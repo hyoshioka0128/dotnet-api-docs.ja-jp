@@ -1,5 +1,5 @@
 <Type Name="UndoEngine" FullName="System.ComponentModel.Design.UndoEngine">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="921558fdca96cca1a39d4c27af1a37fb89d55b6c" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/25/2018" /><Meta Name="ms.locfileid" Value="39837112" /></Metadata><TypeSignature Language="C#" Value="public abstract class UndoEngine : IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="e1dddf59757923d82b4d9c569dca1882564e3602" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65001287" /></Metadata><TypeSignature Language="C#" Value="public abstract class UndoEngine : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit UndoEngine extends System.Object implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.ComponentModel.Design.UndoEngine" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class UndoEngine&#xA;Implements IDisposable" />
@@ -8,6 +8,10 @@
   <AssemblyInfo>
     <AssemblyName>System.Design</AssemblyName>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>System.Windows.Forms.Design</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -19,7 +23,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>標準の元に戻したりやり直したりするデザイン時の機能を指定します。</summary>
+    <summary>デザイン時に、汎用の元に戻す/やり直し機能を指定します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -74,6 +78,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="provider" Type="System.IServiceProvider" />
       </Parameters>
@@ -88,8 +96,8 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="provider" /> は <see langword="null" />です。</exception>
-        <exception cref="T:System.NotSupportedException">必要なサービスが見つかりません。 必要なサービスについては、<see cref="T:System.ComponentModel.Design.UndoEngine" /> のトピックを参照してください。 このサービスが削除されている場合は、必ず代わりのサービスを提供します。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="provider" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.NotSupportedException">必要なサービスが見つかりません。 参照してください<see cref="T:System.ComponentModel.Design.UndoEngine" />必要なサービスです。 このサービスを削除した場合は、置換を指定することを確認します。</exception>
         <altmember cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />
         <altmember cref="T:System.ComponentModel.Design.IDesignerHost" />
         <altmember cref="T:System.IServiceProvider" />
@@ -108,6 +116,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -115,8 +127,8 @@
         <Parameter Name="unit" Type="System.ComponentModel.Design.UndoEngine+UndoUnit" />
       </Parameters>
       <Docs>
-        <param name="unit">追加する取り消し単位。</param>
-        <summary><see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> を、元に戻すスタックに追加します。</summary>
+        <param name="unit">追加する元に戻す単位</param>
+        <summary>追加、<see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />元に戻すスタックにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -141,6 +153,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ComponentModel.Design.UndoEngine+UndoUnit</ReturnType>
       </ReturnValue>
@@ -150,9 +166,9 @@
       </Parameters>
       <Docs>
         <param name="name">作成する単位の名前。</param>
-        <param name="primary">入れ子になっている一連の単位のうち最初の単位を作成する場合は <see langword="true" />。以降の入れ子になっている単位を作成する場合は <see langword="false" />。</param>
+        <param name="primary"><see langword="true" /> 一連の入れ子になったユニットです。 最初に作成するには<see langword="false" />後続の入れ子になったユニットを作成します。</param>
         <summary>新しい <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> を作成します。</summary>
-        <returns>指定した名前の新しい <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />。</returns>
+        <returns>新しい<see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />指定した名前。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -178,6 +194,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -186,7 +206,7 @@
       </Parameters>
       <Docs>
         <param name="unit">破棄する単位。</param>
-        <summary><see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> を破棄します。</summary>
+        <summary>破棄、<see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -223,6 +243,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
           <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
@@ -250,6 +274,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -275,6 +303,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
           <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
@@ -287,7 +319,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="T:System.ComponentModel.Design.UndoEngine" /> を有効または無効にします。</summary>
+        <summary>有効または無効に、<see cref="T:System.ComponentModel.Design.UndoEngine" />します。</summary>
         <value><see cref="T:System.ComponentModel.Design.UndoEngine" /> が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -305,6 +337,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -314,10 +350,10 @@
       <Docs>
         <param name="serviceType">取得するサービスの型。</param>
         <summary>要求したサービスを取得します。</summary>
-        <returns>見つかった場合には、要求されたサービス。</returns>
+        <returns>要求したサービス場合が見つかりました。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" />です。</exception>
-        <exception cref="T:System.NotSupportedException"><paramref name="serviceType" /> が要求されましたが、見つかりません。 このサービスが削除されている場合は、必ず代わりのサービスを提供します。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.NotSupportedException"><paramref name="serviceType" /> 必要ですが、見つかりません。 このサービスを削除した場合は、置換を指定することを確認します。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetService">
@@ -333,6 +369,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -342,9 +382,9 @@
       <Docs>
         <param name="serviceType">取得するサービスの型。</param>
         <summary>要求したサービスを取得します。</summary>
-        <returns>要求されたサービス。要求されたサービスが見つからない場合は <see langword="null" />。</returns>
+        <returns>要求したサービスまたは<see langword="null" />要求したサービスが見つからない場合。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="OnUndoing">
@@ -358,6 +398,10 @@
       <AssemblyInfo>
         <AssemblyName>System.Design</AssemblyName>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -385,6 +429,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -410,6 +458,10 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
@@ -431,12 +483,16 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>元に戻す操作が実行中であることを示します。</summary>
-        <value>元に戻す操作を実行中の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <summary>かどうか、元に戻す操作が進行状況を示します。</summary>
+        <value><see langword="true" /> 元に戻す操作は進行中です。 場合、それ以外の場合、<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -453,11 +509,15 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms.Design</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>元に戻す操作が実行された直後に発生します。</summary>
+        <summary>元に戻す操作が実行された直後後に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
