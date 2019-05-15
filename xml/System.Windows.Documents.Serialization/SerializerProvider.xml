@@ -1,5 +1,5 @@
 <Type Name="SerializerProvider" FullName="System.Windows.Documents.Serialization.SerializerProvider">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="6d5509ccaedc16f725b64e5935b38c1c6cc5aded" /><Meta Name="ms.sourcegitcommit" Value="0ec122ee5f3681159b8460ab15b409fd6e3d3ae0" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="10/04/2018" /><Meta Name="ms.locfileid" Value="48683573" /></Metadata><TypeSignature Language="C#" Value="public sealed class SerializerProvider" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="91657f507aa0414341dcbcc5b64f770deab8572b" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65016476" /></Metadata><TypeSignature Language="C#" Value="public sealed class SerializerProvider" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SerializerProvider extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Windows.Documents.Serialization.SerializerProvider" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SerializerProvider" />
@@ -15,7 +15,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>専用のシリアル化形式を持つ製造元が作成したシリアル化プラグインを、<see cref="T:System.Windows.Documents.Serialization.ISerializerFactory" /> および <see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" /> を使用して管理します。</summary>
+    <summary>シリアル化プラグインを作成するを使用して管理<see cref="T:System.Windows.Documents.Serialization.ISerializerFactory" />と<see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />、独自の独自のシリアル化形式を持つ製造元でします。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -32,7 +32,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
+        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netcore-3.0">
           <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
         </Attribute>
       </Attributes>
@@ -71,7 +71,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
+        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netcore-3.0">
           <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
         </Attribute>
       </Attributes>
@@ -83,10 +83,10 @@
         <Parameter Name="stream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="serializerDescriptor"><see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" /> に関するシリアル化情報を格納する <see cref="T:System.Windows.Documents.Serialization.SerializerWriter" />。</param>
-        <param name="stream">返されるオブジェクトの書き込み先となる <see cref="T:System.IO.Stream" />。</param>
-        <summary>指定した記述子を使用する指定した <see cref="T:System.Windows.Documents.Serialization.SerializerWriter" /> の <see cref="T:System.IO.Stream" /> 抽象クラスから派生したオブジェクトを初期化します。</summary>
-        <returns><see cref="T:System.Windows.Documents.Serialization.SerializerWriter" /> から派生したクラスのオブジェクト。</returns>
+        <param name="serializerDescriptor">A<see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />のシリアル化情報を格納している、<see cref="T:System.Windows.Documents.Serialization.SerializerWriter" />します。</param>
+        <param name="stream"><see cref="T:System.IO.Stream" />が返されるオブジェクトを書き込む。</param>
+        <summary>抽象から派生したオブジェクトを初期化します<see cref="T:System.Windows.Documents.Serialization.SerializerWriter" />、指定されたクラス<see cref="T:System.IO.Stream" />指定された記述子が使用されます。</summary>
+        <returns>派生したクラスのオブジェクト<see cref="T:System.Windows.Documents.Serialization.SerializerWriter" />します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -102,17 +102,17 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException">いずれかのパラメーターが null です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="serializerDescriptor" /> で指定されているバージョンが不正です。  
+        <exception cref="T:System.ArgumentNullException">パラメーターのいずれかが null です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="serializerDescriptor" />不適切なバージョンを指定することができます。  
   
 - または - 
-バージョンが登録されていません。  
+登録されていません。  
   
 - または - 
 アセンブリ ファイルが見つかりません。  
   
 - または - 
-アセンブリを読み込めません。</exception>
+アセンブリをアンロードすることはできません。</exception>
       </Docs>
     </Member>
     <Member MemberName="InstalledSerializers">
@@ -138,7 +138,7 @@
       </ReturnValue>
       <Docs>
         <summary>インストールされているプラグイン シリアライザーのコレクションを取得します。</summary>
-        <value>既に登録されている <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> オブジェクトの <see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />。</value>
+        <value>A<see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" />の<see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />オブジェクトが既に登録されています。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -166,7 +166,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
+        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netcore-3.0">
           <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
         </Attribute>
       </Attributes>
@@ -178,9 +178,9 @@
         <Parameter Name="overwrite" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="serializerDescriptor">プラグインの <see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />。</param>
-        <param name="overwrite">同じプラグインの既存の登録を上書きする場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
-        <summary>シリアライザー プラグインを登録します。</summary>
+        <param name="serializerDescriptor"><see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />プラグインの。</param>
+        <param name="overwrite"><see langword="true" /> 同じプラグインの既存の登録を上書きするにはそれ以外の場合、<see langword="false" />します。</param>
+        <summary>プラグイン シリアライザーを登録します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -192,7 +192,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="serializerDescriptor" /> が null です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="overwrite" /> が <see langword="false" /> で、プラグインが既に登録されています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="overwrite" /> <see langword="false" />プラグインが既に登録されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="UnregisterSerializer">
@@ -208,7 +208,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
+        <Attribute FrameworkAlternate="netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netcore-3.0">
           <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
         </Attribute>
       </Attributes>
@@ -219,7 +219,7 @@
         <Parameter Name="serializerDescriptor" Type="System.Windows.Documents.Serialization.SerializerDescriptor" />
       </Parameters>
       <Docs>
-        <param name="serializerDescriptor">プラグインの <see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />。</param>
+        <param name="serializerDescriptor"><see cref="T:System.Windows.Documents.Serialization.SerializerDescriptor" />プラグインの。</param>
         <summary>レジストリからシリアライザー プラグインを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -232,7 +232,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="serializerDescriptor" /> が null です。</exception>
-        <exception cref="T:System.ArgumentException">プラグインが登録されていません。 「**解説**」を参照してください。</exception>
+        <exception cref="T:System.ArgumentException">プラグインは登録されません。 「**解説**」を参照してください。</exception>
       </Docs>
     </Member>
   </Members>
