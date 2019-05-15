@@ -1,5 +1,5 @@
 <Type Name="OleDbTransaction" FullName="System.Data.OleDb.OleDbTransaction">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="36b9c11c5693676af6cc15af10c0deda5fbfb4a4" /><Meta Name="ms.sourcegitcommit" Value="bac13a81377b1c4ebf3990e3287a6f1700f73751" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/19/2019" /><Meta Name="ms.locfileid" Value="57915309" /></Metadata><TypeSignature Language="C#" Value="public sealed class OleDbTransaction : System.Data.Common.DbTransaction" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f7ce5ba8a0645387fdc7d790346e2883c7a8dfb7" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65006414" /></Metadata><TypeSignature Language="C#" Value="public sealed class OleDbTransaction : System.Data.Common.DbTransaction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OleDbTransaction extends System.Data.Common.DbTransaction" />
   <TypeSignature Language="DocId" Value="T:System.Data.OleDb.OleDbTransaction" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OleDbTransaction&#xA;Inherits DbTransaction" />
@@ -96,7 +96,7 @@
       </Parameters>
       <Docs>
         <param name="isolevel">トランザクションで使用する分離レベル。</param>
-        <summary>入れ子になったデータベース トランザクションを開始し、新しいトランザクションで使用する分離レベルを指定します。</summary>
+        <summary>入れ子になったデータベース トランザクションを開始し、新しいトランザクションを使用する分離レベルを指定します。</summary>
         <returns>入れ子になったデータベース トランザクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -144,7 +144,7 @@
         <exception cref="T:System.Exception">トランザクションをコミットしようとしてエラーが発生しました。</exception>
         <exception cref="T:System.InvalidOperationException">トランザクションは既にコミットまたはロールバックされています。  
   
-または 
+- または - 
 接続が切れています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/f46570de-9e50-4fe6-8710-a8c31fa8569b">トランザクションの実行</related>
       </Docs>
@@ -167,8 +167,8 @@
         <ReturnType>System.Data.OleDb.OleDbConnection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>トランザクションに関連付けられた <see cref="T:System.Data.OleDb.OleDbConnection" /> オブジェクトを取得します。トランザクションが既に無効になっている場合は、<see langword="null" /> が返されます。</summary>
-        <value>トランザクションに関連付けられる <see cref="T:System.Data.OleDb.OleDbConnection" /> オブジェクト。</value>
+        <summary>取得、 <see cref="T:System.Data.OleDb.OleDbConnection" /> 、トランザクションに関連付けられているオブジェクトまたは<see langword="null" />トランザクションが有効になった場合。</summary>
+        <value><see cref="T:System.Data.OleDb.OleDbConnection" />トランザクションに関連付けられているオブジェクト。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -197,8 +197,8 @@
         <ReturnType>System.Data.Common.DbConnection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>この <see cref="T:System.Data.Common.DbConnection" /> により使用される <see cref="T:System.Data.Common.DbCommand" /> を取得または設定します。</summary>
+        <value>データ ソースへの接続。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -222,9 +222,10 @@
         <Parameter Name="disposing" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="disposing">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="disposing">マネージド リソースとアンマネージド リソースの両方を解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <summary>リリース、および必要に応じてでアンマネージ リソースが使用されるマネージ リソースも解放します。</summary>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -244,7 +245,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>オブジェクトが、ガベージ コレクションによって収集される前に、リソースの解放とその他のクリーンアップ操作の実行を試みることができるようにします。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -267,7 +268,7 @@
       </ReturnValue>
       <Docs>
         <summary>このトランザクションの <see cref="T:System.Data.IsolationLevel" /> を指定します。</summary>
-        <value>このトランザクションの <see cref="T:System.Data.IsolationLevel" />。 既定値は、<see langword="ReadCommitted" /> です。</value>
+        <value>このトランザクションの <see cref="T:System.Data.IsolationLevel" />。 既定値は <see langword="ReadCommitted" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -318,7 +319,7 @@
         <exception cref="T:System.Exception">トランザクションをコミットしようとしてエラーが発生しました。</exception>
         <exception cref="T:System.InvalidOperationException">トランザクションは既にコミットまたはロールバックされています。  
   
-または 
+- または - 
 接続が切れています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/f46570de-9e50-4fe6-8710-a8c31fa8569b">トランザクションの実行</related>
       </Docs>

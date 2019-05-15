@@ -1,5 +1,5 @@
 <Type Name="ValidationContext" FullName="System.ComponentModel.DataAnnotations.ValidationContext">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3b4277237b3362646e6c3ca9c45546c599a553df" /><Meta Name="ms.sourcegitcommit" Value="bac13a81377b1c4ebf3990e3287a6f1700f73751" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/19/2019" /><Meta Name="ms.locfileid" Value="57916167" /></Metadata><TypeSignature Language="C#" Value="public sealed class ValidationContext : IServiceProvider" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="453e107d819b2613d29fc02a355571aff99ef426" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65001858" /></Metadata><TypeSignature Language="C#" Value="public sealed class ValidationContext : IServiceProvider" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ValidationContext extends System.Object implements class System.IServiceProvider" />
   <TypeSignature Language="DocId" Value="T:System.ComponentModel.DataAnnotations.ValidationContext" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ValidationContext&#xA;Implements IServiceProvider" />
@@ -70,7 +70,7 @@
       </Parameters>
       <Docs>
         <param name="instance">検証するオブジェクト インスタンス。 <see langword="null" /> にすることはできません。</param>
-        <summary>オブジェクト インスタンスを指定して、<see cref="T:System.ComponentModel.DataAnnotations.ValidationContext" /> クラスの新しいインスタンスを初期化します</summary>
+        <summary>オブジェクト インスタンスを使用して、<see cref="T:System.ComponentModel.DataAnnotations.ValidationContext" /> クラスの新しいインスタンスを初期化します</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -100,7 +100,7 @@
       <Docs>
         <param name="instance">検証するオブジェクト インスタンス。  <see langword="null" /> にすることはできません</param>
         <param name="items">コンシューマーに提供するオプションの一連のキーと値のペア。</param>
-        <summary>オブジェクトとプロパティ バッグ (オプション) を使用して、<see cref="T:System.ComponentModel.DataAnnotations.ValidationContext" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>オブジェクト インスタンスを使用して、<see cref="T:System.ComponentModel.DataAnnotations.ValidationContext" /> クラスの新しいインスタンスを初期化します</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -139,7 +139,7 @@
         <param name="instance">検証対象のオブジェクト。 このパラメーターは必須です。</param>
         <param name="serviceProvider"><see cref="T:System.IServiceProvider" /> インターフェイスを実装するオブジェクト。 このパラメーターは省略できます。</param>
         <param name="items">サービス コンシューマーに使用できるようにするキーと値のペアのディクショナリ。 このパラメーターは省略できます。</param>
-        <summary>サービス プロバイダーとサービス コンシューマーを使用して、<see cref="T:System.ComponentModel.DataAnnotations.ValidationContext" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>サービス プロバイダーとサービス コンシューマーのディクショナリを使用して、<see cref="T:System.ComponentModel.DataAnnotations.ValidationContext" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -216,7 +216,7 @@
         <Parameter Name="serviceType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="serviceType">検証に使用するサービスの型。</param>
+        <param name="serviceType">検証に使用されるサービスの型。</param>
         <summary>カスタム検証を提供するサービスを返します。</summary>
         <returns>サービスのインスタンス。サービスを利用できない場合は <see langword="null" />。</returns>
         <remarks>
@@ -339,9 +339,20 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- このプロパティは、対応するデータ フィールドの名前ではなく、エンティティ メンバー名を表します。 そのため、この名前は、ローカライズされた名前ではありません。 これは、プロパティまたはパラメーターのコンテキストに対してのみ設定する必要があります。  
-  
+## Remarks
+
+このプロパティは、対応するデータ フィールドの名前ではなく、エンティティ メンバー名を表します。 そのため、この名前は、ローカライズされた名前ではありません。 これは、プロパティまたはパラメーターのコンテキストに対してのみ設定する必要があります。  
+
+.NET Framework 4.7.2 およびカスタムを使用する場合、以前のバージョンで<xref:System.ComponentModel.DataAnnotations.ValidationAttribute?displayProperty=nameWithType>、`MemberName`プロパティが返す`null`します。 プロパティは、アプリ構成ファイルに次の設定を追加して、メンバー名を返すようには、.NET Framework 4.8 以降、既定の動作を変更できます。
+
+```xml
+<configuration>
+   <appSettings>
+      <add key="aspnet:GetValidationMemberName" value="true" />
+   </appSettings>
+</configuration>
+```
+
  ]]></format>
         </remarks>
       </Docs>
