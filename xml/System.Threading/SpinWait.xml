@@ -1,5 +1,5 @@
 <Type Name="SpinWait" FullName="System.Threading.SpinWait">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="5896c27a5617b462d71583204dc20739a0fafd47" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58711945" /></Metadata><TypeSignature Language="C#" Value="public struct SpinWait" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="abb7bbb7dbaa77dbfde0e2229f83e792d539dc8b" /><Meta Name="ms.sourcegitcommit" Value="312579b66a6a983587a84f05c419be8fb0df7326" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/09/2019" /><Meta Name="ms.locfileid" Value="65473670" /></Metadata><TypeSignature Language="C#" Value="public struct SpinWait" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit SpinWait extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Threading.SpinWait" />
   <TypeSignature Language="VB.NET" Value="Public Structure SpinWait" />
@@ -80,8 +80,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このインスタンスで <see cref="M:System.Threading.SpinWait.SpinOnce" /> が呼び出された回数を取得します。</summary>
-        <value>このインスタンスで <see cref="M:System.Threading.SpinWait.SpinOnce" /> が呼び出された回数を表す整数を返します。</value>
+        <summary>時間の数を取得<see cref="M:System.Threading.SpinWait.SpinOnce" />がこのインスタンスで呼び出されました。</summary>
+        <value>時間数を表す整数を返します<see cref="M:System.Threading.SpinWait.SpinOnce" />がこのインスタンスで呼び出されました。</value>
         <remarks>To be added.</remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/36012f42-34e5-4f86-adf4-973f433ed6c6">SpinWait</related>
         <related type="Article" href="https://msdn.microsoft.com/library/b2ac4e4a-051a-4f65-b4b9-f8e103aff195">方法: SpinWait を使用して 2 フェーズ待機操作を実装する</related>
@@ -116,8 +116,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>次に <see cref="M:System.Threading.SpinWait.SpinOnce" /> を呼び出したときにプロセッサが生成され、強制的にコンテキストが切り替えられるかどうかを取得します。</summary>
-        <value>次に <see cref="M:System.Threading.SpinWait.SpinOnce" /> を呼び出したときにプロセッサが生成され、強制的にコンテキストが切り替えられるかどうか。</value>
+        <summary>取得する、[次へ] を呼び出すかどうか<see cref="M:System.Threading.SpinWait.SpinOnce" />強制的にコンテキストが切り替え、プロセッサが生成されます。</summary>
+        <value>次の呼び出しかどうか<see cref="M:System.Threading.SpinWait.SpinOnce" />強制的にコンテキストが切り替え、プロセッサが生成されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -172,144 +172,9 @@
 ## Examples  
  次は、単純なロックされないスタックの実装で SpinWait を使用する例です。 (これはほんの一例です。 効率的なスレッド セーフ スタックが必要な場合、ConcurrentStack の使用を検討します。)  
   
- `// C#`  
-  
- `public class LockFreeStack<T>`  
-  
- `{`  
-  
- `private volatile Node m_head;`  
-  
- `private class Node { public Node Next; public T Value; }`  
-  
- `public void Push(T item)`  
-  
- `{`  
-  
- `var spin = new SpinWait();`  
-  
- `Node node = new Node { Value = item }, head;`  
-  
- `while (true)`  
-  
- `{`  
-  
- `head = m_head;`  
-  
- `node.Next = head;`  
-  
- `if (Interlocked.CompareExchange(ref m_head, node, head) == head) break;`  
-  
- `spin.SpinOnce();`  
-  
- `}`  
-  
- `}`  
-  
- `public bool TryPop(out T result)`  
-  
- `{`  
-  
- `result = default(T);`  
-  
- `var spin = new SpinWait();`  
-  
- `Node head;`  
-  
- `while (true)`  
-  
- `{`  
-  
- `head = m_head;`  
-  
- `if (head == null) return false;`  
-  
- `if (Interlocked.CompareExchange(ref m_head, head.Next, head) == head)`  
-  
- `{`  
-  
- `result = head.Value;`  
-  
- `return true;`  
-  
- `}`  
-  
- `spin.SpinOnce();`  
-  
- `}`  
-  
- `}`  
-  
- `}`  
-  
- `' Visual Basic`  
-  
- `Public Class LockFreeStack(Of T)`  
-  
- `Private m_head As Node`  
-  
- `Private Class Node`  
-  
- `Public [Next] As Node`  
-  
- `Public Value As T`  
-  
- `End Class`  
-  
- `Public Sub Push(ByVal item As T)`  
-  
- `Dim spin As New SpinWait()`  
-  
- `Dim head As Node, node As New Node With {.Value = item}`  
-  
- `While True`  
-  
- `Thread.MemoryBarrier()`  
-  
- `head = m_head`  
-  
- `node.Next = head`  
-  
- `If Interlocked.CompareExchange(m_head, node, head) Is head Then Exit While`  
-  
- `spin.SpinOnce()`  
-  
- `End While`  
-  
- `End Sub`  
-  
- `Public Function TryPop(ByRef result As T) As Boolean`  
-  
- `result = CType(Nothing, T)`  
-  
- `Dim spin As New SpinWait()`  
-  
- `Dim head As Node`  
-  
- `While True`  
-  
- `Thread.MemoryBarrier()`  
-  
- `head = m_head`  
-  
- `If head Is Nothing Then Return False`  
-  
- `If Interlocked.CompareExchange(m_head, head.Next, head) Is head Then`  
-  
- `result = head.Value`  
-  
- `Return True`  
-  
- `End If`  
-  
- `spin.SpinOnce()`  
-  
- `End While`  
-  
- `End Function`  
-  
- `End Class`  
-  
+ [!code-csharp[System.Threading.SpinWait.Reset#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.spinwait/cs/reset.cs#01)]
+ [!code-vb[System.Threading.SpinWait.Reset#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.spinwait/vb/reset.vb#01)]
+
  ]]></format>
         </remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/36012f42-34e5-4f86-adf4-973f433ed6c6">SpinWait</related>
@@ -434,7 +299,7 @@
         <Parameter Name="condition" Type="System.Func&lt;System.Boolean&gt;" />
       </Parameters>
       <Docs>
-        <param name="condition">true を返すまで繰り返し実行されるデリゲート。</param>
+        <param name="condition">これまでを繰り返し実行するデリゲートは、true を返します。</param>
         <summary>指定した条件が満たされるまで回転します。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="condition" /> 引数が null です。</exception>
@@ -475,10 +340,10 @@
         <Parameter Name="millisecondsTimeout" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="condition">true を返すまで繰り返し実行されるデリゲート。</param>
+        <param name="condition">これまでを繰り返し実行するデリゲートは、true を返します。</param>
         <param name="millisecondsTimeout">待機するミリ秒数。無制限に待機する場合は <see cref="F:System.Threading.Timeout.Infinite" /> (-1)。</param>
-        <summary>指定した条件が満たされるか、指定したタイムアウトが経過するまで回転します。</summary>
-        <returns>タイムアウト内に条件が満たされた場合は true。それ以外の場合は false。</returns>
+        <summary>指定した条件が満たされるまで、または指定したタイムアウトが経過するまで回転します。</summary>
+        <returns>タイムアウト内に条件が満たされた場合は true。それ以外の場合は、</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="condition" /> 引数が null です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="millisecondsTimeout" /> は無限のタイムアウトを表す -1 以外の負の数です。</exception>
@@ -519,10 +384,10 @@
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="condition">true を返すまで繰り返し実行されるデリゲート。</param>
-        <param name="timeout">待機するミリ秒数を表す <see cref="T:System.TimeSpan" />。無制限に待機する場合は、-1 ミリ秒を表す TimeSpan。</param>
-        <summary>指定した条件が満たされるか、指定したタイムアウトが経過するまで回転します。</summary>
-        <returns>タイムアウト内に条件が満たされた場合は true。それ以外の場合は false。</returns>
+        <param name="condition">これまでを繰り返し実行するデリゲートは、true を返します。</param>
+        <param name="timeout">A<see cref="T:System.TimeSpan" />待機するミリ秒数を表すまたは無制限に待機する-1 ミリ秒を表す TimeSpan。</param>
+        <summary>指定した条件が満たされるまで、または指定したタイムアウトが経過するまで回転します。</summary>
+        <returns>タイムアウト内に条件が満たされた場合は true。それ以外の場合は、</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="condition" /> 引数が null です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="timeout" /> が -1 ミリ秒以外の負数です。-1 は無制限のタイムアウトを表します。または、タイムアウトが <see cref="F:System.Int32.MaxValue" /> を超えています。</exception>
