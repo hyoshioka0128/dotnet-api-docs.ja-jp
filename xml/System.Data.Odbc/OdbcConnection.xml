@@ -1,5 +1,5 @@
 <Type Name="OdbcConnection" FullName="System.Data.Odbc.OdbcConnection">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d250cc3e0ca1862a37b5d41ffb5952a66a7953bf" /><Meta Name="ms.sourcegitcommit" Value="bac13a81377b1c4ebf3990e3287a6f1700f73751" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/19/2019" /><Meta Name="ms.locfileid" Value="57954182" /></Metadata><TypeSignature Language="C#" Value="public sealed class OdbcConnection : System.Data.Common.DbConnection, ICloneable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="674d598aab8e70483194dc9949ccfc9094230d81" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65003956" /></Metadata><TypeSignature Language="C#" Value="public sealed class OdbcConnection : System.Data.Common.DbConnection, ICloneable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OdbcConnection extends System.Data.Common.DbConnection implements class System.ICloneable" />
   <TypeSignature Language="DocId" Value="T:System.Data.Odbc.OdbcConnection" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OdbcConnection&#xA;Inherits DbConnection&#xA;Implements ICloneable" />
@@ -31,7 +31,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>データ ソースへの開いた接続を表します。</summary>
+    <summary>データ ソースへの接続を開くを表します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -102,7 +102,7 @@
 |プロパティ|初期値|  
 |----------------|-------------------|  
 |<xref:System.Data.Odbc.OdbcConnection.ConnectionString%2A>|空の文字列 ("")|  
-|<xref:System.Data.Odbc.OdbcConnection.ConnectionTimeout%2A>|16|  
+|<xref:System.Data.Odbc.OdbcConnection.ConnectionTimeout%2A>|15|  
 |<xref:System.Data.Odbc.OdbcConnection.Database%2A>|空の文字列 ("")|  
   
  のみを使用してこれらのプロパティの値を変更することができます、<xref:System.Data.Odbc.OdbcConnection.ConnectionString%2A>プロパティ。  
@@ -144,7 +144,7 @@
       </Parameters>
       <Docs>
         <param name="connectionString">データ ソースを開くために使用する接続。</param>
-        <summary>接続文字列を指定して、<see cref="T:System.Data.Odbc.OdbcConnection" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>新しいインスタンスを初期化、<see cref="T:System.Data.Odbc.OdbcConnection" />クラスを指定した接続文字列に置き換えます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -154,7 +154,7 @@
 |プロパティ|初期値|  
 |----------------|-------------------|  
 |<xref:System.Data.Odbc.OdbcConnection.ConnectionString%2A>|`connectionString`|  
-|<xref:System.Data.Odbc.OdbcConnection.ConnectionTimeout%2A>|16|  
+|<xref:System.Data.Odbc.OdbcConnection.ConnectionTimeout%2A>|15|  
 |<xref:System.Data.Odbc.OdbcConnection.Database%2A>|空の文字列 ("")|  
   
  のみを使用してこれらのプロパティの値を変更することができます、<xref:System.Data.Odbc.OdbcConnection.ConnectionString%2A>プロパティ。  
@@ -196,9 +196,9 @@
         <Parameter Name="isolationLevel" Type="System.Data.IsolationLevel" Index="0" FrameworkAlternate="dotnet-plat-ext-2.1;dotnet-plat-ext-2.2;dotnet-plat-ext-3.0;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="isolationLevel">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="isolationLevel">トランザクションの分離レベルを指定する列挙値のビットごとの組み合わせ。</param>
+        <summary>接続でトランザクションを開始します。</summary>
+        <returns>トランザクション。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -259,7 +259,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">トランザクションは、現在アクティブです。 並列トランザクションはサポートされていません。</exception>
+        <exception cref="T:System.InvalidOperationException">トランザクションは、現在アクティブなです。 並列トランザクションはサポートされていません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続</related>
       </Docs>
     </Member>
@@ -289,8 +289,8 @@
         <Parameter Name="isolevel" Type="System.Data.IsolationLevel" />
       </Parameters>
       <Docs>
-        <param name="isolevel">この接続のトランザクション分離レベル。 分離レベルを指定しない場合、ドライバーの既定の分離レベルが使用されます。</param>
-        <summary>指定した <see cref="T:System.Data.IsolationLevel" /> 値を使用して、データ ソースでトランザクションを開始します。</summary>
+        <param name="isolevel">この接続のトランザクション分離レベル。 分離レベルを指定しない場合は、ドライバーの既定の分離レベルが使用されます。</param>
+        <summary>指定したデータ ソースでトランザクションを開始<see cref="T:System.Data.IsolationLevel" />値。</summary>
         <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -310,7 +310,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">トランザクションは、現在アクティブです。 並列トランザクションはサポートされていません。</exception>
+        <exception cref="T:System.InvalidOperationException">トランザクションは、現在アクティブなです。 並列トランザクションはサポートされていません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続</related>
       </Docs>
     </Member>
@@ -341,7 +341,7 @@
       </Parameters>
       <Docs>
         <param name="value">データベース名。</param>
-        <summary>開いている <see cref="T:System.Data.Odbc.OdbcConnection" /> に関連付けられている現在のデータベースを変更します。</summary>
+        <summary>関連付けられた開いている現在のデータベース変更<see cref="T:System.Data.Odbc.OdbcConnection" />します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -465,8 +465,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>データ ソースを開くために使用する文字列を取得または設定します。</summary>
-        <value>データ ソース名など、初期接続を確立するために必要な設定を含む ODBC ドライバー接続文字列。 既定値は、空の文字列 ("") です。 最大長は 1024 文字です。</value>
+        <summary>取得または設定するデータ ソースを開くために使用する文字列。</summary>
+        <value>最初の接続を確立するために必要なデータ ソース名などの設定を含む ODBC ドライバー接続文字列。 既定値は、空の文字列 ("") です。 最大長は 1024 文字です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -564,8 +564,8 @@ driver-defined-attribute-keyword ::= identifier
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続の確立の試行を開始してから、その試行を終了してエラーを生成するまでの待機時間を取得または設定します。</summary>
-        <value>接続が開かれるまでの待機時間 (秒)。 既定値は 15 秒です。</value>
+        <summary>取得または試行を終了し、エラーが発生する前に、接続を確立しているときに待機する時間を設定します。</summary>
+        <value>接続を開くを待機する秒単位の時間。 既定値は 15 秒です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -602,7 +602,7 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.Data.Odbc.OdbcCommand" /> に関連付けられている <see cref="T:System.Data.Odbc.OdbcConnection" /> オブジェクトを作成し、返します。</summary>
+        <summary>作成して返します、<see cref="T:System.Data.Odbc.OdbcCommand" />オブジェクトに関連付けられている、<see cref="T:System.Data.Odbc.OdbcConnection" />します。</summary>
         <returns><see cref="T:System.Data.Odbc.OdbcCommand" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続</related>
@@ -668,7 +668,7 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Docs>
         <summary>現在のデータベース、または接続が開いてから使用するデータベースの名前を取得します。</summary>
-        <value>現在のデータベース名。 接続が開かれるまでの間、既定値は空の文字列 ("") です。</value>
+        <value>現在のデータベースの名前。 既定値は空の文字列 ("")、接続が開かれるまでです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -724,8 +724,8 @@ driver-defined-attribute-keyword ::= identifier
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>データ ソースのサーバー名またはファイル名を取得します。</summary>
-        <value>データ ソースのサーバー名またはファイル名。 接続が開かれるまでの間、既定値は空の文字列 ("") です。</value>
+        <summary>サーバー名またはデータ ソースのファイル名を取得します。</summary>
+        <value>サーバー名またはデータ ソースのファイル名。 既定値は空の文字列 ("")、接続が開かれるまでです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -810,8 +810,8 @@ driver-defined-attribute-keyword ::= identifier
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>現在の接続に指定した ODBC ドライバーの名前を取得します。</summary>
-        <value>ODBC ドライバーの名前。 通常は DLL の名前 (Sqlsrv32.dll など) になります。 接続が開かれるまでの間、既定値は空の文字列 ("") です。</value>
+        <summary>現在の接続に指定された ODBC ドライバーの名前を取得します。</summary>
+        <value>ODBC ドライバーの名前。 これは通常は DLL の名前 (Sqlsrv32.dll など) です。 既定値は空の文字列 ("")、接続が開かれるまでです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -960,7 +960,7 @@ driver-defined-attribute-keyword ::= identifier
       </Parameters>
       <Docs>
         <param name="collectionName">返すスキーマの名前を指定します。</param>
-        <summary>スキーマ名として指定した名前を使用して、この <see cref="T:System.Data.Odbc.OdbcConnection" /> のデータ ソースのスキーマ情報を返します。</summary>
+        <summary>このデータ ソースのスキーマ情報を返します<see cref="T:System.Data.Odbc.OdbcConnection" />スキーマ名の指定の名前を使用します。</summary>
         <returns>スキーマ情報を格納する <see cref="T:System.Data.DataTable" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1002,7 +1002,7 @@ driver-defined-attribute-keyword ::= identifier
       </Parameters>
       <Docs>
         <param name="collectionName">返すスキーマの名前を指定します。</param>
-        <param name="restrictionValues">要求したスキーマの制限値のセットを指定します。</param>
+        <param name="restrictionValues">要求されたスキーマの制限値のセットを指定します。</param>
         <summary>スキーマ名に指定した文字列と制限値に指定した文字列配列を使用して、この <see cref="T:System.Data.Odbc.OdbcConnection" /> のデータ ソースのスキーマ情報を返します。</summary>
         <returns>スキーマ情報を格納する <see cref="T:System.Data.DataTable" />。</returns>
         <remarks>
@@ -1046,7 +1046,7 @@ driver-defined-attribute-keyword ::= identifier
         <ReturnType>System.Data.Odbc.OdbcInfoMessageEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ODBC ドライバーが警告メッセージまたは情報メッセージを送信したときに発生します。</summary>
+        <summary>ODBC ドライバーが警告または情報メッセージを送信するときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1082,7 +1082,7 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="P:System.Data.Odbc.OdbcConnection.ConnectionString" /> で指定したプロパティ設定を使用して、データ ソース接続を開きます。</summary>
+        <summary>指定されたプロパティの設定を使用、データ ソースへの接続を開き、<see cref="P:System.Data.Odbc.OdbcConnection.ConnectionString" />します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1122,7 +1122,7 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>基になる最後の接続が解放されたら ODBC ドライバー マネージャーの環境ハンドルを解放できることを示します。</summary>
+        <summary>最後の基になる接続がリリースされたときに ODBC ドライバー マネージャーの環境ハンドルを解放できることを示します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1183,8 +1183,8 @@ driver-defined-attribute-keyword ::= identifier
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クライアントが接続しているサーバーのバージョンが示された文字列を取得します。</summary>
-        <value>接続されているサーバーのバージョン。</value>
+        <summary>クライアントが接続されているサーバーのバージョンを含む文字列を取得します。</summary>
+        <value>接続先のサーバーのバージョン。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1234,7 +1234,7 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Docs>
         <summary>現在の接続の状態を取得します。</summary>
-        <value><see cref="T:System.Data.ConnectionState" /> 値のビットごとの組み合わせ。 既定値は、<see langword="Closed" /> です。</value>
+        <value><see cref="T:System.Data.ConnectionState" /> 値のビットごとの組み合わせ。 既定値は <see langword="Closed" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1272,7 +1272,7 @@ driver-defined-attribute-keyword ::= identifier
         <ReturnType>System.Data.StateChangeEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>接続の状態が変更されたときに発生します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1298,9 +1298,10 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>データベース トランザクションを開始します。</summary>
+        <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.Data.IDbConnection.BeginTransaction">
@@ -1327,10 +1328,11 @@ driver-defined-attribute-keyword ::= identifier
         <Parameter Name="isolevel" Type="System.Data.IsolationLevel" Index="0" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="isolevel">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="isolevel">分離レベルを指定する列挙値のビットごとの組み合わせ。</param>
+        <summary>分離レベルを指定して、データベース トランザクションを開始します。</summary>
+        <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.Data.IDbConnection.CreateCommand">
@@ -1355,9 +1357,10 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>作成して、接続に関連付けられたコマンド オブジェクトを返します。</summary>
+        <returns>接続に関連付けられている command オブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.ICloneable.Clone">
@@ -1386,7 +1389,7 @@ driver-defined-attribute-keyword ::= identifier
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このメンバーの説明については、<see cref="M:System.ICloneable.Clone" /> のトピックを参照してください。</summary>
+        <summary>このメンバーの詳細については、「<see cref="M:System.ICloneable.Clone" />」をご覧ください。</summary>
         <returns>このインスタンスのコピーである新しい <see cref="T:System.Object" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
