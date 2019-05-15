@@ -1,5 +1,5 @@
 <Type Name="CryptoStream" FullName="System.Security.Cryptography.CryptoStream">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="2b27b0f47ece95649fd064105b25d36d1e4cf036" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58735361" /></Metadata><TypeSignature Language="C#" Value="public class CryptoStream : System.IO.Stream" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="7926cb2f266b315fb81634423124042712c2c009" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="64997376" /></Metadata><TypeSignature Language="C#" Value="public class CryptoStream : System.IO.Stream" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CryptoStream extends System.IO.Stream implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.CryptoStream" />
   <TypeSignature Language="VB.NET" Value="Public Class CryptoStream&#xA;Inherits Stream" />
@@ -95,8 +95,8 @@
       <Docs>
         <param name="stream">暗号変換を実行する対象のストリーム。</param>
         <param name="transform">指定したストリームで実行する暗号変換。</param>
-        <param name="mode"><see cref="T:System.Security.Cryptography.CryptoStreamMode" /> 値のいずれか。</param>
-        <summary>暗号化の対象とするストリーム、実行する変換、およびストリームのモードを指定して、<see cref="T:System.Security.Cryptography.CryptoStream" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="mode"><see cref="T:System.Security.Cryptography.CryptoStreamMode" /> 値のいずれか 1 つ。</param>
+        <summary>暗号化の対象とするデータ ストリーム、使用する変換、およびストリームのモードを指定して、<see cref="T:System.Security.Cryptography.CryptoStream" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -407,7 +407,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>現在のストリームを閉じ、現在のストリームに関連付けられているすべてのリソース (ソケット、ファイル ハンドルなど) を解放します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -578,7 +578,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>オブジェクトが、ガベージ コレクションによって収集される前に、リソースの解放とその他のクリーンアップ操作の実行を試みることができるようにします。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -613,7 +613,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在のライターで使用したすべてのストリームをクリアし、バッファー内のすべてのデータを基になるデバイスに書き込みます。</summary>
+        <summary>現在のストリームのバッファーをすべてクリアし、バッファー内にあるデータすべてを、基になるデバイスに書き込みます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -665,7 +665,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.FlushAsync%2A>で、 `await` (C#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
+ 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.FlushAsync%2A>で、 `await` (c#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
   
  完了前に、操作が取り消された場合、返されたタスクが含まれています、<xref:System.Threading.Tasks.TaskStatus.Canceled>値、<xref:System.Threading.Tasks.Task.Status%2A>プロパティ。  
   
@@ -714,11 +714,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.Cryptography.CryptographicException">キーが破損しており、ストリームに無効な埋め込みが行われる可能性があります。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">ストリームに無効な埋め込みが発生することができます、キーが壊れています。</exception>
         <exception cref="T:System.NotSupportedException">現在のストリームが書き込み可能ではありません。  
   
-または 
-最後のブロックが既に変換されています。</exception>
+- または - 
+最後のブロックは既に変換されています。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -751,7 +751,7 @@
       </ReturnValue>
       <Docs>
         <summary>最後のバッファー ブロックが基になるストリームに書き込まれたかどうかを示す値を取得します。</summary>
-        <value>最後のブロックがフラッシュされている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>最後のブロックがフラッシュされた場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -798,7 +798,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは <xref:System.IO.Stream> からの継承をサポートするためだけのもので、使用できません。  
+ 継承をサポートするためだけにこのプロパティが存在する<xref:System.IO.Stream>、使用することはできません。  
   
  ]]></format>
         </remarks>
@@ -842,7 +842,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは <xref:System.IO.Stream> からの継承をサポートするためだけのもので、使用できません。  
+ 継承をサポートするためだけにこのプロパティが存在する<xref:System.IO.Stream>、使用することはできません。  
   
  ]]></format>
         </remarks>
@@ -890,18 +890,18 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="buffer">バイト配列。 現在のストリームから <paramref name="count" /> で指定された最大バイト数を読み取り、<paramref name="buffer" /> 内に格納します。</param>
+        <param name="buffer">バイト配列。 現在のストリームから最大で <paramref name="count" /> バイトを読み取り、<paramref name="buffer" /> 内に格納します。</param>
         <param name="offset">現在のストリームから読み取ったデータの格納を開始する位置を示す、<paramref name="buffer" /> 内のバイト オフセット。</param>
         <param name="count">現在のストリームから読み取る最大バイト数。</param>
         <summary>現在のストリームからバイト シーケンスを読み取り、読み取ったバイト数だけストリーム内の位置を進めます。</summary>
-        <returns>バッファーに読み取られた合計バイト数。 要求されたバイト数を読み取れなかった場合、この値は要求されたバイト数より小さくなることがあります。ストリームの末尾に達していた場合は 0 になります。</returns>
+        <returns>バッファーに読み取られた合計バイト数。 要求されたバイト数をその時点で読み取れなかった場合、この値は要求されたバイト数より小さくなることがあります。ストリームの末尾に達していた場合は 0 になります。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.NotSupportedException">現在の <see cref="T:System.Security.Cryptography.CryptoStreamMode" /> オブジェクトと関連付けられた <see cref="T:System.Security.Cryptography.CryptoStream" /> が、使用されているストリームと一致しません。  <see cref="F:System.Security.Cryptography.CryptoStreamMode.Read" /> を書き込み専用のストリームで使用した場合などに、この例外がスローされます。</exception>
+        <exception cref="T:System.NotSupportedException"><see cref="T:System.Security.Cryptography.CryptoStreamMode" />に現在関連付けられている<see cref="T:System.Security.Cryptography.CryptoStream" />オブジェクトが、基になるストリームと一致しません。  使用する場合、この例外がスローされます<see cref="F:System.Security.Cryptography.CryptoStreamMode.Read" />書き込み専用である基になるストリームを持つ。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターが 0 未満。  
   
-または 
+- または - 
 <paramref name="count" /> パラメーターが 0 未満。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="count" /> パラメーターと <paramref name="offset" /> パラメーターの合計が、バッファーの長さを超えています。</exception>
+        <exception cref="T:System.ArgumentException">合計、<paramref name="count" />と<paramref name="offset" />パラメーターが、バッファーの長さを超えています。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -948,13 +948,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.ReadAsync%2A>で、 `await` (C#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
+ 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.ReadAsync%2A>で、 `await` (c#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
   
  完了前に、操作が取り消された場合、返されたタスクが含まれています、<xref:System.Threading.Tasks.TaskStatus.Canceled>値、<xref:System.Threading.Tasks.Task.Status%2A>プロパティ。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> または <paramref name="count" /> が負の値です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="offset" /> と <paramref name="count" /> の合計が、バッファーの長さよりも大きくなっています。</exception>
         <exception cref="T:System.NotSupportedException">ストリームは読み取りをサポートしません。</exception>
@@ -1082,11 +1082,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは <xref:System.IO.Stream> からの継承をサポートするためだけのもので、使用できません。  
+ 継承をサポートするためだけにこのプロパティが存在する<xref:System.IO.Stream>、使用することはできません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.NotSupportedException">このプロパティは <see cref="T:System.IO.Stream" /> からの継承をサポートするためだけのもので、使用できません。</exception>
+        <exception cref="T:System.NotSupportedException">継承をサポートするためだけにこのプロパティが存在する<see cref="T:System.IO.Stream" />、使用することはできません。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1115,8 +1115,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary><see cref="T:System.Security.Cryptography.CryptoStream" /> クラスの現在のインスタンスによって使用されているリソースを解放します。</summary>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -1164,12 +1165,12 @@
         <param name="count">現在のストリームに書き込むバイト数。</param>
         <summary>バイト シーケンスを現在の <see cref="T:System.Security.Cryptography.CryptoStream" /> に書き込み、書き込んだバイト数の分だけストリーム内の現在位置を進めます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.NotSupportedException">現在の <see cref="T:System.Security.Cryptography.CryptoStreamMode" /> オブジェクトと関連付けられた <see cref="T:System.Security.Cryptography.CryptoStream" /> が、使用されているストリームと一致しません。  <see cref="F:System.Security.Cryptography.CryptoStreamMode.Write" /> を読み取り専用のストリームで使用した場合などに、この例外がスローされます。</exception>
+        <exception cref="T:System.NotSupportedException"><see cref="T:System.Security.Cryptography.CryptoStreamMode" />に現在関連付けられている<see cref="T:System.Security.Cryptography.CryptoStream" />オブジェクトが、基になるストリームと一致しません。  <see cref="F:System.Security.Cryptography.CryptoStreamMode.Write" /> を読み取り専用のストリームで使用した場合などに、この例外がスローされます。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターが 0 未満。  
   
-または 
+- または - 
 <paramref name="count" /> パラメーターが 0 未満。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="count" /> パラメーターと <paramref name="offset" /> パラメーターの合計が、バッファーの長さを超えています。</exception>
+        <exception cref="T:System.ArgumentException">合計、<paramref name="count" />と<paramref name="offset" />パラメーターが、バッファーの長さを超えています。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1216,13 +1217,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.WriteAsync%2A>で、 `await` (C#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
+ 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.WriteAsync%2A>で、 `await` (c#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
   
  完了前に、操作が取り消された場合、返されたタスクが含まれています、<xref:System.Threading.Tasks.TaskStatus.Canceled>値、<xref:System.Threading.Tasks.Task.Status%2A>プロパティ。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> または <paramref name="count" /> が負の値です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="offset" /> と <paramref name="count" /> の合計が、バッファーの長さよりも大きいです。</exception>
         <exception cref="T:System.NotSupportedException">ストリームは書き込みをサポートしません。</exception>
