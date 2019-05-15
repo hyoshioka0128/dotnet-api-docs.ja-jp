@@ -1,5 +1,5 @@
 <Type Name="OdbcCommand" FullName="System.Data.Odbc.OdbcCommand">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="ce14dc7448377ef0ca21b153d69ac061ef55758f" /><Meta Name="ms.sourcegitcommit" Value="bac13a81377b1c4ebf3990e3287a6f1700f73751" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/19/2019" /><Meta Name="ms.locfileid" Value="57960273" /></Metadata><TypeSignature Language="C#" Value="public sealed class OdbcCommand : System.Data.Common.DbCommand, ICloneable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="704c2f4b3ac513edc3b55a242793c3dca6346d45" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65003971" /></Metadata><TypeSignature Language="C#" Value="public sealed class OdbcCommand : System.Data.Common.DbCommand, ICloneable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OdbcCommand extends System.Data.Common.DbCommand implements class System.ICloneable" />
   <TypeSignature Language="DocId" Value="T:System.Data.Odbc.OdbcCommand" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OdbcCommand&#xA;Inherits DbCommand&#xA;Implements ICloneable" />
@@ -184,7 +184,7 @@
       <Docs>
         <param name="cmdText">クエリのテキスト。</param>
         <param name="connection">データ ソースへの接続を表す <see cref="T:System.Data.Odbc.OdbcConnection" /> オブジェクト。</param>
-        <summary>クエリ テキストと <see cref="T:System.Data.Odbc.OdbcCommand" /> オブジェクトを使用して、<see cref="T:System.Data.Odbc.OdbcConnection" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>新しいインスタンスを初期化、 <see cref="T:System.Data.Odbc.OdbcCommand" /> 、クエリのテキストを持つクラスと<see cref="T:System.Data.Odbc.OdbcConnection" />オブジェクト。</summary>
         <remarks>To be added.</remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/40494916-c25a-4cb8-8f7c-fcb8d378464e">コマンドの実行</related>
       </Docs>
@@ -262,7 +262,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.Data.Odbc.OdbcCommand" /> の実行のキャンセルを試行します。</summary>
+        <summary>実行をキャンセルしようとする、<see cref="T:System.Data.Odbc.OdbcCommand" />します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -347,7 +347,7 @@
   
  このエスケープ シーケンスが認識され、ODBC ドライバーで解析します。 それらは、データ ソースに固有の文法でエスケープ シーケンスを置き換えます。  
   
- プロシージャは、データ ソースに格納されている実行可能なオブジェクトです。 一般に、プリコンパイルされた 1 つまたは複数の SQL ステートメントになります。 プロシージャの呼び出しのエスケープ シーケンスは、します。  
+ プロシージャは、データ ソースに格納されている実行可能なオブジェクトです。 これは通常、プリコンパイルされた 1 つ以上の SQL ステートメントです。 プロシージャの呼び出しのエスケープ シーケンスは、します。  
   
 ```  
 {[?=]call procedure-name[([parameter][,[parameter]]...)]}  
@@ -359,7 +359,7 @@
   
  設定することはできません、 <xref:System.Data.Odbc.OdbcCommand.Connection%2A>、<xref:System.Data.Odbc.OdbcCommand.CommandType%2A>と<xref:System.Data.Odbc.OdbcCommand.CommandText%2A>プロパティの場合は、現在の接続で実行またはフェッチ操作が実行されます。  
   
- ODBC.NET プロバイダーが SQL ステートメントまたはによって呼び出されるストアド プロシージャにパラメーターを渡すの名前付きパラメーターをサポートしていません、<xref:System.Data.Odbc.OdbcCommand>とき<xref:System.Data.Odbc.OdbcCommand.CommandType%2A>に設定されている`Text`します。 この場合、疑問符 (?) プレース ホルダーを使用する必要があります。 次に例を示します。  
+ ODBC.NET プロバイダーが SQL ステートメントまたはによって呼び出されるストアド プロシージャにパラメーターを渡すの名前付きパラメーターをサポートしていません、<xref:System.Data.Odbc.OdbcCommand>とき<xref:System.Data.Odbc.OdbcCommand.CommandType%2A>に設定されている`Text`します。 この場合、疑問符 (?) プレース ホルダーを使用する必要があります。 例:  
   
 ```  
 SELECT * FROM Customers WHERE CustomerID = ?  
@@ -392,7 +392,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
 ```  
   
 > [!NOTE]
->  パラメーターを省略した場合、他のパラメーターを区切るコンマが引き続き表示されます必要があります。 パラメーターまたは入力/出力パラメーターを省略した場合、手順は、パラメーターの既定値を使用します。 長さ/インジケーター バッファーの値を設定するパラメーターまたは入力/出力パラメーターの既定値を指定する別の方法に SQL_DEFAULT_PARAM をパラメーターにバインドします。  
+>  パラメーターを省略した場合、他のパラメーターを区切るコンマが引き続き表示されます必要があります。 入力パラメーターまたは入出力パラメーターを省略すると、プロシージャはそのパラメーターの既定値を使用します。 長さ/インジケーター バッファーの値を設定するパラメーターまたは入力/出力パラメーターの既定値を指定する別の方法に SQL_DEFAULT_PARAM をパラメーターにバインドします。  
   
  ]]></format>
         </remarks>
@@ -430,7 +430,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コマンド実行の試行を終了し、エラーを生成するまでの待機時間を取得または設定します。</summary>
+        <summary>取得またはコマンドを実行する試行を終了して、エラーを生成するまでの待機時間を設定します。</summary>
         <value>コマンドの実行を待機する時間 (秒単位)。 既定値は 30 秒です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -478,7 +478,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
       </ReturnValue>
       <Docs>
         <summary><see cref="P:System.Data.Odbc.OdbcCommand.CommandText" /> プロパティをどのように解釈するかを示す値を取得または設定します。</summary>
-        <value><see cref="T:System.Data.CommandType" /> 値のいずれか。 既定値は、<see langword="Text" /> です。</value>
+        <value><see cref="T:System.Data.CommandType" /> 値のいずれか 1 つ。 既定値は <see langword="Text" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -487,7 +487,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
   
  <xref:System.Data.Odbc.OdbcCommand.Connection%2A>、<xref:System.Data.Odbc.OdbcCommand.CommandType%2A>と<xref:System.Data.Odbc.OdbcCommand.CommandText%2A>現在の接続が実行または fetch 操作を実行する場合、プロパティを設定することはできません。  
   
- 名前付きの引き渡しは、.NET Framework Data Provider for ODBC でサポートされません SQL ステートメントまたはストアド プロシージャによって呼び出されるパラメーター、<xref:System.Data.Odbc.OdbcCommand>します。 いずれのこのような場合、疑問符 (?) プレース ホルダーを使用します。 次に例を示します。  
+ 名前付きの引き渡しは、.NET Framework Data Provider for ODBC でサポートされません SQL ステートメントまたはストアド プロシージャによって呼び出されるパラメーター、<xref:System.Data.Odbc.OdbcCommand>します。 いずれのこのような場合、疑問符 (?) プレース ホルダーを使用します。 例:  
   
 ```  
 SELECT * FROM Customers WHERE CustomerID = ?  
@@ -748,8 +748,8 @@ SELECT * FROM Customers WHERE CustomerID = ?
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コマンド オブジェクトをカスタマイズされたインターフェイス コントロールに表示する必要があるかどうかを示す値を取得または設定します。</summary>
-        <value><see langword="true" /> コマンド オブジェクトをコントロールに表示されている必要がある場合それ以外の場合、<see langword="false" />します。 既定値は、<see langword="true" /> です。</value>
+        <summary>取得またはコマンド オブジェクトをカスタマイズしたインターフェイス コントロールに表示するかどうかを示す値を設定します。</summary>
+        <value><see langword="true" /> コマンド オブジェクトをコントロールに表示されている必要がある場合それ以外の場合、<see langword="false" />します。 既定値は <see langword="true" /> です。</value>
         <remarks>To be added.</remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/40494916-c25a-4cb8-8f7c-fcb8d378464e">コマンドの実行</related>
       </Docs>
@@ -840,8 +840,8 @@ SELECT * FROM Customers WHERE CustomerID = ?
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="P:System.Data.Odbc.OdbcCommand.Connection" /> に対して SQL ステートメントを実行し、影響を受けた行数を返します。</summary>
-        <returns>UPDATE、INSERT、DELETE の各ステートメントで、戻り値はそのコマンドの影響を受ける行の数です。 その他のすべての種類のステートメントでは、戻り値は -1 です。</returns>
+        <summary>に対して SQL ステートメントを実行、<see cref="P:System.Data.Odbc.OdbcCommand.Connection" />影響を受ける行の数を返します。</summary>
+        <returns>UPDATE、INSERT、および DELETE ステートメントでは、戻り値は、コマンドによって影響を受ける行の数です。 その他のすべての種類のステートメントでは、戻り値は-1 です。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -852,7 +852,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
   
  <xref:System.Data.Odbc.OdbcCommand.ExecuteNonQuery%2A>の行が、すべての出力パラメーターを返すか、返すデータ パラメーターにマップされている値が設定されます。  
   
- UPDATE、INSERT、DELETE の各ステートメントで、戻り値はそのコマンドの影響を受ける行の数です。 その他のすべての種類のステートメントでは、戻り値は -1 です。 ロールバックが発生した場合、戻り値も-1 にします。  
+ UPDATE、INSERT、および DELETE ステートメントでは、戻り値は、コマンドによって影響を受ける行の数です。 その他のすべての種類のステートメントでは、戻り値は-1 です。 ロールバックが発生した場合、戻り値も-1 にします。  
   
  トリガーが存在する場合は、テーブルとデータが追加またはテーブルで変更される、戻り値が挿入または更新操作のトリガーによって影響を受ける行の数の両方によって影響を受ける行の数が含まれています。  
   
@@ -860,7 +860,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
         </remarks>
         <exception cref="T:System.InvalidOperationException">接続が存在しません。  
   
-または 
+- または - 
 接続が開かれていません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/40494916-c25a-4cb8-8f7c-fcb8d378464e">コマンドの実行</related>
       </Docs>
@@ -871,7 +871,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="P:System.Data.Odbc.OdbcCommand.CommandText" /> を <see cref="P:System.Data.Odbc.OdbcCommand.Connection" /> に送信し、<see cref="T:System.Data.Odbc.OdbcDataReader" /> を構築します。</summary>
+        <summary>送信、<see cref="P:System.Data.Odbc.OdbcCommand.CommandText" />を<see cref="P:System.Data.Odbc.OdbcCommand.Connection" />され、<see cref="T:System.Data.Odbc.OdbcDataReader" />します。</summary>
         <related type="Article" href="https://msdn.microsoft.com/library/40494916-c25a-4cb8-8f7c-fcb8d378464e">コマンドの実行</related>
       </Docs>
     </MemberGroup>
@@ -899,7 +899,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="P:System.Data.Odbc.OdbcCommand.CommandText" /> を <see cref="P:System.Data.Odbc.OdbcCommand.Connection" /> に送信し、<see cref="T:System.Data.Odbc.OdbcDataReader" /> を構築します。</summary>
+        <summary>送信、<see cref="P:System.Data.Odbc.OdbcCommand.CommandText" />を<see cref="P:System.Data.Odbc.OdbcCommand.Connection" />され、<see cref="T:System.Data.Odbc.OdbcDataReader" />します。</summary>
         <returns><see cref="T:System.Data.Odbc.OdbcDataReader" /> オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -940,8 +940,8 @@ SELECT * FROM Customers WHERE CustomerID = ?
         <Parameter Name="behavior" Type="System.Data.CommandBehavior" />
       </Parameters>
       <Docs>
-        <param name="behavior"><see langword="System.Data.CommandBehavior" /> 値のいずれか。</param>
-        <summary><see cref="P:System.Data.Odbc.OdbcCommand.CommandText" /> を <see cref="P:System.Data.Odbc.OdbcCommand.Connection" /> に送信し、<see langword="CommandBehavior" /> 値のいずれかを使用して <see cref="T:System.Data.Odbc.OdbcDataReader" /> を構築します。</summary>
+        <param name="behavior"><see langword="System.Data.CommandBehavior" /> 値のいずれか 1 つ。</param>
+        <summary>送信、<see cref="P:System.Data.Odbc.OdbcCommand.CommandText" />を<see cref="P:System.Data.Odbc.OdbcCommand.Connection" />、ビルド、<see cref="T:System.Data.Odbc.OdbcDataReader" />のいずれかを使用して、<see langword="CommandBehavior" />値。</summary>
         <returns><see cref="T:System.Data.Odbc.OdbcDataReader" /> オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -988,7 +988,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
       <Parameters />
       <Docs>
         <summary>クエリを実行し、そのクエリが返す結果セットの最初の行にある最初の列を返します。 以降の列または行は無視されます。</summary>
-        <returns>結果セットの最初の行の最初の列。結果セットが空の場合は、null 参照。</returns>
+        <returns>結果の最初の行の最初の列は、次の設定、または null 参照結果セットの場合は空です。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1037,7 +1037,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに<xref:System.Data.Odbc.OdbcCommand.CommandType%2A>に設定されている`Text`、名前付きの引き渡しは、.NET Framework Data Provider for ODBC でサポートされません SQL ステートメントまたはストアド プロシージャによって呼び出されるパラメーター、<xref:System.Data.Odbc.OdbcCommand>します。 いずれのこのような場合、疑問符 (?) プレース ホルダーを使用します。 次に例を示します。  
+ ときに<xref:System.Data.Odbc.OdbcCommand.CommandType%2A>に設定されている`Text`、名前付きの引き渡しは、.NET Framework Data Provider for ODBC でサポートされません SQL ステートメントまたはストアド プロシージャによって呼び出されるパラメーター、<xref:System.Data.Odbc.OdbcCommand>します。 いずれのこのような場合、疑問符 (?) プレース ホルダーを使用します。 例:  
   
 ```  
 SELECT * FROM Customers WHERE CustomerID = ?  
@@ -1093,7 +1093,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
         </remarks>
         <exception cref="T:System.InvalidOperationException"><see cref="P:System.Data.Odbc.OdbcCommand.Connection" /> が設定されていません。  
   
-または 
+- または - 
 <see cref="P:System.Data.Odbc.OdbcCommand.Connection" /> が <see cref="M:System.Data.Odbc.OdbcConnection.Open" /> ではありません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/40494916-c25a-4cb8-8f7c-fcb8d378464e">コマンドの実行</related>
       </Docs>
@@ -1122,7 +1122,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="P:System.Data.Odbc.OdbcCommand.CommandTimeout" /> プロパティを既定値にリセットします。</summary>
+        <summary>リセット、<see cref="P:System.Data.Odbc.OdbcCommand.CommandTimeout" />プロパティを既定値にします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1183,9 +1183,10 @@ SELECT * FROM Customers WHERE CustomerID = ?
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary><see cref="P:System.Data.IDbCommand.Connection" /> に対して <see cref="P:System.Data.IDbCommand.CommandText" /> を実行し、<see cref="T:System.Data.IDataReader" /> をビルドします。</summary>
+        <returns><see cref="T:System.Data.IDataReader" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.Data.IDbCommand.ExecuteReader">
@@ -1212,10 +1213,11 @@ SELECT * FROM Customers WHERE CustomerID = ?
         <Parameter Name="behavior" Type="System.Data.CommandBehavior" Index="0" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="behavior">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="behavior">コマンドの動作を指定する列挙値のビットごとの組み合わせ。</param>
+        <summary>実行します、<see cref="P:System.Data.IDbCommand.CommandText" />に対して、 <see cref="P:System.Data.IDbCommand.Connection" />、およびビルド、<see cref="T:System.Data.IDataReader" />指定動作を使用します。</summary>
+        <returns><see cref="T:System.Data.IDataReader" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.ICloneable.Clone">
@@ -1244,7 +1246,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このメンバーの説明については、<see cref="M:System.ICloneable.Clone" /> のトピックを参照してください。</summary>
+        <summary>このメンバーの詳細については、「<see cref="M:System.ICloneable.Clone" />」をご覧ください。</summary>
         <returns>このインスタンスのコピーである新しい <see cref="T:System.Object" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1335,7 +1337,7 @@ SELECT * FROM Customers WHERE CustomerID = ?
       </ReturnValue>
       <Docs>
         <summary>**Update** メソッドがコマンドの結果を **DataRow** に適用する方法を示す値を取得または設定します。</summary>
-        <value><see cref="T:System.Data.UpdateRowSource" /> 値のいずれか。</value>
+        <value><see cref="T:System.Data.UpdateRowSource" /> 値のいずれか 1 つ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

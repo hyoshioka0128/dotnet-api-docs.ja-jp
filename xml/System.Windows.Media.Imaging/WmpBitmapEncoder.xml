@@ -1,5 +1,5 @@
 <Type Name="WmpBitmapEncoder" FullName="System.Windows.Media.Imaging.WmpBitmapEncoder">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d1f93b911eacd0be94f52c2e43109d69bfe4b24a" /><Meta Name="ms.sourcegitcommit" Value="8e213bb5e6801f6e29861ba72664978ad00e34fa" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/18/2019" /><Meta Name="ms.locfileid" Value="56376954" /></Metadata><TypeSignature Language="C#" Value="public sealed class WmpBitmapEncoder : System.Windows.Media.Imaging.BitmapEncoder" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="47ccdb77bba119d9ea99171d970d4f2ade847ec5" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65010552" /></Metadata><TypeSignature Language="C#" Value="public sealed class WmpBitmapEncoder : System.Windows.Media.Imaging.BitmapEncoder" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit WmpBitmapEncoder extends System.Windows.Media.Imaging.BitmapEncoder" />
   <TypeSignature Language="DocId" Value="T:System.Windows.Media.Imaging.WmpBitmapEncoder" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class WmpBitmapEncoder&#xA;Inherits BitmapEncoder" />
@@ -46,7 +46,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
+        <Attribute FrameworkAlternate="netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netcore-3.0">
           <AttributeName>System.Security.SecurityCritical</AttributeName>
         </Attribute>
       </Attributes>
@@ -89,10 +89,10 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>圧縮ドメイン トランスコードの間に破棄するアルファ周波数データのレベルを取得または設定します。</summary>
-        <value>イメージをエンコードするときに破棄するアルファ データのレベル。 値の範囲は 0 (破棄するデータなし) ～ 4 (アルファ チャネルを完全に破棄) です。 既定値は 1 です。  
+        <summary>取得または圧縮ドメイン トランス コードの間に破棄するアルファ周波数データのレベルを設定します。</summary>
+        <value>イメージをエンコードするときに破棄するアルファ データのレベル。 値の範囲は 0 (データは破棄されます) を使用する 4 (アルファ チャネルを完全に破棄されます) です。 既定値は 1 です。  
   
- <list type="table"><listheader><term> [値]  
+ <list type="table"><listheader><term> 値  
   
  </term><description> 説明  
   
@@ -102,19 +102,19 @@
   
  </description></item><item><term> 1  
   
- </term><description> FlexBits が破棄されます。 イメージの有効解像度を変更しないと、イメージの質が低下します。  
+ </term><description> FlexBits が破棄されます。 イメージの有効解像度を変更することがなく、イメージのイメージ品質が低下します。  
   
  </description></item><item><term> 2  
   
- </term><description> HighPass 周波数データ帯域が破棄されます。 両方の次元のファクター 4 によってイメージの有効解像度が低下します。  
+ </term><description> HighPass 周波数データ帯域が破棄されます。 イメージの有効解像度が両方の次元の 4 の倍数で減少します。  
   
  </description></item><item><term> 3  
   
- </term><description> HighPass および LowPass 周波数データ帯域が破棄されます。 両方の次元のファクター 16 によってイメージの有効解像度が低下します。  
+ </term><description> HighPass および LowPass 周波数データ帯域が破棄されます。 イメージの有効解像度が両方の次元の 16 の倍数で減少します。  
   
  </description></item><item><term> 4  
   
- </term><description> アルファ チャネルは完全に破棄されます。 アルファ チャネルの削除を反映してピクセル形式が変更されます。  
+ </term><description> アルファ チャネルは完全に破棄されます。 ピクセル形式は、アルファ チャネルの削除を反映するように変更されます。  
   
  </description></item></list></value>
         <remarks>
@@ -125,7 +125,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">指定された値が 0 ～ 4 の範囲ではありません。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">指定された値は、0 ~ 4 の範囲はありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="AlphaQualityLevel">
@@ -150,8 +150,8 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>planar アルファ チャネルの圧縮品質を取得または設定します。</summary>
-        <value>planar アルファ チャネル イメージの圧縮品質。 値 1 が無損失で、値が増加するにつれて圧縮率が高くなり、イメージの品質が下がります。 値の範囲は 1 ～ 255 です。 既定値は 1 です。</value>
+        <summary>取得または planar アルファ チャネルの圧縮品質を設定します。</summary>
+        <value>Planar アルファ チャネル イメージの圧縮品質。 値 1 は、無損失、値が増加により、圧縮率が高くとイメージ品質の低下と見なされます。 値の範囲は、1 ~ 255 です。 既定値は 1 です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -187,8 +187,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>圧縮ドメイン操作を使用できるかどうかを示す値を取得または設定します。 圧縮ドメイン操作は、イメージ データをデコードせずに行われる変換操作です。</summary>
-        <value>圧縮ドメイン操作を使用できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="true" /> です。</value>
+        <summary>取得または圧縮ドメイン操作を使用するかどうかを示す値を設定します。 圧縮ドメイン操作は、イメージ データをデコードせずに行われる変換操作です。</summary>
+        <value><see langword="true" /> 圧縮ドメイン操作を使用する場合それ以外の場合、<see langword="false" />します。 既定値は <see langword="true" /> です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -209,8 +209,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>イメージを水平方向に反転させるかどうかを示す値を取得または設定します。</summary>
-        <value>イメージを水平方向に反転させる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <summary>取得またはイメージを水平方向に反転するかどうかを示す値を設定します。</summary>
+        <value><see langword="true" /> 画像が水平方向に反転させる場合それ以外の場合、<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -231,8 +231,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>イメージを垂直方向に反転させるかどうかを示す値を取得または設定します。</summary>
-        <value>イメージを垂直方向に反転させる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <summary>取得またはイメージを垂直方向に反転するかどうかを示す値を設定します。</summary>
+        <value><see langword="true" /> イメージの垂直方向に反転させる場合それ以外の場合、<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -261,8 +261,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>周波数順にエンコードするかどうかを示す値を取得または設定します。</summary>
-        <value>イメージを周波数順にエンコードする場合は <see langword="true" />。イメージをその空間的な向きによってエンコードする場合は <see langword="false" />。 既定値は、<see langword="true" /> です。</value>
+        <summary>取得または設定を示す値を周波数順にエンコードするかどうか。</summary>
+        <value><see langword="true" /> 頻度の順序でイメージをエンコードするには<see langword="false" />その空間的な向きによって、イメージをエンコードします。 既定値は <see langword="true" /> です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -288,7 +288,7 @@
         <ReturnType>System.Int16</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>圧縮エンコードの間に使用する水平分割の数を取得または設定します。 1 つの分割で 2 つの水平領域が作成されます。</summary>
+        <summary>取得または圧縮エンコードの間に使用する水平分割の数を設定します。 1 つの分割は、2 つの水平方向の領域を作成します。</summary>
         <value>圧縮エンコードの間に使用する水平分割の数。 値の範囲は、0 ~ 4095 です。 既定値は 0 です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -329,8 +329,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>副領域の圧縮ドメイン エンコードで重なる領域のピクセルを無視するかどうかを示す値を取得または設定します。 この機能は現在実装されていません。</summary>
-        <value>重なりを無視する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
+        <summary>取得または設定するかどうかをサブ地域で重なる領域のピクセルを無視する圧縮ドメイン エンコードを示す値。 この機能は現在実装されていません。</summary>
+        <value><see langword="true" /> 重複は無視されます。 場合、それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -363,10 +363,10 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>圧縮ドメイン トランスコードの間に破棄するイメージ データのレベルを取得または設定します。</summary>
-        <value>イメージの圧縮ドメイン エンコードの間に破棄するイメージ データのレベル。 値の範囲は 0 (破棄するデータなし) ～ 3 (HighPass および LowPass を破棄) です。 既定値は 1 です。  
+        <summary>取得または圧縮ドメイン トランス コードの間に破棄するイメージ データのレベルを設定します。</summary>
+        <value>イメージの圧縮ドメイン エンコードの間に破棄するイメージ データのレベル。 値の範囲は 0 (データは破棄されます) を使用する 3 (HighPass および LowPass を破棄) です。 既定値は 1 です。  
   
- <list type="table"><listheader><term> [値]  
+ <list type="table"><listheader><term> 値  
   
  </term><description> 説明  
   
@@ -376,15 +376,15 @@
   
  </description></item><item><term> 1  
   
- </term><description> FlexBits が破棄されます。 イメージの有効解像度を変更しないと、イメージの質が低下します。  
+ </term><description> FlexBits が破棄されます。 イメージの有効解像度を変更することがなく、イメージのイメージ品質が低下します。  
   
  </description></item><item><term> 2  
   
- </term><description> HighPass 周波数データ帯域が破棄されます。 両方の次元のファクター 4 によってイメージの有効解像度が低下します。  
+ </term><description> HighPass 周波数データ帯域が破棄されます。 イメージの有効解像度が両方の次元の 4 の倍数で減少します。  
   
  </description></item><item><term> 3  
   
- </term><description> HighPass および LowPass 周波数データ帯域が破棄されます。 両方の次元のファクター 16 によってイメージの有効解像度が低下します。  
+ </term><description> HighPass および LowPass 周波数データ帯域が破棄されます。 イメージの有効解像度が両方の次元の 16 の倍数で減少します。  
   
  </description></item></list></value>
         <remarks>
@@ -420,8 +420,8 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>イメージの品質レベルを取得または設定します。</summary>
-        <value>イメージの品質レベル。 範囲は 0 ～ 1.0 (無損失のイメージ品質) です。 既定値は 0.9 です。</value>
+        <summary>取得またはイメージの品質レベルを設定します。</summary>
+        <value>イメージの品質レベル。 範囲は、0 ~ 1.0 (無損失のイメージ品質) です。 既定値は 0.9 です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -450,8 +450,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>アルファ チャネルのデータを追加の interleaved チャネルとしてエンコードするかどうかを示す値を取得または設定します。</summary>
-        <value>イメージが追加の interleaved アルファ チャネルでエンコードされる場合は <see langword="true" />。planar アルファ チャネルが使用される場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
+        <summary>取得または追加の interleaved チャネルとしてアルファ チャネルのデータをエンコードするかどうかを示す値を設定します。</summary>
+        <value><see langword="true" /> イメージが; 追加の interleaved アルファ チャネルでエンコードされた場合<see langword="false" /> planar アルファ チャネルを使用する場合。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -487,8 +487,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>無損失圧縮を使用してエンコードするかどうかを示す値を取得または設定します。</summary>
-        <value>無損失圧縮を使用する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
+        <summary>取得または無損失圧縮を使用してエンコードするかどうかを示す値を設定します。</summary>
+        <value><see langword="true" /> 無損失圧縮を使用するにはそれ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -514,24 +514,24 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>オーバーラップ処理のレベルを取得または設定します。</summary>
-        <value>オーバーラップ処理のレベル。 既定値は 1 です。  
+        <summary>取得またはオーバー ラップ処理のレベルを設定します。</summary>
+        <value>オーバー ラップ処理のレベル。 既定値は 1 です。  
   
- <list type="table"><listheader><term> [値]  
+ <list type="table"><listheader><term> 値  
   
  </term><description> 説明  
   
  </description></listheader><item><term> 0  
   
- </term><description> オーバーラップ処理は有効ではありません。  
+ </term><description> オーバー ラップ処理が有効なことはありません。  
   
  </description></item><item><term> 1  
   
- </term><description> 1 レベルのオーバーラップ処理が有効です。 4x4 ブロックのエンコード値が、隣接するブロックの値に基づいて変更されます。  
+ </term><description> オーバー ラップ処理の 1 つのレベルが有効になっているとします。 4 x 4 ブロックのエンコード値を変更するには、隣接するブロックの値に基づきます。  
   
  </description></item><item><term> 2  
   
- </term><description> 2 レベルのオーバーラップ処理が有効です。 最初のレベルの処理に加えて、16x16 マクロ ブロックのエンコード値が、隣接するマクロ ブロックの値に基づいて変更されます。  
+ </term><description> オーバー ラップ処理の 2 つのレベルが有効になります。 処理の最初のレベルだけでなく隣接するマクロ ブロックの値に基づいて 16 x 16 マクロ ブロックのエンコード値が変更されます。  
   
  </description></item></list></value>
         <remarks>To be added.</remarks>
@@ -559,8 +559,8 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>メイン イメージの圧縮品質を取得または設定します。</summary>
-        <value>メイン イメージの圧縮品質。 値 1 が無損失で、値が高くなるにつれて圧縮率が高くなり、イメージの品質が下がります。 範囲は 1 ～ 255 です。 既定値は 1 です。</value>
+        <summary>取得またはメイン イメージの圧縮品質を設定します。</summary>
+        <value>メイン イメージの圧縮品質。 値 1 が無損失し、高圧縮率とイメージ品質の低下を示す値を大きくします。 範囲は、1 ~ 255 です。 既定値は 1 です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -581,8 +581,8 @@
         <ReturnType>System.Windows.Media.Imaging.Rotation</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>イメージの <see cref="T:System.Windows.Media.Imaging.Rotation" /> を取得または設定します。</summary>
-        <value>イメージの回転。</value>
+        <summary>取得または設定します、<see cref="T:System.Windows.Media.Imaging.Rotation" />のイメージ。</summary>
+        <value>イメージの回転します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -608,24 +608,24 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>RGB イメージ エンコードのサブ サンプリング レベルを取得または設定します。</summary>
+        <summary>取得または RGB イメージ エンコードのサブ サンプリング レベルを設定します。</summary>
         <value>RGB イメージ エンコードのサブ サンプリング レベル。 範囲は、0 ~ 3 です。 既定値は 3 です。  
   
- <list type="table"><listheader><term> [値]  
+ <list type="table"><listheader><term> 値  
   
  </term><description> 説明  
   
  </description></listheader><item><term> 0  
   
- </term><description> 4:0:0 エンコーディング。 クロマ コンテンツは破棄され、ルミナンスは保持されます。  
+ </term><description> 4:0:0 エンコードします。 クロマ コンテンツは破棄されます。ルミナンスは保持されます。  
   
  </description></item><item><term> 1  
   
- </term><description> 4:2:0 のエンコーディングします。 クロマ解像度がルミナンス解像度の 1/4 に下げられます。  
+ </term><description> 4:2:0 のエンコーディングします。 クロマ解像度がルミナンス解像度の 1/4 が減少します。  
   
  </description></item><item><term> 2  
   
- </term><description> 4:2:2 でエンコードします。 クロマ解像度がルミナンス解像度の 1/2 に下げられます。  
+ </term><description> 4:2:2 でエンコードします。 クロマ解像度がルミナンス解像度の 1/2 に減少します。  
   
  </description></item><item><term> 3  
   
@@ -661,8 +661,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コーデックのオプションを使用するかどうかを示す値を取得または設定します。</summary>
-        <value>コーデックのオプションを使用する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
+        <summary>取得またはコーデックのオプションが使用されるかを示す値を設定します。</summary>
+        <value><see langword="true" /> コーデックのオプションが使用する場合それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -697,7 +697,7 @@
         <ReturnType>System.Int16</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>圧縮エンコードの間に使用する垂直分割の数を取得または設定します。 1 つの分割で 2 つの垂直領域が作成されます。</summary>
+        <summary>取得または圧縮エンコードの間に使用する垂直分割の数を設定します。 1 つの分割は、2 つの垂直領域を作成します。</summary>
         <value>圧縮エンコードの間に使用する垂直分割の数。 値の範囲は、0 ~ 4095 です。 既定値は 0 です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  

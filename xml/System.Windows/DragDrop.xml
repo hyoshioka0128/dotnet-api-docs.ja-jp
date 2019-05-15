@@ -1,5 +1,5 @@
 <Type Name="DragDrop" FullName="System.Windows.DragDrop">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="84d88fdc72d2e940323f0ee0b26fe19b6d8ca6e2" /><Meta Name="ms.sourcegitcommit" Value="8e213bb5e6801f6e29861ba72664978ad00e34fa" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/18/2019" /><Meta Name="ms.locfileid" Value="56395271" /></Metadata><TypeSignature Language="C#" Value="public static class DragDrop" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="b4eb0c8f0a9115a223b4d03cba70db15410bdef1" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65009417" /></Metadata><TypeSignature Language="C#" Value="public static class DragDrop" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit DragDrop extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Windows.DragDrop" />
   <TypeSignature Language="VB.NET" Value="Public Class DragDrop" />
@@ -15,7 +15,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>ドラッグ アンド ドロップ操作を開始するメソッドやドラッグ アンド ドロップ関連のイベント ハンドラーを追加および削除する機能など、ドラッグ アンド ドロップ操作を開始するためのヘルパー メソッドおよびフィールドを提供します。</summary>
+    <summary>ドラッグ アンド ドロップ操作では、機能と機能を追加して、ドラッグ アンド ドロップ関連のイベント ハンドラーの削除を開始するメソッドを含む、ドラッグ アンド ドロップ操作を開始するためのヘルパー メソッドとフィールドを提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -518,7 +518,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
+        <Attribute FrameworkAlternate="netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netcore-3.0">
           <AttributeName>System.Security.SecurityCritical</AttributeName>
         </Attribute>
       </Attributes>
@@ -531,11 +531,11 @@
         <Parameter Name="allowedEffects" Type="System.Windows.DragDropEffects" />
       </Parameters>
       <Docs>
-        <param name="dragSource">ドラッグするデータのソースである依存関係オブジェクトへの参照。</param>
-        <param name="data">ドラッグするデータを格納するデータ オブジェクト。</param>
-        <param name="allowedEffects">ドラッグ アンド ドロップ操作の許容される効果を指定する <see cref="T:System.Windows.DragDropEffects" /> 値の 1 つ。</param>
+        <param name="dragSource">ドラッグされているデータのソースである依存関係オブジェクトへの参照。</param>
+        <param name="data">ドラッグされているデータを含むデータ オブジェクト。</param>
+        <param name="allowedEffects">1 つ、<see cref="T:System.Windows.DragDropEffects" />を指定する値は、ドラッグ アンド ドロップ操作の効果を許可します。</param>
         <summary>ドラッグ アンド ドロップ操作を開始します。</summary>
-        <returns>ドラッグ アンド ドロップ操作中に実行された最終的な効果を指定する <see cref="T:System.Windows.DragDropEffects" /> 値の 1 つ。</returns>
+        <returns>1 つ、<see cref="T:System.Windows.DragDropEffects" />ドラッグ アンド ドロップ操作中に実行された最終的な効果を指定する値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -570,15 +570,14 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>オブジェクトがドロップ ターゲットの役目を果たす要素の境界内にドラッグされたときに発生します。</summary>
+        <summary>オブジェクトが、ドロップ先として機能する要素の境界内までドラッグされた時点で発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  このイベントには、オブジェクトがドロップ先として機能する要素の境界内にドラッグされるたびに 1 回は発生します。 場合、このイベントは発生しませんが、要素の<xref:System.Windows.UIElement.AllowDrop%2A>プロパティは`false`します。  
   
- このイベントを処理してはドロップ ターゲットには、省略可能、ドラッグ アンド ドロップのすべてのシナリオでは必要ありません。 通常は、アプリケーションに適していれば、ドラッグ アンド ドロップ操作の効果のプレビューを提供するように、このイベントを処理します。 
-  <xref:System.Windows.DragEventArgs.Effects%2A?displayProperty=nameWithType> イベントで <xref:System.Windows.DragDrop.DragEnter> プロパティを設定しないでください。このプロパティは <xref:System.Windows.DragDrop.DragOver> イベントで上書きされるためです。  
+ このイベントを処理してはドロップ ターゲットには、省略可能、ドラッグ アンド ドロップのすべてのシナリオでは必要ありません。 通常は、アプリケーションに適していれば、ドラッグ アンド ドロップ操作の効果のプレビューを提供するように、このイベントを処理します。 <xref:System.Windows.DragEventArgs.Effects%2A?displayProperty=nameWithType> イベントで <xref:System.Windows.DragDrop.DragEnter> プロパティを設定しないでください。このプロパティは <xref:System.Windows.DragDrop.DragOver> イベントで上書きされるためです。  
   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
@@ -733,7 +732,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>オブジェクトがドロップ ターゲットの役目を果たす要素の境界内でドラッグされたときに連続的に発生します。</summary>
+        <summary>オブジェクトがドロップ ターゲットとして機能する要素の境界内にドラッグされたときに継続的に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -814,7 +813,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>オブジェクトがドロップ ターゲットの役目を果たす要素の境界内にドロップされたときに発生します。</summary>
+        <summary>ドロップ先として機能する要素の境界内でオブジェクトがドロップされた時点で発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -895,7 +894,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ドラッグ アンド ドロップ操作の進行中に連続的に発生し、ドラッグ ソースがユーザーにフィードバックを返すことができるようにします。</summary>
+        <summary>ドラッグ アンド ドロップ操作中に継続的に発生し、ドラッグ ソースがユーザーにフィードバックできるようにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -969,7 +968,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>オブジェクトがドロップ ターゲットの役目を果たす要素の境界内にドラッグされたときに発生します。</summary>
+        <summary>オブジェクトが、ドロップ先として機能する要素の境界内までドラッグされた時点で発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1115,7 +1114,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>オブジェクトがドロップ ターゲットの役目を果たす要素の境界内でドラッグされたときに連続的に発生します。</summary>
+        <summary>オブジェクトがドロップ ターゲットとして機能する要素の境界内にドラッグされたときに継続的に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1188,7 +1187,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>オブジェクトがドロップ ターゲットの役目を果たす要素の境界内にドロップされたときに発生します。</summary>
+        <summary>ドロップ先として機能する要素の境界内でオブジェクトがドロップされた時点で発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1261,7 +1260,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ドラッグ アンド ドロップ操作の進行中に連続的に発生し、ドラッグ ソースがユーザーにフィードバックを返すことができるようにします。</summary>
+        <summary>ドラッグ アンド ドロップ操作中に継続的に発生し、ドラッグ ソースがユーザーにフィードバックできるようにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1332,7 +1331,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ドラッグ アンド ドロップ操作が進行中に連続的に発生し、ドロップ ソースがキーとボタンの状態に応じてドラッグ アンド ドロップ操作を終了できるようにします。</summary>
+        <summary>ドラッグ アンド ドロップ操作の進行中に連続的に発生し、ドロップ ソースがキー/ボタンの状態に応じてドラッグ アンド ドロップ操作を終了できるようにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1403,7 +1402,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ドラッグ アンド ドロップ操作が進行中に連続的に発生し、ドロップ ソースがキーとボタンの状態に応じてドラッグ アンド ドロップ操作を終了できるようにします。</summary>
+        <summary>ドラッグ アンド ドロップ操作の進行中に連続的に発生し、ドロップ ソースがキー/ボタンの状態に応じてドラッグ アンド ドロップ操作を終了できるようにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1482,9 +1481,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.DragEnter" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.DragEnter" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1520,9 +1519,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.DragLeave" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.DragLeave" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1558,9 +1557,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.DragOver" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.DragOver" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1596,9 +1595,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.Drop" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.Drop" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1634,9 +1633,9 @@
         <Parameter Name="handler" Type="System.Windows.GiveFeedbackEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.GiveFeedback" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.GiveFeedback" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1672,9 +1671,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.PreviewDragEnter" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.PreviewDragEnter" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1710,9 +1709,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.PreviewDragLeave" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.PreviewDragLeave" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1748,9 +1747,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.PreviewDragOver" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.PreviewDragOver" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1786,9 +1785,9 @@
         <Parameter Name="handler" Type="System.Windows.DragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.PreviewDrop" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.PreviewDrop" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1824,9 +1823,9 @@
         <Parameter Name="handler" Type="System.Windows.GiveFeedbackEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.PreviewGiveFeedback" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.PreviewGiveFeedback" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1862,9 +1861,9 @@
         <Parameter Name="handler" Type="System.Windows.QueryContinueDragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.PreviewQueryContinueDrag" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.PreviewQueryContinueDrag" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1900,9 +1899,9 @@
         <Parameter Name="handler" Type="System.Windows.QueryContinueDragEventHandler" />
       </Parameters>
       <Docs>
-        <param name="element">イベント ハンドラーの削除元の依存関係プロパティ (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
-        <param name="handler">削除されるハンドラー メソッドを参照するデリゲート。</param>
-        <summary><see cref="E:System.Windows.DragDrop.QueryContinueDrag" /> イベント ハンドラーを、指定した依存関係オブジェクトから削除します。</summary>
+        <param name="element">イベント ハンドラーを削除する対象の依存関係オブジェクト (<see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />)。</param>
+        <param name="handler">削除するハンドラー メソッドを参照するデリゲート。</param>
+        <summary>指定した依存関係オブジェクトから <see cref="E:System.Windows.DragDrop.QueryContinueDrag" /> イベント ハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
