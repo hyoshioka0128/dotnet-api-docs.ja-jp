@@ -1,5 +1,5 @@
 <Type Name="RuntimeReflectionExtensions" FullName="System.Reflection.RuntimeReflectionExtensions">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="ffaf7f58536fe0c7bde06471ea1cc141b8ced496" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58699806" /></Metadata><TypeSignature Language="C#" Value="public static class RuntimeReflectionExtensions" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="5ec8d53d6e1cfcc108425d84e1f029104658202c" /><Meta Name="ms.sourcegitcommit" Value="0b4deef443af9fe6334aa34b8a17190223bf0486" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/14/2019" /><Meta Name="ms.locfileid" Value="65609443" /></Metadata><TypeSignature Language="C#" Value="public static class RuntimeReflectionExtensions" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit RuntimeReflectionExtensions extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.RuntimeReflectionExtensions" />
   <TypeSignature Language="VB.NET" Value="Public Module RuntimeReflectionExtensions" />
@@ -29,7 +29,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>実行時における型情報を取得するメソッドを提供します。</summary>
+    <summary>実行時に型に関する情報を取得するメソッドを提供します。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -71,7 +71,7 @@
         <summary>指定したデリゲートによって表されるメソッドを表すオブジェクトを取得します。</summary>
         <returns>メソッドを表すオブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="del" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="del" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.MemberAccessException">呼び出し元には、デリゲートによって表されるメソッドへのアクセスはありません (たとえば、メソッドがプライベートである)。</exception>
         <altmember cref="P:System.Delegate.Method" />
       </Docs>
@@ -110,11 +110,11 @@
         <Parameter Name="method" Type="System.Reflection.MethodInfo" RefType="this" />
       </Parameters>
       <Docs>
-        <param name="method">情報の取得対象のメソッド。</param>
-        <summary>メソッドが最初に宣言された直接基本クラスまたは間接基本クラスの指定したメソッドを表すオブジェクトを取得します。</summary>
-        <returns>基本クラスにおける指定されたメソッドの最初の宣言を表すオブジェクト。</returns>
+        <param name="method">に関する情報を取得するメソッド。</param>
+        <summary>指定されたメソッドが最初に宣言された直接または間接基本クラス メソッドを表すオブジェクトを取得します。</summary>
+        <returns>基本クラスで指定されたメソッドの最初の宣言を表すオブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="method" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="method" /> は <see langword="null" /> です。</exception>
         <altmember cref="M:System.Reflection.MethodInfo.GetBaseDefinition" />
       </Docs>
     </Member>
@@ -155,13 +155,13 @@
         <param name="type">イベントを含む型。</param>
         <param name="name">イベントの名前です。</param>
         <summary>指定したイベントを表すオブジェクトを取得します。</summary>
-        <returns>指定したイベントを表すオブジェクト。イベントが見つからない場合は <see langword="null" />。</returns>
+        <returns>指定したイベントを表すオブジェクトまたは<see langword="null" />イベントが見つからない場合。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。
 
 - または -
 
-<paramref name="name" /> は <see langword="null" />です。</exception>
+<paramref name="name" /> は <see langword="null" /> です。</exception>
         <altmember cref="M:System.Type.GetEvent(System.String)" />
       </Docs>
     </Member>
@@ -199,8 +199,8 @@
       </Parameters>
       <Docs>
         <param name="type">イベントを含む型。</param>
-        <summary>指定した型で定義されるすべてのイベントを表すコレクションを取得します。</summary>
-        <returns>指定した種類のイベントのコレクション。</returns>
+        <summary>指定した型で定義されているすべてのイベントを表すコレクションを取得します。</summary>
+        <returns>指定した型のイベントのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -209,7 +209,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。</exception>
         <altmember cref="M:System.Type.GetEvents(System.Reflection.BindingFlags)" />
       </Docs>
     </Member>
@@ -250,13 +250,13 @@
         <param name="type">フィールドを含む型。</param>
         <param name="name">フィールドの名前。</param>
         <summary>指定したフィールドを表すオブジェクトを取得します。</summary>
-        <returns>指定したフィールドを表すオブジェクト。フィールドが見つからない場合は <see langword="null" />。</returns>
+        <returns>指定したフィールドを表すオブジェクトまたは<see langword="null" />フィールドが見つからない場合。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。
 
 - または -
 
-<paramref name="name" /> は <see langword="null" />です。</exception>
+<paramref name="name" /> は <see langword="null" /> です。</exception>
         <altmember cref="M:System.Type.GetField(System.String)" />
       </Docs>
     </Member>
@@ -294,8 +294,8 @@
       </Parameters>
       <Docs>
         <param name="type">フィールドを含む型。</param>
-        <summary>指定した型で定義されるすべてのフィールドを表すコレクションを取得します。</summary>
-        <returns>指定した種類のフィールドのコレクション。</returns>
+        <summary>指定した型で定義されているすべてのフィールドを表すコレクションを取得します。</summary>
+        <returns>指定した型のフィールドのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -304,7 +304,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。</exception>
         <altmember cref="M:System.Type.GetFields(System.Reflection.BindingFlags)" />
       </Docs>
     </Member>
@@ -342,33 +342,33 @@
         <Parameter Name="interfaceType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="typeInfo">割り当ての取得対象である型。</param>
-        <param name="interfaceType">割り当ての取得対象であるインターフェイス。</param>
-        <summary>指定した型とインターフェイスに対するインターフェイスの割り当てを返します。</summary>
-        <returns>指定したインターフェイスや種類のインターフェイスの割り当て表すオブジェクト。</returns>
+        <param name="typeInfo">マッピングを取得する型。</param>
+        <param name="interfaceType">マッピングを取得するインターフェイス。</param>
+        <summary>指定された型および指定されたインターフェイスに対するインターフェイス マップを返します。</summary>
+        <returns>指定されたインターフェイスと型のインターフェイス マップを表すオブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="typeInfo" /> は <see langword="null" />です。
+        <exception cref="T:System.ArgumentNullException"><paramref name="typeInfo" /> は <see langword="null" /> です。
         
 - または -
 
-<paramref name="interfaceType" /> は <see langword="null" />です。</exception>
+<paramref name="interfaceType" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="interfaceType" /> は、<paramref name="typeInfo" /> によって実装されていません。
 
-または
+- または -
 
 <paramref name="interfaceType" /> によってインターフェイスが参照されていません。
 
-または
+- または -
 
 <paramref name="typeInfo" /> または <paramref name="interfaceType" /> はオープン ジェネリック型です。
 
-または
+- または -
 
 <paramref name="interfaceType" /> はジェネリック インターフェイスであり、<paramref name="typeInfo" /> は配列型です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="typeInfo" /> は、ジェネリック型パラメーターを示します。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="typeInfo" /> は <see cref="T:System.Reflection.Emit.TypeBuilder" /> インスタンスであり、その <see cref="M:System.Reflection.Emit.TypeBuilder.CreateType" /> メソッドはまだ呼び出されていません。
 
-または
+- または -
 
 呼び出されたメソッドは基底クラスでサポートされていません。 派生クラスには実装を指定しなければなりません。</exception>
         <altmember cref="M:System.Type.GetInterfaceMap(System.Type)" />
@@ -411,15 +411,15 @@
       <Docs>
         <param name="type">メソッドを含む型。</param>
         <param name="name">メソッドの名前。</param>
-        <param name="parameters">配列には、メソッドのパラメーターを格納します。</param>
+        <param name="parameters">メソッドのパラメーターを含む配列。</param>
         <summary>指定したメソッドを表すオブジェクトを取得します。</summary>
-        <returns>指定したメソッドを表すオブジェクト。メソッドが見つからない場合は <see langword="null" />。</returns>
+        <returns>指定したメソッドを表すオブジェクトまたは<see langword="null" />メソッドが見つからない場合。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。
 
 - または -
 
-<paramref name="name" /> は <see langword="null" />です。</exception>
+<paramref name="name" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.AmbiguousMatchException">指定した名前のメソッドが複数個見つかりました。</exception>
         <altmember cref="M:System.Type.GetMethod(System.String,System.Type[])" />
       </Docs>
@@ -458,8 +458,8 @@
       </Parameters>
       <Docs>
         <param name="type">メソッドを含む型。</param>
-        <summary>指定した型で定義されるすべてのメソッドを表すコレクションを取得します。</summary>
-        <returns>指定した種類のメソッドのコレクション。</returns>
+        <summary>指定した型で定義されているすべてのメソッドを表すコレクションを取得します。</summary>
+        <returns>指定した型のメソッドのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -468,7 +468,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。</exception>
         <altmember cref="M:System.Type.GetMethods(System.Reflection.BindingFlags)" />
       </Docs>
     </Member>
@@ -506,8 +506,8 @@
       </Parameters>
       <Docs>
         <param name="type">プロパティを含む型。</param>
-        <summary>指定した型で定義されるすべてのプロパティを表すコレクションを取得します。</summary>
-        <returns>指定した種類のプロパティのコレクション。</returns>
+        <summary>指定した型で定義されているすべてのプロパティを表すコレクションを取得します。</summary>
+        <returns>指定した型のプロパティのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -516,8 +516,8 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。</exception>
-        <altmember cref="M:System.Type.GetProperties(System.Reflection.BindingFlags" />
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。</exception>
+        <altmember cref="M:System.Type.GetProperties(System.Reflection.BindingFlags)" />
       </Docs>
     </Member>
     <Member MemberName="GetRuntimeProperty">
@@ -557,13 +557,13 @@
         <param name="type">プロパティを含む型。</param>
         <param name="name">プロパティの名前。</param>
         <summary>指定したプロパティを表すオブジェクトを取得します。</summary>
-        <returns>指定したプロパティを表すオブジェクト。プロパティが見つからない場合は <see langword="null" />。</returns>
+        <returns>指定したプロパティを表すオブジェクトまたは<see langword="null" />プロパティが見つからない場合。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。
 
 - または -
 
-<paramref name="name" /> は <see langword="null" />です。</exception>
+<paramref name="name" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="type" /> が <see langword="RuntimeType" /> ではありません。</exception>
         <exception cref="T:System.Reflection.AmbiguousMatchException">要求された名前を持つプロパティが複数見つかりました。</exception>
         <altmember cref="M:System.Type.GetProperty(System.String)" />

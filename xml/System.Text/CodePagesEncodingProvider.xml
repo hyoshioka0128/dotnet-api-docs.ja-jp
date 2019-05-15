@@ -1,5 +1,5 @@
 <Type Name="CodePagesEncodingProvider" FullName="System.Text.CodePagesEncodingProvider">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1323a352e263e5e3a619e8c6cb216ebbb2d9dad1" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56772701" /></Metadata><TypeSignature Language="C#" Value="public sealed class CodePagesEncodingProvider" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="6b37732559909efad2dbd4ddf97d9b335de1ad7b" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65014318" /></Metadata><TypeSignature Language="C#" Value="public sealed class CodePagesEncodingProvider" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CodePagesEncodingProvider extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Text.CodePagesEncodingProvider" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CodePagesEncodingProvider" />
@@ -25,16 +25,13 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>デスクトップの .NET Framework でサポートされ、UWP アプリでサポートされないコード ページのエンコード プロバイダーへのアクセスを提供します。</summary>
+    <summary>それ以外の場合は、デスクトップの .NET Framework でのみ使用可能なコード ページのエンコーディング プロバイダーへのアクセスを提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
-  
-> [!NOTE]
->  <xref:System.Text.CodePagesEncodingProvider>クラスは .NET Core の .NET ネイティブ実装のみでサポートされています。  
-  
- Windows デスクトップの .NET Framework には、Unicode とコード ページ エンコーディングの大規模なセットがサポートしています。 ユニバーサル Windows プラットフォームおよび .NET ネイティブでは、その一方で、次のエンコーディングのみをサポートします。  
+    
+ Windows デスクトップの .NET Framework には、Unicode とコード ページ エンコーディングの大規模なセットがサポートしています。 .NET core には、その一方で、次のエンコードのみがサポートされています。  
   
 -   ASCII (コード ページ 20127) によって返される、<xref:System.Text.Encoding.ASCII%2A?displayProperty=nameWithType>プロパティ。  
   
@@ -54,14 +51,13 @@
   
  コード ページ 20127、以外のコード ページ エンコーディングはサポートされていません。  
   
- <xref:System.Text.CodePagesEncodingProvider>クラスは拡張<xref:System.Text.EncodingProvider>.NET ネイティブとユニバーサル Windows プラットフォーム (UWP) アプリからこれらのコード ページを可能にします。 これらの追加のコード ページを使用するには、次を行います。  
+ <xref:System.Text.CodePagesEncodingProvider>クラスは拡張<xref:System.Text.EncodingProvider>.NET Core をこれらのコード ページを使用できるようにします。 これらの追加のコード ページを使用するには、次を行います。  
   
 -   System.Text.Encoding.CodePages.dll アセンブリへの参照をプロジェクトに追加します。  
   
 -   取得、<xref:System.Text.CodePagesEncodingProvider>オブジェクト、静的なから<xref:System.Text.CodePagesEncodingProvider.Instance%2A?displayProperty=nameWithType>プロパティ。  
   
--   
-  <xref:System.Text.CodePagesEncodingProvider> オブジェクトを <xref:System.Text.Encoding.RegisterProvider%2A?displayProperty=nameWithType> メソッドに渡します。  
+-   <xref:System.Text.CodePagesEncodingProvider> オブジェクトを <xref:System.Text.Encoding.RegisterProvider%2A?displayProperty=nameWithType> メソッドに渡します。  
   
  後に、<xref:System.Text.EncodingProvider>オブジェクトが登録されているのオーバー ロードを呼び出すことによってサポートされているエンコードは使用可能な<xref:System.Text.Encoding.GetEncoding%2A?displayProperty=nameWithType>; 呼び出す必要はありません、<xref:System.Text.EncodingProvider.GetEncoding%2A?displayProperty=nameWithType>オーバー ロードします。  
   
@@ -148,9 +144,8 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.CodePagesEncodingProvider.Instance%2A>プロパティが返す、<xref:System.Text.EncodingProvider>エンコーディングを使用できるようにアプリを対象とするオブジェクト、[!INCLUDE[net_v46](~/includes/net-v46-md.md)]またはそれ以降のバージョンとは、それ以外の場合、Windows デスクトップ上の .NET Framework でのみ使用できます。  
   
- Windows デスクトップ上の .NET Framework には、文字エンコーディングとコード ページの数が多いがサポートしています。 エンコーディングの完全な一覧を取得するには呼び出すことによって、 <xref:System.Text.Encoding.GetEncodings%2A?displayProperty=nameWithType> 、Windows デスクトップで完全な .NET Framework で使用可能なメソッドです。 .NET ネイティブ UWP アプリでは、その一方で、エンコードをサポートのみ次既定。  
+ Windows デスクトップ上の .NET Framework には、文字エンコーディングとコード ページの数が多いがサポートしています。 エンコーディングの完全な一覧を取得するには呼び出すことによって、 <xref:System.Text.Encoding.GetEncodings%2A?displayProperty=nameWithType> 、Windows デスクトップで完全な .NET Framework で使用可能なメソッドです。 .NET core には、既定では、次のエンコードのみその一方で、サポートされています。  
   
 -   ASCII (コード ページ 20127) によって返される、<xref:System.Text.Encoding.ASCII%2A?displayProperty=nameWithType>プロパティ。  
   
@@ -168,7 +163,7 @@
   
 -   UTF-32BE (コード ページ 12001) 呼び出すことによってインスタンス化されますが、<xref:System.Text.UTF32Encoding>を持つコンス トラクター、`bigEndian`パラメーターとの値を指定する`true`メソッドの呼び出しで。  
   
- UWP アプリではなく、Windows デスクトップ上の .NET Framework に存在するエンコーディングを取得するには、次を行います。  
+ .NET Core ではなく、Windows デスクトップ上の .NET Framework に存在するエンコーディングを取得するには、次を行います。  
   
 -   System.Text.Encoding.CodePages.dll アセンブリへの参照をプロジェクトに追加します。  
   

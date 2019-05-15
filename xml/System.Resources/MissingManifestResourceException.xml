@@ -1,5 +1,5 @@
 <Type Name="MissingManifestResourceException" FullName="System.Resources.MissingManifestResourceException">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="63e31ce8d6b9bdb6b04ee7f8385509e1e97d1b3d" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58693664" /></Metadata><TypeSignature Language="C#" Value="public class MissingManifestResourceException : SystemException" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="3817675c390e5ff08a8070a6aac53ea73cfb4316" /><Meta Name="ms.sourcegitcommit" Value="0609891c89ddaa91e4c02970acb00072fcc29baf" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/13/2019" /><Meta Name="ms.locfileid" Value="65558309" /></Metadata><TypeSignature Language="C#" Value="public class MissingManifestResourceException : SystemException" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit MissingManifestResourceException extends System.SystemException" />
   <TypeSignature Language="DocId" Value="T:System.Resources.MissingManifestResourceException" />
   <TypeSignature Language="VB.NET" Value="Public Class MissingManifestResourceException&#xA;Inherits SystemException" />
@@ -43,14 +43,15 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>メイン アセンブリにニュートラル カルチャ リソースが含まれておらず、適切なサテライト アセンブリがない場合にスローされる例外。</summary>
+    <summary>メイン アセンブリにニュートラル カルチャのリソースが含まれていないと、適切なサテライト アセンブリが見つからない場合にスローされる例外。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
   
-## <a name="desktop-apps"></a>デスクトップ アプリ  
- デスクトップ アプリ<xref:System.Resources.MissingManifestResourceException>ニュートラル カルチャのリソース セットが特定のアセンブリから読み込めなかったため、リソースを取得する試みが失敗したときにスローされます。 特定のリソースを取得しようとすると、例外がスローされたが、リソースを検索する障害ではなく、リソース セットの読み込みに失敗した原因が。  
+## <a name="net-apps"></a>.NET アプリ  
+
+.NET Framework と .NET Core アプリで<xref:System.Resources.MissingManifestResourceException>ニュートラル カルチャのリソース セットが特定のアセンブリから読み込めなかったため、リソースを取得する試みが失敗したときにスローされます。 特定のリソースを取得しようとすると、例外がスローされたが、リソースを検索する障害ではなく、リソース セットの読み込みに失敗した原因が。  
   
 > [!NOTE]
 >  詳細については、「MissingManifestResourceException 例外を処理」のセクションを参照してください、<xref:System.Resources.ResourceManager>クラスに関するトピック。  
@@ -77,12 +78,13 @@
 > [!NOTE]
 >  サテライト アセンブリが使用できない場合、アプリが失敗しないように、中立的な一連のリソースをメイン アセンブリに含めることをお勧めします。  
   
-## <a name="includewin8appnamelongincludeswin8-appname-long-mdmd-apps"></a>[!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリ  
- サテライト アセンブリでのローカライズされたリソースをデプロイし、通常、メイン アセンブリにニュートラル カルチャのリソースを格納、デスクトップ アプリとは異なり[!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)]アプリ、1 つのニュートラル カルチャを含む複数のカルチャのリソースをデプロイします。パッケージ リソース インデックス (.pri) ファイルです。 この結果、[!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)]の優先カルチャのリソースが見つからない場合、アプリ、<xref:System.Resources.MissingManifestResourceException>次の条件のいずれかでスローされます。  
+## <a name="universal-windows-platform-uwp-apps"></a>ユニバーサル Windows プラットフォーム (UWP) アプリ 
+
+UWP アプリでは、1 つのパッケージ リソース インデックス (.pri) ファイルに、ニュートラル カルチャを含む複数のカルチャのリソースをデプロイします。 その結果、UWP アプリの場合の優先カルチャのリソースが見つからない場合に、<xref:System.Resources.MissingManifestResourceException>次の条件のいずれかでスローされます。  
   
--   アプリには、.pri ファイルが含まれていないまたは .pri ファイルを開くことができませんでした。  
+- アプリでは、.pri ファイルは含まれませんまたは .pri ファイルを開くことができませんでした。  
   
--   アプリの .pri ファイルでは、特定のルート名のリソース セットは含まれません。  
+- アプリの .pri ファイルでは、特定のルート名のリソース セットは含まれません。  
   
  ]]></format>
     </remarks>
@@ -136,7 +138,7 @@
 ## Remarks  
  <xref:System.Resources.MissingManifestResourceException> のインスタンスの初期プロパティ値を次の表に示します。  
   
-|プロパティ|[値]|  
+|プロパティ|値|  
 |--------------|-----------|  
 |<xref:System.Exception.InnerException%2A>|`null`。|  
 |<xref:System.Exception.Message%2A>|ローカライズされたエラー メッセージ<xref:System.Resources.MissingManifestResourceException>します。|  
@@ -183,7 +185,7 @@
 ## Remarks  
  <xref:System.Resources.MissingManifestResourceException> のインスタンスの初期プロパティ値を次の表に示します。  
   
-|プロパティ|[値]|  
+|プロパティ|値|  
 |--------------|-----------|  
 |<xref:System.Exception.InnerException%2A>|`null`。|  
 |<xref:System.Exception.Message%2A>|`message`文字列。|  
@@ -228,7 +230,7 @@
       </Parameters>
       <Docs>
         <param name="info">シリアル化されたオブジェクト データを保持するオブジェクト。</param>
-        <param name="context">例外の発生元または発生先に関するコンテキスト情報。</param>
+        <param name="context">ソースまたは例外の変換先に関するコンテキスト情報。</param>
         <summary>シリアル化したデータから、<see cref="T:System.Resources.MissingManifestResourceException" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  

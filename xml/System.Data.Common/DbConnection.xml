@@ -1,5 +1,5 @@
 <Type Name="DbConnection" FullName="System.Data.Common.DbConnection">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="421f5364c04622c177ef9fe987f4b229b7bcf9c1" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58689392" /></Metadata><TypeSignature Language="C#" Value="public abstract class DbConnection : System.ComponentModel.Component, IDisposable, System.Data.IDbConnection" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="793a3532a331dfca14554b15414e956710241ad9" /><Meta Name="ms.sourcegitcommit" Value="0b4deef443af9fe6334aa34b8a17190223bf0486" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/14/2019" /><Meta Name="ms.locfileid" Value="65609693" /></Metadata><TypeSignature Language="C#" Value="public abstract class DbConnection : System.ComponentModel.Component, IDisposable, System.Data.IDbConnection" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DbConnection extends System.ComponentModel.Component implements class System.Data.IDbConnection, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Data.Common.DbConnection" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class DbConnection&#xA;Inherits Component&#xA;Implements IDbConnection, IDisposable" />
@@ -325,7 +325,6 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Data.Common.DbException">接続を開くときに発生した接続レベルのエラー。</exception>
         <altmember cref="M:System.Data.Common.DbConnection.Open" />
         <related type="Article" href="https://msdn.microsoft.com/library/955c057f-aea8-4ba8-aa6d-e3dfa18ba8d5">接続プール (ADO.NET)</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
@@ -378,13 +377,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続を開くために使用する文字列を取得または設定します。</summary>
-        <value>初期接続を確立するために使用する接続文字列。 接続文字列の正確な内容は、この接続の特定のデータ ソースに応じて異なります。 既定値は空の文字列です。</value>
+        <summary>取得または設定、接続を開くために使用する文字列。</summary>
+        <value>最初の接続を確立するために使用する接続文字列。 接続文字列の正確な内容は、この接続の特定のデータ ソースに依存します。 既定値は空の文字列です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 接続文字列の正確な内容は、この接続の特定のデータ ソースに応じて異なります。 どの設定が有効で調べるには、特定の種類を使用する接続のドキュメントを参照してください。  
+ 接続文字列の正確な内容は、この接続の特定のデータ ソースに依存します。 どの設定が有効で調べるには、特定の種類を使用する接続のドキュメントを参照してください。  
   
  ]]></format>
         </remarks>
@@ -425,8 +424,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>試行を中断してエラーを生成するまでの、接続の確立時に待機する時間を取得します。</summary>
-        <value>接続が開くのを待機する時間 (秒単位)。 既定値は、使用している特定の接続の種類により決まります。</value>
+        <summary>試行を終了し、エラーが発生する前に、接続を確立中に待機する時間を取得します。</summary>
+        <value>接続が開くのを待機する時間 (秒単位)。 既定値については、使用している接続の特定の種類によって決まります。</value>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -462,7 +461,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在の接続に関連付けられている <see cref="T:System.Data.Common.DbCommand" /> オブジェクトを作成し、返します。</summary>
+        <summary>作成して返します、<see cref="T:System.Data.Common.DbCommand" />現在の接続に関連付けられているオブジェクト。</summary>
         <returns><see cref="T:System.Data.Common.DbCommand" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/commands-and-parameters.md">コマンド (ADO.NET)</related>
@@ -500,7 +499,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在の接続に関連付けられている <see cref="T:System.Data.Common.DbCommand" /> オブジェクトを作成し、返します。</summary>
+        <summary>作成して返します、<see cref="T:System.Data.Common.DbCommand" />現在の接続に関連付けられているオブジェクト。</summary>
         <returns><see cref="T:System.Data.Common.DbCommand" /> オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -547,7 +546,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続が開いてから現在のデータベースの名前を取得するか、接続が開く前に接続文字列に指定されたデータベース名を取得します。</summary>
+        <summary>接続が開かれる前に、接続文字列で指定されたデータベース名または接続が開かれた後に、現在のデータベースの名前を取得します。</summary>
         <value>現在のデータベース、または接続が開いてから使用するデータベースの名前。 既定値は空の文字列です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -590,8 +589,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続するデータベース サーバーの名前を取得します。</summary>
-        <value>接続するデータベース サーバーの名前。 既定値は空の文字列です。</value>
+        <summary>接続先となるデータベース サーバーの名前を取得します。</summary>
+        <value>接続先となるデータベース サーバーの名前。 既定値は空の文字列です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -731,7 +730,7 @@
       </Parameters>
       <Docs>
         <param name="transaction">登録先の既存の <see cref="T:System.Transactions.Transaction" /> への参照。</param>
-        <summary>指定したトランザクションに参加します。</summary>
+        <summary>指定したトランザクションに参加させます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -887,7 +886,7 @@
       </Parameters>
       <Docs>
         <param name="collectionName">返すスキーマの名前を指定します。</param>
-        <param name="restrictionValues">要求したスキーマの制限値のセットを指定します。</param>
+        <param name="restrictionValues">要求されたスキーマの制限値のセットを指定します。</param>
         <summary>スキーマ名に指定した文字列と制限値に指定した文字列配列を使用して、この <see cref="T:System.Data.Common.DbConnection" /> のデータ ソースのスキーマ情報を返します。</summary>
         <returns>スキーマ情報を格納する <see cref="T:System.Data.DataTable" />。</returns>
         <remarks>
@@ -988,7 +987,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="P:System.Data.Common.DbConnection.ConnectionString" /> で指定した設定を使用して、データベース接続を開きます。</summary>
+        <summary>指定した設定を使用して、データベース接続を開く、<see cref="P:System.Data.Common.DbConnection.ConnectionString" />します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1006,8 +1005,8 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <exception cref="T:System.Data.Common.DbException">接続を開いているときにエラーが発生しました。</exception>
-        <summary>このメソッドは、<see cref="M:System.Data.Common.DbConnection.Open" /> の非同期バージョンを実装します。</summary>
+        <exception cref="T:System.Data.Common.DbException">接続を開くときにエラーが発生しました。</exception>
+        <summary>このメソッドの非同期バージョンを実装する<see cref="M:System.Data.Common.DbConnection.Open" />します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1049,7 +1048,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="M:System.Data.Common.DbConnection.Open" /> で指定した設定を使用してデータベース接続を開く <see cref="P:System.Data.Common.DbConnection.ConnectionString" /> の非同期バージョン。 このメソッドは、CancellationToken.None で仮想メソッド <see cref="M:System.Data.Common.DbConnection.OpenAsync(System.Threading.CancellationToken)" /> を呼び出します。</summary>
+        <summary>非同期バージョン<see cref="M:System.Data.Common.DbConnection.Open" />、によって指定される設定を使用して、データベース接続を開く、<see cref="P:System.Data.Common.DbConnection.ConnectionString" />します。 このメソッドは、仮想メソッドを呼び出す<see cref="M:System.Data.Common.DbConnection.OpenAsync(System.Threading.CancellationToken)" />CancellationToken.None を使用します。</summary>
         <returns>非同期操作を表すタスク。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1098,11 +1097,11 @@
       </Parameters>
       <Docs>
         <param name="cancellationToken">取り消し命令。</param>
-        <summary>これは <see cref="M:System.Data.Common.DbConnection.Open" /> の非同期バージョンです。 プロバイダーは、適切な実装でオーバーライドする必要があります。 オプションで、キャンセル トークン優先できます。  
+        <summary>これは非同期バージョンの<see cref="M:System.Data.Common.DbConnection.Open" />します。 プロバイダーは、適切な実装をオーバーライドする必要があります。 キャンセル トークンを受け入れられることが必要に応じてことができます。  
   
-既定の実装は同期 <see cref="M:System.Data.Common.DbConnection.Open" /> コールを呼び出し、完了したタスクを返します。 既定の実装は、既に取り消された cancellationToken を渡した場合、取り消されたタスクを返します。 Open によってスローされる例外は、返されたタスクの Exception プロパティを介して通信されます。  
+既定の実装を呼び出す、同期<see cref="M:System.Data.Common.DbConnection.Open" />を呼び出すし、完了したタスクを返します。 既定の実装は、既に取り消された cancellationToken を渡した場合に、取り消されたタスクを返します。 Open によってスローされる例外は、返されたタスクの Exception プロパティを介して通信されます。  
   
-返されたタスクが完了するまで <see langword="DbConnection" /> オブジェクトの他のメソッドとプロパティを呼び出さないでください。</summary>
+その他のメソッドとプロパティを呼び出さないでください、<see langword="DbConnection" />返されたタスクが完了するまでのオブジェクトします。</summary>
         <returns>非同期操作を表すタスク。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1154,8 +1153,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>オブジェクトが接続しているサーバーのバージョンを表す文字列を取得します。</summary>
-        <value>データベースのバージョン。 返される文字列の形式は、使用している特定の接続の種類に応じて決まります。</value>
+        <summary>オブジェクトが接続されているサーバーのバージョンを表す文字列を取得します。</summary>
+        <value>データベースのバージョン。 返される文字列の形式は、接続を使用しているは、特定の種類によって異なります。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">返されるタスクが完了しておらず、<see cref="Overload:System.Data.Common.DbConnection.OpenAsync" /> への呼び出しの後に接続が開かれていないときに、<see cref="P:System.Data.Common.DbConnection.ServerVersion" /> が呼び出されました。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
@@ -1200,7 +1199,7 @@
       </ReturnValue>
       <Docs>
         <summary>接続の状態を説明する文字列を取得します。</summary>
-        <value>接続の状態。 返される文字列の形式は、使用している特定の接続の種類に応じて決まります。</value>
+        <value>接続の状態。 返される文字列の形式は、接続を使用しているは、特定の種類によって異なります。</value>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1298,7 +1297,7 @@
 ## Remarks  
  このメンバーは、明示的なインターフェイス メンバーの実装です。 これは、<xref:System.Data.Common.DbConnection> のインスタンスが <xref:System.Data.IDbConnection> インターフェイスにキャストされる場合のみ、使用できます。  
   
- 詳細については、「<xref:System.Data.IDbConnection.BeginTransaction%2A>」を参照してください。  
+ 詳細については、「 <xref:System.Data.IDbConnection.BeginTransaction%2A> 」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1338,14 +1337,14 @@
         <Parameter Name="isolationLevel" Type="System.Data.IsolationLevel" Index="0" FrameworkAlternate="netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="isolationLevel"><see cref="T:System.Data.IsolationLevel" /> 値のいずれか。</param>
+        <param name="isolationLevel"><see cref="T:System.Data.IsolationLevel" /> 値のいずれか 1 つ。</param>
         <summary>指定した <see cref="T:System.Data.IsolationLevel" /> 値を使用して、データベース トランザクションを開始します。</summary>
         <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については、「<xref:System.Data.IDbConnection.BeginTransaction%2A>」を参照してください。  
+ 詳細については、「 <xref:System.Data.IDbConnection.BeginTransaction%2A> 」を参照してください。  
   
  ]]></format>
         </remarks>

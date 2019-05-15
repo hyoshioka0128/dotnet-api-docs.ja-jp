@@ -1,5 +1,5 @@
 <Type Name="Claim" FullName="System.Security.Claims.Claim">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7e441b71ed11368d1a36cebbb07edcedfe50ad88" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58706029" /></Metadata><TypeSignature Language="C#" Value="public class Claim" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="b4ec2b206e208664bffb01237947e58200ed9241" /><Meta Name="ms.sourcegitcommit" Value="95e24aee1283af2f120fc5da4b0bdc0712ab698f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/06/2019" /><Meta Name="ms.locfileid" Value="65156049" /></Metadata><TypeSignature Language="C#" Value="public class Claim" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit Claim extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Security.Claims.Claim" />
   <TypeSignature Language="VB.NET" Value="Public Class Claim" />
@@ -129,7 +129,7 @@ if (null != principal)
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="reader" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="reader" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -164,6 +164,7 @@ if (null != principal)
         <param name="other">セキュリティ要求。</param>
         <summary><see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks></remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="other" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -200,6 +201,7 @@ if (null != principal)
         <param name="subject">この要求を記述するサブジェクト。</param>
         <summary>指定したリーダーとサブジェクトで、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks></remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="reader" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -236,6 +238,7 @@ if (null != principal)
         <param name="subject">この要求を記述するサブジェクト。</param>
         <summary>指定されたセキュリティ要求、および件名により、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks></remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="other" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -269,13 +272,13 @@ if (null != principal)
       </Parameters>
       <Docs>
         <param name="type">要求の種類。</param>
-        <param name="value">クレーム値。</param>
+        <param name="value">要求の値。</param>
         <summary>指定した要求の種類および値を使用して、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Claims.Claim.Subject%2A> プロパティが `null` に設定されている。 <xref:System.Security.Claims.Claim.Issuer%2A> プロパティと <xref:System.Security.Claims.Claim.OriginalIssuer%2A> プロパティを <xref:System.Security.Claims.ClaimsIdentity.DefaultIssuer> に設定します。 <xref:System.Security.Claims.Claim.ValueType%2A> プロパティが <xref:System.Security.Claims.ClaimValueTypes.String?displayProperty=nameWithType> に設定されています。  
+ <xref:System.Security.Claims.Claim.Subject%2A> プロパティが `null` に設定されている。 <xref:System.Security.Claims.Claim.Issuer%2A> プロパティと <xref:System.Security.Claims.Claim.OriginalIssuer%2A> プロパティを <xref:System.Security.Claims.ClaimsIdentity.DefaultIssuer> に設定します。 <xref:System.Security.Claims.Claim.ValueType%2A> プロパティが <xref:System.Security.Claims.ClaimValueTypes.String?displayProperty=nameWithType> に設定されている。  
   
  ]]></format>
         </remarks>
@@ -316,8 +319,8 @@ if (null != principal)
       </Parameters>
       <Docs>
         <param name="type">要求の種類。</param>
-        <param name="value">クレーム値。</param>
-        <param name="valueType">クレーム値の型。 このパラメーターが <see langword="null" /> の場合は <see cref="F:System.Security.Claims.ClaimValueTypes.String" /> が使用されます。</param>
+        <param name="value">要求の値。</param>
+        <param name="valueType">要求の値の型。 このパラメーターが <see langword="null" /> の場合、<see cref="F:System.Security.Claims.ClaimValueTypes.String" /> を使用します。</param>
         <summary>指定した要求の種類、値、および値の型を使用して、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -365,10 +368,10 @@ if (null != principal)
       </Parameters>
       <Docs>
         <param name="type">要求の種類。</param>
-        <param name="value">クレーム値。</param>
-        <param name="valueType">クレーム値の型。 このパラメーターが <see langword="null" /> の場合は <see cref="F:System.Security.Claims.ClaimValueTypes.String" /> が使用されます。</param>
-        <param name="issuer">クレーム発行者。 このパラメーターが空か <see langword="null" /> である場合は、<see cref="F:System.Security.Claims.ClaimsIdentity.DefaultIssuer" /> が使用されます。</param>
-        <summary>指定したクレームの種類、値、値型、および発行元を使用して、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="value">要求の値。</param>
+        <param name="valueType">要求の値の型。 このパラメーターが <see langword="null" /> の場合、<see cref="F:System.Security.Claims.ClaimValueTypes.String" /> を使用します。</param>
+        <param name="issuer">要求の発行者。 このパラメーターが空または <see langword="null" /> の場合、<see cref="F:System.Security.Claims.ClaimsIdentity.DefaultIssuer" /> を使用します。</param>
+        <summary>指定した要求の種類、値、値の型、および発行者を使用して、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -416,11 +419,11 @@ if (null != principal)
       </Parameters>
       <Docs>
         <param name="type">要求の種類。</param>
-        <param name="value">クレーム値。</param>
-        <param name="valueType">クレーム値の型。 このパラメーターが <see langword="null" /> の場合は <see cref="F:System.Security.Claims.ClaimValueTypes.String" /> が使用されます。</param>
-        <param name="issuer">クレーム発行者。 このパラメーターが空か <see langword="null" /> である場合は、<see cref="F:System.Security.Claims.ClaimsIdentity.DefaultIssuer" /> が使用されます。</param>
-        <param name="originalIssuer">クレームの元の発行元。 このプロパティが空か <see langword="null" /> である場合、<see cref="P:System.Security.Claims.Claim.OriginalIssuer" /> プロパティは <see cref="P:System.Security.Claims.Claim.Issuer" /> プロパティの値に設定されます。</param>
-        <summary>指定されたクレームの種類、値、値型、発行元、および元の発行元を指定して、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="value">要求の値。</param>
+        <param name="valueType">要求の値の型。 このパラメーターが <see langword="null" /> の場合、<see cref="F:System.Security.Claims.ClaimValueTypes.String" /> を使用します。</param>
+        <param name="issuer">要求の発行者。 このパラメーターが空または <see langword="null" /> の場合、<see cref="F:System.Security.Claims.ClaimsIdentity.DefaultIssuer" /> を使用します。</param>
+        <param name="originalIssuer">要求の発行元。 このパラメーターが空または <see langword="null" /> の場合、<see cref="P:System.Security.Claims.Claim.OriginalIssuer" /> プロパティを <see cref="P:System.Security.Claims.Claim.Issuer" /> プロパティの値に設定します。</param>
+        <summary>指定された要求の種類、値、値の型、発行者、および発行元を使用して、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -469,12 +472,12 @@ if (null != principal)
       </Parameters>
       <Docs>
         <param name="type">要求の種類。</param>
-        <param name="value">クレーム値。</param>
-        <param name="valueType">クレーム値の型。 このパラメーターが <see langword="null" /> の場合は <see cref="F:System.Security.Claims.ClaimValueTypes.String" /> が使用されます。</param>
-        <param name="issuer">クレーム発行者。 このパラメーターが空か <see langword="null" /> である場合は、<see cref="F:System.Security.Claims.ClaimsIdentity.DefaultIssuer" /> が使用されます。</param>
-        <param name="originalIssuer">クレームの元の発行元。 このプロパティが空か <see langword="null" /> である場合、<see cref="P:System.Security.Claims.Claim.OriginalIssuer" /> プロパティは <see cref="P:System.Security.Claims.Claim.Issuer" /> プロパティの値に設定されます。</param>
+        <param name="value">要求の値。</param>
+        <param name="valueType">要求の値の型。 このパラメーターが <see langword="null" /> の場合、<see cref="F:System.Security.Claims.ClaimValueTypes.String" /> を使用します。</param>
+        <param name="issuer">要求の発行者。 このパラメーターが空または <see langword="null" /> の場合、<see cref="F:System.Security.Claims.ClaimsIdentity.DefaultIssuer" /> を使用します。</param>
+        <param name="originalIssuer">要求の発行元。 このパラメーターが空または <see langword="null" /> の場合、<see cref="P:System.Security.Claims.Claim.OriginalIssuer" /> プロパティを <see cref="P:System.Security.Claims.Claim.Issuer" /> プロパティの値に設定します。</param>
         <param name="subject">この要求を記述するサブジェクト。</param>
-        <summary>指定されたクレームの種類、値、値型、発行元、元の発行元、およびサブジェクトを指定して、<see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>指定された要求の種類、値、値の型、発行者、発行元、および件名を持つ <see cref="T:System.Security.Claims.Claim" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks></remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="type" /> または <paramref name="value" /> が <see langword="null" /> です。</exception>
         <altmember cref="T:System.Security.Claims.ClaimTypes" />
@@ -648,8 +651,8 @@ if (null != principal)
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クレームの発行元を取得します。</summary>
-        <value>クレームの発行元を示す名前。</value>
+        <summary>要求の発行元を取得します。</summary>
+        <value>要求の発行元を参照する名前。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -691,8 +694,8 @@ if (null != principal)
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クレームの元の発行元を取得します。</summary>
-        <value>クレームの元の発行元を示す名前。</value>
+        <summary>要求の発行元を取得します。</summary>
+        <value>要求の発行元を指す名前。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -738,8 +741,8 @@ if (null != principal)
         <ReturnType>System.Collections.Generic.IDictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このクレームに関連付けられた追加のプロパティを含むディクショナリを取得します。</summary>
-        <value>クレームに関連付けられた追加のプロパティを含むディクショナリ。 プロパティは、名前と値のペアで表現されます。</value>
+        <summary>この要求に関連付けられている追加のプロパティを格納するディクショナリを取得します。</summary>
+        <value>この要求に関連付けられている追加のプロパティを格納するディクショナリ。 プロパティは、名前と値の組として表されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -780,8 +783,8 @@ if (null != principal)
         <ReturnType>System.Security.Claims.ClaimsIdentity</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クレームの対象を取得します。</summary>
-        <value>クレームのサブジェクト。</value>
+        <summary>クレームの件名を取得します。</summary>
+        <value>クレームの件名。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -822,7 +825,7 @@ if (null != principal)
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>この <see cref="T:System.Security.Claims.Claim" /> オブジェクトの文字列形式を返します。</summary>
+        <summary>この <see cref="T:System.Security.Claims.Claim" /> オブジェクトの文字列表現を返します。</summary>
         <returns>この <see cref="T:System.Security.Claims.Claim" /> オブジェクトの文字列表現。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -863,7 +866,7 @@ if (null != principal)
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クレームの種類を取得します。</summary>
+        <summary>要求の種類を取得します。</summary>
         <value>要求の種類。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -904,8 +907,8 @@ if (null != principal)
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クレームの値を取得します。</summary>
-        <value>クレーム値。</value>
+        <summary>要求の値を取得します。</summary>
+        <value>要求の値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -949,8 +952,8 @@ if (null != principal)
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クレームの値型を取得します。</summary>
-        <value>クレーム値の型。</value>
+        <summary>要求の値の型を取得します。</summary>
+        <value>要求の値の型。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -997,7 +1000,7 @@ if (null != principal)
         <param name="writer">データ ストレージに使用するライター。</param>
         <summary>この <see cref="T:System.Security.Claims.Claim" /> をライターに書き込みます。</summary>
         <remarks></remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="writer" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="writer" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteTo">
@@ -1037,6 +1040,7 @@ if (null != principal)
         <param name="userData">要求するユーザー データ。</param>
         <summary>この <see cref="T:System.Security.Claims.Claim" /> をライターに書き込みます。</summary>
         <remarks></remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="writer" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
   </Members>
