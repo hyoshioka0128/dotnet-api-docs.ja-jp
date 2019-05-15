@@ -1,5 +1,5 @@
 <Type Name="OleDbConnection" FullName="System.Data.OleDb.OleDbConnection">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="fd4a22c4011915e7c00551a25be1cc241633203e" /><Meta Name="ms.sourcegitcommit" Value="bac13a81377b1c4ebf3990e3287a6f1700f73751" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/19/2019" /><Meta Name="ms.locfileid" Value="57927802" /></Metadata><TypeSignature Language="C#" Value="public sealed class OleDbConnection : System.Data.Common.DbConnection, ICloneable, IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="34b764f718e21c703748b13f279bc3b0327d9db9" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65003937" /></Metadata><TypeSignature Language="C#" Value="public sealed class OleDbConnection : System.Data.Common.DbConnection, ICloneable, IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OleDbConnection extends System.Data.Common.DbConnection implements class System.Data.IDbConnection, class System.ICloneable, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Data.OleDb.OleDbConnection" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OleDbConnection&#xA;Inherits DbConnection&#xA;Implements ICloneable, IDisposable" />
@@ -32,7 +32,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>データ ソースへの開いた接続を表します。</summary>
+    <summary>データ ソースへの接続を開くを表します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -105,7 +105,7 @@
 |プロパティ|初期値|  
 |----------------|-------------------|  
 |<xref:System.Data.OleDb.OleDbConnection.ConnectionString%2A>|空の文字列 ("")|  
-|<xref:System.Data.OleDb.OleDbConnection.ConnectionTimeout%2A>|16|  
+|<xref:System.Data.OleDb.OleDbConnection.ConnectionTimeout%2A>|15|  
 |<xref:System.Data.OleDb.OleDbConnection.Database%2A>|空の文字列 ("")|  
 |<xref:System.Data.OleDb.OleDbConnection.DataSource%2A>|空の文字列 ("")|  
   
@@ -142,8 +142,8 @@
         <Parameter Name="connectionString" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="connectionString">データベースを開くために使用する接続。</param>
-        <summary>接続文字列を指定して、<see cref="T:System.Data.OleDb.OleDbConnection" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="connectionString">データベースを開くために使用される接続。</param>
+        <summary>新しいインスタンスを初期化、<see cref="T:System.Data.OleDb.OleDbConnection" />クラスを指定した接続文字列に置き換えます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -153,7 +153,7 @@
 |プロパティ|初期値|  
 |----------------|-------------------|  
 |<xref:System.Data.OleDb.OleDbConnection.ConnectionString%2A>|`connectionString`|  
-|<xref:System.Data.OleDb.OleDbConnection.ConnectionTimeout%2A>|16|  
+|<xref:System.Data.OleDb.OleDbConnection.ConnectionTimeout%2A>|15|  
 |<xref:System.Data.OleDb.OleDbConnection.Database%2A>|空の文字列 ("")|  
 |<xref:System.Data.OleDb.OleDbConnection.DataSource%2A>|空の文字列 ("")|  
   
@@ -226,7 +226,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在の <see cref="T:System.Data.IsolationLevel" /> 値を使用して、データベース トランザクションを開始します。</summary>
+        <summary>現在のデータベース トランザクションを開始<see cref="T:System.Data.IsolationLevel" />値。</summary>
         <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -432,7 +432,7 @@
       </ReturnValue>
       <Docs>
         <summary>データベースを開くために使用する文字列を取得または設定します。</summary>
-        <value>データ ソース名を含む OLE DB プロバイダー接続文字列、および初期接続を確立するために必要なその他のパラメーター。 既定値は空の文字列です。</value>
+        <value>データ ソース名、および初期接続を確立するために必要なその他のパラメーターを含む OLE DB プロバイダー接続文字列。 既定値は空の文字列です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -457,11 +457,11 @@
   
  接続文字列の詳細については、次を参照してください。[使用した Connection String Keywords with SQL Server Native Client を使用して](https://go.microsoft.com/fwlink/?LinkId=126696)します。  
   
- <xref:System.Data.OleDb.OleDbConnection.ConnectionString%2A>プロパティは、接続が閉じられたときにのみ設定できます。 多くの接続文字列の値により、対応する読み取り専用プロパティがあります。 接続文字列が設定されている場合、エラーが検出された場合を除き、これらのプロパティが更新します。 ここで、プロパティのいずれも更新されます。 <xref:System.Data.OleDb.OleDbConnection> プロパティに格納されている設定のみを返す、<xref:System.Data.OleDb.OleDbConnection.ConnectionString%2A>します。  
+ <xref:System.Data.OleDb.OleDbConnection.ConnectionString%2A>プロパティは、接続が閉じられたときにのみ設定できます。 接続文字列の値の多くに、対応する読み取り専用プロパティがあります。 接続文字列が設定されている場合、エラーが検出された場合を除き、これらのプロパティが更新します。 ここで、プロパティのいずれも更新されます。 <xref:System.Data.OleDb.OleDbConnection> プロパティに格納されている設定のみを返す、<xref:System.Data.OleDb.OleDbConnection.ConnectionString%2A>します。  
   
  リセット、<xref:System.Data.OleDb.OleDbConnection.ConnectionString%2A>閉じた接続に対して、すべての接続文字列の値と関連するプロパティをリセットします。 これには、パスワードが含まれます。 含む接続文字列を設定する場合など"Initial Catalog = AdventureWorks"への接続文字列をリセットし、"プロバイダー = SQLOLEDB; データ ソース = MySQLServer; IntegratedSecurity = SSPI"、<xref:System.Data.OleDb.OleDbConnection.Database%2A>プロパティに設定されなくAdventureWorks です。 (接続文字列の初期カタログ値に対応、`Database`プロパティです)。  
   
- プロパティが設定されている場合、接続文字列の予備検証が実行されます。 場合の値を`Provider`、 `Connect Timeout`、 `Persist Security Info`、または`OLE DB Services`が含まれる文字列で、これらの値がチェックされます。 アプリケーションを呼び出すと、<xref:System.Data.OleDb.OleDbConnection.Open%2A>メソッド、接続文字列が完全に検証します。 など、接続文字列に無効またはサポートされていないプロパティ、実行時に例外が含まれている場合<xref:System.ArgumentException>が生成されます。  
+ このプロパティが設定されていると、接続文字列の予備検証が実行されます。 場合の値を`Provider`、 `Connect Timeout`、 `Persist Security Info`、または`OLE DB Services`が含まれる文字列で、これらの値がチェックされます。 アプリケーションを呼び出すと、<xref:System.Data.OleDb.OleDbConnection.Open%2A>メソッド、接続文字列が完全に検証します。 など、接続文字列に無効またはサポートされていないプロパティ、実行時に例外が含まれている場合<xref:System.ArgumentException>が生成されます。  
   
 > [!CAUTION]
 >  接続情報を提供することは、 <xref:System.Data.OleDb.OleDbConnection> Universal Data Link (UDL) ファイルです。 ただししないでそうです。 UDL ファイルは暗号化されていないと、クリア テキストで接続文字列情報を公開します。 UDL ファイルは、アプリケーションにとって外部ファイルをベースにしたリソースであるため、.NET Framework でセキュリティ保護できません。  
@@ -495,7 +495,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">無効な接続文字列の引数が指定されました。または、必要な接続文字列の引数が指定されませんでした。</exception>
+        <exception cref="T:System.ArgumentException">無効な接続文字列引数が指定されているか、必要な接続文字列の引数が指定されていません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続</related>
       </Docs>
     </Member>
@@ -529,7 +529,7 @@
       </ReturnValue>
       <Docs>
         <summary>試行を中断してエラーを生成する前に、接続の確立時に待機する時間を取得します。</summary>
-        <value>接続が開かれるまでの待機時間 (秒)。 既定値は 15 秒です。</value>
+        <value>接続を開くを待機する秒単位の時間。 既定値は 15 秒です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -571,7 +571,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.Data.OleDb.OleDbCommand" /> に関連付けられている <see cref="T:System.Data.OleDb.OleDbConnection" /> オブジェクトを作成し、返します。</summary>
+        <summary>作成して返します、<see cref="T:System.Data.OleDb.OleDbCommand" />オブジェクトに関連付けられている、<see cref="T:System.Data.OleDb.OleDbConnection" />します。</summary>
         <returns><see cref="T:System.Data.OleDb.OleDbCommand" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続</related>
@@ -683,8 +683,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>データ ソースのサーバー名またはファイル名を取得します。</summary>
-        <value>データ ソースのサーバー名またはファイル名。 既定値は空の文字列です。</value>
+        <summary>サーバー名またはデータ ソースのファイル名を取得します。</summary>
+        <value>サーバー名またはデータ ソースのファイル名。 既定値は空の文字列です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -825,15 +825,15 @@
         <Parameter Name="restrictions" Type="System.Object[]" />
       </Parameters>
       <Docs>
-        <param name="schema">取得するスキーマ テーブルを示す <see cref="T:System.Data.OleDb.OleDbSchemaGuid" /> 値の 1 つ。</param>
-        <param name="restrictions">制約値の <see cref="T:System.Object" /> 配列。 制約値は、制約列の順に適用されます。 つまり、先頭の制約値は先頭の制約列に適用され、2 番目の制約値は 2 番目の制約列に適用されます。</param>
-        <summary>GUID によって指定したデータ ソースのスキーマ情報を、指定した制約の適用後に返します。</summary>
-        <returns>要求したスキーマ情報を格納した <see cref="T:System.Data.DataTable" />。</returns>
+        <param name="schema">1 つ、<see cref="T:System.Data.OleDb.OleDbSchemaGuid" />を返すスキーマ テーブルを指定する値。</param>
+        <param name="restrictions"><see cref="T:System.Object" />制限値の配列。 これらは、制限列の順序で適用されます。 つまり、最初の制限値は最初の制限列に、2 番目の制限値は 2 番目の制限列に、という形で適用されます。</param>
+        <summary>GUID で示されていると、指定された制約の適用後に、データ ソースからスキーマ情報を返します。</summary>
+        <returns>A<see cref="T:System.Data.DataTable" />要求されたスキーマ情報を格納します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スキーマ テーブルは、<xref:System.Data.DataTable>で指定された OLE DB スキーマ行セットと同じ形式を持つ、`schema`パラメーター。 使用して、`restrictions`パラメーターで返される行をフィルター選択、 <xref:System.Data.DataTable> (たとえば、テーブル名、型、所有者、またはスキーマの制限の指定) をします。 配列内の値を渡すと、ときに、空の文字列または配列要素の値を含まないで null 値が含まれます。 空の配列を渡す場合`restrictions`、(テーブルごとに 1 つ) のすべての行が既定の順序で返されます。 ソース テーブルの列順序配列内の値に対応し、<xref:System.Data.DataTable>します。 制限の配列内の各要素は、スキーマ行セットの対応する列の内容と比較されます。 たとえば、制限の配列の最初の要素、行セットの最初の列が比較されます。 スキーマ行セットから制限の値を正確に一致する行のみが結果の追加制限要素が null でない場合<xref:System.Data.DataTable>します。  
+ スキーマ テーブルは、`schema` パラメーターで指定した OLE DB スキーマ行セットと同じ形式を持つ <xref:System.Data.DataTable> として返されます。 使用して、`restrictions`パラメーターで返される行をフィルター選択、 <xref:System.Data.DataTable> (たとえば、テーブル名、型、所有者、またはスキーマの制限の指定) をします。 値を配列で渡す場合、値を含まない配列要素には空の文字列または NULL を含めます。 空の配列を渡す場合`restrictions`、(テーブルごとに 1 つ) のすべての行が既定の順序で返されます。 ソース テーブルの列順序配列内の値に対応し、<xref:System.Data.DataTable>します。 制限の配列内の各要素は、スキーマ行セットの対応する列の内容と比較されます。 たとえば、制限の配列の最初の要素、行セットの最初の列が比較されます。 スキーマ行セットから制限の値を正確に一致する行のみが結果の追加制限要素が null でない場合<xref:System.Data.DataTable>します。  
   
  <xref:System.Data.OleDb.OleDbConnection>メソッドは基になる OLE DB **idbschemarowset::getrowset**メソッドの標準的な共通言語ランタイムの変換規則を使用します。 詳細については、次を参照してください。 [COM のデータ型](https://msdn.microsoft.com/library/f93ae35d-a416-4218-8700-c8218cc90061)します。  
   
@@ -853,8 +853,8 @@
         <exception cref="T:System.InvalidOperationException"><see cref="T:System.Data.OleDb.OleDbConnection" /> が閉じています。</exception>
         <exception cref="T:System.ArgumentException">指定されたスキーマ行セットは、OLE DB プロバイダーでサポートされていません。  
   
-または 
-<paramref name="schema" /> パラメーターに <see cref="F:System.Data.OleDb.OleDbSchemaGuid.DbInfoLiterals" /> の値が格納され、<paramref name="restrictions" /> パラメーターに 1 つ以上の制約が格納されています。</exception>
+- または - 
+<paramref name="schema" />パラメーターの値が含まれる<see cref="F:System.Data.OleDb.OleDbSchemaGuid.DbInfoLiterals" />と<paramref name="restrictions" />パラメーターには、1 つまたは複数の制限が含まれています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続</related>
       </Docs>
     </Member>
@@ -948,7 +948,7 @@
       </Parameters>
       <Docs>
         <param name="collectionName">返すスキーマの名前を指定します。</param>
-        <param name="restrictionValues">要求したスキーマの制限値のセットを指定します。</param>
+        <param name="restrictionValues">要求されたスキーマの制限値のセットを指定します。</param>
         <summary>スキーマ名に指定した文字列と制限値に指定した文字列配列を使用して、この <see cref="T:System.Data.OleDb.OleDbConnection" /> のデータ ソースのスキーマ情報を返します。</summary>
         <returns>スキーマ情報を格納する <see cref="T:System.Data.DataTable" />。</returns>
         <remarks>
@@ -989,7 +989,7 @@
         <ReturnType>System.Data.OleDb.OleDbInfoMessageEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>プロバイダーが警告メッセージまたは情報メッセージを送信したときに発生します。</summary>
+        <summary>プロバイダーが警告または情報メッセージを送信するときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1072,8 +1072,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続文字列の Provider= 句で指定した OLE DB プロバイダー名を取得します。</summary>
-        <value>接続文字列の Provider= 句で指定したプロバイダー名。 既定値は空の文字列です。</value>
+        <summary>指定された OLE DB プロバイダーの名前を取得、"プロバイダー ="接続文字列の句。</summary>
+        <value>指定されているプロバイダーの名前、"プロバイダー ="接続文字列の句。 既定値は空の文字列です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1107,7 +1107,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>基になる最後の接続が解放されたときに、<see cref="T:System.Data.OleDb.OleDbConnection" /> オブジェクトのプールを削除できることを示します。</summary>
+        <summary>示します、<see cref="T:System.Data.OleDb.OleDbConnection" />オブジェクト プールは、最後の基になる接続がリリースされたときに解放できます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1164,7 +1164,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="P:System.Data.OleDb.OleDbConnection.State" /> オブジェクトの <see cref="T:System.Data.OleDb.OleDbConnection" /> プロパティを更新します。</summary>
+        <summary>更新プログラム、<see cref="P:System.Data.OleDb.OleDbConnection.State" />のプロパティ、<see cref="T:System.Data.OleDb.OleDbConnection" />オブジェクト。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1205,8 +1205,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クライアントが接続しているサーバーのバージョンが示された文字列を取得します。</summary>
-        <value>接続されているサーバーのバージョン。</value>
+        <summary>クライアントが接続されているサーバーのバージョンを含む文字列を取得します。</summary>
+        <value>接続先のサーバーのバージョン。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1262,7 +1262,7 @@
       </ReturnValue>
       <Docs>
         <summary>現在の接続の状態を取得します。</summary>
-        <value><see cref="T:System.Data.ConnectionState" /> 値のビットごとの組み合わせ。 既定値は Closed です。</value>
+        <value><see cref="T:System.Data.ConnectionState" /> 値のビットごとの組み合わせ。 既定値は閉じられます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1325,9 +1325,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>データベース トランザクションを開始します。</summary>
+        <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.Data.IDbConnection.BeginTransaction">
@@ -1350,10 +1351,11 @@
         <Parameter Name="isolationLevel" Type="System.Data.IsolationLevel" Index="0" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="isolationLevel">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="isolationLevel">トランザクションの分離レベルを指定する列挙値のビットごとの組み合わせ。</param>
+        <summary>分離レベルを指定して、データベース トランザクションを開始します。</summary>
+        <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.Data.IDbConnection.CreateCommand">
@@ -1375,9 +1377,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>作成して、接続に関連付けられたコマンド オブジェクトを返します。</summary>
+        <returns>接続に関連付けられている command オブジェクト。</returns>
         <remarks>To be added.</remarks>
+        <forInternalUseOnly />
       </Docs>
     </Member>
     <Member MemberName="System.ICloneable.Clone">
@@ -1401,7 +1404,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このメンバーの説明については、<see cref="M:System.ICloneable.Clone" /> のトピックを参照してください。</summary>
+        <summary>このメンバーの詳細については、「<see cref="M:System.ICloneable.Clone" />」をご覧ください。</summary>
         <returns>このインスタンスのコピーである新しい <see cref="T:System.Object" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  

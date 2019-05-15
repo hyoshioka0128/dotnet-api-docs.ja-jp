@@ -1,5 +1,5 @@
 <Type Name="ImmutableArray&lt;T&gt;" FullName="System.Collections.Immutable.ImmutableArray&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="b02e5fb2654a29c15737b43bbc39dceb0586a831" /><Meta Name="ms.sourcegitcommit" Value="7461f9e28c2f184bd1596e6f07c25a3f34984516" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/28/2019" /><Meta Name="ms.locfileid" Value="58554972" /></Metadata><TypeSignature Language="C#" Value="public struct ImmutableArray&lt;T&gt; : IEquatable&lt;System.Collections.Immutable.ImmutableArray&lt;T&gt;&gt;, System.Collections.Generic.ICollection&lt;T&gt;, System.Collections.Generic.IEnumerable&lt;T&gt;, System.Collections.Generic.IList&lt;T&gt;, System.Collections.Generic.IReadOnlyCollection&lt;T&gt;, System.Collections.Generic.IReadOnlyList&lt;T&gt;, System.Collections.IList, System.Collections.Immutable.IImmutableList&lt;T&gt;, System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="49f0a984728e2cf2059345c067e97447669077c1" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65002487" /></Metadata><TypeSignature Language="C#" Value="public struct ImmutableArray&lt;T&gt; : IEquatable&lt;System.Collections.Immutable.ImmutableArray&lt;T&gt;&gt;, System.Collections.Generic.ICollection&lt;T&gt;, System.Collections.Generic.IEnumerable&lt;T&gt;, System.Collections.Generic.IList&lt;T&gt;, System.Collections.Generic.IReadOnlyCollection&lt;T&gt;, System.Collections.Generic.IReadOnlyList&lt;T&gt;, System.Collections.IList, System.Collections.Immutable.IImmutableList&lt;T&gt;, System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ImmutableArray`1&lt;T&gt; extends System.ValueType implements class System.Collections.Generic.ICollection`1&lt;!T&gt;, class System.Collections.Generic.IEnumerable`1&lt;!T&gt;, class System.Collections.Generic.IList`1&lt;!T&gt;, class System.Collections.Generic.IReadOnlyCollection`1&lt;!T&gt;, class System.Collections.Generic.IReadOnlyList`1&lt;!T&gt;, class System.Collections.ICollection, class System.Collections.IEnumerable, class System.Collections.IList, class System.Collections.Immutable.IImmutableList`1&lt;!T&gt;, class System.Collections.IStructuralComparable, class System.Collections.IStructuralEquatable, class System.IEquatable`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;!T&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Collections.Immutable.ImmutableArray`1" />
   <TypeSignature Language="VB.NET" Value="Public Structure ImmutableArray(Of T)&#xA;Implements ICollection(Of T), IEnumerable(Of T), IEquatable(Of ImmutableArray(Of T)), IImmutableList(Of T), IList, IList(Of T), IReadOnlyCollection(Of T), IReadOnlyList(Of T), IStructuralComparable, IStructuralEquatable" />
@@ -435,7 +435,7 @@
       </Parameters>
       <Docs>
         <param name="destination">コピー先の配列。</param>
-        <param name="destinationIndex"><paramref name="array" /> 内のコピー開始位置を示すインデックス。</param>
+        <param name="destinationIndex">内のインデックス<paramref name="array" />コピーを開始します。</param>
         <summary>この配列の内容を、指定した配列の指定したインデックスを開始位置としてコピーします。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -469,7 +469,7 @@
       <Docs>
         <param name="sourceIndex">この配列内のコピー開始位置を示すインデックス。</param>
         <param name="destination">コピー先の配列。</param>
-        <param name="destinationIndex"><paramref name="array" /> 内のコピー開始位置を示すインデックス。</param>
+        <param name="destinationIndex">内のインデックス<paramref name="array" />コピーを開始します。</param>
         <param name="length">この配列からコピーする要素の数。</param>
         <summary>この配列内の指定した項目を、指定した配列の指定したインデックスを開始位置としてコピーします。</summary>
         <remarks>To be added.</remarks>
@@ -1035,9 +1035,9 @@
         <Parameter Name="index" Type="System.Int32" Index="0" FrameworkAlternate="netcore-2.1" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">参照を取得する要素の 0 から始まるインデックス。</param>
+        <summary>指定した要素への読み取り専用の参照を取得します。<paramref name="index" />読み取り専用リストにします。</summary>
+        <returns>指定した位置にある要素への読み取り専用参照<paramref name="index" />読み取り専用リストにします。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2428,6 +2428,7 @@
         <summary>変更できない配列を反復処理する列挙子を返します。</summary>
         <returns>変更できない配列を反復処理する列挙子。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Collections.Immutable.ImmutableArray`1.IsDefault" />プロパティが返す<see langword="true" />します。</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IList.Add">
@@ -2460,6 +2461,7 @@
         <summary>常に <see cref="T:System.NotSupportedException" /> をスローします。</summary>
         <returns>常に <see cref="T:System.NotSupportedException" /> をスローします。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotSupportedException">常にスローされます。</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IList.Clear">
@@ -2488,6 +2490,7 @@
       <Docs>
         <summary>常に <see cref="T:System.NotSupportedException" /> をスローします。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotSupportedException">常にスローされます。</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IList.Contains">
@@ -2585,6 +2588,7 @@
         <param name="value">挿入する値。</param>
         <summary>常に <see cref="T:System.NotSupportedException" /> をスローします。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotSupportedException">常にスローされます。</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IList.IsFixedSize">
@@ -2719,6 +2723,7 @@
         <param name="value">配列から削除する値。</param>
         <summary>常に <see cref="T:System.NotSupportedException" /> をスローします。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotSupportedException">常にスローされます。</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IList.RemoveAt">
@@ -2750,6 +2755,7 @@
         <param name="index">削除する項目のインデックス。</param>
         <summary>常に <see cref="T:System.NotSupportedException" /> をスローします。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotSupportedException">常にスローされます。</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.Immutable.IImmutableList&lt;T&gt;.Add">
