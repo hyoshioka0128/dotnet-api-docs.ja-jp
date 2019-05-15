@@ -1,5 +1,5 @@
 <Type Name="ComRegisterFunctionAttribute" FullName="System.Runtime.InteropServices.ComRegisterFunctionAttribute">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7e9da725a5a358fe788a4e56b05f1325805df10c" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58743511" /></Metadata><TypeSignature Language="C#" Value="public sealed class ComRegisterFunctionAttribute : Attribute" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="7999f3eea934906fb26325623019fce2b128f1de" /><Meta Name="ms.sourcegitcommit" Value="0609891c89ddaa91e4c02970acb00072fcc29baf" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/13/2019" /><Meta Name="ms.locfileid" Value="65558289" /></Metadata><TypeSignature Language="C#" Value="public sealed class ComRegisterFunctionAttribute : Attribute" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ComRegisterFunctionAttribute extends System.Attribute" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.InteropServices.ComRegisterFunctionAttribute" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ComRegisterFunctionAttribute&#xA;Inherits Attribute" />
@@ -35,16 +35,18 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>アセンブリを COM から使用できるように登録するときに呼び出すメソッドを指定します。これにより、登録処理中にユーザー記述のコードを実行できるようになります。</summary>
+    <summary>COM から使用するため、アセンブリを登録するときに呼び出すメソッドを指定しますこれにより、登録プロセス中にユーザーによって書かれたコードの実行ができます。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  メソッドには、この属性を適用できます。  
   
- <xref:System.Runtime.InteropServices.ComRegisterFunctionAttribute> COM クライアントの要件に対応する任意の登録コードを追加できます。 登録関数を使用してレジストリを更新するなど、<xref:Microsoft.Win32>名前空間。 適用する必要がある登録方法を指定した場合<xref:System.Runtime.InteropServices.ComUnregisterFunctionAttribute?displayProperty=nameWithType>を登録解除メソッドを登録メソッドで行われる操作を反転させます。  
+ `ComRegisterFunctionAttribute` COM クライアントの要件に対応する任意の登録コードを追加できます。 登録関数を使用してレジストリを更新するなど、<xref:Microsoft.Win32>名前空間。 登録方法を指定する場合も適用してください<xref:System.Runtime.InteropServices.ComUnregisterFunctionAttribute?displayProperty=nameWithType>を登録解除メソッドでは、登録メソッドで行われる操作を反転します。  
   
- 共通言語ランタイムが、含んでいるアセンブリが登録される (直接または間接的に) と、この属性を持つメソッドを呼び出す、 [Regasm.exe (アセンブリ登録ツール)](~/docs/framework/tools/regasm-exe-assembly-registration-tool.md)または、<xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly%2A?displayProperty=nameWithType>メソッド。  
+**.NET framework:** 共通言語ランタイムが、含んでいるアセンブリが登録される (直接または間接的に) と、この属性を持つメソッドを呼び出す、 [Regasm.exe (アセンブリ登録) ツール)](~/docs/framework/tools/regasm-exe-assembly-registration-tool.md)または、<xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly%2A?displayProperty=nameWithType>メソッド。  
+
+**.NET core:** 共通言語ランタイムを使用して、含んでいるアセンブリの COM ホストが登録されている場合にこの属性でメソッドを呼び出す、 [RegSvr32.exe ツール](https://docs.microsoft.com/windows-server/administration/windows-commands/regsvr32)します。
   
  この属性を次の特性を持つメソッドにのみ適用できます。  
   
