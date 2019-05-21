@@ -1,5 +1,5 @@
 <Type Name="ConfigurationSet" FullName="System.DirectoryServices.ActiveDirectory.ConfigurationSet">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="439f5c5a75e2e2ac600a670bb9c1e9015bde03d8" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/24/2018" /><Meta Name="ms.locfileid" Value="37661929" /></Metadata><TypeSignature Language="C#" Value="public class ConfigurationSet" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="77785f91265bb3513eec09e3642e4b08da5e7309" /><Meta Name="ms.sourcegitcommit" Value="5ebd9691c6f7d50c4730e997fba69e54bdd7cc0c" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/17/2019" /><Meta Name="ms.locfileid" Value="65829750" /></Metadata><TypeSignature Language="C#" Value="public class ConfigurationSet" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ConfigurationSet extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />
   <TypeSignature Language="VB.NET" Value="Public Class ConfigurationSet" />
@@ -16,7 +16,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary><see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" /> クラスは、1 つ以上の AD LDS インスタンスの構成セットを表します。</summary>
+    <summary><see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />クラスは、1 つの構成を表します。 または、複数の AD LDS インスタンス。</summary>
     <remarks>To be added.</remarks>
     <permission cref="T:System.DirectoryServices.DirectoryServicesPermission">要求値: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" /></permission>
   </Docs>
@@ -40,7 +40,7 @@
       </ReturnValue>
       <Docs>
         <summary>構成セットにある AD LDS インスタンスの読み取り専用コレクションを取得します。</summary>
-        <value>構成セット内の <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクトを格納している <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト。</value>
+        <value>構成セットにある <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクトを格納した <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクトを取得します。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" />
@@ -65,8 +65,8 @@
         <ReturnType>System.DirectoryServices.ActiveDirectory.ApplicationPartitionCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>構成セット内のアプリケーション パーティションの読み取り専用コレクションを取得します。</summary>
-        <value>構成セット内の <see cref="T:System.DirectoryServices.ActiveDirectory.ApplicationPartitionCollection" /> オブジェクトを格納している <see cref="T:System.DirectoryServices.ActiveDirectory.ApplicationPartition" /> オブジェクト。</value>
+        <summary>設定で構成されているアプリケーション パーティションの読み取り専用コレクションを取得します。</summary>
+        <value>構成セットにある <see cref="T:System.DirectoryServices.ActiveDirectory.ApplicationPartition" /> オブジェクトを格納した <see cref="T:System.DirectoryServices.ActiveDirectory.ApplicationPartitionCollection" /> オブジェクトを取得します。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.ApplicationPartition" />
@@ -102,7 +102,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>オブジェクトによって使用されているすべてのマネージド リソースとアンマネージド リソースを解放します。</summary>
+        <summary>オブジェクトによって使用されるすべてのマネージ コードとアンマネージ リソースを解放します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -128,7 +128,7 @@
       </Parameters>
       <Docs>
         <param name="disposing">マネージド リソースを解放する必要があるかどうかを決定する <see cref="T:System.Boolean" /> 値。 マネージド リソースを解放する必要がある場合は <see langword="true" />、アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
-        <summary>オブジェクトによって使用されているアンマネージド リソースを解放します。オプションでマネージド リソースも解放できます。</summary>
+        <summary>オブジェクトによって使用されているアンマネージ リソースを解放し、マネージ リソースも解放します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -184,9 +184,9 @@
         <summary>所定のパーティション名について、この構成セット内で AD LDS インスタンスを検索します。</summary>
         <returns>見つかった AD LDS インスタンスを表す <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="partitionName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="partitionName" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
-        <exception cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException"><paramref name="partitionName" /> で指定された AD LDS インスタンスが、この構成セット内に見つかりませんでした。</exception>
+        <exception cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException">指定した <paramref name="partitionName" /> の AD LDS インスタンスは、この構成セットに見つかりませんでした。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" />
       </Docs>
     </Member>
@@ -217,9 +217,9 @@
         <summary>所定のパーティション名とサイト名について、この構成セット内で AD LDS インスタンスを検索します。</summary>
         <returns>見つかった AD LDS インスタンスを表す <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="siteName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="siteName" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
-        <exception cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException"><paramref name="partitionName" /> パラメーターおよび <paramref name="siteName" /> パラメーターで指定された AD LDS インスタンスが、この構成セット内に見つかりませんでした。</exception>
+        <exception cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException">指定した <paramref name="partitionName" /> と <paramref name="siteName" /> パラメーターの AD LDS インスタンスは、この構成セットに見つかりませんでした。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" />
       </Docs>
     </Member>
@@ -243,7 +243,7 @@
       <Parameters />
       <Docs>
         <summary>この構成セット内のすべての AD LDS インスタンスを返します。</summary>
-        <returns>見つかった <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクトを格納している <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト。</returns>
+        <returns>見つかった <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクトが格納された <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" />
@@ -273,9 +273,9 @@
       <Docs>
         <param name="partitionName">検索するパーティションを指定する <see cref="T:System.String" />。</param>
         <summary>所定のパーティション名に対して、この構成セット内のすべての AD LDS インスタンスを返します。</summary>
-        <returns>見つかった <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクトを格納している <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト。</returns>
+        <returns>見つかった <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクトが格納された <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="partitionName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="partitionName" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" />
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" />
@@ -306,9 +306,9 @@
         <param name="partitionName">検索するパーティションを指定する <see cref="T:System.String" />。</param>
         <param name="siteName">検索するパーティションを指定する <see cref="T:System.String" />。</param>
         <summary>所定のパーティション名とサイト名に対して、この構成セット内のすべての AD LDS インスタンスを返します。</summary>
-        <returns>見つかった <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクトを格納している <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト。</returns>
+        <returns>見つかった <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクトが格納された <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="siteName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="siteName" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" />
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamInstanceCollection" />
@@ -335,14 +335,14 @@
         <Parameter Name="context" Type="System.DirectoryServices.ActiveDirectory.DirectoryContext" />
       </Parameters>
       <Docs>
-        <param name="context">オブジェクトの検索に使用するターゲットおよび資格情報が格納された <see cref="T:System.DirectoryServices.ActiveDirectory.DirectoryContext" /> オブジェクト。 コンテキストのターゲットには、構成セットを識別できる、現在のフォレスト内の serviceConnectionPoint オブジェクトで指定されている AD LDS インスタンスまたはキーワードを指定できます。</param>
-        <summary>指定したディレクトリ コンテキストの <see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" /> オブジェクトを返します。</summary>
-        <returns>指定したコンテキストの構成セットを表す <see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" /> オブジェクト。</returns>
+        <param name="context">オブジェクトの検索に使用するターゲットおよび資格情報が格納された <see cref="T:System.DirectoryServices.ActiveDirectory.DirectoryContext" /> オブジェクト。 コンテキストのターゲットには、AD LDS インスタンスまたは構成セットを識別できる、現在のフォレスト内の serviceConnectionPoint オブジェクトで指定されているキーワードを指定できます。</param>
+        <summary>返します、<see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />指定したディレクトリ コンテキストのオブジェクト。</summary>
+        <returns>A<see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />指定されたコンテキストの構成を表すオブジェクトを設定します。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException"><paramref name="context" /> パラメーターで指定されたターゲットが見つかりませんでした。</exception>
+        <exception cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException">指定されたターゲット、<paramref name="context" />パラメーターが見つかりませんでした。</exception>
         <exception cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException">基になるディレクトリ サービスの呼び出しでエラーが発生しました。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="context" /> は <see langword="null" />です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="context" /> パラメーターが有効ではありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="context" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="context" /> パラメーターが正しくありません。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.DirectoryContext" />
       </Docs>
     </Member>
@@ -365,8 +365,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>構成パーティションの <see cref="T:System.DirectoryServices.DirectoryEntry" /> オブジェクトを取得します。</summary>
-        <returns>構成パーティションの <see cref="T:System.DirectoryServices.DirectoryEntry" /> オブジェクト。</returns>
+        <summary>取得、<see cref="T:System.DirectoryServices.DirectoryEntry" />構成パーティションのオブジェクト。</summary>
+        <returns><see cref="T:System.DirectoryServices.DirectoryEntry" />構成パーティションのオブジェクト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -390,7 +390,7 @@
       <Parameters />
       <Docs>
         <summary>AD LDS レプリケーション セキュリティ レベルを返します。</summary>
-        <returns>現在の AD LDS レプリケーション認証モードを示す <see cref="T:System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel" /> 値。</returns>
+        <returns>A<see cref="T:System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel" />を現在の AD LDS レプリケーション認証モードを示す値。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel" />
       </Docs>
@@ -414,7 +414,7 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" /> オブジェクトの名前を取得します。</summary>
-        <value><see cref="T:System.String" /> オブジェクトの名前が格納された <see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />。</value>
+        <value>A<see cref="T:System.String" />の名前を格納している、<see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />オブジェクト。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="M:System.DirectoryServices.ActiveDirectory.ConfigurationSet.ToString" />
@@ -438,11 +438,11 @@
         <ReturnType>System.DirectoryServices.ActiveDirectory.AdamInstance</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ドメイン名前付けマスター ロールの現在の所有者である AD LDS インスタンスを取得します。</summary>
-        <value>ドメイン名前付けマスター ロールを現在保持している AD LDS インスタンスを表す <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト。</value>
+        <summary>現在、ドメイン名前付けマスター ロールの所有者になっている AD LDS インスタンスを取得します。</summary>
+        <value><see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" />が現在の AD LDS インスタンスを表すオブジェクトが、ドメイン名前付けマスター ロールを保持します。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
-        <altmember cref="P:System.DirectoryServices.ActiveDirectory.ADAMInstance.Roles" />
+        <altmember cref="P:System.DirectoryServices.ActiveDirectory.AdamInstance.Roles" />
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamRole" />
       </Docs>
     </Member>
@@ -465,7 +465,7 @@
       </ReturnValue>
       <Docs>
         <summary>構成セットのスキーマ オブジェクトを取得します。</summary>
-        <value>この構成セットのスキーマを表す <see cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectorySchema" /> オブジェクト。</value>
+        <value><see cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectorySchema" />この構成セットのスキーマを表すオブジェクト。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectorySchema" />
@@ -489,12 +489,12 @@
         <ReturnType>System.DirectoryServices.ActiveDirectory.AdamInstance</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>スキーマ操作マスター ロールの現在の所有者である AD LDS インスタンスを取得します。</summary>
-        <value>スキーマ操作マスター ロールを現在保持する AD LDS インスタンスを表す <see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> オブジェクト 
-。</value>
+        <summary>スキーマ操作マスターの役割の現在の所有者である AD LDS インスタンスを取得します。</summary>
+        <value><see cref="T:System.DirectoryServices.ActiveDirectory.AdamInstance" /> AD LDS + を表すオブジェクトを 
+スキーマ操作マスターの役割を現在保持しているインスタンス。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
-        <altmember cref="P:System.DirectoryServices.ActiveDirectory.ADAMInstance.Roles" />
+        <altmember cref="P:System.DirectoryServices.ActiveDirectory.AdamInstance.Roles" />
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.AdamRole" />
       </Docs>
     </Member>
@@ -519,7 +519,7 @@
         <Parameter Name="securityLevel" Type="System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel" />
       </Parameters>
       <Docs>
-        <param name="securityLevel">AD LDS レプリケーション認証モードを設定する対象の <see cref="T:System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel" /> 値。</param>
+        <param name="securityLevel"><see cref="T:System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel" /> AD LDS レプリケーション認証モードを設定する値。</param>
         <summary>AD LDS レプリケーション セキュリティ レベルを設定します。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="securityLevel" /> は有効な <see cref="T:System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel" /> 値ではありません。</exception>
@@ -544,8 +544,8 @@
         <ReturnType>System.DirectoryServices.ActiveDirectory.ReadOnlySiteCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>構成セット内のサイトの読み取り専用コレクションを取得します。</summary>
-        <value>構成セット内の <see cref="T:System.DirectoryServices.ActiveDirectory.ReadOnlySiteCollection" /> オブジェクトを格納している <see cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectorySite" /> オブジェクト。</value>
+        <summary>設定で構成されているサイトの読み取り専用コレクションを取得します。</summary>
+        <value><see cref="T:System.DirectoryServices.ActiveDirectory.ReadOnlySiteCollection" />オブジェクトを含む<see cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectorySite" />設定で構成されているオブジェクト。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ObjectDisposedException">オブジェクトは破棄されました。</exception>
         <altmember cref="T:System.DirectoryServices.ActiveDirectory.ActiveDirectorySite" />
@@ -571,8 +571,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" /> オブジェクトの名前を返します。</summary>
-        <returns>現在の <see cref="T:System.String" /> オブジェクトの名前を格納している <see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />。</returns>
+        <summary>名前を返します、<see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />オブジェクト。</summary>
+        <returns>A <see cref="T:System.String" /> 、現在の名前を格納している<see cref="T:System.DirectoryServices.ActiveDirectory.ConfigurationSet" />オブジェクト。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="P:System.DirectoryServices.ActiveDirectory.ConfigurationSet.Name" />
       </Docs>

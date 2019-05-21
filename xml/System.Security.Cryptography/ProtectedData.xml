@@ -1,5 +1,5 @@
 <Type Name="ProtectedData" FullName="System.Security.Cryptography.ProtectedData">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="bcc571c1b9e91c577a9733b53e867330b9c48f83" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56771500" /></Metadata><TypeSignature Language="C#" Value="public sealed class ProtectedData" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="38eb090e97e5972009f0065e48a5b55765ceee17" /><Meta Name="ms.sourcegitcommit" Value="3575d47a0ba065e8986f03d99279f478811907b8" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/20/2019" /><Meta Name="ms.locfileid" Value="65922699" /></Metadata><TypeSignature Language="C#" Value="public sealed class ProtectedData" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ProtectedData extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.ProtectedData" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ProtectedData" />
@@ -28,15 +28,17 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- このクラスは、データ保護 API (DPAPI) Microsoft Windows 2000 以降のオペレーティング システムで使用するアクセスを提供します。 これは、サービスは、オペレーティング システムによって提供され、その他のライブラリは必要ありません。 暗号化またはデータの暗号化を解除するユーザーまたはコンピューターの資格情報を使用して保護を提供します。  
+## Remarks
+
+このクラスは、データ保護 API (DPAPI) は、Windows オペレーティング システムでへのアクセスを提供します。 これは、サービスは、オペレーティング システムによって提供され、その他のライブラリは必要ありません。 暗号化またはデータの暗号化を解除するユーザーまたはコンピューターの資格情報を使用して保護を提供します。
+
+> [!IMPORTANT]
+> DPAPI では、依存しているので、`ProtectedData`クラスは、Windows プラットフォームのみでサポートされています。 Windows 以外のプラットフォーム上で .NET Core での使用をスローする<xref:System.PlatformNotSupportedException>します。
   
- クラスは、アンマネージの DPAPI のラッパーの 2 つの<xref:System.Security.Cryptography.ProtectedData.Protect%2A>と<xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>します。 これら 2 つのメソッドは、暗号化し、パスワード、キー、および接続文字列などのデータを復号化に使用できます。  
+クラスは、アンマネージの DPAPI のラッパーの 2 つの<xref:System.Security.Cryptography.ProtectedData.Protect%2A>と<xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>します。 これら 2 つのメソッドは、暗号化し、パスワード、キー、および接続文字列などのデータを復号化に使用できます。  
   
- 権限借用中にこれらのメソッドを使用する場合、次のエラーが表示される可能性があります。"は無効なキー指定された状態で使用します。" これは、DPAPI は、ユーザー プロファイルで、主要なデータを格納するために発生します。 プロファイルが読み込まれていない場合は、DPAPI、復号化を実行することはできません。 このエラーを回避するには、いずれかのメソッドを呼び出す前に権限を借用するユーザーのプロファイルを読み込みます。 DPAPI 権限借用を使用して重要な問題が発生し、慎重に設計の選択肢が必要です。  
-  
-   
-  
+権限借用中にこれらのメソッドを使用する場合、次のエラーが表示される可能性があります。"は無効なキー指定された状態で使用します。" これは、DPAPI は、ユーザー プロファイルで、主要なデータを格納するために発生します。 プロファイルが読み込まれていない場合は、DPAPI、復号化を実行することはできません。 このエラーを回避するには、いずれかのメソッドを呼び出す前に権限を借用するユーザーのプロファイルを読み込みます。 DPAPI 権限借用を使用して重要な問題が発生し、慎重に設計の選択肢が必要です。  
+
 ## Examples  
  次の例では、データ保護を使用する方法を示します。  
   
@@ -85,7 +87,7 @@
       </Parameters>
       <Docs>
         <param name="userData">暗号化するデータを格納するバイト配列。</param>
-        <param name="optionalEntropy">暗号化の複雑さを増加させるのに使用するオプションの追加のバイト配列。複雑さを増加させない場合は、<see langword="null" />。</param>
+        <param name="optionalEntropy">暗号化の複雑さが増すに使用する省略可能な追加のバイト配列または<see langword="null" />の複雑さを増加させない。</param>
         <param name="scope">暗号化のスコープを指定する列挙値のいずれか。</param>
         <summary>指定されたバイト配列のデータを暗号化し、暗号化されたデータを含むバイト配列を返します。</summary>
         <returns>暗号化されたデータを表すバイト配列。</returns>
@@ -111,8 +113,9 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="userData" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">暗号化に失敗しました。</exception>
-        <exception cref="T:System.NotSupportedException">このメソッドがオペレーティング システムでサポートされていません。</exception>
-        <exception cref="T:System.OutOfMemoryException">データの暗号化処理中にシステムで使用できるメモリがなくなりました。</exception>
+        <exception cref="T:System.NotSupportedException">オペレーティング システムは、このメソッドをサポートしていません。</exception>
+        <exception cref="T:System.OutOfMemoryException">システムは、データの暗号化中にメモリ不足実行しました。</exception>
+        <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: 呼び出し、<c>保護</c>メソッドは、Windows オペレーティング システムのみでサポートされます。</exception>
         <permission cref="T:System.Security.Permissions.DataProtectionPermission">関連付けられている<see cref="P:System.Security.Permissions.DataProtectionPermissionAttribute.ProtectData" />データを保護するためのアクセス許可のフラグ。</permission>
       </Docs>
     </Member>
@@ -152,8 +155,8 @@
         <Parameter Name="scope" Type="System.Security.Cryptography.DataProtectionScope" />
       </Parameters>
       <Docs>
-        <param name="encryptedData"><see cref="M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)" /> メソッドを使用して暗号化されたデータを格納しているバイト配列。</param>
-        <param name="optionalEntropy">データの暗号化に使用されたオプションの追加のバイト配列。追加のバイト配列が使用されなかった場合は、<see langword="null" />。</param>
+        <param name="encryptedData">使用して暗号化されたデータを格納するバイト配列、<see cref="M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)" />メソッド。</param>
+        <param name="optionalEntropy">データの暗号化に使用されたオプションの追加のバイト配列または<see langword="null" />場合、追加のバイト配列は使用されませんでした。</param>
         <param name="scope">データの暗号化に使用されたデータ保護のスコープを指定する列挙値のいずれか。</param>
         <summary>指定されたバイト配列のデータの暗号化を解除し、暗号化解除されたデータを含むバイト配列を返します。</summary>
         <returns>暗号化解除されたデータを表すバイト配列。</returns>
@@ -179,8 +182,9 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="encryptedData" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">復号化に失敗しました。</exception>
-        <exception cref="T:System.NotSupportedException">このメソッドがオペレーティング システムでサポートされていません。</exception>
+        <exception cref="T:System.NotSupportedException">オペレーティング システムは、このメソッドをサポートしていません。</exception>
         <exception cref="T:System.OutOfMemoryException">メモリが不足しています。</exception>
+        <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: 呼び出し、 <c>Unprotect</c>メソッドは、Windows オペレーティング システムのみでサポートされます。</exception>
         <permission cref="T:System.Security.Permissions.DataProtectionPermission">関連付けられている<see cref="P:System.Security.Permissions.DataProtectionPermissionAttribute.UnprotectData" />データの保護を解除するためのアクセス許可のフラグ。</permission>
       </Docs>
     </Member>

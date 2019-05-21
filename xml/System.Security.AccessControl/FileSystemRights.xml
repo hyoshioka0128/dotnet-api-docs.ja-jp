@@ -1,5 +1,5 @@
 <Type Name="FileSystemRights" FullName="System.Security.AccessControl.FileSystemRights">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="28a93ba05b0e69fd177a9b7bab5ea9c9e7caa52d" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56775587" /></Metadata><TypeSignature Language="C#" Value="public enum FileSystemRights" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="9680f2545ad8c2d906759bc695a74bbdf099d2e4" /><Meta Name="ms.sourcegitcommit" Value="f61362e4134a78bac27d2c8136823a467216f4ab" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/15/2019" /><Meta Name="ms.locfileid" Value="65629436" /></Metadata><TypeSignature Language="C#" Value="public enum FileSystemRights" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FileSystemRights extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Security.AccessControl.FileSystemRights" />
   <TypeSignature Language="VB.NET" Value="Public Enum FileSystemRights" />
@@ -30,7 +30,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>アクセス規則と監査規則の作成時に使用するアクセス権を定義します。</summary>
+    <summary>アクセスおよび監査規則を作成するときに使用するアクセス権を定義します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -39,10 +39,10 @@
   
  使用して、<xref:System.Security.AccessControl.FileSystemRights>列挙とアクセス規則を作成するときに、<xref:System.Security.AccessControl.FileSystemAccessRule>クラスまたはでルール、監査を作成するときに、<xref:System.Security.AccessControl.FileSystemAuditRule>クラス。  
   
- この列挙体には、いくつかの細かいシステム権限の値とそれらの詳細な値の組み合わせであるいくつかの値が含まれています。  など、FullControl、読み取りと書き込みはなく、個別に各コンポーネントの値を指定する値の組み合わせを使いやすくなります。  
+ この列挙体には、いくつかの細かいシステム権限の値とそれらの詳細な値の組み合わせであるいくつかの値が含まれています。  値の組み合わせを使用する方が簡単`FullControl`、 `Read`、および`Write`、個別に各コンポーネントの値を指定するのではなく。  
   
-   
-  
+`CreateDirectories`と`CreateFiles`権限が必要な`Synchronize`右。 明示的に設定しない場合、`Synchronize`値に設定とファイルまたはディレクトリを作成するには自動的に、設定します。
+
 ## Examples  
  次のコード例では、<xref:System.Security.AccessControl.FileSystemRights.FullControl>列挙型へのアクセス規則を指定し、ファイルからアクセス規則を削除します。  この例を実行するには、有効なユーザーまたはグループ アカウントを指定する必要があります。  
   
@@ -109,7 +109,7 @@
       </ReturnValue>
       <MemberValue>262144</MemberValue>
       <Docs>
-        <summary>ファイルまたはフォルダーに関連付けられたセキュリティ規則と監査規則を変更する権限を指定します。</summary>
+        <summary>セキュリティを変更して、ファイルまたはフォルダーに関連付けられている規則を監査する権限を指定します。</summary>
       </Docs>
     </Member>
     <Member MemberName="CreateDirectories">
@@ -138,15 +138,8 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>フォルダーを作成する権限を指定します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- この権限は、同期の値が必要です。  同期値は、ファイルまたはフォルダーを作成するときに明示的に設定しなくて同期値は、自動的に設定するのに注意してください。  
-  
- ]]></format>
-        </remarks>
+        <summary>この権限をフォルダーに作成する権限を必要がありますを指定します、<c>同期</c>値。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateFiles">
@@ -175,15 +168,8 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>ファイルを作成する権限を指定します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- この権限は、同期の値が必要です。  同期値は、ファイルまたはフォルダーを作成するときに明示的に設定しなくて同期値は、自動的に設定するのに注意してください。  
-  
- ]]></format>
-        </remarks>
+        <summary>ファイルを作成する権限を指定します。 この権限が必要です、<c>同期</c>値。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Delete">
@@ -241,7 +227,7 @@
       </ReturnValue>
       <MemberValue>64</MemberValue>
       <Docs>
-        <summary>フォルダーおよびそのフォルダー内に格納されているファイルを削除する権限を指定します。</summary>
+        <summary>フォルダーとそのフォルダー内に含まれるすべてのファイルを削除する権限を指定します。</summary>
       </Docs>
     </Member>
     <Member MemberName="ExecuteFile">
@@ -299,7 +285,7 @@
       </ReturnValue>
       <MemberValue>2032127</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルに対してフル コントロールを行い、アクセス制御と監査規則を変更する権限を指定します。  この値は、ファイルに対してどのような操作でも行うことができる権限を表します。この値は、この列挙体のすべての権限を組み合わせたものです。</summary>
+        <summary>フォルダーまたはファイルを完全に制御しと監査規則をアクセス制御を変更する権限を指定します。  この値は、ファイルを使用して何も実行する権限を表しはこの列挙体のすべての権限の組み合わせです。</summary>
       </Docs>
     </Member>
     <Member MemberName="ListDirectory">
@@ -357,7 +343,7 @@
       </ReturnValue>
       <MemberValue>197055</MemberValue>
       <Docs>
-        <summary>読み取り、書き込み、フォルダーの内容の一覧表示、フォルダーとファイルの削除、およびアプリケーション ファイルの実行を行う権限を指定します。  この権限には、<see cref="F:System.Security.AccessControl.FileSystemRights.ReadAndExecute" /> 権限、<see cref="F:System.Security.AccessControl.FileSystemRights.Write" /> 権限、および <see cref="F:System.Security.AccessControl.FileSystemRights.Delete" /> 権限が含まれます。</summary>
+        <summary>読み取り、書き込み、フォルダー内容の一覧、フォルダーとファイルの削除、およびアプリケーション ファイルを実行する権限を指定します。  この権限が含まれています、 <see cref="F:System.Security.AccessControl.FileSystemRights.ReadAndExecute" /> 、適切な<see cref="F:System.Security.AccessControl.FileSystemRights.Write" />、および<see cref="F:System.Security.AccessControl.FileSystemRights.Delete" />右。</summary>
       </Docs>
     </Member>
     <Member MemberName="Read">
@@ -386,7 +372,7 @@
       </ReturnValue>
       <MemberValue>131209</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルを読み取り専用として開いたり、コピーしたりする権限を指定します。  この権限には、<see cref="F:System.Security.AccessControl.FileSystemRights.ReadData" /> 権限、<see cref="F:System.Security.AccessControl.FileSystemRights.ReadExtendedAttributes" /> 権限、<see cref="F:System.Security.AccessControl.FileSystemRights.ReadAttributes" /> 権限、および <see cref="F:System.Security.AccessControl.FileSystemRights.ReadPermissions" /> 権限が含まれます。</summary>
+        <summary>フォルダーまたはファイルを読み取り専用として開いたりコピーしたりする権限を指定します。  この権限が含まれています、 <see cref="F:System.Security.AccessControl.FileSystemRights.ReadData" /> 、 <see cref="F:System.Security.AccessControl.FileSystemRights.ReadExtendedAttributes" /> 、 <see cref="F:System.Security.AccessControl.FileSystemRights.ReadAttributes" /> 、および<see cref="F:System.Security.AccessControl.FileSystemRights.ReadPermissions" />右。</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadAndExecute">
@@ -415,7 +401,7 @@
       </ReturnValue>
       <MemberValue>131241</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルを読み取り専用として開いたりコピーしたりする権限、およびアプリケーション ファイルを実行する権限を指定します。  この権限には、<see cref="F:System.Security.AccessControl.FileSystemRights.Read" /> 権限および <see cref="F:System.Security.AccessControl.FileSystemRights.ExecuteFile" /> 権限が含まれます。</summary>
+        <summary>フォルダーまたはファイルを読み取り専用として開いたりコピーしたりして、アプリケーション ファイルを実行する権限を指定します。  この権限が含まれています、<see cref="F:System.Security.AccessControl.FileSystemRights.Read" />右と<see cref="F:System.Security.AccessControl.FileSystemRights.ExecuteFile" />右。</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadAttributes">
@@ -444,7 +430,7 @@
       </ReturnValue>
       <MemberValue>128</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルのファイル システム属性を開いたり、コピーしたりする権限を指定します。  たとえば、この値は、ファイルの作成日や変更日を表示する権限を指定します。  これには、データ、拡張ファイル システム属性、またはアクセス規則や監査規則を読み取る権限は含まれません。</summary>
+        <summary>開き、フォルダーまたはファイルからファイル システム属性をコピーする権限を指定します。  たとえば、この値は、ファイルの作成を表示する権限を指定します。 または、更新日。  これには、データ、拡張ファイル システム属性、またはアクセス規則や監査規則を読み取る権限は含まれません。</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadData">
@@ -473,7 +459,7 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary>ファイルまたはフォルダーを開いたり、コピーしたりする権限を指定します。  これには、ファイル システム属性、拡張ファイル システム属性、またはアクセス規則や監査規則を読み取る権限は含まれません。</summary>
+        <summary>開き、ファイルまたはフォルダーをコピーする権限を指定します。  これには、ファイル システム属性、拡張ファイル システム属性、またはアクセス規則や監査規則を読み取る権限は含まれません。</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadExtendedAttributes">
@@ -502,7 +488,7 @@
       </ReturnValue>
       <MemberValue>8</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルの拡張ファイル システム属性を開いたり、コピーしたりする権限を指定します。  たとえば、この値は、作成者や内容に関する情報を表示する権限を指定します。  これには、データ、ファイル システム属性、またはアクセス規則や監査規則を読み取る権限は含まれません。</summary>
+        <summary>開き、フォルダーまたはファイルから拡張ファイル システム属性をコピーする権限を指定します。  たとえば、この値は、作成者や内容に関する情報を表示する権限を指定します。  これには、データ、ファイル システム属性、またはアクセス規則や監査規則を読み取る権限は含まれません。</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadPermissions">
@@ -531,7 +517,7 @@
       </ReturnValue>
       <MemberValue>131072</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルのアクセス規則や監査規則を開いたり、コピーしたりする権限を指定します。  これには、データ、ファイル システム属性、および拡張ファイル システム属性を読み取る権限は含まれません。</summary>
+        <summary>開くとアクセスをコピーし、監査規則をフォルダーからまたはファイル権限を指定します。  これは、データを読み取り、ファイル システム属性、右を含まない、拡張ファイル システム属性。</summary>
       </Docs>
     </Member>
     <Member MemberName="Synchronize">
@@ -560,17 +546,8 @@
       </ReturnValue>
       <MemberValue>1048576</MemberValue>
       <Docs>
-        <summary>ファイル ハンドルが I/O 操作の完了に同期するまでアプリケーションが待機できるかどうかを指定します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 同期値が、アクセスを許可すると自動的に設定し、アクセスを拒否するときに自動的に除外されます。  
-  
- ファイルまたはフォルダーを作成する権限は、この値が必要です。  この値は、ファイルの作成時に明示的に設定しなくても、自動的に設定されますに注意してください。  
-  
- ]]></format>
-        </remarks>
+        <summary>ファイル ハンドルが I/O 操作の完了と同期するアプリケーションが待機できるかどうかを指定します。 この値がアクセスを許可すると自動的に設定され、アクセスを拒否するときに自動的に除外されます。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TakeOwnership">
@@ -599,7 +576,7 @@
       </ReturnValue>
       <MemberValue>524288</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルの所有者を変更する権限を指定します。  リソースの所有者は、そのリソースに対してフル アクセス権限を持ちます。</summary>
+        <summary>フォルダーまたはファイルの所有者を変更する権限を指定します。  リソースの所有者にそのリソースへのフル アクセスがあることに注意してください。</summary>
       </Docs>
     </Member>
     <Member MemberName="Traverse">
@@ -628,7 +605,7 @@
       </ReturnValue>
       <MemberValue>32</MemberValue>
       <Docs>
-        <summary>フォルダーの内容を一覧表示し、そのフォルダーに格納されているアプリケーションを実行する権限を指定します。</summary>
+        <summary>フォルダーの内容を一覧表示し、そのフォルダー内に含まれるアプリケーションを実行する権限を指定します。</summary>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -657,7 +634,7 @@
       </ReturnValue>
       <MemberValue>278</MemberValue>
       <Docs>
-        <summary>フォルダーおよびファイルを作成し、ファイルに対してデータの追加または削除を行う権限を指定します。  この権限には、<see cref="F:System.Security.AccessControl.FileSystemRights.WriteData" /> 権限、<see cref="F:System.Security.AccessControl.FileSystemRights.AppendData" /> 権限、<see cref="F:System.Security.AccessControl.FileSystemRights.WriteExtendedAttributes" /> 権限、および <see cref="F:System.Security.AccessControl.FileSystemRights.WriteAttributes" /> 権限が含まれます。</summary>
+        <summary>フォルダーとファイルを作成し、追加またはファイルからデータを削除する権限を指定します。  この権限が含まれています、 <see cref="F:System.Security.AccessControl.FileSystemRights.WriteData" /> 、 <see cref="F:System.Security.AccessControl.FileSystemRights.AppendData" /> 、 <see cref="F:System.Security.AccessControl.FileSystemRights.WriteExtendedAttributes" /> 、および<see cref="F:System.Security.AccessControl.FileSystemRights.WriteAttributes" />右。</summary>
       </Docs>
     </Member>
     <Member MemberName="WriteAttributes">
@@ -686,7 +663,7 @@
       </ReturnValue>
       <MemberValue>256</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルのファイル システム属性を開いたり、フォルダーまたはファイルにファイル システム属性を書き込んだりする権限を指定します。 これには、データ、拡張属性、またはアクセス規則や監査規則を書き込む権限は含まれません。</summary>
+        <summary>開き、フォルダーまたはファイルにファイル システム属性を書き込んだりする権限を指定します。 これは、データ、拡張属性、またはアクセスの書き込みや監査規則を機能には含まれません。</summary>
       </Docs>
     </Member>
     <Member MemberName="WriteData">
@@ -715,7 +692,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>ファイルまたはフォルダーを開いたり、ファイルまたはフォルダーに書き込んだりする権限を指定します。  これには、ファイル システム属性、拡張ファイル システム属性、またはアクセス規則や監査規則を開いたり書き込んだりする権限は含まれません。</summary>
+        <summary>開き、ファイルまたはフォルダーへの書き込み権限を指定します。  これには、チェック ボックスを開いたりするファイル システム属性、拡張ファイル システム属性、またはアクセスおよび監査規則を書き込む権限は含まれません。</summary>
       </Docs>
     </Member>
     <Member MemberName="WriteExtendedAttributes">
@@ -744,7 +721,7 @@
       </ReturnValue>
       <MemberValue>16</MemberValue>
       <Docs>
-        <summary>フォルダーまたはファイルの拡張ファイル システム属性を開いたり、フォルダーまたはファイルに拡張ファイル システム属性を書き込んだりする権限を指定します。  これには、データ、属性、またはアクセス規則や監査規則を書き込む権限は含まれません。</summary>
+        <summary>開き、フォルダーまたはファイルに拡張ファイル システム属性を書き込んだりする権限を指定します。  これは、データ、属性、またはアクセスの書き込みや監査規則を機能には含まれません。</summary>
       </Docs>
     </Member>
   </Members>

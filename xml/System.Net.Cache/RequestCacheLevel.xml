@@ -1,5 +1,5 @@
 <Type Name="RequestCacheLevel" FullName="System.Net.Cache.RequestCacheLevel">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="66f8774c30d3c10a73e0b4d876ea49f28750a7b8" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58713458" /></Metadata><TypeSignature Language="C#" Value="public enum RequestCacheLevel" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="ba3b8411cdeb85b710e8fb5355cbffd6a81da2be" /><Meta Name="ms.sourcegitcommit" Value="f61362e4134a78bac27d2c8136823a467216f4ab" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/15/2019" /><Meta Name="ms.locfileid" Value="65629402" /></Metadata><TypeSignature Language="C#" Value="public enum RequestCacheLevel" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed RequestCacheLevel extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Net.Cache.RequestCacheLevel" />
   <TypeSignature Language="VB.NET" Value="Public Enum RequestCacheLevel" />
@@ -25,7 +25,7 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary><see cref="T:System.Net.WebRequest" /> およびその派生クラスを使用して取得されるリソースのキャッシュ動作を指定します。</summary>
+    <summary>使用して取得されるリソースのキャッシュ動作を指定します<see cref="T:System.Net.WebRequest" />とその派生クラス。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -35,10 +35,10 @@
  これは、<xref:System.Net.Cache.HttpRequestCacheLevel.BypassCache>値は、.NET Framework に付属するマシンの構成ファイルで指定された既定のキャッシュ動作します。 クライアントとサーバー間では、エントリはキャッシュから取得したり、キャッシュに追加、またはキャッシュから削除したりされません。  
   
  <xref:System.Net.HttpWebRequest.DefaultCachePolicy%2A?displayProperty=nameWithType>プロパティは、既定のキャッシュ ポリシーの設定を取得または使用<xref:System.Net.HttpWebRequest>インスタンス。 <xref:System.Net.WebRequest.CachePolicy%2A?displayProperty=nameWithType>プロパティを取得または設定の既定のキャッシュ ポリシーを使用する<xref:System.Net.WebRequest>インスタンス。 <xref:System.Net.WebRequest.CachePolicy%2A?displayProperty=nameWithType>取得または特定の要求のキャッシュ ポリシーを設定するプロパティを使用します。  
-  
- リソースのコピーは、リソースの応答ストリームが取得され、ストリームの末尾に読み込まれる場合にのみ、キャッシュに追加されます。 同じリソースに対してもう 1 つの要求は、この要求の既定のキャッシュ ポリシー レベルによって、キャッシュされたコピーを使用できます。  
-  
-   
+
+キャッシュの動作がある場合`CacheIfAvailable`または`Revalidate`リソースの応答ストリームが取得され、ストリームの末尾に読み込まれる場合、要求されたリソースのコピーはキャッシュに追加のみです。 `CacheIfAvailable`、後続の要求で同じリソースがキャッシュされたコピーを使用します。 `Revalidate`、後続の要求で同じリソースはキャッシュされたコピーを使用は、キャッシュされたリソースのタイムスタンプが、サーバー上のリソースのタイムスタンプと同じである場合。  
+
+リソースのコピーは、リソースの応答ストリームが取得され、ストリームの末尾に読み込まれる場合にのみ、キャッシュに追加されます。 同じリソースに対してもう 1 つの要求は、この要求の既定のキャッシュ ポリシー レベルによって、キャッシュされたコピーを使用できます。   
   
 ## Examples  
  次のコード例では、キャッシュ内にある場合にのみ、リソースを返すポリシーを作成します。  
@@ -115,15 +115,8 @@
       </ReturnValue>
       <MemberValue>3</MemberValue>
       <Docs>
-        <summary>リソースが利用可能な場合は、キャッシュからリソースの要求に応じます。それ以外の場合は、リソースの要求をサーバーに送信します。 要求されたアイテムがクライアントとサーバー間のキャッシュにある場合は、その中間キャッシュから要求に応じることもあります。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 要求されたリソースのコピーは、リソースの応答ストリームが取得され、ストリームの末尾に読み込まれる場合にのみ、キャッシュに追加されます。 同じリソースに対する後続の要求では、キャッシュされたコピーを使用します。  
-  
- ]]></format>
-        </remarks>
+        <summary>リソースがある場合、キャッシュからリソースの要求に応じます。それ以外の場合、サーバーにリソースへの要求を送信します。 要求されたアイテムがクライアントとサーバー間のキャッシュにある場合は、その中間キャッシュから要求に応じることもあります。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CacheOnly">
@@ -251,7 +244,7 @@
       </ReturnValue>
       <MemberValue>5</MemberValue>
       <Docs>
-        <summary>サーバーを使用して要求に応じます。 応答は、キャッシュに保存される可能性があります。 HTTP キャッシュ プロトコルの場合、これは <see langword="no-cache" /> キャッシュ制御ディレクティブおよび no-cache <see langword="Pragma" /> ヘッダーを使用して実現されます。</summary>
+        <summary>サーバーを使用して要求に応じます。 応答は、キャッシュに保存される可能性があります。 Http キャッシュ プロトコルの場合、これを使用して、<see langword="no-cache" />キャッシュ制御ディレクティブおよび no-cache<see langword="Pragma" />ヘッダー。</summary>
       </Docs>
     </Member>
     <Member MemberName="Revalidate">
@@ -283,15 +276,8 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>タイムスタンプがサーバーのリソースのタイムスタンプと同じ場合は、キャッシュされたリソースのコピーを使用して要求に応じます。それ以外の場合は、リソースがサーバーからダウンロードされ、呼び出し元に提示され、キャッシュに格納されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- リソースのコピーは、リソースの応答ストリームが取得され、ストリームの末尾に読み込まれる場合にのみ、キャッシュに追加されます。 キャッシュされたリソースのタイムスタンプが、サーバー上のリソースのタイムスタンプと同じ場合、同じリソースに対して、後続の要求はキャッシュされたコピーを使用します。  
-  
- ]]></format>
-        </remarks>
+        <summary>タイムスタンプが、サーバー上のリソースのタイムスタンプと同じである場合は、リソースのキャッシュされたコピーを使用して、要求に応じます。それ以外の場合、リソースにサーバーからダウンロード、呼び出し元に表示される、キャッシュに格納します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

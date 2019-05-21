@@ -1,5 +1,5 @@
 <Type Name="HttpStatusCode" FullName="System.Net.HttpStatusCode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3325c3cd718c3c18eb36e65c4bbaddb7c10b0dcb" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58711596" /></Metadata><TypeSignature Language="C#" Value="public enum HttpStatusCode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="1e191df0f448b0b427818370764381c457f75930" /><Meta Name="ms.sourcegitcommit" Value="f61362e4134a78bac27d2c8136823a467216f4ab" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/15/2019" /><Meta Name="ms.locfileid" Value="65629300" /></Metadata><TypeSignature Language="C#" Value="public enum HttpStatusCode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed HttpStatusCode extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Net.HttpStatusCode" />
   <TypeSignature Language="VB.NET" Value="Public Enum HttpStatusCode" />
@@ -32,17 +32,26 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>HTTP で定義されたステータス コードの値を格納します。</summary>
+    <summary>HTTP 用に定義されたステータス コードの値。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- <xref:System.Net.HttpStatusCode>列挙には、HTTP 1.1 RFC 2616 で定義されている状態コードの値が含まれています。  
+## Remarks
+
+<xref:System.Net.HttpStatusCode>列挙には、HTTP 1.1 RFC 2616 で定義されている状態コードの値が含まれています。  
   
- HTTP 要求の状態が含まれている、<xref:System.Net.HttpWebResponse.StatusCode%2A?displayProperty=nameWithType>プロパティ。  
-  
-   
-  
+HTTP 要求の状態が含まれている、<xref:System.Net.HttpWebResponse.StatusCode%2A?displayProperty=nameWithType>プロパティ。  
+場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`がスローされる例外が発生する次の列挙値。
+ 
+- `Ambiguous`
+- `Found`
+- `MultipleChoices`
+- `Redirect`
+- `RedirectKeepVerb`
+- `RedirectMethod`
+- `SeeOther`
+- `TemporaryRedirect`
+
 ## Examples  
  次の例は、によって返される状態を比較、<xref:System.Net.HttpWebResponse>のメンバーと、<xref:System.Net.HttpStatusCode>応答の状態を確認するクラス。  
   
@@ -159,17 +168,8 @@
       </ReturnValue>
       <MemberValue>300</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 300 と等価です。 <see cref="F:System.Net.HttpStatusCode.Ambiguous" /> は、要求された情報に複数の表現があることを示します。 既定のアクションは、このステータスをリダイレクトとして扱い、この応答に関連付けられている Location ヘッダーの内容に従うことです。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`、あいまいながスローされる例外が発生します。  
-  
- あいまいな MultipleChoices のシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 300 と等価です。 <see cref="F:System.Net.HttpStatusCode.Ambiguous" /> は、要求された情報に複数の表現があることを示します。 既定のアクションは、このステータスをリダイレクトとして扱い、この応答に関連付けられている Location ヘッダーの内容に従うことです。 <c>あいまいな</c>のシノニムです<c>MultipleChoices</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BadGateway">
@@ -541,17 +541,8 @@
       </ReturnValue>
       <MemberValue>302</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 302 と等価です。 <see cref="F:System.Net.HttpStatusCode.Found" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求では GET メソッドが使用されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`検出がスローされる例外が発生します。  
-  
- 見つかったリダイレクトのシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 302 と等価です。 <see cref="F:System.Net.HttpStatusCode.Found" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求では GET メソッドが使用されます。 <c>見つかった</c>のシノニムです<c>リダイレクト</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GatewayTimeout">
@@ -974,15 +965,8 @@
       </ReturnValue>
       <MemberValue>301</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 301 と等価です。 <see cref="F:System.Net.HttpStatusCode.Moved" /> は、要求された情報が Location ヘッダーで指定される URI に移動したことを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求では GET メソッドが使用されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- MovedPermanently のシノニムは、移動します。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 301 と等価です。 <see cref="F:System.Net.HttpStatusCode.Moved" /> は、要求された情報が Location ヘッダーで指定される URI に移動したことを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求では GET メソッドが使用されます。 <c>移動</c>のシノニムです<c>MovedPermanently</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MovedPermanently">
@@ -1021,15 +1005,8 @@
       </ReturnValue>
       <MemberValue>301</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 301 と等価です。 <see cref="F:System.Net.HttpStatusCode.MovedPermanently" /> は、要求された情報が Location ヘッダーで指定される URI に移動したことを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- MovedPermanently は、移動のシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 301 と等価です。 <see cref="F:System.Net.HttpStatusCode.MovedPermanently" /> は、要求された情報が Location ヘッダーで指定される URI に移動したことを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 <c>MovedPermanently</c>のシノニムです<c>移動</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MultipleChoices">
@@ -1068,17 +1045,8 @@
       </ReturnValue>
       <MemberValue>300</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 300 と等価です。 <see cref="F:System.Net.HttpStatusCode.MultipleChoices" /> は、要求された情報に複数の表現があることを示します。 既定のアクションは、このステータスをリダイレクトとして扱い、この応答に関連付けられている Location ヘッダーの内容に従うことです。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`MultipleChoices がスローされる例外が発生します。  
-  
- MultipleChoices では、あいまいなシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 300 と等価です。 <see cref="F:System.Net.HttpStatusCode.MultipleChoices" /> は、要求された情報に複数の表現があることを示します。 既定のアクションは、このステータスをリダイレクトとして扱い、この応答に関連付けられている Location ヘッダーの内容に従うことです。 <c>MultipleChoices</c>のシノニムです<c>あいまいな</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MultiStatus">
@@ -1588,7 +1556,7 @@
       </ReturnValue>
       <MemberValue>412</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 412 と等価です。 <see cref="F:System.Net.HttpStatusCode.PreconditionFailed" /> は、この要求で設定された条件が満たされず、要求を実行できないことを示します。条件は、If-Match、If-None-Match、If-Unmodified-Since などの条件要求ヘッダーを使用して設定されます。</summary>
+        <summary>HTTP ステータス 412 と等価です。 <see cref="F:System.Net.HttpStatusCode.PreconditionFailed" /> 条件の設定が失敗した要求の要求を実行できないことを示します。条件が設定されて、If-match などの条件付きの要求ヘッダーなし-If-match、または場合は、未変更の状態-以降。</summary>
       </Docs>
     </Member>
     <Member MemberName="PreconditionRequired">
@@ -1726,17 +1694,8 @@
       </ReturnValue>
       <MemberValue>302</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 302 と等価です。 <see cref="F:System.Net.HttpStatusCode.Redirect" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求では GET メソッドが使用されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`リダイレクトがスローされる例外が発生します。  
-  
- リダイレクトは、検出のシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 302 と等価です。 <see cref="F:System.Net.HttpStatusCode.Redirect" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求では GET メソッドが使用されます。 <c>リダイレクト</c>のシノニムです<c>Found</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RedirectKeepVerb">
@@ -1775,17 +1734,8 @@
       </ReturnValue>
       <MemberValue>307</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 307 と等価です。 <see cref="F:System.Net.HttpStatusCode.RedirectKeepVerb" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求でも POST メソッドが使用されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`RedirectKeepVerb がスローされる例外が発生します。  
-  
- RedirectKeepVerb、TemporaryRedirect のシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 307 と等価です。 <see cref="F:System.Net.HttpStatusCode.RedirectKeepVerb" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求でも POST メソッドが使用されます。 <c>RedirectKeepVerb</c>のシノニムです<c>TemporaryRedirect</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RedirectMethod">
@@ -1824,17 +1774,8 @@
       </ReturnValue>
       <MemberValue>303</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 303 と等価です。 <see cref="F:System.Net.HttpStatusCode.RedirectMethod" /> は、POST の結果として、Location ヘッダーで指定された URI にクライアントを自動的にリダイレクトします。 Location ヘッダーで指定されたリソースへの要求は、GET によって実行されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`RedirectMethod がスローされる例外が発生します。  
-  
- RedirectMethod、SeeOther のシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 303 と等価です。 <see cref="F:System.Net.HttpStatusCode.RedirectMethod" /> は、POST の結果として、Location ヘッダーで指定された URI にクライアントを自動的にリダイレクトします。 Location ヘッダーで指定されたリソースへの要求は、GET によって実行されます。 <c>RedirectMethod</c>のシノニムです<c>SeeOther</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RequestedRangeNotSatisfiable">
@@ -2098,17 +2039,8 @@
       </ReturnValue>
       <MemberValue>303</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 303 と等価です。 <see cref="F:System.Net.HttpStatusCode.SeeOther" /> は、POST の結果として、Location ヘッダーで指定された URI にクライアントを自動的にリダイレクトします。 Location ヘッダーで指定されたリソースへの要求は、GET によって実行されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`SeeOther がスローされる例外が発生します。  
-  
- SeeOther、RedirectMethod のシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 303 と等価です。 <see cref="F:System.Net.HttpStatusCode.SeeOther" /> は、POST の結果として、Location ヘッダーで指定された URI にクライアントを自動的にリダイレクトします。 Location ヘッダーで指定されたリソースへの要求は、GET によって実行されます。 <c>SeeOther</c>のシノニムです<c>RedirectMethod</c></summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ServiceUnavailable">
@@ -2225,17 +2157,8 @@
       </ReturnValue>
       <MemberValue>307</MemberValue>
       <Docs>
-        <summary>HTTP ステータス 307 と等価です。 <see cref="F:System.Net.HttpStatusCode.TemporaryRedirect" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求でも POST メソッドが使用されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 場合、<xref:System.Net.HttpWebRequest.AllowAutoRedirect%2A?displayProperty=nameWithType>プロパティは`false`TemporaryRedirect がスローされる例外が発生します。  
-  
- TemporaryRedirect、RedirectKeepVerb のシノニムです。  
-  
- ]]></format>
-        </remarks>
+        <summary>HTTP ステータス 307 と等価です。 <see cref="F:System.Net.HttpStatusCode.TemporaryRedirect" /> は、要求された情報が Location ヘッダーで指定される URI にあることを示します。 このステータスが受信されたときの既定のアクションは、この応答に関連付けられている Location ヘッダーに従うことです。 元の要求メソッドが POST だった場合、リダイレクトされた要求でも POST メソッドが使用されます。 <c>TemporaryRedirect</c>のシノニムです<c>RedirectKeepVerb</c>します。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TooManyRequests">

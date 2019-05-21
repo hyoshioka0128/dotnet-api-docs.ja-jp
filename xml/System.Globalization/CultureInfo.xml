@@ -1,5 +1,5 @@
 <Type Name="CultureInfo" FullName="System.Globalization.CultureInfo">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="5d22463ac83363aad9b99f88b9600e59ebd2ac53" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58714274" /></Metadata><TypeSignature Language="C#" Value="public class CultureInfo : ICloneable, IFormatProvider" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="99a9c72622633b0afab49cf0a30001d21c76259e" /><Meta Name="ms.sourcegitcommit" Value="5ebd9691c6f7d50c4730e997fba69e54bdd7cc0c" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/17/2019" /><Meta Name="ms.locfileid" Value="65829766" /></Metadata><TypeSignature Language="C#" Value="public class CultureInfo : ICloneable, IFormatProvider" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable beforefieldinit CultureInfo extends System.Object implements class System.ICloneable, class System.IFormatProvider" />
   <TypeSignature Language="DocId" Value="T:System.Globalization.CultureInfo" />
   <TypeSignature Language="VB.NET" Value="Public Class CultureInfo&#xA;Implements ICloneable, IFormatProvider" />
@@ -60,7 +60,7 @@
  [インバリアント、中立、および特定のカルチャ](#Invariant)   
  [カスタムのカルチャ](#Custom)   
  [動的なカルチャのデータ](#Dynamic)   
- [現在のカルチャと現在の UI カルチャ](#Current)   
+ [CultureInfo と文化データ](#cultureinfo-and-cultural-data)[現在のカルチャと現在の UI カルチャ](#Current)   
  [すべてのカルチャを取得します。](#GetAll)   
  [カルチャとスレッド](#Threads)   
  [カルチャ、およびアプリケーションのドメイン](#AppDomain)   
@@ -69,7 +69,7 @@
  [コントロール パネルのオーバーライド](#CPanel)   
  [代替の並べ替え順序](#AlternateSort)   
  [カルチャ、および Windows アプリ](#Windows)  
-  
+
 <a name="CultureNames"></a>   
 ## <a name="culture-names-and-identifiers"></a>カルチャ名と識別子  
  <xref:System.Globalization.CultureInfo>クラスが RFC 4646 に基づく、カルチャごとに一意の名前を指定します。 名前は、言語に関連付けられた ISO 639 2 文字の小文字カルチャ コードと国または地域に関連付けられた ISO 3166 の 2 文字の大文字サブカルチャ コードの組み合わせです。 対象とするアプリのさらに、[!INCLUDE[net_v40_short](~/includes/net-v40-short-md.md)]またはそれ以降を実行している Windows 10 以降、タグがサポートされている有効な bcp-47 の言語に対応するカルチャ名。  
@@ -142,7 +142,27 @@
 -   カスタムのカルチャが既定値を上書きすることに注意してください。 そのため、安定しているカルチャのデータを考慮することはできません。 国名、数値と日付の形式、およびスペルは、今後変更可能性があります。 日付と時刻の解析関数に渡される日付と時刻の文字列などのカルチャに依存するデータをシリアル化する場合は、インバリアント カルチャまたは特定を使用する必要があります。  
   
  <xref:System.Globalization.CultureInfo.CultureTypes%2A>システムにインストールされているカスタムのカルチャのプロパティの値が含まれています、<xref:System.Globalization.CultureTypes?displayProperty=nameWithType>フラグ、およびカスタムのカルチャが割り当てられている、<xref:System.Globalization.CultureInfo.LCID%2A>プロパティ値の`LOCALE_CUSTOM_UNSPECIFIED`(0x1000、または 4096)。 Windows 10 以降、この値も割り当てられているカルチャの完全なデータがないシステム定義のカルチャに注意してください。  
-  
+
+## <a name="cultureinfo-and-cultural-data"></a>CultureInfo とカルチャのデータ
+
+.NET では、そのカルチャのデータを派生のさまざまな実装、プラットフォーム、およびバージョンによって、ソースのいずれかから。
+
+- .NET Framework 3.5 およびそれ以前のバージョンでは、カルチャのデータは、Windows オペレーティング システムと .NET Framework の両方によって提供されます。
+
+- .NET Framework 4 およびそれ以降のバージョン、カルチャのデータは、Windows オペレーティング システムによって提供されます。
+
+- すべてのバージョンの Windows で実行されている .NET Core では、カルチャのデータは、Windows オペレーティング システムによって提供されます。
+
+- すべてのバージョンの Unix プラットフォームで実行されている .NET Core では、カルチャのデータがによって提供される、 [International Components for Unicode (ICU) ライブラリ](http://site.icu-project.org/)します。 ICU ライブラリの特定のバージョンは、個々 のオペレーティング システムによって異なります。
+
+このため、特定 .NET 実装、プラットフォーム、またはバージョンで使用できるカルチャのさまざまな .NET 実装、プラットフォーム、またはバージョンで使用できるしない場合があります。
+
+いくつか`CultureInfo`オブジェクトが基になるプラットフォームによって異なります。 具体的には、"ZH-CN"、または中国語 (簡体字、中国)、ZH-TW、中国語 (繁、台湾)、Windows システムでは、使用できるカルチャが、Unix システムでエイリアス化されたカルチャ。 "ZH-CN"は、"Hans-ZH-CN"カルチャの別名であり"ZH-TW"は"Hant-ZH-TW"カルチャ用のエイリアスです。 エイリアスのカルチャがへの呼び出しによって返されません、<xref:System.Globalization.CultureInfo.GetCultures%2A>メソッドなど、さまざまな異なるプロパティ値を持つことがありますと<xref:System.Globalization.CultureInfo.Parent>カルチャは、対応する Windows よりも。 ZH-CN、ZH-TW カルチャでは、これらの differenes 以下に示します。
+
+- Windows システムでは、"ZH-CN"カルチャの親カルチャが"Zh-hans"と"ZH-TW"カルチャの親カルチャが"Zh-hant"。 これら両方のカルチャの親カルチャは、"zh"です。 Unix システムでは、両方のカルチャの親は、"zh"が。 つまり、"ZH-CN"または"ZH-TW"カルチャのカルチャに固有のリソースを指定しないはニュートラル"Zh-hans"または"Zh-hant"カルチャのリソースを提供する場合は、アプリケーションは Windows で Unix ではなくニュートラル カルチャのリソースをロードするが、. Unix システムでは、スレッドの明示的に設定する必要があります<xref:System.Globalization.CultureInfo.CurrentUICulture>"Zh-hans"または"Zh-hant"のいずれかにします。 
+
+- Windows システムでは、呼び出す<xref:System.Globalization.CultureInfo.Equals%2A?displayProperty=nameWithType>"ZH-CN"カルチャを表すインスタンスで、渡す"Hans-ZH-CN"インスタンスを返します`true`します。 Unix システムでは、メソッドの呼び出しが返されます`false`します。 この動作は、呼び出し元にも適用されます<xref:System.Globalization.CultureInfo.Equals%2A>「zh-tw があります」で<xref:System.Globalization.CultureInfo>インスタンスと"Hant-Zh-tw"インスタンスを渡します。
+
 <a name="Dynamic"></a>   
 ## <a name="dynamic-culture-data"></a>動的なカルチャのデータ  
  を除き、インバリアント カルチャのデータは動的です。 これは、定義済みのカルチャにも当てはまります。 たとえば、国や地域の通貨が新しく導入、その単語のスペルを変更または、使用する暦を変更し、カルチャの定義はこれを追跡するために変更します。  カスタム カルチャが、予告なく変更される可能性があり、置換のカスタム カルチャによって、特定のカルチャをオーバーライドする可能性があります。 また、以下のように、個々 のユーザーはカルチャ設定をオーバーライドできます。 アプリケーションでは、実行時に常にカルチャのデータを取得する必要があります。  
@@ -152,7 +172,7 @@
   
 <a name="Current"></a>   
 ## <a name="the-current-culture-and-current-ui-culture"></a>現在のカルチャと現在の UI カルチャ  
- すべてのスレッド、.NET Framework アプリケーションには、現在のカルチャと現在の UI カルチャをが。 現在のカルチャでは、日付、時刻、数字、および通貨の値、テキスト、大文字と小文字の表記規則、および文字列の比較方法の並べ替え順序の書式指定規則を決定します。 現在の UI カルチャを使用して、実行時にカルチャ固有のリソースを取得します。  
+ .NET アプリケーションですべてのスレッドでは、現在のカルチャと現在の UI カルチャを持っています。 現在のカルチャでは、日付、時刻、数字、および通貨の値、テキスト、大文字と小文字の表記規則、および文字列の比較方法の並べ替え順序の書式指定規則を決定します。 現在の UI カルチャを使用して、実行時にカルチャ固有のリソースを取得します。  
   
 > [!NOTE]
 >  スレッドごとに、現在と現在の UI カルチャを決定する方法については、次を参照してください。、[カルチャとスレッド](#Threads)セクション。 スレッドの現在と現在の UI カルチャを決定する方法については、新しいアプリケーション ドメインとアプリケーション ドメインの境界を越えてスレッドの実行を参照してください、[カルチャとアプリケーション ドメイン](#AppDomain)セクション。 タスク ベースの非同期操作を実行するスレッドの現在と現在を決定する方法については、次を参照してください。、[カルチャとタスク ベースの非同期操作](#Async)セクション。  
@@ -187,7 +207,7 @@
   
 1.  インスタンスを作成、<xref:System.Globalization.CultureInfo>呼び出すことによって、そのカルチャを表すオブジェクトを<xref:System.Globalization.CultureInfo>クラスのコンス トラクターとカルチャの名前を渡します。 <xref:System.Globalization.CultureInfo.%23ctor%28System.String%29>コンス トラクターをインスタンス化、<xref:System.Globalization.CultureInfo>ユーザーを表すオブジェクトでは、新しいカルチャが Windows の現在のカルチャと同じである場合よりも優先されます。   <xref:System.Globalization.CultureInfo.%23ctor%28System.String%2CSystem.Boolean%29>コンス トラクターを使用すると、指定するかどうか新しくインスタンス化された<xref:System.Globalization.CultureInfo>オブジェクトは、ユーザーが新しいカルチャが Windows の現在のカルチャと同じである場合に上書きが反映されます。  
   
-2.  割り当てる、<xref:System.Globalization.CultureInfo>オブジェクトを<xref:System.Threading.Thread.CurrentCulture%2A?displayProperty=nameWithType>または<xref:System.Threading.Thread.CurrentUICulture%2A?displayProperty=nameWithType>プロパティ。 さらに、バージョンのデスクトップの .NET Framework 4.6 以降を実行して、アプリに割り当てることも、<xref:System.Globalization.CultureInfo>オブジェクトを<xref:System.Globalization.CultureInfo.CurrentCulture%2A?displayProperty=nameWithType>または<xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=nameWithType>プロパティ。  
+2.  割り当てる、<xref:System.Globalization.CultureInfo>オブジェクトを<xref:System.Globalization.CultureInfo.CurrentCulture%2A?displayProperty=nameWithType>または<xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=nameWithType>.NET Core と .NET Framework 4.6 以降のバージョンのプロパティ。 (.NET Framework 4.5.2 および以前のバージョン、youc 割り当て、`CultureInfo`オブジェクトを<xref:System.Threading.Thread.CurrentCulture%2A?displayProperty=nameWithType>または<xref:System.Threading.Thread.CurrentUICulture%2A?displayProperty=nameWithType>プロパティです)。   
   
  次の例では、現在のカルチャを取得します。 、フランス語 (フランス) カルチャ以外のものである場合、現在のカルチャをフランス語 (フランス) に変更します。 それ以外の場合、現在のカルチャをフランス語 (ルクセンブルク) に変わります。  
   
@@ -277,15 +297,15 @@
  [!code-csharp[System.Globalization.CultureInfo.Class.Async#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.globalization.cultureinfo.class.async/cs/asyncculture4.cs#4)]
  [!code-vb[System.Globalization.CultureInfo.Class.Async#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.globalization.cultureinfo.class.async/vb/asyncculture4.vb#4)]  
   
-<a name="Serialization"></a>   
+<a name="Serialization"></a>  
 ## <a name="cultureinfo-object-serialization"></a>CultureInfo オブジェクトのシリアル化  
  ときに、<xref:System.Globalization.CultureInfo>オブジェクトがシリアル化、実際に格納されているは<xref:System.Globalization.CultureInfo.Name%2A>と<xref:System.Globalization.CultureInfo.UseUserOverride%2A>します。 環境でのみ正常に逆シリアル化は場所を<xref:System.Globalization.CultureInfo.Name%2A>同じ意味を持ちます。 これが理由は次の 3 つの例を表示する場合。  
   
--   場合、<xref:System.Globalization.CultureInfo.CultureTypes%2A>プロパティの値が<xref:System.Globalization.CultureTypes?displayProperty=nameWithType>、し、そのカルチャは、Windows Vista または Windows オペレーティング システムの以降のバージョンで初めて導入されたの場合は、Windows XP で逆シリアル化することはできません。 同様に、カルチャは、Windows XP Service Pack 2 で初めて導入されたの場合は、カルチャがインストールされていない Windows XP システムをシリアル化を解除することはできません。  
+- 場合、<xref:System.Globalization.CultureInfo.CultureTypes%2A>プロパティの値が<xref:System.Globalization.CultureTypes.InstalledWin32Cultures?displayProperty=nameWithType>、し、そのカルチャは、Windows オペレーティング システムの特定のバージョンで初めて導入されたの場合は、Windows の以前のバージョンで逆シリアル化することはできません。 たとえば場合は、カルチャは、Windows 10 で導入された、そのことはできません逆シリアル化 Windows 8 で。  
   
--   場合、<xref:System.Globalization.CultureInfo.CultureTypes%2A>値は<xref:System.Globalization.CultureTypes?displayProperty=nameWithType>がシリアル化解除されたコンピューターにインストールされているこのユーザーのカスタム カルチャがないとは、逆シリアル化することはできません。  
+-   場合、<xref:System.Globalization.CultureInfo.CultureTypes%2A>値は<xref:System.Globalization.CultureTypes.UserCustomCulture?displayProperty=nameWithType>がシリアル化解除されたコンピューターにインストールされているこのユーザーのカスタム カルチャがないとは、逆シリアル化することはできません。  
   
--   場合、<xref:System.Globalization.CultureInfo.CultureTypes%2A>値は<xref:System.Globalization.CultureTypes?displayProperty=nameWithType>がシリアル化解除されたコンピューターには、この置換カルチャはありません。 とは、同じ特性をすべてではなく、同じ名前を逆シリアル化します。 たとえば、EN-US がコンピューター B ではなくが、コンピューター A では、置換カルチャを<xref:System.Globalization.CultureInfo>オブジェクトを参照するこのカルチャはコンピューター A でシリアル化され、コンピューター B でシリアル化解除は、カルチャのカスタムの特性を none転送されます。 カルチャには、異なる意味を持つが、正常に逆シリアル化します。  
+-   場合、<xref:System.Globalization.CultureInfo.CultureTypes%2A>値は<xref:System.Globalization.CultureTypes.ReplacementCultures?displayProperty=nameWithType>がシリアル化解除されたコンピューターには、この置換カルチャはありません。 とは、同じ特性をすべてではなく、同じ名前を逆シリアル化します。 たとえば、EN-US がコンピューター B ではなくが、コンピューター A では、置換カルチャを<xref:System.Globalization.CultureInfo>オブジェクトを参照するこのカルチャはコンピューター A でシリアル化され、コンピューター B でシリアル化解除は、カルチャのカスタムの特性を none転送されます。 カルチャには、異なる意味を持つが、正常に逆シリアル化します。  
   
 <a name="CPanel"></a>   
 ## <a name="control-panel-overrides"></a>コントロール パネルのオーバーライド  
@@ -295,7 +315,7 @@
   
 <a name="AlternateSort"></a>   
 ## <a name="alternate-sort-orders"></a>代替の並べ替え順序  
- 一部のカルチャでは、複数の並べ替え順序がサポートされています。 次に例を示します。  
+ 一部のカルチャでは、複数の並べ替え順序がサポートされています。 例:  
   
 -   スペイン語 (スペイン) カルチャが 2 つの並べ替え順序: 既定のインターナショナル ソート順序と従来の並べ替え順序。 インスタンス化すると、 <xref:System.Globalization.CultureInfo> ES-ES カルチャの名前を持つオブジェクトのインターナショナル ソート順序が使用されます。 インスタンス化すると、 <xref:System.Globalization.CultureInfo> es-ES-tradnl カルチャの名前を持つオブジェクトの従来の並べ替え順序を使用します。  
   
@@ -411,7 +431,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="culture" /> が 0 未満です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="culture" /> が有効なカルチャ識別子ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="culture" /> が正しいカルチャ識別子ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="culture" />有効なカルチャ識別子ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このコンス トラクターがスローされます、<see cref="T:System.Globalization.CultureNotFoundException" />します。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="culture" />オペレーティング システムは、そのカルチャをサポートしていない場合、オペレーティング システムから、メソッドがスローされます、<see cref="T:System.Globalization.CultureNotFoundException" />例外。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.LCID" />
         <altmember cref="P:System.Globalization.CultureInfo.UseUserOverride" />
@@ -459,7 +479,7 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">定義済みの <see cref="T:System.Globalization.CultureInfo" /> 名、既存の <see cref="P:System.Globalization.CultureInfo.Name" /> の <see cref="T:System.Globalization.CultureInfo" />、または Windows 専用カルチャ名。 <paramref name="name" /> では、大文字と小文字は区別されません。</param>
+        <param name="name">定義済みの <see cref="T:System.Globalization.CultureInfo" /> 名、既存の <see cref="T:System.Globalization.CultureInfo" /> の <see cref="P:System.Globalization.CultureInfo.Name" />、または Windows 専用カルチャ名。 <paramref name="name" /> では、大文字と小文字は区別されません。</param>
         <summary>名前で指定するカルチャに基づいて、<see cref="T:System.Globalization.CultureInfo" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -496,7 +516,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> が null です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> が有効なカルチャ名ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> は有効なカルチャ名ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="name" />有効なカルチャ名ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このコンス トラクターがスローされます、<see cref="T:System.Globalization.CultureNotFoundException" />します。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="name" />オペレーティング システムから、オペレーティング システムは、そのカルチャをサポートしていない場合、<paramref name="name" />補助または置換カルチャでのメソッドがスローされます名ではなく、<see cref="T:System.Globalization.CultureNotFoundException" />例外。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.LCID" />
         <altmember cref="P:System.Globalization.CultureInfo.UseUserOverride" />
@@ -577,7 +597,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="culture" /> が 0 未満です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="culture" /> が有効なカルチャ識別子ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="culture" /> が正しいカルチャ識別子ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="culture" />有効なカルチャ識別子ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このコンス トラクターがスローされます、<see cref="T:System.Globalization.CultureNotFoundException" />します。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="culture" />オペレーティング システムは、そのカルチャをサポートしていない場合、オペレーティング システムから、メソッドがスローされます、<see cref="T:System.Globalization.CultureNotFoundException" />例外。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.LCID" />
         <altmember cref="P:System.Globalization.CultureInfo.UseUserOverride" />
@@ -616,7 +636,7 @@
         <Parameter Name="useUserOverride" Type="System.Boolean" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="name">定義済みの <see cref="T:System.Globalization.CultureInfo" /> 名、既存の <see cref="P:System.Globalization.CultureInfo.Name" /> の <see cref="T:System.Globalization.CultureInfo" />、または Windows 専用カルチャ名。 <paramref name="name" /> では、大文字と小文字は区別されません。</param>
+        <param name="name">定義済みの <see cref="T:System.Globalization.CultureInfo" /> 名、既存の <see cref="T:System.Globalization.CultureInfo" /> の <see cref="P:System.Globalization.CultureInfo.Name" />、または Windows 専用カルチャ名。 <paramref name="name" /> では、大文字と小文字は区別されません。</param>
         <param name="useUserOverride">ユーザーが選択したカルチャ設定 (<see langword="true" />) または既定のカルチャ設定 (<see langword="false" />) のいずれを使用するかを示すブール値。</param>
         <summary>名前で指定したカルチャと、システムからユーザーが選択したカルチャ設定を使用するかどうかを指定するブール値に基づいて、<see cref="T:System.Globalization.CultureInfo" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
@@ -654,7 +674,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> が null です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> が有効なカルチャ名ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> が正しいカルチャ名ではありません。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="name" />有効なカルチャ名ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このコンス トラクターがスローされます、<see cref="T:System.Globalization.CultureNotFoundException" />します。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="name" />オペレーティング システムから、オペレーティング システムは、そのカルチャをサポートしていない場合、<paramref name="name" />補助または置換カルチャでのメソッドがスローされます名ではなく、<see cref="T:System.Globalization.CultureNotFoundException" />例外。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.LCID" />
         <altmember cref="P:System.Globalization.CultureInfo.UseUserOverride" />
@@ -936,13 +956,13 @@
         <param name="name">定義済みの <see cref="T:System.Globalization.CultureInfo" /> の名前または既存の <see cref="T:System.Globalization.CultureInfo" /> オブジェクトの名前。 <paramref name="name" /> では、大文字と小文字は区別されません。</param>
         <summary>指定した名前に関連付けられている特定のカルチャを表す <see cref="T:System.Globalization.CultureInfo" /> を作成します。</summary>
         <returns>次のものを表す <see cref="T:System.Globalization.CultureInfo" /> オブジェクト。 
-インバリアント カルチャ (<paramref name="name" />が空の文字列 ("") の場合)。  
+インバリアント カルチャ (<paramref name="name" /> が空の文字列 ("") の場合)。  
   
-または 
-<paramref name="name" /> に関連付けられた特定カルチャ (<paramref name="name" /> がニュートラル カルチャの場合)。  
+- または - 
+<paramref name="name" /> に関連付けられた特定のカルチャ (<paramref name="name" /> がニュートラル カルチャの場合)。  
   
-または 
-<paramref name="name" /> で指定されたカルチャ (<paramref name="name" /> が既に特定カルチャの場合)。</returns>
+- または - 
+<paramref name="name" /> で指定されたカルチャ (<paramref name="name" /> が既に特定のカルチャの場合)。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -973,10 +993,10 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> が有効なカルチャ名ではありません。  
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> は有効なカルチャ名ではありません。  
   
-または 
-<paramref name="name" /> で指定するカルチャに関連付けられている特定のカルチャがありません。</exception>
+- または - 
+<paramref name="name" /> で指定されたカルチャには、関連付けられている特定のカルチャがありません。</exception>
         <exception cref="T:System.NullReferenceException"><paramref name="name" /> が null です。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="name" />有効なカルチャ名ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このメソッドは、<see cref="T:System.Globalization.CultureNotFoundException" />します。</para></block>
         <altmember cref="Overload:System.Globalization.CultureInfo.#ctor" />
@@ -1390,7 +1410,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException">プロパティが null に設定されています。</exception>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Globalization.CultureInfo.DateTimeFormat" /> プロパティまたは <see cref="T:System.Globalization.DateTimeFormatInfo" /> の任意のプロパティが設定されます。<see cref="T:System.Globalization.CultureInfo" /> は読み取り専用です。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Globalization.CultureInfo.DateTimeFormat" /> プロパティまたは <see cref="T:System.Globalization.DateTimeFormatInfo" /> プロパティのいずれかが設定されており、<see cref="T:System.Globalization.CultureInfo" /> は読み取り専用です。</exception>
         <block subset="none" type="usage"><para>場合<see cref="P:System.Globalization.DateTimeFormatInfo.Calendar" />は、<see cref="T:System.Globalization.TaiwanCalendar" />が、<see cref="P:System.Threading.Thread.CurrentCulture" />中国語 (台湾)、ZH-TW、しをという名前に設定されていない<see cref="P:System.Globalization.DateTimeFormatInfo.NativeCalendarName" />、 <see cref="M:System.Globalization.DateTimeFormatInfo.GetEraName(System.Int32)" />、および<see cref="M:System.Globalization.DateTimeFormatInfo.GetAbbreviatedEraName(System.Int32)" />空の文字列が返されます ("")。</para></block>
         <altmember cref="T:System.Globalization.DateTimeFormatInfo" />
         <altmember cref="M:System.Globalization.CultureInfo.GetFormat(System.Type)" />
@@ -1635,7 +1655,7 @@ csc /resource:GreetingStrings.resources Example1.cs
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>完全なローカライズされたカルチャ名を取得します。</summary>
+        <summary>完全にローカライズされたカルチャ名を取得します。</summary>
         <value>形式で完全にローカライズされたカルチャ名*languagefull* [*国/regionfull*] ここで、 *languagefull*言語の完全な名前と*国/regionfull*国/地域の完全な名前を指定します。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1906,7 +1926,7 @@ csc /resource:GreetingStrings.resources Example1.cs
 |ノルウェー語|Ｘ|nb-NO|  
 |オリヤー語|または|en-US|  
 |オリヤー語 (インド)|または、IN|en-US|  
-|パンジャブ語|pa|en-US|  
+|パンジャーブ語|pa|en-US|  
 |パンジャーブ語 (インド)|pa-IN|en-US|  
 |ダリー語|プル要求|en-US|  
 |ダリー語 (アフガニスタン)|pr AF|en-US|  
@@ -1926,7 +1946,7 @@ csc /resource:GreetingStrings.resources Example1.cs
 |タイ語 (タイ)|th Th|en-US|  
 |ウイグル語|ug|en-US|  
 |ウイグル語 (PRC)|ug CN|en-US|  
-|ウルドゥー語|あなたの|en-US|  
+|ウルドゥ語|あなたの|en-US|  
 |ウルドゥ語 (パキスタン)|ur-PK|en-US|  
 |ベトナム語|vi|en-US|  
 |ベトナム語 (ベトナム)|vi-VN|en-US|  
@@ -2004,7 +2024,7 @@ csc /resource:GreetingStrings.resources Example1.cs
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="culture" /> が 0 未満です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="culture" /> は、サポートされていないカルチャを指定しています。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="culture" /> はサポートされていないカルチャを指定します。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="culture" />有効なカルチャ識別子ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このメソッドは、<see cref="T:System.Globalization.CultureNotFoundException" />します。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="culture" />オペレーティング システムは、そのカルチャをサポートしていない場合、オペレーティング システムから、メソッドがスローされます、<see cref="T:System.Globalization.CultureNotFoundException" />します。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.LCID" />
         <altmember cref="M:System.Globalization.CultureInfo.ClearCachedData" />
@@ -2062,7 +2082,7 @@ csc /resource:GreetingStrings.resources Example1.cs
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> が null です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> は、サポートされていないカルチャを指定しています。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> はサポートされていないカルチャを指定します。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="name" />有効なカルチャ名ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このメソッドは、<see cref="T:System.Globalization.CultureNotFoundException" />します。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="name" />オペレーティング システムから、オペレーティング システムは、そのカルチャをサポートしていない場合、<paramref name="name" />補助または置換カルチャでのメソッドがスローされます名ではなく、<see cref="T:System.Globalization.CultureNotFoundException" />します。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.Name" />
       </Docs>
@@ -2119,7 +2139,7 @@ csc /resource:GreetingStrings.resources Example1.cs
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> または <paramref name="altName" /> が null です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> または <paramref name="altName" /> は、サポートされていないカルチャを指定しています。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> または <paramref name="altName" /> が、サポートされていないカルチャを指定しています。 詳細については、「呼び出し時の注意」をご覧ください。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="name" />または<paramref name="altName" />有効なカルチャ名ではありません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このメソッドは、<see cref="T:System.Globalization.CultureNotFoundException" />します。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="name" />オペレーティング システムから、オペレーティング システムは、そのカルチャをサポートしていない場合、<paramref name="name" />補助または置換カルチャでのメソッドがスローされます名ではなく、<see cref="T:System.Globalization.CultureNotFoundException" />例外。 実行するアプリ以降では、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]または後で Windows 7 以降、このメソッドを取得しよう、<see cref="T:System.Globalization.CultureInfo" />オブジェクト識別子を持つ<paramref name="name" />オペレーティング システムから、オペレーティング システムは、そのカルチャをサポートしていない場合、<paramref name="name" />補助または置換カルチャでのメソッドがスローされます名ではなく、<see cref="T:System.Globalization.CultureNotFoundException" />例外。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.Name" />
         <altmember cref="M:System.Globalization.CultureInfo.ClearCachedData" />
@@ -2181,7 +2201,7 @@ csc /resource:GreetingStrings.resources Example1.cs
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> が null です。</exception>
-        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> は、サポートされているカルチャには対応していません。</exception>
+        <exception cref="T:System.Globalization.CultureNotFoundException"><paramref name="name" /> は、サポートされているカルチャに対応していません。</exception>
         <block subset="none" type="usage"><para>[!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)]以前のバージョンをスローして、<see cref="T:System.ArgumentException" />場合<paramref name="name" />サポートされているカルチャの名前に対応していません。 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、このメソッドは、<see cref="T:System.Globalization.CultureNotFoundException" />します。</para></block>
         <altmember cref="P:System.Globalization.CultureInfo.TextInfo" />
         <altmember cref="T:System.Globalization.CultureAndRegionInfoBuilder" />
@@ -2225,7 +2245,7 @@ csc /resource:GreetingStrings.resources Example1.cs
       <Docs>
         <param name="types">取得するカルチャへのフィルターとして使用する列挙値のビットごとの組み合わせ。</param>
         <summary>サポートされているカルチャを、指定した <see cref="T:System.Globalization.CultureTypes" /> パラメーターでフィルター処理した結果のリストを取得します。</summary>
-        <returns><paramref name="types" /> パラメーターで指定されたカルチャを格納する配列。 カルチャの配列は並べ替えられません。</returns>
+        <returns><paramref name="types" /> パラメーターで指定されたカルチャを格納する配列。 カルチャの配列が並べ替えられていません。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2257,7 +2277,7 @@ csc /resource:GreetingStrings.resources Example1.cs
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="types" /> に、無効な <see cref="T:System.Globalization.CultureTypes" /> 値の組み合わせが指定されています。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="types" /> で指定されている <see cref="T:System.Globalization.CultureTypes" /> 値の組み合わせが正しくありません。</exception>
         <altmember cref="T:System.Globalization.CultureTypes" />
       </Docs>
     </Member>
@@ -2308,12 +2328,12 @@ csc /resource:GreetingStrings.resources Example1.cs
       <Docs>
         <param name="formatType">書式指定オブジェクトを取得する <see cref="T:System.Type" />。 このメソッドは、<see cref="T:System.Globalization.NumberFormatInfo" /> 型と <see cref="T:System.Globalization.DateTimeFormatInfo" /> 型だけをサポートしています。</param>
         <summary>指定した型に書式指定する方法を定義するオブジェクトを取得します。</summary>
-        <returns><see cref="P:System.Globalization.CultureInfo.NumberFormat" /> プロパティの値。<paramref name="formatType" /> が <see cref="T:System.Globalization.NumberFormatInfo" /> クラスの <see cref="T:System.Globalization.CultureInfo" /> オブジェクトの場合は、現在の <see cref="T:System.Type" /> の既定の数値書式情報が格納された <see cref="T:System.Globalization.NumberFormatInfo" /> です。  
+        <returns><see cref="P:System.Globalization.CultureInfo.NumberFormat" /> プロパティの値。<paramref name="formatType" /> が <see cref="T:System.Globalization.NumberFormatInfo" /> クラスの <see cref="T:System.Type" /> オブジェクトの場合は、現在の <see cref="T:System.Globalization.CultureInfo" /> の既定の数値書式情報が格納された <see cref="T:System.Globalization.NumberFormatInfo" /> です。  
   
-または 
-<see cref="P:System.Globalization.CultureInfo.DateTimeFormat" /> プロパティの値。<paramref name="formatType" /> が <see cref="T:System.Globalization.DateTimeFormatInfo" /> クラスの <see cref="T:System.Globalization.CultureInfo" /> オブジェクトの場合は、現在の <see cref="T:System.Type" /> の既定の日付および時刻の形式に関する情報が格納された <see cref="T:System.Globalization.DateTimeFormatInfo" /> です。  
+- または - 
+<see cref="P:System.Globalization.CultureInfo.DateTimeFormat" /> プロパティの値。<paramref name="formatType" /> が <see cref="T:System.Globalization.DateTimeFormatInfo" /> クラスの <see cref="T:System.Type" /> オブジェクトの場合は、現在の <see cref="T:System.Globalization.CultureInfo" /> の既定の日付および時刻の形式に関する情報が格納された <see cref="T:System.Globalization.DateTimeFormatInfo" /> です。  
   
-または 
+- または - 
 <paramref name="formatType" /> がその他のオブジェクトである場合は null。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2666,7 +2686,7 @@ csc /resource:GreetingStrings.resources Example1.cs
       </ReturnValue>
       <Docs>
         <summary>現在の <see cref="T:System.Globalization.CultureInfo" /> が読み取り専用かどうかを示す値を取得します。</summary>
-        <value>現在の <see langword="true" /> が読み取り専用の場合は <see cref="T:System.Globalization.CultureInfo" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
+        <value>現在の <see langword="true" /> が読み取り専用の場合は <see cref="T:System.Globalization.CultureInfo" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2959,8 +2979,8 @@ csc /resource:GreetingStrings.resources Example1.cs
         <ReturnType>System.Globalization.NumberFormatInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>数値、通貨、および割合を表示するカルチャに対応する書式を定義する <see cref="T:System.Globalization.NumberFormatInfo" /> を取得または設定します。</summary>
-        <value>数値、通貨、および割合を表示するカルチャに対応する書式を定義する <see cref="T:System.Globalization.NumberFormatInfo" />。</value>
+        <summary>数値、通貨、割合を表示する、カルチャに対応する書式を定義する <see cref="T:System.Globalization.NumberFormatInfo" /> を取得または設定します。</summary>
+        <value>数値、通貨、割合を表示する、カルチャに対応する書式を定義する <see cref="T:System.Globalization.NumberFormatInfo" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2985,7 +3005,7 @@ csc /resource:GreetingStrings.resources Example1.cs
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException">プロパティが null に設定されています。</exception>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Globalization.CultureInfo.NumberFormat" /> プロパティまたは <see cref="T:System.Globalization.NumberFormatInfo" /> の任意のプロパティが設定されます。<see cref="T:System.Globalization.CultureInfo" /> は読み取り専用です。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Globalization.CultureInfo.NumberFormat" /> プロパティまたは <see cref="T:System.Globalization.NumberFormatInfo" /> プロパティのいずれかが設定されており、<see cref="T:System.Globalization.CultureInfo" /> は読み取り専用です。</exception>
         <altmember cref="T:System.Globalization.NumberFormatInfo" />
         <altmember cref="M:System.Globalization.CultureInfo.GetFormat(System.Type)" />
         <altmember cref="P:System.Globalization.CultureInfo.DateTimeFormat" />
@@ -3031,7 +3051,7 @@ csc /resource:GreetingStrings.resources Example1.cs
       </ReturnValue>
       <Docs>
         <summary>カルチャで使用できる暦の一覧を取得します。</summary>
-        <value>現在の <see cref="T:System.Globalization.Calendar" /> が表すカルチャで使用できる暦を表す <see cref="T:System.Globalization.CultureInfo" /> 型の配列。</value>
+        <value>現在の <see cref="T:System.Globalization.CultureInfo" /> が表すカルチャで使用できる暦を表す <see cref="T:System.Globalization.Calendar" /> 型の配列。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -3354,7 +3374,7 @@ csc /resource:GreetingStrings.resources Example1.cs
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Windows API の定義に従って、言語に対する 3 桁文字コードを取得します。</summary>
+        <summary>Windows API の定義に従って、言語に対する 3 文字コードを取得します。</summary>
         <value>Windows API で定義されている言語に対する 3 文字のコード。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -3541,7 +3561,7 @@ csc /resource:GreetingStrings.resources Example1.cs
       </ReturnValue>
       <Docs>
         <summary>現在の <see cref="T:System.Globalization.CultureInfo" /> オブジェクトでユーザーが選択したカルチャ設定を使用するかどうかを示す値を取得します。</summary>
-        <value>現在の <see cref="T:System.Globalization.CultureInfo" /> でユーザーが選択したカルチャ設定値を使用する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>現在の <see cref="T:System.Globalization.CultureInfo" /> でユーザーが選択したカルチャ設定を使用する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
