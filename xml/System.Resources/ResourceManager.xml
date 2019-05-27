@@ -1,5 +1,5 @@
 <Type Name="ResourceManager" FullName="System.Resources.ResourceManager">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1f4576691fe95ae036b83eb8f7fd45935ddefe96" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58729889" /></Metadata><TypeSignature Language="C#" Value="public class ResourceManager" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="286d9bad190bd861714d3d477429bef42297085b" /><Meta Name="ms.sourcegitcommit" Value="9a6da88bd5455e8274257ca7ad259b42f1de114f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/22/2019" /><Meta Name="ms.locfileid" Value="66007227" /></Metadata><TypeSignature Language="C#" Value="public class ResourceManager" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit ResourceManager extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Resources.ResourceManager" />
   <TypeSignature Language="VB.NET" Value="Public Class ResourceManager" />
@@ -89,7 +89,7 @@
   
  たとえば、ベースの名前に MyResources を持つリソース ファイルにいくつかのリソースが含まれているアセンブリを想定します。 これらのリソース ファイルは、日本 (日本語) のカルチャには MyResources.ja-JP.resources、ドイツのカルチャには MyResources.de.resources、簡体字中国語のカルチャには MyResources.zh-CHS.resources、フランス語 (ベルギー) のカルチャには MyResources.fr-BE.resources、などの名前を持つ必要があります。 既定のリソース ファイルは MyResources.resources の名前を持つ必要があります。 通常は、カルチャ固有のリソース ファイルは、カルチャごとにサテライト アセンブリにパッケージ化されます。 既定のリソース ファイルは、アプリのメイン アセンブリに埋め込まれる必要があります。  
   
- 注意として、リソースをプライベートとしてマークできますが、他のアセンブリからアクセスできるように、常にリソースをパブリックとしてマークしてください。 (サテライト アセンブリはコードを含まないため、プライベートとしてマークされたリソースは、どんな方法を使ってもアプリで使用できません。)  
+ 注意してください[アセンブリ リンカー](~/docs/framework/tools/al-exe-assembly-linker.md)により、プライベートとしてマーク済みであるリソースが常にマークするに public として他のアセンブリによってアクセスできるようにします。 (サテライト アセンブリはコードを含まないため、プライベートとしてマークされたリソースは、どんな方法を使ってもアプリで使用できません。)  
   
  リソースの作成、パッケージ化、および、配置の詳細については、[リソース ファイルの作成](~/docs/framework/resources/creating-resource-files-for-desktop-apps.md)、[サテライト アセンブリの作成](~/docs/framework/resources/creating-satellite-assemblies-for-desktop-apps.md)、[リソースのパッケージ化と配置](~/docs/framework/resources/packaging-and-deploying-resources-in-desktop-apps.md)の記事を参照してください。  
   
@@ -613,7 +613,7 @@ al /out:ru-RU\Greet.resources.dll /culture:ru-RU /embed: GreetingResources.ru-RU
 Greeting=Hello  
 ```  
   
- 使用して、テキスト ファイルをバイナリ リソース ファイルに変換できる、コマンド プロンプトで、次のようにします。  
+ 使用して、テキスト ファイルをバイナリ リソース ファイルに変換できる、[リソース ファイル ジェネレーター (ResGen.exe)](~/docs/framework/tools/resgen-exe-resource-file-generator.md)コマンド プロンプトで、次のようにします。  
   
 ```  
 resgen ExampleResources.txt  
@@ -630,13 +630,13 @@ resgen ExampleResources.txt
 vbc Example.vb /resource:ExampleResources.resources  
 ```  
   
- または、以下を使用して C# ではコマンドします。  
+ または、以下を使用して c# ではコマンドします。  
   
 ```  
 csc Example.cs /resource:ExampleResources.resources  
 ```  
   
- 例にそのアセンブリで定義された型を渡すことによって、リソース ファイルを含むアセンブリへの参照を取得することに注意してください、`typeof`関数 (C#) または`GetType`(Visual Basic) で機能し、そのの値を取得する<xref:System.Type.Assembly%2A?displayProperty=nameWithType>プロパティ。  
+ 例にそのアセンブリで定義された型を渡すことによって、リソース ファイルを含むアセンブリへの参照を取得することに注意してください、`typeof`関数 (c#) または`GetType`(Visual Basic) で機能し、そのの値を取得する<xref:System.Type.Assembly%2A?displayProperty=nameWithType>プロパティ。  
   
  ]]></format>
         </remarks>
@@ -988,7 +988,7 @@ csc Example.cs /resource:ExampleResources.resources
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Resources.ResourceManager.GetObject%2A>文字列以外のリソースを取得するメソッドを使用します。 などのプリミティブ データ型に属している値が含まれます<xref:System.Int32>または<xref:System.Double>、ビットマップ (など、<xref:System.Drawing.Bitmap?displayProperty=nameWithType>オブジェクト)、またはカスタム オブジェクトをシリアル化します。 通常、返されたオブジェクトをキャスト (C#) または (Visual Basic) で、適切な型のオブジェクトへの変換する必要があります。  
+ <xref:System.Resources.ResourceManager.GetObject%2A>文字列以外のリソースを取得するメソッドを使用します。 などのプリミティブ データ型に属している値が含まれます<xref:System.Int32>または<xref:System.Double>、ビットマップ (など、<xref:System.Drawing.Bitmap?displayProperty=nameWithType>オブジェクト)、またはカスタム オブジェクトをシリアル化します。 通常、返されたオブジェクトをキャスト (c#) または (Visual Basic) で、適切な型のオブジェクトへの変換する必要があります。  
   
  定義されている現在のスレッドの UI カルチャの返されたリソースのローカライズ、<xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=nameWithType>プロパティ。 リソースがそのカルチャのローカライズされていない場合、リソース マネージャーは適切なリソースの読み込みにフォールバック規則を使用します。 使用できるローカライズされたリソースのセットが見つからない場合、<xref:System.Resources.ResourceManager>既定のカルチャのリソースにフォールバックします。 既定のカルチャのリソース セットが見つからない場合、メソッドがスローされます、<xref:System.Resources.MissingManifestResourceException>例外や、サテライト アセンブリ内に存在するリソース セットが予想される場合、<xref:System.Resources.MissingSatelliteAssemblyException>例外。 適切なリソースが設定という名前のリソースを見つけることができませんが、リソース マネージャーが読み込むことができる場合`name`、メソッドを返します`null`します。  
   
@@ -1086,7 +1086,7 @@ GetObject.exe
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Resources.ResourceManager.GetObject%28System.String%2CSystem.Globalization.CultureInfo%29>文字列以外のリソースを取得するメソッドを使用します。 などのプリミティブ データ型に属している値が含まれます<xref:System.Int32>または<xref:System.Double>、ビットマップ (など、<xref:System.Drawing.Bitmap?displayProperty=nameWithType>オブジェクト)、またはカスタム オブジェクトをシリアル化します。 通常、返されたオブジェクトをキャスト (C#) または (Visual Basic) で、適切な型のオブジェクトへの変換する必要があります。  
+ <xref:System.Resources.ResourceManager.GetObject%28System.String%2CSystem.Globalization.CultureInfo%29>文字列以外のリソースを取得するメソッドを使用します。 などのプリミティブ データ型に属している値が含まれます<xref:System.Int32>または<xref:System.Double>、ビットマップ (など、<xref:System.Drawing.Bitmap?displayProperty=nameWithType>オブジェクト)、またはカスタム オブジェクトをシリアル化します。 通常、返されたオブジェクトをキャスト (c#) または (Visual Basic) で、適切な型のオブジェクトへの変換する必要があります。  
   
  指定されたカルチャ用に、返されたリソースがローカライズ`culture`、またはカルチャで指定されている、<xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=nameWithType>プロパティ場合`culture`は`null`します。 リソースがそのカルチャのローカライズされていない場合、リソース マネージャーは適切なリソースの読み込みにフォールバック規則を使用します。 使用できるローカライズされたリソースのセットが見つからない場合、リソース マネージャーの既定のカルチャのリソースにフォールバックします。 既定のカルチャのリソース セットが見つからない場合、メソッドがスローされます、<xref:System.Resources.MissingManifestResourceException>例外や、サテライト アセンブリ内に存在するリソース セットが予想される場合、<xref:System.Resources.MissingSatelliteAssemblyException>例外。 適切なリソースが設定という名前のリソースを見つけることができませんが、リソース マネージャーが読み込むことができる場合`name`、メソッドを返します`null`します。  
   
@@ -1451,7 +1451,7 @@ al /out:fr-FR\ShowNumbers.resources.dll /culture:fr-FR /embed:NumberResources.fr
  [!code-csharp[Conceptual.Resources.Retrieving#4](~/samples/snippets/csharp/VS_Snippets_CLR/conceptual.resources.retrieving/cs/createresources.cs#4)]
  [!code-vb[Conceptual.Resources.Retrieving#4](~/samples/snippets/visualbasic/VS_Snippets_CLR/conceptual.resources.retrieving/vb/createresources.vb#4)]  
   
- 次のコード (C#) の GetStream.cs をという名前のファイルまたは GetStream.vb (Visual Basic) のリソースを取得しでイメージを表示します、<xref:System.Windows.Forms.PictureBox?displayProperty=nameWithType>コントロール。  
+ 次のコード (c#) の GetStream.cs をという名前のファイルまたは GetStream.vb (Visual Basic) のリソースを取得しでイメージを表示します、<xref:System.Windows.Forms.PictureBox?displayProperty=nameWithType>コントロール。  
   
  [!code-csharp[Conceptual.Resources.Retrieving#5](~/samples/snippets/csharp/VS_Snippets_CLR/conceptual.resources.retrieving/cs/getstream.cs#5)]
  [!code-vb[Conceptual.Resources.Retrieving#5](~/samples/snippets/visualbasic/VS_Snippets_CLR/conceptual.resources.retrieving/vb/getstream.vb#5)]  
@@ -1618,7 +1618,7 @@ csc GetStream.cs /resource:AppResources.resources
 |fr-FR|DateStrings.fr-FR.txt|`DateStart`|Aujourd'hui, c'est le|  
 |ru-RU|DateStrings.ru-RU.txt|`DateStart`|Сегодня|  
   
- 次のバッチ ファイルを使用して、C# の例をコンパイルすることができます。 Visual Basic の場合は、 `csc` を `vbc`に変更し、さらにソース コード ファイルの拡張子を `.cs` から `.vb`に変更します。  
+ 次のバッチ ファイルを使用して、c# の例をコンパイルすることができます。 Visual Basic の場合は、 `csc` を `vbc`に変更し、さらにソース コード ファイルの拡張子を `.cs` から `.vb`に変更します。  
   
 ```  
 resgen DateStrings.txt  
@@ -1633,7 +1633,7 @@ resgen DateStrings.ru-RU.txt
 al /out:ru-RU\Showdate.resources.dll /culture:ru-RU /embed:DateStrings.ru-RU.resources  
 ```  
   
- 次の例では、(Visual Basic バージョンの ShowDate.vb) または ShowDate.cs C# バージョンのソース コードに示します。  
+ 次の例では、(Visual Basic バージョンの ShowDate.vb) または ShowDate.cs c# バージョンのソース コードに示します。  
   
  [!code-csharp[System.Resources.ResourceManager.Class#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.resources.resourcemanager.class/cs/showdate.cs#2)]
  [!code-vb[System.Resources.ResourceManager.Class#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.resources.resourcemanager.class/vb/showdate.vb#2)]  
@@ -1744,7 +1744,7 @@ resgen DateStrings.ru-RU.txt
 al /out:ru-RU\Showdate.resources.dll /culture:ru-RU /embed:DateStrings.ru-RU.resources  
 ```  
   
- 次の例では、(Visual Basic バージョンの ShowDate.vb) または ShowDate.cs C# バージョンのソース コードに示します。  
+ 次の例では、(Visual Basic バージョンの ShowDate.vb) または ShowDate.cs c# バージョンのソース コードに示します。  
   
  [!code-csharp[System.Resources.ResourceManager.Class#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.resources.resourcemanager.class/cs/showdate2.cs#3)]
  [!code-vb[System.Resources.ResourceManager.Class#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.resources.resourcemanager.class/vb/showdate2.vb#3)]  
