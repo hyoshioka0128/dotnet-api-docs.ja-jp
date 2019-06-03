@@ -1,5 +1,5 @@
 <Type Name="ClaimsPrincipal" FullName="System.Security.Claims.ClaimsPrincipal">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="bdca20378828fcc10f43ae079ec447401773a3f2" /><Meta Name="ms.sourcegitcommit" Value="95e24aee1283af2f120fc5da4b0bdc0712ab698f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/06/2019" /><Meta Name="ms.locfileid" Value="65155797" /></Metadata><TypeSignature Language="C#" Value="public class ClaimsPrincipal : System.Security.Principal.IPrincipal" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="c9cc918f4138ad029340a46611b6bfb8c3f58b7e" /><Meta Name="ms.sourcegitcommit" Value="0a995cf65bbc42d609fdd97525c910e4284212bb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/31/2019" /><Meta Name="ms.locfileid" Value="66424152" /></Metadata><TypeSignature Language="C#" Value="public class ClaimsPrincipal : System.Security.Principal.IPrincipal" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit ClaimsPrincipal extends System.Object implements class System.Security.Principal.IPrincipal" />
   <TypeSignature Language="DocId" Value="T:System.Security.Claims.ClaimsPrincipal" />
   <TypeSignature Language="VB.NET" Value="Public Class ClaimsPrincipal&#xA;Implements IPrincipal" />
@@ -39,16 +39,16 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>複数の要求ベース ID をサポートする <see cref="T:System.Security.Principal.IPrincipal" /> 実装。</summary>
+    <summary>複数のクレームベースの ID をサポートする <see cref="T:System.Security.Principal.IPrincipal" /> の実装。</summary>
     <remarks>
-      <format type="text/markdown"><![CDATA[  
-  
+      <format type="text/markdown"><![CDATA[
+
 ## Remarks  
  .NET Framework 4.5 以降、Windows Identity Foundation (WIF) と id のクレームに基づく完全に統合された .NET Framework です。 つまり、これで、.NET Framework 内のプリンシパルを表す多数のクラスから派生する<xref:System.Security.Claims.ClaimsPrincipal>実装するだけではなく、<xref:System.Security.Principal.IPrincipal>インターフェイス。 実装するだけでなく、<xref:System.Security.Principal.IPrincipal>インターフェイス、<xref:System.Security.Claims.ClaimsPrincipal>プロパティとは、要求を操作するための便利なメソッドを公開します。  
   
  <xref:System.Security.Claims.ClaimsPrincipal> 個々 の id のコレクションを公開、<xref:System.Security.Claims.ClaimsIdentity>します。 一般的なケース、を通じてアクセスされる、このコレクションで、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>プロパティは 1 つの要素のみを持ちます。  
   
- 導入に伴い<xref:System.Security.Claims.ClaimsPrincipal>最もプリンシパル クラスを派生元となるプリンシパルとして .NET 4.5 では強制しません id で処理する方法で何も変更します。 ただし詳細可能性を開くし、さらに細かくアクセス コントロールを練習する機会を提供します。 例:  
+ 導入に伴い<xref:System.Security.Claims.ClaimsPrincipal>最もプリンシパル クラスを派生元となるプリンシパルとして .NET 4.5 では強制しません id で処理する方法で何も変更します。 ただし詳細可能性を開くし、さらに細かくアクセス コントロールを練習する機会を提供します。 次に例を示します。  
   
 -   アプリケーション コード自体は、ドライブの追加の認証、承認、およびパーソナル化タスクを現在のプリンシパルに含まれる要求を直接操作できます。  
   
@@ -72,8 +72,7 @@
 ## Examples  
  次の例では、HTTP 要求内のユーザーによって提示されるクレームを抽出し、HTTP 応答に書き込みます。 現在のユーザーがから読み取り、<xref:System.Web.HttpContext>として、<xref:System.Security.Claims.ClaimsPrincipal>します。 要求はその後、そこから読み取られます、応答に書き込まれます。  
   
-```  
-  
+```csharp
 ClaimsPrincipal principal = HttpContext.Current.User as ClaimsPrincipal;  
 if (null != principal)  
 {  
@@ -82,9 +81,9 @@ if (null != principal)
       Response.Write("CLAIM TYPE: " + claim.Type + "; CLAIM VALUE: " + claim.Value + "</br>");  
    }  
 }  
-```  
-  
- ]]></format>
+```
+
+      ]]></format>
     </remarks>
     <altmember cref="T:System.Security.Claims.Claim" />
     <altmember cref="T:System.Security.Claims.ClaimsIdentity" />
@@ -130,12 +129,12 @@ if (null != principal)
       <Docs>
         <summary><see cref="T:System.Security.Claims.ClaimsPrincipal" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- Id の新しいインスタンスに関連付けられたがないです。 (、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクションが空)。  
-  
- ]]></format>
+ Id の新しいインスタンスに関連付けられたがないです。 (、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクションが空)。
+
+          ]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -171,12 +170,12 @@ if (null != principal)
         <param name="identities">新しい要求プリンシパルの初期化元 ID。</param>
         <summary>指定した要求 ID を使用して、<see cref="T:System.Security.Claims.ClaimsPrincipal" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>指定した id を持つコレクションを初期化します。  
-  
- ]]></format>
+ <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>指定した id を持つコレクションを初期化します。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="identities" /> が **null** です。</exception>
       </Docs>
@@ -213,14 +212,14 @@ if (null != principal)
         <param name="reader"><see cref="T:System.Security.Claims.ClaimsPrincipal" /> を示す <see cref="T:System.IO.BinaryReader" />。</param>
         <summary><see cref="T:System.IO.BinaryReader" /> を指定して、<see cref="T:System.Security.Claims.ClaimsPrincipal" /> のインスタンスを初期化します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
  通常、<xref:System.IO.BinaryReader>からバイトを使用して構築される<xref:System.Security.Claims.ClaimsIdentity.WriteTo%2A>と同じ方法で初期化し、<xref:System.IO.BinaryWriter>します。
-  
- ]]></format>
+
+          ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="reader" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="reader" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -255,12 +254,12 @@ if (null != principal)
         <param name="identity">新しい要求プリンシパルの初期化元 ID。</param>
         <summary>指定された ID から <see cref="T:System.Security.Claims.ClaimsPrincipal" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- 指定された id から割り当てることができる場合<xref:System.Security.Claims.ClaimsIdentity>、初期化に使用されますが、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。 それ以外の場合、<xref:System.Security.Claims.ClaimsIdentity>指定した id を使用して作成され、コレクションを初期化するために使用します。  
-  
- ]]></format>
+ 指定された id から割り当てることができる場合<xref:System.Security.Claims.ClaimsIdentity>、初期化に使用されますが、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。 それ以外の場合、<xref:System.Security.Claims.ClaimsIdentity>指定した id を使用して作成され、コレクションを初期化するために使用します。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="identity" /> が **null** です。</exception>
       </Docs>
@@ -297,12 +296,12 @@ if (null != principal)
         <param name="principal">新しい要求プリンシパルの初期化元となるプリンシパル。</param>
         <summary>指定されたプリンシパルから <see cref="T:System.Security.Claims.ClaimsPrincipal" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- 指定したプリンシパルがから割り当て可能な場合<xref:System.Security.Claims.ClaimsPrincipal>、その id のすべてに追加されます、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。 指定したプリンシパルがから割り当てることがない場合<xref:System.Security.Claims.ClaimsPrincipal>、新しい<xref:System.Security.Claims.ClaimsIdentity>から作成された、<xref:System.Security.Principal.IIdentity>でその<xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=nameWithType>プロパティに追加し、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。  
-  
- ]]></format>
+ 指定したプリンシパルがから割り当て可能な場合<xref:System.Security.Claims.ClaimsPrincipal>、その id のすべてに追加されます、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。 指定したプリンシパルがから割り当てることがない場合<xref:System.Security.Claims.ClaimsPrincipal>、新しい<xref:System.Security.Claims.ClaimsIdentity>から作成された、<xref:System.Security.Principal.IIdentity>でその<xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=nameWithType>プロパティに追加し、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="principal" /> が **null** です。</exception>
       </Docs>
@@ -340,9 +339,9 @@ if (null != principal)
         <Parameter Name="context" Type="System.Runtime.Serialization.StreamingContext" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="info">シリアル化データ。</param>
+        <param name="info">シリアル化されたデータ。</param>
         <param name="context">シリアル化のコンテキスト。</param>
-        <summary><see cref="T:System.Runtime.Serialization.ISerializable" /> を使用して作成されたシリアル化ストリームから、<see cref="T:System.Security.Claims.ClaimsPrincipal" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary><see cref="T:System.Security.Claims.ClaimsPrincipal" /> を使用して作成したシリアル化ストリームから <see cref="T:System.Runtime.Serialization.ISerializable" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks></remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="info" /> が **null** です。</exception>
         <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
@@ -388,12 +387,12 @@ if (null != principal)
         <param name="identities">追加する要求 ID。</param>
         <summary>指定された要求 ID をこの要求プリンシパルに追加します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- Id に追加、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。  
-  
- ]]></format>
+ Id に追加、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="identities" /> が **null** です。</exception>
         <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
@@ -436,15 +435,15 @@ if (null != principal)
         <Parameter Name="identity" Type="System.Security.Claims.ClaimsIdentity" />
       </Parameters>
       <Docs>
-        <param name="identity">追加する要求 ID。</param>
-        <summary>指定された要求 ID をこの要求プリンシパルに追加します。</summary>
+        <param name="identity">追加するクレーム ID。</param>
+        <summary>このクレーム プリンシパルに指定されたクレーム ID を追加します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- Id を追加、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。  
-  
- ]]></format>
+ Id を追加、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクション。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="identity" /> が **null** です。</exception>
         <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
@@ -490,14 +489,14 @@ if (null != principal)
         <summary>この要求プリンシパルと関連付けられているすべての要求 ID のすべての要求を含むコレクションを取得します。</summary>
         <value>このプリンシパルに関連付けられた要求。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
  要求プリンシパルが一連の<xref:System.Security.Claims.ClaimsIdentity>の Id プロパティを通じてアクセスできるオブジェクト。 各<xref:System.Security.Claims.ClaimsIdentity>コレクションには 1 つまたは複数の要求が含まれています。 <xref:System.Security.Claims.ClaimsPrincipal.Claims%2A>プロパティがこのコレクション内のクレーム id のすべてからすべてのクレームを返します。  
   
- <xref:System.Security.Claims.ClaimsPrincipal.Claims%2A>プロパティのカスタム実装で調べることができます、<xref:System.Security.Claims.ClaimsAuthenticationManager>認証決定を行うまたはフィルター処理、変換、または; 入力方向の要求セットを強化するにはクラスのカスタム実装によって、<xref:System.Security.Claims.ClaimsAuthorizationManager>クラスを適用するには承認ポリシー。またはアプリケーションによって、承認決定を行う、またはユーザー エクスペリエンスをカスタマイズするコードは、コレクション内に存在する要求に基づきます。  
-  
- ]]></format>
+ <xref:System.Security.Claims.ClaimsPrincipal.Claims%2A>プロパティのカスタム実装で調べることができます、<xref:System.Security.Claims.ClaimsAuthenticationManager>認証決定を行うまたはフィルター処理、変換、または; 入力方向の要求セットを強化するにはクラスのカスタム実装によって、<xref:System.Security.Claims.ClaimsAuthorizationManager>クラスを適用するには承認ポリシー。またはアプリケーションによって、承認決定を行う、またはユーザー エクスペリエンスをカスタマイズするコードは、コレクション内に存在する要求に基づきます。
+
+          ]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -536,14 +535,14 @@ if (null != principal)
       </ReturnValue>
       <Docs>
         <summary><see cref="P:System.Security.Claims.ClaimsPrincipal.Current" /> プロパティによって返される要求プリンシパルを選択するために使用するデリゲートを取得または設定します。</summary>
-        <value>デリゲート。 既定値は <see langword="null" /> です。</value>
+        <value>デリゲート。 既定値は、<see langword="null" /> です。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- 既定の動作をオーバーライドするには、このプロパティを設定することができます、<xref:System.Security.Claims.ClaimsPrincipal.Current%2A>プロパティ。  
-  
- ]]></format>
+ 既定の動作をオーバーライドするには、このプロパティを設定することができます、<xref:System.Security.Claims.ClaimsPrincipal.Current%2A>プロパティ。
+
+          ]]></format>
         </remarks>
         <permission cref="T:System.Security.SecurityCriticalAttribute">設定操作では、直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで設定することはできません。</permission>
         <altmember cref="P:System.Security.Claims.ClaimsPrincipal.Current" />
@@ -620,7 +619,7 @@ if (null != principal)
         <summary>新しいクレーム ID を作成します。</summary>
         <returns>作成されたクレーム ID。</returns>
         <remarks></remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="reader" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="reader" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="Current">
@@ -655,12 +654,12 @@ if (null != principal)
         <summary>現在の要求プリンシパルを取得します。</summary>
         <value>現在の要求プリンシパル。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- 既定では、<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=nameWithType>が返されます。 この動作を設定して変更することができます、<xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A>プロパティを現在のプリンシパルを決定するために呼び出すデリゲートを指定します。  
-  
- ]]></format>
+ 既定では、<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=nameWithType>が返されます。 この動作を設定して変更することができます、<xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A>プロパティを現在のプリンシパルを決定するために呼び出すデリゲートを指定します。
+
+          ]]></format>
         </remarks>
         <altmember cref="P:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector" />
       </Docs>
@@ -706,7 +705,7 @@ if (null != principal)
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定した条件に一致する要求をすべて取得します。</summary>
+        <summary>指定した条件に一致するすべてのクレームを取得します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="FindAll">
@@ -741,16 +740,16 @@ if (null != principal)
         <Parameter Name="match" Type="System.Predicate&lt;System.Security.Claims.Claim&gt;" />
       </Parameters>
       <Docs>
-        <param name="match">一致するロジックを実行する関数。</param>
-        <summary>指定された述語と一致するすべての要求を取得します。</summary>
-        <returns>一致する要求。</returns>
+        <param name="match">一致ロジックを実行する関数。</param>
+        <summary>指定した述語に一致するすべてのクレームを取得します。</summary>
+        <returns>一致するクレーム。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- 要求プリンシパルに関連付けられているすべての id からクレームを返します。  
-  
- ]]></format>
+ 要求プリンシパルに関連付けられているすべての id からクレームを返します。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="match" /> が **null** です。</exception>
       </Docs>
@@ -787,16 +786,16 @@ if (null != principal)
         <Parameter Name="type" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="type">要求の照合対象となる要求の種類。</param>
-        <summary>すべての要求、または指定された要求の種類を持つ要求を取得します。</summary>
-        <returns>一致する要求。</returns>
+        <param name="type">クレームに一致するクレームの種類。</param>
+        <summary>すべてのクレームまたは指定されたクレーム型のすべてのクレームを取得します。</summary>
+        <returns>一致するクレーム。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- 要求プリンシパルに関連付けられているすべての id からクレームを返します。 序数のケースの区別でを使用して、比較が行われます`type`します。  
-  
- ]]></format>
+ 要求プリンシパルに関連付けられているすべての id からクレームを返します。 序数のケースの区別でを使用して、比較が行われます`type`します。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="type" /> が **null** です。</exception>
       </Docs>
@@ -808,7 +807,7 @@ if (null != principal)
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定した条件に一致する最初の要求を取得します。</summary>
+        <summary>指定した条件に一致する最初のクレームを取得します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="FindFirst">
@@ -843,10 +842,21 @@ if (null != principal)
         <Parameter Name="match" Type="System.Predicate&lt;System.Security.Claims.Claim&gt;" />
       </Parameters>
       <Docs>
-        <param name="match">一致するロジックを実行する関数。</param>
-        <summary>指定された述語と一致した最初の要求を取得します。</summary>
-        <returns>最初に一致する要求。一致が検出されない場合は、<see langword="null" />。</returns>
-        <remarks></remarks>
+        <param name="match">一致ロジックを実行する関数。</param>
+        <summary>指定した述語に一致する最初のクレームを取得します。</summary>
+        <returns>最初に一致するクレーム。一致が見つからない場合は <see langword="null" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+各<xref:System.Security.Claims.ClaimsIdentity>が呼び出されます。 
+
+## <a name="see-also"></a>関連項目
+<xref:System.Security.Claims.ClaimsIdentity.FindFirst(System.String)?displayProperty=nameWithType>
+
+          ]]></format>
+        </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="match" /> が **null** です。</exception>
       </Docs>
     </Member>
@@ -882,10 +892,22 @@ if (null != principal)
         <Parameter Name="type" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="type">一致する要求の種類。</param>
-        <summary>指定した要求の種類を持つ最初の要求を取得します。</summary>
-        <returns>最初に一致する要求。一致が検出されない場合は、<see langword="null" />。</returns>
-        <remarks></remarks>
+        <param name="type">一致するクレームの種類。</param>
+        <summary>指定したクレームの種類の最初のクレームを取得します。</summary>
+        <returns>最初に一致するクレーム。一致が見つからない場合は <see langword="null" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+各<xref:System.Security.Claims.ClaimsIdentity>が呼び出されます。
+
+ ## <a name="see-also"></a>関連項目
+ 
+  <xref:System.Security.Claims.ClaimsIdentity.FindFirst(System.Predicate{System.Security.Claims.Claim})?displayProperty=nameWithType>。
+
+          ]]></format>
+        </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="type" /> が **null** です。</exception>
       </Docs>
     </Member>
@@ -927,9 +949,9 @@ if (null != principal)
       <Docs>
         <param name="info">データを読み込む先のオブジェクト。</param>
         <param name="context">このシリアル化のシリアル化先。 <see langword="null" /> の可能性があります。</param>
-        <summary><see cref="T:System.Runtime.Serialization.SerializationInfo" /> に、現在の <see cref="T:System.Security.Claims.ClaimsPrincipal" /> オブジェクトをシリアル化するために必要なすべてのデータを格納します。</summary>
+        <summary><see cref="T:System.Runtime.Serialization.SerializationInfo" /> オブジェクトに、現在の <see cref="T:System.Security.Claims.ClaimsPrincipal" /> オブジェクトをシリアル化するために必要なデータを格納します。</summary>
         <remarks></remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="info" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="info" /> は <see langword="null" />です。</exception>
         <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
       </Docs>
     </Member>
@@ -940,7 +962,7 @@ if (null != principal)
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>この要求プリンシパルに関連付けられているクレーム ID のいずれかに、指定された条件と一致する要求が含まれているかどうかを判断します。</summary>
+        <summary>このクレーム プリンシパルに関連付けられたいずれかのクレーム ID が、指定した条件に一致するクレームを含んでいるかどうかを判断します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="HasClaim">
@@ -975,10 +997,22 @@ if (null != principal)
         <Parameter Name="match" Type="System.Predicate&lt;System.Security.Claims.Claim&gt;" />
       </Parameters>
       <Docs>
-        <param name="match">一致するロジックを実行する関数。</param>
-        <summary>この要求プリンシパルに関連付けられている要求 ID のいずれかに、指定された述語と一致する要求が含まれているかどうかを判断します。</summary>
-        <returns>一致する要求が存在する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
-        <remarks></remarks>
+        <param name="match">一致ロジックを実行する関数。</param>
+        <summary>このクレーム プリンシパルに関連付けられたいずれかのクレーム ID が、指定した述語に一致するクレームを含んでいるかどうかを判断します。</summary>
+        <returns>一致するクレームが存在する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+各<xref:System.Security.Claims.ClaimsIdentity>が呼び出されます。 
+
+## <a name="see-also"></a>関連項目
+
+<xref:System.Security.Claims.ClaimsIdentity.HasClaim(System.String,System.String)?displayProperty=nameWithType>。
+
+          ]]></format>
+        </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="match" /> が **null** です。</exception>
       </Docs>
     </Member>
@@ -1015,21 +1049,21 @@ if (null != principal)
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="type">一致する要求の種類。</param>
-        <param name="value">一致する要求の値。</param>
-        <summary>この要求プリンシパルに関連付けられているクレーム ID のいずれかに、指定された要求の種類と値を持つ要求が含まれているかどうかを判断します。</summary>
-        <returns>一致する要求が存在する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="type">一致するクレームの種類。</param>
+        <param name="value">一致させるクレームの値。</param>
+        <summary>このクレーム プリンシパルに関連付けられたいずれかのクレーム ID が、指定したクレームの種類および値のクレームを含んでいるかどうかを判断します。</summary>
+        <returns>一致するクレームが存在する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- チェックしません、<xref:System.Security.Claims.Claim.Issuer%2A>または<xref:System.Security.Claims.Claim.OriginalIssuer%2A>プロパティ。 序数値の大文字と小文字を使用して、比較が行われますケース型に依存します。  
-  
- ]]></format>
+ チェックしません、<xref:System.Security.Claims.Claim.Issuer%2A>または<xref:System.Security.Claims.Claim.OriginalIssuer%2A>プロパティ。 序数値の大文字と小文字を使用して、比較が行われますケース型に依存します。
+
+          ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="type" /> が **null** です。  
   
-- または - 
+または 
  <paramref name="value" /> が **null** です。</exception>
       </Docs>
     </Member>
@@ -1062,17 +1096,17 @@ if (null != principal)
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Security.Claims.ClaimsIdentity&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このクレーム プリンシパルと関連付けられているクレーム ID をすべて含むコレクションを取得します。</summary>
+        <summary>このクレーム プリンシパルに関連付けられたすべてのクレーム ID を含むコレクションを取得します。</summary>
         <value>クレーム ID のコレクション。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
  一般的なケースでは、コレクションには、1 つの要素のみが含まれています。  
   
- いくつかの要素を格納するコレクションのことは`null`します。  
-  
- ]]></format>
+ いくつかの要素を格納するコレクションのことは`null`します。
+
+          ]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -1108,17 +1142,17 @@ if (null != principal)
         <ReturnType>System.Security.Principal.IIdentity</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>この要求プリンシパルに関連付けられたプライマリ要求 ID を取得します。</summary>
-        <value>この要求プリンシパルに関連付けられたプライマリ要求 ID。</value>
+        <summary>このクレーム プリンシパルに関連付けられているプライマリ クレーム ID を取得します。</summary>
+        <value>このクレーム プリンシパルに関連付けられているプライマリ クレーム ID。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
  既定では、フレームワークが型の id を優先<xref:System.Security.Principal.WindowsIdentity>id を返すときにします。 最初の<xref:System.Security.Principal.WindowsIdentity>で見つかった、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクションが返されます。 存在する場合ありません<xref:System.Security.Principal.WindowsIdentity>から割り当て可能な最初の id、コレクションで<xref:System.Security.Claims.ClaimsIdentity>が返されます。 存在する場合ありません<xref:System.Security.Claims.ClaimsIdentity>、`null`が返されます。 場合、<xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>コレクションは空で、<xref:System.ArgumentNullException>がスローされます。  
   
- 設定して、既定の動作を変更することができます、<xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A>プロパティ id を確認するために呼び出すデリゲートを指定します。  
-  
- ]]></format>
+ 設定して、既定の動作を変更することができます、<xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A>プロパティ id を確認するために呼び出すデリゲートを指定します。
+
+          ]]></format>
         </remarks>
         <altmember cref="P:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector" />
       </Docs>
@@ -1158,19 +1192,19 @@ if (null != principal)
         <Parameter Name="role" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="role">確認するロール。</param>
-        <summary>この要求プリンシパルが表すエンティティ (ユーザー) が、指定したロールにあるかどうかを示す値を返します。</summary>
-        <returns>要求プリンシパルが指定したロールにある場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="role">確認対象のロール。</param>
+        <summary>このクレーム プリンシパルによって表されるエンティティ (ユーザー) に指定されたロールが課されているかどうかを示す値を返します。</summary>
+        <returns>クレーム プリンシパルが指定したロールになっている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
  <xref:System.Security.Claims.ClaimsPrincipal.IsInRole%2A>メソッドは、この要求プリンシパルが所有する id には型のクレームが含まれて かどうかを確認します。<xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=nameWithType>要求の値がで指定された値と等しく、`role`パラメーター。  
   
 > [!NOTE]
->  各<xref:System.Security.Claims.ClaimsIdentity>にロールを表すクレームの種類の独自の定義があります。 この要求の種類のアクセスおよび使用して設定できる、<xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=nameWithType>プロパティ。  
-  
- ]]></format>
+>  各<xref:System.Security.Claims.ClaimsIdentity>にロールを表すクレームの種類の独自の定義があります。 この要求の種類のアクセスおよび使用して設定できる、<xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=nameWithType>プロパティ。
+
+          ]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -1209,14 +1243,14 @@ if (null != principal)
       </ReturnValue>
       <Docs>
         <summary><see cref="P:System.Security.Claims.ClaimsPrincipal.Identity" /> プロパティによって返されるクレーム ID を選択するために使用するデリゲートを取得または設定します。</summary>
-        <value>デリゲート。 既定値は <see langword="null" /> です。</value>
+        <value>デリゲート。 既定値は、<see langword="null" /> です。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
+          <format type="text/markdown"><![CDATA[
+
 ## Remarks  
- 既定の動作をオーバーライドするには、このプロパティを設定することができます、<xref:System.Security.Claims.ClaimsPrincipal.Identity%2A>プロパティ。  
-  
- ]]></format>
+ 既定の動作をオーバーライドするには、このプロパティを設定することができます、<xref:System.Security.Claims.ClaimsPrincipal.Identity%2A>プロパティ。
+
+          ]]></format>
         </remarks>
         <permission cref="T:System.Security.SecurityCriticalAttribute">設定操作では、直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで設定することはできません。</permission>
         <altmember cref="P:System.Security.Claims.ClaimsPrincipal.Identity" />
@@ -1257,7 +1291,7 @@ if (null != principal)
         <param name="writer">データ ストレージに使用するライター。</param>
         <summary><see cref="T:System.IO.BinaryWriter" /> を使用してシリアル化します。</summary>
         <remarks></remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="writer" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="writer" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteTo">
@@ -1297,7 +1331,7 @@ if (null != principal)
         <param name="userData">派生型によって提供される追加データ。</param>
         <summary><see cref="T:System.IO.BinaryWriter" /> を使用してシリアル化します。</summary>
         <remarks></remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="writer" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="writer" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
   </Members>

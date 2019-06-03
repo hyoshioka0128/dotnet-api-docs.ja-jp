@@ -1,5 +1,5 @@
 <Type Name="Span&lt;T&gt;" FullName="System.Span&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="c8645be1b7a27ef7833a8e8354da2899e84a3309" /><Meta Name="ms.sourcegitcommit" Value="7a844d353e1b3079aa7c0d47a6d2c3b3ce8f9647" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/21/2019" /><Meta Name="ms.locfileid" Value="65960854" /></Metadata><TypeSignature Language="C#" Value="public struct Span&lt;T&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="8eab7c9327b9fcef036c512c99bdc56c5c4c3cd7" /><Meta Name="ms.sourcegitcommit" Value="0de246131f8a87c71d008d055adec7bf72470c4f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/29/2019" /><Meta Name="ms.locfileid" Value="66301945" /></Metadata><TypeSignature Language="C#" Value="public struct Span&lt;T&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Span`1&lt;T&gt; extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Span`1" />
   <TypeSignature Language="VB.NET" Value="Public Structure Span(Of T)" />
@@ -41,7 +41,7 @@
 `Span<T>` [ref 構造体](~/docs/csharp/language-reference/keywords/ref.md#ref-struct-types)マネージ ヒープではなく、スタックに割り当てることができます。 Ref 構造体の型がいくつかのボックス化できないことは、型の変数に割り当てられないなど、マネージ ヒープに昇格することはできませんを確実に制限がある<xref:System.Object>、`dynamic`フィールドに任意のインターフェイス型にすることはできないことも、参照型とする間は使用できません`await`と`yield`境界。 さらに、2 つのメソッドを呼び出す<xref:System.Span%601.Equals(System.Object)>と<xref:System.Span%601.GetHashCode%2A>、スロー、<xref:System.NotSupportedException>します。 
 
 > [!IMPORTANT]
-> Stack 専用の種類が`Span<T>`バッファーへの参照を格納する、ヒープを必要とする多くのシナリオには適していません。 これは、true の場合、たとえば、asynchrous メソッドを呼び出すルーチンの。 このようなシナリオでは、無償、使える<xref:System.Memory%601?displayProperty=nameWithType>と<xref:System.ReadOnlyMemory%601?displayProperty=nameWithType>型。
+> Stack 専用の種類が`Span<T>`バッファーへの参照を格納する、ヒープを必要とする多くのシナリオには適していません。 これは、true の場合、たとえば、非同期メソッドの呼び出しを行うルーチンの。 このようなシナリオを使用できます、補完的な<xref:System.Memory%601?displayProperty=nameWithType>と<xref:System.ReadOnlyMemory%601?displayProperty=nameWithType>型。
 
 変更できない、または読み取り専用の構造を表す範囲、使用<xref:System.ReadOnlySpan%601?displayProperty=nameWithType>します。
 
@@ -200,11 +200,11 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="array" /> は <see langword="null" /> ですが、<paramref name="start" /> または <paramref name="length" /> は 0 以外です。
 
-- または -
+または
 
 <paramref name="start" /> は配列の境界の外側にあります。
 
-- または -
+または
 
 <paramref name="start" /> と <paramref name="length" /> は配列の要素数を超えています。</exception>
         <exception cref="T:System.TypeMismatchException"><paramref name="T" /> は参照型です。<paramref name="array" /> は型 <paramref name="T" /> の配列ではありません。</exception>
@@ -765,7 +765,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <Parameter Name="span" Type="System.Span&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <param name="span">変換するオブジェクト、<see cref="T:System.ReadOnlySpan`1" />します。</param>
+        <param name="span"><see cref="T:System.ReadOnlySpan`1" /> に変換するオブジェクト。</param>
         <summary><see cref="T:System.Span`1" /> から <see cref="T:System.ReadOnlySpan`1" /> への暗黙の型変換を定義します。</summary>
         <returns>現在のインスタンスに対応する読み取り専用スパン。</returns>
         <remarks>To be added.</remarks>
@@ -835,7 +835,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <param name="left">比較対象とする最初のスパン。</param>
         <param name="right">比較対象とする 2 つ目のスパン。</param>
         <summary>2 つの <see cref="T:System.Span`1" /> オブジェクトが等しくないかどうかを示す値を返します。</summary>
-        <returns><see langword="true" /> 場合、2 つ<see cref="T:System.Span`1" />オブジェクトが、それ以外の<see langword="false" />します。</returns>
+        <returns>2 つの <see cref="T:System.Span`1" /> オブジェクトが等しくない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
