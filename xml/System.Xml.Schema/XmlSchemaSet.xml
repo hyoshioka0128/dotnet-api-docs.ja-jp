@@ -1,5 +1,5 @@
 <Type Name="XmlSchemaSet" FullName="System.Xml.Schema.XmlSchemaSet">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d653d8ea89c8f3d403be0112895e62ad6b796a71" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58707897" /></Metadata><TypeSignature Language="C#" Value="public class XmlSchemaSet" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="95c84a65dda349c44d2625e4bd881d75ecddf107" /><Meta Name="ms.sourcegitcommit" Value="0de246131f8a87c71d008d055adec7bf72470c4f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/29/2019" /><Meta Name="ms.locfileid" Value="66301818" /></Metadata><TypeSignature Language="C#" Value="public class XmlSchemaSet" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit XmlSchemaSet extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Xml.Schema.XmlSchemaSet" />
   <TypeSignature Language="VB.NET" Value="Public Class XmlSchemaSet" />
@@ -51,7 +51,11 @@
    
   
 ## Examples  
- <xref:System.Xml.Schema.XmlSchemaSet> に格納されているスキーマを使用して XML ファイルを検証する例を次に示します。 XML ファイル内の名前空間 `urn:bookstore-schema` は、検証に使用する <xref:System.Xml.Schema.XmlSchemaSet> 内のスキーマを特定します。  
+ <xref:System.Xml.Schema.XmlSchemaSet> に格納されているスキーマを使用して XML ファイルを検証する例を次に示します。 XML ファイル内の名前空間 `urn:bookstore-schema` は、検証に使用する <xref:System.Xml.Schema.XmlSchemaSet> 内のスキーマを特定します。 出力の例では、XML ファイルに 2 つのスキーマの違反があることを示しています。
+
+ - 最初の\<book > 要素が含まれています、\<作成者 > 要素が\<タイトル > または\<価格 > 要素。
+
+ - \<作成者 > 最後の要素\<book > 要素が不足している、\<名 > と\<姓 > 要素は、代わりに、無効な\<名 > 要素。   
   
  [!code-cpp[XmlReader_Validate_SchemaSet#1](~/samples/snippets/cpp/VS_Snippets_Data/XmlReader_Validate_SchemaSet/CPP/XmlReader_Validate_SchemaSet.cpp#1)]
  [!code-csharp[XmlReader_Validate_SchemaSet#1](~/samples/snippets/csharp/VS_Snippets_Data/XmlReader_Validate_SchemaSet/CS/validschemaset.cs#1)]
@@ -67,11 +71,6 @@
  **books.xsd:**  
   
  [!code-xml[XmlReader_Validate_SchemaSet#3](~/samples/snippets/xml/VS_Snippets_Data/XmlReader_Validate_SchemaSet/XML/books.xsd#3)]  
-  
-## <a name="output"></a>Output  
- 検証エラー :要素 'book' 名前空間 'urn: bookstore-スキーマ' 名前空間で無効な子要素 'author' があります ' urn: bookstore-スキーマ '。 名前空間 'urn:bookstore-schema' の 'title' が期待されています。  
-  
- 検証エラー :要素 'author' 名前空間 'urn: bookstore-スキーマ' 名前空間で無効な子要素 'name' があります ' urn: bookstore-スキーマ '。 名前空間 'urn:bookstore-schema' の 'first-name' が期待されています。  
   
  ]]></format>
     </remarks>

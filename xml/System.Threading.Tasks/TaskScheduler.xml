@@ -1,5 +1,5 @@
 <Type Name="TaskScheduler" FullName="System.Threading.Tasks.TaskScheduler">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="bba851cfd6f156bb1595db68a433823776e03787" /><Meta Name="ms.sourcegitcommit" Value="2dd0eede6edd6dd3d2aa8f79010848658b967609" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="04/18/2019" /><Meta Name="ms.locfileid" Value="58874892" /></Metadata><TypeSignature Language="C#" Value="public abstract class TaskScheduler" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="6eccab7743830eb390cf2966272244bf716e11b3" /><Meta Name="ms.sourcegitcommit" Value="75eca440f8f4d595506405f48961f38649e160d7" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/01/2019" /><Meta Name="ms.locfileid" Value="66457975" /></Metadata><TypeSignature Language="C#" Value="public abstract class TaskScheduler" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit TaskScheduler extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Threading.Tasks.TaskScheduler" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class TaskScheduler" />
@@ -373,9 +373,9 @@
 ## Remarks  
  派生したクラス<xref:System.Threading.Tasks.TaskScheduler>デバッガーとの統合をサポートするためにこのメソッドを実装します。 デバッガーは、データへのアクセスを要求したときに、.NET Framework はこのメソッドを呼び出すだけです。 列挙型の返されたタスクにアクセスするためのユーティリティをデバッグして走査するこのスケジューラはこの情報は、ユーザー インターフェイスでの表現を提供するデバッガーを有効にすると、現在キューに登録します。  
   
- このメソッドが呼び出されると、その他のすべてのプロセス スレッドが凍結されることに注意してください。 そのため、ブロックにつながる可能性のあるその他のスレッドとの同期を回避するために重要です。 同期が必要に応じて、このメソッドでロックを取得できない場合は、デバッガーが停止しないように例外をスローする必要があります。 次の例では、c# の方法の 1 つを示しています。  
+ このメソッドが呼び出されると、その他のすべてのプロセス スレッドが凍結されることに注意してください。 そのため、ブロックにつながる可能性のあるその他のスレッドとの同期を回避するために重要です。 同期が必要に応じて、このメソッドでロックを取得できない場合は、デバッガーがブロックされないように例外をスローする必要があります。 次の例では、c# の方法の 1 つを示しています。
   
-```  
+```csharp
 protected override IEnumerable<Task> GetScheduledTasks()  
 {  
     bool lockTaken = false;  
