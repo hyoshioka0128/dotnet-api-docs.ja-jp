@@ -1,5 +1,5 @@
 <Type Name="Utf8JsonReader" FullName="System.Text.Json.Utf8JsonReader">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="cfe620a074fff1eeb0f7eccb868308146b5c66e4" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65006712" /></Metadata><TypeSignature Language="C#" Value="public struct Utf8JsonReader" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f992d9ddc5811a697ecad197058d154e3b4fbc4c" /><Meta Name="ms.sourcegitcommit" Value="ef1f0c8985003a14413f66c3de381b8f3b6e4436" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/30/2019" /><Meta Name="ms.locfileid" Value="66380665" /></Metadata><TypeSignature Language="C#" Value="public struct Utf8JsonReader" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Utf8JsonReader extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.Utf8JsonReader" />
   <TypeSignature Language="VB.NET" Value="Public Structure Utf8JsonReader" />
@@ -28,7 +28,9 @@
 `Utf8JsonReader` キャッシュなしの順番に、既定のテキストが厳密に準拠するプロセス、 [JSON RFC](https://tools.ietf.org/html/rfc8259)します。
 
 ときに`Utf8JsonReader`無効な JSON を検出するとがスローされます、<xref:System.Text.Json.JsonReaderException>で行の数とバイトの行の位置などの基本的なエラー情報。
+
 この型は、ref 構造体であるために、非同期を直接サポートしていません。 ただし、再入不完全なデータを読み取るしより多くのデータが表示されたら、閲覧を続行するためのサポートは提供します。
+
 読み取り中に最大の深さを設定またはコメントのスキップを許可のインスタンスを作成できる<xref:System.Text.Json.JsonReaderState>リーダーに渡します。
 
  ]]></format>
@@ -229,9 +231,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.DateTime" /> に解析します。</summary>
+        <returns>UTF-8 でエンコードされたトークン値全体を正常に解析できる場合は日時。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークン値が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
+        <exception cref="T:System.FormatException">JSON トークン値はサポートされていない形式です。 ISO 8601 形式のサブセットのみがサポートされます。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetDateTimeOffset">
@@ -251,9 +255,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.DateTimeOffset" /> に解析します。</summary>
+        <returns>UTF-8 でエンコードされたトークン値全体を正常に解析できる場合は日時の値。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークン値が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
+        <exception cref="T:System.FormatException">JSON トークン値はサポートされていない形式です。 ISO 8601 形式のサブセットのみがサポートされます。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetDecimal">
@@ -339,9 +345,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Guid" /> に解析します。</summary>
+        <returns>UTF-8 でエンコードされたトークン値全体を正常に解析できる場合は GUID の値。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークン値が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
+        <exception cref="T:System.FormatException">JSON トークン値は、GUID でサポートされていない形式です。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetInt32">
@@ -473,9 +481,9 @@ JSON トークン値は、<see cref="F:System.Int64.MinValue" /> 未満の数値
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">トークン値は JSON 文字列ではありません (つまり、<see cref="F:System.Text.Json.JsonTokenType.String" /> または <see cref="F:System.Text.Json.JsonTokenType.PropertyName" /> ではない)。
 
-- または -
+または
 
-JSON 文字列には、無効な utf-8 バイトが含まれています。 または、無効な utf-16 のサロゲートします。</exception>
+JSON 文字列に無効な UTF-8 バイトまたは無効な UTF-16 サロゲートが含まれています。</exception>
         <altmember cref="P:System.Text.Json.Utf8JsonReader.TokenType" />
       </Docs>
     </Member>
@@ -621,7 +629,12 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <remarks>To be added.</remarks>
         <exception cref="T:System.Text.Json.JsonReaderException">無効な JSON トークンが検出されました。
             
-- または -
+または
+
+現在の深度が、最大深度によって設定された再帰の限度を超えています。</exception>
+        <exception cref="T:System.Text.Json.JsonException">JSON RFC では無効な JSON トークンが検出されました。
+        
+または
 
 現在の深度が、最大深度によって設定された再帰の限度を超えています。</exception>
       </Docs>
@@ -645,10 +658,17 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <Parameter Name="otherUtf8Text" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="otherUtf8Text">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="otherUtf8Text">比較対象の UTF-8 でエンコードされたテキスト。</param>
+        <summary>UTF-8 でエンコードされたテキストをソース内のエスケープされていない JSON トークン値と比較し、一致する場合は <see langword="true" /> を返します。</summary>
+        <returns>ソースの JSON トークン値が UTF-8 でエンコードされた検索テキストと一致する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format><![CDATA[
+          
+かどうか、テキスト検索は無効な utf-8 テキストには、メソッドを返します`false`JSON ペイロード内で無効な utf-8 を使用できないためです。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークンは文字列ではありません (つまり、その型は <see cref="F:System.Text.Json.JsonTokenType.String" /> または <see cref="F:System.Text.Json.JsonTokenType.PropertyName" /> 以外です)。</exception>
       </Docs>
     </Member>
     <Member MemberName="TextEquals">
@@ -670,10 +690,17 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <Parameter Name="otherText" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="otherText">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="otherText">比較対象の UTF-16 でエンコードされたテキスト。</param>
+        <summary>UTF-16 でエンコードされたテキストをソース内のエスケープされていない JSON トークン値と比較し、一致する場合は true を返します。</summary>
+        <returns>ソースの JSON トークン値が UTF-16 でエンコードされた検索テキストと一致する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format><![CDATA[
+          
+かどうか、検索テキストが無効または不完全な utf-16 テキスト (対になっていないサロゲート) など、メソッドを返します`false`JSON ペイロード内で無効な utf-16 できないためです。
+            
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">JSON テキストは文字列ではありません (型が <see cref="F:System.Text.Json.JsonTokenType.String" /> または <see cref="F:System.Text.Json.JsonTokenType.PropertyName" /> ではありません)。</exception>
       </Docs>
     </Member>
     <Member MemberName="TokenType">
@@ -716,10 +743,11 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <Parameter Name="value" Type="System.DateTime" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="value">このメソッドから戻るときに、解析された値が格納されます。</param>
+        <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.DateTime" /> に解析します。</summary>
+        <returns>UTF-8 でエンコードされたトークン値全体を <see cref="T:System.DateTime" /> に正常に解析できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークン値が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetDateTimeOffset">
@@ -741,10 +769,11 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <Parameter Name="value" Type="System.DateTimeOffset" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="value">このメソッドから戻るときに、解析された値が格納されます。</param>
+        <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.DateTimeOffset" /> に解析します。</summary>
+        <returns>UTF-8 でエンコードされたトークン値全体を <see cref="T:System.DateTimeOffset" /> に正常に解析できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークン値が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetDecimal">
@@ -820,10 +849,17 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <Parameter Name="value" Type="System.Guid" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="value">このメソッドから戻るときに、解析された値が格納されます。</param>
+        <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Guid" /> に解析します。</summary>
+        <returns>UTF-8 でエンコードされたトークン値全体を <see cref="T:System.Guid" /> に正常に解析できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+このメソッドの解析だけ<xref:System.Guid>ハイフンとは、周囲の装飾なしの値。 
+
+         ]]></format>
+         </remarks>
+         <exception cref="T:System.InvalidOperationException">JSON トークン値が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetInt32">
