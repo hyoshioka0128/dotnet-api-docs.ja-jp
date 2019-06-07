@@ -1,5 +1,5 @@
 <Type Name="Utf8JsonWriter" FullName="System.Text.Json.Utf8JsonWriter">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="b4b7b0497772f410974a25727535fde4953c5d22" /><Meta Name="ms.sourcegitcommit" Value="95e24aee1283af2f120fc5da4b0bdc0712ab698f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/06/2019" /><Meta Name="ms.locfileid" Value="65156013" /></Metadata><TypeSignature Language="C#" Value="public sealed class Utf8JsonWriter : IAsyncDisposable, IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="034cf5e0f42e28ed370f3808a6f6cc66720c30a5" /><Meta Name="ms.sourcegitcommit" Value="ef1f0c8985003a14413f66c3de381b8f3b6e4436" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/30/2019" /><Meta Name="ms.locfileid" Value="66381207" /></Metadata><TypeSignature Language="C#" Value="public sealed class Utf8JsonWriter : IAsyncDisposable, IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Utf8JsonWriter extends System.Object implements class System.IAsyncDisposable, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.Utf8JsonWriter" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Utf8JsonWriter&#xA;Implements IAsyncDisposable, IDisposable" />
@@ -31,8 +31,10 @@
 `Utf8JsonWriter` 書き込みキャッシュなしの順番に、既定のテキストに準拠する、 [JSON RFC](https://tools.ietf.org/html/rfc8259)、を除き、コメントを記述します。
 
 検証が無効な JSON を記述しようとするメソッドがスローされますを有効になっている、<xref:System.InvalidOperationException>コンテキストに固有のエラー メッセージを使用します。
+
 この型が ref 構造体であるため、これは直接サポートしていません async です。 ただし、部分的なデータを書き込むチャンク単位での書き込みを続行して、再入のサポートは提供します。
-インスタンスを作成または検証をスキップするインデントおよび空白文字の出力を書式設定できる、<xref:System.Text.Json.JsonWriterState>でライターに渡すとします。
+
+インスタンスを作成または検証をスキップするインデントおよび空白文字の出力を書式設定できる、<xref:System.Text.Json.JsonWriterOptions>をライターに渡します。
 
  ]]></format>
     </remarks>
@@ -54,10 +56,11 @@
         <Parameter Name="options" Type="System.Text.Json.JsonWriterOptions" />
       </Parameters>
       <Docs>
-        <param name="bufferWriter">To be added.</param>
-        <param name="options">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="bufferWriter">JSON テキストの書き込み先。</param>
+        <param name="options"><see cref="T:System.Text.Json.Utf8JsonWriter" /> のカスタマイズされた動作を定義します。既定では、最小化された JSON (余分な空白なし) を書き込み、書き込まれる JSON が構造上有効であることを JSON RFC に従って検証します。</param>
+        <summary>指定された <see cref="T:System.Buffers.IBufferWriter&lt;System.Byte&gt;" /> を使用して、新しい <see cref="T:System.Text.Json.Utf8JsonWriter" /> インスタンスを構築します。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="bufferWriter" /> は <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -76,10 +79,11 @@
         <Parameter Name="options" Type="System.Text.Json.JsonWriterOptions" />
       </Parameters>
       <Docs>
-        <param name="utf8Json">To be added.</param>
-        <param name="options">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="utf8Json">JSON テキストの書き込み先。</param>
+        <param name="options"><see cref="T:System.Text.Json.Utf8JsonWriter" /> のカスタマイズされた動作を定義します。既定では、最小化された JSON (余分な空白なし) を書き込み、書き込まれる JSON が構造上有効であることを JSON RFC に従って検証します。</param>
+        <summary>指定された <paramref name="utf8Json" /> を使用して、新しい <see cref="T:System.Text.Json.Utf8JsonWriter" /> インスタンスを構築します。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="utf8Json" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="BytesCommitted">
@@ -98,10 +102,17 @@
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="T:System.Text.Json.Utf8JsonWriter" /> の現在のインスタンスについて <see cref="T:System.Text.Json.Utf8JsonWriter" /> によってこれまで出力にコミットされた合計バイト数を取得します。
-これは、<see cref="T:System.Buffers.IBufferWriter`1" /> がどの程度進んだかを示します。</summary>
+        <summary>現在のインスタンスによってこれまで出力にコミットされた合計バイト数を取得します。</summary>
         <value>出力にコミットされたバイトの合計数、<see cref="T:System.Text.Json.Utf8JsonWriter" />これまでにします。</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format><![CDATA[
+          
+場合、 <xref:System.Buffers.IBufferWriter%601>、このプロパティは、IBufferWriter に高度な量を示します。
+
+場合、 <xref:System.IO.Stream>、このプロパティは、データの量がストリームに書き込まれたことを示します。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="BytesPending">
@@ -120,7 +131,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>これまでに <see cref="T:System.Text.Json.Utf8JsonWriter" /> によって書き込まれたバイト数のうち、まだ出力にフラッシュされてコミットされていないバイト数を取得します。</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -174,8 +185,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>まだフラッシュされていない残りの JSON テキストがあればそれをコミットし、現在のインスタンスによって使用されているすべてのリソースを解放します。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+
+Stream の場合、これは、データをストリームに書き込み、フラッシュします。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DisposeAsync">
@@ -198,9 +217,17 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>まだフラッシュされていない残りの JSON テキストがあればそれを非同期的にコミットし、現在のインスタンスによって使用されているすべてのリソースを解放します。</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format><![CDATA[
+          
+IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+          
+Stream の場合、これは、データをストリームに書き込み、フラッシュします。
+            
+            ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Flush">
@@ -220,8 +247,17 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>これまでに書き込まれた JSON テキストをコミットします。これにより出力先で表示できるようになります。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+
+場合<xref:System.IO.Stream>、フラッシュとこのデータをストリームに書き込みます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="FlushAsync">
@@ -242,9 +278,18 @@
       </Parameters>
       <Docs>
         <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>これまでに書き込まれた JSON テキストを非同期的にコミットします。これにより出力先で表示できるようになります。</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format><![CDATA[
+          
+IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+
+場合<xref:System.IO.Stream>、このデータをストリームに書き込み、キャンセル要求を監視しながら、非同期的にフラッシュします。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Options">
@@ -263,7 +308,7 @@
         <ReturnType>System.Text.Json.JsonWriterOptions</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>このインスタンスを使用して JSON を書き込む際のカスタム動作を取得します。これによって、書き込み中に出力をフォーマットするかどうか、および JSON の構造検証をスキップするかどうかが示されます。</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -285,8 +330,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>このインスタンスの内部状態をリセットして、それを再利用できるようにします。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+<xref:System.Text.Json.Utf8JsonWriter>ライターの元のオプションと、元の出力を使用し続けます (か<xref:System.Buffers.IBufferWriter`1>または<xref:System.IO.Stream>) のエクスポート先として。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Reset">
@@ -308,9 +360,17 @@
         <Parameter Name="bufferWriter" Type="System.Buffers.IBufferWriter&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="bufferWriter">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="bufferWriter">JSON テキストの書き込み先。</param>
+        <summary>このインスタンスの内部状態をリセットして、<see cref="T:System.Buffers.IBufferWriter`1" /> の新しいインスタンスで再利用できるようにします。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+<xref:System.Text.Json.Utf8JsonWriter>ライターの元のオプションを使用し続けますが、書き込むようになりました`bufferWriter`新しい変換先として。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="bufferWriter" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Reset">
@@ -332,9 +392,17 @@
         <Parameter Name="utf8Json" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="utf8Json">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8Json">JSON テキストの書き込み先。</param>
+        <summary>このインスタンスの内部状態をリセットして、<see cref="T:System.IO.Stream" /> の新しいインスタンスで再利用できるようにします。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+<xref:System.Text.Json.Utf8JsonWriter>ライターの元のオプションを使用してが今すぐに書き込むには引き続き`utf8Json`新しい変換先として。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="utf8Json" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBoolean">
@@ -357,10 +425,18 @@
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの "true" または "false" として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBoolean">
@@ -383,10 +459,18 @@
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの "true" または "false" として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBoolean">
@@ -409,10 +493,18 @@
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの "true" または "false" として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBooleanValue">
@@ -435,9 +527,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Boolean" /> 値を (JSON リテラル "true" または "false" として) 書き込みます。</summary>
+        <summary>JSON 配列の要素として、<see cref="T:System.Boolean" /> 値 (JSON リテラル "true" または "false" として) を書き込みます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteCommentValue">
@@ -459,9 +551,20 @@
         <Parameter Name="utf8Value" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8Value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8Value">/*..*/ 内に JSON コメントとして書き込まれる、UTF-8 でエンコードされた値。</param>
+        <summary>UTF-8 テキスト値を JSON コメントとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+コメントの値は書き込みの前にエスケープされていません。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。
+        
+または
+
+<paramref name="utf8Value" /> にコメント区切り記号 (つまり */) が含まれています。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteCommentValue">
@@ -483,9 +586,20 @@
         <Parameter Name="value" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">/*..*/ 内に UTF-8 でトランスコードされた JSON コメントとして書き込まれる、UTF-16 でエンコードされた値。</param>
+        <summary>UTF-16 テキスト値を JSON コメントとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+コメントの値は書き込みの前にエスケープされていません。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値は、過大な OR です。
+        
+または
+
+<paramref name="value" /> にコメント区切り記号 (つまり */) が含まれています。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteCommentValue">
@@ -507,9 +621,20 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">/*..*/ 内に UTF-8 でトランスコードされた JSON コメントとして書き込まれる、UTF-16 でエンコードされた値。</param>
+        <summary>文字列テキスト値を JSON コメントとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+コメントの値は書き込みの前にエスケープされていません。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。
+        
+または
+
+<paramref name="value" /> にコメント区切り記号 (つまり */) が含まれています。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteEndArray">
@@ -531,7 +656,7 @@
       <Docs>
         <summary>JSON 配列の終了を書き込みます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteEndObject">
@@ -553,7 +678,7 @@
       <Docs>
         <summary>JSON オブジェクトの終了を書き込みます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNull">
@@ -575,9 +700,17 @@
         <Parameter Name="utf8PropertyName" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、JSON リテラルの "null" を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNull">
@@ -599,9 +732,17 @@
         <Parameter Name="propertyName" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、JSON リテラルの "null" を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNull">
@@ -623,9 +764,17 @@
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <summary>文字列として指定されたプロパティ名と、JSON リテラルの "null" を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNullValue">
@@ -647,7 +796,7 @@
       <Docs>
         <summary>JSON 配列の要素として、JSON リテラル "null" を書き込みます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -670,10 +819,18 @@
         <Parameter Name="value" Type="System.Decimal" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Decimal" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -696,10 +853,18 @@
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Double" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -722,10 +887,18 @@
         <Parameter Name="value" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Int32" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -748,10 +921,18 @@
         <Parameter Name="value" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Int64" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -774,10 +955,18 @@
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Single" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -805,10 +994,18 @@
         <Parameter Name="value" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.UInt32" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -836,10 +1033,18 @@
         <Parameter Name="value" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.UInt64" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -862,10 +1067,18 @@
         <Parameter Name="value" Type="System.Decimal" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Decimal" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -888,10 +1101,18 @@
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Double" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+プロパティ名は、書き込みの前にエスケープされます。
+          
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -914,10 +1135,18 @@
         <Parameter Name="value" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Int32" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -940,10 +1169,18 @@
         <Parameter Name="value" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Int64" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -966,10 +1203,18 @@
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Single" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -997,10 +1242,18 @@
         <Parameter Name="value" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.UInt32" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1028,10 +1281,18 @@
         <Parameter Name="value" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.UInt64" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1054,10 +1315,18 @@
         <Parameter Name="value" Type="System.Decimal" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Decimal" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1080,10 +1349,18 @@
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Double" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1106,10 +1383,18 @@
         <Parameter Name="value" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Int32" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1132,10 +1417,18 @@
         <Parameter Name="value" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Int64" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1158,10 +1451,18 @@
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Single" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1189,10 +1490,18 @@
         <Parameter Name="value" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.UInt32" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1220,10 +1529,18 @@
         <Parameter Name="value" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.UInt64" /> 値 (JSON 数値として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -1246,9 +1563,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 数値として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Decimal" /> 値 (JSON 数値) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.Decimal" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.Decimal" /> 値 (JSON 数値として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.Decimal" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -1271,9 +1588,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 数値として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Double" /> 値 (JSON 数値) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.Double" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.Double" /> 値 (JSON 数値として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.Double" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -1296,9 +1613,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 数値として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Int32" /> 値 (JSON 数値) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.Int32" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.Int32" /> 値 (JSON 数値として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.Int32" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -1321,9 +1638,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 数値として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Int64" /> 値 (JSON 数値) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.Int64" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.Int64" /> 値 (JSON 数値として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.Int64" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -1346,9 +1663,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 数値として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Single" /> 値 (JSON 数値) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.Single" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.Single" /> 値 (JSON 数値として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.Single" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -1376,9 +1693,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 数値として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.UInt32" /> 値 (JSON 数値) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.UInt32" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.UInt32" /> 値 (JSON 数値として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.UInt32" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -1406,9 +1723,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 数値として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.UInt64" /> 値 (JSON 数値) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.UInt64" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.UInt64" /> 値 (JSON 数値として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.UInt64" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまり、' G' など)。 たとえば、32767 です。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartArray">
@@ -1430,11 +1747,11 @@
       <Docs>
         <summary>JSON 配列の先頭を書き込みます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えています。
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
 
-- または -
+または
 
-(検証が有効であっても) 無効な JSON が書き込まれる結果になる場合。</exception>
+検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartArray">
@@ -1456,9 +1773,20 @@
         <Parameter Name="utf8PropertyName" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON 配列の UTF-8 でエンコードされたプロパティ名。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名を含む JSON 配列の先頭をキーとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
+
+または 
+検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartArray">
@@ -1480,9 +1808,20 @@
         <Parameter Name="propertyName" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON 配列の UTF-16 でエンコードされたプロパティ名。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名を含む JSON 配列の先頭をキーとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
+
+または 
+検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartArray">
@@ -1504,9 +1843,20 @@
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON 配列の UTF-16 でエンコードされたプロパティ名。</param>
+        <summary>文字列として指定されたプロパティ名を含む JSON 配列の先頭をキーとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
+
+または 
+検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartObject">
@@ -1528,11 +1878,11 @@
       <Docs>
         <summary>JSON オブジェクトの先頭を書き込みます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えています。
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
 
-- または -
+または
 
-書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartObject">
@@ -1554,9 +1904,20 @@
         <Parameter Name="utf8PropertyName" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名を含む JSON オブジェクトの先頭をキーとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。 
+
+または 
+検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartObject">
@@ -1578,9 +1939,20 @@
         <Parameter Name="propertyName" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名を含む JSON オブジェクトの先頭をキーとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。 
+
+または 
+検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartObject">
@@ -1602,9 +1974,20 @@
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <summary>文字列として指定されたプロパティ名を含む JSON オブジェクトの先頭をキーとして書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。 
+
+または 
+検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1627,10 +2010,18 @@
         <Parameter Name="value" Type="System.DateTime" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-8 プロパティ名と <see cref="T:System.DateTime" /> 値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1653,10 +2044,18 @@
         <Parameter Name="value" Type="System.DateTimeOffset" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-8 プロパティ名と <see cref="T:System.DateTimeOffset" /> 値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1679,10 +2078,18 @@
         <Parameter Name="value" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-8 プロパティ名と <see cref="T:System.Guid" /> 値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1705,10 +2112,18 @@
         <Parameter Name="utf8Value" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="utf8Value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="utf8Value">名前/値ペアの一部として、JSON 文字列として書き込まれる UTF-8 でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-8 プロパティ名と UTF-8 テキスト値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1731,10 +2146,18 @@
         <Parameter Name="value" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-8 プロパティ名と UTF-16 テキスト値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1757,10 +2180,18 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-8 プロパティ名と文字列テキスト値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1783,10 +2214,18 @@
         <Parameter Name="value" Type="System.DateTime" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.DateTime" /> 値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1809,10 +2248,18 @@
         <Parameter Name="value" Type="System.DateTimeOffset" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.DateTimeOffset" /> 値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1835,10 +2282,18 @@
         <Parameter Name="value" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Guid" /> 値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1861,10 +2316,18 @@
         <Parameter Name="utf8Value" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="utf8Value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="utf8Value">名前/値ペアの一部として、JSON 文字列として書き込まれる UTF-8 でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-16 プロパティ名と UTF-8 テキスト値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1887,10 +2350,18 @@
         <Parameter Name="value" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-16 プロパティ名と UTF-16 テキスト値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1913,10 +2384,18 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-16 プロパティ名と文字列テキスト値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1939,10 +2418,18 @@
         <Parameter Name="value" Type="System.DateTime" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.DateTime" /> 値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1965,10 +2452,18 @@
         <Parameter Name="value" Type="System.DateTimeOffset" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.DateTimeOffset" /> 値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -1991,10 +2486,18 @@
         <Parameter Name="value" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Guid" /> 値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティ名は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -2017,10 +2520,18 @@
         <Parameter Name="utf8Value" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="utf8Value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="utf8Value">名前/値ペアの一部として、JSON 文字列として書き込まれる UTF-8 でエンコードされた値。</param>
+        <summary>文字列として指定されたプロパティ名と、UTF-8 テキスト値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -2043,10 +2554,18 @@
         <Parameter Name="value" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>文字列として指定されたプロパティ名と、UTF-16 テキスト値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -2069,10 +2588,18 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>文字列として指定されたプロパティ名と、文字列テキスト値 (JSON 文字列として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+プロパティの名前と値は、書き込みの前にエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名または値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStringValue">
@@ -2095,9 +2622,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 文字列として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.DateTime" /> 値 (JSON 文字列) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.DateTime" />復元可能を使用して (' o ')<see cref="T:System.Buffers.StandardFormat" />します。 たとえば、2017-06-12T05:30:45.7680000 します。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.DateTime" /> 値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.DateTime" />復元可能を使用して (' o ')<see cref="T:System.Buffers.StandardFormat" />します。 たとえば、2017-06-12T05:30:45.7680000 します。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStringValue">
@@ -2120,9 +2647,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 文字列として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.DateTimeOffset" /> 値 (JSON 文字列) を書き込みます。</summary>
-        <remarks>書き込み、<see cref="T:System.DateTimeOffset" />復元可能を使用して (' o ')<see cref="T:System.Buffers.StandardFormat" />します。 たとえば、2017-06-12T05:30:45.7680000-07時 00分です。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.DateTimeOffset" /> 値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>このメソッドは書き込みます、<see cref="T:System.DateTimeOffset" />復元可能を使用して (' o ')<see cref="T:System.Buffers.StandardFormat" />します。 たとえば、2017-06-12T05:30:45.7680000-07時 00分です。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStringValue">
@@ -2145,9 +2672,9 @@
       </Parameters>
       <Docs>
         <param name="value">JSON 配列の一部として、JSON 文字列として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Guid" /> 値 (JSON 文字列) を書き込みます。</summary>
-        <remarks>書き込みます、<see cref="T:System.Guid" />既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまりが ')、フォームと: nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn。</remarks>
-        <exception cref="T:System.InvalidOperationException">書き込み対象の JSON データは (検証が有効であっても) 無効な JSON である場合があります。</exception>
+        <summary>JSON 配列の要素として、<see cref="T:System.Guid" /> 値 (JSON 文字列として) を書き込みます。</summary>
+        <remarks>このメソッドを書き込みます、<see cref="T:System.Guid" />値の既定値を使用して<see cref="T:System.Buffers.StandardFormat" />(つまりが ')、フォームと: nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn。</remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStringValue">
@@ -2169,9 +2696,17 @@
         <Parameter Name="utf8Value" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8Value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8Value">JSON 配列の JSON 文字列要素として書き込まれる UTF-8 でエンコードされた値。</param>
+        <summary>JSON 配列の要素として、UTF-8 テキスト値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+書き込みの前に、値はエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStringValue">
@@ -2193,9 +2728,17 @@
         <Parameter Name="value" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">JSON 配列の UTF-8 でトランスコードされた JSON 文字列要素として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>JSON 配列の要素として、UTF-16 テキスト値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+書き込みの前に、値はエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStringValue">
@@ -2217,9 +2760,17 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">JSON 配列の UTF-8 でトランスコードされた JSON 文字列要素として書き込まれる UTF-16 でエンコードされた値。</param>
+        <summary>JSON 配列の要素として、文字列テキスト値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format><![CDATA[
+
+書き込みの前に、値はエスケープされます。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
   </Members>

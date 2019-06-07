@@ -1,5 +1,5 @@
 <Type Name="PipeWriter" FullName="System.IO.Pipelines.PipeWriter">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="e2f146380d236a95e84925bb8544a9b5b326c911" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="64996759" /></Metadata><TypeSignature Language="C#" Value="public abstract class PipeWriter : System.Buffers.IBufferWriter&lt;byte&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="0b622dc070ab36dcf6b941c734e30c03d2c0237d" /><Meta Name="ms.sourcegitcommit" Value="0de246131f8a87c71d008d055adec7bf72470c4f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/29/2019" /><Meta Name="ms.locfileid" Value="66301875" /></Metadata><TypeSignature Language="C#" Value="public abstract class PipeWriter : System.Buffers.IBufferWriter&lt;byte&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit PipeWriter extends System.Object implements class System.Buffers.IBufferWriter`1&lt;unsigned int8&gt;" />
   <TypeSignature Language="DocId" Value="T:System.IO.Pipelines.PipeWriter" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class PipeWriter&#xA;Implements IBufferWriter(Of Byte)" />
@@ -67,8 +67,8 @@
         <Parameter Name="bytes" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="bytes">書き込まれたバイト数、<see cref="T:System.Span`1" />または<see cref="T:System.Memory`1" />します。</param>
-        <summary>通知、<see cref="T:System.IO.Pipelines.PipeWriter" />を<paramref name="bytes" />バイトが出力に書き込まれた<see cref="T:System.Span`1" />または<see cref="T:System.Memory`1" />します。 新しいバッファーを呼び出した後に要求する必要があります<see cref="M:System.IO.Pipelines.PipeWriter.Advance(System.Int32)" />より多くのデータの書き込みを続行する前に取得したバッファーに書き込むことはできません。</summary>
+        <param name="bytes"><see cref="T:System.Span`1" /> または <see cref="T:System.Memory`1" /> に書き込まれるバイト数。</param>
+        <summary><paramref name="bytes" /> バイトが出力 <see cref="T:System.Span`1" /> または <see cref="T:System.Memory`1" /> に書き込まれたことを <see cref="T:System.IO.Pipelines.PipeWriter" /> に通知します。 さらにデータの書き込みを続けるには、<see cref="M:System.IO.Pipelines.PipeWriter.Advance(System.Int32)" /> を呼び出した後に新しいバッファーを要求する必要があります。前に取得したバッファーに書き込むことはできません。</summary>
         <remarks>To be added.</remarks>
         <inheritdoc />
       </Docs>
@@ -90,7 +90,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>書き込みのみを返します<see cref="T:System.IO.Stream" />をラップする、<see cref="T:System.IO.Pipelines.PipeWriter" />します。</summary>
+        <summary><see cref="T:System.IO.Pipelines.PipeWriter" /> をラップする書き込み専用の <see cref="T:System.IO.Stream" /> を返します。</summary>
         <returns><see cref="T:System.IO.Stream" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -160,9 +160,9 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="dotnet-plat-ext-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">内容のコピー元のストリーム。</param>
+        <param name="source">コンテンツのコピー元になるストリーム。</param>
         <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
-        <summary>非同期的に指定したストリームからバイトを読み取りおよびに書き込む、<see cref="T:System.IO.Pipelines.PipeWriter" />します。</summary>
+        <summary>指定したストリームからバイトを非同期に読み取り、<see cref="T:System.IO.Pipelines.PipeWriter" /> に書き込みます。</summary>
         <returns>非同期のコピー操作を表すタスク。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -185,10 +185,10 @@
         <Parameter Name="writerOptions" Type="System.IO.Pipelines.StreamPipeWriterOptions" Index="1" FrameworkAlternate="dotnet-plat-ext-3.0" />
       </Parameters>
       <Docs>
-        <param name="stream">To be added.</param>
-        <param name="writerOptions">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="stream">パイプの書き込み側がラップするストリーム。</param>
+        <param name="writerOptions">パイプの書き込み側が構成するオプション。</param>
+        <summary>指定した <see cref="T:System.IO.Stream" /> をラップする <see cref="T:System.IO.Pipelines.PipeWriter" /> を作成します。</summary>
+        <returns><see cref="T:System.IO.Stream" /> をラップする <see cref="T:System.IO.Pipelines.PipeWriter" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -240,9 +240,9 @@
         <Parameter Name="sizeHint" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="sizeHint">返される <see cref="T:System.Memory`1" /> の最小の長さ。 0 の場合は、任意のサイズの空でないメモリ バッファーが返されます。</param>
-        <summary>返します、<see cref="T:System.Memory`1" />への書き込みには、少なくともで指定したとおり、要求されたサイズ、<paramref name="sizeHint" />パラメーター。</summary>
-        <returns>メモリ バッファーには少なくとも<paramref name="sizeHint" />バイト。 場合<paramref name="sizeHint" />が 0 の場合、空でない任意のサイズのバッファーを返します。</returns>
+        <param name="sizeHint">返される <see cref="T:System.Memory`1" /> の最小の長さ。 0 の場合、任意のサイズの空でないメモリ バッファーが返されます。</param>
+        <summary>少なくとも <paramref name="sizeHint" /> パラメーターで指定した要求されたサイズを持つ、書き込み先の <see cref="T:System.Memory`1" /> を返します。</summary>
+        <returns>少なくとも <paramref name="sizeHint" /> バイトのメモリ バッファー。 <paramref name="sizeHint" /> が 0 の場合は、任意のサイズの空でないバッファーを返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[
 
@@ -281,9 +281,9 @@
         <Parameter Name="sizeHint" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="sizeHint">返される <see cref="T:System.Span`1" /> の最小の長さ。 0 の場合は、任意のサイズの空でないバッファーが返されます。</param>
-        <summary>返します、<see cref="T:System.Span`1" />への書き込みには、少なくともで指定したとおり、要求されたサイズ、<paramref name="sizeHint" />パラメーター。</summary>
-        <returns>バッファーには少なくとも<paramref name="sizeHint" />バイト。 場合<paramref name="sizeHint" />が 0 の場合、空でない任意のサイズのバッファーを返します。</returns>
+        <param name="sizeHint">返される <see cref="T:System.Span`1" /> の最小の長さ。 0 の場合、任意のサイズの空でないバッファーが返されます。</param>
+        <summary>少なくとも <paramref name="sizeHint" /> パラメーターで指定した要求されたサイズを持つ、書き込み先の <see cref="T:System.Span`1" /> を返します。</summary>
+        <returns>少なくとも <paramref name="sizeHint" /> バイトのバッファー。 <paramref name="sizeHint" /> が 0 の場合は、任意のサイズの空でないバッファーを返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[
 

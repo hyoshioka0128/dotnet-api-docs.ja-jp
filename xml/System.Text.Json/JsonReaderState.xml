@@ -1,5 +1,5 @@
 <Type Name="JsonReaderState" FullName="System.Text.Json.JsonReaderState">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="e25eb568da1b7e99f5288b944f33466544d21080" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65014364" /></Metadata><TypeSignature Language="C#" Value="public struct JsonReaderState" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="134658575824ec7ab34ef310d545b4b8914b9306" /><Meta Name="ms.sourcegitcommit" Value="ef1f0c8985003a14413f66c3de381b8f3b6e4436" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/30/2019" /><Meta Name="ms.locfileid" Value="66380640" /></Metadata><TypeSignature Language="C#" Value="public struct JsonReaderState" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit JsonReaderState extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.JsonReaderState" />
   <TypeSignature Language="VB.NET" Value="Public Structure JsonReaderState" />
@@ -41,9 +41,16 @@
         <Parameter Name="options" Type="System.Text.Json.JsonReaderOptions" />
       </Parameters>
       <Docs>
-        <param name="options">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="options">JSON RFC とは異なる <see cref="T:System.Text.Json.Utf8JsonReader" /> のカスタマイズされた動作を定義します (たとえば、コメントの処理方法、読み取り時に許容される最大深度など)。 既定で、<see cref="T:System.Text.Json.Utf8JsonReader" /> は JSON RFC に厳密に従い (JSON 内のコメントは無効です)、最大 64 の深度まで読み取ります。</param>
+        <summary>新しい <see cref="T:System.Text.Json.JsonReaderState" /> インスタンスを作成します。</summary>
+        <remarks>
+          <format><![CDATA[
+          
+この状態のインスタンスに渡す必要があります、 <xref:System.Text.Json.Utf8JsonReader> JSON データを持つコンス トラクター。 異なり、 <xref:System.Text.Json.Utf8JsonReader>、状態は ref 構造体では、非同期/待機の境界を越えて存続でき、この型がより多くのデータの新しいインスタンスを続行する前に非同期的に読み取りをサポートするために必要なため、<xref:System.Text.Json.Utf8JsonReader>します。
+            
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">最大深度が、正でない値 (&lt; 0) に設定されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="BytesConsumed">

@@ -1,5 +1,5 @@
 <Type Name="PEReaderExtensions" FullName="System.Reflection.Metadata.PEReaderExtensions">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="24f516cc92caebe3d926f835aca27e544e037854" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/25/2018" /><Meta Name="ms.locfileid" Value="39781067" /></Metadata><TypeSignature Language="C#" Value="public static class PEReaderExtensions" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="eaf0b4815c08b5267fbb739b74f1875e4a7d5514" /><Meta Name="ms.sourcegitcommit" Value="9a6da88bd5455e8274257ca7ad259b42f1de114f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/22/2019" /><Meta Name="ms.locfileid" Value="66006290" /></Metadata><TypeSignature Language="C#" Value="public static class PEReaderExtensions" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit PEReaderExtensions extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.Metadata.PEReaderExtensions" />
   <TypeSignature Language="VB.NET" Value="Public Module PEReaderExtensions" />
@@ -7,18 +7,23 @@
   <TypeSignature Language="F#" Value="type PEReaderExtensions = class" />
   <AssemblyInfo>
     <AssemblyName>System.Reflection.Metadata</AssemblyName>
+    <AssemblyVersion>1.0.22.0</AssemblyVersion>
     <AssemblyVersion>1.3.0.0</AssemblyVersion>
     <AssemblyVersion>1.4.1.0</AssemblyVersion>
     <AssemblyVersion>1.4.2.0</AssemblyVersion>
     <AssemblyVersion>1.4.3.0</AssemblyVersion>
+    <AssemblyVersion>1.4.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Attributes>
-    <Attribute FrameworkAlternate="netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1">
+    <Attribute FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;dotnet-uwp-10.0;netcore-3.0">
       <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)</AttributeName>
+    </Attribute>
+    <Attribute FrameworkAlternate="netcore-1.0;netcore-1.1">
+      <AttributeName>System.ComponentModel.EditorBrowsable</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
@@ -35,10 +40,12 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Metadata</AssemblyName>
+        <AssemblyVersion>1.0.22.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.4.1.0</AssemblyVersion>
         <AssemblyVersion>1.4.2.0</AssemblyVersion>
         <AssemblyVersion>1.4.3.0</AssemblyVersion>
+        <AssemblyVersion>1.4.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Metadata.MetadataReader</ReturnType>
@@ -47,10 +54,13 @@
         <Parameter Name="peReader" Type="System.Reflection.PortableExecutable.PEReader" RefType="this" />
       </Parameters>
       <Docs>
-        <param name="peReader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="peReader">現在の <see cref="T:System.Reflection.PortableExecutable.PEReader" /> インスタンス。</param>
+        <summary><see cref="T:System.Reflection.PortableExecutable.PEReader" /> から <see cref="T:System.Reflection.Metadata.MetadataReader" /> を取得します。</summary>
+        <returns>メタデータ リーダー。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="peReader" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.PlatformNotSupportedException">現在のプラットフォームはビッグ エンディアンです。</exception>
+        <exception cref="T:System.IO.IOException">基になるストリームからの読み取り中の入出力エラー。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetMetadataReader">
@@ -62,10 +72,12 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Metadata</AssemblyName>
+        <AssemblyVersion>1.0.22.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.4.1.0</AssemblyVersion>
         <AssemblyVersion>1.4.2.0</AssemblyVersion>
         <AssemblyVersion>1.4.3.0</AssemblyVersion>
+        <AssemblyVersion>1.4.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Metadata.MetadataReader</ReturnType>
@@ -75,11 +87,14 @@
         <Parameter Name="options" Type="System.Reflection.Metadata.MetadataReaderOptions" />
       </Parameters>
       <Docs>
-        <param name="peReader">To be added.</param>
-        <param name="options">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="peReader">現在の <see cref="T:System.Reflection.PortableExecutable.PEReader" /> インスタンス。</param>
+        <param name="options">メタデータの読み取り構成を示す列挙値。</param>
+        <summary><see cref="T:System.Reflection.PortableExecutable.PEReader" /> から、指定したメタデータ読み取り構成でメタデータ リーダーを取得します。</summary>
+        <returns>指定したメタデータ読み取り構成によるメタデータ リーダー。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="peReader" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.PlatformNotSupportedException">現在のプラットフォームはビッグ エンディアンです。</exception>
+        <exception cref="T:System.IO.IOException">基になるストリームからの読み取り中の入出力エラー。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetMetadataReader">
@@ -91,10 +106,12 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Metadata</AssemblyName>
+        <AssemblyVersion>1.0.22.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.4.1.0</AssemblyVersion>
         <AssemblyVersion>1.4.2.0</AssemblyVersion>
         <AssemblyVersion>1.4.3.0</AssemblyVersion>
+        <AssemblyVersion>1.4.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Metadata.MetadataReader</ReturnType>
@@ -105,12 +122,16 @@
         <Parameter Name="utf8Decoder" Type="System.Reflection.Metadata.MetadataStringDecoder" />
       </Parameters>
       <Docs>
-        <param name="peReader">To be added.</param>
-        <param name="options">To be added.</param>
-        <param name="utf8Decoder">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="peReader">現在の <see cref="T:System.Reflection.PortableExecutable.PEReader" /> インスタンス。</param>
+        <param name="options">メタデータの読み取り構成を示す列挙値。</param>
+        <param name="utf8Decoder">エンコード構成によるメタデータ文字列デコーダー。</param>
+        <summary><see cref="T:System.Reflection.PortableExecutable.PEReader" /> から、指定したメタデータ読み取り構成とエンコード構成でメタデータ リーダーを取得します。</summary>
+        <returns>&gt;指定したメタデータ読み取り構成とエンコード構成によるメタデータ リーダー。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="peReader" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="utf8Decoder" /> のエンコードは、<see cref="T:System.Text.UTF8Encoding" /> ではありません。</exception>
+        <exception cref="T:System.PlatformNotSupportedException">現在のプラットフォームはビッグ エンディアンです。</exception>
+        <exception cref="T:System.IO.IOException">基になるストリームからの読み取り中の入出力エラー。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetMethodBody">
@@ -122,10 +143,12 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Metadata</AssemblyName>
+        <AssemblyVersion>1.0.22.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.4.1.0</AssemblyVersion>
         <AssemblyVersion>1.4.2.0</AssemblyVersion>
         <AssemblyVersion>1.4.3.0</AssemblyVersion>
+        <AssemblyVersion>1.4.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Metadata.MethodBodyBlock</ReturnType>
@@ -135,11 +158,15 @@
         <Parameter Name="relativeVirtualAddress" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="peReader">To be added.</param>
-        <param name="relativeVirtualAddress">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="peReader">現在の <see cref="T:System.Reflection.PortableExecutable.PEReader" /> インスタンス。</param>
+        <param name="relativeVirtualAddress">Relative Virtual Address (RVA)。</param>
+        <summary>指定した Relative Virtual Address (RVA) でメソッドの本体ブロックを返します。</summary>
+        <returns>メソッド ブロック本体インスタンス。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="peReader" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.BadImageFormatException">本体が、メタデータに見つからないか、無効です。</exception>
+        <exception cref="T:System.InvalidOperationException">メソッドが格納されているセクションを使用できません。</exception>
+        <exception cref="T:System.IO.IOException">基になるストリームからの読み取り中に IO エラーが発生しました。</exception>
       </Docs>
     </Member>
   </Members>

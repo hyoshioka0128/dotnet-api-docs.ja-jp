@@ -1,5 +1,5 @@
 <Type Name="XmlReadMode" FullName="System.Data.XmlReadMode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="a5a6a6cbf395a227f8a3c516b5cdbb7f1cadcea1" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58693773" /></Metadata><TypeSignature Language="C#" Value="public enum XmlReadMode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="a5f18cde616de164446c89aa573066e2444e6afc" /><Meta Name="ms.sourcegitcommit" Value="9a6da88bd5455e8274257ca7ad259b42f1de114f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/22/2019" /><Meta Name="ms.locfileid" Value="66006353" /></Metadata><TypeSignature Language="C#" Value="public enum XmlReadMode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed XmlReadMode extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Data.XmlReadMode" />
   <TypeSignature Language="VB.NET" Value="Public Enum XmlReadMode" />
@@ -31,11 +31,19 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定するときに、この列挙体のメンバーを使用して、`ReadMode`のパラメーター、<xref:System.Data.DataSet.ReadXml%2A>メソッド。  
+ 設定するときに、この列挙体のメンバーを使用して、`ReadMode`のパラメーター、<xref:System.Data.DataSet.ReadXml%2A?displayProperty=nameWithType>メソッド。  
   
 > [!NOTE]
 >  `Auto` モードが設定よりも遅いことがあります<xref:System.Data.XmlReadMode>オプションを明示的にします。  
+
+`Auto` 最も適切なこれらのアクションを実行します。  
   
+- データが DiffGram の場合は、セットの XML 読み取りモードに`DiffGram`します。  
+
+- かどうか、データセットが既にスキーマまたはドキュメントには、インライン スキーマが含まれています、セット XML 読み取りモードにする`ReadSchema`します。  
+  
+- データセットに既にスキーマがない、ドキュメントには、インライン スキーマが含まれていない場合は、セットの XML 読み取りモードに`InferSchema`します。
+
  ]]></format>
     </remarks>
   </Docs>
@@ -70,25 +78,8 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary>既定モード。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 最も適切なこれらのアクションを実行します。  
-  
- データが DiffGram の場合は、設定`XmlReadMode`に`DiffGram`します。  
-  
- または  
-  
- 設定の場合は、データセットが既にスキーマまたはドキュメントには、インライン スキーマが含まれています、`XmlReadMode`に`ReadSchema`します。  
-  
- または  
-  
- データセットに既にスキーマがない、ドキュメントには、インライン スキーマが含まれていない場合は、設定`XmlReadMode`に`InferSchema`します。  
-  
- ]]></format>
-        </remarks>
+        <summary>既定の読み取りモード。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DiffGram">
@@ -121,15 +112,10 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>DiffGram を読み込んで、変更を DiffGram から <see cref="T:System.Data.DataSet" /> に適用します。 セマンティクスは <see cref="M:System.Data.DataSet.Merge(System.Data.DataSet)" /> 操作の場合と同じです。 <see cref="M:System.Data.DataSet.Merge(System.Data.DataSet)" /> 操作の場合と同様に、<see cref="P:System.Data.DataRow.RowState" /> 値が保存されます。 DiffGram による <see cref="M:System.Data.DataSet.ReadXml(System.Xml.XmlReader)" /> への入力は、<see cref="M:System.Data.DataSet.WriteXml(System.IO.Stream)" /> からの出力を DiffGram として使用する方法によってだけ取得する必要があります。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- ターゲット<xref:System.Data.DataSet>として同一のスキーマを指定する必要があります、<xref:System.Data.DataSet>を<xref:System.Data.DataSet.WriteXml%2A>DiffGram が呼び出されるとします。 それ以外の場合、DiffGram のマージ操作は失敗し、例外がスローされます。  
-  
- ]]></format>
-        </remarks>
+        <summary>DiffGram を読み込んで、変更を DiffGram から <see cref="T:System.Data.DataSet" /> に適用します。 セマンティクスは <see cref="M:System.Data.DataSet.Merge(System.Data.DataSet)" /> 操作の場合と同じです。 <see cref="M:System.Data.DataSet.Merge(System.Data.DataSet)" /> 操作の場合と同様に、<see cref="P:System.Data.DataRow.RowState" /> 値が保存されます。 DiffGram による <see cref="M:System.Data.DataSet.ReadXml(System.Xml.XmlReader)" /> への入力は、<see cref="M:System.Data.DataSet.WriteXml(System.IO.Stream)" /> からの出力を DiffGram として使用する方法によってだけ取得する必要があります。
+        
+ターゲットの <see cref="T:System.Data.DataSet" /> は、DiffGram として <see cref="Overload:System.Data.DataSet.WriteXml" /> が呼び出される <see cref="T:System.Data.DataSet" /> と同じスキーマを持つ必要があります。 それ以外の場合、DiffGram のマージ操作が失敗し、例外がスローされます。</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Fragment">
