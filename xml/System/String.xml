@@ -1,5 +1,5 @@
 <Type Name="String" FullName="System.String">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="6676ee0a2b52df9c1f9272c0a4aa8ee2724fd431" /><Meta Name="ms.sourcegitcommit" Value="9a6da88bd5455e8274257ca7ad259b42f1de114f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/22/2019" /><Meta Name="ms.locfileid" Value="66008760" /></Metadata><TypeSignature Language="C#" Value="public sealed class String : ICloneable, IComparable, IComparable&lt;string&gt;, IConvertible, IEquatable&lt;string&gt;, System.Collections.Generic.IEnumerable&lt;char&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="70291a5c3c71f8edaa754b62b73f6524f4470030" /><Meta Name="ms.sourcegitcommit" Value="f55040f35c19a83c85beb55243330558f6e369be" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/10/2019" /><Meta Name="ms.locfileid" Value="66818647" /></Metadata><TypeSignature Language="C#" Value="public sealed class String : ICloneable, IComparable, IComparable&lt;string&gt;, IConvertible, IEquatable&lt;string&gt;, System.Collections.Generic.IEnumerable&lt;char&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit string extends System.Object implements class System.Collections.Generic.IEnumerable`1&lt;char&gt;, class System.Collections.IEnumerable, class System.ICloneable, class System.IComparable, class System.IComparable`1&lt;string&gt;, class System.IConvertible, class System.IEquatable`1&lt;string&gt;" />
   <TypeSignature Language="DocId" Value="T:System.String" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class String&#xA;Implements ICloneable, IComparable, IComparable(Of String), IConvertible, IEnumerable(Of Char), IEquatable(Of String)" />
@@ -97,7 +97,7 @@
 -   呼び出すことによって、<xref:System.String>クラスのコンス トラクター。 次の例では、いくつかのクラスのコンス トラクターを呼び出すことによって文字列がインスタンス化します。 文字配列またはパラメーターとして符号付きバイト配列へのポインターが含まれてコンス トラクターのいくつかのことに注意してください。 Visual Basic では、これらのコンス トラクターの呼び出しはサポートされません。 詳細については<xref:System.String>コンス トラクターを参照してください、<xref:System.String.%23ctor%2A>コンス トラクターの概要。  
   
      [!code-cpp[System.String.Class.Instantiate#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.string.class.instantiate/cpp/string.instantiate2.cpp#2)]
-     [!code-csharp-interactive[System.String.Class.Instantiate#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.string.class.instantiate/cs/program.cs#2)]
+     [!code-csharp[System.String.Class.Instantiate#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.string.class.instantiate/cs/program.cs#2)]
      [!code-vb[System.String.Class.Instantiate#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.string.class.instantiate/vb/instantiate1.vb#2)]  
   
 -   文字列連結演算子を使用して、(+ (C#) と (& a) または Visual Basic では、+) の任意の組み合わせから 1 つの文字列を作成する<xref:System.String>インスタンスと文字列リテラル。 次の例では、文字列連結演算子の使用を示します。  
@@ -4099,17 +4099,31 @@ Windows オペレーティング システムの並べ替え操作と比較操�
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- <xref:System.String.Copy%2A>メソッドを返します。 を<xref:System.String>オブジェクトを、元の文字列と同じ値が別のオブジェクトの参照を表します。 他のオブジェクトを変数への既存の文字列参照に割り当てる代入演算とは異なります。 この例では、違いを示します。  
+## Remarks
+
+`Copy`メソッドを返します。 を<xref:System.String>オブジェクトを、元の文字列と同じ値が別のオブジェクトの参照を表します。 他のオブジェクトを変数への既存の文字列参照に割り当てる代入演算とは異なります。
+
+> [!IMPORTANT]
+>  .NET Core 3.0 以降、このメソッドが古い形式です。 ただし、任意の .NET 実装での使用お勧めできません。 具体的には、場合によっては .NET Core 3.0 では、文字列のインターン変更されたのため、`Copy`メソッドは、新しい文字列は作成されませんは単に既存の隔離された文字列への参照を返します。   
+
+呼び出す理由に応じて、`Copy`メソッドの代替手段がいくつか。
+
+- 文字列を変更する操作で使用する別の文字列インスタンスを実行する場合に、元の文字列インスタンスを使用します。 文字列は変更できないため文字列操作、新しい文字列インスタンスを作成して、元の文字列でも影響を受けません。 この場合、元の文字列変数への新しい文字列参照割り当てないでください。 具体的な例を次に示します。
+
+  [!code-csharp[Performing a string operation](~/samples/snippets/csharp/api/system/string/copy/program.cs#1)]
+  [!code-vb[Performing a string operation](~/samples/snippets/visualbasic/api/system/string/copy/program.vb#1)]  
   
-   
-  
-## Examples  
- 次の例では、値が異なる 2 つの文字列オブジェクトを作成します。 呼び出し時に、 <xref:System.String.Copy%2A> 2 番目の文字列を最初の値を割り当てるメソッドを出力は、その値と等しくなっていますが、文字列が別のオブジェクト参照を表すことを示します。 その一方で、最初の文字列が 2 番目の文字列に割り当てられると、2 つの文字列値を持つ同じ、同じオブジェクト参照を表すため。  
-  
- [!code-csharp[System.String.Copy#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.string.copy/cs/copy1.cs#1)]
- [!code-vb[System.String.Copy#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.string.copy/vb/copy1.vb#1)]  
-  
+   この場合、呼び出し、`Copy`メソッドを呼び出す前に新しい文字列を作成、<xref:System.String.Substring%2A>メソッドが不必要に新しい文字列インスタンスを作成します。 
+
+- 元の文字列と同じ内容で変更可能なバッファーを作成する場合は、呼び出し、<xref:System.String.ToCharArray%2A?displayProperty=nameWithType>または<xref:System.Text.StringBuilder.%23ctor(System.String)?displayProperty=nameWithType>コンス トラクター。 次に例を示します。
+
+  [!code-csharp[Performing a string operation](~/samples/snippets/csharp/api/system/string/copy/program.cs#2)]
+  [!code-vb[Performing a string operation](~/samples/snippets/visualbasic/api/system/string/copy/program.vb#2)]  
+
+- アンセーフ コードを使用して、文字列の内容を変更してを使用できるように、文字列の変更可能なコピーを作成したい場合<xref:System.Runtime.InteropServices.Marshal.StringToHGlobalUni%2A?displayProperty=nameWithType>メソッド。 次の例では、<xref:System.Runtime.InteropServices.Marshal.StringToHGlobalUni%2A?displayProperty=nameWithType>アンマネージ メモリ内コピーした文字列の場所にポインターを取得するメソッドが 1 つずつ、文字列内の各文字の Unicode コード ポイントをインクリメントし、結果の文字列を管理対象の文字列にコピーします。
+
+  [!code-csharp[Performing a string operation](~/samples/snippets/csharp/api/system/string/copy/program.cs#3)]
+
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="str" /> は <see langword="null" />です。</exception>
@@ -4951,7 +4965,7 @@ Windows オペレーティング システムの並べ替え操作と比較操�
  その値の書式を制御できます。  
   
  [!code-cpp[System.String.Format#36](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.String.Format/cpp/starting2.cpp#36)]
- [!code-csharp-interactive[System.String.Format#36](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/starting2.cs#36)]
+ [!code-csharp[System.String.Format#36](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/starting2.cs#36)]
  [!code-vb[System.String.Format#36](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/starting2.vb#36)]  
   
  書式設定、だけでなく、配置と間隔も制御できます。  
@@ -4989,7 +5003,7 @@ Windows オペレーティング システムの並べ替え操作と比較操�
  次の例は、文字列を保持するために 6 文字のフィールドを定義"Year"と年の一部の文字列だけでなく、15 文字のフィールド"Population"文字列を保持するために、いくつかの人口データ。 文字が右揃え フィールドに注意してください。  
   
  [!code-cpp[System.String.Format#33](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.String.Format/cpp/starting1.cpp#33)]
- [!code-csharp-interactive[System.String.Format#33](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/starting3.cs)]
+ [!code-csharp-interactive[System.String.Format#33](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/starting3.cs#33)]
  [!code-vb[System.String.Format#33](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/starting1.vb#33)]  
   
  ### <a name="controlling-alignment"></a>配置を制御します。  
@@ -5034,7 +5048,7 @@ Windows オペレーティング システムの並べ替え操作と比較操�
  たとえば、次のように通貨値の書式設定の書式指定項目が表示されます。  
   
  [!code-cpp[System.String.Format#12](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.String.Format/cpp/formatsyntax1.cpp#12)]
- [!code-csharp-interactive[System.String.Format#12](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/formatsyntax1.cs#12)]  
+ [!code-csharp[System.String.Format#12](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/formatsyntax1.cs#12)]  
  [!code-vb[System.String.Format#12](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/formatsyntax1.vb#12)]  
 
  書式指定項目には、次の要素があります。  
@@ -5114,7 +5128,7 @@ Windows オペレーティング システムの並べ替え操作と比較操�
  この例では、フォーム x-xxxxx-xx で顧客アカウント番号として整数値を書式設定する書式プロバイダーを定義します。  
   
  [!code-cpp[System.String.Format#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.String.Format/cpp/formatexample2.cpp#2)]
- [!code-csharp-interactive[System.String.Format#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/FormatExample2.cs#2)]
+ [!code-csharp[System.String.Format#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/FormatExample2.cs#2)]
  [!code-vb[System.String.Format#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/FormatExample2.vb#2)]  
   
 <a name="Format7_Example"></a>   
@@ -5126,7 +5140,7 @@ Windows オペレーティング システムの並べ替え操作と比較操�
 -   書式設定するオブジェクトが"R"標準書式指定文字列を使用して書式設定される符号なしバイト値の場合は、カスタム フォーマッタ ローマ数字として、数値の書式設定します。  
   
  [!code-cpp[System.String.Format#11](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.String.Format/cpp/interceptor2.cpp#11)]
- [!code-csharp-interactive[System.String.Format#11](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/interceptor2.cs#11)]
+ [!code-csharp[System.String.Format#11](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/interceptor2.cs#11)]
  [!code-vb[System.String.Format#11](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/interceptor2.vb#11)]  
   
 <a name="QA"></a>   
@@ -5142,12 +5156,12 @@ Windows オペレーティング システムの並べ替え操作と比較操�
 
 次の 2 つのコード例の比較では、文字列の連結と複合書式指定メソッドの呼び出しを挿入文字列の上の優位性を示しています。 次の例では、複数の文字列連結操作の使用には、冗長で読みハード コードが生成されます。
 
-[!code-csharp-interactive[non-interpolated string operations](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/qa-interpolated1.cs)]
+[!code-csharp-interactive[non-interpolated string operations](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/qa-interpolated1.cs#QAInterpolated)]
 [!code-vb[non-interpolated string operations](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/qa-interpolated1.vb)]  
 
 これに対し、次の例で挿入文字列の使用が文字列の連結ステートメントとへの呼び出しよりもはるかにわかりやすくより簡潔なコードを生成、<xref:System.String.Format%2A>前の例のメソッド。
 
-[!code-csharp-interactive[interpolated string operations](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/qa-interpolated2.cs)]
+[!code-csharp-interactive[interpolated string operations](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/qa-interpolated2.cs#QAInterpolated2)]
 [!code-vb[interpolated string operations](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/qa-interpolated2.vb)]  
 
 ### <a name="where-can-i-find-a-list-of-the-predefined-format-strings-that-can-be-used-with-format-items"></a>書式指定項目で使用できる定義済み書式指定文字列の一覧はどこで確認できますか。  
@@ -5421,7 +5435,7 @@ Windows オペレーティング システムの並べ替え操作と比較操�
  引数リストではなく配列として書式設定するオブジェクトを渡すこともできます。  
   
  [!code-cpp[System.String.Format#10](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.String.Format/cpp/format_paramarray1.cpp#10)]
- [!code-csharp-interactive[System.String.Format#10](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/format_paramarray1.cs#10)]
+ [!code-csharp[System.String.Format#10](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.String.Format/cs/format_paramarray1.cs#10)]
  [!code-vb[System.String.Format#10](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.String.Format/vb/format_paramarray1.vb#10)]  
 
  ]]></format>
@@ -11496,7 +11510,7 @@ String 'This is a string.' in domain 'NewDomain': 75CC8236
       <Docs>
         <summary>インスタンスから部分文字列を取得します。  
   
-このメンバーはオーバーロードされます。 構文、使用方法、例など、このメンバーの詳細については、オーバーロード リストで名前をクリックしてください。</summary>
+ このメンバーはオーバーロードされます。 構文、使用方法、例など、このメンバーの詳細については、オーバーロード リストで名前をクリックしてください。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="Substring">
