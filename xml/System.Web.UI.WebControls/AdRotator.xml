@@ -1,5 +1,5 @@
 <Type Name="AdRotator" FullName="System.Web.UI.WebControls.AdRotator">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1deab8d110f0b470dfaf9add7a155828b4f522df" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65014121" /></Metadata><TypeSignature Language="C#" Value="public class AdRotator : System.Web.UI.WebControls.DataBoundControl" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="17abd4ca2bfd73e21385c9fff92e1e9f9ffc7d78" /><Meta Name="ms.sourcegitcommit" Value="f55040f35c19a83c85beb55243330558f6e369be" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/10/2019" /><Meta Name="ms.locfileid" Value="66819144" /></Metadata><TypeSignature Language="C#" Value="public class AdRotator : System.Web.UI.WebControls.DataBoundControl" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AdRotator extends System.Web.UI.WebControls.DataBoundControl" />
   <TypeSignature Language="DocId" Value="T:System.Web.UI.WebControls.AdRotator" />
   <TypeSignature Language="VB.NET" Value="Public Class AdRotator&#xA;Inherits DataBoundControl" />
@@ -88,11 +88,11 @@
 |`Width`|(省略可能) ピクセルのイメージの幅。|  
 |`AlternateText`|によって指定されたイメージとイメージの代わりに、テキストを表示、<xref:System.Web.UI.WebControls.AdCreatedEventArgs.ImageUrl%2A>プロパティは使用できません (省略可能)。<br /><br /> 一部のブラウザーでこのテキストとして表示されます、`ToolTip`の提供情報。|  
 |`Keyword`|(省略可能) でフィルター処理できますが、提供情報 (たとえば、「コンピューター」) のカテゴリ。|  
-|`Impressions`|(省略可能) ファイルの他の広告を基準とする回転のスケジュールで広告の重要度を示す数値。<br /><br /> 大きな数値より多くの場合、広告が表示されます。 すべての合計`<Impressions>`XML ファイル内の値は 2,047,999,999 を超えることはできません*します。* その場合、<xref:System.Web.UI.WebControls.AdRotator>コントロールは、実行時に例外をスローします。|  
+|`Impressions`|(省略可能) ファイルの他の広告を基準とする回転のスケジュールで広告の重要度を示す数値。<br /><br /> 大きな数値より多くの場合、広告が表示されます。 すべての合計`<Impressions>`XML ファイル内の値は 2,047,999,999 を超えることはできません。 その場合、<xref:System.Web.UI.WebControls.AdRotator>コントロールは、実行時に例外をスローします。|  
   
  次の例では、XML 広告ファイルの形式を示します。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>  
@@ -172,7 +172,7 @@
   
  次のコード例では、提供情報については、前の例を含む XML ファイルのファイル形式を示します。 ファイル形式の詳細については、次を参照してください。、<xref:System.Web.UI.WebControls.AdRotator.AdvertisementFile%2A>メンバー。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/image1.jpg</ImageUrl>  
@@ -265,7 +265,7 @@
         <ReturnType>System.Web.UI.WebControls.AdCreatedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ページの前に、表示されるコントロールの作成後にサーバーへのラウンド トリップ、ごとに 1 回に発生します。</summary>
+        <summary>作成されたコントロールがぺージ上に表示されるまでの間、サーバーへのラウンド トリップごとに 1 回発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -292,7 +292,7 @@
   
  次のコード例では、広告情報を含む XML ファイルを書式設定する方法を示します。 XML ファイルの詳細については、次を参照してください。、<xref:System.Web.UI.WebControls.AdRotator.AdvertisementFile%2A>プロパティ。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/image1.jpg</ImageUrl>  
@@ -371,7 +371,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または広告情報を含む XML ファイルへのパスを設定します。</summary>
+        <summary>広告情報を含む XML ファイルのパスを取得または設定します。</summary>
         <value>広告情報を含む XML ファイルの場所。 既定値は、空の文字列 ("") です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -418,7 +418,7 @@
   
  次のコード例では、XML 広告ファイルのファイル形式を示します。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/image1.jpg</ImageUrl>  
@@ -471,8 +471,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定の代わりに使用するカスタム データ フィールド、<see langword="AlternateText" />提供情報の属性。</summary>
-        <value>提供情報の代替テキストが格納されているフィールドを識別する名前。 既定値は"alternatetext"とです。</value>
+        <summary>広告の <see langword="AlternateText" /> 属性の代わりに使用するカスタム データ フィールドを取得または設定します。</summary>
+        <value>広告の代替テキストが格納されているフィールドを識別する名前。 既定値は "AlternateText" です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -489,7 +489,7 @@
   
  前の例のサンプルの XML データを次に示します。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/ad1.gif</ImageUrl>  
@@ -576,7 +576,7 @@
       </ReturnValue>
       <Docs>
         <summary>広告バナー コントロールに関連付けられたフォント プロパティを取得します。</summary>
-        <value>A<see cref="T:System.Web.UI.WebControls.FontInfo" />コントロールのフォント プロパティを表すオブジェクト。</value>
+        <value>コントロールのフォント プロパティを表す <see cref="T:System.Web.UI.WebControls.FontInfo" /> オブジェクト。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -602,8 +602,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定の代わりに使用するカスタム データ フィールド、<see langword="ImageUrl" />提供情報の属性。</summary>
-        <value>広告に表示されるイメージの URL が格納されているフィールドを識別する名前。 既定値は"imageurl"とです。</value>
+        <summary>広告の <see langword="ImageUrl" /> 属性の代わりに使用するカスタム データ フィールドを取得または設定します。</summary>
+        <value>広告に表示されるイメージの URL が格納されているフィールドを識別する名前。 既定値は "ImageUrl" です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -620,7 +620,7 @@
   
  前の例のサンプルの XML データを次に示します。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/ad1.gif</ImageUrl>  
@@ -682,8 +682,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定のカテゴリ キーワードを XML 広告ファイル内の提供情報の特定の種類をフィルター処理します。</summary>
-        <value>XML 広告ファイル内の提供情報の特定の種類をフィルター処理するキーワード。 既定値は、空の文字列 ("") です。</value>
+        <summary>XML 広告ファイル内の特定のタイプの広告をフィルター処理するためのカテゴリ キーワードを取得または設定します。</summary>
+        <value>XML 広告ファイル内の特定のタイプの広告をフィルター処理するためのキーワード。 既定値は、空の文字列 ("") です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -708,7 +708,7 @@
   
  次のコード例では、XML 広告ファイル内の各提供情報のキーワードを指定する方法を示します。 ファイル形式の詳細については、次を参照してください。、<xref:System.Web.UI.WebControls.AdRotator.AdvertisementFile%2A>メンバー。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/image1.jpg</ImageUrl>  
@@ -760,8 +760,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定の代わりに使用するカスタム データ フィールド、<see langword="NavigateUrl" />提供情報の属性。</summary>
-        <value>ときの移動先ページの URL を含むフィールドを識別する名前、<see cref="T:System.Web.UI.WebControls.AdRotator" />コントロールがクリックされました。 既定値は"navigateurl"とです。</value>
+        <summary>広告の <see langword="NavigateUrl" /> 属性の代わりに使用するカスタム データ フィールドを取得または設定します。</summary>
+        <value><see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールがクリックされたときの移動先ページの URL を格納しているフィールドを識別する名前。 既定値は "NavigateUrl" です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -778,7 +778,7 @@
   
  前の例のサンプルの XML データを次に示します。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/ad1.gif</ImageUrl>  
@@ -835,7 +835,7 @@
       </Parameters>
       <Docs>
         <param name="e">イベント データを格納している <see cref="T:System.Web.UI.WebControls.AdCreatedEventArgs" />。</param>
-        <summary><see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールの <see cref="E:System.Web.UI.WebControls.AdRotator.AdCreated" /> イベントを発生させます。</summary>
+        <summary><see cref="E:System.Web.UI.WebControls.AdRotator.AdCreated" /> コントロールの <see cref="T:System.Web.UI.WebControls.AdRotator" /> イベントを発生させます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -854,7 +854,7 @@
   
  次のコード例では、広告情報を含む XML ファイルを書式設定する方法を示します。 XML ファイルの詳細については、次を参照してください。、<xref:System.Web.UI.WebControls.AdRotator.AdvertisementFile%2A>プロパティ。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/image1.jpg</ImageUrl>  
@@ -937,7 +937,7 @@
       </Parameters>
       <Docs>
         <param name="e">イベント データを格納する <see cref="T:System.EventArgs" /> オブジェクト。</param>
-        <summary>表示する広告情報は取得ファイル データを検索または、ユーザー イベントを呼び出しています。</summary>
+        <summary>ファイル データを検索するか、ユーザー イベントを呼び出して、表示する広告情報を取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -974,7 +974,7 @@
         <Parameter Name="data" Type="System.Collections.IEnumerable" Index="0" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="data">データ ソースを表すオブジェクトこのオブジェクトを実装する必要があります、<see cref="T:System.Collections.IEnumerable" />インターフェイス。</param>
+        <param name="data">データ ソースを表すオブジェクト。このオブジェクトは <see cref="T:System.Collections.IEnumerable" /> インターフェイスを実装する必要があります。</param>
         <summary>指定したデータ ソースを <see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールにバインドします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1008,7 +1008,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>関連付けられているデータ ソースからの広告データを取得します。</summary>
+        <summary>広告データを関連付けられているデータ ソースから取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1044,7 +1044,7 @@
         <Parameter Name="writer" Type="System.Web.UI.HtmlTextWriter" />
       </Parameters>
       <Docs>
-        <param name="writer">A<see cref="T:System.Web.UI.HtmlTextWriter" />クライアントに表示する出力ストリームを格納しています。</param>
+        <param name="writer">クライアントに表示する出力ストリームを格納している <see cref="T:System.Web.UI.HtmlTextWriter" />。</param>
         <summary>クライアントに <see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールを表示します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1085,8 +1085,8 @@
         <ReturnType>System.Web.UI.HtmlTextWriterTag</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>HTML タグを取得、<see cref="T:System.Web.UI.WebControls.AdRotator" />コントロール。</summary>
-        <value><see cref="T:System.Web.UI.HtmlTextWriterTag" />の HTML タグを表す列挙値、<see cref="T:System.Web.UI.WebControls.AdRotator" />コントロール。</value>
+        <summary><see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールの HTML タグを取得します。</summary>
+        <value><see cref="T:System.Web.UI.HtmlTextWriterTag" /> コントロールの HTML タグを表す <see cref="T:System.Web.UI.WebControls.AdRotator" /> 列挙体の値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1128,8 +1128,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ときにリンクされたブラウザー ウィンドウまたは Web ページの内容を表示するフレームの名前を取得または設定、<see cref="T:System.Web.UI.WebControls.AdRotator" />コントロールがクリックされました。</summary>
-        <value>ブラウザーのウィンドウまたはフレームの Web ページの内容を表示するときにリンクされている、<see cref="T:System.Web.UI.WebControls.AdRotator" />コントロールがクリックされました。 既定値は空の文字列 ("") です。フォーカスのあるウィンドウまたはフレームが更新されます。</value>
+        <summary><see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールがクリックされたときのリンク先 Web ページの内容を表示するブラウザーのウィンドウまたはフレームの名前を取得または設定します。</summary>
+        <value><see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールがクリックされたときのリンク先 Web ページの内容を表示するブラウザーのウィンドウまたはフレーム。 既定値は空の文字列 ("") です。フォーカスのあるウィンドウまたはフレームが更新されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1162,7 +1162,7 @@
   
  次のコード例では、広告情報を含む XML ファイルのファイル形式を示します。 ファイル形式の詳細については、次を参照してください。、<xref:System.Web.UI.WebControls.AdRotator.AdvertisementFile%2A>メンバー。  
   
-```  
+```xml
 <Advertisements>  
   <Ad>  
     <ImageUrl>~/Images/image1.jpg</ImageUrl>  
@@ -1209,8 +1209,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>階層的に修飾、一意の識別子を取得、<see cref="T:System.Web.UI.WebControls.AdRotator" />コントロール。</summary>
-        <value>サーバー コントロールの完全修飾識別子です。</value>
+        <summary>階層構造で修飾された <see cref="T:System.Web.UI.WebControls.AdRotator" /> コントロールの一意の ID を取得します。</summary>
+        <value>サーバー コントロールの完全修飾 ID。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

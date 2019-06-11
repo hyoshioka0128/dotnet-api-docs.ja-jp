@@ -1,5 +1,5 @@
 <Type Name="PnrpPermission" FullName="System.Net.PeerToPeer.PnrpPermission">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7eb19c1a4766825699a4a0659d4cb7fec6503ba2" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56762912" /></Metadata><TypeSignature Language="C#" Value="public sealed class PnrpPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="35cc6e54bceafd19f471a8b506b673d622c5f5b6" /><Meta Name="ms.sourcegitcommit" Value="ddce15914650a504a7399d539ac1f7cfed3c2caa" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/07/2019" /><Meta Name="ms.locfileid" Value="66759932" /></Metadata><TypeSignature Language="C#" Value="public sealed class PnrpPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit PnrpPermission extends System.Security.CodeAccessPermission implements class System.Security.Permissions.IUnrestrictedPermission" />
   <TypeSignature Language="DocId" Value="T:System.Net.PeerToPeer.PnrpPermission" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PnrpPermission&#xA;Inherits CodeAccessPermission&#xA;Implements IUnrestrictedPermission" />
@@ -37,7 +37,7 @@
 ## Remarks  
  既定のアクセス許可は、すべてのローカルおよび PNRP サービスにアクセスするイントラネット ゾーンのアプリケーションです。 既定のアクセス許可が変更されていない場合、すべてのリンク ローカルおよびサイト ローカル アプリケーション、ピア ツー ピア サービスにアクセスできますが、グローバル (インターネット) アプリケーションからはアクセスできません。  
   
- この型のインスタンスがある 2 つのアクセス許可の状態: これらのリソースに無制限にフル アクセスまたはか、アクセス許可によって保護されているリソースへのアクセスを持っていません。  
+ この型のインスタンスがある 2 つのアクセス許可の状態: これらのリソースに無制限にフル アクセスまたはか、アクセス許可によって保護されたリソースへのアクセスを持っていません。  
   
  ]]></format>
     </remarks>
@@ -223,7 +223,7 @@
   
 -   X.Intersect(Y) は、Y.Intersect(X) と同じ値を返します。  
   
--   X.Intersect (、`null`参照 (`Nothing` Visual Basic)) を返します、`null`参照 (`Nothing` Visual Basic で)。  
+-   X.Intersect (、`null`参照 (`Nothing` Visual basic)) を返します、`null`参照 (`Nothing` Visual Basic で)。  
   
  ]]></format>
         </remarks>
@@ -266,19 +266,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在<xref:System.Net.PeerToPeer.PnrpPermission>指定したアクセス許可のサブセットである場合、現在のアクセス許可を指定した権限によって完全に含まれる一連の操作を指定します。 アクセスを表すアクセス許可などの"*C:\example.txt*「へのアクセスを表すアクセス許可のサブセットは」*c:\\*"。 このメソッドが戻る場合`true`、現在のアクセス許可がない以上へのアクセスが保護されたリソースは、指定した権限を表します。  
+
+現在<xref:System.Net.PeerToPeer.PnrpPermission>指定したアクセス許可のサブセットである場合、現在のアクセス許可を指定した権限によって完全に含まれる一連の操作を指定します。 アクセスを表すアクセス許可などの"*C:\example.txt*「へのアクセスを表すアクセス許可のサブセットは」*c:\\*"。 このメソッドが戻る場合`true`、現在のアクセス許可がない以上へのアクセスが保護されたリソースは、指定した権限を表します。  
   
- 次のステートメントは、する必要がある`true`IsSubsetOf メソッドのすべての実装。 X、Y、および Z の表す<xref:System.Security.IPermission>はないオブジェクトを`null`参照 (`Nothing` Visual Basic で)。  
+次のステートメントは、する必要がある`true`IsSubsetOf メソッドのすべての実装。 X、Y、および Z の表す<xref:System.Security.IPermission>はないオブジェクトを`null`参照 (`Nothing` Visual Basic で)。
+
+- `X.IsSubsetOf(X)` は、`true` を返します。
+
+- `X.IsSubsetOf(Y)` 同じ値を返します`Y.IsSubsetOf(X)`X および Y が同じアクセス許可のセットを表す場合にのみです。
+
+- 場合`X.IsSubsetOf(Y)`と`Y.IsSubsetOf(Z)`両方を返す`true`、`X.IsSubsetOf(Z)`返します`true`します。
   
--   X.IsSubsetOf(X) 返します`true`します。  
-  
--   X および Y が同じアクセス許可のセットを表す場合にのみ、X.IsSubsetOf(Y) は Y.IsSubsetOf(X) と同じ値を返します。  
-  
--   X.IsSubsetOf(Y) と Y.IsSubsetOf(Z) 両方を返す場合`true`、X.IsSubsetOf(Z) 返します`true`します。  
-  
--  
-  
- X がのアクセス許可の状態を持つ空 IPermission オブジェクトを表すかどうか*None* Y が IPermission のオブジェクトを表し、`null`参照 (`Nothing` Visual Basic で)、X.IsSubsetOf(Y) を返します`true`します。 Z が空のアクセス許可もある場合、複合設定操作 X.Union(Z) です。IsSubsetOf(Y) も返します`true`ため、<xref:System.Net.PeerToPeer.PnrpPermission.Union%2A>空のアクセス許可は、2 つの空のアクセス許可。  
+X は、空を表している場合<xref:System.Security.IPermission>オブジェクトのアクセス許可の状態を*None*、Y 表します、<xref:System.Security.IPermission>オブジェクトを`null`参照 (`Nothing` Visual Basic で)、 `X.IsSubsetOf(Y)` を返します`true`. 複合の設定操作も Z が空のアクセス許可の場合は、`X.Union(Z).IsSubsetOf(Y)`も返します`true`ため、<xref:System.Net.PeerToPeer.PnrpPermission.Union%2A>空のアクセス許可は、2 つの空のアクセス許可。
   
  ]]></format>
         </remarks>
@@ -403,7 +402,7 @@
   
 -   X.Union(Y) は、Y.Union(X) によって返されるオブジェクトと同じ値を持つオブジェクトを返します。  
   
--   X.Union (、`null`参照 (`Nothing` Visual Basic)) を同じ X 値を持つオブジェクトを返します。  
+-   X.Union (、`null`参照 (`Nothing` Visual basic)) を同じ X 値を持つオブジェクトを返します。  
   
  ]]></format>
         </remarks>

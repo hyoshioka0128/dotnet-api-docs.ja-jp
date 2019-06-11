@@ -1,5 +1,5 @@
 <Type Name="Application" FullName="System.Windows.Application">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="49de4dab9ea26712375d19c72600f630203d96ad" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65004149" /></Metadata><TypeSignature Language="C#" Value="public class Application : System.Windows.Threading.DispatcherObject, System.Windows.Markup.IQueryAmbient" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="fae2d9443188f70f27cb5e0236bd13a172e59602" /><Meta Name="ms.sourcegitcommit" Value="a9b8eb12d69b131f7c0de74d471798e44e863282" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/04/2019" /><Meta Name="ms.locfileid" Value="66502050" /></Metadata><TypeSignature Language="C#" Value="public class Application : System.Windows.Threading.DispatcherObject, System.Windows.Markup.IQueryAmbient" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi Application extends System.Windows.Threading.DispatcherObject implements class System.Windows.Markup.IQueryAmbient" />
   <TypeSignature Language="DocId" Value="T:System.Windows.Application" />
   <TypeSignature Language="VB.NET" Value="Public Class Application&#xA;Inherits DispatcherObject&#xA;Implements IQueryAmbient" />
@@ -96,7 +96,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">1 つ以上のインスタンス、<see cref="T:System.Windows.Application" />あたりクラスが作成される<see cref="T:System.AppDomain" />します。</exception>
+        <exception cref="T:System.InvalidOperationException">1 つの <see cref="T:System.Windows.Application" /> に対して、<see cref="T:System.AppDomain" /> クラスのインスタンスが複数作成されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Activated">
@@ -116,7 +116,7 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>アプリケーションがフォア グラウンド アプリケーションになったときに発生します。</summary>
+        <summary>アプリケーションが前面のアプリケーションになったときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -175,8 +175,8 @@
         <ReturnType>System.Windows.Application</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、 <see cref="T:System.Windows.Application" /> 、現在のオブジェクト<see cref="T:System.AppDomain" />します。</summary>
-        <value><see cref="T:System.Windows.Application" /> 、現在のオブジェクト<see cref="T:System.AppDomain" />します。</value>
+        <summary>現在の <see cref="T:System.Windows.Application" /> の <see cref="T:System.AppDomain" /> オブジェクトを取得します。</summary>
+        <value>現在の <see cref="T:System.Windows.Application" /> の <see cref="T:System.AppDomain" /> オブジェクト。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -206,7 +206,7 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>アプリケーションが前面のアプリケーションを停止したときに発生します。</summary>
+        <summary>アプリケーションが前面のアプリケーションではなくなったときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -256,7 +256,7 @@
         <ReturnType>System.Windows.Threading.DispatcherUnhandledExceptionEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>例外は、アプリケーションによってスローされたが、処理されない場合に発生します。</summary>
+        <summary>アプリケーションによってスローされた例外が処理されないときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -318,7 +318,7 @@
         <ReturnType>System.Windows.ExitEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>アプリケーションがシャット ダウンし、キャンセルできません直前に発生します。</summary>
+        <summary>アプリケーションがシャットダウンする直前に発生し、キャンセルできません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -394,7 +394,7 @@
       <Docs>
         <param name="resourceKey">検索するリソースの名前。</param>
         <summary>指定したキーを持つ [!INCLUDE[TLA#tla_ui](~/includes/tlasharptla-ui-md.md)] リソース (<see cref="T:System.Windows.Style" /> や <see cref="T:System.Windows.Media.Brush" /> など) を検索します。要求したリソースが見つからない場合は例外がスローされます (「[XAML Resources (XAML リソース)](~/docs/framework/wpf/advanced/xaml-resources.md)」を参照)。</summary>
-        <returns>要求されたリソース オブジェクト。 要求されたリソースが見つからない場合、<see cref="T:System.Windows.ResourceReferenceKeyNotFoundException" />がスローされます。</returns>
+        <returns>要求されたリソース オブジェクト。 要求したリソースが見つからない場合は、<see cref="T:System.Windows.ResourceReferenceKeyNotFoundException" /> がスローされます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -418,7 +418,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Windows.ResourceReferenceKeyNotFoundException">リソースが見つかりません。</exception>
+        <exception cref="T:System.Windows.ResourceReferenceKeyNotFoundException">リソースが見つかりませんでした。</exception>
         <altmember cref="M:System.Windows.Application.TryFindResource(System.Object)" />
       </Docs>
     </Member>
@@ -439,7 +439,7 @@
         <ReturnType>System.Windows.Navigation.FragmentNavigationEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>アプリケーションのナビゲーターは、コンテンツ フラグメントへのナビゲーションを開始すると発生ナビゲーションがすぐに発生した理由は、目的のフラグメントが現在のコンテンツ ソースの後に場合[!INCLUDE[TLA2#tla_titlexaml](~/includes/tla2sharptla-titlexaml-md.md)]目的のフラグメントが別の場合、コンテンツが読み込まれましたコンテンツ。</summary>
+        <summary>アプリケーションのナビゲーターがコンテンツ フラグメントへのナビゲーションを開始すると発生します。ナビゲーションは、目的のフラグメントが現在のコンテンツにある場合はすぐに発生し、目的のフラグメントが別のコンテンツにある場合は、ソース [!INCLUDE[TLA2#tla_titlexaml](~/includes/tla2sharptla-titlexaml-md.md)] コンテンツが読み込まれた後に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -483,9 +483,9 @@
         <Parameter Name="uriContent" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="uriContent">相対<see cref="T:System.Uri" />loose リソースにマッピングします。</param>
+        <param name="uriContent">Loose リソースにマッピングする相対 <see cref="T:System.Uri" />。</param>
         <summary>指定した <see cref="T:System.Uri" /> にあるコンテンツ データ ファイル (「[WPF Application Resource, Content, and Data Files (WPF アプリケーション リソース、コンテンツおよびデータ ファイル)](~/docs/framework/wpf/app-development/wpf-application-resource-content-and-data-files.md)」を参照) のリソース ストリームを返します。</summary>
-        <returns>A <see cref="T:System.Windows.Resources.StreamResourceInfo" /> 、指定した位置にあるコンテンツ データ ファイルを格納している<see cref="T:System.Uri" />します。 Loose リソースが見つからない場合は、null が返されます。</returns>
+        <returns>指定した <see cref="T:System.Windows.Resources.StreamResourceInfo" /> にあるコンテンツ データ ファイルを格納している <see cref="T:System.Uri" />。 Loose リソースが見つからない場合は null が返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -494,8 +494,8 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><see cref="T:System.Uri" />に渡される<see cref="M:System.Windows.Application.GetContentStream(System.Uri)" />が null です。</exception>
-        <exception cref="T:System.ArgumentException"><see cref="T:System.Uri" />に渡される<see cref="M:System.Windows.Application.GetContentStream(System.Uri)" />は絶対<see cref="T:System.Uri" />します。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="T:System.Uri" /> に渡される <see cref="M:System.Windows.Application.GetContentStream(System.Uri)" /> は null です。</exception>
+        <exception cref="T:System.ArgumentException"><see cref="T:System.Uri" /> に渡される <see cref="M:System.Windows.Application.GetContentStream(System.Uri)" /> は、絶対 <see cref="T:System.Uri" /> です。</exception>
         <altmember cref="M:System.Windows.Application.GetResourceStream(System.Uri)" />
         <altmember cref="M:System.Windows.Application.GetRemoteStream(System.Uri)" />
         <altmember cref="Overload:System.Windows.Application.LoadComponent" />
@@ -520,9 +520,9 @@
         <Parameter Name="uri" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="uri"><see cref="T:System.Uri" /> Cookie が作成された場所を指定します。</param>
-        <summary>指定された場所のクッキーを取得、<see cref="T:System.Uri" />します。</summary>
-        <returns>A<see cref="T:System.String" />値、cookie が存在する場合、それ以外の場合、<see cref="T:System.ComponentModel.Win32Exception" />がスローされます。</returns>
+        <param name="uri">クッキーが作成された場所を指定する <see cref="T:System.Uri" />。</param>
+        <summary><see cref="T:System.Uri" /> で指定した場所のクッキーを取得します。</summary>
+        <returns>クッキーが存在する場合は <see cref="T:System.String" /> 値が返されます。それ以外の場合は <see cref="T:System.ComponentModel.Win32Exception" /> がスローされます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -564,9 +564,9 @@
         <Parameter Name="uriRemote" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="uriRemote"><see cref="T:System.Uri" />起点サイトに loose リソースにマッピングします。</param>
+        <param name="uriRemote">起点サイトの Loose リソースにマッピングする <see cref="T:System.Uri" />。</param>
         <summary>指定した <see cref="T:System.Uri" /> にある元のサイトに対するデータ ファイル (「[WPF Application Resource, Content, and Data Files (WPF アプリケーション リソース、コンテンツおよびデータ ファイル)](~/docs/framework/wpf/app-development/wpf-application-resource-content-and-data-files.md)」を参照) のリソース ストリームを返します。</summary>
-        <returns>A<see cref="T:System.Windows.Resources.StreamResourceInfo" />リソース ストリームを指定した位置にある起点サイト データ ファイルを格納している<see cref="T:System.Uri" />します。 Loose リソースが見つからない場合<see langword="null" />が返されます。</returns>
+        <returns>指定した <see cref="T:System.Windows.Resources.StreamResourceInfo" /> にある起点サイト データ ファイルのリソース ストリームを格納している <see cref="T:System.Uri" />。 Loose リソースが見つからない場合は <see langword="null" /> が返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -575,7 +575,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><see cref="T:System.Uri" />に渡される<see cref="M:System.Windows.Application.GetRemoteStream(System.Uri)" />が null です。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="T:System.Uri" /> に渡される <see cref="M:System.Windows.Application.GetRemoteStream(System.Uri)" /> は null です。</exception>
         <exception cref="T:System.ArgumentException"><see cref="M:System.Windows.Application.GetRemoteStream(System.Uri)" /> に渡される <see cref="T:System.Uri" /> は相対参照ではなく絶対参照の形式ですが、<c>pack://siteoforigin:,,,/</c> の形式ではありません。</exception>
         <altmember cref="M:System.Windows.Application.GetContentStream(System.Uri)" />
         <altmember cref="M:System.Windows.Application.GetResourceStream(System.Uri)" />
@@ -607,9 +607,9 @@
         <Parameter Name="uriResource" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="uriResource"><see cref="T:System.Uri" />埋め込みリソースにマップされます。</param>
+        <param name="uriResource">埋め込みリソースにマッピングする <see cref="T:System.Uri" />。</param>
         <summary>指定した <see cref="T:System.Uri" /> にあるリソース データ ファイル (「[WPF Application Resource, Content, and Data Files (WPF アプリケーション リソース、コンテンツおよびデータ ファイル)](~/docs/framework/wpf/app-development/wpf-application-resource-content-and-data-files.md)」を参照) のリソース ストリームを返します。</summary>
-        <returns>A<see cref="T:System.Windows.Resources.StreamResourceInfo" />リソース ストリームを指定した位置にあるリソース データ ファイルを格納している<see cref="T:System.Uri" />します。</returns>
+        <returns>指定した <see cref="T:System.Windows.Resources.StreamResourceInfo" /> にあるリソース データ ファイルのリソース ストリームを格納している <see cref="T:System.Uri" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -618,9 +618,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><see cref="T:System.Uri" />に渡される<see cref="M:System.Windows.Application.GetResourceStream(System.Uri)" />が null です。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="T:System.Uri" /> に渡される <see cref="M:System.Windows.Application.GetResourceStream(System.Uri)" /> は null です。</exception>
         <exception cref="T:System.ArgumentException"><see cref="M:System.Windows.Application.GetResourceStream(System.Uri)" /> に渡される <see cref="T:System.Uri" /> は相対参照ではなく絶対参照の形式ですが、<c>pack://application:,,,/</c> の形式ではありません。</exception>
-        <exception cref="T:System.IO.IOException"><see cref="T:System.Uri" />に渡される<see cref="M:System.Windows.Application.GetResourceStream(System.Uri)" />が見つかりません。</exception>
+        <exception cref="T:System.IO.IOException"><see cref="T:System.Uri" /> に渡される <see cref="M:System.Windows.Application.GetResourceStream(System.Uri)" /> が見つかりません。</exception>
         <altmember cref="M:System.Windows.Application.GetContentStream(System.Uri)" />
         <altmember cref="M:System.Windows.Application.GetRemoteStream(System.Uri)" />
         <altmember cref="Overload:System.Windows.Application.LoadComponent" />
@@ -671,7 +671,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>読み込み、 [!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)] 、指定した位置にあるファイル[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]します。</summary>
+        <summary>指定した[!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)] にある [!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] ファイルを読み込みます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -709,8 +709,8 @@
       </Parameters>
       <Docs>
         <param name="resourceLocator">相対 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] ファイルにマップする <see cref="T:System.Uri" />。</param>
-        <summary>読み込み、 [!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)] 、指定した位置にあるファイル[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]のルート要素で指定されたオブジェクトのインスタンスに変換します、[!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)]ファイル。</summary>
-        <returns>XAML ファイルで指定されたルート要素のインスタンスが読み込まれます。</returns>
+        <summary>指定した[!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)] にある [!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] ファイルを読み込み、[!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)] ファイルのルート要素で指定されているオブジェクトのインスタンスに変換します。</summary>
+        <returns>読み込まれた XAML ファイルに指定されているルート要素のインスタンス。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -726,7 +726,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="resourceLocator" /> が null です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="resourceLocator" /> は絶対 [!INCLUDE[TLA2#tla_uri](~/includes/tla2sharptla-uri-md.md)] です。</exception>
-        <exception cref="T:System.Exception">ファイルがない、[!INCLUDE[TLA2#tla_titlexaml](~/includes/tla2sharptla-titlexaml-md.md)]ファイル。</exception>
+        <exception cref="T:System.Exception">ファイルが [!INCLUDE[TLA2#tla_titlexaml](~/includes/tla2sharptla-titlexaml-md.md)] ファイルではありません。</exception>
         <altmember cref="M:System.Windows.Application.GetResourceStream(System.Uri)" />
         <altmember cref="M:System.Windows.Application.GetContentStream(System.Uri)" />
         <altmember cref="M:System.Windows.Application.GetRemoteStream(System.Uri)" />
@@ -797,8 +797,8 @@
         <ReturnType>System.Windows.Window</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはアプリケーションのメイン ウィンドウを設定します。</summary>
-        <value>A<see cref="T:System.Windows.Window" />メイン アプリケーション ウィンドウとして指定されています。</value>
+        <summary>アプリケーションのメイン ウィンドウを取得または設定します。</summary>
+        <value>メイン アプリケーション ウィンドウとして指定される <see cref="T:System.Windows.Window" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -841,7 +841,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Windows.Application.MainWindow" /> など、ブラウザーでホストされているアプリケーションから設定されている、[!INCLUDE[TLA#tla_xbap#plural](~/includes/tlasharptla-xbapsharpplural-md.md)]します。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Windows.Application.MainWindow" /> は、ブラウザーでホストされるアプリケーション ([!INCLUDE[TLA#tla_xbap#plural](~/includes/tlasharptla-xbapsharpplural-md.md)] など) から設定されます。</exception>
         <altmember cref="E:System.Windows.Application.Exit" />
       </Docs>
     </Member>
@@ -862,7 +862,7 @@
         <ReturnType>System.Windows.Navigation.NavigatedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>これを完了していない読み込みは、アプリケーションのナビゲーターによる移動先のコンテンツが見つかった場合に発生します。</summary>
+        <summary>アプリケーションのナビゲーターによる移動先のコンテンツが見つかったときに発生します。ただし、読み込みはまだ完了していない可能性があります。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -934,7 +934,7 @@
         <ReturnType>System.Windows.Navigation.NavigationFailedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>アプリケーションのナビゲーターが要求されたコンテンツを移動する際にエラーが発生したときに発生します。</summary>
+        <summary>アプリケーションのナビゲーターが要求されたコンテンツに移動する際にエラーが発生したときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -970,7 +970,7 @@
         <ReturnType>System.Windows.Navigation.NavigationProgressEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ナビゲーション進行状況に関する情報を提供するアプリケーションのナビゲーターによって管理されているダウンロード中に定期的に発生します。</summary>
+        <summary>アプリケーションのナビゲーターによって管理されているダウンロード中に定期的に発生して、ナビゲーションの進行状況に関する情報を提供します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1006,7 +1006,7 @@
         <ReturnType>System.Windows.Navigation.NavigationStoppedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>発生したときに、<see langword="StopLoading" />アプリケーションのナビゲーターのメソッドが呼び出されると、または現在のナビゲーションの進行中にナビゲーターによってで新しいナビゲーションが要求された場合。</summary>
+        <summary>アプリケーションのナビゲーターの <see langword="StopLoading" /> メソッドが呼び出されたとき、または現在のナビゲーションの進行中にナビゲーターによって新しいナビゲーションが要求されたときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1510,7 +1510,7 @@
       </ReturnValue>
       <Docs>
         <summary>アプリケーション スコープのプロパティのコレクションを取得します。</summary>
-        <value><see cref="T:System.Collections.IDictionary" />アプリケーション スコープのプロパティを格納しています。</value>
+        <value>アプリケーション スコープのプロパティを格納している <see cref="T:System.Collections.IDictionary" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1559,8 +1559,8 @@
         <ReturnType>System.Reflection.Assembly</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定します、 <see cref="T:System.Reflection.Assembly" /> 、パックを提供する[!INCLUDE[TLA#tla_uri#plural](~/includes/tlasharptla-urisharpplural-md.md)]内のリソースに対して、[!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)]アプリケーション。</summary>
-        <value>参照、 <see cref="T:System.Reflection.Assembly" /> 、パックを提供する[!INCLUDE[TLA#tla_uri#plural](~/includes/tlasharptla-urisharpplural-md.md)]内のリソースに対して、[!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)]アプリケーション。</value>
+        <summary>[!INCLUDE[TLA#tla_uri#plural](~/includes/tlasharptla-urisharpplural-md.md)] アプリケーションのリソース用のパッケージの [!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)] を提供する <see cref="T:System.Reflection.Assembly" /> を取得または設定します。</summary>
+        <value>[!INCLUDE[TLA#tla_uri#plural](~/includes/tlasharptla-urisharpplural-md.md)] アプリケーションのリソース用のパッケージの [!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)] を提供する <see cref="T:System.Reflection.Assembly" /> への参照。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1592,7 +1592,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">A[!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)]アプリケーションには、入力アセンブリまたは<see cref="P:System.Windows.Application.ResourceAssembly" />既に設定されています。</exception>
+        <exception cref="T:System.InvalidOperationException">[!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)] アプリケーションに入力アセンブリがあるか、<see cref="P:System.Windows.Application.ResourceAssembly" /> が既に設定されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Resources">
@@ -1620,8 +1620,8 @@
         <ReturnType>System.Windows.ResourceDictionary</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定スタイルやブラシなどのアプリケーション スコープ リソースのコレクション。</summary>
-        <value>A <see cref="T:System.Windows.ResourceDictionary" /> 0 個以上のアプリケーション スコープ リソースを格納しているオブジェクト。</value>
+        <summary>スタイルやブラシなど、アプリケーション スコープ リソースのコレクションを取得または設定します。</summary>
+        <value>0 個以上のアプリケーション スコープ リソースが格納された <see cref="T:System.Windows.ResourceDictionary" /> オブジェクト。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1697,7 +1697,7 @@
       <Parameters />
       <Docs>
         <summary>Windows Presentation Foundation アプリケーションを開始します。</summary>
-        <returns><see cref="T:System.Int32" />アプリケーション終了コードをアプリケーションのシャット ダウン時に、オペレーティング システムに返されます。 既定では、終了コード値は 0 です。</returns>
+        <returns>アプリケーションのシャットダウン時にオペレーティング システムに返される <see cref="T:System.Int32" /> アプリケーション終了コード。 終了コードの既定値は 0 です。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1720,7 +1720,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Windows.Application.Run" /> ブラウザーによってホストされるアプリケーションから呼び出される (たとえば、 [!INCLUDE[TLA#tla_xbap](~/includes/tlasharptla-xbap-md.md)])。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Windows.Application.Run" /> は、ブラウザーによってホストされるアプリケーション ([!INCLUDE[TLA#tla_xbap](~/includes/tlasharptla-xbap-md.md)] など) から呼び出されます。</exception>
         <altmember cref="M:System.Windows.Application.Run(System.Windows.Window)" />
         <altmember cref="M:System.Windows.Application.Shutdown(System.Int32)" />
         <altmember cref="E:System.Windows.Application.Exit" />
@@ -1750,9 +1750,9 @@
         <Parameter Name="window" Type="System.Windows.Window" />
       </Parameters>
       <Docs>
-        <param name="window">A<see cref="T:System.Windows.Window" />に自動的に開くときに、アプリケーションの開始。</param>
+        <param name="window">アプリケーションの起動時に自動的に開く <see cref="T:System.Windows.Window" />。</param>
         <summary>Windows Presentation Foundation アプリケーションを開始し、指定したウィンドウを開きます。</summary>
-        <returns><see cref="T:System.Int32" />アプリケーション終了コードをアプリケーションのシャット ダウン時に、オペレーティング システムに返されます。 既定では、終了コード値は 0 です。</returns>
+        <returns>アプリケーションのシャットダウン時にオペレーティング システムに返される <see cref="T:System.Int32" /> アプリケーション終了コード。 終了コードの既定値は 0 です。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1777,7 +1777,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Windows.Application.Run" /> ブラウザーによってホストされるアプリケーションから呼び出される (たとえば、 [!INCLUDE[TLA#tla_xbap](~/includes/tlasharptla-xbap-md.md)])。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Windows.Application.Run" /> は、ブラウザーによってホストされるアプリケーション ([!INCLUDE[TLA#tla_xbap](~/includes/tlasharptla-xbap-md.md)] など) から呼び出されます。</exception>
         <altmember cref="M:System.Windows.Application.Shutdown" />
         <altmember cref="M:System.Windows.Application.Shutdown(System.Int32)" />
       </Docs>
@@ -1854,9 +1854,9 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="uri"><see cref="T:System.Uri" />クッキーの作成対象となる場所を指定します。</param>
-        <param name="value"><see cref="T:System.String" /> Cookie のデータを格納しています。</param>
-        <summary>指定された場所の cookie を作成、<see cref="T:System.Uri" />します。</summary>
+        <param name="uri">クッキーを作成する場所を指定する <see cref="T:System.Uri" />。</param>
+        <param name="value">クッキー データを格納している <see cref="T:System.String" />。</param>
+        <summary><see cref="T:System.Uri" /> で指定した場所にクッキーを作成します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1891,7 +1891,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>アプリケーションをシャット ダウンします。</summary>
+        <summary>アプリケーションをシャットダウンします。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="Shutdown">
@@ -1917,7 +1917,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>アプリケーションをシャット ダウンします。</summary>
+        <summary>アプリケーションをシャットダウンします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1974,8 +1974,8 @@
         <Parameter Name="exitCode" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="exitCode">アプリケーションの整数の終了コード。 既定の終了コードは、0 です。</param>
-        <summary>アプリケーションをシャット ダウンするオペレーティング システムに指定の終了コードを返します。</summary>
+        <param name="exitCode">アプリケーションの整数型終了コード。 既定の終了コードは 0 です。</param>
+        <summary>アプリケーションをシャットダウンして、指定した終了コードをオペレーティング システムに返します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1984,6 +1984,7 @@
   
  このメソッドは、作成したスレッドからのみ呼び出すことが、<xref:System.Windows.Application>オブジェクト。  
   
+ 参照してください<xref:System.Environment.ExitCode%2A?displayProperty=nameWithType>については終了コード。
  ]]></format>
         </remarks>
         <permission cref="T:System.Security.Permissions.UIPermission">すべての windows と無制限のユーザー入力イベントを使用する権限。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
@@ -2007,7 +2008,7 @@
         <ReturnType>System.Windows.ShutdownMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定が、条件、<see cref="M:System.Windows.Application.Shutdown" />に呼び出されるメソッド。</summary>
+        <summary><see cref="M:System.Windows.Application.Shutdown" /> メソッドが呼び出される条件を取得または設定します。</summary>
         <value><see cref="T:System.Windows.ShutdownMode" /> 列挙値。 既定値は <see cref="F:System.Windows.ShutdownMode.OnLastWindowClose" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2055,7 +2056,7 @@
         <ReturnType>System.Windows.StartupEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>発生したときに、<see cref="M:System.Windows.Application.Run" />のメソッド、<see cref="T:System.Windows.Application" />オブジェクトが呼び出されます。</summary>
+        <summary><see cref="M:System.Windows.Application.Run" /> オブジェクトの <see cref="T:System.Windows.Application" /> メソッドが呼び出されると発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2135,7 +2136,7 @@
   
  次の表は、読み込むことができる UI リソースの種類やに開かれるウィンドウの種類として、これらのリソースを設定できるアプリケーションの種類、<xref:System.Windows.Application.StartupUri%2A>します。  
   
-|型|[Window]|アプリケーションの種類|  
+|型|ウィンドウ|アプリケーションの種類|  
 |----------|------------|----------------------|  
 |<xref:System.Windows.Window>|<xref:System.Windows.Window>|スタンドアロンのみ|  
 |<xref:System.Windows.Navigation.NavigationWindow>|<xref:System.Windows.Navigation.NavigationWindow>|スタンドアロンのみ|  
@@ -2150,7 +2151,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><see cref="P:System.Windows.Application.StartupUri" /> 値は null に設定されています。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="P:System.Windows.Application.StartupUri" /> に null の値が設定されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Windows.Markup.IQueryAmbient.IsAmbientPropertyAvailable">
@@ -2175,8 +2176,8 @@
       </Parameters>
       <Docs>
         <param name="propertyName">要求されたアンビエント プロパティの名前。</param>
-        <summary>指定されたアンビエント プロパティは、現在のスコープで使用可能なかどうかを照会します。</summary>
-        <returns><see langword="true" /> 要求されたアンビエント プロパティがある場合それ以外の場合、<see langword="false" />します。</returns>
+        <summary>指定されたアンビエント プロパティを現在のスコープで使用できるかどうかを照会します。</summary>
+        <returns>要求されたアンビエント プロパティを使用できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2210,7 +2211,7 @@
       <Docs>
         <param name="resourceKey">検索するリソースの名前。</param>
         <summary>指定したリソースを検索します。</summary>
-        <returns>要求されたリソース オブジェクト。 要求されたリソースが見つからない場合は null 参照が返されます。</returns>
+        <returns>要求されたリソース オブジェクト。 要求したリソースが見つからない場合は、null 参照が返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2256,7 +2257,7 @@
       </ReturnValue>
       <Docs>
         <summary>アプリケーションでインスタンス化されたウィンドウを取得します。</summary>
-        <value>A <see cref="T:System.Windows.WindowCollection" /> 、現在のすべてのウィンドウ オブジェクトへの参照を格納している<see cref="T:System.AppDomain" />します。</value>
+        <value>現在の <see cref="T:System.Windows.WindowCollection" /> のすべてのウィンドウ オブジェクトへの参照を格納している <see cref="T:System.AppDomain" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
