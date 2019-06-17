@@ -1,5 +1,5 @@
 <Type Name="ReadOnlySequence&lt;T&gt;" FullName="System.Buffers.ReadOnlySequence&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="eddaaff2604347d74de3fc3efed4eec66f5194c8" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65002995" /></Metadata><TypeSignature Language="C#" Value="public struct ReadOnlySequence&lt;T&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="8eb2b5416c6dc0961c1b998d3dbadfabf3e2baa7" /><Meta Name="ms.sourcegitcommit" Value="bfce49b3a0c0685f994313d2e44a7c70def1694a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/05/2019" /><Meta Name="ms.locfileid" Value="66690887" /></Metadata><TypeSignature Language="C#" Value="public struct ReadOnlySequence&lt;T&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ReadOnlySequence`1&lt;T&gt; extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Buffers.ReadOnlySequence`1" />
   <TypeSignature Language="VB.NET" Value="Public Structure ReadOnlySequence(Of T)" />
@@ -428,7 +428,7 @@
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>長さを取得、<see cref="T:System.Buffers.ReadOnlySequence`1" />します。</summary>
+        <summary><see cref="T:System.Buffers.ReadOnlySequence`1" /> の長さを取得します。</summary>
         <value>読み取り専用のシーケンスの長さ。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -460,7 +460,7 @@
       <Docs>
         <param name="start">このスライスの開始位置を示す開始インデックス。</param>
         <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、指定されたインデックスで始まり、読み取り専用シーケンスの末尾まで継続するスライスを形成します。</summary>
-        <returns>To be added.</returns>
+        <returns>インデックス <paramref name="start" /> から始まり、現在の読み取り専用シーケンスの末尾まで続くスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -490,8 +490,8 @@
       </Parameters>
       <Docs>
         <param name="start">このスライスの開始位置を示す開始 <see cref="T:System.SequencePosition" /> (自身を含む)。</param>
-        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、指定された開始シーケンス位置で始まり、その末尾まで継続するスライスを形成します。</summary>
-        <returns>To be added.</returns>
+        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、指定されたシーケンス位置から始まり、読み取り専用シーケンスの末尾まで継続するスライスを形成します。</summary>
+        <returns>シーケンス位置 <paramref name="start" /> から始まり、現在の読み取り専用シーケンスの末尾まで続くスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -522,8 +522,8 @@
       </Parameters>
       <Docs>
         <param name="start">このスライスの開始位置を示すインデックス。</param>
-        <param name="length">スライスの長さ</param>
-        <summary>指定された <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="length" /> 個の項目を含むスライスを形成します。</summary>
+        <param name="length">スライスの長さ。</param>
+        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="length" /> 個の項目を含むスライスを形成します。</summary>
         <returns>インデックス <paramref name="start" /> で始まる現在のインスタンスからの <paramref name="length" /> 要素で構成されるスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -555,9 +555,9 @@
       </Parameters>
       <Docs>
         <param name="start">このスライスの開始位置を示すインデックス。</param>
-        <param name="end">スライスの末尾 (自身を含む)。</param>
-        <summary>指定された <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="end" /> (自身を含む) で終わるスライスを形成します。</summary>
-        <returns>現在の読み取り専用シーケンス内の <paramref name="start" /> シーケンス位置から <paramref name="end" /> シーケンス位置までの項目で構成されるスライス。</returns>
+        <param name="end">スライスの末尾 (自身を含まない) の <see cref="T:System.SequencePosition" />。</param>
+        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="end" /> (自身を含まない) で終わるスライスを形成します。</summary>
+        <returns>現在の読み取り専用シーケンス内の <paramref name="start" /> インデックスから <paramref name="end" /> シーケンス位置の前までの項目で構成されるスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -590,7 +590,7 @@
         <param name="start">このスライスの開始位置を示すインデックス。</param>
         <param name="length">スライスの長さ。</param>
         <summary>指定された <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="length" /> 個の項目を含むスライスを形成します。</summary>
-        <returns>To be added.</returns>
+        <returns>インデックス <paramref name="start" /> で始まる現在のインスタンスからの <paramref name="length" /> 要素で構成されるスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -621,9 +621,9 @@
       </Parameters>
       <Docs>
         <param name="start">このスライスの開始位置を示すインデックス。</param>
-        <param name="end">スライスの末尾 (自身を含む)。</param>
-        <summary>指定された <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="end" /> (自身を含む) で終わるスライスを形成します。</summary>
-        <returns>To be added.</returns>
+        <param name="end">スライスの末尾 (自身を含まない)。</param>
+        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="end" /> (自身を含まない) で終わるスライスを形成します。</summary>
+        <returns>現在の読み取り専用シーケンス内の <paramref name="start" /> インデックスから <paramref name="end" /> シーケンス位置の前までの項目で構成されるスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -655,8 +655,8 @@
       <Docs>
         <param name="start">このスライスの開始位置を示す開始 <see cref="T:System.SequencePosition" /> (自身を含む)。</param>
         <param name="length">スライスの長さ。</param>
-        <summary>指定された <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="length" /> 個の項目を含むスライスを形成します。</summary>
-        <returns>To be added.</returns>
+        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="length" /> 個の項目を含むスライスを形成します。</summary>
+        <returns>シーケンス位置 <paramref name="start" /> で始まる現在のインスタンスからの <paramref name="length" /> 要素で構成されるスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -688,8 +688,8 @@
       <Docs>
         <param name="start">このスライスの開始位置を示す開始 <see cref="T:System.SequencePosition" /> (自身を含む)。</param>
         <param name="length">スライスの長さ。</param>
-        <summary>指定された <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="length" /> 個の項目を含むスライスを形成します。</summary>
-        <returns>To be added.</returns>
+        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="length" /> 個の項目を含むスライスを形成します。</summary>
+        <returns>シーケンス位置 <paramref name="start" /> で始まる現在のインスタンスからの <paramref name="length" /> 要素で構成されるスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -720,9 +720,9 @@
       </Parameters>
       <Docs>
         <param name="start">このスライスの開始位置を示す開始 <see cref="T:System.SequencePosition" /> (自身を含む)。</param>
-        <param name="end">スライスの終了 <see cref="T:System.SequencePosition" /> (自身を含む)。</param>
-        <summary>指定された <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="end" /> (自身を含む) で終わるスライスを形成します。</summary>
-        <returns>To be added.</returns>
+        <param name="end">スライスの末尾 <see cref="T:System.SequencePosition" /> (自身を含まない)。</param>
+        <summary>現在の <see cref="T:System.Buffers.ReadOnlySequence`1" /> から、<paramref name="start" /> で始まり、<paramref name="end" /> (自身を含まない) で終わるスライスを形成します。</summary>
+        <returns>現在の読み取り専用シーケンス内の <paramref name="start" /> シーケンス位置から <paramref name="end" /> シーケンス位置の前までの項目で構成されるスライス。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

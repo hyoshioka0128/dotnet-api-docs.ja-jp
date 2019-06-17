@@ -1,5 +1,5 @@
 <Type Name="EnvironmentVariableTarget" FullName="System.EnvironmentVariableTarget">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="f4997b7f353585d40b8fbf81a71613f4d2cd3c7a" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58706411" /></Metadata><TypeSignature Language="C#" Value="public enum EnvironmentVariableTarget" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="cf96e94732478ff721feeecdd712cc5c9a16f31a" /><Meta Name="ms.sourcegitcommit" Value="f55040f35c19a83c85beb55243330558f6e369be" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/10/2019" /><Meta Name="ms.locfileid" Value="66818880" /></Metadata><TypeSignature Language="C#" Value="public enum EnvironmentVariableTarget" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed EnvironmentVariableTarget extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.EnvironmentVariableTarget" />
   <TypeSignature Language="VB.NET" Value="Public Enum EnvironmentVariableTarget" />
@@ -34,29 +34,34 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- <xref:System.EnvironmentVariableTarget>列挙の特定のオーバー ロードによって使用されます、 <xref:System.Environment.SetEnvironmentVariable%2A?displayProperty=nameWithType>、 <xref:System.Environment.GetEnvironmentVariable%2A?displayProperty=nameWithType>、および<xref:System.Environment.GetEnvironmentVariables%2A?displayProperty=nameWithType>場所、またはターゲットを指定する方法、環境変数の値と名前が、格納または取得場所。  
+## Remarks
+
+<xref:System.EnvironmentVariableTarget>列挙の特定のオーバー ロードによって使用されます、 <xref:System.Environment.SetEnvironmentVariable%2A?displayProperty=nameWithType>、 <xref:System.Environment.GetEnvironmentVariable%2A?displayProperty=nameWithType>、および<xref:System.Environment.GetEnvironmentVariables%2A?displayProperty=nameWithType>場所、またはターゲットを指定する方法、環境変数の値と名前が、格納または取得場所。  
   
- ターゲットには、3 つの場所のいずれかを指定できます。 
+ターゲットには、3 つの場所のいずれかを指定できます。 
  
- - 現在のプロセスに関連付けられた環境ブロック (`EnvironmentVariableTarget.Process`)。
+- 現在のプロセスに関連付けられた環境ブロック (`EnvironmentVariableTarget.Process`)。
 
-   ユーザーは、設定操作で、環境変数を作成します。 プロセスが終了すると、オペレーティング システムは、このプロセスでは、環境変数を破棄します。
+  ユーザーは、設定操作で、環境変数を作成します。 プロセスが終了すると、オペレーティング システムは、このプロセスでは、環境変数を破棄します。
 
- - Windows オペレーティング システムのレジストリ キー予約されている現在のユーザーに関連付けられた環境変数 (`EnvironmentVariableTarget.User`)。
+- Windows オペレーティング システムのレジストリ キー予約されている現在のユーザーに関連付けられた環境変数 (`EnvironmentVariableTarget.User`)。
  
-   ユーザーは、設定操作で、環境変数を作成するとき、オペレーティング システムは、現在のプロセスではなく、システム レジストリで環境変数を格納します。 ユーザーは、新しいプロセスを起動する場合、オペレーティング システムは、そのプロセス レジストリから環境変数をコピーします。 プロセスが終了すると、オペレーティング システムは、このプロセスでは、環境変数を破棄します。 ただし、レジストリ内の環境変数は、ユーザーを削除するまで、プログラムまたはオペレーティング システム ツールを使用して永続化します。  
-   
- - ローカル コンピューター上のすべてのユーザーに関連付けられた環境変数の予約済みのレジストリ キー (`EnvironmentVariableTarget.Machine`)。 
+  Windows システムでは、ユーザーは、設定操作で、環境変数を作成するときに、オペレーティング システムを格納、環境変数、現在のプロセスではなく、システム レジストリにします。 ユーザーは、新しいプロセスを起動する場合、オペレーティング システムは、そのプロセス レジストリから環境変数をコピーします。 プロセスが終了すると、オペレーティング システムは、このプロセスでは、環境変数を破棄します。 ただし、レジストリ内の環境変数は、ユーザーを削除するまで、プログラムまたはオペレーティング システム ツールを使用して永続化します。  
 
-    ユーザーは、設定操作で、環境変数を作成するとき、オペレーティング システムは、現在のプロセスではなく、システム レジストリで環境変数を格納します。 ローカル コンピューター上のすべてのユーザーは、新しいプロセスを起動する場合、オペレーティング システムは、そのプロセスをレジストリから環境変数をコピーします。 プロセスが終了すると、オペレーティング システムは、このプロセスでは、環境変数を破棄します。 ただし、レジストリ内の環境変数は、ユーザーを削除するまで、プログラムまたはオペレーティング システム ツールを使用して永続化します。
- 
+  Unix ベースのシステムで、環境変数を作成しようとすると、`EnvironmentVariable.User`影響しないと、環境変数を使用して取得しようとすると、`EnvironmentVariable.User`返します`null`(でC#) または`Nothing`(Visual Basic) でします。
+
+- ローカル コンピューター上のすべてのユーザーに関連付けられた環境変数の予約済みのレジストリ キー (`EnvironmentVariableTarget.Machine`)。 
+
+  ユーザーは、設定操作で、環境変数を作成するとき、オペレーティング システムは、現在のプロセスではなく、システム レジストリで環境変数を格納します。 ローカル コンピューター上のすべてのユーザーは、新しいプロセスを起動する場合、オペレーティング システムは、そのプロセスをレジストリから環境変数をコピーします。 プロセスが終了すると、オペレーティング システムは、このプロセスでは、環境変数を破棄します。 ただし、レジストリ内の環境変数は、ユーザーを削除するまで、プログラムまたはオペレーティング システム ツールを使用して永続化します。
+
+  Unix ベースのシステムで、環境変数を作成しようとすると、`EnvironmentVariable.Machine`影響しないと、環境変数を使用して取得しようとすると、`EnvironmentVariable.Machine`返します`null`(でC#) または`Nothing`(Visual Basic) でします。
+
 ## Examples  
- 次のコード例に示します、<xref:System.EnvironmentVariableTarget>作成、変更、および環境変数を削除するメソッドで列挙します。  
+
+次の例では、<xref:System.EnvironmentVariableTarget>作成、取得、および環境変数を削除するメソッドで列挙します。 環境変数が格納されているし、指定しなくても取得の例からの出力を示しています、`EnvironmentVariableTarget`値は、現在のプロセスに関連付けられた環境ブロックに格納されます (`EnvironmentVariableTarget.Process`)。 例では、出力元の Unix ベースのシステムも以外の値を使用の環境変数を定義することを示しています`EnvironmentVariableTarget.Process`は無視されます。    
   
- [!code-cpp[environment.getsetenvar#1](~/samples/snippets/cpp/VS_Snippets_CLR/environment.getsetenvar/CPP/source.cpp#1)]
- [!code-csharp[environment.getsetenvar#1](~/samples/snippets/csharp/VS_Snippets_CLR/environment.getsetenvar/CS/gsev.cs#1)]
- [!code-vb[environment.getsetenvar#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/environment.getsetenvar/VB/gsev.vb#1)]  
+[!code-csharp[environment.getsetenvar#1](~/samples/snippets/csharp/VS_Snippets_CLR/environment.getsetenvar/CS/gsev.cs)]
+[!code-vb[environment.getsetenvar#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/environment.getsetenvar/VB/gsev.vb)]  
   
  ]]></format>
     </remarks>
@@ -91,7 +96,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>環境変数の保存と取得は Windows オペレーティング システムのレジストリ キー <see langword="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" /> との間で行われます。</summary>
+        <summary>環境変数の保存と取得は Windows オペレーティング システムのレジストリ キー <see langword="HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" /> との間で行われます。 この値は、Windows システムで実行される .NET の実装でのみ使用します。</summary>
       </Docs>
     </Member>
     <Member MemberName="Process">
@@ -155,7 +160,7 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary>環境変数の保存と取得は Windows オペレーティング システムのレジストリ キー <see langword="HKEY_CURRENT_USER\Environment" /> との間で行われます。</summary>
+        <summary>環境変数の保存と取得は Windows オペレーティング システムのレジストリ キー <see langword="HKEY_CURRENT_USER\Environment" /> との間で行われます。 この値は、Windows システムで実行される .NET の実装でのみ使用します。</summary>
       </Docs>
     </Member>
   </Members>
