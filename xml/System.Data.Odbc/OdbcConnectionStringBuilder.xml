@@ -1,5 +1,5 @@
 <Type Name="OdbcConnectionStringBuilder" FullName="System.Data.Odbc.OdbcConnectionStringBuilder">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="2688e0b971373d785b0e2b0130aa32b2c4475716" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56759442" /></Metadata><TypeSignature Language="C#" Value="public sealed class OdbcConnectionStringBuilder : System.Data.Common.DbConnectionStringBuilder" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="2688e0b971373d785b0e2b0130aa32b2c4475716" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63891891" /></Metadata><TypeSignature Language="C#" Value="public sealed class OdbcConnectionStringBuilder : System.Data.Common.DbConnectionStringBuilder" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed OdbcConnectionStringBuilder extends System.Data.Common.DbConnectionStringBuilder" />
   <TypeSignature Language="DocId" Value="T:System.Data.Odbc.OdbcConnectionStringBuilder" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OdbcConnectionStringBuilder&#xA;Inherits DbConnectionStringBuilder" />
@@ -40,11 +40,11 @@
 |キー|プロパティ|コメント|既定値|  
 |---------|--------------|-------------|-------------------|  
 |ドライバー|<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>|開発者は、設定されている場合は、ドライバー名を囲んでいる中かっこを含める必要がありますいない、<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>プロパティ。 <xref:System.Data.Odbc.OdbcConnectionStringBuilder>インスタンスでは、必要に応じて中かっこが追加されます。|空の文字列|  
-|DSN (DSN)|<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A>||空の文字列|  
+|DSN|<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A>||空の文字列|  
   
  値の場合 (以外の<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>値)、接続内で文字列にセミコロン (;) が含まれている、<xref:System.Data.Odbc.OdbcConnectionStringBuilder>値を接続文字列に引用符で囲みます。 この問題を回避するために、<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>を頻繁にセミコロンを含む値、<xref:System.Data.Odbc.OdbcConnectionStringBuilder>クラスは、この値を中かっこを常に囲まれています。 ODBC 仕様では、セミコロンが含まれているドライバーの値は、中かっこで囲む必要があり、このクラスでは、これを処理することを示します。  
   
- <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A>プロパティは、悪意のあるコードの挿入が試行を処理します。 たとえば、次のコードを既定値を使用して<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A>プロパティ (C# のインデクサー) が、入れ子になったキー/値ペアを適切にエスケープします。  
+ <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A>プロパティは、悪意のあるコードの挿入が試行を処理します。 たとえば、次のコードを既定値を使用して<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A>プロパティ (c# のインデクサー) が、入れ子になったキー/値ペアを適切にエスケープします。  
   
 ```vb
 Dim builder As _  
@@ -145,8 +145,8 @@ Driver={SQL Server};Server="MyServer;NewValue=Bad"
         <Parameter Name="connectionString" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="connectionString">この情報を基にオブジェクトの内部的な接続情報が生成されます。 この情報が解析され、キー/値のペアが生成されます。</param>
-        <summary><see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> クラスの新しいインスタンスを初期化します。 引数に渡した接続文字列によって、インスタンスの内部的な接続情報のデータが提供されます。</summary>
+        <param name="connectionString">オブジェクトの内部的な接続情報のベース。 この情報が解析され、キー/値のペアが生成されます。</param>
+        <summary><see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> クラスの新しいインスタンスを初期化します。 指定された接続文字列によって、インスタンスの内部的な接続情報のデータが提供されます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -371,8 +371,8 @@ Driver={SQL Server};Server="MyServer;NewValue=Bad"
       </Parameters>
       <Docs>
         <param name="keyword">取得または設定する項目のキー。</param>
-        <summary>指定したキーに関連付けられている値を取得または設定します。 C# では、このプロパティはインデクサーです。</summary>
-        <value>指定したキーに関連付けられている値。</value>
+        <summary>指定されたキーに関連付けられている値を取得または設定します。 C# の場合、このプロパティはインデクサーです。</summary>
+        <value>指定されたキーに関連付けられている値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -417,8 +417,8 @@ Driver={SQL Server};Server="MyServer;NewValue=Bad"
         <ReturnType>System.Collections.ICollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="T:System.Collections.ICollection" /> 内のキーを格納している <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> を取得します。</summary>
-        <value><see cref="T:System.Collections.ICollection" /> 内のキーを格納している <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" />。</value>
+        <summary><see cref="T:System.Collections.ICollection" /> 内のキーが格納されている <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> を取得します。</summary>
+        <value><see cref="T:System.Collections.ICollection" /> 内のキーが格納されている <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -467,9 +467,9 @@ Driver={SQL Server};Server="MyServer;NewValue=Bad"
         <Parameter Name="keyword" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="keyword">この <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> の接続文字列から取り除く、キー/値ペアに対するキー。</param>
-        <summary>指定したキーを持つエントリを <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> インスタンスから削除します。</summary>
-        <returns>接続文字列内にキーが存在し、削除された場合は <see langword="true" />。キーが存在しなかった場合は <see langword="false" />。</returns>
+        <param name="keyword">この <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> 内の接続文字列から削除するキー/値ペアのキー。</param>
+        <summary>指定されたキーを持つエントリを <see cref="T:System.Data.Odbc.OdbcConnectionStringBuilder" /> インスタンスから削除します。</summary>
+        <returns>キーが接続文字列内に存在していて削除された場合は <see langword="true" />、キーが存在しなかった場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -525,7 +525,7 @@ Driver={SQL Server};Server="MyServer;NewValue=Bad"
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 開発者は、<xref:System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue%2A> メソッドを使用すると、<xref:System.Data.Odbc.OdbcConnectionStringBuilder> から安全に値を取得できます。提供されたキー名が有効なキー名であるかどうかを確認する必要はありません。 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue%2A>例外が発生しない場合、存在しないキーを渡すはその値を取得する前にキーを検索する必要はありません。 呼び出す<xref:System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue%2A>存在しないキーを使用して null 値を配置します (`Nothing` Visual Basic) で、`value`パラメーター。  
+ 開発者は、<xref:System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue%2A> メソッドを使用すると、<xref:System.Data.Odbc.OdbcConnectionStringBuilder> から安全に値を取得できます。提供されたキー名が有効なキー名であるかどうかを確認する必要はありません。 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue%2A>例外が発生しない場合、存在しないキーを渡すはその値を取得する前にキーを検索する必要はありません。 呼び出す<xref:System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue%2A>存在しないキーを使用して null 値を配置します (`Nothing` Visual basic) で、`value`パラメーター。  
   
    
   
