@@ -1,5 +1,5 @@
 <Type Name="Hashtable" FullName="System.Collections.Hashtable">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="153f1973d094497347a92986c8222bc9e4cc7d79" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58726400" /></Metadata><TypeSignature Language="C#" Value="public class Hashtable : ICloneable, System.Collections.IDictionary, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="153f1973d094497347a92986c8222bc9e4cc7d79" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63906939" /></Metadata><TypeSignature Language="C#" Value="public class Hashtable : ICloneable, System.Collections.IDictionary, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit Hashtable extends System.Object implements class System.Collections.ICollection, class System.Collections.IDictionary, class System.Collections.IEnumerable, class System.ICloneable, class System.Runtime.Serialization.IDeserializationCallback, class System.Runtime.Serialization.ISerializable" />
   <TypeSignature Language="DocId" Value="T:System.Collections.Hashtable" />
   <TypeSignature Language="VB.NET" Value="Public Class Hashtable&#xA;Implements ICloneable, IDeserializationCallback, IDictionary, ISerializable" />
@@ -90,11 +90,11 @@
   
  内の各キー オブジェクト、<xref:System.Collections.Hashtable>呼び出すことによってアクセスできる独自のハッシュ関数を提供する必要があります<xref:System.Collections.Hashtable.GetHash%2A>します。 ただし、任意のオブジェクトを実装する<xref:System.Collections.IHashCodeProvider>に渡すことができます、<xref:System.Collections.Hashtable>コンス トラクター、およびテーブル内のすべてのオブジェクトに対してハッシュ関数を使用します。  
   
- 容量を<xref:System.Collections.Hashtable>要素の数が、<xref:System.Collections.Hashtable>を保持できます。 要素が追加される、<xref:System.Collections.Hashtable>容量が増やされます自動的に再割り当て、必要に応じて。  
+ <xref:System.Collections.Hashtable>の容量は、<xref:System.Collections.Hashtable>が保持できる要素の数です。 要素が追加される、<xref:System.Collections.Hashtable>容量が増やされます自動的に再割り当て、必要に応じて。  
   
  **.NET framework のみ:** 非常に大きな<xref:System.Collections.Hashtable>オブジェクトを設定して、64 ビット システム上の 20億要素に最大容量を増やすことができます、`enabled`の属性、 [ `<gcAllowVeryLargeObjects>` ](~/docs/framework/configure-apps/file-schema/runtime/gcallowverylargeobjects-element.md)構成要素を`true`で、実行時環境。  
   
- `foreach` C# 言語のステートメント (`For Each` Visual Basic)、コレクション内の要素の型のオブジェクトを返します。 以降の各要素、<xref:System.Collections.Hashtable>キー/値のペアは、要素の型がないと、キーの型または値の型。 要素の型は、代わりに、<xref:System.Collections.DictionaryEntry>します。 次に例を示します。  
+ `foreach` C# 言語のステートメント (`For Each` Visual basic)、コレクション内の要素の型のオブジェクトを返します。 以降の各要素、<xref:System.Collections.Hashtable>キー/値のペアは、要素の型がないと、キーの型または値の型。 要素の型は、代わりに、<xref:System.Collections.DictionaryEntry>します。 次に例を示します。  
   
  [!code-cpp[System.Collections.Hashtable_ClassExample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Collections.Hashtable_ClassExample/cpp/remarks.cpp#01)]
  [!code-csharp[System.Collections.Hashtable_ClassExample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Collections.Hashtable_ClassExample/cs/remarks.cs#01)]
@@ -121,7 +121,7 @@
     </remarks>
     <threadsafe><see cref="T:System.Collections.Hashtable" /> スレッドが複数のリーダー スレッドと 1 つの書き込みスレッドによって使用される安全です。 スレッド セーフであるマルチ スレッドを使用して、ときに、書き込み (更新) 操作を実行、スレッドの 1 つのみを使用できるロック制御不要の読み取りをライターにシリアル化されるとき、<see cref="T:System.Collections.Hashtable" />します。 複数のライターのすべての操作をサポートするために、<see cref="T:System.Collections.Hashtable" />によって返されるラッパーを使用する必要があります、<see cref="M:System.Collections.Hashtable.Synchronized(System.Collections.Hashtable)" />メソッドを読み取り中のスレッドがないこと、<see cref="T:System.Collections.Hashtable" />オブジェクト。  
   
-コレクションの列挙は、スレッド セーフな方法では本質的にします。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。</threadsafe>
+コレクションの列挙は、本質的にスレッド セーフな手続きではありません。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。</threadsafe>
     <altmember cref="T:System.Collections.IDictionary" />
     <altmember cref="T:System.Collections.IHashCodeProvider" />
     <altmember cref="M:System.Object.GetHashCode" />
@@ -324,7 +324,7 @@
   
  <xref:System.Collections.IEqualityComparer>オブジェクトにはハッシュ コード プロバイダーと比較子の両方が含まれています。 場合、<xref:System.Collections.IEqualityComparer>で使用されて、<xref:System.Collections.Hashtable>コンス トラクター、内のキーとして使用されるオブジェクト、<xref:System.Collections.Hashtable>オブジェクトがオーバーライドする必要はありません、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>と<xref:System.Object.Equals%2A?displayProperty=nameWithType>メソッド。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -392,7 +392,7 @@
   
  実際のテーブル占有率には、指定したテーブル占有率に達すると、バケット数を現在のバケット数の 2 倍を超える最小の素数を自動的に増加します。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -466,7 +466,7 @@
   
  <xref:System.Collections.IEqualityComparer>オブジェクトにはハッシュ コード プロバイダーと比較子の両方が含まれています。 場合、<xref:System.Collections.IEqualityComparer>で使用されて、<xref:System.Collections.Hashtable>コンス トラクター、内のキーとして使用されるオブジェクト、<xref:System.Collections.Hashtable>オブジェクトがオーバーライドする必要はありません、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>と<xref:System.Object.Equals%2A?displayProperty=nameWithType>メソッド。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -703,7 +703,7 @@
   
  <xref:System.Collections.IEqualityComparer>オブジェクトにはハッシュ コード プロバイダーと比較子の両方が含まれています。 場合、<xref:System.Collections.IEqualityComparer>で使用されて、<xref:System.Collections.Hashtable>コンス トラクター、内のキーとして使用されるオブジェクト、<xref:System.Collections.Hashtable>をオーバーライドする必要はありません、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>と<xref:System.Object.Equals%2A?displayProperty=nameWithType>メソッド。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -774,7 +774,7 @@
   
  実際のテーブル占有率には、指定したテーブル占有率に達すると、バケット数を現在のバケット数の 2 倍を超える最小の素数を自動的に増加します。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -1010,7 +1010,7 @@
   
  <xref:System.Collections.IEqualityComparer>オブジェクトにはハッシュ コード プロバイダーと比較子の両方が含まれています。 場合、<xref:System.Collections.IEqualityComparer>で使用されて、<xref:System.Collections.Hashtable>コンス トラクター、内のキーとして使用されるオブジェクト、<xref:System.Collections.Hashtable>オブジェクトがオーバーライドする必要はありません、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>と<xref:System.Object.Equals%2A?displayProperty=nameWithType>メソッド。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -1098,7 +1098,7 @@
   
  実際のテーブル占有率には、指定したテーブル占有率に達すると、バケット数を現在のバケット数の 2 倍を超える最小の素数を自動的に増加します。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -1178,7 +1178,7 @@
   
  <xref:System.Collections.IEqualityComparer>オブジェクトにはハッシュ コード プロバイダーと比較子の両方が含まれています。 場合、<xref:System.Collections.IEqualityComparer>で使用されて、<xref:System.Collections.Hashtable>コンス トラクター、内のキーとして使用されるオブジェクト、<xref:System.Collections.Hashtable>をオーバーライドする必要はありません、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>と<xref:System.Object.Equals%2A?displayProperty=nameWithType>メソッド。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -1357,7 +1357,7 @@
   
  実際のテーブル占有率には、指定したテーブル占有率に達すると、バケット数を現在のバケット数の 2 倍を超える最小の素数を自動的に増加します。  
   
- ハッシュ コード プロバイダー内のキーのハッシュ コードを省き、<xref:System.Collections.Hashtable>します。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+ ハッシュ コード プロバイダーは、<xref:System.Collections.Hashtable>内のキーにハッシュ コードを与えます。 既定のハッシュ コード プロバイダーは、キーの実装の<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
   
  比較演算子は、2 つのキーが等しいかどうかを判断します。 内のすべてのキーを<xref:System.Collections.Hashtable>で一意である必要があります。 既定の比較子は、キーの実装の<xref:System.Object.Equals%2A?displayProperty=nameWithType>します。  
   
@@ -2440,7 +2440,7 @@
 ## Remarks  
  A <xref:System.Collections.Hashtable> 1 つのライターと複数リーダー同時にサポートできます。 複数のライターをサポートするために、によって返されるラッパー経由のすべての操作を行う必要がある、<xref:System.Collections.Hashtable.Synchronized%2A>メソッド。  
   
- コレクションの列挙は、スレッド セーフな方法では本質的にします。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。  
+ コレクションの列挙は、本質的にスレッド セーフな手続きではありません。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。  
   
  次のコード例を使用してコレクションをロックする方法を示しています、<xref:System.Collections.Hashtable.SyncRoot%2A>列挙中に。  
   
@@ -2903,7 +2903,7 @@
 ## Remarks  
  同期バージョンを作成する、<xref:System.Collections.Hashtable>を使用して、<xref:System.Collections.Hashtable.Synchronized%2A>メソッド。 ただし、派生クラスは、独自の同期バージョンを提供できます、<xref:System.Collections.Hashtable>を使用して、<xref:System.Collections.Hashtable.SyncRoot%2A>プロパティ。 同期されたコードで操作を実行する必要があります、<xref:System.Collections.Hashtable.SyncRoot%2A>の<xref:System.Collections.Hashtable>、上で直接、<xref:System.Collections.Hashtable>します。 これにより、他のオブジェクトから派生したコレクションを適切に操作できるようになります。 具体的には、同時に変更する可能性があるその他のスレッドと適切な同期を維持、<xref:System.Collections.Hashtable>オブジェクト。  
   
- コレクションの列挙は、スレッド セーフな方法では本質的にします。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。  
+ コレクションの列挙は、本質的にスレッド セーフな手続きではありません。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。  
   
  次のコード例を使用してコレクションをロックする方法を示しています、<xref:System.Collections.Hashtable.SyncRoot%2A>列挙中に。  
   
@@ -2971,13 +2971,13 @@
   
  列挙子を使用すると、コレクション内のデータを読み取ることができますが、基になるコレクションを変更することはできません。  
   
- 最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 <xref:System.Collections.IEnumerator.Reset%2A> を実行した場合も、列挙子はこの位置に戻されます。 この位置で、呼び出す<xref:System.Collections.IEnumerator.Current%2A>例外をスローします。 そのため、<xref:System.Collections.IEnumerator.MoveNext%2A> の値を読み取る前に、<xref:System.Collections.IEnumerator.Current%2A> を呼び出して列挙子をコレクションの最初の要素に進める必要があります。  
+ 最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 <xref:System.Collections.IEnumerator.Reset%2A> を実行した場合も、列挙子はこの位置に戻されます。 この位置で <xref:System.Collections.IEnumerator.Current%2A> を呼び出すと、例外がスローされます。 そのため、<xref:System.Collections.IEnumerator.MoveNext%2A> の値を読み取る前に、<xref:System.Collections.IEnumerator.Current%2A> を呼び出して列挙子をコレクションの最初の要素に進める必要があります。  
   
  <xref:System.Collections.IEnumerator.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> または <xref:System.Collections.IEnumerator.Reset%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IEnumerator.Current%2A> を次の要素に設定します。  
   
- 場合<xref:System.Collections.IEnumerator.MoveNext%2A>列挙子、コレクションの末尾がコレクション内の最後の要素の後に配置されているパスと<xref:System.Collections.IEnumerator.MoveNext%2A>返します`false`します。 この位置では、後続の呼び出しで列挙子の場合<xref:System.Collections.IEnumerator.MoveNext%2A>を返すことも`false`します。 最後の呼び出し場合<xref:System.Collections.IEnumerator.MoveNext%2A>返される`false`を呼び出すと、<xref:System.Collections.IEnumerator.Current%2A>例外をスローします。 <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
+ 場合<xref:System.Collections.IEnumerator.MoveNext%2A>列挙子、コレクションの末尾がコレクション内の最後の要素の後に配置されているパスと<xref:System.Collections.IEnumerator.MoveNext%2A>返します`false`します。 この位置では、後続の呼び出しで列挙子の場合<xref:System.Collections.IEnumerator.MoveNext%2A>を返すことも`false`します。 前回 <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出して `false` が返された場合に、<xref:System.Collections.IEnumerator.Current%2A> を呼び出すと例外がスローされます。 <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
   
- コレクションが変更されない限り、列挙子は有効です。 変更、追加するなど、コレクションに変更を加えるまたは要素を削除するには、列挙子を無効にでき、次の呼び出し場合、<xref:System.Collections.IEnumerator.MoveNext%2A>または<xref:System.Collections.IEnumerator.Reset%2A>スロー、<xref:System.InvalidOperationException>します。 間に、コレクションが変更された場合<xref:System.Collections.IEnumerator.MoveNext%2A>と<xref:System.Collections.IEnumerator.Current%2A>、<xref:System.Collections.IEnumerator.Current%2A>列挙子が既に無効になっている場合でもに設定されている要素を返します。  
+ コレクションが変更されない限り、列挙子は有効です。 変更、追加するなど、コレクションに変更を加えるまたは要素を削除するには、列挙子を無効にでき、次の呼び出し場合、<xref:System.Collections.IEnumerator.MoveNext%2A>または<xref:System.Collections.IEnumerator.Reset%2A>スロー、<xref:System.InvalidOperationException>します。 <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出してから <xref:System.Collections.IEnumerator.Current%2A> を呼び出すまでの間にコレクションが変更された場合、列挙子が既に無効になっていても、<xref:System.Collections.IEnumerator.Current%2A> は、設定されている要素を返します。  
   
  列挙子には、コレクションへの排他アクセスがありません。したがって、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。  
   
