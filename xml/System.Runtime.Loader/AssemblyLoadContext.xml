@@ -1,5 +1,5 @@
 <Type Name="AssemblyLoadContext" FullName="System.Runtime.Loader.AssemblyLoadContext">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1fe12898361e808786693310aaf210145e2d3f9a" /><Meta Name="ms.sourcegitcommit" Value="9a6da88bd5455e8274257ca7ad259b42f1de114f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/22/2019" /><Meta Name="ms.locfileid" Value="66007905" /></Metadata><TypeSignature Language="C#" Value="public abstract class AssemblyLoadContext" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="756de86d1257118d19b330ce89f8113cfda20a94" /><Meta Name="ms.sourcegitcommit" Value="f55040f35c19a83c85beb55243330558f6e369be" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/10/2019" /><Meta Name="ms.locfileid" Value="66818913" /></Metadata><TypeSignature Language="C#" Value="public abstract class AssemblyLoadContext" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit AssemblyLoadContext extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.Loader.AssemblyLoadContext" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class AssemblyLoadContext" />
@@ -123,9 +123,17 @@
         <Parameter Name="isCollectible" Type="System.Boolean" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="isCollectible">ガベージ コレクションを有効にする場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</param>
-        <summary>ガベージ コレクションが有効かどうかを示す値と共に、<see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> クラスの新しいインスタンスを初期化します。</summary>
-        <remarks>To be added.</remarks>
+        <param name="isCollectible"><see cref="M:System.Runtime.Loader.AssemblyLoadContext.Unload" /> を有効にするには <see langword="true" /> で、それ以外の場合は <see langword="false" /> です。 アンロードを有効にするにはパフォーマンス コストがあるため、既定値は <see langword="false" /> です。</param>
+        <summary>アンロードが有効かどうかを示す値を使用して、<see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> クラスの新しいインスタンスを初期化します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+このコンストラクターは保護されています。 のみ呼び出すことができます、<xref:System.Runtime.Loader.AssemblyLoadContext>クラスまたはその派生クラス。
+
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -144,9 +152,9 @@
         <Parameter Name="isCollectible" Type="System.Boolean" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="isCollectible">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="name">新しいインスタンスの <see cref="P:System.Runtime.Loader.AssemblyLoadContext.Name" /> の値です。 この値は <see langword="null" /> の場合もあります。</param>
+        <param name="isCollectible"><see cref="M:System.Runtime.Loader.AssemblyLoadContext.Unload" /> を有効にするには <see langword="true" /> で、それ以外の場合は <see langword="false" /> です。 アンロードを有効にするにはパフォーマンス コストがあるため、既定値は <see langword="false" /> です。</param>
+        <summary>アンロードが有効かどうかを示す名前と値を使用して、<see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -166,8 +174,8 @@
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Runtime.Loader.AssemblyLoadContext&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary><see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> のすべてのインスタンスのコレクションを返します。</summary>
+        <value>すべてのコレクション<see cref="T:System.Runtime.Loader.AssemblyLoadContext" />インスタンス。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -187,8 +195,8 @@
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Reflection.Assembly&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary><see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> に読み込まれた <see cref="T:System.Reflection.Assembly" /> インスタンスのコレクションを返します。</summary>
+        <value>コレクション、<see cref="T:System.Reflection.Assembly" />にインスタンスが読み込まれて、<see cref="T:System.Runtime.Loader.AssemblyLoadContext" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -208,9 +216,16 @@
         <ReturnType>System.Runtime.Loader.AssemblyLoadContext</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary><see cref="M:System.Runtime.Loader.AssemblyLoadContext.EnterContextualReflection" /> への一番最近の呼び出しを使用して、<see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> セットを取得します。</summary>
+        <value><see cref="T:System.Runtime.Loader.AssemblyLoadContext" />を最新の呼び出しで設定<see cref="M:System.Runtime.Loader.AssemblyLoadContext.EnterContextualReflection" />します。 この値は、<see langword="null" /> の場合もあります。 値が格納されている、<see cref="T:System.Threading.AsyncLocal`1" />ので、値は非同期コンテキストごとに一意です。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+詳細については、次を参照してください。 [.NET Core で AssemblyLoadContext.CurrentContextualReflectionContext 設計ドキュメント](https://github.com/dotnet/coreclr/blob/master/Documentation/design-docs/AssemblyLoadContext.ContextualReflection.md)します。
+
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Default">
@@ -258,9 +273,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary><see cref="P:System.Runtime.Loader.AssemblyLoadContext.CurrentContextualReflectionContext" /> を <see langword="this" /> <see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> に設定します。</summary>
+        <returns><see cref="P:System.Runtime.Loader.AssemblyLoadContext.CurrentContextualReflectionContext" /> の以前の値を復元するオブジェクトです。 これは、<see langword="using" /> ブロックの <see cref="T:System.IDisposable" /> として使用されることを意図しています。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+詳細については、次を参照してください。 [.NET Core で AssemblyLoadContext.CurrentContextualReflectionContext 設計ドキュメント](https://github.com/dotnet/coreclr/blob/master/Documentation/design-docs/AssemblyLoadContext.ContextualReflection.md)します。
+
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EnterContextualReflection">
@@ -282,10 +304,17 @@
         <Parameter Name="activating" Type="System.Reflection.Assembly" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="activating">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="activating">要求された <see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> インスタンスを決定するのに使用されるアセンブリです。</param>
+        <summary>アセンブリをロードした <see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> に <see cref="P:System.Runtime.Loader.AssemblyLoadContext.CurrentContextualReflectionContext" /> を設定します。</summary>
+        <returns><see cref="P:System.Runtime.Loader.AssemblyLoadContext.CurrentContextualReflectionContext" /> の以前の値を復元するオブジェクトです。 これは、<see langword="using" /> ブロックの <see cref="T:System.IDisposable" /> として使用されることを意図しています。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+詳細については、次を参照してください。 [.NET Core で AssemblyLoadContext.CurrentContextualReflectionContext 設計ドキュメント](https://github.com/dotnet/coreclr/blob/master/Documentation/design-docs/AssemblyLoadContext.ContextualReflection.md)します。
+
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetAssemblyName">
@@ -456,18 +485,25 @@
           <format type="text/markdown"><![CDATA[
 
 ## Remarks
- <xref:System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName%2A> 解決することでアセンブリを読み込み、<xref:System.Reflection.AssemblyName>します。 これは、フル解像度をトリガーします。 解像度の代替シーケンスは、このプロセスを次に示します。1. メソッド呼び出し<xref:System.Runtime.Loader.AssemblyLoadContext.Load(System.Reflection.AssemblyName)>します。
-         > [!IMPORTANT]
-         > <xref:System.Runtime.Loader.AssemblyLoadContext.Load(System.Reflection.AssemblyName)> must not call this method to prevent recursive stack overflow.
-     2. Unless the assembly is loaded or an exception is thrown, the method attempts to load the assembly in the default <xref:System.Runtime.Loader.AssemblyLoadContext>.
-     3. Unless the assembly is loaded or an exception is thrown, the method fires the <xref:System.Runtime.Loader.AssemblyLoadContext.Resolving> event.
-     4. Unless the assembly is loaded or an exception is thrown, the method fires the <xref:System.AppDomain.AssemblyResolve> event.
+
+<xref:System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName%2A> 解決することでアセンブリを読み込み、<xref:System.Reflection.AssemblyName>します。 これは、フル解像度をトリガーします。 解像度の代替シーケンスは、このプロセスを次に示します。
+
+1. メソッド呼び出し<xref:System.Runtime.Loader.AssemblyLoadContext.Load(System.Reflection.AssemblyName)>します。
+
+   > [!IMPORTANT]
+   > <xref:System.Runtime.Loader.AssemblyLoadContext.Load(System.Reflection.AssemblyName)> 再帰的なスタック オーバーフローを防ぐには、このメソッドを呼び出さないでください。
+
+2. メソッドが、既定でアセンブリを読み込むしようとした、アセンブリが読み込まれたか、例外がスローされます、しない限り、<xref:System.Runtime.Loader.AssemblyLoadContext>します。
+3. メソッドが起動して、アセンブリが読み込まれたか、例外がスローされます、しない限り、<xref:System.Runtime.Loader.AssemblyLoadContext.Resolving>イベント。
+4. メソッドが起動して、アセンブリが読み込まれたか、例外がスローされます、しない限り、<xref:System.AppDomain.AssemblyResolve>イベント。
  
- > [!NOTE]
- > <xref:System.IO.FileLoadException> 場合にスローされる`assemblyRef`完全なアセンブリ名と簡易名に一致する最初のアセンブリは、互換性のないバージョンまたはカルチャを指定します。 ローダーは、単純な名前と一致する他のアセンブリのプローブを続行できません。
+> [!NOTE]
+> <xref:System.IO.FileLoadException> 場合にスローされる`assemblyRef`完全なアセンブリ名と簡易名に一致する最初のアセンブリは、互換性のないバージョンまたはカルチャを指定します。 ローダーは、単純な名前と一致する他のアセンブリのプローブを続行できません。
  
- 各<xref:System.Runtime.Loader.AssemblyLoadContext>のみ読み込むことができます。 * 実行可能アセンブリの 1 つのバージョン。
-* 各カルチャのサテライト アセンブリの 1 つのバージョンです。
+各<xref:System.Runtime.Loader.AssemblyLoadContext>のみ読み込むことができます。
+ 
+* 実行可能アセンブリの 1 つのバージョン。
+* 各カルチャのサテライト アセンブリの 1 つのバージョン。
  
  ]]></format>
         </remarks>
@@ -723,8 +759,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary><see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> の名前を取得します。</summary>
+        <value><see cref="T:System.Runtime.Loader.AssemblyLoadContext" /> の名前。 この値は <see langword="null" /> の場合もあります。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

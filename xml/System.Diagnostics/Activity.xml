@@ -1,5 +1,5 @@
 <Type Name="Activity" FullName="System.Diagnostics.Activity">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="23955fa391628d585f054d1eac569f234a60da09" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/24/2018" /><Meta Name="ms.locfileid" Value="36342569" /></Metadata><TypeSignature Language="C#" Value="public class Activity" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="359f3ec3e2c4ab4a1b4dae520bcd30394973fc26" /><Meta Name="ms.sourcegitcommit" Value="f55040f35c19a83c85beb55243330558f6e369be" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/10/2019" /><Meta Name="ms.locfileid" Value="66817834" /></Metadata><TypeSignature Language="C#" Value="public class Activity" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Activity extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Diagnostics.Activity" />
   <TypeSignature Language="VB.NET" Value="Public Class Activity" />
@@ -10,6 +10,7 @@
     <AssemblyVersion>4.0.2.0</AssemblyVersion>
     <AssemblyVersion>4.0.2.1</AssemblyVersion>
     <AssemblyVersion>4.0.3.0</AssemblyVersion>
+    <AssemblyVersion>4.0.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -33,13 +34,43 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="operationName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="operationName">To be added.</param>
+        <param name="operationName">操作の名前。</param>
+        <summary><see cref="T:System.Diagnostics.Activity" /> クラスの新しいインスタンスを初期化します。</summary>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+なお<xref:System.Diagnostics.Activity>「ビルダー」パターンを持つ: の数、コンス トラクターを呼び出す`Set*`と`Add*`Api、および 呼び出し<xref:System.Diagnostics.Activity.Start>アクティビティを構築します。 **する必要があります**呼び出す<xref:System.Diagnostics.Activity.Start>の新しいインスタンスを使用する前にします。
+
+ ]]></format>
+         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ActivityTraceFlags">
+      <MemberSignature Language="C#" Value="public System.Diagnostics.ActivityTraceFlags ActivityTraceFlags { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Diagnostics.ActivityTraceFlags ActivityTraceFlags" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.ActivityTraceFlags" />
+      <MemberSignature Language="VB.NET" Value="Public Property ActivityTraceFlags As ActivityTraceFlags" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::Diagnostics::ActivityTraceFlags ActivityTraceFlags { System::Diagnostics::ActivityTraceFlags get(); void set(System::Diagnostics::ActivityTraceFlags value); };" />
+      <MemberSignature Language="F#" Value="member this.ActivityTraceFlags : System.Diagnostics.ActivityTraceFlags with get, set" Usage="System.Diagnostics.Activity.ActivityTraceFlags" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Diagnostics.ActivityTraceFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -56,6 +87,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
@@ -65,11 +97,21 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">baggage キーです。</param>
+        <param name="value">baggage 値です。</param>
+        <summary>指定したキーと値の新しい baggage 項目を得られるように <see cref="T:System.Diagnostics.Activity" /> を更新します。</summary>
+        <returns>チェーンで役立つ <see langword="this" /> です。</returns>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+このキー/値ペアがによって返されるコレクションに含まれる、<see cref="P:System.Diagnostics.Activity.Baggage" />プロパティで取得することもでき、<xref:System.Diagnostics.Activity.GetBaggageItem%2A>メソッド。 
+
+`Baggage` 実行時のコントロールに必要な情報のためのもの。 ログに表示するのには役には、<xref:System.Diagnostics.Activity>を使用して、<xref:System.Diagnostics.Activity.Tags>プロパティ。
+
+ ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddTag">
@@ -85,6 +127,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
@@ -94,11 +137,21 @@
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">タグ キーです。</param>
+        <param name="value">タグ値です。</param>
+        <summary>指定した <paramref name="key" /> と <paramref name="value" /> で新しいタグが得られるように <see cref="T:System.Diagnostics.Activity" /> を更新します。 .</summary>
+        <returns>チェーンで役立つ <see langword="this" /> です。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+このキー/値ペアがによって返されるコレクションに含まれる、<see cref="P:System.Diagnostics.Activity.Tags" />プロパティ。
+
+<xref:System.Diagnostics.Activity.Tags> 情報をログに役に立つためのもの、<xref:System.Diagnostics.Activity>します。 実行時のコントロールのために必要な情報については、使用、<xref:System.Diagnostics.Activity.Baggage>プロパティ。
+
+]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Baggage">
@@ -114,32 +167,63 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,System.String&gt;&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>この <see cref="T:System.Diagnostics.Activity" /> の子に渡される情報を表すキーと値のペアのコレクションを取得します。</summary>
+        <value>文字列/文字列のキー/値ペアの列挙。</value>
+         <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+`Baggage` 要求 (ID) と共にプロセスを終了するときは、シリアル化します。 通常、`Baggage`アクティビティと子のログ記録をきめ細かく制御のために使用します。  一般に、実行時にデータを使用していない場合を使うべき<xref:System.Diagnostics.Activity.Tags>代わりにします。
+
+]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Current">
-      <MemberSignature Language="C#" Value="public static System.Diagnostics.Activity Current { get; }" />
+      <MemberSignature Language="C#" Value="public static System.Diagnostics.Activity Current { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property class System.Diagnostics.Activity Current" />
       <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.Current" />
-      <MemberSignature Language="VB.NET" Value="Public Shared ReadOnly Property Current As Activity" />
-      <MemberSignature Language="C++ CLI" Value="public:&#xA; static property System::Diagnostics::Activity ^ Current { System::Diagnostics::Activity ^ get(); };" />
-      <MemberSignature Language="F#" Value="member this.Current : System.Diagnostics.Activity" Usage="System.Diagnostics.Activity.Current" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Property Current As Activity" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; static property System::Diagnostics::Activity ^ Current { System::Diagnostics::Activity ^ get(); void set(System::Diagnostics::Activity ^ value); };" />
+      <MemberSignature Language="F#" Value="member this.Current : System.Diagnostics.Activity with get, set" Usage="System.Diagnostics.Activity.Current" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>現在のスレッドの現在の操作 (<see cref="T:System.Diagnostics.Activity" />) を取得または設定します。  これは非同期呼び出し間でフローします。</summary>
+        <value>現在のスレッドの現在の操作。</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultIdFormat">
+      <MemberSignature Language="C#" Value="public static System.Diagnostics.ActivityIdFormat DefaultIdFormat { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype System.Diagnostics.ActivityIdFormat DefaultIdFormat" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.DefaultIdFormat" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Property DefaultIdFormat As ActivityIdFormat" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; static property System::Diagnostics::ActivityIdFormat DefaultIdFormat { System::Diagnostics::ActivityIdFormat get(); void set(System::Diagnostics::ActivityIdFormat value); };" />
+      <MemberSignature Language="F#" Value="member this.DefaultIdFormat : System.Diagnostics.ActivityIdFormat with get, set" Usage="System.Diagnostics.Activity.DefaultIdFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Diagnostics.ActivityIdFormat</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -160,9 +244,31 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.TimeSpan</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>操作の継続時間を取得します。</summary>
+        <value>間のデルタ<see cref="P:System.Diagnostics.Activity.StartTimeUtc" />と終了時刻の場合、<see cref="T:System.Diagnostics.Activity" />が終了しました (<see cref="M:System.Diagnostics.Activity.Stop" />または<see cref="M:System.Diagnostics.Activity.SetEndTime(System.DateTime)" />が呼び出されました)、または<see cref="F:System.TimeSpan.Zero" />場合、<see cref="T:System.Diagnostics.Activity" />が終了していないと<see cref="M:System.Diagnostics.Activity.SetEndTime(System.DateTime)" />呼び出されませんでした。</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForceDefaultIdFormat">
+      <MemberSignature Language="C#" Value="public static bool ForceDefaultIdFormat { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool ForceDefaultIdFormat" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.ForceDefaultIdFormat" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Property ForceDefaultIdFormat As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; static property bool ForceDefaultIdFormat { bool get(); void set(bool value); };" />
+      <MemberSignature Language="F#" Value="member this.ForceDefaultIdFormat : bool with get, set" Usage="System.Diagnostics.Activity.ForceDefaultIdFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -183,6 +289,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -191,9 +298,9 @@
         <Parameter Name="key" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="key">baggage キーです。</param>
+        <summary><see cref="M:System.Diagnostics.Activity.AddBaggage(System.String,System.String)" /> でアクティビティに追加されたキーと値のペアの値を返します。</summary>
+        <returns>存在する場合は、キーと値のペア項目の値で、それ以外の場合は <see langword="null" /> です。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -210,9 +317,39 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>特定の要求に固有の識別子を取得します。</summary>
+        <value>アクティビティ ID。</value>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたときに<xref:System.Diagnostics.Activity.Start>サフィックスを追加することによって呼び出される、`Activity.Parent.Id`または<xref:System.Diagnostics.Activity.ParentId>します。 <xref:System.Diagnostics.Activity>を開始するまでは、ID がありません。 詳細については、次を参照してください。 [Id の形式](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md#id-format)します。
+
+]]></format>
+         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IdFormat">
+      <MemberSignature Language="C#" Value="public System.Diagnostics.ActivityIdFormat IdFormat { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Diagnostics.ActivityIdFormat IdFormat" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.IdFormat" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property IdFormat As ActivityIdFormat" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::Diagnostics::ActivityIdFormat IdFormat { System::Diagnostics::ActivityIdFormat get(); };" />
+      <MemberSignature Language="F#" Value="member this.IdFormat : System.Diagnostics.ActivityIdFormat" Usage="System.Diagnostics.Activity.IdFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Diagnostics.ActivityIdFormat</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -233,14 +370,23 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>操作名を取得します。</summary>
+        <value>操作の名前。</value>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+操作名は、*粗い*は役に立つ名前のグループ化/フィルター処理します。 名前は、通常、コンパイル時定数です。 Rest Api の名前は、適切なが、引数 (など、特定のアカウント) する必要がありますが、タグではなく名前で作成できません。
+
+]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Parent">
@@ -256,13 +402,14 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>このアクティビティを作成した親 <see cref="T:System.Diagnostics.Activity" /> を取得します。</summary>
+        <value>この親<see cref="T:System.Diagnostics.Activity" />、同じプロセスからである場合、または<see langword="null" />このインスタンスの親 (ルート アクティビティでは) があるない場合、または親のプロセスの外部から場合。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -279,9 +426,62 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>このアクティビティの親の ID を取得します。</summary>
+        <value>1 つが存在する場合は、親の ID または<see langword="null" />そうでない場合。</value>
+      <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+場合この親<xref:System.Diagnostics.Activity>、プロセスの外部から来る、<xref:System.Diagnostics.Activity>親はありませんが、*可能性があります*(これは、親から逆シリアル化された) 親 id。  
+
+このプロパティの値を指定できます`null`場合は、ルート<see cref="T:System.Diagnostics.Activity" />(いいえ、つまり<xref:System.Diagnostics.Activity.Parent>)。  参照してください[Id の形式](href="https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md#id-format)の詳細。
+
+]]></format>
+      </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParentSpanId">
+      <MemberSignature Language="C#" Value="public System.Diagnostics.ActivitySpanId ParentSpanId { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Diagnostics.ActivitySpanId ParentSpanId" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.ParentSpanId" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ParentSpanId As ActivitySpanId" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::Diagnostics::ActivitySpanId ^ ParentSpanId { System::Diagnostics::ActivitySpanId ^ get(); };" />
+      <MemberSignature Language="F#" Value="member this.ParentSpanId : System.Diagnostics.ActivitySpanId" Usage="System.Diagnostics.Activity.ParentSpanId" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue RefType="Ref">
+        <ReturnType>System.Diagnostics.ActivitySpanId</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Recorded">
+      <MemberSignature Language="C#" Value="public bool Recorded { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Recorded" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.Recorded" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Recorded As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property bool Recorded { bool get(); };" />
+      <MemberSignature Language="F#" Value="member this.Recorded : bool" Usage="System.Diagnostics.Activity.Recorded" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -302,14 +502,23 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>この <see cref="T:System.Diagnostics.Activity" /> のルート ID を取得します。</summary>
+        <value>ルート ID、または<see langword="null" />か、現在のインスタンスがある場合、<see cref="P:System.Diagnostics.Activity.ParentId" />または<see cref="P:System.Diagnostics.Activity.Id" />します。</value>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+ルート ID から部分文字列では、<xref:System.Diagnostics.Activity.Id>または<xref:System.Diagnostics.Activity.ParentId>) の間で ' |'(または先頭) と、最初`.`します。 ルート ID でフィルター処理操作の処理に関連するすべての活動を検索することができます。 詳細については、次を参照してください。 [ID の形式](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md#id-format)します。
+
+]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetEndTime">
@@ -325,6 +534,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
@@ -333,9 +543,9 @@
         <Parameter Name="endTimeUtc" Type="System.DateTime" />
       </Parameters>
       <Docs>
-        <param name="endTimeUtc">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="endTimeUtc">UTC の停止時刻です。</param>
+        <summary><see cref="T:System.Diagnostics.Activity" /> を更新して、その <see cref="P:System.Diagnostics.Activity.Duration" /> を <see cref="P:System.Diagnostics.Activity.StartTimeUtc" /> と指定した停止時間の差に設定します。</summary>
+        <returns>チェーンで役立つ <see langword="this" /> です。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -352,6 +562,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
@@ -360,7 +571,42 @@
         <Parameter Name="parentId" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="parentId">To be added.</param>
+        <param name="parentId">親操作の ID です。</param>
+        <summary>この <see cref="T:System.Diagnostics.Activity" /> を更新して、<paramref name="parentId" /> の ID の <see cref="T:System.Diagnostics.Activity" /> がこの <see cref="T:System.Diagnostics.Activity" /> を発生させたことを示します。</summary>
+        <returns>チェーンで役立つ <see langword="this" /> です。</returns>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+このプロパティは、'境界' のシナリオでのみ使用する必要があります、<see cref="T:System.Diagnostics.Activity" />別のプロセスから論理的に開始した<see cref="T:System.Diagnostics.Activity" />します。 `parentId`提起、 <xref:System.Diagnostics.Activity.Tags> (だけでなく<xref:System.Diagnostics.Activity.ParentId>プロパティ) と因果ツリーを再構築に使用できます。
+
+]]></format>
+         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetParentId">
+      <MemberSignature Language="C#" Value="public System.Diagnostics.Activity SetParentId (ref System.Diagnostics.ActivityTraceId traceId, ref System.Diagnostics.ActivitySpanId spanId, System.Diagnostics.ActivityTraceFlags activityTraceFlags = System.Diagnostics.ActivityTraceFlags.None);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Diagnostics.Activity SetParentId([in]valuetype System.Diagnostics.ActivityTraceId&amp; traceId, [in]valuetype System.Diagnostics.ActivitySpanId&amp; spanId, valuetype System.Diagnostics.ActivityTraceFlags activityTraceFlags) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Diagnostics.Activity.SetParentId(System.Diagnostics.ActivityTraceId@,System.Diagnostics.ActivitySpanId@,System.Diagnostics.ActivityTraceFlags)" />
+      <MemberSignature Language="F#" Value="member this.SetParentId :  *  * System.Diagnostics.ActivityTraceFlags -&gt; System.Diagnostics.Activity" Usage="activity.SetParentId (traceId, spanId, activityTraceFlags)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Diagnostics.Activity</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="traceId" Type="System.Diagnostics.ActivityTraceId" RefType="ref" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="spanId" Type="System.Diagnostics.ActivitySpanId" RefType="ref" Index="1" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="activityTraceFlags" Type="System.Diagnostics.ActivityTraceFlags" Index="2" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="traceId">To be added.</param>
+        <param name="spanId">To be added.</param>
+        <param name="activityTraceFlags">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -379,6 +625,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
@@ -387,9 +634,30 @@
         <Parameter Name="startTimeUtc" Type="System.DateTime" />
       </Parameters>
       <Docs>
-        <param name="startTimeUtc">To be added.</param>
+        <param name="startTimeUtc">UTC での <see cref="T:System.Diagnostics.Activity" /> の開始時間です。</param>
+        <summary>この <see cref="T:System.Diagnostics.Activity" /> の開始時間を設定します。</summary>
+        <returns>チェーンで役立つ <see langword="this" /> です。</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SpanId">
+      <MemberSignature Language="C#" Value="public System.Diagnostics.ActivitySpanId SpanId { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Diagnostics.ActivitySpanId SpanId" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.SpanId" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property SpanId As ActivitySpanId" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::Diagnostics::ActivitySpanId ^ SpanId { System::Diagnostics::ActivitySpanId ^ get(); };" />
+      <MemberSignature Language="F#" Value="member this.SpanId : System.Diagnostics.ActivitySpanId" Usage="System.Diagnostics.Activity.SpanId" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue RefType="Ref">
+        <ReturnType>System.Diagnostics.ActivitySpanId</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -406,15 +674,30 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>アクティビティを開始します。</summary>
+        <returns>チェーンで役立つ <see langword="this" /> です。</returns>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+呼び出す、`Start`メソッドは、次を実行します。
+-   セット<xref:System.Diagnostics.Activity.Parent>を保持する<xref:System.Diagnostics.Activity.Current>します。
+-   セット<xref:System.Diagnostics.Activity.Current>この<xref:System.Diagnostics.Activity>します。
+-   場合<xref:System.Diagnostics.Activity.StartTimeUtc>以前に設定されていないに設定して<xref:System.DateTime.UtcNow?displayProperty=nameWithType>します。
+-   生成一意<xref:System.Diagnostics.Activity.Id>このアクティビティ。</item>
+
+使用<xref:System.Diagnostics.DiagnosticSource.StartActivity%2A?displayProperty=nameWithType>を開始する、<see cref="T:System.Diagnostics.Activity" />開始イベントを書き込むとします。
+
+]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartTimeUtc">
@@ -430,14 +713,23 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.DateTime</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>操作が開始された時間を取得します。</summary>
+        <value>操作を開始した UTC 時刻。</value>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+`StartTimeUtc`プロパティが通常するときに初期化<xref:System.Diagnostics.Activity.Start>を呼び出すと、いつでも呼び出すことによって設定できますが、<xref:System.Diagnostics.Activity.SetStartTime%2A>します。
+
+]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -453,14 +745,29 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>アクティビティを停止します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+これの子にこの情報が渡されない<xref:System.Diagnostics.Activity>します。
+呼び出す、`Stop`メソッド。
+
+- セット<xref:System.Diagnostics.Activity.Current>に<xref:System.Diagnostics.Activity.Parent>します。
+- かどうか、終了時刻が未設定以前は、セット<xref:System.Diagnostics.Activity.Duration>間の差として<xref:System.DateTime.UtcNow?displayProperty=nameWithType>と<xref:System.Diagnostics.Activity.StartTimeUtc>します。
+
+呼び出す<xref:System.Diagnostics.DiagnosticSource.StopActivity%2A?displayProperty=nameWithType>を停止する、<xref:System.Diagnostics.Activity>停止イベントを書き込むとします。
+
+]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Tags">
@@ -476,9 +783,52 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,System.String&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>ログ システムに <see cref="T:System.Diagnostics.Activity" /> と共に書き込まれる情報を表すキーと値のペアのコレクションを取得します。</summary>
+        <value>文字列/文字列のキーの値のペアの列挙。</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TraceId">
+      <MemberSignature Language="C#" Value="public System.Diagnostics.ActivityTraceId TraceId { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Diagnostics.ActivityTraceId TraceId" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.TraceId" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property TraceId As ActivityTraceId" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::Diagnostics::ActivityTraceId ^ TraceId { System::Diagnostics::ActivityTraceId ^ get(); };" />
+      <MemberSignature Language="F#" Value="member this.TraceId : System.Diagnostics.ActivityTraceId" Usage="System.Diagnostics.Activity.TraceId" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue RefType="Ref">
+        <ReturnType>System.Diagnostics.ActivityTraceId</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TraceStateString">
+      <MemberSignature Language="C#" Value="public string TraceStateString { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string TraceStateString" />
+      <MemberSignature Language="DocId" Value="P:System.Diagnostics.Activity.TraceStateString" />
+      <MemberSignature Language="VB.NET" Value="Public Property TraceStateString As String" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::String ^ TraceStateString { System::String ^ get(); void set(System::String ^ value); };" />
+      <MemberSignature Language="F#" Value="member this.TraceStateString : string with get, set" Usage="System.Diagnostics.Activity.TraceStateString" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,5 +1,5 @@
 <Type Name="DiagnosticSource" FullName="System.Diagnostics.DiagnosticSource">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="721344c819324ed29d7c87fcc416078d9355d52b" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/24/2018" /><Meta Name="ms.locfileid" Value="36674160" /></Metadata><TypeSignature Language="C#" Value="public abstract class DiagnosticSource" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="8cbc4935d264c7be30193ce6ff6c9af0cdfd4331" /><Meta Name="ms.sourcegitcommit" Value="f55040f35c19a83c85beb55243330558f6e369be" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/10/2019" /><Meta Name="ms.locfileid" Value="66817924" /></Metadata><TypeSignature Language="C#" Value="public abstract class DiagnosticSource" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DiagnosticSource extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Diagnostics.DiagnosticSource" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class DiagnosticSource" />
@@ -12,14 +12,15 @@
     <AssemblyVersion>4.0.2.0</AssemblyVersion>
     <AssemblyVersion>4.0.2.1</AssemblyVersion>
     <AssemblyVersion>4.0.3.0</AssemblyVersion>
+    <AssemblyVersion>4.0.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>コードが、インストルメント化されたプロセスで使用されるために、リッチ データのペイロードの生産時間のログ記録に使用されるのをインストルメント化する抽象クラスです。</summary>
+    <remarks>詳細については、次を参照してください。 [DiagnosticSource ユーザー ガイド](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)します。</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -36,6 +37,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -58,6 +60,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -66,10 +69,16 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="name">書き込まれるイベントの名前です。</param>
+        <summary>通知イベントが有効になったかどうかを確認します。</summary>
+        <returns>通知イベントが有効な場合は <see langword="true" /> で、それ以外の場合は <see langword="false" /> です。</returns>
+         <remarks>
+           <format type="text/markdown"><![CDATA[
+
+高価なセットアップの通知がある場合は、このセットアップを実行する前に IsEnabled を呼び出すことができます。 コンシューマーは、IsEnabled が true の通知をのみ取得したことを想定しないでください。 ただし、この API を呼び出すプロデューサーでは省略可能です。 渡されると同じ名前には<see cref="M:System.Diagnostics.DiagnosticSource.Write(System.String,System.Object)" />します。
+
+           ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEnabled">
@@ -84,21 +93,78 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="name" Type="System.String" />
-        <Parameter Name="arg1" Type="System.Object" />
-        <Parameter Name="arg2" Type="System.Object" />
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
+        <Parameter Name="arg1" Type="System.Object" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
+        <Parameter Name="arg2" Type="System.Object" Index="2" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="arg1">To be added.</param>
-        <param name="arg2">To be added.</param>
+        <param name="name">書き込まれるイベントの名前です。</param>
+        <param name="arg1">IsEnabled の追加のコンテキストを表すオブジェクトです。 コンシューマーは <see langword="null" /> を受け取ります。これは、プロデューサーが純粋な IsEnabled(string) を呼び出し、コンシューマーがそのようなイベントの通知をそもそも受け取りたいかを確認したことを示している場合があります。 これに基づいて、プロデューサーが非 <see langword="null" /> コンテキストを使用して再度 IsEnabled(string, object, object) を呼び出す場合があります。</param>
+        <param name="arg2">任意。 IsEnabled の追加のコンテキストを表すオブジェクトです。 既定では <see langword="null" /> です。 コンシューマーは <see langword="null" /> を受け取ります。これは、プロデューサーが純粋な IsEnabled(string) を呼び出したか、プロデューサーが必要なすべてのコンテキストを <paramref name="arg1" /> で渡していることを示している場合があります。</param>
+        <summary>通知イベントが有効になったかどうかを確認します。</summary>
+        <returns>通知イベントが有効な場合は <see langword="true" /> で、それ以外の場合は <see langword="false" /> です。</returns>
+         <remarks>
+           <format type="text/markdown"><![CDATA[
+          
+高価なセットアップの通知がある場合は、このメソッドを呼び出すし、セットアップを実行する前にコンテキストを提供します。
+          
+           ]]></format>
+         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnActivityExport">
+      <MemberSignature Language="C#" Value="public virtual void OnActivityExport (System.Diagnostics.Activity activity, object payload);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnActivityExport(class System.Diagnostics.Activity activity, object payload) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Diagnostics.DiagnosticSource.OnActivityExport(System.Diagnostics.Activity,System.Object)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual void OnActivityExport(System::Diagnostics::Activity ^ activity, System::Object ^ payload);" />
+      <MemberSignature Language="F#" Value="abstract member OnActivityExport : System.Diagnostics.Activity * obj -&gt; unit&#xA;override this.OnActivityExport : System.Diagnostics.Activity * obj -&gt; unit" Usage="diagnosticSource.OnActivityExport (activity, payload)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="activity" Type="System.Diagnostics.Activity" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="payload" Type="System.Object" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="activity">To be added.</param>
+        <param name="payload">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnActivityImport">
+      <MemberSignature Language="C#" Value="public virtual void OnActivityImport (System.Diagnostics.Activity activity, object payload);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnActivityImport(class System.Diagnostics.Activity activity, object payload) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Diagnostics.DiagnosticSource.OnActivityImport(System.Diagnostics.Activity,System.Object)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual void OnActivityImport(System::Diagnostics::Activity ^ activity, System::Object ^ payload);" />
+      <MemberSignature Language="F#" Value="abstract member OnActivityImport : System.Diagnostics.Activity * obj -&gt; unit&#xA;override this.OnActivityImport : System.Diagnostics.Activity * obj -&gt; unit" Usage="diagnosticSource.OnActivityImport (activity, payload)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Diagnostics.DiagnosticSource</AssemblyName>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="activity" Type="System.Diagnostics.Activity" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="payload" Type="System.Object" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="activity">To be added.</param>
+        <param name="payload">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -114,20 +180,31 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.Activity</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="activity" Type="System.Diagnostics.Activity" />
-        <Parameter Name="args" Type="System.Object" />
+        <Parameter Name="activity" Type="System.Diagnostics.Activity" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
+        <Parameter Name="args" Type="System.Object" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="activity">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="activity">開始する <see cref="T:System.Diagnostics.Activity" /> です。</param>
+        <param name="args">イベントのペイロードとして渡される値を表すオブジェクトです。</param>
+        <summary><see cref="T:System.Diagnostics.Activity" /> を開始し、開始イベントを書き込みます。</summary>
+        <returns>チェーンで役立つために開始されたアクティビティです。</returns>
+         <remarks>
+           <format type="text/markdown"><![CDATA[
+           
+<xref:System.Diagnostics.Activity>論理演算、そのコンテキスト、および親の関係について説明します、現在<xref:System.Diagnostics.Activity>操作の処理を経由して送信します。
+
+このメソッドは、開始、特定<xref:System.Diagnostics.Activity>、グローバル管理<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>と<xref:System.Diagnostics.Activity.Parent?displayProperty=nameWithType>アクティビティを指定された<xref:System.Diagnostics.Activity>、コンシューマーに通知し、、新しい<xref:System.Diagnostics.Activity>が開始されました。 コンシューマーがアクセスできる<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>コンテキストを追加またはテレメトリを強化します。
+
+プロデューサーは、ペイロードにコンシューマーに追加の詳細情報を渡すことがあります。
+
+           ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="StopActivity">
@@ -142,19 +219,29 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="activity" Type="System.Diagnostics.Activity" />
-        <Parameter Name="args" Type="System.Object" />
+        <Parameter Name="activity" Type="System.Diagnostics.Activity" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
+        <Parameter Name="args" Type="System.Object" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="activity">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="activity">停止するアクティビティです。</param>
+        <param name="args">イベントのペイロードとして渡される値を表すオブジェクトです。</param>
+        <summary>指定した <see cref="T:System.Diagnostics.Activity" /> を停止し、グローバルな <see cref="P:System.Diagnostics.Activity.Current" /> アクティビティを維持し、コンシューマーに <see cref="T:System.Diagnostics.Activity" /> が停止されたことを通知します。</summary>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+プロデューサーは、ペイロードにコンシューマーに追加の詳細情報を渡すことがあります。
+
+コンシューマーがアクセスできる<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>コンテキストを追加またはテレメトリを強化します。
+
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -172,6 +259,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
         <AssemblyVersion>4.0.2.1</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.0.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -181,10 +269,22 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">書き込まれるイベントの名前です。</param>
+        <param name="value">イベントのペイロードとして渡される値を表すオブジェクトです。 これは通常、いくつかのサブ値を含む匿名型です。</param>
+        <summary>複雑なペイロードのログを記録する汎用的な方法です。</summary>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+各通知には、それだけでなく、通知に渡す任意の情報を提供するオブジェクト (通常、匿名型) を識別する名前が付けられます。  
+
+`name` 短い必要があります。 以降、あいまいさを回避するにがない限り、完全修飾名を使用しない`name`グローバルに一意である必要があります。 通常、 *componentName.eventName*ここで、 *componentName*と*eventName*未満の 10 文字を文字列には、適切な妥協が。
+
+通知の名前のない`.`コンポーネント名がドット、およびそれらの両方がドットであいまいさを潜在顧客にします。 使用することをお勧めします。`_`代わりにします。
+
+グループをフィルター文字列をプレフィックスとしてリスナーが使用することを想定しています。 そのため、コンポーネント名の階層構造のことをお勧めします。
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
   </Members>
