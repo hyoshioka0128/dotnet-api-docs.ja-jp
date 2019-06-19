@@ -32,7 +32,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Diagnostics.TraceSource> クラスをアプリケーションで使用すると、アプリケーションに関連付けることができるトレースを生成できます。 <xref:System.Diagnostics.TraceSource> は、イベントのトレース、データのトレース、および情報トレースの発行を簡単に実行できるトレース メソッドを提供します。 トレース出力<xref:System.Diagnostics.TraceSource>構成ファイルの設定で制御できます。 構成ファイルでは、アプリケーションの実行可能ファイルとフォルダーにあるし、アプリケーションの名前を持つ、.config ファイル名拡張子を追加します。 たとえば、TraceSourceSample.exe の構成ファイルの名前は TraceSourceSample.exe.config です。構成ファイルは、トレース情報が送信されると、トレース対象のアクティビティのレベルを決定できます。 次の例では、サンプル アプリケーションの構成ファイルの内容を示します。  
+  <xref:System.Diagnostics.TraceSource> クラスをアプリケーションで使用すると、アプリケーションに関連付けることができるトレースを生成できます。 <xref:System.Diagnostics.TraceSource> は、イベントのトレース、データのトレース、および情報トレースの発行を簡単に実行できるトレース メソッドを提供します。 <xref:System.Diagnostics.TraceSource> からのトレース出力は、構成ファイルの設定で制御できます。 構成ファイルでは、アプリケーションの実行可能ファイルとフォルダーにあり、.config 拡張子を追加したアプリケーションの名前と同じファイル名を持ちます。 たとえば、TraceSourceSample.exe の構成ファイルの名前は TraceSourceSample.exe.config です。構成ファイルは、トレース情報の送り先と、トレース対象のアクティビティ レベルを決定できます。 次の例は、サンプル アプリケーションの構成ファイルの内容を示します。  
   
 ```xml  
 <configuration>  
@@ -66,24 +66,24 @@
 </configuration>  
 ```  
   
- <xref:System.Diagnostics.TraceSource>クラスは、通常、アプリケーションの名前、ソースの名前によって識別されます。  特定のコンポーネントからのトレース メッセージは、識別が簡単にそのコンポーネントからすべてのメッセージを許可する特定のトレース ソースで開始できます。  
+ <xref:System.Diagnostics.TraceSource>クラスは、通常はアプリケーションの名前である、ソースの名前によって識別されます。  特定のコンポーネントからのトレース メッセージは、特定のトレース ソースによって開始されるので、そのコンポーネントからのメッセージを簡単に識別することができます。 
   
- <xref:System.Diagnostics.TraceSource> トレース メソッドを定義しますが、生成して、トレース データを格納するの実際には、特定のメカニズムは提供されません。 トレース データは、トレース ソースによって読み込まれるプラグインのトレース リスナーによって生成されます。  
-  
-> [!NOTE]
->  終了処理中にトレース メソッドを呼び出す必要はありません。 これによりが、<xref:System.ObjectDisposedException>がスローされます。  
-  
- トレース出力のターゲットをカスタマイズするには追加または削除によって<xref:System.Diagnostics.TraceListener>インスタンスに格納されているコレクションとの間、<xref:System.Diagnostics.TraceSource.Listeners%2A?displayProperty=nameWithType>プロパティ。 インスタンスを使用して既定では、トレース出力が生成されて、<xref:System.Diagnostics.DefaultTraceListener>クラス。 削除する前の構成ファイルの例に示します、<xref:System.Diagnostics.DefaultTraceListener>を追加して、<xref:System.Diagnostics.ConsoleTraceListener>トレース ソースのトレース出力を生成します。 詳細については、次を参照してください。 [&lt;リスナー&gt; ](~/docs/framework/configure-apps/file-schema/trace-debug/listeners-element-for-source.md)と[&lt;上 sharedListeners&gt;](~/docs/framework/configure-apps/file-schema/trace-debug/sharedlisteners-element.md)します。  
+ <xref:System.Diagnostics.TraceSource> は、トレース メソッドを定義しますが、実際にトレース データを生成して格納する、特定のメカニズムは提供されません。 トレース データは、トレース ソースによって読み込まれるプラグインのトレース リスナーによって生成されます。  
   
 > [!NOTE]
->  トレース リスナーを追加する、<xref:System.Diagnostics.TraceSource.Listeners%2A>トレース リスナーによって使用されるリソースが利用できない場合、コレクションは、トレース中にスローされる例外を発生できます。 条件とスローされる例外は、トレース リスナーに依存し、このトピックで列挙することはできません。 呼び出しを配置することができます、<xref:System.Diagnostics.TraceSource>メソッド`try` / `catch`ブロックを検出し、トレース リスナーから例外を処理します。  
+>  ファイナライゼーション処理中にトレース メソッドを呼び出すべきではありません。 <xref:System.ObjectDisposedException> がスローされる結果になります。 
   
- <xref:System.Diagnostics.SourceSwitch>クラスには、トレース出力を動的に制御するための手段が用意されています。 上記の構成ファイルの例では、トレース ソースとするトレース レベルが発生したコントロールからのトレースを無効にすることができる方法を示します。  アプリケーションを再コンパイルしなくてもソース スイッチの値を変更できます。 スイッチを設定する構成ファイルの使用方法の詳細については、次を参照してください。<xref:System.Diagnostics.Switch>と[方法。作成、初期化、およびトレース スイッチを構成する](~/docs/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches.md)します。  
+ <xref:System.Diagnostics.TraceListener> インスタンスが格納されているコレクション <xref:System.Diagnostics.TraceSource.Listeners%2A?displayProperty=nameWithType> プロパティに追加または削除することによって、トレース出力のターゲットをカスタマイズすることができます。 既定では、<xref:System.Diagnostics.DefaultTraceListener> クラスのインスタンスを使用して、トレース出力が生成されます。 前の構成ファイルの例では、トレース ソースから <xref:System.Diagnostics.DefaultTraceListener> を削除して、トレース出力を生成するために、<xref:System.Diagnostics.ConsoleTraceListener> を追加しています。 詳細については、[&lt;リスナー&gt; ](~/docs/framework/configure-apps/file-schema/trace-debug/listeners-element-for-source.md)と[&lt;上 sharedListeners&gt;](~/docs/framework/configure-apps/file-schema/trace-debug/sharedlisteners-element.md)を参照してください。 
   
 > [!NOTE]
->  アプリケーションを停止および再起動する必要がありますが、アプリケーションの実行中に構成ファイルを変更する場合、または<xref:System.Diagnostics.Trace.Refresh%2A>新しい設定を有効にするために、メソッドを呼び出す必要があります。  
+>  <xref:System.Diagnostics.TraceSource.Listeners> コレクションにトレース リスナーを追加することで、トレース リスナーによって使用されるリソースが利用できない場合、トレース中に例外を発生させることになります。 条件とスローされる例外は、トレース リスナーに依存し、このトピックで列挙することはできません。 トレース リスナーから例外を検出し、処理するために、<xref:System.Diagnostics.TraceSource> メソッドの呼び出しを`try` / `catch`ブロックに配置することができます。 
   
- <xref:System.Diagnostics.TraceEventType>列挙体を使用して、トレース メッセージのイベントの種類を定義します。 トレース フィルターを使用して、<xref:System.Diagnostics.TraceEventType>をトレース リスナーがトレース メッセージを生成する必要があるかどうかを判断します。  
+ <xref:System.Diagnostics.SourceSwitch>クラスには、トレース出力を動的に制御するための手段が用意されています。 上記の構成ファイルの例では、トレース ソースとするトレース レベルが発生したコントロールからのトレースを無効にすることができる方法を示します。  アプリケーションを再コンパイルしなくてもソース スイッチの値を変更できます。 スイッチを設定する構成ファイルの使用方法の詳細については、<xref:System.Diagnostics.Switch>と[方法。作成、初期化、およびトレース スイッチを構成する](~/docs/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches.md)を参照してください。 
+  
+> [!NOTE]
+>  アプリケーションの実行中に構成ファイルを変更する場合、アプリケーションを停止して再起動するか、新しい設定を有効にするために、<xref:System.Diagnostics.Trace.Refresh> メソッドを呼び出す必要があります。 
+  
+ <xref:System.Diagnostics.TraceEventType> 列挙体を使用して、トレース メッセージのイベントの種類を定義します。 トレース フィルターを使用して、<xref:System.Diagnostics.TraceEventType> をトレース リスナーがトレース メッセージを生成する必要があるかどうかを判断します。 
   
  トレース リスナーでは、フィルター処理トレース フィルターの追加レイヤーを持つことができます必要に応じて。  トレース リスナーに関連付けられている、フィルターがある場合、リスナーを呼び出す、<xref:System.Diagnostics.TraceFilter.ShouldTrace%2A>トレース情報を生成するかどうかを判断するには、そのフィルターのメソッド。  
   
