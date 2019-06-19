@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 5feab3f469ed6d7017ee0fdc20e78822b5ed4834
+ms.sourcegitcommit: 1bb00d2f4343e73ae8d58668f02297a3cf10a4c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/15/2019
+ms.locfileid: "63867681"
+---
  .NET は独自の文字のテーブルとそれに対応するカテゴリを保持するため、さまざまなプラットフォームで実行されている特定のバージョンの .NET 実装で同一の文字カテゴリの情報が返されるようになります。 Linux および macOS で実行されている .NET Core 上では、文字カテゴリの情報が [International Components for Unicode](http://site.icu-project.org/) ライブラリによって提供されます。
  
  次の表は、.NET のバージョンとその文字カテゴリが基準としている Unicode 標準のバージョンを示しています。   

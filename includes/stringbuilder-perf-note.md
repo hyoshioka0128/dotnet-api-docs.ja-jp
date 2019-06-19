@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 903ac4ecb57e3a8e02a4f65ecfa6f9e77a552f45
+ms.sourcegitcommit: 1bb00d2f4343e73ae8d58668f02297a3cf10a4c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/15/2019
+ms.locfileid: "63872207"
+---
 <xref:System.Text.StringBuilder.Chars%2A> プロパティで文字ベースのインデックス付けを使用すると、次の条件下では非常に遅くなることがあります。
 
 - <xref:System.Text.StringBuilder> インスタンスが大きい (たとえば、数万文字が含まれている)。
@@ -12,7 +20,7 @@
 
 - <xref:System.Text.StringBuilder.ToString%2A> メソッドを呼び出して <xref:System.Text.StringBuilder> インスタンスを <xref:System.String> に変換した後、文字列内の文字にアクセスします。
 
-- 既存の <xref:System.Text.StringBuilder> オブジェクトの内容を、事前にサイズを設定した新しい <xref:System.Text.StringBuilder> オブジェクトにコピーします。 新しい <xref:System.Text.StringBuilder> オブジェクトはチャンク化していないため、パフォーマンスが向上します。 例:
+- 既存の <xref:System.Text.StringBuilder> オブジェクトの内容を、事前にサイズを設定した新しい <xref:System.Text.StringBuilder> オブジェクトにコピーします。 新しい <xref:System.Text.StringBuilder> オブジェクトはチャンク化していないため、パフォーマンスが向上します。 次に例を示します。
 
    ```csharp
    // sbOriginal is the existing StringBuilder object
