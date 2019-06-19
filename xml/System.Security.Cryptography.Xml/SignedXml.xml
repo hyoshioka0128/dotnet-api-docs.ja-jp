@@ -1,5 +1,5 @@
 <Type Name="SignedXml" FullName="System.Security.Cryptography.Xml.SignedXml">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="c1dedadb74e0944ff24d80b31fa09f5fad2c1816" /><Meta Name="ms.sourcegitcommit" Value="f55040f35c19a83c85beb55243330558f6e369be" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/10/2019" /><Meta Name="ms.locfileid" Value="66818113" /></Metadata><TypeSignature Language="C#" Value="public class SignedXml" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="e630aa2ce3476b00ce50bed3c2270f34369059c5" /><Meta Name="ms.sourcegitcommit" Value="6b9d64332f31de312efea785fbb19e4d80f544d5" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/12/2019" /><Meta Name="ms.locfileid" Value="67027256" /></Metadata><TypeSignature Language="C#" Value="public class SignedXml" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SignedXml extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.Xml.SignedXml" />
   <TypeSignature Language="VB.NET" Value="Public Class SignedXml" />
@@ -27,25 +27,25 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml>クラスは、World Wide Web Consortium (W3C) の .NET Framework 実装[XML 署名の構文と処理の仕様](https://www.w3.org/TR/xmldsig-core/)XMLDSIG (XML デジタル署名) とも呼ばれます。  XMLDSIG は、署名し、XML ドキュメントまたは Uniform Resource Identifier (URI) からアドレス指定可能であるその他のデータの一部またはすべてを検証する、標準ベースの相互運用可能な方法です。  
+ <xref:System.Security.Cryptography.Xml.SignedXml>クラスは、World Wide Web Consortium (W3C) の .NET 実装[XML 署名の構文と処理の仕様](https://www.w3.org/TR/xmldsig-core/)XMLDSIG (XML デジタル署名) とも呼ばれます。 XMLDSIG は、署名し、XML ドキュメントまたは Uniform Resource Identifier (URI) からアドレス指定可能であるその他のデータの一部またはすべてを検証する、標準ベースの相互運用可能な方法です。
   
- 使用して、<xref:System.Security.Cryptography.Xml.SignedXml>を共有する必要がある場合は、クラスは、標準的な方法でアプリケーションまたは組織の間で XML データを署名します。  このクラスを使用して署名されたデータは、XMLDSIG の W3C 仕様に準拠する実装によって検証できます。  
+ 使用して、<xref:System.Security.Cryptography.Xml.SignedXml>を共有する必要がある場合は、クラスは、標準的な方法でアプリケーションまたは組織の間で XML データを署名します。 このクラスを使用して署名されたデータは、XMLDSIG の W3C 仕様に準拠する実装によって検証できます。
   
  <xref:System.Security.Cryptography.Xml.SignedXml>クラスでは、次の 3 種類の XML デジタル署名を作成できます。  
   
 |署名の種類|説明|  
 |--------------------|-----------------|  
 |エンベロープ署名|署名は、署名されている XML 要素内に含まれています。|  
-|エンベロープ署名|署名付きの XML に含まれる、<`Signature`> 要素。|  
+|エンベロープ署名|署名付きの XML に含まれる、`<Signature>`要素。|  
 |内部のデタッチされた署名|署名と署名付きの XML は同じのドキュメントが、他のいずれの要素が含まれています。|  
   
  4 つ目のデータと署名が別個の XML ドキュメントである外部のデタッチされた署名と呼ばれる署名もあります。 外部のデタッチされた署名がサポートされていない、<xref:System.Security.Cryptography.Xml.SignedXml>クラス。  
   
-## <a name="the-structure-of-an--xml-signature"></a>XML 署名の構造  
- XMLDSIG の作成、<`Signature`> 要素で、XML ドキュメントまたは URI からアドレス指定可能なその他のデータのデジタル署名が含まれています。  <`Signature`> 要素が必要に応じて署名を検証するキーを検索する場所についての情報を含めることができ、署名に使用されている暗号アルゴリズム。 基本的な構造は次のとおりです。  
+## <a name="the-structure-of-an-xml-signature"></a>XML 署名の構造  
+
+XMLDSIG の作成、`<Signature>`要素で、XML ドキュメントまたは URI からアドレス指定可能なその他のデータのデジタル署名が含まれています。 `<Signature>`要素が必要に応じて署名を検証するキーを検索する場所についての情報を含めることができ、署名に使用されている暗号アルゴリズム。 基本的な構造は次のとおりです。  
   
-```xml  
-  
+```xml
 <Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">  
     <SignedInfo>  
       <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>  
@@ -59,56 +59,61 @@
       </Reference>  
     </SignedInfo>  
     <SignatureValue>AnotherBase64EncodedValue===</SignatureValue>  
-  </Signature>  
-  
+</Signature>
 ```  
   
- この構造体の主要な部分は次のとおりです。  
+この構造体の主要な部分は次のとおりです。  
   
- <`CanonicalizationMethod`> 要素  
- 書き換えのルールを指定します、 `Signature` XML]、[テキストから要素を署名の検証のバイト数にします。 .NET Framework の既定値はhttps://www.w3.org/TR/2001/REC-xml-c14n-20010315、信頼できるアルゴリズムを識別します。 この要素で表される、<xref:System.Security.Cryptography.Xml.SignedInfo.CanonicalizationMethod%2A?displayProperty=nameWithType>プロパティ。  
+- `<CanonicalizationMethod>` 要素
+
+    書き換えのルールを指定します、 `Signature` XML]、[テキストから要素を署名の検証のバイト数にします。 .NET の既定値は<http://www.w3.org/TR/2001/REC-xml-c14n-20010315>、信頼できるアルゴリズムを識別します。 この要素で表される、<xref:System.Security.Cryptography.Xml.SignedInfo.CanonicalizationMethod%2A?displayProperty=nameWithType>プロパティ。  
   
- <`SignatureMethod`> 要素  
- 署名の生成および適用されたの検証に使用されるアルゴリズムを指定します、<`Signature`> 要素の値を生成するために <`SignatureValue`>。 値を上記の例でhttp://www.w3.org/2000/09/xmldsig#rsa-sha1RSA PKCS1 sha-1 署名を識別します。 この要素で表される、<xref:System.Security.Cryptography.Xml.SignedXml.SignatureMethod%2A>プロパティ。  
+- `<SignatureMethod>` 要素
+
+   署名の生成および適用されたの検証に使用されるアルゴリズムを指定します、`<Signature>`要素の値を生成するために`<SignatureValue>`します。 前の例では、値で<http://www.w3.org/2000/09/xmldsig#rsa-sha1>RSA PKCS1 sha-1 署名を識別します。 この要素で表される、<xref:System.Security.Cryptography.Xml.SignedXml.SignatureMethod%2A>プロパティ。  
   
- <`SignatureValue`> 要素  
- 暗号化署名を指定します、<`Signature`> 要素。 かどうかはこの署名は検証されませんのいくつかの部分にし、<`Signature`> ブロックが改ざんし、ドキュメントは無効と見なされます。 あれば、<`CanonicalizationMethod`> の値が信頼できる、この値は改ざんに対する耐性が強くします。 この要素で表される、<xref:System.Security.Cryptography.Xml.SignedXml.SignatureValue%2A>プロパティ。  
+- `<SignatureValue>` 要素
+
+   暗号化署名を指定します、`<Signature>`要素。 かどうかはこの署名は検証されませんの一部から、`<Signature>`ブロックが改ざんし、ドキュメントは無効と見なされます。 限り、`<CanonicalizationMethod>`値が信頼できる、この値は改ざんに対する耐性が強くします。 この要素で表される、<xref:System.Security.Cryptography.Xml.SignedXml.SignatureValue%2A>プロパティ。  
   
- `URI`の属性、<`Reference`> 要素  
- URI 参照を使用して、データ オブジェクトを指定します。 この属性は、によって表される、<xref:System.Security.Cryptography.Xml.Reference.Uri%2A?displayProperty=nameWithType>プロパティ。  
+- `URI`の属性、`<Reference>`要素  
+
+   URI 参照を使用して、データ オブジェクトを指定します。 この属性は、によって表される、<xref:System.Security.Cryptography.Xml.Reference.Uri%2A?displayProperty=nameWithType>プロパティ。  
   
--   指定していない、`URI`属性、つまり、設定、<xref:System.Security.Cryptography.Xml.Reference.Uri%2A?displayProperty=nameWithType>プロパティを`null`、受信側のアプリケーション オブジェクトの id を把握する必要のあることを意味します。 ほとんどの場合、 `null` URI と、例外がスローされます。 使用しないでください、 `null` URI、アプリケーションが必要とするプロトコルと相互運用する場合を除き、します。  
+   - 指定していない、`URI`属性、つまり、設定、<xref:System.Security.Cryptography.Xml.Reference.Uri%2A?displayProperty=nameWithType>プロパティを`null`、受信側のアプリケーション オブジェクトの id を把握する必要のあることを意味します。 ほとんどの場合、 `null` URI と、例外がスローされます。 使用しないでください、 `null` URI、アプリケーションが必要とするプロトコルと相互運用する場合を除き、します。  
   
--   設定、`URI`に空の文字列属性は、ドキュメントのルート要素が署名されていることを示しますエンベロープ署名の形式。  
+   - 設定、`URI`に空の文字列属性は、ドキュメントのルート要素が署名されていることを示しますエンベロープ署名の形式。  
   
--   場合の値`URI`属性が # で始まる、現在のドキュメント内の要素に値を解決する必要があります。 このフォームは、サポートされている署名の種類 (エンベロープ署名、署名または内部のデタッチされた署名のエンベロープ) のいずれかで使用できます。  
+   - 場合の値`URI`属性が # で始まる、現在のドキュメント内の要素に値を解決する必要があります。 このフォームは、サポートされている署名の種類 (エンベロープ署名、署名または内部のデタッチされた署名のエンベロープ) のいずれかで使用できます。  
   
--   外部のリソースがデタッチされた署名と見なされますでサポートされていないその他、<xref:System.Security.Cryptography.Xml.SignedXml>クラス。  
+   - 外部のリソースがデタッチされた署名と見なされますでサポートされていないその他、<xref:System.Security.Cryptography.Xml.SignedXml>クラス。  
   
- <`Transforms`> 要素  
- 順序付きリストが含まれています <`Transform`> digested が署名者を取得する方法、データ オブジェクトを記述する要素。 変換アルゴリズムは似ていますが書き換えの代わりに、正規化メソッドに、<`Signature`> 要素で識別されるコンテンツ書き換えて、`URI`の属性、<`Reference`> 要素。 <`Transforms`> 要素が表される、<xref:System.Security.Cryptography.Xml.TransformChain>クラス。  
+- `<Transforms>` 要素  
+
+   順序付きリストを含む`<Transform>`digested が署名者を取得する方法、データ オブジェクトを記述する要素。 変換アルゴリズムは似ています、正規化メソッドが書き換えではなく、`<Signature>`要素で識別されるコンテンツ書き換えて、`URI`の属性、`<Reference>`要素。 `<Transforms>`要素が表される、<xref:System.Security.Cryptography.Xml.TransformChain>クラス。  
   
--   各変換アルゴリズムは、XML (XPath ノード セット) またはバイトのいずれかを入力として受け取るように定義されます。 現在のデータの形式は、変換入力の要件によって異なります、変換規則が適用されます。  
+   - 各変換アルゴリズムは、XML (XPath ノード セット) またはバイトのいずれかを入力として受け取るように定義されます。 現在のデータの形式は、変換入力の要件によって異なります、変換規則が適用されます。  
   
--   各変換アルゴリズムは、XML またはバイトのいずれかを出力として生成として定義されます。  
+   - 各変換アルゴリズムは、XML またはバイトのいずれかを出力として生成として定義されます。  
   
--   かどうか、最後の変換アルゴリズムの出力がバイト単位で定義されていない (または変換が指定されていません)、[正規化メソッド](https://www.w3.org/TR/2001/REC-xml-c14n-20010315)暗黙の変換として使用されます (別のアルゴリズムがで指定された場合でも、<`CanonicalizationMethod`> 要素)。  
+   - かどうか、最後の変換アルゴリズムの出力がバイト単位で定義されていない (または変換が指定されていません)、次に、[正規化メソッド](https://www.w3.org/TR/2001/REC-xml-c14n-20010315)暗黙の変換として使用されます (別のアルゴリズムは、で指定された場合でも`<CanonicalizationMethod>`要素)。  
   
--   値http://www.w3.org/2000/09/xmldsig#enveloped-signature変換アルゴリズムをエンコード削除として解釈されますが、ルール、<`Signature`> ドキュメントから要素。 それ以外の場合、エンベロープ署名の検証ツールは、署名を含む、ドキュメントをダイジェストが、署名者が digested ドキュメント署名が適用された、前に異なる回答につながります。  
-  
- <`DigestMethod`> 要素  
- 識別される変換済みのコンテンツに適用する (暗号化ハッシュ) のダイジェスト メソッドを識別、`URI`の属性、<`Reference`> 要素。 これは、<xref:System.Security.Cryptography.Xml.Reference.DigestMethod%2A?displayProperty=nameWithType>プロパティ。  
+   - 値<http://www.w3.org/2000/09/xmldsig#enveloped-signature>変換アルゴリズムをエンコード削除として解釈されますが、ルール、`<Signature>`ドキュメントから要素。 それ以外の場合、エンベロープ署名の検証ツールは、署名を含む、ドキュメントをダイジェストが、署名者が digested ドキュメント署名が適用された、前に異なる回答につながります。  
+
+- `<DigestMethod>` 要素
+ 
+   識別される変換済みのコンテンツに適用する (暗号化ハッシュ) のダイジェスト メソッドを識別、`URI`の属性、`<Reference>`要素。 これは、<xref:System.Security.Cryptography.Xml.Reference.DigestMethod%2A?displayProperty=nameWithType>プロパティ。  
   
 ## <a name="choosing-a-canonicalization-method"></a>正規化の方法の選択  
- 値が、XML C14N 1.0 アルゴリズムである .NET Framework では、既定の正規化方法を使用することをお勧めしない限り、別の値の使用を必要とする仕様との相互運用、https://www.w3.org/TR/2001/REC-xml-c14n-20010315します。 適用する暗黙の最終的な変換は、特に、XMLDSIG のすべての実装でサポートされなければならない - C14N XML 1.0 アルゴリズムが必要です。  
+ 既定の .NET 正規化方法で値を持つは、XML C14N 1.0 アルゴリズムを使用することをお勧めしない限り、別の値の使用を必要とする仕様との相互運用、<http://www.w3.org/TR/2001/REC-xml-c14n-20010315>します。 適用する暗黙の最終的な変換は、特に、XMLDSIG のすべての実装でサポートされなければならない - C14N XML 1.0 アルゴリズムが必要です。  
   
- コメントの保持をサポートする標準化アルゴリズムのバージョンがあります。 "Sign わかる"という原則に違反しているために、正規化メソッドのコメントの保持はお勧めしません。 内のコメントを <`Signature`> の署名を実行する方法は、要素に、処理ロジックは変更されません、だけでどのような署名値。 ハッシュの競合を強制的に、攻撃者の不要な自由に含まれるはコメントを許可する、脆弱な署名アルゴリズムと組み合わせたときに、表示、正当な改ざんされたドキュメントを行っています。  .NET Framework では、組み込み canonicalizers のみは既定でサポートされます。 追加またはカスタム canonicalizers をサポートするために、次を参照してください。、<xref:System.Security.Cryptography.Xml.SignedXml.SafeCanonicalizationMethods%2A>プロパティ。 ドキュメントによって表されるコレクションに含まれていない正規化メソッドを使用している場合、<xref:System.Security.Cryptography.Xml.SignedXml.SafeCanonicalizationMethods%2A>プロパティ、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッドが返す`false`します。  
+ コメントの保持をサポートする標準化アルゴリズムのバージョンがあります。 "Sign わかる"という原則に違反しているために、正規化メソッドのコメントの保持はお勧めしません。 内のコメントを`<Signature>`署名がどのように実行されるは、要素に、処理ロジックは変更されません、だけでどのような署名値。 ハッシュの競合を強制的に、攻撃者の不要な自由に含まれるはコメントを許可する、脆弱な署名アルゴリズムと組み合わせたときに、表示、正当な改ざんされたドキュメントを行っています。  .NET Framework では、組み込み canonicalizers のみは既定でサポートされます。 追加またはカスタム canonicalizers をサポートするために、次を参照してください。、<xref:System.Security.Cryptography.Xml.SignedXml.SafeCanonicalizationMethods%2A>プロパティ。 ドキュメントによって表されるコレクションに含まれていない正規化メソッドを使用している場合、<xref:System.Security.Cryptography.Xml.SignedXml.SafeCanonicalizationMethods%2A>プロパティ、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッドが返す`false`します。  
   
 > [!NOTE]
 >  非常に防御的なアプリケーションから使用する署名者が想定していない任意の値を削除できます、<xref:System.Security.Cryptography.Xml.SignedXml.SafeCanonicalizationMethods%2A>コレクション。  
   
 ## <a name="are-the-reference-values-safe-from-tampering"></a>参照値は改ざんから安全でしょうか。  
- はい、<`Reference`> 値は改ざんから保護します。  .NET framework の検証、<`SignatureValue`> 計算のいずれかを処理する前に、<`Reference`> 値とそれに関連付けられた変換、および可能性のある悪意のある処理命令を回避するために事前に中止されます。  
+ はい、`<Reference>`値は改ざんから保護します。 .NET の検証、`<SignatureValue>`計算のいずれかを処理する前に、`<Reference>`値とそれに関連付けられた変換、および可能性のある悪意のある処理命令を回避するために事前に中止されます。  
   
 ## <a name="choosing-the-elements-to-sign"></a>署名する要素を選択します。  
  値を使用することをお勧めします。""の、`URI`属性 (設定や、<xref:System.Security.Cryptography.Xml.Reference.Uri%2A>プロパティを空の文字列)、可能な場合。 つまり、ドキュメント全体はドキュメント全体が改ざんから保護されていることを意味するダイジェスト計算の対象と見なされます。  
@@ -120,20 +125,20 @@
  部分的にのみで保護されるドキュメントをそのまま使用する必要があると、同じコンテンツを読み取ることを保証する場合、署名が保護されている、使用、<xref:System.Security.Cryptography.Xml.SignedXml.GetIdElement%2A>メソッド。  
   
 ## <a name="security-considerations-about-the-keyinfo-element"></a>KeyInfo 要素に関するセキュリティの考慮事項  
- 省略可能なデータ <`KeyInfo`> 要素 (つまり、<xref:System.Security.Cryptography.Xml.SignedXml.KeyInfo%2A>プロパティ) を署名を検証するためにキーが含まれていますが、信頼されていません。  
+ 省略可能なデータ`<KeyInfo>`要素 (つまり、<xref:System.Security.Cryptography.Xml.SignedXml.KeyInfo%2A>プロパティ) を署名を検証するためにキーが含まれていますが、信頼されていません。  
   
  特定、<xref:System.Security.Cryptography.Xml.SignedXml.KeyInfo%2A>値は、ベア RSA や DSA、ECDSA 公開キーを表す、ドキュメントを使用すると、改ざんする可能性がありますに関係なく、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッドの署名が有効であるレポートを作成します。  これは、改ざんのだけを行うエンティティが新しいキーを生成し、改ざんされたドキュメントをその新しいキーで再署名する必要があるために発生することができます。 したがって、アプリケーションは、公開キーが必要な値であることを確認、しない限り、ドキュメントは、改ざんされた場合と同様に扱う必要があります。 これには、アプリケーションは、ドキュメントに埋め込まれたパブリック キーを調べるし、ドキュメントのコンテキストの既知の値の一覧に照らして確認することが必要です。 たとえば、既知のユーザーによって発行されるドキュメントを認識する可能性がある場合は、そのユーザーによって使用される既知のキーの一覧と照合キーをチェックは。  
   
  使用して、ドキュメントを処理した後、キーを確認することも、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignatureReturningKey%2A>メソッドを使用する代わりに、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッド。 ただし、最適なセキュリティを確認してください、キー事前。  
   
- 新するのではなく、代わりに、公開キーは、登録されているユーザーのしようとして検討してください、<`KeyInfo`> 要素。  
+ 新するのではなく、代わりに、公開キーは、登録されているユーザーのしようとして検討してください、`<KeyInfo>`要素。  
   
 ## <a name="security-considerations-about-the-x509data-element"></a>X509Data 要素に関するセキュリティの考慮事項  
- 省略可能な <`X509Data`> 要素の子である、<`KeyInfo`> 要素が 1 つまたは複数の X509 含まれている証明書または x509 識別子証明書。 内のデータ、<`X509Data`> 要素も本質的には信頼できません。  
+ 省略可能な`<X509Data>`要素の子である、`<KeyInfo>`要素れ、1 つまたは複数の X509 証明書または x509 識別子証明書。 内のデータ、`<X509Data>`要素も本質的には信頼できません。  
   
- 埋め込まれたドキュメントを検証するときに <`X509Data`> 要素では、.NET Framework だけを確認します、データを X509 に解決される公開キーを正常にドキュメントの署名の検証に使用する証明書。 呼び出し元とは異なり、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッドを`verifySignatureOnly`パラメーターに設定`false`、失効チェックは行われません、信頼チェーンがチェックされていない、有効期限が検証されていません。 場合でも、アプリケーションは、証明書自体を抽出しに渡されます、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッドを`verifySignatureOnly`パラメーターに設定`false`、つまりもドキュメントの改ざんを防ぐために検証が十分ではありません。 証明書が署名されているドキュメントの適切なものとして検証する必要があります。  
+ 埋め込まれたドキュメントを検証するときに`<X509Data>`要素、.NET 検証のみデータを X509 に解決される公開キーを正常にドキュメントの署名の検証に使用する証明書。 呼び出し元とは異なり、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッドを`verifySignatureOnly`パラメーターに設定`false`、失効チェックは行われません、信頼チェーンがチェックされていない、有効期限が検証されていません。 場合でも、アプリケーションは、証明書自体を抽出しに渡されます、<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>メソッドを`verifySignatureOnly`パラメーターに設定`false`、つまりもドキュメントの改ざんを防ぐために検証が十分ではありません。 証明書が署名されているドキュメントの適切なものとして検証する必要があります。  
   
- 埋め込みの署名証明書を使用して提供できる便利なキーのローテーション戦略、かどうかで、<`X509Data`> セクションまたはドキュメントの内容にします。 このアプローチを使用する場合、アプリケーションが証明書を手動で抽出し、のような検証を実行する必要があります。  
+ 埋め込みの署名証明書を使用して提供できる便利なキーのローテーション戦略、かどうかで、`<X509Data>`セクションまたはドキュメントの内容にします。 このアプローチを使用する場合、アプリケーションが証明書を手動で抽出し、のような検証を実行する必要があります。  
   
 -   証明書が直接またはチェーン経由で、証明書機関 (CA) によってパブリック証明書がアプリケーションに埋め込まれているを発行します。  
   
@@ -146,9 +151,9 @@
 -   証明書のサブジェクトは、現在のドキュメントに適切なものとして検証されます。  
   
 ## <a name="choosing-the-transform-algorithm"></a>変換アルゴリズムの選択  
- (XrML) などの特定の値が規定されている仕様の相互運用する場合は、仕様に準拠する必要があります。  エンベロープ シグネチャがある場合 (する場合などドキュメント全体を署名)、使用する必要がありますhttp://www.w3.org/2000/09/xmldsig#enveloped-signature(によって表される、<xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform>クラス)。 同様に、暗黙的な XML C14N 変換を指定できますが、必要はありません。  エンベロープまたはデタッチされた署名では、変換は必要ありません。 すべての暗黙的な XML C14N 変換が行われます。  
+ (XrML) などの特定の値が規定されている仕様の相互運用する場合は、仕様に準拠する必要があります。 エンベロープ シグネチャがある場合 (する場合などドキュメント全体を署名)、使用する必要があります<http://www.w3.org/2000/09/xmldsig#enveloped-signature>(によって表される、<xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform>クラス)。 同様に、暗黙的な XML C14N 変換を指定できますが、必要はありません。  エンベロープまたはデタッチされた署名では、変換は必要ありません。 すべての暗黙的な XML C14N 変換が行われます。  
   
- 更新セキュリティによって導入された、[マイクロソフト セキュリティ情報 MS16 035](https://docs.microsoft.com/security-updates/securitybulletins/2016/ms16-035)、.NET Framework は、変換が制限されての原因と信頼されていない変換で、既定では、ドキュメントの検証に使用<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>を常に返す`false`します。 具体的には、追加の入力 (XML 内の子要素として指定) を必要とする変換は許可されません。 不正使用の脆弱性により悪意のあるユーザー。 これらの制限を受ける 2 つの主な変換を XPath と XSLT 変換を回避するには、W3C が表示されます。  
+ セキュリティが更新されたで導入された、[マイクロソフト セキュリティ情報 MS16 035](https://docs.microsoft.com/security-updates/securitybulletins/2016/ms16-035)、.NET によって、変換が制限されている信頼されていない変換が原因で、既定では、ドキュメントの検証に使用<xref:System.Security.Cryptography.Xml.SignedXml.CheckSignature%2A>を常に返す`false`します。 具体的には、追加の入力 (XML 内の子要素として指定) を必要とする変換は許可されません。 不正使用の脆弱性により悪意のあるユーザー。 これらの制限を受ける 2 つの主な変換を XPath と XSLT 変換を回避するには、W3C が表示されます。  
   
 ## <a name="the-problem-with-external-references"></a>外部参照の問題  
  アプリケーションが外部参照が現在のコンテキストに適した見えることを確認していない場合、(サービス拒否攻撃、分散リフレクション型サービス拒否、情報を含む多くのセキュリティの脆弱性を提供するための方法で悪用可能性があります。漏えい、署名バイパス、およびリモートでコードが実行)。 2 回読み込まれているリソースの問題のままがある場合でも、アプリケーションが外部参照の URI を検証しようとすると、: ときに、アプリケーションを読み取りと後と<xref:System.Security.Cryptography.Xml.SignedXml>によって読み取られます。 アプリケーションの読み取りとドキュメントを確認手順が、同じコンテンツがあるという保証がないため、署名は信頼性が提供されません。  
@@ -350,7 +355,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml.AddObject%2A>メソッドを追加、<`Object`> 要素に署名するオブジェクトを表す、<`Signature`> XML デジタル署名の要素。  
+ <xref:System.Security.Cryptography.Xml.SignedXml.AddObject%2A>メソッドを追加、`<Object>`要素に署名するオブジェクトを表す、 `<Signature>` XML デジタル署名の要素。  
   
  <xref:System.Security.Cryptography.Xml.SignedXml.AddObject%2A>メソッドは内部的には、<xref:System.Security.Cryptography.Xml.Signature.AddObject%2A>のメソッド、<xref:System.Security.Cryptography.Xml.Signature>オブジェクトによってカプセル化、<xref:System.Security.Cryptography.Xml.SignedXml>オブジェクト。  追加することも、<xref:System.Security.Cryptography.Xml.DataObject>オブジェクトを直接呼び出すことによって、<xref:System.Security.Cryptography.Xml.Signature.AddObject%2A>からメソッド、<xref:System.Security.Cryptography.Xml.SignedXml.Signature%2A>プロパティ。  
   
@@ -401,7 +406,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml.AddReference%2A>メソッドを追加する <`Reference`> 要素を<xref:System.Security.Cryptography.Xml.SignedXml>ダイジェスト メソッド、ダイジェスト値、および XML デジタル署名を作成するために使用する変換を記述するオブジェクト。  <`Reference`> 要素のサブ要素になるは、<`SignedInfo`> 要素。  
+ <xref:System.Security.Cryptography.Xml.SignedXml.AddReference%2A>メソッドを追加、`<Reference>`要素を<xref:System.Security.Cryptography.Xml.SignedXml>ダイジェスト メソッド、ダイジェスト値、および XML デジタル署名を作成するために使用する変換を記述するオブジェクト。  `<Reference>`要素のサブ要素は、`<SignedInfo>`要素。  
   
  <xref:System.Security.Cryptography.Xml.SignedXml.AddReference%2A>メソッドは内部的には、<xref:System.Security.Cryptography.Xml.SignedInfo.AddReference%2A>のメソッド、<xref:System.Security.Cryptography.Xml.SignedInfo>オブジェクトによってカプセル化、<xref:System.Security.Cryptography.Xml.SignedXml>オブジェクト。  追加することも、<xref:System.Security.Cryptography.Xml.Reference>オブジェクトを直接呼び出すことによって、<xref:System.Security.Cryptography.Xml.SignedInfo.AddReference%2A>からメソッド、<xref:System.Security.Cryptography.Xml.SignedXml.SignedInfo%2A>プロパティ。  
   
@@ -1051,7 +1056,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml.KeyInfo%2A>プロパティは、<`KeyInfo`> 要素を使用して XML デジタル署名の<xref:System.Security.Cryptography.Xml.KeyInfo>プロパティ内に含まれているオブジェクト。  <`KeyInfo`> 要素のサブ要素になるは、<`Signature`> 要素。  
+ <xref:System.Security.Cryptography.Xml.SignedXml.KeyInfo%2A>プロパティを表します、 `<KeyInfo>` 、XML デジタル署名を使用する要素を<xref:System.Security.Cryptography.Xml.KeyInfo>プロパティ内に含まれているオブジェクト。  `<KeyInfo>`要素のサブ要素は、`<Signature>`要素。  
   
  使用して、<xref:System.Security.Cryptography.Xml.SignedXml.KeyInfo%2A>プロパティをキーに関連する情報を埋め込むためのもので、XML ドキュメントを検証するために必要なキーを識別できるようにします。  
   
@@ -1285,7 +1290,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml.Signature%2A>プロパティは、<`Signature`> 要素を使用して XML デジタル署名の<xref:System.Security.Cryptography.Xml.Signature>プロパティ内に含まれているオブジェクト。  <`Signature`> 要素は、XML デジタル署名の作成と検証に使用されるルート要素。  
+ <xref:System.Security.Cryptography.Xml.SignedXml.Signature%2A>プロパティを表します、 `<Signature>` 、XML デジタル署名を使用する要素を<xref:System.Security.Cryptography.Xml.Signature>プロパティ内に含まれているオブジェクト。  `<Signature>`要素は、XML デジタル署名の作成と検証に使用されるルート要素。  
   
  使用して、<xref:System.Security.Cryptography.Xml.SignedXml.Signature%2A>プロパティを取得する、<xref:System.Security.Cryptography.Xml.Signature>によって使用されるオブジェクト、<xref:System.Security.Cryptography.Xml.SignedXml>オブジェクト。  
   
@@ -1409,9 +1414,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml.SignatureMethod%2A>プロパティは、<`SignatureMethod`> 要素のプロパティ内に含まれている Uniform Resource Identifier (URI) 文字列を使用して XML デジタル署名します。 <`SignatureMethod`> 要素のサブ要素になるは、<`SignedInfo`> 要素。  
+ <xref:System.Security.Cryptography.Xml.SignedXml.SignatureMethod%2A>プロパティを表します、`<SignatureMethod>`プロパティ内に含まれている Uniform Resource Identifier (URI) 文字列を使用して、XML デジタル署名の要素。 `<SignatureMethod>`要素のサブ要素は、`<SignedInfo>`要素。  
   
- 使用して、<xref:System.Security.Cryptography.Xml.SignedXml.SignatureMethod%2A>プロパティを取得する、<`SignatureMethod`> で使用される URI、<xref:System.Security.Cryptography.Xml.SignedXml>オブジェクト。 このプロパティは読み取り専用です。 プログラムでの URI を指定することの詳細については、<`SignatureMethod`> 要素を参照してください、<xref:System.Security.Cryptography.Xml.SignedInfo.SignatureMethod%2A>プロパティ。  
+ 使用して、<xref:System.Security.Cryptography.Xml.SignedXml.SignatureMethod%2A>プロパティを取得する、 `<SignatureMethod>` URI に使用されて、<xref:System.Security.Cryptography.Xml.SignedXml>オブジェクト。 このプロパティは読み取り専用です。 プログラムでの URI を指定することの詳細については、`<SignatureMethod>`要素を参照してください、<xref:System.Security.Cryptography.Xml.SignedInfo.SignatureMethod%2A>プロパティ。  
   
  詳細については、`<SignatureMethod>`要素を参照してください、 [XMLDSIG 仕様](https://www.w3.org/TR/xmldsig-core/)します。  
   
@@ -1449,7 +1454,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml.SignatureValue%2A>プロパティは、<`SignatureValue`> 要素のプロパティ内に含まれるバイトの配列を使用して XML デジタル署名します。  <`SignatureValue`> 要素のサブ要素になるは、<`Signature>`要素。  
+ <xref:System.Security.Cryptography.Xml.SignedXml.SignatureValue%2A>プロパティを表します、`<SignatureValue>`プロパティ内に含まれるバイトの配列を使用して、XML デジタル署名の要素。  `<SignatureValue>`要素のサブ要素は、`<Signature>`要素。  
   
  使用して、 <xref:System.Security.Cryptography.Xml.SignedXml.SignatureValue%2A> XML デジタル署名の値を取得するプロパティ。  このプロパティを呼び出しに成功すると自動的に作成、<xref:System.Security.Cryptography.Xml.SignedXml.ComputeSignature%2A>メソッド。  
   
@@ -1489,7 +1494,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Xml.SignedXml.SignedInfo%2A>プロパティは、<`SignedInfo`> 要素のプロパティ内に含まれるバイトの配列を使用して XML デジタル署名します。  <`SignedInfo`> 要素のサブ要素になるは、<`Signature>`要素。  
+ <xref:System.Security.Cryptography.Xml.SignedXml.SignedInfo%2A>プロパティを表します、`<SignedInfo>`プロパティ内に含まれるバイトの配列を使用して、XML デジタル署名の要素。  `<SignedInfo>`要素のサブ要素は、`<Signature>`要素。  
   
  使用して、<xref:System.Security.Cryptography.Xml.SignedXml.SignedInfo%2A>プロパティを取得する、<xref:System.Security.Cryptography.Xml.SignedInfo>オブジェクトによって使用される、 <xref:System.Security.Cryptography.Xml.SignedXml> XML デジタル署名を作成するオブジェクト。  
   
@@ -1613,11 +1618,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDecryptionTransformUrl>フィールドは"http://www.w3.org/2002/07/decrypt#XML"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDecryptionTransformUrl>フィールドは<http://www.w3.org/2002/07/decrypt#XML>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2002/07/decrypt#XMLします。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2002/07/decrypt#XML)します。  
   
  ]]></format>
         </remarks>
@@ -1651,13 +1656,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigBase64TransformUrl>フィールドは"http://www.w3.org/2000/09/xmldsig#base64"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigBase64TransformUrl>フィールドは<http://www.w3.org/2000/09/xmldsig#base64>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
  <xref:System.Security.Cryptography.Xml.XmlDsigBase64Transform>クラスによって記述された変換を実装する、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigBase64TransformUrl>フィールド。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#base64します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) のスキーマ](https://www.w3.org/2000/09/xmldsig#base64)します。  
   
    
   
@@ -1700,7 +1705,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigC14NTransformUrl>フィールドは`http://www.w3.org/TR/2001/REC-xml-c14n-20010315`します。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigC14NTransformUrl>フィールドは<http://www.w3.org/TR/2001/REC-xml-c14n-20010315>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
@@ -1751,7 +1756,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigC14NWithCommentsTransformUrl>フィールドは`http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments`します。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigC14NWithCommentsTransformUrl>フィールドは<http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
@@ -1794,7 +1799,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigCanonicalizationUrl>フィールドは`http://www.w3.org/TR/2001/REC-xml-c14n-20010315`します。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigCanonicalizationUrl>フィールドは<http://www.w3.org/TR/2001/REC-xml-c14n-20010315>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
@@ -1837,7 +1842,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigCanonicalizationWithCommentsUrl>フィールドは`http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments`します。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigCanonicalizationWithCommentsUrl>フィールドは<http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
@@ -1880,11 +1885,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl>フィールドは"http://www.w3.org/2000/09/xmldsig#dsa-sha1"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl>フィールドは<http://www.w3.org/2000/09/xmldsig#dsa-sha1>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#dsa-sha1します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) のスキーマ](https://www.w3.org/2000/09/xmldsig#dsa-sha1)します。  
   
  ]]></format>
         </remarks>
@@ -1918,13 +1923,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigEnvelopedSignatureTransformUrl>フィールドは"http://www.w3.org/2000/09/xmldsig#enveloped-signature"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigEnvelopedSignatureTransformUrl>フィールドは<http://www.w3.org/2000/09/xmldsig#enveloped-signature>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
  <xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform>クラスによって記述された変換を実装する、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigEnvelopedSignatureTransformUrl>フィールド。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#enveloped-signatureします。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) のスキーマ](https://www.w3.org/2000/09/xmldsig#enveloped-signature)します。  
   
    
   
@@ -1967,13 +1972,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigExcC14NTransformUrl>フィールドは"http://www.w3.org/2001/10/xml-exc-c14n#"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigExcC14NTransformUrl>フィールドは<http://www.w3.org/2001/10/xml-exc-c14n#>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
  <xref:System.Security.Cryptography.Xml.XmlDsigExcC14NTransform>クラスによって記述された変換を実装する、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigExcC14NTransformUrl>フィールド。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2001/10/xml-exc-c14n#します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/10/xml-exc-c14n)します。  
   
    
   
@@ -2016,13 +2021,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigExcC14NWithCommentsTransformUrl>フィールドは"http://www.w3.org/2001/10/xml-exc-c14n#WithComments"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigExcC14NWithCommentsTransformUrl>フィールドは<http://www.w3.org/2001/10/xml-exc-c14n#WithComments>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
  <xref:System.Security.Cryptography.Xml.XmlDsigExcC14NWithCommentsTransform>クラスによって記述された変換を実装する、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigExcC14NWithCommentsTransformUrl>フィールド。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2001/10/xml-exc-c14n#WithCommentsします。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/10/xml-exc-c14n#WithComments)します。  
   
    
   
@@ -2066,11 +2071,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigHMACSHA1Url>フィールドは"http://www.w3.org/2000/09/xmldsig#hmac-sha1"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigHMACSHA1Url>フィールドは<http://www.w3.org/2000/09/xmldsig#hmac-sha1>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#hmac-sha1します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2000/09/xmldsig#hmac-sha1)します。  
   
  ]]></format>
         </remarks>
@@ -2105,11 +2110,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigMinimalCanonicalizationUrl>フィールドは"http://www.w3.org/2000/09/xmldsig#minimal"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigMinimalCanonicalizationUrl>フィールドは<http://www.w3.org/2000/09/xmldsig#minimal>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#minimalします。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2000/09/xmldsig#minimal)します。  
   
  ]]></format>
         </remarks>
@@ -2144,11 +2149,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigNamespaceUrl>フィールドは"http://www.w3.org/2000/09/xmldsig#"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigNamespaceUrl>フィールドは<http://www.w3.org/2000/09/xmldsig#>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) のスキーマ](https://www.w3.org/2000/09/xmldsig)します。  
   
  ]]></format>
         </remarks>
@@ -2183,11 +2188,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url>フィールドは"http://www.w3.org/2000/09/xmldsig#rsa-sha1"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url>フィールドは<http://www.w3.org/2000/09/xmldsig#rsa-sha1>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#rsa-sha1します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) のスキーマ](https://www.w3.org/2000/09/xmldsig#rsa-sha1)します。  
   
  ]]></format>
         </remarks>
@@ -2218,11 +2223,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA256Url>フィールドは"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA256Url>フィールドは<http://www.w3.org/2001/04/xmldsig-more#rsa-sha256>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。 [ https://www.w3.org/2001/04/xmldsig-more#rsa-sha256](https://www.w3.org/2001/04/xmldsig-more#rsa-sha256)します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/04/xmldsig-more#rsa-sha256)します。  
   
  ]]></format>
         </remarks>
@@ -2253,11 +2258,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA384Url>フィールドは"http://www.w3.org/2001/04/xmldsig-more#rsa-sha384"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA384Url>フィールドは<http://www.w3.org/2001/04/xmldsig-more#rsa-sha384>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。 [ https://www.w3.org/2001/04/xmldsig-more#rsa-sha384](https://www.w3.org/2001/04/xmldsig-more#rsa-sha384)します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/04/xmldsig-more#rsa-sha384)します。  
   
  ]]></format>
         </remarks>
@@ -2288,11 +2293,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA512Url>フィールドは"http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA512Url>フィールドは<http://www.w3.org/2001/04/xmldsig-more#rsa-sha512>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。 [ https://www.w3.org/2001/04/xmldsig-more#rsa-sha512](https://www.w3.org/2001/04/xmldsig-more#rsa-sha512)します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/04/xmldsig-more#rsa-sha512)します。  
   
  ]]></format>
         </remarks>
@@ -2327,11 +2332,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA1Url>フィールドは"http://www.w3.org/2000/09/xmldsig#sha1"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA1Url>フィールドは<http://www.w3.org/2000/09/xmldsig#sha1>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/2000/09/xmldsig#sha1します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) のスキーマ](https://www.w3.org/2000/09/xmldsig#sha1)します。  
   
  ]]></format>
         </remarks>
@@ -2362,11 +2367,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA256Url>フィールドは"http://www.w3.org/2001/04/xmlenc#sha256"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA256Url>フィールドは<http://www.w3.org/2001/04/xmlenc#sha256>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。 [ http://www.w3.org/2001/04/xmlenc#sha256](https://www.w3.org/2001/04/xmlenc#sha256)します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/04/xmlenc#sha256)します。  
   
  ]]></format>
         </remarks>
@@ -2397,11 +2402,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA384Url>フィールドは"http://www.w3.org/2001/04/xmldsig-more#sha384"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA384Url>フィールドは<http://www.w3.org/2001/04/xmldsig-more#sha384>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。 [ https://www.w3.org/2001/04/xmldsig-more#sha384](https://www.w3.org/2001/04/xmldsig-more#sha384)します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/04/xmldsig-more#sha384)します。  
   
  ]]></format>
         </remarks>
@@ -2432,11 +2437,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA512Url>フィールドは"http://www.w3.org/2001/04/xmlenc#sha512"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA512Url>フィールドは<http://www.w3.org/2001/04/xmlenc#sha512>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。 [ http://www.w3.org/2001/04/xmlenc#sha512](https://www.w3.org/2001/04/xmlenc#sha512)します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/2001/04/xmlenc#sha512)します。  
   
  ]]></format>
         </remarks>
@@ -2470,13 +2475,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigXPathTransformUrl>フィールドは"http://www.w3.org/TR/1999/REC-xpath-19991116"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigXPathTransformUrl>フィールドは<http://www.w3.org/TR/1999/REC-xpath-19991116>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
  <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform>クラスによって記述された変換を実装する、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigXPathTransformUrl>フィールド。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/TR/1999/REC-xpath-19991116します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/TR/1999/REC-xpath-19991116)します。  
   
    
   
@@ -2518,13 +2523,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigXsltTransformUrl>フィールドは"http://www.w3.org/TR/1999/REC-xslt-19991116"。  
+ 値、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigXsltTransformUrl>フィールドは<http://www.w3.org/TR/1999/REC-xslt-19991116>します。  
   
  このフィールドを使用して、XMLDSIG 用の要素の URI の属性のいずれかに値を提供します。  
   
  <xref:System.Security.Cryptography.Xml.XmlDsigXsltTransform>クラスによって記述された変換を実装する、<xref:System.Security.Cryptography.Xml.SignedXml.XmlDsigXsltTransformUrl>フィールド。  
   
- 詳細については、World Wide Web Consortium (W3C) 仕様を参照してください。http://www.w3.org/TR/1999/REC-xslt-19991116します。  
+ 詳細については、次を参照してください。、 [World Wide Web Consortium (W3C) 仕様](https://www.w3.org/TR/1999/REC-xslt-19991116)します。  
   
    
   
