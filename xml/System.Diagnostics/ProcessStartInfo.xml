@@ -1,5 +1,5 @@
 <Type Name="ProcessStartInfo" FullName="System.Diagnostics.ProcessStartInfo">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="ceb087ee2a19df0fbce2c0e86e86ebada4b3dbd6" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63887567" /></Metadata><TypeSignature Language="C#" Value="public sealed class ProcessStartInfo" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="6aae3e941442390152c0bfe1dc86dcbf1bc45ead" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67239390" /></Metadata><TypeSignature Language="C#" Value="public sealed class ProcessStartInfo" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ProcessStartInfo extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Diagnostics.ProcessStartInfo" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ProcessStartInfo" />
@@ -237,7 +237,24 @@
         <summary>アプリケーションを起動するときに使用するコマンド ライン引数のコレクションを取得します。</summary>
         <value>コマンドライン引数のコレクション。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[このプロパティを使用して、コマンドライン引数を設定する場合<xref:System.Diagnostics.ProcessStartInfo.Arguments>空の文字列に設定する必要があります。
+          <format type="text/markdown"><![CDATA[
+          
+`ArgumentList`、.NET Core 2.1 および .NET Standard の 2.1 以降ではサポートされて、<xref:System.Diagnostics.ProcessStartInfo.Arguments>プロパティは 1 つ別の独立しています。 割り当てられた文字列は、`ArgumentList`コレクションが設定を使用しない、<xref:System.Diagnostics.ProcessStartInfo.Arguments>プロパティ、およびに割り当てられた文字列、<xref:System.Diagnostics.ProcessStartInfo.Arguments>プロパティに割り当てられている個々 の文字列に解析されない`ArgumentList`コレクション。 
+
+`ArgumentList` より使いやすく、<xref:System.Diagnostics.ProcessStartInfo.Arguments>プロパティ。 各文字列は、コレクションのメンバーに割り当てられている、ためにできます 1 つの引用符によって区切られたトリプル エスケープ文字列ではなく。 たとえば、次の例が含まれる`-full "Mary Smith"`のメンバーとして、`ArgumentList`コレクション。
+
+```csharp
+info.ArgumentList.Add("-full \"Mary Smith\"";
+```
+
+割り当てを対応する、<xref:System.Diagnostics.ProcessStartInfo.Arguments>プロパティします。
+
+```csharp
+info.Arguments = "-full \"\"\"Mary Smith\"\"\""
+```
+
+このプロパティを使用して、コマンドライン引数を設定する場合<xref:System.Diagnostics.ProcessStartInfo.Arguments>空の文字列に設定する必要があります。
+
 ## Examples
 
 この例では、プロセスの開始情報を 2 つの引数を追加します。
@@ -322,14 +339,19 @@ info.ArgumentList.Add("-last Smith")
       </ReturnValue>
       <Docs>
         <summary>アプリケーションを起動するときに使用するコマンド ライン引数のセットを取得または設定します。</summary>
-        <value><see cref="P:System.Diagnostics.ProcessStartInfo.FileName" /> プロパティで指定したターゲット アプリケーションに渡す引数を格納した単一の文字列。 既定値は、空の文字列 ("") です。 Windows オペレーティング システムの Windows Vista 以前のバージョンでは、プロセスへの完全パスの長さに追加される引数の長さは 2080 よりも小さくする必要があります。 Windows 7 およびそれ以降のバージョンでは、長さは 32699 よりも小さくする必要があります。  
-  
-引数はターゲット アプリケーションで解析され、解釈されるため、そのアプリケーションの想定に合わせたものでなければなりません。 下記の「例」で説明するとおり、.NET アプリケーションではスペースが複数の引数間の区切り記号として解釈されます。 1 つの引数にスペースが含まれる場合は引用符で囲む必要がありますが、これらの引用符はターゲット アプリケーションに渡されません。 解析後の最終的な引数に引用符を組み込むには、それぞれの記号をトリプル エスケープします。</value>
+        <value><see cref="P:System.Diagnostics.ProcessStartInfo.FileName" /> プロパティで指定したターゲット アプリケーションに渡す引数を格納した単一の文字列。 既定値は、空の文字列 ("") です。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[このプロパティを使用して、コマンドライン引数を設定する場合<xref:System.Diagnostics.ProcessStartInfo.ArgumentList*>任意の要素を含めることはできません。
+          <format type="text/markdown"><![CDATA[
+
+割り当てられた文字列の長さ、`Arguments`プロパティは 32,699 未満である必要があります。
   
+引数はターゲット アプリケーションで解析され、解釈されるため、そのアプリケーションの想定に合わせたものでなければなりません。 .NET アプリケーションの以下の例で示したスペースが複数の引数間の区切り記号として解釈されます。 1 つの引数にスペースが含まれる場合は引用符で囲む必要がありますが、これらの引用符はターゲット アプリケーションに渡されません。 解析された最後の引数には、引用符を含める、トリプル エスケープ各をマークします。
+このプロパティを使用して、コマンドライン引数を設定する場合<xref:System.Diagnostics.ProcessStartInfo.ArgumentList>任意の要素を含めることはできません。
+  
+`Arguments` <xref:System.Diagnostics.ProcessStartInfo.ArgumentList>、相互に依存しないは .NET Core 2.1 および .NET Standard の 2.1 以降ではサポートされています。 割り当てられた文字列は、`Arguments`プロパティが設定されません、<xref:System.Diagnostics.ProcessStartInfo.ArgumentList>コレクション、およびのメンバー、<xref:System.Diagnostics.ProcessStartInfo.ArgumentList>コレクションに割り当てられていない、`Arguments`プロパティ。
+
 ## Examples  
- そのエコー (argsecho.exe) 小規模なアプリケーションを作成する最初の例を次の引数をコンソール。 2 番目の例では、引数のプロパティのさまざまなバリエーションを示すために argsecho.exe を起動するアプリケーションを作成します。  
+ そのエコー (argsecho.exe) 小規模なアプリケーションを作成する最初の例では、その引数をコンソール。 2 番目の例のさまざまなバリエーションを示すために argsecho.exe を起動するアプリケーションの作成、`Arguments`プロパティ。  
   
  [!code-cpp[Process.Start_static#3](~/samples/snippets/cpp/VS_Snippets_CLR/Process.Start_static/CPP/processstartstatic.cpp#3)]
  [!code-csharp[Process.Start_static#3](~/samples/snippets/csharp/VS_Snippets_CLR/Process.Start_static/CS/processstartstatic.cs#3)]
