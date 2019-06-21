@@ -1,5 +1,5 @@
 <Type Name="StandardFormat" FullName="System.Buffers.StandardFormat">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="da90a2f655d10e22abd15a633053ef76e35217e6" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/25/2018" /><Meta Name="ms.locfileid" Value="39840214" /></Metadata><TypeSignature Language="C#" Value="public struct StandardFormat : IEquatable&lt;System.Buffers.StandardFormat&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="11818d5fba80f705011eb6622d2b03abdae12cd3" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67238454" /></Metadata><TypeSignature Language="C#" Value="public struct StandardFormat : IEquatable&lt;System.Buffers.StandardFormat&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit StandardFormat extends System.ValueType implements class System.IEquatable`1&lt;valuetype System.Buffers.StandardFormat&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Buffers.StandardFormat" />
   <TypeSignature Language="VB.NET" Value="Public Structure StandardFormat&#xA;Implements IEquatable(Of StandardFormat)" />
@@ -9,6 +9,11 @@
     <AssemblyName>System.Memory</AssemblyName>
     <AssemblyVersion>4.0.1.0</AssemblyVersion>
     <AssemblyVersion>4.1.0.0</AssemblyVersion>
+    <AssemblyVersion>4.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>netstandard</AssemblyName>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -19,13 +24,19 @@
     </Interface>
   </Interfaces>
   <Attributes>
-    <Attribute FrameworkAlternate="netcore-2.1">
+    <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1">
       <AttributeName>System.Runtime.CompilerServices.IsReadOnly</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>実際の文字列を使用せずに標準書式の文字列を表します。</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+
+A`StandardFormat`オブジェクトから成る単一の文字の標準書式指定子 ("G"などが '、または 'X') と、必要に応じて有効桁数指定子。 精度指定子は 0 から 9 までも、特殊なできます<xref:System.Buffers.StandardFormat.NoPrecision?displayProperty=nameWithType>値。
+
+   ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -39,18 +50,50 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="symbol" Type="System.Char" />
         <Parameter Name="precision" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="symbol">To be added.</param>
-        <param name="precision">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="symbol">'G'、'D'、'X' などの、型固有の書式指定子。</param>
+        <param name="precision">0 から 99 までの任意の有効桁数、または特殊な値 <see cref="F:System.Buffers.StandardFormat.NoPrecision" /> (既定)。</param>
+        <summary><see cref="T:System.Buffers.StandardFormat" /> 構造体の新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="symbol" /> が <see cref="F:System.Buffers.StandardFormat.NoPrecision" /> ではなく、その値が <see cref="F:System.Buffers.StandardFormat.MaxPrecision" /> を超えています。
+
+または
+
+<paramref name="symbol" /> を <see cref="T:System.Byte" /> に変換できません。</exception>
       </Docs>
     </Member>
+    <MemberGroup MemberName="Equals">
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+        <AssemblyVersion>4.0.1.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Docs>
+        <summary>このインスタンスが指定したオブジェクトまたは <see cref="T:System.Buffers.StandardFormat" /> と等しいかどうかを示す値を返します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+2 つ<xref:System.Buffers.StandardFormat>インスタンスが等しい場合、<xref:System.Buffers.StandardFormat.Symbol>と<xref:System.Buffers.StandardFormat.Precision>プロパティが等しい。
+
+         ]]></format>
+        </remarks>
+      </Docs>
+    </MemberGroup>
     <Member MemberName="Equals">
       <MemberSignature Language="C#" Value="public bool Equals (System.Buffers.StandardFormat other);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Equals(valuetype System.Buffers.StandardFormat other) cil managed" />
@@ -66,6 +109,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -75,8 +123,8 @@
       </Parameters>
       <Docs>
         <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>指定した <see cref="T:System.Buffers.StandardFormat" /> が現在のインスタンスと等しいかどうかを示す値を返します。</summary>
+        <returns>2 つのインスタンスが等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -92,6 +140,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -100,9 +153,9 @@
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="obj">現在のインスタンスと比較する対象のオブジェクト。</param>
+        <summary>指定したオブジェクトが、現在のインスタンスと等しい <see cref="T:System.Buffers.StandardFormat" /> オブジェクトであるかどうかを示す値を返します。</summary>
+        <returns>2 つのインスタンスが等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -118,14 +171,19 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>このインスタンスのハッシュ コードを返します。</summary>
+        <returns>対象のインスタンスのハッシュ コード。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -141,13 +199,18 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>書式に定義された有効桁数が含まれるかどうかを示す値を取得します。</summary>
+        <value><see langword="true" /> 書式は、有効桁数が以外の場合<see cref="F:System.Buffers.StandardFormat.NoPrecision" />、それ以外の<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -163,14 +226,25 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>現在のインスタンスが既定の書式かどうかを示す値を取得します。</summary>
+        <value><see langword="true" /> 現在のインスタンスが既定の形式の場合それ以外の場合、<see langword="false" />します。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+既定の形式が書式指定子が<xref:System.Byte>値は 0 と有効桁数が<xref:System.Buffers.StandardFormat.NoPrecision>します。
+
+         ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxPrecision">
@@ -185,14 +259,19 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <MemberValue>99</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>最大有効桁数の値を定義します。</summary>
+        <remarks>最大有効桁数は、99 です。</remarks>
       </Docs>
     </Member>
     <Member MemberName="NoPrecision">
@@ -207,13 +286,18 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <MemberValue>255</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>書式が有効桁数を使用しないか、有効桁数が指定されていないことを示します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -229,6 +313,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -238,11 +327,17 @@
         <Parameter Name="right" Type="System.Buffers.StandardFormat" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="left">比較対象となる最初の書式。</param>
+        <param name="right">比較対象となる 2 番目の書式。</param>
+        <summary>2 つの <see cref="T:System.Buffers.StandardFormat" /> インスタンスが等しいかどうかを示す値を返します。</summary>
+        <returns>2 つのインスタンスが等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+2 つ<xref:System.Buffers.StandardFormat>インスタンスが等しい場合、<xref:System.Buffers.StandardFormat.Symbol>と<xref:System.Buffers.StandardFormat.Precision>プロパティが等しい。
+
+         ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
@@ -257,6 +352,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Buffers.StandardFormat</ReturnType>
@@ -265,9 +365,9 @@
         <Parameter Name="symbol" Type="System.Char" />
       </Parameters>
       <Docs>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="symbol"><see cref="T:System.Buffers.StandardFormat" /> 値に変換する文字。</param>
+        <summary><see cref="F:System.Buffers.StandardFormat.NoPrecision" /> の有効桁数を使用して、文字を <see cref="T:System.Buffers.StandardFormat" /> インスタンスに変換します。</summary>
+        <returns><paramref name="symbol" /> と等しい <see cref="P:System.Buffers.StandardFormat.Symbol" /> プロパティおよび <see cref="F:System.Buffers.StandardFormat.NoPrecision" /> と等しい <see cref="P:System.Buffers.StandardFormat.Precision" /> プロパティを含む書式。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -283,6 +383,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -292,11 +397,17 @@
         <Parameter Name="right" Type="System.Buffers.StandardFormat" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="left">比較対象となる最初の書式。</param>
+        <param name="right">比較対象となる 2 番目の書式。</param>
+        <summary>2 つの <see cref="T:System.Buffers.StandardFormat" /> インスタンスが等しくないかどうかを判断します。</summary>
+        <returns>2 つの書式が等しくない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+2 つ<xref:System.Buffers.StandardFormat>インスタンスが等しくない場合、<xref:System.Buffers.StandardFormat.Symbol>と<xref:System.Buffers.StandardFormat.Precision>プロパティが同一でないです。
+
+         ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Parse">
@@ -311,6 +422,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Buffers.StandardFormat</ReturnType>
@@ -319,9 +435,9 @@
         <Parameter Name="format" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="format">解析対象の文字が含まれる読み取り専用のスパン。</param>
+        <summary><see cref="F:System.Buffers.StandardFormat.NoPrecision" /> の有効桁数を使用して、<see langword="ReadOnlySpan&lt;System.Char&gt;" /> を <see cref="T:System.Buffers.StandardFormat" /> インスタンスに変換します。</summary>
+        <returns><see cref="P:System.Buffers.StandardFormat.Symbol" /> プロパティの値が <paramref name="format" /> の文字で、<see cref="P:System.Buffers.StandardFormat.Precision" /> プロパティの値が <see cref="F:System.Buffers.StandardFormat.NoPrecision" /> である値。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -337,6 +453,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Buffers.StandardFormat</ReturnType>
@@ -345,10 +466,11 @@
         <Parameter Name="format" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="format">従来の .NET 標準書式文字列。</param>
+        <summary>従来の .NET 標準書式文字列を <see cref="T:System.Buffers.StandardFormat" /> インスタンスに変換します。</summary>
+        <returns>書式。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.FormatException"><paramref name="format" /> は有効な標準書式指定文字列ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="Precision">
@@ -363,13 +485,18 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>書式の有効桁数のコンポーネントを取得します。</summary>
+        <value>有効桁数のコンポーネント<see cref="F:System.Buffers.StandardFormat.NoPrecision" />、または 0 ~ 9 の範囲のことができます。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -385,13 +512,18 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Char</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>書式の文字のコンポーネントを取得します。</summary>
+        <value>形式の文字のコンポーネントです。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -407,14 +539,55 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>この書式の文字列表現を返します。</summary>
+        <returns>この書式の文字列表現。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+文字列表現を<xref:System.Buffers.StandardFormat>インスタンスは、標準的な .NET 形式の文字列。
+
+         ]]></format>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryParse">
+      <MemberSignature Language="C#" Value="public static bool TryParse (ReadOnlySpan&lt;char&gt; format, out System.Buffers.StandardFormat result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool TryParse(valuetype System.ReadOnlySpan`1&lt;char&gt; format, [out] valuetype System.Buffers.StandardFormat&amp; result) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Buffers.StandardFormat.TryParse(System.ReadOnlySpan{System.Char},System.Buffers.StandardFormat@)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function TryParse (format As ReadOnlySpan(Of Char), ByRef result As StandardFormat) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; static bool TryParse(ReadOnlySpan&lt;char&gt; format, [Runtime::InteropServices::Out] System::Buffers::StandardFormat % result);" />
+      <MemberSignature Language="F#" Value="static member TryParse : ReadOnlySpan&lt;char&gt; *  -&gt; bool" Usage="System.Buffers.StandardFormat.TryParse (format, result)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="result" Type="System.Buffers.StandardFormat" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="format">変換対象の文字が含まれる読み取り専用のスパン。</param>
+        <param name="result">操作が正常に終了した場合は、メソッドから戻るときに、解析された <see cref="T:System.Buffers.StandardFormat" /> インスタンスが格納されます。</param>
+        <summary><see cref="T:System.Buffers.StandardFormat" /> インスタンスへの <see langword="ReadOnlySpan&lt;Char&gt;" /> の変換を試みて、解析操作が成功したかどうかを示す値を返します。</summary>
+        <returns>解析操作が正常に実行された場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

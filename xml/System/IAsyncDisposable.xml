@@ -1,0 +1,90 @@
+<Type Name="IAsyncDisposable" FullName="System.IAsyncDisposable">
+  <Metadata><Meta Name="ms.openlocfilehash" Value="bbd87cb9c175eb0c4d5aa893ad32101018b03b5b" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67245150" /></Metadata><TypeSignature Language="C#" Value="public interface IAsyncDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IAsyncDisposable" />
+  <TypeSignature Language="DocId" Value="T:System.IAsyncDisposable" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IAsyncDisposable" />
+  <TypeSignature Language="C++ CLI" Value="public interface class IAsyncDisposable" />
+  <TypeSignature Language="F#" Value="type IAsyncDisposable = interface" />
+  <AssemblyInfo>
+    <AssemblyName>System.Runtime</AssemblyName>
+    <AssemblyVersion>4.2.1.0</AssemblyVersion>
+  </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>netstandard</AssemblyName>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>アンマネージ リソースを非同期的に解放するためのメカニズムを提供します。</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+.NET では、通常はアンマネージ リソースを所有するクラスの実装、<xref:System.IDisposable>アンマネージ リソースを同期的に解放するためのメカニズムを提供するインターフェイス。 ただし、場合によっては必要なに加えて (または instead of) のアンマネージ リソースを解放する非同期メカニズムを提供する同期の 1 つ。 時間の長い GUI アプリケーションのメイン スレッドをブロックすることがなくリソースを消費する破棄操作を実行するコンシューマーは、このようなメカニズムを提供できます。
+
+<xref:System.IAsyncDisposable.DisposeAsync%2A?displayProperty=nameWithType>このインターフェイスのメソッドを返します、<xref:System.Threading.Tasks.ValueTask>を表す非同期の破棄操作。 アンマネージ リソースを所有するクラスが、このメソッドを実装し、これらのクラスのコンシューマーが不要になったときに、オブジェクトでこのメソッドを呼び出します。
+
+非同期メソッドと組み合わせてで使用される、`async`と`await`キーワードC#および Visual Basic。 詳細 insformation は、次を参照してください。[で非同期プログラミング モデルを、タスクC#](/dotnet/csharp/programming-guide/concepts/async/index)または[Async および Await (Visual Basic) を使用した非同期プログラミング](/dotnet/visual-basic/programming-guide/concepts/async/)します。
+
+### <a name="using-an-object-that-implements-iasyncdisposable"></a>IAsyncDisposable を実装するオブジェクトを使用します。
+
+アプリケーションを実装するオブジェクトを使用する場合、 `IAsyncDisposable`、オブジェクトを呼び出す必要があります<xref:System.IAsyncDisposable.DisposeAsync%2A>実装を使用してこれが完了したら。 例外が発生した場合でも、リソースを解放するを呼び出して、<xref:System.IAsyncDisposable.DisposeAsync%2A>メソッド内で、`finally`の句、 `try` / `finally`ステートメント。 詳細については、 `try` / `finally`パターンは、「 [、try-finally](~/docs/csharp/language-reference/keywords/try-finally.md) (C#) または[お試しください.キャッチしてください.Finally ステートメント](~/docs/visual-basic/language-reference/statements/try-catch-finally-statement.md)(Visual Basic) します。
+
+### <a name="implementing-iasyncdisposable"></a>IAsyncDisposable を実装します。   
+    
+実装する場合があります`IAsyncDisposable`次の状況で。
+
+- 非同期列挙子を開発する際に、アンマネージ リソースを所有します。 非同期の列挙子を併用、 C# 8.0 非同期ストリームの機能です。 非同期ストリームの詳細については、次を参照してください。[チュートリアル。生成および使用を使用して非同期ストリームC#8.0、および .NET Core 3.0](/dotnet/csharp/tutorials/generate-consume-asynchronous-stream)します。
+
+- クラスがアンマネージ リソースを所有しているし、それらをリリース ファイルに、中間バッファーの内容をフラッシュしたり、接続を終了するネットワーク上でパケットを送信するなどのリソースを消費する I/O 操作が必要です。
+
+使用して、<xref:System.IAsyncDisposable.DisposeAsync%2A>解放、リリース、またはアンマネージ リソースをリセットするなど、アンマネージ リソースを使用した後、必要なクリーンアップ処理をすべてを実行するメソッド。 .NET でのアンマネージ リソースの詳細については、次を参照してください。[アンマネージ リソースのクリーンアップ](/dotnet/standard/garbage-collection/unmanaged)します。
+ 
+ ]]></format>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DisposeAsync">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.ValueTask DisposeAsync ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Threading.Tasks.ValueTask DisposeAsync() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.IAsyncDisposable.DisposeAsync" />
+      <MemberSignature Language="VB.NET" Value="Public Function DisposeAsync () As ValueTask" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; System::Threading::Tasks::ValueTask DisposeAsync();" />
+      <MemberSignature Language="F#" Value="abstract member DisposeAsync : unit -&gt; System.Threading.Tasks.ValueTask" Usage="iAsyncDisposable.DisposeAsync " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Runtime</AssemblyName>
+        <AssemblyVersion>4.2.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.ValueTask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>アンマネージ リソースの非同期の解放およびリセットに関連付けられているアプリケーション定義のタスクを実行します。</summary>
+        <returns>非同期の破棄操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+非同期的に閉じるか、ファイル、ストリーム、およびこのインターフェイスを実装するクラスのインスタンスによって保持されているハンドルなどのアンマネージ リソースを解放するには、このメソッドを使用します。 代わりに、このメソッドを使用して<xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType>時間の長い GUI アプリケーションのメイン スレッドをブロックすることがなくリソースを消費する破棄操作を実行することができます。
+
+> [!WARNING]
+>  実装するクラスを使用している場合、<xref:System.IAsyncDisposable>インターフェイスを呼び出す必要があります、`DisposeAsync`実装クラスの使用が終了するときにします。 詳細については、「IAsyncDisposable を実装するオブジェクトを使用して」」セクションを参照してください、<xref:System.IAsyncDisposable>トピック。
+
+このメソッドを実装する場合は、リソースが解放呼び出し包含階層を伝達することで保持されているすべてを確認します。 たとえば、オブジェクト B オブジェクト C、A、の割り当てし、オブジェクト A がオブジェクト B を割り当て`DisposeAsync`実装を呼び出す必要があります`DisposeAsync`b でを呼び出す必要があります順番`DisposeAsync`cオブジェクトが呼び出す必要がありますも、`DisposeAsync`基底クラスを実装する場合は、基底クラスのメソッド<xref:System.IAsyncDisposable>します。
+
+オブジェクトの場合、`DisposeAsync`メソッドが複数回呼び出されて、オブジェクトが 1 つ目の後のすべての呼び出しを無視する必要があり、同期的に返す正常に完了した<xref:System.Threading.Tasks.ValueTask>します。 場合、オブジェクトが例外をスローする必要があります、`DisposeAsync`メソッドは複数回呼び出されました。 インスタンス メソッド以外の`DisposeAsync`スローすることができます、<xref:System.ObjectDisposedException>リソースは既に破棄されています。
+ 
+ ]]></format>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
