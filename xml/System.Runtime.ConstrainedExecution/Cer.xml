@@ -1,5 +1,5 @@
 <Type Name="Cer" FullName="System.Runtime.ConstrainedExecution.Cer">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="23cdbbda92dc12a56457f1d88e9fa3cae6c7ff8a" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58725614" /></Metadata><TypeSignature Language="C#" Value="public enum Cer" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="1eb1ed20f5e5985c10eeb6e49f20c175f5b80e35" /><Meta Name="ms.sourcegitcommit" Value="feb111e137a41d186aef01d83f04819d820520eb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/21/2019" /><Meta Name="ms.locfileid" Value="67307765" /></Metadata><TypeSignature Language="C#" Value="public enum Cer" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed Cer extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.ConstrainedExecution.Cer" />
   <TypeSignature Language="VB.NET" Value="Public Enum Cer" />
@@ -34,18 +34,28 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- <xref:System.Runtime.ConstrainedExecution.Cer>列挙体は、メソッド、型、または制約された実行領 (域 CER) 内のアセンブリの動作を指定します。 エンティティが成功するかを示す 3 つの使用可能な値のいずれかの使用は、CER の知識がないか、成功または失敗をレポートできなくなる可能性があります (確定的に)。  
+## Remarks
+ 
+<xref:System.Runtime.ConstrainedExecution.Cer>列挙体は、メソッド、型、または制約された実行領 (域 CER) 内のアセンブリの動作を指定します。 エンティティが成功するかを示す 3 つの使用可能な値のいずれかの使用は、CER の知識がないか、成功または失敗をレポートできなくなる可能性があります (確定的に)。  
   
- CER は、コードの領域を実行するための保証を提供します。 中断のない場合でも、中止されたスレッドのメモリ不足の例外、またはスタック オーバーフローなどの非同期の例外が発生します。  
+CER は、コードの領域を実行するための保証を提供します。 中断のない場合でも、中止されたスレッドのメモリ不足の例外、またはスタック オーバーフローなどの非同期の例外が発生します。  
   
-   
+ただし、`Cer.None`列挙値では、メソッド、型、またはアセンブリに CER の概念がないことを示します。 この値では、CER の保証を利用しません。 これは以下を意味します。
+
+- 例外的な状況が発生した場合、メソッドが失敗します。  
   
-## Examples  
- 次のコード例は、の使用を示します、<xref:System.Runtime.ConstrainedExecution.Cer>列挙メソッドの制約された実行領域を指定する場合。 このコード例が示されている例の一部、<xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.%23ctor%2A>コンス トラクター。  
+- メソッドがありますまたは失敗したレポートではなくの可能性があります (非決定的です)。  
   
- [!code-csharp[System.Runtime.ConstrainedExecution#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Runtime.ConstrainedExecution/cs/program.cs#3)]
- [!code-vb[System.Runtime.ConstrainedExecution#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Runtime.ConstrainedExecution/vb/program.vb#3)]  
+- (これは最も可能性の高いシナリオです) に注意してください、メソッドが Cer を使用して書き込まれません。  
+  
+として暗黙的にマークされたメソッド、型、またはアセンブリが明示的にマークされていない場合は成功、`Cer.None`します。  
+
+## Examples
+
+次のコード例は、の使用を示します、<xref:System.Runtime.ConstrainedExecution.Cer>列挙メソッドの制約された実行領域を指定する場合。 このコード例が示されている例の一部、<xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.%23ctor%2A>コンス トラクター。  
+  
+[!code-csharp[System.Runtime.ConstrainedExecution#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Runtime.ConstrainedExecution/cs/program.cs#3)]
+[!code-vb[System.Runtime.ConstrainedExecution#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Runtime.ConstrainedExecution/vb/program.vb#3)]  
   
  ]]></format>
     </remarks>
@@ -116,22 +126,7 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary>メソッド、型、またはアセンブリには、CER の概念はありません。 この値では、CER の保証を利用しません。 これは以下を意味します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
--   例外的な状況が発生した場合、メソッドが失敗します。  
-  
--   メソッドがありますまたは失敗したレポートではなくの可能性があります (非決定的です)。  
-  
--   (これは最も可能性の高いシナリオです) に注意してください、メソッドが Cer を使用して書き込まれません。  
-  
- として暗黙的にマークされたメソッド、型、またはアセンブリが明示的にマークされていない場合は成功、`Cer.None`します。  
-  
- ]]></format>
-        </remarks>
+        <summary>メソッド、型、またはアセンブリには、CER の概念はありません。 この値では、CER の保証を利用しません。</summary>
       </Docs>
     </Member>
     <Member MemberName="Success">

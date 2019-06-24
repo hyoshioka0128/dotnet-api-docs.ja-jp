@@ -1,5 +1,5 @@
 <Type Name="SqlCommand" FullName="System.Data.SqlClient.SqlCommand">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="f0181382441e1661d976dbae0ffd433f9ed5713d" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65006404" /></Metadata><TypeSignature Language="C#" Value="public sealed class SqlCommand : System.Data.Common.DbCommand, ICloneable, IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="6800810f74d89543757e694dff504111ee83f5b4" /><Meta Name="ms.sourcegitcommit" Value="feb111e137a41d186aef01d83f04819d820520eb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/21/2019" /><Meta Name="ms.locfileid" Value="67308049" /></Metadata><TypeSignature Language="C#" Value="public sealed class SqlCommand : System.Data.Common.DbCommand, ICloneable, IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SqlCommand extends System.Data.Common.DbCommand implements class System.Data.IDbCommand, class System.ICloneable, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Data.SqlClient.SqlCommand" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SqlCommand&#xA;Inherits DbCommand&#xA;Implements ICloneable, IDisposable" />
@@ -107,7 +107,7 @@
   
  まず、次のスクリプトを実行することによって、サンプル データベースを作成する必要があります。  
   
-```  
+```sql
 USE [master]  
 GO  
   
@@ -298,7 +298,7 @@ GO
   
  次に、コンパイルし、次を実行します。  
   
-```  
+```csharp
 using System;  
 using System.Data;  
 using System.Data.SqlClient;  
@@ -711,7 +711,7 @@ class Program {
       <Docs>
         <param name="cmdText">クエリのテキスト。</param>
         <param name="connection">SQL Server のインスタンスへの接続を表す <see cref="T:System.Data.SqlClient.SqlConnection" />。</param>
-        <param name="transaction"><see cref="T:System.Data.SqlClient.SqlCommand" /> が実行される <see cref="T:System.Data.SqlClient.SqlTransaction" />。</param>
+        <param name="transaction"><see cref="T:System.Data.SqlClient.SqlTransaction" /> が実行される <see cref="T:System.Data.SqlClient.SqlCommand" /> 。</param>
         <param name="columnEncryptionSetting">暗号化の設定。 詳細については、「[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)」を参照してください。</param>
         <summary>指定されたコマンド テキスト、接続、トランザクション、暗号化の設定で、<see cref="T:System.Data.SqlClient.SqlCommand" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
@@ -776,15 +776,23 @@ class Program {
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+または
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -854,15 +862,23 @@ class Program {
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+または
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -930,15 +946,23 @@ class Program {
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+- または -
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -1002,15 +1026,23 @@ class Program {
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+または
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+または
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -1080,15 +1112,23 @@ class Program {
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+または
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -1164,15 +1204,23 @@ class Program {
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+- または -
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+または
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -1229,7 +1277,7 @@ class Program {
   
  一般的な<xref:System.Data.SqlClient.SqlCommand.BeginExecuteXmlReader%2A>クエリは、次の c# の例のように書式設定できます。  
   
-```  
+```csharp
 SqlCommand command = new SqlCommand("SELECT ContactID, FirstName, LastName FROM dbo.Contact FOR XML AUTO, XMLDATA", SqlConn);  
 ```  
   
@@ -1254,15 +1302,23 @@ SqlCommand command = new SqlCommand("SELECT ContactID, FirstName, LastName FROM 
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+- または -
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+または
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -1313,7 +1369,7 @@ SqlCommand command = new SqlCommand("SELECT ContactID, FirstName, LastName FROM 
   
  一般的な<xref:System.Data.SqlClient.SqlCommand.BeginExecuteXmlReader%2A>クエリは、次の c# の例のように書式設定できます。  
   
-```  
+```csharp
 SqlCommand command = new SqlCommand("SELECT ContactID, FirstName, LastName FROM Contact FOR XML AUTO, XMLDATA", SqlConn);  
 ```  
   
@@ -1344,15 +1400,23 @@ SqlCommand command = new SqlCommand("SELECT ContactID, FirstName, LastName FROM 
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">コマンド テキストの実行中に発生したエラー。  
-  
-ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
+
+または
+
+ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、 [「SqlClient ストリーミング サポート」](~/docs/framework/data/adonet/sqlclient-streaming-support.md)を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">名前と値のペア "Asynchronous Processing=true" が、この <see cref="T:System.Data.SqlClient.SqlCommand" /> の接続を定義する接続文字列に含まれていませんでした。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -1554,9 +1618,9 @@ SqlCommand command = new SqlCommand("SELECT ContactID, FirstName, LastName FROM 
 ## Remarks  
  ときに、<xref:System.Data.SqlClient.SqlCommand.CommandType%2A>プロパティに設定されて`StoredProcedure`、<xref:System.Data.SqlClient.SqlCommand.CommandText%2A>プロパティは、ストアド プロシージャの名前に設定する必要があります。 ユーザー ストアド プロシージャ名に特殊文字が含まれている場合は、エスケープ文字構文を使用する必要があります。 コマンドのいずれかを呼び出すときにこのストアド プロシージャの実行、`Execute`メソッド。  
   
- Microsoft .NET Framework Data Provider for SQL Server は、TRANSACT-SQL ステートメントまたはのコマンドによって呼び出されるストアド プロシージャにパラメーターを渡すの疑問符 (?) プレース ホルダーをサポートしていません`CommandType.Text`します。 ここでは、名前付きパラメーターを使用する必要があります。 例えば:  
+ Microsoft .NET Framework Data Provider for SQL Server は、TRANSACT-SQL ステートメントまたはのコマンドによって呼び出されるストアド プロシージャにパラメーターを渡すの疑問符 (?) プレース ホルダーをサポートしていません`CommandType.Text`します。 ここでは、名前付きパラメーターを使用する必要があります。 次に例を示します。  
   
-```  
+```sql
 SELECT * FROM dbo.Customers WHERE CustomerID = @CustomerID  
 ```  
   
@@ -1637,7 +1701,7 @@ SELECT * FROM dbo.Customers WHERE CustomerID = @CustomerID
 >   
 >  かどうかを 30 秒の時間をたとえば、 <xref:System.Data.SqlClient.SqlDataReader.Read%2A> 2 つのネットワーク パケットの場合、両方のネットワーク パケットの読み取りに 30 秒がある必要があります。 呼び出す場合<xref:System.Data.SqlClient.SqlDataReader.Read%2A>ここでも、必要なすべてのデータを読み取る他の 30 秒が得られます。  
   
-```  
+```csharp
 using System;  
 using System.Data.SqlClient;  
 ///   
@@ -1717,14 +1781,14 @@ public class A {
       </ReturnValue>
       <Docs>
         <summary><see cref="P:System.Data.SqlClient.SqlCommand.CommandText" /> プロパティの解釈方法を示す値を取得または設定します。</summary>
-        <value><see cref="T:System.Data.CommandType" /> 値のいずれか 1 つ。 既定値は <see langword="Text" /> です。</value>
+        <value><see cref="T:System.Data.CommandType" /> 値のいずれか 1 つ。 既定値は、<see langword="Text" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  設定すると、<xref:System.Data.SqlClient.SqlCommand.CommandType%2A>プロパティを`StoredProcedure`を設定する必要があります、<xref:System.Data.SqlClient.SqlCommand.CommandText%2A>プロパティをストアド プロシージャの名前にします。 コマンドは、Execute メソッドのいずれかを呼び出すときに、このストアド プロシージャを実行します。  
   
- Microsoft .NET Framework Data Provider for SQL Server が SQL ステートメントにパラメーターを渡す場合の疑問符 (?) プレース ホルダーをサポートしていないか、ストアド プロシージャで呼び出されました、<xref:System.Data.SqlClient.SqlCommand.CommandType%2A>の<xref:System.Data.CommandType.Text>します。 ここでは、名前付きパラメーターを使用する必要があります。 例:  
+ Microsoft .NET Framework Data Provider for SQL Server が SQL ステートメントにパラメーターを渡す場合の疑問符 (?) プレース ホルダーをサポートしていないか、ストアド プロシージャで呼び出されました、<xref:System.Data.SqlClient.SqlCommand.CommandType%2A>の<xref:System.Data.CommandType.Text>します。 ここでは、名前付きパラメーターを使用する必要があります。 次に例を示します。  
   
  SELECT * FROM Customers WHERE CustomerID = @CustomerID  
   
@@ -2061,7 +2125,7 @@ public class A {
       </ReturnValue>
       <Docs>
         <summary>コマンド オブジェクトを Windows フォーム デザイナー コントロールに表示する必要があるかどうかを示す値を取得または設定します。</summary>
-        <value>コマンド オブジェクトをコントロールに表示する必要があるかどうかを示す値。 既定値は <see langword="true" /> です。</value>
+        <value>コマンド オブジェクトをコントロールに表示する必要があるかどうかを示す値。 既定値は、<see langword="true" /> です。</value>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -2150,7 +2214,9 @@ public class A {
         <exception cref="T:System.ArgumentException"><paramref name="asyncResult" /> パラメーターは null です (Microsoft Visual Basic では <see langword="Nothing" /> です)。</exception>
         <exception cref="T:System.InvalidOperationException"><see cref="M:System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(System.IAsyncResult)" /> が 1 回のコマンドの実行に対して複数回呼び出されました。または、メソッドが実行メソッドに対して一致しませんでした (たとえば、<see cref="M:System.Data.SqlClient.SqlCommand.BeginExecuteXmlReader" /> に対する呼び出しを実行するためにコードが <see cref="M:System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(System.IAsyncResult)" /> を呼び出しました)。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException"><see cref="P:System.Data.SqlClient.SqlCommand.CommandTimeout" /> で指定された時間が経過しましたが、<see cref="Overload:System.Data.SqlClient.SqlCommand.BeginExecuteNonQuery" /> で指定された非同期操作が完了していません。  
-  
+ 
+または
+
 状況によっては、<see cref="T:System.IAsyncResult" /> が誤って <see langword="IsCompleted" /> に設定されている可能性があります。 これが発生して <see cref="M:System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(System.IAsyncResult)" /> が呼び出された場合、<see cref="P:System.Data.SqlClient.SqlCommand.CommandTimeout" /> で指定された時間が経過したにもかかわらず <see cref="Overload:System.Data.SqlClient.SqlCommand.BeginExecuteNonQuery" /> で指定した非同期操作が完了していないと、EndExecuteNonQuery が SqlException エラーを発生させることがあります。 このような状況を修正するには、CommandTimeout の値を大きくするか、非同期操作で実行されている作業を軽減する必要があります。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/retrieving-and-modifying-data.md">接続および ADO.NET でのデータの取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">For SQL Server、.NET Framework Data Provider を使用</related>
@@ -2377,7 +2443,7 @@ public class A {
   
  ただし、<xref:System.Data.SqlClient.SqlCommand.ExecuteNonQuery%2A>の行が、すべての出力パラメーターを返すか、返すデータ パラメーターにマップされている値が設定されます。  
   
- UPDATE、INSERT、および DELETE ステートメントでは、戻り値は、コマンドによって影響を受ける行の数です。 その他のすべての種類のステートメントでは、戻り値は-1 です。
+ UPDATE、INSERT、DELETE の各ステートメントで、戻り値はそのコマンドの影響を受ける行の数です。 その他のすべての種類のステートメントでは、戻り値は -1 です。
 
 トリガーは、挿入または更新されているテーブルに存在する場合、戻り値には、挿入または更新操作のトリガーによって影響を受ける行の数の両方によって影響を受ける行の数が含まれています。
 
@@ -2396,12 +2462,18 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">ロックされた行に対するコマンドの実行中に、例外が発生しました。 Microsoft .NET Framework バージョン 1.0 を使用している場合は、この例外は生成されません。  
-  
+
+または
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2453,17 +2525,25 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteNonQueryAsync(System.Threading.CancellationToken)" /> を複数回呼び出しています。  
-  
+
+または
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または 
  <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+- または - 
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2539,15 +2619,23 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">ロックされた行に対するコマンドの実行中に、例外が発生しました。 Microsoft .NET Framework バージョン 1.0 を使用している場合は、この例外は生成されません。  
-  
+
+または
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">現在の接続の状態は "終了" です。 <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteReader" /> には開いている <see cref="T:System.Data.SqlClient.SqlConnection" /> が必要です。  
-  
+
+または
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2617,9 +2705,13 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2689,18 +2781,28 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.ArgumentException">正しくない <see cref="T:System.Data.CommandBehavior" /> 値。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync" /> を複数回呼び出しています。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
  <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+- または -
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2751,18 +2853,28 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.ArgumentException">正しくない <see cref="T:System.Data.CommandBehavior" /> 値。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior)" /> を複数回呼び出しています。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または
+
  <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+- または -
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2814,18 +2926,27 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または - 
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.ArgumentException">正しくない <see cref="T:System.Data.CommandBehavior" /> 値。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)" /> を複数回呼び出しています。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
  <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+または
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2864,7 +2985,7 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="dotnet-plat-ext-2.1;dotnet-plat-ext-2.2;dotnet-plat-ext-3.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="behavior">ステートメントの実行とデータ取得に関するオプション。  <see langword="Default" /> に設定されている場合、<see cref="M:System.Data.SqlClient.SqlDataReader.ReadAsync(System.Threading.CancellationToken)" /> は完全なタスクを返す前に行全体を読み取ります。</param>
+        <param name="behavior">ステートメントの実行とデータ取得に関するオプション。  <see langword="Default" />に設定されている場合、 <see cref="M:System.Data.SqlClient.SqlDataReader.ReadAsync(System.Threading.CancellationToken)" /> は完全なタスクを返す前に行全体を読み取ります。</param>
         <param name="cancellationToken">取り消し命令。</param>
         <summary><see cref="P:System.Data.SqlClient.SqlCommand.CommandText" /> に <see cref="P:System.Data.SqlClient.SqlCommand.Connection" /> を送信し、<see cref="T:System.Data.SqlClient.SqlDataReader" /> を構築する、<see cref="M:System.Data.SqlClient.SqlCommand.ExecuteReader(System.Data.CommandBehavior)" /> の非同期バージョン。  
   
@@ -2879,18 +3000,28 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.ArgumentException">正しくない <see cref="T:System.Data.CommandBehavior" /> 値。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)" /> を複数回呼び出しています。  
-  
+
+または
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
- <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
+
+- または -
+
+<see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+または
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -2942,12 +3073,10 @@ SET NOCOUNT ON 設定されている場合 (前に、または、コマンドの
   
  一般的な<xref:System.Data.SqlClient.SqlCommand.ExecuteScalar%2A>クエリは、次の c# の例のように書式設定できます。  
   
-```  
+```csharp
 cmd.CommandText = "SELECT COUNT(*) FROM dbo.region";  
 Int32 count = (Int32) cmd.ExecuteScalar();  
 ```  
-  
-   
   
 ## Examples  
  次の例では、作成、<xref:System.Data.SqlClient.SqlCommand>しを使用して実行します<xref:System.Data.SqlClient.SqlCommand.ExecuteScalar%2A>します。 例には、テーブルに挿入する新しい値を表す文字列と、データ ソースに接続するために使用する文字列が渡されます。 関数は、新しい返します**Identity**列の値を新しい行が挿入された場合、失敗した場合は 0。  
@@ -2958,12 +3087,18 @@ Int32 count = (Int32) cmd.ExecuteScalar();
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">ロックされた行に対するコマンドの実行中に、例外が発生しました。 Microsoft .NET Framework バージョン 1.0 を使用している場合は、この例外は生成されません。  
-  
+
+または
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -3017,17 +3152,27 @@ Int32 count = (Int32) cmd.ExecuteScalar();
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteScalarAsync(System.Threading.CancellationToken)" /> を複数回呼び出しています。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
- <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
+
+- または -
+
+<see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+- または -
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -3078,7 +3223,7 @@ Int32 count = (Int32) cmd.ExecuteScalar();
   
  一般的な<xref:System.Data.SqlClient.SqlCommand.ExecuteXmlReader%2A>クエリは、Microsoft Visual C# の例を次のように書式設定できます。  
   
-```  
+```csharp
 SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, XMLDATA", SqlConn);  
 ```  
   
@@ -3098,12 +3243,18 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">ロックされた行に対するコマンドの実行中に、例外が発生しました。 Microsoft .NET Framework バージョン 1.0 を使用している場合は、この例外は生成されません。  
-  
+
+- または -
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.InvalidOperationException">ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -3170,17 +3321,27 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteScalarAsync(System.Threading.CancellationToken)" /> を複数回呼び出しています。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
- <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
+
+または
+
+<see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+- または -
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -3235,17 +3396,27 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidCastException"><see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.Stream" /> に設定されたときに、**Binary** でも **VarBinary** でもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+
+または
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.IO.TextReader" /> に設定されたときに、**Char**、**NChar**、**NVarChar**、**VarChar**、**Xml** のいずれでもない <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。  
-  
+
+- または -
+
 <see cref="P:System.Data.SqlClient.SqlParameter.Value" /> が <see cref="T:System.Xml.XmlReader" /> に設定されたときに、**Xml** 以外の <see cref="P:System.Data.SqlClient.SqlParameter.SqlDbType" /> が使用されました。</exception>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlCommand.ExecuteScalarAsync(System.Threading.CancellationToken)" /> を複数回呼び出しています。  
-  
+
+- または -
+
 ストリーミング操作中に、<see cref="T:System.Data.SqlClient.SqlConnection" /> が閉じられたか切断されました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
- <see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
+
+または
+
+<see langword="Context Connection=true" /> は接続文字列で指定されます。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">SQL Server がコマンド テキストの実行中にエラーを返しました。  
-  
+
+- または -
+
 ストリーミング操作中にタイムアウトが発生しました。 ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.IO.IOException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトでエラーが発生しました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリーミング操作中に、<see cref="T:System.IO.Stream" />、<see cref="T:System.Xml.XmlReader" />、または <see cref="T:System.IO.TextReader" /> オブジェクトが閉じられました。  ストリーミングの詳細については、「[SqlClient ストリーミング サポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。</exception>
@@ -3389,7 +3560,7 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Microsoft .NET Framework Data Provider for SQL Server が SQL ステートメントまたはのコマンドによって呼び出されるストアド プロシージャにパラメーターを渡すの疑問符 (?) プレース ホルダーをサポートしていません`CommandType.Text`します。 ここでは、名前付きパラメーターを使用する必要があります。 例:  
+ Microsoft .NET Framework Data Provider for SQL Server が SQL ステートメントまたはのコマンドによって呼び出されるストアド プロシージャにパラメーターを渡すの疑問符 (?) プレース ホルダーをサポートしていません`CommandType.Text`します。 ここでは、名前付きパラメーターを使用する必要があります。 次に例を示します。  
   
  SELECT * FROM Customers WHERE CustomerID = @CustomerID  
   
@@ -3397,8 +3568,6 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
 >  コレクション内のパラメーターで実行されるクエリの要件が一致しない場合、エラーが表示される場合があります。  
   
  詳細については、次を参照してください。[構成パラメーターとパラメーターのデータ型](~/docs/framework/data/adonet/configuring-parameters-and-parameter-data-types.md)します。  
-  
-   
   
 ## Examples  
  次の例では、作成する方法、<xref:System.Data.SqlClient.SqlCommand>パラメーターを追加し、<xref:System.Data.SqlClient.SqlParameterCollection>します。  
@@ -3465,8 +3634,6 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
  出力パラメーターを (かどうかを準備する) かどうかをユーザー指定のデータ型である必要があります。 可変長データ型を指定する場合は、最大値も指定する必要があります<xref:System.Data.SqlClient.SqlParameter.Size%2A>します。  
   
  Visual Studio 2010 では、以前<xref:System.Data.SqlClient.SqlCommand.Prepare%2A>例外をスローしました。  Visual Studio 2010 以降では、このメソッドは例外をスローしません。  
-  
-   
   
 ## Examples  
  <xref:System.Data.SqlClient.SqlCommand.Prepare%2A> メソッドの使用例を次に示します。  
@@ -3605,7 +3772,7 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>送信、<see cref="P:System.Data.SqlClient.SqlCommand.CommandText" />を<see cref="P:System.Data.SqlClient.SqlCommand.Connection" />、およびビルドを<see cref="T:System.Data.SqlClient.SqlDataReader" />します。</summary>
+        <summary><see cref="P:System.Data.SqlClient.SqlCommand.CommandText" /> を <see cref="P:System.Data.SqlClient.SqlCommand.Connection" /> に送信し、<see cref="T:System.Data.SqlClient.SqlDataReader" /> を構築します。</summary>
         <returns><see cref="T:System.Data.SqlClient.SqlDataReader" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -3776,7 +3943,7 @@ SqlCommand command = new SqlCommand("SELECT * FROM dbo.Customers FOR XML AUTO, X
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Data.Common.DbDataAdapter" /> の **Update** メソッドで使用するときに、コマンドの結果を <see cref="T:System.Data.DataRow" /> に適用する方法を取得または設定します。</summary>
-        <value><see cref="T:System.Data.UpdateRowSource" /> 値のいずれか 1 つ。</value>
+        <value><see cref="T:System.Data.UpdateRowSource" /> 値のいずれか。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
