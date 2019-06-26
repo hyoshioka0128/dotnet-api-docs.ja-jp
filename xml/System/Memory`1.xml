@@ -36,13 +36,13 @@
   
 ## Remarks  
   
-ような<xref:System.Span%601>、`Memory<T>`メモリの連続した領域を表します。 異なり<xref:System.Span%601>、ただし、`Memory<T>`でない、 [ref 構造体](~/docs/csharp/language-reference/keywords/ref.md#ref-struct-types)します。 つまり、`Memory<T>`一方、マネージ ヒープ上に配置できる<xref:System.Span%601>ことはできません。 結果として、`Memory<T>`構造体と同じ制限はありません、<xref:System.Span%601>インスタンス。 特に次の点に注意してください。
+`Memory<T>`は、<xref:System.Span%601>のように、メモリの連続した領域を表します。 ただし、<xref:System.Span%601>と異なり、`Memory<T>`は [ref 構造体](~/docs/csharp/language-reference/keywords/ref.md#ref-struct-types)ではありません。 つまり、`Memory<T>`はマネージ ヒープ上に配置できますが、<xref:System.Span%601>はできません。 結果として、`Memory<T>`構造体は<xref:System.Span%601>インスタンスと同じ制限はありません。 特に次の点に注意してください。
 
-- これは、クラスのフィールドとして使用できます。
+- クラスのフィールドとして使用できます。
 
-- 全体で使用できます`await`と`yield`境界。
+- `await`と`yield`をまたいで使用できます。
 
-ほかに`Memory<T>`、使用することができます<xref:System.ReadOnlyMemory%601?displayProperty=nameWithType>を表す不変または読み取り専用メモリ。
+`Memory<T>`のほかに、不変または読み取り専用メモリを表す<xref:System.ReadOnlyMemory%601?displayProperty=nameWithType>を使用することができます。
 
     ]]></format>
     </remarks>
@@ -76,7 +76,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-場合`array`は`null`、このコンス トラクターを返します、<xref:System.Memory%601>オブジェクトを`default<T>`値。
+`array`が`null`の場合、このコンストラクターは、`default<T>`値を持つ<xref:System.Memory%601>オブジェクトを返します。
 
       ]]></format>
         </remarks>
@@ -119,7 +119,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-場合`array`は`null`、このコンス トラクターを返します、<xref:System.Memory%601>オブジェクトを`default<T>`値。
+`array`が`null`の場合、このコンストラクターは、<xref:System.Memory%601>値を持つ`default<T>`オブジェクトを返します。
 
        ]]></format>
         </remarks>
@@ -167,7 +167,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このメソッドは、現在の内容をすべてコピー<xref:System.Memory%601>インスタンス`destination`場合でも、現在のインスタンスの内容と`destination`が重複します。
+このメソッドは、現在のインスタンスの内容と`destination`が重なっている場合でも、現在の<xref:System.Memory%601>インスタンスの内容をすべて`destination`にコピーします。
 
          ]]></format>
         </remarks>
@@ -234,11 +234,11 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-2 つのオブジェクトが等しい場合。
+以下の場合に、2つのオブジェクトが等しいと判定します。
 
-   - `other` <xref:System.Memory%601>または<xref:System.ReadOnlyMemory%601>オブジェクト。
+   - `other`は<xref:System.Memory%601>または<xref:System.ReadOnlyMemory%601>オブジェクトである。
    
-   - 両方のオブジェクトは、同じ配列をポイントし、同じ長さであります。
+   - 両方のオブジェクトは、同じ配列を指し、同じ長さである。
 
 `Equals(Memory<T>)`メソッド参照の等価性テストを実行します。 以外の要素は比較されません<xref:System.Memory%601>等しいかどうか。
 
@@ -283,7 +283,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-2 つ<xref:System.Memory%601>両方のオブジェクトが同じ配列をポイントし、同じ長さである場合は、オブジェクトが等しい。 等しいかどうかテストを確認しませんしないように、内容が等しいかどうかに注意してください。
+2つの<xref:System.Memory%601>オブジェクトが同じ配列を指し、同じ長さである場合は、オブジェクトが等しいと判定します。 要素が等しいかどうかはチェックされないことに注意してください。
    
          ]]></format>
         </remarks>
@@ -540,7 +540,7 @@
 
 ## <a name="see-also"></a>関連項目
 
-ガベージ コレクターが、返されるまでメモリに移動しない<xref:System.Buffers.MemoryHandle>オブジェクトを破棄します。 これにより、取得し、メモリのアドレスを使用することができます。
+返された<xref:System.Buffers.MemoryHandle>オブジェクトが破棄されるまで、ガベージ コレクターはメモリを移動しません。 これにより、メモリのアドレスを取得し、使用することができます。
 
 <xref:System.Type.IsPrimitive> 
 
@@ -608,7 +608,7 @@
       </Parameters>
       <Docs>
         <param name="start">スライスの開始位置を示すインデックス。</param>
-        <summary>指定したインデックスで始まる現在のメモリからスライスを形成します。</summary>
+        <summary>現在のメモリから、指定したインデックスで始まるスライスを生成します。</summary>
         <returns>現在のインスタンスのすべての要素を、<paramref name="start" /> からインスタンスの末尾まで含んでいるオブジェクト。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentOutOfRangeExceptionException"><paramref name="start" /> が 0 未満であるか、<see cref="P:System.Memory`1.Length" /> を超えています。</exception>
@@ -816,7 +816,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このメソッドは、現在の内容をすべてコピー<xref:System.Memory%601>インスタンス`destination`場合でも、現在のインスタンスの内容と`destination`が重複します。
+このメソッドは、現在のインスタンスの内容と<xref:System.Memory%601>が重なっている場合でも、現在の`destination`インスタンスの内容をすべて`destination`にコピーします。
 
          ]]></format>
         </remarks>
