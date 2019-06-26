@@ -1,5 +1,5 @@
 <Type Name="BlobReader" FullName="System.Reflection.Metadata.BlobReader">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="e2c5323265b913959dae35db83d5cff57b291e1e" /><Meta Name="ms.sourcegitcommit" Value="7555c040bd7cb677d117ddf03e647aa7bf625bfc" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/08/2019" /><Meta Name="ms.locfileid" Value="65440110" /></Metadata><TypeSignature Language="C#" Value="public struct BlobReader" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="4326d8e60dc4288069af3d6be3e9db2b23ff88ed" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67249949" /></Metadata><TypeSignature Language="C#" Value="public struct BlobReader" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit BlobReader extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.Metadata.BlobReader" />
   <TypeSignature Language="VB.NET" Value="Public Structure BlobReader" />
@@ -49,13 +49,13 @@
         <Parameter Name="length" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="buffer">メモリ ブロックの先頭へのポインター。</param>
-        <param name="length">メモリ ブロックのバイト長。</param>
+        <param name="buffer">メモリ ブロックの開始へのポインター。</param>
+        <param name="length">メモリ ブロックの長さ (バイト単位)。</param>
         <summary>指定されたメモリ ブロックのリーダーを作成します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> <see langword="null" />と<paramref name="length" />が 0 より大きい。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" /> で、<paramref name="length" /> は 0 より大きい値です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="length" /> が負の値です。</exception>
-        <exception cref="T:System.PlatformNotSupportedException">現在のプラットフォームはリトル エンディアンではありません。</exception>
+        <exception cref="T:System.PlatformNotSupportedException">現在のプラットフォームはリトルエンディアンではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="Align">
@@ -81,7 +81,7 @@
       </Parameters>
       <Docs>
         <param name="alignment">To be added.</param>
-        <summary>指定した配置を満たすために必要なバイト数でリーダーが前の位置を変更します。</summary>
+        <summary>指定された配置を満たすために必要なバイト数だけリーダーの位置を前方に動かします。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -103,7 +103,7 @@
         <ReturnType>System.Byte*</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>リーダーの現在位置にあるバイトへのポインターを取得します。</summary>
+        <summary>リーダーの現在位置でバイトへのポインターを取得します。</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -129,9 +129,9 @@
         <Parameter Name="value" Type="System.Byte" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="value">検索するバイト値。</param>
-        <summary>Blob の現在の位置で指定したバイトを検索します。</summary>
-        <returns>現在の位置または blob の現在の位置にバイトが見つからない場合は-1 のインデックス。</returns>
+        <param name="value">見つけるバイト値。</param>
+        <summary>現在の位置から BLOB 内で指定のバイトを検索します。</summary>
+        <returns>現在位置からの相対インデックス、または現在の位置から BLOB 内でバイトが見つからない場合は -1。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -156,7 +156,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>基になるメモリ ブロックの合計の長さを取得します。</summary>
+        <summary>基礎メモリ ブロックの合計長を取得します。</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -182,10 +182,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または現在の位置に、blob の先頭からのオフセットを設定します。</summary>
+        <summary>BLOB の開始から現在位置までのオフセットを取得するか、設定します。</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.BadImageFormatException">基になるリーダーの範囲外のオフセットが設定されています。</exception>
+        <exception cref="T:System.BadImageFormatException">基礎リーダーの境界外でオフセットが設定されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadBlobHandle">
@@ -209,7 +209,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Blob の読み取りはヒープ圧縮整数としてエンコードされたハンドルです。</summary>
+        <summary>圧縮整数としてエンコードされている BLOB ヒープ ハンドルを読み取ります。</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -293,7 +293,7 @@
       </Parameters>
       <Docs>
         <param name="byteCount">読み取るバイト数。</param>
-        <summary>現在の位置で始まるバイトを読み取ります。</summary>
+        <summary>現在位置から始まるバイトを読み取ります。</summary>
         <returns>バイト配列。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.BadImageFormatException"><paramref name="byteCount" /> バイトが使用できません。</exception>
@@ -324,9 +324,9 @@
       </Parameters>
       <Docs>
         <param name="byteCount">読み取るバイト数。</param>
-        <param name="buffer">コピー先のバッファーに読み取られたバイトが書き込まれます。</param>
-        <param name="bufferOffset">バイトの読み取り、コピー先のバッファー内のオフセットが書き込まれます。</param>
-        <summary>現在の位置からバイトを読み取り、指定したオフセットから始まる指定のバッファーに書き込みます。</summary>
+        <param name="buffer">バイト読み取りの書き込み先となるバッファー。</param>
+        <param name="bufferOffset">バイト読み取りの書き込み先となるバッファーのオフセット。</param>
+        <summary>現在位置から始まるバイトを読み取り、指定のオフセットから始まる指定のバッファーにそれを書き込みます。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.BadImageFormatException"><paramref name="byteCount" /> バイトが使用できません。</exception>
       </Docs>
@@ -380,10 +380,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>圧縮の符号なし整数値を読み取ります。 メタデータの仕様のセクションをご覧ください II.23.2:Blob と署名。</summary>
-        <returns>読み取られた、圧縮された整数の値。</returns>
+        <summary>符号なし圧縮整数値を読み取ります。 「Metadata Specification section II.23.2:Blobs and signatures」 (メタデータ仕様セクション II.23.2: BLOB と署名) を参照してください。</summary>
+        <returns>読み取られた圧縮整数の値。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.BadImageFormatException">現在の位置にあるデータの圧縮の有効な整数でした。</exception>
+        <exception cref="T:System.BadImageFormatException">現在位置のデータは有効な圧縮整数ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadCompressedSignedInteger">
@@ -408,10 +408,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>圧縮の符号付き整数値を読み取ります。 メタデータの仕様のセクションをご覧ください II.23.2:Blob と署名。</summary>
-        <returns>読み取られた、圧縮された整数の値。</returns>
+        <summary>符号付き圧縮整数値を読み取ります。 「Metadata Specification section II.23.2:Blobs and signatures」 (メタデータ仕様セクション II.23.2: BLOB と署名) を参照してください。</summary>
+        <returns>読み取られた圧縮整数の値。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.BadImageFormatException">現在の位置にあるデータの圧縮の有効な整数でした。</exception>
+        <exception cref="T:System.BadImageFormatException">現在位置のデータは有効な圧縮整数ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadConstant">
@@ -438,10 +438,10 @@
       </Parameters>
       <Docs>
         <param name="typeCode">To be added.</param>
-        <summary>定数値を読み取ります (ECMA 335 Partition II 引き続き 22.9 セクションを参照してください) 現在の位置から。</summary>
-        <returns>ボックス化された定数値。 オブジェクトの使い方読み取り * メソッドを直接割り当てを回避します。</returns>
+        <summary>現在位置から定数値を読み取ります (「ECMA-335 Partition II section 22.9」 (ECMA-335 パーティション II セクション 22.9) を参照してください)。</summary>
+        <returns>ボックス化された定数値。 オブジェクトの割り当てを避けるには、Read* メソッドを直接使用します。</returns>
         <remarks>型の定数<see cref="F:System.Reflection.Metadata.ConstantTypeCode.String" />UTF16 文字列を使用してとしてエンコードされます<see cref="M:System.Reflection.Metadata.BlobReader.ReadUTF16(System.Int32)" />読まします。</remarks>
-        <exception cref="T:System.BadImageFormatException">Blob の読み取り中にエラーです。</exception>
+        <exception cref="T:System.BadImageFormatException">BLOB から読み取り中、エラーが発生しました。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="typeCode" /> は有効な <see cref="T:System.Reflection.Metadata.ConstantTypeCode" /> ではありません。</exception>
       </Docs>
     </Member>
@@ -492,10 +492,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>読み取り、<see cref="T:System.Decimal" />数。</summary>
+        <summary><see cref="T:System.Decimal" /> 数を読み取ります。</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.BadImageFormatException">現在の位置にあるデータが、有効でなかった<see cref="T:System.Decimal" />数。</exception>
+        <exception cref="T:System.BadImageFormatException">現在位置のデータは有効な <see cref="T:System.Decimal" /> 数ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadDouble">
@@ -681,8 +681,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>シリアル化されたカスタム属性の値でエンコードされた型コードを読み取ります。</summary>
-        <returns><see cref="F:System.Reflection.Metadata.SerializationTypeCode.Invalid" /> 場合は、エンコードが無効です。</returns>
+        <summary>シリアル化されたカスタム属性値でエンコードされた型コードを読み取ります。</summary>
+        <returns>エンコードが無効な場合は <see cref="F:System.Reflection.Metadata.SerializationTypeCode.Invalid" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -708,10 +708,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>UTF8 でその内容を続けてその長さを含む、圧縮された整数としてエンコードされた文字列を読み取ります。 Null 文字列は、0 xff までの 1 バイトとしてエンコードされます。</summary>
-        <returns>文字列値、または<see langword="null" />します。</returns>
+        <summary>その長さとそのコンテンツが UTF8 で含まれる圧縮整数としてエンコードされた文字列を読み取ります。 null 文字列は 1 つの 0xFF バイトとしてエンコードされます。</summary>
+        <returns>文字列値、または <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.BadImageFormatException">エンコードが無効です。</exception>
+        <exception cref="T:System.BadImageFormatException">エンコードは無効です。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadSignatureHeader">
@@ -763,8 +763,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>シグネチャ エンコードの種類コードを読み取ります。</summary>
-        <returns>エンコードが有効な場合は、シリアル化されたカスタム属性の値でエンコードされた型コードまたは<see cref="F:System.Reflection.Metadata.SignatureTypeCode.Invalid" />エンコードが有効な場合。</returns>
+        <summary>署名でエンコードされている型コードを読み取ります。</summary>
+        <returns>エンコードが有効な場合はシリアル化されたカスタム属性値でエンコードされた型コード、またはエンコードが有効な場合は <see cref="F:System.Reflection.Metadata.SignatureTypeCode.Invalid" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -817,8 +817,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>TypeDefOrRefOrSpecEncoded として署名でエンコードされた型のハンドルを読み取ります (ECMA 335 II.23.2.8 を参照してください)。</summary>
-        <returns>エンコードが有効な場合のハンドルです。 それ以外の場合、ハンドルを<see cref="P:System.Reflection.Metadata.EntityHandle.IsNil" />プロパティは<see langword="true" />します。</returns>
+        <summary>TypeDefOrRefOrSpecEncoded として署名でエンコードされている型ハンドルを読み取ります (「ECMA-335 II.23.2.8」を参照してください)。</summary>
+        <returns>エンコードが有効なときのハンドル。 それ以外の場合、<see cref="P:System.Reflection.Metadata.EntityHandle.IsNil" /> プロパティが <see langword="true" /> のハンドル。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -928,7 +928,7 @@
       </Parameters>
       <Docs>
         <param name="byteCount">読み取るバイト数。</param>
-        <summary>現在の位置から UTF16 (リトル エンディアン) でエンコードされた文字列を読み取ります。</summary>
+        <summary>現在位置から UTF16 (リトルエンディアン) でエンコードされた文字列を読み取ります。</summary>
         <returns>文字列。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.BadImageFormatException"><paramref name="byteCount" /> バイトが使用できません。</exception>
@@ -959,7 +959,7 @@
       </Parameters>
       <Docs>
         <param name="byteCount">読み取るバイト数。</param>
-        <summary>現在の位置から UTF8 でエンコードされた文字列を読み取ります。</summary>
+        <summary>現在位置から UTF8 でエンコードされた文字列を読み取ります。</summary>
         <returns>文字列。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.BadImageFormatException"><paramref name="byteCount" /> バイトが使用できません。</exception>
@@ -986,7 +986,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>基になるメモリ ブロックの末尾に現在位置から残りのバイト数を取得します。</summary>
+        <summary>現在位置から基礎メモリ ブロックの終わりまで、残りのブロック数を取得します。</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1013,7 +1013,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>基になるメモリ ブロックの先頭に、リーダーの位置を変更します。</summary>
+        <summary>基礎メモリ ブロックの開始にリーダーの位置を変更します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1083,7 +1083,7 @@
         <ReturnType>System.Byte*</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>基になるメモリ ブロックの先頭バイトへのポインターを取得します。</summary>
+        <summary>基礎メモリ ブロックの開始で、バイトへのポインターを取得します。</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1112,9 +1112,9 @@
         <Parameter Name="value" Type="System.Int32" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="value">読み取られた、圧縮された整数の値。</param>
-        <summary>圧縮の符号なし整数値を読み取ります。 メタデータの仕様のセクションをご覧ください II.23.2:Blob と署名。</summary>
-        <returns><see langword="true" /> 場合は、値が正常に読み取られました。 <see langword="false" /> 現在の位置にあるデータが圧縮の有効な整数だ場合。</returns>
+        <param name="value">読み取られた圧縮整数の値。</param>
+        <summary>符号なし圧縮整数値を読み取ります。 「Metadata Specification section II.23.2:Blobs and signatures」 (メタデータ仕様セクション II.23.2: BLOB と署名) を参照してください。</summary>
+        <returns>値が正常に読み取られた場合は <see langword="true" />。 現在位置のデータが有効な圧縮整数ではなかった場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1142,9 +1142,9 @@
         <Parameter Name="value" Type="System.Int32" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="value">読み取られた、圧縮された整数の値。</param>
-        <summary>圧縮の符号付き整数値を読み取ります。 メタデータの仕様のセクションをご覧ください II.23.2:Blob と署名。</summary>
-        <returns><see langword="true" /> 場合は、値が正常に読み取られました。 <see langword="false" /> 現在の位置にあるデータが圧縮の有効な整数だ場合。</returns>
+        <param name="value">読み取られた圧縮整数の値。</param>
+        <summary>符号付き圧縮整数値を読み取ります。 「Metadata Specification section II.23.2:Blobs and signatures」 (メタデータ仕様セクション II.23.2: BLOB と署名) を参照してください。</summary>
+        <returns>値が正常に読み取られた場合は <see langword="true" />。 現在位置のデータが有効な圧縮整数ではなかった場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
