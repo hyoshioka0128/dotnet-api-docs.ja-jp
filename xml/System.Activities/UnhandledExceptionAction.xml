@@ -1,5 +1,5 @@
 <Type Name="UnhandledExceptionAction" FullName="System.Activities.UnhandledExceptionAction">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="5ef7a0a32b99e9ac13071b3e26f38aa2e7ad640e" /><Meta Name="ms.sourcegitcommit" Value="f1d16425528e237257ca3b58eb49217a514849ea" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="04/24/2019" /><Meta Name="ms.locfileid" Value="63917115" /></Metadata><TypeSignature Language="C#" Value="public enum UnhandledExceptionAction" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f85bd9656126b16f24a4471014ee80048c8764d3" /><Meta Name="ms.sourcegitcommit" Value="feb111e137a41d186aef01d83f04819d820520eb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/21/2019" /><Meta Name="ms.locfileid" Value="67307974" /></Metadata><TypeSignature Language="C#" Value="public enum UnhandledExceptionAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed UnhandledExceptionAction extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Activities.UnhandledExceptionAction" />
   <TypeSignature Language="VB.NET" Value="Public Enum UnhandledExceptionAction" />
@@ -22,11 +22,20 @@
   
    
   
-## Examples  
- 次の例では、例外をスローするワークフローを呼び出しています。 ワークフローで例外が処理されないため、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A> ハンドラーが呼び出されます。 例外に関する情報を提供するために <xref:System.Activities.WorkflowApplicationUnhandledExceptionEventArgs> が調査され、ワークフローは終了します。  
+## Examples
+
+次の例では、例外をスローするワークフローを呼び出しています。 ワークフローで例外が処理されないため、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A> ハンドラーが呼び出されます。 例外に関する情報を提供するために <xref:System.Activities.WorkflowApplicationUnhandledExceptionEventArgs> が調査され、ワークフローは終了します。  
   
- [!code-csharp[CFX_WorkflowApplicationExample#6](~/samples/snippets/csharp/VS_Snippets_CFX/cfx_workflowapplicationexample/cs/program.cs#6)]  
+[!code-csharp[CFX_WorkflowApplicationExample#6](~/samples/snippets/csharp/VS_Snippets_CFX/cfx_workflowapplicationexample/cs/program.cs#6)]  
+
+次の例では、例外をスローするワークフローを呼び出しています。 ワークフローで例外が処理されないため、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A> ハンドラーが呼び出されます。 例外に関する情報を提供するために <xref:System.Activities.WorkflowApplicationUnhandledExceptionEventArgs> が調査され、ワークフローは中止されます。  
   
+[!code-csharp[CFX_WorkflowApplicationExample#7](~/samples/snippets/csharp/VS_Snippets_CFX/cfx_workflowapplicationexample/cs/program.cs#7)]  
+
+次の例では、例外をスローするワークフローを呼び出しています。 ワークフローで例外が処理されないため、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A> ハンドラーが呼び出されます。 例外に関する情報を提供するために <xref:System.Activities.WorkflowApplicationUnhandledExceptionEventArgs> が調査され、ワークフローはキャンセルされます。  
+  
+ [!code-csharp[CFX_WorkflowApplicationExample#8](~/samples/snippets/csharp/VS_Snippets_CFX/cfx_workflowapplicationexample/cs/program.cs#8)]  
+
  ]]></format>
     </remarks>
   </Docs>
@@ -48,22 +57,7 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary><see cref="T:System.Activities.WorkflowApplication" /> がワークフローを中止するよう指定します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- その結果、中止プロセスが完了すると、<xref:System.Activities.WorkflowApplication.Aborted%2A> が呼び出されます。 中止の理由として未処理の例外が使用されます。  
-  
-   
-  
-## Examples  
- 次の例では、例外をスローするワークフローを呼び出しています。 ワークフローで例外が処理されないため、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A> ハンドラーが呼び出されます。 例外に関する情報を提供するために <xref:System.Activities.WorkflowApplicationUnhandledExceptionEventArgs> が調査され、ワークフローは中止されます。  
-  
- [!code-csharp[CFX_WorkflowApplicationExample#7](~/samples/snippets/csharp/VS_Snippets_CFX/cfx_workflowapplicationexample/cs/program.cs#7)]  
-  
- ]]></format>
-        </remarks>
+        <summary><see cref="T:System.Activities.WorkflowApplication" /> がワークフローを中止するよう指定します。 これにより、中止プロセスの完了時に、<see cref="P:System.Activities.WorkflowApplication.Aborted" /> によって返されたデリゲートが呼び出されます。 中止の理由として未処理の例外が使用されます。</summary>
       </Docs>
     </Member>
     <Member MemberName="Cancel">
@@ -83,22 +77,7 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary><see cref="T:System.Activities.WorkflowApplication" /> がルート アクティビティの取り消しをスケジュールして実行を再開するよう指定します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- その結果、キャンセル プロセスが完了すると、<xref:System.Activities.WorkflowApplication.Completed%2A> が呼び出されます。  
-  
-   
-  
-## Examples  
- 次の例では、例外をスローするワークフローを呼び出しています。 ワークフローで例外が処理されないため、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A> ハンドラーが呼び出されます。 例外に関する情報を提供するために <xref:System.Activities.WorkflowApplicationUnhandledExceptionEventArgs> が調査され、ワークフローはキャンセルされます。  
-  
- [!code-csharp[CFX_WorkflowApplicationExample#8](~/samples/snippets/csharp/VS_Snippets_CFX/cfx_workflowapplicationexample/cs/program.cs#8)]  
-  
- ]]></format>
-        </remarks>
+        <summary><see cref="T:System.Activities.WorkflowApplication" /> がルート アクティビティの取り消しをスケジュールして実行を再開するよう指定します。 これにより、キャンセル プロセスの完了時に、<see cref="P:System.Activities.WorkflowApplication.Completed" /> プロパティによって返されたデリゲートが呼び出されます。</summary>
       </Docs>
     </Member>
     <Member MemberName="Terminate">
@@ -118,22 +97,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary><see cref="T:System.Activities.WorkflowApplication" /> がルート アクティビティの終了をスケジュールして実行を再開するよう指定します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- その結果、終了プロセスが完了すると、<xref:System.Activities.WorkflowApplication.Completed%2A> が呼び出されます。 終了の理由として未処理の例外が使用されます。 終了しない場合、既定のアクションは、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A>ハンドラーを指定します。  
-  
-   
-  
-## Examples  
- 次の例では、例外をスローするワークフローを呼び出しています。 ワークフローで例外が処理されないため、<xref:System.Activities.WorkflowApplication.OnUnhandledException%2A> ハンドラーが呼び出されます。 例外に関する情報を提供するために <xref:System.Activities.WorkflowApplicationUnhandledExceptionEventArgs> が調査され、ワークフローは終了します。  
-  
- [!code-csharp[CFX_WorkflowApplicationExample#6](~/samples/snippets/csharp/VS_Snippets_CFX/cfx_workflowapplicationexample/cs/program.cs#6)]  
-  
- ]]></format>
-        </remarks>
+        <summary><see cref="T:System.Activities.WorkflowApplication" /> がルート アクティビティの終了をスケジュールして実行を再開するよう指定します。 これにより、終了プロセスの完了時に、<see cref="P:System.Activities.WorkflowApplication.Completed" /> プロパティに割り当てられたデリゲートが呼び出されます。 終了の理由として未処理の例外が使用されます。 <see cref="P:System.Activities.WorkflowApplication.OnUnhandledException" /> ハンドラーが指定されない場合は、<see langword="Terminate" /> が既定のアクションになります。</summary>
       </Docs>
     </Member>
   </Members>

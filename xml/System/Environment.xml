@@ -1,5 +1,5 @@
 <Type Name="Environment" FullName="System.Environment">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="8f90cd75a7a7c70b077c46759736bd53d521320e" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67250304" /></Metadata><TypeSignature Language="C#" Value="public static class Environment" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="2befc53c964784ef05f9a3c02e361d9e6aed9618" /><Meta Name="ms.sourcegitcommit" Value="61757d0366a172cdbc11436deb1c1ffa49d97238" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/28/2019" /><Meta Name="ms.locfileid" Value="67458500" /></Metadata><TypeSignature Language="C#" Value="public static class Environment" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Environment extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Environment" />
   <TypeSignature Language="VB.NET" Value="Public Class Environment" />
@@ -165,7 +165,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">空の文字列 ("") に設定しようとしました。</exception>
-        <exception cref="T:System.ArgumentNullException"><see langword="null." /> に設定しようとしました。</exception>
+        <exception cref="T:System.ArgumentNullException"><see langword="null." /></exception>
         <exception cref="T:System.IO.IOException">I/O エラーが発生しました。</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">見つからないローカル パスを設定しようとしました。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、該当するアクセス許可がありません。</exception>
@@ -505,15 +505,15 @@ goto :EOF
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アクティブなを実行することがなく、プロセスを終了します`try` / `finally`ブロックまたはファイナライザー。  
+ このメソッドは、アクティブなを実行することがなく、プロセスを終了します`try` / `finally`ブロックまたはファイナライザー。
   
- <xref:System.Environment.FailFast%2A>メソッドの書き込み、 `message` Windows アプリケーション イベント ログへの文字列が、アプリケーションのダンプを作成し、現在のプロセスを終了します。 `message`文字列はマイクロソフトに報告するエラーも含まれます。  
+ `Environment.FailFast`メソッドの書き込み、 `message` Windows アプリケーション イベント ログへの文字列が、アプリケーションのダンプを作成し、現在のプロセスを終了します。 `message`文字列はマイクロソフトに報告するエラーも含まれます。  
   
- 使用して、<xref:System.Environment.FailFast%2A>メソッドの代わりに、<xref:System.Environment.Exit%2A>メソッドは、アプリケーションの状態が、修復できない破損している場合、アプリケーションを終了して、アプリケーションの実行`try` / `finally`ブロックおよびファイナライザープログラムのリソースが壊れています。  
+ 使用して、`Environment.FailFast`メソッドの代わりに、<xref:System.Environment.Exit%2A>メソッドは、アプリケーションの状態が、修復できない破損している場合、アプリケーションを終了して、アプリケーションの実行`try` / `finally`ブロックおよびファイナライザープログラムのリソースが壊れています。  
   
  情報は、Windows エラー報告を使用して Microsoft に報告されます。 詳細については、次を参照してください。 [Windows エラー報告。Getting Started](https://msdn.microsoft.com/library/windows/hardware/dn641144.aspx)します。  
-  
-   
+
+呼び出す、`Environment.FailFast`デバッガーをスローする Visual Studio で実行するアプリケーションの実行を終了するメソッド、<xref:System.ExecutionEngineException>を自動的にトリガーと、 [fatalExecutionEngineError マネージ デバッグ アシスタント (MDA)](https://github.com/dotnet/docs/blob/master/docs/framework/debug-trace-profile/fatalexecutionengineerror-mda.md).
   
 ## Examples  
  次の例では、Windows アプリケーション イベント ログにログ エントリを書き込み、現在のプロセスを終了します。  
@@ -573,13 +573,15 @@ goto :EOF
 ## Remarks  
  このメソッドは、アクティブなを実行することがなく、プロセスを終了`try` / `finally`ブロックまたはファイナライザー。  
   
- <xref:System.Environment.FailFast%2A>メソッドの書き込み、 `message` Windows アプリケーション イベント ログへの文字列が、アプリケーションのダンプを作成し、現在のプロセスを終了します。  
+ `Environment.FailFast`メソッドの書き込み、 `message` Windows アプリケーション イベント ログへの文字列が、アプリケーションのダンプを作成し、現在のプロセスを終了します。  
   
  情報は、Windows エラー報告を使用して Microsoft に報告されます。 詳細については、次を参照してください。 [Windows エラー報告。Getting Started](https://msdn.microsoft.com/library/windows/hardware/dn641144.aspx)します。 Microsoft に報告するエラーが含まれて`message`と`exception`については、エラーの分類に使用される詳細を提供します。 `exception`は、プロセスが終了したため、処理されない例外が発生したコンテキスト情報は現在でも入手できます。  
   
  場合`exception`は`null`、または`exception`はスローされず、このメソッドと同様に動作、<xref:System.Environment.FailFast%28System.String%29>メソッドのオーバー ロード。  
   
- 使用して、<xref:System.Environment.FailFast%2A>メソッドの代わりに、<xref:System.Environment.Exit%2A>メソッドは、アプリケーションの状態が、修復できない破損している場合、アプリケーションを終了して、アプリケーションの実行`try` / `finally`ブロックおよびファイナライザープログラムのリソースが壊れています。  
+ 使用して、`Environment.FailFast`メソッドの代わりに、<xref:System.Environment.Exit%2A>メソッドは、アプリケーションの状態が、修復できない破損している場合、アプリケーションを終了して、アプリケーションの実行`try` / `finally`ブロックおよびファイナライザープログラムのリソースが壊れています。  
+
+呼び出す、`Environment.FailFast`デバッガーをスローする Visual Studio で実行するアプリケーションの実行を終了するメソッド、<xref:System.ExecutionEngineException>を自動的にトリガーと、 [fatalExecutionEngineError マネージ デバッグ アシスタント (MDA)](https://github.com/dotnet/docs/blob/master/docs/framework/debug-trace-profile/fatalexecutionengineerror-mda.md).
   
  ]]></format>
         </remarks>
@@ -811,7 +813,7 @@ MacOS および Linux では、現在のプロセスの環境ブロックには�
       </Parameters>
       <Docs>
         <param name="variable">環境変数の名前。</param>
-        <param name="target"><see cref="T:System.EnvironmentVariableTarget" /> 値のいずれか。 Unix ベースのシステムで実行される .NET Core では、<see cref="F:System.EnvironmentVariableTarget.Process" /> のみがサポートされています。</param>
+        <param name="target"><see cref="T:System.EnvironmentVariableTarget" /> 値のいずれか 1 つ。 Unix ベースのシステムで実行される .NET Core では、<see cref="F:System.EnvironmentVariableTarget.Process" /> のみがサポートされています。</param>
         <summary>環境変数の値を取得します。取得する場所として、現在のプロセス、現在のユーザー用に予約されている Windows オペレーティング システムのレジストリ キー、および、ローカル コンピューター用に予約されているレジストリ キーのいずれかを選択できます。</summary>
         <returns><paramref name="variable" /> パラメーターと <paramref name="target" /> パラメーターで指定された環境変数の値。環境変数が見つからない場合は <see langword="null" />。</returns>
         <remarks>
@@ -1151,7 +1153,7 @@ or
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="folder" /> が <see cref="T:System.Environment.SpecialFolder" /> のメンバーではありません。
-または
+- または -
 
 <paramref name="options" /> が <see cref="T:System.Environment.SpecialFolderOption" /> のメンバーではありません。</exception>
         <exception cref="T:System.PlatformNotSupportedException">現在のプラットフォームはサポートされていません。</exception>
@@ -1503,8 +1505,8 @@ or
         </remarks>
         <exception cref="T:System.InvalidOperationException">このプロパティはシステムのバージョンを取得できませんでした。  
   
-または 
-取得したプラットフォーム ID が <see cref="T:System.PlatformID" /> のメンバーではありません</exception>
+- または - 
+取得したプラットフォーム ID が <see cref="T:System.PlatformID" />のメンバーではありません</exception>
       </Docs>
     </Member>
     <Member MemberName="ProcessorCount">
@@ -1748,22 +1750,22 @@ MacOS および Linux システムで .NET Core で呼び出し、<xref:System.E
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="variable" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="variable" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="variable" /> に、長さ 0 の文字列、最初の 16 進数 0 文字 (0x00)、または等号 ("=") が含まれています。  
   
-または 
+- または - 
 <paramref name="variable" /> の長さが 32,767 文字以上です。  
   
-または 
+- または - 
  <paramref name="target" /> が <see cref="T:System.EnvironmentVariableTarget" /> 列挙体のメンバーではありません。  
   
 または 
- <paramref name="target" /> が <see cref="F:System.EnvironmentVariableTarget.Machine" /> または <see cref="F:System.EnvironmentVariableTarget.User" /> で、<paramref name="variable" /> の長さが 255 文字以上です。  
+ <paramref name="target" /> が <see cref="F:System.EnvironmentVariableTarget.Machine" /> または <see cref="F:System.EnvironmentVariableTarget.User" />で、 <paramref name="variable" /> の長さが 255 文字以上です。  
   
 または 
- <paramref name="target" /> が <see cref="F:System.EnvironmentVariableTarget.Process" /> で、<paramref name="value" /> の長さが 32,767 文字以上です。  
+ <paramref name="target" /> が <see cref="F:System.EnvironmentVariableTarget.Process" /> で、 <paramref name="value" /> の長さが 32,767 文字以上です。  
   
-または 
+- または - 
 この操作の実行中にエラーが発生しました。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、この操作を実行するために必要なアクセス許可がありません。</exception>
         <permission cref="T:System.Security.Permissions.EnvironmentPermission">環境変数へのフル アクセス。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>

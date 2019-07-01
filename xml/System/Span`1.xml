@@ -1,5 +1,5 @@
 <Type Name="Span&lt;T&gt;" FullName="System.Span&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="8a4c144abb5fe82ddcc1241906d48584a4f7ab4f" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67245170" /></Metadata><TypeSignature Language="C#" Value="public struct Span&lt;T&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="803bd441bc38213f4fa96e5e062b6bb6e5453f5c" /><Meta Name="ms.sourcegitcommit" Value="61757d0366a172cdbc11436deb1c1ffa49d97238" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/28/2019" /><Meta Name="ms.locfileid" Value="67458077" /></Metadata><TypeSignature Language="C#" Value="public struct Span&lt;T&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Span`1&lt;T&gt; extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Span`1" />
   <TypeSignature Language="VB.NET" Value="Public Structure Span(Of T)" />
@@ -33,7 +33,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <typeparam name="T">内の項目の種類、<see cref="System.Span`1" />します。</typeparam>
+    <typeparam name="T"><see cref="System.Span`1" />内の項目の型。</typeparam>
     <summary>任意のメモリの隣接した領域をタイプセーフかつメモリセーフで表します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
@@ -121,7 +121,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
 
       ]]></format>
         </remarks>
-        <exception cref="T:System.TypeMismatchException"><paramref name="T" /> は参照型です。<paramref name="array" /> は型 <paramref name="T" /> の配列ではありません。</exception>
+        <exception cref="T:System.ArrayTypeMismatchException"><paramref name="T" /> は参照型です。<paramref name="array" /> は型 <paramref name="T" /> の配列ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -200,14 +200,14 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="array" /> は <see langword="null" /> ですが、<paramref name="start" /> または <paramref name="length" /> は 0 以外です。
 
-または
+- または -
 
 <paramref name="start" /> は配列の境界の外側にあります。
 
-または
+- または -
 
 <paramref name="start" /> と <paramref name="length" /> は配列の要素数を超えています。</exception>
-        <exception cref="T:System.TypeMismatchException"><paramref name="T" /> は参照型です。<paramref name="array" /> は型 <paramref name="T" /> の配列ではありません。</exception>
+        <exception cref="T:System.ArrayTypeMismatchException"><paramref name="T" /> は参照型です。<paramref name="array" /> は型 <paramref name="T" /> の配列ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="Clear">
@@ -1042,7 +1042,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <returns>この <see cref="T:System.Span`1" /> オブジェクトの文字列表現。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
-`Span<Char>`、`ToString`メソッドを返します。 を<xref:System.String>によって示される文字を含む、<xref:System.Span%601>します。 それを返します、<xref:System.String>型と要素の数の名前を<xref:System.Span%601>が含まれています。
+`Span<Char>`の場合、`ToString`メソッドは<xref:System.Span%601>が指す<xref:System.Char>を含む<xref:System.String>を返します。 それ以外の場合は、型の名前と<xref:System.Span%601>の要素数を含む<xref:System.String>を返します。
 
        ]]></format>
         </remarks>

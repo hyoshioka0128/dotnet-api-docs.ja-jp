@@ -1,5 +1,5 @@
 <Type Name="Format" FullName="Microsoft.SqlServer.Server.Format">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1bc93c473dbd520c0a3c09482d4690ad6df0e29c" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56760871" /></Metadata><TypeSignature Language="C#" Value="public enum Format" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="ffca0cda31e32a79ce7ab852c13be008741be0df" /><Meta Name="ms.sourcegitcommit" Value="feb111e137a41d186aef01d83f04819d820520eb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/21/2019" /><Meta Name="ms.locfileid" Value="67307948" /></Metadata><TypeSignature Language="C#" Value="public enum Format" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Format extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:Microsoft.SqlServer.Server.Format" />
   <TypeSignature Language="VB.NET" Value="Public Enum Format" />
@@ -26,15 +26,43 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute> および <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute> がユーザー定義型 (UDT) または集計のシリアル化形式を指定するときに使用します。  
+
+この列挙体を使って<xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute>と<xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute>ユーザー定義型 (UDT) または集計のシリアル化形式を指定します。 使用、`Native`と`UserDefined`列挙型メンバーが特別な要件。   
+
+- `Format.Native`
+
+   要件、`Format.Native`形式します。  
   
-   
+   - <xref:System.Runtime.InteropServices.StructLayoutAttribute>で、<xref:System.Runtime.InteropServices.StructLayoutAttribute.Value>プロパティ値の<xref:System.Runtime.InteropServices.LayoutKind.Sequential?displayProperty=nameWithType>集約に適用する必要がありますまたは UDT をクラスと構造体ではないで定義されている場合。 これにより、データ フィールドの物理的なレイアウトを制御し、表示される順序で順番にレイアウトするメンバーを強制するために使用します。 SQL Server では、この属性を使用して、複数のフィールドを持つ Udt のフィールド順序を決定します。
   
+   - 種類は、少なくとも 1 つのメンバーを含める必要があります (シリアル化された値はゼロ バイトのサイズにすることはできません)。  
+  
+   - 集計のすべてのフィールドである必要があります*blittable*; 必要がありますマネージとアンマネージの両方のメモリに共通の表現があるし、相互運用マーシャラーによる特別な処理を必要としないのは、します。  
+  
+   - UDT のすべてのフィールドがシリアル化できる、次の種類のいずれかを指定する必要があります: `bool`、 `byte`、 `sbyte`、 `short`、 `ushort`、 `int`、 `uint`、 `long`、 `ulong`、 `float`、 `double`、 <xref:System.Data.SqlTypes.SqlByte>、 <xref:System.Data.SqlTypes.SqlInt16>、 <xref:System.Data.SqlTypes.SqlInt32>、 <xref:System.Data.SqlTypes.SqlInt64>、 <xref:System.Data.SqlTypes.SqlDateTime>、 <xref:System.Data.SqlTypes.SqlSingle>、 <xref:System.Data.SqlTypes.SqlDouble>、 <xref:System.Data.SqlTypes.SqlMoney>、またはその他の値の型、ユーザーが定義されている次のいずれかのフィールドを含む型。  
+
+   - 集計の値を指定する必要があります`MaxByteSize`します。  
+  
+   - 集計はすべて [NonSerialized] フィールドに必要ありません。  
+  
+   - フィールドは、明示的なレイアウトとしてマークされませんする必要があります (で、<xref:System.Runtime.InteropServices.StructLayoutAttribute.Value?displayProperty=nameWithType>の<xref:System.Runtime.InteropServices.LayoutKind.Explicit?displayProperty=nameWithType>)。  
+
+- `Format.UserDefined`
+
+   要件、`Format.UserDefined`形式します。
+
+   - 集計の値を指定する必要があります`MaxByteSize`します。  
+  
+   - 指定、<xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A?displayProperty=nameWithType>属性プロパティ。 既定値は `false` です。  
+  
+   - 任意のフィールドを省略した場合、<xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A?displayProperty=nameWithType>または<xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A?displayProperty=nameWithType>メソッド、そのフィールドの状態はシリアル化されません。  
+
 ## Examples  
- 次の例は、 `UserDefinedType` Point UDT の属性です。  UDT は、バイト順は、「ポイント」の名前は、"ValidatePoint"という名前の検証メソッドがあります、およびはネイティブ シリアル化形式を使用を。  
+
+次の例は、 `UserDefinedType` Point UDT の属性です。  UDT は、バイト順は、「ポイント」の名前は、"ValidatePoint"という名前の検証メソッドがあります、およびはネイティブ シリアル化形式を使用を。  
   
- [!code-csharp[DataWorks SqlUserDefinedTypeAttribute Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/DataWorks SqlUserDefinedTypeAttribute Example/CS/source.cs#1)]
- [!code-vb[DataWorks SqlUserDefinedTypeAttribute Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/DataWorks SqlUserDefinedTypeAttribute Example/VB/source.vb#1)]  
+[!code-csharp[DataWorks SqlUserDefinedTypeAttribute Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/DataWorks SqlUserDefinedTypeAttribute Example/CS/source.cs#1)]
+[!code-vb[DataWorks SqlUserDefinedTypeAttribute Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/DataWorks SqlUserDefinedTypeAttribute Example/VB/source.vb#1)]  
   
  ]]></format>
     </remarks>
@@ -65,29 +93,7 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary><see langword="Native" /> シリアル化形式には、SQL Server が UDT 表現をディスク上に効率よく格納できるようにする、きわめてシンプルなアルゴリズムが使用されています。 <see langword="Native" /> シリアル化の対象となる型には、値型 (Microsoft Visual C# の struct、Microsoft Visual Basic .NET の Structure) のみ、メンバーとして割り当てることができます。 ユーザー定義型であるか、既存の型 (<see cref="T:System.String" /> など) であるかに関係なく、参照型のメンバー (Visual C# や Visual Basic のクラス) はサポートされません。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- この形式の要件は次のとおりです。  
-  
--   `StructLayout.LayoutKindSequential`集計に属性を適用する必要がありますまたは UDT をクラスと構造体ではないで定義されている場合。 これは、データ フィールドの物理的なレイアウトを制御し、表示される順序で順番にレイアウトするメンバーを強制するために使用します。 SQL Server では、この属性を使用して、複数のフィールドを持つ Udt のフィールド順序を決定します。  
-  
--   種類は、少なくとも 1 つのメンバーを含める必要があります (シリアル化された値はゼロ バイトのサイズにすることはできません)。  
-  
--   集計のすべてのフィールドである必要があります*blittable*、する必要がありますマネージとアンマネージの両方のメモリに共通の表現があるし、相互運用マーシャラーによる特別な処理を必要としないのは、します。  
-  
--   UDT のすべてのフィールドがシリアル化できる、次の種類のいずれかを指定する必要があります: `bool`、 `byte`、 `sbyte`、 `short`、 `ushort`、 `int`、 `uint`、 `long`、 `ulong`、 `float`、 `double`、 <xref:System.Data.SqlTypes.SqlByte>、 <xref:System.Data.SqlTypes.SqlInt16>、 <xref:System.Data.SqlTypes.SqlInt32>、 <xref:System.Data.SqlTypes.SqlInt64>、 <xref:System.Data.SqlTypes.SqlDateTime>、 <xref:System.Data.SqlTypes.SqlSingle>、 <xref:System.Data.SqlTypes.SqlDouble>、 <xref:System.Data.SqlTypes.SqlMoney>、またはその他の値の型、ユーザーが定義されている次のいずれかのフィールドを含む型。  
-  
--   集計の値を指定する必要があります`MaxByteSize`します。  
-  
--   集計はすべて [NonSerialized] フィールドに必要ありません。  
-  
--   フィールドは、明示的なレイアウトとしてマークされませんする必要があります (<xref:System.Runtime.InteropServices.StructLayoutAttribute>)。  
-  
- ]]></format>
-        </remarks>
+        <summary>このシリアル化形式には、SQL Server が UDT 表現をディスク上に効率よく格納できるようにする、きわめてシンプルなアルゴリズムが使用されています。 <see langword="Native" /> シリアル化の対象となる型には、値型 (Microsoft Visual C# の struct、Microsoft Visual Basic .NET の Structure) のみ、メンバーとして割り当てることができます。 参照型のメンバー (Visual C# や Visual Basic のクラスなど) は、ユーザー定義型であるか .NET クラス ライブラリに存在するもの (<see cref="T:System.String" /> など) であるかに関係なく、サポートされません。</summary>
       </Docs>
     </Member>
     <Member MemberName="Unknown">
@@ -143,19 +149,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary><see langword="UserDefined" /> シリアル化形式を使用すると、開発者は、<see cref="T:Microsoft.SqlServer.Server.IBinarySerialize" /><see langword=".Write" /> メソッドおよび <see cref="T:Microsoft.SqlServer.Server.IBinarySerialize" /><see langword=".Read" /> メソッドを通じてバイナリ形式を詳細に制御できます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 集計の値を指定する必要があります`MaxByteSize`します。  
-  
- 指定、<xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A>属性プロパティ。 既定値は false です。  
-  
- 任意のフィールドを省略した場合、<xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>または<xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A>メソッド、そのフィールドの状態はシリアル化されません。  
-  
- ]]></format>
-        </remarks>
+        <summary>このシリアル化形式を使用すると、開発者は、<see cref="M:Microsoft.SqlServer.Server.IBinarySerialize.Write(System.IO.BinaryWriter)" /> および <see cref="M:Microsoft.SqlServer.Server.IBinarySerialize.Read(System.IO.BinaryReader)" /> メソッドを通じてバイナリ形式を完全に制御できます。</summary>
       </Docs>
     </Member>
   </Members>

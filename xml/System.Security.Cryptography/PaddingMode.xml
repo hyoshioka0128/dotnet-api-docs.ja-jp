@@ -1,5 +1,5 @@
 <Type Name="PaddingMode" FullName="System.Security.Cryptography.PaddingMode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3e92763a7e0fccc7514ccad74933575954bbb39c" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58687675" /></Metadata><TypeSignature Language="C#" Value="public enum PaddingMode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="3fab23a95a14c3c3885608ce9246a04be5f59ccb" /><Meta Name="ms.sourcegitcommit" Value="24dc380b0d43e8919d4e0d50409e8f0aeae98713" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/27/2019" /><Meta Name="ms.locfileid" Value="67411472" /></Metadata><TypeSignature Language="C#" Value="public enum PaddingMode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed PaddingMode extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.PaddingMode" />
   <TypeSignature Language="VB.NET" Value="Public Enum PaddingMode" />
@@ -42,16 +42,15 @@
 ## Remarks  
  ほとんどのプレーン テキスト メッセージは、ブロックを完全に埋めるバイト数で構成されていません。 多くの場合、最後のブロックを格納するための十分なバイトがありません。 この場合、埋め込み文字列はテキストに追加します。 たとえば、ブロックの長さは 64 ビット、最後のブロックには、40 ビットのみが含まれている場合は、24 ビットのパディングが追加されます。  
   
- 一部の暗号化標準では、特定の埋め込みスキームを指定します。 次の例では、これらのモードのしくみを示します。 Blocklength 8、9 のデータ長、パディングのオクテットが 7、および FF FF FF FF FF FF FF FF FF に等しいデータと等しい数を指定します。  
-  
- データ:                  FF FF FF FF FF FF FF FF FF  
-  
- X923 padding:        FF FF FF FF FF FF FF FF FF 00 00 00 00 00 00 07  
-  
- Pkcs7 で埋め込み:      FF FF FF FF FF FF FF FF FF 07 07 07 07 07 07 07  
-  
- ISO10126 の埋め込み:   FF FF FF FF FF FF FF FF FF 7D 2A 75 EF F8 EF 07  
-  
+ 一部の暗号化標準では、特定の埋め込みスキームを指定します。 次の例では、これらのモードのしくみを示します。 Blocklength 8、9 のデータ長、パディングのオクテットが 7、および FF FF FF FF FF FF FF FF FF に等しいデータと等しい数を指定します。 
+
+ |||
+|-|-| 
+|**データ:**|FF FF FF FF FF FF FF FF FF|  
+|**X923 padding:**|FF FF FF FF FF FF FF FF FF 00 00 00 00 00 00 07|
+|**Pkcs7 で埋め込み:**|FF FF FF FF FF FF FF FF FF 07 07 07 07 07 07 07|
+|**ISO10126 の埋め込み:**|FF FF FF FF FF FF FF FF FF 7D 2A 75 EF F8 EF 07|
+
  ]]></format>
     </remarks>
     <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
@@ -87,18 +86,6 @@
       <MemberValue>4</MemberValue>
       <Docs>
         <summary>ANSIX923 の埋め込み文字列は、ブロック長に到達する直前の位置までゼロを設定したバイト列で構成されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 次の例では、このモードのしくみを示しています。 Blocklength 8、9 のデータ長、パディングのオクテットが 7、および FF FF FF FF FF FF FF FF FF に等しいデータと等しい数を指定します。  
-  
- データ:      FF FF FF FF FF FF FF FF FF  
-  
- X923 padding:        FF FF FF FF FF FF FF FF FF 00 00 00 00 00 00 07  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ISO10126">
@@ -131,18 +118,6 @@
       <MemberValue>5</MemberValue>
       <Docs>
         <summary>ISO10126 の埋め込み文字列は、ブロック長に到達する直前の位置までランダムなデータで構成されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 次の例では、このモードのしくみを示しています。 Blocklength 8、9 のデータ長、パディングのオクテットが 7、および FF FF FF FF FF FF FF FF FF に等しいデータと等しい数を指定します。  
-  
- データ:      FF FF FF FF FF FF FF FF FF  
-  
- ISO10126 の埋め込み:   FF FF FF FF FF FF FF FF FF 7D 2A 75 EF F8 EF 07  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -211,18 +186,6 @@
       <MemberValue>2</MemberValue>
       <Docs>
         <summary>PKCS #7 埋め込み文字列は、バイト シーケンスで構成され、各バイト シーケンスは追加される埋め込みバイトの合計数に等しいバイト数になります。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 次の例では、これらのモードのしくみを示します。 Blocklength 8、9 のデータ長、パディングのオクテットが 7、および FF FF FF FF FF FF FF FF FF に等しいデータと等しい数を指定します。  
-  
- データ:       FF FF FF FF FF FF FF FF FF  
-  
- Pkcs7 で埋め込み:      FF FF FF FF FF FF FF FF FF 07 07 07 07 07 07 07  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Zeros">

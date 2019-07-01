@@ -1,5 +1,5 @@
 <Type Name="UIPermissionWindow" FullName="System.Security.Permissions.UIPermissionWindow">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="da5150dc855b16fa31ab302c372e38b08ee4bbdb" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56791369" /></Metadata><TypeSignature Language="C#" Value="public enum UIPermissionWindow" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="0b15e3f65d21ed3debba7e75607723f77aa3e55c" /><Meta Name="ms.sourcegitcommit" Value="24dc380b0d43e8919d4e0d50409e8f0aeae98713" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/27/2019" /><Meta Name="ms.locfileid" Value="67411655" /></Metadata><TypeSignature Language="C#" Value="public enum UIPermissionWindow" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed UIPermissionWindow extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Security.Permissions.UIPermissionWindow" />
   <TypeSignature Language="VB.NET" Value="Public Enum UIPermissionWindow" />
@@ -34,8 +34,45 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- この列挙体を使って<xref:System.Security.Permissions.UIPermission>します。  
+## Remarks
+
+この列挙体を使って<xref:System.Security.Permissions.UIPermission>します。  
+
+アプリケーションが実行すると、 `SafeTopLevelWindows` 、アクセス許可に。  
+
+- タイトル バーには、DNS 名またはアプリケーションの読み込み元の Web サイトの IP アドレスを示しています。  
+  
+- 最初を表示するとき、制限付きの信頼レベルで実行されているユーザーに通知のバルーン ヒントが表示されます。  
+  
+- 常に、タイトル バーを表示する必要があります。  
+  
+- フォーム上のウィンドウ コントロールに表示する必要があります。  
+  
+- 起動時にメイン ウィンドウを最小限に抑えることはできません。  
+  
+- そのウィンドウを画面外に移動できません。  
+  
+- 使用できません、<xref:System.Windows.Forms.Form.Opacity%2A?displayProperty=nameWithType>プロパティの windows よりも小さい 50% を透明にします。  
+
+- 四角形のウィンドウのみを使う必要があるあり、ウィンドウ フレームを含める必要があります。 Windows フォームの設定は無視されます<xref:System.Windows.Forms.Form.FormBorderStyle%2A?displayProperty=nameWithType>に<xref:System.Windows.Forms.FormBorderStyle.None?displayProperty=nameWithType>します。  
+ 
+- Windows を非表示にすることはできません。 アプリケーションによって設定にしようとすると、<xref:System.Windows.Forms.Control.Visible%2A?displayProperty=nameWithType>プロパティを`False`は無視されます。  
+  
+- タスク バー内のエントリが必要です。  
+  
+- そのコントロールへのアクセスを禁止されていますが、<xref:System.Windows.Forms.Control.Parent%2A>プロパティ。 黙示的、コントロールは兄弟の入れ子の同じレベルには、他のコントロールへのアクセスから除外もします。  
+  
+- フォーカスを使用して制御できない、<xref:System.Windows.Forms.Control.Focus%2A?displayProperty=nameWithType>メソッド。  
+  
+- フォームまたはコントロールのみがアクセスできるようにキーボード イベント自体とその子は、キーボード入力のアクセスを制限されています。  
+  
+- フォームまたはコントロールのみを読み取れるようにマウス座標の表示領域上にマウスが場合、マウスの座標へのアクセスを制限されています。  
+  
+- 設定することはできません、<xref:System.Windows.Forms.Form.TopMost%2A?displayProperty=nameWithType>プロパティ。  
+  
+- 使用して、フォーム上のコントロールの z オーダーを制御することはできません、<xref:System.Windows.Forms.Control.BringToFront%2A?displayProperty=nameWithType>と<xref:System.Windows.Forms.Control.SendToBack%2A?displayProperty=nameWithType>メソッド。  
+  
+ これらの制限は、信頼済みのシステム ダイアログの偽装などの攻撃のなりすましを防ぐ有害なコードを防止します。  
   
  ]]></format>
     </remarks>
@@ -157,47 +194,11 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>ユーザーは、描画を行うために <see cref="F:System.Security.Permissions.UIPermissionWindow.SafeTopLevelWindows" /> と <see cref="F:System.Security.Permissions.UIPermissionWindow.SafeSubWindows" /> だけを使用できます。また、それらのトップレベル ウィンドウとサブウィンドウ内のユーザー インターフェイスとしてユーザー入力イベントだけを使用できます。</summary>
+        <summary>ユーザーは、描画を行うために <see cref="F:System.Security.Permissions.UIPermissionWindow.SafeTopLevelWindows" /> と <see cref="F:System.Security.Permissions.UIPermissionWindow.SafeSubWindows" /> だけを使用できます。また、それらのトップレベル ウィンドウとサブウィンドウ内のユーザー インターフェイスとしてユーザー入力イベントだけを使用できます。 詳細については、次の「解説」を参照してください。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに SafeTopLevelWindows アクセス許可をアプリケーションで実行されます。  
-  
--   タイトル バーに、DNS 名またはアプリケーションの読み込み元の Web サイトの IP アドレスが表示されます。  
-  
--   最初を表示するとき、制限付きの信頼レベルで実行されているユーザーに通知のバルーンのツール ヒントが表示されます。  
-  
--   常に、タイトル バーを表示する必要があります。  
-  
--   フォーム上のウィンドウ コントロールに表示する必要があります。  
-  
--   起動時にメイン ウィンドウを最小限に抑えることはできません。  
-  
--   そのウィンドウを画面外に移動できません。  
-  
--   使用できません、<xref:System.Windows.Forms.Form.Opacity%2A>プロパティ<xref:System.Windows.Forms.Form.Opacity%2A>50% では未満の windows を透明にします。  
-  
--   四角形のウィンドウのみを使う必要があるあり、ウィンドウ フレームを含める必要があります。 Windows フォームの設定は無視されます<xref:System.Windows.Forms.Form.FormBorderStyle%2A>に`None`します。  
-  
--   Windows を非表示にすることはできません。 アプリケーションによって設定にしようとすると、<xref:System.Windows.Forms.Control.Visible%2A>プロパティをその<xref:System.Windows.Forms.Form>オブジェクトを`False`は無視されます。  
-  
--   タスク バー内のエントリが必要です。  
-  
--   そのコントロールへのアクセスを禁止する必要があります、<xref:System.Windows.Forms.Control.Parent%2A>プロパティ。 黙示的、コントロールは兄弟の入れ子の同じレベルには、他のコントロールへのアクセスから除外もします。  
-  
--   フォーカスを使用して制御できない、<xref:System.Windows.Forms.Control.Focus%2A>メソッド。  
-  
--   制限されているキーボード入力のアクセス、フォームまたはコントロールのみがアクセスできるようにキーボード イベント自体とその子。  
-  
--   アクセスが制限されますマウス座標、フォームまたはコントロールのみを読み取れるようにマウス座標の表示領域上にマウスが場合。  
-  
--   設定することはできません、<xref:System.Windows.Forms.Form.TopMost%2A>プロパティ。  
-  
--   使用して、フォーム上のコントロールの z オーダーを制御することはできません、<xref:System.Windows.Forms.Control.BringToFront%2A>と<xref:System.Windows.Forms.Control.SendToBack%2A>メソッド。  
-  
- これらの制限は、信頼済みのシステム ダイアログの偽装などの攻撃のなりすましを防ぐ有害なコードを防止します。  
-  
  ]]></format>
         </remarks>
       </Docs>

@@ -1,5 +1,5 @@
 <Type Name="BuildRequestDataFlags" FullName="Microsoft.Build.Execution.BuildRequestDataFlags">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7c2e6a9f03a7016efe533e8cb6266f51acbe7490" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63880517" /></Metadata><TypeSignature Language="C#" Value="public enum BuildRequestDataFlags" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="8bead5ce5519a9bc7b64966094278b2ecb525294" /><Meta Name="ms.sourcegitcommit" Value="feb111e137a41d186aef01d83f04819d820520eb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/21/2019" /><Meta Name="ms.locfileid" Value="67307999" /></Metadata><TypeSignature Language="C#" Value="public enum BuildRequestDataFlags" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed BuildRequestDataFlags extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:Microsoft.Build.Execution.BuildRequestDataFlags" />
   <TypeSignature Language="VB.NET" Value="Public Enum BuildRequestDataFlags" />
@@ -19,7 +19,17 @@
   </Attributes>
   <Docs>
     <summary>ビルド要求をより詳細に制御できるようにするフラグ。</summary>
-    <remarks>To be added.</remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks 
+
+`IgnoreExistingProjectState`フラグは、クライアントが新しいビルド要求が前回の要求によって生成されたプロジェクトの状態に依存しないことを知ってこのような場合にのみ提供されます。 MSBuild は、それ以外の場合に 1 つのノードから別のプロジェクトの状態をシリアル化することになるために、このフラグを設定と互換性のないノードとのアフィニティの場合、パフォーマンスを改善が提供することができます。 プロジェクトの状態をシリアル化すると、プロジェクトが以前に生成されたデータの量によって、高価なことができます。  
+  
+`IgnoreExistingProjectState`フラグには、ターゲットの結果に影響はないため、新しい要求が、ターゲットを再構築しない場合は、前の要求のターゲットがビルドします。 さらに、以前をターゲットのビルドの結果として発生したプロジェクトの状態変更の再適用されます。  
+  
+ ]]></format>
+        </remarks>
   </Docs>
   <Members>
     <Member MemberName="IgnoreExistingProjectState">
@@ -39,17 +49,7 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>このフラグが存在し、プロジェクトが、その関係がこの要求が必要とする関係に対応しないノードで以前にビルドされていると、このビルド要求は以前に生成されたプロジェクトの状態を無視します (ただし、ターゲットの結果は除きます)。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- この動作は、このフラグが存在するが、通常、望ましくないです。 このフラグは、クライアントが新しいビルド要求が前回の要求によって生成されたプロジェクトの状態に依存しないことを知ってこのような場合にのみ提供されます。 このフラグを設定できる、互換性のないノードとのアフィニティの場合、パフォーマンスを改善、MSBuild がそれ以外の場合、別のシリアル化する 1 つのノードからプロジェクトの状態をシリアル化する必要がありますのでの量によって、高価なプロジェクトの状態を指定できます。データ、プロジェクトが以前に生成します。  
-  
- このフラグには、ターゲットの結果に影響はないため、前回の要求が、ターゲットをビルドする場合、新しい要求が再ビルドされないターゲット。 さらに、以前そのターゲットのビルドの結果として発生したプロジェクトの状態変更の再適用されます。  
-  
- ]]></format>
-        </remarks>
+        <summary>このフラグが存在し、プロジェクトが、その関係がこの要求が必要とする関係に対応しないノードで以前にビルドされていると、このビルド要求は以前に生成されたプロジェクトの状態を無視します (ただし、ターゲットの結果は除きます)。 この動作は、通常は望ましくありません。詳細については、「[Remarks (コメント)](#remarks)」セクションをご覧ください。</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
