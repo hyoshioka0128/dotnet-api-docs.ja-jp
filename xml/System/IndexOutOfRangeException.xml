@@ -45,11 +45,11 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IndexOutOfRangeException>無効なインデックスを使用して、配列またはコレクションのメンバーにアクセスする、またはバッファー内の特定の場所から読み取り/書き込みで例外がスローされます。 この例外の継承、<xref:System.Exception>クラスがない一意のメンバーを追加ができます。  
+ 無効なインデックスを使用して、配列またはコレクションのメンバーにアクセスする、またはバッファー内の特定の場所から読み取り/書き込みした場合<xref:System.IndexOutOfRangeException>例外がスローされます。 この例外は<xref:System.Exception>クラスを継承しますが、一意のメンバーの追加はありません。  
   
- 通常、<xref:System.IndexOutOfRangeException>開発者のエラーの結果として例外がスローされます。 例外を処理する代わりには、エラーの原因を診断し、コードを修正する必要があります。 エラーの最も一般的な原因は次のとおりです。  
+ 通常、<xref:System.IndexOutOfRangeException>例外は開発者のエラーの結果としてスローされます。 例外を処理する代わりに、エラーの原因を診断し、コードを修正する必要があります。 エラーの最も一般的な原因は次のとおりです。  
   
--   次の例として、要素またはメンバーの数よりも小さいを示しますが、0 から始まる配列またはコレクションの上限が、1 つになることを忘れてしまった。  
+-   次の例が示すように、コレクションまたは 0 ベースの配列の上限が、メンバーまたは要素数よりも 1 少ないことを忘れる。  
   
      [!code-csharp[System.IndexOutOfRangeException#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/length1.cs#3)]
      [!code-vb[System.IndexOutOfRangeException#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/length1.vb#3)]  
@@ -59,47 +59,47 @@
      [!code-csharp[System.IndexOutOfRangeException#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/length2.cs#4)]
      [!code-vb[System.IndexOutOfRangeException#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/length2.vb#4)]  
   
-     または、配列内のすべての要素を反復処理をインデックスには、代わりにすることができますを使用して、`foreach`ステートメント (c#) または`For Each`ステートメント (Visual Basic) でします。  
+     または、配列内のすべての要素をインデックスで反復処理する代わりに、`foreach`ステートメント (C#)または`For Each`ステートメント (Visual Basic)を使用することができます。  
   
--   配列の要素を適切に次元されていないと、元の配列よりも少ない要素を持つ別の配列に割り当てるしようとしています。 次の例は、最後の要素を代入しようとしています、`value1`配列内の同じ要素を`value2`配列。 ただし、`value2`配列がされて適切に関連付けられていないが 7 つの要素ではなく 6。 その結果、割り当てがスローされます、<xref:System.IndexOutOfRangeException>例外。  
+-   適切な大きさでなく、元の配列よりも要素の数が少ない別の配列に、配列の要素を割り当てようとしています。 次の例は、`value1`配列内の最後の要素を、`value2`配列の同じ要素に代入しようとしています。 ただし、`value2`配列は 7 ではなく 6 つの要素を持つ、適切でない大きさになっています。 その結果、割り当てによって<xref:System.IndexOutOfRangeException>例外がスローされます。  
   
      [!code-csharp[System.IndexOutOfRangeException#10](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/Uninit1.cs#10)]
      [!code-vb[System.IndexOutOfRangeException#10](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/Uninit1.vb#10)]  
   
--   値を使用して、配列または特定のインデックス位置からコレクションの一部を反復処理するメソッドを検索して返されます。 ランタイムは、スロー、検索操作では、一致が見つかった、かどうかを確認するを忘れた場合、<xref:System.IndexOutOfRangeException>例外は、この例で示すようにします。  
+-   検索メソッドから返された値を使用して、特定のインデックス位置から配列またはコレクションの一部を反復処理します。 検索操作で一致が見つかったかどうかを確認し忘れた場合、この例で示すようにランタイムは<xref:System.IndexOutOfRangeException>例外をスローします。  
   
      [!code-csharp[System.IndexOutOfRangeException#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/negative1.cs#5)]
      [!code-vb[System.IndexOutOfRangeException#5](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/negative1.vb#5)]  
   
-     ここで、<xref:System.Collections.Generic.List%601.IndexOf%2A?displayProperty=nameWithType>メソッドは、検索に失敗した場合、無効なインデックス値である-1 を返します。 このエラーを修正するには、この例で示すように、配列を反復処理する前に、search メソッドの戻り値を確認します。  
+     ここで、<xref:System.Collections.Generic.List%601.IndexOf%2A?displayProperty=nameWithType>メソッドは、検索に失敗した場合、無効なインデックス値である -1 を返します。 このエラーを修正するには、この例で示すように、配列を反復処理する前に、検索メソッドの戻り値を確認します。  
   
      [!code-csharp[System.IndexOutOfRangeException#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/negative2.cs#6)]
      [!code-vb[System.IndexOutOfRangeException#6](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/negative2.vb#6)]  
   
--   使用して、または結果セット、コレクション、または返されるオブジェクトに有効なデータがあるかどうかをテストすることがなく、クエリによって返される配列を列挙しようとしました。  
+-   返されたオブジェクトに有効なデータがあるかどうかをテストせずに、クエリから返された結果セット、コレクション、または配列を使用、または列挙しようとしました。  
   
 -   計算値を使用して、開始インデックス、終了インデックス、または反復処理する項目の数を定義します。 計算の結果が予想される場合に生じる、<xref:System.IndexOutOfRangeException>例外。 インデックス値の計算に、プログラムのロジックを確認し、配列またはコレクションを反復処理する前に、値を検証する必要があります。 次の条件すべてがあります。それ以外の場合、<xref:System.IndexOutOfRangeException>例外がスローされます。  
   
-    -   大きいまたは等しい開始インデックスがある必要があります<xref:System.Array.GetLowerBound%2A?displayProperty=nameWithType>の次元の配列を反復処理するか、コレクションの場合は 0 以上。  
+    -   開始インデックスは、配列の次元を反復する場合は<xref:System.Array.GetLowerBound%2A?displayProperty=nameWithType>以上、コレクションの場合は 0 以上である必要があります。  
   
-    -   終了インデックスを超えることはできません<xref:System.Array.GetUpperBound%2A?displayProperty=nameWithType>の次元の配列を反復処理、またはことはできませんよりも大きい値を指定する、`Count`コレクションのプロパティ。  
+    -   終了インデックスは、配列の次元を反復する場合は<xref:System.Array.GetUpperBound%2A?displayProperty=nameWithType>よりも大きい値を指定、またはコレクションの`Count`プロパティ以上にできません。  
   
-    -   次の式は、反復処理する配列のディメンションの場合は true である必要があります。  
+    -   次の式は、配列の次元を反復する場合は true である必要があります。  
   
         ```  
         start_index >= lower_bound And start_index + items_to_iterate - 1 <= upper_bound  
         ```  
   
-         コレクションの次の式を満たす必要があります。  
+         コレクション場合は、次の式を満たす必要があります。  
   
         ```  
         start_index >= 0 And start_index + items_to_iterate <= Count  
         ```  
   
         > [!TIP]
-        >  配列またはコレクションの開始インデックスは、負の数値をすることはできません。  
+        >  配列またはコレクションの開始インデックスは、負の数値を指定することはできません。  
   
--   配列は、0 から始まる必要があることを想定しています。 作成できますが、0 から始まる配列、<xref:System.Array.CreateInstance%28System.Type%2CSystem.Int32%5B%5D%2CSystem.Int32%5B%5D%29?displayProperty=nameWithType>メソッドが CLS に準拠していない、COM 相互運用機能によって返されるとします。 次の例を示しています、<xref:System.IndexOutOfRangeException>で作成された 0 から始まらない配列を反復処理するときにスローされた、<xref:System.Array.CreateInstance%28System.Type%2CSystem.Int32%5B%5D%2CSystem.Int32%5B%5D%29?displayProperty=nameWithType>メソッド。  
+-   配列は、0 から始まる必要があることを想定しています。 0 以外から始まる配列は<xref:System.Array.CreateInstance%28System.Type%2CSystem.Int32%5B%5D%2CSystem.Int32%5B%5D%29?displayProperty=nameWithType>メソッドで作成でき、COM 相互運用機能で返すことができますが、CLS に準拠していません。 次の例は、<xref:System.Array.CreateInstance%28System.Type%2CSystem.Int32%5B%5D%2CSystem.Int32%5B%5D%29?displayProperty=nameWithType>メソッドで作成された、 0 から始まらない配列を反復処理するときにスローされる<xref:System.IndexOutOfRangeException>を示しています。  
   
      [!code-csharp[System.IndexOutOfRangeException#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/nonzero1.cs#1)]
      [!code-vb[System.IndexOutOfRangeException#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/nonzero1.vb#1)]  
@@ -109,33 +109,33 @@
      [!code-csharp[System.IndexOutOfRangeException#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/nonzero2.cs#2)]
      [!code-vb[System.IndexOutOfRangeException#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/nonzero2.vb#2)]  
   
-     呼び出すときに注意して、 <xref:System.Array.GetLowerBound%2A> 、配列の開始インデックスを取得するメソッドを呼び出す必要もあります、<xref:System.Array.GetUpperBound%28System.Int32%29?displayProperty=nameWithType>終了インデックスを取得します。  
+     <xref:System.Array.GetLowerBound%2A>メソッドを呼び出して配列の開始インデックスを取得するときには、<xref:System.Array.GetUpperBound%28System.Int32%29?displayProperty=nameWithType>も呼び出して終了インデックスを取得する必要があることに注意してください。  
   
--   インデックスと数値の配列またはコレクション内のインデックスにある値が混乱します。 使用する場合に、通常、この問題が発生した、`foreach`ステートメント (c#) または`For Each`ステートメント (Visual Basic) でします。 この問題を説明する例を次に示します。  
+-   数値の配列またはコレクション内のインデックスと、そのインデックスにある値を混同する。 通常、この問題は`foreach`ステートメント (C#) または`For Each`ステートメント (Visual Basic)を使用した場合に発生します。 この問題の例を次に示します。  
   
      [!code-csharp[System.IndexOutOfRangeException#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/foreach1.cs#7)]
      [!code-vb[System.IndexOutOfRangeException#7](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/foreach1.vb#7)]  
   
-     イテレーションの構成体は、配列またはコレクションのインデックスなしで各値を返します。 例外を取り除くには、このコードを使用します。  
+     イテレーションの構成体は、インデックスではなく、配列またはコレクションの各値を返します。 例外を取り除くには、このコードを使用します。  
   
      [!code-csharp[System.IndexOutOfRangeException#8](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.indexoutofrangeexception/cs/foreach2.cs#8)]
      [!code-vb[System.IndexOutOfRangeException#8](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.indexoutofrangeexception/vb/foreach2.vb#8)]  
   
--   無効な列名を指定する、<xref:System.Data.DataView.Sort%2A?displayProperty=nameWithType>プロパティ。  
+-   <xref:System.Data.DataView.Sort%2A?displayProperty=nameWithType>プロパティで、無効な列名を指定する。  
   
--   スレッド セーフに違反します。 同じからの読み取りなどの操作<xref:System.IO.StreamReader>オブジェクト、同じへの書き込み<xref:System.IO.StreamWriter>、複数のスレッドからオブジェクトまたは内のオブジェクトを列挙する、<xref:System.Collections.Hashtable>異なるスレッドからは、スロー、<xref:System.IndexOutOfRangeException>でオブジェクトがアクセスされていない場合、スレッド セーフな方法です。 この例外は、競合状態に依存するために通常断続的です。  
+-   スレッド セーフに違反する。 同じ<xref:System.IO.StreamReader>オブジェクトからの読み取り、複数のスレッドからの同じ<xref:System.IO.StreamWriter>オブジェクトへの書き込み、または異なるスレッドからの<xref:System.Collections.Hashtable>内のオブジェクトの列挙などの操作は、オブジェクトがスレッド セーフな方法でアクセスされていない場合、<xref:System.IndexOutOfRangeException>をスローします。 この例外は競合状態に依存するために、通常は断続的です。  
   
- ハード コーディングされたインデックス値を使用して配列を操作するはインデックス値が正しくないか、無効な場合、または操作されている配列のサイズが予期されていない場合は、例外をスローする可能性があります。 スローすることから、操作を防ぐために、<xref:System.IndexOutOfRangeException>例外では、次を行うことができます。  
+ ハード コーディングされたインデックス値を使用して配列を操作するとき、インデックス値が正しくないか無効な場合、または操作されている配列のサイズが予期されていない場合は、例外をスローする可能性があります。 操作が<xref:System.IndexOutOfRangeException>例外をスローすることを防ぐためには、次のようにします。  
   
--   使用して、配列の要素を反復処理、 [foreach](https://msdn.microsoft.com/library/ttw7t8t6.aspx)ステートメント (c#) または[ごとにしています.[次へ]](https://msdn.microsoft.com/library/5ebk1751.aspx)インデックスを使用して要素を反復処理ではなく (Visual Basic) で構築します。  
+-   インデックスを使用して要素を反復処理する代わりに、[foreach](https://msdn.microsoft.com/library/ttw7t8t6.aspx)ステートメント(C#)または[For Each...Next](https://msdn.microsoft.com/library/5ebk1751.aspx)構造(Visual Basic)を使用して、配列の要素を反復処理します。  
   
--   によって返されるインデックスから始まるインデックスを使用して要素を反復処理、<xref:System.Array.GetLowerBound%2A?displayProperty=nameWithType>メソッドとによって返されるインデックスで終了するまで、<xref:System.Array.GetUpperBound%2A?displayProperty=nameWithType>メソッド。  
+-   <xref:System.Array.GetLowerBound%2A?displayProperty=nameWithType>メソッドによって返されるインデックスで始まり、<xref:System.Array.GetUpperBound%2A?displayProperty=nameWithType>メソッドによって返されるインデックスで終わるインデックスを使用して要素を反復処理します。  
   
--   別の 1 つの配列の要素を割り当てる場合は先の配列に少なくとも同じ数の要素、ソース配列と比較することによってことを確認、<xref:System.Array.Length%2A?displayProperty=nameWithType>プロパティ。  
+-   ある配列の要素を別の配列に割り当てる場合は、<xref:System.Array.Length%2A?displayProperty=nameWithType>プロパティを比較して、対象の配列に、少なくともソース配列と同じ数の要素があることを確認してください。  
   
- インスタンスの初期プロパティ値の一覧については<xref:System.IndexOutOfRangeException>を参照してください、<xref:System.IndexOutOfRangeException>コンス トラクター。  
+ <xref:System.IndexOutOfRangeException>インスタンスの初期プロパティ値の一覧については、<xref:System.IndexOutOfRangeException>コンストラクターを参照してください。  
   
- 次の中間言語 (IL) の手順については、スロー <xref:System.IndexOutOfRangeException>:  
+ 次の中間言語 (IL) 命令は、 <xref:System.IndexOutOfRangeException>をスローします。  
   
 -   ldelem.\<type>  
   
@@ -143,7 +143,7 @@
   
 -   stelem.\<type>  
   
- <xref:System.IndexOutOfRangeException> 値は 0x80131508 HRESULT COR_E_INDEXOUTOFRANGE を使用します。  
+ <xref:System.IndexOutOfRangeException>は、値が 0x80131508 の HRESULT COR_E_INDEXOUTOFRANGE を使用します。  
   
  ]]></format>
     </remarks>
@@ -199,9 +199,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの初期化、 <xref:System.Exception.Message%2A> 「配列のインデックスが範囲外です」などに、エラーを説明するシステム提供のメッセージの新しいインスタンスのプロパティ。 このメッセージには、現在のシステムのカルチャが考慮されます。  
+ このコンストラクターは、新しいインスタンスの<xref:System.Exception.Message%2A>プロパティを「配列のインデックスが範囲外です」など、エラーを説明するシステム提供のメッセージに初期化します。 このメッセージには、現在のシステムのカルチャが考慮されます。  
   
- <xref:System.IndexOutOfRangeException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.IndexOutOfRangeException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  
@@ -253,7 +253,7 @@
 ## Remarks  
  このコンス トラクターの初期化、<xref:System.Exception.Message%2A?displayProperty=nameWithType>を使用して新しい例外のプロパティ、`message`パラメーター。 `message` の内容は、ユーザーが理解できる内容にします。 このコンストラクターの呼び出し元は、この文字列が現在のシステムのカルチャに合わせてローカライズ済みであることを確認しておく必要があります。  
   
- <xref:System.IndexOutOfRangeException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.IndexOutOfRangeException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  
@@ -307,7 +307,7 @@
 ## Remarks  
  前の例外の直接の結果としてスローされる例外については、<xref:System.Exception.InnerException%2A> プロパティに、前の例外への参照が格納されます。 `InnerException` プロパティは、コンストラクターに渡されたものと同じ値を返します。`Nothing` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、null 参照 (Visual Basic の場合は `InnerException`) を返します。  
   
- <xref:System.IndexOutOfRangeException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.IndexOutOfRangeException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  
