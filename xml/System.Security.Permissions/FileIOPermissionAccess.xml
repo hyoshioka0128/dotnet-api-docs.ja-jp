@@ -1,5 +1,5 @@
 <Type Name="FileIOPermissionAccess" FullName="System.Security.Permissions.FileIOPermissionAccess">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="b040b528be39b52b4cd1b70f377d694f4e9e371b" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56779071" /></Metadata><TypeSignature Language="C#" Value="public enum FileIOPermissionAccess" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="6d406434bd34f53c2034d75305354dc75e987a76" /><Meta Name="ms.sourcegitcommit" Value="24dc380b0d43e8919d4e0d50409e8f0aeae98713" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/27/2019" /><Meta Name="ms.locfileid" Value="67411714" /></Metadata><TypeSignature Language="C#" Value="public enum FileIOPermissionAccess" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed FileIOPermissionAccess extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Security.Permissions.FileIOPermissionAccess" />
   <TypeSignature Language="VB.NET" Value="Public Enum FileIOPermissionAccess" />
@@ -37,17 +37,18 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- この列挙体を併用、<xref:System.Security.Permissions.FileIOPermission>クラス。  
-  
+## Remarks
+
+この列挙体を併用、<xref:System.Security.Permissions.FileIOPermission>クラス。
+
 > [!NOTE]
->  NoAccess と AllAccess がのメンバーが<xref:System.Security.Permissions.FileIOPermissionAccess.NoAccess>、これらが無効のパラメーターとして使用するため<xref:System.Security.Permissions.FileIOPermission.GetPathList%2A>説明しているのでないファイル アクセスの種類またはすべてのファイル アクセスの種類では、それぞれ、および<xref:System.Security.Permissions.FileIOPermission.GetPathList%2A>は 1 つのファイル アクセスの種類が必要です。  
-  
-> [!NOTE]
->  アセンブリへの書き込みアクセス権を付与することは、完全な信頼を与えることに似ています。 アプリケーションがファイル システムに書き込む必要がありますいない場合の書き込みアクセスは必要ありません。  
-  
+>  提供`Write`アセンブリへのアクセスは完全信頼を与えることに似ています。 場合は、アプリケーションは、ファイル システムには記述しないでください、書き込みアクセス権は必要ありません。  
+
+`NoAccess`と`AllAccess`のメンバーである`FileIOPermissionAccess`、これらが無効のパラメーターとして使用するため<xref:System.Security.Permissions.FileIOPermission.GetPathList%2A?displayProperty=nameWithtype>説明しているのでないファイル アクセスの種類またはすべてのファイル アクセスの種類では、それぞれします。 <xref:System.Security.Permissions.FileIOPermission.GetPathList%2A?displayProperty=nameWithType> 1 つのファイル アクセスの種類が必要です。
+
  ]]></format>
     </remarks>
+    <altmember cref="T:System.IO.FileMode" />
     <altmember cref="T:System.Security.Permissions.FileIOPermission" />
     <altmember cref="T:System.Security.Permissions.FileIOPermissionAttribute" />
   </Docs>
@@ -107,17 +108,7 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>ファイルまたはディレクトリにデータを追加するためのアクセス許可。 <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Append" /> アクセス許可には、新しいファイルまたはディレクトリを作成するための許可も含まれます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  ファイルを作成するには、コードする必要がありますも付与両方追加し、書き込みまたは読み取りアクセス。 詳細については、次を参照してください。<xref:System.IO.FileMode>します。  
-  
- ]]></format>
-        </remarks>
+        <summary>ファイルまたはディレクトリにデータを追加するためのアクセス許可。 <see langword="FileIOPermissionAccess.Append" /> アクセス許可には、新しいファイルまたはディレクトリを作成するための許可も含まれます。 ファイルを作成するには、コードに <see langword="Append" /> と、<see langword="Write" /> または <see langword="Read" /> アクセスいずれかの、両方を付与する必要があります。</summary>
       </Docs>
     </Member>
     <Member MemberName="NoAccess">
@@ -175,17 +166,8 @@
       </ReturnValue>
       <MemberValue>8</MemberValue>
       <Docs>
-        <summary>パス自体に存在する情報へのアクセス。 これにより、ユーザー名などのパス中の機密情報だけではなく、パスによって判明するディレクトリ構造についての情報も保護されます。 この値は、パスによって表されたファイルまたはフォルダーへのアクセスを与えません。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  パフォーマンス上の理由から、`PathDiscovery`ディレクトリ、ファイルにないだけに付与する必要があります。 たとえば、 `PathDiscovery` C:\test C:\test などのパスにアクセス許可を付与\\、C:\test\example.txt されません。  
-  
- ]]></format>
-        </remarks>
+        <summary><para>パス自体に存在する情報へのアクセス。 これにより、ユーザー名などのパス中の機密情報だけではなく、パスによって判明するディレクトリ構造についての情報も保護されます。 この値は、パスによって表されたファイルまたはフォルダーへのアクセスを与えません。</para>
+        <para>パフォーマンス上の理由から、<see langword="PathDiscovery" /> はファイルではなく、ディレクトリにのみ付与する必要があります。 たとえば、<see langword="PathDiscovery" /> アクセス許可は、C:\test\example.txt ではなく、C:\test や C:\test\\ のようなパスに付与する必要があります。</para></summary>
       </Docs>
     </Member>
     <Member MemberName="Read">

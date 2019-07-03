@@ -1,5 +1,5 @@
 <Type Name="UpdatePanelUpdateMode" FullName="System.Web.UI.UpdatePanelUpdateMode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="a9e5a9fad8308045a0550ce56dca768f1df0e774" /><Meta Name="ms.sourcegitcommit" Value="f1d16425528e237257ca3b58eb49217a514849ea" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="04/24/2019" /><Meta Name="ms.locfileid" Value="64061823" /></Metadata><TypeSignature Language="C#" Value="public enum UpdatePanelUpdateMode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="103fd84d87f3c7c57b5bb2878b410659a4a35449" /><Meta Name="ms.sourcegitcommit" Value="24dc380b0d43e8919d4e0d50409e8f0aeae98713" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/27/2019" /><Meta Name="ms.locfileid" Value="67411724" /></Metadata><TypeSignature Language="C#" Value="public enum UpdatePanelUpdateMode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed UpdatePanelUpdateMode extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Web.UI.UpdatePanelUpdateMode" />
   <TypeSignature Language="VB.NET" Value="Public Enum UpdatePanelUpdateMode" />
@@ -18,15 +18,22 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- <xref:System.Web.UI.UpdatePanelUpdateMode>列挙型のコンテンツの有効な更新モードを定義する、<xref:System.Web.UI.UpdatePanel>コントロール。 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティは、の値のいずれかに設定する必要があります、<xref:System.Web.UI.UpdatePanelUpdateMode>列挙体。 <xref:System.Web.UI.UpdatePanel>コントロールでは、する必要があります、<xref:System.Web.UI.ScriptManager.EnablePartialRendering%2A>のプロパティ、<xref:System.Web.UI.ScriptManager>コントロールである`true`の部分ページ レンダリングが発生します。  
+## Remarks
+
+`UpdatePanelUpdateMode`列挙型を使用して、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A?displayProperty=nameWithType>プロパティのコンテンツの有効な更新モードを定義し、<xref:System.Web.UI.UpdatePanel>コントロール。 <xref:System.Web.UI.UpdatePanel>コントロールでは、する必要があります、<xref:System.Web.UI.ScriptManager.EnablePartialRendering%2A?displayProperty=nameWithType>プロパティに`true`の部分ページ レンダリングが発生します。  
   
- 既定値、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティは常にします。  
+既定値、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A?displayProperty=nameWithType>プロパティは`Always`します。  
   
- 場合、<xref:System.Web.UI.UpdatePanelUpdateMode.Always>別のコントロールが<xref:System.Web.UI.UpdatePanel>コントロールと、親パネルの更新に関係なく、入れ子になったパネルが更新も、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティの値。  
+場合、<xref:System.Web.UI.UpdatePanel>別のコントロールが<xref:System.Web.UI.UpdatePanel>コントロールと、親パネルの更新に関係なく、入れ子になったパネルが更新も、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティの値。  
   
-   
+`Conditional`値のコンテンツを更新する、<xref:System.Web.UI.UpdatePanel>コントロールは、次の条件。
+
+- <xref:System.Web.UI.UpdatePanel.Update%2A?displayProperty=nameWithType>メソッドが明示的に呼び出されます。  
   
+- 使用して、トリガーとして定義するコントロールを<xref:System.Web.UI.UpdatePanel.Triggers?displayProperty=nameWithType>プロパティ ポストバックが発生するとします。 このシナリオでは、コントロールはパネルの内容を更新するため、明示的なトリガーが。 トリガー コントロールは内部または外部のいずれかであることができます、<xref:System.Web.UI.UpdatePanel>コントロール トリガーを定義します。  
+  
+- <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A?displayProperty=nameWithType>プロパティに設定されて`true`の子コントロールと、<xref:System.Web.UI.UpdatePanel>コントロールがポストバックを発生します。 このシナリオで子コントロールの<xref:System.Web.UI.UpdatePanel>コントロール パネルを更新するための暗黙的なトリガーであります。 子コントロールに入れ子になった<xref:System.Web.UI.UpdatePanel>コントロールは、外部させない<xref:System.Web.UI.UpdatePanel>コントロール トリガーとして明示的に定義されている場合を除きが更新されます。 
+
 ## Examples  
  次の例で 2 つ<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>コントロール。 パネルの最初のセット、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>のプロパティ、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>条件を制御します。 2 番目のパネルが<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>既定で常に設定します。 両方のパネルの外部ボタンを使用して、非同期ポストバック コントロールとして登録されている、<xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A>のメソッド、<xref:System.Web.UI.ScriptManager>コントロール。 ボタンのクリックしてイベント ハンドラー、<xref:System.Web.UI.UpdatePanel.Update%2A>前回更新から 5 秒以上が経過した場合、最初のパネルのメソッドが呼び出されます。 このシナリオでは、最後のパネルの更新プログラムが 5 秒以上の場合にのみ、パネルの内容が更新されます。 2 番目のパネルのコンテンツは常に更新されます。  
   
@@ -78,18 +85,13 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの内容は、次の条件で更新されます。</summary>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールのコンテンツを更新する際に使用するいくつかの条件を指定します。詳細については、「解説」セクションをご覧ください。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
   
--   場合、<xref:System.Web.UI.UpdatePanel.Update%2A>のメソッド、<xref:System.Web.UI.UpdatePanel>コントロールが明示的に呼び出されます。  
-  
--   コントロールがのトリガーのプロパティを使用してトリガーとして定義されているかどうか、<xref:System.Web.UI.UpdatePanel>を制御し、ポストバックが発生します。 このシナリオでは、コントロールはパネルの内容を更新するため、明示的なトリガーが。 トリガー コントロールは内部または外部のいずれかであることができます、<xref:System.Web.UI.UpdatePanel>コントロール トリガーを定義します。  
-  
--   場合、<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティに設定されて`true`の子コントロールと、<xref:System.Web.UI.UpdatePanel>コントロールがポストバックを発生します。 このシナリオで子コントロールの<xref:System.Web.UI.UpdatePanel>コントロール パネルを更新するための暗黙的なトリガーであります。 子コントロールに入れ子になった<xref:System.Web.UI.UpdatePanel>コントロールは、外部させない<xref:System.Web.UI.UpdatePanel>コントロール トリガーとして明示的に定義されている場合を除きが更新されます。  
-  
+
  ]]></format>
         </remarks>
       </Docs>

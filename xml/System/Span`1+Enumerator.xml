@@ -36,7 +36,7 @@ C# の[foreach](~/docs/csharp/language-reference/keywords/foreach-in.md)とVisua
 
 <xref:System.Span%601.Enumerator.MoveNext%2A>が呼び出されるまで、<xref:System.Span%601.Enumerator.Current> は同じ値を返します。 <xref:System.Span%601.Enumerator.MoveNext%2A>は、<xref:System.Span%601.Enumerator.Current>を<xref:System.Span%601>の次の項目に設定します。
 
-場合<xref:System.Span%601.Enumerator.MoveNext%2A>の末尾を渡す、 <xref:System.Span%601>、<xref:System.Span%601.Enumerator.MoveNext%2A>返します`false`します。 この状態では、後続の呼び出しで列挙子の場合<xref:System.Span%601.Enumerator.MoveNext%2A>を返すことも`false`と<xref:System.Span%601.Enumerator.Current>が定義されていません。 設定することはできません<xref:System.Span%601.Enumerator.Current>の最初の項目を<xref:System.Span%601>列挙子の新しいインスタンスを代わりに作成する必要があります。 もう一度です。 
+<xref:System.Span%601.Enumerator.MoveNext%2A>が<xref:System.Span%601>の末尾を超えた場合、<xref:System.Span%601.Enumerator.MoveNext%2A>は`false`を返します。 列挙子がこの状態にある場合、<xref:System.Span%601.Enumerator.MoveNext%2A>の後続の呼び出しも`false`を返し、<xref:System.Span%601.Enumerator.Current>は未定義になります。 <xref:System.Span%601.Enumerator.Current>に再度<xref:System.Span%601>の最初の項目を設定することはできません。列挙子の新しいインスタンスを代わりに作成する必要があります。 
 
 列挙子は<xref:System.Span%601>への排他アクセスがありません。 さらに、スパンの基になる基底データも変更できます。 そのため、スパンの列挙処理は、本質的にはスレッド セーフな手順ではありません。 列挙中にスレッド セーフを保証するために、独自の同期を実装する必要があります。 たとえば、次のコードでは、競合条件があります。 `ClearContents`メソッドを実行する前に、スパンが列挙されることは保証されません。 その結果、スパンの列挙中に、基となる配列がクリアされます。
 
@@ -50,7 +50,7 @@ C# の[foreach](~/docs/csharp/language-reference/keywords/foreach-in.md)とVisua
 
 - <xref:System.Collections.IEnumerator>または<xref:System.Collections.Generic.IEnumerator%601>インターフェイスを実装しません。 これは、<xref:System.Span%601.Enumerator>が[ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)であるためです。
 
-- 含まれません、`Reset`メソッドは、最初の要素の前に初期位置、範囲内に列挙子を設定することができます。 (、<xref:System.Collections.IEnumerator.Reset?displayProperty=nameWithType>メソッドは、インターフェイスの一部として実装する必要がありますが、ほとんどの実装者が例外をスローまたは実装を提供しない)。 
+- 列挙子をスパン内の最初の要素より前の初期位置に設定する、`Reset`メソッドは含まれません。 (<xref:System.Collections.IEnumerator.Reset?displayProperty=nameWithType>メソッドは、インターフェイスの一部として実装する必要がありますが、ほとんどの実装が例外をスローするか、実装されていません。) 
  
       ]]></format>
     </remarks>
@@ -85,7 +85,7 @@ C# の[foreach](~/docs/csharp/language-reference/keywords/foreach-in.md)とVisua
 
 - 列挙子が作成された直後、列挙子はスパンの最初の要素の前に配置されます。 `Current`の値を読み取る前に、<xref:System.Span%601.Enumerator.MoveNext%2A>を呼び出して、範囲の最初の要素へ列挙子を進める必要があります。
 
-- 最後の呼び出し<xref:System.Span%601.Enumerator.MoveNext%2A>返される`false`スパンの最後を示します。 
+- <xref:System.Span%601.Enumerator.MoveNext%2A>の最後の呼び出しが`false`を返した。これはスパンの終わりを示します。 
 
 `Current`が呼び出されるまで、<xref:System.Span%601.Enumerator.MoveNext%2A> は同じ値を返します。 <xref:System.Span%601.Enumerator.MoveNext%2A> 設定`Current`範囲で次の項目にします。 
 
@@ -119,7 +119,7 @@ C# の[foreach](~/docs/csharp/language-reference/keywords/foreach-in.md)とVisua
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-列挙子を作成した後、span と最初の呼び出しの最初の要素の前に配置されて`MoveNext`範囲の最初の項目を列挙子を進めます。 
+列挙子が作成された後、列挙子はスパンの最初の要素の前に配置されます。`MoveNext`の最初の呼び出しで、列挙子をスパンの最初の項目に進めます。 
 
 `MoveNext`が範囲の末尾を超えた場合、`MoveNext`は`false`を返します。 列挙子がこの状態にある場合、`MoveNext`の後続の呼び出しも`false`を返します。
 

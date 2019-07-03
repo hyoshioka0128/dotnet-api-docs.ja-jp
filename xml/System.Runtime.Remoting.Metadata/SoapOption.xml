@@ -1,5 +1,5 @@
 <Type Name="SoapOption" FullName="System.Runtime.Remoting.Metadata.SoapOption">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="4bcc9564f74812ac3b70a31aa867769065b383c1" /><Meta Name="ms.sourcegitcommit" Value="756d085f27705e86604f1bba5f2086ee23761acf" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="01/30/2019" /><Meta Name="ms.locfileid" Value="55373580" /></Metadata><TypeSignature Language="C#" Value="public enum SoapOption" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f2bf7f3aa243e0cb506b9d5e16b583c9b7067dc3" /><Meta Name="ms.sourcegitcommit" Value="24dc380b0d43e8919d4e0d50409e8f0aeae98713" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/27/2019" /><Meta Name="ms.locfileid" Value="67411645" /></Metadata><TypeSignature Language="C#" Value="public enum SoapOption" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed SoapOption extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.Remoting.Metadata.SoapOption" />
   <TypeSignature Language="VB.NET" Value="Public Enum SoapOption" />
@@ -31,9 +31,44 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- <xref:System.Runtime.Remoting.Metadata.SoapOption> SOAP を生成する方法の手順については、.NET framework を指定する列挙を使用します。  
+## Remarks
+
+`SoapOption` SOAP を生成する方法の手順については、.NET framework を指定する列挙を使用します。  
+
+たとえば、クラスを既定では while (で、`SoapOptions.None`列挙値) として SOAP 形式でリモート処理される場合があります。  
   
+```xml
+<member1>10</member1>  
+<member2 id="ref-3">hello</member2>  
+<member3 href="#ref-3"/>  
+<member4 href="#ref-4"/>  
+<member4shared href="#ref-4"/>  
+<member5 href="#ref-5"/>  
+<member6 id="ref-6" xsi:type="SOAP-ENC:string">Hello World</member6>  
+<str1 id="ref-7">hello &#60; world</str1>  
+<str2 id="ref-8">&#60;</str2>  
+<str3 id="ref-9">&#60; world</str3>  
+<str4 href="#ref-7"/>  
+```
+
+使用したリモート処理のシリアル化、`SoapOptions.XsdString`オプションには、次の XML が生成されます。
+
+```xml
+<member1 xsi:type="xsd:int">10</member1>  
+<member2 xsi:type="xsd:string">hello</member2>  
+<member3 xsi:type="xsd:string">hello</member3>  
+<member4 href="#ref-3"/>  
+<member4shared href="#ref-3"/>  
+<member5 href="#ref-4"/>  
+<member6 xsi:type="xsd:string">Hello World</member6>  
+<str1 xsi:type="xsd:string">hello &#60; world</str1>  
+<str2 xsi:type="xsd:string">&#60;</str2>  
+<str3 xsi:type="xsd:string">&#60; world</str3>  
+<str4 xsi:type="xsd:string">hello &#60; world</str4>  
+```  
+
+SOAP エンベロープの詳細については、次を参照してください。 [www.w3.org/tr/soap/#_Toc478383494](https://www.w3.org/TR/soap/#_Toc478383494)します。
+    
  ]]></format>
     </remarks>
     <forInternalUseOnly />
@@ -179,47 +214,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>SOAP エンベロープ内の出力 SOAP 文字列型が <see langword="XSD" /> プリフィックスを使用していることと、結果の XML に文字列の ID 属性がないことを示します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- たとえば、既定では、クラスとして SOAP 形式でリモートにあります。  
-  
-```  
-<member1>10</member1>  
-<member2 id="ref-3">hello</member2>  
-<member3 href="#ref-3"/>  
-<member4 href="#ref-4"/>  
-<member4shared href="#ref-4"/>  
-<member5 href="#ref-5"/>  
-<member6 id="ref-6" xsi:type="SOAP-ENC:string">Hello World</member6>  
-<str1 id="ref-7">hello &#60; world</str1>  
-<str2 id="ref-8">&#60;</str2>  
-<str3 id="ref-9">&#60; world</str3>  
-<str4 href="#ref-7"/>  
-```  
-  
- 使用したリモート処理のシリアル化、`XsdString`オプションは、次の XML を生成します。  
-  
-```  
-<member1 xsi:type="xsd:int">10</member1>  
-<member2 xsi:type="xsd:string">hello</member2>  
-<member3 xsi:type="xsd:string">hello</member3>  
-<member4 href="#ref-3"/>  
-<member4shared href="#ref-3"/>  
-<member5 href="#ref-4"/>  
-<member6 xsi:type="xsd:string">Hello World</member6>  
-<str1 xsi:type="xsd:string">hello &#60; world</str1>  
-<str2 xsi:type="xsd:string">&#60;</str2>  
-<str3 xsi:type="xsd:string">&#60; world</str3>  
-<str4 xsi:type="xsd:string">hello &#60; world</str4>  
-```  
-  
- SOAP エンベロープの詳細については、www.w3.org/tr/soap/#_Toc478383494 を参照してください。  
-  
- ]]></format>
-        </remarks>
+        <summary>SOAP エンベロープ内の出力 SOAP 文字列型で <see langword="XSD" /> プレフィックスが使われることと、結果として得られる XML に文字列の ID 属性が含まれないことを示します。</summary>
         <forInternalUseOnly />
       </Docs>
     </Member>
