@@ -1,5 +1,5 @@
 <Type Name="AnonymousPipeServerStream" FullName="System.IO.Pipes.AnonymousPipeServerStream">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d0e982690f510c68030f4bade1b3c0d8537f4f5b" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58742922" /></Metadata><TypeSignature Language="C#" Value="public sealed class AnonymousPipeServerStream : System.IO.Pipes.PipeStream" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="175e6102008b962b2e1714db11ebd2d9530bff64" /><Meta Name="ms.sourcegitcommit" Value="efa3ad59f4ee23bbc2824414ef546bbf142c360e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/02/2019" /><Meta Name="ms.locfileid" Value="67506458" /></Metadata><TypeSignature Language="C#" Value="public sealed class AnonymousPipeServerStream : System.IO.Pipes.PipeStream" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit AnonymousPipeServerStream extends System.IO.Pipes.PipeStream" />
   <TypeSignature Language="DocId" Value="T:System.IO.Pipes.AnonymousPipeServerStream" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class AnonymousPipeServerStream&#xA;Inherits PipeStream" />
@@ -36,25 +36,21 @@
   
  匿名パイプは、通常は親と子プロセス間でデータを転送する名前のない、一方向のパイプです。 匿名パイプは常にローカルです。ネットワーク経由では使用できません。 A <xref:System.IO.Pipes.PipeDirection> @property<xref:System.IO.Pipes.PipeDirection.InOut>匿名パイプは一方向に定義されるため、サポートされていません。  
   
- 匿名パイプをサポートしていない<xref:System.IO.Pipes.PipeTransmissionMode.Message>読み取りモード。  
+ 匿名パイプをサポートしていない、<xref:System.IO.Pipes.PipeTransmissionMode.Message?displayProperty=nameWithType>読み取りモードにします。  
   
  呼び出すことによって、サーバー側によって提供されるパイプ ハンドルから匿名パイプのクライアント側を作成する必要があります、<xref:System.IO.Pipes.AnonymousPipeServerStream.GetClientHandleAsString%2A>メソッド。 クライアント プロセスを作成するときに、文字列がパラメーターとして渡されます。 クライアント プロセスに渡される、<xref:System.IO.Pipes.AnonymousPipeClientStream>としてコンス トラクター、`pipeHandleAsString`パラメーター。  
   
  <xref:System.IO.Pipes.AnonymousPipeServerStream>を使用するクライアント ハンドル オブジェクトを破棄する必要があります、<xref:System.IO.Pipes.AnonymousPipeServerStream.DisposeLocalCopyOfClientHandle%2A>クライアントの終了時に通知を受け取るためのメソッド。  
   
-> [!NOTE]
->  [!INCLUDE[winxppro](~/includes/winxppro-md.md)]と[!INCLUDE[win2kserver](~/includes/win2kserver-md.md)]、10 パイプの最大値は、ネットワーク経由で同時に接続できます。  
-  
-   
-  
 ## Examples  
- 次に、匿名パイプを使用して、親プロセスから子プロセスに文字列を送信する方法の例を示します。 この例では、<xref:System.IO.Pipes.AnonymousPipeServerStream> の <xref:System.IO.Pipes.PipeDirection> 値を使用して、親プロセス内に <xref:System.IO.Pipes.PipeDirection.Out> オブジェクトを作成しています。 作成、<xref:System.IO.Pipes.AnonymousPipeClientStream>を持つ子プロセスでオブジェクトを<xref:System.IO.Pipes.PipeDirection>の値<xref:System.IO.Pipes.PipeDirection.In>します。 次に、親プロセスはユーザー指定の文字列を子プロセスに送信します。 文字列がコンソールに表示されます。  
+
+次の例では、匿名パイプを使用して子プロセスに、親プロセスから文字列を送信します。 この例では、<xref:System.IO.Pipes.AnonymousPipeServerStream> の <xref:System.IO.Pipes.PipeDirection> 値を使用して、親プロセス内に <xref:System.IO.Pipes.PipeDirection.Out?displayProperty=nameWithType> オブジェクトを作成しています。 作成、<xref:System.IO.Pipes.AnonymousPipeClientStream>を持つ子プロセスでオブジェクトを<xref:System.IO.Pipes.PipeDirection>の値<xref:System.IO.Pipes.PipeDirection.In?displayProperty=nameWithType>します。 次に、親プロセスはユーザー指定の文字列を子プロセスに送信します。 文字列がコンソールに表示されます。  
   
  この例は、サーバー プロセスを使用して、<xref:System.IO.Pipes.AnonymousPipeServerStream>クラス。 パイプ クライアントとサーバーの両方のコードを含む完全なコード例を参照してください。[方法。ローカルのプロセス間通信で匿名パイプを使用する](~/docs/standard/io/how-to-use-anonymous-pipes-for-local-interprocess-communication.md)」を参照してください。  
   
- [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp#01)]
- [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs#01)]
- [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb#01)]  
+ [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp)]
+ [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs)]
+ [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb)]  
   
  ]]></format>
     </remarks>
@@ -229,9 +225,9 @@
 ## Examples  
  次の例では、親プロセスから匿名パイプを使用して子プロセスに文字列を送信する方法を示します。 この例で、<xref:System.IO.Pipes.AnonymousPipeServerStream>で親プロセスでオブジェクトを作成、 <xref:System.IO.Pipes.PipeDirection> @property <xref:System.IO.Pipes.PipeDirection.Out>。  
   
- [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp#01)]
- [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs#01)]
- [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb#01)]  
+ [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp)]
+ [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs)]
+ [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb)]  
   
  ]]></format>
         </remarks>
@@ -298,8 +294,9 @@
         <exception cref="T:System.NotSupportedException"><paramref name="direction" /> が <see cref="F:System.IO.Pipes.PipeDirection.InOut" /> に設定されます。</exception>
         <exception cref="T:System.IO.IOException">ディスク エラーなどの I/O エラーが発生しました。  
   
-または 
-ストリームは閉じられました。</exception>
+ - または -  
+  
+ ストリームは閉じられました。</exception>
         <permission cref="F:System.Security.Permissions.SecurityAction.Demand">直前の呼び出し元に対する完全な信頼。 このメンバーは、部分的に信頼されているコードから使用することはできません。</permission>
       </Docs>
     </Member>
@@ -360,7 +357,7 @@
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="inheritability" /> は、<see cref="F:System.IO.HandleInheritability.None" /> にも <see cref="F:System.IO.HandleInheritability.Inheritable" /> にも設定されていません。  
   
-または 
+- または - 
  <paramref name="bufferSize" /> が 0 未満です。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="direction" /> が <see cref="F:System.IO.Pipes.PipeDirection.InOut" /> に設定されます。</exception>
         <permission cref="F:System.Security.Permissions.SecurityAction.Demand">直前の呼び出し元に対する完全な信頼。 このメンバーは、部分的に信頼されているコードから使用することはできません。</permission>
@@ -417,7 +414,7 @@
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="inheritability" /> は、<see cref="F:System.IO.HandleInheritability.None" /> にも <see cref="F:System.IO.HandleInheritability.Inheritable" /> にも設定されていません。  
   
-または 
+- または - 
  <paramref name="bufferSize" /> が 0 未満です。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="direction" /> が <see cref="F:System.IO.Pipes.PipeDirection.InOut" /> に設定されます。</exception>
         <permission cref="F:System.Security.Permissions.SecurityAction.Demand">直前の呼び出し元に対する完全な信頼。 このメンバーは、部分的に信頼されているコードから使用することはできません。</permission>
@@ -557,9 +554,9 @@
 ## Examples  
  次の例では、匿名パイプを使用して、親プロセスから子プロセスに文字列を送信する方法を示します。 この例で、<xref:System.IO.Pipes.AnonymousPipeServerStream>で親プロセスでオブジェクトを作成、 <xref:System.IO.Pipes.PipeDirection> @property <xref:System.IO.Pipes.PipeDirection.Out>。  
   
- [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp#01)]
- [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs#01)]
- [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb#01)]  
+ [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp)]
+ [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs)]
+ [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb)]  
   
  ]]></format>
         </remarks>
@@ -645,9 +642,9 @@
 ## Examples  
  次の例では、匿名パイプを使用して、親プロセスから子プロセスに文字列を送信する方法を示します。 この例で、<xref:System.IO.Pipes.AnonymousPipeServerStream>で親プロセスでオブジェクトを作成、 <xref:System.IO.Pipes.PipeDirection> @property <xref:System.IO.Pipes.PipeDirection.Out>。  
   
- [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp#01)]
- [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs#01)]
- [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb#01)]  
+ [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp)]
+ [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs)]
+ [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb)]  
   
  ]]></format>
         </remarks>
@@ -693,17 +690,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 匿名パイプをサポートしていない<xref:System.IO.Pipes.PipeTransmissionMode.Message>読み取りモードにします。  
-  
-   
-  
-## Examples  
- 次の例では、匿名パイプを使用して、親プロセスから子プロセスに文字列を送信する方法を示します。 この例で、<xref:System.NotSupportedException>とキャッチは、<xref:System.IO.Pipes.AnonymousPipeServerStream.ReadMode%2A>プロパティに設定されて<xref:System.IO.Pipes.PipeTransmissionMode.Message>します。  
-  
- [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp#01)]
- [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs#01)]
- [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb#01)]  
-  
+
+匿名パイプをサポートしていない、<xref:System.IO.Pipes.PipeTransmissionMode.Message?displayProperty=nameWithType>読み取りモードにします。 このプロパティの既定値であるため<xref:System.IO.Pipes.PipeTransmissionMode.Byte?displayProperty=nameWithType>理由、コードでこのプロパティを設定することはありません。    
+
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException">送信モードが有効ではありません。 匿名パイプでは、<see cref="F:System.IO.Pipes.PipeTransmissionMode.Byte" /> のみがサポートされます。</exception>
@@ -751,17 +740,16 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- 匿名パイプをサポートしていない<xref:System.IO.Pipes.PipeTransmissionMode.Message>読み取りモードにします。  
-  
-   
+## Remarks
+
+匿名パイプをサポートしていない、<xref:System.IO.Pipes.PipeTransmissionMode.Message?displayProperty=nameWithType>読み取りモードにします。  
   
 ## Examples  
  次の例では、匿名パイプを使用して、親プロセスから子プロセスに文字列を送信する方法を示します。 この例で、<xref:System.IO.Pipes.AnonymousPipeServerStream>で親プロセス オブジェクトを作成し、<xref:System.IO.Pipes.AnonymousPipeServerStream.TransmissionMode%2A>プロパティがコンソールに表示されます。  
   
- [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp#01)]
- [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs#01)]
- [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb#01)]  
+ [!code-cpp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cpp/program.cpp)]
+ [!code-csharp[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/cs/Program.cs)]
+ [!code-vb[System.IO.Pipes.AnonymousPipeServerStream_Sample#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Pipes.AnonymousPipeServerStream_Sample/vb/program.vb)]  
   
  ]]></format>
         </remarks>
