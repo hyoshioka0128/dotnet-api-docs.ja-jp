@@ -360,18 +360,18 @@ Dim coll As New Microsoft.VisualBasic.Collection()
 ## Remarks  
  [ごとにしています.次のステートメントの](~/docs/visual-basic/language-reference/statements/for-each-next-statement.md)呼び出し`GetEnumerator`コレクションの要素に対する反復処理をサポートする列挙子オブジェクトを取得します。 通常は、使用、 `For Each`.`Next`コレクションまたは配列を走査するループを呼び出す必要はありません`GetEnumerator`明示的にします。  
   
- 近いよりも、イテレーションに制御が必要な場合、 `For Each`.`Next`ステートメントの場合は、使用することができます、`GetEnumerator`カスタマイズされたトラバーサルを実行するメソッド。 次に、場合によっては、これを行う必要がある可能性があります。  
+ `For Each`...`Next` ステートメントよりも細かい繰り返しの制御が必要な場合は、`GetEnumerator` メソッドでカスタマイズされた走査を実行できます。 次の場合に、これを行う必要があるかもしれません。  
   
--   コレクションの先頭に戻り、処理が終了する前に、もう一度イテレーションを開始する場合があります。  
+-   コレクションの先頭に戻り、処理が終了する前に、もう一度反復を開始する場合があります。  
   
--   さまざまな理由の 1 つまたは複数の要素をスキップする場合があります。  
+-   さまざまな理由で 1 つまたは複数の要素をスキップする場合があります。  
   
--   走査を途中でコレクションの要素を変更する必要があります。 ここで前の 1 つが無効になったため、新しい列挙子オブジェクトを取得する必要があります。  
+-   走査の途中でコレクションの要素を変更する必要が生じることがあります。 この場合、前のオブジェクトは無効になるため、新しい列挙子オブジェクトを取得する必要があります。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します`GetEnumerator`のすべての要素を取得する、`Collection`オブジェクト。  
+ 次の例は、`GetEnumerator` を使用して、`Collection` オブジェクトのすべての要素を取得する方法を示します。  
   
  [!code-vb[VbVbalrCollectionObject#7](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#7)]  
   
@@ -422,9 +422,9 @@ Dim coll As New Microsoft.VisualBasic.Collection()
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`Index`の種類は`Object`、`Item`として処理しようとしているプロパティ、 `String`、 `Char`、`Char`配列、または整数値。 場合`Item`変換できない`Index`に`String`または`Integer`がスローされます、<xref:System.ArgumentException>例外。  
+ `Index` が `Object` 型の場合、`Item` プロパティはそれを `String`、`Char`、`Char` 配列、または整数値として処理しようとします。 `Item` が `Index` を `String` または `Integer` に変換できない場合、<xref:System.ArgumentException> 例外がスローされます。  
   
- `Item`プロパティは、コレクションの既定のプロパティ。 そのため、次のコード行は等価です。  
+ `Item` プロパティは、コレクションの既定のプロパティです。 そのため、次のコード行は等価です。  
   
 ```vb
 MsgBox(CStr(customers.Item(1)))  
@@ -439,7 +439,7 @@ MsgBox(CStr(customers(1)))
  [!code-vb[VbVbalrCollectionObject#5](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#5)]  
 [!code-vb[VbVbalrCollectionObject#8](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#8)]  
   
- 最初の呼び出しを明示的に指定するメモ、`Item`プロパティが 2 番目のしません。 両方の呼び出し操作のため、`Item`プロパティの既定のプロパティを`Collection`オブジェクト。  
+ 最初の呼び出しでは `Item` プロパティを明示的に指定していますが、次の呼び出しではしていないことに注意してください。 `Item` プロパティは `Collection` オブジェクトの既定のプロパティであるため、どちらの呼び出しも動作します。  
   
  ]]></format>
         </remarks>
@@ -482,9 +482,9 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`Index`の種類は`Object`、`Item`として処理しようとしているプロパティ、 `String`、 `Char`、`Char`配列、または整数値。 場合`Item`変換できない`Index`に`String`または`Integer`がスローされます、<xref:System.ArgumentException>例外。  
+ `Index` が `Object` 型の場合、`Item` プロパティはそれを `String`、`Char`、`Char` 配列、または整数値として処理しようとします。 `Item` が `Index` を `String` または `Integer` に変換できない場合、<xref:System.ArgumentException> 例外がスローされます。  
   
- `Item`プロパティは、コレクションの既定のプロパティ。 そのため、次のコード行は等価です。  
+ `Item` プロパティは、コレクションの既定のプロパティです。 そのため、次のコード行は等価です。  
   
 ```vb
 MsgBox(CStr(customers.Item(1)))  
@@ -499,7 +499,7 @@ MsgBox(CStr(customers(1)))
  [!code-vb[VbVbalrCollectionObject#5](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#5)]  
 [!code-vb[VbVbalrCollectionObject#8](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#8)]  
   
- 最初の呼び出しを明示的に指定するメモ、`Item`プロパティが 2 番目のしません。 両方の呼び出し操作のため、`Item`プロパティの既定のプロパティを`Collection`オブジェクト。  
+ 最初の呼び出しでは `Item` プロパティを明示的に指定していますが、次の呼び出しではしていないことに注意してください。 `Item` プロパティは `Collection` オブジェクトの既定のプロパティであるため、どちらの呼び出しも動作します。  
   
  ]]></format>
         </remarks>
@@ -536,9 +536,9 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`Index`の種類は`Object`、`Item`として処理しようとしているプロパティ、 `String`、 `Char`、`Char`配列、または整数値。 場合`Item`変換できない`Index`に`String`または`Integer`がスローされます、<xref:System.ArgumentException>例外。  
+ `Index` が `Object` 型の場合、`Item` プロパティはそれを `String`、`Char`、`Char` 配列、または整数値として処理しようとします。 `Item` が `Index` を `String` または `Integer` に変換できない場合、<xref:System.ArgumentException> 例外がスローされます。  
   
- `Item`プロパティは、コレクションの既定のプロパティ。 そのため、次のコード行は等価です。  
+ `Item` プロパティは、コレクションの既定のプロパティです。 そのため、次のコード行は等価です。  
   
 ```vb
 MsgBox(CStr(customers.Item(1)))  
@@ -553,7 +553,7 @@ MsgBox(CStr(customers(1)))
  [!code-vb[VbVbalrCollectionObject#5](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#5)]  
 [!code-vb[VbVbalrCollectionObject#8](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#8)]  
   
- 最初の呼び出しを明示的に指定するメモ、`Item`プロパティが 2 番目のしません。 両方の呼び出し操作のため、`Item`プロパティの既定のプロパティを`Collection`オブジェクト。  
+ 最初の呼び出しでは `Item` プロパティを明示的に指定していますが、次の呼び出しではしていないことに注意してください。 `Item` プロパティは `Collection` オブジェクトの既定のプロパティであるため、どちらの呼び出しも動作します。  
   
  ]]></format>
         </remarks>
@@ -599,14 +599,14 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに`Remove`、コレクションから要素を削除、デクリメント、コレクションの<xref:Microsoft.VisualBasic.Collection.Count%2A>を 1 つのプロパティ。 これもデクリメント、`Index`コレクションで削除された要素の後に続くすべての要素の値。  
+ `Remove` がコレクションから要素を削除すると、コレクションの <xref:Microsoft.VisualBasic.Collection.Count%2A> プロパティを 1 減らします。 コレクションで削除された要素の後に続く、すべての要素の `Index` 値も減らします。  
   
- 要素がないコレクションに追加された場合、 `Key`、使用する必要があります、`Index`を削除します。  
+ `Key` なしでコレクションに追加された要素の場合、`Index` を使用して削除する必要があります。  
   
    
   
 ## Examples  
- この例での使用、`Remove`からオブジェクトを削除する方法、<xref:Microsoft.VisualBasic.Collection>変数内のオブジェクト`birthdays`します。  
+ この例では、変数 `birthdays` の <xref:Microsoft.VisualBasic.Collection> オブジェクトから、`Remove` メソッドを使用してオブジェクトを削除する方法を示します。  
   
  [!code-vb[VbVbalrCollectionObject#5](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#5)]  
 [!code-vb[VbVbalrCollectionObject#9](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#9)]  
@@ -652,14 +652,14 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに`Remove`、コレクションから要素を削除、デクリメント、コレクションの<xref:Microsoft.VisualBasic.Collection.Count%2A>を 1 つのプロパティ。 これもデクリメント、`Index`コレクションで削除された要素の後に続くすべての要素の値。  
+ `Remove` がコレクションから要素を削除すると、コレクションの <xref:Microsoft.VisualBasic.Collection.Count%2A> プロパティを 1 減らします。 コレクションで削除された要素の後に続く、すべての要素の `Index` 値も減らします。  
   
- 要素がないコレクションに追加された場合、 `Key`、使用する必要があります、`Index`を削除します。  
+ `Key` なしでコレクションに追加された要素の場合、`Index` を使用して削除する必要があります。  
   
    
   
 ## Examples  
- この例での使用、`Remove`からオブジェクトを削除する方法、<xref:Microsoft.VisualBasic.Collection>変数内のオブジェクト`birthdays`します。  
+ この例では、変数 `Remove` の <xref:Microsoft.VisualBasic.Collection> オブジェクトから、`birthdays` メソッドを使用してオブジェクトを削除する方法を示します。  
   
  [!code-vb[VbVbalrCollectionObject#5](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#5)]  
 [!code-vb[VbVbalrCollectionObject#9](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCollectionObject/VB/Class1.vb#9)]  
@@ -705,7 +705,7 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 要素のコピー先は、<xref:System.Array>を列挙子が反復処理と同じ順序で、<xref:Microsoft.VisualBasic.Collection>オブジェクト。  
+ 要素は、<xref:Microsoft.VisualBasic.Collection> オブジェクトを列挙子が反復処理するときと同じ順序で、<xref:System.Array> にコピーされます。  
   
  このメソッドは O (`n`) 操作、場所`n`から取得したが、 <xref:Microsoft.VisualBasic.Collection.System%23Collections%23ICollection%23Count>。  
   
@@ -848,11 +848,11 @@ MsgBox(CStr(customers(1)))
   
  <xref:System.Collections.IEnumerator.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> または <xref:System.Collections.IEnumerator.Reset%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IEnumerator.Current%2A> を次の要素に設定します。  
   
- 場合<xref:System.Collections.IEnumerator.MoveNext%2A>列挙子、コレクションの末尾がコレクション内の最後の要素の後に配置されているパスと<xref:System.Collections.IEnumerator.MoveNext%2A>返します`false`します。 この位置では、後続の呼び出しで列挙子の場合<xref:System.Collections.IEnumerator.MoveNext%2A>を返すことも`false`します。 最後の呼び出しの場合<xref:System.Collections.IEnumerator.MoveNext%2A>返します`false`、<xref:System.Collections.IEnumerator.Current%2A>が定義されていません。   <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
+ <xref:System.Collections.IEnumerator.MoveNext%2A> がコレクションの末尾を通過した場合、列挙子がコレクション内の最後の要素の後に配置され、<xref:System.Collections.IEnumerator.MoveNext%2A> は `false` を返します。 列挙子がこの位置にある場合、後続の <xref:System.Collections.IEnumerator.MoveNext%2A> 呼び出しも `false` を返します。 最後の <xref:System.Collections.IEnumerator.MoveNext%2A> 呼び出しが `false` を返す場合、<xref:System.Collections.IEnumerator.Current%2A> は定義されていません。   <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
   
  コレクションが変更されない限り、列挙子は有効です。 コレクションに対して変更 (要素の追加、変更、削除など) が行われると、列挙子は回復不可能な無効状態になり、その動作は未定義になります。  
   
- 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 列挙処理でスレッド セーフを確保するには、列挙処理が終わるまでコレクションをロックできます。 コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
+ 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 列挙処理でスレッド セーフを確保するために、列挙処理が終わるまでコレクションをロックできます。 コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
   
  ]]></format>
         </remarks>
@@ -922,7 +922,7 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドからのすべての項目を削除する、<xref:Microsoft.VisualBasic.Collection>オブジェクト。  
+ このメソッドは、<xref:Microsoft.VisualBasic.Collection> オブジェクトからすべての項目を削除します。  
   
  ]]></format>
         </remarks>
@@ -963,7 +963,7 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを判断するかどうか、<xref:Microsoft.VisualBasic.Collection>オブジェクトには、特定の値が含まれています。  
+ このメソッドは、<xref:Microsoft.VisualBasic.Collection> オブジェクトに、特定の値が含まれているかどうかを判断します。  
   
  ]]></format>
         </remarks>
@@ -1044,7 +1044,7 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`index`内の項目数に等しければ、<xref:Microsoft.VisualBasic.Collection>オブジェクト、`value`が末尾に追加されます。  
+ `index` が <xref:Microsoft.VisualBasic.Collection> オブジェクト内の項目数に等しい場合、`value` は末尾に追加されます。  
   
  リストなどの連続する要素のコレクションでは、新しい要素を挿入するために、挿入位置より後にある要素の位置が繰り下げられます。 コレクションにインデックスがある場合、移動した要素のインデックスも更新されます。 この動作は、要素が概念的にバケットにグループ化されているハッシュ テーブルなどのコレクションには適用されません。  
   
@@ -1190,7 +1190,7 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- リストなどの連続する要素のコレクションでは、空白になった位置を埋めるために、削除された要素の後にある要素の位置が繰り上げられます。 コレクションにインデックスがある場合、移動した要素のインデックスも更新されます。 この動作は、要素が概念的にバケットにグループ化されているハッシュ テーブルなどのコレクションには適用されません。 場合`value`に含まれていない、<xref:Microsoft.VisualBasic.Collection>オブジェクト、<xref:Microsoft.VisualBasic.Collection>オブジェクトは変更されず、例外はスローされません。  
+ リストなどの連続する要素のコレクションでは、空白になった位置を埋めるために、削除された要素の後にある要素の位置が繰り上げられます。 コレクションにインデックスがある場合、移動した要素のインデックスも更新されます。 この動作は、要素が概念的にバケットにグループ化されているハッシュ テーブルなどのコレクションには適用されません。 `value` が <xref:Microsoft.VisualBasic.Collection> オブジェクトにない場合、<xref:Microsoft.VisualBasic.Collection> オブジェクトは変更されず、例外はスローされません。  
   
  ]]></format>
         </remarks>
@@ -1278,7 +1278,7 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、全体の後に呼び出されます<xref:Microsoft.VisualBasic.Collection>オブジェクト グラフが逆シリアル化されています。  
+ このメソッドは、<xref:Microsoft.VisualBasic.Collection> オブジェクト グラフの逆シリアル化が完了した後に呼び出されます。  
   
  ]]></format>
         </remarks>
@@ -1325,7 +1325,7 @@ MsgBox(CStr(customers(1)))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、シリアル化に必要なデータを返します、<xref:Microsoft.VisualBasic.Collection>オブジェクト。  
+ このメソッドは、<xref:Microsoft.VisualBasic.Collection> オブジェクトのシリアル化に必要なデータを返します。  
   
  ]]></format>
         </remarks>
