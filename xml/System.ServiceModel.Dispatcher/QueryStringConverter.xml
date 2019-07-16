@@ -1,5 +1,5 @@
 <Type Name="QueryStringConverter" FullName="System.ServiceModel.Dispatcher.QueryStringConverter">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="257465ef3390b40cd0d6b289b89e4986345ca2f5" /><Meta Name="ms.sourcegitcommit" Value="f1d16425528e237257ca3b58eb49217a514849ea" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="04/24/2019" /><Meta Name="ms.locfileid" Value="64032496" /></Metadata><TypeSignature Language="C#" Value="public class QueryStringConverter" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="24033f91596af96985ae3f014706d85646b682a8" /><Meta Name="ms.sourcegitcommit" Value="10aa513a7461eb2abbf8d1e35d2a045d4e5a9be7" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/09/2019" /><Meta Name="ms.locfileid" Value="67664850" /></Metadata><TypeSignature Language="C#" Value="public class QueryStringConverter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit QueryStringConverter extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.Dispatcher.QueryStringConverter" />
   <TypeSignature Language="VB.NET" Value="Public Class QueryStringConverter" />
@@ -16,14 +16,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>このクラスは、クエリ文字列のパラメーターを適切な型のオブジェクトに変換します。 また、オブジェクトからのパラメーターをクエリ文字列表現に変換することもできます。</summary>
+    <summary>This class converts a parameter in a query string to an object of the appropriate type. It can also convert a parameter from an object to its query string representation.</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  パラメーターは、URL 内のクエリ文字列に指定できます。 このクラスは、文字列に指定されたこれらのパラメーターを取得し、オブジェクトに変換します。 たとえば、次のコントラクトを定義します。  
   
-```  
+```csharp
 [ServiceContract]  
 interface Calculator  
 {  
@@ -33,7 +33,7 @@ interface Calculator
 }  
 ```  
   
- Windows Communication Foundation (WCF) サービスは、このインターフェイスを実装し、それを使用してエンドポイントに公開、<xref:System.ServiceModel.Description.WebHttpBehavior>でhttp://localhost:8000/MyCalcServiceします。 `Add`に HTTP GET を送信することによって、サービス操作を呼び出すことができますhttp://localhost:8000/MyCalcService/Add?n1=10&n2=5します。 <xref:System.ServiceModel.Dispatcher.QueryStringConverter> はこの URL を受け取り、URL で指定された 2 つのパラメーター (n1 と n2) を、適切な値の 2 つの `long` オブジェクトに変換します。  
+ Windows Communication Foundation (WCF) サービスは、このインターフェイスを実装し、それを使用してエンドポイントに公開、<xref:System.ServiceModel.Description.WebHttpBehavior>で`http://localhost:8000/MyCalcService`します。 `Add`に HTTP GET を送信することによって、サービス操作を呼び出すことができます`http://localhost:8000/MyCalcService/Add?n1=10&n2=5`します。 <xref:System.ServiceModel.Dispatcher.QueryStringConverter> はこの URL を受け取り、URL で指定された 2 つのパラメーター (n1 と n2) を、適切な値の 2 つの `long` オブジェクトに変換します。  
   
  <xref:System.ServiceModel.Dispatcher.QueryStringConverter> からクラスを派生して、クエリ文字列パラメーターをサービス操作のパラメーターにマップする方法を制御できます。  
   
@@ -112,7 +112,7 @@ interface Calculator
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.ServiceModel.Dispatcher.QueryStringConverter" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Dispatcher.QueryStringConverter" /> class.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -146,9 +146,9 @@ interface Calculator
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">変換対象の <see cref="T:System.Type" />。</param>
-        <summary>指定した型と文字列表現を双方向に変換できるかどうかを確認します。</summary>
-        <returns>型を変換できるかどうかを指定する値。</returns>
+        <param name="type">The <see cref="T:System.Type" /> to convert.</param>
+        <summary>Determines whether the specified type can be converted to and from a string representation.</summary>
+        <returns>A value that specifies whether the type can be converted.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -184,10 +184,10 @@ interface Calculator
         <Parameter Name="parameterType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="parameter">パラメーターと値から構成される文字列形式。</param>
-        <param name="parameterType">パラメーターを変換する <see cref="T:System.Type" />。</param>
-        <summary>クエリ文字列パラメーターを指定した型に変換します。</summary>
-        <returns>変換されるパラメーター。</returns>
+        <param name="parameter">The string form of the parameter and value.</param>
+        <param name="parameterType">The <see cref="T:System.Type" /> to convert the parameter to.</param>
+        <summary>Converts a query string parameter to the specified type.</summary>
+        <returns>The converted parameter.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -204,7 +204,7 @@ interface Calculator
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.FormatException">指定された文字列の形式が不適切です。</exception>
+        <exception cref="T:System.FormatException">The provided string does not have the correct format.</exception>
       </Docs>
     </Member>
     <Member MemberName="ConvertValueToString">
@@ -229,10 +229,10 @@ interface Calculator
         <Parameter Name="parameterType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="parameter">変換するパラメーター。</param>
-        <param name="parameterType">変換するパラメーターの <see cref="T:System.Type" />。</param>
-        <summary>パラメーターをクエリ文字列表現に変換します。</summary>
-        <returns>パラメーター名と値。</returns>
+        <param name="parameter">The parameter to convert.</param>
+        <param name="parameterType">The <see cref="T:System.Type" /> of the parameter to convert.</param>
+        <summary>Converts a parameter to a query string representation.</summary>
+        <returns>The parameter name and value.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

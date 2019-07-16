@@ -1,5 +1,5 @@
 <Type Name="ValueTask" FullName="System.Threading.Tasks.ValueTask">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d58ed24d138ed240c4dd2f5c35cae44cbd69e825" /><Meta Name="ms.sourcegitcommit" Value="61757d0366a172cdbc11436deb1c1ffa49d97238" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/28/2019" /><Meta Name="ms.locfileid" Value="67458226" /></Metadata><TypeSignature Language="C#" Value="public struct ValueTask : IEquatable&lt;System.Threading.Tasks.ValueTask&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="39915c4d8279433cae62ee98d244ffc2e58738b5" /><Meta Name="ms.sourcegitcommit" Value="690605a2d62010b93e13edf329aafe2bdc57423a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/11/2019" /><Meta Name="ms.locfileid" Value="67801800" /></Metadata><TypeSignature Language="C#" Value="public struct ValueTask : IEquatable&lt;System.Threading.Tasks.ValueTask&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ValueTask extends System.ValueType implements class System.IEquatable`1&lt;valuetype System.Threading.Tasks.ValueTask&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Threading.Tasks.ValueTask" />
   <TypeSignature Language="VB.NET" Value="Public Structure ValueTask&#xA;Implements IEquatable(Of ValueTask)" />
@@ -33,7 +33,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>非同期操作の待機可能な結果が提供されます。</summary>
+    <summary>Provides an awaitable result of an asynchronous operation.</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[ 
 
@@ -80,8 +80,8 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <Parameter Name="task" Type="System.Threading.Tasks.Task" />
       </Parameters>
       <Docs>
-        <param name="task">操作を表すタスク。</param>
-        <summary>操作を表す指定されたタスクを使用して、<see cref="T:System.Threading.Tasks.ValueTask" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="task">The task that represents the operation.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Threading.Tasks.ValueTask" /> class using the supplied task that represents the operation.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -109,9 +109,9 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <Parameter Name="token" Type="System.Int16" />
       </Parameters>
       <Docs>
-        <param name="source">操作を表すオブジェクト。</param>
-        <param name="token"><see cref="T:System.Threading.Tasks.Sources.IValueTaskSource" /> に渡される非透過的な値</param>
-        <summary>操作を表す指定された <see cref="T:System.Threading.Tasks.Sources.IValueTaskSource" /> オブジェクトを使用して、<see cref="T:System.Threading.Tasks.ValueTask" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="source">An object that represents the operation.</param>
+        <param name="token">An opaque value that is passed through to the <see cref="T:System.Threading.Tasks.Sources.IValueTaskSource" /></param>
+        <summary>Initializes a new instance of the <see cref="T:System.Threading.Tasks.ValueTask" /> class using the supplied <see cref="T:System.Threading.Tasks.Sources.IValueTaskSource" /> object that represents the operation.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -139,9 +139,13 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>この <see cref="T:System.Threading.Tasks.ValueTask" /> を表す <see cref="T:System.Threading.Tasks.Task" /> オブジェクトを取得します。</summary>        
-        <returns>この <see cref="T:System.Threading.Tasks.ValueTask" /> でラップされる <see cref="T:System.Threading.Tasks.Task" /> オブジェクト (存在する場合)、または、結果を表す新しい <see cref="T:System.Threading.Tasks.Task" /> オブジェクト。</returns>
-        <remarks>To be added.</remarks>
+        <summary>Retrieves a <see cref="T:System.Threading.Tasks.Task" /> object that represents this <see cref="T:System.Threading.Tasks.ValueTask" />.</summary>
+        <returns>The <see cref="T:System.Threading.Tasks.Task" /> object that is wrapped in this <see cref="T:System.Threading.Tasks.ValueTask" /> if one exists, or a new <see cref="T:System.Threading.Tasks.Task" /> object that represents the result.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+このメソッドは、1 つ存在するか、新しいタスクの結果を表すオブジェクトを製造している場合か、ラップされたタスク オブジェクトを返します。
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ConfigureAwait">
@@ -170,9 +174,9 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <Parameter Name="continueOnCapturedContext" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="continueOnCapturedContext"><see langword="true" /> の場合は、キャプチャされたコンテキストに継続をマーシャリングします。そうしない場合は <see langword="false" /> にします。</param>
-        <summary>この値の awaiter を構成します。</summary>
-        <returns>構成済み awaiter。</returns>
+        <param name="continueOnCapturedContext"><see langword="true" /> to attempt to marshal the continuation back to the captured context; otherwise, <see langword="false" />.</param>
+        <summary>Configures an awaiter for this value.</summary>
+        <returns>The configured awaiter.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -202,17 +206,17 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">現在のオブジェクトと比較するオブジェクト。</param>
-        <summary>指定したオブジェクトが現在の <see cref="T:System.Threading.Tasks.ValueTask" /> インスタンスと等しいかどうかを判断します。</summary>
-        <returns>指定したオブジェクトが現在のオブジェクトと等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />です。</returns>
+        <param name="obj">The object to compare with the current object.</param>
+        <summary>Determines whether the specified object is equal to the current <see cref="T:System.Threading.Tasks.ValueTask" /> instance.</summary>
+        <returns><see langword="true" /> if the specified object is equal to the current object; otherwise, <see langword="false" />.</returns>
         <remarks>
-      <format type="text/markdown"><![CDATA[ 
+          <format type="text/markdown"><![CDATA[ 
 
 ## Remarks  
 2 つ<xref:System.Threading.Tasks.ValueTask>同じをラップするときに、インスタンスが等しい<xref:System.Threading.Tasks.Task>またはの同じペア、<xref:System.Threading.Tasks.Sources.IValueTaskSource>オブジェクトと、トークンです。
 
  ]]></format>
-    </remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -244,17 +248,17 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <Parameter Name="other" Type="System.Threading.Tasks.ValueTask" />
       </Parameters>
       <Docs>
-        <param name="other">現在のオブジェクトと比較するオブジェクト。</param>
-        <summary>指定した <see cref="T:System.Threading.Tasks.ValueTask" /> オブジェクトが、現在の <see cref="T:System.Threading.Tasks.ValueTask" /> オブジェクトと等しいかどうかを判断します。</summary>
-        <returns>指定したオブジェクトが現在のオブジェクトと等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />です。</returns>
+        <param name="other">The object to compare with the current object.</param>
+        <summary>Determines whether the specified <see cref="T:System.Threading.Tasks.ValueTask" /> object is equal to the current <see cref="T:System.Threading.Tasks.ValueTask" /> object.</summary>
+        <returns><see langword="true" /> if the specified object is equal to the current object; otherwise, <see langword="false" />.</returns>
         <remarks>
-      <format type="text/markdown"><![CDATA[ 
+          <format type="text/markdown"><![CDATA[ 
 
 ## Remarks  
 2 つ<xref:System.Threading.Tasks.ValueTask>同じをラップするときに、インスタンスが等しい<xref:System.Threading.Tasks.Task>またはの同じペア、<xref:System.Threading.Tasks.Sources.IValueTaskSource>オブジェクトと、トークンです。
 
  ]]></format>
-    </remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetAwaiter">
@@ -281,8 +285,8 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>この値の awaiter を作成します。</summary>
-        <returns>awaiter。</returns>
+        <summary>Creates an awaiter for this value.</summary>
+        <returns>The awaiter.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -310,8 +314,8 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このインスタンスのハッシュ コードを返します。</summary>
-        <returns>現在のオブジェクトのハッシュ コード。</returns>
+        <summary>Returns the hash code for this instance.</summary>
+        <returns>The hash code for the current object.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -338,9 +342,13 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このオブジェクトが取り消された操作を表すかどうかを示す値を取得します。</summary>
+        <summary>Gets a value that indicates whether this object represents a canceled operation.</summary>
         <value><see langword="true" /> このオブジェクトが、取り消された操作を表している場合それ以外の場合、<see langword="false" />します。</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+場合、<xref:System.Threading.Tasks.ValueTask>結果またはバックアップは、 <xref:System.Threading.Tasks.Sources.IValueTaskSource>、これは常に返します`false`します。  によって保証されている場合、 <xref:System.Threading.Tasks.Task>、タスクの値が戻って<xref:System.Threading.Tasks.Task.IsCanceled>プロパティ。
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsCompleted">
@@ -366,7 +374,7 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このオブジェクトが完了した操作を表すかどうかを示す値を取得します。</summary>
+        <summary>Gets a value that indicates whether this object represents a completed operation.</summary>
         <value><see langword="true" /> このオブジェクトは、完了した操作を表している場合それ以外の場合、<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -394,7 +402,7 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このオブジェクトが正常に完了した操作を表すかどうかを示す値を取得します。</summary>
+        <summary>Gets a value that indicates whether this object represents a successfully completed operation.</summary>
         <value><see langword="true" /> このオブジェクトを正常に完了した操作を表している場合それ以外の場合、<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -422,7 +430,7 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このオブジェクトが失敗した操作を表すかどうかを示す値を取得します。</summary>
+        <summary>Gets a value that indicates whether this object represents a failed operation.</summary>
         <value><see langword="true" /> このオブジェクトが表す操作が失敗した場合それ以外の場合、<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -454,18 +462,18 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <Parameter Name="right" Type="System.Threading.Tasks.ValueTask" />
       </Parameters>
       <Docs>
-        <param name="left">比較する最初の値です。</param>
-        <param name="right">比較する 2 番目の値です。</param>
-        <summary>2 つの <see cref="T:System.Threading.Tasks.ValueTask" /> の値が等しいかどうかを比較します。</summary>
-        <returns>2 つの <see cref="T:System.Threading.Tasks.ValueTask" /> 値が等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="left">The first value to compare.</param>
+        <param name="right">The second value to compare.</param>
+        <summary>Compares two <see cref="T:System.Threading.Tasks.ValueTask" /> values for equality.</summary>
+        <returns><see langword="true" /> if the two <see cref="T:System.Threading.Tasks.ValueTask" /> values are equal; otherwise, <see langword="false" />.</returns>
         <remarks>
-      <format type="text/markdown"><![CDATA[ 
+          <format type="text/markdown"><![CDATA[ 
 
 ## Remarks  
 2 つ<xref:System.Threading.Tasks.ValueTask>同じをラップするときに、インスタンスが等しい<xref:System.Threading.Tasks.Task>またはの同じペア、<xref:System.Threading.Tasks.Sources.IValueTaskSource>オブジェクトと、トークンです。
 
  ]]></format>
-    </remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Inequality">
@@ -495,18 +503,18 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
         <Parameter Name="right" Type="System.Threading.Tasks.ValueTask" />
       </Parameters>
       <Docs>
-        <param name="left">比較する最初の値です。</param>
-        <param name="right">比較する 2 番目の値です。</param>
-        <summary>2 つの <see cref="T:System.Threading.Tasks.ValueTask" /> 値が等しくないかどうかを判断します。</summary>
-        <returns>2 つの <see cref="T:System.Threading.Tasks.ValueTask" /> 値が等しくない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="left">The first value to compare.</param>
+        <param name="right">The second value to compare.</param>
+        <summary>Determines whether two <see cref="T:System.Threading.Tasks.ValueTask" /> values are unequal.</summary>
+        <returns><see langword="true" /> if the two <see cref="T:System.Threading.Tasks.ValueTask" /> values are not equal; otherwise, <see langword="false" />.</returns>
         <remarks>
-      <format type="text/markdown"><![CDATA[ 
+          <format type="text/markdown"><![CDATA[ 
 
 ## Remarks  
 2 つ<xref:System.Threading.Tasks.ValueTask>同じをラップするときに、インスタンスが等しい<xref:System.Threading.Tasks.Task>またはの同じペア、<xref:System.Threading.Tasks.Sources.IValueTaskSource>オブジェクトと、トークンです。
 
  ]]></format>
-    </remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Preserve">
@@ -533,8 +541,8 @@ A`ValueTask`いずれかをラップできる構造体には、<xref:System.Thre
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>将来のある時点で使用される可能性のある <see cref="T:System.Threading.Tasks.ValueTask" /> を取得します。</summary>
-        <returns>保存された <see cref="T:System.Threading.Tasks.ValueTask" />。</returns>
+        <summary>Gets a <see cref="T:System.Threading.Tasks.ValueTask" /> that may be used at any point in the future.</summary>
+        <returns>The preserved <see cref="T:System.Threading.Tasks.ValueTask" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
