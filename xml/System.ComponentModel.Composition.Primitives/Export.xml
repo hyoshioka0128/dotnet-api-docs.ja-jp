@@ -1,5 +1,5 @@
 <Type Name="Export" FullName="System.ComponentModel.Composition.Primitives.Export">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="ce587bb6dae21759d7f8c4b59250102364bc1567" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63906845" /></Metadata><TypeSignature Language="C#" Value="public class Export" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="b87902b296c010fd5b463eed458ab0e893e5351b" /><Meta Name="ms.sourcegitcommit" Value="690605a2d62010b93e13edf329aafe2bdc57423a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/11/2019" /><Meta Name="ms.locfileid" Value="67801173" /></Metadata><TypeSignature Language="C#" Value="public class Export" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Export extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.ComponentModel.Composition.Primitives.Export" />
   <TypeSignature Language="VB.NET" Value="Public Class Export" />
@@ -104,7 +104,7 @@
         <param name="exportedValueGetter"><see cref="T:System.ComponentModel.Composition.Primitives.Export" /> のエクスポート オブジェクトを作成するために呼び出されるメソッド。 オブジェクトの作成は、<see cref="P:System.ComponentModel.Composition.Primitives.Export.Value" /> メソッドが呼び出されるまで遅延されます。</param>
         <summary>コントラクト名およびエクスポート値の取得メソッドを指定して、<see cref="T:System.ComponentModel.Composition.Primitives.Export" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="contractName" /> は <see langword="null" />です。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="contractName" /> が <see langword="null" /> です。  
   
 - または - 
  <paramref name="exportedObjectGetter" /> は <see langword="null" />です。</exception>
@@ -192,9 +192,16 @@
       <Docs>
         <summary>エクスポートが提供するエクスポート オブジェクトを返します。</summary>
         <returns>エクスポートが提供するエクスポート オブジェクト。</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+## <a name="note-to-inheritors"></a>継承時に注意してください。
+
+このメソッドのオーバーライドは返さないように`null`します。
+          ]]></format>
+        </remarks>
         <exception cref="T:System.NotImplementedException"><see cref="M:System.ComponentModel.Composition.Primitives.Export.GetExportedValueCore" /> メソッドは、派生クラスでオーバーライドされませんでした。</exception>
         <exception cref="T:System.ComponentModel.Composition.CompositionException">合成中にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが格納されます。</exception>
+        <exception cref="T:System.ComponentModel.Composition.CompositionContractMismatchException">現在のインスタンスは <see cref="T:System.Lazy`1" /> のインスタンスであり、基になるエクスポートされた値を <c>T</c> にキャストすることはできません。</exception>
       </Docs>
     </Member>
     <Member MemberName="Metadata">
@@ -247,6 +254,9 @@
         <summary>このエクスポートが表すオブジェクトを提供します。</summary>
         <value>このエクスポートが表すオブジェクト。</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ComponentModel.Composition.CompositionException">合成中にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが格納されます。</exception>
+        <exception cref="T:System.ComponentModel.Composition.CompositionContractMismatchException">現在のインスタンスは <see cref="T:System.Lazy`1" /> のインスタンスであり、基になるエクスポートされた値を <c>T</c> にキャストすることはできません。</exception>
+        <exception cref="T:System.NotImplementedException"><see cref="M:System.ComponentModel.Composition.Primitives.Export.GetExportedValueCore" /> メソッドは、派生クラスでオーバーライドされませんでした。</exception>
       </Docs>
     </Member>
   </Members>
