@@ -1,5 +1,5 @@
 <Type Name="Activity" FullName="System.Diagnostics.Activity">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="447d0b7c665242e9f520c6575a55767cbd659554" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67239655" /></Metadata><TypeSignature Language="C#" Value="public class Activity" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="acd759fdd6beca32c0075e63f6e3aea2b7c5d7fd" /><Meta Name="ms.sourcegitcommit" Value="727af77f0b7ae2636efa3bc47000697540084461" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/15/2019" /><Meta Name="ms.locfileid" Value="67877150" /></Metadata><TypeSignature Language="C#" Value="public class Activity" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Activity extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Diagnostics.Activity" />
   <TypeSignature Language="VB.NET" Value="Public Class Activity" />
@@ -17,8 +17,22 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>ログ記録に使用されるコンテキストを使用して、操作を表します。</summary>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+`Activity`が操作名、ID、開始時刻と期間、タグ、および手荷物受取所。
+             
+現在のアクティビティにアクセスするのには、静的な<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>プロパティ。
+
+アクティビティのコンス トラクターを呼び出すことによって作成、必要に応じて、構成および使用を開始する必要がある、<xref:System.Diagnostics.Activity.Start%2A>メソッドで、アクティビティおよびセットの親/子リレーションシップを維持して<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>します。
+            
+アクティビティが完了したらで停止する必要があります、<xref:System.Diagnostics.Activity.Stop?displayProperty=nameWithType>メソッド。
+            
+いいえ`Activity`メソッドは、不適切な入力への応答としてエスケープする例外を許可します。 スローされキャッチされました (これにより、デバッガーを監視により、エラーを参照してください) は、例外が抑制されていて、操作が (通常は nothing) が意味のあるもの。
+
+         ]]></format>
+         </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -69,8 +83,8 @@
         <ReturnType>System.Diagnostics.ActivityTraceFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>アクティビティに関連付けられている (W3C ID 仕様によって定義された) フラグを取得します。</summary>
+        <value>アクティビティに関連付けられているフラグです。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -226,9 +240,15 @@
         <ReturnType>System.Diagnostics.ActivityIdFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary><see cref="T:System.Diagnostics.Activity" /> の既定の ID の形式を取得または設定します。</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+`Activity`インスタンス Id の親と同じ形式を使用しようとしました。 親アクティビティがない場合は、このプロパティには、使用する既定の形式が決定します。
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Duration">
@@ -271,9 +291,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>既定の ID 形式を定義するために <see cref="P:System.Diagnostics.Activity.DefaultIdFormat" /> を常に使用するかどうかを決定する値を取得または設定します。</summary>
+        <value><see langword="true" /> 常に使用する、 <see cref="P:System.Diagnostics.Activity.DefaultIdFormat" />、それ以外の<see langword="false" />します。</value>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+通常の場合、<xref:System.Diagnostics.Activity.ParentId>がの形式を決定現在を使用する書式を定義、<xref:System.Diagnostics.Activity>します。 ただし場合、`ForceDefaultFormat`に設定されている`true`、ID の形式は、常に定義、<xref:System.Diagnostics.Activity.DefaultIdFormat>プロパティの場合でも、<xref:System.Diagnostics.Activity.ParentId>が定義されている別の形式であり、親。
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBaggageItem">
@@ -352,8 +378,8 @@ ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたと�
         <ReturnType>System.Diagnostics.ActivityIdFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary><see cref="P:System.Diagnostics.Activity.Id" /> の形式を取得します。</summary>
+        <value>形式、<see cref="P:System.Diagnostics.Activity.Id" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -441,7 +467,7 @@ ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたと�
 
 場合この親<xref:System.Diagnostics.Activity>、プロセスの外部から来る、<xref:System.Diagnostics.Activity>親はありませんが、*可能性があります*(これは、親から逆シリアル化された) 親 id。  
 
-このプロパティの値を指定できます`null`場合は、ルート<see cref="T:System.Diagnostics.Activity" />(いいえ、つまり<xref:System.Diagnostics.Activity.Parent>)。  参照してください[Id の形式](href="https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md#id-format)の詳細。
+このプロパティの値を指定できます`null`場合は、ルート<see cref="T:System.Diagnostics.Activity" />(いいえ、つまり<xref:System.Diagnostics.Activity.Parent>)。  参照してください[Id の形式](href="https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md#id-format")の詳細。
 
 ]]></format>
         </remarks>
@@ -463,9 +489,15 @@ ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたと�
         <ReturnType>System.Diagnostics.ActivitySpanId</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>親の <see cref="P:System.Diagnostics.Activity.SpanId" /> を取得します。</summary>
+        <value>親の<see cref="P:System.Diagnostics.Activity.SpanId" />します。</value>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+場合、 <xref:System.Diagnostics.Activity.ParentId?displayProperty=nameWithType> W3C 形式では、このプロパティを返します、 <xref:System.Diagnostics.Activity.SpanId> ParentId の一部です。  それ以外の場合、0 を返します<xref:System.Diagnostics.Activity.SpanId>します。
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Recorded">
@@ -484,8 +516,8 @@ ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたと�
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>W3CIdFlags.Recorded フラグが設定されているかどうかを示す値を取得します。</summary>
+        <value><see langword="true" /> W3CIdFlags.Recorded フラグが設定されている場合それ以外の場合、<see langword="false" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -656,8 +688,8 @@ ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたと�
         <ReturnType>System.Diagnostics.ActivitySpanId</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary><see cref="P:System.Diagnostics.Activity.Id" /> の SPAN 部分を取得します。</summary>
+        <value>ID のスパンの一部を<see cref="P:System.Diagnostics.Activity.Id" />場合は、 <see cref="T:System.Diagnostics.Activity" /> W3C 形式があります。 それ以外に 0 を<see langword="SpanId" />します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -810,8 +842,8 @@ ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたと�
         <ReturnType>System.Diagnostics.ActivityTraceId</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary><see cref="P:System.Diagnostics.Activity.Id" /> の TraceId 部分を取得します。</summary>
+        <value>部分は、TraceId の ID、 <see cref="P:System.Diagnostics.Activity.Id" />ID は、W3C 形式の場合は、それ以外の場合、0 個の TraceId します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -831,9 +863,17 @@ ID が階層構造:`root-id.id1_id2.id3_`します。 ID が生成されたと�
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>W3C <see langword="tracestate" /> ヘッダーを取得します。</summary>
+        <value>W3C<see langword="tracestate" />ヘッダー。</value>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+`tracestate`トレースの親に含まれているトレースの id に補足情報を実行するためにヘッダーが対象としています。 `tracestate` 複数の分散トレース グラフ内の要求の位置に関する情報を伝達するキー/値ペアの一覧で構成されます。 この情報は、通常、分散トレース システムによって使用されため、この分散トレースの相関関係を中断する可能性がありますされません一般的な用途の荷物に使用する必要があります。
+            
+論理的に`TraceStateString`は荷物フローでは、手荷物受取所と同じです) であればの種類だけですが、特殊なケースにすることが予想されるため (独自の HTTP ヘッダーが)、効率が高い便利な/場合、その他の荷物を使用していないまとめられています。
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
   </Members>
