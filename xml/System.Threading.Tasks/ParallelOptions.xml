@@ -1,5 +1,5 @@
 <Type Name="ParallelOptions" FullName="System.Threading.Tasks.ParallelOptions">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="38ff626d498db46abb7959bbe91594a078ab5a3b" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58716048" /></Metadata><TypeSignature Language="C#" Value="public class ParallelOptions" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="41147c8213421a6410b90743914718cacad192cb" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68368997" /></Metadata><TypeSignature Language="C#" Value="public class ParallelOptions" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ParallelOptions extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Threading.Tasks.ParallelOptions" />
   <TypeSignature Language="VB.NET" Value="Public Class ParallelOptions" />
@@ -26,8 +26,16 @@
   <Interfaces />
   <Docs>
     <summary><see cref="T:System.Threading.Tasks.Parallel" /> クラスのメソッドの操作を構成するオプションを格納します。</summary>
-    <remarks>To be added.</remarks>
-    <threadsafe>コンス トラクターでは、スレッド セーフされ、複数のインスタンスを構築する同時に複数のスレッドで使用可能性があります。 その他のパブリック メンバーの中は、スレッド セーフです。</threadsafe>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定では、 <xref:System.Threading.Tasks.Parallel>クラスのメソッドは、使用可能なすべてのプロセッサを使用しようとします。取り消し可能ではなく、既定値<xref:System.Threading.Tasks.TaskScheduler> (<xref:System.Threading.Tasks.TaskScheduler.Default?displayProperty=nameWithType>) を対象とします。 <xref:System.Threading.Tasks.ParallelOptions>これらの既定値を上書きできるようにします。
+
+ ]]></format>
+    </remarks>
+    <threadsafe>コンストラクターはスレッドセーフであり、複数のスレッドが同時に複数のインスタンスを構築するために使用できます。 他のどのパブリックメンバーもスレッドセーフではありません。</threadsafe>
     <related type="Article" href="~/docs/standard/parallel-programming/data-parallelism-task-parallel-library.md">データの並列化 (タスク並列ライブラリ)</related>
   </Docs>
   <Members>
@@ -60,9 +68,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターでは、既定値を持つインスタンスを初期化します。 <xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A> どの程度の並列処理を使用する必要がありますに上限が設定されていないことを示す-1 に初期化されます。 <xref:System.Threading.Tasks.ParallelOptions.CancellationToken%2A> キャンセルできないトークンに初期化と<xref:System.Threading.Tasks.ParallelOptions.TaskScheduler%2A>は既定のスケジューラ (TaskScheduler.Default) に初期化されます。  
+ このコンストラクターは、既定値を使用してインスタンスを初期化します。 <xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A>は-1 に初期化されます。これは、使用する並列処理の量に上限が設定されていないことを示します。 <xref:System.Threading.Tasks.ParallelOptions.CancellationToken%2A>はキャンセル不可能なトークンに初期化され、 <xref:System.Threading.Tasks.ParallelOptions.TaskScheduler%2A>既定のスケジューラ (TaskScheduler) に初期化されます。  
   
- インスタンスでプロパティの set アクセサーを使用してこれらの既定値のすべてが上書きされる可能性があります。  
+ これらの既定値はすべて、インスタンスのプロパティセットアクセサーを使用して上書きされる可能性があります。  
   
  ]]></format>
         </remarks>
@@ -101,7 +109,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 提供する、<xref:System.Threading.CancellationToken>を<xref:System.Threading.Tasks.Parallel>メソッドを早期に終了する操作を使用できます。 操作の外部のコードは、トークンをキャンセルし、スローすることによって早期に終了ができる場合は、操作が設定されているトークンを監視、<xref:System.OperationCanceledException>します。  
+ メソッド<xref:System.Threading.Tasks.Parallel>にを指定すると、操作を早期に終了できます。 <xref:System.Threading.CancellationToken> 操作の外部のコードは、トークンを取り消すことができます。また、設定されているトークンを操作が観察<xref:System.OperationCanceledException>する場合は、をスローすることで早期に終了することがあります。  
   
  ]]></format>
         </remarks>
@@ -140,17 +148,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A>プロパティによって実行同時操作数に影響する<xref:System.Threading.Tasks.Parallel>これに渡されるメソッド呼び出し<xref:System.Threading.Tasks.ParallelOptions>インスタンス。 正の値のプロパティの値は、値の設定を同時操作の数を制限します。 -1 の場合、同時に実行される操作の数に制限はありません。  
+ プロパティ<xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A>は、この<xref:System.Threading.Tasks.ParallelOptions>インスタンスに渡されたメソッド<xref:System.Threading.Tasks.Parallel>呼び出しによって実行される同時実行操作の数に影響します。 正のプロパティ値を指定すると、同時実行操作の数が設定値に制限されます。 -1 の場合、同時に実行される操作の数に制限はありません。  
   
- 既定では、<xref:System.Threading.Tasks.Parallel.For%2A>と<xref:System.Threading.Tasks.Parallel.ForEach%2A>でを利用する多数のスレッド、基になるスケジューラを提供するための変更が<xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A>のみの既定の制限数の同時実行タスクが使用されます。  
+ 既定<xref:System.Threading.Tasks.Parallel.For%2A>では、 <xref:System.Threading.Tasks.Parallel.ForEach%2A>とは、基になるスケジューラが提供する多くの<xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A>スレッドを利用するため、既定のを変更しても、使用される同時実行タスクの数は制限されます。  
   
- 一般に、この設定を変更する必要はありません。 ただし、こうした高度な使用シナリオで明示的に設定することができます。  
+ 一般に、この設定を変更する必要はありません。 ただし、次のような高度な使用シナリオでは、明示的に設定することもできます。  
   
--   わかっている場合に使用している特定のアルゴリズムは、コア数を超えるスケーリングされません。 追加のコアのサイクルを節約するためにプロパティを設定することができます。  
+-   使用しているアルゴリズムが特定のコア数を超えて拡張されないことがわかっている場合。 追加のコアでサイクルが無駄になるのを避けるために、プロパティを設定できます。  
   
--   同時に複数のアルゴリズムを実行しているし、手動で定義する各アルゴリズムが利用できるシステムの量。 設定することができます、<xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A>それぞれの値。  
+-   複数のアルゴリズムを同時に実行していて、各アルゴリズムで使用できるシステムの量を手動で定義する場合。 それぞれに値を<xref:System.Threading.Tasks.ParallelOptions.MaxDegreeOfParallelism%2A>設定できます。  
   
--   ときに、スレッド プールのヒューリスティックが使用するスレッドの適切な数を決定できないと、スレッドが多すぎるを挿入することになります。 たとえば、実行時間の長いループ本体のイテレーションでスレッド プールが妥当な進行状況、ライブロック、またはデッドロックの違いを見分けることができない可能性があり、パフォーマンスを向上させるために追加されたスレッドを再利用できない可能性があります。 この場合、スレッドの適切な数よりも多く使用しないことを確認するプロパティを設定できます。  
+-   スレッドプールのヒューリスティックが、使用するスレッドの適切な数を特定できず、終了によってスレッドが過剰に挿入される場合があります。 たとえば、実行時間の長いループ本体のイテレーションでは、スレッドプールが、適正な進行状況または livelock またはデッドロックの違いを通知できない可能性があります。また、パフォーマンス向上のために追加されたスレッドを再利用できない可能性があります。 この場合、プロパティを設定して、十分な数のスレッドを使用しないようにすることができます。  
   
  ]]></format>
         </remarks>

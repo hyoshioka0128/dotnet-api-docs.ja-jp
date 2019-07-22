@@ -1,5 +1,5 @@
 <Type Name="TaskAwaiter" FullName="System.Runtime.CompilerServices.TaskAwaiter">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="cd9dbf7d59e48f74d60d0712117689f32b3e148b" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58683584" /></Metadata><TypeSignature Language="C#" Value="public struct TaskAwaiter : System.Runtime.CompilerServices.ICriticalNotifyCompletion" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="9febc455d004ed5efe5e58cea2b72e0a1c7839ca" /><Meta Name="ms.sourcegitcommit" Value="87817aa377ffe999787a084c8e8ca669080f1e6b" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/19/2019" /><Meta Name="ms.locfileid" Value="68337040" /></Metadata><TypeSignature Language="C#" Value="public struct TaskAwaiter : System.Runtime.CompilerServices.ICriticalNotifyCompletion" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit TaskAwaiter extends System.ValueType implements class System.Runtime.CompilerServices.ICriticalNotifyCompletion, class System.Runtime.CompilerServices.INotifyCompletion" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.CompilerServices.TaskAwaiter" />
   <TypeSignature Language="VB.NET" Value="Public Structure TaskAwaiter&#xA;Implements ICriticalNotifyCompletion" />
@@ -47,7 +47,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この型とそのメンバーは、コンパイラでのみ使用します。  
+ この型とそのメンバーは、コンパイラの使用のみを目的としています。  
   
  ]]></format>
     </remarks>
@@ -97,7 +97,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この型とそのメンバーは、使用するため、コンパイラによる意図しています。  
+ この型とそのメンバーは、コンパイラによって使用されることを意図しています。  
   
  ]]></format>
         </remarks>
@@ -150,7 +150,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この型とそのメンバーは、使用するため、コンパイラによる意図しています。  
+ この型とそのメンバーは、コンパイラによって使用されることを意図しています。  
   
  ]]></format>
         </remarks>
@@ -207,13 +207,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この型とそのメンバーは、使用するため、コンパイラによる意図しています。  
+ この型とそのメンバーは、コンパイラによって使用されることを意図しています。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="continuation" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="continuation" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.NullReferenceException"><see cref="T:System.Runtime.CompilerServices.TaskAwaiter" /> オブジェクトが正常に初期化されませんでした。</exception>
         <forInternalUseOnly />
+        <exception cref="T:System.InvalidOperationException">awaiter が適切に初期化されませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="UnsafeOnCompleted">
@@ -261,8 +262,12 @@
       <Docs>
         <param name="continuation">待機操作の完了時に呼び出すアクション。</param>
         <summary>この awaiter に関連付けられている非同期タスクに継続の操作をスケジュールします。</summary>
-        <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="continuation" /> は <see langword="null" />です。</exception>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+このメソッドは、コードで直接使用するのではなく、コンパイラユーザーを対象としています。
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="continuation" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">awaiter が適切に初期化されませんでした。</exception>
         <forInternalUseOnly />
       </Docs>
