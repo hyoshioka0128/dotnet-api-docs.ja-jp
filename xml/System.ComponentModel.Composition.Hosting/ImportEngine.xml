@@ -1,5 +1,5 @@
 <Type Name="ImportEngine" FullName="System.ComponentModel.Composition.Hosting.ImportEngine">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="69ef581363576c62f9a76375023cc7b32a9f508a" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63906884" /></Metadata><TypeSignature Language="C#" Value="public class ImportEngine : IDisposable, System.ComponentModel.Composition.ICompositionService" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="697de33454fecd6ee59c23c4a326e406a2b08a74" /><Meta Name="ms.sourcegitcommit" Value="690605a2d62010b93e13edf329aafe2bdc57423a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/11/2019" /><Meta Name="ms.locfileid" Value="67801260" /></Metadata><TypeSignature Language="C#" Value="public class ImportEngine : IDisposable, System.ComponentModel.Composition.ICompositionService" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ImportEngine extends System.Object implements class System.ComponentModel.Composition.ICompositionService, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.ComponentModel.Composition.Hosting.ImportEngine" />
   <TypeSignature Language="VB.NET" Value="Public Class ImportEngine&#xA;Implements ICompositionService, IDisposable" />
@@ -216,6 +216,9 @@
         <param name="atomicComposition">使用する合成トランザクション。合成トランザクションを使用しない場合は <see langword="null" />。</param>
         <summary>指定したパーツに必要なすべてのインポートをプレビューして、それらを満たすことができることを確認します。実際の設定は行いません。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ComponentModel.Composition.CompositionException">プレビュー中にエラーが発生し、<paramref name="atomicComposition" /> が <see langword="null" /> です。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが格納されます。 発生したエラーによって、既存の合成が不明な状態になります。</exception>
+        <exception cref="T:System.ComponentModel.Composition.ChangeRejectedException">プレビュー中にエラーが発生し、<paramref name="atomicComposition" /> が <see langword="null" /> ではありません。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが格納されます。 既存の合成が有効な状態のままです。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:System.ComponentModel.Composition.Hosting.ImportEngine" /> は破棄されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReleaseImports">
@@ -267,6 +270,9 @@
         <param name="part">インポートを満たすパーツ。</param>
         <summary>指定したパーツのインポートを満たします。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="part" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ComponentModel.Composition.CompositionException">合成中にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが格納されます。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:System.ComponentModel.Composition.Hosting.ImportEngine" /> は破棄されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="SatisfyImportsOnce">
@@ -295,6 +301,9 @@
         <param name="part">インポートを満たすパーツ。</param>
         <summary>指定したパーツのインポートを、再合成の対象としては登録せずに満たします。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="part" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ComponentModel.Composition.CompositionException">合成中にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが格納されます。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:System.ComponentModel.Composition.ICompositionService" /> は破棄されています。</exception>
       </Docs>
     </Member>
   </Members>

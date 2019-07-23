@@ -1,5 +1,5 @@
 <Type Name="Binding" FullName="System.ServiceModel.Channels.Binding">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="48b0347d4d9d99b5d74894ad20cf0ed5c1c32ac9" /><Meta Name="ms.sourcegitcommit" Value="7461f9e28c2f184bd1596e6f07c25a3f34984516" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/28/2019" /><Meta Name="ms.locfileid" Value="58553868" /></Metadata><TypeSignature Language="C#" Value="public abstract class Binding : System.ServiceModel.IDefaultCommunicationTimeouts" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="c89b7105c9fd5725eaa64587f0ecdb9e09cdca39" /><Meta Name="ms.sourcegitcommit" Value="10aa513a7461eb2abbf8d1e35d2a045d4e5a9be7" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/09/2019" /><Meta Name="ms.locfileid" Value="67665163" /></Metadata><TypeSignature Language="C#" Value="public abstract class Binding : System.ServiceModel.IDefaultCommunicationTimeouts" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit Binding extends System.Object implements class System.ServiceModel.IDefaultCommunicationTimeouts" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.Channels.Binding" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class Binding&#xA;Implements IDefaultCommunicationTimeouts" />
@@ -29,7 +29,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>クライアントとサービスの間の通信に使用するプロトコル、トランスポート、およびメッセージ エンコーダーを指定するバインド要素を格納します。</summary>
+    <summary>Contains the binding elements that specify the protocols, transports, and message encoders used for communication between clients and services.</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -40,17 +40,17 @@
   
 |レイヤー|オプション|必須|  
 |-----------|-------------|--------------|  
-|トランザクション フロー|<xref:System.ServiceModel.Channels.TransactionFlowBindingElement>|いいえ|  
-|信頼性|<xref:System.ServiceModel.Channels.ReliableSessionBindingElement>|いいえ|  
+|トランザクション フロー|<xref:System.ServiceModel.Channels.TransactionFlowBindingElement>|Ｘ|  
+|信頼性|<xref:System.ServiceModel.Channels.ReliableSessionBindingElement>|Ｘ|  
 |セキュリティ|同期、非同期、トランスポート レベル|いいえ|  
 |形状の変更|<xref:System.ServiceModel.Channels.CompositeDuplexBindingElement>|いいえ|  
 |トランスポートのアップグレード|SSL ストリーム、Windows ストリーム、ピア リゾルバー|いいえ|  
-|エンコード|テキスト、バイナリ、MTOM、カスタム|はい|  
-|Transport|TCP、名前付きパイプ、HTTP、HTTPS、MSMQ、およびカスタム|はい|  
+|エンコーディング|テキスト、バイナリ、MTOM、カスタム|[はい]|  
+|Transport|TCP、名前付きパイプ、HTTP、HTTPS、MSMQ、およびカスタム|[はい]|  
   
  各バインド要素は、クライアントでのチャネル ファクトリの構築、およびサービスでのチャネル リスナーの構築に対する仕様を提供します。 たとえば、チャネル ファクトリ スタックを作成するときは、バインド内の各バインド要素に対し、スタック内に 1 つのチャネル ファクトリが存在します。 同様のマッピングが、サービス上のスタックでのチャネル リスナーにも適用されます。 これらのエンドポイントの間でチャネル ベースの接続を確立するには、クライアントとサービスの間の整合性が不可欠です。 その結果、各ファクトリとリスナーは、両者を接続するチャネル スタック内の対応するチャネルの送信と受け入れを処理し、これらのチャネルは通信に使用するメッセージを送受信できます。  
   
- <xref:System.ServiceModel.Channels.Binding> の各インスタンスには、<xref:System.ServiceModel.Channels.Binding.Name%2A> および <xref:System.ServiceModel.Channels.Binding.Namespace%2A> があり、合わせてサービスのメタデータ内でそのインスタンスを一意に識別します。 名前または名前空間が指定されていない場合、WCF は、既定値を追加します。 既定の名前は`null`、既定の名前空間はhttp://tempuri.org/します。 バインディングに対するこのユーザー名は、<xref:System.ServiceModel.Channels.Binding.Scheme%2A> プロパティによって指定されるプロトコル名とは異なります。 たとえば、HTTP バインドをさらに追加する場合は、それらに自由に名前を付けて、すべてのスキームを "http" に設定できます。 <xref:System.ServiceModel.Channels.Binding.Scheme%2A> に基づくアプリケーションまたはマシンの固有のディスパッチはありません。 したがって、既知のプロトコルに対して追加のハンドラーを登録できないという、よくある問題は避けられます。 また、複数のバージョンのバインドの並行使用も、各バージョンに異なる名前を付けることで、簡単に処理できます。  
+ <xref:System.ServiceModel.Channels.Binding> の各インスタンスには、<xref:System.ServiceModel.Channels.Binding.Name%2A> および <xref:System.ServiceModel.Channels.Binding.Namespace%2A> があり、合わせてサービスのメタデータ内でそのインスタンスを一意に識別します。 名前または名前空間が指定されていない場合、WCF は、既定値を追加します。 既定の名前は`null`、既定の名前空間は`http://tempuri.org/`します。 バインディングに対するこのユーザー名は、<xref:System.ServiceModel.Channels.Binding.Scheme%2A> プロパティによって指定されるプロトコル名とは異なります。 たとえば、HTTP バインドをさらに追加する場合は、それらに自由に名前を付けて、すべてのスキームを "http" に設定できます。 <xref:System.ServiceModel.Channels.Binding.Scheme%2A> に基づくアプリケーションまたはマシンの固有のディスパッチはありません。 したがって、既知のプロトコルに対して追加のハンドラーを登録できないという、よくある問題は避けられます。 また、複数のバージョンのバインドの並行使用も、各バージョンに異なる名前を付けることで、簡単に処理できます。  
   
  <xref:System.ServiceModel.Channels.Binding> クラスは、長時間リソースを停滞させることによるサービス拒否 (DOS) 攻撃を軽減するために、<xref:System.ServiceModel.IDefaultCommunicationTimeouts> インターフェイスを実装します。 この実装により、接続の確立と終了や、メッセージの送受信に関連付けられている読み取りおよび書き込み操作についての通信タイムアウト値が指定されます。 これらのタイムアウト値とその既定の操作を取得および設定するプロパティを、次の表に示します。  
   
@@ -81,7 +81,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="T:System.ServiceModel.Channels.Binding" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Channels.Binding" /> class.</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName=".ctor">
@@ -108,12 +108,12 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>既定の名前と名前空間を使用して、<see cref="T:System.ServiceModel.Channels.Binding" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Channels.Binding" /> class with a default name and namespace.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の名前は`null`、既定の名前空間はhttp://tempuri.org/します。  
+ 既定の名前は`null`、既定の名前空間は`http://tempuri.org/`します。  
   
    
   
@@ -153,9 +153,9 @@
         <Parameter Name="ns" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">バインドの <see cref="P:System.ServiceModel.Channels.Binding.Name" />。</param>
-        <param name="ns">バインドの <see cref="P:System.ServiceModel.Channels.Binding.Namespace" />。</param>
-        <summary>サービスの指定したバインドを使用して、<see cref="T:System.ServiceModel.Channels.Binding" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="name">The <see cref="P:System.ServiceModel.Channels.Binding.Name" /> of the binding.</param>
+        <param name="ns">The <see cref="P:System.ServiceModel.Channels.Binding.Namespace" /> of the binding.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Channels.Binding" /> class from a specified binding of the service.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -164,8 +164,8 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="name" /> は、<see langword="null" /> または空の文字列です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="ns" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="name" /> is <see langword="null" /> or an empty string.</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="ns" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="BuildChannelFactory&lt;TChannel&gt;">
@@ -175,7 +175,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>クライアント上に、バインドが指定するチャネル ファクトリ スタックを構築します。</summary>
+        <summary>Builds the channel factory stack on the client specified by the binding.</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="BuildChannelFactory&lt;TChannel&gt;">
@@ -218,11 +218,11 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル ファクトリが作成するチャネルの種類。</typeparam>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定するオブジェクト配列。</param>
-        <summary>指定した種類のチャネルを作成し、オブジェクト配列で指定されている機能を満たすチャネル ファクトリ スタックを、クライアント上に構築します。</summary>
-        <returns>コレクションによって指定される機能を満たす <paramref name="TChannel" /> 型の <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" />。</returns>
+        <param name="parameters">The object array that specifies requirements for the channel factory that is built.</param>
+        <summary>Builds the channel factory stack on the client that creates a specified type of channel and that satisfies the features specified by an object array.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" /> of type <paramref name="TChannel" /> that satisfies the features specified by the collection.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelFactory&lt;TChannel&gt;">
@@ -259,11 +259,11 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル ファクトリが作成するチャネルの種類。</typeparam>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>指定した種類のチャネルを作成し、バインド パラメーターのコレクションで指定されている機能を満たすチャネル ファクトリ スタックを、クライアント上に構築します。</summary>
-        <returns>コレクションによって指定される機能を満たす <paramref name="TChannel" /> 型の <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" />。</returns>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel factory built.</param>
+        <summary>Builds the channel factory stack on the client that creates a specified type of channel and that satisfies the features specified by a collection of binding parameters.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" /> of type <paramref name="TChannel" /> that satisfies the features specified by the collection.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -272,7 +272,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -313,11 +313,11 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定するオブジェクト配列。</param>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="parameters">The object array that specifies requirements for the channel factory built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -352,11 +352,11 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="parameters">作成されるチャネル リスナーの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>指定した種類のチャネルを受け入れ、バインド パラメーターのコレクションで指定されている機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel listener that is built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified by a collection of binding parameters.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -399,13 +399,13 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="listenUriBaseAddress">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="listenUriRelativeAddress">サービスがリッスンするアドレス (ベース アドレスに相対)。</param>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定するオブジェクト配列。</param>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="listenUriBaseAddress">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="listenUriRelativeAddress">The address, relative to the base address, on which the service listens.</param>
+        <param name="parameters">The object array that specifies requirements for the channel factory that is built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -447,13 +447,13 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="listenUriBaseAddress">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="listenUriRelativeAddress">サービスがリッスンするアドレス (ベース アドレスに相対)。</param>
-        <param name="parameters">作成されるチャネル リスナーの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="listenUriBaseAddress">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="listenUriRelativeAddress">The address, relative to the base address, on which the service listens.</param>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel listener that is built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -500,13 +500,13 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="listenUriBaseAddress">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="listenUri">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定するオブジェクト配列。</param>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="listenUriBaseAddress">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="listenUri">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="parameters">The object array that specifies requirements for the channel factory that is built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -547,13 +547,13 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="listenUriBaseAddress">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="listenUri">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="parameters">作成されるチャネル リスナーの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="listenUriBaseAddress">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="listenUri">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel listener that is built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -596,14 +596,14 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="listenUriBaseAddress">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="listenUriRelativeAddress">サービスがリッスンするアドレス (ベース アドレスに相対)。</param>
-        <param name="listenUriMode">サービスがリッスンするために提供される URI が一意であるか、または提供されたとおりに正確に使用できることを、トランスポートが保証する必要があるかどうかを示す <see cref="T:System.ServiceModel.Description.ListenUriMode" /> の値。</param>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定するオブジェクト配列。</param>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="listenUriBaseAddress">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="listenUriRelativeAddress">The address, relative to the base address, on which the service listens.</param>
+        <param name="listenUriMode">A value of the <see cref="T:System.ServiceModel.Description.ListenUriMode" /> that indicates whether the transport must ensure that the URI provided for the service to listen on is unique or can be used exactly as provided.</param>
+        <param name="parameters">The object array that specifies requirements for the channel factory that is built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <Member MemberName="BuildChannelListener&lt;TChannel&gt;">
@@ -640,14 +640,14 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">チャネル リスナーが受け入れるチャネルの種類。</typeparam>
-        <param name="listenUriBaseAddress">サービスがリッスンするベース アドレスを提供する <see cref="T:System.Uri" />。</param>
-        <param name="listenUriRelativeAddress">サービスがリッスンするアドレス (ベース アドレスに相対)。</param>
-        <param name="listenUriMode">サービスがリッスンするために提供される URI が一意であるか、または提供されたとおりに正確に使用できることを、トランスポートが保証する必要があるかどうかを示す <see cref="T:System.ServiceModel.Description.ListenUriMode" /> の値。</param>
-        <param name="parameters">作成されるチャネル リスナーの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>指定した種類のチャネルを受け入れ、指定した機能を満たすチャネル リスナーを、サービス上に構築します。</summary>
-        <returns>指定された機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> 型の <paramref name="TChannel" /></returns>
+        <param name="listenUriBaseAddress">The <see cref="T:System.Uri" /> that provides the base address on which the service listens.</param>
+        <param name="listenUriRelativeAddress">The address, relative to the base address, on which the service listens.</param>
+        <param name="listenUriMode">A value of the <see cref="T:System.ServiceModel.Description.ListenUriMode" /> that indicates whether the transport must ensure that the URI provided for the service to listen on is unique or can be used exactly as provided.</param>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel listener that is built.</param>
+        <summary>Builds the channel listener on the service that accepts a specified type of channel and that satisfies the features specified.</summary>
+        <returns>An <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> of type <paramref name="TChannel" /> that satisfies the features specified.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">トランスポート要素がないか、トランスポート要素の順序が正しくないか、スキームが無効であるか、またはメッセージのバージョンが指定されていません。</exception>
+        <exception cref="T:System.InvalidOperationException">Transport element is missing or out of order or scheme is invalid or the message version is not specified.</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="CanBuildChannelFactory&lt;TChannel&gt;">
@@ -657,7 +657,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>特定の条件を満たすチャネル ファクトリ スタックを現在のバインドがクライアント上に構築できるかどうかを示す値を返します。</summary>
+        <summary>Returns a value that indicates whether the current binding can build a channel factory stack on the client that satisfies some specific criteria.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -708,9 +708,9 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">ファクトリがテストされているチャネルの種類。</typeparam>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定するオブジェクト配列。</param>
-        <summary>オブジェクト配列で指定した要件を満たすチャネル ファクトリ スタックを、現在のバインドがクライアント上に構築できるかどうかを示す値を返します。</summary>
-        <returns>指定したチャネル ファクトリ スタックをクライアントで作成できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="parameters">The object array that specifies requirements for the channel factory that is built.</param>
+        <summary>Returns a value that indicates whether the current binding can build a channel factory stack on the client that satisfies the requirements specified by an object array.</summary>
+        <returns><see langword="true" /> if the specified channel factory stack can be build on the client; otherwise, <see langword="false" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -755,9 +755,9 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">ファクトリがテストされているチャネルの種類。</typeparam>
-        <param name="parameters">作成するチャネル ファクトリの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>指定したバインド パラメーターのコレクションを満たすチャネル ファクトリ スタックを、現在のバインドがクライアント上に構築できるかどうかを示す値を返します。</summary>
-        <returns>指定したチャネル ファクトリ スタックをクライアントで作成できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel factory that is built.</param>
+        <summary>Returns a value that indicates whether the current binding can build a channel factory stack on the client that satisfies the collection of binding parameters specified.</summary>
+        <returns><see langword="true" /> if the specified channel factory stack can be build on the client; otherwise, <see langword="false" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -774,7 +774,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定した条件を満たすチャネル リスナー スタックを現在のバインドがサービス上に構築できるかどうかを示す値を返します。</summary>
+        <summary>Returns a value that indicates whether the current binding can build a channel listener stack on the service that satisfies some specified criteria.</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="CanBuildChannelListener&lt;TChannel&gt;">
@@ -815,9 +815,9 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">リスナーがテストされているチャネルの種類。</typeparam>
-        <param name="parameters">作成されるチャネル ファクトリの要件を指定するオブジェクト配列。</param>
-        <summary>オブジェクトの配列で指定した条件を満たすチャネル リスナー スタックを、現在のバインドがサービス上に構築できるかどうかを示す値を返します。</summary>
-        <returns>指定したチャネル リスナー スタックをサービスで作成できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="parameters">The object array that specifies requirements for the channel factory that is built.</param>
+        <summary>Returns a value that indicates whether the current binding can build a channel listener stack on the service that satisfies the criteria specified in an array of objects.</summary>
+        <returns><see langword="true" /> if the specified channel listener stack can be build on the service; otherwise, <see langword="false" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -860,9 +860,9 @@
       </Parameters>
       <Docs>
         <typeparam name="TChannel">リスナーがテストされているチャネルの種類。</typeparam>
-        <param name="parameters">作成されるチャネル リスナーの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>指定したバインド パラメーターのコレクションを満たすチャネル リスナー スタックを、現在のバインドがサービス上に構築できるかどうかを示す値を返します。</summary>
-        <returns>指定したチャネル リスナー スタックをサービスで作成できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel listener that is built.</param>
+        <summary>Returns a value that indicates whether the current binding can build a channel listener stack on the service that satisfies the collection of binding parameters specified.</summary>
+        <returns><see langword="true" /> if the specified channel listener stack can be build on the service; otherwise, <see langword="false" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -908,7 +908,7 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続の終了を待機する時間間隔を取得および設定します。これを超えるとトランスポートで例外が発生します。</summary>
+        <summary>Gets or sets the interval of time provided for a connection to close before the transport raises an exception.</summary>
         <value>クローズ操作がタイムアウトになるまでの時間を表す <see cref="T:System.TimeSpan" />。既定値は 1 分です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -918,7 +918,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">値が 0 未満か、または大きすぎます。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The value is less than zero or too large.</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateBindingElements">
@@ -949,8 +949,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>派生クラスでオーバーライドされると、現在のバインドの一部であるバインド要素を格納するコレクションを作成します。</summary>
-        <returns>現在のバインド オブジェクトのバインド要素を正しい順序で格納する、<see cref="T:System.Collections.Generic.ICollection`1" /> 型の <see cref="T:System.ServiceModel.Channels.BindingElement" /> オブジェクト。</returns>
+        <summary>When overridden in a derived class, creates a collection that contains the binding elements that are part of the current binding.</summary>
+        <returns>A <see cref="T:System.Collections.Generic.ICollection`1" /> object of type <see cref="T:System.ServiceModel.Channels.BindingElement" /> that contains the binding elements from the current binding object in the correct order.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -999,9 +999,9 @@
       </Parameters>
       <Docs>
         <typeparam name="T">メソッドが照会している、型指定されたオブジェクト。</typeparam>
-        <param name="parameters">作成されるチャネル リスナーの要件を指定する <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" />。</param>
-        <summary>バインド スタックの適切な層から、要求のあった型指定されたオブジェクト (ある場合) を返します。</summary>
-        <returns>要求される型指定されたオブジェクト <paramref name="T" /> がある場合は、そのオブジェクト。ない場合は <see langword="null" />。</returns>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> that specifies requirements for the channel listener that is built.</param>
+        <summary>Returns a typed object requested, if present, from the appropriate layer in the binding stack.</summary>
+        <returns>The typed object <paramref name="T" /> requested if it is present or <see langword="null" /> if it is not.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1039,8 +1039,8 @@
         <ReturnType>System.ServiceModel.Channels.MessageVersion</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>バインドで構成されるクライアントとサービスが使用するメッセージ バージョンを取得します。</summary>
-        <value>バインドで構成されるクライアントとサービスが使用する <see cref="T:System.ServiceModel.Channels.MessageVersion" />。</value>
+        <summary>Gets the message version used by clients and services configured with the binding.</summary>
+        <value>バインディングで構成されるクライアントとサービスが使用する <see cref="T:System.ServiceModel.Channels.MessageVersion" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1071,7 +1071,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>バインドの名前を取得または設定します。</summary>
+        <summary>Gets or sets the name of the binding.</summary>
         <value>バインディングの名前。 既定の名前は <see langword="null" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1083,7 +1083,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">設定する値には、<see langword="null" /> も空の文字列も指定できません。</exception>
+        <exception cref="T:System.ArgumentException">The value set cannot be <see langword="null" /> or an empty string.</exception>
       </Docs>
     </Member>
     <Member MemberName="Namespace">
@@ -1118,8 +1118,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>バインドの XML 名前空間を取得または設定します。</summary>
-        <value>バインディングの XML 名前空間。 既定値は "http://tempuri.org/" です。</value>
+        <summary>Gets or sets the XML namespace of the binding.</summary>
+        <value>バインディングの XML 名前空間。 既定値は<c>"http://tempuri.org/"</c>します。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1130,7 +1130,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException">設定する値を <see langword="null" /> にすることはできません。</exception>
+        <exception cref="T:System.ArgumentNullException">The value set cannot be <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="OpenTimeout">
@@ -1168,7 +1168,7 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続の確立を待機する時間間隔を取得および設定します。これを超えるとトランスポートで例外が発生します。</summary>
+        <summary>Gets or sets the interval of time provided for a connection to open before the transport raises an exception.</summary>
         <value>オープン操作がタイムアウトになるまでの時間を表す <see cref="T:System.TimeSpan" />。既定値は 1 分です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1178,7 +1178,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">値が 0 未満か、または大きすぎます。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The value is less than zero or too large.</exception>
       </Docs>
     </Member>
     <Member MemberName="ReceiveTimeout">
@@ -1216,7 +1216,7 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>アプリケーション メッセージが受信されない間に、接続が非アクティブになってから切断されるまでの時間を取得または設定します。</summary>
+        <summary>Gets or sets the interval of time that a connection can remain inactive, during which no application messages are received, before it is dropped.</summary>
         <value>アプリケーションでメッセージを受信する必要がある、タイムアウトまでの制限時間を指定する <see cref="T:System.TimeSpan" />。既定値は、10 分です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1236,7 +1236,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">値が 0 未満か、または大きすぎます。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The value is less than zero or too large.</exception>
       </Docs>
     </Member>
     <Member MemberName="Scheme">
@@ -1266,7 +1266,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>派生クラスとして実装された場合、バインドによって作成されるチャネルおよびリスナー ファクトリが使用するトランスポートを指定する URI スキームを設定します。</summary>
+        <summary>When implemented in a derived class, sets the URI scheme that specifies the transport used by the channel and listener factories that are built by the bindings.</summary>
         <value>現在のバインドによって構築されるファクトリが作成するチャネルまたはリスナーが使用する URI スキーム。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1313,7 +1313,7 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>書き込み操作の完了を待機する時間間隔を取得および設定します。これを超えるとトランスポートで例外が発生します。</summary>
+        <summary>Gets or sets the interval of time provided for a write operation to complete before the transport raises an exception.</summary>
         <value>書き込み操作を完了する必要がある、タイムアウトまでの制限時間を指定する <see cref="T:System.TimeSpan" />。既定値は 1 分です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1323,7 +1323,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">値が 0 未満か、または大きすぎます。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The value is less than zero or too large.</exception>
       </Docs>
     </Member>
     <Member MemberName="ShouldSerializeName">
@@ -1351,8 +1351,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>バインドの名前をシリアル化する必要があるかどうかを示す値を返します。</summary>
-        <returns>バインド名をシリアル化する必要がある場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <summary>Returns whether the name of the binding should be serialized.</summary>
+        <returns><see langword="true" /> if the binding name should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1381,8 +1381,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>バインドの名前空間をシリアル化する必要があるかどうかを示す値を返します。</summary>
-        <returns>バインドの名前空間をシリアル化する必要がある場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <summary>Returns whether the namespace of the binding should be serialized.</summary>
+        <returns><see langword="true" /> if the binding namespace should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

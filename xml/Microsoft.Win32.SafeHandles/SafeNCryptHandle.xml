@@ -1,5 +1,5 @@
 <Type Name="SafeNCryptHandle" FullName="Microsoft.Win32.SafeHandles.SafeNCryptHandle">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="0587dc04070c77ac04f4355a1798ec80dfeb6f41" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56775951" /></Metadata><TypeSignature Language="C#" Value="public abstract class SafeNCryptHandle : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="0cbff58f64d36eb4aa11d9911a1ae313cecbd1a2" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68368831" /></Metadata><TypeSignature Language="C#" Value="public abstract class SafeNCryptHandle : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit SafeNCryptHandle extends Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
   <TypeSignature Language="DocId" Value="T:Microsoft.Win32.SafeHandles.SafeNCryptHandle" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class SafeNCryptHandle&#xA;Inherits SafeHandleZeroOrMinusOneIsInvalid" />
@@ -34,8 +34,23 @@
   </Attributes>
   <Docs>
     <summary>CNG (Cryptography Next Generation) オブジェクトで使用できるセーフ ハンドルを提供します。</summary>
-    <remarks>To be added.</remarks>
-    <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+      
+## Remarks
+
+
+このクラスは、これらのハンドルを正しく複製して解放し、ネイティブ複製をシミュレートするロジックをラップします。
+            
+開いている各ハンドルオブジェクトは、次の3つの状態のいずれかであると考えることができます。
+
+- マーシャラーを使用して作成された**所有者**(従来のスタイルセーフハンドル)。 特に、特定のネイティブハンドルに存在する所有者ハンドルは1つだけです。
+- ホルダー状態のハンドルの**重複**するポイント。 重複状態のハンドルを解放すると、は、ネイティブハンドルのリリースではなく、ホルダーの参照カウントをデクリメントするだけです。
+- **ホルダー** -はネイティブハンドルに保持され、重複状態のハンドルによって参照されます。 すべての重複するハンドルが閉じられると、ホルダーハンドルはネイティブハンドルを解放します。 ホルダーハンドルは完了しません。これは、重複するハンドルとホルダーハンドルのファイナライザーが競合するためです。 代わりに、すべての重複するハンドルを完了させ、参照カウントを0にデクリメントします。 ホルダーハンドルのインスタンスは、重複するハンドル以外では参照されないようにする必要があります。
+
+      ]]></format>
+    </remarks>
+    <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
     <forInternalUseOnly />
   </Docs>
   <Members>
@@ -67,7 +82,7 @@
       <Docs>
         <summary><see cref="T:Microsoft.Win32.SafeHandles.SafeNCryptHandle" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <forInternalUseOnly />
       </Docs>
     </Member>
@@ -166,7 +181,21 @@
       <Docs>
         <summary>CNG (Cryptography Next Generation) オブジェクトで使用されるハンドルを解放します。</summary>
         <returns>ハンドルが正常に解放された場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+重複と同様に、ハンドルを解放すると、ハンドルの状態に基づいてさまざまな操作が実行されます。
+            
+ParentHandle 値を使用して構築されたインスタンスは、parentHandle オブジェクトでのみ DangerousRelease を呼び出します。 それ以外の場合、動作は所有権の状態によって決まります。
+
+- **Owner** -release P/Invoke メソッドを呼び出します。
+- **Duplicate** -現在の所有者の参照カウントをデクリメントします。
+- [**所有**者]-リリース P/Invoke を呼び出します。 ホルダーの ReleaseHandle は、参照カウントが0であることに注意してください。
+
+          ]]></format>
+        </remarks>
         <forInternalUseOnly />
       </Docs>
     </Member>

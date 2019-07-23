@@ -1,5 +1,5 @@
 <Type Name="SoapHttpClientProtocol" FullName="System.Web.Services.Protocols.SoapHttpClientProtocol">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3bd6853edcd153b523c50a5a724fe6928c71f027" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65006590" /></Metadata><TypeSignature Language="C#" Value="public class SoapHttpClientProtocol : System.Web.Services.Protocols.HttpWebClientProtocol" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="c706c1af8177916071757d526a6577557a1f625a" /><Meta Name="ms.sourcegitcommit" Value="d273738f2e9a7125fddf20a2da56406d86290ce9" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/10/2019" /><Meta Name="ms.locfileid" Value="67725074" /></Metadata><TypeSignature Language="C#" Value="public class SoapHttpClientProtocol : System.Web.Services.Protocols.HttpWebClientProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SoapHttpClientProtocol extends System.Web.Services.Protocols.HttpWebClientProtocol" />
   <TypeSignature Language="DocId" Value="T:System.Web.Services.Protocols.SoapHttpClientProtocol" />
   <TypeSignature Language="VB.NET" Value="Public Class SoapHttpClientProtocol&#xA;Inherits HttpWebClientProtocol" />
@@ -22,7 +22,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>SOAP を使用する場合に、プロキシがから派生したクラスのクライアントを指定します。</summary>
+    <summary>Specifies the class client that proxies derive from when using SOAP.</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -45,6 +45,8 @@
 > [!IMPORTANT]
 >  この例には、ユーザー入力を受け付けるテキスト ボックスがあります。これにより、セキュリティが脆弱になる可能性があります。 既定では、ASP.NET Web ページによって、ユーザー入力にスクリプトまたは HTML 要素が含まれていないかどうかが検証されます。 詳細については、「[スクリプトによる攻略の概要](https://msdn.microsoft.com/library/772c7312-211a-4eb3-8d6e-eec0aa1dcc07)」を参照してください。  
   
+ [!code-aspx-csharp[Classic SoapHttpClientProtocol Example#2](~/samples/snippets/csharp/VS_Snippets_Remoting/Classic SoapHttpClientProtocol Example/CS/sourcecs.asmx)]
+ [!code-aspx-vb[Classic SoapHttpClientProtocol Example#2](~/samples/snippets/visualbasic/VS_Snippets_Remoting/Classic SoapHttpClientProtocol Example/VB/sourcevb.asmx)]  
   
   
  ]]></format>
@@ -70,7 +72,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.Web.Services.Protocols.SoapHttpClientProtocol" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.Services.Protocols.SoapHttpClientProtocol" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -99,12 +101,12 @@
         <Parameter Name="asyncState" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="methodName">呼び出している派生クラスで XML Web サービス メソッドの名前、<see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke(System.String,System.Object[],System.AsyncCallback,System.Object)" />メソッド。</param>
-        <param name="parameters">XML Web サービスに渡すパラメーターを格納しているオブジェクトの配列。 配列内の値の順序は、呼び出し元の派生クラスのメソッドのパラメーター順序に対応します。</param>
-        <param name="callback">非同期呼び出しが完了したときに呼び出すデリゲート。 場合<paramref name="callback" />は<see langword="null" />デリゲートは呼び出されません。</param>
-        <param name="asyncState">呼び出し元によって提供される追加情報。</param>
-        <summary>SOAP を使用して XML Web サービス メソッドの非同期呼び出しを開始します。</summary>
-        <returns><see cref="T:System.IAsyncResult" />に渡される、<see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.EndInvoke(System.IAsyncResult)" />リモート メソッド呼び出しから戻り値を取得します。</returns>
+        <param name="methodName">The name of the XML Web service method in the derived class that is invoking the <see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke(System.String,System.Object[],System.AsyncCallback,System.Object)" /> method.</param>
+        <param name="parameters">An array of objects containing the parameters to pass to the XML Web service. The order of the values in the array correspond to the order of the parameters in the calling method of the derived class.</param>
+        <param name="callback">The delegate to call when the asynchronous invoke is complete. If <paramref name="callback" /> is <see langword="null" />, the delegate is not called.</param>
+        <param name="asyncState">Extra information supplied by the caller.</param>
+        <summary>Starts an asynchronous invocation of an XML Web service method using SOAP.</summary>
+        <returns>An <see cref="T:System.IAsyncResult" /> that is passed to the <see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.EndInvoke(System.IAsyncResult)" /> method to obtain the return values from the remote method call.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -130,13 +132,14 @@
   
  次のコード例は、`Math`前述のプロキシ クラスの作成元の XML Web サービス。  
   
-  
+ [!code-aspx-csharp[Classic SoapHttpClientProtocol.BeginInvoke Example#2](~/samples/snippets/csharp/VS_Snippets_Remoting/Classic SoapHttpClientProtocol.BeginInvoke Example/CS/sourcecs.asmx)]
+ [!code-aspx-vb[Classic SoapHttpClientProtocol.BeginInvoke Example#2](~/samples/snippets/visualbasic/VS_Snippets_Remoting/Classic SoapHttpClientProtocol.BeginInvoke Example/VB/sourcevb.asmx)]
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Web.Services.Protocols.SoapException">要求は、サーバー コンピューターに到達が正常に処理されませんでした。</exception>
-        <exception cref="T:System.InvalidOperationException">要求は、オブジェクトの現在の状態に対して無効でした。</exception>
-        <exception cref="T:System.Net.WebException">ネットワークへのアクセス中にエラーが発生しました。</exception>
+        <exception cref="T:System.Web.Services.Protocols.SoapException">The request reached the server computer, but was not processed successfully.</exception>
+        <exception cref="T:System.InvalidOperationException">The request was not valid for the object's current state.</exception>
+        <exception cref="T:System.Net.WebException">An error occurred while accessing the network.</exception>
         <altmember cref="T:System.IAsyncResult" />
         <altmember cref="T:System.AsyncCallback" />
         <altmember cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.EndInvoke(System.IAsyncResult)" />
@@ -164,7 +167,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ある探索ドキュメントで説明されている XML Web サービスに動的にバインド<see cref="P:System.Web.Services.Protocols.WebClientProtocol.Url" />します。</summary>
+        <summary>Dynamically binds to an XML Web service described in the discovery document at <see cref="P:System.Web.Services.Protocols.WebClientProtocol.Url" />.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -192,10 +195,10 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Exception">探索ドキュメント内のプロキシ クラスで定義されているバインドが見つかりませんでした<see cref="P:System.Web.Services.Protocols.WebClientProtocol.Url" />します。
+        <exception cref="T:System.Exception">The binding defined in the proxy class could not be found in the discovery document at <see cref="P:System.Web.Services.Protocols.WebClientProtocol.Url" />.
 
-- または - 
-プロキシ クラスに定義されているバインドがありません。</exception>
+-or- 
+The proxy class does not have a binding defined.</exception>
         <altmember cref="T:System.Web.Services.WebServiceBindingAttribute" />
         <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/fxx6cfx2(v=vs.100)">XML Web サービス探索</related>
       </Docs>
@@ -222,9 +225,9 @@
         <Parameter Name="asyncResult" Type="System.IAsyncResult" />
       </Parameters>
       <Docs>
-        <param name="asyncResult"><see cref="T:System.IAsyncResult" /> メソッドから返された <see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke(System.String,System.Object[],System.AsyncCallback,System.Object)" />。</param>
-        <summary>SOAP を使用して XML Web サービス メソッドの非同期呼び出しを終了します。</summary>
-        <returns>戻り値と、参照渡しを含むオブジェクトの配列または<see langword="out" />派生クラス メソッドのパラメーター。</returns>
+        <param name="asyncResult">The <see cref="T:System.IAsyncResult" /> returned from the <see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke(System.String,System.Object[],System.AsyncCallback,System.Object)" /> method.</param>
+        <summary>Ends an asynchronous invocation of an XML Web service method using SOAP.</summary>
+        <returns>An array of objects that contains the return value and any by-reference or <see langword="out" /> parameters of the derived class method.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -246,14 +249,15 @@
   
  次のコード例は、`Math`前述のプロキシ クラスの作成元の XML Web サービス。  
   
-  
+ [!code-aspx-csharp[Classic SoapHttpClientProtocol.EndInvoke Example#2](~/samples/snippets/csharp/VS_Snippets_Remoting/Classic SoapHttpClientProtocol.EndInvoke Example/CS/sourcecs.asmx)]
+ [!code-aspx-vb[Classic SoapHttpClientProtocol.EndInvoke Example#2](~/samples/snippets/visualbasic/VS_Snippets_Remoting/Classic SoapHttpClientProtocol.EndInvoke Example/VB/sourcevb.asmx)]
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="asyncResult" /> 戻り値のない、<see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke(System.String,System.Object[],System.AsyncCallback,System.Object)" />メソッド。</exception>
-        <exception cref="T:System.Web.Services.Protocols.SoapException">要求は、サーバー コンピューターに到達が正常に処理されませんでした。</exception>
-        <exception cref="T:System.InvalidOperationException">要求は、オブジェクトの現在の状態に対して無効でした。</exception>
-        <exception cref="T:System.Net.WebException">ネットワークへのアクセス中にエラーが発生しました。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="asyncResult" /> is not the return value from the <see cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke(System.String,System.Object[],System.AsyncCallback,System.Object)" /> method.</exception>
+        <exception cref="T:System.Web.Services.Protocols.SoapException">The request reached the server computer, but was not processed successfully.</exception>
+        <exception cref="T:System.InvalidOperationException">The request was not valid for the object's current state.</exception>
+        <exception cref="T:System.Net.WebException">An error occurred while accessing the network.</exception>
         <altmember cref="T:System.IAsyncResult" />
         <altmember cref="M:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke(System.String,System.Object[],System.AsyncCallback,System.Object)" />
         <altmember cref="T:System.Web.Services.Protocols.WebClientProtocol" />
@@ -281,10 +285,10 @@
         <Parameter Name="bufferSize" Type="System.Int32" Index="1" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="message">A<see cref="T:System.Web.Services.Protocols.SoapClientMessage" />を提供する、<see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" />初期化するために、<see cref="T:System.Xml.XmlReader" />します。</param>
-        <param name="bufferSize">初期バッファー サイズ、<see cref="T:System.IO.StreamReader" />で使用される、<see cref="T:System.Xml.XmlReader" />します。</param>
-        <summary>返します、<see cref="T:System.Xml.XmlReader" />で初期化されて、<see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" />のプロパティ、<see cref="T:System.Web.Services.Protocols.SoapClientMessage" />パラメーター。</summary>
-        <returns>A<see cref="T:System.Xml.XmlReader" />で初期化されて、<see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" />のプロパティ、<paramref name="message" />パラメーター。</returns>
+        <param name="message">A <see cref="T:System.Web.Services.Protocols.SoapClientMessage" /> that provides the <see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" /> to initialize the <see cref="T:System.Xml.XmlReader" />.</param>
+        <param name="bufferSize">The initial buffer size of the <see cref="T:System.IO.StreamReader" /> used by the <see cref="T:System.Xml.XmlReader" />.</param>
+        <summary>Returns an <see cref="T:System.Xml.XmlReader" /> initialized with the <see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" /> property of the <see cref="T:System.Web.Services.Protocols.SoapClientMessage" /> parameter.</summary>
+        <returns>A <see cref="T:System.Xml.XmlReader" /> initialized with the <see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" /> property of the <paramref name="message" /> parameter.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -309,9 +313,9 @@
         <Parameter Name="uri" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="uri"><see cref="T:System.Uri" />を作成するときに使用する、<see cref="T:System.Net.WebRequest" />します。</param>
-        <summary>指定した <paramref name="uri" /> に対して <see cref="T:System.Net.WebRequest" /> を作成します。</summary>
-        <returns><see cref="T:System.Net.WebRequest" />指定した URI 用です。</returns>
+        <param name="uri">The <see cref="T:System.Uri" /> to use when creating the <see cref="T:System.Net.WebRequest" />.</param>
+        <summary>Creates a <see cref="T:System.Net.WebRequest" /> for the specified <paramref name="uri" />.</summary>
+        <returns>The <see cref="T:System.Net.WebRequest" /> for the specified URI.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -320,7 +324,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><paramref name="uri" /> パラメーターが <see langword="null" /> です。</exception>
+        <exception cref="T:System.InvalidOperationException">The <paramref name="uri" /> parameter is <see langword="null" />.</exception>
         <altmember cref="T:System.Net.WebRequest" />
         <altmember cref="T:System.Web.Services.Protocols.WebClientProtocol" />
         <altmember cref="M:System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(System.Net.WebRequest)" />
@@ -350,10 +354,10 @@
         <Parameter Name="bufferSize" Type="System.Int32" Index="1" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="message">A<see cref="T:System.Web.Services.Protocols.SoapClientMessage" />を提供する、<see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" />初期化するために、<see cref="T:System.Xml.XmlWriter" />します。</param>
-        <param name="bufferSize">初期バッファー サイズ、<see cref="T:System.IO.StreamWriter" />で使用される、<see cref="T:System.Xml.XmlWriter" />します。</param>
-        <summary>返します、<see cref="T:System.Xml.XmlWriter" />で初期化されて、<see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" />のプロパティ、<see cref="T:System.Web.Services.Protocols.SoapClientMessage" />パラメーター。</summary>
-        <returns>A<see cref="T:System.Xml.XmlWriter" />で初期化されて、<see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" />のプロパティ、<paramref name="message" />パラメーター。</returns>
+        <param name="message">A <see cref="T:System.Web.Services.Protocols.SoapClientMessage" /> that provides the <see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" /> to initialize the <see cref="T:System.Xml.XmlWriter" />.</param>
+        <param name="bufferSize">The initial buffer size of the <see cref="T:System.IO.StreamWriter" /> used by the <see cref="T:System.Xml.XmlWriter" />.</param>
+        <summary>Returns a <see cref="T:System.Xml.XmlWriter" /> initialized with the <see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" /> property of the <see cref="T:System.Web.Services.Protocols.SoapClientMessage" /> parameter.</summary>
+        <returns>A <see cref="T:System.Xml.XmlWriter" /> initialized with the <see cref="P:System.Web.Services.Protocols.SoapMessage.Stream" /> property of the <paramref name="message" /> parameter.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -387,11 +391,11 @@
         <Parameter Name="parameters" Type="System.Object[]" Index="1" />
       </Parameters>
       <Docs>
-        <param name="methodName">XML Web サービス メソッドの名前。</param>
-        <param name="method_name">XML Web サービス メソッドの名前。</param>
-        <param name="parameters">XML Web サービスに渡すパラメーターを格納するオブジェクトの配列。 配列内の値の順序は、呼び出し元の派生クラスのメソッドのパラメーター順序に対応します。</param>
-        <summary>同期的に SOAP を使用して XML Web サービス メソッドを呼び出します。</summary>
-        <returns>戻り値とを含むオブジェクトの配列<see langword="reference" />または<see langword="out" />派生クラス メソッドのパラメーター。</returns>
+        <param name="methodName">The name of the XML Web service method.</param>
+        <param name="method_name">The name of the XML Web service method.</param>
+        <param name="parameters">An array of objects that contains the parameters to pass to the XML Web service. The order of the values in the array corresponds to the order of the parameters in the calling method of the derived class.</param>
+        <summary>Invokes an XML Web service method synchronously using SOAP.</summary>
+        <returns>An array of objects that contains the return value and any <see langword="reference" /> or <see langword="out" /> parameters of the derived class method.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -413,13 +417,14 @@
   
  次のコード例は、`Math`前述のプロキシ クラスの作成元の XML Web サービス。  
   
-  
+ [!code-aspx-csharp[Classic SoapHttpClientProtocol.Invoke Example#2](~/samples/snippets/csharp/VS_Snippets_Remoting/Classic SoapHttpClientProtocol.Invoke Example/CS/sourcecs.asmx)]
+ [!code-aspx-vb[Classic SoapHttpClientProtocol.Invoke Example#2](~/samples/snippets/visualbasic/VS_Snippets_Remoting/Classic SoapHttpClientProtocol.Invoke Example/VB/sourcevb.asmx)]
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Web.Services.Protocols.SoapException">要求は、サーバー コンピューターに到達が正常に処理されませんでした。</exception>
-        <exception cref="T:System.InvalidOperationException">要求は、オブジェクトの現在の状態に対して無効でした。</exception>
-        <exception cref="T:System.Net.WebException">ネットワークへのアクセス中にエラーが発生しました。</exception>
+        <exception cref="T:System.Web.Services.Protocols.SoapException">The request reached the server computer, but was not processed successfully.</exception>
+        <exception cref="T:System.InvalidOperationException">The request was not valid for the object's current state.</exception>
+        <exception cref="T:System.Net.WebException">An error occurred while accessing the network.</exception>
         <altmember cref="T:System.Web.Services.Protocols.SoapDocumentMethodAttribute" />
         <altmember cref="T:System.Web.Services.Protocols.WebClientProtocol" />
       </Docs>
@@ -431,7 +436,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定したメソッドを非同期的に呼び出します。</summary>
+        <summary>Invokes the specified method asynchronously.</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="InvokeAsync">
@@ -457,10 +462,10 @@
         <Parameter Name="callback" Type="System.Threading.SendOrPostCallback" Index="2" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="methodName">呼び出すメソッドの名前。</param>
-        <param name="parameters">メソッドに渡すパラメーター。</param>
-        <param name="callback">メソッドの呼び出しが完了したときに、デリゲートが呼び出されます。</param>
-        <summary>指定したメソッドを非同期的に呼び出します。</summary>
+        <param name="methodName">The name of the method to invoke.</param>
+        <param name="parameters">The parameters to pass to the method.</param>
+        <param name="callback">The delegate called when the method invocation has completed.</param>
+        <summary>Invokes the specified method asynchronously.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -488,11 +493,11 @@
         <Parameter Name="userState" Type="System.Object" Index="3" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="methodName">呼び出すメソッドの名前。</param>
-        <param name="parameters">メソッドに渡すパラメーター。</param>
-        <param name="callback">メソッドの呼び出しが完了したときに、デリゲートが呼び出されます。</param>
-        <param name="userState">状態情報を渡すために使用するオブジェクト、<paramref name="callback" />を委任します。</param>
-        <summary>指定したメソッドを非同期的に呼び出します。</summary>
+        <param name="methodName">The name of the method to invoke.</param>
+        <param name="parameters">The parameters to pass to the method.</param>
+        <param name="callback">The delegate called when the method invocation has completed.</param>
+        <param name="userState">An object used to pass state information into the <paramref name="callback" /> delegate.</param>
+        <summary>Invokes the specified method asynchronously.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -522,7 +527,7 @@
         <ReturnType>System.Web.Services.Protocols.SoapProtocolVersion</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または XML Web サービスに SOAP 要求に使用される SOAP プロトコルのバージョンを設定します。</summary>
+        <summary>Gets or sets the version of the SOAP protocol used to make the SOAP request to the XML Web service.</summary>
         <value><see cref="T:System.Web.Services.Protocols.SoapProtocolVersion" /> 値のいずれか 1 つ。 既定値は <see cref="F:System.Web.Services.Protocols.SoapProtocolVersion.Soap11" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  

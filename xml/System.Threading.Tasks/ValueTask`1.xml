@@ -1,5 +1,5 @@
 <Type Name="ValueTask&lt;TResult&gt;" FullName="System.Threading.Tasks.ValueTask&lt;TResult&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="953ef401ffeb6331e621c9a3995fa7eb28049aa2" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67243440" /></Metadata><TypeSignature Language="C#" Value="public struct ValueTask&lt;TResult&gt; : IEquatable&lt;System.Threading.Tasks.ValueTask&lt;TResult&gt;&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="2f4372b896320fcf53bf11ac0e31b51b6bcf2aba" /><Meta Name="ms.sourcegitcommit" Value="44248681576d2d3e55999de22512082227ce367c" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/16/2019" /><Meta Name="ms.locfileid" Value="68238743" /></Metadata><TypeSignature Language="C#" Value="public struct ValueTask&lt;TResult&gt; : IEquatable&lt;System.Threading.Tasks.ValueTask&lt;TResult&gt;&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ValueTask`1&lt;TResult&gt; extends System.ValueType implements class System.IEquatable`1&lt;valuetype System.Threading.Tasks.ValueTask`1&lt;!TResult&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Threading.Tasks.ValueTask`1" />
   <TypeSignature Language="VB.NET" Value="Public Structure ValueTask(Of TResult)&#xA;Implements IEquatable(Of ValueTask(Of TResult))" />
@@ -45,27 +45,27 @@
       <format type="text/markdown"><![CDATA[ 
 
 ## Remarks  
-A<xref:System.Threading.Tasks.ValueTask%601>インスタンスが待機するかに変換する<xref:System.Threading.Tasks.Task%601>を使用して<xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>します。 A<xref:System.Threading.Tasks.ValueTask%601>インスタンスは 1 回、待機のみとコンシューマーは呼び出すことができません<xref:System.Threading.Tasks.ValueTask%601.GetAwaiter>インスタンスが完了するまでです。 これらの制限が許容されない場合は、変換、<xref:System.Threading.Tasks.ValueTask%601>を<xref:System.Threading.Tasks.Task%601>呼び出して<xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>します。
+インスタンス<xref:System.Threading.Tasks.ValueTask%601>は、を使用して待機するか<xref:System.Threading.Tasks.Task%601> 、 <xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>を使用してに変換することができます。 インスタンス<xref:System.Threading.Tasks.ValueTask%601>を待機できるのは1回だけで、インスタンスが<xref:System.Threading.Tasks.ValueTask%601.GetAwaiter>完了するまでコンシューマーがを呼び出すことはできません。 これらの制限が許容されない<xref:System.Threading.Tasks.ValueTask%601>場合は<xref:System.Threading.Tasks.Task%601> 、を<xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>呼び出して、をに変換します。
 
-次の操作を実行しない必要があります、<xref:System.Threading.Tasks.ValueTask%601>インスタンス。
+<xref:System.Threading.Tasks.ValueTask%601>インスタンスに対して次の操作を実行することはできません。
 
-  - 複数回インスタンスが待機しています。
-  - 呼び出す<xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>複数回です。
-  - 使用して`.Result`または`.GetAwaiter().GetResult()`ときに、操作はまだ完了していない、またはそれらを複数回使用します。
-  - これらの手法の 1 つ以上を使用して、インスタンスを使用します。
+  - インスタンスを複数回待機しています。
+  - を<xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>複数回呼び出す。
+  - 操作`.Result`が`.GetAwaiter().GetResult()`まだ完了していない場合、または複数回使用する場合は、またはを使用します。
+  - インスタンスを使用するために、これらの手法の1つ以上を使用します。
 
-上記のいずれかを行うと、結果は未定義です。
+上記のいずれかを実行すると、結果は未定義になります。
 
-メソッドはその操作の結果ができる同期的にすることを想定している場合こと可能性がある場合は、この値型のインスタンスが呼び出されたら頻繁に新しい割り当てのコストを返す可能性があります<xref:System.Threading.Tasks.Task%601>の各呼び出しは桁違いになります。   
+メソッドは、この値型のインスタンスを返すことがあります。その操作の結果が同期的に使用可能になる可能性があり、呼び出しごとに新しい<xref:System.Threading.Tasks.Task%601>を割り当てるコストが非常に高くなることが予想される場合です。   
 
-使用してにトレードオフがある、<xref:System.Threading.Tasks.ValueTask%601>の代わりに、<xref:System.Threading.Tasks.Task%601>します。 中でも、<xref:System.Threading.Tasks.ValueTask%601>成功の結果が使用可能な同期の場合、割り当てを防ぐことができますも含まれている 2 つのフィールドは、<xref:System.Threading.Tasks.Task%601>型が 1 つのフィールドを参照として。 つまり、メソッドの呼び出しでは、1 つではなくデータの価値が 2 つのフィールドが返しますは多くのデータをコピーします。 またを返すメソッドの場合、 <xref:System.Threading.Tasks.ValueTask%601> async メソッドと 1 つの参照ではなく 2 つのフィールドを含む構造体を格納する必要がありますので、サイズが大きくなりますが、非同期メソッドをステート マシン内で待機します。   
+の代わり<xref:System.Threading.Tasks.ValueTask%601>にを使用すると、トレードオフが発生します。<xref:System.Threading.Tasks.Task%601> たとえば、は、正常<xref:System.Threading.Tasks.ValueTask%601>に実行された結果が同期的に使用可能な場合には割り当てを回避するのに役立ちます<xref:System.Threading.Tasks.Task%601>が、参照型としては1つのフィールドであるのに対し、は複数のフィールドを含みます。 これは、メソッドから<xref:System.Threading.Tasks.ValueTask%601>を返すと、より多くのデータがコピーされることを意味します。 また、を<xref:System.Threading.Tasks.ValueTask%601>返すメソッドが非同期メソッド内で待機している場合、その非同期メソッドのステートマシンは、1つの参照ではなく複数のフィールドを含む構造体を格納する必要があるため、より大きなサイズになります。   
 
-Await を使用して、非同期操作の結果を使用する以外はの<xref:System.Threading.Tasks.ValueTask%601>複雑なプログラミング モデルを複数の割り当てを必要とする可能性があります。 たとえば、いずれかを返す可能性のあるメソッド、<xref:System.Threading.Tasks.Task%601>で一般的な結果として、キャッシュされたタスクまたは<xref:System.Threading.Tasks.ValueTask%601>します。 結果のコンシューマーとして使用するかどうか、<xref:System.Threading.Tasks.Task%601>などのメソッドで<xref:System.Threading.Tasks.Task.WhenAll%2A>または<xref:System.Threading.Tasks.Task.WhenAny%2A>、<xref:System.Threading.Tasks.ValueTask%601>最初に変換する必要があります、<xref:System.Threading.Tasks.Task%601>を使用して<xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>は回避できた場合は、割り当てに市場をリードする、キャッシュされた<xref:System.Threading.Tasks.Task%601>最初に使用されていた。   
+Await を使用した非同期操作の結果を使用する以外の<xref:System.Threading.Tasks.ValueTask%601>用途では、より多くの割り当てを必要とするより複雑なプログラミングモデルになる可能性があります。 たとえば、共通の結果<xref:System.Threading.Tasks.Task%601> <xref:System.Threading.Tasks.ValueTask%601>またはとしてキャッシュされたタスクを含むを返すメソッドがあるとします。 結果のコンシューマー <xref:System.Threading.Tasks.Task%601>が、 <xref:System.Threading.Tasks.Task.WhenAll%2A>や<xref:System.Threading.Tasks.Task.WhenAny%2A> <xref:System.Threading.Tasks.Task%601> <xref:System.Threading.Tasks.ValueTask%601.AsTask%2A>などのメソッドでをとして使用する場合は、まずを使用してをに変換する必要があります。これは、<xref:System.Threading.Tasks.ValueTask%601>最初<xref:System.Threading.Tasks.Task%601>の場所でキャッシュが使用されました。   
 
-返す非同期メソッドの既定の選択肢は、そのため、<xref:System.Threading.Tasks.Task>または<xref:System.Threading.Tasks.Task%601>します。 パフォーマンスの分析を証明価値のある場合にのみにする必要があります、<xref:System.Threading.Tasks.ValueTask%601>の代わりに使用する、<xref:System.Threading.Tasks.Task%601>します。 非ジェネリック バージョンの<xref:System.Threading.Tasks.ValueTask>はほとんどのシナリオは推奨されません。 <xref:System.Threading.Tasks.Task.CompletedTask>メソッドを返す場合は、正常に完了した場合は、シングルトンを送り返すにプロパティを使用する必要があります、<xref:System.Threading.Tasks.Task>が同期的に、正常に完了するとします。
+そのため、任意の非同期メソッドの既定の選択肢は、または<xref:System.Threading.Tasks.Task> <xref:System.Threading.Tasks.Task%601>を返すことです。 パフォーマンス分析では、 <xref:System.Threading.Tasks.ValueTask%601> <xref:System.Threading.Tasks.Task%601>ではなくを使用する必要があることが証明されている場合にのみ使用します。 の<xref:System.Threading.Tasks.ValueTask>非ジェネリックバージョンは、ほとんどのシナリオでは推奨されません。 <xref:System.Threading.Tasks.Task.CompletedTask> を<xref:System.Threading.Tasks.Task>返すメソッドが同期的かつ正常に完了した場合に、正常に完了したシングルトンを戻すには、プロパティを使用する必要があります。
 
 > [!NOTE]
->  使用、<xref:System.Threading.Tasks.ValueTask%601>以降では、種類がサポートされてC#7.0 では、任意のバージョンの Visual Basic ではサポートされていません。
+>  この<xref:System.Threading.Tasks.ValueTask%601>型の使用はC# 7.0 以降でサポートされており、Visual Basic のどのバージョンでもサポートされていません。
  ]]></format>
     </remarks>
   </Docs>
@@ -157,9 +157,9 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
         <Parameter Name="token" Type="System.Int16" Index="1" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="token">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="source">ソース。</param>
+        <param name="token"><see cref="T:System.Threading.Tasks.Sources.IValueTaskSource" /> に渡される非透過的な値。</param>
+        <summary>操作を表す <see cref="T:System.Threading.Tasks.Sources.IValueTaskSource`1" /> オブジェクトを使用して、<see cref="T:System.Threading.Tasks.ValueTask`1" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -192,7 +192,11 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
       <Docs>
         <summary>この <see cref="T:System.Threading.Tasks.ValueTask`1" /> を表す <see cref="T:System.Threading.Tasks.Task`1" /> オブジェクトを取得します。</summary>
         <returns>この <see cref="T:System.Threading.Tasks.ValueTask`1" /> でラップされる <see cref="T:System.Threading.Tasks.Task`1" /> オブジェクト (存在する場合)、または、結果を表す新しい <see cref="T:System.Threading.Tasks.Task`1" /> オブジェクト。</returns>
-        <remarks></remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+このメソッドは、ラップされたタスクオブジェクト (存在する場合) を返すか、または結果を表す新しい task オブジェクトを作成します。
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ConfigureAwait">
@@ -432,8 +436,12 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
       </ReturnValue>
       <Docs>
         <summary>このオブジェクトが取り消された操作を表すかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> このオブジェクトが、取り消された操作を表している場合それ以外の場合、<see langword="false" />します。</value>
-        <remarks></remarks>
+        <value><see langword="true" />このオブジェクトが取り消された操作を表している場合は。それ以外<see langword="false" />の場合は。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+が結果また<xref:System.Threading.Tasks.Sources.IValueTaskSource`1>はによってサポートされている場合、この`false`は常にを返します。 <xref:System.Threading.Tasks.ValueTask`1>  によって<xref:System.Threading.Tasks.Task>サポートされている場合は、タスクの<xref:System.Threading.Tasks.Task.IsCanceled>プロパティの値が返されます。
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsCompleted">
@@ -463,7 +471,7 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
       </ReturnValue>
       <Docs>
         <summary>このオブジェクトが完了した操作を表すかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> このオブジェクトは、完了した操作を表している場合それ以外の場合、<see langword="false" />します。</value>
+        <value><see langword="true" />このオブジェクトが完了した操作を表している場合は。それ以外<see langword="false" />の場合は。</value>
         <remarks></remarks>
       </Docs>
     </Member>
@@ -494,7 +502,7 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
       </ReturnValue>
       <Docs>
         <summary>このオブジェクトが正常に完了した操作を表すかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> このオブジェクトを正常に完了した操作を表している場合それ以外の場合、<see langword="false" />します。</value>
+        <value><see langword="true" />このオブジェクトが正常に完了した操作を表している場合は。それ以外<see langword="false" />の場合は。</value>
         <remarks></remarks>
       </Docs>
     </Member>
@@ -525,7 +533,7 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
       </ReturnValue>
       <Docs>
         <summary>このオブジェクトが失敗した操作を表すかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> このオブジェクトが表す操作が失敗した場合それ以外の場合、<see langword="false" />します。</value>
+        <value><see langword="true" />このオブジェクトが失敗した操作を表している場合は。それ以外<see langword="false" />の場合は。</value>
         <remarks></remarks>
       </Docs>
     </Member>
@@ -627,8 +635,8 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>将来のある時点で使用される可能性のある <see cref="T:System.Threading.Tasks.ValueTask`1" /> を取得します。</summary>
+        <returns>今後の使用のためのタスク オブジェクト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -663,9 +671,9 @@ Await を使用して、非同期操作の結果を使用する以外はの<xref
         <remarks>
           <format type="text/markdown"><![CDATA[  
 ## Remarks  
-このプロパティに 1 回のみアクセスできると、その後のみ<xref:System.Threading.Tasks.ValueTask%601>が完了します。
+このプロパティには、一度だけアクセスできます。この<xref:System.Threading.Tasks.ValueTask%601>プロパティは、完了後にのみアクセスできます。
 
-この場合<xref:System.Threading.Tasks.ValueTask%601>が正常に完了、このプロパティは、結果の値を返します。 この場合<xref:System.Threading.Tasks.ValueTask%601>が、エラーが発生しました。 このプロパティは、例外が発生します。 スローされた例外はラップされていない、<xref:System.AggregateException>します。
+これ<xref:System.Threading.Tasks.ValueTask%601>が正常に完了した場合、このプロパティは結果の値を返します。 この<xref:System.Threading.Tasks.ValueTask%601>エラーが発生した場合、このプロパティは例外を発生させます。 スローされた例外は、 <xref:System.AggregateException>でラップされていません。
 ]]></format>
         </remarks>
       </Docs>

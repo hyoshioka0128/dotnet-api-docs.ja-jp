@@ -1,5 +1,5 @@
 <Type Name="DiagnosticListener" FullName="System.Diagnostics.DiagnosticListener">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="ee69c9bbc69b712102cee4af1a8fd044575a3161" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67239470" /></Metadata><TypeSignature Language="C#" Value="public class DiagnosticListener : System.Diagnostics.DiagnosticSource, IDisposable, IObservable&lt;System.Collections.Generic.KeyValuePair&lt;string,object&gt;&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f0ca1d8fc3384f636938fa376747be0e95d7412c" /><Meta Name="ms.sourcegitcommit" Value="cfc0e4215fd0d259582ada2141878befd7c3c8c6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/12/2019" /><Meta Name="ms.locfileid" Value="67855029" /></Metadata><TypeSignature Language="C#" Value="public class DiagnosticListener : System.Diagnostics.DiagnosticSource, IDisposable, IObservable&lt;System.Collections.Generic.KeyValuePair&lt;string,object&gt;&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DiagnosticListener extends System.Diagnostics.DiagnosticSource implements class System.IDisposable, class System.IObservable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, object&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Diagnostics.DiagnosticListener" />
   <TypeSignature Language="VB.NET" Value="Public Class DiagnosticListener&#xA;Inherits DiagnosticSource&#xA;Implements IDisposable, IObservable(Of KeyValuePair(Of String, Object))" />
@@ -151,7 +151,13 @@
       <Docs>
         <summary>登録されているサブスクライバーが存在するかどうかを判断します。</summary>
         <returns>登録されているサブスクライバーがいる場合は <see langword="true" /> で、それ以外の場合は <see langword="false" /> です。</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+通知のセットアップが高価な場合は、呼び出す`IsEnabled`このセットアップを実行する前にします。 プロデューサーを呼び出すことが必要に応じて`IsEnabled`呼び出す前に<xref:System.Diagnostics.DiagnosticListener.IsEnabled(System.String) in performance-critical parts of the application to determine whether there are any listeners to the <xref:System.Diagnostics.DiagnosticListener>します。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEnabled">
@@ -318,9 +324,9 @@
         <Parameter Name="observer" Type="System.IObserver&lt;System.Collections.Generic.KeyValuePair&lt;System.String,System.Object&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="observer">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="observer">サブスクライバーです。</param>
+        <summary>サブスクライバーを追加します。</summary>
+        <returns><see cref="T:System.Diagnostics.DiagnosticSource" /> が通知の送信を完了する前に、リスナーが通知の受信を停止できるインターフェイスへの参照。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -348,11 +354,13 @@
       </Parameters>
       <Docs>
         <param name="observer">サブスクライバーです。</param>
-        <param name="isEnabled">その名前と最大 2 つのコンテキスト オブジェクト (<see langword="null" /> が可能) に基づいてイベントをフィルタリングするデリゲートです。</param>
-        <summary>サブスクライバーを追加します。 <paramref name="isEnabled" /> パラメーターが <see langword="null" /> でない場合、これは一部のイベントは重要でなく、効率化のためにスキップできることを示します。</summary>
-        <returns>To be added.</returns>
+        <param name="isEnabled">その名前と最大 2 つのコンテキスト オブジェクト (<see langword="null" /> が可能) に基づいてイベントをフィルタリングするデリゲートです。あるいは、イベント フィルターが望ましくない場合、<see langword="null" />。</param>
+        <summary>サブスクライバーを追加し、任意で、その名前と最大 2 つのコンテキスト オブジェクトに基づいてイベントをフィルタリングします。</summary>
+        <returns><see cref="T:System.Diagnostics.DiagnosticSource" /> が通知の送信を完了する前に、リスナーが通知の受信を停止できるインターフェイスへの参照。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[
+
+場合`isEnabled`ない`null`、一部のイベントが興味深いいないことを示しますの効率性をスキップすることができます。
 
 インストルメンテーションを特定のサイトが 1 つまたは複数を呼び出すこと<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>引数として他の 2 つの (特定のサイト instrumentation) オブジェクトまでイベントの名前を渡しますがオーバー ロードします。 これらのいずれか<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>呼び出しが行われる、この`isEnabled`述語が渡された値で呼び出されます (短いオーバー ロードを使用している場合`null`のコンテキスト オブジェクトの不足が渡されます)。
 
@@ -395,14 +403,14 @@
       <Docs>
         <param name="observer">サブスクライバーです。</param>
         <param name="isEnabled">その名前 (<see cref="T:System.String" />) に基づいてイベントをフィルタリングするデリゲートです。 イベントが有効な場合、このデリゲートは <see langword="true" /> を返します。</param>
-        <summary>サブスクライバーを追加します (オブザーバー)。 <paramref name="isEnabled" /> パラメーターが <see langword="null" /> でない場合、これは一部のイベントは重要でなく、効率化のためにスキップできることを示します。</summary>
-        <returns>To be added.</returns>
+        <summary>サブスクライバーを追加し、任意で、その名前に基づいてイベントをフィルタリングします。</summary>
+        <returns><see cref="T:System.Diagnostics.DiagnosticSource" /> が通知の送信を完了する前に、リスナーが通知の受信を停止できるインターフェイスへの参照。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[
-            
-なお、`isEnabled`述語は、ペイロードを設定して、呼び出しを回避するために、インストルメンテーションのサイトを許可する、省略可能な最適化<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>ときにサブスクライバー気にしないことです。 インストルメンテーションのサイトを無視することが特に、<xref:System.Diagnostics.DiagnosticListener.IsEnabled>述語 (呼ばなかった) と単純に呼び出して<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>します。 そのため、サブスクライバーは、フィルター処理を必要とする場合これを行う必要が自体。
 
-このパラメーターが場合`null`、フィルター処理は行われません (のすべてのオーバー ロード<xref:System.Diagnostics.DiagnosticSource.IsEnabled%2A>返す`true`)。
+場合`isEnabled`ない`null`、一部のイベントは興味深いと効率性をスキップすることができます。 `isEnabled`述語は、ペイロードを設定して、呼び出しを回避するために、インストルメンテーションのサイトを許可する、省略可能な最適化<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>ときにサブスクライバー気にしないことです。 インストルメンテーションのサイトを無視することが特に、<xref:System.Diagnostics.DiagnosticListener.IsEnabled>述語 (呼ばなかった) と単純に呼び出して<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>します。 そのため、サブスクライバーは、フィルター処理を必要とする場合これを行う必要が自体。
+
+場合`isEnabled`は`null`、フィルター処理は行われません (のすべてのオーバー ロード<xref:System.Diagnostics.DiagnosticSource.IsEnabled%2A>返す`true`)。
 
           ]]></format>
         </remarks>
@@ -433,9 +441,17 @@
         <param name="isEnabled">To be added.</param>
         <param name="onActivityImport">To be added.</param>
         <param name="onActivityExport">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>サブスクライバーを追加し、任意で、その名前と最大 2 つのコンテキスト オブジェクトに基づいてイベントをフィルタリングし、プロバイダーがプロセスの外からアクティビティをインポートまたはエクスポートするときに呼び出すメソッドを指定します。</summary>
+        <returns><see cref="T:System.Diagnostics.DiagnosticSource" /> が通知の送信を完了する前に、リスナーが通知の受信を停止できるインターフェイスへの参照。</returns>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+場合`isEnabled`が null 以外の場合、一部のイベントは、興味深いは効率性をスキップすることができます。  
+
+ときに呼び出される 'onActivityImport' と 'onActivityExport' のメソッドを指定することもできます。 プロバイダーからのアクティビティ (たとえば、HTTP 要求) からプロセスの外部のインポートまたはエクスポートします。 これらのメソッドは、インポートまたはエクスポート、アクティビティの後に呼び出され、アクティビティまたはポリシーを追加する送信要求を変更するために使用できます。
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -493,11 +509,18 @@
         <Parameter Name="parameters" Type="System.Object" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="value">To be added.</param>
-        <param name="parameters">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">ログ記録するイベントの名前。</param>
+        <param name="value">イベントのペイロードを表すオブジェクト。</param>
+        <param name="parameters">イベントのペイロードを表すオブジェクト。</param>
+        <summary>通知をログ記録します。</summary>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+詳細については、<xref:System.Diagnostics.DiagnosticSource.Write%2A?displayProperty=nameWithType> メソッドを参照してください。
+
+         ]]></format>
+         </remarks>
+
       </Docs>
     </Member>
   </Members>

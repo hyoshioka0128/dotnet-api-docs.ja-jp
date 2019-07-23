@@ -1,5 +1,5 @@
 <Type Name="XmlEntity" FullName="System.Xml.XmlEntity">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="4f144e25e7db03607bbdcb34caa5e057d4583f49" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58682023" /></Metadata><TypeSignature Language="C#" Value="public class XmlEntity : System.Xml.XmlNode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="755883891a190dbabee047f73aefc6dc59f65f14" /><Meta Name="ms.sourcegitcommit" Value="10aa513a7461eb2abbf8d1e35d2a045d4e5a9be7" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/09/2019" /><Meta Name="ms.locfileid" Value="67665648" /></Metadata><TypeSignature Language="C#" Value="public class XmlEntity : System.Xml.XmlNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit XmlEntity extends System.Xml.XmlNode" />
   <TypeSignature Language="DocId" Value="T:System.Xml.XmlEntity" />
   <TypeSignature Language="VB.NET" Value="Public Class XmlEntity&#xA;Inherits XmlNode" />
@@ -27,7 +27,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>エンティティの宣言を表します (&lt;!ENTITY... &gt; など)。</summary>
+    <summary>Represents an entity declaration, such as &lt;!ENTITY... &gt;.</summary>
     <remarks>To be added.</remarks>
     <altmember cref="P:System.Xml.XmlDocumentType.Entities" />
     <related type="Article" href="https://msdn.microsoft.com/library/b5e52844-4820-47c0-a61d-de2da33e9f54">XML ドキュメント オブジェクト モデル (DOM)</related>
@@ -67,7 +67,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>現在のノードのベース URI (Uniform Resource Identifier) を取得します。</summary>
+        <summary>Gets the base Uniform Resource Identifier (URI) of the current node.</summary>
         <value>読み込まれたノードの読み込み元の場所。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -86,18 +86,18 @@
   
  外部エンティティ`a/b.xml`XML テキストを含む`<test>123</test>`します。  
   
- ドキュメントが読み込まれた場合http://server/mydata.xml、`BaseURI`は以下を返します。  
+ ドキュメントが読み込まれた場合`http://server/mydata.xml`、`BaseURI`は以下を返します。  
   
-|ノード型|name|BaseURI|  
+|ノード型|名前|BaseURI|  
 |--------------|----------|-------------|  
-|属性|num|http://server/mydata.xml|  
-|ドキュメント|#document|http://server/mydata.xml|  
-|DocumentType|項目|http://server/mydata.xml|  
-|エンティティ|xyz|http://server/mydata.xml|  
-|要素|項目|http://server/mydata.xml|  
-|EntityReference|xyz|http://server/mydata.xml|  
-|要素|テスト|http://server/a/b.xml|  
-|テキスト|#text|http://server/a/b.xml|  
+|属性|num|`http://server/mydata.xml`|  
+|ドキュメント|#document|`http://server/mydata.xml`|  
+|DocumentType|item|`http://server/mydata.xml`|  
+|エンティティ|xyz|`http://server/mydata.xml`|  
+|要素|item|`http://server/mydata.xml`|  
+|EntityReference|xyz|`http://server/mydata.xml`|  
+|要素|テスト|`http://server/a/b.xml`|  
+|テキスト|#text|`http://server/a/b.xml`|  
   
  `BaseURI` エンティティ参照の境界を次のエンティティが展開されている場合は、この情報は保持されませんし、このプロパティの場所を返します、`XmlDocument`のすべてのケース内のオブジェクト。  
   
@@ -118,7 +118,7 @@
   
  XML ドキュメントが読み込まれた場合http://localhost/mydata.xml、`BaseURI`は以下の各ノードを返します。  
   
-|ノード型|name|BaseURI|  
+|ノード型|Name|BaseURI|  
 |--------------|----------|-------------|  
 |ドキュメント|#document|http://localhost/mydata.xml|  
 |DocumentType|Mydata|http://localhost/doctype.dtd|  
@@ -168,11 +168,11 @@
         <Parameter Name="deep" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="deep">指定したノードの下にあるサブツリーのクローンを順次作成していく場合は <see langword="true" />。指定したノードだけのクローンを作成する場合は <see langword="false" />。</param>
-        <summary>このノードの複製を作成します。 エンティティ ノードのクローンは作成できません。 <see cref="T:System.Xml.XmlEntity" /> オブジェクトでこのメソッドを呼び出すと、例外がスローされます。</summary>
-        <returns>メソッドの呼び出し元の <see cref="T:System.Xml.XmlNode" /> のコピー。</returns>
+        <param name="deep"><see langword="true" /> to recursively clone the subtree under the specified node; <see langword="false" /> to clone only the node itself.</param>
+        <summary>Creates a duplicate of this node. Entity nodes cannot be cloned. Calling this method on an <see cref="T:System.Xml.XmlEntity" /> object throws an exception.</summary>
+        <returns>A copy of the <see cref="T:System.Xml.XmlNode" /> from which the method is called.</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">エンティティ ノードのクローンは作成できません。 <see cref="T:System.Xml.XmlEntity" /> オブジェクトでこのメソッドを呼び出すと、例外がスローされます。</exception>
+        <exception cref="T:System.InvalidOperationException">Entity nodes cannot be cloned. Calling this method on an <see cref="T:System.Xml.XmlEntity" /> object throws an exception.</exception>
       </Docs>
     </Member>
     <Member MemberName="InnerText">
@@ -204,7 +204,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>エンティティ ノードとそのすべての子の連結された値を取得します。</summary>
+        <summary>Gets the concatenated values of the entity node and all its children.</summary>
         <value>ノードとすべての子の連結された値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -216,7 +216,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">プロパティを設定しようとしています。</exception>
+        <exception cref="T:System.InvalidOperationException">Attempting to set the property.</exception>
       </Docs>
     </Member>
     <Member MemberName="InnerXml">
@@ -253,8 +253,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このノードの子を表すマークアップを取得します。</summary>
-        <value><see langword="XmlEntity" /> ノードの場合は、String.Empty が返されます。</value>
+        <summary>Gets the markup representing the children of this node.</summary>
+        <value><see langword="XmlEntity" />ノード、String.Empty が返されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -265,7 +265,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">プロパティを設定しようとしています。</exception>
+        <exception cref="T:System.InvalidOperationException">Attempting to set the property.</exception>
       </Docs>
     </Member>
     <Member MemberName="IsReadOnly">
@@ -297,10 +297,10 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ノードが読み取り専用かどうかを示す値を取得します。</summary>
+        <summary>Gets a value indicating whether the node is read-only.</summary>
         <value><see langword="true" /> ノードが読み取り専用の場合それ以外の場合、<see langword="false" />します。  
   
-<see langword="XmlEntity" /> ノードは読み取り専用であるため、このプロパティは常に <see langword="true" /> を返します。</value>
+<see langword="XmlEntity" />ノードは、読み取り専用には、このプロパティはその常に返します<see langword="true" />します。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -345,8 +345,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ノードの名前を名前空間プリフィックスを付けずに取得します。</summary>
-        <value><see langword="XmlEntity" /> ノードの場合、このプロパティはエンティティの名前を返します。</value>
+        <summary>Gets the name of the node without the namespace prefix.</summary>
+        <value><see langword="XmlEntity" />ノードの場合、このプロパティがエンティティの名前を返します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -384,7 +384,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ノードの名前を取得します。</summary>
+        <summary>Gets the name of the node.</summary>
         <value>エンティティの名前。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -434,8 +434,8 @@
         <ReturnType>System.Xml.XmlNodeType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ノードの種類を取得します。</summary>
-        <value>ノード型。 <see langword="XmlEntity" /> ノードの場合、値は XmlNodeType.Entity です。</value>
+        <summary>Gets the type of the node.</summary>
+        <value>ノード型。 <see langword="XmlEntity" />ノードの場合、値は xmlnodetype.entity です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -489,8 +489,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>エンティティ宣言のオプションの NDATA 属性の名前を取得します。</summary>
-        <value>NDATA 属性の名前。 NDATA がない場合は、<see langword="null" /> が返されます。</value>
+        <summary>Gets the name of the optional NDATA attribute on the entity declaration.</summary>
+        <value>NDATA 属性の名前。 NDATA が存在しない場合<see langword="null" />が返されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -544,8 +544,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このノードとそのすべての子を表すマークアップを取得します。</summary>
-        <value><see langword="XmlEntity" /> ノードの場合は、String.Empty が返されます。</value>
+        <summary>Gets the markup representing this node and all its children.</summary>
+        <value><see langword="XmlEntity" />ノード、String.Empty が返されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -590,8 +590,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>エンティティ宣言のパブリック ID の値を取得します。</summary>
-        <value>エンティティのパブリック ID。 パブリック ID がない場合は、<see langword="null" /> が返されます。</value>
+        <summary>Gets the value of the public identifier on the entity declaration.</summary>
+        <value>エンティティのパブリック id。 パブリック識別子がない場合<see langword="null" />が返されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -645,8 +645,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>エンティティ宣言のシステム ID の値を取得します。</summary>
-        <value>エンティティのシステム ID。 システム ID がない場合は、<see langword="null" /> が返されます。</value>
+        <summary>Gets the value of the system identifier on the entity declaration.</summary>
+        <value>エンティティのシステム id。 システムの識別子がない場合<see langword="null" />が返されます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -698,8 +698,8 @@
         <Parameter Name="w" Type="System.Xml.XmlWriter" />
       </Parameters>
       <Docs>
-        <param name="w">保存先の <see langword="XmlWriter" />。</param>
-        <summary>指定した <see cref="T:System.Xml.XmlWriter" /> にノードのすべての子を保存します。 <see langword="XmlEntity" /> ノードの場合、このメソッドは無効です。</summary>
+        <param name="w">The <see langword="XmlWriter" /> to which you want to save.</param>
+        <summary>Saves all the children of the node to the specified <see cref="T:System.Xml.XmlWriter" />. For <see langword="XmlEntity" /> nodes, this method has no effect.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -742,8 +742,8 @@
         <Parameter Name="w" Type="System.Xml.XmlWriter" />
       </Parameters>
       <Docs>
-        <param name="w">保存先の <see langword="XmlWriter" />。</param>
-        <summary>指定した <see cref="T:System.Xml.XmlWriter" /> にノードを保存します。 <see langword="XmlEntity" /> ノードの場合、このメソッドは無効です。</summary>
+        <param name="w">The <see langword="XmlWriter" /> to which you want to save.</param>
+        <summary>Saves the node to the specified <see cref="T:System.Xml.XmlWriter" />. For <see langword="XmlEntity" /> nodes, this method has no effect.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
