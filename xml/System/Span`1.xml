@@ -41,25 +41,25 @@
 `Span<T>` [ref 構造体](~/docs/csharp/language-reference/keywords/ref.md#ref-struct-types)マネージ ヒープではなく、スタックに割り当てることができます。 Ref 構造体の型がいくつかのボックス化できないことは、型の変数に割り当てられないなど、マネージ ヒープに昇格することはできませんを確実に制限がある<xref:System.Object>、`dynamic`フィールドに任意のインターフェイス型にすることはできないことも、参照型とする間は使用できません`await`と`yield`境界。 さらに、2 つのメソッドを呼び出す<xref:System.Span%601.Equals(System.Object)>と<xref:System.Span%601.GetHashCode%2A>、スロー、<xref:System.NotSupportedException>します。 
 
 > [!IMPORTANT]
-> Stack 専用の種類が`Span<T>`バッファーへの参照を格納する、ヒープを必要とする多くのシナリオには適していません。 これは、true の場合、たとえば、非同期メソッドの呼び出しを行うルーチンの。 このようなシナリオを使用できます、補完的な<xref:System.Memory%601?displayProperty=nameWithType>と<xref:System.ReadOnlyMemory%601?displayProperty=nameWithType>型。
+> `Span<T>`はスタック専用の型であるため、ヒープ上でバッファーへの参照を格納する必要のある、多くのシナリオには適していません。 たとえば、非同期メソッドの呼び出しを行うルーチンなどが当てはまります。 このようなシナリオでは、補完的な<xref:System.Memory%601?displayProperty=nameWithType>と<xref:System.ReadOnlyMemory%601?displayProperty=nameWithType>型を使用できます。
 
-変更できない、または読み取り専用の構造を表す範囲、使用<xref:System.ReadOnlySpan%601?displayProperty=nameWithType>します。
+不変、または読み取り専用の構造を表すスパンの場合、<xref:System.ReadOnlySpan%601?displayProperty=nameWithType>を使用してください。
 
 ## <a name="spant-and-memory"></a>スパン\<T > とメモリ
 
-A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`インスタンスは、配列の要素または配列の一部を保持するためによく使用されます。 ただし、配列とは異なり、`Span<T>`インスタンスは、ネイティブ メモリ、マネージ メモリを指すことができますか、上のメモリ管理スタック。 次の例では、作成、`Span<Byte>`配列から。
+`Span<T>`は任意のメモリの連続した領域を表します。 `Span<T>`インスタンスは、配列の要素または配列の一部を保持するためによく使用されます。 ただし、配列とは異なり、`Span<T>`インスタンスは、マネージド メモリ、ネイティブ メモリ、スタック上で管理されたメモリを指すことができます。 次の例では、配列から`Span<Byte>`を作成します。
 
 [!code-csharp[Creating a Span\<Byte> from an array](~/samples/snippets/csharp/api/system/span/program.cs#1)]
      
-次の例では、作成、`Span<Byte>`ネイティブ メモリの 100 バイトから。
+次の例では、ネイティブ メモリの 100 バイトから`Span<Byte>`を作成します。
 
 [!code-csharp[Creating a Span\<Byte> from native memory](~/samples/snippets/csharp/api/system/span/program.cs#2)]
 
-次の例では、 C# [stackalloc](~/docs/csharp/language-reference/keywords/stackalloc.md) 100 バイトのスタックにメモリを割り当てるキーワード。
+次の例では、 C#の[stackalloc](~/docs/csharp/language-reference/keywords/stackalloc.md)キーワードを用いて、スタック上に 100 バイトのメモリを割り当てます。
 
 [!code-csharp[Creating a Span\<Byte> from stack-allocated memory](~/samples/snippets/csharp/api/system/span/program.cs#3)]
 
-`Span<T>`抽象化は、メモリのメソッドの任意のブロックの上、`Span<T>`クラスとメソッドを`Span<T>`パラメーターは、いずれかで動作`Span<T>`をカプセル化するメモリの種類に関係なくオブジェクト。 たとえば、次のスパンを初期化して、その要素の合計は、次の例としてを単一の初期化と計算の方法に変更できるを計算するコードの個別のセクションの各を示します。
+`Span<T>`は、メモリ上の任意のブロックを抽象化したものであるため、`Span<T>`クラスのメソッドと`Span<T>`をパラメーターに持つメソッドは、カプセル化するメモリの種類に関係なく、任意の`Span<T>`オブジェクトで動作します。 たとえば、スパンを初期化して、その要素を合計するコードの各セクションは、次の例のように単一の初期化メソッドと計算メソッドに変更できます。
 
 [!code-csharp[Creating a Span\<Byte> from stack-allocated memory](~/samples/snippets/csharp/api/system/span/program.cs#4)]
 
@@ -67,19 +67,19 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
 
 配列をラップして場合、`Span<T>`と同じ例では、配列全体をラップすることができます、[スパン\<T > とメモリ](#spant-and-memory)セクション。 スライスをサポートするため、`Span<T>`配列内の任意の連続する範囲を指すこともできます。  
 
-次の例では、10 要素の整数の配列の 5 つの中間要素のスライスを作成します。 コードにスライス内の各整数の値が 2 倍にことに注意してください。 出力をスパンで加えられた変更は、配列の値に反映されます。
+次の例では、10 要素ある整数配列の中間 5 つの要素のスライスを作成します。 コードがスライス内の各整数の値を 2 倍することに注意してください。 出力のとおり、スパンで加えられた変更は、配列の値に反映されます。
 
 [!code-csharp[Creating a slice from a portion of a span](~/samples/snippets/csharp/api/system/span/slice/program.cs)]
 
 ## <a name="spant-and-slices"></a>スパン\<T > とスライス
 
-`Span<T>` 2 つのオーバー ロードが含まれています、<xref:System.Span%601.Slice%2A>指定したインデックスから始まりの現在の範囲外のスライスを形成するメソッド。 内のデータを処理できるようになります、`Span<T>`一連のパフォーマンスにほとんど影響とデータ処理パイプラインの一部の必要に応じて処理できる論理的なまとまりとして。 たとえば、最新のサーバー プロトコルは多くの場合、テキスト ベースであるため文字列と部分文字列の操作は特に重要です。 <xref:System.String>クラスの場合は、部分文字列の抽出が主要なメソッド<xref:System.String.Substring%2A>します。 広範な文字列操作に依存するデータ パイプラインの用途はため、いくつかのパフォーマンスの低下を提供します。
+`Span<T>`には、現在のスパンより、指定したインデックスから始まるスライスを形成する<xref:System.Span%601.Slice%2A>メソッドの 2 つのオーバー ロードが含まれています。 これにより、`Span<T>`のデータを、パフォーマンスの影響を最小限にしながら、データ処理パイプラインの一部で必要に応じて処理できる、一連の論理的なまとまりとして扱うことができます。 たとえば、最新のサーバー プロトコルは多くの場合、テキスト ベースであるため、文字列と部分文字列の操作は特に重要です。 <xref:System.String>クラスの場合、部分文字列の抽出に使う主要なメソッドは<xref:System.String.Substring%2A>です。 広範な文字列操作に依存するデータ パイプラインは、次のように、いくつかのパフォーマンスの低下を招きます。
 
 1. 部分文字列を保持するために新しい文字列を作成します。
 
 2. 元の文字列から文字のサブセットを新しい文字列にコピーします。
 
-この割り当てとコピー操作は、いずれかを使用して削除できる`Span<T>`または<xref:System.ReadOnlySpan%601>次の例に示すように。
+次の例に示すように、この割り当てとコピー操作は、`Span<T>`または<xref:System.ReadOnlySpan%601>いずれかを使用して削除できます。
 
 [!code-csharp[Creating a slice from a substring](~/samples/snippets/csharp/api/system/span/slice2/program.cs)]
 
@@ -117,7 +117,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-場合`array`は`null`、このコンス トラクターを返します、 `null` `Span<T>`します。
+`array`が`null`の場合、このコンストラクターは`null` `Span<T>`を返します。
 
       ]]></format>
         </remarks>
@@ -239,7 +239,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-`Clear`メソッドでは、項目の設定、<xref:System.Span%601>オブジェクトをその既定値にします。 項目は削除されません、<xref:System.Span%601>します。  
+`Clear`メソッドは、<xref:System.Span%601>オブジェクト内の項目をデフォルト値に設定します。 <xref:System.Span%601>から項目は削除されません。  
 
          ]]></format>
         </remarks>
@@ -277,7 +277,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このメソッドは、すべてのコピー`source`に`destination`場合でも`source`と`destination`が重複します。
+このメソッドは、`source`と`destination`が重なる場合でも、`source`のすべてを`destination`にコピーします。
 
          ]]></format>
         </remarks>
@@ -353,13 +353,13 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <returns>このメソッドを呼び出すことはできません。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
-呼び出し、<xref:System.Span%601.Equals%2A>メソッドがサポートされていません。 呼び出し、<xref:System.Span%601.Equals%2A>メソッドが 2 つの結果のいずれかを生成します。
+<xref:System.Span%601.Equals%2A>メソッドの呼び出しはサポートされていません。 <xref:System.Span%601.Equals%2A>メソッド呼び出しは 2 つの結果のいずれかを生成します。
 
 - 場合`obj`は、<xref:System.Span%601>メソッドの呼び出しには、コンパイラ エラー CS1503 が生成されます:「に変換できません 'System.Span' から 'object'.」これは、ため<xref:System.Span%601>は、 [ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)をボックス化することはできず、変換することはできません、<xref:System.Object>します。
 
-- 場合の種類`obj`でない、 <xref:System.Span%601>、メソッド呼び出しがスローされた、<xref:System.NotSupportedException>します。 
+- `obj`の型が<xref:System.Span%601>でない場合、メソッド呼び出しは<xref:System.NotSupportedException>をスローします。 
 
-2 つを比較する<xref:System.Span%601>等しいかどうか、オブジェクトを使用して、<xref:System.Span%601.op_Equality%2A>比較演算子。
+2 つの<xref:System.Span%601>オブジェクトが等しいかどうかを比較するには、<xref:System.Span%601.op_Equality%2A>比較演算子を使用します。
 
         ]]></format>
         </remarks>
@@ -426,7 +426,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <returns>このスパンの列挙子。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
-呼び出す代わりに、<xref:System.Span%601.GetEnumerator%2A>メソッドを直接使用することができます、c#`foreach`ステートメントと Visual Basic `For Each`.`Next`コンストラクトを列挙、<xref:System.Span%601>します。
+<xref:System.Span%601.GetEnumerator%2A>メソッドを直接呼び出す代わりに、C#の`foreach`ステートメントと Visual Basicの`For Each`...`Next`構造を<xref:System.Span%601>の列挙に使用することができます。
 
        ]]></format>
         </remarks>
@@ -656,7 +656,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
       </ReturnValue>
       <Docs>
         <summary>現在のスパンの長さを返します。</summary>
-        <value>現在の範囲の長さ。</value>
+        <value>現在のスパンの長さ。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -695,7 +695,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-2 つ<xref:System.Span%601>オブジェクトが同じ長さとの対応する要素がある場合は、等しい`left`と`right`同じメモリを指しています。 等しいかどうかテストでは、注意*いない*内容が等しいかどうかを判断しようとしています。
+同じ長さで、`left`と`right`が同じメモリを指している場合、2 つ<xref:System.Span%601>オブジェクトは等しいです。 等値のテストでは、内容が等しいかどうかを判断しようと*しない*ことに注意してください。
 
          ]]></format>
         </remarks>
@@ -839,7 +839,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-2 つ<xref:System.Span%601>オブジェクトが等しい場合または異なる長さがある場合、対応する要素の`left`と`right`同じメモリを指していません。 
+長さが異なる、あるいは`left`と`right`が同じメモリを指していない場合、2 つの<xref:System.Span%601>オブジェクトは等しくありません。 
 
          ]]></format>
         </remarks>
@@ -1008,7 +1008,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このメソッドは、ヒープ割り当てを実行し、したがっては可能であれば避ける必要があります。 これは、Api をサポートする場合にも必要<xref:System.Span%601>オブジェクトは使用できませんが、配列と共に使用する Api は。
+このメソッドは、ヒープ割り当てを実行するため、可能であれば避ける必要があります。 <xref:System.Span%601>オブジェクトを使用する API がなく、配列を使用する API を利用できる場合には必要となります。
 
          ]]></format>
         </remarks>
@@ -1081,7 +1081,7 @@ A`Span<T>`任意のメモリの連続した領域を表します。 A`Span<T>`�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このメソッドは、すべてのコピー`source`に`destination`場合でも`source`と`destination`が重複します。
+このメソッドは、`source`と`destination`が重なる場合でも、`source`のすべてを`destination`にコピーします。
 
 場合`destination`ソースよりも短い<xref:System.Span%601>、このメソッドが戻る`false`とにデータが書き込まれない`destination`します。
 
