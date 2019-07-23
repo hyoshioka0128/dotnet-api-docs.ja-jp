@@ -38,14 +38,14 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
 
-`Span<T>` [ref 構造体](~/docs/csharp/language-reference/keywords/ref.md#ref-struct-types)マネージ ヒープではなく、スタックに割り当てることができます。 Ref 構造体の型がいくつかのボックス化できないことは、型の変数に割り当てられないなど、マネージ ヒープに昇格することはできませんを確実に制限がある<xref:System.Object>、`dynamic`フィールドに任意のインターフェイス型にすることはできないことも、参照型とする間は使用できません`await`と`yield`境界。 さらに、2 つのメソッドを呼び出す<xref:System.Span%601.Equals(System.Object)>と<xref:System.Span%601.GetHashCode%2A>、スロー、<xref:System.NotSupportedException>します。 
+`Span<T>`はマネージド ヒープではなく、スタックに割り当てられる[ref 構造体](~/docs/csharp/language-reference/keywords/ref.md#ref-struct-types)です。 ref 構造体は、ボックス化できない、<xref:System.Object>、`dynamic`または任意のインターフェイス型の変数に割り当てられない、参照型のフィールドにできない、`await`や`yield`をまたいで使用できないなど、マネージド ヒープに昇格しないようにするためのいくつかの制限があります。 さらに、<xref:System.Span%601.Equals(System.Object)>と<xref:System.Span%601.GetHashCode%2A>の2つのメソッドを呼び出すと、<xref:System.NotSupportedException>をスローします。 
 
 > [!IMPORTANT]
 > `Span<T>`はスタック専用の型であるため、ヒープ上でバッファーへの参照を格納する必要のある、多くのシナリオには適していません。 たとえば、非同期メソッドの呼び出しを行うルーチンなどが当てはまります。 このようなシナリオでは、補完的な<xref:System.Memory%601?displayProperty=nameWithType>と<xref:System.ReadOnlyMemory%601?displayProperty=nameWithType>型を使用できます。
 
 不変、または読み取り専用の構造を表すスパンの場合、<xref:System.ReadOnlySpan%601?displayProperty=nameWithType>を使用してください。
 
-## <a name="spant-and-memory"></a>スパン\<T > とメモリ
+## <a name="spant-and-memory"></a>Span\<T> とメモリ
 
 `Span<T>`は任意のメモリの連続した領域を表します。 `Span<T>`インスタンスは、配列の要素または配列の一部を保持するためによく使用されます。 ただし、配列とは異なり、`Span<T>`インスタンスは、マネージド メモリ、ネイティブ メモリ、スタック上で管理されたメモリを指すことができます。 次の例では、配列から`Span<Byte>`を作成します。
 
@@ -63,15 +63,15 @@
 
 [!code-csharp[Creating a Span\<Byte> from stack-allocated memory](~/samples/snippets/csharp/api/system/span/program.cs#4)]
 
-## <a name="spant-and-arrays"></a>スパン\<T > と配列
+## <a name="spant-and-arrays"></a>Span\<T> と配列
 
-配列をラップして場合、`Span<T>`と同じ例では、配列全体をラップすることができます、[スパン\<T > とメモリ](#spant-and-memory)セクション。 スライスをサポートするため、`Span<T>`配列内の任意の連続する範囲を指すこともできます。  
+[Span\<T> とメモリ](#spant-and-memory)セクションの例のように、配列をラップした場合、`Span<T>`は配列全体をラップすることができます。 スライスをサポートするため、`Span<T>`は配列内の連続する範囲を指すこともできます。  
 
 次の例では、10 要素ある整数配列の中間 5 つの要素のスライスを作成します。 コードがスライス内の各整数の値を 2 倍することに注意してください。 出力のとおり、スパンで加えられた変更は、配列の値に反映されます。
 
 [!code-csharp[Creating a slice from a portion of a span](~/samples/snippets/csharp/api/system/span/slice/program.cs)]
 
-## <a name="spant-and-slices"></a>スパン\<T > とスライス
+## <a name="spant-and-slices"></a>Span\<T> とスライス
 
 `Span<T>`には、現在のスパンより、指定したインデックスから始まるスライスを形成する<xref:System.Span%601.Slice%2A>メソッドの 2 つのオーバー ロードが含まれています。 これにより、`Span<T>`のデータを、パフォーマンスの影響を最小限にしながら、データ処理パイプラインの一部で必要に応じて処理できる、一連の論理的なまとまりとして扱うことができます。 たとえば、最新のサーバー プロトコルは多くの場合、テキスト ベースであるため、文字列と部分文字列の操作は特に重要です。 <xref:System.String>クラスの場合、部分文字列の抽出に使う主要なメソッドは<xref:System.String.Substring%2A>です。 広範な文字列操作に依存するデータ パイプラインは、次のように、いくつかのパフォーマンスの低下を招きます。
 
@@ -155,15 +155,15 @@
       <Docs>
         <param name="pointer">メモリ内で指定された数の <typeparamref name="T" /> 要素の開始アドレスを指すポインター。</param>
         <param name="length"><see cref="T:System.Span`1" /> 内に格納される <typeparamref name="T" /> 要素の数。</param>
-        <summary>指定されたメモリ アドレスで始まる指定された <typeparamref name="T" /> 要素数から新しい <see cref="T:System.Span`1" /> オブジェクトを作成します。</summary>
+        <summary>指定されたメモリ アドレスで始まり、指定された数の <typeparamref name="T" /> 要素を持つ、新しい <see cref="T:System.Span`1" /> オブジェクトを作成します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-        This constructor should be used with care, since it creates arbitrarily typed `T`s from a `void*`-typed block of memory, and `length` is not checked. However, if the constructor succeeds in creating a new <xref:System.Span%601> object, all subsequent uses are correct.        
+        このコンストラクターは、`void*`型のメモリ ブロックから、任意の`T`型の要素を作成し、長さはチェックされないため、注意して使用する必要があります。ただし、コンストラクターが新しい<xref:System.Span%601>オブジェクトの作成に成功した場合、後続のすべての使用は正しいです。
 
       ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="T" /> は参照型であるか、ポインターを含み、そのため、アンマネージド メモリに格納できません。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="T" /> は参照型であるか、ポインターを含むため、アンマネージ メモリに格納できません。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="length" /> が負の値です。</exception>
       </Docs>
     </Member>
@@ -281,7 +281,7 @@
 
          ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="destination" /> はソース <see cref="System.Span`1" /> より短くなります。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="destination" /> が元の <see cref="System.Span`1" /> より短くなります。</exception>
       </Docs>
     </Member>
     <Member MemberName="Empty">
@@ -355,7 +355,7 @@
           <format type="text/markdown"><![CDATA[  
 <xref:System.Span%601.Equals%2A>メソッドの呼び出しはサポートされていません。 <xref:System.Span%601.Equals%2A>メソッド呼び出しは 2 つの結果のいずれかを生成します。
 
-- 場合`obj`は、<xref:System.Span%601>メソッドの呼び出しには、コンパイラ エラー CS1503 が生成されます:「に変換できません 'System.Span' から 'object'.」これは、ため<xref:System.Span%601>は、 [ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)をボックス化することはできず、変換することはできません、<xref:System.Object>します。
+- `obj`が<xref:System.Span%601>の場合、メソッド呼び出しには、コンパイラ エラー CS1503:「'System.Span' から 'object' に変換できません。」 が生成されます。これは、<xref:System.Span%601>が、[ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)であり、ボックス化できず、そのため<xref:System.Object>に変換することはできないからです。
 
 - `obj`の型が<xref:System.Span%601>でない場合、メソッド呼び出しは<xref:System.NotSupportedException>をスローします。 
 
@@ -494,11 +494,11 @@
       <Parameters />
       <Docs>
         <summary>インデックス 0 にある <see cref="T:System.Span`1" /> の要素の参照を返します。</summary>
-        <returns>インデックス 0 にある <see cref="T:System.Span`1" /> の要素の参照。あるいは、<see cref="M:System.Span`1.IsEmpty" /> が <see langword="true" /> の場合は <see langword="null" />。</returns>
+        <returns>インデックス 0 にある <see cref="T:System.Span`1" /> の要素の参照。<see cref="M:System.Span`1.IsEmpty" /> が <see langword="true" /> の場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-`GetPinnableReference`メソッドを返します。 を[ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)します。 ピン留めできます、<xref:System.Span%601>メモリにします。 使用をサポートするために必要なこと、<xref:System.Span%601>内、[固定](~/docs/csharp/language-reference/keywords/fixed-statement.md)ステートメント。
+`GetPinnableReference`メソッドは[ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)を返します。 <xref:System.Span%601>をメモリにピン留めするために使用できます。 [fixed](~/docs/csharp/language-reference/keywords/fixed-statement.md)ステートメント内で<xref:System.Span%601>の使用をサポートするために必要です。
 
        ]]></format>
         </remarks>
@@ -529,7 +529,7 @@
       </ReturnValue>
       <Docs>
         <summary>現在の <see cref="T:System.Span`1" /> が空かどうかを示す値を返します。</summary>
-        <value><see langword="true" /> 現在の範囲が空である場合それ以外の場合、<see langword="false" />します。</value>
+        <value>現在の範囲が空の場合に<see langword="true" />を、それ以外の場合に<see langword="false" />を返します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -839,7 +839,9 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-長さが異なる、あるいは`left`と`right`が同じメモリを指していない場合、2 つの<xref:System.Span%601>オブジェクトは等しくありません。 
+
+長さが異なる、あるいは`left`と`right`が同じメモリを指していない場合、2 つの<xref:System.Span%601>オブジェクトは等しくありません。
+
 
          ]]></format>
         </remarks>
@@ -1083,7 +1085,7 @@
 
 このメソッドは、`source`と`destination`が重なる場合でも、`source`のすべてを`destination`にコピーします。
 
-場合`destination`ソースよりも短い<xref:System.Span%601>、このメソッドが戻る`false`とにデータが書き込まれない`destination`します。
+`destination`が元の<xref:System.Span%601>よりも短い場合、このメソッドは`false`を返し、`destination`にデータは書き込まれません。
 
          ]]></format>
         </remarks>
