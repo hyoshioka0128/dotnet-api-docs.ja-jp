@@ -1,5 +1,5 @@
 <Type Name="ReadOnlyMemory&lt;T&gt;" FullName="System.ReadOnlyMemory&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="eff082a2eabcfd6dc2e7b601f19bc82f0b553e13" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/25/2018" /><Meta Name="ms.locfileid" Value="39827770" /></Metadata><TypeSignature Language="C#" Value="public struct ReadOnlyMemory&lt;T&gt;" />
+  <TypeSignature Language="C#" Value="public struct ReadOnlyMemory&lt;T&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ReadOnlyMemory`1&lt;T&gt; extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.ReadOnlyMemory`1" />
   <TypeSignature Language="VB.NET" Value="Public Structure ReadOnlyMemory(Of T)" />
@@ -9,21 +9,28 @@
     <AssemblyName>System.Runtime</AssemblyName>
     <AssemblyVersion>4.2.1.0</AssemblyVersion>
   </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>System.Memory</AssemblyName>
+  </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>netstandard</AssemblyName>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+  </AssemblyInfo>
   <TypeParameters>
     <TypeParameter Name="T" />
   </TypeParameters>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces></Interfaces>
   <Attributes>
-    <Attribute FrameworkAlternate="netcore-2.1">
+    <Attribute FrameworkAlternate="netcore-2.2;netcore-2.1;netcore-3.0;netstandard-2.1">
       <AttributeName>System.Runtime.CompilerServices.IsReadOnly</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
-    <typeparam name="T">To be added.</typeparam>
-    <summary>To be added.</summary>
+    <typeparam name="T">メモリの連続する領域の読み取り元となるオブジェクトの種類。</typeparam>
+    <summary><see cref="T:System.ReadOnlySpan`1" /> と似ていますが、メモリの隣接した領域を表します。 <see cref="T:System.ReadOnlySpan`1" /> とは異なり、これは ByRef に似た型ではありません。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -39,13 +46,30 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="array" Type="T[]" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="array">対象となる配列。</param>
+        <summary>対象となる配列全体に新しいメモリ領域を作成します。</summary>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+が`default`の`array`場合は`null`、を返します。
+
+               </format>
+        </remarks>
+        <exception cref="T:System.ArrayTypeMismatchException"><paramref name="array" /> は共変であり、配列の型は <see langword="T[]" /> とまったく同じではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -60,17 +84,35 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="array" Type="T[]" />
         <Parameter Name="start" Type="System.Int32" />
         <Parameter Name="length" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <param name="start">To be added.</param>
-        <param name="length">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="array">対象となる配列。</param>
+        <param name="start">メモリ領域の開始位置を示すインデックス。</param>
+        <param name="length">メモリ領域の項目数。</param>
+        <summary>指定された位置を開始位置とし、指定された要素数を含む、対象となる配列の一部に新しいメモリ領域を作成します。</summary>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+が`default`の`array`場合は`null`、を返します。
+
+               </format>
+        </remarks>
+        <exception cref="T:System.ArrayTypeMismatchException"><paramref name="array" /> は共変であり、配列の型は <see langword="T[]" /> とまったく同じではありません。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="start" />、<paramref name="length" />、または <paramref name="start" /> + <paramref name="length" /> では、配列の範囲外の位置を識別します。</exception>
       </Docs>
     </Member>
     <Member MemberName="CopyTo">
@@ -85,6 +127,13 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -92,9 +141,19 @@
         <Parameter Name="destination" Type="System.Memory&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="destination">項目のコピー先のメモリ領域。</param>
+        <summary>読み取り専用メモリ領域の内容をコピー先のメモリ領域にコピーします。</summary>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+ 
+ ## Remarks
+ 
+ `source` と`destination`の場合、このメソッドは、変換先が上書きされる前に、元の値が一時的な場所にあるかのように動作します。
+
+         ]]></format>
+         </remarks>
+        <exception cref="T:System.ArgumentException"><paramref name="destination" /> は、ソース メモリ領域よりも小さくなっています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Empty">
@@ -109,12 +168,19 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>空の <see cref="T:System.ReadOnlyMemory`1" /> を取得します。</summary>
+        <value>空の読み取り専用メモリ領域。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -130,8 +196,15 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netcore-2.1">
+        <Attribute FrameworkAlternate="netcore-2.2;netcore-2.1;netcore-3.0;netstandard-2.1">
           <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)</AttributeName>
         </Attribute>
       </Attributes>
@@ -142,9 +215,9 @@
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="obj">比較対象のオブジェクト。</param>
+        <summary>指定したオブジェクトが現在の読み取り専用メモリ領域と等しいかどうかを判断します。</summary>
+        <returns>現在のインスタンスと <paramref name="obj" /> が等しい場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -160,6 +233,13 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -167,10 +247,21 @@
         <Parameter Name="other" Type="System.ReadOnlyMemory&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="other">比較する読み取り専用メモリ。</param>
+        <summary>現在のインスタンスと指定した <see cref="T:System.ReadOnlyMemory`1" /> オブジェクトが、等しいかどうかを判断します。</summary>
+        <returns>現在のインスタンスと <paramref name="other" /> が等しい場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+[!IMPORTANT]
+
+2 <xref:System.ReadOnlyMemory%601>つのオブジェクトは、メモリ領域が同じ配列を指し、長さが同じである場合に等しくなります。 メソッドは、内容が等しいかどうかを確認しません。
+
+               </format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -185,8 +276,15 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netcore-2.1">
+        <Attribute FrameworkAlternate="netcore-2.2;netcore-2.1;netcore-3.0;netstandard-2.1">
           <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)</AttributeName>
         </Attribute>
       </Attributes>
@@ -195,8 +293,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>この <see cref="T:System.ReadOnlyMemory`1" /> のハッシュ コードを返します。</summary>
+        <returns>ハッシュ コード。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -212,12 +310,51 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>この読み取り専用メモリ領域が空かどうかを示す値を取得します。</summary>
+        <value><see langword="true" />読み取り専用のメモリ領域が空である (つまり、 <see cref="P:System.ReadOnlyMemory`1.Length" />が0である) 場合は。それ以外の<see langword="false" />場合は。</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public ReadOnlyMemory&lt;T&gt; this[Range range] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.ReadOnlyMemory`1&lt;!T&gt; Item(valuetype System.Range)" />
+      <MemberSignature Language="DocId" Value="P:System.ReadOnlyMemory`1.Item(System.Range)" />
+      <MemberSignature Language="VB.NET" Value="Default Public ReadOnly Property Item(range As Range) As ReadOnlyMemory(Of T)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property ReadOnlyMemory&lt;T&gt; default[Range] { ReadOnlyMemory&lt;T&gt; get(Range range); };" />
+      <MemberSignature Language="F#" Value="member this.Item(Range) : ReadOnlyMemory&lt;'T&gt;" Usage="System.ReadOnlyMemory&lt;'T&gt;.Item" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Runtime</AssemblyName>
+        <AssemblyVersion>4.2.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="range" Type="System.Range" Index="0" FrameworkAlternate="netcore-3.0;netstandard-2.1" />
+      </Parameters>
+      <Docs>
+        <param name="range">現在のインスタンスから抽出する範囲。</param>
+        <summary>指定した <see cref="T:System.Range" /> によって定義された読み取り専用メモリ領域を取得します。</summary>
+        <value>読み取り専用のメモリ領域。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -233,12 +370,19 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>メモリ領域の項目数を取得します。</summary>
+        <value>メモリ領域内の項目の数。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -254,6 +398,13 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
       </ReturnValue>
@@ -261,9 +412,9 @@
         <Parameter Name="segment" Type="System.ArraySegment&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <param name="segment">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="segment">変換する配列セグメント。</param>
+        <summary><see cref="T:System.ArraySegment`1" /> から <see cref="T:System.ReadOnlyMemory`1" /> への暗黙の型変換を定義します。</summary>
+        <returns>配列セグメントの読み取り専用メモリ表示。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -279,6 +430,13 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
       </ReturnValue>
@@ -286,9 +444,9 @@
         <Parameter Name="array" Type="T[]" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="array">変換する型 T の配列。</param>
+        <summary>配列から <see cref="T:System.ReadOnlyMemory`1" /> への暗黙の型変換を定義します。</summary>
+        <returns>型 T の配列の読み取り専用メモリ表示。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -304,11 +462,61 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Buffers.MemoryHandle</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>メモリに対してハンドルを作成します。</summary>
+        <returns>メモリ用のハンドル。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+> [!IMPORTANT]
+> ガベージコレクターは、返さ<see cref="T:System.Buffers.MemoryHandle" />れたが破棄されるまでメモリを移動せず、メモリのアドレスを取得して使用できるようにします。
+
+               </format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">非プリミティブ (blittable でない) メンバーを持つインスタンスは固定できません。</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Slice">
+      <MemberSignature Language="C#" Value="public ReadOnlyMemory&lt;T&gt; Slice (Index startIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.ReadOnlyMemory`1&lt;!T&gt; Slice(valuetype System.Index startIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ReadOnlyMemory`1.Slice(System.Index)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Slice (startIndex As Index) As ReadOnlyMemory(Of T)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; ReadOnlyMemory&lt;T&gt; Slice(Index startIndex);" />
+      <MemberSignature Language="F#" Value="member this.Slice : Index -&gt; ReadOnlyMemory&lt;'T&gt;" Usage="readOnlyMemory.Slice startIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Runtime</AssemblyName>
+        <AssemblyVersion>4.2.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="startIndex" Type="System.Index" Index="0" FrameworkAlternate="netcore-3.0;netstandard-2.1" />
+      </Parameters>
+      <Docs>
+        <param name="startIndex">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -326,6 +534,13 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
       </ReturnValue>
@@ -333,9 +548,41 @@
         <Parameter Name="start" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="start">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="start">このスライスの開始位置を示すインデックス。</param>
+        <summary>指定した位置を開始位置とし、その最後まで続く、指定したメモリ領域からスライスを形成します。</summary>
+        <returns>目的のスライスを表している読み取り専用メモリ領域。</returns>
+        <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="start" /> が 0 未満であるか、または <see cref="P:System.ReadOnlyMemory`1.Length" /> を超えています。</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Slice">
+      <MemberSignature Language="C#" Value="public ReadOnlyMemory&lt;T&gt; Slice (Range range);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.ReadOnlyMemory`1&lt;!T&gt; Slice(valuetype System.Range range) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ReadOnlyMemory`1.Slice(System.Range)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; ReadOnlyMemory&lt;T&gt; Slice(Range range);" />
+      <MemberSignature Language="F#" Value="member this.Slice : Range -&gt; ReadOnlyMemory&lt;'T&gt;" Usage="readOnlyMemory.Slice range" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Runtime</AssemblyName>
+        <AssemblyVersion>4.2.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="range" Type="System.Range" Index="0" FrameworkAlternate="netcore-3.0;netstandard-2.1" />
+      </Parameters>
+      <Docs>
+        <param name="range">スライスに含める現在のメモリ領域からの要素の範囲。</param>
+        <summary>現在のインスタンスの範囲からスライスを形成します。</summary>
+        <returns>目的のスライスを表している読み取り専用メモリ領域。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -351,6 +598,13 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlyMemory&lt;T&gt;</ReturnType>
       </ReturnValue>
@@ -359,11 +613,12 @@
         <Parameter Name="length" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="start">To be added.</param>
-        <param name="length">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="start">このスライスの開始位置を示すインデックス。</param>
+        <param name="length">スライスに求められる長さ。</param>
+        <summary><paramref name="length" /> 要素の <paramref name="start" /> 位置から開始して、指定されたメモリ領域からスライスを形成します。</summary>
+        <returns>目的のスライスを表している読み取り専用メモリ領域。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="start" />、<paramref name="length" />、または <paramref name="start" /> + <paramref name="length" /> が現在のインスタンスの範囲外です。</exception>
       </Docs>
     </Member>
     <Member MemberName="Span">
@@ -378,12 +633,19 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlySpan&lt;T&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>メモリ領域から範囲を取得します。</summary>
+        <value>メモリスパン。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -399,14 +661,30 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>T[]</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>メモリ範囲の内容を新しい配列にコピーします。</summary>
+        <returns>配列。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+`ToArray`ヒープにを割り当てます。通常は避けてください。 ただし、場合によっては、配列として記述された Api を使用してギャップを埋める必要があります。
+
+               </format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -421,13 +699,20 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>この読み取り専用メモリ インスタンスの文字列表現を返します。</summary>
+        <returns><see cref="T:System.ReadOnlyMemory`1" /> の場合、メモリで指定されている文字を表す文字列の新しいインスタンスを返します。 それ以外の場合は、型の名前と要素の数を含む <see cref="T:System.String" /> を返します。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -443,6 +728,13 @@
         <AssemblyName>System.Runtime</AssemblyName>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -450,10 +742,19 @@
         <Parameter Name="destination" Type="System.Memory&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="destination">項目のコピー先のメモリ領域。</param>
+        <summary>コピー先に読み取り専用メモリの内容のコピーを試行し、コピー操作が成功したかどうかを示す値を返します。</summary>
+        <returns>コピー操作が成功した場合は <see langword="true" />。 <paramref name="destination" /> が現在のインスタンスより小さく、データが <paramref name="destination" /> に書き込まれない場合は <see langword="false" />。</returns>
+        <remarks>  
+          <format type="text/markdown"><![CDATA[  
+
+
+## Remarks
+
+コピー元とコピー先が重複している場合、このメソッドは、変換先が上書きされる前に、元の値が一時的な場所にあるかのように動作します。
+
+         ]]></format>
+         </remarks>
       </Docs>
     </Member>
   </Members>

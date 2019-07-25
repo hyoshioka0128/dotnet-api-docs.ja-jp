@@ -1,5 +1,5 @@
 <Type Name="Parallel" FullName="System.Threading.Tasks.Parallel">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="e8e0df7e304c1afdb9394a270fb26d17f094b1a6" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67243470" /></Metadata><TypeSignature Language="C#" Value="public static class Parallel" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="9969ebfed1c4d5ee33c68817c29ef43bc01f7aa4" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68369013" /></Metadata><TypeSignature Language="C#" Value="public static class Parallel" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Parallel extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Threading.Tasks.Parallel" />
   <TypeSignature Language="VB.NET" Value="Public Class Parallel" />
@@ -30,21 +30,21 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Tasks.Parallel>クラスには、各ループ、および一連のステートメントの実行の一般的な操作、ループなどの並列の置き換えをライブラリに基づくデータが用意されています。  
+ クラス<xref:System.Threading.Tasks.Parallel>は、for ループ、for each ループ、ステートメントセットの実行などの一般的な操作のために、ライブラリに基づくデータの並列置換を提供します。  
   
    
   
 ## Examples  
- この例では、複数の言語コンストラクトを使用して並列ループを実装するためのいくつかの方法を示します。  
+ この例では、複数の言語構成要素を使用して並列ループを実装するいくつかの方法を示します。  
   
  [!code-csharp[System.Threading.Tasks.Parallel#07](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel/cs/parallelintro.cs#07)]
  [!code-vb[System.Threading.Tasks.Parallel#07](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel/vb/parallelintro.vb#07)]  
   
  ]]></format>
     </remarks>
-    <threadsafe>すべてのパブリックおよびプロテクト メンバー<see cref="T:System.Threading.Tasks.Parallel" />スレッド セーフでは、複数のスレッドから同時に使用される可能性があります。</threadsafe>
+    <threadsafe>のすべてのパブリックメンバーと<see cref="T:System.Threading.Tasks.Parallel" />プロテクトメンバーはスレッドセーフであり、複数のスレッドから同時に使用できます。</threadsafe>
     <related type="Article" href="~/docs/standard/parallel-programming/data-parallelism-task-parallel-library.md">データの並列化 (タスク並列ライブラリ)</related>
-    <related type="ExternalDocumentation" href="https://code.msdn.microsoft.com/Samples-for-Parallel-b4b76364">.NET Framework による並列プログラミングのサンプル</related>
+    <related type="ExternalDocumentation" href="https://code.msdn.microsoft.com/Samples-for-Parallel-b4b76364">.NET Framework を使用した並列プログラミングのサンプル</related>
   </Docs>
   <Members>
     <MemberGroup MemberName="For">
@@ -98,31 +98,31 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 2 つの引数と共に提供されます。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` 2つの引数を使用して提供されます。  
   
--   <xref:System.Int32>反復カウントを表す値です。  
+-   イテレーションの数を表す値。<xref:System.Int32>  
   
--   A<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことができます。 <xref:System.Threading.Tasks.ParallelLoopState>オブジェクトが、コンパイラによって作成された; ユーザー コードでインスタンス化することはできません。  
+-   ループを途中で中断するために使用できるインスタンス。<xref:System.Threading.Tasks.ParallelLoopState> <xref:System.Threading.Tasks.ParallelLoopState>オブジェクトはコンパイラによって作成されます。ユーザーコードでインスタンス化することはできません。  
   
- 呼び出す、<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>メソッド通知、`for`操作を現在後のイテレーションが実行する必要はありません。 ただし、現在の前にすべてのイテレーション 1 つがありますがまだ実行していない場合に実行されます。  
+ メソッドを<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>呼び出すと`for` 、現在のの後のイテレーションが実行する必要がないことが操作に通知されます。 ただし、現在のイテレーションより前のイテレーションは、まだ実行していない場合でも実行する必要があります。  
   
- そのため、<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>内で、従来の中断操作の使用と似ています`for`などの言語でのループC#が完璧な代替ではありません。たとえば、保証はありません、イテレーション後、現在の 1 つは間違いなく実行されません。  
+ したがって、 <xref:System.Threading.Tasks.ParallelLoopState.Break%2A>の呼び出しは、などC#の言語の従来`for`のループ内で break 操作を使用するのと似ていますが、これは完全な代替手段ではありません。たとえば、現在のイテレーションより後のイテレーションが確実に実行されないという保証はありません。  
   
- 現在のものが必要ない前にすべてのイテレーションを実行する場合は、使用、<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>メソッドを使用してではなく<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>します。 呼び出す<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>通知、`for`ループ作業は既に完了しているかどうか、現在の反復処理の前後にあるためすべてに関係なく、残りのすべてのイテレーションを破棄できることが必要です。 ただしで<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>、に関するその他のイテレーションは実行されませんの保証はありません。  
+ 現在のイテレーションの前にすべての反復処理を実行する必要<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>がない場合は<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>、を使用する代わりにメソッドを使用します。 を<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>呼び出す`for`と、すべての必要な作業が既に完了しているため、現在の反復処理の前後であるかどうかに関係なく、残りのすべての反復が破棄される可能性があることがループに通知されます。 ただし、と<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>同様に、他のイテレーションが実行されないことについての保証はありません。  
   
- ループが途中で終了した場合、<xref:System.Threading.Tasks.ParallelLoopResult>返される構造体は、ループの完了に関連する情報を含めることができます。  
+ ループが途中で終了した場合<xref:System.Threading.Tasks.ParallelLoopResult> 、返される構造体には、ループの完了に関する関連情報が含まれます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐに返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは、繰り返しを実行せずにすぐに制御を戻します。  
   
    
   
 ## Examples  
- 次の例では、並列ループの最大 100 個のイテレーションを実行します。 各イテレーションでは、1 から 1,000 ミリ秒単位までのランダムな間隔の一時停止します。 ループのイテレーションでランダムに生成された値を決定します、<xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>メソッドが呼び出されます。 例のインデックスがより大きいイテレーションなしの出力として、<xref:System.Threading.Tasks.ParallelLoopState.LowestBreakIteration%2A?displayProperty=nameWithType>への呼び出し後のプロパティ値の開始、<xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>メソッド。  
+ 次の例では、ループの最大100の反復処理を並列実行します。 各イテレーションは、1 ~ 1000 ミリ秒のランダムな間隔で一時停止します。 ランダムに生成された値によって、 <xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>メソッドが呼び出されるループの反復処理が決定されます。 この例の出力に示されているように、インデックスが<xref:System.Threading.Tasks.ParallelLoopState.LowestBreakIteration%2A?displayProperty=nameWithType>プロパティ値よりも大きいイテレーションは、メソッドの<xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>呼び出しの後に開始されません。  
   
  [!code-csharp[System.Threading.Tasks.ParallelLoopState#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallelloopstate/cs/break1.cs#2)]
  [!code-vb[System.Threading.Tasks.ParallelLoopState#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallelloopstate/vb/break1.vb#2)]  
   
- ループの反復処理がまだときに実行されている可能性がありますので、<xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>メソッドが呼び出されると、各反復処理を呼び出す、<xref:System.Threading.Tasks.ParallelLoopState.ShouldExitCurrentIteration%2A?displayProperty=nameWithType>別のイテレーションが呼び出されているかどうかを確認するプロパティ、<xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>メソッド。 プロパティの値が場合`true`、イテレーションの値を確認します、<xref:System.Threading.Tasks.ParallelLoopState.LowestBreakIteration%2A?displayProperty=nameWithType>プロパティと、現在のイテレーションのインデックス値よりも大きい場合は、すぐに返します。  
+ <xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>メソッドが呼び出されたときにループの反復処理が実行される可能性があるため、各<xref:System.Threading.Tasks.ParallelLoopState.ShouldExitCurrentIteration%2A?displayProperty=nameWithType>反復はプロパティを呼び出して、別の<xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=nameWithType>イテレーションがメソッドを呼び出したかどうかを確認します。 プロパティ値が`true`の場合、イテレーションは<xref:System.Threading.Tasks.ParallelLoopState.LowestBreakIteration%2A?displayProperty=nameWithType>プロパティの値をチェックし、現在のイテレーションのインデックス値よりも大きい場合は、すぐにを返します。  
   
  ]]></format>
         </remarks>
@@ -173,14 +173,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 反復回数で提供されます (<xref:System.Int32>) をパラメーターとして。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これは、パラメーターとして反復<xref:System.Int32>回数 () を使用して提供されます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐに返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは、繰り返しを実行せずにすぐに制御を戻します。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Threading.Tasks.Parallel.For%2A>メソッドのランダム バイトを生成するデリゲートの呼び出しで 100 の値し、その合計を計算します。  
+ 次の例では<xref:System.Threading.Tasks.Parallel.For%2A> 、メソッドを使用して、ランダムバイト値を生成し、合計を計算するデリゲートの100呼び出しを呼び出します。  
   
  [!code-csharp[System.Threading.Tasks.Parallel.For#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel.for/cs/for1.cs#1)]
  [!code-vb[System.Threading.Tasks.Parallel.For#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel.for/vb/for1.vb#1)]  
@@ -233,17 +233,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 次のパラメーターと共に提供されます: 反復カウント (<xref:System.Int64>)、および<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことがあります。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` このメソッドには、反復回数 (<xref:System.Int64>) <xref:System.Threading.Tasks.ParallelLoopState>と、ループを途中で中断するために使用できるインスタンスのパラメーターが用意されています。  
   
- 呼び出す、<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>メソッド通知、`for`操作を現在後のイテレーションを実行する必要はありませんが、現在の前にすべてのイテレーションの操作を行います。  
+ メソッドを<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>呼び出すと`for` 、現在のの反復処理が実行される必要がないことを操作に通知しますが、現在のイテレーションの前のイテレーションはすべて実行されます。  
   
- 中断の呼び出しは、従来の中断操作を使用してに似ていますそのため、`for`などの言語でループC#が完璧な代替ではありません。たとえば、保証はありません、イテレーション後、現在の 1 つは間違いなく実行されません。  
+ したがって、break の呼び出しは、など`for` C#の言語の従来のループ内で break 操作を使用するのと似ていますが、これは完全な代替手段ではありません。たとえば、現在のイテレーションより後のイテレーションが確実に実行されないという保証はありません。  
   
- 現在のものが必要ない前にすべてのイテレーションを実行する場合は、使用、<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>メソッドを使用してではなく<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>します。 呼び出す<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>通知、`for`ループ作業は既に完了しているかどうか、現在の反復処理の前後にあるためすべてに関係なく、残りのすべてのイテレーションを破棄できることが必要です。 ただしで<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>、に関するその他のイテレーションは実行されませんの保証はありません。  
+ 現在のイテレーションの前にすべての反復処理を実行する必要<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>がない場合は<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>、を使用する代わりにメソッドを使用します。 を<xref:System.Threading.Tasks.ParallelLoopState.Stop%2A>呼び出す`for`と、すべての必要な作業が既に完了しているため、現在の反復処理の前後であるかどうかに関係なく、残りのすべての反復が破棄される可能性があることがループに通知されます。 ただし、と<xref:System.Threading.Tasks.ParallelLoopState.Break%2A>同様に、他のイテレーションが実行されないことについての保証はありません。  
   
- ループが途中で終了した場合、<xref:System.Threading.Tasks.ParallelLoopResult>返される構造体は、ループの完了に関連する情報を含めることができます。  
+ ループが途中で終了した場合<xref:System.Threading.Tasks.ParallelLoopResult> 、返される構造体には、ループの完了に関する関連情報が含まれます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐを返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは反復処理を実行せずにすぐに制御を戻します。  
   
  ]]></format>
         </remarks>
@@ -293,9 +293,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 反復回数で提供されます (<xref:System.Int64>) をパラメーターとして。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これは、パラメーターとして反復<xref:System.Int64>回数 () を使用して提供されます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐに返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは、繰り返しを実行せずにすぐに制御を戻します。  
   
  ]]></format>
         </remarks>
@@ -346,16 +346,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 次のパラメーターと共に提供されます: 反復カウント (<xref:System.Int32>)、および<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことがあります。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` このメソッドには、反復回数 (<xref:System.Int32>) <xref:System.Threading.Tasks.ParallelLoopState>と、ループを途中で中断するために使用できるインスタンスのパラメーターが用意されています。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐに返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは、繰り返しを実行せずにすぐに制御を戻します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.OperationCanceledException"><paramref name="parallelOptions" /> 引数の <see cref="T:System.Threading.CancellationToken" /> が取り消されました。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <exception cref="T:System.ObjectDisposedException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationTokenSource" /> に関連付けられている <see cref="T:System.Threading.CancellationToken" /> は破棄されました。</exception>
@@ -404,14 +404,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 反復回数で提供されます (<xref:System.Int32>) をパラメーターとして。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これは、パラメーターとして反復<xref:System.Int32>回数 () を使用して提供されます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐを返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは反復処理を実行せずにすぐに制御を戻します。  
   
    
   
 ## Examples  
- 次の例では、並列ループを取り消す方法を示します。  
+ 次の例は、並列ループを取り消す方法を示しています。  
   
  [!code-csharp[System.Threading.Tasks.Parallel#05](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel/cs/parallelforcancel.cs#05)]
  [!code-vb[System.Threading.Tasks.Parallel#05](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel/vb/parallelforcancel.vb#05)]  
@@ -470,14 +470,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 次のパラメーターと共に提供されます: 反復カウント (<xref:System.Int64>)、および<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことがあります。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` このメソッドには、反復回数 (<xref:System.Int64>) <xref:System.Threading.Tasks.ParallelLoopState>と、ループを途中で中断するために使用できるインスタンスのパラメーターが用意されています。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐに返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは、繰り返しを実行せずにすぐに制御を戻します。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>メソッドを<xref:System.Threading.Tasks.ParallelOptions>オブジェクト。  
+ 次の例は、 <xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType> <xref:System.Threading.Tasks.ParallelOptions>オブジェクトでメソッドを使用する方法を示しています。  
   
  [!code-csharp[System.Threading.Tasks.Parallel#03](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel/cs/parallelfor.cs#03)]
  [!code-vb[System.Threading.Tasks.Parallel#03](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel/vb/parallelfor.vb#03)]  
@@ -536,14 +536,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 64 ビットのインデックスをサポートしています。 `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 反復回数で提供されます (<xref:System.Int64>) をパラメーターとして。  
+ では、64ビットのインデックスをサポートしています。 デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これは、パラメーターとして反復<xref:System.Int64>回数 () を使用して提供されます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐを返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは反復処理を実行せずにすぐに制御を戻します。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します<xref:System.Threading.Tasks.ParallelOptions>カスタム タスク スケジューラを指定します。  
+ 次の例は、を使用<xref:System.Threading.Tasks.ParallelOptions>してカスタムタスクスケジューラを指定する方法を示しています。  
   
  [!code-csharp[System.Threading.Tasks.Parallel#06](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel/cs/parallelforwithscheduler.cs#06)]
  [!code-vb[System.Threading.Tasks.Parallel#06](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel/vb/parallelforwithscheduler.vb#06)]  
@@ -609,21 +609,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 次のパラメーターと共に提供されます。 反復カウント (<xref:System.Int32>)、<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと同じスレッドで実行されるイテレーション間で共有できるいくつかのローカル状態。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これには、次のパラメーターが用意されて<xref:System.Int32>います。 <xref:System.Threading.Tasks.ParallelLoopState>反復回数 ()、ループを途中で中断するために使用できるインスタンス、および同じスレッドで実行される繰り返し間で共有される可能性のあるローカル状態。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐを返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは反復処理を実行せずにすぐに制御を戻します。  
   
- このメソッドを使用して、例では、次を参照してください。[方法。スレッド ローカル変数を使用する Parallel.For ループを記述する](~/docs/standard/parallel-programming/how-to-write-a-parallel-for-loop-with-thread-local-variables.md)」を参照してください。  
+ このメソッドの使用例については[、「方法:スレッド ローカル変数を使用する Parallel.For ループを記述する](~/docs/standard/parallel-programming/how-to-write-a-parallel-for-loop-with-thread-local-variables.md)」を参照してください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
 または 
@@ -681,15 +681,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 次のパラメーターと共に提供されます。 反復カウント (<xref:System.Int64>)、<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと同じタスクを実行するイテレーション間で共有できるいくつかのローカル状態。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これには、次のパラメーターが用意されて<xref:System.Int64>います。 <xref:System.Threading.Tasks.ParallelLoopState>反復回数 ()、ループを途中で中断するために使用できるインスタンス、および同じタスクで実行されるイテレーション間で共有される可能性のあるローカル状態。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐを返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは反復処理を実行せずにすぐに制御を戻します。  
   
- このメソッドを使用して、例では、次を参照してください。[方法。スレッド ローカル変数を使用する Parallel.For ループを記述する](~/docs/standard/parallel-programming/how-to-write-a-parallel-for-loop-with-thread-local-variables.md)」を参照してください。  
+ このメソッドの使用例については[、「方法:スレッド ローカル変数を使用する Parallel.For ループを記述する](~/docs/standard/parallel-programming/how-to-write-a-parallel-for-loop-with-thread-local-variables.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -698,7 +698,7 @@
 または 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localFinally" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
@@ -754,18 +754,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 次のパラメーターと共に提供されます。 反復カウント (<xref:System.Int32>)、<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと同じタスクを実行するイテレーション間で共有できるいくつかのローカル状態。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これには、次のパラメーターが用意されて<xref:System.Int32>います。 <xref:System.Threading.Tasks.ParallelLoopState>反復回数 ()、ループを途中で中断するために使用できるインスタンス、および同じタスクで実行されるイテレーション間で共有される可能性のあるローカル状態。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは、複数のスレッドで同時に呼び出すことがあります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のスレッドで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐを返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは反復処理を実行せずにすぐに制御を戻します。  
   
    
   
 ## Examples  
- 次の例では、スレッド ローカル変数を使用して、多くの時間のかかる操作の結果の合計を計算します。 この例では、4 の並列処理の次数を制限します。  
+ 次の例では、スレッドローカル変数を使用して、多くの長い操作の結果の合計を計算します。 この例では、並列処理の次数を4に制限しています。  
   
  [!code-csharp[System.Threading.Tasks.Parallel#04](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel/cs/threadlocalforwithoptions.cs#04)]
  [!code-vb[System.Threading.Tasks.Parallel#04](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel/vb/threadlocalforwithoptions.vb#04)]  
@@ -774,13 +774,13 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localFinally" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.OperationCanceledException"><paramref name="parallelOptions" /> 引数の <see cref="T:System.Threading.CancellationToken" /> が取り消されました。</exception>
         <exception cref="T:System.ObjectDisposedException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationTokenSource" /> に関連付けられている <see cref="T:System.Threading.CancellationToken" /> は破棄されました。</exception>
@@ -838,13 +838,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートがイテレーションの範囲の値ごとに 1 回呼び出される (`fromInclusive`、 `toExclusive`)。 次のパラメーターと共に提供されます。 反復カウント (<xref:System.Int64>)、<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと同じスレッドで実行されるイテレーション間で共有できるいくつかのローカル状態。  
+ デリゲートは、反復範囲 (`fromInclusive`、 `toExclusive`) の各値に対して1回ずつ呼び出されます。 `body` これには、次のパラメーターが用意されて<xref:System.Int64>います。 <xref:System.Threading.Tasks.ParallelLoopState>反復回数 ()、ループを途中で中断するために使用できるインスタンス、および同じスレッドで実行される繰り返し間で共有される可能性のあるローカル状態。  
   
- `localInit`デリゲートがスレッドごとに、ループの実行に参加し、これらの各スレッドの初期のローカル状態を返す 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各スレッドの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各スレッドで本文の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各スレッドのローカル状態に対して最後のアクションを実行するスレッドあたり 1 回呼び出されます。 このデリゲートは、複数のスレッドで同時に呼び出すことがあります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するスレッドごとに1回呼び出され、各スレッドの最初のローカル状態を返します。 これらの初期状態は、各スレッド`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各スレッドの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各スレッドのローカル状態に対して最後のアクションを実行するために、スレッドごとに1回呼び出されます。 このデリゲートは、複数のスレッドで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
- 場合`fromInclusive`がより大きいまたは等しい`toExclusive`メソッドは、イテレーションを実行することがなくすぐを返します。  
+ `fromInclusive` が`toExclusive`以上の場合、メソッドは反復処理を実行せずにすぐに制御を戻します。  
   
  ]]></format>
         </remarks>
@@ -856,7 +856,7 @@
 または 
 <paramref name="localFinally" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.OperationCanceledException"><paramref name="parallelOptions" /> 引数の <see cref="T:System.Threading.CancellationToken" /> が取り消されました。</exception>
         <exception cref="T:System.ObjectDisposedException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationTokenSource" /> に関連付けられている <see cref="T:System.Threading.CancellationToken" /> は破棄されました。</exception>
@@ -917,13 +917,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">順序付け可能のパーティショナー、<paramref name="source" /> の <see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> プロパティは <see langword="false" /> を返します。  
   
@@ -932,6 +932,7 @@
   
 または 
 ソースの順序付け可能なパーティショナーのすべてのメソッドは、<see langword="null" /> を返します。</exception>
+        <exception cref="T:System.AggregateException">指定したデリゲートのいずれかからスローされた例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
       </Docs>
     </Member>
@@ -978,7 +979,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -988,7 +989,7 @@
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="source" /> パーティショナーの <see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> プロパティは <see langword="false" /> を返します。  
   
-または 
+- または - 
 <paramref name="source" /> パーティショナーのメソッドは <see langword="null" /> を返します。  
   
 または 
@@ -1040,12 +1041,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
    
   
 ## Examples  
- 次の例で使用するための範囲のパーティショナーを実装する方法を示しています<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>:。  
+ 次の例は、で<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>使用する範囲パーティショナーを実装する方法を示しています。  
   
  [!code-csharp[System.Threading.Tasks.Parallel_RangePartitioners#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel_rangepartitioners/cs/rangepartitioner.cs#01)]
  [!code-vb[System.Threading.Tasks.Parallel_RangePartitioners#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel_rangepartitioners/vb/rangepart.vb#01)]  
@@ -1054,14 +1055,14 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="source" /> パーティショナーの <see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> プロパティは <see langword="false" /> を返します。  
   
-または 
+- または - 
 <paramref name="source" /> パーティショナー内のメソッドが <see langword="null" /> を返したときにスローされる例外。  
   
-または 
+- または - 
 <paramref name="source" /> パーティショナーの <see cref="M:System.Collections.Concurrent.Partitioner`1.GetPartitions(System.Int32)" /> メソッドが正しいパーティション数を返しません。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
         <exception cref="T:System.AggregateException">指定のデリゲートの 1 つからスローされる例外を含める目的でスローされる例外。</exception>
@@ -1110,13 +1111,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます: 現在の要素を<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと現在の要素のインデックス (<xref:System.Int64>)。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` このパラメーターには、現在の要素<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンス、および現在の要素のインデックス (<xref:System.Int64>) が含まれています。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
@@ -1165,7 +1166,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます: 現在の要素と<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことがあります。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` これには、現在の要素と<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンスのパラメーターが用意されています。  
   
  ]]></format>
         </remarks>
@@ -1220,12 +1221,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 現在の要素と共にパラメーターとして提供されます。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` 現在の要素がパラメーターとして提供されます。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Threading.Tasks.Parallel.ForEach%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Action%7B%60%600%7D%29>母音とテキスト ファイル内の空白以外の文字の数をカウントするメソッド。 ここで、<xref:System.Threading.Tasks.ParallelLoopResult>メソッドによって返される値は無視されます。 操作を並列で実行できるため、必ず分割不可能な操作は、カウンター変数をインクリメントして、複数のスレッドが同時に、カウンター変数にアクセスするにしないでに注意してください。 例では、この目的のため、`lock`ステートメント (c#) および`SyncLock`ステートメント (Visual Basic) でします。  
+ 次の例では<xref:System.Threading.Tasks.Parallel.ForEach%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Action%7B%60%600%7D%29> 、メソッドを使用して、テキストファイル内の母音と空白以外の文字の数をカウントします。 この場合、 <xref:System.Threading.Tasks.ParallelLoopResult>メソッドによって返される値は無視されます。 操作は並列で実行できるため、カウンター変数のインクリメントがアトミック操作であること、および複数のスレッドがカウンター変数に同時にアクセスしようとしないことを確認する必要があることに注意してください。 このため、この例では、 `lock`ステートメント (でC#は) と`SyncLock`ステートメント (Visual Basic) を使用します。  
   
  [!code-csharp[System.Threading.Tasks.Parallel.ForEach#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel.foreach/cs/foreach1.cs#1)]
  [!code-vb[System.Threading.Tasks.Parallel.ForEach#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel.foreach/vb/foreach1.vb#1)]  
@@ -1234,7 +1235,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
@@ -1284,7 +1285,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1294,7 +1295,7 @@
 または 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.ObjectDisposedException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationTokenSource" /> に関連付けられている <see cref="T:System.Threading.CancellationToken" /> は破棄されました。</exception>
         <exception cref="T:System.InvalidOperationException">順序付け可能のパーティショナー、<paramref name="source" /> の <see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> プロパティは <see langword="false" /> を返します。  
@@ -1302,7 +1303,7 @@
 または 
 順序付け可能のパーティショナー、<paramref name="source" /> の <see cref="P:System.Collections.Concurrent.OrderablePartitioner`1.KeysNormalized" /> プロパティは <see langword="false" /> を返します。  
   
-または 
+- または - 
 順序付け可能なパーティショナー、<paramref name="source" /> 内のメソッドが <see langword="null" /> を返したときにスローされる例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
         <exception cref="T:System.AggregateException">指定のデリゲートの 1 つからスローされる例外を含める目的でスローされる例外。</exception>
@@ -1352,7 +1353,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1360,14 +1361,14 @@
         <exception cref="T:System.ObjectDisposedException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationTokenSource" /> に関連付けられている <see cref="T:System.Threading.CancellationToken" /> は破棄されました。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="source" /> パーティショナーの <see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> プロパティは <see langword="false" /> を返します。  
   
-または 
+- または - 
 <paramref name="source" /> パーティショナー内のメソッドが <see langword="null" /> を返したときにスローされる例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
         <exception cref="T:System.AggregateException">指定のデリゲートの 1 つからスローされる例外を含める目的でスローされる例外。</exception>
@@ -1417,7 +1418,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1432,7 +1433,7 @@
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="source" /> パーティショナーの <see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> プロパティは <see langword="false" /> を返します。  
   
-または 
+- または - 
 <paramref name="source" /> パーティショナー内のメソッドが <see langword="null" /> を返したときにスローされる例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
         <exception cref="T:System.AggregateException">指定のデリゲートの 1 つからスローされる例外を含める目的でスローされる例外。</exception>
@@ -1482,7 +1483,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます: 現在の要素を<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと現在の要素のインデックス (<xref:System.Int64>)。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` このパラメーターには、現在の要素<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンス、および現在の要素のインデックス (<xref:System.Int64>) が含まれています。  
   
  ]]></format>
         </remarks>
@@ -1492,7 +1493,7 @@
 または 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <exception cref="T:System.ObjectDisposedException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationTokenSource" /> に関連付けられている <see cref="T:System.Threading.CancellationToken" /> は破棄されました。</exception>
@@ -1543,14 +1544,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます: 現在の要素と<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことがあります。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` これには、現在の要素と<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンスのパラメーターが用意されています。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.OperationCanceledException"><paramref name="parallelOptions" /> 引数の <see cref="T:System.Threading.CancellationToken" /> が取り消されました</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
 または 
@@ -1604,7 +1605,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 現在の要素と共にパラメーターとして提供されます。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` 現在の要素がパラメーターとして提供されます。  
   
  ]]></format>
         </remarks>
@@ -1614,7 +1615,7 @@
 または 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <exception cref="T:System.ObjectDisposedException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationTokenSource" /> に関連付けられている <see cref="T:System.Threading.CancellationToken" /> は破棄されました。</exception>
@@ -1670,20 +1671,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
 または 
@@ -1742,11 +1743,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
- `localInit`スレッドごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するスレッドごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
  ]]></format>
         </remarks>
@@ -1758,7 +1759,7 @@
 または 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localFinally" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="source" /><see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> の <see cref="T:System.Collections.Concurrent.Partitioner" /> プロパティは <see langword="false" /> を返します。またはパーティショナーは <see langword="null" /> パーティションを返します。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
@@ -1814,23 +1815,23 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます。 現在の要素を<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことがあります、現在の要素のインデックス (<xref:System.Int64>)、および実行するイテレーション間で共有できるいくつかのローカルの状態同じスレッド。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` これには、現在の要素<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンス、現在の要素のインデックス (<xref:System.Int64>)、および実行されるイテレーション間で共有される可能性があるローカル状態のパラメーターがあります。同じスレッドで。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localFinally" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
@@ -1885,16 +1886,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます: 現在の要素を<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと同じスレッドで実行されるイテレーション間で共有できるいくつかのローカル状態。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` これには、現在の要素<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンス、および同じスレッドで実行される反復処理の間で共有される可能性があるローカル状態のパラメーターがあります。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するスレッドあたり 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、スレッドごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Threading.Tasks.Parallel.ForEach%2A>ローカル状態を持つメソッド。  
+ 次の例は、ローカル状態の<xref:System.Threading.Tasks.Parallel.ForEach%2A>メソッドを使用する方法を示しています。  
   
  [!code-csharp[System.Threading.Tasks.Parallel#02](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel/cs/parallelforeach.cs#02)]
  [!code-vb[System.Threading.Tasks.Parallel#02](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel/vb/parallelforeach.vb#02)]  
@@ -1903,13 +1904,13 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localFinally" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
         <related type="Article" href="https://docs.microsoft.com/previous-versions/msp-n-p/ff963552(v=pandp.10)">並列ループ</related>
@@ -1965,23 +1966,23 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各スレッドで本文の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各スレッドの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> または <paramref name="localFinally" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="source" /><see cref="P:System.Collections.Concurrent.Partitioner`1.SupportsDynamicPartitions" /> の <see cref="T:System.Collections.Concurrent.Partitioner" /> プロパティは <see langword="false" /> を返します。またはパーティショナーは <see langword="null" /> パーティションを返します。</exception>
         <exception cref="T:System.AggregateException">すべてのスレッドでスローされたすべての個別の例外を含む例外。</exception>
@@ -2040,23 +2041,23 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のパーティション構成を上書きする場合、このオーバー ロードが提供されます。 たとえば、小さなループ本体は、範囲をパーティション分割によるメリット可能性があります。 <xref:System.Threading.Tasks.Parallel.ForEach%2A>メソッドは、動的なパーティション分割をサポートするカスタム パーティショナーを受け取ります。 このオーバー ロードは、静的な範囲パーティション分割によるメリットが小さなループ本体を持つシナリオに対して提供されます。 パーティショナーは動的パーティションをサポートする必要があります。  詳細については、次を参照してください。 [PLINQ および TPL 用のカスタム パーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md)と[方法。動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
+ このオーバーロードは、既定のパーティション構成をオーバーライドする場合に提供されます。 たとえば、小さなループ本体では、範囲をパーティション分割することによってメリットが得られる場合があります。 メソッド<xref:System.Threading.Tasks.Parallel.ForEach%2A>では、動的パーティション分割をサポートするためにカスタムパーティショナーが必要です。 このオーバーロードは、静的な範囲のパーティション分割の恩恵を受ける可能性がある小さなループ本体を使用するシナリオに対して用意されています。 パーティショナーは、動的パーティションをサポートする必要があります。  詳細については、「 [PLINQ および TPL のカスタムパーティショナー](~/docs/standard/parallel-programming/custom-partitioners-for-plinq-and-tpl.md) 」および[「方法:動的パーティションを実装する](~/docs/standard/parallel-programming/how-to-implement-dynamic-partitions.md)」を参照してください。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するタスクごと 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、タスクごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
 または 
 <paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
 または 
@@ -2118,23 +2119,23 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます。 現在の要素を<xref:System.Threading.Tasks.ParallelLoopState>インスタンスを使用して、途中で、ループから抜け出すことがあります、現在の要素のインデックス (<xref:System.Int64>)、および実行するイテレーション間で共有できるいくつかのローカルの状態同じスレッド。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` これには、現在の要素<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンス、現在の要素のインデックス (<xref:System.Int64>)、および実行されるイテレーション間で共有される可能性があるローカル状態のパラメーターがあります。同じスレッドで。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するスレッドあたり 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、スレッドごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
 または 
 <paramref name="body" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="localInit" /> 引数が <see langword="null" /> です。  
   
 または 
@@ -2195,20 +2196,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `body`デリゲートが内の各要素に対して 1 回呼び出される、`source`列挙可能な。 次のパラメーターと共に提供されます: 現在の要素を<xref:System.Threading.Tasks.ParallelLoopState>に途中で、ループから抜け出すことができますのインスタンスと同じスレッドで実行されるイテレーション間で共有できるいくつかのローカル状態。  
+ デリゲートは、 `source`列挙可能な内の要素ごとに1回呼び出されます。 `body` これには、現在の要素<xref:System.Threading.Tasks.ParallelLoopState> 、ループを途中で中断するために使用できるインスタンス、および同じスレッドで実行される反復処理の間で共有される可能性があるローカル状態のパラメーターがあります。  
   
- `localInit`タスクごとに、ループの実行に参加し、それらのタスクのそれぞれの初期のローカル状態を返すデリゲートが 1 回呼び出されます。 これらの初期状態は、最初に渡される`body`各タスクでの呼び出し。 次に、以降の本文のすべての呼び出しは、次の本文の呼び出しに渡される可能性がある変更された状態値を返します。 最後に、各タスクの本体の最後の呼び出しに渡される状態値を返します、`localFinally`を委任します。 `localFinally`デリゲートが各タスクのローカル状態に対して最後のアクションを実行するスレッドあたり 1 回呼び出されます。 このデリゲートは複数のタスクで同時に呼び出す可能性があります。したがって、共有変数へのアクセスを同期する必要があります。  
+ `localInit`デリゲートは、ループの実行に参加するタスクごとに1回呼び出され、各タスクの最初のローカル状態を返します。 これらの初期状態は、各タスク`body`の最初の呼び出しに渡されます。 次に、後続のすべての本文呼び出しで、次の本文呼び出しに渡される、変更可能な状態値が返されます。 最後に、各タスクの最後の本文呼び出しによって、 `localFinally`デリゲートに渡される状態値が返されます。 デリゲート`localFinally`は、各タスクのローカル状態に対して最後のアクションを実行するために、スレッドごとに1回呼び出されます。 このデリゲートは、複数のタスクで同時に呼び出される場合があります。そのため、共有変数へのアクセスを同期する必要があります。  
   
- <xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>メソッドは、既存タスクが完了すると、その実行の有効期間にわたってスレッドよりも多くのタスクを使用することがあり、新しいタスクは置き換えられます。 これにより、基になる<xref:System.Threading.Tasks.TaskScheduler>オブジェクトを追加する機会、変更、またはループのサービスのスレッドを削除します。  
+ 既存<xref:System.Threading.Tasks.Parallel.ForEach%2A?displayProperty=nameWithType>のタスクが完了し、新しいタスクに置き換えられるため、メソッドは、実行の有効期間中にスレッドよりも多くのタスクを使用できます。 これにより、 <xref:System.Threading.Tasks.TaskScheduler>基になるオブジェクトに、ループを処理するスレッドを追加、変更、または削除する機会が与えられます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="source" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="body" /> 引数が <see langword="null" /> です。  
   
 または 
@@ -2274,16 +2275,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを並列に可能性のある一連の操作を実行できます。  
+ このメソッドは、一連の操作を並列で実行するために使用できます。  
   
- または並列で実行するかどうか、操作が実行される順序に関する保証は行われません。 指定された操作が完了するまで、通常や例外的な終了のため完了が発生するかどうかに関係なく、このメソッドは返しません。  
+ 操作が実行される順序や、並列で実行するかどうかは保証されません。 このメソッドは、指定された各操作が完了するまでは戻りません。通常または例外的な終了によって完了が発生したかどうかは関係ありません。  
   
  詳細については、「[How to: Use Parallel.Invoke to Execute Parallel Operations](~/docs/standard/parallel-programming/how-to-use-parallel-invoke-to-execute-parallel-operations.md)」を参照してください。  
   
    
   
 ## Examples  
- この例では、使用、<xref:System.Threading.Tasks.Parallel.Invoke%2A>他のメソッド、匿名のデリゲートとラムダ式を持つメソッド。  
+ この例では<xref:System.Threading.Tasks.Parallel.Invoke%2A> 、メソッドを他のメソッド、匿名デリゲート、およびラムダ式と共に使用する方法を示します。  
   
  [!code-csharp[System.Threading.Tasks.Parallel#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.tasks.parallel/cs/parallelinvoke.cs#01)]
  [!code-vb[System.Threading.Tasks.Parallel#01](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.tasks.parallel/vb/parallelinvoke.vb#01)]  
@@ -2338,9 +2339,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを並列に可能性のある一連の操作を実行できます。 渡されたキャンセル トークン、<xref:System.Threading.Tasks.ParallelOptions>構造体には、全体の操作をキャンセルする呼び出し元ができるようにします。 詳細については、「[マネージド スレッドのキャンセル](~/docs/standard/threading/cancellation-in-managed-threads.md)」を参照してください。  
+ このメソッドは、一連の操作を並列で実行するために使用できます。 <xref:System.Threading.Tasks.ParallelOptions>構造体と共に渡されたキャンセルトークンを使用すると、呼び出し元は操作全体を取り消すことができます。 詳細については、「[マネージド スレッドのキャンセル](~/docs/standard/threading/cancellation-in-managed-threads.md)」を参照してください。  
   
- または並列で実行するかどうか、操作が実行される順序に関する保証は行われません。 指定された操作が完了するまで、通常や例外的な終了のため完了が発生するかどうかに関係なく、このメソッドは返しません。  
+ 操作が実行される順序や、並列で実行するかどうかは保証されません。 このメソッドは、指定された各操作が完了するまでは戻りません。通常または例外的な終了によって完了が発生したかどうかは関係ありません。  
   
  詳細については、「[How to: Use Parallel.Invoke to Execute Parallel Operations](~/docs/standard/parallel-programming/how-to-use-parallel-invoke-to-execute-parallel-operations.md)」を参照してください。  
   
@@ -2349,7 +2350,7 @@
         <exception cref="T:System.OperationCanceledException"><paramref name="parallelOptions" /> 内の <see cref="T:System.Threading.CancellationToken" /> が設定されます。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="actions" /> 引数が <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="parallelOptions" /> 引数が <see langword="null" /> です。</exception>
         <exception cref="T:System.AggregateException"><paramref name="actions" /> 配列内のアクションが例外をスローしたときにスローされる例外。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="actions" /> 配列に <see langword="null" /> 要素が含まれています。</exception>

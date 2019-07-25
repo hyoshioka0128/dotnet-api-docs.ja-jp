@@ -1,5 +1,5 @@
 <Type Name="Path" FullName="System.IO.Path">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7ee477deba03f922a5b4875f5fa99e93f9edcc64" /><Meta Name="ms.sourcegitcommit" Value="24dc380b0d43e8919d4e0d50409e8f0aeae98713" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/27/2019" /><Meta Name="ms.locfileid" Value="67411301" /></Metadata><TypeSignature Language="C#" Value="public static class Path" />
+  <TypeSignature Language="C#" Value="public static class Path" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed Path extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.IO.Path" />
   <TypeSignature Language="VB.NET" Value="Public Class Path" />
@@ -41,39 +41,39 @@
   
 ## Remarks  
   
- パスは、ファイルまたはディレクトリの場所を提供する文字列です。 パスが必ずしも; ディスク上の場所を指していませんたとえば、パスは、メモリ内、またはデバイス上の場所にマップ可能性があります。 パスの正確な形式は、現在のプラットフォームで決定されます。 たとえば、一部のシステムでこの要素が他のシステムに存在しない一方、パスをことができますドライブまたはボリュームの文字で起動します。 一部のシステム ファイルのパスがファイルに格納されている情報の種類を示す拡張子を含めることができます。 ファイル名拡張子の形式は、プラットフォームに依存します。たとえば、一部のシステム制限を 3 文字は、拡張機能とそうでないです。 現在のプラットフォームには、パスの要素を区切るために使用する文字のセットとパスを指定するときに使用できない文字のセットも決定します。 これらの違いのフィールドがあるため、`Path`クラスの一部のメンバーの正確な動作と、`Path`クラスは、プラットフォームに依存します。  
+ パスは、ファイルまたはディレクトリの場所を提供する文字列です。 パスがディスク上の場所を指しているとは限りません。たとえば、パスは、メモリ内またはデバイス上の場所にマップされる場合があります。 パスの正確な形式は、現在のプラットフォームによって決まります。 たとえば、一部のシステムでは、パスはドライブまたはボリューム文字で開始できますが、この要素は他のシステムには存在しません。 一部のシステムでは、ファイルパスに拡張子を含めることができます。拡張子は、ファイルに格納されている情報の種類を示します。 ファイル名拡張子の形式はプラットフォームに依存します。たとえば、一部のシステムでは拡張機能を3文字に制限していますが、そうでない場合もあります。 また、現在のプラットフォームでは、パスの要素を区切るために使用する文字セットと、パスを指定するときに使用できない文字のセットも決定されます。 これらの違いにより、クラスの`Path`フィールドと、 `Path`クラスの一部のメンバーの正確な動作は、プラットフォームに依存します。  
   
- パスは絶対位置または相対位置情報を含めることができます。 絶対パスが完全に場所を指定します。 ファイルまたはディレクトリを現在の場所に関係なく一意に識別できます。 部分的な場所を指定する相対パス。 相対パスで指定されたファイルを検索する際、現在の場所が開始点として使用されます。 現在のディレクトリを決定するには、呼び出す<xref:System.IO.Directory.GetCurrentDirectory%2A?displayProperty=nameWithType>します。  
+ パスには、絶対または相対位置情報を含めることができます。 絶対パスは、場所を完全に指定します。ファイルまたはディレクトリは、現在の場所に関係なく一意に識別できます。 相対パスは、部分的な場所を指定します。相対パスで指定されたファイルを検索するときに、現在の場所が開始点として使用されます。 現在のディレクトリを確認するに<xref:System.IO.Directory.GetCurrentDirectory%2A?displayProperty=nameWithType>は、を呼び出します。  
 
- .NET core 1.1 と以降のバージョンと .NET Framework 4.6.2 以降のバージョンなど、デバイス名であるファイル システム オブジェクトへのアクセスをサポートも"\\? \C:\"します。
+ .NET Core 1.1 以降のバージョンと .NET Framework 4.6.2 以降のバージョンでは、"? \c:\\\"" などのデバイス名であるファイルシステムオブジェクトへのアクセスもサポートされています。
 
-Windows 上のファイル パスの形式の詳細については、次を参照してください。[ファイル パスの形式の Windows システムで](~/docs/standard/io/file-path-formats.md)します。
+Windows でのファイルパス形式の詳細については、「 [windows システムでのファイルパス形式](~/docs/standard/io/file-path-formats.md)」を参照してください。
 
- ほとんどのメンバー、`Path`クラスは、ファイル システムと対話しないと、パス文字列で指定されたファイルの存在は検証されません。 `Path` クラスのメンバーなど、パス文字列を変更する<xref:System.IO.Path.ChangeExtension%2A>、ファイル システム内のファイルの名前に影響を与えるありません。 `Path` メンバーの操作を行います、ただし、指定したパス文字列の内容を検証およびスロー、<xref:System.ArgumentException>例外文字列から返される文字で定義されているパスの文字列に無効な文字が含まれている場合、<xref:System.IO.Path.GetInvalidPathChars%2A>メソッド。 などの Windows ベースのデスクトップ プラットフォームで無効なパス文字があります引用符 (") より小さい (\<)、大なり (>)、パイプ (&#124;)、バック スペース (\b)、null (\0)、および 18 と 20 ~ 25 ~ Unicode 文字 16。  
+ `Path`クラスのほとんどのメンバーは、ファイルシステムとはやり取りせず、パス文字列によって指定されたファイルが存在するかどうかを検証しません。 `Path`パス文字列を変更するクラスメンバー (など) <xref:System.IO.Path.ChangeExtension%2A>は、ファイルシステム内のファイルの名前には影響しません。 `Path`ただし、メンバーは、指定されたパス文字列の内容を検証し、 <xref:System.ArgumentException> <xref:System.IO.Path.GetInvalidPathChars%2A>メソッドから返された文字に定義されているように、パス文字列に無効な文字が含まれている場合は例外をスローします。 たとえば、Windows ベースのデスクトッププラットフォームでは、無効なパス文字に引用符 (")、小なり (\<)、より大きい (>)、パイプ (&#124;)、バックスペース (\b)、null (\ 0)、Unicode 文字の 16 ~ 18 および 20 ~ 25 を含めることができます。  
   
- メンバー、`Path`クラスを使用すると、迅速かつ簡単には、ファイル名拡張子が、パスの一部であるかどうかを判断して、1 つのパス名に 2 つの文字列を結合することなどの一般的な操作を実行します。  
+ `Path`クラスのメンバーを使用すると、ファイル名拡張子がパスの一部であるかどうかを判断したり、2つの文字列を1つのパス名に結合したりするなど、一般的な操作をすばやく簡単に実行できます。  
   
- すべてのメンバー、`Path`クラスは静的と、そのため、パスのインスタンスがなくても呼び出すことができます。  
+ `Path`クラスのすべてのメンバーは静的であるため、パスのインスタンスを使用せずに呼び出すことができます。  
   
 > [!NOTE]
->  入力文字列としてのパスを受け入れるメンバーの場合は、そのパスは、整形式である必要があります。 または例外が発生します。 たとえば、パスが完全修飾されて、文字で始まる場合は、パスは、クラスのメソッドで切り捨てられません。 したがって、パスの形式が、例外が発生します。 同様に、パスまたはパスの組み合わせ完全修飾できない 2 回です。 たとえば、"c:\temp c:\windows"では、ほとんどの場合、例外も発生します。 パス文字列をそのまま使用するメソッドを使用する場合、パスが整形式であることを確認します。  
+>  パスを入力文字列として受け取るメンバーでは、そのパスは適切な形式である必要があります。そうでない場合、例外が発生します。 たとえば、パスが完全修飾されていても、スペースで始まる場合は、クラスのメソッドでパスがトリムされません。 そのため、パスの形式が正しくないため、例外が発生します。 同様に、パスまたはパスの組み合わせを2回完全に修飾することはできません。 たとえば、"c:\temp c:\windows" は、ほとんどの場合に例外を発生させます。 パス文字列を受け取るメソッドを使用する場合は、パスが適切な形式であることを確認します。  
   
- パスを受け入れるメンバーでは、パスがファイルまたはディレクトリを参照できます。 指定されたパスは相対パスまたはサーバーと共有名の汎用名前付け規則 (UNC) パスにも参照できます。 たとえば、次のすべてが許容可能なパスです。  
+ パスを受け入れるメンバーでは、ファイルまたはディレクトリのみを参照できます。 指定されたパスは、サーバーと共有名の相対パスまたは UNC (汎用名前付け規則) パスを参照することもできます。 たとえば、次のすべてが許容されるパスです。  
   
--   "c:\\\MyDir\\\MyFile.txt"c# の場合、または Visual Basic では、"c:\MyDir\MyFile.txt"にします。  
+-   Visual Basic の "\\c\\: \MyDir \MyFile.txt C#" または "c:\MyDir\MyFile.txt"。  
   
--   "c:\\\MyDir"c# の場合、または Visual Basic では、"c:\MyDir"にします。  
+-   Visual Basic の "\\c: \MyDir C#" または "c:\MyDir"。  
   
--   "MyDir\\\MySubdir"c# の場合、または Visual Basic では、"MyDir\MySubDir"にします。  
+-   Visual Basic の "\\mydir \MySubdir C#"、または "MyDir\MySubDir"。  
   
--   "\\\\\\\MyServer\\\MyShare"c# の場合、または"\\\MyServer\MyShare"Visual Basic でします。  
+-   \\ C#Visual Basic の "\MyServer\\\MyShare" または\\"「\myserver\myshare」"。\\\\  
   
- 文字列では、これらすべての操作が実行される、ので、結果がすべてのシナリオでは有効であることを確認することはできません。 たとえば、<xref:System.IO.Path.GetExtension%2A>メソッドに渡すことのできる文字列を解析し、その文字列から拡張子を返します。 ただし、その拡張子のファイルがディスクに存在するつまりされません。  
+ これらのすべての操作は文字列に対して実行されるため、結果がすべてのシナリオで有効であることを確認することはできません。 たとえば、メソッドは<xref:System.IO.Path.GetExtension%2A> 、渡された文字列を解析し、その文字列から拡張を返します。 ただし、その拡張子を持つファイルがディスク上に存在することを意味するわけではありません。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。   
   
 ## Examples  
- 次の例では、メインのメンバーの一部を示します、`Path`クラス。  
+ `Path`クラスの主なメンバーの一部を次の例に示します。  
   
  [!code-cpp[path class#1](~/samples/snippets/cpp/VS_Snippets_CLR/Path Class/CPP/path class.cpp#1)]
  [!code-csharp[path class#1](~/samples/snippets/csharp/VS_Snippets_CLR/Path Class/CS/path class.cs#1)]
@@ -125,13 +125,13 @@ Windows 上のファイル パスの形式の詳細については、次を参�
   
 ## Remarks  
  
-このフィールドと同じ値を指定できます<xref:System.IO.Path.DirectorySeparatorChar>します。 `AltDirectorySeparatorChar` <xref:System.IO.Path.DirectorySeparatorChar>はどちらも、ディレクトリ レベルでパス文字列を区切るため無効です。  
+このフィールドは、と<xref:System.IO.Path.DirectorySeparatorChar>同じ値を持つことができます。 `AltDirectorySeparatorChar`と<xref:System.IO.Path.DirectorySeparatorChar>はどちらも、パス文字列内のディレクトリレベルを区切るために有効です。  
   
-このフィールドの値は、Windows と Unix ベースのオペレーティング システムの両方でスラッシュ (/) です。  
+このフィールドの値は、Windows と Unix ベースの両方のオペレーティングシステムのスラッシュ ('/') です。  
   
 ## Examples  
 
-次の例では、表示<xref:System.IO.Path>フィールドの Windows と Unix ベースのシステム値です。 Windows がいずれか、スラッシュをサポートすることに注意してください (から返される、<xref:System.IO.Path.AltDirectorySeparatorChar>フィールド) または円記号 (から返される、<xref:System.IO.Path.DirectorySeparatorChar>フィールド) のパス区切り文字、スラッシュのみをサポートする Unix ベースのシステムにします。
+次の例で<xref:System.IO.Path>は、Windows および Unix ベースのシステムでのフィールド値を表示します。 Windows では、( <xref:System.IO.Path.AltDirectorySeparatorChar>フィールドによって返される) スラッシュまたは円記号 ( <xref:System.IO.Path.DirectorySeparatorChar>フィールドによって返される) がパス区切り文字としてサポートされていますが、Unix ベースのシステムではスラッシュのみがサポートされています。
 
 [!code-csharp[DirectorySeparatorChar](~/samples/snippets/csharp/api/system.io/path/directoryseparatorchar/program.cs)]
 [!code-vb[DirectorySeparatorChar](~/samples/snippets/visualbasic/api/system.io/path/directoryseparatorchar/program.vb)]
@@ -189,26 +189,26 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- どちらの場合`path`も`extension`ピリオド (.) を含む`ChangeExtension`期間を追加します。  
+ との`path`どちら`extension`にもピリオド (.) が`ChangeExtension`含まれていない場合は、期間が追加されます。  
   
- `extension`パラメーターは、複数のピリオドと任意の有効なパス文字を含めることができ、任意の長さを指定できます。 場合`extension`は`null`、返される文字列には内容が含まれています`path`最後にピリオドとそれに続くすべての文字を削除します。  
+ パラメーター `extension`には、複数のピリオドと有効なパス文字を含めることができ、任意の長さを指定できます。 が`extension` `path`の場合、返される文字列には、最後の期間に続くの内容と、その後のすべての文字が含まれます。 `null`  
   
- 場合`extension`空の文字列は、返されるパス文字列の内容を格納する`path`最後の期間を次の文字を削除します。  
+ が`extension`空の文字列の場合、返されるパス文字列には、 `path`最後の期間が削除された後の文字を含むの内容が含まれます。  
   
- 場合`path`、拡張子が付いていないと`extension`は`null`、返される文字列が含まれています`path`続けて`extension`します。  
+ に`path` `null` `path` `extension`拡張子がなく、がでない場合、返される文字列にはが続きます。`extension`  
   
- 場合`extension`ない`null`先行するピリオドが含まれていない期間が追加されます。  
+ が`extension`では`null`なく、先頭のピリオドが含まれていない場合は、期間が追加されます。  
   
- 場合`path`複数のピリオドで区切られた複数の拡張機能が含まれています、返される文字列の内容を格納する`path`最後にピリオドとそれに続くすべての文字に置き換え`extension`します。 たとえば場合、 `path` "\Dir1\examples\pathtests.csx.txt"と`extension`"cs"は、変更されたパスが"\Dir1\examples\pathtests.csx.cs"。  
+ に`path`複数のピリオドで区切られた複数の拡張機能が含まれている`path`場合、返される文字列には、最後のピリオド`extension`とそれに続くすべての文字がで置き換えられたの内容が含まれます。 たとえば、が " `path` \Dir1\examples\pathtests.csx.txt `extension` " で、が "cs" の場合、変更されたパスは "\Dir1\examples\pathtests.csx.cs" になります。  
   
- 場合によっては、返される結果がすべてのシナリオでは有効であることを確認することはできません。 たとえば場合、`path`が空、`extension`が追加されます。  
+ 返された結果がすべてのシナリオで有効であることを確認することはできません。 たとえば、が`extension`空`path`の場合、が追加されます。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例を使用して、`ChangeExtension`メソッド。  
+ 次の例は、 `ChangeExtension`メソッドの使用方法を示しています。  
   
  [!code-cpp[System.IO.Path Members#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#1)]
  [!code-csharp[System.IO.Path Members#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#1)]
@@ -238,10 +238,10 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
  
 ## Remarks  
 
-このメソッドは、個々 の文字列をファイル パスを表す 1 つの文字列に連結します。 ただし、1 つ目以外の引数にはルートされたパスが含まれている場合、前のパス コンポーネントは無視され、返される文字列は、そのルートのパス コンポーネントで始まります。 代替方法として、`Combine`メソッドの使用を検討、<xref:System.IO.Path.Join%2A>または<xref:System.IO.Path.TryJoin%2A>メソッド。
+このメソッドは、個々の文字列を、ファイルパスを表す1つの文字列に連結することを目的としています。 ただし、最初の以外の引数にルート化されたパスが含まれている場合、前のパスコンポーネントは無視され、返された文字列はルートパスコンポーネントで始まります。 `Combine`メソッドの代わりに、メソッドまたは<xref:System.IO.Path.TryJoin%2A>メソッドの<xref:System.IO.Path.Join%2A>使用を検討してください。
 
 > [!IMPORTANT]
-> このメソッドは、最初の引数が絶対パスであること、および次の引数または引数に相対パスがあると仮定します。 そうでない場合、および、後続の引数が、ユーザーによって入力された文字列である場合に特に呼び出し、<xref:System.IO.Path.Join%2A>または<xref:System.IO.Path.TryJoin%2A>メソッド代わりにします。
+> このメソッドは、最初の引数が絶対パスであり、次の引数が相対パスであることを前提としています。 そうでない場合、特に後続の引数がユーザーによって入力された文字列の場合<xref:System.IO.Path.Join%2A>は<xref:System.IO.Path.TryJoin%2A> 、代わりにメソッドまたはメソッドを呼び出します。
 
  ]]></format>
         </remarks>
@@ -294,21 +294,21 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
   
 ## Remarks
 
-`paths` 結合するパスの部分の配列を指定する必要があります。 後続のパスのいずれかが絶対パスである場合は、し、結合操作をリセット前のすべての結合パスを破棄すること、その絶対パスで始まます。  
+`paths`は、結合するパスの部分の配列である必要があります。 後続のパスのいずれかが絶対パスの場合、結合操作はその絶対パスで開始され、前に結合されたすべてのパスを破棄してリセットされます。  
 
-場合の任意の要素`paths`が最後の 1 つドライブではないと、いずれかで終わらない、<xref:System.IO.Path.DirectorySeparatorChar>または<xref:System.IO.Path.AltDirectorySeparatorChar>文字、`Combine`メソッドを追加、<xref:System.IO.Path.DirectorySeparatorChar>その要素と次の文字。 要素は、ターゲット プラットフォームに対して適切でないパスの区切り文字で終わっている場合に、注意してください、`Combine`メソッドは元のパスの区切り文字を保持し、サポートされている 1 つを追加します。 次の例は、バック スラッシュをパスの区切り文字として使用する場合、Windows と Unix ベースのシステムで結果を比較します。
+の`paths`いずれかの要素が、最後の要素がドライブではなく、 <xref:System.IO.Path.DirectorySeparatorChar>または<xref:System.IO.Path.AltDirectorySeparatorChar>のいずれかの文字で`Combine`終了しない<xref:System.IO.Path.DirectorySeparatorChar>場合、メソッドはその要素と次の要素の間に文字を追加します。 要素がターゲットプラットフォームに適していないパス区切り文字で終了した場合、メソッドは`Combine`元のパス区切り文字を保持し、サポートされているものを追加します。 次の例では、円記号がパスの区切り文字として使用されている場合に、Windows と Unix ベースのシステムの結果を比較します。
 
 [!code-csharp[Combine and path separator characters](~/samples/snippets/csharp/api/system.io/path/combine/program.cs#1)]
 [!code-vb[Combine and path separator characters](~/samples/snippets/visualbasic/api/system.io/path/combine/program.vb#1)]  
 
- 長さ 0 の文字列は、結合されたパスから除外されます。  
+ 長さ0の文字列は、組み合わせたパスから省略されます。  
   
- パラメーターは、ホワイト スペースがある場合は解析されません。  
+ 空白の場合、パラメーターは解析されません。  
   
- ディレクトリとファイル名のすべての無効な文字はによって許容として解釈されます、`Combine`メソッドでは、これらの文字を使用するにはワイルドカード文字の検索のためです。 たとえば、`Path.Combine("c:\\", "*.txt")`有効でない可能性がありますからファイルを作成する場合は、検索文字列として有効です。 正常に解釈されますので、`Combine`メソッド。  
+ 検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Combine`名とファイル名に無効な文字が含まれることはありません。 たとえば、では`Path.Combine("c:\\", "*.txt")` 、ファイルを作成するときには無効になる場合があります。これは、検索文字列として有効です。 このため、 `Combine`メソッドによって正常に解釈されます。  
   
 ## Examples  
- 次の例では、パスに文字列の配列を結合します。  
+ 次の例では、文字列の配列を1つのパスに結合します。  
   
  [!code-csharp[System.IO.Path.Combine#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.path.combine/cs/program.cs#3)]
  [!code-vb[System.IO.Path.Combine#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.path.combine/vb/program.vb#3)]  
@@ -363,23 +363,23 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`path1`ドライブの参照 (つまり、「c:」または「d:」) ではないで定義されている有効な区切り記号で終わっていない<xref:System.IO.Path.DirectorySeparatorChar>、 <xref:System.IO.Path.AltDirectorySeparatorChar>、または<xref:System.IO.Path.VolumeSeparatorChar>、<xref:System.IO.Path.DirectorySeparatorChar>に追加される`path1`連結する前にします。 その場合に注意してください`path1`、ターゲット プラットフォームに対して適切でないパスの区切り文字で終わる、`Combine`メソッドは元のパスの区切り文字を保持し、サポートされている 1 つを追加します。 次の例は、バック スラッシュをパスの区切り文字として使用する場合、Windows と Unix ベースのシステムで結果を比較します。  
+ が`path1`ドライブ参照 (つまり、"C:" または "D:") ではなく、が、 <xref:System.IO.Path.AltDirectorySeparatorChar>、または<xref:System.IO.Path.DirectorySeparatorChar> <xref:System.IO.Path.DirectorySeparatorChar> <xref:System.IO.Path.VolumeSeparatorChar>で定義されている有効な区切り文字で終了し`path1`ない場合は、連結前にがに追加されます。 がターゲットプラットフォーム`path1`に適していないパス区切り文字で終了する場合、メソッドは`Combine`元のパス区切り文字を保持し、サポートされているものを追加します。 次の例では、円記号がパスの区切り文字として使用されている場合に、Windows と Unix ベースのシステムの結果を比較します。  
   
 [!code-csharp[Combine and path separator characters](~/samples/snippets/csharp/api/system.io/path/combine/program.cs#2)]
 [!code-vb[Combine and path separator characters](~/samples/snippets/visualbasic/api/system.io/path/combine/program.vb#2)]  
 
- 場合`path2`ルートは含まれません (場合など、`path2`区切り記号の文字またはドライブの仕様で始まらない)、介在する区切り記号文字で、2 つのパスを連結したものになります。 場合`path2`、ルートが含まれています`path2`が返されます。  
+ に`path2`ルートが含まれていない場合 (たとえば`path2` 、が区切り文字またはドライブ指定で始まらない場合)、結果は2つのパスを連結したものになります。 に`path2`ルートが含まれ`path2`ている場合は、が返されます。  
   
- パラメーターは、ホワイト スペースがある場合は解析されません。 そのため場合、`path2`が空白文字 (たとえば、"\file.txt")、含まれています、<xref:System.IO.Path.Combine%2A>メソッドは、追加`path2`に`path1`のみを返す代わりに`path2`します。  
+ 空白の場合、パラメーターは解析されません。 したがって、 `path2`に空白が含まれている場合 (たとえば、"\file.txt <xref:System.IO.Path.Combine%2A> ")、 `path1`メソッドはを返す`path2`のではなく、にを追加`path2`します。  
   
- ディレクトリとファイル名のすべての無効な文字はによって許容として解釈されます、`Combine`メソッドでは、これらの文字を使用するにはワイルドカード文字の検索のためです。 たとえば、`Path.Combine("c:\\", "*.txt")`有効でない可能性がありますからファイルを作成する場合は、検索文字列として有効です。 正常に解釈されますので、`Combine`メソッド。  
+ 検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Combine`名とファイル名に無効な文字が含まれることはありません。 たとえば、では`Path.Combine("c:\\", "*.txt")` 、ファイルを作成するときには無効になる場合があります。これは、検索文字列として有効です。 このため、 `Combine`メソッドによって正常に解釈されます。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例を使用して、 `Combine` Windows ベースのデスクトップ プラットフォーム上のメソッド。  
+ 次の例は、Windows `Combine`ベースのデスクトッププラットフォームでのメソッドの使用方法を示しています。  
   
  [!code-cpp[pathcombine#1](~/samples/snippets/cpp/VS_Snippets_CLR/pathcombine/CPP/pathcombine.cpp#1)]
  [!code-csharp[pathcombine#1](~/samples/snippets/csharp/VS_Snippets_CLR/pathcombine/CS/pathcombine.cs#1)]
@@ -438,25 +438,25 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `path1` 絶対パスである必要があります (たとえば、"d:\archives"または"\\\archives\public")。 場合`path2`または`path3`も絶対パス、結合操作の破棄を組み合わせて使用したすべてのパスと絶対パスにリセットします。  
+ `path1`絶対パスを指定する必要があります (たとえば、"d:\archives\\" または "\archives\public")。 `path2` また`path3`はが絶対パスの場合、結合操作は、以前に結合されたすべてのパスを破棄し、その絶対パスにリセットします。  
   
- 長さ 0 の文字列は、結合されたパスから除外されます。  
+ 長さ0の文字列は、組み合わせたパスから省略されます。  
   
- 場合`path1`または`path2`ドライブの参照 (つまり、「c:」または「d:」) ではないで定義されている有効な区切り記号で終わっていない<xref:System.IO.Path.DirectorySeparatorChar>、 <xref:System.IO.Path.AltDirectorySeparatorChar>、または<xref:System.IO.Path.VolumeSeparatorChar>、<xref:System.IO.Path.DirectorySeparatorChar>に追加される`path1`または`path2`連結する前にします。 その場合に注意してください`path1`または`path2`、ターゲット プラットフォームに対して適切でないパスの区切り文字で終わる、`Combine`メソッドは元のパスの区切り文字を保持し、サポートされている 1 つを追加します。 次の例は、バック スラッシュをパスの区切り文字として使用する場合、Windows と Unix ベースのシステムで結果を比較します。 
+ また`path1` <xref:System.IO.Path.DirectorySeparatorChar> <xref:System.IO.Path.DirectorySeparatorChar> <xref:System.IO.Path.AltDirectorySeparatorChar> `path1` <xref:System.IO.Path.VolumeSeparatorChar>はがドライブ参照 (つまり "C:" または "D:") ではなく、が、、またはで定義されている有効な区切り文字で終了しない場合、はまたはに追加されます。 `path2` `path2`連結前。 または`path1` `path2`がターゲットプラットフォームに適していないパス区切り文字である場合、メソッドは`Combine`元のパス区切り文字を保持し、サポートされているものを追加します。 次の例では、円記号がパスの区切り文字として使用されている場合に、Windows と Unix ベースのシステムの結果を比較します。 
 
 [!code-csharp[Combine and path separator characters](~/samples/snippets/csharp/api/system.io/path/combine/program.cs#3)]
 [!code-vb[Combine and path separator characters](~/samples/snippets/visualbasic/api/system.io/path/combine/program.vb#3)]  
 
- 場合`path2`ルートは含まれません (場合など、`path2`区切り記号の文字またはドライブの仕様で始まらない)、介在する区切り記号文字で、2 つのパスを連結したものになります。 場合`path2`、ルートが含まれています`path2`が返されます。  
+ に`path2`ルートが含まれていない場合 (たとえば`path2` 、が区切り文字またはドライブ指定で始まらない場合)、結果は2つのパスを連結したものになります。 に`path2`ルートが含まれ`path2`ている場合は、が返されます。  
   
- パラメーターは、ホワイト スペースがある場合は解析されません。 そのため場合、`path2`が空白文字 (たとえば、"\file.txt")、含まれています、<xref:System.IO.Path.Combine%2A>メソッドは、追加`path2`に`path1`します。  
+ 空白の場合、パラメーターは解析されません。 したがって、 `path2`に空白が含まれている場合 (たとえば、"\file.txt <xref:System.IO.Path.Combine%2A> ")、 `path1`メソッドはにを追加`path2`します。  
   
- ディレクトリとファイル名のすべての無効な文字はによって許容として解釈されます、`Combine`メソッドでは、これらの文字を使用するにはワイルドカード文字の検索のためです。 たとえば、`Path.Combine("c:\\", "*.txt")`有効でない可能性がありますからファイルを作成する場合は、検索文字列として有効です。 正常に解釈されますので、`Combine`メソッド。  
+ 検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Combine`名とファイル名に無効な文字が含まれることはありません。 たとえば、では`Path.Combine("c:\\", "*.txt")` 、ファイルを作成するときには無効になる場合があります。これは、検索文字列として有効です。 このため、 `Combine`メソッドによって正常に解釈されます。  
   
    
   
 ## Examples  
- 次の例では、次の 3 つのパスを結合します。  
+ 次の例では、3つのパスを結合します。  
   
  [!code-csharp[System.IO.Path.Combine#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.path.combine/cs/program.cs#1)]
  [!code-vb[System.IO.Path.Combine#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.path.combine/vb/program.vb#1)]  
@@ -511,25 +511,25 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `path1` 絶対パスである必要があります (たとえば、"d:\archives"または"\\\archives\public")。後続のパスのいずれかが絶対パスでも場合、結合操作はすべて以前に結合されたパスを破棄し、その絶対パスにリセットします。  
+ `path1`絶対パスを指定する必要があります (たとえば、"d:\archives\\" または "\archives\public")。後続のパスのいずれかが絶対パスでもある場合、結合操作は以前に結合されたすべてのパスを破棄し、その絶対パスにリセットします。  
   
- 長さ 0 の文字列は、結合されたパスから除外されます。  
+ 長さ0の文字列は、組み合わせたパスから省略されます。  
   
- 場合`path1`、 `path2`、または`path3`ドライブの参照 (つまり、「c:」または「d:」) ではないで定義されている有効な区切り記号で終わっていない<xref:System.IO.Path.DirectorySeparatorChar>、 <xref:System.IO.Path.AltDirectorySeparatorChar>、または<xref:System.IO.Path.VolumeSeparatorChar>、<xref:System.IO.Path.DirectorySeparatorChar>がそれに追加されます連結する前に。 場合`path1`、 `path2`、または`path3`、ターゲット プラットフォームに対して適切でないパスの区切り文字で終わる、`Combine`メソッドは元のパスの区切り文字を保持し、サポートされている 1 つを追加します。 次の例は、バック スラッシュをパスの区切り文字として使用する場合、Windows と Unix ベースのシステムで結果を比較します。 
+ 、 `path1` <xref:System.IO.Path.VolumeSeparatorChar> <xref:System.IO.Path.DirectorySeparatorChar> <xref:System.IO.Path.DirectorySeparatorChar> <xref:System.IO.Path.AltDirectorySeparatorChar>、または`path3`がドライブ参照 (つまり "C:" または "D:") ではなく、かつ、、、またはで定義されている有効な区切り文字で終了しない場合、が追加されます。 `path2`連結前。 、 `path1` `Combine` 、または`path3`がターゲットプラットフォームに適していないパス区切り文字で終了する場合、メソッドは元のパス区切り文字を保持し、サポートされているものを追加します。 `path2` 次の例では、円記号がパスの区切り文字として使用されている場合に、Windows と Unix ベースのシステムの結果を比較します。 
 
 [!code-csharp[Combine and path separator characters](~/samples/snippets/csharp/api/system.io/path/combine/program.cs#4)]
 [!code-vb[Combine and path separator characters](~/samples/snippets/visualbasic/api/system.io/path/combine/program.vb#4)]   
   
- 場合`path2`ルートは含まれません (場合など、`path2`区切り記号の文字またはドライブの仕様で始まらない)、介在する区切り記号文字で、2 つのパスを連結したものになります。 場合`path2`、ルートが含まれています`path2`が返されます。  
+ に`path2`ルートが含まれていない場合 (たとえば`path2` 、が区切り文字またはドライブ指定で始まらない場合)、結果は2つのパスを連結したものになります。 に`path2`ルートが含まれ`path2`ている場合は、が返されます。  
   
- パラメーターは、ホワイト スペースがある場合は解析されません。 そのため場合、`path2`が空白文字 (たとえば、"\file.txt")、含まれています、<xref:System.IO.Path.Combine%2A>メソッドは、追加`path2`に`path1`します。  
+ 空白の場合、パラメーターは解析されません。 したがって、 `path2`に空白が含まれている場合 (たとえば、"\file.txt <xref:System.IO.Path.Combine%2A> ")、 `path1`メソッドはにを追加`path2`します。  
   
- ディレクトリとファイル名のすべての無効な文字はによって許容として解釈されます、`Combine`メソッドでは、これらの文字を使用するにはワイルドカード文字の検索のためです。 たとえば、`Path.Combine("c:\\", "*.txt")`有効でない可能性がありますからファイルを作成する場合は、検索文字列として有効です。 正常に解釈されますので、`Combine`メソッド。  
+ 検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Combine`名とファイル名に無効な文字が含まれることはありません。 たとえば、では`Path.Combine("c:\\", "*.txt")` 、ファイルを作成するときには無効になる場合があります。これは、検索文字列として有効です。 このため、 `Combine`メソッドによって正常に解釈されます。  
   
    
   
 ## Examples  
- 次の例では、次の 4 つのパスを結合します。  
+ 次の例では、4つのパスを結合します。  
   
  [!code-csharp[System.IO.Path.Combine#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.path.combine/cs/program.cs#2)]
  [!code-vb[System.IO.Path.Combine#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.path.combine/vb/program.vb#2)]  
@@ -578,13 +578,13 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
   
 ## Remarks
 
-<xref:System.IO.Path.AltDirectorySeparatorChar> `DirectorySeparatorChar`はどちらも、ディレクトリ レベルでパス文字列を区切るため無効です。  
+<xref:System.IO.Path.AltDirectorySeparatorChar>と`DirectorySeparatorChar`はどちらも、パス文字列内のディレクトリレベルを区切るために有効です。  
   
-複数のプラットフォームで実行するアプリケーションを開発、.NET Core を使用している場合。
+.NET Core を使用して、複数のプラットフォームで実行されるアプリケーションを開発する場合は、次のようにします。
 
-- ディレクトリの区切り記号をハード コーディングしたい場合は、スラッシュを使用する必要があります (`/`) 文字。 Unix システムで認識されている唯一のディレクトリ区切り文字を例の出力結果が、 <xref:System.IO.Path.AltDirectorySeparatorChar> Windows にします。
+- ディレクトリの区切り記号をハードコーディングする場合は、スラッシュ (`/`) 文字を使用する必要があります。 Unix システムで認識されているディレクトリの区切り文字は、この例の出力に示されている<xref:System.IO.Path.AltDirectorySeparatorChar>もののみで、は Windows 上のです。
 
-- 動的に実行時にパスの区切り文字を取得し、ファイル システム パスに組み込むには、文字列の連結を使用します。 たとえば、オブジェクトに適用された 
+- 実行時にパスの区切り文字を動的に取得し、ファイルシステムパスに組み込むには、文字列の連結を使用します。 たとえば、オブジェクトに適用された 
 
    ```csharp
    separator = Path.DirectorySeparatorChar;
@@ -594,15 +594,15 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
    separator = Path.DirectorySeparatorChar;
    path = $"{separator}users{separator}user1{separator}";
    ``` 
-   値を取得することも、<xref:System.IO.Path.AltDirectorySeparatorChar>プロパティは、Windows と Unx ベースのシステムの両方で同じであるためです。
+   また、 <xref:System.IO.Path.AltDirectorySeparatorChar>プロパティから値を取得することもできます。これは、Windows と Unx ベースのシステムの両方で同じであるためです。
 
-- 取得、<xref:System.IO.Path.AltDirectorySeparatorChar>プロパティ
+- プロパティを<xref:System.IO.Path.AltDirectorySeparatorChar>取得する
 
-アプリケーションがクロス プラットフォームではない場合は、システムの適切な区切り記号を使用できます。
+アプリケーションがクロスプラットフォームでない場合は、システムに適した区切り記号を使用できます。
 
 ## Examples  
 
-次の例では、表示<xref:System.IO.Path>フィールドの Windows と Unix ベースのシステム値です。 Windows がいずれか、スラッシュをサポートすることに注意してください (から返される、<xref:System.IO.Path.AltDirectorySeparatorChar>フィールド) または円記号 (から返される、<xref:System.IO.Path.DirectorySeparatorChar>フィールド) のパス区切り文字、スラッシュのみをサポートする Unix ベースのシステムにします。  
+次の例で<xref:System.IO.Path>は、Windows および Unix ベースのシステムでのフィールド値を表示します。 Windows では、( <xref:System.IO.Path.AltDirectorySeparatorChar>フィールドによって返される) スラッシュまたは円記号 ( <xref:System.IO.Path.DirectorySeparatorChar>フィールドによって返される) がパス区切り文字としてサポートされていますが、Unix ベースのシステムではスラッシュのみがサポートされています。  
 
 [!code-csharp[DirectorySeparatorChar](~/samples/snippets/csharp/api/system.io/path/directoryseparatorchar/program.cs)]
 [!code-vb[DirectorySeparatorChar](~/samples/snippets/visualbasic/api/system.io/path/directoryseparatorchar/program.vb)]
@@ -757,14 +757,14 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 最後に、パスのすべての文字のほとんどの場合、このメソッドによって返される文字列がで構成されています。<xref:System.IO.Path.DirectorySeparatorChar>または<xref:System.IO.Path.AltDirectorySeparatorChar>します。 パスがルート ディレクトリのなどはかどうかは"c:\\"、null が返されます。 このメソッドを使用してパスをサポートしていないことに注意してください"ファイル:"です。 返されるパスが含まれていないため、<xref:System.IO.Path.DirectorySeparatorChar>または<xref:System.IO.Path.AltDirectorySeparatorChar>に返されるパスを渡して、<xref:System.IO.Path.GetDirectoryName%2A>メソッドは、結果の文字列で後続の呼び出しごとに 1 つのフォルダー レベルの切り捨てが発生します。 たとえば、"C:\Directory\SubDirectory\test.txt"パスを渡すことに、<xref:System.IO.Path.GetDirectoryName%2A>メソッドは"C:\Directory\SubDirectory"を返します。 "C:\Directory\SubDirectory"は、その文字列を渡すこと<xref:System.IO.Path.GetDirectoryName%2A>"C:\Directory"になります。  
+ ほとんどの場合、このメソッドによって返される文字列は、パス内のすべての文字で構成され<xref:System.IO.Path.DirectorySeparatorChar>ます<xref:System.IO.Path.AltDirectorySeparatorChar>が、最後のまたはは含まれません。 パスがルートディレクトリ ("c:\\" など) で構成されている場合は、null が返されます。 このメソッドは、"file:" を使用したパスをサポートしていないことに注意してください。 返されるパスに<xref:System.IO.Path.DirectorySeparatorChar>はまたは<xref:System.IO.Path.AltDirectorySeparatorChar>が含まれていないため、 <xref:System.IO.Path.GetDirectoryName%2A>返されたパスをメソッドに渡すと、結果の文字列の後続の呼び出しごとに1つのフォルダーレベルが切り捨てられます。 たとえば、パス "C:\Directory\SubDirectory\test.txt" を<xref:System.IO.Path.GetDirectoryName%2A>メソッドに渡すと、"C:\Directory\SubDirectory" が返されます。 その文字列 "C:\Directory\SubDirectory" をに<xref:System.IO.Path.GetDirectoryName%2A>渡すと、"c:\ ディレクトリ" になります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例を使用して、 `GetDirectoryName` Windows ベースのデスクトップ プラットフォーム上のメソッド。  
+ 次の例は、Windows `GetDirectoryName`ベースのデスクトッププラットフォームでのメソッドの使用方法を示しています。  
   
  [!code-cpp[System.IO.Path Members#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#3)]
  [!code-csharp[System.IO.Path Members#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#3)]
@@ -819,7 +819,7 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このメソッドの拡張機能を取得する`path`を検索して`path`期間 (".")、読み取り専用のスパンの最後の文字から開始し、最初の文字に向かって。 前にピリオドが見つかった場合、<xref:System.IO.Path.DirectorySeparatorChar>または<xref:System.IO.Path.AltDirectorySeparatorChar>文字、返される読み取り専用のスパン。 その後にピリオドと文字を含むそれ以外の場合、<xref:System.ReadOnlySpan%601.Empty?displayProperty=nameWithType>が返されます。  
+このメソッドは、ピリオド ( `path` ". `path` ") を検索することによっての拡張を取得します。これは、読み取り専用の範囲の最後の文字から始まり、その最初の文字に向かって進みます。 <xref:System.IO.Path.DirectorySeparatorChar>また<xref:System.ReadOnlySpan%601.Empty?displayProperty=nameWithType>は<xref:System.IO.Path.AltDirectorySeparatorChar>文字の前にピリオドがある場合、返される読み取り専用スパンにはピリオドとその後の文字が含まれます。それ以外の場合はが返されます。  
 
          ]]></format>
         </remarks>
@@ -869,12 +869,12 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
   
 ## Remarks  
 
-このメソッドの拡張機能を取得する`path`を検索して`path`のピリオド (.)、最後の文字で始まる`path`先頭に向かってします。 前にピリオドが見つかった場合、<xref:System.IO.Path.DirectorySeparatorChar>または<xref:System.IO.Path.AltDirectorySeparatorChar>文字、返される文字列です。 その後にピリオドと文字を含むそれ以外の場合、<xref:System.String.Empty?displayProperty=nameWithType>が返されます。  
+このメソッドは、の最後`path`の文字`path` `path`から始まり、最初の文字の前に続くピリオド (.) を検索することによって、の拡張を取得します。 <xref:System.IO.Path.DirectorySeparatorChar>また<xref:System.String.Empty?displayProperty=nameWithType>は<xref:System.IO.Path.AltDirectorySeparatorChar>文字の前にピリオドがある場合、返される文字列にはピリオドとその後の文字が含まれます。それ以外の場合は、が返されます。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。
  
 ## Examples  
- 次の例を使用して、 `GetExtension` Windows ベースのデスクトップ プラットフォーム上のメソッド。  
+ 次の例は、Windows `GetExtension`ベースのデスクトッププラットフォームでのメソッドの使用方法を示しています。  
   
  [!code-cpp[System.IO.Path Members#4](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#4)]
  [!code-csharp[System.IO.Path Members#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#4)]
@@ -921,7 +921,7 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-返される読み取り専用のスパンには最後の区切り記号に続くパスの文字が含まれています`path`します。 場合の最後の文字`path`ボリュームまたはディレクトリの区切り記号は、メソッドが返される<xref:System.ReadOnlySpan%601.Empty?displayProperty=nameWithType>します。 場合`path`が含まれていない区切り記号の文字には返します`path`します。
+返される読み取り専用スパンには、の最後の区切り記号`path`に続くパスの文字が含まれます。 の`path`最後の文字がボリュームまたはディレクトリの区切り文字の場合、メソッド<xref:System.ReadOnlySpan%601.Empty?displayProperty=nameWithType>はを返します。 に`path`区切り文字が含まれていない`path`場合、メソッドはを返します。
 
          ]]></format>
         </remarks>
@@ -971,18 +971,18 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
   
 ## Remarks  
 
-返される値は`null`ファイル パスが場合`null`します。  
+ファイルパスが`null`の`null`場合、戻り値はです。  
   
-ファイル名の先頭を判断するために使用する区切り文字は<xref:System.IO.Path.DirectorySeparatorChar>と<xref:System.IO.Path.AltDirectorySeparatorChar>します。  
+ファイル名<xref:System.IO.Path.DirectorySeparatorChar>の先頭を決定するために使用される区切り文字<xref:System.IO.Path.AltDirectorySeparatorChar>は、とです。  
 
-*\\* Unix では、有効なファイル名は、 `GetFileName` Unix ベースのプラットフォームで実行されているような Windows ベースのパスからファイル名を返すことはできません正しく*c:\\mydir\\myfile.ext*が`GetFileName`Windows ベースのプラットフォームで実行されているような Unix ベース パスからファイル名を返すことができます正しく */tmp/myfile.ext*ための動作、 `GetFileName`メソッドは厳密に Unix および Windows ベースのプラットフォームで同一にします。
+は*\\* unix 上の有効なファイル名で`GetFileName`あるため、unix ベースのプラットフォームで実行されている場合、 *C:\\mydir\\myfile.txt. ext*の`GetFileName`ような Windows ベースのパスからファイル名を正しく返すことはできません。Windows ベースのプラットフォームで実行すると、 */tmp/myfile.ext*のような unix ベースのパスからファイル名を正しく返すことができ`GetFileName`ます。そのため、unix ベースおよび Windows ベースのプラットフォームでは、メソッドの動作は厳密には同じではありません。
 
 共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例での動作、 `GetFileName` Windows ベースのデスクトップ プラットフォーム上のメソッド。  
+ 次の例は、Windows ベースの`GetFileName`デスクトッププラットフォームでのメソッドの動作を示しています。  
   
  [!code-cpp[System.IO.Path Members#5](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#5)]
  [!code-csharp[System.IO.Path Members#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#5)]
@@ -1072,14 +1072,14 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パスまたはファイル名が存在することを検証しません。  
+ このメソッドでは、パスまたはファイル名が存在するかどうかは検証されません。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例を使用して、`GetFileNameWithoutExtension`メソッド。  
+ 次の例は、 `GetFileNameWithoutExtension`メソッドの使用方法を示しています。  
   
  [!code-cpp[System.IO.Path Members#6](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#6)]
  [!code-csharp[System.IO.Path Members#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#6)]
@@ -1141,27 +1141,27 @@ Windows ベースのデスクトップ プラットフォームでは、<paramre
   
 ## Remarks  
   
- 絶対パスには、システム上のファイルまたはディレクトリを検索するために必要なすべての情報が含まれます。  
+ 絶対パスには、システム上のファイルまたはディレクトリを検索するために必要なすべての情報が含まれています。  
   
- ファイルまたはディレクトリで指定された`path`が存在する必要はありません。 たとえば場合、 *c:\temp\newdir*は、現在のディレクトリを呼び出す`GetFullPath`などのファイル名を*test.txt*を返します*c:\temp\newdir\test.txt*します。 ファイルが存在しない必要があります。  
+ によって指定され`path`たファイルまたはディレクトリが存在している必要はありません。 たとえば、 *c:\temp\newdir*が現在のディレクトリである場合、 `GetFullPath` *test.txt*などのファイル名でを呼び出すと*c:\temp\newdir\test.txt*が返されます。 ファイルは存在していない必要があります。  
 
 > [!IMPORTANT]
-> 場合`path`は相対パスでは、このオーバー ロードがに基づいて、現在のドライブと現在のディレクトリは完全修飾パスを返します。 現在のドライブと現在のディレクトリは、アプリケーションの実行時にいつでも変更できます。 その結果、このオーバー ロードによって返されるパスを事前に決定することはできません。 確定的なパスを返すを呼び出して、<xref:System.IO.Path.GetFullPath(System.String,System.String)>オーバー ロードします。 呼び出すこともできます、<xref:System.IO.Path.IsPathFullyQualified%2A>かどうか、パスが絶対または相対パスを決定する方法と、そのためへの呼び出しかどうか`GetFullPath`必要があります。
+> が`path`相対パスの場合、このオーバーロードは、現在のドライブと現在のディレクトリに基づいている可能性がある絶対パスを返します。 現在のドライブと現在のディレクトリは、アプリケーションの実行時にいつでも変更できます。 このため、このオーバーロードによって返されるパスは事前に決定できません。 決定的パスを返すには、 <xref:System.IO.Path.GetFullPath(System.String,System.String)>オーバーロードを呼び出します。 <xref:System.IO.Path.IsPathFullyQualified%2A>メソッドを呼び出して、パスが完全に修飾されているか、相対パスであるか、 `GetFullPath`およびの呼び出しが必要かどうかを確認することもできます。
 
- ただし場合、`path`が存在し、呼び出し元のパス情報を取得するアクセス許可が必要`path`します。 注意のほとんどのメンバーとは異なり、<xref:System.IO.Path>クラス、このメソッドは、ファイル システムにアクセスします。  
+ ただし、が`path`存在する場合、呼び出し元はのパス情報を取得する`path`ためのアクセス許可を持っている必要があります。 <xref:System.IO.Path>クラスのほとんどのメンバーとは異なり、このメソッドはファイルシステムにアクセスします。  
   
- このメソッドは、現在のディレクトリと現在のボリューム情報を使用して、完全に修飾する`path`します。 ファイルを指定する場合のみで名前`path`、`GetFullPath`現在のディレクトリの完全修飾パスを返します。  
+ このメソッドは、現在のディレクトリと現在のボリューム情報を`path`使用して完全修飾します。 で`path`のみファイル名を指定した場合`GetFullPath` 、は現在のディレクトリの絶対パスを返します。  
   
- 短いファイル名を渡す場合は、長いファイル名に展開されます。  
+ 短いファイル名を渡すと、長いファイル名に拡張されます。  
   
- パスに有意文字が含まれていない場合は無効です 1 つ以上含まれている場合を除き、"."文字の後にスペース以外の任意の数いずれかとして解析されます。 その後"。"または".."。  
+ パスに有意な文字が含まれていない場合、1つ以上の "." 文字の後に任意の数の空白が続くと無効になります。次に、"." または ".." として解析されます。  
 
-.NET core 1.1 と以降のバージョンと .NET Framework 4.6.2 以降のバージョンなど、デバイス名を含むパスをサポートも"\\? \C:\"します。
+.NET Core 1.1 以降のバージョンと .NET Framework 4.6.2 以降のバージョンでは、"? \c:\\\"" などのデバイス名を含むパスもサポートしています。
 
-Windows 上のファイル パスの形式の詳細については、次を参照してください。[ファイル パスの形式の Windows システムで](~/docs/standard/io/file-path-formats.md)します。 共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。
+Windows でのファイルパス形式の詳細については、「 [windows システムでのファイルパス形式](~/docs/standard/io/file-path-formats.md)」を参照してください。 共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。
   
 ## Examples  
- 次の例で、 `GetFullPath` Windows ベースのデスクトップ プラットフォーム上のメソッド。  
+ 次の例は、 `GetFullPath` Windows ベースのデスクトッププラットフォームでのメソッドを示しています。  
   
  [!code-cpp[System.IO.Path Members#7](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#7)]
  [!code-csharp[System.IO.Path Members#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#7)]
@@ -1177,7 +1177,7 @@ Windows 上のファイル パスの形式の詳細については、次を参�
         <exception cref="T:System.ArgumentNullException"><paramref name="path" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="path" /> に、ボリュームの識別子 ("C:\\") の一部ではないコロン (:) が含まれています。</exception>
         <exception cref="T:System.IO.PathTooLongException">指定したパス、ファイル名、またはその両方がシステム定義の最大長を超えています。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">パスにアクセスします。</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">パスへのアクセスに使用します。</permission>
         <related type="Article" href="~/docs/standard/io/file-path-formats.md">Windows システムのファイル パス形式</related>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
@@ -1220,13 +1220,13 @@ Windows 上のファイル パスの形式の詳細については、次を参�
   
 ## Remarks  
 
-場合`path`空のパスは、メソッドが返される`basePath`します。 場合`path`は完全修飾パスをメソッドが渡す`path`を<xref:System.IO.Path.GetFullPath(System.String)>メソッド結果を返します。
+が`path`空のパスの場合、メソッドは`basePath`を返します。 が`path`完全修飾パスの場合、メソッドは<xref:System.IO.Path.GetFullPath(System.String)>メソッド`path`にを渡し、結果を返します。
 
-このメソッドを使用すると、確定的なパスが、指定されたボリュームに基づいており、相対パスを使用しているときに、ディレクトリをルートを返します。 事前に定義されたを使用して`basePath`ではなく、現在のドライブとディレクトリで予期しない変更による不要なファイル パスから現在のドライブ ディレクトリの保護に基づくいずれか。 
+相対パスを使用している場合は、このメソッドを使用して、指定したボリュームおよびルート化されたディレクトリに基づいて決定論的パスを返します。 現在のドライブ`basePath`ディレクトリに基づく定義済みのを使用するのではなく、現在のドライブとディレクトリで予期しない変更が発生したことが原因で、望ましくないファイルパスに対して保護されます。 
 
 ## <a name="example"></a>例
 
-次の例では、変数、`basePath`アプリケーションの現在のディレクトリを表すため。 次に渡します、`GetFullPath`アプリケーションのデータ ディレクトリへの完全修飾パスを取得します。
+次の例では、アプリケーション`basePath`の現在のディレクトリを表す変数を定義します。 次に、それを`GetFullPath`メソッドに渡して、アプリケーションのデータディレクトリへの完全修飾パスを取得します。
 
 [!code-csharp[Path.GetFullPath(String,String)](~/samples/snippets/csharp/api/system.io/path/getfullpath/program.cs)] 
 [!code-vb[Path.GetFullPath(String,String)](~/samples/snippets/visualbasic/api/system.io/path/getfullpath/program.vb)] 
@@ -1236,7 +1236,7 @@ Windows 上のファイル パスの形式の詳細については、次を参�
         <exception cref="T:System.ArgumentNullException"><paramref name="path" /> または <paramref name="basePath" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="basePath" /> が完全修飾パスではありません。
 
-- または -
+または
 
 <paramref name="path" /> または <paramref name="basePath" /> に無効なパス文字 (U+0000 など) が含まれています。</exception>
       </Docs>
@@ -1279,12 +1279,12 @@ Windows 上のファイル パスの形式の詳細については、次を参�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドから返される配列は、ファイルとディレクトリ名に無効な文字の完全なセットを含むは保証されません。 無効な文字の完全なセットは、ファイル システムによって異なることができます。 たとえば、Windows ベースのデスクトップ プラットフォームに無効なパス文字可能性があります Ascii/unicode 文字 1 ~ 31、だけでなく引用符 (") より小さい (\<)、大なり (>)、パイプ (&#124;)、バック スペース (\b)、null (\0)、およびタブ (\t)。  
+ このメソッドから返される配列には、ファイル名とディレクトリ名で無効な文字の完全なセットが含まれているとは限りません。 無効な文字の完全なセットは、ファイルシステムによって異なる場合があります。 たとえば、Windows ベースのデスクトッププラットフォームでは、無効なパス文字には、ASCII/Unicode 文字の 1 ~ 31 のほか、引用符 (")、小\<なり ()、より大きい (>)、&#124;パイプ ()、バックスペース (\b)、null (\ 0)、およびタブ (\t) が含まれます。  
   
    
   
 ## Examples  
- 次の例で、<xref:System.IO.Path.GetInvalidFileNameChars%2A>メソッドと<xref:System.IO.Path.GetInvalidPathChars%2A>無効な文字を取得します。  
+ <xref:System.IO.Path.GetInvalidFileNameChars%2A> メソッド<xref:System.IO.Path.GetInvalidPathChars%2A>とメソッドを使用して無効な文字を取得する例を次に示します。  
   
  [!code-cpp[IO.Path.GetInvalidFile-PathChars#1](~/samples/snippets/cpp/VS_Snippets_CLR/IO.Path.GetInvalidFile-PathChars/cpp/example.cpp#1)]
  [!code-csharp[IO.Path.GetInvalidFile-PathChars#1](~/samples/snippets/csharp/VS_Snippets_CLR/IO.Path.GetInvalidFile-PathChars/CS/example.cs#1)]
@@ -1332,12 +1332,12 @@ Windows 上のファイル パスの形式の詳細については、次を参�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドから返される配列は、ファイルとディレクトリ名に無効な文字の完全なセットを含むは保証されません。 無効な文字の完全なセットは、ファイル システムによって異なることができます。 たとえば、Windows ベースのデスクトップ プラットフォームに無効なパス文字可能性があります Ascii/unicode 文字 1 ~ 31、だけでなく引用符 (") より小さい (\<)、大なり (>)、パイプ (&#124;)、バック スペース (\b)、null (\0)、およびタブ (\t)。  
+ このメソッドから返される配列には、ファイル名とディレクトリ名で無効な文字の完全なセットが含まれているとは限りません。 無効な文字の完全なセットは、ファイルシステムによって異なる場合があります。 たとえば、Windows ベースのデスクトッププラットフォームでは、無効なパス文字には、ASCII/Unicode 文字の 1 ~ 31 のほか、引用符 (")、小\<なり ()、より大きい (>)、&#124;パイプ ()、バックスペース (\b)、null (\ 0)、およびタブ (\t) が含まれます。  
   
    
   
 ## Examples  
- 次の例で、<xref:System.IO.Path.GetInvalidFileNameChars%2A>メソッドと<xref:System.IO.Path.GetInvalidPathChars%2A>無効な文字を取得します。  
+ <xref:System.IO.Path.GetInvalidFileNameChars%2A> メソッド<xref:System.IO.Path.GetInvalidPathChars%2A>とメソッドを使用して無効な文字を取得する例を次に示します。  
   
  [!code-cpp[IO.Path.GetInvalidFile-PathChars#1](~/samples/snippets/cpp/VS_Snippets_CLR/IO.Path.GetInvalidFile-PathChars/cpp/example.cpp#1)]
  [!code-csharp[IO.Path.GetInvalidFile-PathChars#1](~/samples/snippets/csharp/VS_Snippets_CLR/IO.Path.GetInvalidFile-PathChars/CS/example.cs#1)]
@@ -1427,26 +1427,26 @@ Windows 上のファイル パスの形式の詳細については、次を参�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パスまたはファイル名が存在することを検証しません。  
+ このメソッドでは、パスまたはファイル名が存在するかどうかは検証されません。  
   
- このメソッドによって返される文字列のパターンは次のとおりです。  
+ このメソッドによって返される文字列には、次のようなパターンがあります。  
   
 - 空の文字列 (`path`現在のドライブまたはボリューム上の相対パスを指定)。  
   
-- "\" (`path`現在のドライブ上の絶対パスを指定)。  
+- "\" (`path`現在のドライブの絶対パスを指定します)。  
   
-- "X": (`path`ドライブ、X がドライブまたはボリューム文字を表す相対パスを指定)。  
+- "X:" (`path`ドライブの相対パスを指定します。 x はドライブまたはボリューム文字を表します)。  
   
-- "X:\" (`path`特定のドライブで絶対パスを指定)。  
+- "X:\" (`path`指定されたドライブの絶対パス)。  
   
-- "\\\ComputerName\SharedFolder"(UNC パス)。  
+- "\\\ Computer\ sharedfolder" (UNC パス)。  
   
-- "\\\\\?\C:"(DOS デバイス パス、.NET Core 1.1 以降では、.NET Framework 4.6.2 以降でサポートされています)
+- "\\\C:"\?(DOS デバイスパス。 .net Core 1.1 以降のバージョンでサポートされており、.NET Framework 4.6.2 以降のバージョンでサポートされています)\\
    
- Windows 上のファイル パスの詳細については、次を参照してください。[ファイル パスの形式の Windows システムで](~/docs/standard/io/file-path-formats.md)します。 共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
+ Windows 上のファイルパスの詳細については、「 [windows システムでのファイルパス形式](~/docs/standard/io/file-path-formats.md)」を参照してください。 共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
 ## Examples  
- 次の例を使用して、`GetPathRoot`メソッド。  
+ 次の例は、 `GetPathRoot`メソッドの使用方法を示しています。  
   
  [!code-cpp[System.IO.Path Members#8](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#8)]
  [!code-csharp[System.IO.Path Members#8](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#8)]
@@ -1456,7 +1456,7 @@ Windows 上のファイル パスの形式の詳細については、次を参�
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="path" /> が、<see cref="M:System.IO.Path.GetInvalidPathChars" /> で定義されている無効な文字を 1 つ以上含んでいます。  
   
-- または - 
+または 
  <see cref="F:System.String.Empty" /> が <paramref name="path" /> に渡されました。</exception>
         <related type="article" href="~/docs/standard/io/file-path-formats.md">Windows システムのファイル パス形式</related>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
@@ -1502,12 +1502,12 @@ Windows 上のファイル パスの形式の詳細については、次を参�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.Path.GetRandomFileName%2A>メソッドは、フォルダー名またはファイル名のいずれかとして使用できる暗号強度が高い、ランダムな文字列を返します。 異なり<xref:System.IO.Path.GetTempFileName%2A>、<xref:System.IO.Path.GetRandomFileName%2A>ファイルを作成できません。 代わりにこのメソッドを使用する必要があります、ファイル システムのセキュリティが最優先事項と、<xref:System.IO.Path.GetTempFileName%2A>します。  
+ メソッド<xref:System.IO.Path.GetRandomFileName%2A>は、フォルダー名またはファイル名のいずれかとして使用できる暗号強度の高いランダムな文字列を返します。 と<xref:System.IO.Path.GetTempFileName%2A>は<xref:System.IO.Path.GetRandomFileName%2A>異なり、はファイルを作成しません。 ファイルシステムのセキュリティが最優先事項である場合は、の<xref:System.IO.Path.GetTempFileName%2A>代わりにこのメソッドを使用する必要があります。  
   
    
   
 ## Examples  
- 次の例からの出力を表示する、<xref:System.IO.Path.GetRandomFileName%2A>メソッド。  
+ 次の例では、 <xref:System.IO.Path.GetRandomFileName%2A>メソッドからの出力を示します。  
   
  [!code-csharp[System.IO.Path Members#20](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers20.cs#20)]
  [!code-vb[System.IO.Path Members#20](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Path Members/VB/pathmembers20.vb#20)]  
@@ -1551,7 +1551,7 @@ Windows 上のファイル パスの形式の詳細については、次を参�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-パスが呼び出すことによって解決される、<xref:System.IO.Path.GetFullPath%2A>差を計算する前にメソッド。 メソッドは、現在のプラットフォームの既定のファイル パスの比較を使用 (<xref:System.StringComparison.OrdinalIgnoreCase?displayProperty=nameWithType> Windows および MacOs での<xref:System.StringComparison.Ordinal?displayProperty=nameWithType>for Linux。 
+パスは、差異を計算<xref:System.IO.Path.GetFullPath%2A>する前にメソッドを呼び出すことによって解決されます。 このメソッドは、現在のプラットフォーム (<xref:System.StringComparison.OrdinalIgnoreCase?displayProperty=nameWithType> Windows および MacOs の場合は Linux 用) <xref:System.StringComparison.Ordinal?displayProperty=nameWithType>の既定のファイルパス比較を使用します。 
 
          ]]></format>
         </remarks>
@@ -1617,7 +1617,7 @@ Windows 上のファイル パスの形式の詳細については、次を参�
 または
   
  あるいは、このメソッドで一時ファイルを作成できませんでした。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">一時フォルダーに書き込むために必要です。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">一時フォルダーに書き込むために必要です。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -1666,13 +1666,13 @@ Windows 上のファイル パスの形式の詳細については、次を参�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、次の順序で環境変数の存在を確認し、最初に見つかったパスを使用します。  
+ このメソッドは、次の順序で環境変数の存在を確認し、見つかった最初のパスを使用します。  
   
-1.  TMP 環境変数で指定されたパス。  
+1.  TMP 環境変数によって指定されたパス。  
   
-2.  TEMP 環境変数で指定されたパス。  
+2.  TEMP 環境変数によって指定されたパス。  
   
-3.  %USERPROFILE% 環境変数で指定されたパス。  
+3.  USERPROFILE 環境変数によって指定されたパス。  
   
 4.  Windows ディレクトリ。  
   
@@ -1691,7 +1691,7 @@ string result = Path.GetTempPath();
 Console.WriteLine(result);  
 ```  
   
- この例では、次のような出力を生成します。  
+ この例では、次のような出力が生成されます。  
   
 ```  
 C:\Users\UserName\AppData\Local\Temp\  
@@ -1700,7 +1700,7 @@ C:\Users\UserName\AppData\Local\Temp\
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.EnvironmentPermission">環境変数への無制限のアクセス許可。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.EnvironmentPermission">環境変数に無制限でアクセスできます。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -1738,7 +1738,7 @@ C:\Users\UserName\AppData\Local\Temp\
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-末尾のピリオド`path`拡張機能とは見なされません。
+の`path`末尾の期間は、拡張機能とは見なされません。
 
          ]]></format>
         </remarks>
@@ -1787,7 +1787,7 @@ C:\Users\UserName\AppData\Local\Temp\
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 末尾から開始`path`、このメソッドは、少なくとも 1 つの文字が続くピリオド (.) を検索します。 前にこのパターンが見つかった場合、 <xref:System.IO.Path.DirectorySeparatorChar>、 <xref:System.IO.Path.AltDirectorySeparatorChar>、または<xref:System.IO.Path.VolumeSeparatorChar>文字が検出されると、このメソッドが戻る`true`します。  
+ の`path`末尾から、このメソッドはピリオド (.) と1つ以上の文字を検索します。 <xref:System.IO.Path.DirectorySeparatorChar>、 `true`、または<xref:System.IO.Path.VolumeSeparatorChar>文字が検出される前にこのパターンが見つかった場合、このメソッドはを返します。 <xref:System.IO.Path.AltDirectorySeparatorChar>  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
@@ -1851,15 +1851,15 @@ C:\Users\UserName\AppData\Local\Temp\
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドから返される配列は、ファイルとディレクトリ名に無効な文字の完全なセットを含むは保証されません。 無効な文字の完全なセットは、ファイル システムによって異なることができます。 たとえば、Windows ベースのデスクトップ プラットフォームに無効なパス文字可能性があります Ascii/unicode 文字 1 ~ 31、だけでなく引用符 (") より小さい (\<)、大なり (>)、パイプ (&#124;)、バック スペース (\b)、null (\0)、およびタブ (\t)。  
+ このメソッドから返される配列には、ファイル名とディレクトリ名で無効な文字の完全なセットが含まれているとは限りません。 無効な文字の完全なセットは、ファイルシステムによって異なる場合があります。 たとえば、Windows ベースのデスクトッププラットフォームでは、無効なパス文字には、ASCII/Unicode 文字の 1 ~ 31 のほか、引用符 (")、小\<なり ()、より大きい (>)、&#124;パイプ ()、バックスペース (\b)、null (\ 0)、およびタブ (\t) が含まれます。  
   
 > [!CAUTION]
->  使用しない<xref:System.IO.Path.InvalidPathChars>信頼できないコードと同じアプリケーション ドメインでコードを実行すると思われる場合。 <xref:System.IO.Path.InvalidPathChars> その要素を上書きできるように、配列、です。 信頼できないコードの要素を上書きする場合<xref:System.IO.Path.InvalidPathChars>コードが悪用される可能性の方法で正しく機能しなくなる場合があります。  
+>  コードが信頼<xref:System.IO.Path.InvalidPathChars>できないコードと同じアプリケーションドメインで実行される可能性がある場合は、を使用しないでください。 <xref:System.IO.Path.InvalidPathChars>は配列であるため、要素を上書きできます。 信頼できないコードによっ<xref:System.IO.Path.InvalidPathChars>ての要素が上書きされると、コードが悪用される可能性があります。  
   
    
   
 ## Examples  
- 次の例では、使用、`InvalidPathChars`プロパティ。  
+ 次の例は、 `InvalidPathChars`プロパティの使用方法を示しています。  
   
  [!code-cpp[System.IO.Path Members#13](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#13)]
  [!code-csharp[System.IO.Path Members#13](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#13)]
@@ -1880,9 +1880,9 @@ C:\Users\UserName\AppData\Local\Temp\
  
 ## Remarks  
 
-オーバー ロード、`IsPathFullyQualified`両方を使用してメソッド ハンドルのパス、<xref:System.IO.Path.DirectorySeparatorChar>と<xref:System.IO.Path.AltDirectorySeparatorChar>文字。 パスを引数として渡されたにも、検証も行われません。 その結果、Uri は相対パスとして解釈され、返す`false`します。 
+`IsPathFullyQualified`メソッドのオーバーロードは、 <xref:System.IO.Path.DirectorySeparatorChar>との<xref:System.IO.Path.AltDirectorySeparatorChar>両方の文字を使用するパスを処理します。 引数として渡されるパスに対して検証は実行されません。 その結果、Uri は相対パスとして解釈さ`false`れ、を返します。 
 
-完全修飾パスの間に相違がある (によって示される、`IsPathFullyQualified`メソッド) とルートのパス (によって示される、<xref:System.IO.Path.IsPathRooted%2A>メソッド)。 A*の完全修飾パス*または*絶対パス*常に、特定のドライブまたはデバイスから、ターゲット ファイルまたはディレクトリへの正確なパスを定義し、現在のドライブまたは現在のディレクトリに依存しません。 たとえば、Windows システムで*C:/users/user1/documents/reports/2019/january/highlights.pdf* c: ドライブのルートから、ターゲット ファイルへの絶対パスを定義します。 *highlights.pdf*します。 A*ルートされたパスを*開始ドライブまたはルート ディレクトリのいずれかを指定しますが、(ルート ディレクトリをルートとなる) の場合は、(指定したドライブをルートとなる) の場合は、現在のディレクトリまたは現在のドライブのいずれかに依存します。 次の例は、完全修飾パスおよびルート化されたパスの違いを示しています。
+完全修飾パス ( `IsPathFullyQualified`メソッドによって示される) とルート化されたパス ( <xref:System.IO.Path.IsPathRooted%2A>メソッドによって示される) の間には違いがあります。 *完全修飾パス*または*絶対パス*は、特定のドライブまたはデバイスからターゲットファイルまたはディレクトリへの正確なパスを常に定義し、現在のドライブまたは現在のディレクトリに依存しません。 たとえば、Windows システムの場合、 *c:/users/user1/documents/reports/2019/1 月/ハイライト。 .pdf*は、c: ドライブのルートからターゲットファイルへの絶対パスを定義し、 *.pdf を強調*表示します。 ルート*パス*は、開始ドライブまたはルートディレクトリのいずれかを指定しますが、現在のディレクトリ (指定されたドライブがルートになっている場合) または現在のドライブ (ルートディレクトリがルートになっている場合) のいずれかに依存します。 次の例は、完全修飾パスとルート化されたパスの違いを示しています。
 
 [!code-csharp[IsPathRooted](~/samples/snippets/csharp/api/system.IO/Path/IsPathRooted/program.cs)]
 [!code-vb[IsPathRooted](~/samples/snippets/visualbasic/api/system.IO/Path/IsPathRooted/program.vb)]
@@ -1959,7 +1959,7 @@ C:\Users\UserName\AppData\Local\Temp\
         <summary>指定されたファイル パスが特定のドライブまたは UNC パスに固定されているかどうかを示す値を返します。</summary>
         <returns>パスが特定のドライブまたは UNC パスに固定されている場合は <see langword="true" />。パスが現在のドライブまたは作業ディレクトリを基準としている場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="path" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="path" /> は <see langword="null" />です。</exception>
         <related type="article" href="~/docs/standard/io/file-path-formats.md">Windows システムのファイル パス形式</related>
       </Docs>
     </Member>
@@ -1971,9 +1971,9 @@ C:\Users\UserName\AppData\Local\Temp\
  
 ## Remarks  
 
-A**ルート パス**ファイルのパスは、特定のドライブまたは UNIC パスに固定されている; 現在のドライブまたは作業ディレクトリに対して相対的なパスとは対照的です。 たとえば、Windows システムは、円記号 (たとえば、"\Documents") またはドライブ文字とコロン (たとえば、"C:Documents") を使用にはルートされたパスが開始します。 
+ルート化された**パス**は、特定のドライブまたは非 ic パスに固定されたファイルパスです。現在のドライブまたは作業ディレクトリに対する相対パスとは対照的です。 たとえば、Windows システムでは、ルート化されたパスは、円記号 ("\Documents" など) またはドライブ文字とコロン (たとえば、"C:Documents") で始まります。 
 
-ルート パスできること (つまり、完全修飾) 絶対パスまたは相対パスのいずれかに注意してください。 ルートの絶対パスは、特定のディレクトリに、ドライブのルートからの完全修飾パスです。 ルートからの相対パスが、ドライブを指定しますが、その完全修飾パスは、現在のディレクトリに対して解決されます。 この違いを次の例に示します。
+ルート化されたパスは、絶対パス (完全修飾名) または相対パスのいずれかになることに注意してください。 絶対ルートパスは、ドライブのルートから特定のディレクトリへの完全修飾パスです。 相対ルートパスはドライブを指定しますが、その完全修飾パスは現在のディレクトリに対して解決されます。 この違いを次の例に示します。
 
 [!code-csharp[IsPathRooted](~/samples/snippets/csharp/api/system.IO/Path/IsPathRooted/program.cs)]
 [!code-vb[IsPathRooted](~/samples/snippets/visualbasic/api/system.IO/Path/IsPathRooted/program.vb)]
@@ -2057,14 +2057,14 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.Path.IsPathRooted%2A>メソッドを返します。`true`最初の文字など、ディレクトリの区切り記号をが場合"\\"、またはパスがドライブ文字とコロン (:) で始まる場合。 たとえばを返します`true`の`path`などの文字列"\\\MyDir\\\MyFile.txt"、"c:\\\MyDir"、または"C:MyDir"。 返します`false`の`path`MyDir というなどの文字列。  
+ 最初<xref:System.IO.Path.IsPathRooted%2A>の文字`true`がディレクトリ区切り文字 ("\\" など) の場合、またはパスがドライブ文字とコロン (:) で始まる場合は、メソッドはを返します。 `true`たとえば、"\MyDir\MyFile.txt\\"、"C:\\\MyDir"、"C:MyDir" などの文字列に対し`path`てを返します。\\ "Mydir `path` " などの文字列に対してを返し`false`ます。  
   
- このメソッドは、パスまたはファイル名が存在することを検証しません。  
+ このメソッドでは、パスまたはファイル名が存在するかどうかは検証されません。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
 
 ## Examples  
- 例を次に示しますが、どのように`IsPathRooted`メソッドを使用して、3 つの文字列をテストします。  
+ 次の例は、メソッド`IsPathRooted`を使用して3つの文字列をテストする方法を示しています。  
   
  [!code-cpp[System.IO.Path Members#12](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#12)]
  [!code-csharp[System.IO.Path Members#12](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#12)]
@@ -2110,10 +2110,29 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="paths">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="paths">パスの配列。</param>
+        <summary>パスの配列を連結して 1 つのパスにします。</summary>
+        <returns>連結されたパス。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+このメソッドは、内のすべての`paths`文字列を連結するだけで、パスコンポーネントがまだ存在しない場合は、そのディレクトリの区切り文字を追加します。 <xref:System.String.Length> 内`paths`のいずれかのパスのがゼロの場合、メソッドは残りの引数を連結します。 結果の連結された文字列の長さが0の場合<xref:System.String.Empty?displayProperty=nameWithType>、メソッドはを返します。
+
+のいずれかのパス`paths`(最後のパスを除く) が、ターゲットプラットフォームに適していないパス区切り文字で終了した場合、メソッドは`Join`元のパス区切り文字を保持し、サポートされているものを追加します。 この問題は、Unix ベースのシステムでパスの区切りとして\"認識されない Windows の円記号 (") 文字を使用するハードコードされたパスで発生します。 この問題を回避するには、次の操作を行います。
+
+- ディレクトリの区切り文字を<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ハードコーディングするのではなく、プロパティの値を取得します。
+
+- ディレクトリの区切り記号としてスラッシュ ("/") を使用します。 この文字は、Unix ベース<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>のシステムのプロパティと<xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティによって返されます。
+
+メソッドとは異なり、 <xref:System.IO.Path.Join%2A>メソッドは返されたパスのルートを試行しません。 <xref:System.IO.Path.Combine%2A> (つまり、最後のパスを除き、の`paths`パスのいずれかが絶対パス`Join`である場合、メソッドは、 <xref:System.IO.Path.Combine%2A>メソッドが行うように前のパスを破棄しません。
+
+検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Join`名とファイル名に無効な文字が含まれることはありません。 たとえば、ファイルの`Path.Join("c:\\", "temp", "*.txt")`作成時には無効になる場合がありますが、検索文字列として有効です。 その`Join`ため、メソッドは正常に解釈します。
+
+             </format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Join">
@@ -2152,21 +2171,21 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
   
 ## Remarks  
  
-このメソッドは単に連結`path`と`path2`の最後に存在する 1 つがない場合は、2 つのパス コンポーネント間のディレクトリの区切り記号を追加します`path1`の先頭または`path2`します。 場合、<xref:System.ReadOnlySpan%601.Length>いずれかの`path1`または`path2`0 の場合は、その他のパスを返します。 場合、<xref:System.ReadOnlySpan%601.Length>両方の`path1`と`path2`0 の場合は、メソッドが返される<xref:System.String.Empty?displayProperty=nameWithType>します。 
+このメソッドは、 `path`と`path2`を連結するだけで、2つのパスコンポーネントが`path2`の`path1`末尾または先頭にまだ存在しない場合は、そのディレクトリの区切り文字を追加します。 `path1`または<xref:System.ReadOnlySpan%601.Length> のいずれかがゼロの場合、メソッドはもう一方のパスを返します。`path2` <xref:System.ReadOnlySpan%601.Length>と`path1`の両方がゼロの場合、メソッドはを<xref:System.String.Empty?displayProperty=nameWithType>返します。 `path2` 
 
-場合`path1`、ターゲット プラットフォームに対して適切でないパスの区切り文字で終わる、`Join`メソッドは、元のパスの区切り文字を保持し、サポートされている 1 つを追加します。 この問題は、Windows の円記号を使用するハード コードされたパスで発生 ("\") 文字で、Unix ベースのシステムで、パスの区切り文字として認識されていません。 この問題を回避するには、次の操作を実行できます。
+が`path1`ターゲットプラットフォームに適していないパス区切り文字で終了した場合、 `Join`メソッドは元のパス区切り文字を保持し、サポートされているものを追加します。 この問題は、Unix ベースのシステムでパスの区切りとして\"認識されない Windows の円記号 (") 文字を使用するハードコードされたパスで発生します。 この問題を回避するには、次の操作を行います。
 
-- 値を取得、<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ディレクトリの区切り記号をハード コーディングするのではなく、プロパティ。
+- ディレクトリの区切り文字を<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ハードコーディングするのではなく、プロパティの値を取得します。
 
-- ディレクトリの区切り記号としてスラッシュ (「/」) を使用します。 この文字は、によって返される、 <xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType> Unix ベースのシステムと、プロパティ、 <xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティ。 
+- ディレクトリの区切り記号としてスラッシュ ("/") を使用します。 この文字は、Unix ベース<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>のシステムのプロパティと<xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティによって返されます。 
 
-異なり、<xref:System.IO.Path.Combine%2A>メソッド、<xref:System.IO.Path.Join%2A>メソッドが返されるパスのルートを試行しません。 (場合に、 `path2` 、絶対パス、`Join`メソッドを破棄しません`path1`戻って`path2`として、<xref:System.IO.Path.Combine%2A>メソッドはします)。次の例は、2 つのメソッドによって返されるパスの違いを示しています。 場合のソース`path2`は、ユーザー入力、<xref:System.IO.Path.Combine%2A>メソッドでは、ユーザーはファイル システム リソースにアクセスする (など*c:/ユーザー/User1/ドキュメント/金融/* 例の場合)、アプリケーションを実行します。アクセスできるようにする予定がないです。  
+メソッドとは異なり、 <xref:System.IO.Path.Join%2A>メソッドは返されたパスのルートを試行しません。 <xref:System.IO.Path.Combine%2A> (つまり、が絶対`path2`パス`Join`の場合、メソッドはを<xref:System.IO.Path.Combine%2A>破棄`path1`してを返し`path2`ません。次の例は、2つのメソッドによって返されるパスの違いを示しています。 のソースがユーザー `path2`入力の場合<xref:System.IO.Path.Combine%2A> 、このメソッドを使用すると、アプリケーションが意図していなかったファイルシステムリソース (例の場合は、 *C:/Users/User1/Documents/財務*など) にアクセスできます。利用.  
 
-ディレクトリとファイル名のすべての無効な文字はによって許容として解釈されます、`Join`メソッドでは、これらの文字を使用するにはワイルドカード文字の検索のためです。 たとえば、`Path.Join("c:\\", "*.txt")`可能性がありますが無効な場合にファイルを作成するが検索文字列として有効です。 `Join`メソッドのため正常にそれを解釈します。 
+検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Join`名とファイル名に無効な文字が含まれることはありません。 たとえば、ファイルの`Path.Join("c:\\", "*.txt")`作成時には無効になる場合がありますが、検索文字列として有効です。 その`Join`ため、メソッドは正常に解釈します。 
 
 ## <a name="example"></a>例
 
-次の例から返されるパスの違いを示しています、<xref:System.IO.Path.Join(System.ReadOnlySpan%7BSystem.Char%7D,System.ReadOnlySpan%7BSystem.Char%7D)?displayProperty=nameWithType>と<xref:System.IO.Path.Combine(System.String,System.String)?displayProperty=nameWithType>メソッド。 最初の文字列はドライブとルート ディレクトリを含む、完全修飾パスと、2 番目は最初のパスからの相対パス、2 つのメソッドは、同一の結果を生成します。 2 番目と 3 番目の呼び出しで、`ShowPathInformation`メソッド、2 つのメソッドによって返される文字列が分岐します。 2 番目のメソッド呼び出しの最初の文字列引数は、ドライブを 2 つ目はルート ディレクトリ。 `Join`メソッドは、2 つの文字列を連結および維持には、パスの区切り記号が重複しています。 `Combine`メソッドは、ドライブを破棄し、現在のドライブのルート ディレクトリを返します。 アプリケーションの現在のドライブは C:\ 場合文字列は、ファイルまたはディレクトリ内のファイルへのアクセスに使用されます、c: d: の代わりにアクセスすることです。 最後に、ため、両方の引数を 3 回目の呼び出しで`ShowPathInformation`ルートが、`Join`メソッド、単にそれを追加無意味なファイル パスを作成するときに、`Combine`メソッドは、最初の文字列を破棄し、秒を返します。 この文字列を使用してファイルへのアクセスを使用すれば、アプリケーションの機密性の高いファイルへの意図しません。  
+次の例は、メソッド<xref:System.IO.Path.Join(System.ReadOnlySpan%7BSystem.Char%7D,System.ReadOnlySpan%7BSystem.Char%7D)?displayProperty=nameWithType>と<xref:System.IO.Path.Combine(System.String,System.String)?displayProperty=nameWithType>メソッドによって返されるパスの違いを示しています。 最初の文字列がドライブおよびルートディレクトリを含む完全修飾パスで、2番目の文字列が最初のパスからの相対パスである場合、2つのメソッドは同じ結果を生成します。 2回目と3回目の`ShowPathInformation`メソッドの呼び出しでは、2つのメソッドによって返される文字列は分岐します。 2番目のメソッド呼び出しでは、最初の文字列引数はドライブ、2番目の文字列はルート化されたディレクトリです。 メソッド`Join`は、2つの文字列を連結し、重複するパス区切り記号を保持します。 メソッド`Combine`は、ドライブを破棄し、現在のドライブ上のルート化されたディレクトリを返します。 アプリケーションの現在のドライブが C:\ の場合また、この文字列は、ディレクトリ内のファイルにアクセスするために使用され、d: ではなく C: にアクセスします。 最後に、の3番目の呼び出し`ShowPathInformation`の引数は両方ともルート化されているため、メソッドは`Join`単に`Combine`それらを追加して無意味ファイルパスを作成します。メソッドは、最初の文字列を破棄し、2番目の文字列を返します。 ファイルアクセスにこの文字列を使用すると、アプリケーションが機密ファイルに意図せずアクセスする可能性があります。  
 
 [!code-csharp[Path.Join(String,String)](~/samples/snippets/csharp/api/system.io/path/combine2/program.cs)]
 [!code-csharp[Path.Join(String,String)](~/samples/snippets/visualbasic/api/system.io/path/combine2/program.vb)]
@@ -2203,11 +2222,30 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
         <Parameter Name="path2" Type="System.String" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="path1">To be added.</param>
-        <param name="path2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path1">結合する 1 番目のパス。</param>
+        <param name="path2">結合する 2 番目のパス。</param>
+        <summary>2 つのパスを単一のパスに連結します。</summary>
+        <returns>連結されたパス。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+このメソッドは、 `path`と`path2`を連結するだけで、パスコンポーネントがまだ存在しない場合は、そのディレクトリの区切り文字を追加します。 `path1`または`path2`の長さが0の場合、メソッドは残りの引数を連結します。 結果として連結された文字列の長さがゼロの<xref:System.String.Empty?displayProperty=nameWithType>場合、メソッドはを返します。
+
+が`path1`ターゲットプラットフォームに適していないパス区切り文字で終了した場合、 `Join`メソッドは元のパス区切り文字を保持し、サポートされているものを追加します。 この問題は、Unix ベースのシステムでパスの区切りとして\"認識されない Windows の円記号 (") 文字を使用するハードコードされたパスで発生します。 この問題を回避するには、次の操作を行います。
+
+- ディレクトリの区切り文字を<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ハードコーディングするのではなく、プロパティの値を取得します。
+
+- ディレクトリの区切り記号としてスラッシュ ("/") を使用します。 この文字は、Unix ベース<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>のシステムのプロパティと<xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティによって返されます。
+
+メソッドとは異なり、 <xref:System.IO.Path.Join%2A>メソッドは返されたパスのルートを試行しません。 <xref:System.IO.Path.Combine%2A> (つまり、が絶対`path2`パス`Join`の場合、メソッドは、 <xref:System.IO.Path.Combine%2A>メソッドと同じ前のパスを破棄しません。
+
+検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Join`名とファイル名に無効な文字が含まれることはありません。 たとえば、ファイルの`Path.Join("c:\\", "temp", "*.txt")`作成時には無効になる場合がありますが、検索文字列として有効です。 その`Join`ため、メソッドは正常に解釈します。
+
+             </format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Join">
@@ -2242,30 +2280,30 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
         <param name="path2">結合する 2 番目のパスを含む文字範囲。</param>
         <param name="path3">結合する 3 番目のパスを含む文字範囲。</param>
         <summary>3 つのパス コンポーネントを単一のパスに連結します。</summary>
-        <returns>To be added.</returns>
+        <returns>連結されたパス。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  
-このメソッドは単に連結`path`、 `path2`、および`path3`し 1 つが存在しない場合は、パス コンポーネントのいずれかの間でディレクトリの区切り記号を追加します。 場合、<xref:System.ReadOnlySpan%601.Length>のいずれかの`path1`、 `path2`、または`path3`引数が 0 で、メソッドは、残りの引数を連結します。 場合、<xref:System.ReadOnlySpan%601.Length?displayProperty=nameWithType>のすべてのコンポーネントが 0 の場合、メソッドを返します<xref:System.String.Empty?displayProperty=nameWithType>します。    
+このメソッドは、 `path` `path2`、、および`path3`を連結するだけで、パスコンポーネントがまだ存在しない場合は、そのディレクトリの区切り文字を追加します。 <xref:System.ReadOnlySpan%601.Length> 、 `path1`、または`path3`のいずれかの引数のが0の場合、メソッドは残りの引数を連結します。 `path2` すべてのコンポーネントのがゼロの場合、メソッドは<xref:System.String.Empty?displayProperty=nameWithType>を返します。 <xref:System.ReadOnlySpan%601.Length?displayProperty=nameWithType>
 
-場合`path1`または`path2`、ターゲット プラットフォームに対して適切でないパスの区切り文字で終わる、`Join`メソッドは、元のパスの区切り文字を保持し、サポートされている 1 つを追加します。 この問題は、Windows の円記号を使用するハード コードされたパスで発生 ("\") 文字で、Unix ベースのシステムで、パスの区切り文字として認識されていません。 この問題を回避するには、次の操作を実行できます。
+また`path1`は`path2`が、ターゲットプラットフォームに適していないパスの区切り文字で終わった`Join`場合、メソッドは元のパス区切り文字を保持し、サポートされているものを追加します。 この問題は、Unix ベースのシステムでパスの区切りとして\"認識されない Windows の円記号 (") 文字を使用するハードコードされたパスで発生します。 この問題を回避するには、次の操作を行います。
 
-- 値を取得、<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ディレクトリの区切り記号をハード コーディングするのではなく、プロパティ。
+- ディレクトリの区切り文字を<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ハードコーディングするのではなく、プロパティの値を取得します。
 
-- ディレクトリの区切り記号としてスラッシュ (「/」) を使用します。 この文字は、によって返される、 <xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType> Unix ベースのシステムと、プロパティ、 <xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティ。 
+- ディレクトリの区切り記号としてスラッシュ ("/") を使用します。 この文字は、Unix ベース<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>のシステムのプロパティと<xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティによって返されます。
 
-異なり、<xref:System.IO.Path.Combine%2A>メソッド、<xref:System.IO.Path.Join%2A>メソッドが返されるパスのルートを試行しません。 (場合に、`path2`または`path2`、絶対パス、`Join`メソッドとして前のパスを破棄しません、<xref:System.IO.Path.Combine%2A>メソッドでは。  
+メソッドとは異なり、 <xref:System.IO.Path.Join%2A>メソッドは返されたパスのルートを試行しません。 <xref:System.IO.Path.Combine%2A> `path2` (また`path2`はが絶対パス`Join`の場合、メソッドは、メソッドが行った<xref:System.IO.Path.Combine%2A>ように、前のパスを破棄しません。
   
-ディレクトリとファイル名のすべての無効な文字はによって許容として解釈されます、`Join`メソッドでは、これらの文字を使用するにはワイルドカード文字の検索のためです。 たとえば、`Path.Join("c:\\", "temp", "*.txt")`可能性がありますが無効な場合にファイルを作成するが検索文字列として有効です。 `Join`メソッドのため正常にそれを解釈します。 
+検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Join`名とファイル名に無効な文字が含まれることはありません。 たとえば、ファイルの`Path.Join("c:\\", "temp", "*.txt")`作成時には無効になる場合がありますが、検索文字列として有効です。 その`Join`ため、メソッドは正常に解釈します。
 
 ## <a name="example"></a>例
 
-次の例から返されるパスの違いを示しています、<xref:System.IO.Path.Join(System.ReadOnlySpan%7BSystem.Char%7D,System.ReadOnlySpan%7BSystem.Char%7D,System.ReadOnlySpan%7BSystem.Char%7D)?displayProperty=nameWithType>と<xref:System.IO.Path.Combine(System.String,System.String,System.String)?displayProperty=nameWithType>メソッド。 最初の文字列はドライブとルート ディレクトリを含む、完全修飾パスと、2 番目は最初のパスからの相対パス、2 つのメソッドは、同一の結果を生成します。 2 番目と 3 番目の呼び出しで、`ShowPathInformation`メソッド、2 つのメソッドによって返される文字列が分岐します。 2 番目のメソッド呼び出しの最初の文字列引数は、ドライブを 2 つ目はルート ディレクトリ。 `Join`メソッドは、2 つの文字列を連結および維持には、パスの区切り記号が重複しています。 呼び出し、<xref:System.IO.Path.GetFullPath%2A>メソッドは、重複を排除します。 `Combine`メソッドは、ドライブを破棄し、現在のドライブのルート ディレクトリを返します。 アプリケーションの現在のドライブは C:\ 場合文字列は、ファイルまたはディレクトリ内のファイルへのアクセスに使用されます、c: d: の代わりにアクセスすることです。 最後に、ため、3 番目の呼び出しで最後の引数`ShowPathInformation`ルートが、`Join`メソッドだけに追加、無意味なファイル パスを作成する最初の 2 つの引数間、`Combine`メソッドは、最初の 2 つの文字列を破棄し、返します3 番目です。 この文字列を使用してファイルへのアクセスを使用すれば、アプリケーションの機密性の高いファイルへの意図しません。  
+次の例は、メソッド<xref:System.IO.Path.Join(System.ReadOnlySpan%7BSystem.Char%7D,System.ReadOnlySpan%7BSystem.Char%7D,System.ReadOnlySpan%7BSystem.Char%7D)?displayProperty=nameWithType>と<xref:System.IO.Path.Combine(System.String,System.String,System.String)?displayProperty=nameWithType>メソッドによって返されるパスの違いを示しています。 最初の文字列がドライブおよびルートディレクトリを含む完全修飾パスで、2番目の文字列が最初のパスからの相対パスである場合、2つのメソッドは同じ結果を生成します。 2回目と3回目の`ShowPathInformation`メソッドの呼び出しでは、2つのメソッドによって返される文字列は分岐します。 2番目のメソッド呼び出しでは、最初の文字列引数はドライブ、2番目の文字列はルート化されたディレクトリです。 メソッド`Join`は、2つの文字列を連結し、重複するパス区切り記号を保持します。 <xref:System.IO.Path.GetFullPath%2A>メソッドを呼び出すと、重複が除去されます。 メソッド`Combine`は、ドライブを破棄し、現在のドライブ上のルート化されたディレクトリを返します。 アプリケーションの現在のドライブが C:\ の場合また、この文字列は、ディレクトリ内のファイルにアクセスするために使用され、d: ではなく C: にアクセスします。 最後に、の3番目の呼び出し`ShowPathInformation`の最後の引数がルートになっているため、メソッドは`Join`単にそれを最初の2つの引数`Combine`に追加して無意味ファイルのパスを作成します。メソッドは、最初の2つの文字列を破棄し、を返します。3番目の。 ファイルアクセスにこの文字列を使用すると、アプリケーションが機密ファイルに意図せずアクセスする可能性があります。
 
-[!code-csharp[Path.Join(String,String,String)](~/samples/snippets/csharp/api/system.io/path/combine3/program.cs)] 
-[!code-csharp[Path.Join(String,String,String)](~/samples/snippets/visualbasic/api/system.io/path/combine3/program.vb)] 
+[!code-csharp[Path.Join(String,String,String)](~/samples/snippets/csharp/api/system.io/path/combine3/program.cs)]
+[!code-csharp[Path.Join(String,String,String)](~/samples/snippets/visualbasic/api/system.io/path/combine3/program.vb)]
 
        ]]></format>
         </remarks>
@@ -2299,12 +2337,31 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
         <Parameter Name="path3" Type="System.String" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="path1">To be added.</param>
-        <param name="path2">To be added.</param>
-        <param name="path3">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path1">結合する 1 番目のパス。</param>
+        <param name="path2">結合する 2 番目のパス。</param>
+        <param name="path3">結合する 3 番目のパス。</param>
+        <summary>3 つのパスを単一のパスに連結します。</summary>
+        <returns>連結されたパス。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+このメソッドは、 `path` `path2`、、および`path3`を連結するだけで、パスコンポーネントがまだ存在しない場合は、そのディレクトリの区切り文字を追加します。 、、 `path1` `path2`または`path3`のいずれかの引数の長さが0の場合、メソッドは残りの引数を連結します。 結果として連結された文字列の長さがゼロの<xref:System.String.Empty?displayProperty=nameWithType>場合、メソッドはを返します。
+
+また`path1`は`path2`が、ターゲットプラットフォームに適していないパスの区切り文字で終わった`Join`場合、メソッドは元のパス区切り文字を保持し、サポートされているものを追加します。 この問題は、Unix ベースのシステムでパスの区切りとして\"認識されない Windows の円記号 (") 文字を使用するハードコードされたパスで発生します。 この問題を回避するには、次の操作を行います。
+
+- ディレクトリの区切り文字を<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ハードコーディングするのではなく、プロパティの値を取得します。
+
+- ディレクトリの区切り記号としてスラッシュ ("/") を使用します。 この文字は、Unix ベース<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>のシステムのプロパティと<xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティによって返されます。
+
+メソッドとは異なり、 <xref:System.IO.Path.Join%2A>メソッドは返されたパスのルートを試行しません。 <xref:System.IO.Path.Combine%2A> `path2` (また`path2`はが絶対パス`Join`の場合、メソッドは、メソッドが行った<xref:System.IO.Path.Combine%2A>ように、前のパスを破棄しません。
+
+検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Join`名とファイル名に無効な文字が含まれることはありません。 たとえば、ファイルの`Path.Join("c:\\", "temp", "*.txt")`作成時には無効になる場合がありますが、検索文字列として有効です。 その`Join`ため、メソッドは正常に解釈します。
+
+             </format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Join">
@@ -2335,13 +2392,32 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
         <Parameter Name="path4" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="path1">To be added.</param>
-        <param name="path2">To be added.</param>
-        <param name="path3">To be added.</param>
-        <param name="path4">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path1">結合する最初のパスを含む文字範囲。</param>
+        <param name="path2">結合する 2 番目のパスを含む文字範囲。</param>
+        <param name="path3">結合する 3 番目のパスを含む文字範囲。</param>
+        <param name="path4">結合する 4 番目のパスを含む文字範囲。</param>
+        <summary>4 つのパス コンポーネントを単一のパスに連結します。</summary>
+        <returns>連結されたパス。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+この`path`メソッドは`path2` `path4` 、、、およびを連結するだけで、パスコンポーネントがまだ存在しない場合は、そのディレクトリの区切り文字を追加します。 `path3` <xref:System.ReadOnlySpan%601.Length> 、 `path1` 、または`path4`のいずれかの引数のが0の場合、メソッドは残りの引数を連結します。 `path3` `path2` すべてのコンポーネントのがゼロの場合、メソッドは<xref:System.String.Empty?displayProperty=nameWithType>を返します。 <xref:System.ReadOnlySpan%601.Length?displayProperty=nameWithType>
+
+また`path1` `Join`はまたは`path3`が、ターゲットプラットフォームに適していないパス区切り文字で終了した場合、メソッドは元のパス区切り文字を保持し、サポートされているものを追加します。 `path2` この問題は、Unix ベースのシステムでパスの区切りとして\"認識されない Windows の円記号 (") 文字を使用するハードコードされたパスで発生します。 この問題を回避するには、次の操作を行います。
+
+- ディレクトリの区切り文字を<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ハードコーディングするのではなく、プロパティの値を取得します。
+
+- ディレクトリの区切り記号としてスラッシュ ("/") を使用します。 この文字は、Unix ベース<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>のシステムのプロパティと<xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティによって返されます。
+
+メソッドとは異なり、 <xref:System.IO.Path.Join%2A>メソッドは返されたパスのルートを試行しません。 <xref:System.IO.Path.Combine%2A> ( `path2` `Join` <xref:System.IO.Path.Combine%2A>または`path2`またはが絶対パスの場合、メソッドは、メソッドが行ったように、前`path3`のパスを破棄しません。
+
+検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Join`名とファイル名に無効な文字が含まれることはありません。 たとえば、ファイルの`Path.Join("c:\\", "temp", "*.txt")`作成時には無効になる場合がありますが、検索文字列として有効です。 その`Join`ため、メソッドは正常に解釈します。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Join">
@@ -2372,13 +2448,32 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
         <Parameter Name="path4" Type="System.String" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="path1">To be added.</param>
-        <param name="path2">To be added.</param>
-        <param name="path3">To be added.</param>
-        <param name="path4">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path1">結合する 1 番目のパス。</param>
+        <param name="path2">結合する 2 番目のパス。</param>
+        <param name="path3">結合する 3 番目のパス。</param>
+        <param name="path4">結合する 4 番目のパス。</param>
+        <summary>4 つのパスを単一のパスに連結します。</summary>
+        <returns>連結されたパス。</returns>
+        <remarks>
+          <format type="text/markdown">
+        
+
+## Remarks
+
+この`path`メソッドは`path2` `path4` 、、、およびを連結するだけで、パスコンポーネントがまだ存在しない場合は、そのディレクトリの区切り文字を追加します。 `path3` 、 `path1` 、`path2`または`path4`のいずれかの引数の長さが0の場合、メソッドは残りの引数を連結します。 `path3` 結果として連結された文字列の長さがゼロの<xref:System.String.Empty?displayProperty=nameWithType>場合、メソッドはを返します。
+
+また`path1` `Join`はまたは`path3`が、ターゲットプラットフォームに適していないパス区切り文字で終了した場合、メソッドは元のパス区切り文字を保持し、サポートされているものを追加します。 `path2` この問題は、Unix ベースのシステムでパスの区切りとして\"認識されない Windows の円記号 (") 文字を使用するハードコードされたパスで発生します。 この問題を回避するには、次の操作を行います。
+
+- ディレクトリの区切り文字を<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>ハードコーディングするのではなく、プロパティの値を取得します。
+
+- ディレクトリの区切り記号としてスラッシュ ("/") を使用します。 この文字は、Unix ベース<xref:System.IO.Path.DirectorySeparatorChar?displayProperty=nameWithType>のシステムのプロパティと<xref:System.IO.Path.AltDirectorySeparatorChar?displayProperty=nameWithType> Windows システムのプロパティによって返されます。
+
+メソッドとは異なり、 <xref:System.IO.Path.Join%2A>メソッドは返されたパスのルートを試行しません。 <xref:System.IO.Path.Combine%2A> ( `path2` `Join` <xref:System.IO.Path.Combine%2A>または`path2`またはが絶対パスの場合、メソッドは、メソッドが行ったように、前`path3`のパスを破棄しません。
+
+検索ワイルドカード文字にはこれらの文字を使用できるため、ディレクトリ`Join`名とファイル名に無効な文字が含まれることはありません。 たとえば、ファイルの`Path.Join("c:\\", "temp", "*.txt")`作成時には無効になる場合がありますが、検索文字列として有効です。 その`Join`ため、メソッドは正常に解釈します。
+
+             </format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PathSeparator">
@@ -2417,12 +2512,12 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このフィールドの値はセミコロン (;) を Windows ベースのデスクトップ プラットフォームの場合、既定では、他のプラットフォームで異なる場合がありますが、します。  
+ Windows ベースのデスクトッププラットフォームでは、このフィールドの値はセミコロン (;)既定では、他のプラットフォームによって異なる場合があります。  
   
    
   
 ## Examples  
- 次の例では、使用、`PathSeparator`フィールド。  
+ `PathSeparator`フィールドの使用例を次に示します。  
   
  [!code-cpp[System.IO.Path Members#13](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#13)]
  [!code-csharp[System.IO.Path Members#13](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#13)]
@@ -2505,7 +2600,7 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
  
 ## Remarks  
 
-変換先の文字範囲は、連結されたパスを保持するのに十分な大きさである必要があります。 呼び出すことによって連結されたパスを取得することができますし、<xref:System.Span%601.Slice%2A?displayProperty=nameWithType>メソッドでは、次の例として示します。
+コピー先の文字範囲は、連結されたパスを保持するのに十分な大きさである必要があります。 次の例に示すように、 <xref:System.Span%601.Slice%2A?displayProperty=nameWithType>メソッドを呼び出すことによって、連結されたパスを取得できます。
 
 [!code-csharp[IsPathRooted](~/samples/snippets/csharp/api/system.IO/Path/TryJoin/program.cs)]
 
@@ -2553,7 +2648,7 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
 
 ## Remarks
 
-`destination` 連結されたパスを保持するのに十分な大きさである必要があります。 呼び出すことによって連結されたパスを取得することができますし、<xref:System.Span%601.Slice%2A?displayProperty=nameWithType>メソッドの例として示します。
+`destination`は、連結されたパスを保持するのに十分な大きさである必要があります。 この例に示すように、 <xref:System.Span%601.Slice%2A?displayProperty=nameWithType>メソッドを呼び出すことで、連結されたパスを取得できます。
 
          ]]></format>
         </remarks>
@@ -2602,7 +2697,7 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
 
 ## Remarks
 
-`destination` 連結されたパスを保持するのに十分な大きさである必要があります。 呼び出すことによって連結されたパスを取得することができますし、<xref:System.Span%601.Slice%2A?displayProperty=nameWithType>メソッドの例として示します。
+`destination`は、連結されたパスを保持するのに十分な大きさである必要があります。 この例に示すように、 <xref:System.Span%601.Slice%2A?displayProperty=nameWithType>メソッドを呼び出すことで、連結されたパスを取得できます。
 
          ]]></format>
         </remarks>
@@ -2645,12 +2740,12 @@ A**ルート パス**ファイルのパスは、特定のドライブまたは U
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このフィールドの値は、Windows、Macintosh、および UNIX オペレーティング システムでスラッシュ (/) にコロン (:)。 これは"c:\windows"または「MacVolume:System フォルダー」などのパスを解析するために最も役立ちます。  
+ このフィールドの値はコロン (:)Windows と Macintosh の場合は、UNIX オペレーティングシステムの場合はスラッシュ (/)。 これは、"c:\windows" や "MacVolume: System Folder" などのパスを解析する場合に最も役立ちます。  
   
    
   
 ## Examples  
- 次の例では、使用、`VolumeSeparatorChar`フィールド。  
+ `VolumeSeparatorChar`フィールドの使用例を次に示します。  
   
  [!code-cpp[System.IO.Path Members#13](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Path Members/CPP/pathmembers.cpp#13)]
  [!code-csharp[System.IO.Path Members#13](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Path Members/CS/pathmembers.cs#13)]

@@ -1,5 +1,5 @@
 <Type Name="SequenceMarshal" FullName="System.Runtime.InteropServices.SequenceMarshal">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="72ac42bfd90183f84fc5dc1c99f35f88e9e9c837" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/25/2018" /><Meta Name="ms.locfileid" Value="39847764" /></Metadata><TypeSignature Language="C#" Value="public static class SequenceMarshal" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="fe8f8669b7fc8b990435e855bce6e49c921cc93f" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68368838" /></Metadata><TypeSignature Language="C#" Value="public static class SequenceMarshal" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit SequenceMarshal extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.InteropServices.SequenceMarshal" />
   <TypeSignature Language="VB.NET" Value="Public Class SequenceMarshal" />
@@ -9,13 +9,18 @@
     <AssemblyName>System.Memory</AssemblyName>
     <AssemblyVersion>4.0.1.0</AssemblyVersion>
     <AssemblyVersion>4.1.0.0</AssemblyVersion>
+    <AssemblyVersion>4.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>netstandard</AssemblyName>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary><see cref="T:System.Buffers.ReadOnlySequence`1" /> と相互運用するためのメソッドのコレクションを提供します。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -31,6 +36,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -43,11 +53,11 @@
         <Parameter Name="segment" Type="System.ArraySegment&lt;T&gt;" RefType="out" />
       </Parameters>
       <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="sequence">To be added.</param>
-        <param name="segment">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <typeparam name="T">読み取り専用シーケンスの型。</typeparam>
+        <param name="sequence">配列セグメントの取得元となる読み取り専用のシーケンス。</param>
+        <param name="segment">返された配列セグメント。</param>
+        <summary>基になる読み取り専用シーケンスから配列セグメントを取得します。</summary>
+        <returns>配列セグメントを取得できる場合は <see langword="true" />、それ以外の場合は <see langword="false" /> で、既定の配列セグメントが返されます。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -63,6 +73,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -75,11 +90,11 @@
         <Parameter Name="memory" Type="System.ReadOnlyMemory&lt;T&gt;" RefType="out" />
       </Parameters>
       <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="sequence">To be added.</param>
-        <param name="memory">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <typeparam name="T">読み取り専用シーケンスの型。</typeparam>
+        <param name="sequence">メモリの取得元となる読み取り専用のシーケンス。</param>
+        <param name="memory">T 型で返された読み取り専用のメモリ。</param>
+        <summary>指定した読み取り専用シーケンスから読み取り専用メモリの取得を試みます。</summary>
+        <returns>読み取り専用メモリを取得できる場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -95,6 +110,11 @@
         <AssemblyName>System.Memory</AssemblyName>
         <AssemblyVersion>4.0.1.0</AssemblyVersion>
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+        <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -110,15 +130,64 @@
         <Parameter Name="endIndex" Type="System.Int32" RefType="out" />
       </Parameters>
       <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="sequence">To be added.</param>
-        <param name="startSegment">To be added.</param>
-        <param name="startIndex">To be added.</param>
-        <param name="endSegment">To be added.</param>
-        <param name="endIndex">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <typeparam name="T">読み取り専用シーケンスの型。</typeparam>
+        <param name="sequence">読み取り専用シーケンス セグメントの取得元となる読み取り専用のシーケンス。</param>
+        <param name="startSegment">先頭の読み取り専用シーケンス セグメント。</param>
+        <param name="startIndex">最初の位置。</param>
+        <param name="endSegment">末尾の読み取り専用シーケンス セグメント。</param>
+        <param name="endIndex">最後の位置。</param>
+        <summary>指定した読み取り専用シーケンスから読み取り専用シーケンス セグメントの取得を試みます。</summary>
+        <returns>読み取り専用シーケンス セグメントを取得できる場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryRead&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static bool TryRead&lt;T&gt; (ref System.Buffers.SequenceReader&lt;byte&gt; reader, out T value) where T : struct;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool TryRead&lt;struct .ctor (class System.ValueType) T&gt;(valuetype System.Buffers.SequenceReader`1&lt;unsigned int8&gt;&amp; reader, [out] !!T&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Runtime.InteropServices.SequenceMarshal.TryRead``1(System.Buffers.SequenceReader{System.Byte}@,``0@)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function TryRead(Of T As Structure) (ByRef reader As SequenceReader(Of Byte), ByRef value As T) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename T&gt;&#xA; where T : value class static bool TryRead(System::Buffers::SequenceReader&lt;System::Byte&gt; % reader, [Runtime::InteropServices::Out] T % value);" />
+      <MemberSignature Language="F#" Value="static member TryRead :  *  -&gt; bool (requires 'T : struct)" Usage="System.Runtime.InteropServices.SequenceMarshal.TryRead (reader, value)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Memory</AssemblyName>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
+            <BaseTypeName>System.ValueType</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="reader" Type="System.Buffers.SequenceReader&lt;System.Byte&gt;" RefType="ref" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="value" Type="T" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">値の型。</typeparam>
+        <param name="reader">シーケンス ヘッダへの参照。</param>
+        <param name="value">読み取りが成功した場合は、返された値。 領域不足により失敗した場合は、<paramref name="value" /> が <see langword="default" /> になります。</param>
+        <summary>バッファーから指定された型の読み取りを試みます。 このメソッドを任意の構造体で使用するのは危険です。詳細については、注釈を参照してください。</summary>
+        <returns>読み取りが正常に終了した場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+> [!IMPORTANT]
+> 読み取りは、ビットの単純なコピーです。 構造体が、メンバーの特定の状態に依存して正常に動作する場合、例外が発生する可能性があります。 エンディアン固有の整数を読み取る場合は、 [TryReadLittleEndian (SequenceReader\<Byte >, Int32)](xref:System.Buffers.SequenceReaderExtensions.TryReadLittleEndian%2A)などの明示的なオーバーロードを使用します。
+
+]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

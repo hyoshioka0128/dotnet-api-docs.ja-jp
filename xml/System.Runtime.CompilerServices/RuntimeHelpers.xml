@@ -1,5 +1,5 @@
 <Type Name="RuntimeHelpers" FullName="System.Runtime.CompilerServices.RuntimeHelpers">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="b40d1399ba376f6afd0abc3e363f11ec34a1b86a" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58719761" /></Metadata><TypeSignature Language="C#" Value="public static class RuntimeHelpers" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="20caf079609cb385dbdccfe7779f8f54505dd62e" /><Meta Name="ms.sourcegitcommit" Value="87817aa377ffe999787a084c8e8ca669080f1e6b" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/19/2019" /><Meta Name="ms.locfileid" Value="68337010" /></Metadata><TypeSignature Language="C#" Value="public static class RuntimeHelpers" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit RuntimeHelpers extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.CompilerServices.RuntimeHelpers" />
   <TypeSignature Language="VB.NET" Value="Public Class RuntimeHelpers" />
@@ -41,7 +41,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例を使用してハンドルを確実に設定する方法を示しています、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッド。 確実に指定した既存のハンドルを識別するハンドルを設定するにすることが必要、ネイティブ ハンドルの割り当てとそのハンドル内の後続の記録、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクトはアトミックです。 漏洩するネイティブ ハンドル。 これらの操作 (スレッドの中止やメモリ不足の例外) の間で障害が発生します。  使用することができます、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>ハンドルがリークしないことを確認するメソッド。  
+ 次の例は、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッドを使用してハンドルを確実に設定する方法を示しています。 指定された既存のハンドルへのハンドルを確実に設定するには、ネイティブハンドルの割り当てと、 <xref:System.Runtime.InteropServices.SafeHandle>オブジェクト内のそのハンドルの後続の記録がアトミックであることを確認する必要があります。 これらの操作 (スレッドの中止やメモリ不足の例外など) の間に障害が発生すると、ネイティブハンドルのリークが発生します。  <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッドを使用して、ハンドルが漏洩しないようにすることができます。  
   
  [!code-csharp[SafeHandle-RuntimeHelpers.PrepareConstrainedRegions#1](~/samples/snippets/csharp/VS_Snippets_CLR/SafeHandle-RuntimeHelpers.PrepareConstrainedRegions/cs/sample.cs#1)]
  [!code-vb[SafeHandle-RuntimeHelpers.PrepareConstrainedRegions#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/SafeHandle-RuntimeHelpers.PrepareConstrainedRegions/vb/sample.vb#1)]  
@@ -96,14 +96,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.CompilerServices.RuntimeHelpers.EnsureSufficientExecutionStack%2A> 復旧操作を実行して、例外が発生します。 十分な領域を保持する人工的な制限付きのスタックについて提供します。 人為的なスタックの制限は、安全な例外をスローするのに十分な領域が保たれるようにする、共通言語ランタイムによって選択されます。  
+ <xref:System.Runtime.CompilerServices.RuntimeHelpers.EnsureSufficientExecutionStack%2A>例外を発生させるための十分な領域を保持し、回復操作を実行するための、人為的に制限されたスタックに関する情報を提供します。 人工 stack の制限は共通言語ランタイムによって選択され、十分な領域が確保され、例外が安全にスローされるようにします。  
   
- このメソッドは無限再帰の結果として、スタック オーバーフローが発生する場合に便利です。 これも使用できますが安全に他の開発シナ リオで、コンパイラ サービス シナリオで使用するものでは。  
+ このメソッドは、バインドされていない再帰の結果としてスタックオーバーフローが発生する可能性がある場合に便利です。 これは、コンパイラサービスのシナリオで使用するためのものですが、他の開発シナリオで安全に使用することもできます。  
   
- スタック領域が十分では、例外はスローされませんし、ほとんどの .NET Framework 型とメンバーも呼び出すことができます。  
+ スタック領域が十分な場合、例外はスローされず、ほとんどの .NET Framework 型およびメンバーを呼び出すことができます。  
   
 > [!NOTE]
->  このメソッドは、制約された実行領 (域 CER) サポートの一部でないし、混同しないようにと、<xref:System.Runtime.CompilerServices.RuntimeHelpers.ProbeForSufficientStack%2A?displayProperty=nameWithType>メソッド。  
+>  このメソッドは、制約された実行領域 (CER) のサポートの一部ではないため、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.ProbeForSufficientStack%2A?displayProperty=nameWithType>メソッドと混同しないようにしてください。  
   
  ]]></format>
         </remarks>
@@ -161,7 +161,7 @@
    
   
 ## Examples  
- 次の例を使用して 2 つのオブジェクトを比較する方法、<xref:System.Runtime.CompilerServices.RuntimeHelpers.Equals%2A>メソッド。  
+ 次の例は、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.Equals%2A>メソッドを使用して2つのオブジェクトを比較する方法を示しています。  
   
  [!code-csharp[Runtime.CompilerServices.RuntimeHelpers.Equals#1](~/samples/snippets/csharp/VS_Snippets_CLR/Runtime.CompilerServices.RuntimeHelpers.Equals/cs/example.cs#1)]
  [!code-vb[Runtime.CompilerServices.RuntimeHelpers.Equals#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Runtime.CompilerServices.RuntimeHelpers.Equals/vb/example.vb#1)]  
@@ -221,7 +221,7 @@
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -272,42 +272,42 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>メソッドは常に呼び出し、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>メソッド非仮想的オブジェクトの型がオーバーライドされた場合でも、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>メソッド。 したがってを使用して<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>呼び出し元が異なる場合があります`GetHashCode`を持つオブジェクトで直接、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>メソッド。  
+ メソッドは、オブジェクトの<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>型がメソッドを<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>オーバーライドした場合でも、常にメソッドを非仮想的に呼び出します。 <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType> したがって、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>を使用すると`GetHashCode` 、 <xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>メソッドを使用してオブジェクトに直接を呼び出す場合とは異なる場合があります。  
   
 > [!WARNING]
->  ただし、<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>メソッドは、同一のオブジェクト参照のと同じハッシュ コードを返します、このハッシュ コードがオブジェクト参照を一意に識別されないため、オブジェクトの id をテストするこの方法に使用することがない必要があります。 テストするには、オブジェクトを識別する (つまり、その 2 つのテスト オブジェクトにメモリ内で同じオブジェクトを参照)、呼び出し、<xref:System.Object.ReferenceEquals%2A?displayProperty=nameWithType>メソッド。 使用する必要がありますも<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A>文字列がインターン プールに存在するために、2 つの文字列が等しいオブジェクトの参照を表すかどうかをテストします。 文字列インターンをテストするには、呼び出し、<xref:System.String.IsInterned%2A?displayProperty=nameWithType>メソッド。  
+>  メソッドは<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>同一のオブジェクト参照に対して同一のハッシュコードを返しますが、このハッシュコードはオブジェクト参照を一意に識別しないため、このメソッドを使用してオブジェクト id をテストすることは避けてください。 オブジェクトの識別をテストする (つまり、2つのオブジェクトがメモリ内の同じオブジェクトを参照することを<xref:System.Object.ReferenceEquals%2A?displayProperty=nameWithType>テストする) には、メソッドを呼び出します。 また、を使用<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A>して、2つの文字列が等しいオブジェクト参照を表しているかどうかをテストします。 文字列インターンをテストするには、 <xref:System.String.IsInterned%2A?displayProperty=nameWithType>メソッドを呼び出します。  
   
- <xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>と<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>メソッドは次のように異なります。  
+ メソッド<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType> と<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>メソッドは次のように異なります。  
   
--   <xref:System.Object.GetHashCode%2A?displayProperty=nameWithType> 等しいかどうかのオブジェクトの定義に基づくハッシュ コードを返します。 たとえば、同じコンテンツを持つ 2 つの文字列がの同じ値を返す<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>します。  
+-   <xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>オブジェクトの等価性の定義に基づくハッシュコードを返します。 たとえば、同じ内容を持つ2つの文字列は、と同じ<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>値を返します。  
   
--   <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType> オブジェクト id を示すハッシュ コードを返します。 つまり、2 つの文字列変数の内容は同じですがインターン プールに存在する文字列を表す (を参照してください、[文字列インターン](#interning)セクション) またはメモリ内の 1 つの文字列を返すと同じを表すハッシュ コード。  
+-   <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>オブジェクト id を示すハッシュコードを返します。 つまり、2つの文字列変数の内容が同じで、その内容がインターン文字列 ([文字列インターン](#interning)セクションを参照) であるか、単一の文字列を表すメモリ内の文字列を表す文字列変数は、同一のハッシュコードを返します。  
   
 > [!IMPORTANT]
->  なお<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A>常に同じオブジェクト参照のと同じハッシュ コードを返します。 ただし、その逆は true。 等しいオブジェクト参照は等しいハッシュ コードを示していません。 特定のハッシュ コード値が特定のオブジェクトの参照に一意ではありません。異なるオブジェクト参照には、同一のハッシュ コードを生成できます。  
+>  は、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A>同じオブジェクト参照に対して常に同一のハッシュコードを返すことに注意してください。 ただし、逆は true ではありません。等値のハッシュコードは、等しいオブジェクト参照を示していません。 特定のハッシュコード値は、特定のオブジェクト参照に対して一意ではありません。オブジェクト参照が異なると、同一のハッシュコードを生成できます。  
   
  このメソッドは、コンパイラによって使用されます。  
   
 <a name="interning"></a>   
 ## <a name="string-interning"></a>文字列インターン  
- 共通言語ランタイム (CLR) は、文字列の内部プールを保持し、プール内のリテラルを格納します。 2 つの文字列の場合 (たとえば、`str1`と`str2`)、まったく同じ文字列リテラルでは、CLR の設定から形成`str1`と`str2`メモリを節約するために、マネージ ヒープ上の同じ場所をポイントします。 呼び出す<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>これら 2 つの文字列にオブジェクトが前のセクションで 2 番目の箇条書き項目とは異なり、同じハッシュ コードを生成します。  
+ 共通言語ランタイム (CLR) は、文字列の内部プールを管理し、リテラルをプールに格納します。 2つ`str1`の文字列 (や`str2`など) が同じ文字列リテラルから形成されている場合、CLR は`str2`とを設定`str1`し、メモリを節約するためにマネージヒープ上の同じ場所を指すようにします。 これら<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>の2つの string オブジェクトに対してを呼び出すと、前のセクションの2番目の箇条書き項目とは対照的に、同じハッシュコードが生成されます。  
   
- CLR では、リテラルのみをプールに追加します。 コンパイラは、単一の文字列リテラルと文字列の連結を解決しない限り、連結などの文字列操作の結果は、プールに追加されません。 そのため場合、 `str2` 、連結操作の結果として作成されたと`str2`と同じ`str1`を使用して、<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>これら 2 つの文字列のオブジェクトは、同じハッシュ コードを生成しません。  
+ CLR は、プールにリテラルのみを追加します。 連結などの文字列操作の結果は、コンパイラが文字列の連結を単一の文字列リテラルとして解決しない限り、プールに追加されません。 したがって、 `str2`が連結演算の結果として作成され`str2` 、がと`str1`同じで<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>ある場合、これらの2つの文字列オブジェクトに対してを使用しても、同じハッシュコードは生成されません。  
   
- 連結された文字列を明示的にプールに追加する場合を使用して、<xref:System.String.Intern%2A?displayProperty=nameWithType>メソッド。  
+ 連結された文字列をプールに明示的に追加する場合は<xref:System.String.Intern%2A?displayProperty=nameWithType> 、メソッドを使用します。  
   
- 使用することも、<xref:System.String.IsInterned%2A?displayProperty=nameWithType>文字列がインターンの参照を持つかどうかを確認する方法。  
+ また、メソッドを使用<xref:System.String.IsInterned%2A?displayProperty=nameWithType>して、文字列にインターン参照があるかどうかを確認することもできます。  
   
    
   
 ## Examples  
- 次の例では、間の差、<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>と<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>メソッド。 次の例からの出力を示しています。  
+ 次の例は、メソッドと<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType> <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>メソッドの違いを示しています。 この例の出力は、次のことを示しています。  
   
--   渡される文字列の最初のセットのハッシュ コードの両方のセット、`ShowHashCodes`メソッドはまた別の文字列が完全に異なるためです。  
+-   文字列が完全に異なるため、 `ShowHashCodes`メソッドに渡される最初の文字列セットのハッシュコードセットは両方とも異なります。  
   
--   <xref:System.Object.GetHashCode%2A?displayProperty=nameWithType> 渡される文字列の 2 番目のセットを同じハッシュ コードを生成、`ShowHashCodes`メソッドでは、文字列が等しいためです。 ただし、<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>メソッドはありません。 最初の文字列は、文字列リテラルを使用して定義されてし、ように隔離します。 2 番目の文字列の値が同じですが、されません隔離されているへの呼び出しによって返されるため、<xref:System.String.Format%2A?displayProperty=nameWithType>メソッド。  
+-   <xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>文字列が等しいため、 `ShowHashCodes`メソッドに渡される2番目の文字列セットに対して同じハッシュコードが生成されます。 ただし、メソッド<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>にはありません。 最初の文字列は文字列リテラルを使用して定義されているため、インターンプールされます。 2番目の文字列の値は同じですが、メソッドの<xref:System.String.Format%2A?displayProperty=nameWithType>呼び出しによって返されるため、この値はインターンプールされません。  
   
--   3 番目の文字列の場合は、によって生成されたハッシュ コード<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>によって生成されたハッシュ コードを両方の文字列が同一のとして<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>します。 これは、コンパイラが 1 つの文字列リテラルには、両方の文字列に割り当てられた値を扱われるため、そのため、隔離されたと同じ文字列を文字列変数が参照してください。  
+-   3番目の文字列の場合、によって生成さ<xref:System.Object.GetHashCode%2A?displayProperty=nameWithType>れるハッシュコードは、によっ<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%2A?displayProperty=nameWithType>て生成されるハッシュコードと同じになります。 これは、コンパイラが両方の文字列に割り当てられた値を1つの文字列リテラルとして処理し、文字列変数が同じインターン文字列を参照するためです。  
   
  [!code-csharp[System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.runtime.compilerservices.runtimehelpers.gethashcode/cs/gethashcodeex1.cs#1)]
  [!code-vb[System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.runtime.compilerservices.runtimehelpers.gethashcode/vb/gethashcodeex1.vb#1)]  
@@ -365,24 +365,24 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値の型をボックス化、オブジェクトを作成し、新しいオブジェクトに指定した値型のフィールドの簡易コピーを実行します。  
+ 値型をボックス化すると、オブジェクトが作成され、指定した値型のフィールドの簡易コピーが新しいオブジェクトに実行されます。  
   
- このメソッドでは、値クラスが値クラスのエイリアスの動作が保持していますが、オブジェクトとして操作できるようにします。  
+ このメソッドは、値クラスのエイリアス動作を保持しながら、値クラスをオブジェクトとして操作できるようにします。  
   
- 戻り値は、値クラスは、変更可能なまたは変更できないかどうかによって異なります。  
+ 戻り値は、値クラスが変更可能であるか不変であるかによって異なります。  
   
--   割り当てられている値が変更可能な値クラスの場合は、メソッドは、値クラスは、コピーのセマンティクスを持つため、クラスの簡易コピーを返します。  
+-   割り当てられている値が変更可能な値クラスである場合、値クラスにはコピーのセマンティクスがあるため、メソッドはクラスの簡易コピーを返します。  
   
--   割り当てられている値が、変更できない値クラスの場合は、クラスのコピーではなく、オブジェクト自体を返します。  
+-   割り当てられている値が変更できない値クラスの場合、メソッドは、クラスのコピーではなく、オブジェクト自体を返します。  
   
- 動的に型指定された言語のコンパイラでは、ボックス化された値の型がボックス化解除された値の型と同じように機能するかどうかを確認する、このメソッドを使用できます。 つまり、それらを渡すし、常に値によって渡されるときにボックス化された値の型に複製します。 コンパイラを呼び出すことができます<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetObjectValue%2A>値の型をオブジェクトに割り当てるか、値の型を型のオブジェクトのパラメーターとして渡す。  
+ 動的に型指定された言語のコンパイラでは、このメソッドを使用して、ボックス化された値型がボックス化されていない値型とまったく同じように動作する つまり、ボックス化された値型は、それらを渡すときに複製され、常に値によって渡されます。 コンパイラは、を<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetObjectValue%2A>呼び出して、値型をオブジェクトに割り当てるか、型オブジェクトのパラメーターとして値型を渡すことができます。  
   
  このメソッドは、コンパイラによって使用されます。  
   
    
   
 ## Examples  
- 値クラスを使用して、ボックスに次の例には、<xref:System.Runtime.CompilerServices.RuntimeHelpers.GetObjectValue%2A>メソッド。  
+ 次の例は、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.GetObjectValue%2A>メソッドを使用して値クラスをボックスにボックスする方法を示しています。  
   
  [!code-csharp[Runtime.CompilerServices.RuntimeHelpers.GetObjectValue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Runtime.CompilerServices.RuntimeHelpers.GetObjectValue/cs/example.cs#1)]
  [!code-vb[Runtime.CompilerServices.RuntimeHelpers.GetObjectValue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Runtime.CompilerServices.RuntimeHelpers.GetObjectValue/vb/example.vb#1)]  
@@ -420,11 +420,11 @@
         <Parameter Name="range" Type="System.Range" Index="1" FrameworkAlternate="netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="array">To be added.</param>
-        <param name="range">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <typeparam name="T">配列内の要素の型。</typeparam>
+        <param name="array">スライスする配列。</param>
+        <param name="range">スライスに含める <paramref name="array" /> の部分を決定するオブジェクト。</param>
+        <summary>指定された範囲を使用して、指定された配列をスライスします。</summary>
+        <returns><paramref name="range" /> によって定義されるサブ配列。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -542,9 +542,9 @@
       </TypeParameters>
       <Parameters />
       <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <typeparam name="T">型。</typeparam>
+        <summary>指定された型が参照型であるか、または参照を含む値型であるかを示す値を返します。</summary>
+        <returns>指定された型が参照型または参照を含む値型の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -592,7 +592,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンパイラでは、このプロパティを使用するマネージ文字列の文字で、安全でないが、効率的なポインター操作。 コンパイラは、使用する前に、ガベージ コレクターによって移動されない文字列をピン留めする必要があります。 共通言語ランタイムの文字列が変更可能な; いないことに注意してください。つまり、その内容を読み取るが変更されません。  
+ コンパイラは、マネージ文字列の文字に対する安全ではないが効率的なポインター操作に、このプロパティを使用します。 コンパイラは、使用する前に、ガベージコレクターによる移動に対して文字列をピン留めする必要があります。 共通言語ランタイムの文字列は変更できないことに注意してください。つまり、内容を読み取ることはできますが、変更することはできません。  
   
  ]]></format>
         </remarks>
@@ -640,25 +640,25 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンパイラでは、このメソッドを使用して、マークする`catch`、 `finally`、および`fault`制約された実行領 (域 Cer) としてブロックされます。 制約された領域は、厳密な信頼性コントラクトでは、他のコードを呼び出す必要がありますのみとマークされているコードです。 エラーを処理する準備ができた場合を除き、準備されていないまたは信頼性の低いメソッドに仮想呼び出しを作成または割り当てにしないでください。  
+ コンパイラは、、、および`catch` `fault`ブロック`finally`を制約された実行領域 (cer) としてマークするために、このメソッドを使用します。 制約付き領域としてマークされているコードは、信頼性の高いコントラクトを持つ他のコードだけを呼び出す必要があります。 エラーを処理する準備ができていない限り、準備されていないメソッドや信頼性のないメソッドに対して仮想呼び出しを割り当てたり、作成したりしないでください。  
   
- いいえ、言語のオペコードを除く中級レベルの注`NOP`への呼び出しが許可されている、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッドと`try`ブロックします。 Cer の詳細については、クラスを参照してください、<xref:System.Runtime.ConstrainedExecution>名前空間。  
+ <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッド`NOP`と`try`ブロックの呼び出しの間に、中間言語のオペコード (を除く) は使用できないことに注意してください。 Cer の詳細については、 <xref:System.Runtime.ConstrainedExecution>名前空間のクラスを参照してください。  
   
- Cer を使用してマークされている、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッドが完全に動作しない場合、<xref:System.StackOverflowException>から生成される、`try`ブロックします。 詳細については、<xref:System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup%2A> メソッドを参照してください。  
+ <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッドを使用してマークされた cer は、 <xref:System.StackOverflowException>が`try`ブロックから生成された場合には正常に機能しません。 詳細については、<xref:System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup%2A> メソッドを参照してください。  
   
  <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A> メソッドは <xref:System.Runtime.CompilerServices.RuntimeHelpers.ProbeForSufficientStack%2A> メソッドを呼び出します。  
   
    
   
 ## Examples  
- 次の例を使用してハンドルを確実に設定する方法を示しています、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッド。 確実に指定した既存のハンドルを識別するハンドルを設定するにすることが必要、ネイティブ ハンドルの割り当てとそのハンドル内の後続の記録、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクトはアトミックです。 漏洩するネイティブ ハンドル。 これらの操作 (スレッドの中止やメモリ不足の例外) の間で障害が発生します。 使用することができます、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>ハンドルがリークしないことを確認するメソッド。  
+ 次の例は、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッドを使用してハンドルを確実に設定する方法を示しています。 指定された既存のハンドルへのハンドルを確実に設定するには、ネイティブハンドルの割り当てと、 <xref:System.Runtime.InteropServices.SafeHandle>オブジェクト内のそのハンドルの後続の記録がアトミックであることを確認する必要があります。 これらの操作 (スレッドの中止やメモリ不足の例外など) の間に障害が発生すると、ネイティブハンドルのリークが発生します。 <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A>メソッドを使用して、ハンドルが漏洩しないようにすることができます。  
   
  [!code-csharp[SafeHandle-RuntimeHelpers.PrepareConstrainedRegions#1](~/samples/snippets/csharp/VS_Snippets_CLR/SafeHandle-RuntimeHelpers.PrepareConstrainedRegions/cs/sample.cs#1)]
  [!code-vb[SafeHandle-RuntimeHelpers.PrepareConstrainedRegions#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/SafeHandle-RuntimeHelpers.PrepareConstrainedRegions/vb/sample.vb#1)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="PrepareConstrainedRegionsNoOP">
@@ -706,11 +706,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンパイラでは、このメソッドを直接呼び出さないでください。 代わりに、呼び出すことによって、CER を定義、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A?displayProperty=nameWithType>メソッド。  
+ コンパイラは、このメソッドを直接呼び出すことはできません。 代わりに、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A?displayProperty=nameWithType>メソッドを呼び出して CER を定義します。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="PrepareContractedDelegate">
@@ -754,19 +754,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.AppDomain> イベントのデリゲートなど<xref:System.AppDomain.DomainUnload>、 <xref:System.AppDomain.ProcessExit>、および<xref:System.AppDomain.UnhandledException>起動時に自動的に準備されていません。 準備のために、次のメソッドを使用できます。  
+ <xref:System.AppDomain><xref:System.AppDomain.DomainUnload>、 <xref:System.AppDomain.ProcessExit> 、<xref:System.AppDomain.UnhandledException>などのイベントデリゲートは、起動時に自動的に準備されません。 次の方法を使用して準備を行うことができます。  
   
--   メソッドを使用して、属性、<xref:System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute>属性。  
+-   <xref:System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute>属性を使用してメソッドを属性します。  
   
--   メソッドを使用して、属性、<xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute>属性。  
+-   <xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute>属性を使用してメソッドを属性します。  
   
--   呼び出す、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareContractedDelegate%2A>メソッド、デリゲートを動的に準備をします。  
+-   <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareContractedDelegate%2A>メソッドを呼び出して、デリゲートを動的に準備します。  
   
- 詳細については、この記事を参照してください。[保持でコードを実行、.NET Framework の信頼性機能](https://go.microsoft.com/fwlink/?LinkId=145491)MSDN Magazine にします。  
+ 詳細については、MSDN マガジンの「 [.NET Framework の信頼性機能でコードの実行を続ける](https://go.microsoft.com/fwlink/?LinkId=145491)」を参照してください。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="PrepareDelegate">
@@ -811,11 +811,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンパイラを使用して、このメソッドをデリゲートの呼び出しメソッドを準備し、その呼び出し (およびデリゲートの静的に特定の呼び出し先) のターゲットを準備する制約された実行領 (域 CER) として。  
+ コンパイラは、このメソッドを使用して、デリゲートの呼び出しメソッドを準備し、その呼び出しのターゲット (およびデリゲートの静的 determinable 呼び出しグラフ) を制約された実行領域 (CER) として準備します。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="PrepareMethod">
@@ -870,11 +870,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンパイラを使用して、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%29>制約された実行領 (域 CER) 内で行われた仮想呼び出しを処理するメソッド。 、JIT コンパイル時に、共通言語ランタイムは通常ありません仮想呼び出しのターゲットに関する十分な情報。 そのため、ランタイムは呼び出し先のセグメントを最初に準備できません。 CER を使用しているコードに十分な知識がある場合は、CER までの時間で任意の時点でターゲットを決定するが実際に入力された、呼び出すことができます<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%29>に通常行う CER ルートを引数として指定されたメソッドの同じランタイムの準備を実行します。  
+ コンパイラは、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%29>メソッドを使用して、制約された実行領域 (CER) 内に作成された仮想呼び出しを処理します。 JIT コンパイル時に、共通言語ランタイムには、通常、仮想呼び出しのターゲットに関する十分な情報がありません。 したがって、ランタイムは最初に呼び出しグラフのセグメントを準備しません。 Cer を使用するコードに、cer が実際に入力される前の任意の時点でターゲットを判断するための十分な知識が<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%29>ある場合は、を呼び出して、引数として指定されたメソッドをルートとする CER に対して通常実行されるのと同じランタイム準備を実行できます。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="PrepareMethod">
@@ -921,13 +921,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用してコンパイラのジェネリックのサポートを行うことができます、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%2CSystem.RuntimeTypeHandle%5B%5D%29>メソッド。 共通言語ランタイムが制約された実行領域 (Cer) ジェネリック型パラメーター (型パラメーター、メソッド、または 1 つは、メソッド自体を含むクラス) を持つメソッドで root 化を準備できませんこれらの型パラメーターがインスタンス化されたときとして参照型。  
+ コンパイラのジェネリックサポートは、 <xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%2CSystem.RuntimeTypeHandle%5B%5D%29>メソッドを使用して指定できます。 共通言語ランタイムは、ジェネリック型パラメーターを持つメソッド (メソッドを含むクラスの型パラメーター、またはメソッド自体に1つ) を持つメソッドをルートとする制約された実行領域 (Cer) を準備できません。参照型として。  
   
- このオーバー ロードを使用して、特定のインスタンス化 (型の配列) などを渡します (存在する場合) まずクラスの型パラメーターを指定するメソッドの型パラメーター (ある場合) と、その後。 ランタイムは、メソッドのインスタンス化を準備します。 (これは、使用するインスタンス化が少なくとも 1 つの参照型パラメーターが含まれている場合にのみ必要)したがって、CER スタイルを使用することができます`try`句では、ジェネリック メソッド (または、ジェネリック クラスの非ジェネリック メソッド) のインスタンス化で確実に動作して<xref:System.Int32>またはその他の値の型。 などの参照をインスタンス化する型<xref:System.String>を明示的に使用する必要がある<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%2CSystem.RuntimeTypeHandle%5B%5D%29>CER でメソッドがメソッドを最初にルートします。  
+ このオーバーロードを使用して、特定のインスタンス化 (型の配列など) を渡し、最初にクラス型パラメーター (存在する場合) を指定し、その後にメソッド型パラメーター (存在する場合) を指定することができます。 ランタイムは、メソッドのインスタンス化を準備します。 (これは、使用するインスタンス化に参照型パラメーターが少なくとも1つ含まれている場合にのみ必要です)。したがって、ジェネリックメソッド (またはジェネリック`try`クラスの非ジェネリックメソッド) で CER 形式の句を使用して、またはその他の値型<xref:System.Int32>のインスタンス化で確実に動作することができます。 などの参照型をインスタンス<xref:System.String>化するには、最初<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareMethod%28System.RuntimeMethodHandle%2CSystem.RuntimeTypeHandle%5B%5D%29>に CER のルートメソッドに対して明示的なメソッドを使用する必要があります。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="ProbeForSufficientStack">
@@ -972,15 +972,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、Microsoft SQL Server や Microsoft Exchange Server などのスタック オーバーフローに対する回復力のホストで実行する場合、制約された実行領 (域 CER) インフラストラクチャによって使用されます。 このメソッドは現在、x86 上でのスタック領域は 48 KB のプローブ時間の経過と共に変更することがありますが、プラットフォーム、正確な量と、他のプラットフォームで異なる場合があります。  
+ このメソッドは、Microsoft SQL Server や Microsoft Exchange Server などのスタックオーバーフローに対して回復力があるホストで実行されている場合に、制約された実行領域 (CER) インフラストラクチャによって使用されます。 現在、このメソッドは x86 プラットフォームで 48 KB のスタック領域をプローブしますが、正確な量は時間の経過と共に変化し、他のプラットフォームでは異なる場合があります。  
   
  このメソッドは、コンパイラによっても使用されます。  
   
- 使用する代わりに、<xref:System.Runtime.CompilerServices.RuntimeHelpers.ProbeForSufficientStack%2A>メソッド、標準的な CER を使用する必要があります。 つまり、中程度の量のスタック領域を使用しようとしている場合を呼び出す、<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A?displayProperty=nameWithType>メソッドの直前に、 `try` / `finally`または`try` / `catch`ブロックします。 使用する必要があります、再帰的なメソッドまたは大量のスタック領域を使用するプランを呼び出す場合、<xref:System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup%2A?displayProperty=nameWithType>メソッド。  
+ <xref:System.Runtime.CompilerServices.RuntimeHelpers.ProbeForSufficientStack%2A>メソッドを使用する代わりに、標準の CER を使用する必要があります。 つまり、一定量のスタック領域を使用することを計画している場合は<xref:System.Runtime.CompilerServices.RuntimeHelpers.PrepareConstrainedRegions%2A?displayProperty=nameWithType> 、 `finally`または/ `catch` `try`ブロック`try`の直前にメソッド/を呼び出します。 再帰的なメソッドを呼び出して<xref:System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup%2A?displayProperty=nameWithType>いる場合、またはスタック領域を大量に使用する場合は、メソッドを使用する必要があります。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="RunClassConstructor">

@@ -1,5 +1,5 @@
 <Type Name="MemberInfoExtensions" FullName="System.Reflection.MemberInfoExtensions">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="b1119c2576b683f28cc96dffce2875aac2a6eaef" /><Meta Name="ms.sourcegitcommit" Value="434f60616a9793fa8436744549fc856e94f7a648" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="08/24/2018" /><Meta Name="ms.locfileid" Value="36542701" /></Metadata><TypeSignature Language="C#" Value="public static class MemberInfoExtensions" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="85d773bbb9fb0046b783593f354944f36db4ee3f" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68368970" /></Metadata><TypeSignature Language="C#" Value="public static class MemberInfoExtensions" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit MemberInfoExtensions extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.MemberInfoExtensions" />
   <TypeSignature Language="VB.NET" Value="Public Module MemberInfoExtensions" />
@@ -39,10 +39,19 @@
         <Parameter Name="member" Type="System.Reflection.MemberInfo" RefType="this" />
       </Parameters>
       <Docs>
-        <param name="member">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="member">reftype としてトークンを取得する対象のメンバー。</param>
+        <summary>指定されたメンバーのメタデータ トークンを取得します (存在する場合)。</summary>
+        <returns>メタデータ値を表す整数。 返されたトークンが nil になることはありません。 何もない場合は、例外がスローされます。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+
+このメソッドは、指定されたメンバーに対してメタデータトークンを使用できない場合に、例外をスローします。 を呼び出し<xref:System.Reflection.MemberInfoExtensions.HasMetadataToken%2A>て、このメソッドを呼び出す前にメタデータトークンが使用可能かどうかを判断できます。
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">使用できるメタデータ トークンがありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="HasMetadataToken">
@@ -65,10 +74,18 @@
         <Parameter Name="member" Type="System.Reflection.MemberInfo" RefType="this" />
       </Parameters>
       <Docs>
-        <param name="member">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="member">reftype として分析するメンバー。</param>
+        <summary>指定されたメンバーに対してメタデータ トークンを使用できるかどうかを示す値を返します。</summary>
+        <returns>指定されたメンバーに使用できるメタデータ トークンがある場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+
+<xref:System.Reflection.MemberInfoExtensions.GetMetadataToken%2A>指定されたメンバーに対してメタデータトークンを使用できない場合、例外をスローします。 そのため、このメソッドを使用して、を呼び出す<xref:System.Reflection.MemberInfoExtensions.GetMetadataToken%2A>前にメタデータトークンを使用できるかどうかを確認します。 
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>
