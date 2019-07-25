@@ -1,5 +1,5 @@
 <Type Name="Claim" FullName="System.IdentityModel.Claims.Claim">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="66ca6c28f9616ec7c385311b87bb5100235579e5" /><Meta Name="ms.sourcegitcommit" Value="4ee26ac79338b0bf99fa1e0913e8a06b21994d8e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/26/2019" /><Meta Name="ms.locfileid" Value="58453806" /></Metadata><TypeSignature Language="C#" Value="public class Claim" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="13e860f969c6e4730f5ebf4676ad2593c32d1642" /><Meta Name="ms.sourcegitcommit" Value="87817aa377ffe999787a084c8e8ca669080f1e6b" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/19/2019" /><Meta Name="ms.locfileid" Value="68337123" /></Metadata><TypeSignature Language="C#" Value="public class Claim" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Claim extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.IdentityModel.Claims.Claim" />
   <TypeSignature Language="VB.NET" Value="Public Class Claim" />
@@ -27,7 +27,7 @@
 ## Remarks  
  ID モデルはクレームに基づく承認システムです。 クレームは、システム内の何らかのエンティティ (多くの場合システムのユーザー) に関連する機能について記述します。 指定のエンティティに関連するクレームのセットをキーと考えることができます。 キーの形状は特定のクレームにより定義されます。このしくみは、ドアを開けるための物理的なキーとよく似ています。 このようにして、クレームは、リソースへのアクセスを取得するために使用されます。 保護された任意のリソースへのアクセスの可否は、そのリソースにアクセスするために必要なクレームと、アクセスを試みるエンティティに関連付けられたクレームを比較することにより特定されます。  
   
- クレームは、特定の値に関連付けられる権限の表現です。 権限には、読み取り、書き込み、所有があります。 値には、データベース、ファイル、メールボックス、またはプロパティが使用できます。 クレームはまた、特定のクレームの種類に属します。 クレームの種類と権限の組み合わせにより、値に基づいて機能が指定されるしくみが提供されます。 型の要求例では、`file`権限を持つ`read`値`biography.doc`このようなクレームとエンティティに、ファイル biography.doc への読み取りアクセスがあることを示します。権限を持つ型の名前のクレーム<xref:System.IdentityModel.Claims.Rights.PossessProperty%2A>値`Martin`クレームとエンティティを所有していることを示します、`Name`プロパティ値を持つ`Martin`。  
+ クレームは、特定の値に関連付けられる権限の表現です。 権限には、読み取り、書き込み、所有があります。 値には、データベース、ファイル、メールボックス、またはプロパティが使用できます。 クレームはまた、特定のクレームの種類に属します。 クレームの種類と権限の組み合わせにより、値に基づいて機能が指定されるしくみが提供されます。 たとえば、値`file` `read`に対する権限を持つ型のクレームは、そのクレームを持つエンティティが、ファイルの test.doc に対する読み取りアクセス権を持っていることを示します。 `biography.doc`値<xref:System.IdentityModel.Claims.Rights.PossessProperty%2A> `Name` `Martin`の右側にある型名のクレームは、そのクレームを持つエンティティが、値を持つプロパティを持つことを示します。 `Martin`  
   
  さまざまなクレームの種類および権限が ID モデルの一部として定義されていますが、システムは拡張可能です。 ID モデル インフラストラクチャを基にして構築されているさまざまなシステムでは、必要に応じてクレームの種類と権限を定義できます。  
   
@@ -68,17 +68,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Windows Communication Foundation には、定義済みのクレームの種類とのメンバーとして表される権限のセットが付属しています、<xref:System.IdentityModel.Claims.ClaimTypes>と<xref:System.IdentityModel.Claims.Rights>クラス。  
+ Windows Communication Foundation には、クラス<xref:System.IdentityModel.Claims.ClaimTypes>および<xref:System.IdentityModel.Claims.Rights>クラスのメンバーとして表される定義済みのクレームの種類と権限のセットが付属しています。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="claimType" /> は <see langword="null" />です。  
   
 - または - 
- <paramref name="right" /> は <see langword="null" />です。</exception>
+ <paramref name="right" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="claimType" /> の長さがゼロです。  
   
-または 
+- または - 
  <paramref name="right" /> の長さがゼロです。</exception>
       </Docs>
     </Member>
@@ -154,7 +154,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 拒否専用 SID の SID_AND_ATTRIBUTES 構造体では、SE_GROUP_USE_FOR_SENY_ONLY フラグが設定されています。  
+ 拒否専用 SID は、SE_GROUP_USE_FOR_DENY_ONLY フラグが設定された SID_AND_ATTRIBUTES 構造体です。  
   
  このメソッドが作成する <xref:System.IdentityModel.Claims.Claim> オブジェクトのプロパティ値を次の表に示します。  
   
@@ -762,7 +762,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 定義済みの値を含める<xref:System.IdentityModel.Claims.Rights.Identity%2A>と<xref:System.IdentityModel.Claims.Rights.PossessProperty%2A>します。  
+ 定義済みの値に<xref:System.IdentityModel.Claims.Rights.Identity%2A>は<xref:System.IdentityModel.Claims.Rights.PossessProperty%2A>、およびが含まれます。  
   
    
   
