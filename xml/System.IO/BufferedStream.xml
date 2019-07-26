@@ -1,5 +1,5 @@
 <Type Name="BufferedStream" FullName="System.IO.BufferedStream">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="82a31ea989a4810e730491f7136c2a9037d687a0" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67238500" /></Metadata><TypeSignature Language="C#" Value="public sealed class BufferedStream : System.IO.Stream" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="770b54035e135e827d1cabffe2b0f6af0fde8110" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68368899" /></Metadata><TypeSignature Language="C#" Value="public sealed class BufferedStream : System.IO.Stream" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BufferedStream extends System.IO.Stream" />
   <TypeSignature Language="DocId" Value="T:System.IO.BufferedStream" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BufferedStream&#xA;Inherits Stream" />
@@ -41,19 +41,19 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- バッファーは、データをキャッシュに使用するメモリ内のバイトのブロックです。 バッファーは読み取りを向上させ、書き込みのパフォーマンス。 バッファーは、いずれかの読み取りまたは書き込みは同時に使用できます。 <xref:System.IO.BufferedStream.Read%2A>と<xref:System.IO.BufferedStream.Write%2A>メソッドの`BufferedStream`自動的にバッファーを維持します。  
+ バッファーは、データをキャッシュするために使用されるメモリ内のバイトのブロックです。これにより、オペレーティングシステムへの呼び出しの回数が減少します。 バッファーにより、読み取りと書き込みのパフォーマンスが向上します。 バッファーは、読み取りまたは書き込みのいずれかに使用できますが、両方同時に使用することはできません。 の<xref:System.IO.BufferedStream.Read%2A> <xref:System.IO.BufferedStream.Write%2A>メソッドとメソッドは、バッファーを自動的に保持します。 `BufferedStream`  
   
 > [!IMPORTANT]
 >  この型は <xref:System.IDisposable> インターフェイスを実装します。 型の使用が完了したら、直接的または間接的に型を破棄する必要があります。 直接的に型を破棄するには、`try` / `catch` ブロック内で <xref:System.IDisposable.Dispose%2A> メソッドを呼び出します。 間接的に型を破棄するには、`using` (C# の場合) または `Using` (Visual Basic 言語) などの言語構成要素を使用します。 詳細については、<xref:System.IDisposable> インターフェイスに関するトピック内の「IDisposable を実装するオブジェクトの使用」セクションを参照してください。  
   
- `BufferedStream` ストリームの特定の種類を構成できます。 読み取りとバイトを書き込み、基になるデータ ソースまたはリポジトリの実装を提供します。 使用<xref:System.IO.BinaryReader>と<xref:System.IO.BinaryWriter>の読み取りと書き込みの他のデータ型。 `BufferedStream` バッファーのバッファーが必要ない場合に、入力と出力低下を防ぐために設計されています。 常に読み取りし、し、内部バッファーのサイズより大きいサイズの書き込みを実行する場合`BufferedStream`も内部バッファーを割り当てる可能性がありますされません。 `BufferedStream` バッファーの読み取りと共有バッファーに書き込みます。 一連の読み取りまたは書き込みを行う、ほぼ必ずがこれらの 2 つの別のほとんどと見なされます。  
+ `BufferedStream`は、特定の種類のストリームに対して構成できます。 このメソッドは、基になるデータソースまたはリポジトリへのバイトの読み取りおよび書き込みを行うための実装を提供します。 他<xref:System.IO.BinaryReader>の<xref:System.IO.BinaryWriter>データ型の読み取りと書き込みには、およびを使用します。 `BufferedStream`は、バッファーが不要な場合に、バッファーが入力と出力の速度を低下させないように設計されています。 常に、内部バッファーサイズよりも大きいサイズの読み取りと書き込みを行う`BufferedStream`場合、は内部バッファーを割り当てないこともあります。 `BufferedStream`また、は、共有バッファーの読み取りと書き込みも行います。 ほとんどの場合、一連の読み取りまたは書き込みを実行しますが、2つの間ではあまり別のものを使用しないことを前提としています。  
   
    
   
 ## Examples  
- 次のコード例を使用する方法を表示する、`BufferedStream`経由でクラス、`NetworkStream`クラスの特定の I/O 操作のパフォーマンスを向上させる。 リモート コンピューターにクライアントを開始する前に、サーバーを起動します。 クライアントを開始するときに、コマンドライン引数として、リモート コンピューター名を指定します。 異なる、`dataArraySize`と`streamBufferSize`パフォーマンスに対する影響度を表示するための定数。  
+ クラスを`BufferedStream` `NetworkStream`クラスで使用して、特定の i/o 操作のパフォーマンスを向上させる方法を次のコード例に示します。 クライアントを起動する前に、リモートコンピューターでサーバーを起動します。 クライアントを起動するときに、コマンドライン引数としてリモートコンピューター名を指定します。 パフォーマンスに`dataArraySize`与える`streamBufferSize`影響を表示するには、定数と定数を変更します。  
   
- 最初の例は、クライアントで実行されるコードと、2 番目の例は、サーバーで実行されるコードを示しています。  
+ 最初の例は、クライアントで実行されるコードを示しています。2番目の例は、サーバーで実行されるコードを示しています。  
   
  **例 1:クライアントで実行されるコード**  
   
@@ -124,11 +124,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 共有の読み取り/書き込みバッファーは最初に割り当てられている、`BufferedStream`オブジェクトは、このコンス トラクターで初期化されます。 すべての読み取りと書き込みがより大きいか等しい場合、共有バッファーは使用されません`bufferSize`します。  
+ 共有の読み取り/書き込みバッファーは、このコンストラクターを使用`BufferedStream`して初めてオブジェクトを初期化するときに割り当てられます。 すべての読み取りと書き込みが以上の`bufferSize`場合、共有バッファーは使用されません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> が <see langword="null" /> です。</exception>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -174,12 +174,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 共有の読み取り/書き込みバッファーは最初に割り当てられている、`BufferedStream`オブジェクトは、このコンス トラクターで初期化されます。 すべての読み取りと書き込みがより大きいか等しい場合、共有バッファーは使用されません`bufferSize`します。  
+ 共有の読み取り/書き込みバッファーは、このコンストラクターを使用`BufferedStream`して初めてオブジェクトを初期化するときに割り当てられます。 すべての読み取りと書き込みが以上の`bufferSize`場合、共有バッファーは使用されません。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。  
+ このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.BufferedStream1#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CPP/client.cpp#2)]
  [!code-csharp[System.IO.BufferedStream1#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CS/client.cs#2)]
@@ -242,14 +242,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- .NET Framework 4 と以前のバージョンでは、メソッドを使用する必要がある<xref:System.IO.Stream.BeginRead%2A>と<xref:System.IO.Stream.EndRead%2A>ファイルの非同期操作を実装します。 これらのメソッドはでまだ使用できる、[!INCLUDE[net_v45](~/includes/net-v45-md.md)]レガシ コードをサポートするために、新しい非同期メソッドなど<xref:System.IO.BufferedStream.ReadAsync%2A>、<xref:System.IO.BufferedStream.WriteAsync%2A>と<xref:System.IO.BufferedStream.FlushAsync%2A>、ヘルプ ファイルの非同期操作をより簡単に実装します。  
+ .NET Framework 4 以前のバージョンでは、非同期ファイル操作を実装するため<xref:System.IO.Stream.BeginRead%2A>に<xref:System.IO.Stream.EndRead%2A> 、やなどのメソッドを使用する必要があります。 これらのメソッドは[!INCLUDE[net_v45](~/includes/net-v45-md.md)] 、レガシコードをサポートするためにでも使用できます。ただし、、、などの新しい非同期メソッド<xref:System.IO.BufferedStream.ReadAsync%2A> <xref:System.IO.BufferedStream.WriteAsync%2A> <xref:System.IO.BufferedStream.FlushAsync%2A>は、非同期のファイル操作をより簡単に実装するのに役立ちます。  
   
- <xref:System.IO.BufferedStream.EndWrite%2A> 呼び出しごとに 1 回だけ呼び出す必要があります<xref:System.IO.BufferedStream.BeginRead%2A>します。 別の読み取りを開始する前に読み取りのプロセスを終了に失敗すると、デッドロックなどの動作が望ましくない可能性があります。  
+ <xref:System.IO.BufferedStream.EndWrite%2A>を<xref:System.IO.BufferedStream.BeginRead%2A>呼び出すたびに1回だけ呼び出す必要があります。 読み取りプロセスを終了してから別の読み取りを開始すると、デッドロックなどの望ましくない動作が発生する可能性があります。  
   
 > [!NOTE]
->  使用して、<xref:System.IO.BufferedStream.CanRead%2A>プロパティを現在のインスタンスが読み取りをサポートするかどうかを判断します。  
+>  現在の<xref:System.IO.BufferedStream.CanRead%2A>インスタンスが読み取りをサポートしているかどうかを確認するには、プロパティを使用します。  
   
- <xref:System.IO.BufferedStream.EndRead%2A> これを呼び出す必要があります<xref:System.IAsyncResult>読み取られたバイト数を確認します。  
+ <xref:System.IO.BufferedStream.EndRead%2A>読み取られたバイト数<xref:System.IAsyncResult>を調べるには、このを使用してを呼び出す必要があります。  
   
  ]]></format>
         </remarks>
@@ -308,9 +308,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- .NET Framework 4 と以前のバージョンでは、メソッドを使用する必要がある<xref:System.IO.Stream.BeginWrite%2A>と<xref:System.IO.Stream.EndWrite%2A>ファイルの非同期操作を実装します。 これらのメソッドはでまだ使用できる、[!INCLUDE[net_v45](~/includes/net-v45-md.md)]レガシ コードをサポートするために、新しい非同期メソッドなど<xref:System.IO.BufferedStream.ReadAsync%2A>、<xref:System.IO.BufferedStream.WriteAsync%2A>と<xref:System.IO.BufferedStream.FlushAsync%2A>、ヘルプ ファイルの非同期操作をより簡単に実装します。  
+ .NET Framework 4 以前のバージョンでは、非同期ファイル操作を実装するため<xref:System.IO.Stream.BeginWrite%2A>に<xref:System.IO.Stream.EndWrite%2A> 、やなどのメソッドを使用する必要があります。 これらのメソッドは[!INCLUDE[net_v45](~/includes/net-v45-md.md)] 、レガシコードをサポートするためにでも使用できます。ただし、、、などの新しい非同期メソッド<xref:System.IO.BufferedStream.ReadAsync%2A> <xref:System.IO.BufferedStream.WriteAsync%2A> <xref:System.IO.BufferedStream.FlushAsync%2A>は、非同期のファイル操作をより簡単に実装するのに役立ちます。  
   
- <xref:System.IO.BufferedStream.EndWrite%2A> 1 回だけ呼び出す必要がありますすべて<xref:System.IAsyncResult>から<xref:System.IO.BufferedStream.BeginWrite%2A>します。 <xref:System.IO.BufferedStream.EndWrite%2A> I/O 操作が完了するまでブロックされます。  
+ <xref:System.IO.BufferedStream.EndWrite%2A>は、から<xref:System.IAsyncResult> <xref:System.IO.BufferedStream.BeginWrite%2A>のたびに1回だけ呼び出す必要があります。 <xref:System.IO.BufferedStream.EndWrite%2A>は、i/o 操作が完了するまでブロックされます。  
   
  ]]></format>
         </remarks>
@@ -347,8 +347,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>このバッファー ストリームのバッファー サイズをバイト単位で取得します。</summary>
+        <value>バッファーサイズをバイト単位で表す整数。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -391,14 +391,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生したクラスの場合<xref:System.IO.Stream>読み取りをサポートしませんへの呼び出し、 <xref:System.IO.BufferedStream.Read%2A>、 <xref:System.IO.BufferedStream.ReadByte%2A>、 <xref:System.IO.Stream.BeginRead%2A>、 <xref:System.IO.Stream.EndRead%2A>、および`Peek`メソッドの<xref:System.IO.StreamReader>、 <xref:System.IO.StringReader>、および<xref:System.IO.TextReader>をスロー<xref:System.NotSupportedException>.  
+ から<xref:System.IO.Stream>派生したクラスが読み取りをサポートしていない場合<xref:System.IO.BufferedStream.ReadByte%2A>、 <xref:System.IO.Stream.BeginRead%2A>、 <xref:System.IO.Stream.EndRead%2A>、、、 `Peek` 、、 <xref:System.IO.StreamReader>、 <xref:System.IO.StringReader>および<xref:System.IO.TextReader>の各メソッド<xref:System.IO.BufferedStream.Read%2A>を呼び出すと、がスローされます<xref:System.NotSupportedException>。  
   
- このプロパティを返しますのかどうかは、ストリームが閉じている、`false`します。  
+ ストリームが閉じている場合、このプロパティ`false`はを返します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。  
+ このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.BufferedStream1#5](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CPP/client.cpp#5)]
  [!code-csharp[System.IO.BufferedStream1#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CS/client.cs#5)]
@@ -451,14 +451,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生したクラスの場合<xref:System.IO.Stream>への呼び出しをシークをサポートしていない<xref:System.IO.BufferedStream.Length%2A>、 <xref:System.IO.BufferedStream.SetLength%2A>、 <xref:System.IO.BufferedStream.Position%2A>、および<xref:System.IO.BufferedStream.Seek%2A>スロー、<xref:System.NotSupportedException>します。  
+ から<xref:System.IO.Stream>派生したクラスがシークをサポートしていない<xref:System.IO.BufferedStream.SetLength%2A>場合<xref:System.IO.BufferedStream.Position%2A>、、 <xref:System.IO.BufferedStream.Seek%2A> 、、 <xref:System.NotSupportedException>およびを<xref:System.IO.BufferedStream.Length%2A>呼び出すと、がスローされます。  
   
- このプロパティを返しますのかどうかは、ストリームが閉じている、`false`します。  
+ ストリームが閉じている場合、このプロパティ`false`はを返します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。  
+ このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.BufferedStream1#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CPP/client.cpp#3)]
  [!code-csharp[System.IO.BufferedStream1#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CS/client.cs#3)]
@@ -512,14 +512,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生したクラスの場合<xref:System.IO.Stream>への呼び出しの書き込みをサポートしていません<xref:System.IO.BufferedStream.SetLength%2A>、 <xref:System.IO.BufferedStream.Write%2A>、または<xref:System.IO.BufferedStream.WriteByte%2A>スロー、<xref:System.NotSupportedException>します。  
+ <xref:System.IO.Stream>から派生したクラスが書き込みをサポートしていない場合<xref:System.IO.BufferedStream.Write%2A>、、 <xref:System.IO.BufferedStream.WriteByte%2A> 、また<xref:System.NotSupportedException>はを<xref:System.IO.BufferedStream.SetLength%2A>呼び出すと、がスローされます。  
   
- このプロパティを返しますのかどうかは、ストリームが閉じている、`false`します。  
+ ストリームが閉じている場合、このプロパティ`false`はを返します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。  
+ このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.BufferedStream1#4](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CPP/client.cpp#4)]
  [!code-csharp[System.IO.BufferedStream1#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CS/client.cs#4)]
@@ -564,14 +564,14 @@
           <format type="text/markdown"><![CDATA[
 
 ## Remarks  
-以前、バッファーに書き込まれたデータは、バッファー済みストリームを閉じる前に、基になるデータ ソースまたはリポジトリにコピーされます。 そのため、呼び出す必要はない<xref:System.IO.BufferedStream.Flush>Close を呼び出す前にします。 Close の呼び出し、次のバッファー済みストリームでその操作例外が発生する可能性があります。
+バッファーに書き込まれたすべてのデータは、バッファーストリームが閉じられる前に、基になるデータソースまたはリポジトリにコピーされます。 そのため、Close を呼び出す前に<xref:System.IO.BufferedStream.Flush>を呼び出す必要はありません。 Close の呼び出しの後に、バッファーストリームに対する操作を実行すると、例外が発生する可能性があります。
 
-ストリームのフラッシュを明示的に呼び出さない限り、その基になるエンコーダー フラッシュしない<xref:System.IO.BufferedStream.Flush>または閉じる。 設定<xref:System.IO.StreamWriter.AutoFlush>に true の場合は、ストリームにバッファーからデータがフラッシュされますが、エンコーダーの状態はフラッシュされません。 これにより、エンコーダーで、次の文字のブロックは正常にエンコードできるように、(一部の文字) の状態を維持できます。 このシナリオでは、UTF8、UTF7、特定の文字をエンコードするため、エンコーダーは、隣接する文字または文字列を受信した後に影響します。
+明示的にを呼び出す<xref:System.IO.BufferedStream.Flush>か閉じる場合を除き、ストリームをフラッシュしても、基になるエンコーダーはフラッシュされません。 を<xref:System.IO.StreamWriter.AutoFlush> true に設定すると、バッファーからストリームにデータがフラッシュされますが、エンコーダーの状態はフラッシュされません。 これにより、エンコーダーは次の文字ブロックを正しくエンコードできるように、その状態 (部分文字) を保持できます。 このシナリオは、エンコーダーが隣接する文字を受け取ると、特定の文字のみをエンコードできる UTF8 と UTF7 に影響します。
 
-スローする可能性が閉じられた後にストリームを操作しようとして、<xref:System.ObjectDisposedException>します。
+閉じた後にストリームを操作しようとすると、 <xref:System.ObjectDisposedException>がスローされる可能性があります。
 
 ## Examples  
-このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。
+このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。
 
 ```vb
 ' When bufStream is closed, netStream is in turn 
@@ -636,10 +636,19 @@ bufStream->Close();
         <Parameter Name="bufferSize" Type="System.Int32" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bufferSize">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="destination">現在のバッファー ストリームの内容のコピー先のストリーム。</param>
+        <param name="bufferSize">バッファーのサイズ。 これは、0 より大きい値である必要があります。 既定のサイズは 81920 です。</param>
+        <summary>現在のバッファー ストリームからバイトを読み取り、別のストリームに書き込みます。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="destination" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="bufferSize" /> が負の値またはゼロです。</exception>
+        <exception cref="T:System.NotSupportedException">現在のストリームは読み取りをサポートしません。
+
+または
+
+<paramref name="destination" /> は、書き込みをサポートしません。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> メソッドが呼び出される前に、現在のストリームまたは <paramref name="destination" /> が閉じられました。</exception>
+        <exception cref="T:System.IO.IOException">I/O エラーが発生しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="CopyToAsync">
@@ -671,12 +680,24 @@ bufStream->Close();
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bufferSize">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="destination">現在のバッファー ストリームの内容のコピー先のストリーム。</param>
+        <param name="bufferSize">バッファーのサイズ (バイト数)。 これは、0 より大きい値である必要があります。 既定のサイズは 81920 です。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>現在のバッファー ストリームからバイトを非同期に読み取り、指定されたバッファー サイズとキャンセル トークンを使用して、別のストリームに書き込みます。</summary>
+        <returns>非同期のコピー操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+メソッド`CopyToAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する i/o 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。  
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled>タスクには<xref:System.Threading.Tasks.Task.Status%2A>プロパティの値が含まれます。  
+
+コピーは、現在のストリームの現在位置から開始します。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -714,9 +735,21 @@ bufStream->Close();
         <Parameter Name="disposing" Type="System.Boolean" Index="0" FrameworkAlternate="netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.5;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="disposing">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="disposing">マネージド リソースとアンマネージド リソースの両方を解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <summary>バッファー ストリームで使用しているアンマネージド リソースを解放し、オプションでマネージド リソースも解放します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+にを指定`true`することで、すべて`disposing`のリソースを解放する必要があります。 が`disposing`の`true`場合、ストリームは、基になるバッファーにデータをフラッシュし、その他のファイナライズ可能なオブジェクトにアクセスすることもできます。 ファイナライザーの順序が不足しているためにファイナライザーから呼び出された場合は、これが不可能になることがあります。
+
+ストリームがソースとの通信にオペレーティングシステムハンドルを使用している場合は、この目的<xref:System.Runtime.InteropServices.SafeHandle>でのサブクラスの使用を検討してください。
+
+このメソッドは、パブリック<xref:System.ComponentModel.Component.Dispose>メソッド<xref:System.Object.Finalize%2A>とメソッドによって呼び出されます。 <xref:System.ComponentModel.Component.Dispose>`disposing`パラメーターをに`Dispose(Boolean)` 設定して、保護されたメソッド`true`を呼び出します。 <xref:System.Object.Finalize%2A>をに`disposing` `Dispose(Boolean)` 設定してを呼び出します`false`。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DisposeAsync">
@@ -746,9 +779,21 @@ bufStream->Close();
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>バッファー ストリームで使用されているアンマネージ リソースを非同期に解放します。</summary>
+        <returns>非同期の破棄操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+`DisposeAsync`メソッドを使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する dispose 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。
+
+このメソッドは、バッキングストアに変更を書き込んでストリームを破棄し、リソースを解放するためにストリームを閉じます。
+
+を`DisposeAsync`呼び出すと、 <xref:System.IO.BufferedStream>によって使用されるリソースを他の目的で再割り当てできます。 詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EndRead">
@@ -791,9 +836,9 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- .NET Framework 4 と以前のバージョンでは、メソッドを使用する必要がある<xref:System.IO.Stream.BeginRead%2A>と<xref:System.IO.Stream.EndRead%2A>ファイルの非同期操作を実装します。 これらのメソッドはでまだ使用できる、[!INCLUDE[net_v45](~/includes/net-v45-md.md)]レガシ コードをサポートするために、新しい非同期メソッドなど<xref:System.IO.BufferedStream.ReadAsync%2A>、<xref:System.IO.BufferedStream.WriteAsync%2A>と<xref:System.IO.BufferedStream.FlushAsync%2A>、ヘルプ ファイルの非同期操作をより簡単に実装します。  
+ .NET Framework 4 以前のバージョンでは、非同期ファイル操作を実装するため<xref:System.IO.Stream.BeginRead%2A>に<xref:System.IO.Stream.EndRead%2A> 、やなどのメソッドを使用する必要があります。 これらのメソッドは[!INCLUDE[net_v45](~/includes/net-v45-md.md)] 、レガシコードをサポートするためにでも使用できます。ただし、、、などの新しい非同期メソッド<xref:System.IO.BufferedStream.ReadAsync%2A> <xref:System.IO.BufferedStream.WriteAsync%2A> <xref:System.IO.BufferedStream.FlushAsync%2A>は、非同期のファイル操作をより簡単に実装するのに役立ちます。  
   
- <xref:System.IO.BufferedStream.EndRead%2A> これを呼び出す必要があります<xref:System.IAsyncResult>読み取られたバイト数を確認します。  
+ <xref:System.IO.BufferedStream.EndRead%2A>読み取られたバイト数<xref:System.IAsyncResult>を調べるには、このを使用してを呼び出す必要があります。  
   
  ]]></format>
         </remarks>
@@ -840,9 +885,9 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- .NET Framework 4 と以前のバージョンでは、メソッドを使用する必要がある<xref:System.IO.Stream.BeginWrite%2A>と<xref:System.IO.Stream.EndWrite%2A>ファイルの非同期操作を実装します。 これらのメソッドはでまだ使用できる、[!INCLUDE[net_v45](~/includes/net-v45-md.md)]レガシ コードをサポートするために、新しい非同期メソッドなど<xref:System.IO.BufferedStream.ReadAsync%2A>、<xref:System.IO.BufferedStream.WriteAsync%2A>と<xref:System.IO.BufferedStream.FlushAsync%2A>、ヘルプ ファイルの非同期操作をより簡単に実装します。  
+ .NET Framework 4 以前のバージョンでは、非同期ファイル操作を実装するため<xref:System.IO.Stream.BeginWrite%2A>に<xref:System.IO.Stream.EndWrite%2A> 、やなどのメソッドを使用する必要があります。 これらのメソッドは[!INCLUDE[net_v45](~/includes/net-v45-md.md)] 、レガシコードをサポートするためにでも使用できます。ただし、、、などの新しい非同期メソッド<xref:System.IO.BufferedStream.ReadAsync%2A> <xref:System.IO.BufferedStream.WriteAsync%2A> <xref:System.IO.BufferedStream.FlushAsync%2A>は、非同期のファイル操作をより簡単に実装するのに役立ちます。  
   
- <xref:System.IO.BufferedStream.EndWrite%2A> 呼び出しごとに 1 回だけ呼び出す必要があります<xref:System.IO.BufferedStream.BeginRead%2A>します。 開始する前に読み取りプロセスを終了するもう 1 つの読み取り操作可能性がありますデッドロックまたはその他の望ましくない動作します。  
+ <xref:System.IO.BufferedStream.EndWrite%2A>を<xref:System.IO.BufferedStream.BeginRead%2A>呼び出すたびに1回だけ呼び出す必要があります。 読み取りプロセスを終了してから別の読み取り操作を開始すると、デッドロックまたはその他の望ましくない動作が発生する可能性があります。  
   
  ]]></format>
         </remarks>
@@ -889,16 +934,16 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ストリームのフラッシュを明示的に呼び出さない限り、その基になるエンコーダー フラッシュしない`Flush`または<xref:System.IO.Stream.Close%2A>します。  
+ または`Flush` <xref:System.IO.Stream.Close%2A>を明示的に呼び出す場合を除き、ストリームをフラッシュしても、基になるエンコーダーはフラッシュされません。  
   
- 使用する場合、<xref:System.IO.BufferedStream.%23ctor%2A>コンス トラクターを作成するときにバッファー サイズを指定するため、`BufferedStream`オブジェクト、バッファーのサイズに達したときに、コンテンツがフラッシュされます。 たとえば、コードなど`BufferedStream bs = new BufferedStream(bs, 5)`5 バイトのバッファー サイズに達するにコンテンツをフラッシュします。  
+ <xref:System.IO.BufferedStream.%23ctor%2A>コンストラクターを使用して、オブジェクトの`BufferedStream`作成中にバッファーサイズを指定すると、バッファーサイズに達したときにコンテンツがフラッシュされます。 たとえば、などのコード`BufferedStream bs = new BufferedStream(bs, 5)`は、バッファーサイズが5バイトに達したときにコンテンツをフラッシュします。  
   
- すべての読み取りと書き込みのメソッド`BufferedStream`を呼び出す必要はありませんので、バッファーを自動的に維持`Flush`読み取りと書き込みの間の切り替え時にします。  
+ のすべての`BufferedStream`読み取りおよび書き込みメソッドは、バッファーを自動的に保持するため、読み取りと`Flush`書き込みを切り替えるときにを呼び出す必要はありません。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。  
+ このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.BufferedStream1#6](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CPP/client.cpp#6)]
  [!code-csharp[System.IO.BufferedStream1#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CS/client.cs#6)]
@@ -1037,11 +1082,11 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `get`アクセサーを呼び出す<xref:System.IO.BufferedStream.Seek%2A>を基になるストリーム内の現在位置を取得し、バッファー内の現在の位置に従って、この値を調整します。  
+ アクセサー `get`はを<xref:System.IO.BufferedStream.Seek%2A>呼び出して、基になるストリーム内の現在位置を取得し、バッファー内の現在位置に応じてこの値を調整します。  
   
- `set`アクセサーは、以前に、基になるストリームにバッファーに書き込まれたデータをコピーして呼び出します<xref:System.IO.BufferedStream.Seek%2A>します。  
+ アクセサー `set`は、以前にバッファーに書き込まれたすべてのデータを基になるストリーム<xref:System.IO.BufferedStream.Seek%2A>にコピーしてから、を呼び出します。  
   
- ストリームの長さを超える任意の場所にシークがサポートされています。  
+ ストリームの長さを超えた場所へのシークはサポートされています。  
   
  ]]></format>
         </remarks>
@@ -1084,10 +1129,22 @@ bufStream->Close();
         <Parameter Name="destination" Type="System.Span&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="destination">メモリの領域。 このメソッドが戻ると、この領域のコンテンツは現在のソースから読み取られたバイトに置き換えられます。</param>
+        <summary>現在のバッファー ストリームからバイトの範囲にバイトをコピーし、読み取ったバイト数だけバッファー ストリーム内の現在位置を進めます。</summary>
+        <returns>バッファーに読み取られた合計バイト数。 要求しただけのバイト数を読み取ることができなかった場合、この値はバッファーに割り当てられているバイト数より小さくなります。ストリームの末尾に到達した場合は 0 (ゼロ) になることがあります。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks
+
+現在の<xref:System.IO.BufferedStream.CanRead%2A>インスタンスが読み取りをサポートしているかどうかを確認するには、プロパティを使用します。 現在の<xref:System.IO.BufferedStream.ReadAsync%2A>ストリームから非同期的に読み取るには、メソッドを使用します。
+
+このメソッドの実装では、現在`buffer.Length`のストリームから最大バイトを読み取り、に`buffer`格納します。 ストリーム内の現在位置は、読み取ったバイト数だけ進んでいます。ただし、例外が発生した場合、ストリーム内の現在位置は変更されません。 実装は、読み取ったバイト数を返します。 データが使用できない場合は、少なくとも1バイトのデータを読み取ることができるようになるまで、実装はブロックされます。 `Read`ストリームにデータがこれ以上ない場合にのみ0を返します。これ以上のデータは必要ありません (閉じているソケットやファイルの終端など)。 の実装では、ストリームの末尾に到達していない場合でも、要求されたバイト数よりも小さい値を返すことができます。
+
+プリミティブ<xref:System.IO.BinaryReader>データ型の読み取りに使用します。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Read">
@@ -1142,14 +1199,14 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `Read`ストリームの末尾に達した場合にのみ、メソッドは 0 に戻ります。 その他のすべてのケースで`Read`常に少なくとも 1 バイトを返す前に、ストリームから読み取ります。 定義上、ストリームへの呼び出し時にデータがない場合`Read`、`Read`メソッド (自動的にストリームの末尾に到達) 0 を返します。 実装は自由に、ストリームの末尾に達していない場合でも、要求されたより少ないバイト数を返します。  
+ `Read`メソッドは、ストリームの末尾に到達した場合にのみ0を返します。 それ以外の場合は`Read` 、が返される前に、常にストリームから少なくとも1バイトを読み取ります。 定義上、の呼び出し時に`Read`ストリームから使用できるデータがない場合、メソッドは`Read` 0 (ストリームの末尾に自動的に到達します) を返します。 の実装では、ストリームの末尾に到達していない場合でも、要求されたバイト数よりも小さい値を返すことができます。  
   
- 使用<xref:System.IO.BinaryReader>プリミティブ データ型を読み取るためです。  
+ プリミティブ<xref:System.IO.BinaryReader>データ型の読み取りに使用します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。  
+ このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.BufferedStream1#7](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CPP/client.cpp#7)]
  [!code-csharp[System.IO.BufferedStream1#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CS/client.cs#7)]
@@ -1198,11 +1255,23 @@ bufStream->Close();
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">データを書き込むメモリの領域。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>現在のバッファー ストリームからバイト シーケンスを非同期に読み取り、読み取ったバイト数だけバッファー ストリーム内の位置を進めます。</summary>
+        <returns>非同期の読み取り操作を表すタスク。 その <see cref="P:System.Threading.Tasks.ValueTask`1.Result" /> プロパティの値には、バッファーに読み取られるバイトの合計数が含まれます。 要求しただけのバイト数を読み取ることができなかった場合、結果の値はバッファーに割り当てられているバイト数より小さくなります。ストリームの末尾に到達した場合は 0 (ゼロ) になることがあります。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+メソッド`ReadAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する i/o 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。
+
+現在の<xref:System.IO.BufferedStream.CanRead%2A>インスタンスが読み取りをサポートしているかどうかを確認するには、プロパティを使用します。
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled?displayProperty=nameWithType>タスクには<xref:System.Threading.Tasks.Task.Status>プロパティの値が含まれます。
+
+            ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReadAsync">
@@ -1251,11 +1320,11 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- インスタンスを作成して、キャンセル トークンを作成することができます、<xref:System.Threading.CancellationTokenSource>クラスを渡して、<xref:System.Threading.CancellationTokenSource.Token%2A>プロパティとして、`cancellationToken`パラメーター。  
+ <xref:System.Threading.CancellationTokenSource>クラスのインスタンスを作成し、その<xref:System.Threading.CancellationTokenSource.Token%2A>プロパティを`cancellationToken`パラメーターとして渡すことによって、キャンセルトークンを作成できます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> または <paramref name="count" /> が負の値です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="offset" /> と <paramref name="count" /> の合計が、バッファーの長さよりも大きくなっています。</exception>
         <exception cref="T:System.NotSupportedException">ストリームは読み取りをサポートしません。</exception>
@@ -1303,7 +1372,7 @@ bufStream->Close();
         <exception cref="T:System.IO.IOException">ストリームが閉じられているなどの I/O エラーが発生しました。</exception>
         <exception cref="T:System.NotSupportedException">ストリームは読み取りをサポートしません。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリームが閉じた後でメソッドが呼び出されました。</exception>
-        <block subset="none" type="overrides"><para>既定の実装で<see langword="Stream" />新しい 1 バイトの配列を作成し、呼び出して<see cref="M:System.IO.Stream.Read(System.Byte[],System.Int32,System.Int32)" />します。 これは正式には正しいが、効率的です。 内部バッファーを備えた任意のストリームは、このメソッドをオーバーライドし、バッファーを直接読み込む呼び出しごとに余分な配列の割り当てを回避するはるかに効率的バージョンを提供する必要があります。</para></block>
+        <block subset="none" type="overrides"><para>の既定の実装<see langword="Stream" />では、新しい1バイト配列が作成さ<see cref="M:System.IO.Stream.Read(System.Byte[],System.Int32,System.Int32)" />れ、が呼び出されます。 これは正式には正しくありますが、非効率的です。 内部バッファーを持つすべてのストリームは、このメソッドをオーバーライドして、バッファーを直接読み取るより効率的なバージョンを提供する必要があります。これにより、すべての呼び出しで追加の配列割り当てが回避されます。</para></block>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -1359,11 +1428,11 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `offset`が負の値の場合は、`origin`で指定した位置から `offset` で指定したバイト数だけさかのぼった位置が新しい位置になります。 場合`offset`が 0 の場合、新しい位置で指定した位置になります`origin`します。 `offset`が正の値の場合は、`origin`で指定した位置から `offset` で指定したバイト数だけ進んだ位置が新しい位置になります。  
+ `offset`が負の値の場合は、`origin`で指定した位置から `offset` で指定したバイト数だけさかのぼった位置が新しい位置になります。 が`offset` 0 の場合、新しい位置はによって`origin`指定された位置になります。 `offset`が正の値の場合は、`origin`で指定した位置から `offset` で指定したバイト数だけ進んだ位置が新しい位置になります。  
   
- ときに、<xref:System.IO.BufferedStream>オブジェクトは、基本ストリームの<xref:System.IO.StreamReader>オブジェクトを呼び出す、<xref:System.IO.BufferedStream.Seek%2A>メソッドが一致しなくなった、リーダー内の内部バッファーの位置をストリームの位置が発生することができます。 内部バッファーをリセットするには、呼び出し、<xref:System.IO.StreamReader.DiscardBufferedData%2A?displayProperty=nameWithType>メソッドです。 ただし、このメソッドはパフォーマンスが低下し、どうしても必要な場合にのみ呼び出す必要があります。  
+ オブジェクトが<xref:System.IO.StreamReader>オブジェクトのベースストリームである場合、 <xref:System.IO.BufferedStream.Seek%2A>メソッドを呼び出すと、ストリームの位置がリーダー内の内部バッファーの位置と一致しなくなる可能性があります。 <xref:System.IO.BufferedStream> 内部バッファーをリセットするには、 <xref:System.IO.StreamReader.DiscardBufferedData%2A?displayProperty=nameWithType>メソッドを呼び出します。ただし、このメソッドはパフォーマンスを低下させるため、絶対に必要な場合にのみ呼び出す必要があります。  
   
- ストリームの長さを超える任意の場所にシークがサポートされています。  
+ ストリームの長さを超えた場所へのシークはサポートされています。  
   
  ]]></format>
         </remarks>
@@ -1418,11 +1487,11 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 基になるデータ ソースまたはリポジトリの長さを設定する前に、バッファーがフラッシュされます。 指定した値が現在のバッファー ストリームの長さよりも小さい場合は、バッファー済みストリームは切り捨てられます。 指定した値がバッファー済みストリームの現在の長さより大きい場合は、バッファー済みストリームが展開されます。 バッファー済みストリームを展開すると、古いバージョンと新しい長さのバッファー済みストリームの内容は定義されていません。  
+ バッファーは、基になるデータソースまたはリポジトリの長さを設定する前にフラッシュされます。 指定した値がバッファーストリームの現在の長さよりも小さい場合は、バッファーストリームが切り捨てられます。 指定した値がバッファーストリームの現在の長さより大きい場合は、バッファーストリームが展開されます。 バッファーストリームが展開されている場合は、古い長と新しい長さの間のバッファーストリームの内容が定義されていません。  
   
- `SetLength` 必要な場合は、バッファー内の書き込みをフラッシュします。  
+ `SetLength`必要に応じて、バッファーされた書き込みをフラッシュします。  
   
- ストリームが書き込みとシークの両方をサポートする必要があります`SetLength`させる。  
+ ストリームでは、の書き込みとシークの`SetLength`両方がサポートされている必要があります。  
   
  ]]></format>
         </remarks>
@@ -1463,8 +1532,8 @@ bufStream->Close();
         <ReturnType>System.IO.Stream</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>このバッファー ストリームの基になる <see cref="T:System.IO.Stream" /> インスタンスを取得します。</summary>
+        <value>基になるストリームインスタンス。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1496,9 +1565,19 @@ bufStream->Close();
         <Parameter Name="buffer" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="buffer">メモリの領域。 このメソッドでは、この領域のコンテンツが現在のバッファー ストリームにコピーされます。</param>
+        <summary>現在のバッファー ストリームにバイト シーケンスを書き込み、書き込んだバイト数だけこのバッファー ストリーム内の現在位置を進めます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+現在の<xref:System.IO.BufferedStream.CanWrite%2A>インスタンスが書き込みをサポートしているかどうかを判断するには、プロパティを使用します。 現在の<xref:System.IO.BufferedStream.WriteAsync%2A>バッファーストリームに非同期に書き込むには、メソッドを使用します。
+
+書き込み操作が成功した場合、バッファーストリーム内の位置は、書き込まれたバイト数だけ進みます。 例外が発生した場合、バッファーストリーム内の位置は変更されません。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -1552,7 +1631,7 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- このコード例が示されている例の一部、<xref:System.IO.BufferedStream>クラス。  
+ このコード例は、 <xref:System.IO.BufferedStream>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.BufferedStream1#6](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CPP/client.cpp#6)]
  [!code-csharp[System.IO.BufferedStream1#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.BufferedStream1/CS/client.cs#6)]
@@ -1600,11 +1679,23 @@ bufStream->Close();
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">データを書き込む元のメモリの領域。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>現在のバッファー ストリームにバイト シーケンスを非同期に書き込み、書き込んだバイト数だけこのバッファー ストリーム内の現在位置を進め、キャンセル要求を監視します。</summary>
+        <returns>非同期の書き込み操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+メソッド`WriteAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する i/o 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。
+
+現在の<xref:System.IO.BufferedStream.CanWrite%2A>インスタンスが書き込みをサポートしているかどうかを判断するには、プロパティを使用します。
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled?displayProperty=nameWithType>タスクには<xref:System.Threading.Tasks.Task.Status%2A?displayProperty=nameWithType>プロパティの値が含まれます。
+
+            ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteAsync">
@@ -1653,11 +1744,11 @@ bufStream->Close();
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- インスタンスを作成して、キャンセル トークンを作成することができます、<xref:System.Threading.CancellationTokenSource>クラスを渡して、<xref:System.Threading.CancellationTokenSource.Token%2A>プロパティとして、`cancellationToken`パラメーター。  
+ <xref:System.Threading.CancellationTokenSource>クラスのインスタンスを作成し、その<xref:System.Threading.CancellationTokenSource.Token%2A>プロパティを`cancellationToken`パラメーターとして渡すことによって、キャンセルトークンを作成できます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> または <paramref name="count" /> が負の値です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="offset" /> と <paramref name="count" /> の合計が、バッファーの長さよりも大きいです。</exception>
         <exception cref="T:System.NotSupportedException">ストリームは書き込みをサポートしません。</exception>
@@ -1703,7 +1794,15 @@ bufStream->Close();
       <Docs>
         <param name="value">ストリームに書き込むバイト。</param>
         <summary>バッファー ストリームの現在位置にバイトを書き込みます。</summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+現在の<xref:System.IO.BufferedStream.CanWrite%2A>インスタンスが書き込みをサポートしているかどうかを判断するには、プロパティを使用します。
+
+          ]]></format>
+        </remarks>
         <exception cref="T:System.NotSupportedException">ストリームは書き込みをサポートしません。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ObjectDisposedException">ストリームが閉じた後でメソッドが呼び出されました。</exception>
