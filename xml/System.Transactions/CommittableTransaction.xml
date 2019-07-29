@@ -1,5 +1,5 @@
 <Type Name="CommittableTransaction" FullName="System.Transactions.CommittableTransaction">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="051e7170b311f9af83680067a1edb706570cb5af" /><Meta Name="ms.sourcegitcommit" Value="61757d0366a172cdbc11436deb1c1ffa49d97238" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/28/2019" /><Meta Name="ms.locfileid" Value="67458323" /></Metadata><TypeSignature Language="C#" Value="public sealed class CommittableTransaction : System.Transactions.Transaction, IAsyncResult, IDisposable, System.Runtime.Serialization.ISerializable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="0da6b9221b6ad3b7440f3ba1669ddb377b762a43" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68437650" /></Metadata><TypeSignature Language="C#" Value="public sealed class CommittableTransaction : System.Transactions.Transaction, IAsyncResult, IDisposable, System.Runtime.Serialization.ISerializable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit CommittableTransaction extends System.Transactions.Transaction implements class System.IAsyncResult, class System.IDisposable, class System.Runtime.Serialization.ISerializable" />
   <TypeSignature Language="DocId" Value="T:System.Transactions.CommittableTransaction" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CommittableTransaction&#xA;Inherits Transaction&#xA;Implements IAsyncResult, IDisposable, ISerializable" />
@@ -46,22 +46,22 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `CommittableTransaction` クラスは、<xref:System.Transactions.TransactionScope> クラスが暗黙的に使用されるのと対照的に、アプリケーションがトランザクションを明示的に使用する方法を提供します。 <xref:System.Transactions.TransactionScope> クラスとは異なり、アプリケーション作成者はトランザクションをコミットまたは中止するために、具体的に <xref:System.Transactions.CommittableTransaction.Commit%2A> メソッドまたは <xref:System.Transactions.Transaction.Rollback%2A> メソッドを呼び出す必要があります。 ただし、トランザクションの作成者のみがトランザクションをコミットすることができます。 コミット トランザクションのコピーがそのため、を介して取得された、<xref:System.Transactions.Transaction.Clone%2A?displayProperty=nameWithType>メソッドはコミットされません。  
+ `CommittableTransaction` クラスは、<xref:System.Transactions.TransactionScope> クラスが暗黙的に使用されるのと対照的に、アプリケーションがトランザクションを明示的に使用する方法を提供します。 <xref:System.Transactions.TransactionScope> クラスとは異なり、アプリケーション作成者はトランザクションをコミットまたは中止するために、具体的に <xref:System.Transactions.CommittableTransaction.Commit%2A> メソッドまたは <xref:System.Transactions.Transaction.Rollback%2A> メソッドを呼び出す必要があります。 ただし、トランザクションをコミットできるのは、トランザクションの作成者だけです。 したがって、メソッドを<xref:System.Transactions.Transaction.Clone%2A?displayProperty=nameWithType>通じて取得されたコミットできるトランザクションのコピーは、コミットできません。  
   
 > [!NOTE]
->  使用して暗黙のトランザクションを作成することをお勧め、<xref:System.Transactions.TransactionScope>クラスのアンビエント トランザクション コンテキストが自動的に管理できるようにします。 使用することも必要があります、<xref:System.Transactions.TransactionScope>と<xref:System.Transactions.DependentTransaction>を複数の関数呼び出しまたは複数のスレッド呼び出しの間で、同じトランザクションの使用を必要とするアプリケーション用のクラス。 このモデルの詳細については、次を参照してください。、[実装 An Implicit Transaction Using Transaction Scope](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。  
+>  アンビエントトランザクションコンテキストが自動的に管理される<xref:System.Transactions.TransactionScope>ように、クラスを使用して暗黙のトランザクションを作成することをお勧めします。 また、複数の関数<xref:System.Transactions.TransactionScope>呼び出し<xref:System.Transactions.DependentTransaction>または複数のスレッド呼び出しで同じトランザクションを使用する必要があるアプリケーションの場合は、クラスとクラスを使用する必要があります。 このモデルの詳細については、「[トランザクションスコープを使用した暗黙的なトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」を参照してください。  
   
- 作成、<xref:System.Transactions.CommittableTransaction>でコードが実行されるトランザクションをアンビエント トランザクションを自動的に設定されません。 取得または静的なを呼び出すことによって、アンビエント トランザクションを設定することができます<xref:System.Transactions.Transaction.Current%2A?displayProperty=nameWithType>のグローバル プロパティ<xref:System.Transactions.Transaction>オブジェクト。 アンビエント トランザクションの詳細については、の「TransactionScopeOption を使用して管理するトランザクション フロー」セクションを参照してください、[実装 An Implicit Transaction Using Transaction Scope](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。 アンビエント トランザクションが設定されていない場合、リソース マネージャーでの任意の操作はこのトランザクションの一部ではありません。 明示的に設定し、リソース マネージャーに適切なトランザクション コンテキストで動作させるのにアンビエント トランザクションをリセットする必要があります。  
+ を<xref:System.Transactions.CommittableTransaction>作成しても、コードが実行されるトランザクションであるアンビエントトランザクションは自動的には設定されません。 アンビエントトランザクションを取得または設定するには、グローバル<xref:System.Transactions.Transaction.Current%2A?displayProperty=nameWithType> <xref:System.Transactions.Transaction>オブジェクトの静的プロパティを呼び出します。 アンビエントトランザクションの詳細については、「[トランザクションスコープを使用した暗黙のトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」の「TransactionScopeOption を使用したトランザクションフローの管理」セクションを参照してください。 アンビエントトランザクションが設定されていない場合、リソースマネージャーでのすべての操作は、そのトランザクションの一部ではありません。 リソースマネージャーが適切なトランザクションコンテキストで動作するようにするには、アンビエントトランザクションを明示的に設定してリセットする必要があります。  
   
- まで、<xref:System.Transactions.CommittableTransaction>がコミットされると、トランザクションに関連するすべてのリソースはロックされたままです。  
+ <xref:System.Transactions.CommittableTransaction>がコミットされるまで、そのトランザクションに関連するすべてのリソースがロックされたままになります。  
   
- <xref:System.Transactions.CommittableTransaction> オブジェクトは再利用できません。 コミットまたはロールバックされていますが後、トランザクションでもう一度使用または現在のアンビエント トランザクション コンテキストとして設定することはできません。  
+ <xref:System.Transactions.CommittableTransaction> オブジェクトは再利用できません。 コミットまたはロールバックが完了すると、トランザクションで再び使用したり、現在のアンビエントトランザクションコンテキストとして設定したりすることはできません。  
 
  ]]></format>
     </remarks>
     <threadsafe>この型はスレッド セーフです。</threadsafe>
-    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/f6c648f8-d638-4228-bfa4-0d65dd262968">CommittableTransaction を使用した明示的なトランザクションを実装します。</related>
+    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/f6c648f8-d638-4228-bfa4-0d65dd262968">CommittableTransaction を使用した明示的なトランザクションの実装</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -104,7 +104,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、の新しいインスタンスを作成します。<xref:System.Transactions.CommittableTransaction>してコミットします。  
+ 次の例では、の<xref:System.Transactions.CommittableTransaction>新しいインスタンスを作成し、それをコミットします。  
   
  [!code-csharp[Tx_CommittableTx#1](~/samples/snippets/csharp/VS_Snippets_CFX/tx_committabletx/cs/committabletxwithsql.cs#1)]
  [!code-vb[Tx_CommittableTx#1](~/samples/snippets/visualbasic/VS_Snippets_CFX/tx_committabletx/vb/committabletxwithsql.vb#1)]  
@@ -182,7 +182,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、の新しいインスタンスを作成します。<xref:System.Transactions.CommittableTransaction>をオプションでそれを中止します。  
+ 次の例では、オプションを<xref:System.Transactions.CommittableTransaction>使用しての新しいインスタンスを作成し、それを中止します。  
   
   
   
@@ -242,10 +242,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、トランザクションが完了する前に、すぐに返します。 トランザクション、別のスレッドでのコミットと`asyncCallback`終了時にデリゲートが呼び出されます。 このメソッドが呼び出されると、受信しないトランザクションの結果を呼び出すまで<xref:System.Transactions.CommittableTransaction.EndCommit%2A>します。  
+ このメソッドは、トランザクションが完了する前に直ちに戻ります。 その後、トランザクションは別のスレッド`asyncCallback`でコミットし、デリゲートは完了した時点で呼び出されます。 このメソッドを呼び出すと、が呼び出されるまで<xref:System.Transactions.CommittableTransaction.EndCommit%2A>、トランザクションの結果は得られません。  
   
 > [!NOTE]
->  コミット処理は、このメソッドの呼び出し内で同期的に完了することがあります。  
+>  コミットプロセスは、このメソッド呼び出し内で同期的に完了することがあります。  
   
  ]]></format>
         </remarks>
@@ -286,11 +286,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドが呼び出されると、トランザクションに参加する登録されているすべてのオブジェクトをポーリングして、トランザクションをロールバックまたはコミットにその投票が個別に示さ。 すべての参加要素は、トランザクションをロールバックする投票する場合、はロールバックし、このメソッドがスローされます、<xref:System.Transactions.TransactionException>例外。 これは、トランザクションに対する通常の動作であり、コードでキャッチしてこのような例外を処理する必要があります。  
+ このメソッドを呼び出すと、トランザクションに参加するように登録されているすべてのオブジェクトがポーリングされ、トランザクションのコミットまたはロールバックのいずれかに投票を個別に示すことができます。 トランザクションをロールバックするように参加者が投票した場合は、ロールバックされ<xref:System.Transactions.TransactionException> 、このメソッドは例外をスローします。 これはトランザクションの通常の発生であり、コードでこのような例外をキャッチして処理する必要があります。  
   
- <xref:System.Transactions.CommittableTransaction.Commit%2A> <xref:System.Transactions.CommittableTransaction.EndCommit%2A>トランザクション処理の最初のフェーズが完了するまでブロックします。 すべてのリソース マネージャーの後に最初のフェーズが終了し、トランザクションの参加リストがトランザクションの結果を報告しました、<xref:System.Transactions.TransactionManager>は永続的ことにコミットするか、トランザクションを中止しました。 2 番目のフェーズの処理は常に非同期です。 そのためから特定のトランザクション内でコミットされたばかりのデータはすぐに使用できる後でこのデータを表示する別のトランザクションを使用していないときに保証することはありません。  
+ <xref:System.Transactions.CommittableTransaction.Commit%2A>および<xref:System.Transactions.CommittableTransaction.EndCommit%2A>は、トランザクション処理の最初のフェーズが完了するまでブロックします。 最初のフェーズは、トランザクション内のすべての<xref:System.Transactions.TransactionManager>リソースマネージャーと参加リストがトランザクションの結果に投票し、永続的にがトランザクションのコミットまたは中止を決定した後に終了します。 処理の2番目のフェーズは常に非同期です。 そのため、このデータを表示するために別のトランザクションを使用しない場合、特定のトランザクション内からコミットされたばかりのデータをすぐに使用できる保証はありません。  
   
- トランザクション処理の最初のフェーズが完了するまで、細心の注意する必要があります (WinForm) の Windows フォーム アプリケーションでは、またはデッドロックでこのメソッドを使用する場合、このメソッドはブロックが発生することができます。 (たとえば、ボタンをクリックして)、1 つの WinForm コントロール イベント内では、このメソッドの呼び出しし、同期を使用して、<xref:System.Windows.Forms.Control.Invoke%2A>トランザクションの処理の途中でいくつかの UI タスク (たとえば、変化する色) を実行するコントロールに出力するためのメソッド、デッドロックは発生します。 これは、ため、<xref:System.Windows.Forms.Control.Invoke%2A>メソッドは同期であり、UI スレッドがそのジョブが完了するまでにワーカー スレッドをブロックします。 ただし、ここでは、UI スレッド側も、ワーカー スレッドがトランザクションをコミットするまで待機しようとします。 結果は、スコープがコミットが完了するは無期限に待機を none は続行できません。 使用する必要があります<xref:System.Windows.Forms.Control.BeginInvoke%2A>なく<xref:System.Windows.Forms.Control.Invoke%2A>可能な限り、非同期およびそのため、デッドロックに陥りやすい未満であるためです。  
+ このメソッドは、トランザクション処理の最初のフェーズが完了するまでブロックするので、Windows フォーム (WinForm) アプリケーションでこのメソッドを使用する場合は細心の注意が必要です。または、デッドロックが発生する可能性があります。 1つの WinForm コントロールイベント内でこのメソッドを呼び出し (ボタンをクリックするなど)、同期<xref:System.Windows.Forms.Control.Invoke%2A>メソッドを使用して、トランザクションの処理中にいくつかの UI タスク (色の変更など) を実行するようコントロールに指示する場合は、デッドロックが発生します。 これは、 <xref:System.Windows.Forms.Control.Invoke%2A>メソッドが同期され、UI スレッドがジョブを完了するまでワーカースレッドがブロックされるためです。 ただし、このシナリオでは、UI スレッドもワーカースレッドがトランザクションをコミットするのを待機しています。 結果として、何も続行できず、コミットが終了するまでスコープが無期限に待機することになります。 非同期である<xref:System.Windows.Forms.Control.BeginInvoke%2A>ため、 <xref:System.Windows.Forms.Control.Invoke%2A>デッドロックが発生しにくくなるため、可能な限りを使用する必要があります。  
   
  ]]></format>
         </remarks>
@@ -343,12 +343,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- パラメーターとして指定されたコールバックのデリゲートでこのメソッドを呼び出す必要があります、<xref:System.Transactions.CommittableTransaction.BeginCommit%2A>メソッドは、非同期のコミットに関連付けられている任意のクリーンアップ作業を完了するとします。 デリゲートを待たずに早い段階もこのメソッドを呼び出すことができます。 このメソッドを呼び出すまで、トランザクションが完了していない場合は、このメソッドはその完了を待機します。  
+ 非同期コミットメントに関連付けられたクリーンアップ作業が完了したら、 <xref:System.Transactions.CommittableTransaction.BeginCommit%2A>メソッドのパラメーターとして指定されたコールバックデリゲートでこのメソッドを呼び出す必要があります。 デリゲートを待機せずにこのメソッドを早期に呼び出すこともできます。 このメソッドを呼び出したときに、トランザクションが完了していない場合、このメソッドは完了を待機します。  
   
 > [!CAUTION]
->  <xref:System.IAsyncResult.CompletedSynchronously%2A>プロパティによって返された`asyncResult`は常に`false`操作が同期的に完了した場合でも、します。  
+>  操作が同期的`asyncResult`に完了`false`した場合でも、によって返されるプロパティは常にです。<xref:System.IAsyncResult.CompletedSynchronously%2A>  
   
- <xref:System.Transactions.CommittableTransaction.Commit%2A> <xref:System.Transactions.CommittableTransaction.EndCommit%2A>トランザクション処理の最初のフェーズが完了するまでブロックします。 すべてのリソース マネージャーの後に最初のフェーズが終了し、トランザクションの参加リストがトランザクションの結果を報告しました、<xref:System.Transactions.TransactionManager>は永続的ことにコミットするか、トランザクションを中止しました。 2 番目のフェーズの処理は常に非同期です。 そのためから特定のトランザクション内でコミットされたばかりのデータはすぐに使用できる後でこのデータを表示する別のトランザクションを使用していないときに保証することはありません。  
+ <xref:System.Transactions.CommittableTransaction.Commit%2A>および<xref:System.Transactions.CommittableTransaction.EndCommit%2A>は、トランザクション処理の最初のフェーズが完了するまでブロックします。 最初のフェーズは、トランザクション内のすべての<xref:System.Transactions.TransactionManager>リソースマネージャーと参加リストがトランザクションの結果に投票し、永続的にがトランザクションのコミットまたは中止を決定した後に終了します。 処理の2番目のフェーズは常に非同期です。 そのため、このデータを表示するために別のトランザクションを使用しない場合、特定のトランザクション内からコミットされたばかりのデータをすぐに使用できる保証はありません。  
   
  ]]></format>
         </remarks>

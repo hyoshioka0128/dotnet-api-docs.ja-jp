@@ -1,5 +1,5 @@
 <Type Name="CancellationTokenRegistration" FullName="System.Threading.CancellationTokenRegistration">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="692038f172871bd843d1e84c97c7de5203cd7b32" /><Meta Name="ms.sourcegitcommit" Value="690605a2d62010b93e13edf329aafe2bdc57423a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/11/2019" /><Meta Name="ms.locfileid" Value="67801701" /></Metadata><TypeSignature Language="C#" Value="public struct CancellationTokenRegistration : IDisposable, IEquatable&lt;System.Threading.CancellationTokenRegistration&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="03ec267229dc845d09481a4371582f1e61a607af" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68541290" /></Metadata><TypeSignature Language="C#" Value="public struct CancellationTokenRegistration : IDisposable, IEquatable&lt;System.Threading.CancellationTokenRegistration&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CancellationTokenRegistration extends System.ValueType implements class System.IDisposable, class System.IEquatable`1&lt;valuetype System.Threading.CancellationTokenRegistration&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Threading.CancellationTokenRegistration" />
   <TypeSignature Language="VB.NET" Value="Public Structure CancellationTokenRegistration&#xA;Implements IDisposable, IEquatable(Of CancellationTokenRegistration)" />
@@ -47,11 +47,11 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トークンが取り消されたときに、コールバックが呼び出されます。 コールバックの登録を解除するには、対応する登録インスタンスを破棄します。 詳細情報とコード例を参照してください。[マネージ スレッドのキャンセル](~/docs/standard/threading/cancellation-in-managed-threads.md)します。  
+ このコールバックは、トークンが取り消されたときに呼び出されます。 コールバックの登録を解除するには、対応する登録インスタンスを破棄します。 詳細とコード例については、「[マネージスレッドでのキャンセル](~/docs/standard/threading/cancellation-in-managed-threads.md)」を参照してください。  
   
  ]]></format>
     </remarks>
-    <threadsafe>すべてのパブリックおよびプロテクト メンバー<see cref="T:System.Threading.CancellationTokenRegistration" />スレッド セーフであり、Dispose 必要がありますのみを除き、複数のスレッドから同時に使用できる際に使用されるその他のすべての操作を<see cref="T:System.Threading.CancellationTokenRegistration" />完了しました。</threadsafe>
+    <threadsafe>の<see cref="T:System.Threading.CancellationTokenRegistration" />パブリックメンバーとプロテクトメンバーはすべてスレッドセーフであり、複数のスレッドから同時に使用することができます。 Dispose は例外です。これは、 <see cref="T:System.Threading.CancellationTokenRegistration" />の他のすべての操作が完了している場合にのみ使用する必要があります。</threadsafe>
     <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
     <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
     <related type="Article" href="https://msdn.microsoft.com/library/8838dd75-18ed-4b8b-b322-cd4531faac64">方法: キャンセル要求のコールバックを登録する</related>
@@ -142,13 +142,13 @@
       <Docs>
         <summary>登録を破棄して、関連付けられている <see cref="T:System.Threading.CancellationToken" /> から対象のコールバックの登録を解除します。</summary>
         <returns>非同期の破棄操作を表すタスク。</returns>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
-返された<xref:System.Threading.Tasks.ValueTask>関連付けられているコールバックは、実行せずに、または、低次元テキスト場合自体、コールバックが登録解除を除いて、実行が完了すると、登録されているときに完了します。
+返さ<xref:System.Threading.Tasks.ValueTask>れたは、関連付けられたコールバックが実行されない場合、または実行が完了した後に、コールバックが自身の登録を解除している場合を除き、完了した後に完了します。
 
          ]]></format>
-         </remarks>
+        </remarks>
       </Docs>
     </Member>
     <MemberGroup MemberName="Equals">
@@ -416,7 +416,7 @@
       </ReturnValue>
       <Docs>
         <summary>登録が関連付けられている <see cref="T:System.Threading.CancellationToken" /> を取得します。  登録がトークンに関連付けられていない場合 (登録が破棄された後など)、これにより既定のトークンが返されます。</summary>
-        <value>この登録が、関連付けられているキャンセル トークンまたは既定のトークン、登録は、トークンに関連付けられていない場合 (など、登録が破棄された後に)。</value>
+        <value>この登録が関連付けられているキャンセルトークン。登録がトークンに関連付けられていない場合 (登録が破棄された後など) は、既定のトークン。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -19,14 +19,14 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>XAML の読み取りと XAML の書き込み中に発生する内部矛盾に対してスローされる例外。</summary>
+    <summary>XAML の読み取り中および XAML の書き込み中に発生する内部矛盾に対してスローされる例外です。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- XAML リーダーまたは XAML ライターのシステムの一部の側面は、コードによって拡張され、の不整合や実装の問題が発生しました .NET Framework XAML サービスのシステム コードに渡された場合にのみ、この例外はスロー通常。 XAML を解析し、XAML でエラーが発生したなどのサード パーティから発生した例外をスローする必要があります<xref:System.Xaml.XamlInternalException>などの他の例外をスロー代わりに、<xref:System.Xaml.XamlParseException>または<xref:System.Xaml.XamlObjectWriterException>します。  
+ この例外がスローされるのは、通常、XAML リーダーまたは XAML ライターシステムの一部がコードによって拡張され、.NET Framework XAML サービスのシステムコードに渡された不整合または実装の問題が発生した場合のみです。 Xaml の解析やエラーの発生など、サードパーティ製の例外はスロー <xref:System.Xaml.XamlInternalException>しないでください。代わりに<xref:System.Xaml.XamlParseException>や<xref:System.Xaml.XamlObjectWriterException>などの他の例外をスローする必要があります。  
   
- .NET Framework XAML サービスに拡張するコードを記述する場合は、具体的には、XAML リーダーまたは XAML ライターの実装のコードを記述する必要がありますを維持するこの区別<xref:System.Xaml.XamlInternalException>と、その他の XAML 関連の例外。 コードをスローする必要がありますのみ<xref:System.Xaml.XamlInternalException>クラスの拡張機能をさらに、呼び出し可能なコードを定義するデザインの原則や実装パターンに違反している場合。 コードでは、例外の場合で、XAML リーダーまたは XAML ライターの実装が拡張機能なしで使用し、サード パーティ製の XAML やサード パーティ製の XAML スキーマ コンテキストを読み込むために使用には、その他の XAML に固有例外をスローする必要があります。  
+ Xaml リーダーまたは xaml ライターの実装のコードを記述する場合は .NET Framework の xaml サービスを拡張するコードを記述する場合、 <xref:System.Xaml.XamlInternalException>とその他の xaml 関連の例外との違いを維持する必要があります。 コードをスロー <xref:System.Xaml.XamlInternalException>するのは、呼び出し可能コードで定義されている設計上の原則または実装パターンにクラスの追加の拡張が違反している場合のみです。 コードでは、XAML リーダーまたは XAML ライターの実装が拡張なしで使用され、サードパーティの XAML、サードパーティの XAML スキーマコンテキストなどを読み込むために使用される例外の場合に、XAML 固有のその他の例外をスローする必要があります。  
   
  ]]></format>
     </remarks>

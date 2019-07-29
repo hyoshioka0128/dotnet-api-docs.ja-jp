@@ -30,12 +30,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>ユーザー定義集計のメソッド定義を SQL Server での関数としてマークするために使用します。 属性のプロパティは、種類が SQL Server に登録されているときに使用する物理的な特性を反映します。</summary>
+    <summary>ユーザー定義集計のメソッド定義を SQL Server の関数として宣言する場合に使用します。 この属性には、型を SQL Server に登録する際に使用される物理的な特性を反映した、いくつかのプロパティが格納されます。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、指定したディレクトリ パス内のファイルの一覧を返します、集計関数を示します。  
+ 次の例は、指定されたディレクトリパス内のファイルの一覧を返す集計関数を示しています。  
   
  [!code-csharp[DataWorks SqlFunctionAttribute Sample#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/DataWorks SqlFunctionAttribute Sample/CS/source.cs#1)]
  [!code-vb[DataWorks SqlFunctionAttribute Sample#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/DataWorks SqlFunctionAttribute Sample/VB/source.vb#1)]  
@@ -65,7 +65,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>メソッドを関数としての SQL Server に登録することを示すために、ユーザー定義集計に対するオプションの属性が使用されます。 設定するため、 <see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess" />、 <see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.FillRowMethodName" />、 <see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic" />、 <see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsPrecise" />、 <see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.Name" />、 <see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess" />、および<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition" />関数の属性のプロパティ。</summary>
+        <summary>ユーザー定義集計に対するオプションの属性。ユーザー定義集計のメソッドを SQL Server に関数として登録する場合に使用します。 関数の属性に対し、<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess" />、<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.FillRowMethodName" />、<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic" />、<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsPrecise" />、<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.Name" />、<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess" />、<see cref="P:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition" /> の各プロパティを設定する場合にも使用します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -93,15 +93,15 @@
         <ReturnType>Microsoft.SqlServer.Server.DataAccessKind</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>関数が、SQL Server のローカル インスタンスに格納されているユーザー データにアクセスするかどうかを示します。</summary>
-        <value><see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="None" />:データにアクセスしません。 <see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="Read" />:ユーザー データだけを読み取ります。</value>
+        <summary>その関数が、SQL Server のローカル インスタンスに格納されたユーザー データにアクセスするかどうかを示します。</summary>
+        <value><see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="None" />:はデータにアクセスしません。 <see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="Read" />:ユーザーデータのみを読み取ります。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定値は<xref:Microsoft.SqlServer.Server.DataAccessKind.None>します。<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A> 必要な場合にも (既定値) に必要なトランザクションの統合がある場合は、リモート サーバーに接続します。  
+ 既定値は<xref:Microsoft.SqlServer.Server.DataAccessKind.None>です。<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A> トランザクション統合が必要な場合は、リモートサーバーに接続するときにも必要になります (既定)。  
   
- TRANSACT-SQL クエリは、テーブル値関数 (TVF) 内から実行される場合、<xref:Microsoft.SqlServer.Server.DataAccessKind.Read>プロパティを設定する必要があります。  
+ Transact-sql クエリがテーブル値関数 (TVF) <xref:Microsoft.SqlServer.Server.DataAccessKind.Read>の内部から実行される場合は、プロパティを設定する必要があります。  
   
  ]]></format>
         </remarks>
@@ -132,7 +132,7 @@
       </ReturnValue>
       <Docs>
         <summary>テーブル値関数によって返されるテーブル内のデータ行の設定に使用される、同じクラスのメソッドの名前。</summary>
-        <value>A<see cref="T:System.String" />テーブル値関数によって返されるテーブル内のデータの行の塗りつぶしに使用される同じクラスのメソッドの名前を表す値。</value>
+        <value>テーブル値関数によって返されるテーブル内のデータ行を埋めるために使用される、同じクラス内のメソッドの名前を表す値。<see cref="T:System.String" /></value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -166,23 +166,23 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ユーザー定義関数が決定的かどうかを示します。</summary>
-        <value><see langword="true" /> 場合は、関数は決定的です。それ以外の場合<see langword="false" />します。</value>
+        <summary>ユーザー定義関数が決定的であるかどうかを示します。</summary>
+        <value>関数が決定的である場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ユーザー定義関数は、常に同じ出力値を生成、同じ入力値と同じデータベースの状態を指定する場合は決定的であると言います。  
+ ユーザー定義関数は、同じ入力値とデータベースの状態に対して常に同じ出力値が生成される場合、決定的であると言います。  
   
- <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic%2A>プロパティもインデックス付き計算列およびインデックス付きビューの形式で関数の結果をインデックス作成のために役立ちます。 このプロパティが指定されていない場合、関数は非決定的であると見なされます。  
+ <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic%2A>プロパティは、インデックス付き計算列およびインデックス付きビューの形式で関数の結果のインデックスを作成する場合にも役立ちます。 このプロパティが指定されていない場合、関数は非決定的であると見なされます。  
   
- ローカル データにアクセスする関数は決定論的にすることはできます。 データ アクセスの特性がによって個別にキャプチャされた、<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A>と<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A>プロパティ。  
+ ローカルデータにアクセスする関数は、決定的な場合があります。 データアクセス特性は、プロパティ<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A>と<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A>プロパティによって個別にキャプチャされます。  
   
- リモート サーバーへのデータ アクセスに注意してください (を使用するなど、<xref:System.Data.SqlClient.SqlConnection>別の SQL Server インスタンスに接続する) はユーザー定義関数で使用できます。 まだに従う必要がありますが、する、<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic%2A>宣言します。 共通言語ランタイム (CLR) 関数が決定的とマークされている場合、リモート サーバーで、副作用は発生しません。 コンテキスト接続に対して副次的な影響が制限されているときに、SQL Server はリモート接続を介して、副作用の制限を強制されません。  
+ リモートサーバーへのデータアクセス (たとえば、を使用して<xref:System.Data.SqlClient.SqlConnection>別の SQL Server インスタンスに接続するなど) は、ユーザー定義関数で使用できます。 ただし、宣言には<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic%2A>引き続き従う必要があります。 共通言語ランタイム (CLR) 関数が決定的とマークされている場合、リモートサーバーで副作用が発生することはありません。 コンテキスト接続に対する副作用は制限されていますが、SQL Server では、リモート接続を介した副作用の制限は適用されません。  
   
  この属性の既定値は `false` です。  
   
- マークを付けないでください関数が常に同じ出力値を生成しない場合は決定的関数として、同じ入力値と同じデータベースの状態を指定します。 決定的関数としてマークすることは、関数は非決定的本当に破損しているインデックス付きビューと計算列で結果ことができます。  
+ 同じ入力値とデータベースの状態が指定されている場合、関数が常に同じ出力値を生成しない場合は、関数を決定的としてマークしないでください。 関数が真の決定的でない場合に関数を決定的としてマークすると、インデックス付きビューと計算列が破損する可能性があります。  
   
  ]]></format>
         </remarks>
@@ -212,13 +212,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>関数が、浮動小数点演算などの不正確な計算するかどうかを示します。</summary>
-        <value><see langword="true" /> 関数に正確な計算が含まれている場合それ以外の場合<see langword="false" />します。</value>
+        <summary>関数に、浮動小数点演算などの不正確な計算が含まれているかどうかを示します。</summary>
+        <value>関数に、正確な計算が含まれる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 関数の有効桁数では、この関数を使用する列のインデックスを作成できる計算されるかを判断するためのプロパティの 1 つです。  
+ 関数の有効桁数は、この関数を使用する計算列にインデックスを作成できるかどうかを判断するために使用されるプロパティの1つです。  
   
  この属性の既定値は `false` です。  
   
@@ -250,15 +250,15 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>名前を SQL Server で関数を登録する必要があります。</summary>
-        <value>A<see cref="T:System.String" />関数を登録する名前を表す値。</value>
+        <summary>関数を SQL Server に登録する際に使用する名前。</summary>
+        <value>関数を登録する際に使用する名前を表す <see cref="T:System.String" /> 値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この属性は、ユーザー定義関数として指定されたメソッドを自動的に登録する Microsoft Visual Studio でのみ使用されます。 SQL Server では使用されません。  
+ この属性は、指定したメソッドをユーザー定義関数として自動的に登録するために Microsoft Visual Studio によってのみ使用されます。 SQL Server では使用されません。  
   
- 次の例は、名前を使用して、ユーザー定義関数を参照することを指定します`sp_scalarFunc`します。  
+ 次の例では、という名前`sp_scalarFunc`を使用してユーザー定義関数を参照するように指定しています。  
   
    
   
@@ -294,13 +294,13 @@
         <ReturnType>Microsoft.SqlServer.Server.SystemDataAccessKind</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>関数がシステム カタログまたは SQL Server の仮想システム テーブルに格納されたデータへのアクセスを必要とするかどうかを示します。</summary>
-        <value><see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="None" />:システム データにアクセスしません。 <see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="Read" />:システム データだけを読み取ります。</value>
+        <summary>その関数で、SQL Server のシステム カタログまたは仮想システム テーブルに格納されたデータにアクセスする必要があるかどうかを示します。</summary>
+        <value><see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="None" />:システムデータにはアクセスしません。 <see cref="T:Microsoft.SqlServer.Server.DataAccessKind" />.<see langword="Read" />:システムデータのみを読み取ります。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定値は <xref:Microsoft.SqlServer.Server.SystemDataAccessKind.None> です。  
+ 既定値は、<xref:Microsoft.SqlServer.Server.SystemDataAccessKind.None> です。  
   
  ]]></format>
         </remarks>
@@ -330,15 +330,15 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>テーブル値関数 (TVF) として、メソッドを使用する場合に、結果のテーブルの定義を表す文字列。</summary>
-        <value>A<see cref="T:System.String" />結果のテーブルの定義を表す値。</value>
+        <summary>メソッドをテーブル値関数 (TVF) として使用する場合、結果のテーブル定義を表す文字列。</summary>
+        <value>結果のテーブル定義を表す <see cref="T:System.String" /> 値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この属性は、TVF として指定されたメソッドを自動的に登録する Microsoft Visual Studio でのみ使用されます。 SQL Server では使用されません。  
+ この属性は、指定したメソッドを TVF として自動的に登録するために Microsoft Visual Studio によってのみ使用されます。 SQL Server では使用されません。  
   
- 次の例では、名前を使用して、ユーザー定義関数を参照することを指定します`sp_tableFunc`します。 `TableDefinition`プロパティの値を`letter nchar(1)`します。  
+ 次の例では、という名前`sp_tableFunc`を使用してユーザー定義関数を参照するように指定しています。 プロパティには値`letter nchar(1)`があります。 `TableDefinition`  
   
    
   

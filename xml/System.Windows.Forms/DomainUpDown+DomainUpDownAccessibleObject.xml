@@ -26,11 +26,11 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Windows フォームは、組み込みのユーザー補助のサポートを備え、ユーザー補助クライアント アプリケーションを使用することを許可するアプリケーションに関する情報を提供します。 ユーザー補助クライアント アプリケーションの例については、ツールとレビュー担当者のユーティリティを画面には、音声入力ユーティリティ、オンスクリーン キーボード、代替入力デバイス、およびキーボード拡張ユーティリティ。 <xref:System.Windows.Forms.DomainUpDown.DomainUpDownAccessibleObject>クラスから継承、<xref:System.Windows.Forms.AccessibleObject>に関する情報を提供するクラス、<xref:System.Windows.Forms.DomainUpDown>ユーザー補助クライアント アプリケーションを制御します。  
+ Windows フォームには、ユーザー補助機能のサポートが組み込まれており、ユーザー補助クライアントアプリケーションと連携できるように、アプリケーションに関する情報を提供しています。 ユーザー補助クライアントアプリケーションの例としては、スクリーンたまにとレビューアーユーティリティ、音声入力ユーティリティ、スクリーンキーボード、代替入力デバイス、キーボード拡張ユーティリティなどがあります。 クラス<xref:System.Windows.Forms.DomainUpDown.DomainUpDownAccessibleObject>は、 <xref:System.Windows.Forms.AccessibleObject>クラスから継承して、ユーザー補助<xref:System.Windows.Forms.DomainUpDown>クライアントアプリケーションにコントロールに関する情報を提供します。  
   
- コントロールの名前または説明、ユーザー補助クライアント アプリケーションなどのカスタム情報を提供することはインスタンスです。 この情報を提供する 2 つの方法はあります。 既存のコントロールのアクセシビリティの制限に関する情報を提供する設定、コントロールの<xref:System.Windows.Forms.Control.AccessibleName%2A>、 <xref:System.Windows.Forms.Control.AccessibleDescription%2A>、 <xref:System.Windows.Forms.Control.AccessibleDefaultActionDescription%2A>、および<xref:System.Windows.Forms.Control.AccessibleRole%2A>プロパティの値は、ユーザー補助クライアント アプリケーションに報告されます。  
+ コントロールの名前や説明などのカスタム情報をユーザー補助クライアントアプリケーションに提供する場合は、インスタンスがあります。 この情報を提供する方法は2つあります。 既存のコントロールに限定されたアクセシビリティ情報を提供する<xref:System.Windows.Forms.Control.AccessibleName%2A>には<xref:System.Windows.Forms.Control.AccessibleDefaultActionDescription%2A>、コントロール<xref:System.Windows.Forms.Control.AccessibleRole%2A>の、 <xref:System.Windows.Forms.Control.AccessibleDescription%2A>、、およびの各プロパティ値を設定します。これは、ユーザー補助クライアントアプリケーションに報告されます。  
   
- 派生した独自のクラスを記述することができます、コントロールに含まれる他のアクセシビリティ情報が必要な場合、<xref:System.Windows.Forms.AccessibleObject>または<xref:System.Windows.Forms.Control.ControlAccessibleObject>クラス。 たとえば、共通のコントロールから派生していない独自のコントロールを作成している場合、またはコントロール内でヒット テストなどの操作が必要な作成する必要があります、<xref:System.Windows.Forms.Control.ControlAccessibleObject>呼び出すことによって、コントロール、<xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>メソッド。  
+ コントロールにより多くのアクセシビリティ情報を含める必要がある場合は、クラス<xref:System.Windows.Forms.AccessibleObject>または<xref:System.Windows.Forms.Control.ControlAccessibleObject>クラスから派生した独自のクラスを記述できます。 たとえば、コモンコントロールから派生していない独自のコントロールを作成する場合、またはコントロール内のヒットテストのような操作が必要な場合は、 <xref:System.Windows.Forms.Control.ControlAccessibleObject> <xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>メソッドを呼び出してコントロールのを作成する必要があります。  
   
  ]]></format>
     </remarks>
@@ -87,20 +87,20 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">アクセス可能な子の 0 から始まるインデックス。</param>
+        <param name="index">子ユーザー補助オブジェクトの、0 から始まるインデックス番号。</param>
         <summary>指定したインデックスに対応する子ユーザー補助オブジェクトを取得します。</summary>
         <returns>指定したインデックスに対応する子ユーザー補助オブジェクトを表す <see cref="T:System.Windows.Forms.AccessibleObject" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.DomainUpDown.DomainUpDownAccessibleObject>のさまざまな部分に対応する子ユーザー補助オブジェクトが含まれています、<xref:System.Windows.Forms.DomainUpDown>コントロール。 次の表に、インデックスと子ユーザー補助オブジェクトの値、<xref:System.Windows.Forms.DomainUpDown.DomainUpDownAccessibleObject.GetChild%2A>メソッドを返します。  
+ に<xref:System.Windows.Forms.DomainUpDown.DomainUpDownAccessibleObject>は、 <xref:System.Windows.Forms.DomainUpDown>コントロールのさまざまな部分に対応する子ユーザー補助オブジェクトが含まれています。 次の表に、インデックスの値と、メソッドから<xref:System.Windows.Forms.DomainUpDown.DomainUpDownAccessibleObject.GetChild%2A>返される子ユーザー補助オブジェクトを示します。  
   
-|値|説明|  
+|[値]|説明|  
 |-----------|-----------------|  
-|0|テキスト ボックスのユーザー補助オブジェクト|  
-|1|ユーザー補助オブジェクトの上向きと下向きの矢印ボタン。|  
-|2|ユーザー補助オブジェクトの Items プロパティの<xref:System.Windows.Forms.DomainUpDown>コントロール。|  
+|0|テキストボックスのユーザー補助オブジェクト|  
+|1|上矢印ボタンと下矢印ボタンのアクセス可能なオブジェクト。|  
+|2|<xref:System.Windows.Forms.DomainUpDown>コントロールの Items プロパティのアクセス可能なオブジェクト。|  
   
  ]]></format>
         </remarks>
@@ -127,7 +127,7 @@
       <Parameters />
       <Docs>
         <summary>ユーザー補助オブジェクトに属する子の数を取得します。</summary>
-        <returns>すべてのケースでは、3 を返します。</returns>
+        <returns>常に 3 が返されます。</returns>
         <remarks>To be added.</remarks>
         <forInternalUseOnly />
       </Docs>
@@ -156,13 +156,13 @@
 ## Remarks  
 
 
-.NET Framework 4.7.1 で導入されたアクセシビリティ機能改善を取得するために、アプリケーションは、.NET Framework 4.7.1 以降のバージョンで実行されていると、次のいずれかを実行する必要があります。  
+.NET Framework 4.7.1 で導入されたアクセシビリティの向上を実現するには、アプリケーションを .NET Framework 4.7.1 以降のバージョンで実行して、次のいずれかの操作を行う必要があります。  
   
--   .NET Framework 4.7.1 を対象とするアプリケーションを再コンパイルします。  
+-   .NET Framework 4.7.1 を対象とするようにアプリケーションを再コンパイルします。  
   
--   AppCompat スイッチを使用してこれらの .NET Framework のアクセシビリティ拡張機能にオプトインします。  
+-   AppCompat スイッチを使用して、これらの .NET Framework ユーザー補助機能の強化をオプトインします。  
   
- 詳細については、次を参照してください。 [Windows フォーム コントロールのアクセシビリティ機能改善](https://github.com/Microsoft/dotnet/blob/master/Documentation/compatibility/winforms-accessibility-changes-471.md)します。  
+ 詳細については、「 [Windows フォームコントロールのユーザー補助機能の強化](https://github.com/Microsoft/dotnet/blob/master/Documentation/compatibility/winforms-accessibility-changes-471.md)」を参照してください。  
   
  ]]></format>
         </remarks>

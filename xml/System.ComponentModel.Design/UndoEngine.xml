@@ -23,38 +23,38 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>デザイン時に、汎用の元に戻す/やり直し機能を指定します。</summary>
+    <summary>標準の元に戻したりやり直したりするデザイン時の機能を指定します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.UndoEngine>抽象クラスは、デザイン時に元に戻す機能の既定の実装を提供します。 取り消し単位では、取り消し可能な作業の 1 つの単位を表します。 このユニットがスタックに追加され、ユーザーは、各アクションを元に戻すスタックをウォークすることができます。 元に戻す単位通常は設計に切り替えるには、つまり、その呼び出し元に戻すが 2 回開始状態にアプリケーションを返します。  
+ 抽象<xref:System.ComponentModel.Design.UndoEngine>クラスは、デザイン時に元に戻す機能の既定の実装を提供します。 元に戻す単位は、取り消し可能な1つの作業単位を表します。 この単位がスタックに追加され、ユーザーはスタックをたどって各アクションを元に戻すことができます。 通常、元に戻す単位は切り替えるように設計されています。つまり、undo を2回呼び出すと、アプリケーションが開始状態に戻ります。  
   
- <xref:System.ComponentModel.Design.UndoEngine>クラスには、デザイナー内で実行されているオブジェクトの次の特性を活用します。  
+ クラス<xref:System.ComponentModel.Design.UndoEngine>では、デザイナー内で実行されているオブジェクトの次の特性を利用します。  
   
--   すべての関連オブジェクトは、デザイナー ローダーで何らかの形式に保持できます。  
+-   すべての興味深いオブジェクトは、デザイナーローダーによって何らかの形式に永続化できます。  
   
--   すべてのオブジェクトは、プロパティが変更されたときに、プロパティ変更通知を発生します。  
+-   プロパティが変更されると、すべてのオブジェクトはプロパティ変更通知を発生させます。  
   
--   <xref:System.ComponentModel.Design.IDesignerHost> トランザクションは、複数の小さいアクションにまたがる元に戻す操作を作成するために使用できますのアイデアを提供します。  
+-   <xref:System.ComponentModel.Design.IDesignerHost>トランザクションの概念を提供します。これを使用すると、複数の小さなアクションにまたがる undo アクションを作成できます。  
   
- これらの機能と<xref:System.ComponentModel.Design.UndoEngine>自動的に必要な任意の undo 単位を作成することができます。  
+ これらの機能を<xref:System.ComponentModel.Design.UndoEngine>使用すると、は自動的に必要な取り消し単位を作成ことができます。  
   
 > [!NOTE]
->  プロパティ値は直接変更しないでください。 <xref:System.ComponentModel.Design.UndoEngine>クラスでは、適切なを使用する必要があります<xref:System.ComponentModel.TypeDescriptor>プロパティの値を変更します。  
+>  プロパティ値は直接変更しないでください。 クラス<xref:System.ComponentModel.Design.UndoEngine>では、適切な<xref:System.ComponentModel.TypeDescriptor>を使用してプロパティ値を変更する必要があります。  
   
- <xref:System.ComponentModel.Design.UndoEngine> 変更通知を作成するモニターは、単位を元に戻すし、シリアル化されたオブジェクトの状態のユニット自体で構成されます。 次の表は、サービスに必要なときに<xref:System.ComponentModel.Design.UndoEngine>が作成されます。  
+ <xref:System.ComponentModel.Design.UndoEngine>変更通知を監視して取り消し単位を作成します。ユニット自体は、シリアル化されたオブジェクトの状態で構成されます。 次の表は、の作成時に<xref:System.ComponentModel.Design.UndoEngine>使用できる必要があるサービスを示しています。  
   
 |サービス|説明|  
 |-------------|-----------------|  
-|<xref:System.ComponentModel.Design.Serialization.ComponentSerializationService>|前に、と変更を加えた後は、コンポーネントのプロパティとオブジェクトの値を保存します。|  
-|<xref:System.ComponentModel.Design.IComponentChangeService>|コンポーネントに加えられた変更のアンドゥ エンジンに通知します。|  
-|<xref:System.ComponentModel.Design.IDesignerHost>|トランザクションを追跡するために使用します。|  
+|<xref:System.ComponentModel.Design.Serialization.ComponentSerializationService>|変更の前と後に、コンポーネントのプロパティとオブジェクトの値を保存します。|  
+|<xref:System.ComponentModel.Design.IComponentChangeService>|コンポーネントに加えられた変更を元に戻すエンジンに通知します。|  
+|<xref:System.ComponentModel.Design.IDesignerHost>|トランザクションを追跡するために使用されます。|  
   
 > [!NOTE]
->  <xref:System.ComponentModel.Design.UndoEngine>クラスが必要です<xref:System.ComponentModel.Design.Serialization.ComponentSerializationService>と<xref:System.ComponentModel.Design.IComponentChangeService>デザイン時にのみ使用可能なは。  
+>  クラスに<xref:System.ComponentModel.Design.UndoEngine>はと<xref:System.ComponentModel.Design.Serialization.ComponentSerializationService> <xref:System.ComponentModel.Design.IComponentChangeService>が必要であるため、デザイン時にのみ使用できます。  
   
- アンドゥ エンジンでは、トランザクションを追跡し、トランザクションを含む 1 つの undo 単位を作成します。 その結果、元に戻すエンジンでは、取り消し可能なアクションの期間にわたってコントロールがあります。 また、トランザクションの名前を指定できます、ため、取り消し可能なアクションは、現在のトランザクションからの名前を継承します。 使用可能なトランザクションがないと、変更が報告された、元に戻すエンジンは、元に戻す名の変更 (たとえば、「プロパティの変更 'Text'」) の種類に基づいて作成します。  
+ 元に戻すエンジンは、トランザクションを追跡し、1つのトランザクションを含む単一の undo 単位を作成します。 その結果、元に戻すエンジンは、取り消し可能なアクションの期間を制御できます。 また、トランザクションに名前を付けることができるので、取り消し可能なアクションは、現在のトランザクションから名前を継承します。 使用できるトランザクションがなく、変更が報告された場合は、元に戻すエンジンによって、変更の種類 (たとえば、"プロパティ ' Text ' の変更 ') に基づいて元に戻す名前が作成されます。  
   
  ]]></format>
     </remarks>
@@ -92,12 +92,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.UndoEngine>からいくつかのサービスが必要です、`provider`パラメーターは便利です。  
+ を<xref:System.ComponentModel.Design.UndoEngine>使用するには、 `provider`パラメーターにいくつかのサービスが必要です。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="provider" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.NotSupportedException">必要なサービスが見つかりません。 参照してください<see cref="T:System.ComponentModel.Design.UndoEngine" />必要なサービスです。 このサービスを削除した場合は、置換を指定することを確認します。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="provider" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.NotSupportedException">必要なサービスが見つかりません。 必要なサービスについては、<see cref="T:System.ComponentModel.Design.UndoEngine" /> のトピックを参照してください。 このサービスが削除されている場合は、必ず代わりのサービスを提供します。</exception>
         <altmember cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />
         <altmember cref="T:System.ComponentModel.Design.IDesignerHost" />
         <altmember cref="T:System.IServiceProvider" />
@@ -127,13 +127,13 @@
         <Parameter Name="unit" Type="System.ComponentModel.Design.UndoEngine+UndoUnit" />
       </Parameters>
       <Docs>
-        <param name="unit">追加する元に戻す単位</param>
-        <summary>追加、<see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />元に戻すスタックにします。</summary>
+        <param name="unit">追加する取り消し単位。</param>
+        <summary><see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> を、元に戻すスタックに追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 作成、`unit`パラメーターを呼び出すことによって、<xref:System.ComponentModel.Design.UndoEngine.CreateUndoUnit%2A>メソッド。  
+ メソッド<xref:System.ComponentModel.Design.UndoEngine.CreateUndoUnit%2A>を`unit`呼び出して、パラメーターを作成します。  
   
  ]]></format>
         </remarks>
@@ -166,16 +166,16 @@
       </Parameters>
       <Docs>
         <param name="name">作成する単位の名前。</param>
-        <param name="primary"><see langword="true" /> 一連の入れ子になったユニットです。 最初に作成するには<see langword="false" />後続の入れ子になったユニットを作成します。</param>
+        <param name="primary">入れ子になっている一連の単位のうち最初の単位を作成する場合は <see langword="true" />。以降の入れ子になっている単位を作成する場合は <see langword="false" />。</param>
         <summary>新しい <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> を作成します。</summary>
-        <returns>新しい<see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />指定した名前。</returns>
+        <returns>指定した名前の新しい <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の実装、<xref:System.ComponentModel.Design.UndoEngine.CreateUndoUnit%2A>メソッドは単に新しい返します<xref:System.ComponentModel.Design.UndoEngine.UndoUnit>します。  
+ <xref:System.ComponentModel.Design.UndoEngine.CreateUndoUnit%2A>メソッドの既定の実装では、単に<xref:System.ComponentModel.Design.UndoEngine.UndoUnit>新しいを返します。  
   
- 既定では、<xref:System.ComponentModel.Design.UndoEngine>で何も行われません、`primary`パラメーターが COM に関係するなど、元に戻すの実装によって`Microsoft.VisualStudio.OLE.Interop.IOleParentUndoUnit`デザイン パターン、主要な単位とその子の違いを識別する必要があります。  
+ 既定では<xref:System.ComponentModel.Design.UndoEngine> 、は`primary`パラメーターを使用して何も実行しませんが、COM `Microsoft.VisualStudio.OLE.Interop.IOleParentUndoUnit`デザインパターンに関係するものなど、元に戻すの実装によっては、プライマリユニットとその子の違いを識別する必要がある場合があります。  
   
  ]]></format>
         </remarks>
@@ -206,12 +206,12 @@
       </Parameters>
       <Docs>
         <param name="unit">破棄する単位。</param>
-        <summary>破棄、<see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />します。</summary>
+        <summary><see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> を破棄します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 前に、<xref:System.ComponentModel.Design.UndoEngine.DiscardUndoUnit%2A>メソッドが呼び出されると、元に戻す単位が閉じられ、元に戻します。  
+ <xref:System.ComponentModel.Design.UndoEngine.DiscardUndoUnit%2A>メソッドが呼び出される前に、元に戻す単位が閉じられ、元に戻されます。  
   
  ]]></format>
         </remarks>
@@ -319,7 +319,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>有効または無効に、<see cref="T:System.ComponentModel.Design.UndoEngine" />します。</summary>
+        <summary><see cref="T:System.ComponentModel.Design.UndoEngine" /> を有効または無効にします。</summary>
         <value><see cref="T:System.ComponentModel.Design.UndoEngine" /> が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -350,10 +350,10 @@
       <Docs>
         <param name="serviceType">取得するサービスの型。</param>
         <summary>要求したサービスを取得します。</summary>
-        <returns>要求したサービス場合が見つかりました。</returns>
+        <returns>見つかった場合には、要求されたサービス。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.NotSupportedException"><paramref name="serviceType" /> 必要ですが、見つかりません。 このサービスを削除した場合は、置換を指定することを確認します。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.NotSupportedException"><paramref name="serviceType" /> が要求されましたが、見つかりません。 このサービスが削除されている場合は、必ず代わりのサービスを提供します。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetService">
@@ -382,9 +382,9 @@
       <Docs>
         <param name="serviceType">取得するサービスの型。</param>
         <summary>要求したサービスを取得します。</summary>
-        <returns>要求したサービスまたは<see langword="null" />要求したサービスが見つからない場合。</returns>
+        <returns>要求されたサービス。要求されたサービスが見つからない場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="serviceType" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="OnUndoing">
@@ -491,8 +491,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>かどうか、元に戻す操作が進行状況を示します。</summary>
-        <value><see langword="true" /> 元に戻す操作は進行中です。 場合、それ以外の場合、<see langword="false" />します。</value>
+        <summary>元に戻す操作が実行中であることを示します。</summary>
+        <value>元に戻す操作を実行中の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -517,12 +517,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>元に戻す操作が実行された直後後に発生します。</summary>
+        <summary>元に戻す操作が実行された直後に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.UndoEngine.Undone>常にイベントは、例外がスローされた場合でもです。  
+ 例外がスローされた場合でも、イベントは常に発生します。<xref:System.ComponentModel.Design.UndoEngine.Undone>  
   
  ]]></format>
         </remarks>

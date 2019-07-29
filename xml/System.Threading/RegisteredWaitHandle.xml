@@ -34,20 +34,20 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>呼び出すときに登録されているハンドルを表す<see cref="M:System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.UInt32,System.Boolean)" />します。 このクラスは継承できません。</summary>
+    <summary><see cref="M:System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.UInt32,System.Boolean)" /> を呼び出すときに登録されたハンドルを表します。 このクラスは継承できません。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Threading.RegisteredWaitHandle>コールバック メソッドを呼び出す理由と、待機ハンドルがシグナル状態になるため、コールバックが発生した場合、タスクの登録を解除する方法を決定します。  
+ 次の例は、を<xref:System.Threading.RegisteredWaitHandle>使用して、コールバックメソッドが呼び出される理由、および待機ハンドルがシグナル状態になったためにコールバックが発生した場合にタスクを登録解除する方法を示しています。  
   
- 使用する方法も示します、<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>指定した待機ハンドルがシグナル通知されたときに、指定されたコールバック メソッドを実行するメソッド。 この例では、コールバック メソッドは`WaitProc`、待機ハンドルがあり、<xref:System.Threading.AutoResetEvent>します。  
+ また、この例では、指定<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>された待機ハンドルがシグナル状態になったときに、メソッドを使用して指定されたコールバックメソッドを実行する方法も示しています。 この例では`WaitProc`、コールバックメソッドはで、待機ハンドル<xref:System.Threading.AutoResetEvent>はです。  
   
- 例では、定義、`TaskInfo`を実行するときに、コールバックに渡される情報を保持するクラス。 例は、作成、`TaskInfo`オブジェクトし、文字列データを割り当てます。 <xref:System.Threading.RegisteredWaitHandle>によって返される、<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>に割り当てられているメソッド、`Handle`のフィールド、`TaskInfo`オブジェクトをコールバック メソッドへのアクセスを持つよう、<xref:System.Threading.RegisteredWaitHandle>します。  
+ この例では`TaskInfo` 、実行時にコールバックに渡される情報を保持するクラスを定義します。 この例では`TaskInfo` 、オブジェクトを作成し、いくつかの文字列データを割り当てます。 メソッドに<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>よって返さ`TaskInfo` れるは<xref:System.Threading.RegisteredWaitHandle>、コールバックメソッドがにアクセスできるように、オブジェクトのフィールドに割り当てられます。`Handle` <xref:System.Threading.RegisteredWaitHandle>  
   
- 指定するだけでなく`TaskInfo`への呼び出し、コールバック メソッドに渡すためにオブジェクトとして、<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>メソッドを指定します、 <xref:System.Threading.AutoResetEvent> 、タスクが待機する、<xref:System.Threading.WaitOrTimerCallback>を表すデリゲート、`WaitProc`コールバック メソッド、1 秒のタイムアウト間隔、および複数のコールバック。  
+ コールバックメソッドに`TaskInfo`渡すオブジェクトとしてを指定するだけでなく、 <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>メソッドの呼び出しでは<xref:System.Threading.AutoResetEvent> 、タスクが`WaitProc`待機<xref:System.Threading.WaitOrTimerCallback>する、コールバックメソッドを表すデリゲート、1秒間のタイムアウト間隔と複数のコールバック。  
   
- メイン スレッドに通知すると、<xref:System.Threading.AutoResetEvent>を呼び出してその<xref:System.Threading.EventWaitHandle.Set%2A>メソッド、<xref:System.Threading.WaitOrTimerCallback>デリゲートが呼び出されます。 `WaitProc`メソッド テスト<xref:System.Threading.RegisteredWaitHandle>タイムアウトが発生したかどうかを判断します。 待機ハンドルがシグナル通知されたため、コールバックが呼び出された場合、`WaitProc`メソッドの登録を解除、<xref:System.Threading.RegisteredWaitHandle>コールバックの追加を停止しています。 タイムアウトの場合は、タスクが待機する続けます。 `WaitProc`メソッドは、コンソールにメッセージを出力することによって終了します。  
+ メインスレッドが<xref:System.Threading.AutoResetEvent> <xref:System.Threading.EventWaitHandle.Set%2A>メソッドを<xref:System.Threading.WaitOrTimerCallback>呼び出すことによってを通知すると、デリゲートが呼び出されます。 メソッド`WaitProc`は、 <xref:System.Threading.RegisteredWaitHandle>タイムアウトが発生したかどうかを判断するためにテストを行います。 待機ハンドルがシグナル状態になったためにコールバックが`WaitProc`呼び出された<xref:System.Threading.RegisteredWaitHandle>場合、メソッドはを登録解除し、追加のコールバックを停止します。 タイムアウトの場合、タスクは待機を続けます。 メソッド`WaitProc`は、メッセージをコンソールに出力することによって終了します。  
   
  [!code-cpp[System.Threading.ThreadPool RegisterWaitForSingleObject0#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.ThreadPool RegisterWaitForSingleObject0/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.ThreadPool RegisterWaitForSingleObject0#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.ThreadPool RegisterWaitForSingleObject0/CS/source.cs#1)]
@@ -127,27 +127,27 @@
         <Parameter Name="waitObject" Type="System.Threading.WaitHandle" />
       </Parameters>
       <Docs>
-        <param name="waitObject"><see cref="T:System.Threading.WaitHandle" />がシグナル状態にします。</param>
-        <summary>によって発行された登録済みの待機操作をキャンセル、<see cref="M:System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.UInt32,System.Boolean)" />メソッド。</summary>
-        <returns><see langword="true" /> 関数が成功した場合それ以外の場合、<see langword="false" />します。</returns>
+        <param name="waitObject">シグナル状態になる <see cref="T:System.Threading.WaitHandle" />。</param>
+        <summary><see cref="M:System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.UInt32,System.Boolean)" /> メソッドで実行した登録済みの待機操作を取り消します。</summary>
+        <returns>関数が成功した場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`waitObject`を指定するが通知された場合にのみ、<xref:System.Threading.RegisteredWaitHandle>が正常に登録解除します。 コールバック メソッドが実行中である場合と<xref:System.Threading.RegisteredWaitHandle.Unregister%2A>を実行する`waitObject`コールバック メソッドが完了するまでは通知されません。 コールバック メソッドを実行する場合は、特に<xref:System.Threading.RegisteredWaitHandle.Unregister%2A>、`waitObject`そのコールバック メソッドが完了するまでシグナル状態はありません。  
+ を`waitObject`指定した場合、が正常に登録<xref:System.Threading.RegisteredWaitHandle>解除された場合にのみ通知されます。 実行時に<xref:System.Threading.RegisteredWaitHandle.Unregister%2A>コールバックメソッドが実行中で`waitObject`ある場合、は、コールバックメソッドが完了するまで通知されません。 特に、コールバックメソッドを実行<xref:System.Threading.RegisteredWaitHandle.Unregister%2A>する`waitObject`と、コールバックメソッドが完了するまで、は通知されません。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Threading.RegisteredWaitHandle.Unregister%2A>待機ハンドルがシグナル状態になるために、コールバックが発生した場合、タスクの登録を解除するメソッド。  
+ 次の例は、 <xref:System.Threading.RegisteredWaitHandle.Unregister%2A>メソッドを使用して、待機ハンドルがシグナル状態になったためにコールバックが発生した場合にタスクの登録を解除する方法を示しています。  
   
- 使用する方法も示します、<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>指定した待機ハンドルがシグナル通知されたときに、指定されたコールバック メソッドを実行するメソッド。 この例では、コールバック メソッドは`WaitProc`、待機ハンドルがあり、<xref:System.Threading.AutoResetEvent>します。  
+ また、この例では、指定<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>された待機ハンドルがシグナル状態になったときに、メソッドを使用して指定されたコールバックメソッドを実行する方法も示しています。 この例では`WaitProc`、コールバックメソッドはで、待機ハンドル<xref:System.Threading.AutoResetEvent>はです。  
   
- 例では、定義、`TaskInfo`を実行するときに、コールバックに渡される情報を保持するクラス。 例は、作成、`TaskInfo`オブジェクトし、文字列データを割り当てます。 <xref:System.Threading.RegisteredWaitHandle>によって返される、<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>に割り当てられているメソッド、`Handle`のフィールド、`TaskInfo`オブジェクトをコールバック メソッドへのアクセスを持つよう、<xref:System.Threading.RegisteredWaitHandle>します。  
+ この例では`TaskInfo` 、実行時にコールバックに渡される情報を保持するクラスを定義します。 この例では`TaskInfo` 、オブジェクトを作成し、いくつかの文字列データを割り当てます。 メソッドに<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>よって返さ`TaskInfo` れるは<xref:System.Threading.RegisteredWaitHandle>、コールバックメソッドがにアクセスできるように、オブジェクトのフィールドに割り当てられます。`Handle` <xref:System.Threading.RegisteredWaitHandle>  
   
- 指定するだけでなく`TaskInfo`への呼び出し、コールバック メソッドに渡すためにオブジェクトとして、<xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>メソッドを指定します、 <xref:System.Threading.AutoResetEvent> 、タスクが待機する、<xref:System.Threading.WaitOrTimerCallback>を表すデリゲート、`WaitProc`コールバック メソッド、1 秒のタイムアウト間隔、および複数のコールバック。  
+ コールバックメソッドに`TaskInfo`渡すオブジェクトとしてを指定するだけでなく、 <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>メソッドの呼び出しでは<xref:System.Threading.AutoResetEvent> 、タスクが`WaitProc`待機<xref:System.Threading.WaitOrTimerCallback>する、コールバックメソッドを表すデリゲート、1秒間のタイムアウト間隔と複数のコールバック。  
   
- メイン スレッドに通知すると、<xref:System.Threading.AutoResetEvent>を呼び出してその<xref:System.Threading.EventWaitHandle.Set%2A>メソッド、<xref:System.Threading.WaitOrTimerCallback>デリゲートが呼び出されます。 `WaitProc`メソッド テスト<xref:System.Threading.RegisteredWaitHandle>タイムアウトが発生したかどうかを判断します。 待機ハンドルがシグナル通知されたため、コールバックが呼び出された場合、`WaitProc`メソッドの登録を解除、<xref:System.Threading.RegisteredWaitHandle>コールバックの追加を停止しています。 タイムアウトの場合は、タスクが待機する続けます。 `WaitProc`メソッドは、コンソールにメッセージを出力することによって終了します。  
+ メインスレッドが<xref:System.Threading.AutoResetEvent> <xref:System.Threading.EventWaitHandle.Set%2A>メソッドを<xref:System.Threading.WaitOrTimerCallback>呼び出すことによってを通知すると、デリゲートが呼び出されます。 メソッド`WaitProc`は、 <xref:System.Threading.RegisteredWaitHandle>タイムアウトが発生したかどうかを判断するためにテストを行います。 待機ハンドルがシグナル状態になったためにコールバックが`WaitProc`呼び出された<xref:System.Threading.RegisteredWaitHandle>場合、メソッドはを登録解除し、追加のコールバックを停止します。 タイムアウトの場合、タスクは待機を続けます。 メソッド`WaitProc`は、メッセージをコンソールに出力することによって終了します。  
   
  [!code-cpp[System.Threading.ThreadPool RegisterWaitForSingleObject0#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.ThreadPool RegisterWaitForSingleObject0/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.ThreadPool RegisterWaitForSingleObject0#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.ThreadPool RegisterWaitForSingleObject0/CS/source.cs#1)]

@@ -29,38 +29,38 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>プロパティまたは型をアンビエントとして扱うように指定しています。 アンビエントの概念は XAML プロセッサがメンバーの型の所有者を確認する方法と関連します。</summary>
+    <summary>プロパティまたは型をアンビエントとして扱うよう指定しています。 アンビエントの概念は XAML プロセッサがメンバーの型の所有者を確認する方法と関連します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アンビエント プロパティは、即時の XAML ノードが作成されるセットのために一般的な型メンバーの参照が中断されているが、オブジェクト グラフを作成するときに、パーサー コンテキストで使用できる値が必要な場所のプロパティです。 アンビエントの概念の 2 つの主なシナリオがあります。  
+ アンビエントプロパティは、オブジェクトグラフを作成するときにパーサーコンテキストで値を使用できると想定されるプロパティですが、作成される直前の XAML ノードセットのために一般的な型メンバーの参照が中断されます。 アンビエント概念には、主に次の2つのシナリオがあります。  
   
--   同じオブジェクトのさまざまなプロパティは影響し、そのオブジェクトとプロパティ検索のしくみを修飾します。  
+-   同じオブジェクトの他のいくつかのプロパティは、オブジェクトプロパティの参照がどのように動作するかを指定します。  
   
--   プロパティは遅延の大きいメカニズムを表し、メンバー値を検索するためのアンビエント機能は、現在のオブジェクト内に含まれるすべてのオブジェクトに拡張します。  
+-   プロパティは、より大きな遅延メカニズムを表し、メンバー値を検索するためのアンビエント機能は、現在のオブジェクト内に含まれるすべてのオブジェクトに拡張されます。  
   
- この属性は、アンビエント プロパティの検索動作を有効にするコンテナーを必要とする特定のプロパティに適用できるか、プロパティの値型のすべてのケースでのアンビエント プロパティの動作を有効にするクラスに適用できます。  
+ この属性は、アンビエントプロパティの検索動作を有効にするコンテナーが想定されている特定のプロパティに適用できます。また、プロパティに対してその値型のすべてのケースでアンビエントプロパティの動作を有効にするためにクラスに適用することもできます。  
   
- <xref:System.Windows.Markup.AmbientAttribute> XAML のアタッチ可能なプロパティをアンビエントとして属性設定をサポートするために、CLR メソッドにも適用できます。 これは、CLR の実装を XAML で添付プロパティを実装/表されるでアクセサー パターンとしてリフレクションのために必要な可能性のある`get`と`set`メソッド。 属性に実際の CLR プロパティが存在しないための使用量を制限する<xref:System.AttributeTargets>に`Property`が有効にしていないアンビエントとしてアタッチ可能なメンバーを指定することです。 アンビエントとして報告するアタッチ可能なメンバー、属性、`get`アクセサー。 アタッチ可能なメンバーのサポート方法を具体的にはない属性のメソッドにはしないでください。  
+ <xref:System.Windows.Markup.AmbientAttribute>を CLR メソッドに適用して、XAML アタッチ可能なプロパティの属性をアンビエントとしてサポートすることもできます。 CLR の実装では、XAML の添付プロパティが実装されているか、 `get` `set`メソッドとメソッドを使用してアクセサーパターンとしてリフレクションに表されるため、これが必要になることがあります。 属性に対する実際の CLR プロパティが存在しないため<xref:System.AttributeTargets> 、 `Property`の使用をに制限しても、アタッチ可能なメンバーをアンビエントとして指定することはできません。 アンビエントとして報告するアタッチ可能なメンバーの場合は、 `get`アクセサーを属性として指定します。 アタッチ可能なメンバーのメソッドを明示的にサポートしていないメソッドは、属性を使用しないようにしてください。  
   
- .NET Framework の以前のバージョンでは、このクラスは、WPF 固有の WindowsBase アセンブリに存在します。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、<xref:System.Windows.Markup.AmbientAttribute>は System.Xaml アセンブリにします。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
+ 以前のバージョンの .NET Framework では、このクラスは WPF 固有のアセンブリ WindowsBase に存在していました。 で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]は<xref:System.Windows.Markup.AmbientAttribute> 、は、システムの .xaml アセンブリにあります。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
   
- アンビエント型 (型 where<xref:System.Windows.Markup.AmbientAttribute>型レベルで適用されます)、プロパティの型解決が必要誤順序の特定の XAML の処理状況のために使用できます。  
+ アンビエント型 ( <xref:System.Windows.Markup.AmbientAttribute>が型レベルで適用される型) は、プロパティの型を順序どおりに解決する必要がある特定の XAML 処理状況に使用できます。  
   
-## <a name="object-writer-scenarios"></a>オブジェクト ライターのシナリオ  
- XAML オブジェクト ライターを定義して、プロパティ、メソッドまたは型が発生した場合、<xref:System.Windows.Markup.AmbientAttribute>が適用するには、通常必要がありますサービスにアクセスする、オブジェクトを記述するために必要な目的のアンビエント プロパティ検索の動作を決定します。 詳細については、「 <xref:System.Xaml.IAmbientProvider> 」を参照してください。  
+## <a name="object-writer-scenarios"></a>オブジェクトライターのシナリオ  
+ XAML オブジェクトライターを定義していて、が適用されている<xref:System.Windows.Markup.AmbientAttribute>プロパティ、メソッド、または型が発生した場合は、通常、サービスにアクセスして、オブジェクトの書き込みに必要なアンビエントプロパティの参照動作を決定する必要があります。 詳細については、「<xref:System.Xaml.IAmbientProvider>」を参照してください。  
   
 ## <a name="value-converters"></a>値コンバーター  
- 型コンバーターまたはマークアップ拡張機能は、文字列名または修飾なしで、メンバーまたは型を指定するプロパティなどの間接的な型マッピングを表すプロパティを処理するために、アンビエント情報を把握する必要があります。 このシナリオで<xref:System.Windows.Markup.AmbientAttribute>値コンバーター コード ロジックに直接使用するものではありません。 XAML のライター処理動作が合格する必要があります、値コンバーターを利用ではなく、<xref:System.Xaml.IAmbientProvider>値コンバーターのメソッドが呼び出されたときにそのサービスのコンテキストでします。  
+ 型コンバーターまたはマークアップ拡張機能は、間接的な型のマッピングを表すプロパティ (修飾の有無にかかわらず、文字列名によってメンバーまたは型を指定するプロパティなど) を処理するために、アンビエント情報を知る必要がある場合があります。 このシナリオでは<xref:System.Windows.Markup.AmbientAttribute> 、は、値コンバーターのコードロジックに直接使用するためのものではありません。 代わりに、値コンバーターは XAML ライターの処理動作に依存する必要があります<xref:System.Xaml.IAmbientProvider> 。これは、呼び出されたときに、そのサービスコンテキストを値コンバーターメソッドに渡します。  
   
-## <a name="wpf-scenarios-for-ambientattribute"></a>AmbientAttribute の WPF のシナリオ  
+## <a name="wpf-scenarios-for-ambientattribute"></a>AmbientAttribute の WPF シナリオ  
   
--   プロパティを<xref:System.Windows.Style>(<xref:System.Windows.Style.TargetType%2A>) のプロパティ名のバッキングの参照を検索するために必要なために必要なプロパティ名の参照を修飾できます<xref:System.Windows.Setter.Property%2A?displayProperty=nameWithType>値。  
+-   <xref:System.Windows.Style> ( <xref:System.Windows.Setter.Property%2A?displayProperty=nameWithType> ) のプロパティは、値内のプロパティ名のバッキング参照を検索するために必要なプロパティ名参照を修飾できます。<xref:System.Windows.Style.TargetType%2A>  
   
--   内のすべてのコンテンツを`Resources`プロパティ (の項目を<xref:System.Windows.ResourceDictionary>) テンプレートの内容とする必要がありますにアクセスできる他のピアとして値。 全体を宣言する`Resources`プロパティをアンビエントとしては、WPF XAML パーサーでこのようにするロジックを呼び出します。  
+-   `Resources`プロパティ(<xref:System.Windows.ResourceDictionary>の項目) およびテンプレートコンテンツ内のすべてのコンテンツは、他のピアに値としてアクセスできる必要があります。 アンビエントとし`Resources`てプロパティ全体を宣言すると、WPF XAML パーサーでこれを有効にするロジックが呼び出されます。  
   
- 参照してください<xref:System.Windows.ResourceDictionary>設定用のシナリオ例については<xref:System.Windows.Markup.AmbientAttribute>型レベル。  
+ を<xref:System.Windows.ResourceDictionary>型レベルで設定<xref:System.Windows.Markup.AmbientAttribute>するシナリオの例については、「」を参照してください。  
   
  ]]></format>
     </remarks>
@@ -69,7 +69,7 @@
     <altmember cref="T:System.Xaml.IAmbientProvider" />
     <related type="Article" href="https://msdn.microsoft.com/library/5dfb299a-b6e2-41b8-8694-e6ac987547f1">カスタム型およびライブラリの XAML 関連の CLR 属性</related>
     <related type="Article" href="https://msdn.microsoft.com/library/c2667cbd-2f46-4a7f-9dfc-53696e35e8e4">.NET Framework XAML サービスで使用するためのカスタム型の定義</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">NET XAML サービスの概念に関するドキュメント</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">NET XAML サービスの概念説明ドキュメント</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

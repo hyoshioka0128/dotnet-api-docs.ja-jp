@@ -1,5 +1,5 @@
 <Type Name="LocalFileSettingsProvider" FullName="System.Configuration.LocalFileSettingsProvider">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="946bad3d194ef09bd645fcf5203b5dc7d2ad78f1" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56767462" /></Metadata><TypeSignature Language="C#" Value="public class LocalFileSettingsProvider : System.Configuration.SettingsProvider, System.Configuration.IApplicationSettingsProvider" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="e5af9672f5398c1f7b9fb310cf876401ff7bdd0b" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68395942" /></Metadata><TypeSignature Language="C#" Value="public class LocalFileSettingsProvider : System.Configuration.SettingsProvider, System.Configuration.IApplicationSettingsProvider" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit LocalFileSettingsProvider extends System.Configuration.SettingsProvider implements class System.Configuration.IApplicationSettingsProvider" />
   <TypeSignature Language="DocId" Value="T:System.Configuration.LocalFileSettingsProvider" />
   <TypeSignature Language="VB.NET" Value="Public Class LocalFileSettingsProvider&#xA;Inherits SettingsProvider&#xA;Implements IApplicationSettingsProvider" />
@@ -30,15 +30,15 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定プロバイダーでは、アプリケーション設定アーキテクチャで使用される構成データを格納するためのメカニズムを定義します。 [!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)] 、1 つの既定の設定プロバイダーが含まれています<xref:System.Configuration.LocalFileSettingsProvider>、ローカル ファイル システムに構成データを格納します。 アプリケーション設定プロパティまたはプロパティのグループを使用して特定の設定プロバイダーに関連付けられている、<xref:System.Configuration.SettingsProviderAttribute>します。  
+ プロバイダーの設定は、アプリケーション設定アーキテクチャで使用される構成データを格納するためのメカニズムを定義します。 に[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)]は、構成データをローカルファイル<xref:System.Configuration.LocalFileSettingsProvider>システムに格納する既定の設定プロバイダーが1つ含まれています。 アプリケーション設定のプロパティまたはプロパティのグループは、 <xref:System.Configuration.SettingsProviderAttribute>を使用して特定の設定プロバイダーに関連付けられます。  
   
- 通常、クライアント プログラムに明示的にアクセスしません。 このクラス代わりに、アプリケーション設定アーキテクチャでは自動的に適切な設定プロバイダーを起動して、そのサービスが必要な場合。 たとえば、多くのメンバーの<xref:System.Configuration.ApplicationSettingsBase>に関連付けられた設定プロバイダーに作業を委任します。  
+ 通常、クライアントプログラムは、このクラスに明示的にアクセスしません。代わりに、アプリケーション設定のアーキテクチャによって、サービスが必要になったときに適切な設定プロバイダーが自動的に呼び出されます。 たとえば、の<xref:System.Configuration.ApplicationSettingsBase>メンバーの多くは、関連付けられている設定プロバイダーに作業を委任します。  
   
- <xref:System.Configuration.LocalFileSettingsProvider> 拡張子を持つ構成ファイルの設定が引き続き発生する`.config`します。 構成ファイルの内容は、XML ドキュメントとして構成されています。 内の要素として、構成データを格納するかどうか、アプリケーション レベルまたはユーザー レベルで、設定のスコープは、によって、`<applicationSettings>`または`<userSettings>`グループをそれぞれセクションします。 対応するで表されるこれらのセクション グループの各<xref:System.Configuration.AppSettingsSection>または<xref:System.Configuration.ClientSettingsSection>、それぞれします。 セクションの各オブジェクトが所有し、型のオブジェクトでは、構成セクション ハンドラーによって管理<xref:System.Configuration.IConfigurationSectionHandler>します。  
+ <xref:System.Configuration.LocalFileSettingsProvider>拡張機能`.config`を持つ構成ファイルに設定を保持します。 構成ファイルの内容は、XML ドキュメントとして構成されます。 設定のスコープがアプリケーションレベルとユーザーレベルのどちらであるかに応じて、構成データは、 `<applicationSettings>` `<userSettings>`またはセクショングループ内の要素としてそれぞれ格納されます。 これらのセクショングループはそれぞれ、対応する<xref:System.Configuration.AppSettingsSection>または<xref:System.Configuration.ClientSettingsSection>によって表されます。 各 section オブジェクトは、型<xref:System.Configuration.IConfigurationSectionHandler>のオブジェクトである構成セクションハンドラーによって所有および管理されます。  
   
- アプリケーション スコープの設定および既定のユーザー スコープ設定がという名前のファイルに格納されている`application.exe.config`、これは、実行可能ファイルと同じディレクトリに作成されます。 アプリケーションの構成設定とは、読み取り専用です。 という名前のファイルで特定のユーザー データが格納されている`user.config`ユーザーのホーム ディレクトリの下に格納します。 ローミング プロファイルが有効な場合、ユーザー構成ファイルの 2 つのバージョンが存在します。 このような場合は、ローミングのバージョンのエントリは、ローカル ユーザー構成ファイル内に重複するエントリに優先します。  
+ アプリケーションスコープ設定と既定のユーザースコープ設定は、という名前`application.exe.config`のファイルに格納されます。このファイルは、実行可能ファイルと同じディレクトリに作成されます。 アプリケーション構成設定は読み取り専用です。 特定のユーザーデータは、という名前`user.config`のファイルに格納され、ユーザーのホームディレクトリに格納されます。 移動プロファイルが有効になっている場合、ユーザー構成ファイルの2つのバージョンが存在する可能性があります。 このような場合、ローミングバージョンのエントリは、ローカルユーザー構成ファイルの重複するエントリより優先されます。  
   
- アプリケーション設定の詳細については、次を参照してください。[アプリケーション設定を Windows フォーム](~/docs/framework/winforms/advanced/application-settings-for-windows-forms.md)します。  
+ アプリケーション設定の詳細については、「 [Windows フォームのアプリケーション設定](~/docs/framework/winforms/advanced/application-settings-for-windows-forms.md)」を参照してください。  
   
  ]]></format>
     </remarks>
@@ -76,7 +76,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のコンス トラクターは、設定、<xref:System.Configuration.LocalFileSettingsProvider.ApplicationName%2A>プロパティを<xref:System.String.Empty>します。  
+ パラメーターなしのコンストラクターは<xref:System.Configuration.LocalFileSettingsProvider.ApplicationName%2A> 、プロパティ<xref:System.String.Empty>をに設定します。  
   
  ]]></format>
         </remarks>
@@ -120,7 +120,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Configuration.LocalFileSettingsProvider.ApplicationName%2A>と<xref:System.Configuration.Provider.ProviderBase.Name%2A>プロパティは、同様にさまざまなアプリケーションのプロパティの名前付きの設定を解消するために役立ちます。  
+ プロパティ<xref:System.Configuration.LocalFileSettingsProvider.ApplicationName%2A>と<xref:System.Configuration.Provider.ProviderBase.Name%2A>プロパティを使用すると、異なるアプリケーションの同じ名前の設定プロパティを明確に区別できます。  
   
  ]]></format>
         </remarks>
@@ -170,7 +170,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Configuration.LocalFileSettingsProvider.GetPreviousVersion%2A>と共にメソッドが使用される多くの場合、<xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>メソッドの新しいバージョンのアプリケーションのインストール中にアプリケーションの設定を移行する場合。 詳細については、<xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A> メソッドを参照してください。  
+ メソッドは、新しいバージョンのアプリケーションのインストール<xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>中にアプリケーション設定を移行するときに、メソッドと組み合わせて使用されることがよくあります。 <xref:System.Configuration.LocalFileSettingsProvider.GetPreviousVersion%2A> 詳細については、<xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A> メソッドを参照してください。  
   
  ]]></format>
         </remarks>
@@ -220,10 +220,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Configuration.LocalFileSettingsProvider.GetPropertyValues%2A>メソッドは、特別なアプリケーション設定の種類も管理<xref:System.Configuration.SpecialSetting.ConnectionString>します。 要素で区切られた構成ファイルの特別なセクションで接続文字列が格納されている`<connectionstrings>`します。  
+ この<xref:System.Configuration.LocalFileSettingsProvider.GetPropertyValues%2A>メソッドは、特殊なアプリケーション設定の<xref:System.Configuration.SpecialSetting.ConnectionString>種類も管理します。 接続文字列は、要素`<connectionstrings>`で区切られた構成ファイルの特殊なセクションに格納されます。  
   
 > [!CAUTION]
->  <xref:System.Configuration.LocalFileSettingsProvider> 任意の設定を永続化は、暗号化を使用しません。 したがって、プレーン テキスト パスワード、または構成ファイル内の情報を個別に暗号化などの追加の対策を講じることがなく、このプロバイダーを使用して他の機密情報を格納しないでください。 詳細については、次を参照してください。[暗号化構成を使用して保護された構成情報](https://msdn.microsoft.com/library/51cdfe5b-9d82-458c-94ff-c551c4f38ed1)します。  
+>  <xref:System.Configuration.LocalFileSettingsProvider>では、暗号化を使用して設定を保持しません。 そのため、構成ファイル内の情報を個別に暗号化するなど、追加の予防措置を行わずに、このプロバイダーを使用してプレーンテキストのパスワードやその他の機密情報を保存しないでください。 詳細については、「[保護された構成を使用した構成情報の暗号化](https://msdn.microsoft.com/library/51cdfe5b-9d82-458c-94ff-c551c4f38ed1)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -307,13 +307,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Configuration.LocalFileSettingsProvider.Reset%2A>メソッドは、保存された値の指定したアプリケーション設定グループを復元します。 アクション<xref:System.Configuration.LocalFileSettingsProvider.Reset%2A>アプリケーション設定プロパティのスコープによって異なります。  
+ メソッド<xref:System.Configuration.LocalFileSettingsProvider.Reset%2A>は、指定されたアプリケーション設定グループの格納されている値を復元します。 の<xref:System.Configuration.LocalFileSettingsProvider.Reset%2A>アクションは、アプリケーション設定プロパティのスコープによって異なります。  
   
--   アプリケーション スコープの設定は影響しません。  
+-   アプリケーションスコープの設定は影響を受けません。  
   
--   ユーザー スコープ設定は、アプリケーション構成ファイルの読み取り専用のエントリとして格納されている既定値にリセットされます`application.exe.config`します。 ローミング プロファイルを使用している場合、ローミング プロファイル内の任意のアプリケーション設定値は、ローカルのプロファイルで検出された重複部分より優先されます。  
+-   ユーザースコープ設定は、アプリケーション構成ファイル`application.exe.config`に読み取り専用のエントリとして格納されている既定値にリセットされます。 ローミングプロファイルを使用している場合は、移動プロファイルのアプリケーション設定値が、ローカルプロファイルで見つかった重複より優先されます。  
   
- ローミング プロファイルを使用する場合があること 2 つに注目してください。`user.config`ファイルのローカル設定のいずれか、およびローミング プロファイルのいずれか。  
+ ローミングプロファイルを使用する場合は、ローカル設定用と`user.config`ローミングプロファイル用の2つのファイルがあることに注意してください。  
   
  ]]></format>
         </remarks>
@@ -364,29 +364,30 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定のラッパー クラスから派生した<xref:System.Configuration.ApplicationSettingsBase>が含まれています、<xref:System.Configuration.ApplicationSettingsBase.Save%2A>メソッドで、その設定のプロパティのすべての値を保持するために呼び出されます。 このメソッドは、すべての設定を使用して列挙その設定のプロパティと呼び出しに関連付けられているプロバイダー、<xref:System.Configuration.SettingsProvider.SetPropertyValues%2A>メソッドごとに<xref:System.Configuration.SettingsProvider>実際のシリアル化操作を実行します。  
+ から<xref:System.Configuration.ApplicationSettingsBase>派生した設定ラッパークラスには、 <xref:System.Configuration.ApplicationSettingsBase.Save%2A>メソッドが含まれています。このメソッドは、すべての設定プロパティの値を保持するために呼び出されます。 このメソッドは、設定プロパティに関連付けられているすべての設定プロバイダー <xref:System.Configuration.SettingsProvider.SetPropertyValues%2A>を列挙し<xref:System.Configuration.SettingsProvider> 、各に対してメソッドを呼び出して、実際のシリアル化操作を実行します。  
   
- <xref:System.Configuration.LocalFileSettingsProvider.SetPropertyValues%2A> 適切な設定の対応するアプリケーションにユーザー スコープのアプリケーション設定プロパティごとに個別にシリアル化`user.config`構成ファイル。  
+ <xref:System.Configuration.LocalFileSettingsProvider.SetPropertyValues%2A>各ユーザースコープのアプリケーション設定プロパティを、適切な`user.config`構成ファイル内の対応するアプリケーション設定に個別にシリアル化します。  
   
- 既定で、<xref:System.Configuration.LocalFileSettingsProvider.SetPropertyValues%2A>メソッドは、次の論理シーケンスを使用して、設定プロパティの種類に応じて、シリアル化方式を決定します。  
+ 既定では、 <xref:System.Configuration.LocalFileSettingsProvider.SetPropertyValues%2A>メソッドは、設定プロパティの種類に応じて、次の論理シーケンスを使用してシリアル化スキームを決定します。  
   
-1.  型が関連付けられている<xref:System.ComponentModel.TypeConverter>で、<xref:System.ComponentModel.TypeConverter.ConvertToString%2A>メソッドの実装、この変換が使用されます。  
+1.  型に<xref:System.ComponentModel.TypeConverter.ConvertToString%2A>メソッド実装に関連<xref:System.ComponentModel.TypeConverter>付けられているがある場合は、この変換が使用されます。  
   
 2.  XML シリアル化が使用されます。  
   
- ただし、推奨されるシリアル化メカニズムを指定を使用して、<xref:System.Configuration.SettingsSerializeAsAttribute>します。 <xref:System.Configuration.LocalFileSettingsProvider> バイナリのシリアル化をサポートしていません[!INCLUDE[vsprvslong](~/includes/vsprvslong-md.md)]します。  
+ ただし、を使用<xref:System.Configuration.SettingsSerializeAsAttribute>して、適切なシリアル化メカニズムを指定できます。 <xref:System.Configuration.LocalFileSettingsProvider>では、での[!INCLUDE[vsprvslong](~/includes/vsprvslong-md.md)]バイナリシリアル化はサポートされていません。  
   
- ユーザー スコープ設定のプロパティは戻るが既定値に明示的に設定し、ローカル ファイルの設定プロバイダーは、ユーザー構成ファイルから関連する設定のエントリを削除します。 場合、 このプロパティの [次へ] の読み取りアクセス権は、既定値を使用して単純にします。  
+ ユーザースコープ設定プロパティが明示的に既定値に設定されている場合は、ローカルファイル設定プロバイダーによって、関連付けられている設定のエントリがユーザー構成ファイルから削除されます。 このプロパティの次の読み取りアクセスでは、単に既定値を使用します。  
   
 > [!CAUTION]
->  <xref:System.Configuration.LocalFileSettingsProvider> 任意の設定を永続化は、暗号化を使用しません。 したがって、プレーン テキスト パスワード、または構成ファイル内の情報を個別に暗号化などの追加の対策を講じることがなく、このプロバイダーを使用して他の機密情報を格納しないでください。 詳細については、次を参照してください。[暗号化構成を使用して保護された構成情報](https://msdn.microsoft.com/library/51cdfe5b-9d82-458c-94ff-c551c4f38ed1)します。  
+>  <xref:System.Configuration.LocalFileSettingsProvider>では、暗号化を使用して設定を保持しません。 そのため、構成ファイル内の情報を個別に暗号化するなど、追加の予防措置を行わずに、このプロバイダーを使用してプレーンテキストのパスワードやその他の機密情報を保存しないでください。 詳細については、「[保護された構成を使用した構成情報の暗号化](https://msdn.microsoft.com/library/51cdfe5b-9d82-458c-94ff-c551c4f38ed1)」を参照してください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.Configuration.ConfigurationErrorsException">ユーザー スコープの設定が見つかりましたが、現在の構成はアプリケーション スコープの設定しかサポートしていません。  
   
-または 
-構成ファイルに設定を保存する際に一般的なエラーが発生しました。</exception>
+ または  
+  
+ 構成ファイルに設定を保存する際に一般的なエラーが発生しました。</exception>
         <altmember cref="M:System.Configuration.LocalFileSettingsProvider.GetPropertyValues(System.Configuration.SettingsContext,System.Configuration.SettingsPropertyCollection)" />
         <altmember cref="M:System.Configuration.ApplicationSettingsBase.Save" />
         <altmember cref="T:System.ComponentModel.TypeConverter" />
@@ -435,24 +436,25 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Configuration.LocalFileSettingsProvider> 別の操作で、ローカルおよびローミングの設定を移行します。  
+ <xref:System.Configuration.LocalFileSettingsProvider>ローカルとローミングの設定を別々の操作で移行します。  
   
- <xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>の設定をすべてのアプリケーションがある、メソッドは非表示、<xref:System.Configuration.NoSettingsVersionUpgradeAttribute>から派生した全体の設定ラッパー クラス、またはそれに適用<xref:System.Configuration.ApplicationSettingsBase>します。  
+ メソッドは、 <xref:System.Configuration.NoSettingsVersionUpgradeAttribute>が適用されているすべてのアプリケーション設定、またはから<xref:System.Configuration.ApplicationSettingsBase>派生した設定ラッパークラス全体に対して抑制されます。 <xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>  
   
- このメソッドはこの方法は、アップグレード中は、アプリケーションの種類によって異なります。  
+ このメソッドの呼び出し方法は、アップグレードするアプリケーションの種類によって異なります。  
   
--   各バージョンを[!INCLUDE[ndptecclick](~/includes/ndptecclick-md.md)]アプリケーションが独自の独立したインストール ディレクトリに格納されています。 新しいバージョンの後、[!INCLUDE[ndptecclick](~/includes/ndptecclick-md.md)]アプリケーションがインストールされているし、新しいバージョンが最初に実行時に内部ロジックが自動的に呼び出さ<xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>新しいバージョンに共通のすべてのアプリケーション設定を移行します。 詳細については、「[ClickOnce とアプリケーション設定](https://msdn.microsoft.com/library/891caba6-faef-4a3c-8f71-60e6fadb60eb)」を参照してください。  
+-   [!INCLUDE[ndptecclick](~/includes/ndptecclick-md.md)]アプリケーションの各バージョンは、独自の分離インストールディレクトリに格納されます。 新しいバージョンの<xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A> アプリケーションがインストールされ、新しいバージョンが最初に実行されると、内部ロジックは自動的にを呼び出して、すべての共通アプリケーション設定を新しいバージョンに[!INCLUDE[ndptecclick](~/includes/ndptecclick-md.md)]移行します。 詳細については、「[ClickOnce とアプリケーション設定](https://msdn.microsoft.com/library/891caba6-faef-4a3c-8f71-60e6fadb60eb)」を参照してください。  
   
--   標準の Windows フォームおよびコンソール アプリケーションを呼び出す必要があります手動で<xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>、このようなアプリケーションの最初の実行時を決定する自動の一般的な方法がないためです。 インストール プログラムまたは永続化されたプロパティを使用して、アプリケーション自体からを使用してから 2 つの一般的な方法が多くの場合、ような名前`IsFirstRun`します。  
+-   標準の Windows フォームおよびコンソールアプリケーションは、 <xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>このようなアプリケーションを最初に実行するタイミングを決定するための一般的な自動方法がないため、手動で呼び出す必要があります。 これを行う2つの一般的な方法は、インストールプログラムから、または永続化されたプロパティを使用してアプリケーション自体`IsFirstRun`からを使用する方法です。通常は、のように名前を付けます。  
   
- アプリケーション設定を移行する、新しいバージョンでは、その必要があること、古いバージョンのアプリケーション設定の読み込みとすることに注意してください。 そのため、そのアプリケーションの新しいと以前のバージョンと互換性のあるラッパー クラスを含める必要があります。  
+ 新しいバージョンでは、アプリケーション設定を移行するために、古いバージョンのアプリケーション設定も読み込んで読み取ることができる必要があることに注意してください。 そのため、アプリケーションの新しいバージョンと以前のバージョンの両方と互換性のあるラッパークラスが含まれている必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.Configuration.ConfigurationErrorsException">ユーザー スコープの設定が見つかりましたが、現在の構成はアプリケーション スコープの設定しかサポートしていません。  
   
-または 
-構成ファイルの以前のバージョンにアクセスできませんでした。</exception>
+ - または -  
+  
+ 構成ファイルの以前のバージョンにアクセスできませんでした。</exception>
         <altmember cref="M:System.Configuration.LocalFileSettingsProvider.GetPreviousVersion(System.Configuration.SettingsContext,System.Configuration.SettingsProperty)" />
         <altmember cref="M:System.Configuration.LocalFileSettingsProvider.Reset(System.Configuration.SettingsContext)" />
         <altmember cref="T:System.Configuration.IApplicationSettingsProvider" />

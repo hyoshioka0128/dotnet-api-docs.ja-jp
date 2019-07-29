@@ -28,14 +28,14 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サポートが必要な UI オートメーション プロバイダーの実装、<xref:System.Windows.Automation.TextPattern>コントロール パターン。  
+ コントロールパターンを<xref:System.Windows.Automation.TextPattern>サポートする必要がある UI オートメーションプロバイダーに実装されます。  
   
  ]]></format>
     </remarks>
     <altmember cref="T:System.Windows.Automation.TextPattern" />
     <related type="Article" href="~/docs/framework/ui-automation/ui-automation-control-patterns-overview.md">UI オートメーション コントロール パターンの概要</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーション プロバイダーの実装</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーション プロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーションプロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーションプロバイダーの実装</related>
     <related type="Article" href="https://msdn.microsoft.com/library/0d635c35-ffa8-4dc8-bbc9-12fcd5445776">UI オートメーション プロバイダーでのコントロール パターンのサポート</related>
     <related type="Article" href="https://msdn.microsoft.com/library/41787927-df1f-4f4a-aba3-641662854fc4">UI オートメーション TextPattern の概要</related>
   </Docs>
@@ -63,7 +63,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ヘッダー、脚注、または注釈などのテキストを補助は含まれません可能性があります。  
+ ヘッダー、脚注、注釈などの補助テキストを含めることはできません。  
   
  ]]></format>
         </remarks>
@@ -94,11 +94,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- テキスト選択をサポートする UI オートメーション プロバイダーでは、プロバイダーこのメソッドの実装し、を返すことも、<xref:System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection%2A>値。  
+ テキスト選択をサポートする UI オートメーションプロバイダーの場合、プロバイダーはこのメソッドを実装し、 <xref:System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection%2A>値も返す必要があります。  
   
- テキストが選択されていない場合<xref:System.Windows.Automation.Provider.ITextProvider.GetSelection%2A>システム カーソル (テキスト挿入ポイント) の位置にある低次元テキスト範囲 (空の範囲) が返されます。  
+ テキストが選択されて<xref:System.Windows.Automation.Provider.ITextProvider.GetSelection%2A>いない場合は、システムカーソル (テキスト挿入ポイント) の位置にある低次元テキスト範囲 (空の範囲) を返します。  
   
- システムのカーソル (テキスト挿入ポイント) が存在しない場合<xref:System.Windows.Automation.Provider.ITextProvider.GetSelection%2A>null 参照を返す可能性があります (`Nothing` Visual Basic で)。  
+ システムカーソル (テキスト挿入ポイント) が存在しない場合、 <xref:System.Windows.Automation.Provider.ITextProvider.GetSelection%2A>は null 参照 (`Nothing` Visual Basic) を返すことがあります。  
   
  ]]></format>
         </remarks>
@@ -130,11 +130,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- UI オートメーション プロバイダーでは、こと、戻り値が最大では、コンテナー内で表示されるテキスト範囲を確認してください。  
+ UI オートメーションプロバイダーは、コンテナー内に表示されるテキスト範囲の最大値を返すようにする必要があります。  
   
- 不整合のあるテキストの範囲は、テキスト コンテナーのコンテンツが重なったウィンドウまたはその他のオブジェクトによって隠されている場合、または複数列のレイアウトとテキストのコンテナーが 1 つまたは複数の列がビューから部分的にスクロールに発生する可能性があります。  
+ 結合されていないテキスト範囲は、重なっているウィンドウまたは他のオブジェクトによってテキストコンテナーのコンテンツが隠されている場合、または複数列のレイアウトを持つテキストコンテナーの一部の列が一部スクロールされて表示されない場合に発生することがあります。  
   
- テキストが表示されていない場合 (空) の低次元テキスト範囲が返されます。 この空の範囲は、テキスト コンテナーが空の場合、またはすべてのテキストのスクロールされて見えない場合に返されます。  
+ テキストが表示されない場合は、低次元テキスト範囲 (空) が返されます。 テキストコンテナーが空である場合、またはすべてのテキストがスクロールして表示されない場合は、この空の範囲を返すことができます。  
   
  ]]></format>
         </remarks>
@@ -168,11 +168,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- UI オートメーション プロバイダーでは、テキスト コンテナーの子に渡された要素を確認する必要があります。  
+ UI オートメーションプロバイダーは、渡された要素がテキストコンテナーの子であることを確認する必要があります。  
   
- 子要素が存在する範囲内にテキストがない場合は、低次元 (空) の範囲が返されます。  
+ 子要素が存在する範囲にテキストがない場合は、低次元 (空) 範囲が返されます。  
   
- `childElement`パラメーターは、の子、<xref:System.Windows.Automation.AutomationElement>に関連付けられている、<xref:System.Windows.Automation.TextPattern>または子の配列から、<xref:System.Windows.Automation.Text.TextPatternRange>します。  
+ パラメーターは、 <xref:System.Windows.Automation.AutomationElement> またはの子<xref:System.Windows.Automation.TextPattern>の配列に関連付けられているの子です。 <xref:System.Windows.Automation.Text.TextPatternRange> `childElement`  
   
  ]]></format>
         </remarks>
@@ -207,13 +207,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 画面座標が、イメージ、ハイパーリンク、または他の埋め込みオブジェクトの座標を子オブジェクトを囲むテキスト範囲が返されます。  
+ 子オブジェクトを囲むテキスト範囲は、画面座標がイメージ、ハイパーリンク、またはその他の埋め込みオブジェクトの座標内にある場合に返されます。  
   
- 非表示のテキストが無視されないため、<xref:System.Windows.Automation.Provider.ITextProvider.RangeFromPoint%2A>から表示されるテキストを指定したポイントに最も近い低次元テキスト範囲が返されます。  
+ 非表示のテキストは、指定<xref:System.Windows.Automation.Provider.ITextProvider.RangeFromPoint%2A>されたポイントに最も近い表示テキストからの低次元テキスト範囲によって無視されないため、が返されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">指定したポイントは外側の場合、[!INCLUDE[TLA2#tla_uiautomation](~/includes/tla2sharptla-uiautomation-md.md)]テキスト パターンに関連付けられている要素。</exception>
+        <exception cref="T:System.ArgumentException">指定した位置が、テキスト パターンに関連付けられている [!INCLUDE[TLA2#tla_uiautomation](~/includes/tla2sharptla-uiautomation-md.md)]要素の外側にある場合。</exception>
         <altmember cref="T:System.Windows.Automation.Provider.ITextRangeProvider" />
       </Docs>
     </Member>

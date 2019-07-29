@@ -1,5 +1,5 @@
 <Type Name="MachineKeyValidation" FullName="System.Web.Configuration.MachineKeyValidation">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="559131291bad5055eec7c7ee35c2613afd2e7c09" /><Meta Name="ms.sourcegitcommit" Value="9170ef1c277dbe29b425d453dc133624b156d393" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/01/2019" /><Meta Name="ms.locfileid" Value="67488155" /></Metadata><TypeSignature Language="C#" Value="public enum MachineKeyValidation" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="8844244d8e6eb836809be920ddb9ccaffc14d1a4" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68438817" /></Metadata><TypeSignature Language="C#" Value="public enum MachineKeyValidation" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MachineKeyValidation extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Web.Configuration.MachineKeyValidation" />
   <TypeSignature Language="VB.NET" Value="Public Enum MachineKeyValidation" />
@@ -19,12 +19,12 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ASP.NET でフォーム認証またはビューの状態に使用されるデータが変更されているかどうかを検出するために、ハッシュ ベース メッセージ認証コード (HMAC) を使用します。 ビュー状態のコンテンツが作成され、HMAC の後続の要求がオン、HMAC が生成されます。 HMAC は、ASP.NET は、サーバーとクライアント間で送信されるデータが変更されたことも暗号化されている場合を除き、インターネットを介してやり取りする際、データのすべてのユーザーが読み取り可能かどうかを判断に役立ちます。 ビュー ステートは既定では、検証しますが、暗号化されません。 詳細については、次のトピックを参照してください。 <xref:System.Web.UI.Page.ViewStateEncryptionMode%2A> および <xref:System.Web.UI.Page.RegisterRequiresViewStateEncryption%2A>  
+ ASP.NET は、ハッシュベースのメッセージ認証コード (HMAC) を使用して、フォーム認証またはビューステートに使用されるデータが改ざんされたかどうかを検出します。 HMAC は、ビューステートコンテンツの作成時に生成され、その後の要求に対して HMAC がチェックされます。 HMAC は、サーバーとクライアントの間で送信されるデータが変更されているかどうかを ASP.NET に判断するのに役立ちますが、暗号化されていない限り、インターネットを経由して送信されるすべてのユーザーがデータを読み取ることができます。 既定では、ビューステートは検証されますが、暗号化されません。 詳細については、次のトピックを参照してください。 <xref:System.Web.UI.Page.ViewStateEncryptionMode%2A> および <xref:System.Web.UI.Page.RegisterRequiresViewStateEncryption%2A>  
   
- `MachineKeyValidation`列挙型では、ASP.NET を使用して、HMAC を作成するアルゴリズムを指定することができます。 既定値は `HMACSHA256` です。 ASP.NET の値を使用して、 <xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A> HMAC を生成する、選択したアルゴリズムを持つプロパティです。  
+ `MachineKeyValidation`列挙体を使用すると、ASP.NET が HMAC の作成に使用するアルゴリズムを指定できます。 既定値は `HMACSHA256` です。 ASP.NET は、選択した<xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A>アルゴリズムでプロパティの値を使用して HMAC を生成します。  
   
 ## Examples  
- 次のコード例を使用する方法を示しています、<xref:System.Web.Configuration.MachineKeyValidation>列挙体。 例では、`configSection`のインスタンスである<xref:System.Web.Configuration.MachineKeySection>します。このコード例が示されている例の一部、<xref:System.Web.Configuration.MachineKeySection>クラス。  
+ 列挙型の<xref:System.Web.Configuration.MachineKeyValidation>使用方法を次のコード例に示します。 この例では`configSection` 、はの<xref:System.Web.Configuration.MachineKeySection>インスタンスです。このコード例は、 <xref:System.Web.Configuration.MachineKeySection>クラスに対して提供される大規模な例の一部です。  
   
  [!code-csharp[System.Web.Configuration.MachineKeySection#5](~/samples/snippets/csharp/VS_Snippets_WebNet/System.Web.Configuration.MachineKeySection/CS/machinekeysection.cs#5)]
  [!code-vb[System.Web.Configuration.MachineKeySection#5](~/samples/snippets/visualbasic/VS_Snippets_WebNet/System.Web.Configuration.MachineKeySection/VB/machinekeysection.vb#5)]  
@@ -57,7 +57,8 @@
       </ReturnValue>
       <MemberValue>3</MemberValue>
       <Docs>
-        <summary><para>ASP.NET で、<see langword="AES" /> (Rijndael) 暗号化アルゴリズムを使用するように指定します。 Web アプリケーションでビューの状態を暗号化したい場合は、このオプションを選択します。</para><para>このオプションを選択すると、<see cref="P:System.Web.Configuration.MachineKeySection.DecryptionKey" /> プロパティは暗号化と複合化に使用され、<see langword="HMACSHA1" /> ハッシュ アルゴリズムは検証の <see cref="P:System.Web.Configuration.MachineKeySection.ValidationKey" /> プロパティに使用されます。</para></summary>
+        <summary><para>ASP.NET で、<see langword="AES" /> (Rijndael) 暗号化アルゴリズムを使用するように指定します。 Web アプリケーションでビューの状態を暗号化したい場合は、このオプションを選択します。</para>
+          <para>このオプションを選択すると、<see cref="P:System.Web.Configuration.MachineKeySection.DecryptionKey" /> プロパティは暗号化と複合化に使用され、<see langword="HMACSHA1" /> ハッシュ アルゴリズムは検証の <see cref="P:System.Web.Configuration.MachineKeySection.ValidationKey" /> プロパティに使用されます。</para></summary>
         <altmember cref="T:System.Web.Configuration.MachineKeyValidation" />
       </Docs>
     </Member>
@@ -78,7 +79,8 @@
       </ReturnValue>
       <MemberValue>7</MemberValue>
       <Docs>
-        <summary><para>ASP.NET で、カスタム ハッシュ アルゴリズムを使用するように指定します。 カスタムのハッシュ アルゴリズムは、<see cref="T:System.Security.Cryptography.KeyedHashAlgorithm" /> から派生する任意のクラスに実装できます。</para><para>カスタム アルゴリズムは、通常 <see href="https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100)">machineKey</see> 要素の <c>validation</c> 属性に、<c>alg:*algorithm_name*</c> の形式で宣言によって指定します。 コードでカスタム アルゴリズムを指定する方法については、<see cref="P:System.Web.Configuration.MachineKeySection.ValidationAlgorithm" /> プロパティを参照してください。</para></summary>
+        <summary><para>ASP.NET で、カスタム ハッシュ アルゴリズムを使用するように指定します。 カスタムのハッシュ アルゴリズムは、<see cref="T:System.Security.Cryptography.KeyedHashAlgorithm" /> から派生する任意のクラスに実装できます。</para>
+          <para>カスタム アルゴリズムは、通常 <see href="https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100)">machineKey</see> 要素の <c>validation</c> 属性に、<c>alg:*algorithm_name*</c> の形式で宣言によって指定します。 コードでカスタム アルゴリズムを指定する方法については、<see cref="P:System.Web.Configuration.MachineKeySection.ValidationAlgorithm" /> プロパティを参照してください。</para></summary>
         <altmember cref="T:System.Web.Configuration.MachineKeyValidation" />
       </Docs>
     </Member>

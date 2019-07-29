@@ -1,5 +1,5 @@
 <Type Name="CustomBinding" FullName="System.ServiceModel.Channels.CustomBinding">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="af0979c04e9cc6488456b0a6ece43f78d9c9186a" /><Meta Name="ms.sourcegitcommit" Value="7461f9e28c2f184bd1596e6f07c25a3f34984516" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/28/2019" /><Meta Name="ms.locfileid" Value="58555022" /></Metadata><TypeSignature Language="C#" Value="public class CustomBinding : System.ServiceModel.Channels.Binding" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="b400b4e35af1af28d0c7b380ad181758068a4215" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68399210" /></Metadata><TypeSignature Language="C#" Value="public class CustomBinding : System.ServiceModel.Channels.Binding" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CustomBinding extends System.ServiceModel.Channels.Binding" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.Channels.CustomBinding" />
   <TypeSignature Language="VB.NET" Value="Public Class CustomBinding&#xA;Inherits Binding" />
@@ -43,7 +43,7 @@
   
 -   その次にあるのは、WS-ReliableMessaging 仕様で定義されているセッションおよび順序指定のメカニズムを提供するオプションの <xref:System.ServiceModel.Channels.ReliableSessionBindingElement> です。 このセッションの概念は、SOAP およびトランスポート中継局を通過できます。  
   
--   その次にあるのは、承認、認証、保護、機密性などのセキュリティ機能を提供するオプションのセキュリティ バインド要素です。 次のセキュリティ バインド要素は、Windows Communication Foundation (WCF) によって用意されています。  
+-   その次にあるのは、承認、認証、保護、機密性などのセキュリティ機能を提供するオプションのセキュリティ バインド要素です。 Windows Communication Foundation (WCF) によって提供されるセキュリティバインド要素は次のとおりです。  
   
     -   <xref:System.ServiceModel.Channels.SecurityBindingElement>  
   
@@ -73,7 +73,7 @@
   
     -   <xref:System.ServiceModel.Channels.MtomMessageEncodingBindingElement>  
   
--   最下位には、必須のトランスポート要素があります。 独自のトランスポートを使用して、または Windows Communication Foundation (WCF) によって提供される要素のバインディングのトランスポートのいずれかを使用できます。  
+-   最下位には、必須のトランスポート要素があります。 独自のトランスポートを使用することも、Windows Communication Foundation (WCF) によって提供されるトランスポートバインド要素のいずれかを使用することもできます。  
   
     -   <xref:System.ServiceModel.Channels.TcpTransportBindingElement>  
   
@@ -103,10 +103,10 @@
   
  さらに、独自のバインド要素を定義し、それを定義済みの層のいずれかの間に挿入できます。  
   
- カスタム システム指定のバインディングを変更するバインドを使用する方法の詳細については、次を参照してください。[方法。システム指定のバインディングをカスタマイズ](~/docs/framework/wcf/extending/how-to-customize-a-system-provided-binding.md)します。  
+ カスタムバインディングを使用してシステム指定のバインディングを変更する方法の詳細について[は、「」を参照してください。システム指定のバインディング](~/docs/framework/wcf/extending/how-to-customize-a-system-provided-binding.md)をカスタマイズします。  
   
 > [!NOTE]
->  With .NET Framework 4.0 またはで作成された WCF クライアント アプリケーションから後では、構築、WCF サービスを呼び出すときに[!INCLUDE[netfx35_short](~/includes/netfx35-short-md.md)]svcutil.exe によって生成された、または Visual Studio からサービス参照の追加、構成ファイルに有効性を格納する前に、またはバインディングの構成の属性。 この属性は、[!INCLUDE[netfx35_short](~/includes/netfx35-short-md.md)] ランタイムによって認識されないため、アプリケーションでは <xref:System.Configuration.ConfigurationErrorsException> がスローされ、"認識されない属性 validity" のメッセージが表示されます。 この問題を回避するには、バインド構成から validity 属性を削除します。  
+>  [!INCLUDE[netfx35_short](~/includes/netfx35-short-md.md)]またはそれ以前のバージョンでビルドされた wcf クライアントアプリケーションから .NET Framework 4.0 以降でビルドされた wcf サービスを呼び出す場合、svcutil.exe によって生成される構成ファイルまたは Visual Studio からサービス参照を追加すると、有効になります。バインディング構成の属性。 この属性は、[!INCLUDE[netfx35_short](~/includes/netfx35-short-md.md)] ランタイムによって認識されないため、アプリケーションでは <xref:System.Configuration.ConfigurationErrorsException> がスローされ、"認識されない属性 validity" のメッセージが表示されます。 この問題を回避するには、バインド構成から validity 属性を削除します。  
   
    
   
@@ -159,7 +159,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 既定のコンストラクターを使用する例を次に示します。  
+ 次の例は、パラメーターなしのコンストラクターを使用する方法を示しています。  
   
   
   
@@ -375,7 +375,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="bindingElementsInTopDownChannelStackOrder" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="bindingElementsInTopDownChannelStackOrder" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateBindingElements">

@@ -33,18 +33,18 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このクラスを使用すると、シリアル ポートのファイル リソースを制御できます。 このクラスは、同期およびイベント ドリブン I/O、暗証番号 (pin) と中断の状態へのアクセス、およびシリアル ドライバーのプロパティへのアクセスを提供します。 このクラスの機能をラップして、内部でさらに、<xref:System.IO.Stream>オブジェクトを使用してアクセスできます、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティをラップするストリームを使用してクラスに渡されるとします。  
+ このクラスを使用して、シリアルポートファイルリソースを制御します。 このクラスは、同期およびイベントドリブン i/o、ピン状態とブレーク状態へのアクセス、およびシリアルドライバーのプロパティへのアクセスを提供します。 さらに、このクラスの機能は、 <xref:System.IO.Stream> <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティを通じてアクセスできる内部オブジェクトにラップし、ストリームをラップまたは使用するクラスに渡すことができます。  
   
- <xref:System.IO.Ports.SerialPort>クラスは、次のエンコードをサポートしています: <xref:System.Text.ASCIIEncoding>、 <xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、 <xref:System.Text.UTF32Encoding>、エンコーディングのコード ページが 50000 未満か、コード ページは 54936 mscorlib.dll で定義されているとします。  代替のエンコーディングを使用できますが、使用する必要があります、<xref:System.IO.Ports.SerialPort.ReadByte%2A>または<xref:System.IO.Ports.SerialPort.Write%2A>メソッドと、自分でエンコードを実行します。  
+ クラス<xref:System.IO.Ports.SerialPort> <xref:System.Text.ASCIIEncoding>は、、、 <xref:System.Text.UnicodeEncoding>、 <xref:System.Text.UTF8Encoding> 、<xref:System.Text.UTF32Encoding>および mscorlib.dll で定義されているエンコード (コードページが5万未満、またはコードページが 54936) をサポートしています。  代替エンコーディングを使用できますが、メソッド<xref:System.IO.Ports.SerialPort.ReadByte%2A>または<xref:System.IO.Ports.SerialPort.Write%2A>メソッドを使用して、自分でエンコードを実行する必要があります。  
   
- 使用する、<xref:System.IO.Ports.SerialPort.GetPortNames%2A>現在のコンピューターの有効なポートを取得します。  
+ 現在のコンピューター <xref:System.IO.Ports.SerialPort.GetPortNames%2A>の有効なポートを取得するには、メソッドを使用します。  
   
- 場合、<xref:System.IO.Ports.SerialPort>オブジェクトが読み取り操作中にブロックされて、スレッドを中止できません。 基本を閉じるか代わりに、ストリーミングや、破棄、<xref:System.IO.Ports.SerialPort>オブジェクト。  
+ 読み取り操作<xref:System.IO.Ports.SerialPort>中にオブジェクトがブロックされた場合は、スレッドを中止しないでください。 代わりに、ベースストリームを閉じるか、 <xref:System.IO.Ports.SerialPort>オブジェクトの破棄を行います。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 両方のコンピューターには、この例の完全な機能を実現するために、プログラムを実行する必要があります。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 この例のすべての機能を実現するには、両方のコンピューターがプログラムを実行している必要があります。  
   
  [!code-cpp[System.IO.Ports.SerialPort#10](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#10)]
  [!code-csharp[System.IO.Ports.SerialPort#10](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#10)]
@@ -52,7 +52,7 @@
   
  ]]></format>
     </remarks>
-    <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+    <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すことができる。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -88,12 +88,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターはいずれも指定されている既定のプロパティ値を使用します。 たとえば、 <xref:System.IO.Ports.SerialPort.DataBits%2A> 8、プロパティの既定値、<xref:System.IO.Ports.SerialPort.Parity%2A>プロパティの既定値、`None`列挙の値、<xref:System.IO.Ports.SerialPort.StopBits%2A>プロパティの既定値 1、および COM1 の既定のポートの名前。  
+ このコンストラクターは、指定されていない場合、既定のプロパティ値を使用します。 たとえば、プロパティの<xref:System.IO.Ports.SerialPort.DataBits%2A>既定値は 8 <xref:System.IO.Ports.SerialPort.Parity%2A> 、 `None`既定値は列挙値<xref:System.IO.Ports.SerialPort.StopBits%2A> 、プロパティの既定値は1、既定のポート名は COM1 です。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -131,11 +131,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターはいずれも指定されている既定のプロパティ値を使用します。 たとえば、 <xref:System.IO.Ports.SerialPort.DataBits%2A> 8、プロパティの既定値、<xref:System.IO.Ports.SerialPort.Parity%2A>プロパティの既定値、`None`列挙の値、<xref:System.IO.Ports.SerialPort.StopBits%2A>プロパティの既定値 1、および COM1 の既定のポートの名前。  
+ このコンストラクターは、指定されていない場合、既定のプロパティ値を使用します。 たとえば、プロパティの<xref:System.IO.Ports.SerialPort.DataBits%2A>既定値は 8 <xref:System.IO.Ports.SerialPort.Parity%2A> 、 `None`既定値は列挙値<xref:System.IO.Ports.SerialPort.StopBits%2A> 、プロパティの既定値は1、既定のポート名は COM1 です。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、開きます。</exception>
+        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、ポートを開くことができませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -171,11 +171,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを使用して、新しいインスタンスを作成する、<xref:System.IO.Ports.SerialPort>ポート名を指定するクラスします。  
+ ポート名を指定する場合は、このコンストラクター <xref:System.IO.Ports.SerialPort>を使用してクラスの新しいインスタンスを作成します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、開きます。</exception>
+        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、ポートを開くことができませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -213,11 +213,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを使用して、新しいインスタンスを作成する、<xref:System.IO.Ports.SerialPort>ポート名とボー レートを指定するクラスします。  
+ ポート名とボーレートを指定する場合は<xref:System.IO.Ports.SerialPort> 、このコンストラクターを使用してクラスの新しいインスタンスを作成します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、開きます。</exception>
+        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、ポートを開くことができませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -256,11 +256,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを使用して、新しいインスタンスを作成する、<xref:System.IO.Ports.SerialPort>クラス、ポート名、ボー レート、パリティ ビットを指定する場合。  
+ ポート名、ボーレート、およびパリティビットを<xref:System.IO.Ports.SerialPort>指定する場合は、このコンストラクターを使用してクラスの新しいインスタンスを作成します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、開きます。</exception>
+        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、ポートを開くことができませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -301,11 +301,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを使用して、新しいインスタンスを作成する、<xref:System.IO.Ports.SerialPort>ポート名、ボー レート、パリティ ビット、およびデータ ビットを指定するクラスします。  
+ ポート名、ボーレート、パリティビット、および<xref:System.IO.Ports.SerialPort>データビットを指定する場合は、このコンストラクターを使用してクラスの新しいインスタンスを作成します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、開きます。</exception>
+        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、ポートを開くことができませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -335,7 +335,7 @@
       <Docs>
         <param name="portName">使用するポート (COM1 など)。</param>
         <param name="baudRate">ボー レート。</param>
-        <param name="parity"><see cref="P:System.IO.Ports.SerialPort.Parity" /> 値のいずれか 1 つ。</param>
+        <param name="parity"><see cref="P:System.IO.Ports.SerialPort.Parity" /> 値のいずれか。</param>
         <param name="dataBits">データ ビット値。</param>
         <param name="stopBits"><see cref="P:System.IO.Ports.SerialPort.StopBits" /> 値のいずれか 1 つ。</param>
         <summary>指定したポート名、ボー レート、パリティ ビット、データ ビット、およびストップ ビットを使用して、<see cref="T:System.IO.Ports.SerialPort" /> クラスの新しいインスタンスを初期化します。</summary>
@@ -343,11 +343,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを使用して、新しいインスタンスを作成する、<xref:System.IO.Ports.SerialPort>クラスの指定したポート名、ボー レート、パリティ ビット、データ ビット、およびストップ ビットしたいとき。  
+ ポート名、ボーレート、パリティビット、データ<xref:System.IO.Ports.SerialPort>ビット、およびストップビットを指定する場合は、このコンストラクターを使用して、クラスの新しいインスタンスを作成します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、開きます。</exception>
+        <exception cref="T:System.IO.IOException">指定したポートが見つからないか、ポートを開くことができませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="BaseStream">
@@ -386,19 +386,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 明示的な非同期 I/O 操作または渡すには、このプロパティを使用して、<xref:System.IO.Ports.SerialPort>オブジェクトを<xref:System.IO.Stream>などのラッパー クラス<xref:System.IO.StreamWriter>します。  
+ このプロパティは、明示的な非同期 i/o 操作または<xref:System.IO.Ports.SerialPort>オブジェクトをなどの<xref:System.IO.Stream>ラッパークラス<xref:System.IO.StreamWriter>に渡すために使用します。  
   
- 開いている任意のシリアル ポートの<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティは、抽象型から派生したオブジェクトを返します<xref:System.IO.Stream>クラス、および実装は、読み取りおよび書き込みメソッドのプロトタイプの継承を使用して、<xref:System.IO.Stream>クラス: <xref:System.IO.Stream.BeginRead%2A>、 <xref:System.IO.Stream.BeginWrite%2A>、 <xref:System.IO.Stream.Read%2A>、 <xref:System.IO.Stream.ReadByte%2A>、 <xref:System.IO.Stream.Write%2A>、および<xref:System.IO.Stream.WriteByte%2A>します。 ラップされたシリアル リソースを渡すときに、これらのメソッドが役に立ちます、<xref:System.IO.Stream>ラッパー クラス。  
+ 開いているシリアルポート<xref:System.IO.Ports.SerialPort.BaseStream%2A>のプロパティは、抽象<xref:System.IO.Stream>クラスから派生したオブジェクトを返し、 <xref:System.IO.Stream>クラス<xref:System.IO.Stream.BeginWrite%2A>から継承されたプロトタイプを使用して、読み取り<xref:System.IO.Stream.Read%2A>および書き込みメソッドを実装します。 <xref:System.IO.Stream.BeginRead%2A>、 <xref:System.IO.Stream.ReadByte%2A>、、および。 <xref:System.IO.Stream.Write%2A> <xref:System.IO.Stream.WriteByte%2A> これらのメソッドは、ラップされたシリアルリソースを<xref:System.IO.Stream>ラッパークラスに渡すときに便利です。  
   
- ラップされたファイルのハンドルにアクセスできないのため、<xref:System.IO.Stream.Length%2A>と<xref:System.IO.Stream.Position%2A>プロパティはサポートされていません、<xref:System.IO.Stream.Seek%2A>と<xref:System.IO.Stream.SetLength%2A>メソッドはサポートされていません。  
+ ラップされたファイル<xref:System.IO.Stream.Length%2A>ハンドルの可能性のため、プロパティと<xref:System.IO.Stream.Position%2A>プロパティは<xref:System.IO.Stream.SetLength%2A>サポート<xref:System.IO.Stream.Seek%2A>されていません。およびメソッドはサポートされていません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
-        <exception cref="T:System.NotSupportedException">ストリームが .NET Compact Framework アプリケーションで、次のメソッドのいずれかが呼び出されました。 
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
+        <exception cref="T:System.NotSupportedException">ストリームが .NET Compact Framework アプリケーションにあるときに、次のいずれかのメソッドが呼び出されました。 
  <see cref="M:System.IO.Stream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)" /><see cref="M:System.IO.Stream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)" /><see cref="M:System.IO.Stream.EndRead(System.IAsyncResult)" /><see cref="M:System.IO.Stream.EndWrite(System.IAsyncResult)" />  
   
-.NET Compact Framework は、基本ストリームと非同期モデルをサポートしていません。</exception>
+.NET Compact Framework では、基本ストリームとの非同期モデルはサポートされません。</exception>
       </Docs>
     </Member>
     <Member MemberName="BaudRate">
@@ -446,18 +446,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ユーザーのシリアル ドライバーでは、ボー レートをサポートする必要があります。 既定値は 9600 ビット/秒 (bps) です。  
+ このボーレートは、ユーザーのシリアルドライバーでサポートされている必要があります。 既定値は9600ビット/秒 (bps) です。  
   
    
   
 ## Examples  
- 次の例は、設定する方法を示します、<xref:System.IO.Ports.SerialPort.BaudRate%2A>プロパティを`9600`します。  
+ <xref:System.IO.Ports.SerialPort.BaudRate%2A>プロパティをに`9600`設定する方法を次の例に示します。  
   
  [!code-cpp[System.IO.Ports.SerialPort#20](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/datareceived.cpp#20)]
  [!code-csharp[System.IO.Ports.SerialPort#20](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/datareceived.cs#20)]
  [!code-vb[System.IO.Ports.SerialPort#20](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/vb/datareceived.vb#20)]  
   
- 次の例では、使用、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次の例では、2人<xref:System.IO.Ports.SerialPort>のユーザーが、ヌルモデムケーブルで接続された2台の異なるコンピューターからチャットできるようにするためのクラスの使用方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -465,11 +465,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">指定したボー レートが 0 未満またはデバイスの許容最大ボー レートを超えます。</exception>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.ArgumentOutOfRangeException">指定したボー レートが 0 以下か、デバイスの許容最大ボー レートを超えています。</exception>
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
       </Docs>
     </Member>
     <Member MemberName="BreakState">
@@ -508,15 +508,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ブレーク シグナルの状態は、転送が中断され、行がブレーク状態 (すべて低、ありませんストップ ビット) に配置するときに発生します。 解放されるまでです。 中断状態に、このプロパティを設定`true`します。 ポートがブレーク状態の場合、このプロパティの設定にもう一度`true`例外では行われません。 書き込むことはできません、<xref:System.IO.Ports.SerialPort>中にオブジェクト<xref:System.IO.Ports.SerialPort.BreakState%2A>は`true`します。  
+ 中断シグナル状態は、転送が中断され、その行がリリースされるまで中断状態 (すべて低、停止ビット) に配置されると発生します。 中断状態を入力するには、このプロパティ`true`をに設定します。 ポートが既にブレーク状態にある場合、このプロパティをにもう`true`一度設定すると、例外は発生しません。 がの間<xref:System.IO.Ports.SerialPort> <xref:System.IO.Ports.SerialPort.BreakState%2A>は`true`、オブジェクトに書き込むことはできません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="BytesToRead">
@@ -555,13 +555,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 受信バッファーには、シリアル ドライバーの受信バッファーと同様に、内部バッファリングが含まれています、<xref:System.IO.Ports.SerialPort>オブジェクト自体です。  
+ 受信バッファーには、シリアルドライバーの受信バッファーだけでなく、 <xref:System.IO.Ports.SerialPort>オブジェクト自体の内部バッファリングも含まれます。  
   
- <xref:System.IO.Ports.SerialPort.BytesToRead%2A>プロパティを表す両方の<xref:System.IO.Ports.SerialPort>よりも大きい値を返すことができますバッファーと Windows が作成したバッファー、<xref:System.IO.Ports.SerialPort.ReadBufferSize%2A>プロパティで、Windows が作成したバッファーのみを表します。  
+ プロパティは<xref:System.IO.Ports.SerialPort.BytesToRead%2A>バッファーと windows に<xref:System.IO.Ports.SerialPort>よって作成されたバッファーの両方を表すため、windows で作成<xref:System.IO.Ports.SerialPort.ReadBufferSize%2A>されたバッファーのみを表すプロパティよりも大きい値を返すことができます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">ポートが開いていません。</exception>
+        <exception cref="T:System.InvalidOperationException">ポートは開いていません。</exception>
       </Docs>
     </Member>
     <Member MemberName="BytesToWrite">
@@ -600,12 +600,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 送信バッファーには、シリアル ドライバーの送信バッファーと同様に、内部バッファリングが含まれています、<xref:System.IO.Ports.SerialPort>オブジェクト自体です。  
+ 送信バッファーには、シリアルドライバーの送信バッファーだけでなく、 <xref:System.IO.Ports.SerialPort>オブジェクト自体の内部バッファリングも含まれます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="CDHolding">
@@ -644,15 +644,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、ポートのキャリア検出ラインの状態を監視できます。 通信事業者、通常はないことを示します、受信側がハングして、通信事業者が削除されました。  
+ このプロパティは、ポートのキャリア検出ラインの状態を監視するために使用できます。 通常、通信事業者がいない場合は、受信側が停止していて、運送業者が切断されていることを示します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="Close">
@@ -683,14 +683,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドの呼び出しを閉じます、<xref:System.IO.Ports.SerialPort>オブジェクトし、両方の受信をクリアし、バッファーを送信します。 このメソッドは、<xref:System.ComponentModel.Component.Dispose?displayProperty=nameWithType>メソッドを呼び出しますが、保護された<xref:System.IO.Ports.SerialPort.Dispose%28System.Boolean%29?displayProperty=nameWithType>メソッドを`disposing`パラメーターに設定`true`します。  
+ このメソッドを呼び出す<xref:System.IO.Ports.SerialPort>と、オブジェクトが閉じられ、受信バッファーと送信バッファーの両方がクリアされます。 このメソッド<xref:System.ComponentModel.Component.Dispose?displayProperty=nameWithType>は、メソッドを呼び出します。この<xref:System.IO.Ports.SerialPort.Dispose%28System.Boolean%29?displayProperty=nameWithType>メソッドは、 `disposing`パラメーターをに`true`設定してプロテクトメソッドを呼び出します。  
   
- 任意のアプリケーションのベスト プラクティスはある程度の呼び出し後の時間を待機するが、<xref:System.IO.Ports.SerialPort.Close%2A>メソッド呼び出しを試みる前に、<xref:System.IO.Ports.SerialPort.Open%2A>メソッド、ポートとして閉じられなかった可能性がある瞬時にします。  
+ 任意のアプリケーションのベストプラクティスは、メソッドを呼び出した後、メソッドを呼び出し<xref:System.IO.Ports.SerialPort.Close%2A>た後<xref:System.IO.Ports.SerialPort.Open%2A> 、ポートが即座に閉じられない可能性があるため、しばらく待つことです。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -698,10 +698,10 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
       </Docs>
     </Member>
     <Member MemberName="CtsHolding">
@@ -740,15 +740,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Clear to Send (CTS) 回線は、(RTS/CTS) ハードウェアのハンドシェイクを送信する送信/クリアする要求で使用されます。 データが送信される前に、ポート、CTS 行が照会されます。  
+ 送信 (RTS/CTS) ハードウェアハンドシェイクを送信/クリアする要求では、[送信] (CTS) 行が使用されます。 CTS 行は、データが送信される前にポートによって照会されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="DataBits">
@@ -796,12 +796,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティの値の範囲は 5 ~ 8 です。 既定値は、8 です。  
+ このプロパティの値の範囲は 5 ~ 8 です。 既定値は8です。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -809,11 +809,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">データ ビット値は、5 未満または 8 個を超えるです。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">データ ビット値が 5 未満か、8 を超えています。</exception>
       </Docs>
     </Member>
     <Member MemberName="DataReceived">
@@ -851,22 +851,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 内の項目のいずれかによって、データ イベントを発生すること、<xref:System.IO.Ports.SerialData>列挙体。 オペレーティング システムを指定するかどうかは、このイベントを発生させるかどうかをするためには、すべてのパリティ エラーを報告する可能性があります。  
+ データイベントは、 <xref:System.IO.Ports.SerialData>列挙体のいずれかの項目によって発生することがあります。 オペレーティングシステムは、このイベントを発生させるかどうかを判断するため、すべてのパリティエラーが報告されるとは限りません。  
   
- <xref:System.IO.Ports.SerialPort.DataReceived>イベントは、内部入力バッファー内のバイト数との値に関係なく、Eof 文字を受信した場合にも発生、<xref:System.IO.Ports.SerialPort.ReceivedBytesThreshold%2A>プロパティ。  
+ 内部入力バッファーのバイト数と<xref:System.IO.Ports.SerialPort.ReceivedBytesThreshold%2A>プロパティの値に関係なく、Eof 文字が受信された場合にもイベントが発生します。<xref:System.IO.Ports.SerialPort.DataReceived>  
   
- <xref:System.IO.Ports.SerialPort.PinChanged>、 <xref:System.IO.Ports.SerialPort.DataReceived>、および<xref:System.IO.Ports.SerialPort.ErrorReceived>イベントが順序で呼び出すことができ、基になるストリームが、エラーを報告すると、イベント ハンドラーが実行されるとの間にわずかな遅延がある可能性があります。 一度に 1 つだけのイベント ハンドラーを実行できます。  
+ <xref:System.IO.Ports.SerialPort.PinChanged>、 <xref:System.IO.Ports.SerialPort.DataReceived>、および<xref:System.IO.Ports.SerialPort.ErrorReceived>の各イベントは、順序どおりに呼び出されないことがあります。また、基になるストリームがエラーを報告してから、イベントハンドラーが実行されるまでにわずかな遅延が発生する可能性があります。 一度に実行できるイベントハンドラーは1つだけです。  
   
- <xref:System.IO.Ports.SerialPort.DataReceived>イベントを受信したバイトごとに発生する保証はありません。 使用して、<xref:System.IO.Ports.SerialPort.BytesToRead%2A>バッファーで読み取られるデータの量が左を決定するプロパティ。  
+ イベント<xref:System.IO.Ports.SerialPort.DataReceived>は、受信したすべてのバイトに対して発生するとは限りません。 <xref:System.IO.Ports.SerialPort.BytesToRead%2A>プロパティを使用して、バッファー内で読み取られるデータの量を決定します。  
   
- <xref:System.IO.Ports.SerialPort.DataReceived>からデータを受信すると、セカンダリ スレッドでイベントが発生します、<xref:System.IO.Ports.SerialPort>オブジェクト。 セカンダリのスレッドの UI 要素など、メイン スレッドの一部の要素を変更しようとしています。 メイン スレッドいないでこのイベントが発生した場合は、スレッドの例外を生じる可能性があります。 メイン要素を変更する必要がある場合<xref:System.Windows.Forms.Form>または<xref:System.Windows.Forms.Control>、投稿の変更要求を使用して<xref:System.Windows.Forms.Control.Invoke%2A>、これは、適切なスレッドで処理を行います。  
+ イベント<xref:System.IO.Ports.SerialPort.DataReceived>は、 <xref:System.IO.Ports.SerialPort>オブジェクトからデータを受信するときに、セカンダリスレッドで発生します。 このイベントはメインスレッドではなくセカンダリスレッドで発生するため、メインスレッド (UI 要素など) の一部の要素を変更しようとすると、スレッド例外が発生する可能性があります。 Main <xref:System.Windows.Forms.Form>または<xref:System.Windows.Forms.Control>の要素を変更する必要がある場合は、を使用し<xref:System.Windows.Forms.Control.Invoke%2A>てポスト変更要求を戻します。これにより、適切なスレッドで作業が行われます。  
   
  イベントの処理の詳細については、「[処理とイベントの発生](~/docs/standard/events/index.md)」を参照してください。  
   
    
   
 ## Examples  
- この例で追加、<xref:System.IO.Ports.SerialDataReceivedEventHandler>に<xref:System.IO.Ports.SerialPort.DataReceived>COM1 ポートで受信したすべての利用可能なデータを読み取る。 このコードをテストするのには、データを送信する COM1 に接続されているハードウェアを用意する必要があることに注意してください。  
+ この例では<xref:System.IO.Ports.SerialDataReceivedEventHandler> 、 <xref:System.IO.Ports.SerialPort.DataReceived>をに追加して、COM1 ポートで受信した使用可能なすべてのデータを読み取ります。 このコードをテストするには、データを送信するハードウェアを COM1 に接続する必要があることに注意してください。  
   
  [!code-cpp[System.IO.Ports.SerialPort#06](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/datareceived.cpp#06)]
  [!code-csharp[System.IO.Ports.SerialPort#06](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/datareceived.cs#06)]
@@ -904,15 +904,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、次の Visual Basic コード:`MSComm1.InBufferCount = 0`します。 受信バッファーをクリアしますが、送信バッファーには影響しません。  
+ このメソッドは、次の Visual Basic コード`MSComm1.InBufferCount = 0`に相当します。 受信バッファーはクリアされますが、送信バッファーには影響しません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="DiscardNull">
@@ -958,20 +958,20 @@
       </ReturnValue>
       <Docs>
         <summary>ポートと受信バッファー間での送信時に、null バイトを無視するかどうかを示す値を取得または設定します。</summary>
-        <value>null バイトを無視する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
+        <value>null バイトを無視する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この値は通常に設定する必要があります`false`、特にバイナリ伝送の。  このプロパティを設定`true`UTF32 と UTF16 でエンコードされたバイトの予期しない結果が発生することができます。  
+ この値は通常、特に`false`バイナリ転送の場合にに設定する必要があります。  このプロパティをに`true`設定すると、UTF32 および UTF16 でエンコードされたバイトに対して予期しない結果が発生する可能性があります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="DiscardOutBuffer">
@@ -1002,15 +1002,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、次の Visual Basic コード:`MSComm1.OutBufferCount = 0`します。 転送バッファーをクリアしますが、受信バッファーには影響しません。  
+ このメソッドは、次の Visual Basic コード`MSComm1.OutBufferCount = 0`に相当します。 送信バッファーはクリアされますが、受信バッファーには影響しません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -1044,22 +1044,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パブリック<xref:System.ComponentModel.Component.Dispose%2A>メソッドと<xref:System.Object.Finalize%2A>メソッド。 <xref:System.ComponentModel.Component.Dispose%2A> 保護された起動<xref:System.IO.Ports.SerialPort.Dispose%2A>メソッドを`disposing`パラメーターに設定`true`します。 <xref:System.Object.Finalize%2A> 呼び出す<xref:System.IO.Ports.SerialPort.Dispose%2A>で`disposing`に設定`false`します。  
+ このメソッドは、パブリック<xref:System.ComponentModel.Component.Dispose%2A>メソッド<xref:System.Object.Finalize%2A>とメソッドによって呼び出されます。 <xref:System.ComponentModel.Component.Dispose%2A>`disposing`パラメーターをに<xref:System.IO.Ports.SerialPort.Dispose%2A> 設定して、保護されたメソッド`true`を呼び出します。 <xref:System.Object.Finalize%2A>をに`disposing` <xref:System.IO.Ports.SerialPort.Dispose%2A> 設定してを呼び出します`false`。  
   
  `disposing` パラメーターが `true` の場合、このメソッドは、この <xref:System.IO.Ports.SerialPort> が参照しているすべてのマネージド オブジェクトによって保持されているリソースをすべて解放します。 このメソッドは、参照される各オブジェクトの <xref:System.ComponentModel.Component.Dispose%2A> メソッドを呼び出します。  
   
- このメソッドはフラッシュしでストリーム オブジェクトを閉じる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティ。  
+ このメソッドは<xref:System.IO.Ports.SerialPort.BaseStream%2A> 、プロパティのストリームオブジェクトをフラッシュし、閉じます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
         <block subset="none" type="overrides"><para>
-            <see cref="M:System.ComponentModel.Component.Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see cref="M:System.IO.Ports.SerialPort.Dispose(System.Boolean)" /> をオーバーライドする場合は、以前に <see cref="M:System.ComponentModel.Component.Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 実装する方法についての詳細は<see cref="M:System.IO.Ports.SerialPort.Dispose(System.Boolean)" />を参照してください[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。  
+            <see cref="M:System.ComponentModel.Component.Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see cref="M:System.IO.Ports.SerialPort.Dispose(System.Boolean)" /> をオーバーライドする場合は、以前に <see cref="M:System.ComponentModel.Component.Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 を実装<see cref="M:System.IO.Ports.SerialPort.Dispose(System.Boolean)" />する方法の詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。  
   
-詳細については<see cref="M:System.ComponentModel.Component.Dispose" />と<see cref="M:System.Object.Finalize" />を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)します。</para></block>
+<see cref="M:System.ComponentModel.Component.Dispose" /> および<see cref="M:System.Object.Finalize" />の詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。</para></block>
       </Docs>
     </Member>
     <Member MemberName="DsrHolding">
@@ -1098,15 +1098,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、データ セットの準備完了/データ ターミナル準備ができて (DSR/DTR) ハンドシェイクで使用されます。 データ セットの準備ができて (DSR) シグナルは、通常データ伝送またはデータの受信準備ができたことを示すポートにモデムで送信されます。  
+ このプロパティは、Data Set Ready/Data Terminal Ready (DSR/DTR) ハンドシェイクで使用されます。 Data Set Ready (DSR) 信号は、通常、データ転送またはデータ受信の準備ができていることを示すために、モデムによってポートに送信されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 ため、これが発生することができます、<see cref="M:System.IO.Ports.SerialPort.Open" />メソッドが呼び出されていない、または<see cref="M:System.IO.Ports.SerialPort.Close" />メソッドが呼び出されました。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームは閉じられています。 これは、<see cref="M:System.IO.Ports.SerialPort.Open" /> メソッドが呼び出されていないか、<see cref="M:System.IO.Ports.SerialPort.Close" /> メソッドが呼び出されたことが原因で発生する場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="DtrEnable">
@@ -1146,19 +1146,19 @@
       </ReturnValue>
       <Docs>
         <summary>シリアル通信中に、DTR (Data Terminal Ready) シグナルを有効にする値を取得または設定します。</summary>
-        <value>DTR を有効にする場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
+        <value>DTR を有効にする場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 準備ができて DTR (data Terminal) は通常、XON/XOFF ソフトウェアのハンド シェークおよび送信/クリアする要求の送信 (RTS/CTS) ハードウェアのハンド シェークおよびモデム間の通信中に有効にします。  
+ 一般に、XON/XOFF ソフトウェアハンドシェイク中にデータターミナル対応 (DTR) が有効になり、送信/クリアの要求 (RTS/CTS) ハードウェアハンドシェイク、およびモデム通信が要求されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
       </Docs>
     </Member>
     <Member MemberName="Encoding">
@@ -1201,10 +1201,10 @@
       </ReturnValue>
       <Docs>
         <summary>テキストの伝送前変換と伝送後変換のバイト エンコーディングを取得または設定します。</summary>
-        <value><see cref="T:System.Text.Encoding" /> オブジェクト。 既定値は <see cref="T:System.Text.ASCIIEncoding" /> です。</value>
+        <value><see cref="T:System.Text.Encoding" /> オブジェクト。 既定値は、<see cref="T:System.Text.ASCIIEncoding" /> です。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><see cref="P:System.IO.Ports.SerialPort.Encoding" />プロパティに設定されました<see langword="null" />します。</exception>
-        <exception cref="T:System.ArgumentException"><see cref="P:System.IO.Ports.SerialPort.Encoding" />プロパティでないエンコードに設定されました<see cref="T:System.Text.ASCIIEncoding" />、 <see cref="T:System.Text.UTF8Encoding" />、 <see cref="T:System.Text.UTF32Encoding" />、 <see cref="T:System.Text.UnicodeEncoding" />、1 つ、Windows の 1 バイト エンコーディングまたは Windows の 2 バイト エンコーディングのいずれか。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="P:System.IO.Ports.SerialPort.Encoding" /> プロパティが <see langword="null" /> に設定されました。</exception>
+        <exception cref="T:System.ArgumentException"><see cref="P:System.IO.Ports.SerialPort.Encoding" /> プロパティに、<see cref="T:System.Text.ASCIIEncoding" />、<see cref="T:System.Text.UTF8Encoding" />、<see cref="T:System.Text.UTF32Encoding" />、<see cref="T:System.Text.UnicodeEncoding" />、Windows の 1 バイト エンコーディングのいずれか、Windows の 2 バイト エンコーディングのいずれか以外のエンコーディングが設定されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="ErrorReceived">
@@ -1242,13 +1242,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 内の項目のいずれかによってエラー イベントを発生すること、<xref:System.IO.Ports.SerialError>列挙体。 オペレーティング システムを指定するかどうかは、このイベントを発生させるかどうかをするためには、すべてのパリティ エラーを報告する可能性があります。  
+ エラーイベントは、 <xref:System.IO.Ports.SerialError>列挙体のいずれかの項目によって発生することがあります。 オペレーティングシステムは、このイベントを発生させるかどうかを判断するため、すべてのパリティエラーが報告されるとは限りません。  
   
- <xref:System.IO.Ports.SerialPort.PinChanged>、 <xref:System.IO.Ports.SerialPort.DataReceived>、および<xref:System.IO.Ports.SerialPort.ErrorReceived>イベントが順序で呼び出すことができ、基になるストリームが、エラーを報告すると、コードでは、イベント ハンドラーが実行されたときとの間にわずかな遅延がある可能性があります。 一度に 1 つだけのイベント ハンドラーを実行できます。  
+ <xref:System.IO.Ports.SerialPort.PinChanged>、 <xref:System.IO.Ports.SerialPort.DataReceived>、および<xref:System.IO.Ports.SerialPort.ErrorReceived>の各イベントは、順序どおりに呼び出されないことがあります。また、基になるストリームがエラーを報告してから、イベントハンドラーが実行されたときにコードが実行されるまでにわずかな遅延が発生する可能性があります。 一度に実行できるイベントハンドラーは1つだけです。  
   
- ストリームの末尾のバイトでパリティ エラーが発生した場合、追加のバイトは 126 の値は、入力バッファーに追加されます。  
+ ストリームの末尾のバイトでパリティエラーが発生すると、追加のバイトが値126の入力バッファーに追加されます。  
   
- <xref:System.IO.Ports.SerialPort.ErrorReceived>からエラーが受信したときにセカンダリ スレッドでイベントが発生した、<xref:System.IO.Ports.SerialPort>オブジェクト。 セカンダリのスレッドの UI 要素など、メイン スレッドの一部の要素を変更しようとしています。 メイン スレッドいないでこのイベントが発生した場合は、スレッドの例外を生じる可能性があります。 メイン要素を変更する必要がある場合<xref:System.Windows.Forms.Form>または<xref:System.Windows.Forms.Control>、投稿の変更要求を使用して<xref:System.Windows.Forms.Control.Invoke%2A>、これは、適切なスレッドで処理を行います。  
+ イベント<xref:System.IO.Ports.SerialPort.ErrorReceived>は、 <xref:System.IO.Ports.SerialPort>オブジェクトからエラーを受信したときに、セカンダリスレッドで発生します。 このイベントはメインスレッドではなくセカンダリスレッドで発生するため、メインスレッド (UI 要素など) の一部の要素を変更しようとすると、スレッド例外が発生する可能性があります。 Main <xref:System.Windows.Forms.Form>または<xref:System.Windows.Forms.Control>の要素を変更する必要がある場合は、を使用し<xref:System.Windows.Forms.Control.Invoke%2A>てポスト変更要求を戻します。これにより、適切なスレッドで作業が行われます。  
   
  イベントの処理の詳細については、「[処理とイベントの発生](~/docs/standard/events/index.md)」を参照してください。  
   
@@ -1285,16 +1285,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 返された、ポート名の順序<xref:System.IO.Ports.SerialPort.GetPortNames%2A>が指定されていません。  
+ から<xref:System.IO.Ports.SerialPort.GetPortNames%2A>返されたポート名の順序が指定されていません。  
   
- 使用して、<xref:System.IO.Ports.SerialPort.GetPortNames%2A>有効なシリアル ポート名の一覧については、現在のコンピューターを照会します。 たとえば、このメソッドを使用すると、COM1 と COM2 が現在のコンピューターのシリアル ポートが有効かどうかを判断します。  
+ 現在の<xref:System.IO.Ports.SerialPort.GetPortNames%2A>コンピューターに対して、有効なシリアルポート名の一覧を照会するには、メソッドを使用します。 たとえば、この方法を使用して、COM1 と COM2 が現在のコンピューターの有効なシリアルポートであるかどうかを判断できます。  
   
- ポート名は、システム レジストリ (たとえば、HKEY_LOCAL_MACHINE\HARDWARE\DEVICEMAP\SERIALCOMM) から取得されます。 レジストリには、古いまたはそれ以外の場合に正しくないデータが含まれている場合、<xref:System.IO.Ports.SerialPort.GetPortNames%2A>メソッドには、正しくないデータが返されます。  
+ ポート名はシステムレジストリから取得されます (たとえば、HKEY_LOCAL_MACHINE\HARDWARE\DEVICEMAP\SERIALCOMM)。 レジストリに古いデータや正しくないデータが含まれ<xref:System.IO.Ports.SerialPort.GetPortNames%2A>ている場合、メソッドは正しくないデータを返します。  
   
    
   
 ## Examples  
- 次のコード例では、<xref:System.IO.Ports.SerialPort.GetPortNames%2A>シリアル ポート名をコンソールに表示するメソッド。  
+ 次のコード例では<xref:System.IO.Ports.SerialPort.GetPortNames%2A> 、メソッドを使用して、シリアルポート名をコンソールに表示します。  
   
  [!code-cpp[IO.Ports.GetPortNames#1](~/samples/snippets/cpp/VS_Snippets_CLR/IO.Ports.GetPortNames/cpp/example.cpp#1)]
  [!code-csharp[IO.Ports.GetPortNames#1](~/samples/snippets/csharp/VS_Snippets_CLR/IO.Ports.GetPortNames/CS/example.cs#1)]
@@ -1345,19 +1345,19 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.IO.Ports.Handshake" /> からの値を使用したデータのシリアル ポート伝送のハンドシェイク プロトコルを取得または設定します。</summary>
-        <value><see cref="T:System.IO.Ports.Handshake" /> 値のいずれか 1 つ。 既定値は <see langword="None" /> です。</value>
+        <value><see cref="T:System.IO.Ports.Handshake" /> 値のいずれか。 既定値は、<see langword="None" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- デバイスが接続されているハンドシェイクを使用する場合、<xref:System.IO.Ports.SerialPort>オブジェクトは、少なくともがある場合にデータの送信を停止するように指示されます (<xref:System.IO.Ports.SerialPort.ReadBufferSize%2A>-1024) バッファー内のバイト。 デバイスは、バッファーのバイト数が 1024 未満がある場合は、データをもう一度送信を開始するように指示されます。 デバイスが 1024 バイトを超えるブロックでデータを送信する場合、バッファー オーバーフローがあります。  
+ ハンドシェイクを使用すると、バッファーに少なくと<xref:System.IO.Ports.SerialPort>も (<xref:System.IO.Ports.SerialPort.ReadBufferSize%2A>-1024) バイトがある場合に、オブジェクトに接続されているデバイスにデータの送信を停止するように指示されます。 バッファー内のバイト数が1024以下の場合、デバイスはデータの送信を再開するように指示されます。 デバイスが1024バイトを超えるブロックでデータを送信している場合、バッファーがオーバーフローする可能性があります。  
   
- 場合、<xref:System.IO.Ports.SerialPort.Handshake%2A>プロパティに設定されて<xref:System.IO.Ports.Handshake.RequestToSendXOnXOff>と<xref:System.IO.Ports.SerialPort.CtsHolding%2A>に設定されている`false`、XOff 文字は送信されません。 場合<xref:System.IO.Ports.SerialPort.CtsHolding%2A>に設定されている、 `true`、XOff 文字が送信する前より多くのデータを送信する必要があります。  
+ プロパティが<xref:System.IO.Ports.Handshake.RequestToSendXOnXOff>に設定され`false`、がに設定されている場合、XOff文字は送信されません。<xref:System.IO.Ports.SerialPort.CtsHolding%2A> <xref:System.IO.Ports.SerialPort.Handshake%2A> を<xref:System.IO.Ports.SerialPort.CtsHolding%2A> に`true`設定した場合、XOff 文字が送信される前に、より多くのデータを送信する必要があります。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -1365,11 +1365,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">渡された値の有効な値でない、<see cref="T:System.IO.Ports.Handshake" />列挙体。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">渡された値は、<see cref="T:System.IO.Ports.Handshake" /> 列挙体の有効値ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="InfiniteTimeout">
@@ -1400,7 +1400,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この値を併用、<xref:System.IO.Ports.SerialPort.ReadTimeout%2A>と<xref:System.IO.Ports.SerialPort.WriteTimeout%2A>プロパティ。  
+ この値は、 <xref:System.IO.Ports.SerialPort.ReadTimeout%2A> <xref:System.IO.Ports.SerialPort.WriteTimeout%2A>プロパティとプロパティで使用されます。  
   
  ]]></format>
         </remarks>
@@ -1434,17 +1434,17 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.IO.Ports.SerialPort" /> オブジェクトの開いている状態または閉じた状態を示す値を取得します。</summary>
-        <value>シリアル ポートが開いている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
+        <value>シリアル ポートが開いている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.Ports.SerialPort.IsOpen%2A>プロパティは、ポートが開いて、呼び出し元によって使用されるかどうかいないかどうかのポートが開いて、コンピューター上のアプリケーションでは追跡します。  
+ プロパティ<xref:System.IO.Ports.SerialPort.IsOpen%2A>は、ポートがコンピューター上のアプリケーションによって開かれているかどうかではなく、呼び出し元が使用するためにポートが開いているかどうかを追跡します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><see cref="P:System.IO.Ports.SerialPort.IsOpen" />渡された値が<see langword="null" />します。</exception>
-        <exception cref="T:System.ArgumentException"><see cref="P:System.IO.Ports.SerialPort.IsOpen" />渡された値が空の文字列 ("")。</exception>
+        <exception cref="T:System.ArgumentNullException">渡される <see cref="P:System.IO.Ports.SerialPort.IsOpen" /> 値は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException">渡される <see cref="P:System.IO.Ports.SerialPort.IsOpen" /> 値は、空の文字列 ("") です。</exception>
       </Docs>
     </Member>
     <Member MemberName="NewLine">
@@ -1487,16 +1487,16 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="M:System.IO.Ports.SerialPort.ReadLine" /> メソッドと <see cref="M:System.IO.Ports.SerialPort.WriteLine(System.String)" /> メソッドの呼び出しの末尾を解釈する際に使用する値を取得または設定します。</summary>
-        <value>行の末尾を表す値。 既定値は、改行 ("\n"でC#または<see cref="F:Microsoft.VisualBasic.Constants.vbLf" />Visual Basic で)。</value>
+        <value>行の末尾を表す値。 既定値は、ラインフィード ( C#または Visual Basic の場合<see cref="F:Microsoft.VisualBasic.Constants.vbLf" />は "\n") です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティでは、どのような値 (バイト単位) の行の末尾を定義するかを決定します。、<xref:System.IO.Ports.SerialPort.ReadLine%2A>と<xref:System.IO.Ports.SerialPort.WriteLine%2A>メソッド。 既定で、行末の値には、ライン フィード文字 (`\n`でC#、 <xref:Microsoft.VisualBasic.Constants.vbLf?displayProperty=nameWithType> Visual Basic で)。 使用している特定のシリアル デバイスが同じ目的で別の値を使用している場合の別の値に変更するとします。  
+ このプロパティは<xref:System.IO.Ports.SerialPort.ReadLine%2A> 、メソッドと<xref:System.IO.Ports.SerialPort.WriteLine%2A>メソッドの行の末尾を定義する値 (byte) を決定します。 既定ではC#、行の末尾の値は改行文字 ( <xref:Microsoft.VisualBasic.Constants.vbLf?displayProperty=nameWithType> `\n`では、Visual Basic) です。 使用している特定のシリアルデバイスで同じ目的で異なる値が使用されている場合は、これを別の値に変更します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">プロパティの値が空です。</exception>
+        <exception cref="T:System.ArgumentException">プロパティ値が空です。</exception>
         <exception cref="T:System.ArgumentNullException">プロパティ値が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
@@ -1528,14 +1528,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ごとに 1 つだけ開いている接続が存在できる<xref:System.IO.Ports.SerialPort>オブジェクト。  
+ オブジェクトごと<xref:System.IO.Ports.SerialPort>に存在できる開いている接続は1つだけです。  
   
- 任意のアプリケーションのベスト プラクティスはある程度の呼び出し後の時間を待機するが、<xref:System.IO.Ports.SerialPort.Close%2A>メソッド呼び出しを試みる前に、<xref:System.IO.Ports.SerialPort.Open%2A>メソッド、ポートとして閉じられなかった可能性がある瞬時にします。  
+ 任意のアプリケーションのベストプラクティスは、メソッドを呼び出した後、メソッドを呼び出し<xref:System.IO.Ports.SerialPort.Close%2A>た後<xref:System.IO.Ports.SerialPort.Open%2A> 、ポートが即座に閉じられない可能性があるため、しばらく待つことです。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -1543,21 +1543,21 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.UnauthorizedAccessException">ポートへのアクセスは拒否します。  
+        <exception cref="T:System.UnauthorizedAccessException">ポートへのアクセスが拒否されています。  
   
 - または - 
-開くかによって、指定した COM ポートが既に現在のプロセスまたはシステムで、別のプロセスを<see cref="T:System.IO.Ports.SerialPort" />インスタンスまたはアンマネージ コードにします。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">このインスタンスのプロパティの 1 つ以上が無効です。 たとえば、 <see cref="P:System.IO.Ports.SerialPort.Parity" />、 <see cref="P:System.IO.Ports.SerialPort.DataBits" />、または<see cref="P:System.IO.Ports.SerialPort.Handshake" />プロパティが有効な値です。<see cref="P:System.IO.Ports.SerialPort.BaudRate" />がを 0 未満、<see cref="P:System.IO.Ports.SerialPort.ReadTimeout" />または<see cref="P:System.IO.Ports.SerialPort.WriteTimeout" />プロパティが 0 より小さい、とでない<see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" />。</exception>
-        <exception cref="T:System.ArgumentException">ポートの名前は、"COM"で始まらないです。  
+現在のプロセス、またはシステム上の別のプロセスが、<see cref="T:System.IO.Ports.SerialPort" /> インスタンスまたはアンマネージ コードで、指定した COM ポートを既に開いています。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">このインスタンスの 1 つ以上のプロパティが無効です。 たとえば、<see cref="P:System.IO.Ports.SerialPort.Parity" />、<see cref="P:System.IO.Ports.SerialPort.DataBits" />、または <see cref="P:System.IO.Ports.SerialPort.Handshake" /> の各プロパティが有効値ではない、<see cref="P:System.IO.Ports.SerialPort.BaudRate" /> が 0 以下の値である、<see cref="P:System.IO.Ports.SerialPort.ReadTimeout" /> プロパティまたは <see cref="P:System.IO.Ports.SerialPort.WriteTimeout" /> プロパティが 0 未満であり、<see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" /> ではない、などです。</exception>
+        <exception cref="T:System.ArgumentException">ポート名が "COM" で始まっていません。  
   
-- または - 
-ポートのファイルの種類がサポートされていません。</exception>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+または 
+ポートのこのファイルの種類はサポートされていません。</exception>
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.InvalidOperationException">指定したポートの現在のインスタンスに、<see cref="T:System.IO.Ports.SerialPort" />は既に開いています。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出す。 関連付けられた列挙体。<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /> セキュリティ アクション。 <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" /></permission>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="T:System.IO.Ports.SerialPort" /> の現在のインスタンス上の指定されたポートが既に開いています。</exception>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" />セキュリティアクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" /></permission>
       </Docs>
     </Member>
     <Member MemberName="Parity">
@@ -1600,19 +1600,19 @@
       </ReturnValue>
       <Docs>
         <summary>パリティ チェック プロトコルを取得または設定します。</summary>
-        <value>パリティ チェック プロトコルを表す列挙値のいずれか。 既定値は <see cref="F:System.IO.Ports.Parity.None" /> です。</value>
+        <value>パリティ チェック プロトコルを表す列挙値のいずれか。 既定値は、<see cref="F:System.IO.Ports.Parity.None" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- パリティとは、エラー チェックを 1 s 数常に同じでなければなりません - 偶数か奇数 - エラーなしで送信されるビットの各グループのプロシージャです。 モデムの通信、パリティは多くの場合必要がありますについて合意して送信側と受信パーティ伝送を行う前に配置されるパラメーターのいずれか。  
+ パリティとは、エラーを発生させずに転送されるビットの各グループについて、1つの値が常に同じであるか奇数である必要がある、エラーチェックの手順です。 モデムからモデムへの通信では、多くの場合、転送を実行する前にパーティと受信側で合意する必要があるパラメーターの1つがパリティです。  
   
- ストリームの末尾のバイトでパリティ エラーが発生した場合、追加のバイトは 126 の値は、入力バッファーに追加されます。  
+ ストリームの末尾のバイトでパリティエラーが発生すると、追加のバイトが値126の入力バッファーに追加されます。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -1620,11 +1620,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.Parity" />渡される値の有効な値でない、<see cref="T:System.IO.Ports.Parity" />列挙体。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">渡された <see cref="P:System.IO.Ports.SerialPort.Parity" /> 値は、<see cref="T:System.IO.Ports.Parity" /> 列挙体の有効値ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="ParityReplace">
@@ -1675,14 +1675,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値が null 文字に設定されている場合は、パリティの置換は無効です。  
+ 値が null 文字に設定されている場合、パリティ置換は無効になります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
       </Docs>
     </Member>
     <Member MemberName="PinChanged">
@@ -1720,13 +1720,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル ピン変更イベントは、内の項目のいずれかによって発生すること、<xref:System.IO.Ports.SerialPinChange>列挙体。 オペレーティング システムを指定するかどうかは、このイベントを発生させるかどうかをするためには、すべてのパリティ エラーを報告する可能性があります。 イベントの一部として、pin の新しい値が設定されます。  
+ シリアル pin に<xref:System.IO.Ports.SerialPinChange>よって変更されたイベントは、列挙体のいずれかの項目によって発生することがあります。 オペレーティングシステムは、このイベントを発生させるかどうかを判断するため、すべてのパリティエラーが報告されるとは限りません。 イベントの一部として、pin の新しい値が設定されます。  
   
- <xref:System.IO.Ports.SerialPort.PinChanged>イベントが発生したときに、<xref:System.IO.Ports.SerialPort>オブジェクトを入力、 <xref:System.IO.Ports.SerialPort.BreakState%2A>、しないポートが終了したときは、<xref:System.IO.Ports.SerialPort.BreakState%2A>します。 この動作は、他の値には当てはまりません、<xref:System.IO.Ports.SerialPinChange>列挙体。  
+ イベントは、 <xref:System.IO.Ports.SerialPort>オブジェクトがに入っ<xref:System.IO.Ports.SerialPort.BreakState%2A>たときに発生し<xref:System.IO.Ports.SerialPort.BreakState%2A>ますが、ポートがを終了したときには発生しません。 <xref:System.IO.Ports.SerialPort.PinChanged> この動作は、 <xref:System.IO.Ports.SerialPinChange>列挙体の他の値には適用されません。  
   
- <xref:System.IO.Ports.SerialPort.PinChanged>、 <xref:System.IO.Ports.SerialPort.DataReceived>、および<xref:System.IO.Ports.SerialPort.ErrorReceived>イベントが順序で呼び出すことができ、基になるストリームが、エラーを報告すると、イベント ハンドラーが実行されるとの間にわずかな遅延がある可能性があります。 一度に 1 つだけのイベント ハンドラーを実行できます。  
+ <xref:System.IO.Ports.SerialPort.PinChanged>、 <xref:System.IO.Ports.SerialPort.DataReceived>、および<xref:System.IO.Ports.SerialPort.ErrorReceived>の各イベントは、順序どおりに呼び出されないことがあります。また、基になるストリームがエラーを報告してから、イベントハンドラーが実行されるまでにわずかな遅延が発生する可能性があります。 一度に実行できるイベントハンドラーは1つだけです。  
   
- <xref:System.IO.Ports.SerialPort.PinChanged>セカンダリ スレッドでイベントが発生します。 セカンダリのスレッドの UI 要素など、メイン スレッドの一部の要素を変更しようとしています。 メイン スレッドいないでこのイベントが発生した場合は、スレッドの例外を生じる可能性があります。 メイン要素を変更する必要がある場合<xref:System.Windows.Forms.Form>または<xref:System.Windows.Forms.Control>、投稿の変更要求を使用して<xref:System.Windows.Forms.Control.Invoke%2A>、これは、適切なスレッドで処理を行います。  
+ イベント<xref:System.IO.Ports.SerialPort.PinChanged>は、セカンダリスレッドで発生します。 このイベントはメインスレッドではなくセカンダリスレッドで発生するため、メインスレッド (UI 要素など) の一部の要素を変更しようとすると、スレッド例外が発生する可能性があります。 Main <xref:System.Windows.Forms.Form>または<xref:System.Windows.Forms.Control>の要素を変更する必要がある場合は、を使用し<xref:System.Windows.Forms.Control.Invoke%2A>てポスト変更要求を戻します。これにより、適切なスレッドで作業が行われます。  
   
  イベントの処理の詳細については、「[処理とイベントの発生](~/docs/standard/events/index.md)」を参照してください。  
   
@@ -1779,12 +1779,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、有効なポート名の一覧を取得することができます、<xref:System.IO.Ports.SerialPort.GetPortNames%2A>メソッド。  
+ 有効なポート名の一覧は、 <xref:System.IO.Ports.SerialPort.GetPortNames%2A>メソッドを使用して取得できます。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -1792,15 +1792,15 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><see cref="P:System.IO.Ports.SerialPort.PortName" />プロパティは、長さ 0 の値に設定されました。  
+        <exception cref="T:System.ArgumentException"><see cref="P:System.IO.Ports.SerialPort.PortName" /> プロパティに長さ 0 の値が設定されました。  
   
 - または - 
 <see cref="P:System.IO.Ports.SerialPort.PortName" /> プロパティに、"\\\\" で始まる値が設定されました。  
   
-- または - 
-ポート名が無効です。</exception>
-        <exception cref="T:System.ArgumentNullException"><see cref="P:System.IO.Ports.SerialPort.PortName" />プロパティに設定されました<see langword="null" />します。</exception>
-        <exception cref="T:System.InvalidOperationException">指定したポートが開いています。</exception>
+または 
+ポート名が有効ではありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="P:System.IO.Ports.SerialPort.PortName" /> プロパティが <see langword="null" /> に設定されました。</exception>
+        <exception cref="T:System.InvalidOperationException">指定したポートは開いています。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="Read">
@@ -1848,19 +1848,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- をテキストを読み取ると、ストリームからバイナリ データの読み取りを切り替える必要がある場合は、慎重にテキストとバイナリ データを手動でバイトの読み取りや、データのデコードなどの境界を定義するプロトコルを選択します。  
+ テキストの読み取りとストリームからのバイナリデータの読み取りを切り替える必要がある場合は、バイトの手動読み取りやデータのデコードなど、テキストデータとバイナリデータの間の境界を慎重に定義するプロトコルを選択します。  
   
- <xref:System.IO.Ports.SerialPort>クラスは、データをバッファーし、ストリームに含まれる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティは、2 つは読み取り可能バイト数の詳細について競合する可能性があります。  <xref:System.IO.Ports.SerialPort.BytesToRead%2A>は読み取るには、バイトがありますが、これらのバイトに含まれているストリームにアクセスできない可能性がありますプロパティを示すことができます、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティにバッファリングされるされているため、<xref:System.IO.Ports.SerialPort>クラス。  
+ クラスは<xref:System.IO.Ports.SerialPort>データをバッファーするため、 <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティに格納されているストリームは、読み取ることができるバイト数が競合する可能性があります。  プロパティ<xref:System.IO.Ports.SerialPort.BytesToRead%2A>は、読み取るバイトがあることを示すことができますが、これらのバイトは、 <xref:System.IO.Ports.SerialPort>クラスにバッファリング<xref:System.IO.Ports.SerialPort.BaseStream%2A>されているため、プロパティに格納されているストリームにアクセスできない可能性があります。  
   
- <xref:System.IO.Ports.SerialPort.Read%2A> Equals が読み取られたバイト数とメソッドがその他の操作をブロックしません`count`も未読のバイト数に使用できるあるシリアル ポートが、します。  
+ 読み取り<xref:System.IO.Ports.SerialPort.Read%2A>バイト数がと等しい`count`が、シリアルポートで使用可能な未読バイトが残っている場合、メソッドは他の操作をブロックしません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException">渡されたバッファーが<see langword="null" />します。</exception>
+        <exception cref="T:System.ArgumentNullException">渡されたバッファーが <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" />または<paramref name="count" />パラメーターが有効なリージョンの外には、<paramref name="buffer" />渡されています。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="offset" /> plus<paramref name="count" />がの長さより大きい、<paramref name="buffer" />します。</exception>
-        <exception cref="T:System.TimeoutException">読み取るバイト数はありませんでした。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターまたは <paramref name="count" /> パラメーターが、渡される <paramref name="buffer" /> の有効な領域外です。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="offset" /> に <paramref name="count" /> を加算した値が、<paramref name="buffer" /> の長さを超えています。</exception>
+        <exception cref="T:System.TimeoutException">読み取ることができるバイトがありませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="Read">
@@ -1899,22 +1899,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル ポートから文字を読み取るためには、このメソッドを使用します。  
+ シリアルポートから文字を読み取るには、このメソッドを使用します。  
   
- をテキストを読み取ると、ストリームからバイナリ データの読み取りを切り替える必要がある場合は、慎重にテキストとバイナリ データを手動でバイトの読み取りや、データのデコードなどの境界を定義するプロトコルを選択します。  
+ テキストの読み取りとストリームからのバイナリデータの読み取りを切り替える必要がある場合は、バイトの手動読み取りやデータのデコードなど、テキストデータとバイナリデータの間の境界を慎重に定義するプロトコルを選択します。  
   
- <xref:System.IO.Ports.SerialPort>クラスは、データをバッファーし、ストリームに含まれる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティは、2 つの文字数が読み取り可能競合する可能性があります。  <xref:System.IO.Ports.SerialPort.BytesToRead%2A>プロパティで、ことができますが、読み取る文字がある、これらの文字に含まれているストリームにアクセスできない可能性があります、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティにバッファリングされるされているため、<xref:System.IO.Ports.SerialPort>クラス。  
+ クラスは<xref:System.IO.Ports.SerialPort>データをバッファーするため、 <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティに格納されているストリームは、読み取ることができる文字数が競合する可能性があります。  プロパティ<xref:System.IO.Ports.SerialPort.BytesToRead%2A>は、読み取る文字があることを示すことができますが、これらの文字は、 <xref:System.IO.Ports.SerialPort>クラスにバッファリング<xref:System.IO.Ports.SerialPort.BaseStream%2A>されているため、プロパティに格納されているストリームにはアクセスできない可能性があります。  
   
- <xref:System.IO.Ports.SerialPort.Read%2A> Equals が読み取られたバイト数とメソッドがその他の操作をブロックしません`count`も未読のバイト数に使用できるあるシリアル ポートが、します。  
+ 読み取り<xref:System.IO.Ports.SerialPort.Read%2A>バイト数がと等しい`count`が、シリアルポートで使用可能な未読バイトが残っている場合、メソッドは他の操作をブロックしません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="offset" /> plus<paramref name="count" />がバッファーの長さより大きい。  
+        <exception cref="T:System.ArgumentException"><paramref name="offset" /> に <paramref name="count" /> を加算した値が、バッファーの長さを超えています。  
   
 - または - 
- <paramref name="count" /> 1、バッファーにサロゲート文字があります。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" />が渡される<see langword="null" />します。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" />または<paramref name="count" />パラメーターが有効なリージョンの外には、<paramref name="buffer" />渡されています。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
+ <paramref name="count" /> が 1 であり、バッファーにサロゲート文字が存在しています。</exception>
+        <exception cref="T:System.ArgumentNullException">渡された <paramref name="buffer" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターまたは <paramref name="count" /> パラメーターが、渡される <paramref name="buffer" /> の有効な領域外です。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
         <exception cref="T:System.TimeoutException">読み取ることができる文字がありませんでした。</exception>
       </Docs>
@@ -1964,15 +1964,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.Ports.SerialPort.ReadBufferSize%2A>プロパティには、任意の値は 4096 以上が無視されます。  
+ プロパティ<xref:System.IO.Ports.SerialPort.ReadBufferSize%2A>は、4096より小さい値を無視します。  
   
- <xref:System.IO.Ports.SerialPort.ReadBufferSize%2A>プロパティは、Windows が作成したバッファーのみを表すより小さい値を返すことができます、<xref:System.IO.Ports.SerialPort.BytesToRead%2A>プロパティは、両方を表す、<xref:System.IO.Ports.SerialPort>バッファーと Windows が作成したバッファー。  
+ プロパティは<xref:System.IO.Ports.SerialPort.ReadBufferSize%2A> windows で作成されたバッファーのみを表すため、 <xref:System.IO.Ports.SerialPort>バッファーと windows で作成<xref:System.IO.Ports.SerialPort.BytesToRead%2A>されたバッファーの両方を表すプロパティよりも小さい値を返すことができます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.ReadBufferSize" />設定値が 0 未満です。</exception>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.IO.Ports.SerialPort.ReadBufferSize" />ストリームが開いているときにプロパティが設定されました。</exception>
-        <exception cref="T:System.IO.IOException"><see cref="P:System.IO.Ports.SerialPort.ReadBufferSize" />プロパティ奇数の整数値に設定されました。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.ReadBufferSize" /> 値が 0 以下の値に設定されています。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームが開いているときに、<see cref="P:System.IO.Ports.SerialPort.ReadBufferSize" /> プロパティが設定されました。</exception>
+        <exception cref="T:System.IO.IOException"><see cref="P:System.IO.Ports.SerialPort.ReadBufferSize" /> プロパティに奇数の整数値が設定されました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadByte">
@@ -2004,20 +2004,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、1 バイトを読み取ります。  
+ このメソッドは、1バイトを読み取ります。  
   
- 使用する場合は、注意を使用して<xref:System.IO.Ports.SerialPort.ReadByte%2A>と<xref:System.IO.Ports.SerialPort.ReadChar%2A>化します。 バイトの読み取りと文字の読み取りを切り替えるには、余分なデータを読み取るやその他の意図しない動作可能性があります。 をテキストを読み取ると、ストリームからバイナリ データの読み取りを切り替える必要がある場合は、慎重にテキストとバイナリ データを手動でバイトの読み取りや、データのデコードなどの境界を定義するプロトコルを選択します。  
+ <xref:System.IO.Ports.SerialPort.ReadByte%2A> と<xref:System.IO.Ports.SerialPort.ReadChar%2A>を一緒に使用する場合は注意が必要です。 バイトの読み取りと文字の読み取りを切り替えると、余分なデータが読み込まれたり、その他の意図しない動作が発生したりする可能性があります。 テキストの読み取りとストリームからのバイナリデータの読み取りを切り替える必要がある場合は、バイトの手動読み取りやデータのデコードなど、テキストデータとバイナリデータの間の境界を慎重に定義するプロトコルを選択します。  
   
 > [!NOTE]
->  <xref:System.IO.Ports.SerialPort>クラスは、データをバッファーし、ストリームに含まれる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティは、2 つは読み取り可能バイト数の詳細について競合する可能性があります。  <xref:System.IO.Ports.SerialPort.BytesToRead%2A>は読み取るには、バイトがありますが、これらのバイトに含まれているストリームにアクセスできない可能性がありますプロパティを示すことができます、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティにバッファリングされるされているため、<xref:System.IO.Ports.SerialPort>クラス。  
+>  クラスは<xref:System.IO.Ports.SerialPort>データをバッファーするため、 <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティに格納されているストリームは、読み取ることができるバイト数が競合する可能性があります。  プロパティ<xref:System.IO.Ports.SerialPort.BytesToRead%2A>は、読み取るバイトがあることを示すことができますが、これらのバイトは、 <xref:System.IO.Ports.SerialPort>クラスにバッファリング<xref:System.IO.Ports.SerialPort.BaseStream%2A>されているため、プロパティに格納されているストリームにアクセスできない可能性があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト期間が終了する前に、操作は完了しませんでした。  
+        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト時間内に操作が完了しませんでした。  
   
 - または - 
-バイトが読み取られません。</exception>
+バイトが読み取られませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadChar">
@@ -2049,20 +2049,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、エンコーディングに基づいて、1 つの完全な文字を読み取ります。  
+ このメソッドは、エンコーディングに基づいて1つの完全な文字を読み取ります。  
   
- 使用する場合は、注意を使用して<xref:System.IO.Ports.SerialPort.ReadByte%2A>と<xref:System.IO.Ports.SerialPort.ReadChar%2A>化します。 バイトの読み取りと文字の読み取りを切り替えるには、余分なデータを読み取るやその他の意図しない動作可能性があります。 をテキストを読み取ると、ストリームからバイナリ データの読み取りを切り替える必要がある場合は、慎重にテキストとバイナリ データを手動でバイトの読み取りや、データのデコードなどの境界を定義するプロトコルを選択します。  
+ <xref:System.IO.Ports.SerialPort.ReadByte%2A> と<xref:System.IO.Ports.SerialPort.ReadChar%2A>を一緒に使用する場合は注意が必要です。 バイトの読み取りと文字の読み取りを切り替えると、余分なデータが読み込まれたり、その他の意図しない動作が発生したりする可能性があります。 テキストの読み取りとストリームからのバイナリデータの読み取りを切り替える必要がある場合は、バイトの手動読み取りやデータのデコードなど、テキストデータとバイナリデータの間の境界を慎重に定義するプロトコルを選択します。  
   
 > [!NOTE]
->  <xref:System.IO.Ports.SerialPort>クラスは、データをバッファーし、ストリームに含まれる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティは、2 つは読み取り可能バイト数の詳細について競合する可能性があります。  <xref:System.IO.Ports.SerialPort.BytesToRead%2A>は読み取るには、バイトがありますが、これらのバイトに含まれているストリームにアクセスできない可能性がありますプロパティを示すことができます、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティにバッファリングされるされているため、<xref:System.IO.Ports.SerialPort>クラス。  
+>  クラスは<xref:System.IO.Ports.SerialPort>データをバッファーするため、 <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティに格納されているストリームは、読み取ることができるバイト数が競合する可能性があります。  プロパティ<xref:System.IO.Ports.SerialPort.BytesToRead%2A>は、読み取るバイトがあることを示すことができますが、これらのバイトは、 <xref:System.IO.Ports.SerialPort>クラスにバッファリング<xref:System.IO.Ports.SerialPort.BaseStream%2A>されているため、プロパティに格納されているストリームにアクセスできない可能性があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト期間が終了する前に、操作は完了しませんでした。  
+        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト時間内に操作が完了しませんでした。  
   
-- または - 
-割り当てられたタイムアウト期間に使用できる文字がありませんでした。</exception>
+または 
+割り当てられたタイムアウト時間内に使用できる文字がありませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadExisting">
@@ -2094,12 +2094,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドはストリームとの内部バッファーの内容を返します、<xref:System.IO.Ports.SerialPort>オブジェクトを表す文字列。 このメソッドでは、タイムアウトは使用しません。このメソッドの先頭バイトにより、内部バッファーの末尾できますおくことに注意してください、 <xref:System.IO.Ports.SerialPort.BytesToRead%2A> 0 より大きい値です。  
+ このメソッドは<xref:System.IO.Ports.SerialPort> 、ストリームの内容とオブジェクトの内部バッファーを文字列として返します。 このメソッドは、タイムアウトを使用しません。このメソッドでは、内部バッファーに後続の先行バイトを残すことができ<xref:System.IO.Ports.SerialPort.BytesToRead%2A>ます。この場合、値は0より大きくなります。  
   
- をテキストを読み取ると、ストリームからバイナリ データの読み取りを切り替える必要がある場合は、慎重にテキストとバイナリ データを手動でバイトの読み取りや、データのデコードなどの境界を定義するプロトコルを選択します。  
+ テキストの読み取りとストリームからのバイナリデータの読み取りを切り替える必要がある場合は、バイトの手動読み取りやデータのデコードなど、テキストデータとバイナリデータの間の境界を慎重に定義するプロトコルを選択します。  
   
 > [!NOTE]
->  <xref:System.IO.Ports.SerialPort>クラスは、データをバッファー処理が、ストリーム オブジェクトに含まれる、<xref:System.IO.Ports.SerialPort.BaseStream%2A?displayProperty=nameWithType>プロパティはありません。 そのため、<xref:System.IO.Ports.SerialPort>オブジェクトおよびストリーム オブジェクトは、読み取りに使用できるバイト数で異なる場合があります。 バイトをバッファリングする場合、<xref:System.IO.Ports.SerialPort>オブジェクト、<xref:System.IO.Ports.SerialPort.BytesToRead%2A>プロパティには値にこれらのバイトが含まれます。 ただし、これらのバイトできない可能性があります内に含まれているストリームにアクセスできる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティ。  
+>  クラス<xref:System.IO.Ports.SerialPort>はデータをバッファーしますが、 <xref:System.IO.Ports.SerialPort.BaseStream%2A?displayProperty=nameWithType>プロパティに格納されているストリームオブジェクトはデータをバッファーしません。 そのため、 <xref:System.IO.Ports.SerialPort>オブジェクトとストリームオブジェクトは、読み取ることができるバイト数とは異なる場合があります。 バイトが<xref:System.IO.Ports.SerialPort>オブジェクトにバッファーされると、 <xref:System.IO.Ports.SerialPort.BytesToRead%2A>プロパティの値にはこれらのバイトが含まれますが、 <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティに格納されているストリームにはこれらのバイトがアクセスできない可能性があります。  
   
  ]]></format>
         </remarks>
@@ -2135,19 +2135,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドが返さない間、<xref:System.IO.Ports.SerialPort.NewLine%2A>値、<xref:System.IO.Ports.SerialPort.NewLine%2A>値が入力バッファーから削除されます。  
+ このメソッドは<xref:System.IO.Ports.SerialPort.NewLine%2A>値<xref:System.IO.Ports.SerialPort.NewLine%2A>を返さないため、値は入力バッファーから削除されることに注意してください。  
   
- 既定で、<xref:System.IO.Ports.SerialPort.ReadLine%2A>メソッドは、行が受信されるまでブロックされます。 この動作が望ましくない場合は、設定、<xref:System.IO.Ports.SerialPort.ReadTimeout%2A>プロパティを強制的に 0 以外の値はすべて、<xref:System.IO.Ports.SerialPort.ReadLine%2A>をスローするメソッド、<xref:System.TimeoutException>ポートでは、行が使用できない場合。  
+ 既定では、 <xref:System.IO.Ports.SerialPort.ReadLine%2A>メソッドは、行が受信されるまでブロックします。 この動作が望ましくない場合は、 <xref:System.IO.Ports.SerialPort.ReadTimeout%2A>プロパティを0以外の値に設定して<xref:System.IO.Ports.SerialPort.ReadLine%2A> 、ポートで行<xref:System.TimeoutException>が使用できない場合にメソッドに強制的にをスローさせます。  
   
- をテキストを読み取ると、ストリームからバイナリ データの読み取りを切り替える必要がある場合は、慎重にテキストとバイナリ データを手動でバイトの読み取りや、データのデコードなどの境界を定義するプロトコルを選択します。  
+ テキストの読み取りとストリームからのバイナリデータの読み取りを切り替える必要がある場合は、バイトの手動読み取りやデータのデコードなど、テキストデータとバイナリデータの間の境界を慎重に定義するプロトコルを選択します。  
   
 > [!NOTE]
->  <xref:System.IO.Ports.SerialPort>クラスは、データをバッファーし、ストリームに含まれる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティは、2 つは読み取り可能バイト数の詳細について競合する可能性があります。  <xref:System.IO.Ports.SerialPort.BytesToRead%2A>は読み取るには、バイトがありますが、これらのバイトに含まれているストリームにアクセスできない可能性がありますプロパティを示すことができます、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティにバッファリングされるされているため、<xref:System.IO.Ports.SerialPort>クラス。  
+>  クラスは<xref:System.IO.Ports.SerialPort>データをバッファーするため、 <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティに格納されているストリームは、読み取ることができるバイト数が競合する可能性があります。  プロパティ<xref:System.IO.Ports.SerialPort.BytesToRead%2A>は、読み取るバイトがあることを示すことができますが、これらのバイトは、 <xref:System.IO.Ports.SerialPort>クラスにバッファリング<xref:System.IO.Ports.SerialPort.BaseStream%2A>されているため、プロパティに格納されているストリームにアクセスできない可能性があります。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -2156,10 +2156,10 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.TimeoutException">タイムアウト期間が終了する前に、操作は完了しませんでした。  
+        <exception cref="T:System.TimeoutException">タイムアウト時間内に操作が完了しませんでした。  
   
 - または - 
-バイトが読み取られません。</exception>
+バイトが読み取られませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadTimeout">
@@ -2207,17 +2207,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 読み取りタイムアウト値は、Win32 の通信 API の 500 ミリ秒に設定されました最初。 このプロパティを使用して、この値を設定できます。 タイムアウトをゼロより大きい値に設定またはに設定できる<xref:System.IO.Ports.SerialPort.InfiniteTimeout>、後者のタイムアウトは発生しません。 <xref:System.IO.Ports.SerialPort.InfiniteTimeout> が既定値です。  
+ 読み取りタイムアウト値は、最初は Win32 通信 API で500ミリ秒に設定されていました。 このプロパティを使用すると、この値を設定できます。 タイムアウトは、ゼロより大きい値に設定することも、に<xref:System.IO.Ports.SerialPort.InfiniteTimeout>設定することもできます。この場合、タイムアウトは発生しません。 <xref:System.IO.Ports.SerialPort.InfiniteTimeout> が既定値です。  
   
 > [!NOTE]
->  アンマネージ ユーザー`COMMTIMEOUTS`構造体のタイムアウトを抑制する 0 に、タイムアウト値を設定することで可能性があります。 タイムアウトを抑制する、<xref:System.IO.Ports.SerialPort.ReadTimeout%2A>プロパティ、ただし、する必要があります指定<xref:System.IO.Ports.SerialPort.InfiniteTimeout>します。  
+>  アンマネージ`COMMTIMEOUTS`構造体のユーザーはタイムアウト値を0に設定してタイムアウトを抑制することがあります。 ただし、 <xref:System.IO.Ports.SerialPort.ReadTimeout%2A>プロパティを使用してタイムアウトを抑制するには、 <xref:System.IO.Ports.SerialPort.InfiniteTimeout>を指定する必要があります。  
   
- このプロパティには影響しません、<xref:System.IO.Stream.BeginRead%2A>メソッドによって返されるストリームの<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティ。  
+ このプロパティは、 <xref:System.IO.Stream.BeginRead%2A> <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティによって返されるストリームのメソッドには影響しません。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -2225,11 +2225,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
-- または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">読み取りタイムアウト値が 0 と等しくありません小さい<see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" />します。</exception>
+または 
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">読み取りタイムアウト値が 0 未満であり、<see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" /> と等しくありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadTo">
@@ -2264,19 +2264,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、指定された文字列を読み取ります`value`します。 返される文字列に含まれないときに、 `value`、`value`入力バッファーから削除されます。  
+ このメソッドは、指定さ`value`れたまで文字列を読み取ります。 返された文字列には`value` `value`が含まれていませんが、は入力バッファーから削除されます。  
   
- をテキストを読み取ると、ストリームからバイナリ データの読み取りを切り替える必要がある場合は、慎重にテキストとバイナリ データを手動でバイトの読み取りや、データのデコードなどの境界を定義するプロトコルを選択します。  
+ テキストの読み取りとストリームからのバイナリデータの読み取りを切り替える必要がある場合は、バイトの手動読み取りやデータのデコードなど、テキストデータとバイナリデータの間の境界を慎重に定義するプロトコルを選択します。  
   
 > [!NOTE]
->  <xref:System.IO.Ports.SerialPort>クラスは、データをバッファーし、ストリームに含まれる、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティは、2 つは読み取り可能バイト数の詳細について競合する可能性があります。  <xref:System.IO.Ports.SerialPort.BytesToRead%2A>は読み取るには、バイトがありますが、これらのバイトに含まれているストリームにアクセスできない可能性がありますプロパティを示すことができます、<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティにバッファリングされるされているため、<xref:System.IO.Ports.SerialPort>クラス。  
+>  クラスは<xref:System.IO.Ports.SerialPort>データをバッファーするため、 <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティに格納されているストリームは、読み取ることができるバイト数が競合する可能性があります。  プロパティ<xref:System.IO.Ports.SerialPort.BytesToRead%2A>は、読み取るバイトがあることを示すことができますが、これらのバイトは、 <xref:System.IO.Ports.SerialPort>クラスにバッファリング<xref:System.IO.Ports.SerialPort.BaseStream%2A>されているため、プロパティに格納されているストリームにアクセスできない可能性があります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">長さ、<paramref name="value" />パラメーターが 0 です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="value" /> パラメーターの長さが 0 です。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="value" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.TimeoutException">タイムアウト期間が終了する前に、操作は完了しませんでした。</exception>
+        <exception cref="T:System.TimeoutException">タイムアウト時間内に操作が完了しませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="ReceivedBytesThreshold">
@@ -2327,11 +2327,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.Ports.SerialPort.DataReceived>場合にも、イベントが発生する<xref:System.IO.Ports.SerialData.Eof>内部入力バッファー内のバイト数との値に関係なく、文字が受信した、<xref:System.IO.Ports.SerialPort.ReceivedBytesThreshold%2A>プロパティ。  
+ 内部入力バッファーのバイト数<xref:System.IO.Ports.SerialPort.ReceivedBytesThreshold%2A>と<xref:System.IO.Ports.SerialData.Eof>プロパティの値に関係なく、文字が受信された場合にもイベントが発生します。<xref:System.IO.Ports.SerialPort.DataReceived>  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.ReceivedBytesThreshold" />値が 0 未満です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.ReceivedBytesThreshold" /> 値が 0 以下です。</exception>
       </Docs>
     </Member>
     <Member MemberName="RtsEnable">
@@ -2371,20 +2371,20 @@
       </ReturnValue>
       <Docs>
         <summary>シリアル通信中に、RTS (Request To Send) シグナルが有効かどうかを示す値を取得または設定します。</summary>
-        <value>RTS を有効にする場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
+        <value>RTS を有効にする場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 送信 (RTS) シグナルへの要求は、(RTS/CTS) ハードウェアのハンドシェイクを送信する送信/クリアする要求で通常使用されます。  
+ RTS (Request to send) シグナルは、通常、送信 (RTS/CTS) ハードウェアハンドシェイクの送信/クリア要求で使用されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">値、<see cref="P:System.IO.Ports.SerialPort.RtsEnable" />プロパティが設定または取得中に、<see cref="P:System.IO.Ports.SerialPort.Handshake" />プロパティに設定されて、<see cref="F:System.IO.Ports.Handshake.RequestToSend" />値または<see cref="F:System.IO.Ports.Handshake.RequestToSendXOnXOff" />値。</exception>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.IO.Ports.SerialPort.RtsEnable" /> プロパティに <see cref="P:System.IO.Ports.SerialPort.Handshake" /> 値または <see cref="F:System.IO.Ports.Handshake.RequestToSend" /> 値が設定されているときに、<see cref="F:System.IO.Ports.Handshake.RequestToSendXOnXOff" /> プロパティの値が設定または取得されました。</exception>
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
       </Docs>
     </Member>
     <Member MemberName="StopBits">
@@ -2427,25 +2427,25 @@
       </ReturnValue>
       <Docs>
         <summary>バイトごとのストップ ビットの標準の数を取得または設定します。</summary>
-        <value><see cref="T:System.IO.Ports.StopBits" /> 値のいずれか 1 つ。</value>
+        <value><see cref="T:System.IO.Ports.StopBits" /> 値のいずれか。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.Ports.SerialPort.StopBits%2A> の既定値は <xref:System.IO.Ports.StopBits.One> です。  
+ <xref:System.IO.Ports.SerialPort.StopBits%2A> の既定値は <xref:System.IO.Ports.StopBits.One>です。  
   
- <xref:System.IO.Ports.StopBits.None?displayProperty=nameWithType>値がサポートされていません。  
+ この<xref:System.IO.Ports.StopBits.None?displayProperty=nameWithType>値はサポートされていません。  
   
    
   
 ## Examples  
- 次の例は、設定する方法を示します、<xref:System.IO.Ports.SerialPort.StopBits%2A>プロパティを`One`します。  
+ <xref:System.IO.Ports.SerialPort.StopBits%2A>プロパティをに`One`設定する方法を次の例に示します。  
   
  [!code-cpp[System.IO.Ports.SerialPort#20](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/datareceived.cpp#20)]
  [!code-csharp[System.IO.Ports.SerialPort#20](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/datareceived.cs#20)]
  [!code-vb[System.IO.Ports.SerialPort#20](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/vb/datareceived.vb#20)]  
   
- 次の例では、使用、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例の一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次の例では、2人<xref:System.IO.Ports.SerialPort>のユーザーが、ヌルモデムケーブルで接続された2台の異なるコンピューターからチャットできるようにするためのクラスの使用方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -2454,10 +2454,10 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.StopBits" /> 値は <see cref="F:System.IO.Ports.StopBits.None" /> です。</exception>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="Write">
@@ -2508,17 +2508,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル ポートに出力として文字列を記述する場合は、このメソッドを使用します。  
+ このメソッドは、シリアルポートへの出力として文字列を書き込む場合に使用します。  
   
- 出力バッファーのバイト数が多すぎますがないかと<xref:System.IO.Ports.SerialPort.Handshake%2A>に設定されている<xref:System.IO.Ports.Handshake.XOnXOff>、<xref:System.IO.Ports.SerialPort>オブジェクトが生じる可能性がある、<xref:System.ServiceProcess.TimeoutException>デバイスをより多くのデータを受け入れる準備が完了するまで待機する間。  
+ 出力バッファー内のバイト数が多すぎてに<xref:System.IO.Ports.SerialPort.Handshake%2A> <xref:System.IO.Ports.Handshake.XOnXOff>設定されている<xref:System.IO.Ports.SerialPort>場合、オブジェクトは<xref:System.ServiceProcess.TimeoutException> 、デバイスがより多くのデータを受け入れる準備が整うまで待機している間、を発生させる可能性があります。  
   
- 既定では、<xref:System.IO.Ports.SerialPort>使用<xref:System.Text.ASCIIEncoding>文字をエンコードします。 <xref:System.Text.ASCIIEncoding> (char) 63 として 127 より大きいすべての文字をエンコードまたは '?' です。 その範囲の追加の文字をサポートするために次のように設定します。<xref:System.IO.Ports.SerialPort.Encoding%2A>に<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UTF32Encoding>、または<xref:System.Text.UnicodeEncoding>します。  
+ 既定では<xref:System.IO.Ports.SerialPort> 、 <xref:System.Text.ASCIIEncoding>はを使用して文字をエンコードします。 <xref:System.Text.ASCIIEncoding>127より大きいすべての文字を (char) 63 または '? ' としてエンコードします。 その範囲の追加の文字をサポートする<xref:System.IO.Ports.SerialPort.Encoding%2A>には<xref:System.Text.UTF32Encoding>、を<xref:System.Text.UnicodeEncoding>、、またはに<xref:System.Text.UTF8Encoding>設定します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="text" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト期間が終了する前に、操作は完了しませんでした。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="text" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト時間内に操作が完了しませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -2556,19 +2556,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル ポートに出力を作成するバイト バッファーを記述する場合は、このメソッドを使用します。  
+ このメソッドは、シリアルポートへの出力を作成するためにバイトバッファーに書き込む場合に使用します。  
   
- 出力バッファーのバイト数が多すぎますがないかと<xref:System.IO.Ports.SerialPort.Handshake%2A>に設定されている<xref:System.IO.Ports.Handshake.XOnXOff>、<xref:System.IO.Ports.SerialPort>オブジェクトが生じる可能性がある、<xref:System.ServiceProcess.TimeoutException>デバイスをより多くのデータを受け入れる準備が完了するまで待機する間。  
+ 出力バッファー内のバイト数が多すぎてに<xref:System.IO.Ports.SerialPort.Handshake%2A> <xref:System.IO.Ports.Handshake.XOnXOff>設定されている<xref:System.IO.Ports.SerialPort>場合、オブジェクトは<xref:System.ServiceProcess.TimeoutException> 、デバイスがより多くのデータを受け入れる準備が整うまで待機している間、を発生させる可能性があります。  
   
- 既定では、<xref:System.IO.Ports.SerialPort>使用<xref:System.Text.ASCIIEncoding>文字をエンコードします。 <xref:System.Text.ASCIIEncoding> (char) 63 として 127 より大きいすべての文字をエンコードまたは '?' です。 その範囲の追加の文字をサポートするために次のように設定します。<xref:System.IO.Ports.SerialPort.Encoding%2A>に<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UTF32Encoding>、または<xref:System.Text.UnicodeEncoding>します。  
+ 既定では<xref:System.IO.Ports.SerialPort> 、 <xref:System.Text.ASCIIEncoding>はを使用して文字をエンコードします。 <xref:System.Text.ASCIIEncoding>127より大きいすべての文字を (char) 63 または '? ' としてエンコードします。 その範囲の追加の文字をサポートする<xref:System.IO.Ports.SerialPort.Encoding%2A>には<xref:System.Text.UTF32Encoding>、を<xref:System.Text.UnicodeEncoding>、、またはに<xref:System.Text.UTF8Encoding>設定します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" />が渡される<see langword="null" />します。</exception>
+        <exception cref="T:System.ArgumentNullException">渡された <paramref name="buffer" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" />または<paramref name="count" />パラメーターが有効なリージョンの外には、<paramref name="buffer" />渡されています。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="offset" /> plus<paramref name="count" />がの長さより大きい、<paramref name="buffer" />します。</exception>
-        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト期間が終了する前に、操作は完了しませんでした。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターまたは <paramref name="count" /> パラメーターが、渡される <paramref name="buffer" /> の有効な領域外です。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="offset" /> に <paramref name="count" /> を加算した値が、<paramref name="buffer" /> の長さを超えています。</exception>
+        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト時間内に操作が完了しませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -2606,19 +2606,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル ポートに出力を作成する、文字バッファーへの書き込みをする場合は、このメソッドを使用します。  
+ このメソッドは、シリアルポートへの出力を作成するために文字バッファーに書き込む場合に使用します。  
   
- 出力バッファーのバイト数が多すぎますがないかと<xref:System.IO.Ports.SerialPort.Handshake%2A>に設定されている<xref:System.IO.Ports.Handshake.XOnXOff>、<xref:System.IO.Ports.SerialPort>オブジェクトが生じる可能性がある、<xref:System.ServiceProcess.TimeoutException>デバイスをより多くのデータを受け入れる準備が完了するまで待機する間。  
+ 出力バッファー内のバイト数が多すぎてに<xref:System.IO.Ports.SerialPort.Handshake%2A> <xref:System.IO.Ports.Handshake.XOnXOff>設定されている<xref:System.IO.Ports.SerialPort>場合、オブジェクトは<xref:System.ServiceProcess.TimeoutException> 、デバイスがより多くのデータを受け入れる準備が整うまで待機している間、を発生させる可能性があります。  
   
- 既定では、<xref:System.IO.Ports.SerialPort>使用<xref:System.Text.ASCIIEncoding>文字をエンコードします。 <xref:System.Text.ASCIIEncoding> (char) 63 として 127 より大きいすべての文字をエンコードまたは '?' です。 その範囲の追加の文字をサポートするために次のように設定します。<xref:System.IO.Ports.SerialPort.Encoding%2A>に<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UTF32Encoding>、または<xref:System.Text.UnicodeEncoding>します。  
+ 既定では<xref:System.IO.Ports.SerialPort> 、 <xref:System.Text.ASCIIEncoding>はを使用して文字をエンコードします。 <xref:System.Text.ASCIIEncoding>127より大きいすべての文字を (char) 63 または '? ' としてエンコードします。 その範囲の追加の文字をサポートする<xref:System.IO.Ports.SerialPort.Encoding%2A>には<xref:System.Text.UTF32Encoding>、を<xref:System.Text.UnicodeEncoding>、、またはに<xref:System.Text.UTF8Encoding>設定します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" />が渡される<see langword="null" />します。</exception>
+        <exception cref="T:System.ArgumentNullException">渡された <paramref name="buffer" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" />または<paramref name="count" />パラメーターが有効なリージョンの外には、<paramref name="buffer" />渡されています。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="offset" /> plus<paramref name="count" />がの長さより大きい、<paramref name="buffer" />します。</exception>
-        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト期間が終了する前に、操作は完了しませんでした。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターまたは <paramref name="count" /> パラメーターが、渡される <paramref name="buffer" /> の有効な領域外です。 <paramref name="offset" /> または <paramref name="count" /> のいずれかが 0 より小さい値です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="offset" /> に <paramref name="count" /> を加算した値が、<paramref name="buffer" /> の長さを超えています。</exception>
+        <exception cref="T:System.ServiceProcess.TimeoutException">タイムアウト時間内に操作が完了しませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBufferSize">
@@ -2666,13 +2666,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.Ports.SerialPort.WriteBufferSize%2A>プロパティ 2048 よりも小さい値は無視されます。  
+ プロパティ<xref:System.IO.Ports.SerialPort.WriteBufferSize%2A>は、2048より小さい値を無視します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.WriteBufferSize" />値が 0 未満です。</exception>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.IO.Ports.SerialPort.WriteBufferSize" />ストリームが開いているときにプロパティが設定されました。</exception>
-        <exception cref="T:System.IO.IOException"><see cref="P:System.IO.Ports.SerialPort.WriteBufferSize" />プロパティ奇数の整数値に設定されました。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.WriteBufferSize" /> 値が 0 以下です。</exception>
+        <exception cref="T:System.InvalidOperationException">ストリームが開いているときに、<see cref="P:System.IO.Ports.SerialPort.WriteBufferSize" /> プロパティが設定されました。</exception>
+        <exception cref="T:System.IO.IOException"><see cref="P:System.IO.Ports.SerialPort.WriteBufferSize" /> プロパティに奇数の整数値が設定されました。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteLine">
@@ -2714,14 +2714,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 入力バッファーのバイト数が多すぎますがある場合と<xref:System.IO.Ports.SerialPort.Handshake%2A>に設定されている<xref:System.IO.Ports.Handshake.XOnXOff>、<xref:System.IO.Ports.SerialPort>オブジェクトが生じる可能性がある、<xref:System.ServiceProcess.TimeoutException>デバイスをより多くのデータを受け入れる準備が完了するまで待機する間。  
+ 入力バッファー内のバイト数が多すぎてに<xref:System.IO.Ports.SerialPort.Handshake%2A> <xref:System.IO.Ports.Handshake.XOnXOff>設定されている<xref:System.IO.Ports.SerialPort>場合、オブジェクトは<xref:System.ServiceProcess.TimeoutException> 、デバイスがより多くのデータを受け入れる準備が整うまで待機している間、を発生させる可能性があります。  
   
- 出力に、<xref:System.IO.Ports.SerialPort.NewLine%2A>文字列。  
+ 書き込まれた出力に<xref:System.IO.Ports.SerialPort.NewLine%2A>は、という文字列が含まれます。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -2731,7 +2731,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="text" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">指定したポートが開いていません。</exception>
-        <exception cref="T:System.TimeoutException"><see cref="M:System.IO.Ports.SerialPort.WriteLine(System.String)" />メソッドは、ストリームに書き込みできませんでした。</exception>
+        <exception cref="T:System.TimeoutException"><see cref="M:System.IO.Ports.SerialPort.WriteLine(System.String)" /> メソッドは、ストリームに書き込むことができませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteTimeout">
@@ -2774,22 +2774,22 @@
       </ReturnValue>
       <Docs>
         <summary>書き込み操作が完了していないときに、タイムアウトになるまでのミリ秒数を取得または設定します。</summary>
-        <value>タイムアウトになるまでのミリ秒数。 既定値は <see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" /> です。</value>
+        <value>タイムアウトになるまでのミリ秒数。 既定値は、<see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 書き込みのタイムアウト値は、Win32 の通信 API の 500 ミリ秒に設定されました最初。 このプロパティを使用して、この値を設定できます。 タイムアウトをゼロより大きい値に設定またはに設定できる<xref:System.IO.Ports.SerialPort.InfiniteTimeout>、後者のタイムアウトは発生しません。 <xref:System.IO.Ports.SerialPort.InfiniteTimeout> が既定値です。  
+ 書き込みタイムアウト値は、最初は Win32 通信 API で500ミリ秒に設定されていました。 このプロパティを使用すると、この値を設定できます。 タイムアウトは、ゼロより大きい値に設定することも、に<xref:System.IO.Ports.SerialPort.InfiniteTimeout>設定することもできます。この場合、タイムアウトは発生しません。 <xref:System.IO.Ports.SerialPort.InfiniteTimeout> が既定値です。  
   
 > [!NOTE]
->  アンマネージ ユーザー`COMMTIMEOUTS`構造体のタイムアウトを抑制する 0 に、タイムアウト値を設定することで可能性があります。 タイムアウトを抑制する、<xref:System.IO.Ports.SerialPort.WriteTimeout%2A>プロパティ、ただし、する必要があります指定<xref:System.IO.Ports.SerialPort.InfiniteTimeout>します。  
+>  アンマネージ`COMMTIMEOUTS`構造体のユーザーはタイムアウト値を0に設定してタイムアウトを抑制することがあります。 ただし、 <xref:System.IO.Ports.SerialPort.WriteTimeout%2A>プロパティを使用してタイムアウトを抑制するには、 <xref:System.IO.Ports.SerialPort.InfiniteTimeout>を指定する必要があります。  
   
- このプロパティには影響しません、<xref:System.IO.Stream.BeginWrite%2A>メソッドによって返されるストリームの<xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティ。  
+ このプロパティは、 <xref:System.IO.Stream.BeginWrite%2A> <xref:System.IO.Ports.SerialPort.BaseStream%2A>プロパティによって返されるストリームのメソッドには影響しません。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、<xref:System.IO.Ports.SerialPort>ヌル モデム ケーブルで接続されている 2 つの別々 のコンピューターからチャットを行う 2 人のユーザーを許可するクラス。 この例で、ユーザーが、ポート設定とユーザー名のチャットする前にように求められます。 このコード例が示されている例のコードの一部、<xref:System.IO.Ports.SerialPort>クラス。  
+ 次のコード例では、 <xref:System.IO.Ports.SerialPort>クラスを使用して、2人のユーザーが、null モデムケーブルで接続された2台の異なるコンピューターからチャットできるようにする方法を示します。 この例では、チャットする前に、ポート設定とユーザー名の入力を求められます。 このコード例は、 <xref:System.IO.Ports.SerialPort>クラスで提供されているより大きなコード例の一部です。  
   
  [!code-cpp[System.IO.Ports.SerialPort#01](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cpp/serialport.cpp#01)]
  [!code-csharp[System.IO.Ports.SerialPort#01](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.Ports.SerialPort/cs/SerialPort.cs#01)]
@@ -2797,11 +2797,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.IO.IOException">ポートが無効な状態にします。  
+        <exception cref="T:System.IO.IOException">ポートが無効状態です。  
   
 - または - 
-基になるポートの状態を設定できませんでした。 たとえば、これから渡されるパラメーター<see cref="T:System.IO.Ports.SerialPort" />オブジェクトが無効です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.WriteTimeout" />値が等しくないし、0 より小さい<see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" />します。</exception>
+基本ポートの状態を設定しようとしましたが失敗しました。 たとえば、この <see cref="T:System.IO.Ports.SerialPort" /> オブジェクトから渡されたパラメーターが無効であるなどです。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.IO.Ports.SerialPort.WriteTimeout" /> 値が 0 未満であり、<see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout" /> と等しくありません。</exception>
       </Docs>
     </Member>
   </Members>

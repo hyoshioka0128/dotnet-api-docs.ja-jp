@@ -1,5 +1,5 @@
 <Type Name="HashCode" FullName="System.HashCode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="a9c8aeaa459e84d5207c9d3068bd8e103c6609e9" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58723333" /></Metadata><TypeSignature Language="C#" Value="public struct HashCode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="5d7792e00e0659eb565d01c655ac15776a8c8f46" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68434604" /></Metadata><TypeSignature Language="C#" Value="public struct HashCode" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit HashCode extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.HashCode" />
   <TypeSignature Language="VB.NET" Value="Public Structure HashCode" />
@@ -13,6 +13,9 @@
     <AssemblyName>netstandard</AssemblyName>
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
   </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+  </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
@@ -24,37 +27,37 @@
 
 ## Remarks
 
-使用することができます<xref:System.HashCode>に 1 つのハッシュ コードを複数の値 (たとえば、構造体またはクラスのフィールド) を結合します。 この構造体は、2 つの方法のいずれかで動作します。
+を使用<xref:System.HashCode>すると、複数の値 (構造体またはクラスのフィールドなど) を1つのハッシュコードに結合できます。 この構造は、次の2つの方法のいずれかで動作します。
 
- * 結合する最大 8 つの値のセットをそのまま使用する静的メソッド。
- * 2 つのインスタンス、一度に 1 つずつ値を受け入れ、ストリーミング方式で操作するメソッド。
+ * 結合する最大8個の値のセットを受け入れる静的メソッド。
+ * ストリーミング方式で動作する2つのインスタンスメソッドで、一度に1つずつ値を受け取ります。
 
 > [!WARNING]
-> 実装は、アセンブリのバージョン間で変わる可能性が、ハッシュ コードを実装の詳細として考慮すべきベスト プラクティスを勧めします。 によって生成されたハッシュ コードを保存しない<xref:System.HashCode>でシリアル化された構造体は、たとえば、ディスク上です。 <xref:System.HashCode> つまり、ハッシュ コードは、オペレーティング システム処理のスコープ内で決定論的のみ、このベスト プラクティスを適用するのにには、静的に初期化されたランダム シードを使用します。
+> 実装はアセンブリのバージョン間で変わる可能性があるため、実装の詳細としてハッシュコードを考慮することをお勧めします。 によって<xref:System.HashCode>生成されるハッシュコードを、ディスク上などのシリアル化された構造体に格納しないでください。 <xref:System.HashCode>静的に初期化されたランダムシードを使用して、このベストプラクティスを適用します。つまり、ハッシュコードは、オペレーティングシステムプロセスのスコープ内でのみ決定的なものになります。
 
 ### <a name="static-methods"></a>静的メソッド
 
-静的メソッドでは、最大 8 つの値の既定のハッシュ コードを結合します。
+静的メソッドは、最大8つの値の既定のハッシュコードを結合します。
  
  [!code-csharp[System.HashCode.Structure#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.hashcode.structure/cs/example1.cs#1)]
  [!code-vb[System.HashCode.Structure#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.hashcode.structure/vb/example1.vb#1)] 
 
-### <a name="instance-methods"></a>インスタンス メソッド
+### <a name="instance-methods"></a>インスタンスメソッド
 
 > [!IMPORTANT]
-> <xref:System.HashCode.ToHashCode> インスタンスごとに最大 1 回呼び出す必要があります<xref:System.HashCode>します。
+> <xref:System.HashCode.ToHashCode>は、の<xref:System.HashCode>インスタンスごとに1回だけ呼び出す必要があります。
 
-インスタンス メソッドでは、8 個を超える値のハッシュ コードを結合します。
+インスタンスメソッドは、8個を超える値のハッシュコードを結合します。
  
  [!code-csharp[System.HashCode.Structure#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.hashcode.structure/cs/example2.cs#1)]
  [!code-vb[System.HashCode.Structure#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.hashcode.structure/vb/example2.vb#1)]
 
-インスタンス メソッドを組み合わせることも、特定によって生成されたハッシュ コード<xref:System.Collections.Generic.IEqualityComparer%601>実装します。
+また、インスタンスメソッドは、特定<xref:System.Collections.Generic.IEqualityComparer%601>の実装によって生成されるハッシュコードを結合します。
 
  [!code-csharp[System.HashCode.Structure#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.hashcode.structure/cs/example3.cs#1)]
  [!code-vb[System.HashCode.Structure#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.hashcode.structure/vb/example3.vb#1)]
 
-<xref:System.HashCode>構造渡す必要がある参照で他の方法では、値型であります。
+<xref:System.HashCode>構造体は、値型であるため、他のメソッドに参照渡しする必要があります。
  
  [!code-csharp[System.HashCode.Structure#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.hashcode.structure/cs/example4.cs#1)]
  [!code-vb[System.HashCode.Structure#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.hashcode.structure/vb/example4.vb#1)]
@@ -79,6 +82,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -89,7 +95,7 @@
         <Parameter Name="value" Type="T" />
       </Parameters>
       <Docs>
-        <typeparam name="T">ハッシュ コードを追加する値の型。</typeparam>
+        <typeparam name="T">ハッシュコードに追加する値の型。</typeparam>
         <param name="value">ハッシュ コードに追加する値。</param>
         <summary>ハッシュ コードに値を 1 つ追加します。</summary>
         <remarks>To be added.</remarks>
@@ -111,6 +117,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -122,7 +131,7 @@
         <Parameter Name="comparer" Type="System.Collections.Generic.IEqualityComparer&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">ハッシュ コードを追加する値の型。</typeparam>
+        <typeparam name="T">ハッシュコードに追加する値の型。</typeparam>
         <param name="value">ハッシュ コードに追加する値。</param>
         <param name="comparer">ハッシュ コードの計算に使用する <see cref="T:System.Collections.Generic.IEqualityComparer`1" />。
 この値には、<typeparamref name="T" /> の既定の等値比較子を使用する null 参照 (Visual Basic では Nothing) を指定できます。</param>
@@ -146,6 +155,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -156,11 +168,11 @@
         <Parameter Name="value1" Type="T1" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードを追加する値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードを追加する値の型。</typeparam>
         <param name="value1">ハッシュ コードに追加する値。</param>
         <summary>指定した値によって返されるハッシュ コードを拡散します。</summary>
         <returns>単一の値を表すハッシュ コード。</returns>
-        <remarks>一部のデータ構造では、大きな範囲にわたるハッシュ コードが拡散されることを前提としています。 このメソッドは、値によって返されたハッシュ コードの品質が向上し、基になるデータ型が単純で、たとえば、整数値である場合に便利です。</remarks>
+        <remarks>一部のデータ構造では、ハッシュコードが大きな範囲内で拡散されることを前提としています。 このメソッドは、値によって返されるハッシュコードの品質を向上させ、基になるデータ型が単純な場合 (整数値など) に便利です。</remarks>
       </Docs>
     </Member>
     <Member MemberName="Combine&lt;T1,T2&gt;">
@@ -179,6 +191,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -191,8 +206,8 @@
         <Parameter Name="value2" Type="T2" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードに結合する最初の値の型。</typeparam>
-        <typeparam name="T2">ハッシュ コードに結合する 2 番目の値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードに結合する最初の値の型。</typeparam>
+        <typeparam name="T2">ハッシュコードに結合する2番目の値の型。</typeparam>
         <param name="value1">ハッシュ コードに結合する最初の値。</param>
         <param name="value2">ハッシュ コードに結合する 2 番目の値。</param>
         <summary>2 つの値をハッシュ コードに結合します。</summary>
@@ -216,6 +231,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -230,9 +248,9 @@
         <Parameter Name="value3" Type="T3" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードに結合する最初の値の型。</typeparam>
-        <typeparam name="T2">ハッシュ コードに結合する 2 番目の値の型。</typeparam>
-        <typeparam name="T3">ハッシュ コードを組み込んで、3 番目の値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードに結合する最初の値の型。</typeparam>
+        <typeparam name="T2">ハッシュコードに結合する2番目の値の型。</typeparam>
+        <typeparam name="T3">ハッシュコードに結合する3番目の値の型。</typeparam>
         <param name="value1">ハッシュ コードに結合する最初の値。</param>
         <param name="value2">ハッシュ コードに結合する 2 番目の値。</param>
         <param name="value3">ハッシュ コードに結合する 3 番目の値。</param>
@@ -257,6 +275,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -273,10 +294,10 @@
         <Parameter Name="value4" Type="T4" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードに結合する最初の値の型。</typeparam>
-        <typeparam name="T2">ハッシュ コードに結合する 2 番目の値の型。</typeparam>
-        <typeparam name="T3">ハッシュ コードを組み込んで、3 番目の値の型。</typeparam>
-        <typeparam name="T4">ハッシュ コードを組み込んで、4 番目の値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードに結合する最初の値の型。</typeparam>
+        <typeparam name="T2">ハッシュコードに結合する2番目の値の型。</typeparam>
+        <typeparam name="T3">ハッシュコードに結合する3番目の値の型。</typeparam>
+        <typeparam name="T4">ハッシュコードに結合する4番目の値の型。</typeparam>
         <param name="value1">ハッシュ コードに結合する最初の値。</param>
         <param name="value2">ハッシュ コードに結合する 2 番目の値。</param>
         <param name="value3">ハッシュ コードに結合する 3 番目の値。</param>
@@ -302,6 +323,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -320,11 +344,11 @@
         <Parameter Name="value5" Type="T5" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードに結合する最初の値の型。</typeparam>
-        <typeparam name="T2">ハッシュ コードに結合する 2 番目の値の型。</typeparam>
-        <typeparam name="T3">ハッシュ コードを組み込んで、3 番目の値の型。</typeparam>
-        <typeparam name="T4">ハッシュ コードを組み込んで、4 番目の値の型。</typeparam>
-        <typeparam name="T5">ハッシュ コードを組み込んで、5 番目の値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードに結合する最初の値の型。</typeparam>
+        <typeparam name="T2">ハッシュコードに結合する2番目の値の型。</typeparam>
+        <typeparam name="T3">ハッシュコードに結合する3番目の値の型。</typeparam>
+        <typeparam name="T4">ハッシュコードに結合する4番目の値の型。</typeparam>
+        <typeparam name="T5">ハッシュコードに結合する5番目の値の型。</typeparam>
         <param name="value1">ハッシュ コードに結合する最初の値。</param>
         <param name="value2">ハッシュ コードに結合する 2 番目の値。</param>
         <param name="value3">ハッシュ コードに結合する 3 番目の値。</param>
@@ -351,6 +375,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -371,12 +398,12 @@
         <Parameter Name="value6" Type="T6" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードに結合する最初の値の型。</typeparam>
-        <typeparam name="T2">ハッシュ コードに結合する 2 番目の値の型。</typeparam>
-        <typeparam name="T3">ハッシュ コードを組み込んで、3 番目の値の型。</typeparam>
-        <typeparam name="T4">ハッシュ コードを組み込んで、4 番目の値の型。</typeparam>
-        <typeparam name="T5">ハッシュ コードを組み込んで、5 番目の値の型。</typeparam>
-        <typeparam name="T6">ハッシュ コードを組み込んで、6 番目の値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードに結合する最初の値の型。</typeparam>
+        <typeparam name="T2">ハッシュコードに結合する2番目の値の型。</typeparam>
+        <typeparam name="T3">ハッシュコードに結合する3番目の値の型。</typeparam>
+        <typeparam name="T4">ハッシュコードに結合する4番目の値の型。</typeparam>
+        <typeparam name="T5">ハッシュコードに結合する5番目の値の型。</typeparam>
+        <typeparam name="T6">ハッシュコードに結合する6番目の値の型。</typeparam>
         <param name="value1">ハッシュ コードに結合する最初の値。</param>
         <param name="value2">ハッシュ コードに結合する 2 番目の値。</param>
         <param name="value3">ハッシュ コードに結合する 3 番目の値。</param>
@@ -404,6 +431,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -426,13 +456,13 @@
         <Parameter Name="value7" Type="T7" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードに結合する最初の値の型。</typeparam>
-        <typeparam name="T2">ハッシュ コードに結合する 2 番目の値の型。</typeparam>
-        <typeparam name="T3">ハッシュ コードを組み込んで、3 番目の値の型。</typeparam>
-        <typeparam name="T4">ハッシュ コードを組み込んで、4 番目の値の型。</typeparam>
-        <typeparam name="T5">ハッシュ コードを組み込んで、5 番目の値の型。</typeparam>
-        <typeparam name="T6">ハッシュ コードを組み込んで、6 番目の値の型。</typeparam>
-        <typeparam name="T7">ハッシュ コードを組み込んで、7 番目の値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードに結合する最初の値の型。</typeparam>
+        <typeparam name="T2">ハッシュコードに結合する2番目の値の型。</typeparam>
+        <typeparam name="T3">ハッシュコードに結合する3番目の値の型。</typeparam>
+        <typeparam name="T4">ハッシュコードに結合する4番目の値の型。</typeparam>
+        <typeparam name="T5">ハッシュコードに結合する5番目の値の型。</typeparam>
+        <typeparam name="T6">ハッシュコードに結合する6番目の値の型。</typeparam>
+        <typeparam name="T7">ハッシュコードに結合する7番目の値の型。</typeparam>
         <param name="value1">ハッシュ コードに結合する最初の値。</param>
         <param name="value2">ハッシュ コードに結合する 2 番目の値。</param>
         <param name="value3">ハッシュ コードに結合する 3 番目の値。</param>
@@ -461,6 +491,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -485,14 +518,14 @@
         <Parameter Name="value8" Type="T8" />
       </Parameters>
       <Docs>
-        <typeparam name="T1">ハッシュ コードに結合する最初の値の型。</typeparam>
-        <typeparam name="T2">ハッシュ コードに結合する 2 番目の値の型。</typeparam>
-        <typeparam name="T3">ハッシュ コードを組み込んで、3 番目の値の型。</typeparam>
-        <typeparam name="T4">ハッシュ コードを組み込んで、4 番目の値の型。</typeparam>
-        <typeparam name="T5">ハッシュ コードを組み込んで、5 番目の値の型。</typeparam>
-        <typeparam name="T6">ハッシュ コードを組み込んで、6 番目の値の型。</typeparam>
-        <typeparam name="T7">ハッシュ コードを組み込んで、7 番目の値の型。</typeparam>
-        <typeparam name="T8">ハッシュ コードを組み込んで、8 番目の値の型。</typeparam>
+        <typeparam name="T1">ハッシュコードに結合する最初の値の型。</typeparam>
+        <typeparam name="T2">ハッシュコードに結合する2番目の値の型。</typeparam>
+        <typeparam name="T3">ハッシュコードに結合する3番目の値の型。</typeparam>
+        <typeparam name="T4">ハッシュコードに結合する4番目の値の型。</typeparam>
+        <typeparam name="T5">ハッシュコードに結合する5番目の値の型。</typeparam>
+        <typeparam name="T6">ハッシュコードに結合する6番目の値の型。</typeparam>
+        <typeparam name="T7">ハッシュコードに結合する7番目の値の型。</typeparam>
+        <typeparam name="T8">ハッシュコードに結合する8番目の値の型。</typeparam>
         <param name="value1">ハッシュ コードに結合する最初の値。</param>
         <param name="value2">ハッシュ コードに結合する 2 番目の値。</param>
         <param name="value3">ハッシュ コードに結合する 3 番目の値。</param>
@@ -522,11 +555,14 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1">
+        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1;dotnet-plat-ext-3.0">
           <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)</AttributeName>
         </Attribute>
-        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1">
+        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1;dotnet-plat-ext-3.0">
           <AttributeName>System.Obsolete("HashCode is a mutable struct and should not be compared with other HashCodes.", true)</AttributeName>
         </Attribute>
       </Attributes>
@@ -560,11 +596,14 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <Attributes>
-        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1">
+        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1;dotnet-plat-ext-3.0">
           <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)</AttributeName>
         </Attribute>
-        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1">
+        <Attribute FrameworkAlternate="netcore-3.0;netcore-2.1;netcore-2.2;netstandard-2.1;dotnet-plat-ext-3.0">
           <AttributeName>System.Obsolete("HashCode is a mutable struct and should not be compared with other HashCodes. Use ToHashCode to retrieve the computed hash code.", true)</AttributeName>
         </Attribute>
       </Attributes>
@@ -595,6 +634,9 @@
         <AssemblyName>netstandard</AssemblyName>
         <AssemblyVersion>2.1.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Bcl.HashCode</AssemblyName>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -602,7 +644,7 @@
       <Docs>
         <summary><see cref="Overload:System.HashCode.Add" /> を連続して呼び出した後に、最終的なハッシュ コードを計算します。</summary>
         <returns>計算されたハッシュ コード。</returns>
-        <remarks>このメソッドのインスタンスごとに最大 1 回呼び出す必要があります<see cref="T:System.HashCode" />します。</remarks>
+        <remarks>このメソッドは、の<see cref="T:System.HashCode" />インスタンスごとに1回だけ呼び出す必要があります。</remarks>
       </Docs>
     </Member>
   </Members>

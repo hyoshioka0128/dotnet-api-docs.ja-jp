@@ -1,5 +1,5 @@
 <Type Name="JsonReaderState" FullName="System.Text.Json.JsonReaderState">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="134658575824ec7ab34ef310d545b4b8914b9306" /><Meta Name="ms.sourcegitcommit" Value="ef1f0c8985003a14413f66c3de381b8f3b6e4436" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/30/2019" /><Meta Name="ms.locfileid" Value="66380640" /></Metadata><TypeSignature Language="C#" Value="public struct JsonReaderState" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="62a0cf74d99495feb18860cc8597af7d51d6831d" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68435023" /></Metadata><TypeSignature Language="C#" Value="public struct JsonReaderState" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit JsonReaderState extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.JsonReaderState" />
   <TypeSignature Language="VB.NET" Value="Public Structure JsonReaderState" />
@@ -20,7 +20,7 @@
 
 ## Remarks
 
-`JsonReaderState` 不完全なデータを読み取るときに、再入をサポートしより多くのデータが使用可能、読み取りを続行する必要があります。 異なり、<xref:System.Text.Json.Utf8JsonReader>構造体、ref 構造体は、この型は、非同期/待機の境界を越えて存続できますおよびの新しいインスタンスを続行する前より多くのデータを非同期的に読み取りをサポートする必須ではそのため、<xref:System.Text.Json.Utf8JsonReader>します。
+`JsonReaderState`は、不完全なデータを読み取るときに再入をサポートするために必要であり、さらに多くのデータを使用できるようになると、読み取りを続行します。 Ref 構造体である<xref:System.Text.Json.Utf8JsonReader>構造体とは異なり、この型はasync/awaitの境界を越えて保持できます。したがって、の新しいインスタンスを続行する前に、より多くのデータを非同期に読み取るためのサポートを提供する必要があります。<xref:System.Text.Json.Utf8JsonReader>
 
  ]]></format>
     </remarks>
@@ -46,32 +46,11 @@
         <remarks>
           <format><![CDATA[
           
-この状態のインスタンスに渡す必要があります、 <xref:System.Text.Json.Utf8JsonReader> JSON データを持つコンス トラクター。 異なり、 <xref:System.Text.Json.Utf8JsonReader>、状態は ref 構造体では、非同期/待機の境界を越えて存続でき、この型がより多くのデータの新しいインスタンスを続行する前に非同期的に読み取りをサポートするために必要なため、<xref:System.Text.Json.Utf8JsonReader>します。
+この状態のインスタンスは、JSON データを使用<xref:System.Text.Json.Utf8JsonReader>してコンストラクターに渡す必要があります。 Ref 構造体であるとは異なり、非同期/待機の境界を越えて状態を維持することができます。したがって、この型は、の新しいインスタンスを続行する前に<xref:System.Text.Json.Utf8JsonReader>、より多くのデータを非同期に読み取るためのサポートを提供するために必要です。 <xref:System.Text.Json.Utf8JsonReader>
             
             ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">最大深度が、正でない値 (&lt; 0) に設定されています。</exception>
-      </Docs>
-    </Member>
-    <Member MemberName="BytesConsumed">
-      <MemberSignature Language="C#" Value="public long BytesConsumed { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int64 BytesConsumed" />
-      <MemberSignature Language="DocId" Value="P:System.Text.Json.JsonReaderState.BytesConsumed" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property BytesConsumed As Long" />
-      <MemberSignature Language="C++ CLI" Value="public:&#xA; property long BytesConsumed { long get(); };" />
-      <MemberSignature Language="F#" Value="member this.BytesConsumed : int64" Usage="System.Text.Json.JsonReaderState.BytesConsumed" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>System.Text.Json</AssemblyName>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int64</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>UTF-8 でエンコードされた指定の入力テキストのために、これまで <see cref="T:System.Text.Json.Utf8JsonReader" /> によって使用された合計バイト数を取得します。</summary>
-        <value>によって使用されたバイトの合計数、<see cref="T:System.Text.Json.Utf8JsonReader" />これまでにします。</value>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Options">
@@ -92,27 +71,6 @@
       <Docs>
         <summary>JSON 仕様への厳格な準拠 (これが既定の動作) から逸脱する場合がある <see cref="T:System.Text.Json.Utf8JsonReader" /> 構造体を使用して JSON データを読み取る際に使用するカスタム動作を取得します。</summary>
         <value>JSON データを読み取るときに使用するカスタム動作。</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public SequencePosition Position { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.SequencePosition Position" />
-      <MemberSignature Language="DocId" Value="P:System.Text.Json.JsonReaderState.Position" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Position As SequencePosition" />
-      <MemberSignature Language="C++ CLI" Value="public:&#xA; property SequencePosition Position { SequencePosition get(); };" />
-      <MemberSignature Language="F#" Value="member this.Position : SequencePosition" Usage="System.Text.Json.JsonReaderState.Position" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>System.Text.Json</AssemblyName>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.SequencePosition</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>UTF-8 でエンコードされた入力 ReadOnlySequence&lt;byte&gt; が指定されている場合は、その中の現在の <see cref="T:System.SequencePosition" /> を取得します。 <see cref="T:System.Text.Json.Utf8JsonReader" /> 構造体が ReadOnlySpan&lt;byte&gt; で構築されている場合は、既定の <see cref="T:System.SequencePosition" /> が常に返されます。</summary>
-        <value>現在<see cref="T:System.SequencePosition" />内、指定された utf-8 でエンコードされた入力 ReadOnlySequence&lt;バイト&gt;します。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

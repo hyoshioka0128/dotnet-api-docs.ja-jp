@@ -1,5 +1,5 @@
 <Type Name="LockRecursionPolicy" FullName="System.Threading.LockRecursionPolicy">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="2710d7132d86e232d9f54622c01c3bbba4025bc1" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58702992" /></Metadata><TypeSignature Language="C#" Value="public enum LockRecursionPolicy" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="fe9e72b040cba4c878667a21d3545bbb03d217fc" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68393512" /></Metadata><TypeSignature Language="C#" Value="public enum LockRecursionPolicy" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed LockRecursionPolicy extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Threading.LockRecursionPolicy" />
   <TypeSignature Language="VB.NET" Value="Public Enum LockRecursionPolicy" />
@@ -32,20 +32,20 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の再帰ポリシーは、ロックの種類によって異なります。 既定のポリシーと、指定されたロックの種類のロックの再帰の正確な動作は、型のドキュメントを参照してください。 たとえば、<xref:System.Threading.ReaderWriterLockSlim>クラスには、既に入力した場合と、ロック、ロックのポリシー設定に関係なく、読み取りモードでデッドロックが発生する可能性を軽減するために書き込みモードでロックに入るスレッドはできません。  
+ 既定の再帰ポリシーは、ロックの種類によって異なります。 既定のポリシーと、特定のロックの種類に対するロック再帰の正確な動作の詳細については、型のドキュメントを参照してください。 たとえば、 <xref:System.Threading.ReaderWriterLockSlim>クラスでは、ロックポリシーの設定に関係なく、ロックが既に読み取りモードでロックに入っている場合に、スレッドがロックに入ることを許可しません。これは、デッドロックの可能性を減らすためです。  
   
- 現在、だけが 1 つのロックは、この列挙体を使用します。  
+ 現在、この列挙体を使用するロックは1つだけです。  
   
 -   <xref:System.Threading.ReaderWriterLockSlim>。 詳細については、<xref:System.Threading.ReaderWriterLockSlim.RecursionPolicy%2A> プロパティを参照してください。  
   
    
   
 ## Examples  
- 次の例は、いずれかに依存している 2 つの例外シナリオ、<xref:System.Threading.LockRecursionPolicy>設定し、1 つにはないです。  
+ 次の例では、2つの例外シナリオを示し<xref:System.Threading.LockRecursionPolicy>ます。1つは設定に依存し、もう1つは設定に依存しません。  
   
- 最初のシナリオでは、スレッドは読み取りモードでロックに入ったし、再帰的に読み取りモードに入ろいます。 場合、<xref:System.Threading.ReaderWriterLockSlim>が作成される、NoRecursion を再帰ポリシーを設定の既定のコンス トラクターを使用して、例外がスローされます。 SupportsRecursion を使用して作成する場合、<xref:System.Threading.ReaderWriterLockSlim>例外はスローされません。  
+ 最初のシナリオでは、スレッドが読み取りモードでロックに入り、読み取りモードを再帰的に入力しようとします。 <xref:System.Threading.ReaderWriterLockSlim>がパラメーターなしのコンストラクターを使用して作成され、再帰ポリシーが NoRecursion に設定されている場合は、例外がスローされます。 Supportsrecursion を使用して<xref:System.Threading.ReaderWriterLockSlim>を作成した場合、例外はスローされません。  
   
- 2 番目のシナリオでは、スレッドは、読み取りモードでロックに入ったで、書き込みモードでロックに入るしようとします。 <xref:System.Threading.LockRecursionException> ロック再帰ポリシーに関係なくがスローされます。  
+ 2番目のシナリオでは、スレッドは読み取りモードでロックに入り、書き込みモードでロックに入ろうとします。 <xref:System.Threading.LockRecursionException>は、ロックの再帰ポリシーに関係なくスローされます。  
   
  [!code-csharp[System.Threading.LockRecursionPolicy#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.LockRecursionPolicy/cs/example1.cs#1)]
  [!code-vb[System.Threading.LockRecursionPolicy#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.LockRecursionPolicy/vb/source.vb#1)]  

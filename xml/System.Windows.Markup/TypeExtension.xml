@@ -1,5 +1,5 @@
 <Type Name="TypeExtension" FullName="System.Windows.Markup.TypeExtension">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1a46121bfdddb6a8cdf34506ee157fd116be9469" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65004387" /></Metadata><TypeSignature Language="C#" Value="public class TypeExtension : System.Windows.Markup.MarkupExtension" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="3155d713c41688fabd0a6b259c216268dd04d2a4" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68439520" /></Metadata><TypeSignature Language="C#" Value="public class TypeExtension : System.Windows.Markup.MarkupExtension" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TypeExtension extends System.Windows.Markup.MarkupExtension" />
   <TypeSignature Language="DocId" Value="T:System.Windows.Markup.TypeExtension" />
   <TypeSignature Language="VB.NET" Value="Public Class TypeExtension&#xA;Inherits MarkupExtension" />
@@ -21,10 +21,10 @@
   </Base>
   <Interfaces />
   <Attributes>
-    <Attribute FrameworkAlternate="netframework-4.8;netcore-3.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2">
+    <Attribute FrameworkAlternate="netframework-4.8;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2">
       <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.TypeExtensionConverter))</AttributeName>
     </Attribute>
-    <Attribute FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netcore-3.0">
+    <Attribute FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
       <AttributeName>System.Runtime.CompilerServices.TypeForwardedFrom("PresentationFramework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")</AttributeName>
     </Attribute>
     <Attribute FrameworkAlternate="netframework-4.8;netcore-3.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2">
@@ -32,23 +32,23 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>文字列の入力に基づき <see cref="T:System.Type" /> を返すマークアップ拡張を実装します。</summary>
+    <summary>文字列入力に基づいて、<see cref="T:System.Type" /> を返すマークアップ拡張機能を実装します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]使用状況の情報を参照してください[X:type マークアップ拡張機能](~/docs/framework/xaml-services/x-type-markup-extension.md)します。  
+ 使用[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]方法の詳細については、「 [x:Type Markup Extension](~/docs/framework/xaml-services/x-type-markup-extension.md)」を参照してください。  
   
 > [!NOTE]
->  `{x:Type}`機能は、一般にマークアップからユーザー コードの呼び出し。 型解決サービスが元の XAML のサポートが実装しているコードでは、<xref:System.Windows.Markup.IXamlTypeResolver>機能の実装に関連して XAML スキーマ コンテキスト。 参照しないで<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>の代わりに、<xref:System.Windows.Markup.IXamlTypeResolver>サービス プロバイダー; 渡すコンテキストが型の解決の無効になるし、せず、有効なサービスを呼び出す試みは失敗します。  
+>  通常`{x:Type}` 、この機能は、マークアップからユーザーコードを呼び出すときに使用されます。 Xaml サポートを実装しているコードの場合、型解決<xref:System.Windows.Markup.IXamlTypeResolver>サービスはから取得され、動作する xaml スキーマコンテキストの実装に関連します。 サービス<xref:System.Windows.Markup.IXamlTypeResolver>プロバイダーの代わりと<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>してを参照しないでください。渡されたコンテキストが型解決に対して有効でない可能性があり、有効なサービスを使用せずにを呼び出すと失敗します。  
   
 ## <a name="wpf-usage-notes"></a>WPF の使用上の注意  
- 型の参照はで、スタイル、テンプレート、およびデータ バインドの機能領域でよく使われる[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]、これらの機能が XAML で参照されている場合。  
+ 型参照は、これらの機能が XAML によって参照され[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]ている場合に、のスタイル、テンプレート、およびデータバインド機能の領域でよく使用されます。  
   
  ]]></format>
     </remarks>
     <related type="Article" href="https://msdn.microsoft.com/library/e0e0ce6f-e873-49c7-8ad7-8b840eb353ec">x:Type マークアップ拡張機能</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/db07a952-05ce-4aa4-b6f9-aac7397d0326">型コンバーターと XAML のマークアップ拡張機能</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/db07a952-05ce-4aa4-b6f9-aac7397d0326">XAML の型コンバーターまたはマークアップ拡張機能</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -112,13 +112,13 @@
         <Parameter Name="typeName" Type="System.String" Index="0" FrameworkAlternate="netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="typeName">参照する型を識別する文字列。 この文字列の形式は <c>prefix:className</c> です。 <c>prefix</c> は XAML 名前空間のマッピング プレフィックスで、既定の XAML 名前空間にマップされない型を参照する場合にのみ必要です。</param>
-        <summary><see cref="T:System.Windows.Markup.TypeExtension" /> クラスの新しいインスタンスを初期化します。<see cref="P:System.Windows.Markup.TypeExtension.TypeName" /> 値は、指定された <paramref name="typeName" /> 文字列に基づいて初期化されます。</summary>
+        <param name="typeName">参照を作成する対象となる型を識別する文字列。 この文字列の形式は <c>prefix:className</c> です。 <c>prefix</c> は XAML 名前空間のマッピング プレフィックスで、既定の XAML 名前空間にマップされない型を参照する場合にのみ必要です。</param>
+        <summary>指定した <paramref name="typeName" /> 文字列に基づいて <see cref="T:System.Windows.Markup.TypeExtension" /> 値を初期化し、<see cref="P:System.Windows.Markup.TypeExtension.TypeName" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンス トラクターで設定すると、この値は評価されません。 値がない場合`null`値が最初に受け付けられます。 実際の解析と値の評価がまで延期されます<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>は、利用可能なサービス コンテキストがアクティブな XAML が解析される際と、この拡張機能は、呼び出されます。 この時点で、 `typeName` 、XAML スキーマ コンテキスト内での型とその型が返されるように解決可能なことが必要です。  
+ この値は、コンストラクターで設定した場合は評価されません。 値がでない`null`場合は、最初に値が受け入れられます。 XAML を解析し、使用可能なサービスコンテキストを<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>アクティブにすると、この拡張機能でが呼び出されるまで、値の実際の解析と評価は遅延されます。 現時点では、 `typeName`は、XAML スキーマコンテキスト内の型として解決できると想定され、その型が返されます。  
   
  ]]></format>
         </remarks>
@@ -153,7 +153,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これはヘルパー メソッドの実行時のコードの使用状況を<xref:System.Windows.Markup.TypeExtension>マークアップ拡張機能の標準の実装パターンの一部でないとします。  
+ これは、の<xref:System.Windows.Markup.TypeExtension>実行時コード使用のヘルパーメソッドであり、マークアップ拡張機能の通常の実装パターンの一部ではありません。  
   
  ]]></format>
         </remarks>
@@ -186,26 +186,26 @@
         <Parameter Name="serviceProvider" Type="System.IServiceProvider" Index="0" FrameworkAlternate="netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="serviceProvider">マークアップ拡張機能のサービスを提供できるオブジェクト。 プロバイダーは、<see cref="T:System.Windows.Markup.IXamlTypeResolver" /> に対するサービスを提供することが求められます。</param>
-        <summary>この拡張機能を適用するプロパティで設定するオブジェクトを返します。 <see cref="T:System.Windows.Markup.TypeExtension" /> の場合、これは要求された型名の評価対象となる <see cref="T:System.Type" /> 値です。</summary>
-        <returns>拡張機能が適用されたプロパティに設定する <see cref="T:System.Type" />。</returns>
+        <param name="serviceProvider">マークアップ拡張機能のサービスを提供できるオブジェクト。 プロバイダーは、 <see cref="T:System.Windows.Markup.IXamlTypeResolver" />に対するサービスを提供することが求められます。</param>
+        <summary>この拡張機能を適用するプロパティで設定するオブジェクトを返します。 <see cref="T:System.Windows.Markup.TypeExtension" /> の場合、これは、要求された型名の評価対象となる <see cref="T:System.Type" /> 値です。</summary>
+        <returns>拡張機能が適用されたプロパティで設定する <see cref="T:System.Type" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 渡すことができます`null`の`serviceProvider`が、この場合にのみ<xref:System.Windows.Markup.TypeExtension>インスタンスは、初期の真の型とコンス トラクターで確立されたなく`typeName`します。 このマークアップ拡張機能の実装が渡されたに基づくサービスに依存するそれ以外の場合、`serviceProvider`します。 できません`null`します。 `serviceProvider`のサービスを提供する予定が<xref:System.Windows.Markup.IXamlTypeResolver>します。  
+ に`null` <xref:System.Windows.Markup.TypeExtension> `typeName`はを渡すことができますが、このインスタンスがではなくコンストラクターの初期の true 型で確立されている場合にのみ、を渡すことができます。 `serviceProvider` それ以外の場合、このマークアップ拡張機能の実装は`serviceProvider`、渡されたに基づいてサービスに依存します。 にする`null`ことはできません。 は`serviceProvider` 、の<xref:System.Windows.Markup.IXamlTypeResolver>サービスを提供することが想定されています。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">拡張機能の <paramref name="member" /> 値は <see langword="null" />です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="typeName" /> 文字列に正しく解析されなかった部分があります。  
+        <exception cref="T:System.InvalidOperationException">拡張機能の <paramref name="member" /> 値は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="typeName" /> 文字列は、正しく解析されなかった部分があります。  
   
 - または - 
  <paramref name="serviceProvider" /> が <see cref="T:System.Windows.Markup.IXamlTypeResolver" /> のサービスを提供しませんでした。  
   
 - または - 
- <paramref name="typeName" /> 値が型に対して解決されませんでした。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="serviceProvider" /> は <see langword="null" /> です</exception>
+ <paramref name="typeName" /> 値が、型に対して解決されませんでした。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="serviceProvider" /> が <see langword="null" /></exception>
       </Docs>
     </Member>
     <Member MemberName="Type">
@@ -243,18 +243,18 @@
       </ReturnValue>
       <Docs>
         <summary>この拡張機能の型情報を取得または設定します。</summary>
-        <value>確立された型。 ランタイムの場合は、get アクセスで <see langword="null" /> になることがありますが、<see langword="null" /> に設定することはできません。</value>
+        <value>確立された型。 ランタイムの場合は、get アクセスで <see langword="null" /> になることがありますが、 <see langword="null" />に設定することはできません。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このインスタンスが使用しない限り、<xref:System.Windows.Markup.TypeExtension.%23ctor%28System.Type%29>署名のコンス トラクターは、この値はある`null`します。 このプロパティはできないときにリセット<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>が呼び出されます。 True 型で表現する場合は常を呼び出す<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>このプロパティを確認するのではなく。  
+ このインスタンスが<xref:System.Windows.Markup.TypeExtension.%23ctor%28System.Type%29>署名コンストラクターを使用して意図的にインスタンス化され`null`ていない限り、この値はになります。 が呼び出された場合<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A> 、このプロパティはリセットされません。 実際の型を表す場合は、常にこの<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>プロパティをチェックするのではなく、を呼び出す必要があります。  
   
- このプロパティは、マークアップ拡張機能の使用状況に関する通常の規則に従って設定します。 ただしを設定する場合は、 <xref:System.Type>、このマークアップ拡張機能の目的は、関連するではありませんので、同じ<xref:System.Type>から返される、<xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>を呼び出します。  
+ このプロパティは、マークアップ拡張機能の使用に関する通常の規則に従って設定できます。 ただし、を使用して<xref:System.Type>を設定している場合は、 <xref:System.Windows.Markup.TypeExtension.ProvideValue%2A>呼び出しから同じ<xref:System.Type>が返されるため、このマークアップ拡張機能の目的は関係ありません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><see langword="null" /> に設定しようとしました。</exception>
+        <exception cref="T:System.ArgumentNullException"><see langword="null" /> を設定しようとしました。</exception>
       </Docs>
     </Member>
     <Member MemberName="TypeName">
@@ -288,10 +288,10 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このマークアップ拡張機能によって表される型名を取得または設定します。</summary>
-        <value>型を識別する文字列。 この文字列の形式は*プレフィックス*<c>:</c>*className*します。 (*プレフィックス*、XML 名前空間のマッピング プレフィックスは、WPF の既定の XML 名前空間にマップされていない型を参照するために必要なだけ ([!INCLUDE[TLA#tla_wpfxmlnsv1](~/includes/tlasharptla-wpfxmlnsv1-md.md)])。</value>
+        <summary>このマークアップ拡張機能で表される型名を取得または設定します。</summary>
+        <value>型を識別する文字列。 この文字列の形式は*prefix*<c>:</c>*className*です。 (*prefix* は XML 名前空間のマッピング プレフィックスで、WPF の既定の XML 名前空間 ([!INCLUDE[TLA#tla_wpfxmlnsv1](~/includes/tlasharptla-wpfxmlnsv1-md.md)]) にマップされていない型を参照するためにだけ必要です。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><see langword="null" /> に設定しようとしました。</exception>
+        <exception cref="T:System.ArgumentNullException"><see langword="null" />に設定しようとしました。</exception>
       </Docs>
     </Member>
   </Members>

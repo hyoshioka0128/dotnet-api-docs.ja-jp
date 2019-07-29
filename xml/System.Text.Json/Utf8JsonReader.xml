@@ -1,5 +1,5 @@
 <Type Name="Utf8JsonReader" FullName="System.Text.Json.Utf8JsonReader">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="b28e3f5d8816fc720b94105dae9b26daef43639a" /><Meta Name="ms.sourcegitcommit" Value="61757d0366a172cdbc11436deb1c1ffa49d97238" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/28/2019" /><Meta Name="ms.locfileid" Value="67458312" /></Metadata><TypeSignature Language="C#" Value="public struct Utf8JsonReader" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="d819d79b85a5451effbb779c90de4a7d1fa77343" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68434918" /></Metadata><TypeSignature Language="C#" Value="public struct Utf8JsonReader" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Utf8JsonReader extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.Utf8JsonReader" />
   <TypeSignature Language="VB.NET" Value="Public Structure Utf8JsonReader" />
@@ -25,56 +25,85 @@
 
 ## Remarks
 
-`Utf8JsonReader` キャッシュなしの順番に、既定のテキストが厳密に準拠するプロセス、 [JSON RFC](https://tools.ietf.org/html/rfc8259)します。
+`Utf8JsonReader`キャッシュを使用せずにテキストを順番に処理し、既定では[JSON RFC](https://tools.ietf.org/html/rfc8259)に厳密に準拠します。
 
-ときに`Utf8JsonReader`無効な JSON を検出するとがスローされます、<xref:System.Text.Json.JsonReaderException>で行の数とバイトの行の位置などの基本的なエラー情報。
+が`Utf8JsonReader`無効な JSON を検出した<xref:System.Text.Json.JsonReaderException>場合は、行の行番号やバイト位置などの基本的なエラー情報を使用してをスローします。
 
-この型は、ref 構造体であるために、非同期を直接サポートしていません。 ただし、再入不完全なデータを読み取るしより多くのデータが表示されたら、閲覧を続行するためのサポートは提供します。
+この型は ref 構造体であるため、非同期的には直接サポートされません。 ただし、不完全なデータを読み取って、さらに多くのデータが表示された場合は、再入によるサポートを提供します。
 
-読み取り中に最大の深さを設定またはコメントのスキップを許可のインスタンスを作成できる<xref:System.Text.Json.JsonReaderState>リーダーに渡します。
+コメントの読み取り中またはスキップを許可するときに、最大の深さを設定<xref:System.Text.Json.JsonReaderState>できるようにするには、のインスタンスを作成してリーダーに渡します。
 
  ]]></format>
     </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public Utf8JsonReader (ref System.Buffers.ReadOnlySequence&lt;byte&gt; jsonData, bool isFinalBlock, System.Text.Json.JsonReaderState state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor([in]valuetype System.Buffers.ReadOnlySequence`1&lt;unsigned int8&gt;&amp; jsonData, bool isFinalBlock, valuetype System.Text.Json.JsonReaderState state) cil managed" />
-      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.#ctor(System.Buffers.ReadOnlySequence{System.Byte}@,System.Boolean,System.Text.Json.JsonReaderState)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (ByRef jsonData As ReadOnlySequence(Of Byte), isFinalBlock As Boolean, state As JsonReaderState)" />
-      <MemberSignature Language="C++ CLI" Value="public:&#xA; Utf8JsonReader(System::Buffers::ReadOnlySequence&lt;System::Byte&gt; % jsonData, bool isFinalBlock, System::Text::Json::JsonReaderState state);" />
-      <MemberSignature Language="F#" Value="new System.Text.Json.Utf8JsonReader :  * bool * System.Text.Json.JsonReaderState -&gt; System.Text.Json.Utf8JsonReader" Usage="new System.Text.Json.Utf8JsonReader (jsonData, isFinalBlock, state)" />
+      <MemberSignature Language="C#" Value="public Utf8JsonReader (System.Buffers.ReadOnlySequence&lt;byte&gt; jsonData, System.Text.Json.JsonReaderOptions options = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Buffers.ReadOnlySequence`1&lt;unsigned int8&gt; jsonData, valuetype System.Text.Json.JsonReaderOptions options) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.#ctor(System.Buffers.ReadOnlySequence{System.Byte},System.Text.Json.JsonReaderOptions)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (jsonData As ReadOnlySequence(Of Byte), Optional options As JsonReaderOptions = null)" />
+      <MemberSignature Language="F#" Value="new System.Text.Json.Utf8JsonReader : System.Buffers.ReadOnlySequence&lt;byte&gt; * System.Text.Json.JsonReaderOptions -&gt; System.Text.Json.Utf8JsonReader" Usage="new System.Text.Json.Utf8JsonReader (jsonData, options)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Text.Json</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="jsonData" Type="System.Buffers.ReadOnlySequence&lt;System.Byte&gt;" RefType="ref">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.Runtime.CompilerServices.IsReadOnly</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="jsonData" Type="System.Buffers.ReadOnlySequence&lt;System.Byte&gt;" />
+        <Parameter Name="options" Type="System.Text.Json.JsonReaderOptions" />
+      </Parameters>
+      <Docs>
+        <param name="jsonData">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Utf8JsonReader (ReadOnlySpan&lt;byte&gt; jsonData, System.Text.Json.JsonReaderOptions options = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; jsonData, valuetype System.Text.Json.JsonReaderOptions options) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.#ctor(System.ReadOnlySpan{System.Byte},System.Text.Json.JsonReaderOptions)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (jsonData As ReadOnlySpan(Of Byte), Optional options As JsonReaderOptions = null)" />
+      <MemberSignature Language="F#" Value="new System.Text.Json.Utf8JsonReader : ReadOnlySpan&lt;byte&gt; * System.Text.Json.JsonReaderOptions -&gt; System.Text.Json.Utf8JsonReader" Usage="new System.Text.Json.Utf8JsonReader (jsonData, options)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="jsonData" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
+        <Parameter Name="options" Type="System.Text.Json.JsonReaderOptions" />
+      </Parameters>
+      <Docs>
+        <param name="jsonData">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Utf8JsonReader (System.Buffers.ReadOnlySequence&lt;byte&gt; jsonData, bool isFinalBlock, System.Text.Json.JsonReaderState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Buffers.ReadOnlySequence`1&lt;unsigned int8&gt; jsonData, bool isFinalBlock, valuetype System.Text.Json.JsonReaderState state) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.#ctor(System.Buffers.ReadOnlySequence{System.Byte},System.Boolean,System.Text.Json.JsonReaderState)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (jsonData As ReadOnlySequence(Of Byte), isFinalBlock As Boolean, state As JsonReaderState)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; Utf8JsonReader(System::Buffers::ReadOnlySequence&lt;System::Byte&gt; jsonData, bool isFinalBlock, System::Text::Json::JsonReaderState state);" />
+      <MemberSignature Language="F#" Value="new System.Text.Json.Utf8JsonReader : System.Buffers.ReadOnlySequence&lt;byte&gt; * bool * System.Text.Json.JsonReaderState -&gt; System.Text.Json.Utf8JsonReader" Usage="new System.Text.Json.Utf8JsonReader (jsonData, isFinalBlock, state)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="jsonData" Type="System.Buffers.ReadOnlySequence&lt;System.Byte&gt;" />
         <Parameter Name="isFinalBlock" Type="System.Boolean" />
         <Parameter Name="state" Type="System.Text.Json.JsonReaderState" />
       </Parameters>
       <Docs>
-        <param name="jsonData">UTF-8 でエンコードされた、処理対象の JSON テキスト。</param>
-        <param name="isFinalBlock">入力シーケンスに処理対象のデータ全体が含まれている場合は、<see langword="true" />。 一部のデータが入力スパンに含まれていて、後続のデータがあることが確認されている場合にのみ <see langword="false" />。</param>
-        <param name="state">これがコンストラクターの最初の呼び出しである場合は、既定の状態が渡されます。 それ以外の場合は、<see cref="T:System.Text.Json.Utf8JsonReader" /> の前のインスタンスから状態を取り込んで、それを返します。</param>
-        <summary><see cref="T:System.Text.Json.Utf8JsonReader" /> クラスの新しいインスタンスを初期化します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-
-## Remarks
-
-この型は、ref 構造体であるため、スタック専用の型でし、ref 構造体のすべての制限が適用されます。
-これが原因で、コンス トラクターが受け入れる理由、<xref:System.Text.Json.JsonReaderState>します。
-
- ]]></format>
-        </remarks>
+        <param name="jsonData">To be added.</param>
+        <param name="isFinalBlock">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -104,8 +133,8 @@
 
 ## Remarks
 
-この型は、ref 構造体であるため、スタック専用の型でし、ref 構造体のすべての制限が適用されます。
-これが原因で、コンス トラクターが受け入れる理由、<xref:System.Text.Json.JsonReaderState>します。
+この型は ref 構造体であるため、スタックのみの型であり、ref 構造体のすべての制限が適用されます。
+コンストラクターがを<xref:System.Text.Json.JsonReaderState>受け入れる理由は次のようになります。
 
  ]]></format>
         </remarks>
@@ -149,13 +178,13 @@
       </ReturnValue>
       <Docs>
         <summary>現在のトークンの深度を取得します。</summary>
-        <value>現在のトークンの深度。</value>
+        <value>現在のトークンの深さ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
 ## Remarks
 
-`CurrentDepth`プロパティは入れ子になったオブジェクトの再帰の深さを追跡/これまでに処理する JSON テキスト内での配列。
+この`CurrentDepth`プロパティは、これまでに処理された JSON テキスト内の入れ子になったオブジェクトまたは配列の再帰的な深さを追跡します。
 
  ]]></format>
         </remarks>
@@ -184,7 +213,7 @@
 
 ## Remarks
 
-異なり、 <xref:System.Text.Json.Utf8JsonReader>、ref 構造体は、状態は、非同期/待機の境界を越えて存続できます、この型がより多くのデータの新しいインスタンスを続行する前に非同期的に読み取りをサポートするために必要なため、<xref:System.Text.Json.Utf8JsonReader>します。
+Ref 構造体であるとは異なり、非同期/待機の境界を越えて状態を維持することができます。したがって、この型は、の新しいインスタンスを続行する前に、 <xref:System.Text.Json.Utf8JsonReader>より多くのデータを非同期に読み取るためのサポートを提供するために必要です。 <xref:System.Text.Json.Utf8JsonReader>
 
  ]]></format>
         </remarks>
@@ -212,6 +241,28 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">JSON トークンの値はブール値 (つまり、<see cref="F:System.Text.Json.JsonTokenType.True" /> または <see cref="F:System.Text.Json.JsonTokenType.False" />) ではありません。</exception>
         <altmember cref="P:System.Text.Json.Utf8JsonReader.TokenType" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetByte">
+      <MemberSignature Language="C#" Value="public byte GetByte ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8 GetByte() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.GetByte" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetByte () As Byte" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; System::Byte GetByte();" />
+      <MemberSignature Language="F#" Value="member this.GetByte : unit -&gt; byte" Usage="utf8JsonReader.GetByte " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBytesFromBase64">
@@ -330,7 +381,7 @@
 
 ## Remarks
 
-`GetDecimal`全体の utf-8 でエンコードされたトークンの値は解析する場合、メソッドが例外をスローする<xref:System.Decimal>値。
+Utf-8 `GetDecimal`でエンコードされたトークンの値全体を<xref:System.Decimal>値に解析できない場合、メソッドは例外をスローします。
 
  ]]></format>
         </remarks>
@@ -363,7 +414,7 @@
 
 ## Remarks
 
-`GetDouble`全体の utf-8 でエンコードされたトークンの値は解析する場合、メソッドが例外をスローする<xref:System.Double>値。
+Utf-8 `GetDouble`でエンコードされたトークンの値全体を<xref:System.Double>値に解析できない場合、メソッドは例外をスローします。
 
  ]]></format>
         </remarks>
@@ -396,6 +447,28 @@
         <exception cref="T:System.FormatException">JSON トークン値は、GUID でサポートされていない形式です。</exception>
       </Docs>
     </Member>
+    <Member MemberName="GetInt16">
+      <MemberSignature Language="C#" Value="public short GetInt16 ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int16 GetInt16() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.GetInt16" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetInt16 () As Short" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; short GetInt16();" />
+      <MemberSignature Language="F#" Value="member this.GetInt16 : unit -&gt; int16" Usage="utf8JsonReader.GetInt16 " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int16</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetInt32">
       <MemberSignature Language="C#" Value="public int GetInt32 ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetInt32() cil managed" />
@@ -420,7 +493,7 @@
 
 ## Remarks
 
-`GetInt32`全体の utf-8 でエンコードされたトークンの値は解析する場合、メソッドが例外をスローする<xref:System.Int32>値。
+Utf-8 `GetInt32`でエンコードされたトークンの値全体を<xref:System.Int32>値に解析できない場合、メソッドは例外をスローします。
 
  ]]></format>
         </remarks>
@@ -457,7 +530,7 @@ JSON トークン値は、<see cref="F:System.Int32.MinValue" /> 未満の数値
 
 ## Remarks
 
-`GetInt64`全体の utf-8 でエンコードされたトークンの値は解析する場合、メソッドが例外をスローする<xref:System.Int64>値。
+Utf-8 `GetInt64`でエンコードされたトークンの値全体を<xref:System.Int64>値に解析できない場合、メソッドは例外をスローします。
 
  ]]></format>
         </remarks>
@@ -468,6 +541,33 @@ JSON トークン値は、<see cref="F:System.Int32.MinValue" /> 未満の数値
 
 JSON トークン値は、<see cref="F:System.Int64.MinValue" /> 未満の数値、または <see cref="F:System.Int64.MaxValue" /> より大きい数値を表しています。</exception>
         <altmember cref="P:System.Text.Json.Utf8JsonReader.TokenType" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetSByte">
+      <MemberSignature Language="C#" Value="public sbyte GetSByte ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int8 GetSByte() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.GetSByte" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetSByte () As SByte" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; System::SByte GetSByte();" />
+      <MemberSignature Language="F#" Value="member this.GetSByte : unit -&gt; sbyte" Usage="utf8JsonReader.GetSByte " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.CLSCompliant(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.SByte</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetSingle">
@@ -494,7 +594,7 @@ JSON トークン値は、<see cref="F:System.Int64.MinValue" /> 未満の数値
 
 ## Remarks
 
-`GetSingle`全体の utf-8 でエンコードされたトークンの値は解析する場合、メソッドが例外をスローする<xref:System.Single>値。
+Utf-8 `GetSingle`でエンコードされたトークンの値全体を<xref:System.Single>値に解析できない場合、メソッドは例外をスローします。
 
  ]]></format>
         </remarks>
@@ -525,10 +625,37 @@ JSON トークン値は、<see cref="F:System.Int64.MinValue" /> 未満の数値
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">トークン値は JSON 文字列ではありません (つまり、<see cref="F:System.Text.Json.JsonTokenType.String" /> または <see cref="F:System.Text.Json.JsonTokenType.PropertyName" /> ではない)。
 
-- または -
+または
 
 JSON 文字列に無効な UTF-8 バイトまたは無効な UTF-16 サロゲートが含まれています。</exception>
         <altmember cref="P:System.Text.Json.Utf8JsonReader.TokenType" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetUInt16">
+      <MemberSignature Language="C#" Value="public ushort GetUInt16 ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int16 GetUInt16() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.GetUInt16" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetUInt16 () As UShort" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; System::UInt16 GetUInt16();" />
+      <MemberSignature Language="F#" Value="member this.GetUInt16 : unit -&gt; uint16" Usage="utf8JsonReader.GetUInt16 " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.CLSCompliant(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt16</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetUInt32">
@@ -611,20 +738,25 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <AssemblyName>System.Text.Json</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.CompilerServices.IsReadOnly</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>トークン値を取得するために使用する <c>Value</c> プロパティを示す値を取得します。</summary>
-        <value><see langword="true" /> 場合<see cref="P:System.Text.Json.Utf8JsonReader.ValueSequence" />トークン値を取得するために使用する必要があります。 <see langword="false" /> 場合<see cref="P:System.Text.Json.Utf8JsonReader.ValueSpan" />代わりに使用する必要があります。</value>
+        <value><see langword="true" />トークン値を取得するには、を使用する必要があります。<see cref="P:System.Text.Json.Utf8JsonReader.ValueSequence" /> <see langword="false" />代わりに<see cref="P:System.Text.Json.Utf8JsonReader.ValueSpan" />を使用する必要があります。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
 ## Remarks
 
-場合`HasValueSequence`は`false`、<xref:System.Text.Json.Utf8JsonReader.ValueSequence>が空です。 トークンの値を使用して、そのため、読み取り、<xref:System.Text.Json.Utf8JsonReader.ValueSpan>プロパティ。
+が`HasValueSequence` <xref:System.Text.Json.Utf8JsonReader.ValueSequence>の場合、は空です。 `false` そのため、 <xref:System.Text.Json.Utf8JsonReader.ValueSpan>プロパティを使用してトークン値を読み取ります。
 
-入力データ内の`ReadOnlySpan<byte>`この、常に返します`false`。 入力データ内の`ReadOnlySequence<byte>`、のみが返されます`true`かどうか、トークンの値をまたぐ複数のセグメント化し、そのため、範囲として表すことができません。
+内`ReadOnlySpan<byte>`の入力データの場合、これは`false`常にを返します。 内`ReadOnlySequence<byte>`の入力データの場合は、トークン`true`値が1つ以上のセグメントをまたがっし、そのためにスパンとして表すことができない場合にのみ、が返されます。
 
  ]]></format>
         </remarks>
@@ -668,7 +800,7 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
       </ReturnValue>
       <Docs>
         <summary>指定された UTF-8 でエンコードされた入力 ReadOnlySequence&lt;byte&gt; 内の現在の <see cref="T:System.SequencePosition" /> を取得します。<see cref="T:System.Text.Json.Utf8JsonReader" /> 構造体が ReadOnlySpan&lt;byte&gt; で構築されている場合は既定の <see cref="T:System.SequencePosition" /> を取得します。</summary>
-        <value>現在<see cref="T:System.SequencePosition" />内、指定された utf-8 でエンコードされた入力 ReadOnlySequence&lt;バイト&gt;または既定値を<see cref="T:System.SequencePosition" />場合、<see cref="T:System.Text.Json.Utf8JsonReader" />構造体が構築した、ReadOnlySpan&lt;バイト&gt;します。</value>
+        <value>指定し<see cref="T:System.SequencePosition" />た utf-8 でエンコードされた入力 ReadOnlySequence&lt;バイト&gt; 、または<see cref="T:System.SequencePosition" /> <see cref="T:System.Text.Json.Utf8JsonReader" />構造体が ReadOnlySpan&lt;バイト&gt;を使用して構築された場合は既定値である、現在の。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -694,7 +826,7 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <remarks>To be added.</remarks>
         <exception cref="T:System.Text.Json.JsonException">JSON RFC では無効な JSON トークンが検出されました。
         
-または
+- または -
 
 現在の深度が、最大深度によって設定された再帰の限度を超えています。</exception>
       </Docs>
@@ -720,70 +852,6 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="TextEquals">
-      <MemberSignature Language="C#" Value="public bool TextEquals (ReadOnlySpan&lt;byte&gt; otherUtf8Text);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TextEquals(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; otherUtf8Text) cil managed" />
-      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.TextEquals(System.ReadOnlySpan{System.Byte})" />
-      <MemberSignature Language="VB.NET" Value="Public Function TextEquals (otherUtf8Text As ReadOnlySpan(Of Byte)) As Boolean" />
-      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool TextEquals(ReadOnlySpan&lt;System::Byte&gt; otherUtf8Text);" />
-      <MemberSignature Language="F#" Value="member this.TextEquals : ReadOnlySpan&lt;byte&gt; -&gt; bool" Usage="utf8JsonReader.TextEquals otherUtf8Text" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>System.Text.Json</AssemblyName>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="otherUtf8Text" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="otherUtf8Text">比較対象の UTF-8 でエンコードされたテキスト。</param>
-        <summary>UTF-8 でエンコードされたテキストをソース内のエスケープされていない JSON トークン値と比較し、一致する場合は <see langword="true" /> を返します。</summary>
-        <returns>ソースの JSON トークン値が UTF-8 でエンコードされた検索テキストと一致する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
-        <remarks>
-          <format><![CDATA[
-          
-かどうか、テキスト検索は無効な utf-8 テキストには、メソッドを返します`false`JSON ペイロード内で無効な utf-8 を使用できないためです。
-
-          ]]></format>
-        </remarks>
-        <exception cref="T:System.InvalidOperationException">JSON トークンは文字列ではありません (つまり、その型は <see cref="F:System.Text.Json.JsonTokenType.String" /> または <see cref="F:System.Text.Json.JsonTokenType.PropertyName" /> 以外です)。</exception>
-      </Docs>
-    </Member>
-    <Member MemberName="TextEquals">
-      <MemberSignature Language="C#" Value="public bool TextEquals (ReadOnlySpan&lt;char&gt; otherText);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TextEquals(valuetype System.ReadOnlySpan`1&lt;char&gt; otherText) cil managed" />
-      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.TextEquals(System.ReadOnlySpan{System.Char})" />
-      <MemberSignature Language="VB.NET" Value="Public Function TextEquals (otherText As ReadOnlySpan(Of Char)) As Boolean" />
-      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool TextEquals(ReadOnlySpan&lt;char&gt; otherText);" />
-      <MemberSignature Language="F#" Value="member this.TextEquals : ReadOnlySpan&lt;char&gt; -&gt; bool" Usage="utf8JsonReader.TextEquals otherText" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>System.Text.Json</AssemblyName>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="otherText" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="otherText">比較対象の UTF-16 でエンコードされたテキスト。</param>
-        <summary>UTF-16 でエンコードされたテキストをソース内のエスケープされていない JSON トークン値と比較し、一致する場合は true を返します。</summary>
-        <returns>ソースの JSON トークン値が UTF-16 でエンコードされた検索テキストと一致する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
-        <remarks>
-          <format><![CDATA[
-          
-かどうか、検索テキストが無効または不完全な utf-16 テキスト (対になっていないサロゲート) など、メソッドを返します`false`JSON ペイロード内で無効な utf-16 できないためです。
-            
-            ]]></format>
-        </remarks>
-        <exception cref="T:System.InvalidOperationException">JSON テキストは文字列ではありません (型が <see cref="F:System.Text.Json.JsonTokenType.String" /> または <see cref="F:System.Text.Json.JsonTokenType.PropertyName" /> ではありません)。</exception>
-      </Docs>
-    </Member>
     <Member MemberName="TokenStartIndex">
       <MemberSignature Language="C#" Value="public long TokenStartIndex { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int64 TokenStartIndex" />
@@ -796,6 +864,11 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <AssemblyName>System.Text.Json</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.CompilerServices.IsReadOnly</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
@@ -823,6 +896,31 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
       <Docs>
         <summary>UTF-8 でエンコードされた JSON テキスト内で最後に処理された JSON トークンの種類を取得します。</summary>
         <value>最後に処理された JSON トークンの型。</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryGetByte">
+      <MemberSignature Language="C#" Value="public bool TryGetByte (out byte value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetByte([out] unsigned int8&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.TryGetByte(System.Byte@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function TryGetByte (ByRef value As Byte) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool TryGetByte([Runtime::InteropServices::Out] System::Byte % value);" />
+      <MemberSignature Language="F#" Value="member this.TryGetByte :  -&gt; bool" Usage="utf8JsonReader.TryGetByte value" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Byte" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -982,11 +1080,36 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このメソッドの解析だけ<xref:System.Guid>ハイフンとは、周囲の装飾なしの値。 
+このメソッドは、 <xref:System.Guid>ハイフンを使用した値の解析だけを行います。 
 
          ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">JSON トークン値が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="TryGetInt16">
+      <MemberSignature Language="C#" Value="public bool TryGetInt16 (out short value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetInt16([out] int16&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.TryGetInt16(System.Int16@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function TryGetInt16 (ByRef value As Short) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool TryGetInt16([Runtime::InteropServices::Out] short % value);" />
+      <MemberSignature Language="F#" Value="member this.TryGetInt16 :  -&gt; bool" Usage="utf8JsonReader.TryGetInt16 value" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Int16" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TryGetInt32">
@@ -1043,6 +1166,36 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <altmember cref="P:System.Text.Json.Utf8JsonReader.TokenType" />
       </Docs>
     </Member>
+    <Member MemberName="TryGetSByte">
+      <MemberSignature Language="C#" Value="public bool TryGetSByte (out sbyte value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetSByte([out] int8&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.TryGetSByte(System.SByte@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function TryGetSByte (ByRef value As SByte) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool TryGetSByte([Runtime::InteropServices::Out] System::SByte % value);" />
+      <MemberSignature Language="F#" Value="member this.TryGetSByte :  -&gt; bool" Usage="utf8JsonReader.TryGetSByte value" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.CLSCompliant(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.SByte" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TryGetSingle">
       <MemberSignature Language="C#" Value="public bool TryGetSingle (out float value);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetSingle([out] float32&amp; value) cil managed" />
@@ -1068,6 +1221,36 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">JSON トークン値は <see cref="F:System.Text.Json.JsonTokenType.Number" /> ではありません。</exception>
         <altmember cref="P:System.Text.Json.Utf8JsonReader.TokenType" />
+      </Docs>
+    </Member>
+    <Member MemberName="TryGetUInt16">
+      <MemberSignature Language="C#" Value="public bool TryGetUInt16 (out ushort value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetUInt16([out] unsigned int16&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.TryGetUInt16(System.UInt16@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function TryGetUInt16 (ByRef value As UShort) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool TryGetUInt16([Runtime::InteropServices::Out] System::UInt16 % value);" />
+      <MemberSignature Language="F#" Value="member this.TryGetUInt16 :  -&gt; bool" Usage="utf8JsonReader.TryGetUInt16 value" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.CLSCompliant(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.UInt16" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TryGetUInt32">
@@ -1168,6 +1351,11 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <AssemblyName>System.Text.Json</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.CompilerServices.IsReadOnly</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Buffers.ReadOnlySequence&lt;System.Byte&gt;</ReturnType>
       </ReturnValue>
@@ -1181,8 +1369,8 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
 ## Remarks
 
 
-場合<xref:System.Text.Json.Utf8JsonReader.HasValueSequence>は`false`、`ValueSequence`が空です。 そのため、アクセスのみ`ValueSequence`場合<xref:System.Text.Json.Utf8JsonReader.HasValueSequence>は`true`します。
-トークンの値にアクセスする必要がありますそれ以外の場合、<xref:System.Text.Json.Utf8JsonReader.ValueSpan>します。
+が<xref:System.Text.Json.Utf8JsonReader.HasValueSequence> `ValueSequence`の場合、は空です。 `false` したがって、が`ValueSequence` `true`の<xref:System.Text.Json.Utf8JsonReader.HasValueSequence>場合にのみアクセスします。
+それ以外の場合は、から<xref:System.Text.Json.Utf8JsonReader.ValueSpan>トークン値にアクセスする必要があります。
 
  ]]></format>
         </remarks>
@@ -1200,6 +1388,11 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <AssemblyName>System.Text.Json</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.CompilerServices.IsReadOnly</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ReadOnlySpan&lt;System.Byte&gt;</ReturnType>
       </ReturnValue>
@@ -1212,11 +1405,86 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
 
 ## Remarks
 
-場合<xref:System.Text.Json.Utf8JsonReader.HasValueSequence>は`true`、<xref:System.Text.Json.Utf8JsonReader.ValueSpan>が空です。 そのため、アクセスのみ`ValueSpan`場合<xref:System.Text.Json.Utf8JsonReader.HasValueSequence>は`false`します。
-トークンの値にアクセスする必要がありますそれ以外の場合、<xref:System.Text.Json.Utf8JsonReader.ValueSequence>します。
+が<xref:System.Text.Json.Utf8JsonReader.HasValueSequence> <xref:System.Text.Json.Utf8JsonReader.ValueSpan>の場合、は空です。 `true` したがって、が`ValueSpan` `false`の<xref:System.Text.Json.Utf8JsonReader.HasValueSequence>場合にのみアクセスします。
+それ以外の場合は、から<xref:System.Text.Json.Utf8JsonReader.ValueSequence>トークン値にアクセスする必要があります。
 
  ]]></format>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValueTextEquals">
+      <MemberSignature Language="C#" Value="public bool ValueTextEquals (ReadOnlySpan&lt;byte&gt; utf8Text);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool ValueTextEquals(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; utf8Text) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.ValueTextEquals(System.ReadOnlySpan{System.Byte})" />
+      <MemberSignature Language="VB.NET" Value="Public Function ValueTextEquals (utf8Text As ReadOnlySpan(Of Byte)) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool ValueTextEquals(ReadOnlySpan&lt;System::Byte&gt; utf8Text);" />
+      <MemberSignature Language="F#" Value="member this.ValueTextEquals : ReadOnlySpan&lt;byte&gt; -&gt; bool" Usage="utf8JsonReader.ValueTextEquals utf8Text" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="utf8Text" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="utf8Text">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValueTextEquals">
+      <MemberSignature Language="C#" Value="public bool ValueTextEquals (ReadOnlySpan&lt;char&gt; text);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool ValueTextEquals(valuetype System.ReadOnlySpan`1&lt;char&gt; text) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.ValueTextEquals(System.ReadOnlySpan{System.Char})" />
+      <MemberSignature Language="VB.NET" Value="Public Function ValueTextEquals (text As ReadOnlySpan(Of Char)) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool ValueTextEquals(ReadOnlySpan&lt;char&gt; text);" />
+      <MemberSignature Language="F#" Value="member this.ValueTextEquals : ReadOnlySpan&lt;char&gt; -&gt; bool" Usage="utf8JsonReader.ValueTextEquals text" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValueTextEquals">
+      <MemberSignature Language="C#" Value="public bool ValueTextEquals (string text);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool ValueTextEquals(string text) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonReader.ValueTextEquals(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function ValueTextEquals (text As String) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool ValueTextEquals(System::String ^ text);" />
+      <MemberSignature Language="F#" Value="member this.ValueTextEquals : string -&gt; bool" Usage="utf8JsonReader.ValueTextEquals text" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

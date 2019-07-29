@@ -28,16 +28,16 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コントロールの値は、可能性がありますか、コントロールとその設定によっては編集できない可能性があります。  
+ コントロールの値は、コントロールとその設定に応じて編集できます。  
   
- サポートが必要な UI オートメーション プロバイダーの実装、<xref:System.Windows.Automation.ValuePattern>コントロール パターン。  
+ コントロールパターンを<xref:System.Windows.Automation.ValuePattern>サポートする必要がある UI オートメーションプロバイダーに実装されます。  
   
  ]]></format>
     </remarks>
     <altmember cref="T:System.Windows.Automation.ValuePattern" />
     <related type="Article" href="~/docs/framework/ui-automation/ui-automation-control-patterns-overview.md">UI オートメーション コントロール パターンの概要</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーション プロバイダーの実装</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーション プロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーションプロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーションプロバイダーの実装</related>
     <related type="Article" href="https://msdn.microsoft.com/library/0d635c35-ffa8-4dc8-bbc9-12fcd5445776">UI オートメーション プロバイダーでのコントロール パターンのサポート</related>
     <related type="Article" href="https://msdn.microsoft.com/library/b0fcdd87-3add-4345-bca9-e891205e02ba">UI オートメーション Value コントロール パターンの実装</related>
   </Docs>
@@ -59,7 +59,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コントロールの値は読み取り専用かどうかを示す値を取得します。</summary>
+        <summary>コントロールの値が読み取り専用かどうかを示す値を取得します。</summary>
         <value>値が読み取り専用の場合は <see langword="true" />。変更可能な場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -70,7 +70,7 @@
    
   
 ## Examples  
- 次の例では、このメソッドを変更するには、その値をできるようにするコントロールの実装を示します。  
+ 次の例では、値を変更できるコントロールに対してこのメソッドを実装しています。  
   
  [!code-csharp[UIAIValueProvider_snip#IsReadOnly](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIValueProvider_snip/CSharp/ValueFragment.cs#isreadonly)]
  [!code-vb[UIAIValueProvider_snip#IsReadOnly](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIValueProvider_snip/visualbasic/valuefragment.vb#isreadonly)]  
@@ -107,7 +107,7 @@
 ## Remarks  
  単一行のエディット コントロールは、そのコンテンツへのプログラムによるアクセスをサポートするために、 <xref:System.Windows.Automation.Provider.IValueProvider>を実装します。 一方、複数行のエディット コントロールは <xref:System.Windows.Automation.Provider.IValueProvider>を実装しません。代わりに <xref:System.Windows.Automation.Provider.ITextProvider>を実装して、そのコンテンツへのアクセスを提供します。  
   
- などのコントロール<xref:System.Windows.Automation.ControlType.ListItem>と<xref:System.Windows.Automation.ControlType.TreeItem>実装する必要があります<xref:System.Windows.Automation.Provider.IValueProvider>編集コントロールのモードを現在に関係なく、項目のいずれかの値が編集可能な場合。 親コントロールを実装する必要がありますも<xref:System.Windows.Automation.Provider.IValueProvider>子項目が編集可能な場合。  
+ やなどのコントロールは、 <xref:System.Windows.Automation.Provider.IValueProvider>コントロールの現在の編集モードに関係なく、いずれかの項目の値が編集可能である場合にを実装する必要があります。 <xref:System.Windows.Automation.ControlType.TreeItem> <xref:System.Windows.Automation.ControlType.ListItem> 子項目が編集可能で<xref:System.Windows.Automation.Provider.IValueProvider>ある場合は、親コントロールもを実装する必要があります。  
   
  ![編集可能なリスト項目。](~/add/media/uia-valuepattern-editable-listitem.PNG "編集可能なリスト項目。")  
 編集可能なリスト項目の例  
@@ -115,7 +115,7 @@
    
   
 ## Examples  
- 次のコード例では、制限長さの文字列に設定するには、その値を許可するカスタム コントロールを示します。  
+ 次のコード例は、値を制限された長さの文字列に設定できるようにするカスタムコントロールを示しています。  
   
  [!code-csharp[UIAIValueProvider_snip#SetValue](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIValueProvider_snip/CSharp/ValueFragment.cs#setvalue)]
  [!code-vb[UIAIValueProvider_snip#SetValue](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIValueProvider_snip/visualbasic/valuefragment.vb#setvalue)]  
@@ -150,16 +150,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 単一行のエディット コントロールを実装してその内容にプログラムでアクセスをサポートする<xref:System.Windows.Automation.Provider.IValueProvider>(に加えて<xref:System.Windows.Automation.Provider.ITextProvider>)。 ただし、複数行のエディット コントロールを実装しない<xref:System.Windows.Automation.Provider.IValueProvider>します。  
+ 単一行のエディットコントロールは、(に加えて) を<xref:System.Windows.Automation.Provider.IValueProvider>実装する<xref:System.Windows.Automation.Provider.ITextProvider>ことによって、コンテンツへのプログラムによるアクセスをサポートします。 ただし、複数行のエディットコントロールはを実装<xref:System.Windows.Automation.Provider.IValueProvider>しません。  
   
- 複数行のエディット コントロールのテキスト コンテンツを取得するコントロールを実装する必要があります<xref:System.Windows.Automation.Provider.ITextProvider>します。 ただし、 <xref:System.Windows.Automation.Provider.ITextProvider> はコントロールの値の設定はサポートしていません。  
+ 複数行の編集コントロールのテキストコンテンツを取得するには、コントロールが<xref:System.Windows.Automation.Provider.ITextProvider>を実装する必要があります。 ただし、 <xref:System.Windows.Automation.Provider.ITextProvider> はコントロールの値の設定はサポートしていません。  
   
  <xref:System.Windows.Automation.Provider.IValueProvider> は、書式設定情報や部分文字列の値の取得をサポートしていません。 このようなシナリオでは <xref:System.Windows.Automation.Provider.ITextProvider> を実装します。  
   
    
   
 ## Examples  
- 次の例では、コントロールを取得するには、その値を許可するには、このメソッドの実装を示します。  
+ 次の例は、その値を取得できるようにするコントロールのこのメソッドの実装を示しています。  
   
  [!code-csharp[UIAIValueProvider_snip#Value](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIValueProvider_snip/CSharp/ValueFragment.cs#value)]
  [!code-vb[UIAIValueProvider_snip#Value](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIValueProvider_snip/visualbasic/valuefragment.vb#value)]  

@@ -32,36 +32,36 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Zip アーカイブし、そのファイルのエントリを操作するためのメソッドが 3 つのクラスに分散: <xref:System.IO.Compression.ZipFile>、 <xref:System.IO.Compression.ZipArchive>、および<xref:System.IO.Compression.ZipArchiveEntry>します。  
+ Zip アーカイブとそのファイルエントリを操作するためのメソッドは<xref:System.IO.Compression.ZipFile>、3つのクラス (、、および<xref:System.IO.Compression.ZipArchiveEntry>) <xref:System.IO.Compression.ZipArchive>に分散されています。  
   
-|目的|使用|  
+|終了|使用|  
 |--------|---------|  
-|ディレクトリから zip アーカイブを作成します。|<xref:System.IO.Compression.ZipFile.CreateFromDirectory%2A?displayProperty=nameWithType>|  
-|ディレクトリの zip アーカイブの内容を抽出します。|<xref:System.IO.Compression.ZipFile.ExtractToDirectory%2A?displayProperty=nameWithType>|  
-|新しいファイルを既存の zip アーカイブに追加します。|<xref:System.IO.Compression.ZipArchive.CreateEntry%2A?displayProperty=nameWithType>|  
-|Zip アーカイブからファイルを取得します。|<xref:System.IO.Compression.ZipArchive.GetEntry%2A?displayProperty=nameWithType>|  
-|Zip アーカイブからのすべてのファイルを取得します。|<xref:System.IO.Compression.ZipArchive.Entries%2A?displayProperty=nameWithType>|  
-|Zip アーカイブに含まれる 1 つのファイル ストリームを開く|<xref:System.IO.Compression.ZipArchiveEntry.Open%2A?displayProperty=nameWithType>|  
-|Zip アーカイブからファイルを削除します。|<xref:System.IO.Compression.ZipArchiveEntry.Delete%2A?displayProperty=nameWithType>|  
+|ディレクトリから zip アーカイブを作成する|<xref:System.IO.Compression.ZipFile.CreateFromDirectory%2A?displayProperty=nameWithType>|  
+|Zip アーカイブの内容をディレクトリに抽出する|<xref:System.IO.Compression.ZipFile.ExtractToDirectory%2A?displayProperty=nameWithType>|  
+|既存の zip アーカイブに新しいファイルを追加する|<xref:System.IO.Compression.ZipArchive.CreateEntry%2A?displayProperty=nameWithType>|  
+|Zip アーカイブからファイルを取得する|<xref:System.IO.Compression.ZipArchive.GetEntry%2A?displayProperty=nameWithType>|  
+|Zip アーカイブからすべてのファイルを取得する|<xref:System.IO.Compression.ZipArchive.Entries%2A?displayProperty=nameWithType>|  
+|Zip アーカイブに含まれる1つのファイルへのストリームを開く|<xref:System.IO.Compression.ZipArchiveEntry.Open%2A?displayProperty=nameWithType>|  
+|Zip アーカイブからファイルを削除する|<xref:System.IO.Compression.ZipArchiveEntry.Delete%2A?displayProperty=nameWithType>|  
   
- 新しいエントリを作成するときに、ファイルが圧縮し、zip パッケージに追加します。 <xref:System.IO.Compression.ZipArchive.CreateEntry%2A>メソッドでは、エントリを追加するときに、ディレクトリ階層を指定することができます。 Zip パッケージ内で新しいエントリの相対パスが含まれます。 たとえば、新しいエントリを作成するとの相対パス`AddedFolder\NewFile.txt`AddedFolder という名前のディレクトリに圧縮されたテキスト ファイルを作成します。  
+ 新しいエントリを作成すると、ファイルが圧縮され、zip パッケージに追加されます。 <xref:System.IO.Compression.ZipArchive.CreateEntry%2A>メソッドを使用すると、エントリを追加するときにディレクトリ階層を指定できます。 Zip パッケージ内に新しいエントリの相対パスを含めます。 たとえば、相対パスを持つ新しいエントリを作成すると`AddedFolder\NewFile.txt` 、addedfolder という名前のディレクトリに圧縮されたテキストファイルが作成されます。  
   
- 参照する場合、`System.IO.Compression.FileSystem`アセンブリ プロジェクトで、次の 4 つの拡張機能メソッドにアクセスすることができます (から、<xref:System.IO.Compression.ZipFileExtensions>クラス) の<xref:System.IO.Compression.ZipArchive>クラス: <xref:System.IO.Compression.ZipFileExtensions.CreateEntryFromFile(System.IO.Compression.ZipArchive,System.String,System.String)>、 <xref:System.IO.Compression.ZipFileExtensions.CreateEntryFromFile(System.IO.Compression.ZipArchive,System.String,System.String,System.IO.Compression.CompressionLevel)>、 <xref:System.IO.Compression.ZipFileExtensions.ExtractToDirectory(System.IO.Compression.ZipArchive,System.String)>、および<xref:System.IO.Compression.ZipFileExtensions.ExtractToDirectory(System.IO.Compression.ZipArchive,System.String,System.Boolean)>(.NET で使用できます。Core 2.0 およびそれ以降のバージョン)。 これらの拡張メソッドを使用すると、圧縮およびファイルにエントリの内容を展開できます。 `System.IO.Compression.FileSystem`アセンブリは使用できません[!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)]アプリ。 [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)]アプリ、圧縮およびを使用してファイルを展開することができます、<xref:System.IO.Compression.DeflateStream>または<xref:System.IO.Compression.GZipStream>クラス、またはを使用できる、[!INCLUDE[wrt](~/includes/wrt-md.md)]型[圧縮](https://go.microsoft.com/fwlink/p/?LinkID=246357)と[伸張](https://go.microsoft.com/fwlink/p/?LinkID=246358)します。  
+ プロジェクトで`System.IO.Compression.FileSystem`アセンブリを参照する場合は、 <xref:System.IO.Compression.ZipArchive>クラスの4つの拡張メソッド ( <xref:System.IO.Compression.ZipFileExtensions>クラスから) にアクセスできます<xref:System.IO.Compression.ZipFileExtensions.CreateEntryFromFile(System.IO.Compression.ZipArchive,System.String,System.String)>。このクラスに<xref:System.IO.Compression.ZipFileExtensions.ExtractToDirectory(System.IO.Compression.ZipArchive,System.String,System.Boolean)>は、 <xref:System.IO.Compression.ZipFileExtensions.CreateEntryFromFile(System.IO.Compression.ZipArchive,System.String,System.String,System.IO.Compression.CompressionLevel)> <xref:System.IO.Compression.ZipFileExtensions.ExtractToDirectory(System.IO.Compression.ZipArchive,System.String)>、、、および (.net で使用可能) があります。コア2.0 以降のバージョン)。 これらの拡張メソッドを使用すると、エントリの内容をファイルに圧縮して圧縮解除できます。 アセンブリ`System.IO.Compression.FileSystem`は、アプリで[!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)]は使用できません。 アプリ[!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)]で<xref:System.IO.Compression.DeflateStream>は、クラスまたは<xref:System.IO.Compression.GZipStream>クラスを使用してファイルの圧縮と圧縮解除を行う[!INCLUDE[wrt](~/includes/wrt-md.md)]ことができ[ます。また](https://go.microsoft.com/fwlink/p/?LinkID=246358)は、[圧縮プログラム](https://go.microsoft.com/fwlink/p/?LinkID=246357)および圧縮解除の種類を使用できます。  
   
    
   
 ## Examples  
- 最初の例では、新しいエントリを作成し、ストリームを使用して書き込む方法を示します。  
+ 最初の例では、ストリームを使用して新しいエントリを作成し、それに書き込む方法を示します。  
   
  [!code-csharp[System.IO.Compression.ZipArchiveMode#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.compression.ziparchivemode/cs/program1.cs#1)]
  [!code-vb[System.IO.Compression.ZipArchiveMode#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.compression.ziparchivemode/vb/program1.vb#1)]  
   
- 次の例では、zip アーカイブを開き、エントリのコレクションを反復処理する方法を示します。  
+ 次の例は、zip アーカイブを開き、エントリのコレクションを反復処理する方法を示しています。  
   
  [!code-csharp[System.IO.Compression.ZipArchive#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.compression.ziparchive/cs/program1.cs#1)]
  [!code-vb[System.IO.Compression.ZipArchive#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.compression.ziparchive/vb/program1.vb#1)]  
   
- 3 番目の例では、既存のファイルから、zip アーカイブ内の新しいエントリを作成し、アーカイブの内容を抽出する拡張メソッドを使用する方法を示します。 参照する必要があります、`System.IO.Compression.FileSystem`アセンブリ コードを実行します。  
+ 3番目の例では、拡張メソッドを使用して、既存のファイルから zip アーカイブに新しいエントリを作成し、アーカイブの内容を抽出する方法を示します。 コードを実行する`System.IO.Compression.FileSystem`には、アセンブリを参照する必要があります。  
   
  [!code-csharp[System.IO.Compression.ZipArchive#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.compression.ziparchive/cs/program3.cs#3)]
  [!code-vb[System.IO.Compression.ZipArchive#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.compression.ziparchive/vb/program3.vb#3)]  
@@ -108,11 +108,11 @@
       </Parameters>
       <Docs>
         <param name="stream">読み取るアーカイブを格納しているストリーム。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.IO.Compression.ZipArchive" />指定したストリームからのクラス。</summary>
+        <summary>指定したストリームから <see cref="T:System.IO.Compression.ZipArchive" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException">ストリームは既に閉じられているか、読み取りをサポートしません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.IO.InvalidDataException">ストリームの内容は zip アーカイブ形式でないです。</exception>
+        <exception cref="T:System.ArgumentException">ストリームが既に閉じているか、読み取りをサポートしていません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.IO.InvalidDataException">ストリームの内容は zip アーカイブのフォームにありません。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -142,25 +142,25 @@
       <Docs>
         <param name="stream">入力ストリームまたは出力ストリーム。</param>
         <param name="mode">zip のアーカイブがエントリの読み込み、作成、または更新に使用されているかどうかを示す列挙値の 1 つ。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.IO.Compression.ZipArchive" />クラス指定したストリームからと、指定したモード。</summary>
+        <summary>指定したストリームと指定したモードから <see cref="T:System.IO.Compression.ZipArchive" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Read>ストリームが読み取りをサポートする必要があります。 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Create>ストリームが書き込みをサポートする必要があります。 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Update>ストリームは、読み取り、書き込み、およびシークをサポートする必要があります。  
+ パラメーターが`mode`に<xref:System.IO.Compression.ZipArchiveMode.Read>設定されている場合、ストリームは読み取りをサポートしている必要があります。 パラメーターが`mode`に<xref:System.IO.Compression.ZipArchiveMode.Create>設定されている場合、ストリームは書き込みをサポートしている必要があります。 パラメーターがに<xref:System.IO.Compression.ZipArchiveMode.Update>設定されている場合、ストリームは読み取り、書き込み、シークをサポートしている必要があります。 `mode`  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">ストリームは既に閉じている、またはストリームの機能では、モードが一致しません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="mode" /> 無効な値です。</exception>
-        <exception cref="T:System.IO.InvalidDataException">Zip アーカイブとして、ストリームの内容を解釈できませんでした。  
+        <exception cref="T:System.ArgumentException">ストリームは既に終了しているか、ストリームの機能がモードに一致しません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="mode" /> が無効な値です。</exception>
+        <exception cref="T:System.IO.InvalidDataException">ストリームの内容は zip のアーカイブとして解釈できません。  
+  
+または 
+ <paramref name="mode" /> が <see cref="F:System.IO.Compression.ZipArchiveMode.Update" /> で、エントリがアーカイブにないか、または破損していて読み取ることができません。  
   
 - または - 
- <paramref name="mode" /> <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />とエントリがアーカイブにないまたは破損していて読み取ることができません。  
-  
-- または - 
- <paramref name="mode" /> <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />で、エントリが大きすぎてメモリに収まりません。</exception>
+ <paramref name="mode" /> が <see cref="F:System.IO.Compression.ZipArchiveMode.Update" /> で、エントリが大きすぎてメモリに収まりません。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -192,25 +192,25 @@
         <param name="stream">入力ストリームまたは出力ストリーム。</param>
         <param name="mode">zip のアーカイブがエントリの読み込み、作成、または更新に使用されているかどうかを示す列挙値の 1 つ。</param>
         <param name="leaveOpen"><see cref="T:System.IO.Compression.ZipArchive" /> オブジェクトを破棄した後にストリームを開いたままにする場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.IO.Compression.ZipArchive" />で指定したモード、および必要に応じて、ストリームを開いたまま、指定したストリーム クラス。</summary>
+        <summary>指定されたモードの指定されたストリームで <see cref="T:System.IO.Compression.ZipArchive" /> クラスの新しいインスタンスを初期化し、必要に応じて、ストリームを開いたままにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Read>ストリームが読み取りをサポートする必要があります。 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Create>ストリームが書き込みをサポートする必要があります。 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Update>ストリームは、読み取り、書き込み、およびシークをサポートする必要があります。  
+ パラメーターが`mode`に<xref:System.IO.Compression.ZipArchiveMode.Read>設定されている場合、ストリームは読み取りをサポートしている必要があります。 パラメーターが`mode`に<xref:System.IO.Compression.ZipArchiveMode.Create>設定されている場合、ストリームは書き込みをサポートしている必要があります。 パラメーターがに<xref:System.IO.Compression.ZipArchiveMode.Update>設定されている場合、ストリームは読み取り、書き込み、シークをサポートしている必要があります。 `mode`  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">ストリームは既に閉じている、またはストリームの機能では、モードが一致しません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="mode" /> 無効な値です。</exception>
-        <exception cref="T:System.IO.InvalidDataException">Zip アーカイブとして、ストリームの内容を解釈できませんでした。  
+        <exception cref="T:System.ArgumentException">ストリームは既に終了しているか、ストリームの機能がモードに一致しません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="mode" /> が無効な値です。</exception>
+        <exception cref="T:System.IO.InvalidDataException">ストリームの内容は zip のアーカイブとして解釈できません。  
   
 - または - 
- <paramref name="mode" /> <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />とエントリがアーカイブにないまたは破損していて読み取ることができません。  
+ <paramref name="mode" /> が <see cref="F:System.IO.Compression.ZipArchiveMode.Update" /> で、エントリがアーカイブにないか、または破損していて読み取ることができません。  
   
 - または - 
- <paramref name="mode" /> <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />で、エントリが大きすぎてメモリに収まりません。</exception>
+ <paramref name="mode" /> が <see cref="F:System.IO.Compression.ZipArchiveMode.Update" /> で、エントリが大きすぎてメモリに収まりません。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -244,45 +244,45 @@
         <param name="mode">zip のアーカイブがエントリの読み込み、作成、または更新に使用されているかどうかを示す列挙値の 1 つ。</param>
         <param name="leaveOpen"><see cref="T:System.IO.Compression.ZipArchive" /> オブジェクトを破棄した後にストリームを開いたままにする場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</param>
         <param name="entryNameEncoding">このアーカイブのエントリ名の読み取りまたは書き込み時に使用するエンコード。 エントリ名の UTF-8 エンコードをサポートしない zip アーカイブ ツールとライブラリとの相互運用性のためにエンコードが必要な場合にのみ、このパラメーターの値を指定してください。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.IO.Compression.ZipArchive" />クラスが指定されたモードの指定されたストリームで、エントリ名の指定したエンコーディングを使用して、ストリームを開いたまま必要に応じて。</summary>
+        <summary>指定されたモードの指定されたストリームで <see cref="T:System.IO.Compression.ZipArchive" /> クラスの新しいインスタンスを初期化し、エントリ名に指定されたエンコーディングを使用します。また、必要に応じて、ストリームを開いたままにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Read>ストリームが読み取りをサポートする必要があります。 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Create>ストリームが書き込みをサポートする必要があります。 場合、`mode`にパラメーターが設定されている<xref:System.IO.Compression.ZipArchiveMode.Update>ストリームは、読み取り、書き込み、およびシークをサポートする必要があります。  
+ パラメーターが`mode`に<xref:System.IO.Compression.ZipArchiveMode.Read>設定されている場合、ストリームは読み取りをサポートしている必要があります。 パラメーターが`mode`に<xref:System.IO.Compression.ZipArchiveMode.Create>設定されている場合、ストリームは書き込みをサポートしている必要があります。 パラメーターがに<xref:System.IO.Compression.ZipArchiveMode.Update>設定されている場合、ストリームは読み取り、書き込み、シークをサポートしている必要があります。 `mode`  
   
- 読み取り用の zip アーカイブ ファイルを開くと`entryNameEncoding`に設定されている`null`エントリの名前は、次の規則に従ってデコードされます。  
+ Zip アーカイブファイルを読み取り`entryNameEncoding`用に開き、をに`null`設定すると、エントリ名は次の規則に従ってデコードされます。  
   
--   エンコード (ローカル ファイル ヘッダーの汎用のビット フラグ) にフラグが設定されていない場合、現在のシステム既定のコード ページは、エントリ名のデコードに使用されます。  
+-   言語エンコードフラグ (ローカルファイルヘッダーの汎用ビットフラグ) が設定されていない場合、現在のシステムの既定のコードページを使用してエントリ名がデコードされます。  
   
--   言語エンコード フラグが設定されている場合は、utf-8 が、エントリ名のデコードに使用されます。  
+-   言語のエンコードフラグが設定されている場合は、UTF-8 を使用してエントリ名がデコードされます。  
   
- 読み取り用の zip アーカイブ ファイルを開くと`entryNameEncoding`以外の値に設定されて`null`エントリの名前は、次の規則に従ってデコードされます。  
+ 読み取り`entryNameEncoding`用に zip アーカイブファイルを開いたときに以外`null`の値に設定されている場合、エントリ名は次の規則に従ってデコードされます。  
   
--   エンコード フラグは設定しない場合、指定した`entryNameEncoding`エントリ名のデコードに使用します。  
+-   言語のエンコードフラグが設定されていない`entryNameEncoding`場合は、指定されたを使用してエントリ名がデコードされます。  
   
--   言語エンコード フラグが設定されている場合は、utf-8 が、エントリ名のデコードに使用されます。  
+-   言語のエンコードフラグが設定されている場合は、UTF-8 を使用してエントリ名がデコードされます。  
   
- アーカイブ ファイルを作成する場合と`entryNameEncoding`に設定されている`null`エントリの名前は、次の規則に従ってエンコードされます。  
+ アーカイブファイル`entryNameEncoding`に書き込み、がに`null`設定されている場合、エントリ名は次の規則に従ってエンコードされます。  
   
--   ASCII 範囲外の文字が含まれているエントリの名前、言語エンコード フラグが設定されてとエントリ名は、utf-8 を使用してエンコードされます。  
+-   ASCII の範囲外の文字を含むエントリ名の場合、言語エンコードフラグが設定され、エントリ名は UTF-8 を使用してエンコードされます。  
   
--   ASCII 文字のみが含まれているエントリの名前、言語エンコード フラグが設定されていないとエントリの名前は、現在のシステム既定のコード ページを使用してエンコードされます。  
+-   ASCII 文字のみを含むエントリ名の場合、言語エンコードフラグは設定されず、エントリ名は、現在のシステムの既定のコードページを使用してエンコードされます。  
   
- アーカイブ ファイルを作成する場合と`entryNameEncoding`以外の値に設定されて`null`、指定した`entryNameEncoding`エントリの名前をバイトにエンコードするために使用します。 指定したエンコーディングは utf-8 エンコードが場合にのみ、言語のエンコード (ローカル ファイル ヘッダーの汎用のビット フラグ) にフラグが設定されます。  
+ アーカイブファイルに書き込み、が以外`entryNameEncoding` `null`の値に設定されている場合、 `entryNameEncoding`指定されたはエントリ名をバイトにエンコードするために使用されます。 言語エンコードフラグ (ローカルファイルヘッダーの汎用ビットフラグ) は、指定されたエンコードが UTF-8 エンコーディングの場合にのみ設定されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">ストリームは既に閉じている、またはストリームの機能では、モードが一致しません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="mode" /> 無効な値です。</exception>
-        <exception cref="T:System.IO.InvalidDataException">Zip アーカイブとして、ストリームの内容を解釈できませんでした。  
+        <exception cref="T:System.ArgumentException">ストリームは既に終了しているか、ストリームの機能がモードに一致しません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="mode" /> が無効な値です。</exception>
+        <exception cref="T:System.IO.InvalidDataException">ストリームの内容は zip のアーカイブとして解釈できません。  
+  
+または 
+ <paramref name="mode" /> が <see cref="F:System.IO.Compression.ZipArchiveMode.Update" /> で、エントリがアーカイブにないか、または破損していて読み取ることができません。  
   
 - または - 
- <paramref name="mode" /> <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />とエントリがアーカイブにないまたは破損していて読み取ることができません。  
-  
-- または - 
- <paramref name="mode" /> <see cref="F:System.IO.Compression.ZipArchiveMode.Update" />で、エントリが大きすぎてメモリに収まりません。</exception>
+ <paramref name="mode" /> が <see cref="F:System.IO.Compression.ZipArchiveMode.Update" /> で、エントリが大きすぎてメモリに収まりません。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="CreateEntry">
@@ -332,24 +332,24 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `entryName`文字列は、zip アーカイブ内に作成するエントリの相対パスを反映する必要があります。 指定した文字列に制限はありません。 ただし、相対パスとしてフォーマットされていない場合は、エントリが作成されたが、zip アーカイブの内容を抽出するときに、例外を発生する可能性があります。 アーカイブに指定されたパスと名前を持つエントリが既に存在する場合は、2 番目のエントリが同じパスと名前で作成されます。  
+ 文字列`entryName`には、zip アーカイブ内に作成するエントリの相対パスを反映する必要があります。 指定した文字列に制限はありません。 ただし、相対パスとして書式設定されていない場合はエントリが作成されますが、zip アーカイブの内容を抽出するときに例外が発生する可能性があります。 指定したパスと名前を持つエントリがアーカイブ内に既に存在する場合は、同じパスと名前で2番目のエントリが作成されます。  
   
- 値、<xref:System.IO.Compression.ZipArchiveEntry.LastWriteTime%2A>新しいエントリのプロパティが現在の時刻に設定します。 エントリは、基になる圧縮アルゴリズムの既定の圧縮レベルを使用して圧縮されます。 異なる圧縮レベルを指定する場合は、使用、<xref:System.IO.Compression.ZipArchive.CreateEntry%2A>メソッド。  
+ 新しいエントリの<xref:System.IO.Compression.ZipArchiveEntry.LastWriteTime%2A>プロパティの値は、現在の時刻に設定されます。 このエントリは、基になる圧縮アルゴリズムの既定の圧縮レベルを使用して圧縮されます。 別の圧縮レベルを指定する場合は、 <xref:System.IO.Compression.ZipArchive.CreateEntry%2A>メソッドを使用します。  
   
    
   
 ## Examples  
- 次の例では、エントリを作成し、ストリームを使用して書き込む方法を示します。  
+ 次の例では、ストリームを使用してエントリを作成し、それに書き込む方法を示します。  
   
  [!code-csharp[System.IO.Compression.ZipArchiveMode#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.compression.ziparchivemode/cs/program1.cs#1)]
  [!code-vb[System.IO.Compression.ZipArchiveMode#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.compression.ziparchivemode/vb/program1.vb#1)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="entryName" /> は <see cref="F:System.String.Empty" /> です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="entryName" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.NotSupportedException">Zip アーカイブは書き込みをサポートしません。</exception>
-        <exception cref="T:System.ObjectDisposedException">Zip アーカイブが破棄されています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="entryName" /> は <see cref="F:System.String.Empty" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="entryName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.NotSupportedException">zip アーカイブは書き込みをサポートしません。</exception>
+        <exception cref="T:System.ObjectDisposedException">zip アーカイブが破棄されました。</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateEntry">
@@ -388,24 +388,24 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `entryName`文字列は、zip アーカイブ内に作成するエントリの相対パスを反映する必要があります。 指定した文字列に制限はありません。 ただし、相対パスとしてフォーマットされていない場合は、エントリが作成されたが、zip アーカイブの内容を抽出するときに、例外を発生する可能性があります。 アーカイブに指定した名前のエントリが既に存在する場合は、同じ名前の 2 番目のエントリが作成されます。  
+ 文字列`entryName`には、zip アーカイブ内に作成するエントリの相対パスを反映する必要があります。 指定した文字列に制限はありません。 ただし、相対パスとして書式設定されていない場合はエントリが作成されますが、zip アーカイブの内容を抽出するときに例外が発生する可能性があります。 指定した名前のエントリがアーカイブ内に既に存在する場合は、同じ名前で2番目のエントリが作成されます。  
   
- 値、<xref:System.IO.Compression.ZipArchiveEntry.LastWriteTime%2A>新しいエントリのプロパティが現在の時刻に設定します。 設定、`compressionLevel`パラメーターを<xref:System.IO.Compression.CompressionLevel.Optimal>ファイルを圧縮するを可能な限りする場合。 設定、`compressionLevel`パラメーターを<xref:System.IO.Compression.CompressionLevel.Fastest>圧縮操作は、シナリオでは、迅速に完了しませんが心配な場合にのみです。  
+ 新しいエントリの<xref:System.IO.Compression.ZipArchiveEntry.LastWriteTime%2A>プロパティの値は、現在の時刻に設定されます。 ファイルを`compressionLevel`可能な<xref:System.IO.Compression.CompressionLevel.Optimal>限り圧縮する場合は、パラメーターをに設定します。 このパラメーターをに<xref:System.IO.Compression.CompressionLevel.Fastest>設定するのは、圧縮操作がシナリオに対して十分に完了しないことが心配な場合のみにしてください。 `compressionLevel`  
   
    
   
 ## Examples  
- 次の例では、最適な圧縮レベルを持つエントリを作成する方法を示します。 これも、ストリームを使用して、新しいエントリを書き込みます。  
+ 次の例では、最適な圧縮レベルを使用してエントリを作成する方法を示します。 また、ストリームを使用して新しいエントリに書き込みます。  
   
  [!code-csharp[System.IO.Compression.ZipArchiveMode#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.compression.ziparchivemode/cs/program2.cs#2)]
  [!code-vb[System.IO.Compression.ZipArchiveMode#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.compression.ziparchivemode/vb/program2.vb#2)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="entryName" /> は <see cref="F:System.String.Empty" /> です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="entryName" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.NotSupportedException">Zip アーカイブは書き込みをサポートしません。</exception>
-        <exception cref="T:System.ObjectDisposedException">Zip アーカイブが破棄されています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="entryName" /> は <see cref="F:System.String.Empty" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="entryName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.NotSupportedException">zip アーカイブは書き込みをサポートしません。</exception>
+        <exception cref="T:System.ObjectDisposedException">zip アーカイブが破棄されました。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="Dispose">
@@ -454,11 +454,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アーカイブの書き込みが完了しで使用されるすべてのリソースを解放、<xref:System.IO.Compression.ZipArchive>オブジェクト。 使用してオブジェクトを構築する場合を除き、<xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%2CSystem.Boolean%29>コンス トラクター オーバー ロードとその`leaveOpen`パラメーターを`true`、すべての基になるストリームが閉じていて、それ以降の書き込み操作は使用できなくします。  
+ このメソッドは、アーカイブの書き込みを終了し、オブジェクトに<xref:System.IO.Compression.ZipArchive>よって使用されているすべてのリソースを解放します。 <xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%2CSystem.Boolean%29>コンストラクターのオーバーロードを使用してオブジェクトを構築し、その`leaveOpen`パラメーターを`true`に設定しない限り、基になるすべてのストリームが閉じられ、後続の書き込み操作で使用できなくなります。  
   
- このインスタンスの使用が終了するときに<xref:System.IO.Compression.ZipArchive>、呼び出す<xref:System.IO.Compression.ZipArchive.Dispose>をこのインスタンスによって使用されるすべてのリソースを解放します。 これをさらに参照を削除する必要があります<xref:System.IO.Compression.ZipArchive>インスタンス、ガベージ コレクターがファイナライズの履歴に保持する代わりにインスタンスのメモリが再利用できるようにします。  
+ のこのインスタンスの使用が終了し<xref:System.IO.Compression.ZipArchive>たら、 <xref:System.IO.Compression.ZipArchive.Dispose>を呼び出して、このインスタンスで使用されているすべてのリソースを解放します。 ガベージコレクターがインスタンスのメモリを<xref:System.IO.Compression.ZipArchive>再利用できるように、このインスタンスへの参照を削除する必要があります。  
   
- <xref:System.IO.Compression.ZipArchive.Dispose> 呼び出し、<xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29>メソッドは、マネージ コードとアンマネージ リソースを解放するコードが含まれています。 詳細については、次を参照してください。 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。
+ <xref:System.IO.Compression.ZipArchive.Dispose>マネージリソースとアンマネージリソースを解放するコードを含むメソッドを呼び出します。<xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29> 詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。
   
  ]]></format>
         </remarks>
@@ -492,23 +492,23 @@
         <Parameter Name="disposing" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="disposing"><see langword="true" /> アーカイブの書き込みを終了し、アンマネージ コードとマネージ リソースを解放するには<see langword="false" />にアンマネージ リソースだけを解放します。</param>
-        <summary>メソッドを呼び出して、<see cref="M:System.IO.Compression.ZipArchive.Dispose" />と<see cref="M:System.Object.Finalize" />の現在のインスタンスによって使用されるアンマネージ リソースを解放するメソッド、<see cref="T:System.IO.Compression.ZipArchive" />クラス、および必要に応じて、アーカイブの書き込みが完了し、マネージ リソースも解放します。</summary>
+        <param name="disposing">アーカイブの書き込みを終了し、アンマネージド リソースとマネージド リソースを解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <summary><see cref="M:System.IO.Compression.ZipArchive.Dispose" /> クラスの現在のインスタンスによって使用されるアンマネージド リソースを解放するために、<see cref="M:System.Object.Finalize" /> メソッドと <see cref="T:System.IO.Compression.ZipArchive" /> メソッドによって呼び出されます。オプションで、アーカイブの書き込みを終了し、マネージド リソースを解放できます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`disposing`に設定されている`true`を使用してオブジェクトを構築する場合を除き、すべての基になるストリームが閉じていて、それ以降の書き込み操作では利用できなく、<xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%2CSystem.Boolean%29>コンス トラクター オーバー ロードとその`leaveOpen`パラメーター`true`.  
+ が`disposing`に設定さ`true`れている場合、 <xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%2CSystem.Boolean%29>コンストラクターのオーバーロードを使用してオブジェクトを構築し、その`leaveOpen`パラメーターをに設定しない限り、基になるすべてのストリームが閉じられ、後続の書き込み操作で使用できなくなります`true`。  
   
- このメソッドは、パブリックによってのみ呼び出さ<xref:System.IO.Compression.ZipArchive.Dispose>と<xref:System.Object.Finalize>メソッドです。 このメソッドを直接呼び出さないでください。  
+ このメソッドは、パブリック<xref:System.IO.Compression.ZipArchive.Dispose>メソッドと<xref:System.Object.Finalize>メソッドによってのみ呼び出されます。このメソッドを直接呼び出すことはできません。  
   
- ブール型パラメーター、dispose パターンを実装する場合、<xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29>メソッドを次のように使用する必要があります。  
+ Dispose パターンを実装する場合は、 <xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29>メソッドのブール型パラメーターを次のように使用する必要があります。  
   
--   <xref:System.IO.Compression.ZipArchive.Dispose>現在のオブジェクトのメソッドを呼び出す必要があります<xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29>ブール型のパラメーターを設定して`true`マネージとアンマネージの両方のリソースを解放します。  
+-   現在<xref:System.IO.Compression.ZipArchive.Dispose>のオブジェクトのメソッドは、ブール<xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29>型パラメーターをに`true`設定してを呼び出して、マネージリソースとアンマネージリソースの両方を解放する必要があります。  
   
--   <xref:System.Object.Finalize>現在のオブジェクトのメソッドを呼び出す必要があります<xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29>ブール型のパラメーターを設定して`false`にアンマネージ リソースだけを解放します。
+-   現在<xref:System.Object.Finalize>のオブジェクトのメソッドは、ブール<xref:System.IO.Compression.ZipArchive.Dispose%28System.Boolean%29>型パラメーターをに`false`設定してを呼び出し、アンマネージリソースだけを解放する必要があります。
   
- 詳細については、次を参照してください。 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。
+ 詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。
 
  ]]></format>
         </remarks>
@@ -545,21 +545,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.IO.Compression.ZipArchive.Entries%2A>エントリのコレクション全体を取得するプロパティ。 使用して、<xref:System.IO.Compression.ZipArchive.GetEntry%2A>名前によって 1 つのエントリを取得します。  
+ <xref:System.IO.Compression.ZipArchive.Entries%2A>プロパティを使用して、エントリのコレクション全体を取得します。 名前で<xref:System.IO.Compression.ZipArchive.GetEntry%2A> 1 つのエントリを取得するには、メソッドを使用します。  
   
    
   
 ## Examples  
- 次の例では、zip アーカイブを開き、エントリのコレクションを反復処理する方法を示します。  
+ 次の例は、zip アーカイブを開き、エントリのコレクションを反復処理する方法を示しています。  
   
  [!code-csharp[System.IO.Compression.ZipArchive#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.compression.ziparchive/cs/program1.cs#1)]
  [!code-vb[System.IO.Compression.ZipArchive#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.compression.ziparchive/vb/program1.vb#1)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.NotSupportedException">Zip アーカイブは読み取りをサポートしていません。</exception>
-        <exception cref="T:System.ObjectDisposedException">Zip アーカイブが破棄されています。</exception>
-        <exception cref="T:System.IO.InvalidDataException">Zip アーカイブが壊れていると、そのエントリを取得できません。</exception>
+        <exception cref="T:System.NotSupportedException">zip アーカイブは読み取りをサポートしません。</exception>
+        <exception cref="T:System.ObjectDisposedException">zip アーカイブが破棄されました。</exception>
+        <exception cref="T:System.IO.InvalidDataException">zip アーカイブが破損しているため、エントリを取得できません。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetEntry">
@@ -592,28 +592,28 @@
       <Docs>
         <param name="entryName">取得するエントリを識別する、アーカイブのルートを基準とするパス。</param>
         <summary>zip アーカイブ内の指定したエントリのラッパーを取得します。</summary>
-        <returns>保管場所に指定されたエントリのラッパー<see langword="null" />エントリがアーカイブに存在しない場合。</returns>
+        <returns>アーカイブ内の指定されたエントリのラッパー。エントリがアーカイブに存在しない場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定した名前を持つ複数のエントリは、アーカイブに存在する場合は、1 つ目が返されます。 エントリの名前と比較されます`entryName`序数に基づく比較を使用します。  
+ 指定された名前を持つ複数のエントリがアーカイブ内に存在する場合は、最初のエントリが返されます。 エントリの名前は、序数に`entryName`よる比較を使用した場合と比較されます。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.IO.Compression.ZipArchive.GetEntry%2A>エントリを取得します。  
+ 次の例は、メソッドを使用<xref:System.IO.Compression.ZipArchive.GetEntry%2A>してエントリを取得する方法を示しています。  
   
  [!code-csharp[System.IO.Compression.ZipArchiveEntry#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.compression.ziparchiveentry/cs/program2.cs#2)]
  [!code-vb[System.IO.Compression.ZipArchiveEntry#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.compression.ziparchiveentry/vb/program2.vb#2)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="entryName" /> は <see cref="F:System.String.Empty" /> です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="entryName" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.NotSupportedException">Zip アーカイブは読み取りをサポートしていません。</exception>
-        <exception cref="T:System.ObjectDisposedException">Zip アーカイブが破棄されています。</exception>
-        <exception cref="T:System.IO.InvalidDataException">Zip アーカイブが壊れていると、そのエントリを取得できません。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="entryName" /> が <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="entryName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.NotSupportedException">zip アーカイブは読み取りをサポートしません。</exception>
+        <exception cref="T:System.ObjectDisposedException">zip アーカイブが破棄されました。</exception>
+        <exception cref="T:System.IO.InvalidDataException">zip アーカイブが破損しているため、エントリを取得できません。</exception>
       </Docs>
     </Member>
     <Member MemberName="Mode">
@@ -647,7 +647,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値を指定する、<xref:System.IO.Compression.ZipArchive>プロパティのインスタンスを作成するときに、<xref:System.IO.Compression.ZipArchive>クラス。 使用して、<xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%29>または<xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%2CSystem.Boolean%29>の値を指定するコンス トラクター、<xref:System.IO.Compression.ZipArchive.Mode%2A>プロパティ。  
+ クラスのインスタンスを作成する<xref:System.IO.Compression.ZipArchive>ときに、プロパティの値を指定します。 <xref:System.IO.Compression.ZipArchive> または<xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%2CSystem.Boolean%29>コンストラクターを使用して、 <xref:System.IO.Compression.ZipArchive.Mode%2A>プロパティの値を指定します。 <xref:System.IO.Compression.ZipArchive.%23ctor%28System.IO.Stream%2CSystem.IO.Compression.ZipArchiveMode%29>  
   
  ]]></format>
         </remarks>

@@ -19,27 +19,27 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>現在のユーザーに関する情報へのアクセスを提供します。</summary>
+    <summary>現在のユーザーに関する情報にアクセスします。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって公開されるメソッドとプロパティ、`My.User`オブジェクトが現在のユーザーに関する情報へのアクセスを提供します。 「現在のユーザー」の意味は、Windows および Web アプリケーション間で若干異なります。 Windows のアプリケーションでは、現在のユーザーは、アプリケーションを実行するユーザーが。 Web アプリケーションでは、現在のユーザーは、アプリケーションにアクセスするユーザーが。  
+ `My.User`オブジェクトによって公開されるプロパティとメソッドは、現在のユーザーに関する情報へのアクセスを提供します。 "現在のユーザー" の意味は、Windows アプリケーションと Web アプリケーションで若干異なります。 Windows アプリケーションでは、現在のユーザーは、アプリケーションを実行するユーザーです。 Web アプリケーションでは、現在のユーザーは、アプリケーションにアクセスするユーザーです。  
   
- `My.User`プロパティはへのアクセスを提供することも、<xref:System.Security.Principal.IPrincipal>現在のユーザー。 プリンシパル オブジェクトは、そのユーザーの id や、ユーザーが所属するロールを含め、ユーザーのセキュリティ コンテキストを表します。  
+ また`My.User` 、プロパティは、 <xref:System.Security.Principal.IPrincipal>現在のユーザーのへのアクセスも提供します。 プリンシパルオブジェクトは、ユーザーのセキュリティコンテキストを表します。これには、ユーザーの id や、ユーザーが属するすべてのロールが含まれます。  
   
- Windows アプリケーションでは、このプロパティは、同じ機能を提供します。、<xref:System.Threading.Thread.CurrentPrincipal%2A>プロパティ。 Web アプリケーションの場合、このプロパティは、同じ機能を提供します、<xref:System.Web.HttpContext.User%2A>によって返されるオブジェクトのプロパティ、<xref:System.Web.HttpContext.Current%2A>プロパティ。  
-  
-> [!NOTE]
->  上の Windows アプリケーションでは、プロジェクトだけに構築された、 **Windows アプリケーション**テンプレートの初期化、`My.User`既定のオブジェクト。 その他のすべての Windows プロジェクト種類で初期化する必要があります、`My.User`オブジェクトを呼び出すことによって、<xref:Microsoft.VisualBasic.ApplicationServices.User.InitializeWithWindowsUser%2A>メソッドに値を割り当てることによって、明示的に<xref:System.Threading.Thread.CurrentPrincipal%2A>します。  
+ Windows アプリケーションの場合、このプロパティは<xref:System.Threading.Thread.CurrentPrincipal%2A>プロパティと同じ機能を提供します。 Web アプリケーションの場合、このプロパティは、 <xref:System.Web.HttpContext.User%2A> <xref:System.Web.HttpContext.Current%2A>プロパティによって返されるオブジェクトのプロパティと同じ機能を提供します。  
   
 > [!NOTE]
->  `My.User`オブジェクトは、これらのオペレーティング システムでは、ログオン ユーザーの概念をサポートしていないために Windows 95 および Windows 98 で実行する場合、現在の Windows ユーザーに関する情報を報告できません。 使用するカスタム認証を実装する必要があります、`My.User`これらのオペレーティング システム上のオブジェクト。  
+>  Windows アプリケーションの場合、既定では、 **windows アプリケーション**テンプレートに基づい`My.User`て構築されたプロジェクトのみがオブジェクトを初期化します。 その他のすべての Windows プロジェクトの種類では`My.User` 、 <xref:Microsoft.VisualBasic.ApplicationServices.User.InitializeWithWindowsUser%2A>メソッドを明示的に呼び出すか、に<xref:System.Threading.Thread.CurrentPrincipal%2A>値を割り当てることによって、オブジェクトを初期化する必要があります。  
+  
+> [!NOTE]
+>  Windows `My.User` 95 および windows 98 で実行されている場合、オブジェクトは、ログオンしているユーザーの概念をサポートしていないため、現在の windows ユーザーに関する情報を報告できません。 これらのオペレーティングシステムでオブジェクトを使用`My.User`するには、カスタム認証を実装する必要があります。  
   
    
   
 ## Examples  
- この例では、アプリケーションは Windows またはカスタムの認証を使用してその情報を使用して解析を確認します。、`My.User.Name`プロパティ。  
+ この例では、アプリケーションが Windows 認証とカスタム認証のどちらを使用しているか`My.User.Name`を確認し、その情報を使用してプロパティを解析します。  
   
  [!code-vb[VbVbalrMyUser#3](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrMyUser/VB/Class1.vb#3)]  
   
@@ -80,7 +80,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって公開されるメソッドとプロパティ、`My.User`オブジェクトが現在のユーザーに関する情報へのアクセスを提供します。  
+ `My.User`オブジェクトによって公開されるプロパティとメソッドは、現在のユーザーに関する情報へのアクセスを提供します。  
   
  ]]></format>
         </remarks>
@@ -120,41 +120,41 @@
         <ReturnType>System.Security.Principal.IPrincipal</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定 (ロール ベース セキュリティ) の現在のプリンシパル。</summary>
-        <value>A<see cref="T:System.Security.Principal.IPrincipal" />セキュリティ コンテキストを表す値。</value>
+        <summary>ロールベースのセキュリティに関する、現在のプリンシパルを取得または設定します。</summary>
+        <value>セキュリティ コンテキストを表す <see cref="T:System.Security.Principal.IPrincipal" /> 値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定することができます、`My.User.CurrentPrincipal`プロパティを実装するオブジェクトを<xref:System.Security.Principal.IPrincipal>カスタム認証を有効にするインターフェイス。  
+ インターフェイス<xref:System.Security.Principal.IPrincipal>を実装する`My.User.CurrentPrincipal`オブジェクトにプロパティを設定して、カスタム認証を有効にすることができます。  
   
- ほとんどの種類のプロジェクトでこのプロパティを取得およびスレッドの現在のプリンシパルを設定します。 ASP.NET アプリケーションでこのプロパティを取得および現在の HTTP 要求のユーザー id のセキュリティ情報を設定します。  
+ ほとんどの種類のプロジェクトでは、このプロパティはスレッドの現在のプリンシパルを取得して設定します。 ASP.NET アプリケーションでは、このプロパティは、現在の HTTP 要求のユーザー id のセキュリティ情報を取得して設定します。  
   
- これは、高度なメンバーの場合。クリックしない限り、intellisense が表示されない、**すべて**タブ。  
+ これは上級メンバーです。**[すべて]** タブをクリックしない限り、IntelliSense に表示されません。  
   
-## <a name="availability-by-project-type"></a>プロジェクトの種類ごとの可用性  
+## <a name="availability-by-project-type"></a>プロジェクトの種類別の可用性  
   
 |プロジェクトの種類|使用可能|  
 |-|-|  
 |Windows アプリケーション|**はい**|  
 |クラス ライブラリ|**はい**|  
 |コンソール アプリケーション|**はい**|  
-|Windows コントロール ライブラリ|**はい**|  
-|Web コントロール ライブラリ|**はい**|  
+|Windows コントロールライブラリ|**はい**|  
+|Web コントロールライブラリ|**はい**|  
 |Windows サービス|**はい**|  
 |Web サイト|**はい**|  
   
    
   
 ## Examples  
- この例では、アプリケーションは Windows またはカスタムの認証を使用してその情報を使用して解析を確認します。`My.User.Name`プロパティ。  
+ この例では、アプリケーションが Windows 認証とカスタム認証のどちらを使用している`My.User.Name`かを確認し、その情報を使用してプロパティを解析します。  
   
  [!code-vb[VbVbalrMyUser#3](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrMyUser/VB/Class1.vb#3)]  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、プリンシパルを設定するために必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティのアクセス許可のセットについて説明します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティ アクセス許可のセットを記述します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
         <altmember cref="T:System.Security.Principal.IPrincipal" />
         <related type="Article" href="~/docs/visual-basic/language-reference/objects/index.md">オブジェクト (Visual Basic)</related>
       </Docs>
@@ -185,29 +185,29 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>アプリケーションを開始した Windows ユーザーに、スレッドの現在のプリンシパルを設定します。</summary>
+        <summary>スレッドの現在のプリンシパルを、アプリケーションを起動した Windows ユーザーに設定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用することができます、`My.User.InitializeWithWindowsUser`アプリケーションを開始した Windows ユーザーに、スレッドの現在のプリンシパルを設定します。 Visual Basic アプリケーション モデルは、Windows アプリケーションでは、既定では、起動時にこのメソッドを呼び出します。 このメソッドを明示的に呼び出すことによって、または値を割り当てることで他の種類のプロジェクトで、スレッドの現在のプリンシパルを設定する必要があります<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=nameWithType>します。  
+ `My.User.InitializeWithWindowsUser`メソッドを使用して、スレッドの現在のプリンシパルを、アプリケーションを起動した Windows ユーザーに設定できます。 Windows アプリケーションの Visual Basic アプリケーションモデルでは、起動時にこのメソッドが既定で呼び出されます。 他のプロジェクトの種類では、このメソッドを明示的に呼び出すか、に<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=nameWithType>値を割り当てることによって、スレッドの現在のプリンシパルを設定する必要があります。  
   
- Windows のプロジェクトで、`My.User`オブジェクトは、スレッドの現在のプリンシパルに基づいています。 そのため、このメソッドは情報を変更する`My.User`を返します。 ASP.NET アプリケーションで、`My.User`オブジェクトが現在の HTTP 要求のユーザーの id に基づいており、このメソッドによる影響はありません。  
+ Windows プロジェクト`My.User`では、オブジェクトはスレッドの現在のプリンシパルに基づいているため、このメソッドは情報`My.User`を返すことができます。 ASP.NET アプリケーション`My.User`では、オブジェクトは現在の HTTP 要求のユーザー id に基づいており、このメソッドの影響を受けません。  
   
 > [!NOTE]
->  実際の動作、`My.User`オブジェクトは、アプリケーションを実行するオペレーティング システムとアプリケーションの種類に依存します。 詳細については、次を参照してください。、<xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要。  
+>  `My.User`オブジェクトの正確な動作は、アプリケーションの種類と、アプリケーションが実行されているオペレーティングシステムによって異なります。 詳細については、 <xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要に関するトピックを参照してください。  
   
- これは、高度なメンバーの場合。クリックしない限り、intellisense が表示されない、**すべて**タブ。  
+ これは上級メンバーです。**[すべて]** タブをクリックしない限り、IntelliSense に表示されません。  
   
-## <a name="availability-by-project-type"></a>プロジェクトの種類ごとの可用性  
+## <a name="availability-by-project-type"></a>プロジェクトの種類別の可用性  
   
 |プロジェクトの種類|使用可能|  
 |-|-|  
 |Windows アプリケーション|**はい**|  
 |クラス ライブラリ|**はい**|  
 |コンソール アプリケーション|**はい**|  
-|Windows コントロール ライブラリ|**はい**|  
-|Web コントロール ライブラリ|**はい**|  
+|Windows コントロールライブラリ|**はい**|  
+|Web コントロールライブラリ|**はい**|  
 |Windows サービス|**はい**|  
 |Web サイト|**はい**|  
   
@@ -238,13 +238,13 @@
         <ReturnType>System.Security.Principal.IPrincipal</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または現在のユーザーを表すプリンシパル オブジェクトを設定します。</summary>
-        <value><see cref="T:System.Security.Principal.IPrincipal" />現在のユーザーを表すオブジェクト。</value>
+        <summary>現在のユーザーを表すプリンシパル オブジェクトを取得または設定します。</summary>
+        <value>現在のユーザーを表す <see cref="T:System.Security.Principal.IPrincipal" /> オブジェクト。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.VisualBasic.ApplicationServices.User>オブジェクト、プロパティをラップします、<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=nameWithType>プロパティ。 さまざまな動作を提供する派生クラスでこのメソッドをオーバーライドします。 たとえば、<xref:Microsoft.VisualBasic.ApplicationServices.WebUser.InternalPrincipal%2A?displayProperty=nameWithType>プロパティは、このプロパティをオーバーライドします。  
+ オブジェクトでは、このプロパティは<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=nameWithType>プロパティをラップします。 <xref:Microsoft.VisualBasic.ApplicationServices.User> 異なる動作を提供するために、派生クラスでこのメソッドをオーバーライドします。 たとえば、プロパティは<xref:Microsoft.VisualBasic.ApplicationServices.WebUser.InternalPrincipal%2A?displayProperty=nameWithType> 、このプロパティをオーバーライドします。  
   
  ]]></format>
         </remarks>
@@ -278,33 +278,33 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `My.User.IsAuthenticated`プロパティは、現在のユーザーが認証されているかどうかを決定するコードを使用します。  
+ `My.User.IsAuthenticated`プロパティを使用すると、現在のユーザーが認証されているかどうかをコードで判断できます。  
   
 > [!NOTE]
->  正確な動作`My.User`オブジェクトは、アプリケーションを実行するオペレーティング システムとアプリケーションの種類に依存します。 詳細については、次を参照してください。、<xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要。  
+>  オブジェクトの正確な`My.User`動作は、アプリケーションの種類と、アプリケーションが実行されているオペレーティングシステムによって異なります。 詳細については、 <xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要に関するトピックを参照してください。  
   
-## <a name="availability-by-project-type"></a>プロジェクトの種類ごとの可用性  
+## <a name="availability-by-project-type"></a>プロジェクトの種類別の可用性  
   
 |プロジェクトの種類|使用可能|  
 |-|-|  
 |Windows アプリケーション|**はい**|  
 |クラス ライブラリ|**はい**|  
 |コンソール アプリケーション|**はい**|  
-|Windows コントロール ライブラリ|**はい**|  
-|Web コントロール ライブラリ|**はい**|  
+|Windows コントロールライブラリ|**はい**|  
+|Web コントロールライブラリ|**はい**|  
 |Windows サービス|**はい**|  
 |Web サイト|**はい**|  
   
    
   
 ## Examples  
- この例では、リソースにアクセスする前に、ユーザーが認証されていることを確認します。  
+ この例では、リソースにアクセスする前にユーザーが認証されていることを確認します。  
   
  [!code-vb[VbVbalrMyUser#2](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrMyUser/VB/Class1.vb#2)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティのアクセス許可のセットについて説明します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティ アクセス許可のセットを記述します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
         <related type="Article" href="~/docs/visual-basic/language-reference/objects/index.md">オブジェクト (Visual Basic)</related>
       </Docs>
     </Member>
@@ -340,44 +340,44 @@
         <Parameter Name="role" Type="Microsoft.VisualBasic.ApplicationServices.BuiltInRole" Index="0" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="role">メンバーシップを確認する対象の組み込みの Windows ロール。</param>
+        <param name="role">メンバーシップの確認対象となる組み込みの Windows ロール。</param>
         <summary>現在のユーザーが、指定したロールに属しているかどうかを確認します。</summary>
-        <returns><see langword="True" /> 現在のユーザーが指定されたロールのメンバーである場合それ以外の場合、<see langword="False" />します。</returns>
+        <returns>現在のユーザーが指定されたロールのメンバーである場合は <see langword="True" />。それ以外の場合は <see langword="False" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `My.User.IsInRole`メソッドは、現在のユーザーが指定されたロールのメンバーであるかを決定するコードを使用します。  
+ `My.User.IsInRole`メソッドを使用すると、現在のユーザーが指定されたロールのメンバーであるかどうかをコードで判断できます。  
   
- オーバー ロード、 `My.User.IsInRole` 、文字列を受け取るメソッドに簡単にアクセスを提供する、<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッドの現在のプリンシパル。  
+ 文字列を受け取る`My.User.IsInRole`メソッドのオーバーロードにより、現在のプリンシパルの<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッドに簡単にアクセスできるようになります。  
   
- オーバー ロード、`My.User.IsInRole`を受け取るメソッドを`BuiltInRole`現在のプリンシパルによって、異なる動作を列挙します。 Windows ユーザーのプリンシパルである場合 (<xref:System.Security.Principal.WindowsPrincipal>)、この関数に変換します`role`を等価<xref:System.Security.Principal.WindowsBuiltInRole>列挙し、呼び出しの結果を返します<xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>します。 この関数が列挙値の名前を渡す、現在のプリンシパルがその他のすべてのプリンシパルの場合は、`role`するプリンシパルの<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッド。  
+ 列挙体を`BuiltInRole`受け取る`My.User.IsInRole`メソッドのオーバーロードは、現在のプリンシパルによって動作が異なります。 Windows ユーザー<xref:System.Security.Principal.WindowsPrincipal>プリンシパル () の場合、この関数は同等<xref:System.Security.Principal.WindowsBuiltInRole>の`role`列挙型に変換し、を呼び出し<xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>た結果を返します。 現在のプリンシパルがその他のプリンシパルである場合、この関数は、の`role`列挙値の名前をプリンシパルの<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッドに渡します。  
   
 > [!NOTE]
->  実際の動作、`My.User`オブジェクトは、アプリケーションを実行するオペレーティング システムとアプリケーションの種類に依存します。 詳細については、次を参照してください。、<xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要。  
+>  `My.User`オブジェクトの正確な動作は、アプリケーションの種類と、アプリケーションが実行されているオペレーティングシステムによって異なります。 詳細については、 <xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要に関するトピックを参照してください。  
   
-## <a name="availability-by-project-type"></a>プロジェクトの種類ごとの可用性  
+## <a name="availability-by-project-type"></a>プロジェクトの種類別の可用性  
   
 |プロジェクトの種類|使用可能|  
 |-|-|  
 |Windows アプリケーション|**はい**|  
 |クラス ライブラリ|**はい**|  
 |コンソール アプリケーション|**はい**|  
-|Windows コントロール ライブラリ|**はい**|  
-|Web コントロール ライブラリ|**はい**|  
+|Windows コントロールライブラリ|**はい**|  
+|Web コントロールライブラリ|**はい**|  
 |Windows サービス|**はい**|  
 |Web サイト|**はい**|  
   
    
   
 ## Examples  
- この例では、ユーザーのリソースにアクセスする前に管理者がいるを確認します。  
+ この例では、リソースにアクセスする前に、ユーザーが管理者であるかどうかを確認します。  
   
  [!code-vb[VbVbalrMyUser#1](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrMyUser/VB/Class1.vb#1)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティのアクセス許可のセットについて説明します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティ アクセス許可のセットを記述します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
         <related type="Article" href="~/docs/visual-basic/language-reference/objects/index.md">オブジェクト (Visual Basic)</related>
       </Docs>
     </Member>
@@ -407,42 +407,42 @@
       <Docs>
         <param name="role">メンバーシップを確認する対象のロールの名前。</param>
         <summary>現在のユーザーが、指定したロールに属しているかどうかを確認します。</summary>
-        <returns><see langword="True" /> 現在のユーザーが指定されたロールのメンバーである場合それ以外の場合、<see langword="False" />します。</returns>
+        <returns>現在のユーザーが指定されたロールのメンバーである場合は <see langword="True" />。それ以外の場合は <see langword="False" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `My.User.IsInRole`メソッドは、現在のユーザーが指定されたロールのメンバーであるかを決定するコードを使用します。  
+ `My.User.IsInRole`メソッドを使用すると、現在のユーザーが指定されたロールのメンバーであるかどうかをコードで判断できます。  
   
- オーバー ロード、 `My.User.IsInRole` 、文字列を受け取るメソッドに簡単にアクセスを提供する、<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッドの現在のプリンシパル。  
+ 文字列を受け取る`My.User.IsInRole`メソッドのオーバーロードにより、現在のプリンシパルの<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッドに簡単にアクセスできるようになります。  
   
- オーバー ロード、`My.User.IsInRole`を受け取るメソッドを`BuiltInRole`現在のプリンシパルによって、異なる動作を列挙します。 Windows ユーザーのプリンシパルである場合 (<xref:System.Security.Principal.WindowsPrincipal>)、この関数に変換します`role`を等価<xref:System.Security.Principal.WindowsBuiltInRole>列挙し、呼び出しの結果を返します<xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>します。 この関数が列挙値の名前を渡す、現在のプリンシパルがその他のすべてのプリンシパルの場合は、`role`するプリンシパルの<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッド。  
+ 列挙体を`BuiltInRole`受け取る`My.User.IsInRole`メソッドのオーバーロードは、現在のプリンシパルによって動作が異なります。 Windows ユーザー<xref:System.Security.Principal.WindowsPrincipal>プリンシパル () の場合、この関数は同等<xref:System.Security.Principal.WindowsBuiltInRole>の`role`列挙型に変換し、を呼び出し<xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>た結果を返します。 現在のプリンシパルがその他のプリンシパルである場合、この関数は、の`role`列挙値の名前をプリンシパルの<xref:System.Security.Principal.IPrincipal.IsInRole%2A>メソッドに渡します。  
   
 > [!NOTE]
->  実際の動作、`My.User`オブジェクトは、アプリケーションを実行するオペレーティング システムとアプリケーションの種類に依存します。 詳細については、次を参照してください。、<xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要。  
+>  `My.User`オブジェクトの正確な動作は、アプリケーションの種類と、アプリケーションが実行されているオペレーティングシステムによって異なります。 詳細については、 <xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要に関するトピックを参照してください。  
   
-## <a name="availability-by-project-type"></a>プロジェクトの種類ごとの可用性  
+## <a name="availability-by-project-type"></a>プロジェクトの種類別の可用性  
   
 |プロジェクトの種類|使用可能|  
 |-|-|  
 |Windows アプリケーション|**はい**|  
 |クラス ライブラリ|**はい**|  
 |コンソール アプリケーション|**はい**|  
-|Windows コントロール ライブラリ|**はい**|  
-|Web コントロール ライブラリ|**はい**|  
+|Windows コントロールライブラリ|**はい**|  
+|Web コントロールライブラリ|**はい**|  
 |Windows サービス|**はい**|  
 |Web サイト|**はい**|  
   
    
   
 ## Examples  
- この例では、ユーザーのリソースにアクセスする前に管理者がいるを確認します。  
+ この例では、リソースにアクセスする前に、ユーザーが管理者であるかどうかを確認します。  
   
  [!code-vb[VbVbalrMyUser#1](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrMyUser/VB/Class1.vb#1)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティのアクセス許可のセットについて説明します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティ アクセス許可のセットを記述します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
         <altmember cref="T:Microsoft.VisualBasic.ApplicationServices.BuiltInRole" />
         <related type="Article" href="~/docs/visual-basic/language-reference/objects/index.md">オブジェクト (Visual Basic)</related>
       </Docs>
@@ -474,38 +474,38 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用することができます、`My.User`オブジェクトは、現在のユーザーに関する情報を取得します。  
+ `My.User`オブジェクトを使用して、現在のユーザーに関する情報を取得できます。  
   
- ユーザーを認証するプリンシパルは、ユーザー名の形式も制御します。 既定では、アプリケーションで Windows 認証を使用して、ユーザー名が domain \username の形式。 プリンシパルのカスタム実装は、同じ形式を必ずしも使用しません。  
-  
-> [!NOTE]
->  `My.User.Name`プロパティは、これらのオペレーティング システムは、ユーザー名を認識しないため、Windows 95 および Windows 98 で実行する場合、空の文字列を返します。  
+ ユーザーを認証するプリンシパルは、ユーザー名の形式も制御します。 既定では、アプリケーションは Windows 認証を使用し、ユーザー名の形式は DOMAIN\USERNAME です。 プリンシパルのカスタム実装では、必ずしも同じ形式を使用するわけではありません。  
   
 > [!NOTE]
->  実際の動作、`My.User`オブジェクトは、アプリケーションを実行するオペレーティング システムとアプリケーションの種類に依存します。 詳細については、次を参照してください。、<xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要。  
+>  Windows `My.User.Name` 95 および windows 98 で実行した場合、プロパティは空の文字列を返します。これらのオペレーティングシステムはユーザー名を認識しないためです。  
   
-## <a name="availability-by-project-type"></a>プロジェクトの種類ごとの可用性  
+> [!NOTE]
+>  `My.User`オブジェクトの正確な動作は、アプリケーションの種類と、アプリケーションが実行されているオペレーティングシステムによって異なります。 詳細については、 <xref:Microsoft.VisualBasic.ApplicationServices.User>クラスの概要に関するトピックを参照してください。  
+  
+## <a name="availability-by-project-type"></a>プロジェクトの種類別の可用性  
   
 |プロジェクトの種類|使用可能|  
 |-|-|  
 |Windows アプリケーション|**はい**|  
 |クラス ライブラリ|**はい**|  
 |コンソール アプリケーション|**はい**|  
-|Windows コントロール ライブラリ|**はい**|  
-|Web コントロール ライブラリ|**はい**|  
+|Windows コントロールライブラリ|**はい**|  
+|Web コントロールライブラリ|**はい**|  
 |Windows サービス|**はい**|  
 |Web サイト|**はい**|  
   
    
   
 ## Examples  
- この例では、アプリケーションは Windows またはカスタムの認証を使用してその情報を使用して解析を確認します。、`My.User.Name`プロパティ。  
+ この例では、アプリケーションが Windows 認証とカスタム認証のどちらを使用しているか`My.User.Name`を確認し、その情報を使用してプロパティを解析します。  
   
  [!code-vb[VbVbalrMyUser#3](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrMyUser/VB/Class1.vb#3)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティのアクセス許可のセットについて説明します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">コードに適用されるセキュリティ アクセス許可のセットを記述します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
         <related type="Article" href="~/docs/visual-basic/language-reference/objects/index.md">オブジェクト (Visual Basic)</related>
         <related type="Article" href="~/docs/visual-basic/developing-apps/programming/accessing-user-data.md">ユーザー データへのアクセス (Visual Basic)</related>
       </Docs>

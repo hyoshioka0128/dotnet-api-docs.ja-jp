@@ -29,7 +29,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>RSS <see langword="&lt;item&gt;" /> や Atom <see langword="&lt;entry&gt;" /> などのフィード項目を表します。</summary>
+    <summary>RSS の <see langword="&lt;item&gt;" />、Atom の <see langword="&lt;entry&gt;" /> などのフィード項目を表します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -40,10 +40,10 @@
 |------------------------------|---------------------|  
 |<xref:System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions%2A>|`<entry>` 要素の属性。|  
 |<xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A>|コレクション内の各作成者の `<author>` 要素。|  
-|<xref:System.ServiceModel.Syndication.SyndicationItem.Categories%2A>|A`<category>`要素。|  
-|<xref:System.ServiceModel.Syndication.SyndicationItem.Content%2A>|A`<content>`要素。|  
-|<xref:System.ServiceModel.Syndication.SyndicationItem.Contributors%2A>|A`<contributor>`の各投稿者コレクション内の要素。|  
-|<xref:System.ServiceModel.Syndication.SyndicationItem.Copyright%2A>|A`<rights>`要素。|  
+|<xref:System.ServiceModel.Syndication.SyndicationItem.Categories%2A>|`<category>`要素。|  
+|<xref:System.ServiceModel.Syndication.SyndicationItem.Content%2A>|`<content>`要素。|  
+|<xref:System.ServiceModel.Syndication.SyndicationItem.Contributors%2A>|コレクション内の各コントリビューターの要素。`<contributor>`|  
+|<xref:System.ServiceModel.Syndication.SyndicationItem.Copyright%2A>|`<rights>`要素。|  
 |<xref:System.ServiceModel.Syndication.SyndicationItem.ElementExtensions%2A>|`<entry>` 要素内の要素。|  
 |<xref:System.ServiceModel.Syndication.SyndicationItem.Id%2A>|`<id>` 要素。|  
 |<xref:System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime%2A>|`<updated>` 要素。|  
@@ -192,7 +192,7 @@
       </Parameters>
       <Docs>
         <param name="title">項目のタイトル。</param>
-        <param name="content">項目のコンテンツ。</param>
+        <param name="content">項目コンテンツ。</param>
         <param name="itemAlternateLink">項目の URL。</param>
         <param name="feedAlternateLink">To be added.</param>
         <summary>指定されたタイトル、コンテンツ、およびリンクで、<see cref="T:System.ServiceModel.Syndication.SyndicationItem" /> クラスの新しいインスタンスを初期化します。</summary>
@@ -415,7 +415,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 配信オブジェクト モデルを使用して、カスタム属性を <xref:System.ServiceModel.Syndication.SyndicationItem> インスタンスに追加できます。 Atom 1.0 にシリアル化する場合、カスタム属性は、 `<entry>` 要素に書き込まれます。 RSS 2.0 にシリアル化する場合、カスタム属性は、 `<item>` 要素に書き込まれます。 属性の拡張機能を追加する方法を示す完全な例については、 [Loosely-Typed 拡張](~/docs/framework/wcf/samples/loosely-typed-extensions-sample.md)サンプル。  
+ 配信オブジェクト モデルを使用して、カスタム属性を <xref:System.ServiceModel.Syndication.SyndicationItem> インスタンスに追加できます。 Atom 1.0 にシリアル化する場合、カスタム属性は、 `<entry>` 要素に書き込まれます。 RSS 2.0 にシリアル化する場合、カスタム属性は、 `<item>` 要素に書き込まれます。 属性拡張を追加する方法を示す完全な例については、「[緩やかに型指定](~/docs/framework/wcf/samples/loosely-typed-extensions-sample.md)された拡張機能のサンプル」を参照してください。  
   
    
   
@@ -471,7 +471,7 @@
 ## Remarks  
  Atom 1.0 にシリアル化する場合、`<author>` 要素は <xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A> コレクションの各 <xref:System.ServiceModel.Syndication.SyndicationPerson> に書き込まれます。  
   
- RSS 2.0 にシリアル化する際、 `<managingEditor>`要素が書き込まれる場合、<xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A>コレクションが 1 つだけ<xref:System.ServiceModel.Syndication.SyndicationPerson>、それ以外の場合、`<a10:author>`の各要素が書き込まれます<xref:System.ServiceModel.Syndication.SyndicationPerson>で、<xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A>コレクション。  
+ RSS 2.0 にシリアル化する際、 <xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A> <xref:System.ServiceModel.Syndication.SyndicationPerson> <xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A> <xref:System.ServiceModel.Syndication.SyndicationPerson> `<a10:author>`要素は、コレクションに1つだけ存在する場合は書き込まれます。それ以外の場合は、コレクション内の各に対して要素が書き込まれます。 `<managingEditor>`  
   
    
   
@@ -1028,7 +1028,7 @@
 <mg:MyElement xmlns:mg="http://myserver/elements" />  
 ```  
   
- 要素拡張を追加する方法を示す完全な例については、 [Loosely-Typed 拡張](~/docs/framework/wcf/samples/loosely-typed-extensions-sample.md)サンプル。  
+ 要素拡張を追加する方法を示す完全な例については、「[緩やかに型指定](~/docs/framework/wcf/samples/loosely-typed-extensions-sample.md)された拡張機能のサンプル」を参照してください。  
   
    
   
@@ -1680,7 +1680,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは追加するときに自動的に設定されませんを<xref:System.ServiceModel.Syndication.SyndicationItem>を<xref:System.ServiceModel.Syndication.SyndicationFeed>-明示的に設定する必要があります。 Atom 1.0 または RSS 2.0 にシリアル化する際、このプロパティは `<source>` 要素に書き込まれます。 その要素のコンテンツは、シリアル化した形式によって変化します。  
+ <xref:System.ServiceModel.Syndication.SyndicationItem> を<xref:System.ServiceModel.Syndication.SyndicationFeed>に追加した場合、このプロパティは自動的には設定されません。明示的に設定する必要があります。 Atom 1.0 または RSS 2.0 にシリアル化する際、このプロパティは `<source>` 要素に書き込まれます。 その要素のコンテンツは、シリアル化した形式によって変化します。  
   
    
   

@@ -24,7 +24,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer>クラスは、ステートメントまたは式を作成できます。 シリアル化するオブジェクトが、配列の場合、<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer>は式を作成し、現在のコンテキスト スタック内のステートメントに割り当てます。 オブジェクトがコレクションである場合、 *AddRange*または同様のメソッド、<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer>はメソッドを呼び出すステートメントを作成します。  
+ クラス<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer>では、ステートメントまたは式のいずれかを作成できます。 シリアル化するオブジェクトが配列である場合は<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer> 、によって式が作成され、現在のコンテキストスタックのステートメントに代入されます。 オブジェクトが、 *AddRange*または類似のメソッドを含むコレクションである<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer>場合は、メソッドを呼び出すステートメントがによって作成されます。  
   
  ]]></format>
     </remarks>
@@ -82,18 +82,18 @@
         <Parameter Name="method" Type="System.Reflection.MethodInfo" Index="0" FrameworkAlternate="netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="method"><see cref="T:System.Reflection.MethodInfo" />シリアル化属性を確認します。</param>
-        <summary>シリアル化のサポートを確認、<paramref name="method" />します。</summary>
-        <returns><see langword="true" /> 場合、<paramref name="method" />シリアル化をサポートしています。 そうしないと、<see langword="false" />します。</returns>
+        <param name="method">シリアル化属性を確認する対象の <see cref="T:System.Reflection.MethodInfo" />。</param>
+        <summary><paramref name="method" /> によるシリアル化のサポートを検証します。</summary>
+        <returns><paramref name="method" /> がシリアル化をサポートしている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- チェック、`method`属性をシリアル化をサポートしているを参照してください。  
+ 属性を`method`チェックして、シリアル化がサポートされているかどうかを確認します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="method" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="method" /> が <see langword="null" /> です。</exception>
         <altmember cref="T:System.Reflection.MethodInfo" />
         <related type="Article" href="https://msdn.microsoft.com/library/d077a3e8-bd81-4bdf-b6a3-323857ea30fb">動的なソース コードの生成とコンパイル</related>
       </Docs>
@@ -123,25 +123,25 @@
         <Parameter Name="value" Type="System.Object" Index="1" FrameworkAlternate="netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="manager">シリアル化時に使用する <see cref="T:System.ComponentModel.Design.Serialization.IDesignerSerializationManager" />。</param>
+        <param name="manager">シリアル化中に使用する <see cref="T:System.ComponentModel.Design.Serialization.IDesignerSerializationManager" />。</param>
         <param name="value">シリアル化するオブジェクト。</param>
-        <summary>指定したコレクションを CodeDOM オブジェクトをシリアル化します。</summary>
-        <returns>表す CodeDOM オブジェクト<paramref name="value" />します。</returns>
+        <summary>指定したコレクションをシリアル化して、CodeDOM オブジェクトを生成します。</summary>
+        <returns><paramref name="value" /> を表す CodeDOM オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コレクションは、次のようにシリアル化されます。  
+ コレクションは次のようにシリアル化されます。  
   
-1.  コレクションが配列の場合、配列が書き込まれます。  
+1.  コレクションが配列の場合は、配列が書き込まれます。  
   
-    1.  コレクションがある場合、 *AddRange*メソッドと呼ばれる、配列が提供されます。  
+    1.  コレクションに*AddRange*メソッドがある場合は、このメソッドが呼び出され、配列と共に提供されます。  
   
-    2.  コレクションがある場合、*追加*メソッドでは、これは繰り返し呼び出されます、コレクション内のすべての項目が書き込まれるまでです。  
+    2.  コレクションに*Add*メソッドがある場合、コレクション内のすべての項目が書き込まれるまで繰り返し呼び出されます。  
   
-2.  コレクションの場合、 <xref:System.Collections.IList>、<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer.Serialize%2A>メソッドは、コレクションにキャスト、<xref:System.Collections.IList>し、そのインターフェイスを追加します。  
+2.  コレクションが<xref:System.Collections.IList>の場合<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer.Serialize%2A> 、メソッドはコレクションをに<xref:System.Collections.IList>キャストし、そのインターフェイスを介してを追加します。  
   
-    1.  コレクションにない場合*追加*メソッドでマークされますが、 <xref:System.ComponentModel.DesignerSerializationVisibility.Content?displayProperty=nameWithType>、<xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer.Serialize%2A>コレクションを列挙し、各要素をシリアル化されます。  
+    1.  コレクションに*Add*メソッドがなく、で<xref:System.ComponentModel.DesignerSerializationVisibility.Content?displayProperty=nameWithType>マークされている場合、 <xref:System.ComponentModel.Design.Serialization.CollectionCodeDomSerializer.Serialize%2A>はコレクションを列挙し、各要素をシリアル化します。  
   
  ]]></format>
         </remarks>
@@ -178,18 +178,18 @@
         <Parameter Name="valuesToSerialize" Type="System.Collections.ICollection" Index="4" FrameworkAlternate="netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="manager">シリアル化時に使用する <see cref="T:System.ComponentModel.Design.Serialization.IDesignerSerializationManager" />。</param>
+        <param name="manager">シリアル化中に使用する <see cref="T:System.ComponentModel.Design.Serialization.IDesignerSerializationManager" />。</param>
         <param name="targetExpression">コレクションを参照する <see cref="T:System.CodeDom.CodeExpression" />。</param>
         <param name="targetType">コレクションの <see cref="T:System.Type" />。</param>
         <param name="originalCollection">シリアル化するコレクション。</param>
         <param name="valuesToSerialize">シリアル化する値。</param>
-        <summary>指定されたコレクションをシリアル化します。</summary>
+        <summary>指定したコレクションをシリアル化します。</summary>
         <returns>シリアル化プロセスが正常に実行された場合はシリアル化されたコレクション。それ以外の場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.CodeDom.CodeExpression>を参照するコレクションを指定できます`null`します。  
+ コレクション<xref:System.CodeDom.CodeExpression>を参照するは、にする`null`ことができます。  
   
  ]]></format>
         </remarks>
