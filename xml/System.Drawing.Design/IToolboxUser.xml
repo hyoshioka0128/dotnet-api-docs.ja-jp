@@ -17,17 +17,17 @@
   </AssemblyInfo>
   <Interfaces />
   <Docs>
-    <summary>現在選択されているツールボックス項目を設定して、デザイナーが特定のツールボックス項目をサポートしているかどうかを示すのためのインターフェイスを定義します。</summary>
+    <summary>現在選択されているツールボックス項目を設定し、デザイナーが特定のツールボックス項目をサポートしているかどうかを示すインターフェイスを定義します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このインターフェイスは、デザイナーのツールボックスのサポート機能を提供します。 <xref:System.Drawing.Design.IToolboxUser.GetToolSupported%2A>メソッドを示すかどうか、指定した<xref:System.Drawing.Design.ToolboxItem>現在のデザイナーがアクティブなときに使用できます。 <xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A>メソッドは、指定した選択<xref:System.Drawing.Design.ToolboxItem>します。  
+ このインターフェイスは、デザイナーにツールボックスのサポート機能を提供します。 メソッド<xref:System.Drawing.Design.IToolboxUser.GetToolSupported%2A>は、現在のデザイナー <xref:System.Drawing.Design.ToolboxItem>がアクティブになっている場合に、指定したを使用できるかどうかを示します。 メソッド<xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A>は、指定さ<xref:System.Drawing.Design.ToolboxItem>れたを選択します。  
   
    
   
 ## Examples  
- 実装を次のコード例に示します、<xref:System.Drawing.Design.IToolboxUser>インターフェイスの特定の種類のサポートを制限する<xref:System.Drawing.Design.ToolboxItem>オブジェクト。  
+ 次のコード例は、特定の<xref:System.Drawing.Design.IToolboxUser> <xref:System.Drawing.Design.ToolboxItem>種類のオブジェクトのサポートを制限できるインターフェイスの実装を示しています。  
   
  [!code-cpp[IToolboxUserExample#1](~/samples/snippets/cpp/VS_Snippets_Winforms/IToolboxUserExample/CPP/samplecontrol.cpp#1)]
  [!code-csharp[IToolboxUserExample#1](~/samples/snippets/csharp/VS_Snippets_Winforms/IToolboxUserExample/CS/samplecontrol.cs#1)]
@@ -63,19 +63,19 @@
         <Parameter Name="tool" Type="System.Drawing.Design.ToolboxItem" />
       </Parameters>
       <Docs>
-        <param name="tool"><see cref="T:System.Drawing.Design.ToolboxItem" />ツールボックスのサポートをテストします。</param>
+        <param name="tool">ツールボックスでサポートされているかどうかをテストする対象の <see cref="T:System.Drawing.Design.ToolboxItem" />。</param>
         <summary>指定したツールが現在のデザイナーでサポートされているかどうかを示す値を取得します。</summary>
-        <returns><see langword="true" /> ツールがツールボックスでサポートされていて、有効にできます。<see langword="false" />ドキュメント デザイナーがツールを使用する方法を把握していない場合。</returns>
+        <returns>ツールボックスでツールがサポートされていて有効にできる場合は <see langword="true" />。ドキュメント デザイナーでツールの使用方法が認識されない場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定したツールがデザイナーの実装でサポートされている場合、<xref:System.Drawing.Design.IToolboxUser>インターフェイスこのデザイナーにフォーカスがある場合、ツールがツールボックスで有効になります。 それ以外の場合、無効になります。 ツールが有効になっているとマークされると無効にすると、その可能性がありますテストされないことに同じデザイナーのサポートについてはもう一度またはします。  
+ 指定したツールが<xref:System.Drawing.Design.IToolboxUser>インターフェイスを実装しているデザイナーによってサポートされている場合、このデザイナーにフォーカスがあるときにツールボックスでツールが有効になります。 それ以外の場合は無効になります。 ツールが有効または無効としてマークされると、同じデザイナーでのサポートが再度テストされないことがあります。  
   
    
   
 ## Examples  
- 実装を次のコード例に示します、<xref:System.Drawing.Design.IToolboxUser.GetToolSupported%2A>メソッド。  
+ 次のコード例は、 <xref:System.Drawing.Design.IToolboxUser.GetToolSupported%2A>メソッドの実装を示しています。  
   
  [!code-cpp[IToolboxUserExample#2](~/samples/snippets/cpp/VS_Snippets_Winforms/IToolboxUserExample/CPP/samplecontrol.cpp#2)]
  [!code-csharp[IToolboxUserExample#2](~/samples/snippets/csharp/VS_Snippets_Winforms/IToolboxUserExample/CS/samplecontrol.cs#2)]
@@ -111,13 +111,13 @@
         <Parameter Name="tool" Type="System.Drawing.Design.ToolboxItem" />
       </Parameters>
       <Docs>
-        <param name="tool"><see cref="T:System.Drawing.Design.ToolboxItem" />を選択します。</param>
+        <param name="tool">選択する <see cref="T:System.Drawing.Design.ToolboxItem" />。</param>
         <summary>指定したツールを選択します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A> ユーザーは、ツールボックス項目をダブルクリックすると呼び出されます。 ドキュメント デザイナーでは、指定したツールのコンポーネントを作成する必要があります。 Visual Studio 統合開発環境の呼び出しだけ<xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A>ツールがツールボックスで有効になっています。  
+ <xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A>は、ユーザーがツールボックス項目をダブルクリックすると呼び出されます。 ドキュメントデザイナーは、指定されたツール用のコンポーネントを作成する必要があります。 Visual Studio 統合開発環境では、ツール<xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A>ボックスで有効になっているツールのみが呼び出されます。  
   
  ]]></format>
         </remarks>

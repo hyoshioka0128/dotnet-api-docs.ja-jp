@@ -20,22 +20,22 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.Keyboard>クラスには、キーボード関連のイベント、メソッド、およびキーボードの状態に関する情報を提供するプロパティが用意されています。  
+ クラス<xref:System.Windows.Input.Keyboard>には、キーボードの状態に関する情報を提供するキーボード関連のイベント、メソッド、およびプロパティが用意されています。  
   
- 各イベントを<xref:System.Windows.Input.Keyboard>基本要素クラスで添付イベントが再公開も定義<xref:System.Windows.UIElement>と<xref:System.Windows.ContentElement>新しいルーティング イベントとして。 一般に、アプリケーションのキーボード イベントを処理する方が便利です<xref:System.Windows.UIElement>と<xref:System.Windows.ContentElement>を使用してではなく、<xref:System.Windows.Input.Keyboard>イベント。 詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)します。  
+ を添付イベントとし<xref:System.Windows.Input.Keyboard>て定義する各イベントは、基本要素クラス<xref:System.Windows.UIElement>および<xref:System.Windows.ContentElement>新しいルーティングイベントによっても再公開されます。 一般に、 <xref:System.Windows.UIElement> <xref:System.Windows.Input.Keyboard>イベントを使用するのではなく、と<xref:System.Windows.ContentElement>でアプリケーションのキーボードイベントを処理する方が便利です。 詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」を参照してください。  
   
- 要素にキーボード入力を受け取るためには、要素がフォーカスを設定できるある必要があります。 ほとんど<xref:System.Windows.UIElement>派生オブジェクトが既定でフォーカスを設定します。 それ以外の場合、要素をフォーカスを設定するためには、次のように設定します。、<xref:System.Windows.UIElement.Focusable%2A>に基本要素のプロパティ`true`します。  基本要素の詳細については、次を参照してください。[基本要素の概要](~/docs/framework/wpf/advanced/base-elements-overview.md)します。  
+ 要素がキーボード入力を受け取るには、要素にフォーカスを設定する必要があります。 既定<xref:System.Windows.UIElement>では、ほとんどの派生オブジェクトはフォーカスを設定できます。 それ以外の場合は、要素にフォーカスを<xref:System.Windows.UIElement.Focusable%2A>設定するには、基本`true`要素のプロパティをに設定します。  基本要素の詳細については、「[基本要素の概要](~/docs/framework/wpf/advanced/base-elements-overview.md)」を参照してください。  
   
- <xref:System.Windows.Controls.Panel> などのクラス<xref:System.Windows.Controls.StackPanel>と<xref:System.Windows.Controls.Canvas>の既定値を設定<xref:System.Windows.UIElement.Focusable%2A>に`false`します。 そのため、キーボード フォーカスを取得するには、これらオブジェクトの<xref:System.Windows.UIElement.Focusable%2A>に設定する必要があります`true`します。  
+ <xref:System.Windows.Controls.Panel>クラス ( <xref:System.Windows.Controls.StackPanel>や<xref:System.Windows.Controls.Canvas>など) では、の<xref:System.Windows.UIElement.Focusable%2A>既定値が`false`に設定されます。 そのため、これらのオブジェクトでキーボードフォーカスを<xref:System.Windows.UIElement.Focusable%2A>取得するには`true`、をに設定する必要があります。  
   
- キーボード フォーカスはキーボード入力を受信しているオブジェクトを指します。 キーボード フォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>設定`true`します。  デスクトップ全体でのキーボード フォーカスを持つ 1 つだけの要素があります。  論理フォーカスはフォーカスを持つフォーカス範囲内でオブジェクトを指します。  フォーカス、キーボード フォーカスと論理フォーカスの詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)と[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)します。  
+ キーボードフォーカスは、キーボード入力を受け取るオブジェクトを参照します。 キーボードフォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>に`true`設定されています。  キーボードフォーカスを持つ要素は、デスクトップ全体に1つだけ存在できます。  論理フォーカスとは、フォーカスがあるフォーカススコープ内のオブジェクトを指します。  フォーカス、キーボードフォーカス、および論理フォーカスの詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」と「[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)」を参照してください。  
   
- 静的メンバー、<xref:System.Windows.Input.Keyboard>クラスのデリゲートをプライマリ<xref:System.Windows.Input.KeyboardDevice>のため、必ずしもスレッド セーフではありませんが、呼び出し元のスレッド。  
+ <xref:System.Windows.Input.Keyboard>クラスの静的メンバーは、呼び出し元のスレッド<xref:System.Windows.Input.KeyboardDevice>のプライマリに委任されるため、必ずしもスレッドセーフであるとは限りません。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>メソッド キーが切り替わった状態を判断します。 場合、<xref:System.Windows.Input.Key>に渡される<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>を切り替え、ボタンの背景が変更されました。  
+ 次の例は、 <xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>メソッドを使用して、キーが切り替えられた状態かどうかを判断する方法を示しています。 <xref:System.Windows.Input.Key> に<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>渡されたが切り替えられると、ボタンの背景が変わります。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsKeyBoardIsToggled](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargskeyboardistoggled)]
  [!code-vb[keyargssnippetsample#KeyEventArgsKeyBoardIsToggled](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargskeyboardistoggled)]  
@@ -69,12 +69,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.GotKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.GotKeyboardFocus" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.GotKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.GotKeyboardFocus?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -102,12 +102,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -136,12 +136,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.KeyDown" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.KeyDown" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.KeyDown?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.KeyDown?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -170,12 +170,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.KeyUp" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.KeyUp" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.KeyUp?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.KeyUp?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -204,12 +204,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.LostKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.LostKeyboardFocus" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.LostKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.LostKeyboardFocus?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -238,12 +238,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -271,12 +271,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -305,12 +305,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.PreviewKeyDown" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewKeyDown" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.PreviewKeyDown?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.PreviewKeyDown?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -339,12 +339,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.PreviewKeyUp" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewKeyUp" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.PreviewKeyUp?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.PreviewKeyUp?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -373,12 +373,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">追加するイベント ハンドラー。</param>
-        <summary>ハンドラーを追加、<see cref="E:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus" /> 添付イベントのハンドラーを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供し、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]の属性の処理、<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus?displayProperty=nameWithType>添付イベントのコードアクセスおよび属性処理に対して、添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -406,9 +406,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- フォーカスが Win32 ウィンドウ内にある場合は、WPF を呼び出す、<xref:System.Windows.Input.Keyboard.ClearFocus%2A>メソッドをメニューが閉じられるときに、フォーカスを復元します。  
+ フォーカスが Win32 ウィンドウ内にある場合、WPF は<xref:System.Windows.Input.Keyboard.ClearFocus%2A>メニューが閉じられると、フォーカスの復元時にメソッドを呼び出します。  
   
- Win32 フォーカスがホストされている子 HWND に返されるメニュー モードを終了するときと、要素には、WPF のフォーカスがありません。  
+ メニューモードを終了すると、ホストされている子 HWND に Win32 フォーカスが戻り、WPF フォーカスを持つ要素は存在しません。  
   
  ]]></format>
         </remarks>
@@ -430,8 +430,8 @@
         <ReturnType>System.Windows.Input.RestoreFocusMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定の動作[!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)]フォーカスを復元するときにします。</summary>
-        <value>動作を指定する列挙値[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]フォーカスを復元するときにします。 既定で<see cref="F:System.Windows.Input.RestoreFocusMode.Auto" />します。</value>
+        <summary>フォーカスを復元するときの [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] の動作を取得または設定します。</summary>
+        <value>フォーカスを復元するときの [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] の動作を指定する列挙値。 既定値は、<see cref="F:System.Windows.Input.RestoreFocusMode.Auto" /> です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -455,23 +455,23 @@
         <Parameter Name="element" Type="System.Windows.IInputElement" />
       </Parameters>
       <Docs>
-        <param name="element">キーボード フォーカスを設定する要素。</param>
+        <param name="element">キーボード フォーカスの設定対象の要素。</param>
         <summary>指定した要素にキーボード フォーカスを設定します。</summary>
         <returns>キーボード フォーカスを持つ要素。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 要素がキーボード入力を受け取るには、要素がフォーカスを設定できる必要があります。 要素をフォーカスを設定するためには、設定、<xref:System.Windows.UIElement.Focusable%2A>に基本要素のプロパティ`true`します。  基本要素の詳細については、次を参照してください。[基本要素の概要](~/docs/framework/wpf/advanced/base-elements-overview.md)します。  <xref:System.Windows.Controls.Panel> などのクラス<xref:System.Windows.Controls.StackPanel>と<xref:System.Windows.Controls.Canvas>の既定値を設定<xref:System.Windows.UIElement.Focusable%2A>に`false`はそのため、キーボード フォーカスを取得するには、これらオブジェクト<xref:System.Windows.UIElement.Focusable%2A>に設定する必要があります`true`します。  
+ 要素がキーボード入力を受け取るには、要素にフォーカスを設定する必要があります。 要素にフォーカスを設定できるように<xref:System.Windows.UIElement.Focusable%2A>するには、基本要素`true`のプロパティをに設定します。  基本要素の詳細については、「[基本要素の概要](~/docs/framework/wpf/advanced/base-elements-overview.md)」を参照してください。  <xref:System.Windows.Controls.Panel>`false` <xref:System.Windows.UIElement.Focusable%2A> <xref:System.Windows.UIElement.Focusable%2A>やなどのクラスは、の既定値をに設定します。したがって、これらのオブジェクトでキーボードフォーカスを取得する`true`には、をに設定する必要があります。 <xref:System.Windows.Controls.Canvas> <xref:System.Windows.Controls.StackPanel>  
   
- キーボード フォーカスはキーボード入力を受信しているオブジェクトを指します。 キーボード フォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>設定`true`します。  デスクトップ全体でのキーボード フォーカスを持つ 1 つだけの要素があります。  論理フォーカスはフォーカスを持つフォーカス範囲内でオブジェクトを指します。  フォーカス、キーボード フォーカスと論理フォーカスの詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)と[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)します。  
+ キーボードフォーカスは、キーボード入力を受け取るオブジェクトを参照します。 キーボードフォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>に`true`設定されています。  キーボードフォーカスを持つ要素は、デスクトップ全体に1つだけ存在できます。  論理フォーカスとは、フォーカスがあるフォーカススコープ内のオブジェクトを指します。  フォーカス、キーボードフォーカス、および論理フォーカスの詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」と「[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)」を参照してください。  
   
- キーボード フォーカスを持つ要素では、要素が属するフォーカス範囲の論理フォーカスも持ちます。  論理フォーカスを持つ要素は、可能性がありますか、キーボード フォーカスがない可能性があります。  
+ キーボードフォーカスを持つ要素には、要素が属するフォーカス範囲の論理フォーカスもあります。  論理フォーカスを持つ要素は、キーボードフォーカスを持つことができます。  
   
    
   
 ## Examples  
- 次の例は、<xref:System.Windows.FrameworkElement.Loaded>にキーボード フォーカスを設定するイベント ハンドラー、<xref:System.Windows.Controls.Button>します。  
+ 次の例は、 <xref:System.Windows.FrameworkElement.Loaded> <xref:System.Windows.Controls.Button>にキーボードフォーカスを設定するイベントハンドラーを示しています。  
   
  [!code-csharp[focussample#FocusSampleSetFocus](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSample/CSharp/Window1.xaml.cs#focussamplesetfocus)]
  [!code-vb[focussample#FocusSampleSetFocus](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSample/visualbasic/window1.xaml.vb#focussamplesetfocus)]  
@@ -503,14 +503,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- キーボード フォーカスはキーボード入力を受信しているオブジェクトを指します。 キーボード フォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>設定`true`します。  デスクトップ全体でのキーボード フォーカスを持つ 1 つだけの要素があります。  論理フォーカスはフォーカスを持つフォーカス範囲内でオブジェクトを指します。  フォーカス、キーボード フォーカスと論理フォーカスの詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)と[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)します。  
+ キーボードフォーカスは、キーボード入力を受け取るオブジェクトを参照します。 キーボードフォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>に`true`設定されています。  キーボードフォーカスを持つ要素は、デスクトップ全体に1つだけ存在できます。  論理フォーカスとは、フォーカスがあるフォーカススコープ内のオブジェクトを指します。  フォーカス、キーボードフォーカス、および論理フォーカスの詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」と「[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)」を参照してください。  
   
- キーボード フォーカスを持つ要素では、要素が属するフォーカス範囲の論理フォーカスも持ちます。  論理フォーカスを持つ要素は、可能性がありますか、キーボード フォーカスがない可能性があります。  
+ キーボードフォーカスを持つ要素には、要素が属するフォーカス範囲の論理フォーカスもあります。  論理フォーカスを持つ要素は、キーボードフォーカスを持つことができます。  
   
    
   
 ## Examples  
- 次の例は、キーボード フォーカスを持つ要素を取得しにキャスト、<xref:System.Windows.Controls.Control>します。  キーボード フォーカスを持つ要素がある場合、<xref:System.Windows.Controls.Control>要素の背景を変更します。  
+ 次の例では、キーボードフォーカスを持つ要素を取得し<xref:System.Windows.Controls.Control>、それをにキャストします。  キーボードフォーカスを持つ要素が<xref:System.Windows.Controls.Control>である場合、要素の背景が変更されます。  
   
  [!code-csharp[focussample#GetKeyboardFocusedElement](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSample/CSharp/Window1.xaml.cs#getkeyboardfocusedelement)]
  [!code-vb[focussample#GetKeyboardFocusedElement](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSample/visualbasic/window1.xaml.vb#getkeyboardfocusedelement)]  
@@ -545,14 +545,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.KeyStates> ビット フィールドの列挙体は、します。したがって、キーの複数の状態になる可能性が。  たとえば、キーは押された状態も切り替わった状態のようになります。  キーの状態を正確に判断するのには、比較演算をビットを使用します。  
+ <xref:System.Windows.Input.KeyStates>はビットフィールドの列挙体です。そのため、1つのキーが複数の状態になる可能性があります。  たとえば、キーが押された状態であったり、切り替えられた状態であったりする可能性があります。  ビット比較演算を使用して、キーが含まれている正確な状態または状態を判断します。  
   
- <xref:System.Windows.Input.Keyboard>クラスには、さまざまなキーの状態情報を取得するためにも使用する静的メソッドが用意されています。  メソッドは、: <xref:System.Windows.Input.Keyboard.IsKeyDown%2A>、 <xref:System.Windows.Input.Keyboard.IsKeyUp%2A>、および<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>します。  
+ クラス<xref:System.Windows.Input.Keyboard>には、キー状態情報を取得するために使用できるいくつかの静的メソッドが用意されています。  メソッドには<xref:System.Windows.Input.Keyboard.IsKeyDown%2A>、 <xref:System.Windows.Input.Keyboard.IsKeyUp%2A>、、および<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>があります。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Windows.Input.Keyboard.GetKeyStates%2A>かを判断するメソッド、<xref:System.Windows.Input.Key.Return>キーは、<xref:System.Windows.Input.KeyStates.Down>状態。  少し AND 演算が比較に使用、<xref:System.Windows.Input.KeyStates>から返された<xref:System.Windows.Input.Keyboard.GetKeyStates%2A>と<xref:System.Windows.Input.Key.Down>状態。 キーが、バック グラウンドの下にある場合、<xref:System.Windows.Controls.Button>が変更されました。  
+ 次の例は、 <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>メソッドを使用して、 <xref:System.Windows.Input.Key.Return>キーが<xref:System.Windows.Input.KeyStates.Down>状態であるかどうかを確認する方法を示しています。  ビットと演算を使用して、から<xref:System.Windows.Input.KeyStates> <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>返されたと<xref:System.Windows.Input.Key.Down>の状態を比較します。 キーが押されている場合は、の<xref:System.Windows.Controls.Button>背景が変更されます。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsKeyBoardGetKeyStates](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargskeyboardgetkeystates)]
  [!code-vb[keyargssnippetsample#KeyEventArgsKeyBoardGetKeyStates](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargskeyboardgetkeystates)]  
@@ -581,27 +581,27 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
- キーボード フォーカスはキーボード入力を受信しているオブジェクトを指します。 キーボード フォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>設定`true`します。  デスクトップ全体でのキーボード フォーカスを持つ 1 つだけの要素があります。  論理フォーカスはフォーカスを持つフォーカス範囲内でオブジェクトを指します。  フォーカス、キーボード フォーカスと論理フォーカスの詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)と[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)します。  
+ キーボードフォーカスは、キーボード入力を受け取るオブジェクトを参照します。 キーボードフォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>に`true`設定されています。  キーボードフォーカスを持つ要素は、デスクトップ全体に1つだけ存在できます。  論理フォーカスとは、フォーカスがあるフォーカススコープ内のオブジェクトを指します。  フォーカス、キーボードフォーカス、および論理フォーカスの詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」と「[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)」を参照してください。  
   
- 場合、<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたは<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>イベントは、キーボード フォーカスは変更できます。  
+ <xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたはイベントが処理されると、キーボード<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>フォーカスが変わります。  
   
 <a name="routedEventInfo_GotKeyboardFocusEvent"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.GotKeyboardFocusEvent>|  
-|ルーティング方法|バブル|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.GotKeyboardFocusEvent>|  
+|ルーティング方法|バブリング|  
 |Delegate|<xref:System.Windows.Input.KeyboardFocusChangedEventHandler>|  
   
--   対応するトンネル イベントは<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>します。  
+-   対応するトンネリングイベントは<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>です。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Windows.Controls.TextBox>のイベント ハンドラーをアタッチし、<xref:System.Windows.UIElement.GotKeyboardFocus>イベントと<xref:System.Windows.Input.Keyboard.LostKeyboardFocus>イベント。  ときに、<xref:System.Windows.Controls.TextBox>がキーボードのフォーカスを取得背景色を変更と、テキストを<xref:System.Windows.Controls.TextBox>がクリアされます。  ときに、<xref:System.Windows.Controls.TextBlock>がキーボード フォーカスを失う背景色が変更され、サンプルで使用される変数をリセットするメソッドが呼び出されます。  
+ 次の例では<xref:System.Windows.Controls.TextBox> 、を作成し、イベント<xref:System.Windows.UIElement.GotKeyboardFocus>と<xref:System.Windows.Input.Keyboard.LostKeyboardFocus>イベントのイベントハンドラーをアタッチします。  が<xref:System.Windows.Controls.TextBox>キーボードフォーカスを取得すると、背景色が変更され、 <xref:System.Windows.Controls.TextBox>のテキストがクリアされます。  が<xref:System.Windows.Controls.TextBlock>キーボードフォーカスを失った場合、背景色が変更され、サンプルで使用される変数をリセットするメソッドが呼び出されます。  
   
  [!code-xml[keyboardsample#KeyboardSampleXAMLHandlerHookup](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyboardSample/CSharp/Window1.xaml#keyboardsamplexamlhandlerhookup)]  
   
@@ -637,7 +637,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -663,18 +663,18 @@
       </Parameters>
       <Docs>
         <param name="key">指定されたキー。</param>
-        <summary>指定したキーが押されたかどうかを判断します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="key" />が押された状態以外の場合、<see langword="false" />します。</returns>
+        <summary>指定したキーが押されたかどうかを確認します。</summary>
+        <returns><paramref name="key" /> が押された状態の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>メソッドを使用して、特定のキーの状態のセットを決定します。  
+ <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>メソッドを使用すると、特定のキーの状態のセットを確認できます。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Windows.Input.Keyboard.IsKeyDown%2A>メソッドを特定のキーの状態を確認します。  <xref:System.Windows.Input.Key.Return>にキーが渡される、<xref:System.Windows.Input.Keyboard.IsKeyDown%2A>メソッド。  メソッドを返す場合`true`の背景を<xref:System.Windows.Controls.Button>が変更されました。  
+ 次の例は、 <xref:System.Windows.Input.Keyboard.IsKeyDown%2A>メソッドを使用して特定のキーの状態を確認する方法を示しています。  キーが<xref:System.Windows.Input.Keyboard.IsKeyDown%2A>メソッドに渡されます。 <xref:System.Windows.Input.Key.Return>  メソッドがを返し`true`た場合、 <xref:System.Windows.Controls.Button>の背景が変更されます。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsKeyBoardIsKeyDown](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargskeyboardiskeydown)]
  [!code-vb[keyargssnippetsample#KeyEventArgsKeyBoardIsKeyDown](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargskeyboardiskeydown)]  
@@ -705,18 +705,18 @@
       </Parameters>
       <Docs>
         <param name="key">指定されたキー。</param>
-        <summary>指定したキーが切り替えられたかどうかを判断します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="key" />が切り替わった状態以外の場合、<see langword="false" />します。</returns>
+        <summary>指定したキーが切り替えられたかどうかを確認します。</summary>
+        <returns><paramref name="key" /> が切り替わった状態の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>メソッドを使用して、特定のキーの状態のセットを決定します。  
+ <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>メソッドを使用すると、特定のキーの状態のセットを確認できます。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>メソッドを特定のキーの状態を確認します。 <xref:System.Windows.Input.Key.Return>にキーが渡される、<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>メソッド。  メソッドを返す場合`true`、しの背景を<xref:System.Windows.Controls.Button>が変更されました。  
+ 次の例は、 <xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>メソッドを使用して特定のキーの状態を確認する方法を示しています。 キーが<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>メソッドに渡されます。 <xref:System.Windows.Input.Key.Return>  メソッドがを返し`true`た場合、 <xref:System.Windows.Controls.Button>の背景が変更されます。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsKeyBoardIsToggled](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargskeyboardistoggled)]
  [!code-vb[keyargssnippetsample#KeyEventArgsKeyBoardIsToggled](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargskeyboardistoggled)]  
@@ -747,18 +747,18 @@
       </Parameters>
       <Docs>
         <param name="key">チェックするキー。</param>
-        <summary>指定したキーが離されたかどうかを判断します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="key" />が離さ状態以外の場合、<see langword="false" />します。</returns>
+        <summary>指定したキーが離されたかどうかを確認します。</summary>
+        <returns><paramref name="key" /> が離された状態の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>メソッドを使用して、特定のキーの状態のセットを決定します。  
+ <xref:System.Windows.Input.Keyboard.GetKeyStates%2A>メソッドを使用すると、特定のキーの状態のセットを確認できます。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Windows.Input.Keyboard.IsKeyUp%2A>メソッドを特定のキーの状態を確認します。  <xref:System.Windows.Input.Key.Return>にキーが渡される、<xref:System.Windows.Input.Keyboard.IsKeyUp%2A>メソッド。  メソッドを返す場合`true`、しの背景を<xref:System.Windows.Controls.Button>が変更されました。  
+ 次の例は、 <xref:System.Windows.Input.Keyboard.IsKeyUp%2A>メソッドを使用して特定のキーの状態を確認する方法を示しています。  キーが<xref:System.Windows.Input.Keyboard.IsKeyUp%2A>メソッドに渡されます。 <xref:System.Windows.Input.Key.Return>  メソッドがを返し`true`た場合、 <xref:System.Windows.Controls.Button>の背景が変更されます。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsKeyBoardIsKeyUp](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargskeyboardiskeyup)]
  [!code-vb[keyargssnippetsample#KeyEventArgsKeyBoardIsKeyUp](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargskeyboardiskeyup)]  
@@ -786,18 +786,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_KeyboardInputProviderAcquireFocus"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocusEvent>|  
-|ルーティング方法|バブル|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocusEvent>|  
+|ルーティング方法|バブリング|  
 |Delegate|<xref:System.Windows.Input.KeyboardInputProviderAcquireFocusEventHandler>|  
   
--   対応するトンネル イベントは<xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus>します。  
+-   対応するトンネリングイベントは<xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus>です。  
   
  ]]></format>
         </remarks>
@@ -824,7 +824,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -848,23 +848,23 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_KeyDown"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.KeyDownEvent>|  
-|ルーティング方法|バブル|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.KeyDownEvent>|  
+|ルーティング方法|バブリング|  
 |Delegate|<xref:System.Windows.Input.KeyEventHandler>|  
   
--   対応するトンネル イベントは<xref:System.Windows.Input.Keyboard.PreviewKeyDown>します。  
+-   対応するトンネリングイベントは<xref:System.Windows.Input.Keyboard.PreviewKeyDown>です。  
   
    
   
 ## Examples  
- 次の例では、作成<xref:System.Windows.Controls.TextBox>のイベント ハンドラーをアタッチする、<xref:System.Windows.UIElement.KeyDown>イベント。  ときに、<xref:System.Windows.Input.Key.Return>が押された、イベント ハンドラー内のテキストの表示、<xref:System.Windows.Controls.TextBox>で、<xref:System.Windows.Controls.TextBlock>します。  
+ 次の例で<xref:System.Windows.Controls.TextBox>は、 <xref:System.Windows.UIElement.KeyDown>イベントのイベントハンドラーをアタッチするを作成します。  が押されると、イベントハンドラーによっ<xref:System.Windows.Controls.TextBox> <xref:System.Windows.Controls.TextBlock>て内のテキストがに表示されます。 <xref:System.Windows.Input.Key.Return>  
   
  [!code-xml[keydown#KeyDownUI](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyDown/CSharp/Window1.xaml#keydownui)]  
   
@@ -898,7 +898,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -917,23 +917,23 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>キーボードのキーを離したときに発生します。</summary>
+        <summary>キーボードのキーを離すと発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_KeyUp"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.KeyUpEvent>|  
-|ルーティング方法|バブル|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.KeyUpEvent>|  
+|ルーティング方法|バブリング|  
 |Delegate|<xref:System.Windows.Input.KeyEventHandler>|  
   
--   対応するトンネル イベントは<xref:System.Windows.Input.Keyboard.PreviewKeyUp>します。  
+-   対応するトンネリングイベントは<xref:System.Windows.Input.Keyboard.PreviewKeyUp>です。  
   
  ]]></format>
         </remarks>
@@ -962,7 +962,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -981,32 +981,32 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>要素がキーボード フォーカスを失ったときに発生します。</summary>
+        <summary>要素がキーボード フォーカスを失うと発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
- キーボード フォーカスはキーボード入力を受信しているオブジェクトを指します。 キーボード フォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>設定`true`します。  デスクトップ全体でのキーボード フォーカスを持つ 1 つだけの要素があります。  論理フォーカスはフォーカスを持つフォーカス範囲内でオブジェクトを指します。  フォーカス、キーボード フォーカスと論理フォーカスの詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)と[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)します。  
+ キーボードフォーカスは、キーボード入力を受け取るオブジェクトを参照します。 キーボードフォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>に`true`設定されています。  キーボードフォーカスを持つ要素は、デスクトップ全体に1つだけ存在できます。  論理フォーカスとは、フォーカスがあるフォーカススコープ内のオブジェクトを指します。  フォーカス、キーボードフォーカス、および論理フォーカスの詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」と「[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)」を参照してください。  
   
- 場合、<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたは<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>イベントは、キーボード フォーカスは変更されません。  
+ <xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたはイベントが処理された場合、キーボードフォーカス<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>は変わりません。  
   
 <a name="routedEventInfo_LostKeyboardFocus"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.LostKeyboardFocusEvent>|  
-|ルーティング方法|バブル|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.LostKeyboardFocusEvent>|  
+|ルーティング方法|バブリング|  
 |Delegate|<xref:System.Windows.Input.KeyboardFocusChangedEventHandler>|  
   
--   対応するトンネル イベントは<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>します。  
+-   対応するトンネリングイベントは<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>です。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Windows.Controls.TextBox>のイベント ハンドラーをアタッチし、<xref:System.Windows.UIElement.GotKeyboardFocus>イベントと<xref:System.Windows.Input.Keyboard.LostKeyboardFocus>イベント。  ときに、<xref:System.Windows.Controls.TextBox>がキーボードのフォーカスを取得背景色を変更と、テキストを<xref:System.Windows.Controls.TextBox>がクリアされます。  ときに、<xref:System.Windows.Controls.TextBlock>がキーボード フォーカスを失う背景色が変更され、サンプルで使用される変数をリセットするメソッドが呼び出されます。  
+ 次の例では<xref:System.Windows.Controls.TextBox> 、を作成し、イベント<xref:System.Windows.UIElement.GotKeyboardFocus>と<xref:System.Windows.Input.Keyboard.LostKeyboardFocus>イベントのイベントハンドラーをアタッチします。  が<xref:System.Windows.Controls.TextBox>キーボードフォーカスを取得すると、背景色が変更され、 <xref:System.Windows.Controls.TextBox>のテキストがクリアされます。  が<xref:System.Windows.Controls.TextBlock>キーボードフォーカスを失った場合、背景色が変更され、サンプルで使用される変数をリセットするメソッドが呼び出されます。  
   
  [!code-xml[keyboardsample#KeyboardSampleXAMLHandlerHookup](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyboardSample/CSharp/Window1.xaml#keyboardsamplexamlhandlerhookup)]  
   
@@ -1042,7 +1042,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -1065,18 +1065,18 @@
         <ReturnType>System.Windows.Input.ModifierKeys</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>セットを取得<see cref="T:System.Windows.Input.ModifierKeys" />を現在押されています。</summary>
+        <summary>現在押されている <see cref="T:System.Windows.Input.ModifierKeys" /> のセットを取得します。</summary>
         <value><see cref="T:System.Windows.Input.ModifierKeys" /> 値のビットごとの組み合わせ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.ModifierKeys> ビット フィールド列挙型が複数の修飾子キーを同時に押す可能性があります。  押された修飾子キーの正確なセットを決定するビット操作を使用します。  
+ <xref:System.Windows.Input.ModifierKeys>はビットフィールドの列挙体であるため、複数の修飾子キーを同時に押すことができます。  ビット演算を使用して、押された修飾キーの正確なセットを判別します。  
   
    
   
 ## Examples  
- 次の例を確認するビットと比較を使用して、<xref:System.Windows.Input.ModifierKeys.Control>修飾子キーが押されました。  
+ 次の例では、ビットと比較を使用し<xref:System.Windows.Input.ModifierKeys.Control>て、修飾子キーが押されたかどうかを判断します。  
   
  [!code-csharp[keyargssnippetsample#KeyboardModifiersBitOperation](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyboardmodifiersbitoperation)]
  [!code-vb[keyargssnippetsample#KeyboardModifiersBitOperation](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyboardmodifiersbitoperation)]  
@@ -1098,27 +1098,27 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>要素がキーボード フォーカスを獲得する途中である場合に発生します。</summary>
+        <summary>要素がキーボード フォーカスを取得中の場合に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
- 場合、<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたは<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>イベントは、キーボード フォーカスは変更されません。  
+ <xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたはイベントが処理された場合、キーボードフォーカス<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>は変わりません。  
   
- キーボード フォーカスはキーボード入力を受信しているオブジェクトを指します。 キーボード フォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>設定`true`します。  デスクトップ全体でのキーボード フォーカスを持つ 1 つだけの要素があります。  論理フォーカスはフォーカスを持つフォーカス範囲内でオブジェクトを指します。  フォーカス、キーボード フォーカスと論理フォーカスの詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)と[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)します。  
+ キーボードフォーカスは、キーボード入力を受け取るオブジェクトを参照します。 キーボードフォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>に`true`設定されています。  キーボードフォーカスを持つ要素は、デスクトップ全体に1つだけ存在できます。  論理フォーカスとは、フォーカスがあるフォーカススコープ内のオブジェクトを指します。  フォーカス、キーボードフォーカス、および論理フォーカスの詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」と「[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_PreviewGotKeyborad"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocusEvent>|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocusEvent>|  
 |ルーティング方法|トンネリング|  
 |Delegate|<xref:System.Windows.Input.KeyboardFocusChangedEventHandler>|  
   
--   対応するバブル イベントが<xref:System.Windows.Input.Keyboard.GotKeyboardFocus>します。  
+-   対応するバブルイベントは<xref:System.Windows.Input.Keyboard.GotKeyboardFocus>です。  
   
  ]]></format>
         </remarks>
@@ -1146,7 +1146,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -1164,23 +1164,23 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>キーボード入力プロバイダーがフォーカスを取得中に発生します。</summary>
+        <summary>キーボード入力プロバイダーがフォーカスを取得中の場合に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_PreviewKeyboardInputProviderAcquireFocus"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocusEvent>|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocusEvent>|  
 |ルーティング方法|トンネリング|  
 |Delegate|<xref:System.Windows.Input.KeyboardInputProviderAcquireFocusEventHandler>|  
   
--   対応するバブル イベントが<xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus>します。  
+-   対応するバブルイベントは<xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus>です。  
   
  ]]></format>
         </remarks>
@@ -1207,7 +1207,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -1231,18 +1231,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_PreviewKeyDown"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.PreviewKeyDownEvent>|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.PreviewKeyDownEvent>|  
 |ルーティング方法|トンネリング|  
 |Delegate|<xref:System.Windows.Input.KeyEventHandler>|  
   
--   対応するバブル イベントが<xref:System.Windows.Input.Keyboard.KeyDown>します。  
+-   対応するバブルイベントは<xref:System.Windows.Input.Keyboard.KeyDown>です。  
   
  ]]></format>
         </remarks>
@@ -1270,7 +1270,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -1289,23 +1289,23 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>キーボードのキーを離したときに発生します。</summary>
+        <summary>キーボードのキーを離すと発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_PreviewKeyUp"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.PreviewKeyUpEvent>|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.PreviewKeyUpEvent>|  
 |ルーティング方法|トンネリング|  
 |Delegate|<xref:System.Windows.Input.KeyEventHandler>|  
   
--   対応するバブル イベントが<xref:System.Windows.Input.Keyboard.KeyUp>します。  
+-   対応するバブルイベントは<xref:System.Windows.Input.Keyboard.KeyUp>です。  
   
  ]]></format>
         </remarks>
@@ -1333,7 +1333,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -1352,27 +1352,27 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>要素がキーボード フォーカスを失う過程である場合に発生します。</summary>
+        <summary>要素がキーボード フォーカスを喪失中の場合に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ルーティング イベントとして添付イベントを実装します。 添付イベントは、基本的に、 [!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、そのイベントを定義しないオブジェクトで処理できるイベントを参照するための言語の概念を[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]により、ルートを走査するイベントを拡張します。 アタッチされるイベントでは、コードでは、直接処理構文はありません。指定された追加に使用するコードでルーティング イベントのハンドラーをアタッチする * ハンドラー メソッド。 詳細については、次を参照してください。[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)します。  
+ これは添付イベントです。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]添付イベントをルーティングイベントとして実装します。 添付イベントは、基本的[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]には、イベントを定義していないオブジェクトで処理できるイベントを参照するため[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の言語の概念です。これは、イベントがルートを走査できるようにすることによって展開されます。 アタッチされたイベントには、コードで直接処理構文がありません。コードでルーティングイベントのハンドラーをアタッチするには、指定された Add * Handler メソッドを使用します。 詳細については、「[添付イベントの概要](~/docs/framework/wpf/advanced/attached-events-overview.md)」を参照してください。  
   
- 場合、<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたは<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>イベントは、キーボード フォーカスは変更されません。  
+ <xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus>イベントまたはイベントが処理された場合、キーボードフォーカス<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus>は変わりません。  
   
- キーボード フォーカスはキーボード入力を受信しているオブジェクトを指します。 キーボード フォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>設定`true`します。  デスクトップ全体でのキーボード フォーカスを持つ 1 つだけの要素があります。  論理フォーカスはフォーカスを持つフォーカス範囲内でオブジェクトを指します。  フォーカス、キーボード フォーカスと論理フォーカスの詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)と[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)します。  
+ キーボードフォーカスは、キーボード入力を受け取るオブジェクトを参照します。 キーボードフォーカスを持つ要素が<xref:System.Windows.IInputElement.IsKeyboardFocused%2A>に`true`設定されています。  キーボードフォーカスを持つ要素は、デスクトップ全体に1つだけ存在できます。  論理フォーカスとは、フォーカスがあるフォーカススコープ内のオブジェクトを指します。  フォーカス、キーボードフォーカス、および論理フォーカスの詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」と「[フォーカスの概要](~/docs/framework/wpf/advanced/focus-overview.md)」を参照してください。  
   
 <a name="routedEventInfo_PreviewLostKeyboardFocus"></a>   
 ## <a name="routed-event-information"></a>ルーティングされたイベント情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocusEvent>|  
+|識別子フィールド|<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocusEvent>|  
 |ルーティング方法|トンネリング|  
 |Delegate|<xref:System.Windows.Input.KeyboardFocusChangedEventHandler>|  
   
--   対応するバブル イベントが<xref:System.Windows.Input.Keyboard.LostKeyboardFocus>します。  
+-   対応するバブルイベントは<xref:System.Windows.Input.Keyboard.LostKeyboardFocus>です。  
   
  ]]></format>
         </remarks>
@@ -1400,7 +1400,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ルーティング イベントの識別子は、ルーティング イベントが登録され、結果がルーティング イベントを登録するクラスのフィールドとして格納されているときに作成されます。 これらの識別子には、識別名、所有者型、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティ メソッドが含まれます。 多くの場合、特定のルーティング イベントを識別するために、イベント システム メソッドへのパラメーターとしてこれらの識別子を使用します。  
+ ルーティングイベント識別子は、ルーティングイベントが登録されたときに作成されます。結果は、ルーティングイベントを登録するクラスのフィールドとして格納されます。 これらの識別子には、識別名、所有者の種類、ハンドラーの型、ルーティング方法、およびイベントの所有者を追加するためのユーティリティメソッドが含まれています。 多くの場合、これらの識別子をイベントシステムメソッドのパラメーターとして使用して、特定のルーティングイベントを識別します。  
   
  ]]></format>
         </remarks>
@@ -1434,7 +1434,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] インフラストラクチャをサポートしますが、独自に作成したコードから直接使用するためのものではありません。  
+ このプロパティは、[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] インフラストラクチャをサポートします。コードから直接使用するためのものではありません。  
   
  ]]></format>
         </remarks>
@@ -1464,12 +1464,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.GotKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.GotKeyboardFocus" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.GotKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.GotKeyboardFocus?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1497,12 +1497,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.KeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1531,12 +1531,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.KeyDown" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.KeyDown" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.KeyDown?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.KeyDown?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1565,12 +1565,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.KeyUp" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.KeyUp" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.KeyUp?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.KeyUp?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1599,12 +1599,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.LostKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.LostKeyboardFocus" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.LostKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.LostKeyboardFocus?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1633,12 +1633,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.PreviewGotKeyboardFocus?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1666,12 +1666,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.PreviewKeyboardInputProviderAcquireFocus?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1700,12 +1700,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.PreviewKeyDown" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewKeyDown" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.PreviewKeyDown?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.PreviewKeyDown?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1734,12 +1734,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.PreviewKeyUp" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewKeyUp" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.PreviewKeyUp?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.PreviewKeyUp?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>
@@ -1768,12 +1768,12 @@
       <Docs>
         <param name="element">このイベントをリッスンする <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" />。</param>
         <param name="handler">削除するイベント ハンドラー。</param>
-        <summary>ハンドラーを削除、<see cref="E:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus" />添付イベント。</summary>
+        <summary><see cref="E:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus" /> 添付イベントのハンドラーを削除します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コードへのアクセスの添付プロパティのアクセサーを提供、<xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus?displayProperty=nameWithType>添付イベント。  
+ このメソッドは、 <xref:System.Windows.Input.Keyboard.PreviewLostKeyboardFocus?displayProperty=nameWithType>添付イベントへのコードアクセスの添付プロパティアクセサーを提供します。  
   
  ]]></format>
         </remarks>

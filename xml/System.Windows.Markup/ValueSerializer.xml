@@ -28,16 +28,16 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル化のためのコンバーターを返す文字列は損失のないである必要があり、コンバーターでは、特定の値と同じ文字列を返す必要があります常にします。  型コンバーターの場合 (から派生した<xref:System.ComponentModel.TypeConverter>) でこれらの要件を満たさないその`ConvertTo`文字列出力の実装、カスタム<xref:System.Windows.Markup.ValueSerializer>宣言する必要があります。 いずれか、<xref:System.Windows.Markup.ValueSerializer>要件、または null に満たす必要があります<xref:System.Windows.Markup.ValueSerializer>型を関連付ける必要があります。 A<xref:System.Windows.Markup.ValueSerializer>適用することで、種類に関連付けられて、<xref:System.Windows.Markup.ValueSerializerAttribute>属性。  
+ シリアル化のためにコンバーターが返す文字列は、損失が発生しないようにする必要があり、コンバーターは常に特定の値に対して同じ文字列を返す必要があります。  型コンバーター (から派生した<xref:System.ComponentModel.TypeConverter>もの) が、文字列出力の`ConvertTo`実装でこれらの要件を満たして<xref:System.Windows.Markup.ValueSerializer>いない場合は、カスタムを宣言する必要があります。 が要件を満たす<xref:System.Windows.Markup.ValueSerializer> 必要があるか、またはnullが型に関連付けられている必要があります。<xref:System.Windows.Markup.ValueSerializer> は、 <xref:System.Windows.Markup.ValueSerializerAttribute>属性を適用することによって型に関連付けられます。 <xref:System.Windows.Markup.ValueSerializer>  
   
- Null<xref:System.Windows.Markup.ValueSerializer>オブジェクト グラフから文字列への変換の変換の型コンバーターを無視するかを示します。  
+ Null <xref:System.Windows.Markup.ValueSerializer>は、オブジェクトグラフから文字列への変換に対して、型コンバーターが無視される必要があることを示します。  
   
 > [!IMPORTANT]
->  実装<xref:System.Windows.Markup.ValueSerializer>例外のスローは避ける必要があります。 スローされた例外は、シリアル化を終了でした。  
+>  の実装<xref:System.Windows.Markup.ValueSerializer>では、例外をスローしないようにする必要があります。 スローされた例外は、シリアル化を終了できます。  
   
- <xref:System.Windows.Markup.IValueSerializerContext> <xref:System.Windows.Markup.ValueSerializer>であり、その Api に似ています<xref:System.ComponentModel.ITypeDescriptorContext>の<xref:System.ComponentModel.TypeConverter>します。 実際、<xref:System.Windows.Markup.IValueSerializerContext>継承<xref:System.ComponentModel.ITypeDescriptorContext>します。 ときに、<xref:System.Windows.Markup.ValueSerializer>派生クラスの API が呼び出されると、呼び出し元 (通常はシリアライザー プロセス) は、特定のサービスを提供するコンテキストを渡します。 一般的なガイダンスのためを<xref:System.Windows.Markup.ValueSerializer>例外をスローする必要があります。 エラーを特定のサービスをコンテキストから返す必要がありますも例外をスローしません。  
+ <xref:System.Windows.Markup.IValueSerializerContext>とその api は、 <xref:System.ComponentModel.TypeConverter>の場合と<xref:System.ComponentModel.ITypeDescriptorContext>似ています。 <xref:System.Windows.Markup.ValueSerializer> 実際には<xref:System.Windows.Markup.IValueSerializerContext> 、 <xref:System.ComponentModel.ITypeDescriptorContext>はを継承します。 <xref:System.Windows.Markup.ValueSerializer>派生クラス API が呼び出されると、呼び出し元 (通常はシリアライザープロセス) は、特定のサービスを提供する可能性のあるコンテキストを渡します。 一般的なガイダンスにより、は<xref:System.Windows.Markup.ValueSerializer>例外をスローしないようにする必要があります。 コンテキストから特定のサービスを返さないと、例外もスローされません。  
   
- .NET Framework の以前のバージョンでは、このクラスは、WPF 固有の WindowsBase アセンブリに存在します。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、<xref:System.Windows.Markup.ValueSerializer>は System.Xaml アセンブリにします。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
+ 以前のバージョンの .NET Framework では、このクラスは WPF 固有のアセンブリ WindowsBase に存在していました。 で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]は<xref:System.Windows.Markup.ValueSerializer> 、は、システムの .xaml アセンブリにあります。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
   
  ]]></format>
     </remarks>
@@ -71,7 +71,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの本体は空です。<xref:System.Windows.Markup.ValueSerializer>クラスに初期化を必要とする任意の値が含まれていません。  
+ このコンストラクターの本体は空です。クラス<xref:System.Windows.Markup.ValueSerializer>に、初期化を必要とする値が含まれていません。  
   
  ]]></format>
         </remarks>
@@ -103,13 +103,13 @@
       <Docs>
         <param name="value">変換の評価対象となる文字列。</param>
         <param name="context">変換に使用されるコンテキスト情報。</param>
-        <summary>派生クラスでオーバーライドされたときに、指定した <see cref="T:System.String" /> を <see cref="T:System.Windows.Markup.ValueSerializer" /> の実装でサポートされる型のインスタンスに変換できるかどうか判別します。</summary>
+        <summary>派生クラスでオーバーライドされると、指定した <see cref="T:System.String" /> が、<see cref="T:System.Windows.Markup.ValueSerializer" /> の実装でサポートされる型のインスタンスに変換できるかどうかを確認します。</summary>
         <returns>値を変換できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 基本の実装は常に返します`false`します。  
+ 基本実装では、常に `false` を返します。  
   
  ]]></format>
         </remarks>
@@ -147,7 +147,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 基本の実装は常に返します`false`します。  
+ 基本実装では、常に `false` を返します。  
   
  ]]></format>
         </remarks>
@@ -185,12 +185,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 基本の実装は常に例外をスローします。  
+ 基本実装では、常に例外がスローされます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.NotSupportedException"><paramref name="value" /> を変換できません。</exception>
-        <block subset="none" type="overrides"><para>実装からの例外のスローは避けます。 以下を参照してください。<see cref="T:System.Windows.Markup.ValueSerializer" /></para></block>
+        <block subset="none" type="overrides"><para>実装から例外をスローしないようにします。 以下を参照してください。<see cref="T:System.Windows.Markup.ValueSerializer" /></para></block>
       </Docs>
     </Member>
     <Member MemberName="ConvertToString">
@@ -219,18 +219,18 @@
       <Docs>
         <param name="value">文字列に変換するオブジェクト。</param>
         <param name="context">変換に使用されるコンテキスト情報。</param>
-        <summary>派生クラスでオーバーライドされた場合は、指定されたオブジェクトを <see cref="T:System.String" /> に変換します。</summary>
-        <returns>指定されたオブジェクトの文字列表現。</returns>
+        <summary>派生クラスでオーバーライドされると、指定したオブジェクトを <see cref="T:System.String" /> に変換します。</summary>
+        <returns>指定されたオブジェクトの文字列形式。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 基本の実装は常に例外をスローします。  
+ 基本実装では、常に例外がスローされます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.NotSupportedException"><paramref name="value" /> を変換できません。</exception>
-        <block subset="none" type="overrides"><para>実装からの例外のスローは避けます。 以下を参照してください。<see cref="T:System.Windows.Markup.ValueSerializer" /></para></block>
+        <block subset="none" type="overrides"><para>実装から例外をスローしないようにします。 以下を参照してください。<see cref="T:System.Windows.Markup.ValueSerializer" /></para></block>
       </Docs>
     </Member>
     <Member MemberName="GetConvertFromException">
@@ -257,15 +257,15 @@
       </Parameters>
       <Docs>
         <param name="value">変換できなかったオブジェクト。</param>
-        <summary>変換を実行できないときにスローする例外を返します。</summary>
-        <returns><see langword="ConvertFrom" /> 変換を実行できないときにスローする例外の <see cref="T:System.Exception" /> オブジェクト。</returns>
+        <summary>変換を実行できなかった場合にスローされる例外を返します。</summary>
+        <returns><see langword="ConvertFrom" /> の変換を実行できない場合にスローされる例外の <see cref="T:System.Exception" /> オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 実際、`throw`キーワードはこのメソッドによって呼び出されませんが、一般的な使用方法は、そのため`throw GetConvertFromException`(で指定されたパラメーター)。  
+ このメソッド`throw`では、実際のキーワードが呼び出されないため、一般的`throw GetConvertFromException`な使用方法は (パラメーターを指定した) です。  
   
- 特定の例外が返される<xref:System.InvalidOperationException>で`value`例外メッセージで渡されます。 使用状況のパターンは、例外ユーティリティと同じ<xref:System.ComponentModel.TypeConverter>します。  
+ 返される特定の例外<xref:System.InvalidOperationException>は`value` 、例外メッセージで渡されるです。 使用パターンは、の<xref:System.ComponentModel.TypeConverter>例外ユーティリティのパターンと同じです。  
   
  ]]></format>
         </remarks>
@@ -297,15 +297,15 @@
       <Docs>
         <param name="value">変換できなかったオブジェクト。</param>
         <param name="destinationType">コンバーターが変換しようとした型を表す型。</param>
-        <summary>変換を実行できないときにスローする例外を返します。</summary>
-        <returns><see langword="ConvertTo" /> 変換を実行できないときにスローする例外の <see cref="T:System.Exception" /> オブジェクト。</returns>
+        <summary>変換を実行できなかった場合にスローされる例外を返します。</summary>
+        <returns><see langword="ConvertTo" /> の変換を実行できない場合にスローされる例外の <see cref="T:System.Exception" /> オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 実際、`throw`キーワードはこのメソッドによって呼び出されませんが、一般的な使用方法は、そのため`throw GetConvertToException`(で`value`指定されたパラメーター)。  
+ このメソッド`throw`では、実際のキーワードが呼び出されないため、一般的`throw GetConvertToException`な使用`value`方法は (パラメーターを指定した) です。  
   
- 特定の例外が返される<xref:System.InvalidOperationException>で`value`例外メッセージで渡されます。 使用状況のパターンは、例外ユーティリティと同じ<xref:System.ComponentModel.TypeConverter>します。  
+ 返される特定の例外<xref:System.InvalidOperationException>は`value` 、例外メッセージで渡されるです。 使用パターンは、の<xref:System.ComponentModel.TypeConverter>例外ユーティリティのパターンと同じです。  
   
  ]]></format>
         </remarks>
@@ -317,7 +317,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>取得、<see cref="T:System.Windows.Markup.ValueSerializer" />オブジェクト。</summary>
+        <summary>オブジェクトの <see cref="T:System.Windows.Markup.ValueSerializer" /> を取得します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="GetSerializerFor">
@@ -344,32 +344,32 @@
       </Parameters>
       <Docs>
         <param name="descriptor">シリアル化するプロパティの CLR プロパティ記述子。</param>
-        <summary>プロパティの CLR プロパティ記述子を渡すことで、プロパティに対して宣言された <see cref="T:System.Windows.Markup.ValueSerializer" /> を取得します。</summary>
+        <summary>プロパティの CLR プロパティ記述子を渡すことにより、プロパティに対して宣言された <see cref="T:System.Windows.Markup.ValueSerializer" /> を取得します。</summary>
         <returns>指定したプロパティに関連付けられているシリアライザー。 <see langword="null" /> を返す場合があります。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- A<xref:System.Windows.Markup.ValueSerializer>適用することで、プロパティまたはプロパティの値として使用される型が示されます、<xref:System.Windows.Markup.ValueSerializerAttribute>プロパティまたは型の宣言で属性。 <xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A>メソッドは、CLR 型システムの情報を読み取り、新しいを返しますユーティリティ メソッド<xref:System.Windows.Markup.ValueSerializer>場合に、クラスが属性に基づく、プロパティが見つからないか、プロパティの型で検出された場合。 `null` このようなシリアライザーが存在しないかどうかに返されます。 `null` 型またはプロパティが null 値を持つ属性が意図的にかどうかは返される可能性がありますも<xref:System.Windows.Markup.ValueSerializerAttribute>します。  
+ プロパティ<xref:System.Windows.Markup.ValueSerializer>の、またはプロパティの値として使用される型については、プロパティまたは型<xref:System.Windows.Markup.ValueSerializerAttribute>の宣言に属性を適用することによって示されます。 メソッドは、CLR 型システム情報を読み取り、プロパティで見つかった場合は属性<xref:System.Windows.Markup.ValueSerializer>に基づいて新しいクラスを返すユーティリティメソッドです。プロパティの型で見つかった場合は、このメソッドを返します。 <xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A> `null`そのようなシリアライザーが存在しない場合は、が返されることがあります。 `null`型またはプロパティに null 値が意図的に指定<xref:System.Windows.Markup.ValueSerializerAttribute>されている場合にも返されることがあります。  
   
- 別のモードを<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A>サポートは、内部で返すことが`TypeConverterValueSerializer`はクラス、<xref:System.Windows.Markup.ValueSerializer>実装をラップする、<xref:System.ComponentModel.TypeConverter>し、変換、`Convert`メソッドを`Convert*String`メソッド (インスタンスの<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>の入力を呼び出すと、<xref:System.String>型、およびに変換されます<xref:System.Windows.Markup.ValueSerializer.ConvertToString%2A>します。 これは、次のすべてが true の場合にのみ行います。  
+ をサポートする<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A>別のモードでは`TypeConverterValueSerializer` 、内部<xref:System.Windows.Markup.ValueSerializer>クラスを返します。これは<xref:System.ComponentModel.TypeConverter> 、をラップ`Convert`し、 `Convert*String`メソッドをメソッドに変換する実装です (たとえば<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>、は、 <xref:System.String>型の入力を使用して呼び出され<xref:System.Windows.Markup.ValueSerializer.ConvertToString%2A>、に変換されます。 これは、次のすべてが当てはまる場合にのみ実行されます。  
   
--   A<xref:System.ComponentModel.TypeConverterAttribute>に関連するプロパティ、または関連するプロパティの型が見つかった。  
+-   は<xref:System.ComponentModel.TypeConverterAttribute> 、関連するプロパティ、または関連するプロパティの型にあります。  
   
--   指定された<xref:System.ComponentModel.TypeConverter>正常に作成できます。  
+-   指定<xref:System.ComponentModel.TypeConverter>されたは正常に構築できます。  
   
--   <xref:System.ComponentModel.TypeConverter>返します`true`の<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>を参照するという、<xref:System.String>型。  
+-   は<xref:System.ComponentModel.TypeConverter> 、 `true`型<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>の参照<xref:System.String>と呼ばれるを返します。  
   
--   <xref:System.ComponentModel.TypeConverter>返します`true`の<xref:System.ComponentModel.TypeConverter.CanConvertTo%2A?displayProperty=nameWithType>を参照するという、<xref:System.String>型。  
+-   は<xref:System.ComponentModel.TypeConverter> 、 `true`型<xref:System.ComponentModel.TypeConverter.CanConvertTo%2A?displayProperty=nameWithType>の参照<xref:System.String>と呼ばれるを返します。  
   
--   <xref:System.ComponentModel.TypeConverter>返します`true`の<xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A?displayProperty=nameWithType>を参照するという、<xref:System.String>型。  
+-   は<xref:System.ComponentModel.TypeConverter> 、 `true`型<xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A?displayProperty=nameWithType>の参照<xref:System.String>と呼ばれるを返します。  
   
 > [!NOTE]
->  特殊なケースを次に示します:<xref:System.DateTime>戻り値の型を<xref:System.Windows.Markup.DateTimeValueSerializer>;<xref:System.String>型は、内部の機能がシリアライザーを返します (`StringValueSerializer`)。  
+>  次に特殊なケースを<xref:System.DateTime>示します。 <xref:System.Windows.Markup.DateTimeValueSerializer>型はを返します。型は内部では機能するシリアライザー`StringValueSerializer`() を返します。 <xref:System.String>  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="descriptor" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="descriptor" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetSerializerFor">
@@ -401,26 +401,26 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- A<xref:System.Windows.Markup.ValueSerializer>適用することで、種類が示されるため、<xref:System.Windows.Markup.ValueSerializerAttribute>型宣言の属性。 <xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A>メソッドは、CLR 型システムの情報を読み取り、新しいを返しますユーティリティ メソッド<xref:System.Windows.Markup.ValueSerializer>場合に、クラスが属性に基づく、指定した検出`type`します。 `null` このようなシリアライザーが存在しないかどうかに返されます。 `null` 型に意図的に属性を null 値が返される可能性がありますも<xref:System.Windows.Markup.ValueSerializerAttribute>します。  
+ 型<xref:System.Windows.Markup.ValueSerializer>のは、型宣言に<xref:System.Windows.Markup.ValueSerializerAttribute>属性を適用することによって示されます。 メソッドは、CLR 型システム情報を読み取り、指定さ`type`れたで見つかった<xref:System.Windows.Markup.ValueSerializer>場合は属性に基づいて新しいクラスを返すユーティリティメソッドです。 <xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A> `null`そのようなシリアライザーが存在しない場合は、が返されることがあります。 `null`型に null 値が意図的に指定<xref:System.Windows.Markup.ValueSerializerAttribute>されている場合にも返されることがあります。  
   
- 別のモードを<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A>サポートは、内部で返すことが`TypeConverterValueSerializer`はクラス、<xref:System.Windows.Markup.ValueSerializer>実装をラップする、<xref:System.ComponentModel.TypeConverter>し、変換、`Convert`メソッドを`Convert*String`メソッド (インスタンスの<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>の入力を呼び出すと、<xref:System.String>型、およびに変換されます<xref:System.Windows.Markup.ValueSerializer.ConvertToString%2A>します。 これは、次のすべてが true の場合にのみ行います。  
+ をサポートする<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%2A>別のモードでは`TypeConverterValueSerializer` 、内部<xref:System.Windows.Markup.ValueSerializer>クラスを返します。これは<xref:System.ComponentModel.TypeConverter> 、をラップ`Convert`し、 `Convert*String`メソッドをメソッドに変換する実装です (たとえば<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>、は、 <xref:System.String>型の入力を使用して呼び出され<xref:System.Windows.Markup.ValueSerializer.ConvertToString%2A>、に変換されます。 これは、次のすべてが当てはまる場合にのみ実行されます。  
   
--   A<xref:System.ComponentModel.TypeConverterAttribute>で見つかった`type`します。  
+-   <xref:System.ComponentModel.TypeConverterAttribute>がに`type`あります。  
   
--   指定された<xref:System.ComponentModel.TypeConverter>正常に作成できます。  
+-   指定<xref:System.ComponentModel.TypeConverter>されたは正常に構築できます。  
   
--   <xref:System.ComponentModel.TypeConverter>返します`true`の<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>を参照するという、<xref:System.String>型。  
+-   は<xref:System.ComponentModel.TypeConverter> 、 `true`型<xref:System.ComponentModel.TypeConverter.ConvertTo%2A?displayProperty=nameWithType>の参照<xref:System.String>と呼ばれるを返します。  
   
--   <xref:System.ComponentModel.TypeConverter>返します`true`の<xref:System.ComponentModel.TypeConverter.CanConvertTo%2A?displayProperty=nameWithType>を参照するという、<xref:System.String>型。  
+-   は<xref:System.ComponentModel.TypeConverter> 、 `true`型<xref:System.ComponentModel.TypeConverter.CanConvertTo%2A?displayProperty=nameWithType>の参照<xref:System.String>と呼ばれるを返します。  
   
--   <xref:System.ComponentModel.TypeConverter>返します`true`の<xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A?displayProperty=nameWithType>を参照するという、<xref:System.String>型。  
+-   は<xref:System.ComponentModel.TypeConverter> 、 `true`型<xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A?displayProperty=nameWithType>の参照<xref:System.String>と呼ばれるを返します。  
   
 > [!NOTE]
->  特殊なケースを次に示します:<xref:System.DateTime>戻り値の型を<xref:System.Windows.Markup.DateTimeValueSerializer>;<xref:System.String>型は、内部の機能がシリアライザーを返します (`StringValueSerializer`)。  
+>  次に特殊なケースを<xref:System.DateTime>示します。 <xref:System.Windows.Markup.DateTimeValueSerializer>型はを返します。型は内部では機能するシリアライザー`StringValueSerializer`() を返します。 <xref:System.String>  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetSerializerFor">
@@ -449,21 +449,21 @@
       <Docs>
         <param name="descriptor">シリアル化するプロパティの記述子。</param>
         <param name="context">変換に使用されるコンテキスト情報。</param>
-        <summary>指定したコンテキストを使って、指定したプロパティに対して宣言された <see cref="T:System.Windows.Markup.ValueSerializer" /> を取得します。</summary>
+        <summary>指定したコンテキストを使用して、指定されたプロパティに宣言された <see cref="T:System.Windows.Markup.ValueSerializer" /> を取得します。</summary>
         <returns>指定したプロパティに関連付けられているシリアライザー。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 純粋に頼ることがなく属性で報告される CLR 型システムで、このオーバー ロードを使用して、 `context` 、サービスとしてのサービスの実装を呼び出して、<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>します。 <xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>にも依存する通常の実装、`descriptor`が、特定のコンテキストの特別な動作を実装する場合があります。  
+ このオーバーロードは、CLR 型システムで報告される属性のみを使用するの`context`ではなく、をサービスとして使用し<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>、のサービスの実装を呼び出します。 通常<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType> 、実装はに依存`descriptor`しますが、特定のコンテキストに対して特殊な動作を実装することもあります。  
   
- 呼び出し元がある、使用可能なときに、このメソッドを呼び出す必要があります<xref:System.Windows.Markup.IValueSerializerContext>サービスから。  これにより、正しい<xref:System.Windows.Markup.ValueSerializer>の特定のコンテキストが返されます。  
+ このメソッドは、呼び出し元がサービスから使用できる<xref:System.Windows.Markup.IValueSerializerContext>を持っている場合に呼び出す必要があります。  これにより、特定の<xref:System.Windows.Markup.ValueSerializer>コンテキストに対して正しいが返されます。  
   
- コンテキストを返す場合`null`からその<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>、指定された`descriptor`、または指定したコンテキストが`null`、動作を呼び出すことと同じですし、<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%28System.ComponentModel.PropertyDescriptor%29>オーバー ロードします。  
+ 指定した<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>の`null`コンテキストがから返され`descriptor`た場合、または指定した`null`コンテキストがの場合、動作はオーバーロード<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%28System.ComponentModel.PropertyDescriptor%29>の呼び出しと同じになります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="descriptor" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="descriptor" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetSerializerFor">
@@ -491,21 +491,21 @@
       <Docs>
         <param name="type"><see cref="T:System.Windows.Markup.ValueSerializer" /> を取得する対象の型。</param>
         <param name="context">変換に使用されるコンテキスト情報。</param>
-        <summary>指定したコンテキストを使用して、指定された型に宣言されている <see cref="T:System.Windows.Markup.ValueSerializer" /> を取得します。</summary>
+        <summary>指定したコンテキストを使用して、指定された型に宣言された <see cref="T:System.Windows.Markup.ValueSerializer" /> を取得します。</summary>
         <returns>指定した型に関連付けられているシリアライザー。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 純粋に頼ることがなく属性で報告される CLR 型システムで、このオーバー ロードを使用して、 `context` 、サービスとしてのサービスの実装を呼び出して、<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>します。 <xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>にも依存する通常の実装、`type`が、特定のコンテキストの特別な動作を実装する場合があります。  
+ このオーバーロードは、CLR 型システムで報告される属性のみを使用するの`context`ではなく、をサービスとして使用し<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>、のサービスの実装を呼び出します。 通常<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType> 、実装はに依存`type`しますが、特定のコンテキストに対して特殊な動作を実装することもあります。  
   
- 呼び出し元がある、使用可能なときに、このメソッドを呼び出す必要があります<xref:System.Windows.Markup.IValueSerializerContext>サービスから。 これにより、正しい<xref:System.Windows.Markup.ValueSerializer>の特定のコンテキストが返されます。  
+ このメソッドは、呼び出し元がサービスから使用できる<xref:System.Windows.Markup.IValueSerializerContext>を持っている場合に呼び出す必要があります。 これにより、特定の<xref:System.Windows.Markup.ValueSerializer>コンテキストに対して正しいが返されます。  
   
- コンテキストを返す場合`null`からその<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>、指定された`type`、または指定したコンテキストが`null`、動作を呼び出すことと同じですし、<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%28System.Type%29>オーバー ロードします。  
+ 指定した<xref:System.Windows.Markup.IValueSerializerContext.GetValueSerializerFor%2A?displayProperty=nameWithType>の`null`コンテキストがから返され`type`た場合、または指定した`null`コンテキストがの場合、動作はオーバーロード<xref:System.Windows.Markup.ValueSerializer.GetSerializerFor%28System.Type%29>の呼び出しと同じになります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="TypeReferences">
@@ -532,7 +532,7 @@
         <Parameter Name="context" Type="System.Windows.Markup.IValueSerializerContext" Index="1" FrameworkAlternate="netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="value">シリアル化する値。</param>
+        <param name="value">シリアル化されている型。</param>
         <param name="context">変換に使用されるコンテキスト情報。</param>
         <summary><see cref="T:System.Windows.Markup.ValueSerializer" /> によって参照される型の列挙体を取得します。</summary>
         <returns>このシリアライザーによって変換された型。</returns>
@@ -540,12 +540,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 任意の型を<xref:System.Windows.Markup.ValueSerializer>返された列挙体に含めるかに変換します。  これにより、除外のシリアライザーは、シリアライザーは変換の種類について十分な情報を持つようにするためのシリアライザー。  
+ 返される列挙<xref:System.Windows.Markup.ValueSerializer>体には、変換が含まれているすべての型を含める必要があります。  これにより、シリアライザーは、このシリアライザーが変換する型に関する十分な情報を持つことができます。  
   
- 高度なシナリオは、このメソッドをオーバーライドします。 オーバーライドは、必ずシステムを実装している場合に必要な CLR 型システムの ownertype プロパティ関係が XAML スキーマ コンテキストを使用できると十分な情報が報告しません。  
+ このメソッドをオーバーライドすることは高度なシナリオです。 オーバーライドが必要になるのは、XAML スキーマコンテキストで使用できる CLR 型システム ownertype リレーションシップが十分な情報を報告しないシステムを実装している場合のみです。  
   
 ## <a name="wpf-usage-notes"></a>WPF の使用上の注意  
- [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]プロパティ システムの実装をオーバーライドする内部値シリアライザー<xref:System.Windows.Markup.ValueSerializer.TypeReferences%2A>ことができますが追加の所有者の概念が依存関係プロパティ。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] 式では、特別な処理の内部処理もあります。  
+ プロパティ[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]システムは、依存関係プロパティに所有者<xref:System.Windows.Markup.ValueSerializer.TypeReferences%2A>を追加できるという概念があるため、をオーバーライドする内部値シリアライザーを実装します。 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]式には、特別な内部処理もあります。  
   
  ]]></format>
         </remarks>

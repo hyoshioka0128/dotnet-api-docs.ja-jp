@@ -1,5 +1,5 @@
 <Type Name="UnmanagedMemoryStream" FullName="System.IO.UnmanagedMemoryStream">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="ffe6af5098b2b3390feda5f9cd059ecf3ef08b43" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68368946" /></Metadata><TypeSignature Language="C#" Value="public class UnmanagedMemoryStream : System.IO.Stream" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="789e8c68383c3446e7557da1eabbfcf5b25b3a09" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68542158" /></Metadata><TypeSignature Language="C#" Value="public class UnmanagedMemoryStream : System.IO.Stream" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit UnmanagedMemoryStream extends System.IO.Stream" />
   <TypeSignature Language="DocId" Value="T:System.IO.UnmanagedMemoryStream" />
   <TypeSignature Language="VB.NET" Value="Public Class UnmanagedMemoryStream&#xA;Inherits Stream" />
@@ -293,7 +293,7 @@
 - または - 
 <paramref name="capacity" /> 値が 0 未満です。  
   
-または 
+- または - 
 <paramref name="length" /> 値が <paramref name="capacity" /> 値を超えています。</exception>
         <permission cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode">アンマネージメモリにアクセスするための。</permission>
         <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
@@ -774,13 +774,13 @@
         <param name="pointer">アンマネージ メモリ位置へのポインター。</param>
         <param name="length">使用するメモリの長さ。</param>
         <param name="capacity">ストリームに割り当てられたメモリの総量。</param>
-        <param name="access"><see cref="T:System.IO.FileAccess" /> 値のいずれか。</param>
+        <param name="access"><see cref="T:System.IO.FileAccess" /> 値のいずれか 1 つ。</param>
         <summary>アンマネージ メモリ位置へのポインターを使用して、<see cref="T:System.IO.UnmanagedMemoryStream" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、 <xref:System.IO.UnmanagedMemoryStream.%23ctor%2A>コンストラクターに相当します。 ストリーム変数を設定する前にポインターを初期化する必要のあるメソッドをサポートしているため、パラメーター化されたコンストラクターを呼び出すことはできません。 このようなメソッドでは、既定<xref:System.IO.UnmanagedMemoryStream.%23ctor>のコンストラクターを使用し、ポインターを初期化<xref:System.IO.UnmanagedMemoryStream.Initialize%2A>してから、メソッドを呼び出す必要があります。  
+ このメソッドは、 <xref:System.IO.UnmanagedMemoryStream.%23ctor%2A>コンストラクターに相当します。 ストリーム変数を設定する前にポインターを初期化する必要のあるメソッドをサポートしているため、パラメーター化されたコンストラクターを呼び出すことはできません。 このようなメソッドでは、パラメーター <xref:System.IO.UnmanagedMemoryStream.%23ctor>なしのコンストラクターを使用し、ポインターを<xref:System.IO.UnmanagedMemoryStream.Initialize%2A>初期化してから、メソッドを呼び出す必要があります。  
   
  ]]></format>
         </remarks>
@@ -791,7 +791,7 @@
 - または - 
 <paramref name="capacity" /> 値が 0 未満です。  
   
-または 
+- または - 
 <paramref name="length" /> 値がオーバーフローの原因になりうる長さです。</exception>
         <permission cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode">アンマネージメモリにアクセスするための。</permission>
         <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
@@ -1127,7 +1127,7 @@
         <exception cref="T:System.ObjectDisposedException">ストリームは閉じられています。</exception>
         <exception cref="T:System.NotSupportedException">基になるメモリが読み取りをサポートしていません。  
   
-- または - 
+または 
 <see cref="P:System.IO.UnmanagedMemoryStream.CanRead" /> プロパティが <see langword="false" /> に設定されている。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> パラメーターを <see langword="null" /> に設定します。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターが 0 未満。  
@@ -1405,11 +1405,11 @@
         <exception cref="T:System.ObjectDisposedException">ストリームは閉じられています。</exception>
         <exception cref="T:System.NotSupportedException">基になるメモリが書き込みをサポートしていません。  
   
-- または - 
+または 
 ストリームへの書き込みが行われようとしましたが、<see cref="P:System.IO.UnmanagedMemoryStream.CanWrite" /> プロパティが <see langword="false" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException">指定した <paramref name="value" /> がストリームの容量を超えています。  
   
-または 
+- または - 
 指定した <paramref name="value" /> が負の値です。</exception>
       </Docs>
     </Member>
@@ -1515,7 +1515,7 @@
 - または - 
 ストリームへの書き込みが行われようとしましたが、<see cref="P:System.IO.UnmanagedMemoryStream.CanWrite" /> プロパティが <see langword="false" /> です。  
   
-または 
+- または - 
 <paramref name="count" /> 値がストリームの容量を超えています。  
   
 - または - 

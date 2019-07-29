@@ -27,18 +27,18 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- イメージに関連付けられているメタデータには、データ、イメージについて説明しますが、イメージを表示する必要はありませんですが。 ビットマップ イメージ形式のハンドルのメタデータを異なる方法でサポートされる各が、メタデータの読み取りと書き込みの機能は同じです。  
+ イメージに関連付けられているメタデータは、イメージを記述するデータですが、イメージを表示するためには必要ありません。 サポートされているビットマップイメージ形式では、メタデータの処理方法が異なりますが、メタデータの読み取りと書き込みの機能は同じです。  
   
- [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] 次のイメージのメタデータのスキーマをサポートしています: [!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキスト データ)、 [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)]、 [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]します。  
+ [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)][!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]では、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキストデータ) [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)] [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、、、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]のイメージメタデータスキーマがサポートされています。  
   
- 場合、<xref:System.Windows.Media.Imaging.BitmapMetadata>によって公開される、<xref:System.Windows.Media.Imaging.BitmapFrame>を使用して取得した、<xref:System.Windows.Media.Imaging.BitmapDecoder>は既定では読み取り専用、および変更可能な操作例外がスローされます。 により公開される場合、<xref:System.Windows.Media.Imaging.BitmapFrame>別にラップする<xref:System.Windows.Media.Imaging.BitmapSource>、コンス トラクターで変更します。  
+ がを使用して取得<xref:System.Windows.Media.Imaging.BitmapFrame> <xref:System.Windows.Media.Imaging.BitmapDecoder>されたによって公開されている場合、既定では読み取り専用になり、変更可能な操作は例外をスローします。 <xref:System.Windows.Media.Imaging.BitmapMetadata> <xref:System.Windows.Media.Imaging.BitmapFrame> 別<xref:System.Windows.Media.Imaging.BitmapSource>のをラップするによって公開されている場合は、構築時に変更可能です。  
   
- <xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A>と<xref:System.Windows.Media.Imaging.BitmapMetadata.GetQuery%2A>を構築し、メタデータ クエリを読み取るメソッドを使用できます。  
+ メソッド<xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A> と<xref:System.Windows.Media.Imaging.BitmapMetadata.GetQuery%2A>メソッドを使用して、メタデータクエリを作成および読み取ることができます。  
   
    
   
 ## Examples  
- 次の例では、メタデータを書き込む方法を[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]IFD を使用してイメージと[!INCLUDE[TLA2#tla_exif](~/includes/tla2sharptla-exif-md.md)]スキーマ。  
+ 次の例は、IFD と[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)] [!INCLUDE[TLA2#tla_exif](~/includes/tla2sharptla-exif-md.md)]スキーマを使用してイメージにメタデータを書き込む方法を示しています。  
   
  [!code-csharp[BitmapFrameExample#7](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#7)]
  [!code-vb[BitmapFrameExample#7](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#7)]  
@@ -48,10 +48,10 @@
     <altmember cref="T:System.Windows.Media.Imaging.BitmapSource" />
     <altmember cref="M:System.Windows.Media.Imaging.BitmapMetadata.SetQuery(System.String,System.Object)" />
     <altmember cref="M:System.Windows.Media.Imaging.BitmapMetadata.GetQuery(System.String)" />
-    <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブル ネットワーク グラフィックス テキスト データ (テキスト) の仕様</related>
-    <related type="ExternalDocumentation" href="https://iptc.org/">国際新聞通信 Council (IPTC) のスキーマ情報</related>
-    <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe の拡張可能メタデータ プラットフォーム (XMP)</related>
-    <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image ファイル形式) の仕様</related>
+    <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブルネットワークグラフィックスのテキストデータ (テキスト) の仕様</related>
+    <related type="ExternalDocumentation" href="https://iptc.org/">国際プレス通信委員会 (IPTC) のスキーマ情報</related>
+    <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe 拡張可能メタデータプラットフォーム (XMP)</related>
+    <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image File Format) 仕様</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -76,20 +76,20 @@
         <Parameter Name="containerFormat" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="containerFormat">"Gif"、"jpg"、"png"または"tiff"として指定されたビットマップ イメージの形式。</param>
-        <summary>新しいインスタンスを初期化<see cref="T:System.Windows.Media.Imaging.BitmapMetadata" />指定したイメージ形式を使用します。</summary>
+        <param name="containerFormat">ビットマップ イメージの形式。"gif"、"jpg"、"png"、または "tiff" として指定します。</param>
+        <summary>指定したイメージ形式で使用する <see cref="T:System.Windows.Media.Imaging.BitmapMetadata" /> の新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、メタデータを書き込む方法を[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]IFD を使用してイメージと[!INCLUDE[TLA2#tla_exif](~/includes/tla2sharptla-exif-md.md)]スキーマ。  
+ 次の例は、IFD と[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)] [!INCLUDE[TLA2#tla_exif](~/includes/tla2sharptla-exif-md.md)]スキーマを使用してイメージにメタデータを書き込む方法を示しています。  
   
  [!code-csharp[BitmapFrameExample#7](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#7)]
  [!code-vb[BitmapFrameExample#7](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#7)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="containerFormat" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="containerFormat" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="ApplicationName">
@@ -120,7 +120,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -152,7 +152,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -189,7 +189,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -226,7 +226,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -259,9 +259,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 変更可能なコピーを生成するためにこのメソッドが使用される固定された<xref:System.Windows.Freezable>オブジェクト (またはその<xref:System.Windows.Freezable>オブジェクト)。 便宜上は、このメソッドは、継承したバージョンをシャドウします。  
+ このメソッドを使用して、固定された <xref:System.Windows.Freezable> オブジェクト (または任意の <xref:System.Windows.Freezable> オブジェクト) の変更可能なコピーを作成します。 便宜上、このメソッドは継承されたバージョンをシャドウします。  
   
- 詳細については、「 <xref:System.Windows.Freezable.Clone%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.Clone%2A?displayProperty=nameWithType>」を参照してください。  
   
  このメソッドは、依存関係プロパティをコピーするときにリソース参照とデータ バインディングをコピーしますが (ただし、これらは解決されなくなる場合があります)、アニメーションやその現在の値はコピーしません。  
   
@@ -296,9 +296,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを呼び出して、<xref:System.Windows.Freezable.Clone%2A>メソッドが呼び出されないコードから直接を除く中に、このメソッドをオーバーライドする基本実装を呼び出すときにします。 現在のオブジェクトの変更可能なコピーを作成するには<xref:System.Windows.Freezable.Clone%2A>このメソッドを直接呼び出す代わりにします。  
+ このメソッドは、 <xref:System.Windows.Freezable.Clone%2A>メソッドによって呼び出されます。このメソッドをオーバーライドするときに基本実装を呼び出す場合を除き、コードから直接呼び出すことはできません。 現在のオブジェクトの変更可能なコピーを作成する<xref:System.Windows.Freezable.Clone%2A>には、このメソッドを直接呼び出すのではなく、を呼び出します。  
   
- 詳細については、「 <xref:System.Windows.Freezable.CloneCore%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.CloneCore%2A?displayProperty=nameWithType>」を参照してください。  
   
  このメソッドは、依存関係プロパティをコピーするときにリソース参照とデータ バインディングをコピーしますが (ただし、これらは解決されなくなる場合があります)、アニメーションやその現在の値はコピーしません。  
   
@@ -333,9 +333,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを呼び出して、<xref:System.Windows.Freezable.CloneCurrentValue%2A>メソッドが呼び出されないコードから直接を除く中に、このメソッドをオーバーライドする基本実装を呼び出すときにします。 現在のオブジェクトの変更可能なコピーを作成するには<xref:System.Windows.Freezable.CloneCurrentValue%2A>このメソッドを直接呼び出す代わりにします。  
+ このメソッドは、 <xref:System.Windows.Freezable.CloneCurrentValue%2A>メソッドによって呼び出されます。このメソッドをオーバーライドするときに基本実装を呼び出す場合を除き、コードから直接呼び出すことはできません。 現在のオブジェクトの変更可能なコピーを作成する<xref:System.Windows.Freezable.CloneCurrentValue%2A>には、このメソッドを直接呼び出すのではなく、を呼び出します。  
   
- 詳細については、「 <xref:System.Windows.Freezable.CloneCurrentValueCore%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.CloneCurrentValueCore%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -370,7 +370,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -411,17 +411,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- イメージに関連付けられているメタデータは、データ イメージをについて説明しますが、イメージの表示に必要でないです。 ビットマップ イメージ形式のハンドルのメタデータを異なる方法でサポートされる各が、メタデータの読み取りと書き込みの機能は同じです。  
+ イメージに関連付けられているメタデータは、イメージを記述するデータですが、イメージの表示には必要ありません。 サポートされているビットマップイメージ形式では、メタデータの処理方法が異なりますが、メタデータの読み取りと書き込みの機能は同じです。  
   
- [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] 次のイメージのメタデータのスキーマをサポートしています: [!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキスト データ)、 [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)]、 [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]します。  
+ [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)][!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]では、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキストデータ) [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)] [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、、、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]のイメージメタデータスキーマがサポートされています。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="query" /> は <see langword="null" /> です。</exception>
-        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブル ネットワーク グラフィックス テキスト データ (テキスト) の仕様</related>
-        <related type="ExternalDocumentation" href="https://iptc.org/">国際新聞通信 Council (IPTC) のスキーマ情報</related>
-        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe の拡張可能メタデータ プラットフォーム (XMP)</related>
-        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image ファイル形式) の仕様</related>
+        <exception cref="T:System.ArgumentNullException"><paramref name="query" /> は <see langword="null" />です。</exception>
+        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブルネットワークグラフィックスのテキストデータ (テキスト) の仕様</related>
+        <related type="ExternalDocumentation" href="https://iptc.org/">国際プレス通信委員会 (IPTC) のスキーマ情報</related>
+        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe 拡張可能メタデータプラットフォーム (XMP)</related>
+        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image File Format) 仕様</related>
       </Docs>
     </Member>
     <Member MemberName="Copyright">
@@ -452,7 +452,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -479,7 +479,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>実装<see cref="M:System.Windows.Freezable.CreateInstance" />します。</summary>
+        <summary><see cref="M:System.Windows.Freezable.CreateInstance" /> の実装。</summary>
         <returns>新しいインスタンス。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="M:System.Windows.Freezable.CreateInstanceCore" />
@@ -508,7 +508,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -545,7 +545,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、のさまざまなプロパティを読み取る方法を示します、<xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトし、それらの値を送信する<xref:System.Windows.MessageBox>文字列として。  
+ 次のコード例は、 <xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトのさまざまなプロパティを読み取り、その値を文字列<xref:System.Windows.MessageBox>としてに送信する方法を示しています。  
   
  [!code-csharp[BitmapFrameExample#9](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#9)]
  [!code-vb[BitmapFrameExample#9](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#9)]  
@@ -580,11 +580,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、依存関係プロパティをコピーするときにリソース参照とデータ バインディングをコピーしますが (ただし、これらは解決されなくなる場合があります)、アニメーションやその現在の値はコピーしません。 これらのプロパティには、リソース参照またはデータのバインドが含まれている場合に注意する<xref:System.Windows.Freezable.GetAsFrozen%2A>に失敗するオブジェクトを固定してがスローされます、<xref:System.InvalidOperationException>します。  
+ このメソッドは、依存関係プロパティをコピーするときにリソース参照とデータ バインディングをコピーしますが (ただし、これらは解決されなくなる場合があります)、アニメーションやその現在の値はコピーしません。 これらのプロパティにリソース参照またはデータバインドが含ま<xref:System.Windows.Freezable.GetAsFrozen%2A>れている場合、はオブジェクトを固定しようと<xref:System.InvalidOperationException>すると失敗し、がスローされます。  
   
- このメソッドを呼び出して、<xref:System.Windows.Freezable.GetAsFrozen%2A>メソッドが呼び出されないコードから直接を除く中に、このメソッドをオーバーライドする基本実装を呼び出すときにします。 現在のオブジェクトの固定されたコピーを作成するには<xref:System.Windows.Freezable.GetAsFrozen%2A>このメソッドを直接呼び出す代わりにします。  
+ このメソッドは、 <xref:System.Windows.Freezable.GetAsFrozen%2A>メソッドによって呼び出されます。このメソッドをオーバーライドするときに基本実装を呼び出す場合を除き、コードから直接呼び出すことはできません。 現在のオブジェクトの固定コピーを作成するには<xref:System.Windows.Freezable.GetAsFrozen%2A> 、このメソッドを直接呼び出すのではなく、を呼び出します。  
   
- 詳細については、「 <xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -617,9 +617,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを呼び出して、<xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>メソッドが呼び出されないコードから直接を除く中に、このメソッドをオーバーライドする基本実装を呼び出すときにします。 現在のオブジェクトの固定されたコピーを作成するには<xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>このメソッドを直接呼び出す代わりにします。  
+ このメソッドは、 <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>メソッドによって呼び出されます。このメソッドをオーバーライドするときに基本実装を呼び出す場合を除き、コードから直接呼び出すことはできません。 現在のオブジェクトの固定コピーを作成するには<xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> 、このメソッドを直接呼び出すのではなく、を呼び出します。  
   
- 詳細については、「 <xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -658,20 +658,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- イメージに関連付けられているメタデータは、データ イメージをについて説明しますが、イメージの表示に必要でないです。 ビットマップ イメージ形式のハンドルのメタデータを異なる方法でサポートされる各が、メタデータの読み取りと書き込みの機能は同じです。  
+ イメージに関連付けられているメタデータは、イメージを記述するデータですが、イメージの表示には必要ありません。 サポートされているビットマップイメージ形式では、メタデータの処理方法が異なりますが、メタデータの読み取りと書き込みの機能は同じです。  
   
- [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] 次のイメージのメタデータのスキーマをサポートしています: [!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキスト データ)、 [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)]、 [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]します。  
+ [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)][!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]では、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキストデータ) [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)] [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、、、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]のイメージメタデータスキーマがサポートされています。  
   
    
   
 ## Examples  
- 次のコード例は、使用する方法を示します、<xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A>にメタデータを記述するメソッド、[!INCLUDE[TLA#tla_png](~/includes/tlasharptla-png-md.md)]ファイル。  
+ 次のコード例は、 <xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A>メソッドを使用してメタデータを[!INCLUDE[TLA#tla_png](~/includes/tlasharptla-png-md.md)]ファイルに書き込む方法を示しています。  
   
  [!code-cpp[bitmapmetadata#SetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#setquery)]
  [!code-csharp[bitmapmetadata#SetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#setquery)]
  [!code-vb[bitmapmetadata#SetQuery](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitMapMetadata/VB/BitmapMetadata.vb#setquery)]  
   
- メタデータが書き込まれた後に、<xref:System.Windows.Media.Imaging.BitmapMetadata.GetQuery%2A>メソッドを使用するデータを読み取り、テキスト文字列として出力します。  
+ メタデータが書き込まれた後<xref:System.Windows.Media.Imaging.BitmapMetadata.GetQuery%2A> 、メソッドを使用してそのデータが読み取られ、テキスト文字列として出力されます。  
   
  [!code-cpp[bitmapmetadata#GetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#getquery)]
  [!code-csharp[bitmapmetadata#GetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#getquery)]
@@ -679,11 +679,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="query" /> は <see langword="null" /> です。</exception>
-        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブル ネットワーク グラフィックス テキスト データ (テキスト) の仕様</related>
-        <related type="ExternalDocumentation" href="https://iptc.org/">国際新聞通信 Council (IPTC) のスキーマ情報</related>
-        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe の拡張可能メタデータ プラットフォーム (XMP)</related>
-        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image ファイル形式) の仕様</related>
+        <exception cref="T:System.ArgumentNullException"><paramref name="query" /> は <see langword="null" />です。</exception>
+        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブルネットワークグラフィックスのテキストデータ (テキスト) の仕様</related>
+        <related type="ExternalDocumentation" href="https://iptc.org/">国際プレス通信委員会 (IPTC) のスキーマ情報</related>
+        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe 拡張可能メタデータプラットフォーム (XMP)</related>
+        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image File Format) 仕様</related>
       </Docs>
     </Member>
     <Member MemberName="IsFixedSize">
@@ -703,13 +703,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>決定する値を取得するかどうか、<see cref="T:System.Windows.Media.Imaging.BitmapMetadata" />オブジェクトが固定サイズです。</summary>
-        <value><see langword="true" /> 場合、<see cref="T:System.Windows.Media.Imaging.BitmapMetadata" />が固定サイズである場合は、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
+        <summary><see cref="T:System.Windows.Media.Imaging.BitmapMetadata" /> オブジェクトが固定サイズかどうかを判断する値を取得します。</summary>
+        <value><see cref="T:System.Windows.Media.Imaging.BitmapMetadata" /> が固定サイズの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、のさまざまなプロパティを読み取る方法を示します、<xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトし、それらの値を送信する<xref:System.Windows.MessageBox>文字列として。  
+ 次のコード例は、 <xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトのさまざまなプロパティを読み取り、その値を文字列<xref:System.Windows.MessageBox>としてに送信する方法を示しています。  
   
  [!code-csharp[BitmapFrameExample#9](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#9)]
  [!code-vb[BitmapFrameExample#9](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#9)]  
@@ -736,12 +736,12 @@
       </ReturnValue>
       <Docs>
         <summary>イメージに関連付けられているメタデータが読み取り専用かどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> メタデータが読み取り専用である場合それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
+        <value>メタデータが読み取り専用の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、のさまざまなプロパティを読み取る方法を示します、<xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトし、それらの値を送信する<xref:System.Windows.MessageBox>文字列として。  
+ 次のコード例は、 <xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトのさまざまなプロパティを読み取り、その値を文字列<xref:System.Windows.MessageBox>としてに送信する方法を示しています。  
   
  [!code-csharp[BitmapFrameExample#9](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#9)]
  [!code-vb[BitmapFrameExample#9](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#9)]  
@@ -800,17 +800,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、のさまざまなプロパティを読み取る方法を示します、<xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトし、それらの値を送信する<xref:System.Windows.MessageBox>文字列として。  
+ 次のコード例は、 <xref:System.Windows.Media.Imaging.BitmapMetadata>オブジェクトのさまざまなプロパティを読み取り、その値を文字列<xref:System.Windows.MessageBox>としてに送信する方法を示しています。  
   
  [!code-csharp[BitmapFrameExample#9](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#9)]
  [!code-vb[BitmapFrameExample#9](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#9)]  
   
  ]]></format>
         </remarks>
-        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブル ネットワーク グラフィックス テキスト データ (テキスト) の仕様</related>
-        <related type="ExternalDocumentation" href="https://iptc.org/">国際新聞通信 Council (IPTC) のスキーマ情報</related>
-        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe の拡張可能メタデータ プラットフォーム (XMP)</related>
-        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image ファイル形式) の仕様</related>
+        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブルネットワークグラフィックスのテキストデータ (テキスト) の仕様</related>
+        <related type="ExternalDocumentation" href="https://iptc.org/">国際プレス通信委員会 (IPTC) のスキーマ情報</related>
+        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe 拡張可能メタデータプラットフォーム (XMP)</related>
+        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image File Format) 仕様</related>
       </Docs>
     </Member>
     <Member MemberName="Rating">
@@ -830,8 +830,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはイメージの評価を識別する値を設定します。</summary>
-        <value>0 から 5 までの評価値。</value>
+        <summary>イメージの評価を識別する値を取得または設定します。</summary>
+        <value>0 ～ 5 の評価値。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -866,18 +866,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- イメージに関連付けられているメタデータは、データ イメージをについて説明しますが、イメージの表示に必要でないです。 ビットマップ イメージ形式のハンドルのメタデータを異なる方法でサポートされる各が、メタデータの読み取りと書き込みの機能は同じです。  
+ イメージに関連付けられているメタデータは、イメージを記述するデータですが、イメージの表示には必要ありません。 サポートされているビットマップイメージ形式では、メタデータの処理方法が異なりますが、メタデータの読み取りと書き込みの機能は同じです。  
   
- [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] 次のイメージのメタデータのスキーマをサポートしています: [!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキスト データ)、 [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)]、 [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]します。  
+ [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)][!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]では、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキストデータ) [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)] [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、、、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]のイメージメタデータスキーマがサポートされています。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="query" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="query" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.InvalidOperationException">イメージ メタデータが読み取り専用の場合に発生します。</exception>
-        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブル ネットワーク グラフィックス テキスト データ (テキスト) の仕様</related>
-        <related type="ExternalDocumentation" href="https://iptc.org/">国際新聞通信 Council (IPTC) のスキーマ情報</related>
-        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe の拡張可能メタデータ プラットフォーム (XMP)</related>
-        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image ファイル形式) の仕様</related>
+        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブルネットワークグラフィックスのテキストデータ (テキスト) の仕様</related>
+        <related type="ExternalDocumentation" href="https://iptc.org/">国際プレス通信委員会 (IPTC) のスキーマ情報</related>
+        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe 拡張可能メタデータプラットフォーム (XMP)</related>
+        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image File Format) 仕様</related>
       </Docs>
     </Member>
     <Member MemberName="SetQuery">
@@ -913,20 +913,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- イメージに関連付けられているメタデータは、データ イメージをについて説明しますが、イメージの表示に必要でないです。 ビットマップ イメージ形式のハンドルのメタデータを異なる方法でサポートされる各が、メタデータの読み取りと書き込みの機能は同じです。  
+ イメージに関連付けられているメタデータは、イメージを記述するデータですが、イメージの表示には必要ありません。 サポートされているビットマップイメージ形式では、メタデータの処理方法が異なりますが、メタデータの読み取りと書き込みの機能は同じです。  
   
- [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] 次のイメージのメタデータのスキーマをサポートしています: [!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキスト データ)、 [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)]、 [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]します。  
+ [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)][!INCLUDE[TLA#tla_exif](~/includes/tlasharptla-exif-md.md)]では、テキスト ([!INCLUDE[TLA2#tla_png](~/includes/tla2sharptla-png-md.md)]テキストデータ) [!INCLUDE[TLA#tla_ifd](~/includes/tlasharptla-ifd-md.md)] [!INCLUDE[TLA#tla_iptc](~/includes/tlasharptla-iptc-md.md)]、、、および[!INCLUDE[TLA#tla_xmp](~/includes/tlasharptla-xmp-md.md)]のイメージメタデータスキーマがサポートされています。  
   
    
   
 ## Examples  
- 次のコード例は、使用する方法を示します、<xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A>にメタデータを記述するメソッド、[!INCLUDE[TLA#tla_png](~/includes/tlasharptla-png-md.md)]ファイル。  
+ 次のコード例は、 <xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A>メソッドを使用してメタデータを[!INCLUDE[TLA#tla_png](~/includes/tlasharptla-png-md.md)]ファイルに書き込む方法を示しています。  
   
  [!code-cpp[bitmapmetadata#SetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#setquery)]
  [!code-csharp[bitmapmetadata#SetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#setquery)]
  [!code-vb[bitmapmetadata#SetQuery](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitMapMetadata/VB/BitmapMetadata.vb#setquery)]  
   
- メタデータが書き込まれた後に、<xref:System.Windows.Media.Imaging.BitmapMetadata.GetQuery%2A>メソッドを使用するデータを読み取り、テキスト文字列として出力します。  
+ メタデータが書き込まれた後<xref:System.Windows.Media.Imaging.BitmapMetadata.GetQuery%2A> 、メソッドを使用してそのデータが読み取られ、テキスト文字列として出力されます。  
   
  [!code-cpp[bitmapmetadata#GetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#getquery)]
  [!code-csharp[bitmapmetadata#GetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#getquery)]
@@ -934,10 +934,10 @@
   
  ]]></format>
         </remarks>
-        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブル ネットワーク グラフィックス テキスト データ (テキスト) の仕様</related>
-        <related type="ExternalDocumentation" href="https://iptc.org/">国際新聞通信 Council (IPTC) のスキーマ情報</related>
-        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe の拡張可能メタデータ プラットフォーム (XMP)</related>
-        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image ファイル形式) の仕様</related>
+        <related type="ExternalDocumentation" href="https://www.w3.org/TR/PNG-Chunks.html">ポータブルネットワークグラフィックスのテキストデータ (テキスト) の仕様</related>
+        <related type="ExternalDocumentation" href="https://iptc.org/">国際プレス通信委員会 (IPTC) のスキーマ情報</related>
+        <related type="ExternalDocumentation" href="https://www.adobe.com/products/xmp.html">Adobe 拡張可能メタデータプラットフォーム (XMP)</related>
+        <related type="ExternalDocumentation" href="https://www.exif.org/Exif2-2.PDF">EXIF (Exchangeable Image File Format) 仕様</related>
       </Docs>
     </Member>
     <Member MemberName="Subject">
@@ -968,7 +968,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  
@@ -1085,7 +1085,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のわかりやすいプロパティを使用して、ビットマップ イメージにメタデータを書き込む方法を示しています、<xref:System.Windows.Media.Imaging.BitmapMetadata>クラス。  
+ <xref:System.Windows.Media.Imaging.BitmapMetadata>クラスのわかりやすいプロパティを使用してビットマップイメージにメタデータを書き込む方法を次のコード例に示します。  
   
  [!code-csharp[BitmapFrameExample#8](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#8)]
  [!code-vb[BitmapFrameExample#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#8)]  

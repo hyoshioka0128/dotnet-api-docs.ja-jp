@@ -24,9 +24,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.Linq.DataContext>データベース接続経由でマップされているすべてのエンティティのソースです。 取得したすべてのエンティティに対して行った変更を追跡し、"identity はキャッシュを保持"によって表されるエンティティが 1 つ以上の時間を取得することの保証が同じオブジェクト インスタンスを使用します。  
+ は<xref:System.Data.Linq.DataContext> 、データベース接続によってマップされたすべてのエンティティのソースです。 取得したすべてのエンティティに対して行った変更を追跡し、"id キャッシュ" を保持します。これにより、複数回取得したエンティティが同じオブジェクトインスタンスを使用して表されることが保証されます。  
   
- 一般に、<xref:System.Data.Linq.DataContext>一方、アプリケーションは、その用語を定義します。 1 つ"の作業ユニット"の最後のインスタンスは設計されています。 A<xref:System.Data.Linq.DataContext>は軽量で、作成するコストではありません。 一般的な[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]アプリケーションを作成します<xref:System.Data.Linq.DataContext>メソッドのスコープでの論理セットを表す有効期間が短いクラスのメンバーとしてインスタンスのデータベース操作に関連します。  
+ 一般に、 <xref:System.Data.Linq.DataContext>インスタンスは1つの "作業単位" に対して最後に設計されていますが、アプリケーションではその用語を定義しています。 <xref:System.Data.Linq.DataContext>は軽量であり、作成にはコストがかかりません。 一般的[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]なアプリケーションで<xref:System.Data.Linq.DataContext>は、メソッドスコープでインスタンスを作成するか、関連するデータベース操作の論理セットを表す有効期間の短いクラスのメンバーとしてインスタンスを作成します。  
   
  ]]></format>
     </remarks>
@@ -38,7 +38,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="T:System.Data.Linq.DataContext" /> クラスの新しいインスタンスを初期化します。 使用する接続文字列は、ADO.NET 接続文字列を指定できます。 SQL Server Express または SQL Server Compact ファイルにファイル名を指定することもできます。</summary>
+        <summary><see cref="T:System.Data.Linq.DataContext" /> クラスの新しいインスタンスを初期化します。 接続文字列として、ADO.NET 接続文字列を使用できます。 SQL Server Express ファイルまたは SQL Server Compact Edition ファイルにファイル名を指定することもできます。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName=".ctor">
@@ -58,13 +58,13 @@
         <Parameter Name="connection" Type="System.Data.IDbConnection" />
       </Parameters>
       <Docs>
-        <param name="connection">によって使用される接続、[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)]します。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Data.Linq.DataContext" />クラスによって使用される接続を参照することによって、[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)]します。</summary>
+        <param name="connection">[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)] で使用される接続。</param>
+        <summary>[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)] で使用される接続を参照して、<see cref="T:System.Data.Linq.DataContext" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- A<xref:System.Data.Linq.DataContext>閉じた接続または接続文字列を指定する場合、必要に応じて、データベース接続を開いたり閉じたりします。 一般に、することはありませんを呼び出す`Dispose`上、<xref:System.Data.Linq.DataContext>します。 開いている接続を提供する場合、<xref:System.Data.Linq.DataContext>閉じますはありません。 そのため、インスタンス化は、<xref:System.Data.Linq.DataContext>に対して開いている接続でこれを行うには相応の理由がないです。 <xref:System.Transactions> 、トランザクション、<xref:System.Data.Linq.DataContext>開くまたは昇格を回避するために、接続を閉じるされません。  
+ は<xref:System.Data.Linq.DataContext> 、閉じられた接続または接続文字列を指定した場合に、必要に応じてデータベース接続を開き、閉じます。 一般に、 `Dispose` <xref:System.Data.Linq.DataContext>でを呼び出す必要はありません。 開いている接続を指定した<xref:System.Data.Linq.DataContext>場合、はそれを閉じません。 そのため、この操作を<xref:System.Data.Linq.DataContext>実行するための十分な理由がない限り、を開いている接続を使用してをインスタンス化しないでください。 トランザクションでは、の<xref:System.Data.Linq.DataContext>昇格を回避するために、接続を開いたり閉じたりすることはありません。 <xref:System.Transactions>  
   
  ]]></format>
         </remarks>
@@ -88,9 +88,9 @@
         <Parameter Name="mapping" Type="System.Data.Linq.Mapping.MappingSource" />
       </Parameters>
       <Docs>
-        <param name="connection">.NET Framework で使用する接続。</param>
-        <param name="mapping">マッピングのソース。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Data.Linq.DataContext" />接続およびマップ ソースを参照することでクラス。</summary>
+        <param name="connection">.NET Framework によって使用される接続。</param>
+        <param name="mapping">マッピングのためのソース。</param>
+        <summary>接続およびマップ ソースを参照して、<see cref="T:System.Data.Linq.DataContext" /> クラスの新規のインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -112,14 +112,14 @@
         <Parameter Name="mapping" Type="System.Data.Linq.Mapping.MappingSource" />
       </Parameters>
       <Docs>
-        <param name="fileOrServerOrConnection">この引数は、次のいずれかを指定できます。 
-SQL Server Express データベースが存在するファイルの名前。  
+        <param name="fileOrServerOrConnection">この引数には、次のいずれかを指定できます。 
+SQL Server Express データベースを格納しているファイルの名前。  
   
-データベースが存在するサーバーの名前。 この場合、プロバイダーは、ユーザーの既定のデータベースを使用します。  
+データベースが存在するサーバーの名前。 この場合、ユーザーの既定のデータベースがプロバイダーで使用されます。  
   
-完全な接続文字列。 [!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)] プロバイダーを変更せずに文字列を渡すのみです。</param>
-        <param name="mapping">マッピングのソース。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Data.Linq.DataContext" />ファイル ソースおよびマップ ソースを参照することでクラス。</summary>
+完全な接続文字列。 [!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)] はプロバイダーに渡すだけで、文字列は変更しません。</param>
+        <param name="mapping">マッピングのためのソース。</param>
+        <summary>ファイル ソースおよびマップ ソースを参照して、<see cref="T:System.Data.Linq.DataContext" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -147,14 +147,14 @@ SQL Server Express データベースが存在するファイルの名前。
         <Parameter Name="connectionString" Type="System.String" Index="0" FrameworkAlternate="xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="fileOrServerOrConnection">この引数は、次のいずれかを指定できます。SQL Server Express データベースが存在するファイルの名前。
+        <param name="fileOrServerOrConnection">この引数には、次のいずれかを指定できます。SQL Server Express データベースを格納しているファイルの名前。
 
-データベースが存在するサーバーの名前。 この場合、プロバイダーは、ユーザーの既定のデータベースを使用します。  
+データベースが存在するサーバーの名前。 この場合、ユーザーの既定のデータベースがプロバイダーで使用されます。  
   
 完全な接続文字列。 LINQ to SQL はプロバイダーに渡すだけで、文字列は変更しません。</param>
-        <param name="connectionString">この引数は、次のいずれかを指定できます。SQL Server Express データベースが存在するファイルの名前。
+        <param name="connectionString">この引数には、次のいずれかを指定できます。SQL Server Express データベースを格納しているファイルの名前。
 
-データベースが存在するサーバーの名前。 この場合、プロバイダーは、ユーザーの既定のデータベースを使用します。  
+データベースが存在するサーバーの名前。 この場合、ユーザーの既定のデータベースがプロバイダーで使用されます。  
   
 完全な接続文字列。 LINQ to SQL はプロバイダーに渡すだけで、文字列は変更しません。</param>
         <summary>ファイル ソースを参照して、<see cref="T:System.Data.Linq.DataContext" /> クラスの新しいインスタンスを初期化します。</summary>
@@ -184,7 +184,7 @@ SQL Server Express データベースが存在するファイルの名前。
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- どのコレクション反復処理できる競合情報を取得するのには、次の例です。  
+ 次の例は、競合情報を取得するためにコレクションを反復処理する方法を示しています。  
   
    
   
@@ -214,14 +214,14 @@ SQL Server Express データベースが存在するファイルの名前。
       </ReturnValue>
       <Docs>
         <summary>既定のタイムアウト期限ではクエリがタイムアウトする場合に、クエリのタイムアウト期限の値 (秒) を増やす整数値を取得または設定します。</summary>
-        <value>それ以外の場合のタイムアウトを既定のタイムアウト期間中に、クエリのタイムアウト期間 (秒) 単位が増加する整数値。</value>
+        <value>既定のタイムアウト期間中にタイムアウトになる可能性があるクエリのタイムアウト期間 (秒単位) を増やす整数値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを取得または生成されたコマンドを実行するために使用する秒単位でコマンド タイムアウトの設定 (`IDbCommands`)。 詳細については、「 <xref:System.Data.IDbCommand.CommandTimeout%2A> 」を参照してください。  
+ このプロパティは、生成されたコマンドを実行するために使用されるコマンドのタイムアウト`IDbCommands`(秒単位) を取得または設定します ()。 詳細については、「<xref:System.Data.IDbCommand.CommandTimeout%2A>」を参照してください。  
   
- ときにこのプロパティが設定されていない、既定値の<xref:System.Data.IDbCommand.CommandTimeout%2A>クエリ コマンドの実行に使用します。 この既定値は、記憶域プロバイダーによって設定されます。 この値が 0 以外の値に設定されている場合に、一部のプロバイダーが例外をスロー可能性がありますに注意してください。  
+ このプロパティが設定されていない場合、 <xref:System.Data.IDbCommand.CommandTimeout%2A>の既定値がクエリコマンドの実行に使用されます。 この既定値は、記憶域プロバイダーによって設定されます。 この値が0以外の値に設定されている場合、一部のプロバイダーで例外がスローされることがあります。  
   
  ]]></format>
         </remarks>
@@ -250,9 +250,9 @@ SQL Server Express データベースが存在するファイルの名前。
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを使用して、リレーショナルの ADO.NET コードと相互運用することができます。  
+ このプロパティを使用して、リレーショナル ADO.NET コードと相互運用することができます。  
   
- ユーザーが明示的に開いている場合を除き、返される接続は閉じられます。  
+ 返された接続は、ユーザーによって明示的に開かれていない限り、閉じられます。  
   
  ]]></format>
         </remarks>
@@ -276,29 +276,29 @@ SQL Server Express データベースが存在するファイルの名前。
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>サーバー上のデータベースを作成します。</summary>
+        <summary>サーバー上にデータベースを作成します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- データベースの名前は、次のアルゴリズムを使用して派生します。  
+ データベースの名前は、次のアルゴリズムを使用して取得されます。  
   
-1. データベースに接続文字列で識別される場合は、その名前が使用されます。  
-1. 場合、<xref:System.Data.Linq.Mapping.DatabaseAttribute>属性が存在する場合は、その<xref:System.Data.Linq.Mapping.DatabaseAttribute.Name%2A>プロパティは、データベースの名前として使用されます。  
-1. 接続文字列と厳密に型指定されたデータベースのタグがない場合は<xref:System.Data.Linq.DataContext>を使用すると同じ名前を持つデータベース、<xref:System.Data.Linq.DataContext>クラスの継承を作成します。  
-1. 場合は、弱い型指定された<xref:System.Data.Linq.DataContext>が使用すると、例外がスローされます。  
-1. 場合、<xref:System.Data.Linq.DataContext>が作成されたファイル名を使用すると、そのファイル名に対応するデータベースが作成されます。  
+1. 接続文字列でデータベースが識別されている場合は、その名前が使用されます。  
+1. 属性が<xref:System.Data.Linq.Mapping.DatabaseAttribute>存在する場合、その<xref:System.Data.Linq.Mapping.DatabaseAttribute.Name%2A>プロパティはデータベースの名前として使用されます。  
+1. 接続文字列にデータベースタグがなく、厳密に型指定<xref:System.Data.Linq.DataContext>されたを使用する場合は、 <xref:System.Data.Linq.DataContext>継承クラスと同じ名前のデータベースが作成されます。  
+1. 弱く型指定<xref:System.Data.Linq.DataContext>されたを使用した場合、例外がスローされます。  
+1. <xref:System.Data.Linq.DataContext>ファイル名を使用してが作成されている場合は、そのファイル名に対応するデータベースが作成されます。  
      
   
 ## Examples  
- 次のコードでは、一時的なデータベースを設定し、それを削除する方法を示します。  
+ 次のコードは、一時データベースを設定して削除する方法を示しています。  
   
  [!code-csharp[System.Data.Linq.DataContext#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Data.Linq.DataContext/cs/Program.cs#1)]
  [!code-vb[System.Data.Linq.DataContext#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Data.Linq.DataContext/vb/Module1.vb#1)]  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://msdn.microsoft.com/library/fb7f23c4-4572-4c38-9898-a287807d070c">方法: 動的にデータベースを作成する (LINQ to SQL)</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/fb7f23c4-4572-4c38-9898-a287807d070c">方法: データベースを動的に作成する (LINQ to SQL)</related>
         <related type="Article" href="https://msdn.microsoft.com/library/4ed76327-54a7-414b-82a9-7579bfcec04b">SQL と CLR の型マッピング (LINQ to SQL)</related>
       </Docs>
     </Member>
@@ -333,16 +333,16 @@ SQL Server Express データベースが存在するファイルの名前。
       </Parameters>
       <Docs>
         <typeparam name="TResult">返されるコレクション内の要素の型。</typeparam>
-        <param name="instance">メソッドの呼び出し (現在のオブジェクト) のインスタンス。</param>
+        <param name="instance">メソッド呼び出しのインスタンス (現在のオブジェクト)。</param>
         <param name="methodInfo">データベース メソッドに対応する .NET メソッドを識別する <see cref="T:System.Reflection.MethodInfo" />。</param>
-        <param name="parameters">コマンドに渡されるパラメーターの配列。</param>
+        <param name="parameters">コマンドに渡すパラメーターの配列。</param>
         <summary>指定した .NET メソッドに関連付けられているテーブル値データベース関数を実行します。</summary>
-        <returns>データベース クエリによって返される結果の値のコレクション。</returns>
+        <returns>データベース クエリによって返される結果値のコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.Linq.DataContext.CreateMethodCallQuery%2A>メソッドは自動的に生成されたコードで使用し、データベース関数をプロキシとして機能します。  
+ メソッド<xref:System.Data.Linq.DataContext.CreateMethodCallQuery%2A>は、自動的に生成されたコードで使用され、データベース関数のプロキシとして機能します。  
   
  ]]></format>
         </remarks>
@@ -366,18 +366,18 @@ SQL Server Express データベースが存在するファイルの名前。
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>関連付けられているデータベースを開くことがあるかどうかを判断します。</summary>
-        <returns><see langword="true" /> 場合は、指定されたデータベースを開くことができます。それ以外の場合、<see langword="false" />します。</returns>
+        <summary>関連するデータベースを開くことができるかどうかを判断します。</summary>
+        <returns>指定したデータベースを開くことができる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドで接続を使用して、<xref:System.Data.Linq.DataContext.Connection%2A>プロパティを関連付けられたデータベースを開こうとします。  
+ このメソッドは、プロパティの<xref:System.Data.Linq.DataContext.Connection%2A>接続を使用して、関連付けられているデータベースを開こうとします。  
   
    
   
 ## Examples  
- 次の例では、このメソッドを使用して、データベースが既に存在するかどうか確認します。  
+ 次の例では、このメソッドを使用して、データベースが既に存在するかどうかを確認します。  
   
  [!code-csharp[System.Data.Linq.DataContext#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Data.Linq.DataContext/cs/Program.cs#1)]
  [!code-vb[System.Data.Linq.DataContext#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Data.Linq.DataContext/vb/Module1.vb#1)]  
@@ -403,29 +403,29 @@ SQL Server Express データベースが存在するファイルの名前。
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または一対多または一対一のリレーションシップの遅延読み込みするかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> 遅延読み込みが有効の場合それ以外の場合、<see langword="false" />します。</value>
+        <summary>1 対多または 1 対 1 のリレーションシップを遅延読み込みするかどうかを示す値を取得または設定します。</summary>
+        <value>遅延読み込みが有効の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- リレーションシップが一対一、一対多である場合、空のコレクションが返される場合、コードからのアクセスをする null これらのリレーションシップのいずれかが返されます。 リレーションシップを設定しても入力できる、<xref:System.Data.Linq.DataContext.LoadOptions%2A>プロパティ。  
+ コードがこれらのリレーションシップのいずれかにアクセスすると、リレーションシップが一対一の場合は null が返され、1対多の場合は空のコレクションが返されます。 リレーションシップは、プロパティを<xref:System.Data.Linq.DataContext.LoadOptions%2A>設定することによって引き続き設定できます。  
   
- このプロパティの主なシナリオでは、オブジェクト モデルの一部を抽出して (たとえば、Web サービス) に送信できるようにします。  
+ このプロパティの主なシナリオは、オブジェクトモデルの一部を抽出して、(たとえば、Web サービスに) 送信できるようにすることです。  
   
 > [!NOTE]
->  このプロパティ設定されている場合`false`クエリが実行された後、例外がスローされます。 参照してください、**有効なモード**詳細については後述します。  
+>  クエリが実行された`false`後にこのプロパティをに設定すると、例外がスローされます。 詳細については、以下の「**有効なモード**」セクションを参照してください。  
   
 ## <a name="valid-modes"></a>有効なモード  
- 遅延読み込みでは、オブジェクトの追跡が必要です。 次の 3 つのモードのみでは有効です。  
+ 遅延読み込みには、オブジェクトの追跡が必要です。 次の3つのモードのみが有効です。  
   
--   <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A> = `false`. <xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A> 無視され、推論`false`します。 この動作は読み取り専用<xref:System.Data.Linq.DataContext>します。  
+-   <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A> = `false`. <xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A>は無視され、は`false`と推論されます。 この動作は、読み取り<xref:System.Data.Linq.DataContext>専用に相当します。  
   
--   <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A> = `true`. <xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A> = `false`. このような状況に対応する、<xref:System.Data.Linq.DataContext>を使用して、オブジェクト グラフを読み込むユーザーできる<xref:System.Data.Linq.DataLoadOptions.LoadWith%2A>がディレクティブでは遅延読み込みを有効になりません。  
+-   <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A> = `true`. <xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A> = `false`. この状況は、 <xref:System.Data.Linq.DataContext>ユーザーがディレクティブを使用<xref:System.Data.Linq.DataLoadOptions.LoadWith%2A>してオブジェクトグラフを読み込むことができるに対応しますが、遅延読み込みは有効にしません。  
   
--   設定する`true`します。 既定値です。  
+-   両方ともに`true`設定されています。 既定値です。  
   
- クエリが実行された後は、フラグを変更できません。 使用して最初のクエリの実行後に変更<xref:System.Data.Linq.DataContext>例外をスローします。  
+ クエリの実行後にフラグを変更することはできません。 を<xref:System.Data.Linq.DataContext>使用する最初のクエリの実行後に加えられた変更は、例外をスローします。  
   
  ]]></format>
         </remarks>
@@ -454,7 +454,7 @@ SQL Server Express データベースが存在するファイルの名前。
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドで接続を使用して、<xref:System.Data.Linq.DataContext.Connection%2A>プロパティを削除するデータベースを識別します。  
+ このメソッドは、プロパティの<xref:System.Data.Linq.DataContext.Connection%2A>接続を使用して、削除するデータベースを識別します。  
   
    
   
@@ -556,35 +556,35 @@ SQL Server Express データベースが存在するファイルの名前。
       </Parameters>
       <Docs>
         <param name="command">実行する SQL コマンド。</param>
-        <param name="parameters">コマンドに渡されるパラメーターの配列。 以下の動作に注意してください。 
-配列内のオブジェクトの数が、コマンド文字列で特定された最大数よりも小さい場合は、例外がスローされます。  
+        <param name="parameters">コマンドに渡すパラメーターの配列。 以下の動作に注意してください。 
+配列内のオブジェクトの数が、コマンド文字列で特定された最大数より小さい場合、例外がスローされます。  
   
-配列にコマンド文字列で参照されていないオブジェクトが含まれている場合、例外はスローされません。  
+配列にコマンド文字列で参照されないオブジェクトが含まれている場合、例外はスローされません。  
   
-パラメーターのいずれかが null の場合に変換されます<see langword="DBNull.Value" />します。</param>
-        <summary>データベースに対して直接 SQL コマンドを実行します。</summary>
+パラメーターのいずれかが null の場合、<see langword="DBNull.Value" /> に変換されます。</param>
+        <summary>データベース上で SQL コマンドを直接実行します。</summary>
         <returns>コマンドの実行によって変更された行の数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、ケースのパススルー メカニズム、[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]は特定のシナリオを十分に提供しません。  
+ このメソッドは、 [!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]が特定のシナリオに対して適切にを提供しない場合のパススルーメカニズムです。  
   
- コマンドの構文は、ADO.NET の作成に使用する構文とほぼ同じ`DataCommand`します。 唯一の違いは、パラメーターを指定する方法です。 具体的には、中かっこ ({...}) で囲み、パラメーターを指定し、それらを列挙の 0 から始まります。 パラメーターは、パラメーター配列で均等に番号付きのオブジェクトに関連付けられます。  
+ コマンドの構文は、ADO.NET `DataCommand`の作成に使用される構文とほぼ同じです。 唯一の違いは、パラメーターの指定方法です。 具体的には、パラメーターを中かっこ ({...}) で囲んで指定し、0から開始して列挙します。 パラメーターは、parameters 配列内の同じ番号を持つオブジェクトに関連付けられています。  
   
- `ExecuteQuery` `ExecuteCommand`パラメーター置換の引数の変数の数を指定できます。 ExecuteQuery を呼び出すときに、パラメーターを指定するたとえば、\<TResult >:  
+ `ExecuteQuery`と`ExecuteCommand`を使用すると、パラメーターの置換に可変数の引数を指定できます。 たとえば、ExecuteQuery\<TResult > を呼び出すときにパラメーターを指定できます。  
   
 ```  
 db.ExecuteQuery<Customer>("select * from dbo.Customers where City = {0}", "London");  
 ```  
   
- また、別の例。  
+ もう1つの例を次に示します。  
   
 ```  
 db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {1}", "24 boxes", 5);  
 ```  
   
- 次の例では、接続を開き、SQL を渡す`UPDATE`SQL エンジンにコマンド。  
+ 次の例では、接続を開き、 `UPDATE` sql コマンドを sql エンジンに渡します。  
   
    
   
@@ -617,7 +617,7 @@ db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {
       </Parameters>
       <Docs>
         <param name="entity">削除するエンティティ。</param>
-        <summary>再度代行させるために、削除のオーバーライド メソッド内部で実行します[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]の生成と動的な SQL を実行するタスクが操作を削除します。</summary>
+        <summary>[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)] に削除操作のための動的 SQL の生成と実行を行うタスクを再度代行させるために、削除用のオーバーライド メソッド内部で実行します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -654,15 +654,15 @@ db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 次の考慮事項に注意してください。  
+ 次の点に注意してください。  
   
--   使用に対しては、保護された修飾子をメソッドには、ためサブクラス化する必要があります<xref:System.Data.Linq.DataContext>します。  
+-   メソッドには protected 修飾子があるため、その使用に<xref:System.Data.Linq.DataContext>はサブクラス化が必要です。  
   
--   この操作は内部で呼び出されない場合、例外がスローされます、<xref:System.Data.Linq.DataContext.SubmitChanges%2A>操作。 スタンドアロンの操作の対象外として呼び出されるものではありません、<xref:System.Data.Linq.DataContext.SubmitChanges%2A>操作。 <xref:System.Data.Linq.DataContext.SubmitChanges%2A> 自体の呼び出しメソッドをオーバーライド実装されていてオーバーライド メソッド内部で呼び出される前のメソッドが対象としています。  
+-   この操作が操作の<xref:System.Data.Linq.DataContext.SubmitChanges%2A>内部で呼び出されない場合は、例外がスローされます。 <xref:System.Data.Linq.DataContext.SubmitChanges%2A>操作のスコープ外では、スタンドアロン操作として呼び出すことを意図していません。 <xref:System.Data.Linq.DataContext.SubmitChanges%2A>メソッドが実装されていて、前のメソッドがオーバーライドメソッド内で呼び出されることを意図している場合は、それ自体がオーバーライドメソッドを呼び出します。  
   
--   正しいエンティティを渡すため、開発者の役目です。 実装は、渡されたエンティティが追跡されることを確認します。 ただし、順序を維持し、または 2 回、同じエンティティに渡す、開発者の責任を勧めします。  
+-   開発者は、適切なエンティティを渡す必要があります。 実装は、渡されたエンティティが追跡されていることを確認します。 ただし、注文を維持したり、同じエンティティを2回渡したりするのは、開発者の責任です。  
   
--   正しい動的 API を呼び出すと、開発者の役目です。 たとえば、`Update`のみメソッドをオーバーライドして、<xref:System.Data.Linq.DataContext.ExecuteDynamicUpdate%2A>メソッドを呼び出すことができます。 呼び出した動的メソッドが対象の操作に一致するかどうかについて、[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)] は、検出や検査は行いません。 結果は、適切でないメソッドが呼び出された場合、未定義 (などを呼び出す<xref:System.Data.Linq.DataContext.ExecuteDynamicDelete%2A>を更新するオブジェクトの)。  
+-   開発者は、適切な動的 API を呼び出す必要があります。 たとえば、 `Update` override メソッドでは、 <xref:System.Data.Linq.DataContext.ExecuteDynamicUpdate%2A>メソッドのみを呼び出すことができます。 呼び出した動的メソッドが対象の操作に一致するかどうかについて、[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)] は、検出や検査は行いません。 該当しないメソッドが呼び出された場合 (たとえば、オブジェクトを更新<xref:System.Data.Linq.DataContext.ExecuteDynamicDelete%2A>するためにを呼び出す場合)、結果は未定義になります。  
   
  ]]></format>
         </remarks>
@@ -689,7 +689,7 @@ db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {
       </Parameters>
       <Docs>
         <param name="entity">更新するエンティティ。</param>
-        <summary>再度代行させるために、更新のオーバーライド メソッド内部で実行します[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]タスクの生成と更新操作のための動的 SQL を実行します。</summary>
+        <summary>[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)] に更新操作のための動的 SQL の生成と実行を行うタスクの処理を再度代行させるために、更新用のオーバーライド メソッド内部で実行します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -727,16 +727,16 @@ db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="instance">メソッドの呼び出し (現在のオブジェクト) のインスタンス。</param>
+        <param name="instance">メソッド呼び出しのインスタンス (現在のオブジェクト)。</param>
         <param name="methodInfo">データベース メソッドに対応する .NET メソッドを識別します。</param>
-        <param name="parameters">コマンドに渡されるパラメーターの配列。</param>
+        <param name="parameters">コマンドに渡すパラメーターの配列。</param>
         <summary>指定した .NET メソッドに関連付けられているストアド データベース プロシージャまたはスカラー関数を実行します。</summary>
-        <returns>指定したメソッドの実行結果 (戻り値と出力パラメーター)。</returns>
+        <returns>指定したメソッドを実行した結果 (戻り値と出力パラメーター)。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.Linq.DataContext.ExecuteMethodCall%2A>メソッドは自動的に生成されたコードで使用し、データベース関数をプロキシとして機能します。  
+ メソッド<xref:System.Data.Linq.DataContext.ExecuteMethodCall%2A>は、自動的に生成されたコードで使用され、データベース関数のプロキシとして機能します。  
   
  ]]></format>
         </remarks>
@@ -770,32 +770,32 @@ db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="elementType">種類、<see cref="T:System.Collections.Generic.IEnumerable`1" />が返されます。  
+        <param name="elementType">返される <see cref="T:System.Collections.Generic.IEnumerable`1" /> の型。  
   
-フィールドに、クエリの結果に一致する列またはオブジェクトのプロパティのアルゴリズムはように動作します。 
-フィールドまたはプロパティが特定の列名にマップされている場合は、結果セットの列名が必要です。  
+オブジェクト内のフィールドまたはプロパティに対して、クエリの結果内の列の一致を行うアルゴリズムは、以下のように動作します。 
+フィールドまたはプロパティが特定の列名に割り当てられている場合は、その列名が結果セットに存在する必要があります。  
   
-フィールドまたはプロパティがマップされていない場合は、結果セットのフィールドまたはプロパティと同じ名前の列が必要です。  
+フィールドまたはプロパティが割り当てられていない場合は、フィールドまたはプロパティと同じ名前の列が結果セットに存在する必要があります。  
   
-大文字と小文字の最初を検索して比較されます。 一致するものが見つからない場合は、大文字と小文字の以降の検索が発生します。  
+比較では、まず大文字と小文字が区別されます。 一致するものが見つからない場合は、大文字と小文字を区別せずに以降の検索が実行されます。  
   
-クエリは、すべての追跡対象のフィールドと (遅延ベースで読み込まれているもの) は除くオブジェクトのプロパティを返す必要があります、次の条件が true の場合。 
+このクエリは、以下の条件がすべて当てはまる場合、(遅延読み込みされる場合を除いて) オブジェクトの追跡されるフィールドおよびプロパティをすべて返す必要があります。 
  <c>T</c> が、<see cref="T:System.Data.Linq.DataContext" /> によって明示的に追跡されるエンティティである場合。  
   
- <see cref="P:System.Data.Linq.DataContext.ObjectTrackingEnabled" /> は <see langword="true" /> です。  
+ <see cref="P:System.Data.Linq.DataContext.ObjectTrackingEnabled" /> が <see langword="true" /> です。  
   
-エンティティは、主キーを持ちます。  
+そのエンティティに主キーがある場合。  
   
 それ以外の場合は、例外がスローされます。</param>
         <param name="query">実行する SQL クエリ。</param>
-        <param name="parameters">コマンドに渡されるパラメーターの配列。 以下の動作に注意してください。 
-配列内のオブジェクトの数が、コマンド文字列で特定された最大数よりも小さい場合は、例外がスローされます。  
+        <param name="parameters">コマンドに渡すパラメーターの配列。 以下の動作に注意してください。 
+配列内のオブジェクトの数が、コマンド文字列で特定された最大数より小さい場合、例外がスローされます。  
   
-配列にコマンド文字列で参照されていないオブジェクトが含まれている場合、例外はスローされません。  
+配列にコマンド文字列で参照されないオブジェクトが含まれている場合、例外はスローされません。  
   
-パラメーターが場合<see langword="null" />に変換されます<see langword="DBNull.Value" />します。</param>
-        <summary>データベースに対して直接 SQL クエリを実行します。</summary>
-        <returns><see cref="T:System.Collections.Generic.IEnumerable`1" />クエリによって返されるオブジェクトのコレクション。</returns>
+パラメーターが <see langword="null" /> の場合は、<see langword="DBNull.Value" /> に変換されます。</param>
+        <summary>データベース上で SQL クエリを直接実行します。</summary>
+        <returns>クエリによって返されるオブジェクトの <see cref="T:System.Collections.Generic.IEnumerable`1" /> コレクション。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -831,41 +831,41 @@ db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {
       <Docs>
         <typeparam name="TResult">返されるコレクション内の要素の型。</typeparam>
         <param name="query">実行する SQL クエリ。</param>
-        <param name="parameters">コマンドに渡されるパラメーターの配列。 以下の動作に注意してください。 
-配列内のオブジェクトの数が、コマンド文字列で特定された最大数よりも小さい場合は、例外がスローされます。  
+        <param name="parameters">コマンドに渡すパラメーターの配列。 以下の動作に注意してください。 
+配列内のオブジェクトの数が、コマンド文字列で特定された最大数より小さい場合、例外がスローされます。  
   
-配列にコマンド文字列で参照されていないオブジェクトが含まれている場合、例外はスローされません。  
+配列にコマンド文字列で参照されないオブジェクトが含まれている場合、例外はスローされません。  
   
-パラメーターが null の場合に変換されます<see langword="DBNull.Value" />します。</param>
-        <summary>データベースに対して直接 SQL クエリを実行し、オブジェクトを返します。</summary>
+パラメーターが null の場合は、<see langword="DBNull.Value" /> に変換されます。</param>
+        <summary>データベース上で SQL クエリを直接実行して、オブジェクトを返します。</summary>
         <returns>クエリによって返されるオブジェクトのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、ケースのパススルー メカニズム、[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]は特定のシナリオを提供しません。  
+ このメソッドは、 [!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]が特定のシナリオに対してを提供しない場合のパススルーメカニズムです。  
   
- オブジェクトのプロパティおよびフィールドに、クエリの結果に列の一致のアルゴリズムはように動作します。  
+ クエリの結果の列をオブジェクトのフィールドおよびプロパティに一致させるためのアルゴリズムは、次のようになります。  
   
--   フィールドまたはプロパティが特定の列名にマップされている場合は、結果セットの列名が必要です。  
+-   フィールドまたはプロパティが特定の列名に割り当てられている場合は、その列名が結果セットに存在する必要があります。  
   
--   フィールドまたはプロパティがマップされていない場合は、結果セットのフィールドまたはプロパティと同じ名前の列が必要です。  
+-   フィールドまたはプロパティが割り当てられていない場合は、フィールドまたはプロパティと同じ名前の列が結果セットに存在する必要があります。  
   
--   大文字と小文字の最初を検索して比較されます。 このような一致が見つからない場合は、大文字と小文字の以降の検索が発生します。  
+-   比較は、最初に大文字と小文字を区別する一致を検索することによって行われます。 このような一致が見つからない場合は、大文字と小文字を区別せずに検索が行われます。  
   
--   クエリは、すべての追跡対象のフィールドと (遅延読み込みされる場合を除いて) オブジェクトのプロパティを返す必要があります、次のすべてが true の場合。  
+-   次のすべての条件に該当する場合、クエリはオブジェクトの追跡されたすべてのフィールドとプロパティを返す必要があります。  
   
-    -   場合`<T>`エンティティに明示的にでは、追跡、<xref:System.Data.Linq.DataContext>します。  
+    -   が`<T>` に<xref:System.Data.Linq.DataContext>よって明示的に追跡されるエンティティである場合は。  
   
     -   ObjectTrackingEnabled は true です。  
   
-    -   エンティティは、主キーを持ちます。  
+    -   そのエンティティに主キーがある場合。  
   
      それ以外の場合は、例外がスローされます。  
   
--   その他のすべてのケースで、クエリは、追跡されるフィールドおよびオブジェクトのプロパティのサブセットのみを取得できます。  
+-   それ以外の場合、クエリは、オブジェクトの追跡されたフィールドおよびプロパティのサブセットのみを取得できます。  
   
- 次の c# スニペットは、このメソッドの 1 つの使用を示しています。  
+ 次C#のスニペットは、このメソッドの1つの使用方法を示しています。  
   
 ```  
 var customers = db.ExecuteQuery<Customer>(@"SELECT CustomerID, CompanyName, ContactName, ContactTitle,   
@@ -877,7 +877,7 @@ foreach (Customer c in customers)
    Console.WriteLine(c.ContactName);  
 ```  
   
- Visual basic  
+ Visual Basic  
   
 ```  
 Dim customers = db.ExecuteQuery(Of Customer)("SELECT CustomerID, _    CompanyName, ContactName, ContactTitle, _  
@@ -912,27 +912,27 @@ Next
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>によって追跡される変更されたオブジェクトを取得します。<see cref="T:System.Data.Linq.DataContext" />します。</summary>
-        <returns>オブジェクトのセットは、3 つの読み取り専用コレクションとして返されます。</returns>
+        <summary><see cref="T:System.Data.Linq.DataContext" /> で追跡される変更されたオブジェクトを取得します。</summary>
+        <returns>オブジェクトのセットが、3 つの読み取り専用のコレクションとして返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 次の考慮事項に注意してください。  
+ 次の点に注意してください。  
   
--   <xref:System.Data.Linq.DataContext.GetChangeSet%2A> insert の推論などの副作用があるし、削除の操作時に通常実行される可能性があります<xref:System.Data.Linq.DataContext.SubmitChanges%2A>します。 など、次の操作で使用されるオブジェクトは、次の一覧で対応する、推論される操作を作成できます。  
+-   <xref:System.Data.Linq.DataContext.GetChangeSet%2A>では、通常、の<xref:System.Data.Linq.DataContext.SubmitChanges%2A>時点で実行される挿入操作や削除操作の推定など、副作用が発生する可能性があります。 たとえば、次の操作で使用されるオブジェクトでは、次の一覧に対応する推論操作を作成できます。  
   
-    -   <xref:System.Data.Linq.EntitySet%601.Add%2A> <xref:System.Data.Linq.Table%601.InsertOnSubmit%2A>します。  
+    -   <xref:System.Data.Linq.EntitySet%601.Add%2A>を<xref:System.Data.Linq.Table%601.InsertOnSubmit%2A>にします。  
   
-    -   <xref:System.Data.Linq.EntityRef%601> null の代入 (可能性があるので、<xref:System.Data.Linq.EntitySet%601.Remove%2A>に<xref:System.Data.Linq.Table%601.DeleteOnSubmit%2A>します。  
+    -   <xref:System.Data.Linq.EntityRef%601>null への<xref:System.Data.Linq.EntitySet%601.Remove%2A>代入 (がに<xref:System.Data.Linq.Table%601.DeleteOnSubmit%2A>よって行われる可能性があります。  
   
--   外部キー制約に従って、セットを順序付けされない可能性があります。  
+-   Set は、foreign key 制約に従って並べ替えられない場合があります。  
   
--   データベースによって生成された値 (たとえば、プライマリと外部キーの値、タイムスタンプ、およびなど) は使用できません。 このような情報は、データベース コマンドを実行し、取得した情報 (たとえば、主キーから外部キー) が反映が必要です。  
+-   データベースで生成された値 (たとえば、主キーと外部キーの値、タイムスタンプなど) は使用できません。 このような情報には、データベースコマンドの実行と、取得した情報の伝達 (主キーからの外部キーなど) が必要です。  
   
--   変更されたオブジェクトのセットは、呼び出し時に計算されます。 後続の呼び出し<xref:System.Data.Linq.DataContext.SubmitChanges%2A>追加の変更が加えられた場合、別のセットを生成できます。  
+-   変更されたオブジェクトのセットは、呼び出し時に計算されます。 その後の<xref:System.Data.Linq.DataContext.SubmitChanges%2A>への呼び出しでは、追加の変更が加えられた場合に異なるセットが生成される可能性があります。  
   
- 変更がなかったときに、出力は次のようです。  
+ 変更が行われなかった場合の出力は次のようになります。  
   
  `{Added: 0, Removed: 0, Modified: 0}`  
   
@@ -966,24 +966,24 @@ Next
         <Parameter Name="query" Type="System.Linq.IQueryable" />
       </Parameters>
       <Docs>
-        <param name="query">SQL コマンド情報のクエリでは、取得します。</param>
-        <summary>によって生成された SQL コマンドに関する情報を取得[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]します。</summary>
-        <returns>要求されたコマンド情報オブジェクト。</returns>
+        <param name="query">SQL コマンド情報を取得するクエリ。</param>
+        <summary>[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)] によって生成される SQL コマンドの情報を取得します。</summary>
+        <returns>要求したコマンド情報オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは影響しません、getter のみ<xref:System.Data.Linq.DataContext>状態。  
+ このメソッドは get アクセス操作子であり、 <xref:System.Data.Linq.DataContext>状態には影響しません。  
   
- 次の考慮事項に注意してください。  
+ 次の点に注意してください。  
   
--   引数は、null 以外である必要があります。 それ以外の場合、null の引数の例外がスローされます。  
+-   引数は null 以外である必要があります。 それ以外の場合は、null 引数の例外がスローされます。  
   
--   通常のクエリ変換の例外が中にスローされた[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]変換できないクエリのクエリの実行が適用されます。  
+-   クエリの実行中に[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]スローされる通常のクエリ変換例外は、変換できないクエリに適用されます。  
   
--   最初のクエリ コマンドのみが返されます。 具体的には、その他のコマンド一括読み込みに使用される (<xref:System.Data.Linq.DataLoadOptions.LoadWith%2A>) は含まれません。  
+-   最初のクエリコマンドのみが返されます。 具体的には、一括読み込み (<xref:System.Data.Linq.DataLoadOptions.LoadWith%2A>) に使用される追加のコマンドは含まれません。  
   
--   <xref:System.Data.Linq.DataContext> コマンドを使用して、ユーザーが何を追跡しません。 たとえば返されたコマンドの実行から結果は追跡されませんには影響しません<xref:System.Data.Linq.DataContext>状態。  
+-   <xref:System.Data.Linq.DataContext>は、ユーザーがコマンドを実行したときの処理を追跡しません。 たとえば、返されたコマンドの実行結果は追跡されず、状態には<xref:System.Data.Linq.DataContext>影響しません。  
   
    
   
@@ -1040,15 +1040,15 @@ Next
       </Parameters>
       <Docs>
         <param name="type">返されるオブジェクトの型。</param>
-        <summary>によって、型が定義されている特定の型のオブジェクトのコレクションを返します、<paramref name="type" />パラメーター。</summary>
-        <returns>によって定義されるオブジェクトのコレクション、<paramref name="type" />パラメーター。</returns>
+        <summary><paramref name="type" /> パラメーターで定義される型のオブジェクトのコレクションを返します。</summary>
+        <returns><paramref name="type" /> パラメーターで定義されたオブジェクトのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは弱く型指定されたバージョンの<xref:System.Data.Linq.DataContext.GetTable%2A>します。 弱く型指定されたバージョンであるため、クエリを動的に構築する比較的一般的な方法は重要です。 リフレクションを使用して、適切なジェネリック メソッドを呼び出すアプリケーションを強制する便利なできなくなります。  
+ これは、の<xref:System.Data.Linq.DataContext.GetTable%2A>弱く型指定されたバージョンです。 クエリを動的に構築するのは比較的一般的な方法であるため、弱く型指定されたバージョンを用意することが重要です。 アプリケーションがリフレクションを使用して適切なジェネリックメソッドを呼び出すように強制するのは不便です。  
   
- 特定の型のコレクションがない場合は、例外がスローされます。  
+ 特定の型のコレクションが存在しない場合は、例外がスローされます。  
   
  ]]></format>
         </remarks>
@@ -1080,15 +1080,15 @@ Next
       <Parameters />
       <Docs>
         <typeparam name="TEntity">返されるオブジェクトの型。</typeparam>
-        <summary>によって、型が定義されている特定の型のオブジェクトのコレクションを返します、<paramref name="TEntity" />パラメーター。</summary>
-        <returns>によって定義されるオブジェクトのコレクション、<paramref name="TEntity" />パラメーター。</returns>
+        <summary><paramref name="TEntity" /> パラメーターで定義される型のオブジェクトのコレクションを返します。</summary>
+        <returns><paramref name="TEntity" /> パラメーターで定義されたオブジェクトのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、クエリのメイン エントリ ポイントです。 ときに、厳密に型指定された<xref:System.Data.Linq.DataContext>が作成された、新規生成されたプロパティをこのメソッドの呼び出しをカプセル化します。 たとえば、`Customers`を返すプロパティが生成される`GetTable<Customer>`します。  
+ このメソッドは、クエリを実行するための主なエントリポイントです。 厳密に型指定<xref:System.Data.Linq.DataContext>されたが作成された場合、新しい生成されるプロパティは、このメソッドの呼び出しをカプセル化します。 たとえば、 `Customers`を返す`GetTable<Customer>`プロパティが生成されたとします。  
   
- 特定の型のコレクションがない場合は、例外がスローされます。  
+ 特定の型のコレクションが存在しない場合は、例外がスローされます。  
   
  ]]></format>
         </remarks>
@@ -1111,13 +1111,13 @@ Next
         <ReturnType>System.Data.Linq.DataLoadOptions</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定します、<see cref="T:System.Data.Linq.DataLoadOptions" />これに関連付けられている<see cref="T:System.Data.Linq.DataContext" />します。</summary>
-        <value>プリフェッチ読み込みの関連するデータのオプション。</value>
+        <summary>この <see cref="T:System.Data.Linq.DataLoadOptions" /> に関連付けられた <see cref="T:System.Data.Linq.DataContext" /> を取得または設定します。</summary>
+        <value>関連するデータのプリフェッチ読み込みのオプション。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを取得または遅延読み込みされるメンバーと関連コレクションのメンバシップのプリフェッチの動作の定義に使用するオプションを設定します。  
+ このプロパティは、遅延読み込みされたメンバーと関連コレクションのメンバーシップのプリフェッチ動作を定義するために使用されるオプションを取得または設定します。  
   
  ]]></format>
         </remarks>
@@ -1140,18 +1140,18 @@ Next
         <ReturnType>System.IO.TextWriter</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または SQL クエリまたはコマンドの書き込み先を設定します。</summary>
-        <value><see cref="T:System.IO.TextReader" />コマンドの記述に使用します。</value>
+        <summary>SQL クエリまたはコマンドの書き込み先を取得または設定します。</summary>
+        <value>コマンドを書き込むために使用する <see cref="T:System.IO.TextReader" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを設定`null`コマンドのログ記録を無効にします。  
+ コマンドのログ記録`null`を無効にするには、このプロパティをに設定します。  
   
    
   
 ## Examples  
- 次の例は、クエリの結果を表示する前に、コンソール ウィンドウに生成された SQL を表示します。  
+ 次の例では、生成された SQL をコンソールウィンドウに表示してから、クエリの結果を表示します。  
   
  [!code-csharp[System.Data.Linq.DataContext#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Data.Linq.DataContext/cs/Program.cs#2)]
  [!code-vb[System.Data.Linq.DataContext#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Data.Linq.DataContext/vb/Module1.vb#2)]  
@@ -1177,8 +1177,8 @@ Next
         <ReturnType>System.Data.Linq.Mapping.MetaModel</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:System.Data.Linq.Mapping.MetaModel" />マッピングに基づくにします。</summary>
-        <value>データベースとドメインのオブジェクト間のマッピング。</value>
+        <summary>マッピングの基になる <see cref="T:System.Data.Linq.Mapping.MetaModel" /> を取得します。</summary>
+        <value>データベース オブジェクトとドメイン オブジェクト間のマッピング。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1199,25 +1199,25 @@ Next
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはオブジェクトの追跡が有効になっているかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> は、オブジェクトの追跡が有効な場合それ以外の場合、<see langword="false" />します。 既定値は <see langword="true" /> です。</value>
+        <summary>オブジェクトの追跡が有効かどうかを示す値を取得または設定します。</summary>
+        <value>追跡が有効になっている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="true" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを設定`false`追跡するために以下の項目があるため、取得時にパフォーマンスが向上します。  
+ 追跡する項目が`false`少なくなるため、このプロパティをに設定すると、取得時のパフォーマンスが向上します。  
   
  例外がスローされます。  
   
--   プロパティ設定されている場合`false`クエリが実行された後にします。  
+-   クエリが実行された`false`後に、プロパティがに設定されている場合。  
   
-     詳細については、有効なモード」セクションを参照してください。<xref:System.Data.Linq.DataContext>します。  
+     詳細については、「」の<xref:System.Data.Linq.DataContext>有効なモードに関するセクションを参照してください。  
   
--   プロパティ設定されている場合`false`と<xref:System.Data.Linq.DataContext.SubmitChanges%2A>が呼び出されます。  
+-   プロパティがに`false` <xref:System.Data.Linq.DataContext.SubmitChanges%2A>設定され、が呼び出される場合は。  
   
- 場合<xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A>は`false`、<xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A>は無視され、として扱われます`false`します。 ここで、<xref:System.Data.Linq.DataContext>は読み取り専用です。  
+ が<xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A> `false`の場合、<xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A>は無視され、として扱われます。 `false` この場合、 <xref:System.Data.Linq.DataContext>は読み取り専用です。  
   
- <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A> が `true` の場合、<xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A> は `false` です。 この場合、<xref:System.Data.Linq.DataContext>を使用して、オブジェクト グラフを読み込むことができます<xref:System.Data.Linq.DataLoadOptions.LoadWith%2A>ディレクティブでは、遅延読み込みを有効にしません。  
+ <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled%2A> が `true` の場合、<xref:System.Data.Linq.DataContext.DeferredLoadingEnabled%2A> は `false` です。 この場合、を<xref:System.Data.Linq.DataContext>使用すると、ディレクティブを使用<xref:System.Data.Linq.DataLoadOptions.LoadWith%2A>してオブジェクトグラフを読み込むことができますが、遅延読み込みは有効になりません。  
   
  ]]></format>
         </remarks>
@@ -1250,15 +1250,15 @@ Next
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>データベースにデータを使用してオブジェクトの状態を更新します。</summary>
+        <summary>データベース内のデータを使用してオブジェクトの状態を更新します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、後に別の試行の状態は、項目を表示するとエラーにオプティミスティック同時実行制御に役立ちます。 オブジェクトのプロパティ、プリミティブ型のフィールドの状態を更新します。  
+ このメソッドは、オプティミスティック同時実行制御エラーの後で、項目を別の試行の状態にするために役立ちます。 オブジェクトのプリミティブフィールドとプロパティの状態を更新します。  
   
 > [!NOTE]
->  オブジェクトがある場合、*多く*一対多のリレーションシップ オブジェクトで外部キーの側が設定され、リレーションシップの他方の側のオブジェクトへのポインターは、新しい値に設定されます。  
+>  オブジェクトが一対多のリレーションシップの "*多*" の側にある場合は、オブジェクトの外部キーが設定され、リレーションシップのもう一方の側のオブジェクトポインターが新しい値に設定されます。  
   
  ]]></format>
         </remarks>
@@ -1285,8 +1285,8 @@ Next
         <Parameter Name="entities" Type="System.Collections.IEnumerable" />
       </Parameters>
       <Docs>
-        <param name="mode">どのオプティミスティック同時実行の競合を指定する値が処理されます。</param>
-        <param name="entities">更新するエンティティのコレクション。</param>
+        <param name="mode">オプティミスティック コンカレンシーの競合の処理方法を指定する値。</param>
+        <param name="entities">更新されるエンティティのコレクション。</param>
         <summary>指定したモードに従ってエンティティ オブジェクトのコレクションを更新します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1312,7 +1312,7 @@ Next
         <Parameter Name="entity" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="mode">どのオプティミスティック同時実行の競合を指定する値が処理されます。</param>
+        <param name="mode">オプティミスティック コンカレンシーの競合の処理方法を指定する値。</param>
         <param name="entity">更新するオブジェクト。</param>
         <summary>指定したモードに従ってエンティティ オブジェクトを更新します。</summary>
         <remarks>To be added.</remarks>
@@ -1345,7 +1345,7 @@ Next
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="mode">どのオプティミスティック同時実行の競合を指定する値が処理されます。</param>
+        <param name="mode">オプティミスティック コンカレンシーの競合の処理方法を指定する値。</param>
         <param name="entities">更新するエンティティ オブジェクトの配列。</param>
         <summary>指定したモードに従ってエンティティ オブジェクトの配列を更新します。</summary>
         <remarks>To be added.</remarks>
@@ -1357,14 +1357,14 @@ Next
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>挿入、更新、または削除すると、変更されたオブジェクトのセットを計算し、データベースへの変更を実装するために適切なコマンドを実行します。</summary>
+        <summary>挿入、更新、または削除される変更されたオブジェクトのセットを計算し、該当するコマンドを実行してデータベースを変更します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- オーバーライド メソッドが insert、update、または削除の存在する場合<xref:System.Data.Linq.DataContext.SubmitChanges%2A>、既定ではなく、これらのメソッドを実行します。[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]コマンド。  
+ Insert、update、または delete に override メソッドが存在する<xref:System.Data.Linq.DataContext.SubmitChanges%2A>場合、は既定[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]のコマンドの代わりにこれらのメソッドを実行します。  
   
- <xref:System.Data.Linq.DataContext.SubmitChanges%2A> トランザクションが開始され、例外が発生した場合はロールバックが中に<xref:System.Data.Linq.DataContext.SubmitChanges%2A>を実行します。 ただし、これはロールバックされません変更メモリ内や、によって追跡、 <xref:System.Data.Linq.DataContext>。 これらの変更は手動でロールバックする必要があります。 新しいインスタンスを使用することができます、<xref:System.Data.Linq.DataContext>場合メモリ内の変更は破棄されます。  
+ <xref:System.Data.Linq.DataContext.SubmitChanges%2A>トランザクションを開始し、の実行中に<xref:System.Data.Linq.DataContext.SubmitChanges%2A>例外が発生した場合はロールバックします。 ただし、これによってメモリ内の変更がロールバックされ<xref:System.Data.Linq.DataContext>たり、によって追跡されたりすることはありません。これらの変更は手動でロールバックする必要があります。 メモリ内の変更を破棄する場合は<xref:System.Data.Linq.DataContext> 、の新しいインスタンスから開始できます。  
   
  ]]></format>
         </remarks>
@@ -1388,12 +1388,12 @@ Next
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>挿入、更新、または削除すると、変更されたオブジェクトのセットを計算し、データベースへの変更を実装するために適切なコマンドを実行します。</summary>
+        <summary>挿入、更新、または削除される変更されたオブジェクトのセットを計算し、該当するコマンドを実行してデータベースを変更します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- オーバーライド メソッドが insert、update、または削除の存在する場合<xref:System.Data.Linq.DataContext.SubmitChanges%2A>、既定ではなく、これらのメソッドを実行します。[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]コマンド。  
+ Insert、update、または delete に override メソッドが存在する<xref:System.Data.Linq.DataContext.SubmitChanges%2A>場合、は既定[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]のコマンドの代わりにこれらのメソッドを実行します。  
   
  ]]></format>
         </remarks>
@@ -1419,14 +1419,14 @@ Next
         <Parameter Name="failureMode" Type="System.Data.Linq.ConflictMode" />
       </Parameters>
       <Docs>
-        <param name="failureMode">送信が失敗した場合に実行されるアクション。 有効な引数は次のとおりです。 
+        <param name="failureMode">送信が失敗したときに実行するアクション。 有効な引数は次のとおりです。 
  <see cref="F:System.Data.Linq.ConflictMode.FailOnFirstConflict" /><see cref="F:System.Data.Linq.ConflictMode.ContinueOnConflict" /></param>
-        <summary>加えられた変更を基になるデータベース オブジェクトを取得し、送信に失敗した場合に実行されるアクションを指定しますを送信します。</summary>
+        <summary>取得したオブジェクトに対して行われた変更を、基になるデータベースに送信し、送信が失敗したときに実行するアクションを指定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の障害モードは<xref:System.Data.Linq.ConflictMode.FailOnFirstConflict>します。  
+ 既定のエラーモード<xref:System.Data.Linq.ConflictMode.FailOnFirstConflict>はです。  
   
    
   
@@ -1455,21 +1455,21 @@ Next
         <ReturnType>System.Data.Common.DbTransaction</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ローカルのトランザクションを取得または設定、[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)]を使用して、データベースにアクセスします。</summary>
-        <value>によって使用されるトランザクション オブジェクト、<see cref="T:System.Data.Linq.DataContext" />クエリとコマンドを実行するときにします。</value>
+        <summary>データベースにアクセスするために使用する [!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)] のローカル トランザクションを取得または設定します。</summary>
+        <value>クエリおよびコマンドの実行中に <see cref="T:System.Data.Linq.DataContext" /> によって使用されるトランザクション オブジェクト。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティの主なシナリオは、リレーショナルとの相互運用[!INCLUDE[vstecado](~/includes/vstecado-md.md)]コード。 たとえば、独自に作成するときにこのプロパティを使用して`Create` / `Update` / `Delete`を設定する方法、`Transaction`プロパティを ADO`Command`オブジェクト。  
+ このプロパティの主要なシナリオは、リレーショナル[!INCLUDE[vstecado](~/includes/vstecado-md.md)]コードとの相互運用性です。 `Create`たとえば、独自/ のメソッド`Update`を記述し`Transaction`て ADOオブジェクト`Command`のプロパティを設定するときに、このプロパティを使用します。 / `Delete`  
   
  次の点に注意してください。  
   
--   このプロパティが明示的に設定されていない場合、get アクセス操作子は null を返します。  
+-   このプロパティが明示的に設定されていない場合、getter は null を返します。  
   
--   コードが実行している場合、<xref:System.Transactions.Transaction>コンテキスト、このプロパティの設定は、例外をスローします。  
+-   コードが<xref:System.Transactions.Transaction>コンテキストで実行されている場合、このプロパティを設定すると例外がスローされます。  
   
--   このプロパティが設定され、新しい場合<xref:System.Transactions.Transaction>が開かれると、例外がスローされて、クエリや更新プログラムを実行するとします。  
+-   このプロパティが設定されてい<xref:System.Transactions.Transaction>て、新しいが開かれている場合は、クエリまたは更新が実行されると例外がスローされます。  
   
  ]]></format>
         </remarks>
@@ -1481,30 +1481,30 @@ Next
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>既存の変換<see cref="T:System.Data.IDataReader" />オブジェクトにします。</summary>
+        <summary>既存の <see cref="T:System.Data.IDataReader" /> をオブジェクトに変換します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 内の行ごと、<xref:System.Data.IDataReader>内のオブジェクトに変換されます、<xref:System.Collections.Generic.IEnumerable%601>します。  
+ の各行<xref:System.Collections.Generic.IEnumerable%601>は、内のオブジェクトに変換されます。 <xref:System.Data.IDataReader>  
   
 ```  
 public IEnumerable<T> Translate<T>(IDataReader reader) {}  
 ```  
   
- 説明:このメソッドを使用して、既存の変換を<xref:System.Data.Common.DbDataReader>オブジェクトにします。 内の行ごと、<xref:System.Data.Common.DbDataReader>内のオブジェクトに変換されます、<xref:System.Collections.Generic.IEnumerable%601>します。  
+ 説明:このメソッドは、既存<xref:System.Data.Common.DbDataReader>のをオブジェクトに変換するために使用されます。 の各行<xref:System.Collections.Generic.IEnumerable%601>は、内のオブジェクトに変換されます。 <xref:System.Data.Common.DbDataReader>  
   
- **ジェネリック パラメーター:**  
+ **ジェネリックパラメーター:**  
   
  `T`:以下を参照してください。<xref:System.Data.Linq.DataContext.ExecuteQuery%2A>  
   
  **パラメータ:**  
   
- `Query`:[コマンドの説明を参照して<xref:System.Data.Linq.DataContext.ExecuteCommand%2A>します。  
+ `Query` :の下<xref:System.Data.Linq.DataContext.ExecuteCommand%2A>のコマンドの説明を参照してください。  
   
- `Parameters`:[パラメーターの説明を参照して<xref:System.Data.Linq.DataContext.ExecuteCommand%2A>します。  
+ `Parameters`:パラメーターの説明について<xref:System.Data.Linq.DataContext.ExecuteCommand%2A>は、「」を参照してください。  
   
- **戻り値の型。**  
+ **戻り値の型:**  
   
  <xref:System.Collections.Generic.IEnumerable%601>: 変換によって返されるオブジェクトのコレクション。  
   
@@ -1533,8 +1533,8 @@ public IEnumerable<T> Translate<T>(IDataReader reader) {}
       </Parameters>
       <Docs>
         <param name="reader">変換される <see cref="T:System.Data.IDataReader" />。</param>
-        <summary>既存の変換<see cref="T:System.Data.Common.DbDataReader" />オブジェクトにします。</summary>
-        <returns>変換によって返されるオブジェクトの一覧。</returns>
+        <summary>既存の <see cref="T:System.Data.Common.DbDataReader" /> をオブジェクトに変換します。</summary>
+        <returns>変換によって返されるオブジェクトのリスト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1559,26 +1559,26 @@ public IEnumerable<T> Translate<T>(IDataReader reader) {}
         <Parameter Name="reader" Type="System.Data.Common.DbDataReader" />
       </Parameters>
       <Docs>
-        <param name="elementType">種類、<see cref="T:System.Collections.Generic.IEnumerable`1" />が返されます。  
+        <param name="elementType">返される <see cref="T:System.Collections.Generic.IEnumerable`1" /> の型。  
   
-オブジェクトのプロパティおよびフィールドに結果の列の一致のアルゴリズムはように動作します。 
-フィールドまたはプロパティが特定の列名にマップされている場合は、結果セットの列名が必要です。  
+オブジェクト内のフィールドおよびプロパティに対して、結果内の列の一致を行うアルゴリズムは、以下のように動作します。 
+フィールドまたはプロパティが特定の列名に割り当てられている場合は、その列名が結果セットに存在する必要があります。  
   
-フィールドまたはプロパティがマップされていない場合は、結果セットのフィールドまたはプロパティと同じ名前の列が必要です。  
+フィールドまたはプロパティが割り当てられていない場合は、フィールドまたはプロパティと同じ名前の列が結果セットに存在する必要があります。  
   
-大文字と小文字の最初を検索して比較されます。 以降の検索では、大文字と小文字の発生が一致するものが見つからない場合。  
+比較では、まず大文字と小文字が区別されます。 一致するものが見つからない場合は、大文字と小文字を区別せずに以降の検索が実行されます。  
   
-クエリは、すべての追跡対象のフィールドと (遅延ベースで読み込まれているもの) は除くオブジェクトのプロパティを返す必要があります、次の条件が true の場合。 
+このクエリは、以下の条件がすべて当てはまる場合、(遅延読み込みされる場合を除いて) オブジェクトの追跡されるフィールドおよびプロパティをすべて返す必要があります。 
  <c>T</c> が、<see cref="T:System.Data.Linq.DataContext" /> によって明示的に追跡されるエンティティである場合。  
   
- <see cref="P:System.Data.Linq.DataContext.ObjectTrackingEnabled" /> は <see langword="true" /> です。  
+ <see cref="P:System.Data.Linq.DataContext.ObjectTrackingEnabled" /> は <see langword="true" />です。  
   
-エンティティは、主キーを持ちます。  
+そのエンティティに主キーがある場合。  
   
 それ以外の場合は、例外がスローされます。</param>
         <param name="reader">変換される <see cref="T:System.Data.IDataReader" />。</param>
-        <summary>既存の変換<see cref="T:System.Data.Common.DbDataReader" />オブジェクトにします。</summary>
-        <returns>変換によって返されるオブジェクトの一覧。</returns>
+        <summary>既存の <see cref="T:System.Data.Common.DbDataReader" /> をオブジェクトに変換します。</summary>
+        <returns>変換によって返されるオブジェクトのリスト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1605,9 +1605,9 @@ public IEnumerable<T> Translate<T>(IDataReader reader) {}
         <Parameter Name="reader" Type="System.Data.Common.DbDataReader" />
       </Parameters>
       <Docs>
-        <typeparam name="TResult">種類、<see cref="T:System.Collections.Generic.IEnumerable`1" />が返されます。</typeparam>
+        <typeparam name="TResult">返される <see cref="T:System.Collections.Generic.IEnumerable`1" /> の型。</typeparam>
         <param name="reader">変換される <see cref="T:System.Data.IDataReader" />。</param>
-        <summary>既存の変換<see cref="T:System.Data.Common.DbDataReader" />オブジェクトにします。</summary>
+        <summary>既存の <see cref="T:System.Data.Common.DbDataReader" /> をオブジェクトに変換します。</summary>
         <returns>変換によって返されるオブジェクトのコレクション。</returns>
         <remarks>To be added.</remarks>
       </Docs>

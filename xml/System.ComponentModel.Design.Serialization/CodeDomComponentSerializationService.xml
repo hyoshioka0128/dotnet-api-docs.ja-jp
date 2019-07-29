@@ -19,14 +19,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>シリアル化ストアに一連のコンポーネントをシリアル化します。</summary>
+    <summary>コンポーネントのセットをシリアル化ストアにシリアル化します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService>クラスは、シリアル化ストアに一連のコンポーネントまたはシリアル化可能なオブジェクトをシリアル化します。 ストアは、後でし、逆シリアル化できます。 <xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService>クラスは、シリアル化形式は、不透明なされ、オブジェクトの部分のシリアル化することになります、その他のシリアル化スキームとは異なります。 します。 たとえば、オブジェクトの選択したプロパティのみをシリアル化することができます。  
+ クラス<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService>は、コンポーネントまたはシリアル化可能なオブジェクトのセットをシリアル化ストアにシリアル化します。 ストアは、後で逆シリアル化できます。 クラス<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService>は、シリアル化形式が不透明であり、オブジェクトの部分的なシリアル化を可能にするという点で、他のシリアル化方式とは異なります。 たとえば、オブジェクトに対して選択したプロパティのみをシリアル化するように選択できます。  
   
- 基底クラス、 <xref:System.ComponentModel.Design.Serialization.ComponentSerializationService>、置換、<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationService>旧バージョンとの互換性のため、後者が保持されますが、.NET Framework バージョン 1.0 からインターフェイスします。 <xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService>クラスは実装しない、<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationService>を照会する場合は、インターフェイス<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationService>、<xref:System.ComponentModel.Design.Serialization.CodeDomDesignerLoader>旧バージョンとの互換性を確保するブリッジの実装を提供します。  
+ 基底クラスで<xref:System.ComponentModel.Design.Serialization.ComponentSerializationService>あるは .NET Framework バージョン<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationService> 1.0 のインターフェイスを置き換えますが、後者は旧バージョンとの互換性のために残されています。 クラス<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService> <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationService>はインターフェイスを実装していませんが、に<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationService>対して<xref:System.ComponentModel.Design.Serialization.CodeDomDesignerLoader>クエリを実行すると、下位互換性を確保するためのブリッジ実装が提供されます。  
   
  ]]></format>
     </remarks>
@@ -98,8 +98,8 @@
         <Parameter Name="provider" Type="System.IServiceProvider" />
       </Parameters>
       <Docs>
-        <param name="provider"><see cref="T:System.IServiceProvider" />サービスを解決するのに使用します。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService" />クラスのサービスを解決するのには、特定のサービス プロバイダーを使用します。</summary>
+        <param name="provider">サービスの解決に使用する <see cref="T:System.IServiceProvider" />。</param>
+        <summary>サービスを解決するサービス プロバイダーを指定して、<see cref="T:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.ComponentModel.Design.Serialization.ComponentSerializationService" />
         <altmember cref="T:System.IServiceProvider" />
@@ -134,7 +134,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル化ストアは、のいずれかに渡すことができます、<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.Serialize%2A>オブジェクトのグループの状態をシリアル化を構築する方法。  
+ シリアル化ストアは、オブジェクトのグループのシリアル<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.Serialize%2A>化状態を構築するために、任意のメソッドに渡すことができます。  
   
  ]]></format>
         </remarks>
@@ -149,7 +149,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>オブジェクトのコレクションを生成するために特定の店舗を逆シリアル化します。</summary>
+        <summary>指定したストアを逆シリアル化し、オブジェクトのコレクションを生成します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="Deserialize">
@@ -176,12 +176,12 @@
         <Parameter Name="store" Type="System.ComponentModel.Design.Serialization.SerializationStore" />
       </Parameters>
       <Docs>
-        <param name="store"><see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />オブジェクトから逆シリアル化されます。</param>
-        <summary>オブジェクトのコレクションを生成するために特定の店舗を逆シリアル化します。</summary>
+        <param name="store">オブジェクトの逆シリアル化元である <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />。</param>
+        <summary>指定したストアを逆シリアル化し、オブジェクトのコレクションを生成します。</summary>
         <returns>逆シリアル化されたコンポーネントのコレクション。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="store" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> サポートされている種類のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="store" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> は、サポートされている型のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
         <altmember cref="T:System.ComponentModel.Design.Serialization.ComponentSerializationService" />
         <altmember cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />
         <related type="Article" href="https://msdn.microsoft.com/library/d077a3e8-bd81-4bdf-b6a3-323857ea30fb">動的なソース コードの生成とコンパイル</related>
@@ -212,20 +212,20 @@
         <Parameter Name="container" Type="System.ComponentModel.IContainer" />
       </Parameters>
       <Docs>
-        <param name="store"><see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />オブジェクトから逆シリアル化されます。</param>
+        <param name="store">オブジェクトの逆シリアル化元である <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />。</param>
         <param name="container"><see cref="T:System.ComponentModel.IComponent" /> オブジェクトの追加先となるコンテナー。</param>
-        <summary>特定の店舗を逆シリアル化し、設定、指定された<see cref="T:System.ComponentModel.IContainer" />で逆シリアル化<see cref="T:System.ComponentModel.IComponent" />オブジェクト。</summary>
+        <summary>指定したストアを逆シリアル化し、逆シリアル化された <see cref="T:System.ComponentModel.IContainer" /> オブジェクトを指定した <see cref="T:System.ComponentModel.IComponent" /> に追加します。</summary>
         <returns>逆シリアル化されたコンポーネントのコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 実装するオブジェクトを作成、<xref:System.ComponentModel.IComponent>インターフェイスを追加する、`container`パラメーター。  
+ インターフェイスを<xref:System.ComponentModel.IComponent>実装する作成済みのオブジェクトは、 `container`パラメーターに追加されます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="store" /> または <paramref name="container" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> サポートされている種類のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> は、サポートされている型のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
       </Docs>
     </Member>
     <Member MemberName="DeserializeTo">
@@ -256,20 +256,20 @@
       </Parameters>
       <Docs>
         <param name="store">オブジェクトの逆シリアル化元である <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />。</param>
-        <param name="container">データの適用先となるオブジェクトのコンテナーです。</param>
-        <param name="validateRecycledTypes"><see langword="true" /> 再利用される型; を検証するにはそれ以外の場合、<see langword="false" />します。</param>
-        <param name="applyDefaults"><see langword="true" /> 既定のプロパティの値を適用するにはそれ以外の場合、<see langword="false" />します。</param>
-        <summary>逆シリアル化、指定された<see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />既定のプロパティ値を必要に応じて指定したコンテナーに適用します。</summary>
+        <param name="container">データの適用先であるオブジェクトのコンテナー。</param>
+        <param name="validateRecycledTypes">再利用される型を検証する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
+        <param name="applyDefaults">既定のプロパティ値を適用する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
+        <summary>指定した <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" /> を指定したコンテナーに逆シリアル化します。オプションで、既定のプロパティ値を適用することもできます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.DeserializeTo%2A>メソッドには、特定の店舗が逆シリアル化しますから実行されるオブジェクトの既存のセットに新しいオブジェクトを生成するのではなく、ストア内のデータが適用される、`container`パラメーター。 その結果、呼び出し元オブジェクトを作成できます事前に、適切です。 オブジェクトに逆シリアル化の状態があり、オブジェクトは既存のオブジェクトのセットに指定されていない場合は、新しいオブジェクトが作成されます。 そのオブジェクトにも実装している場合<xref:System.ComponentModel.IComponent>、指定したコンテナーに追加されます。 コンテナー内のオブジェクトは、名前と既存のオブジェクトを使用するためにシリアル化ストア内のオブジェクトに一致する型が必要です。  
+ メソッド<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.DeserializeTo%2A>は、指定されたストアを逆シリアル化しますが、新しいオブジェクトを生成するのではなく、 `container`パラメーターから取得した既存のオブジェクトセットにストア内のデータを適用します。 結果として、呼び出し元はオブジェクトを事前に作成できますが、それに適しています。 オブジェクトに逆シリアル化状態があり、オブジェクトが既存のオブジェクトのセットに名前が付けられていない場合は、新しいオブジェクトが作成されます。 そのオブジェクトもを実装<xref:System.ComponentModel.IComponent>する場合は、指定されたコンテナーに追加されます。 既存のオブジェクトを使用するには、コンテナー内のオブジェクトに、シリアル化ストア内のオブジェクトと一致する名前と型が必要です。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="store" /> または <paramref name="container" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> サポートされている種類のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> は、サポートされている型のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
       </Docs>
     </Member>
     <Member MemberName="LoadStore">
@@ -295,19 +295,19 @@
         <Parameter Name="stream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="stream">読み込み元のストリーム、<see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />します。</param>
-        <summary>読み込み、<see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />指定したストリームから。</summary>
-        <returns>読み込まれた<see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />します。</returns>
+        <param name="stream"><see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" /> の読み取り元のストリーム。</param>
+        <summary>指定したストリームから <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" /> を読み込みます。</summary>
+        <returns>読み込まれた <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 返されたストアを使用するには、さまざまな渡しのオブジェクトを逆シリアル化する<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.Deserialize%2A>メソッド。  
+ 返されたストアを使用して、さまざまな<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.Deserialize%2A>メソッドに渡すことによってオブジェクトを逆シリアル化できます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.Runtime.Serialization.SerializationException"><paramref name="stream" /> シークをサポートしていますが、長さは、0 です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.Runtime.Serialization.SerializationException"><paramref name="stream" /> はシークをサポートしていますが、長さが 0 です。</exception>
         <permission cref="T:System.Security.Permissions.SecurityPermission">シリアル化サービスを提供します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.SerializationFormatter" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
@@ -338,17 +338,17 @@
       <Docs>
         <param name="store"><paramref name="value" /> をシリアル化した結果を格納する <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />。</param>
         <param name="value">シリアル化するオブジェクト。</param>
-        <summary>指定したオブジェクトをシリアル化、指定された<see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />します。</summary>
+        <summary>指定したオブジェクトを指定した <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" /> にシリアル化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `store`パラメーターは、オブジェクトごとに 1 回このメソッドを呼び出すことによって、1 つ以上のオブジェクトをシリアル化するために使用できます。  
+ パラメーター `store`を使用すると、オブジェクトごとに1回このメソッドを呼び出すことにより、複数のオブジェクトをシリアル化できます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="store" /> または <paramref name="value" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> が閉じられているか、<paramref name="store" /> がサポートされている型のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> が閉じているか、または <paramref name="store" /> がサポートされている型のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
       </Docs>
     </Member>
     <Member MemberName="SerializeAbsolute">
@@ -378,17 +378,17 @@
       <Docs>
         <param name="store"><paramref name="value" /> をシリアル化した結果を格納する <see cref="T:System.ComponentModel.Design.Serialization.SerializationStore" />。</param>
         <param name="value">シリアル化するオブジェクト。</param>
-        <summary>既定のプロパティの値を指定したオブジェクトをシリアル化します。</summary>
+        <summary>既定のプロパティ値から成る、指定したオブジェクトをシリアル化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ストアは、このメソッドを複数回呼び出すことによって 1 つ以上のオブジェクトをシリアル化に使用できます。  
+ ストアは、このメソッドを複数回呼び出すことによって複数のオブジェクトをシリアル化するために使用できます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="store" /> または <paramref name="value" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> が閉じられているか、<paramref name="store" /> がサポートされている型のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="store" /> が閉じているか、または <paramref name="store" /> がサポートされている型のシリアル化ストアではありません。 <see cref="M:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.CreateStore" /> によって返されたストアを使用してください。</exception>
       </Docs>
     </Member>
     <Member MemberName="SerializeMember">
@@ -425,7 +425,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シリアル化ストア内でシリアル化されたメンバーの一覧を構築する同じオブジェクトに対してこのメソッドを複数回呼び出すことができます。 メンバーは、一般には、プロパティまたはイベント。  
+ このメソッドは、シリアル化ストア内のシリアル化されたメンバーの一覧を作成するために、同じオブジェクトに対して複数回呼び出すことができます。 通常、メンバーはプロパティまたはイベントである必要があります。  
   
  ]]></format>
         </remarks>
@@ -467,7 +467,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 一部のメンバーのプロパティの既定値を格納しているとメンバーに同じ値の設定は、さまざまな概念です。 たとえば、プロパティでは、ローカル値が設定されていない場合、親オブジェクトからその値が継承している場合、値をプロパティに設定可能性がありますできません何が必要な。 <xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.SerializeMemberAbsolute%2A>メソッドがこれを考慮して、ここで、プロパティの状態をクリアするとします。  
+ 一部のメンバーについては、既定のプロパティ値を含み、同じ値をメンバーに戻すという概念が異なります。 たとえば、ローカル値が設定されていない場合に、プロパティが親オブジェクトからその値を継承すると、その値をプロパティに設定し直す必要がない場合があります。 メソッド<xref:System.ComponentModel.Design.Serialization.CodeDomComponentSerializationService.SerializeMemberAbsolute%2A>はこれを考慮して、この場合はプロパティの状態をクリアします。  
   
  ]]></format>
         </remarks>

@@ -32,31 +32,31 @@
   </Base>
   <Interfaces />
   <Docs>
-    <typeparam name="TDelegate">デリゲートの型を<see cref="T:System.Linq.Expressions.Expression`1" />を表します。</typeparam>
+    <typeparam name="TDelegate"><see cref="T:System.Linq.Expressions.Expression`1" /> を表すデリゲートの型。</typeparam>
     <summary>厳密に型指定されたラムダ式を、式ツリー形式のデータ構造体として表します。 このクラスは継承できません。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ラムダ式が変数、フィールド、または型がパラメーターに割り当てられるとき<xref:System.Linq.Expressions.Expression%601>コンパイラは式ツリーを構築する手順を生成します。  
+ 型が<xref:System.Linq.Expressions.Expression%601>である変数、フィールド、またはパラメーターにラムダ式が割り当てられている場合、コンパイラは式ツリーを構築するための命令を出力します。  
   
 > [!NOTE]
->  ラムダ式を型から変換`Expression<D>`(`Expression(Of D)` Visual Basic で) 場合、ラムダ式から型のデリゲートへの変換が存在する`D`存在します。 ただし、変換はエラー、たとえば、ラムダ式の本体は、ブロックです。 これは、デリゲート、式ツリーがオーバー ロードの解決に関して同様に動作することを意味します。  
+>  ラムダ式から型`Expression<D>` `D`のデリゲートへの変換`Expression(Of D)`が存在する場合は、ラムダ式から型 (Visual Basic) への変換が存在します。 ただし、ラムダ式の本体がブロックの場合など、変換が失敗することがあります。 これは、デリゲートおよび式ツリーが、オーバーロードの解決に関して同様に動作することを意味します。  
   
- 式ツリーは、ラムダ式のデータをメモリ内表現です。 式ツリーは、透過的なと明示的なにラムダ式の構造になります。 その他のすべてのデータ構造の場合と同様、式ツリー内のデータを操作できます。  
+ 式ツリーは、ラムダ式のメモリ内データ表現です。 式ツリーでは、ラムダ式の構造が透過的で、明示的になります。 他のデータ構造と同様に、式ツリー内のデータと対話することができます。  
   
- データ構造として式を処理する機能には、Api を検査、変換、およびカスタムの方法で処理できる形式でユーザー コードを受け取ることができます。 たとえば、[!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]データ アクセス実装では、この機能を使用して、TRANSACT-SQL ステートメントをデータベースによって評価される式ツリーに変換します。  
+ 式をデータ構造として扱う機能によって、Api は、検査、変換、およびカスタム方法での処理が可能な形式でユーザーコードを受け取ることができます。 たとえば、 [!INCLUDE[vbtecdlinq](~/includes/vbtecdlinq-md.md)]データアクセスの実装では、この機能を使用して、式ツリーをデータベースで評価できる transact-sql ステートメントに変換します。  
   
- 多くの標準クエリ演算子で定義されている、<xref:System.Linq.Queryable>クラスは、型の 1 つまたは複数のパラメーターを持つ<xref:System.Linq.Expressions.Expression%601>します。  
+ <xref:System.Linq.Queryable>クラスで定義されている多くの標準クエリ演算子には、 <xref:System.Linq.Expressions.Expression%601>型の1つ以上のパラメーターがあります。  
   
- <xref:System.Linq.Expressions.Expression.NodeType%2A>の<xref:System.Linq.Expressions.Expression%601>は<xref:System.Linq.Expressions.ExpressionType.Lambda>します。  
+ <xref:System.Linq.Expressions.Expression.NodeType%2A> の<xref:System.Linq.Expressions.Expression%601>がです<xref:System.Linq.Expressions.ExpressionType.Lambda>。  
   
- 使用して、<xref:System.Linq.Expressions.Expression.Lambda%60%601%28System.Linq.Expressions.Expression%2CSystem.Collections.Generic.IEnumerable%7BSystem.Linq.Expressions.ParameterExpression%7D%29>または<xref:System.Linq.Expressions.Expression.Lambda%60%601%28System.Linq.Expressions.Expression%2CSystem.Linq.Expressions.ParameterExpression%5B%5D%29>を作成する方法、<xref:System.Linq.Expressions.Expression%601>オブジェクト。  
+ オブジェクトを<xref:System.Linq.Expressions.Expression.Lambda%60%601%28System.Linq.Expressions.Expression%2CSystem.Collections.Generic.IEnumerable%7BSystem.Linq.Expressions.ParameterExpression%7D%29>作成<xref:System.Linq.Expressions.Expression.Lambda%60%601%28System.Linq.Expressions.Expression%2CSystem.Linq.Expressions.ParameterExpression%5B%5D%29>するには、メソッドまたはメソッドを使用します。 <xref:System.Linq.Expressions.Expression%601>  
   
    
   
 ## Examples  
- 次のコード例では、デリゲートの形式で実行可能コードと、式ツリーの形式でデータの両方のラムダ式を表す方法を示します。 使用して実行可能コードに戻る式ツリーを変換する方法も示します、<xref:System.Linq.Expressions.Expression%601.Compile%2A>メソッド。  
+ 次のコード例は、ラムダ式を、デリゲートの形式で実行可能コードとして表現する方法と、式ツリーの形式でデータとして表す方法を示しています。 また、 <xref:System.Linq.Expressions.Expression%601.Compile%2A>メソッドを使用して、式ツリーを実行可能コードに戻す方法についても示します。  
   
  [!code-csharp[System.Linq.Expressions.ExpressionT#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Linq.Expressions.ExpressionT/CS/ExpressionT.cs#1)]
  [!code-vb[System.Linq.Expressions.ExpressionT#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Linq.Expressions.ExpressionT/VB/ExpressionT.vb#1)]  
@@ -138,20 +138,20 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>実行可能コードに、式ツリーによって記述されたラムダ式をコンパイルし、ラムダ式を表すデリゲートを生成します。</summary>
-        <returns>型のデリゲート<paramref name="TDelegate" />によって記述されたコンパイル済みのラムダ式を表す、<see cref="T:System.Linq.Expressions.Expression`1" />します。</returns>
+        <summary>式ツリーによって記述されたラムダ式を実行可能コードにコンパイルし、ラムダ式を表すデリゲートを生成します。</summary>
+        <returns><see cref="T:System.Linq.Expressions.Expression`1" /> によって記述されたコンパイル済みのラムダ式を表す <paramref name="TDelegate" /> 型のデリゲート。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Linq.Expressions.Expression%601.Compile%2A>メソッドは、型のデリゲートを生成します。`TDelegate`実行時にします。 セマンティクスで説明する動作が、そのデリゲートの実行時、<xref:System.Linq.Expressions.Expression%601>します。  
+ メソッド<xref:System.Linq.Expressions.Expression%601.Compile%2A>は、実行時に型`TDelegate`のデリゲートを生成します。 デリゲートを実行すると、の<xref:System.Linq.Expressions.Expression%601>セマンティクスによって記述された動作が実行されます。  
   
- <xref:System.Linq.Expressions.Expression%601.Compile%2A>メソッドを使用して、任意の式ツリーの値を取得します。 最初を使用して、本体として式を持つラムダ式を作成、<xref:System.Linq.Expressions.Expression.Lambda%2A>メソッド。 呼び出して<xref:System.Linq.Expressions.Expression%601.Compile%2A>をデリゲートを取得し、式の値を取得するデリゲートを実行します。  
+ <xref:System.Linq.Expressions.Expression%601.Compile%2A>メソッドを使用すると、任意の式ツリーの値を取得できます。 最初に、 <xref:System.Linq.Expressions.Expression.Lambda%2A>メソッドを使用して、式を本体とするラムダ式を作成します。 次に<xref:System.Linq.Expressions.Expression%601.Compile%2A> 、を呼び出してデリゲートを取得し、デリゲートを実行して式の値を取得します。  
   
    
   
 ## Examples  
- 次のコード例に示す方法<xref:System.Linq.Expressions.Expression%601.Compile%2A>式ツリーを実行するために使用します。  
+ 次のコード例は、 <xref:System.Linq.Expressions.Expression%601.Compile%2A>を使用して式ツリーを実行する方法を示しています。  
   
  [!code-csharp[System.Linq.Expressions.ExpressionT#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Linq.Expressions.ExpressionT/CS/ExpressionT.cs#2)]
  [!code-vb[System.Linq.Expressions.ExpressionT#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Linq.Expressions.ExpressionT/VB/ExpressionT.vb#2)]  
@@ -231,9 +231,9 @@
         <Parameter Name="debugInfoGenerator" Type="System.Runtime.CompilerServices.DebugInfoGenerator" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="debugInfoGenerator">デバッグ情報ジェネレーターがシーケンス ポイントをマークすると、ローカル変数の注釈を付け、コンパイラで使用されます。</param>
-        <summary>ラムダ式を表すデリゲートを生成します。</summary>
-        <returns>ラムダのコンパイル済みバージョンを含むデリゲート。</returns>
+        <param name="debugInfoGenerator">シーケンス ポイントをマークしたりローカル変数に注釈を付けたりするためにコンパイラが使用するデバッグ情報ジェネレーター。</param>
+        <summary>ラムダ式を表すデリゲートを作成します。</summary>
+        <returns>コンパイルされたバージョンのラムダを含んでいるデリゲート。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -273,8 +273,8 @@
       <Docs>
         <param name="body">結果の <see cref="P:System.Linq.Expressions.LambdaExpression.Body" /> プロパティ。</param>
         <param name="parameters">結果の <see cref="P:System.Linq.Expressions.LambdaExpression.Parameters" /> プロパティ。</param>
-        <summary>これに似た式ですが、指定された子を使用する、新しい式を作成します。 すべての子が同じである場合、この式を返します。</summary>
-        <returns>子が変更されていない場合はこの式。あるいは、更新された子を持つ式。</returns>
+        <summary>この式に似た新しい式を作成しますが、指定された子を使用します。 すべての子が同じであれば、この式が返されます。</summary>
+        <returns>更新された子を使用した式。子が変更されていない場合はこの式。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

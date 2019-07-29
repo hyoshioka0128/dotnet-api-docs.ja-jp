@@ -1,5 +1,5 @@
 <Type Name="ParameterBuilder" FullName="System.Reflection.Emit.ParameterBuilder">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="e2e8f33e1825e633b7601bd7dbc61a32dcc13ae0" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58691479" /></Metadata><TypeSignature Language="C#" Value="public class ParameterBuilder : System.Runtime.InteropServices._ParameterBuilder" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="3bd35991211c125b6e563b462ebb64e53dd34b0b" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68437023" /></Metadata><TypeSignature Language="C#" Value="public class ParameterBuilder : System.Runtime.InteropServices._ParameterBuilder" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi beforefieldinit ParameterBuilder extends System.Object implements class System.Runtime.InteropServices._ParameterBuilder" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.Emit.ParameterBuilder" />
   <TypeSignature Language="VB.NET" Value="Public Class ParameterBuilder&#xA;Implements _ParameterBuilder" />
@@ -9,6 +9,7 @@
     <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.3.0</AssemblyVersion>
+    <AssemblyVersion>4.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
@@ -46,14 +47,14 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- パラメーターの属性は、メソッドのシグネチャと一致する必要があります。 指定した場合`Out`パラメーターの属性は、そのメソッドのパラメーターの型があるようにする必要があります、`ByRef`型。  
+ パラメーター属性は、メソッドシグネチャと一致している必要があります。 パラメーターの属性`Out`を指定する場合は、そのメソッドパラメーターの型`ByRef`が型であることを確認する必要があります。  
   
- いくつか<xref:System.Reflection.Emit.ParameterBuilder>属性は、呼び出すことが必要です<xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A>実行時に正常に動作する Microsoft intermediate language (MSIL) の順序で実行可能なパラメーターを使用します。 定義する場合など、 <xref:System.Reflection.Emit.ParameterBuilder> ParameterAttributes.Out のパラメーター 1 で、 `MethodBuilder`、パラメーター 1 の<xref:System.Reflection.Emit.MethodBuilder>Type.GetType などの参照である必要があります ("System.String (& a)")、Type.GetType("System.String") ではなく。  
+ 一部<xref:System.Reflection.Emit.ParameterBuilder>の属性では、 <xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A>実行時に Microsoft 中間言語 (MSIL) を正常に動作させるために、実行可能なパラメーターを使用してを呼び出す必要があります。 たとえば、パラメーター 1 <xref:System.Reflection.Emit.ParameterBuilder> `MethodBuilder`に ParameterAttributes を指定してを定義する場合、の<xref:System.Reflection.Emit.MethodBuilder>パラメーター1は、タイプ gettype ("system.string") ではなく、型 gettype ("system.string &") などの参照である必要があります。  
   
    
   
 ## Examples  
- 次の例を使用して参照によって渡されるパラメーターを使用して動的メソッドを作成する方法を示します`ParameterBuilder`します。  
+ 次の例は、を使用し`ParameterBuilder`て参照によって渡されたパラメーターを使用して動的メソッドを作成する方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.ParameterBuilder Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ParameterBuilder Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ParameterBuilder Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ParameterBuilder Example/CS/source.cs#1)]
@@ -75,6 +76,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -97,7 +99,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 属性の値の値に対応して、<xref:System.Reflection.ParameterAttributes>列挙体。  
+ 属性の値は、 <xref:System.Reflection.ParameterAttributes>列挙体の値に対応します。  
   
  ]]></format>
         </remarks>
@@ -147,6 +149,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -169,7 +172,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、省略可能なメタデータ フラグによって異なります。 このフラグはコンパイラによって挿入されることができますが、コンパイラはこれを行うには限りません。  
+ このメソッドは、省略可能なメタデータフラグに依存します。 このフラグはコンパイラによって挿入できますが、コンパイラはこれを行う義務がありません。  
   
  ]]></format>
         </remarks>
@@ -187,6 +190,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -220,6 +224,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -253,6 +258,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -286,6 +292,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -319,6 +326,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -349,13 +357,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `defaultValue` 次の種類に制限されます`Boolean`、 `SByte`、 `Int16`、 `Int32`、 `Int64`、 `Byte`、 `UInt16`、 `UInt32`、 `UInt64`、 `Single`、 `Double`、 `DateTime` 。、 `Char`、 `String`、および`Enum`します。 パラメーターの型が参照型の場合は、CLS 準拠が必要です`defaultValue`する`null`します。 ただし、以降、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、`defaultValue`参照型の値は、その参照型に割り当てることがあれば、null 以外であることができます。 たとえば、`Int32`型のパラメーターに値を割り当てることが<xref:System.Object>します。 これは CLS 準拠ではありませんが、相互運用シナリオで便利です。  
+ `defaultValue`は、、、 `Boolean` 、`UInt64` `SByte` `Int16` `Int32` 、、`DateTime` 、、、、、 、の各型に制限されています。`Double` `Int64` `Byte` `UInt16` `UInt32` `Single`、 `Char`、、および。 `String` `Enum` パラメーターの型が参照型の場合、CLS 準拠で`defaultValue`ある`null`必要があります。 ただし、以降[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]では、 `defaultValue`その参照型に値を割り当てることができる限り、参照型に対して null 以外の値を指定できます。 たとえば、 `Int32`型<xref:System.Object>のパラメーターに値を割り当てることができます。 これは CLS に準拠していませんが、相互運用のシナリオで役に立つ場合があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">パラメーターが、サポートされている型のいずれでもありません。  
   
-または 
+- または - 
 <paramref name="defaultValue" /> の型がパラメーターの型と一致しません。  
   
 または 
@@ -384,6 +392,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -426,6 +435,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -461,7 +471,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 書式を設定する方法の詳細については、ECMA Partition II ドキュメント メタデータの仕様を参照してください`binaryAttribute`します。 ドキュメントはオンラインで入手できます。MSDN の「[ECMA C# and Common Language Infrastructure Standards](https://go.microsoft.com/fwlink/?LinkID=99212)」 (ECMA の C# および共通言語基盤の標準規格) と、ECMA のインターナショナル Web サイトにある「[Standard ECMA-335 - Common Language Infrastructure (CLI)](https://go.microsoft.com/fwlink/?LinkID=65552)」を参照してください。  
+ 書式設定`binaryAttribute`方法の詳細については、ECMA Partition II のドキュメントのメタデータの仕様を参照してください。 ドキュメントはオンラインで入手できます。MSDN の「[ECMA C# and Common Language Infrastructure Standards](https://go.microsoft.com/fwlink/?LinkID=99212)」 (ECMA の C# および共通言語基盤の標準規格) と、ECMA のインターナショナル Web サイトにある「[Standard ECMA-335 - Common Language Infrastructure (CLI)](https://go.microsoft.com/fwlink/?LinkID=65552)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -512,9 +522,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、次の例外をスローする必要がありますが、現在は使用できません。  
+ このメソッドは次の例外をスローする必要がありますが、現在は例外です。  
   
- <xref:System.InvalidOperationException> 場合は、含んでいる型が TypeBuilder.CreateType() を使用して作成されました。  
+ <xref:System.InvalidOperationException>TypeBuilder を使用して、含まれている型が作成されている場合は、CreateType ()。  
   
  ]]></format>
         </remarks>
@@ -565,7 +575,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetIDsOfNames`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetIDsOfNames`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -612,7 +622,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetTypeInfo`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfo`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -655,7 +665,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetTypeInfoCount`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfoCount`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -712,7 +722,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::Invoke`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::Invoke`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>

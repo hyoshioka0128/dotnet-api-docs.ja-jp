@@ -32,7 +32,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>ユーザーがデータにアクセスするための適切なセキュリティ レベルを持っていることを確認する .NET Framework データ プロバイダーを有効にします。</summary>
+    <summary>.NET Framework データ プロバイダーが、データ アクセスに関する適切なセキュリティ レベルをユーザーに割り当てることができるようにします。</summary>
     <remarks>To be added.</remarks>
     <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
   </Docs>
@@ -105,8 +105,8 @@
         <Parameter Name="state" Type="System.Security.Permissions.PermissionState" />
       </Parameters>
       <Docs>
-        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか 1 つ。</param>
-        <summary>新しいインスタンスを初期化する<see langword="DBDataPermission" />、指定したクラス<see cref="T:System.Security.Permissions.PermissionState" />値。</summary>
+        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか。</param>
+        <summary>指定した <see cref="T:System.Security.Permissions.PermissionState" /> 値を使用して、<see langword="DBDataPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -143,9 +143,9 @@
         <Parameter Name="dataPermission" Type="System.Data.Common.DBDataPermission" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="permission">既存の<see langword="DBDataPermission" />を新規作成するために使用<see langword="DBDataPermission" />します。</param>
+        <param name="permission">新しい <see langword="DBDataPermission" /> の作成に使用する既存の <see langword="DBDataPermission" />。</param>
         <param name="dataPermission">To be added.</param>
-        <summary>新しいインスタンスを初期化、<see langword="DBDataPermission" />既存を使用してクラス<see langword="DBDataPermission" />します。</summary>
+        <summary>既存の <see langword="DBDataPermission" /> を使用して、<see langword="DBDataPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -184,7 +184,7 @@
       <Docs>
         <param name="permissionAttribute">カスタム セキュリティ属性に関連付けられたセキュリティ アクション。</param>
         <param name="attribute">To be added.</param>
-        <summary>新しいインスタンスを初期化、 <see langword="DBDataPermission" /> 、指定したクラス<see langword="DBDataPermissionAttribute" />します。</summary>
+        <summary><see langword="DBDataPermission" /> を指定して、<see langword="DBDataPermissionAttribute" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -227,15 +227,15 @@
         <Parameter Name="blankPassword" Type="System.Boolean" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか 1 つ。</param>
+        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか。</param>
         <param name="allowBlankPassword">空白のパスワードが許可されることを示す場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
         <param name="blankPassword">To be added.</param>
-        <summary>新しいインスタンスを初期化、 <see langword="DBDataPermission" /> 、指定したクラス<see cref="T:System.Security.Permissions.PermissionState" />値、および空白のパスワードを許可するかどうかを示す値。</summary>
+        <summary>指定した <see cref="T:System.Security.Permissions.PermissionState" /> 値、および空白のパスワードを許可するかどうかを指定する値を使用して、<see langword="DBDataPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Permissions.PermissionState>列挙型よりも優先、<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>プロパティ。 そのため、設定した場合<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>に`false`も設定する必要があります<xref:System.Security.Permissions.PermissionState>に`None`をユーザーが空白のパスワードを使用して接続を確立することを防ぐためにします。  
+ 列挙<xref:System.Security.Permissions.PermissionState>は、 <xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>プロパティよりも優先されます。 したがって、をに<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A> `false`設定した場合は、 <xref:System.Security.Permissions.PermissionState>を`None`に設定して、ユーザーが空白のパスワードを使用して接続を確立できないようにする必要もあります。  
   
  ]]></format>
         </remarks>
@@ -273,22 +273,22 @@
       </Parameters>
       <Docs>
         <param name="connectionString">使用できる接続文字列。</param>
-        <param name="restrictions">許可または禁止する接続文字列パラメーターを識別する文字列。</param>
-        <param name="behavior">1 つ、<see cref="T:System.Data.KeyRestrictionBehavior" />プロパティ。</param>
-        <summary>既存の状態に指定された接続文字列へのアクセスを追加、<see langword="DBDataPermission" />します。</summary>
+        <param name="restrictions">接続文字列のパラメーターが許可されるか禁止されるかを識別する文字列。</param>
+        <param name="behavior"><see cref="T:System.Data.KeyRestrictionBehavior" /> プロパティの 1 つ。</param>
+        <summary><see langword="DBDataPermission" /> の既存の状態に、指定した接続文字列が表すアクセス権を追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、実装するときに役に立ちます。  
+ このメソッドは、を実装するときに役立ちます。  
   
--   .NET framework データ プロバイダー。  
+-   .NET framework データプロバイダー。  
   
--   データのアクセス許可をアサートする必要がある API です。  
+-   データアクセス許可のためにアサートする必要がある API。  
   
--   管理ツールまたはインストール プログラムのセキュリティ ポリシーを変更する必要があります。  
+-   セキュリティポリシーを変更する必要がある管理ツールまたはインストールプログラム。  
   
--   1 つ以上のルールを指定するより制限の厳しい規則が選択されます。  
+-   複数のルールが指定されている場合は、より制限の厳しいルールが選択されます。  
   
  ]]></format>
         </remarks>
@@ -321,12 +321,12 @@
       </ReturnValue>
       <Docs>
         <summary>空白のパスワードを許可するかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> それ以外の場合、空白のパスワードが許可された場合<see langword="false" />します。</value>
+        <value>空白のパスワードを許可する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Permissions.PermissionState>列挙型よりも優先、<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>プロパティ。 そのため、設定した場合<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>に`false`も設定する必要があります<xref:System.Security.Permissions.PermissionState>に`None`をユーザーが空白のパスワードを使用して接続を確立することを防ぐためにします。  
+ 列挙<xref:System.Security.Permissions.PermissionState>は、 <xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>プロパティよりも優先されます。 したがって、をに<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A> `false`設定した場合は、 <xref:System.Security.Permissions.PermissionState>を`None`に設定して、ユーザーが空白のパスワードを使用して接続を確立できないようにする必要もあります。  
   
  ]]></format>
         </remarks>
@@ -359,7 +359,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>以前を使用して追加するすべてのアクセス許可を削除、<see cref="M:System.Data.Common.DBDataPermission.Add(System.String,System.String,System.Data.KeyRestrictionBehavior)" />メソッド。</summary>
+        <summary>以前に <see cref="M:System.Data.Common.DBDataPermission.Add(System.String,System.String,System.Data.KeyRestrictionBehavior)" /> メソッドを使用して追加したすべての許可を削除します。</summary>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -390,13 +390,13 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>作成して、現在のアクセス許可オブジェクトと同一のコピーを返します。</summary>
+        <summary>現在のアクセス許可オブジェクトのコピーを作成して返します。</summary>
         <returns>現在のアクセス許可オブジェクトのコピー。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アクセス許可オブジェクトのコピーは、元のアクセス許可オブジェクトとリソースに対して同じアクセス許可を表します。  
+ アクセス許可オブジェクトのコピーは、元のアクセス許可オブジェクトと同じリソースへのアクセスを表します。  
   
  ]]></format>
         </remarks>
@@ -477,7 +477,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- セキュリティ オブジェクトを拡張するカスタム コードを実装する必要があります、`ToXml`と`FromXml`encodable オブジェクト セキュリティを作成するメソッド。  
+ セキュリティオブジェクトを拡張するカスタムコードでは、 `ToXml`オブジェクト`FromXml`のセキュリティを encodable するためにメソッドとメソッドを実装する必要があります。  
   
  ]]></format>
         </remarks>
@@ -512,18 +512,18 @@
         <Parameter Name="target" Type="System.Security.IPermission" />
       </Parameters>
       <Docs>
-        <param name="target">現在のアクセス許可オブジェクトと交差するアクセス許可オブジェクト。 現在のアクセス許可オブジェクトと同じ型でなければなりません。</param>
-        <summary>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの交差を表す新しいアクセス許可オブジェクトを返します。</summary>
-        <returns>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの積集合を表す新しいアクセス許可オブジェクト。 この新しいアクセス許可オブジェクトが null 参照 (<see langword="Nothing" /> Visual basic) の積集合が空の場合。</returns>
+        <param name="target">現在のアクセス許可オブジェクトとの積集合を持つアクセス許可オブジェクト。 このオブジェクトは、現在のアクセス許可オブジェクトと同じ型である必要があります。</param>
+        <summary>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの積集合を表す、新しいアクセス許可オブジェクトを返します。</summary>
+        <returns>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの積集合を表す新しいアクセス許可オブジェクト。 積集合が空の場合、この新しいアクセス許可オブジェクトは null 参照 (Visual Basic の場合は <see langword="Nothing" />) になります。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 2 つのアクセス許可の積集合は、両方について説明する操作のセットを表す権限です。 元の両方の権限を通過する要求だけでは、積集合を渡します。  
+ 2つのアクセス許可の積集合は、両方が記述する一連の操作を記述するアクセス許可です。 両方の元のアクセス許可を渡す要求だけが、積集合を渡します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="target" />パラメーターが null 参照ではありません (<see langword="Nothing" /> Visual basic)、現在のアクセス許可オブジェクトと同じクラスのインスタンスではないとします。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="target" /> パラメーターは、null 参照 (Visual Basic の場合は <see langword="Nothing" />) ではなく、現在のアクセス許可オブジェクトと同じクラスのインスタンスではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -555,18 +555,18 @@
         <Parameter Name="target" Type="System.Security.IPermission" />
       </Parameters>
       <Docs>
-        <param name="target">サブセットの関係をテストするには、アクセス許可オブジェクト。 このオブジェクトは、現在のアクセス許可オブジェクトと同じ型でなければなりません。</param>
+        <param name="target">サブセットの関係を調べる対象のアクセス許可オブジェクト。 このオブジェクトは、現在のアクセス許可オブジェクトと同じ型であることが必要です。</param>
         <summary>現在のアクセス許可オブジェクトが、指定したアクセス許可オブジェクトのサブセットかどうかを示す値を返します。</summary>
-        <returns><see langword="true" /> 現在のアクセス許可オブジェクトがそれ以外の場合、指定したアクセス許可オブジェクトのサブセットが場合<see langword="false" />します。</returns>
+        <returns>現在のアクセス許可オブジェクトが、指定したアクセス許可オブジェクトのサブセットである場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可オブジェクトは、現在のアクセス許可オブジェクトを指定したアクセス許可オブジェクトによって完全に含まれる一連の操作を指定する場合、指定したアクセス許可オブジェクトのサブセットです。 たとえば、C:\example.txt へのアクセスを表すアクセス許可は、c: へのアクセスを表すアクセス許可のサブセット\\します。 このメソッドが戻る場合`true`、現在のアクセス許可オブジェクトがない以上へのアクセスが保護されたリソースは、指定したアクセス許可オブジェクトを表します。  
+ 現在のアクセス許可オブジェクトは、指定したアクセス許可オブジェクトによって完全に含まれる一連の操作を現在のアクセス許可オブジェクトが指定している場合、指定したアクセス許可オブジェクトのサブセットです。 たとえば、C:\example.txt へのアクセスを表すアクセス許可は、C:\\へのアクセスを表すアクセス許可のサブセットです。 このメソッドがを`true`返す場合、現在のアクセス許可オブジェクトは、指定されたアクセス許可オブジェクトよりも保護されたリソースへのアクセスを許可しません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="target" />パラメーターは、現在のアクセス許可オブジェクトと同じ型ではないオブジェクト。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="target" /> パラメーターが、現在のアクセス許可オブジェクトと異なる型のオブジェクトを指定しています。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -599,8 +599,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>アクセス許可のセマンティクスの知識がなくても無制限のアクセス許可として表現できるかどうかを示す値を返します。</summary>
-        <returns><see langword="true" /> アクセス許可として表現できる場合は無制限。</returns>
+        <summary>アクセス許可のセマンティクスがわからなくてもアクセス許可を無制限として表すことができるかどうかを示す値を返します。</summary>
+        <returns>アクセス許可を無制限として表すことができる場合は <see langword="true" />。</returns>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -637,7 +637,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- セキュリティ オブジェクトを拡張するカスタム コードを実装する必要があります、<xref:System.Data.Common.DBDataPermission.ToXml%2A>と<xref:System.Data.Common.DBDataPermission.FromXml%2A>encodable オブジェクト セキュリティを作成するメソッド。  
+ セキュリティオブジェクトを拡張するカスタムコードでは<xref:System.Data.Common.DBDataPermission.ToXml%2A> 、 <xref:System.Data.Common.DBDataPermission.FromXml%2A>オブジェクトのセキュリティを encodable するためにメソッドとメソッドを実装する必要があります。  
   
  ]]></format>
         </remarks>
@@ -679,19 +679,19 @@
         <Parameter Name="other" Type="System.Security.IPermission" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="target">現在のアクセス許可オブジェクトと結合するためのアクセス許可オブジェクト。 現在のアクセス許可オブジェクトと同じ型でなければなりません。</param>
+        <param name="target">現在のアクセス許可オブジェクトと結合されるアクセス許可オブジェクト。 このオブジェクトは、現在のアクセス許可オブジェクトと同じ型である必要があります。</param>
         <param name="other">To be added.</param>
-        <summary>現在、指定したアクセス許可オブジェクトの和集合を表す新しいアクセス許可オブジェクトを返します。</summary>
+        <summary>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの和集合である、新しいアクセス許可オブジェクトを返します。</summary>
         <returns>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの和集合を表す新しいアクセス許可オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しの結果<xref:System.Data.Common.DBDataPermission.Union%2A>がすべての操作を表すアクセス許可を現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの両方で許可します。 いずれかのアクセス許可に適合する要求は、その共用体を渡します。  
+ の呼び出し<xref:System.Data.Common.DBDataPermission.Union%2A>の結果は、現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの両方によって許可されているすべての操作を表すアクセス許可です。 いずれかのアクセス許可を渡す要求では、その共用体が渡されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="target" />オブジェクトは、現在のアクセス許可オブジェクトと同じ型ではありません。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="target" /> オブジェクトが、現在のアクセス許可オブジェクトと同じ型ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>

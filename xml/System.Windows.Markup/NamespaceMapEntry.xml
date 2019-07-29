@@ -20,14 +20,14 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>情報を提供する、 <see cref="T:System.Windows.Markup.XamlTypeMapper" /> XML 名前空間、CLR 名前空間、およびその CLR 名前空間の関連する型を含むアセンブリ間のマッピングを使用します。</summary>
+    <summary><see cref="T:System.Windows.Markup.XamlTypeMapper" /> が XML 名前空間、CLR 名前空間、およびその CLR 名前空間の関連する型を格納するアセンブリの間の割り当てに使用する情報を提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この型は、XAML の WPF 実装に固有です。 一般的な XAML 実装で使用する場合は、WPF アセンブリを含める必要があります。  
+ この型は、XAML の WPF 実装に固有のものです。 XAML の一般的な実装で使用する場合は、WPF アセンブリを含める必要があります。  
   
- WPF アセンブリを含むを必要としない別の手法には、XAML スキーマ コンテキストの参照が含まれます (からサービス プロバイダーのコンテキストで使用できる<xref:System.Xaml.IXamlSchemaContextProvider>からまたは<xref:System.Xaml.XamlObjectWriter.SchemaContext%2A?displayProperty=nameWithType>から XAML ノード ループまたは一般的な XAML ライターのフレームの参照)。XAML スキーマ コンテキストには、そのアセンブリ、優先プレフィックス マッピング、および XAML 名前空間の情報を返すための API が含まれています。  
+ WPF アセンブリを含める必要のない別の方法としては、xaml スキーマコンテキストの参照 (の<xref:System.Xaml.IXamlSchemaContextProvider>サービスプロバイダーコンテキストで使用可能)、 <xref:System.Xaml.XamlObjectWriter.SchemaContext%2A?displayProperty=nameWithType>または xaml ノードループまたは xaml ライターから参照される一般的な xaml ライターのフレームからの参照があります。XAML スキーマコンテキストには、そのアセンブリ、優先するプレフィックスマッピング、および XAML 名前空間情報を返すための API が含まれています。  
   
  ]]></format>
     </remarks>
@@ -88,14 +88,14 @@
       </Parameters>
       <Docs>
         <param name="xmlNamespace">XML 名前空間のマッピング プレフィックス。</param>
-        <param name="assemblyName">このアセンブリは、CLR 名前空間と XML 名前空間にマップする型が含まれています。</param>
-        <param name="clrNamespace">関連する型を含むアセンブリの CLR 名前空間。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Markup.NamespaceMapEntry" />クラス、指定された XML 名前空間、CLR 名前空間、およびアセンブリ情報を使用します。</summary>
+        <param name="assemblyName">XML 名前空間に割り当てる CLR 名前空間および型を格納しているアセンブリ。</param>
+        <param name="clrNamespace">関連する型を格納しているアセンブリ内の CLR 名前空間。</param>
+        <summary>指定された XML 名前空間、CLR 名前空間、およびアセンブリ情報を使用して、<see cref="T:System.Windows.Markup.NamespaceMapEntry" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 「簡易名」形式を使用して、`assemblyName`します。 具体的には、パスを指定しないと、ファイル拡張子を含めないでください。 これはによって報告がフォームに似ています<xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>します。 パスが個別に指定されて参照してください<xref:System.Windows.Markup.XamlTypeMapper.SetAssemblyPath%2A?displayProperty=nameWithType>します。  
+ に`assemblyName`は、"簡易名" の形式を使用します。 特に、パスを指定せずに、ファイル拡張子を含めないでください。 これは、によって報告される可能性の<xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>あるフォームに似ています。 パスは個別に指定します。「 <xref:System.Windows.Markup.XamlTypeMapper.SetAssemblyPath%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -105,7 +105,7 @@
  <paramref name="assemblyName" /> は <see langword="null" /> です  
   
 - または - 
- <paramref name="clrNamespace" /> は <see langword="null" /> です。</exception>
+ <paramref name="clrNamespace" /> は <see langword="null" />です。</exception>
         <altmember cref="T:System.Windows.Markup.XamlTypeMapper" />
       </Docs>
     </Member>
@@ -131,17 +131,17 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または CLR 名前空間の型を含むアセンブリ名を設定します。</summary>
+        <summary>CLR 名前空間にある型を格納しているアセンブリ名を取得または設定します。</summary>
         <value>アセンブリ名。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 「簡易名」形式を使用して、<xref:System.Windows.Markup.NamespaceMapEntry.AssemblyName%2A>します。 具体的には、完全なパスを指定しないと、ファイル拡張子を含めないでください。 これはによって報告がフォームに似ています<xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>します。  
+ に<xref:System.Windows.Markup.NamespaceMapEntry.AssemblyName%2A>は、"簡易名" の形式を使用します。 特に、完全なパスを指定せず、ファイル拡張子を含めないでください。 これは、によって報告される可能性の<xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>あるフォームに似ています。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException">値<see cref="P:System.Windows.Markup.NamespaceMapEntry.AssemblyName" />が設定されていますが<see langword="null" />します。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="P:System.Windows.Markup.NamespaceMapEntry.AssemblyName" /> に設定されている値が <see langword="null" /> です。</exception>
         <altmember cref="T:System.Windows.Markup.XamlTypeMapper" />
       </Docs>
     </Member>
@@ -167,10 +167,10 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはマップされている型を含む CLR 名前空間を設定します。</summary>
+        <summary>割り当てる型を格納している CLR 名前空間を取得または設定します。</summary>
         <value>CLR 名前空間。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">値<see cref="P:System.Windows.Markup.NamespaceMapEntry.ClrNamespace" />が設定されていますが<see langword="null" />します。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="P:System.Windows.Markup.NamespaceMapEntry.ClrNamespace" /> に設定されている値が <see langword="null" /> です。</exception>
         <altmember cref="T:System.Windows.Markup.XamlTypeMapper" />
       </Docs>
     </Member>
@@ -196,10 +196,10 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定にマップされている XML 名前空間のマッピング プレフィックス。</summary>
+        <summary>割り当てる XML 名前空間のマッピング プレフィックスを取得または設定します。</summary>
         <value>XML 名前空間のマッピング プレフィックス。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">値<see cref="P:System.Windows.Markup.NamespaceMapEntry.XmlNamespace" />が設定されていますが<see langword="null" />します。</exception>
+        <exception cref="T:System.ArgumentNullException"><see cref="P:System.Windows.Markup.NamespaceMapEntry.XmlNamespace" /> に設定されている値が <see langword="null" /> です。</exception>
         <altmember cref="T:System.Windows.Markup.XamlTypeMapper" />
       </Docs>
     </Member>

@@ -22,16 +22,16 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 分離プロバイダーは、アプリケーションによってホストされます。 2 つのメソッドは、WMI クラスのインスタンスを使用できるようにするアプリケーションで使用できます。 発行/取り消しまたはコールバック メソッド。 コールバック メソッドを使用して、<xref:System.Management.Instrumentation.InstrumentationManager.RegisterType%2A>と<xref:System.Management.Instrumentation.InstrumentationManager.UnregisterType%2A>メソッド。  
+ 分離プロバイダーは、アプリケーションによってホストされます。 アプリケーションでは、publish/revoke または callback メソッドの2つのメソッドを使用して、WMI クラスのインスタンスを使用できるようにすることができます。 コールバックメソッドは、 <xref:System.Management.Instrumentation.InstrumentationManager.RegisterType%2A>メソッド<xref:System.Management.Instrumentation.InstrumentationManager.UnregisterType%2A>とメソッドを使用します。  
   
- 発行/取り消しモデルでは、WMI インフラストラクチャは、多くのコールバック メソッドで自分で記述する必要があるメソッドの既定の動作を提供します。 これらは、列挙体を含めるし、メソッドをバインドします。 このモデルでは、アプリケーションは、インスタンスを作成し、それらを発行します。 アプリケーションは、クラスのキー プロパティが守られていることを保証します。 アプリケーションは、インスタンスを削除する役割もできます。  
+ パブリッシュ/失効モデルでは、コールバックメソッドで自分で記述する必要がある多くのメソッドに対して、WMI インフラストラクチャによって既定の動作が提供されます。 これには、列挙メソッドとバインドメソッドが含まれます。 このモデルでは、アプリケーションによってインスタンスが作成され、公開されます。 アプリケーションは、クラスの主要なプロパティが尊重されることを保証する役割を担います。 また、アプリケーションはインスタンスの削除も行います。  
   
- コールバック モデルでは、WMI インフラストラクチャには、列挙型、バインディング、およびプロバイダーの機能を実装するために必要なその他のメソッドを処理するメソッドを使用して、アプリケーションが期待しています。 この機能用のアプリケーションを呼び出すしが存在しないか、正しく実装されていない場合は失敗します。 アプリケーションは、呼び出すことによって、インフラストラクチャとその WMI クラスの種類を登録<xref:System.Management.Instrumentation.InstrumentationManager.RegisterType%2A>し、呼び出すことによって公開される WMI クラスが不要になった必要であることを示します<xref:System.Management.Instrumentation.InstrumentationManager.UnregisterType%2A>します。  
+ コールバックモデルでは、WMI インフラストラクチャは、列挙、バインド、およびプロバイダーの機能を実装するために必要なその他のメソッドを処理するメソッドをアプリケーションに提供することを想定しています。 この機能のためにアプリケーションを呼び出します。存在しない場合、または適切に実装されていない場合は失敗します。 アプリケーションは、を呼び出し<xref:System.Management.Instrumentation.InstrumentationManager.RegisterType%2A>て wmi クラスの型をインフラストラクチャに登録し、を呼び出す<xref:System.Management.Instrumentation.InstrumentationManager.UnregisterType%2A>ことによって公開される wmi クラスを必要としないことを示します。  
   
    
   
 ## Examples  
- 次の例では、発行/取り消しモデルを使用する方法を示します。 ルーターのクラスの 2 つのインスタンスが作成および公開します。 これらは後で取り消されました。  
+ 次の例では、パブリッシュ/取り消しモデルを使用する方法を示します。 Router クラスの2つのインスタンスが作成され、発行されます。 これらは後で失効します。  
   
 ```  
 public class Sample_InstanceProvider  
@@ -52,7 +52,7 @@ return 0;
 }  
 ```  
   
- 次の例では、登録のコールバック メソッドを使用して、RouterNew クラスを公開します。  
+ 次の例では、登録のコールバックメソッドを使用して、RouterNew クラスを公開しています。  
   
 ```  
 public int MainNew(string[] args)   
@@ -122,7 +122,7 @@ public int MainNew(string[] args)
       </Parameters>
       <Docs>
         <param name="managementAssembly">登録するアセンブリ。</param>
-        <summary>アセンブリが WMI インフラストラクチャに登録されます。</summary>
+        <summary>アセンブリを WMI インフラストラクチャに登録します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -218,8 +218,8 @@ static int Main(string[] args)
         <Parameter Name="managementAssembly" Type="System.Reflection.Assembly" />
       </Parameters>
       <Docs>
-        <param name="managementAssembly">登録済みのアセンブリの登録を解除します。</param>
-        <summary>WMI インフラストラクチャに現在登録されているアセンブリを登録解除します。</summary>
+        <param name="managementAssembly">登録を解除する登録済みのセンブリ。</param>
+        <summary>WMI インフラストラクチャに現在登録されているアセンブリの登録を解除します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -244,7 +244,7 @@ static int Main(string[] args)
       </Parameters>
       <Docs>
         <param name="managementType">登録を解除する登録済みの型。</param>
-        <summary>WMI インフラストラクチャに登録されているクラスを登録解除します。</summary>
+        <summary>WMI インフラストラクチャに登録されたクラスの登録を解除します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

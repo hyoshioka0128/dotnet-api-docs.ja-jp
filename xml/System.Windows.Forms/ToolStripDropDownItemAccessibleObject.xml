@@ -20,7 +20,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>障がいを持つユーザーに合わせて <see cref="T:System.Windows.Forms.ToolStripDropDown" /> のユーザー インターフェイスを調整するため、ユーザー補助対応アプリケーションで使用される情報を提供します。</summary>
+    <summary>障害を持つユーザーに合わせて <see cref="T:System.Windows.Forms.ToolStripDropDown" /> のユーザー インターフェイスを調整するために、ユーザー補助アプリケーションが使用する情報を提供します。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -46,7 +46,7 @@
         <Parameter Name="item" Type="System.Windows.Forms.ToolStripDropDownItem" />
       </Parameters>
       <Docs>
-        <param name="item"><see cref="T:System.Windows.Forms.ToolStripDropDownItem" />これを所有している<see cref="T:System.Windows.Forms.ToolStripDropDownItemAccessibleObject" />します。</param>
+        <param name="item">この <see cref="T:System.Windows.Forms.ToolStripDropDownItem" /> を所有している <see cref="T:System.Windows.Forms.ToolStripDropDownItemAccessibleObject" />。</param>
         <summary><see cref="T:System.Windows.Forms.ToolStripDropDownItemAccessibleObject" /> を指定して、<see cref="T:System.Windows.Forms.ToolStripDropDownItem" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -69,16 +69,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このユーザー補助オブジェクトに関連付けられている既定のアクションを実行します。</summary>
+        <summary>ユーザー補助オブジェクトに関連付けられた既定のアクションを実行します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- クライアントは、オブジェクトの検査することによって、オブジェクトの既定のアクションを取得できる<xref:System.Windows.Forms.AccessibleObject.DefaultAction%2A>プロパティ。 クライアントが使用できるオートメーション (サポートされている) 場合の代わりに<xref:System.Windows.Forms.AccessibleObject.DoDefaultAction%2A>オブジェクトの既定のアクションを実行します。 ただし、<xref:System.Windows.Forms.AccessibleObject.DoDefaultAction%2A>オブジェクトを実行する簡単な方法は、アクションに最もよく使用を提供します。  
+ クライアントは、オブジェクトの<xref:System.Windows.Forms.AccessibleObject.DefaultAction%2A>プロパティを調べることによって、オブジェクトの既定のアクションを取得できます。 クライアントは、オブジェクトの既定のアクションを実行する<xref:System.Windows.Forms.AccessibleObject.DoDefaultAction%2A>のではなく、オートメーション (サポートされている場合) を使用できます。 ただし、 <xref:System.Windows.Forms.AccessibleObject.DoDefaultAction%2A>では、オブジェクトの中で最もよく使用される操作を簡単に実行できます。  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>システム指定のユーザー インターフェイス要素によって実行される既定のアクションは、キーボードの状態に依存します。 場合など、SHIFT 修飾子キー、alt キー、または ctrl キーを押しは停止されます (または、ユーザー操作によってプログラムで) と<see cref="M:System.Windows.Forms.AccessibleObject.DoDefaultAction" />を呼び出すと、既定のアクションできない可能性があります、これらのキーと下矢は限らないと同じです。 既定のアクションがないオブジェクトもあります。</para></block>
+        <block subset="none" type="overrides"><para>システム提供のユーザーインターフェイス要素によって実行される既定の動作は、キーボードの状態によって異なります。 つまり、が呼び出されたとき<see cref="M:System.Windows.Forms.AccessibleObject.DoDefaultAction" />に、shift、ALT、CTRL などの修飾子キーが押されている場合 (ユーザーの操作またはプログラムによる) は、これらのキーが押されていない場合と同じではない可能性があります。 既定のアクションがないオブジェクトもあります。</para></block>
         <altmember cref="M:System.Windows.Forms.AccessibleObject.DoDefaultAction" />
       </Docs>
     </Member>
@@ -102,16 +102,16 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">アクセス可能な子コントロールの 0 から始まるインデックス。</param>
-        <summary>指定したインデックスに対応する子ユーザー補助コントロールを取得します。</summary>
-        <returns><see cref="T:System.Windows.Forms.AccessibleObject" />指定したインデックスに対応する子ユーザー補助コントロールを表します。</returns>
+        <param name="index">子コントロールのユーザー補助オブジェクトの 0 から始まるインデックス。</param>
+        <summary>指定したインデックスに対応する子コントロールのユーザー補助オブジェクトを取得します。</summary>
+        <returns>指定したインデックスに対応する子コントロールのユーザー補助オブジェクトを表す <see cref="T:System.Windows.Forms.AccessibleObject" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- ユーザー補助対応のグラフの作成を次のコード例に示しますを使用して、制御、<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>アクセス可能な情報を公開するクラス。 コントロールは、凡例と共に 2 つの曲線をプロットします。 `ChartControlAccessibleObject`から派生したクラス<xref:System.Windows.Forms.Control.ControlAccessibleObject>で使用されて、<xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>グラフ コントロールのカスタムのアクセス可能な情報を提供するメソッド。 グラフの凡例の実績がないため<xref:System.Windows.Forms.Control>-ベースの制御が描画される代わりに、グラフ コントロールではなく組み込みアクセス可能な情報。 そのため、`ChartControlAccessibleObject`オーバーライド、<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>を返すメソッドを`CurveLegendAccessibleObject`凡例の各部分にアクセスできる情報を表します。 ユーザー補助対応アプリケーションでは、このコントロールを使用すると、コントロールは、アクセスに必要な情報を提供できます。  
+ 次のコード例は、クラス<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>クラスを使用してアクセス可能な情報を公開する、アクセシビリティ対応のグラフコントロールを作成する方法を示しています。 コントロールは、凡例と共に2つの曲線をプロットします。 から`ChartControlAccessibleObject` <xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>派生したクラスは、グラフコントロールにカスタムのアクセス可能な情報を提供するために、メソッドで使用されます。 <xref:System.Windows.Forms.Control.ControlAccessibleObject> グラフの凡例は実際<xref:System.Windows.Forms.Control>のコントロールではなく、グラフコントロールによって描画されるため、組み込みのアクセス可能な情報は含まれません。 このため、 `ChartControlAccessibleObject`クラスはメソッド<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>をオーバーライドして`CurveLegendAccessibleObject` 、凡例の各部分のアクセス可能な情報を表すを返します。 アクセス可能なアプリケーションがこのコントロールを使用する場合、コントロールは必要なアクセス可能な情報を提供できます。  
   
- このコードでは、オーバーライドでは、<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>メソッド。 参照してください、<xref:System.Windows.Forms.AccessibleObject>完全なコード例では、クラスの概要。  
+ このコードは、メソッド<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>をオーバーライドする方法を示しています。 完全な<xref:System.Windows.Forms.AccessibleObject>コード例については、クラスの概要を参照してください。  
   
  [!code-cpp[System.Windows.Forms.AccessibleObject#4](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CPP/chartcontrol.cpp#4)]
  [!code-csharp[System.Windows.Forms.AccessibleObject#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CS/chartcontrol.cs#4)]
@@ -146,9 +146,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- ユーザー補助対応のグラフの作成を次のコード例に示しますを使用して、制御、<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>アクセス可能な情報を公開するクラス。 コントロールは、凡例と共に 2 つの曲線をプロットします。 `ChartControlAccessibleObject`から派生したクラス<xref:System.Windows.Forms.Control.ControlAccessibleObject>で使用されて、<xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>グラフ コントロールのカスタムのアクセス可能な情報を提供するメソッド。 グラフの凡例の実績がないため<xref:System.Windows.Forms.Control>-ベースの制御が描画される代わりに、グラフ コントロールではなく組み込みアクセス可能な情報。 そのため、`ChartControlAccessibleObject`オーバーライド、<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>を返すメソッドを`CurveLegendAccessibleObject`凡例の各部分にアクセスできる情報を表します。 ユーザー補助対応アプリケーションでは、このコントロールを使用すると、コントロールは、アクセスに必要な情報を提供できます。  
+ 次のコード例は、クラス<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>クラスを使用してアクセス可能な情報を公開する、アクセシビリティ対応のグラフコントロールを作成する方法を示しています。 コントロールは、凡例と共に2つの曲線をプロットします。 から`ChartControlAccessibleObject` <xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>派生したクラスは、グラフコントロールにカスタムのアクセス可能な情報を提供するために、メソッドで使用されます。 <xref:System.Windows.Forms.Control.ControlAccessibleObject> グラフの凡例は実際<xref:System.Windows.Forms.Control>のコントロールではなく、グラフコントロールによって描画されるため、組み込みのアクセス可能な情報は含まれません。 このため、 `ChartControlAccessibleObject`クラスはメソッド<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>をオーバーライドして`CurveLegendAccessibleObject` 、凡例の各部分のアクセス可能な情報を表すを返します。 アクセス可能なアプリケーションがこのコントロールを使用する場合、コントロールは必要なアクセス可能な情報を提供できます。  
   
- この例でのオーバーライドを示しています、<xref:System.Windows.Forms.AccessibleObject.GetChildCount%2A>メソッド。 参照してください、<xref:System.Windows.Forms.AccessibleObject>完全なコード例では、クラスの概要。  
+ このコードは、メソッドを<xref:System.Windows.Forms.AccessibleObject.GetChildCount%2A>オーバーライドする方法を示しています。 完全な<xref:System.Windows.Forms.AccessibleObject>コード例については、クラスの概要を参照してください。  
   
  [!code-cpp[System.Windows.Forms.AccessibleObject#4](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CPP/chartcontrol.cpp#4)]
  [!code-csharp[System.Windows.Forms.AccessibleObject#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CS/chartcontrol.cs#4)]
@@ -181,7 +181,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- オブジェクトの役割は、オブジェクトの関数について説明することができます。  
+ オブジェクトの役割は、オブジェクトの機能を記述するのに役立ちます。  
   
  ]]></format>
         </remarks>

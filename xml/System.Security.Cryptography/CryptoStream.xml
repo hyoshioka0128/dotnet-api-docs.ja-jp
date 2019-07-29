@@ -42,17 +42,17 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 共通言語ランタイムは、暗号化のためのストリーム指向の設計を使用します。 この設計のコアが<xref:System.Security.Cryptography.CryptoStream>します。 どの暗号化オブジェクトを実装する<xref:System.Security.Cryptography.CryptoStream>と共に実装する任意のオブジェクトをチェーンできる<xref:System.IO.Stream>ので、1 つのオブジェクトからストリーミングされる出力を別のオブジェクトの入力に渡すことができます。 中間結果 (最初のオブジェクトからの出力) は、個別に格納されている必要はありません。  
+ 共通言語ランタイムでは、暗号化にストリーム指向のデザインを使用します。 この設計の中核となる<xref:System.Security.Cryptography.CryptoStream>のは、です。 を実装するすべての<xref:System.Security.Cryptography.CryptoStream>暗号化オブジェクトは、を実装<xref:System.IO.Stream>する任意のオブジェクトと共にチェーンすることができるため、1つのオブジェクトからのストリーム出力を別のオブジェクトの入力に渡すことができます。 中間結果 (最初のオブジェクトからの出力) は、個別に保存する必要はありません。  
   
 > [!IMPORTANT]
->  この型は <xref:System.IDisposable> インターフェイスを実装します。 型の使用が完了したら、必要がありますを破棄する、直接または間接的に呼び出すことによってその<xref:System.Security.Cryptography.CryptoStream.Clear%2A>メソッドを呼び出してその<xref:System.IDisposable>実装します。 直接的に型を破棄するには、`try` / `catch` ブロック内で <xref:System.Security.Cryptography.CryptoStream.Clear%2A> メソッドを呼び出します。 間接的に型を破棄するには、`using` (C# の場合) または `Using` (Visual Basic 言語) などの言語構成要素を使用します。 詳細については、<xref:System.IDisposable> インターフェイスに関するトピック内の「IDisposable を実装するオブジェクトの使用」セクションを参照してください。  
+>  この型は <xref:System.IDisposable> インターフェイスを実装します。 型の使用が終了したら、 <xref:System.Security.Cryptography.CryptoStream.Clear%2A>メソッドを呼び出すことによって、直接または間接的にこの型を破棄する必要があります。その後、その<xref:System.IDisposable>実装を呼び出します。 直接的に型を破棄するには、`try` / `catch` ブロック内で <xref:System.Security.Cryptography.CryptoStream.Clear%2A> メソッドを呼び出します。 間接的に型を破棄するには、`using` (C# の場合) または `Using` (Visual Basic 言語) などの言語構成要素を使用します。 詳細については、<xref:System.IDisposable> インターフェイスに関するトピック内の「IDisposable を実装するオブジェクトの使用」セクションを参照してください。  
   
- 常に明示的に閉じる必要があります、<xref:System.Security.Cryptography.CryptoStream>オブジェクトが完了したらを使用して呼び出すことによって、<xref:System.Security.Cryptography.CryptoStream.Clear%2A>メソッド。  これを基になるストリームをまとめてフラッシュし、によって処理されるデータの残りのすべてのブロック、<xref:System.Security.Cryptography.CryptoStream>オブジェクト。  ただし、呼び出す前に、例外が発生した場合、<xref:System.IO.Stream.Close%2A>メソッド、<xref:System.Security.Cryptography.CryptoStream>オブジェクトが終了していない可能性があります。  いることを確認する、<xref:System.IO.Stream.Close%2A>への呼び出しを配置して、常にメソッドは呼び出される、<xref:System.Security.Cryptography.CryptoStream.Clear%2A>内のメソッド、`finally`のブロックを`try` / `catch`ステートメント。  
+ オブジェクトを使用した後<xref:System.Security.Cryptography.CryptoStream>は、 <xref:System.Security.Cryptography.CryptoStream.Clear%2A>メソッドを呼び出すことによって、常に明示的に閉じる必要があります。  これにより、基になるストリームがフラッシュされ、残りのすべてのデータ<xref:System.Security.Cryptography.CryptoStream>ブロックがオブジェクトによって処理されます。  ただし、 <xref:System.IO.Stream.Close%2A>メソッドを呼び出す前に例外が発生した場合<xref:System.Security.Cryptography.CryptoStream> 、オブジェクトは閉じられない可能性があります。  <xref:System.IO.Stream.Close%2A>メソッドが常に呼び出されるようにするには、 <xref:System.Security.Cryptography.CryptoStream.Clear%2A>メソッドへの呼び出しを`finally` `catch`ステートメントの`try` /ブロック内に配置します。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Security.Cryptography.CryptoStream>文字列を暗号化します。 このメソッドを使用して<xref:System.Security.Cryptography.RijndaelManaged>、指定したクラス<xref:System.Security.Cryptography.SymmetricAlgorithm.Key%2A>および初期化ベクター (<xref:System.Security.Cryptography.SymmetricAlgorithm.IV%2A>)。  
+ 次の例は、を使用<xref:System.Security.Cryptography.CryptoStream>して文字列を暗号化する方法を示しています。 このメソッドは<xref:System.Security.Cryptography.RijndaelManaged> 、指定さ<xref:System.Security.Cryptography.SymmetricAlgorithm.Key%2A>れたおよび初期化ベクター<xref:System.Security.Cryptography.SymmetricAlgorithm.IV%2A>() でクラスを使用します。  
   
  [!code-csharp[Cryptography.Rijndael.Create.File#1](~/samples/snippets/csharp/VS_Snippets_CLR/cryptography.rijndael.create.file/cs/fileexample.cs#1)]
  [!code-vb[Cryptography.Rijndael.Create.File#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/cryptography.rijndael.create.file/vb/fileexample.vb#1)]  
@@ -95,13 +95,13 @@
       <Docs>
         <param name="stream">暗号変換を実行する対象のストリーム。</param>
         <param name="transform">指定したストリームで実行する暗号変換。</param>
-        <param name="mode"><see cref="T:System.Security.Cryptography.CryptoStreamMode" /> 値のいずれか 1 つ。</param>
-        <summary>暗号化の対象とするデータ ストリーム、使用する変換、およびストリームのモードを指定して、<see cref="T:System.Security.Cryptography.CryptoStream" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="mode"><see cref="T:System.Security.Cryptography.CryptoStreamMode" /> 値のいずれか。</param>
+        <summary>暗号化の対象とするストリーム、実行する変換、およびストリームのモードを指定して、<see cref="T:System.Security.Cryptography.CryptoStream" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生した任意のオブジェクト<xref:System.IO.Stream>に渡すことができます、`stream`パラメーター。 実装する任意のオブジェクト<xref:System.Security.Cryptography.ICryptoTransform>(など<xref:System.Security.Cryptography.HashAlgorithm>) に渡すことができます、`transform`パラメーター。  
+ から<xref:System.IO.Stream>派生したオブジェクトは、 `stream`パラメーターに渡すことができます。 を実装<xref:System.Security.Cryptography.ICryptoTransform>するオブジェクト ( <xref:System.Security.Cryptography.HashAlgorithm>など) は、 `transform`パラメーターに渡すことができます。  
   
  ]]></format>
         </remarks>
@@ -297,7 +297,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シークがで有効になっていませんを<xref:System.Security.Cryptography.CryptoStream>ので、このメソッドは常に返します`false`します。  
+ でシークが有効になっ<xref:System.Security.Cryptography.CryptoStream>ていないため、この`false`メソッドは常にを返します。  
   
  ]]></format>
         </remarks>
@@ -375,9 +375,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、型の呼び出しをラップ<xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType>実装します。  
+ このメソッドは、型の<xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType>実装への呼び出しをラップします。  
   
- 呼び出す`Dispose`によって使用されるリソースの使用、<xref:System.Security.Cryptography.CryptoStream>他の目的で再割り当てします。 詳細については`Dispose`を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)  
+ を`Dispose`呼び出すと、 <xref:System.Security.Cryptography.CryptoStream>によって使用されるリソースを他の目的で再割り当てできます。 の詳細`Dispose`については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -450,16 +450,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パブリック`Dispose()`メソッドと`Finalize`メソッド。 `Dispose()` 保護された起動`Dispose(Boolean)`メソッドは、disposing パラメーターを設定して`true`。 `Finalize` 呼び出す`Dispose`に設定して`false`します。  
+ このメソッドは、パブリック`Dispose()`メソッド`Finalize`とメソッドによって呼び出されます。 `Dispose()`disposing パラメーターを`Dispose(Boolean)`に`true`設定して、保護されたメソッドを呼び出します。 `Finalize`disposing `Dispose`をに設定し`false`てを呼び出します。  
   
  `disposing` パラメーターが `true` の場合、このメソッドは、この <xref:System.Security.Cryptography.CryptoStream> が参照しているすべてのマネージド オブジェクトによって保持されているリソースをすべて解放します。 このメソッドは、参照される各オブジェクトの `Dispose()` メソッドを呼び出します。  
   
  ]]></format>
         </remarks>
         <block subset="none" type="overrides"><para>
-            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 オーバーライドするときに<see langword="Dispose(Boolean)" />を以前の呼び出しで破棄されたオブジェクトを参照しないように注意、<see langword="Dispose" />します。 実装する方法についての詳細は<see langword="Dispose(Boolean)" />を参照してください[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。  
+            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 をオーバーライド<see langword="Dispose(Boolean)" />する場合は、以前にを<see langword="Dispose" />呼び出したときに破棄されたオブジェクトを参照しないように注意してください。 を実装<see langword="Dispose(Boolean)" />する方法の詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。  
   
-詳細については<see langword="Dispose" />と<see langword="Finalize" />を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)します。</para></block>
+<see langword="Dispose" /> および<see langword="Finalize" />の詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。</para></block>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -613,15 +613,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在のストリームのバッファーをすべてクリアし、バッファー内にあるデータすべてを、基になるデバイスに書き込みます。</summary>
+        <summary>現在のライターで使用したすべてのストリームをクリアし、バッファー内のすべてのデータを基になるデバイスに書き込みます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ストリームのフラッシュを明示的に呼び出さない限り、その基になるエンコーダー フラッシュしない<xref:System.Security.Cryptography.CryptoStream.Flush%2A>または<xref:System.IO.Stream.Close%2A>します。 設定<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`データは、バッファーからストリームにフラッシュされますが、エンコーダーの状態はフラッシュされないことを意味します。 これにより、エンコーダーで、次の文字のブロックは正常にエンコードできるように、(一部の文字) の状態を維持できます。 このシナリオでは、UTF8、UTF7、特定の文字をエンコードするため、エンコーダーは、隣接する文字または文字列を受信した後に影響します。  
+ または<xref:System.Security.Cryptography.CryptoStream.Flush%2A> <xref:System.IO.Stream.Close%2A>を明示的に呼び出す場合を除き、ストリームをフラッシュしても、基になるエンコーダーはフラッシュされません。 を<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`設定すると、バッファーからストリームにデータがフラッシュされますが、エンコーダーの状態はフラッシュされません。 これにより、エンコーダーは次の文字ブロックを正しくエンコードできるように、その状態 (部分文字) を保持できます。 このシナリオは、エンコーダーが隣接する文字を受け取ると、特定の文字のみをエンコードできる UTF8 と UTF7 に影響します。  
   
 > [!NOTE]
->  いずれかを呼び出す必要があります、<xref:System.IO.Stream.Close%2A>メソッドまたは<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>メソッドをバッファーのフラッシュを完了します。  
+>  バッファーのフラッシュを完了<xref:System.IO.Stream.Close%2A>するに<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>は、メソッドまたはメソッドのいずれかを呼び出す必要があります。  
   
  ]]></format>
         </remarks>
@@ -665,9 +665,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.FlushAsync%2A>で、 `await` (c#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
+ タスクが完了するまでメソッド<xref:System.Security.Cryptography.CryptoStream.FlushAsync%2A>の実行`await`を中断する`Await`には、(C#) または (Visual Basic) 演算子を使用して、の呼び出しを先頭に付ける必要があります。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
   
- 完了前に、操作が取り消された場合、返されたタスクが含まれています、<xref:System.Threading.Tasks.TaskStatus.Canceled>値、<xref:System.Threading.Tasks.Task.Status%2A>プロパティ。  
+ 操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled>タスクには<xref:System.Threading.Tasks.Task.Status%2A>プロパティの値が含まれます。  
   
  ]]></format>
         </remarks>
@@ -710,15 +710,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出す、<xref:System.IO.Stream.Close%2A>メソッドの呼び出しは<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>します。 呼び出さない場合<xref:System.IO.Stream.Close%2A>、呼び出す<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>バッファーのフラッシュが完了します。 呼び出す<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>ストリームのすべてのアクティビティが完了するとだけです。  
+ メソッドを<xref:System.IO.Stream.Close%2A>呼び出すと<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>、が呼び出されます。 を呼び<xref:System.IO.Stream.Close%2A>出さない場合は、 <xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>を呼び出してバッファーのフラッシュを完了します。 すべて<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>のストリームアクティビティが完了した場合にのみ、を呼び出します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.Cryptography.CryptographicException">ストリームに無効な埋め込みが発生することができます、キーが壊れています。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーが破損しており、ストリームに無効な埋め込みが行われる可能性があります。</exception>
         <exception cref="T:System.NotSupportedException">現在のストリームが書き込み可能ではありません。  
   
 - または - 
-最後のブロックは既に変換されています。</exception>
+最後のブロックが既に変換されています。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -751,12 +751,12 @@
       </ReturnValue>
       <Docs>
         <summary>最後のバッファー ブロックが基になるストリームに書き込まれたかどうかを示す値を取得します。</summary>
-        <value>最後のブロックがフラッシュされた場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>最後のブロックがフラッシュされている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは設定`true`ときに、<xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>メソッドが呼び出されます。  
+ このプロパティは、 `true` <xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>メソッドが呼び出されたときに設定されます。  
   
  ]]></format>
         </remarks>
@@ -798,7 +798,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 継承をサポートするためだけにこのプロパティが存在する<xref:System.IO.Stream>、使用することはできません。  
+ このプロパティは <xref:System.IO.Stream> からの継承をサポートするためだけのもので、使用できません。  
   
  ]]></format>
         </remarks>
@@ -842,7 +842,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 継承をサポートするためだけにこのプロパティが存在する<xref:System.IO.Stream>、使用することはできません。  
+ このプロパティは <xref:System.IO.Stream> からの継承をサポートするためだけのもので、使用できません。  
   
  ]]></format>
         </remarks>
@@ -890,18 +890,18 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="buffer">バイト配列。 現在のストリームから最大で <paramref name="count" /> バイトを読み取り、<paramref name="buffer" /> 内に格納します。</param>
+        <param name="buffer">バイト配列。 現在のストリームから <paramref name="count" /> で指定された最大バイト数を読み取り、<paramref name="buffer" /> 内に格納します。</param>
         <param name="offset">現在のストリームから読み取ったデータの格納を開始する位置を示す、<paramref name="buffer" /> 内のバイト オフセット。</param>
         <param name="count">現在のストリームから読み取る最大バイト数。</param>
         <summary>現在のストリームからバイト シーケンスを読み取り、読み取ったバイト数だけストリーム内の位置を進めます。</summary>
-        <returns>バッファーに読み取られた合計バイト数。 要求されたバイト数をその時点で読み取れなかった場合、この値は要求されたバイト数より小さくなることがあります。ストリームの末尾に達していた場合は 0 になります。</returns>
+        <returns>バッファーに読み取られた合計バイト数。 要求されたバイト数を読み取れなかった場合、この値は要求されたバイト数より小さくなることがあります。ストリームの末尾に達していた場合は 0 になります。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.NotSupportedException"><see cref="T:System.Security.Cryptography.CryptoStreamMode" />に現在関連付けられている<see cref="T:System.Security.Cryptography.CryptoStream" />オブジェクトが、基になるストリームと一致しません。  使用する場合、この例外がスローされます<see cref="F:System.Security.Cryptography.CryptoStreamMode.Read" />書き込み専用である基になるストリームを持つ。</exception>
+        <exception cref="T:System.NotSupportedException">現在の <see cref="T:System.Security.Cryptography.CryptoStreamMode" /> オブジェクトと関連付けられた <see cref="T:System.Security.Cryptography.CryptoStream" /> が、使用されているストリームと一致しません。  <see cref="F:System.Security.Cryptography.CryptoStreamMode.Read" /> を書き込み専用のストリームで使用した場合などに、この例外がスローされます。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターが 0 未満。  
   
 - または - 
 <paramref name="count" /> パラメーターが 0 未満。</exception>
-        <exception cref="T:System.ArgumentException">合計、<paramref name="count" />と<paramref name="offset" />パラメーターが、バッファーの長さを超えています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="count" /> パラメーターと <paramref name="offset" /> パラメーターの合計が、バッファーの長さを超えています。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -948,13 +948,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.ReadAsync%2A>で、 `await` (c#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
+ タスクが完了するまでメソッド<xref:System.Security.Cryptography.CryptoStream.ReadAsync%2A>の実行`await`を中断する`Await`には、(C#) または (Visual Basic) 演算子を使用して、の呼び出しを先頭に付ける必要があります。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
   
- 完了前に、操作が取り消された場合、返されたタスクが含まれています、<xref:System.Threading.Tasks.TaskStatus.Canceled>値、<xref:System.Threading.Tasks.Task.Status%2A>プロパティ。  
+ 操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled>タスクには<xref:System.Threading.Tasks.Task.Status%2A>プロパティの値が含まれます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> または <paramref name="count" /> が負の値です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="offset" /> と <paramref name="count" /> の合計が、バッファーの長さよりも大きくなっています。</exception>
         <exception cref="T:System.NotSupportedException">ストリームは読み取りをサポートしません。</exception>
@@ -1035,7 +1035,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 継承をサポートするためだけにこのメソッドが存在する<xref:System.IO.Stream>、使用することはできません。  
+ このメソッドは、からの<xref:System.IO.Stream>継承をサポートするためにのみ存在し、使用することはできません。  
   
  ]]></format>
         </remarks>
@@ -1082,11 +1082,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 継承をサポートするためだけにこのプロパティが存在する<xref:System.IO.Stream>、使用することはできません。  
+ このプロパティは <xref:System.IO.Stream> からの継承をサポートするためだけのもので、使用できません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.NotSupportedException">継承をサポートするためだけにこのプロパティが存在する<see cref="T:System.IO.Stream" />、使用することはできません。</exception>
+        <exception cref="T:System.NotSupportedException">このプロパティは <see cref="T:System.IO.Stream" /> からの継承をサポートするためだけのもので、使用できません。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1165,12 +1165,12 @@
         <param name="count">現在のストリームに書き込むバイト数。</param>
         <summary>バイト シーケンスを現在の <see cref="T:System.Security.Cryptography.CryptoStream" /> に書き込み、書き込んだバイト数の分だけストリーム内の現在位置を進めます。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.NotSupportedException"><see cref="T:System.Security.Cryptography.CryptoStreamMode" />に現在関連付けられている<see cref="T:System.Security.Cryptography.CryptoStream" />オブジェクトが、基になるストリームと一致しません。  <see cref="F:System.Security.Cryptography.CryptoStreamMode.Write" /> を読み取り専用のストリームで使用した場合などに、この例外がスローされます。</exception>
+        <exception cref="T:System.NotSupportedException">現在の <see cref="T:System.Security.Cryptography.CryptoStreamMode" /> オブジェクトと関連付けられた <see cref="T:System.Security.Cryptography.CryptoStream" /> が、使用されているストリームと一致しません。  <see cref="F:System.Security.Cryptography.CryptoStreamMode.Write" /> を読み取り専用のストリームで使用した場合などに、この例外がスローされます。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> パラメーターが 0 未満。  
   
 - または - 
 <paramref name="count" /> パラメーターが 0 未満。</exception>
-        <exception cref="T:System.ArgumentException">合計、<paramref name="count" />と<paramref name="offset" />パラメーターが、バッファーの長さを超えています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="count" /> パラメーターと <paramref name="offset" /> パラメーターの合計が、バッファーの長さを超えています。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1217,13 +1217,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しを付ける必要があります<xref:System.Security.Cryptography.CryptoStream.WriteAsync%2A>で、 `await` (c#) または`Await`タスクが完了するまでメソッドの実行を中断する (Visual Basic) 演算子。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
+ タスクが完了するまでメソッド<xref:System.Security.Cryptography.CryptoStream.WriteAsync%2A>の実行`await`を中断する`Await`には、(C#) または (Visual Basic) 演算子を使用して、の呼び出しを先頭に付ける必要があります。 詳細については、「[Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/db854f91-ccef-4035-ae4d-0911fde808c7)」を参照してください。  
   
- 完了前に、操作が取り消された場合、返されたタスクが含まれています、<xref:System.Threading.Tasks.TaskStatus.Canceled>値、<xref:System.Threading.Tasks.Task.Status%2A>プロパティ。  
+ 操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled>タスクには<xref:System.Threading.Tasks.Task.Status%2A>プロパティの値が含まれます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> または <paramref name="count" /> が負の値です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="offset" /> と <paramref name="count" /> の合計が、バッファーの長さよりも大きいです。</exception>
         <exception cref="T:System.NotSupportedException">ストリームは書き込みをサポートしません。</exception>

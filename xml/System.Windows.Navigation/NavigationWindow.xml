@@ -32,28 +32,28 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Navigation.NavigationWindow> 派生した<xref:System.Windows.Window>に移動し、コンテンツを表示する機能を拡張されています。  
+ <xref:System.Windows.Navigation.NavigationWindow>から<xref:System.Windows.Window>派生し、コンテンツに移動して表示できるように拡張します。  
   
- コンテンツは、.NET Framework オブジェクトまたは HTML ファイルです。 ただし、一般に、<xref:System.Windows.Controls.Page>オブジェクトがパッケージ コンテンツ ナビゲーションをすることをお勧めします。  
+ コンテンツには .NET Framework オブジェクトまたは HTML ファイルを指定できます。 ただし、一般に、ナビゲーション<xref:System.Windows.Controls.Page>のためにコンテンツをパッケージ化するには、オブジェクトを使用することをお勧めします。  
   
- 設定するコンテンツを移動する、<xref:System.Windows.Navigation.NavigationWindow.Source%2A>プロパティを目的のコンテンツの URI。 さらに、コンテンツに移動するに次のオーバー ロードのいずれかを使用して、<xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>メソッド。  
+ コンテンツに移動するには、プロパティ<xref:System.Windows.Navigation.NavigationWindow.Source%2A>に目的のコンテンツの URI を設定します。 また、 <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>メソッドの次のいずれかのオーバーロードを使用して、コンテンツに移動できます。  
   
 -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29>  
   
 -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29>  
   
- コンテンツを移動する URI で<xref:System.Windows.Navigation.NavigationWindow>はコンテンツを格納しているオブジェクトを返します。  
+ URI によってコンテンツに移動する<xref:System.Windows.Navigation.NavigationWindow>と、はコンテンツを含むオブジェクトを返します。  
   
 > [!NOTE]
->  ナビゲーション URI では、コンテンツ フラグメントへのナビゲーションもサポートします。 以下を参照してください。<xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>  
+>  URI によるナビゲーションでは、コンテンツフラグメントへのナビゲーションもサポートされています。 以下を参照してください。<xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>  
   
- いずれかを使用してコンテンツに移動する代わりに、<xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>オブジェクトを受け取るメソッド オーバー ロードします。  
+ または、オブジェクトを受け取る<xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>メソッドオーバーロードのいずれかを使用して、コンテンツに移動できます。  
   
 -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29>  
   
 -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29>  
   
- ナビゲーションの有効期間は、次のイベントを追跡できます。  
+ ナビゲーションの有効期間は、次のイベントを使用して追跡できます。  
   
 -   <xref:System.Windows.Navigation.NavigationWindow.Navigating>  
   
@@ -69,32 +69,32 @@
   
 -   <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>。  
   
- ナビゲーションが発生するたびにすべてのイベントが発生します。(キャンセル、停止、または失敗) ナビゲーション (コンテンツ、コンテンツ フラグメント) に発生して、ナビゲーションの完了方法の種類によって発生するイベントのセットが決まります。  
+ ナビゲーションが発生するたびにすべてのイベントが発生するとは限りません。発生するイベントのセットは、発生するナビゲーションの種類 (コンテンツまたはコンテンツフラグメント) と、ナビゲーションの完了 (取り消し、停止、または失敗) によって決まります。  
   
- 次の図は、これらのイベントを発生させるシーケンスを示しています。  
+ 次の図は、これらのイベントが発生する順序を示しています。  
   
- ![ページ ナビゲーションのフロー チャート](~/add/media/navigationoverviewfigure11.png "ページ ナビゲーションのフロー チャート")  
+ ![ページナビゲーションのフローチャート](~/add/media/navigationoverviewfigure11.png "ページナビゲーションのフローチャート")  
   
- 中または、ナビゲーション後<xref:System.Windows.Navigation.NavigationWindow>移動先のコンテンツの URI を含む、移動先のコンテンツに関する情報を提供します (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>)、現在のコンテンツの URI (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>)、およびオブジェクトが含まれていますが、移動したコンテンツ (<xref:System.Windows.Controls.ContentControl.Content%2A>)。  
+ ナビゲーション中または移動後<xref:System.Windows.Navigation.NavigationWindow>に、移動先のコンテンツの uri (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>)、現在のコンテンツの uri (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>)、およびを格納するオブジェクト () など、移動先のコンテンツに関する情報を提供します。移動先のコンテンツ (<xref:System.Windows.Controls.ContentControl.Content%2A>)。  
   
- コンテンツの移動、<xref:System.Windows.Navigation.NavigationWindow>ナビゲーション履歴にエントリとしてナビゲーションを記録します。 ナビゲーション履歴のバックアップを作成して呼び出すことによって、いずれか、新しいナビゲーションが発生したときにエントリを追加、<xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>メソッドを呼び出すことによって、"進む"ナビゲーション履歴内のエントリに移動して<xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>。 呼び出すことによってナビゲーション履歴に戻るエントリに移動して"進む"ナビゲーション履歴にエントリが追加された<xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>します。 <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A> <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A>かどうかにエントリが下位互換性および上位のナビゲーション履歴にそれぞれを報告します。  
+ コンテンツに移動するときに<xref:System.Windows.Navigation.NavigationWindow> 、ナビゲーション履歴のエントリとしてナビゲーションを記録します。 新しいナビゲーションが発生したとき、 <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>メソッドを呼び出したとき、またはを呼び出し<xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>て "進む" ナビゲーション履歴のエントリに移動したときに、"戻る" ナビゲーション履歴にエントリが追加されます。 を呼び出す<xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>ことにより、[戻る] ナビゲーション履歴のエントリに移動して、[進む] ナビゲーション履歴にエントリが追加されます。 <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A>[ <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A>戻る] ナビゲーション履歴と [進む] ナビゲーション履歴にそれぞれエントリがあるかどうかを報告します。  
   
- 最初にその 1 つのコンテンツにナビゲートすると、コンテンツの別の部分から<xref:System.Windows.Navigation.NavigationWindow>ナビゲーション UI をユーザーに移動することし、ナビゲーション履歴は転送を自動的に表示されます。 ナビゲーション UI が表示されると設定を構成することができます、<xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>プロパティ。  
+ あるコンテンツの1つの部分が別のコンテンツから移動されると、 <xref:System.Windows.Navigation.NavigationWindow>によってナビゲーション UI が自動的に表示されます。この UI を使用すると、ユーザーはナビゲーション履歴を使って戻ることができます。 プロパティを<xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>設定することによって、ナビゲーション UI を表示するタイミングを構成できます。  
   
- 最も新しいエントリは戻るナビゲーション履歴を呼び出すことによって削除できます<xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>します。  
+ 戻るナビゲーション履歴の最新のエントリは、を呼び出す<xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>ことによって削除できます。  
   
- <xref:System.Windows.Navigation.NavigationWindow> ナビゲーション履歴には、コンテンツ オブジェクトのインスタンスを保存しません。 代わりに、<xref:System.Windows.Navigation.NavigationWindow>ナビゲーション履歴によるナビゲーションが毎回、コンテンツ オブジェクトの新しいインスタンスを作成します。 この動作は、膨大な数とコンテンツの大部分に移動されるときに過剰なメモリの消費を回避するために設計されています。 その結果、次に、コンテンツの状態は 1 つのナビゲーションからに記憶されません。 ただし、WPF には、ナビゲーション履歴のコンテンツの状態の一部を格納する、いくつかの方法が用意されています。  
+ <xref:System.Windows.Navigation.NavigationWindow>は、コンテンツオブジェクトのインスタンスをナビゲーション履歴に格納しません。 代わりに、 <xref:System.Windows.Navigation.NavigationWindow>はナビゲーション履歴を使用して移動するたびに、コンテンツオブジェクトの新しいインスタンスを作成します。 この動作は、大量の大量のコンテンツが移動されている場合に、過度なメモリ消費を避けるように設計されています。 そのため、コンテンツの状態は、1つのナビゲーションから次のナビゲーションに記憶されません。 ただし、WPF には、コンテンツの一部をナビゲーション履歴に格納するためのいくつかの手法が用意されています。  
   
- 使用して<xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>、1 つのページ インスタンスの状態の複数のセットも注意してください。  
+ を<xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>使用すると、1つのページインスタンスに対して複数の状態のセットを覚えることもできます。  
   
- <xref:System.Windows.Navigation.NavigationWindow> WPF では、もう一方の 2 つのナビゲーターの 1 つ<xref:System.Windows.Controls.Frame>します。 基本的に、ナビゲーターは、ナビゲーション、ナビゲーション履歴をサポートするクラス。 視覚的に、[!INCLUDE[TLA2#tla_xbap#plural](~/includes/tla2sharptla-xbapsharpplural-md.md)]使用[!INCLUDE[TLA2#tla_ie7](~/includes/tla2sharptla-ie7-md.md)]として、ナビゲーターの統合されたユーザー エクスペリエンスを提供します。 ただし、[!INCLUDE[TLA2#tla_xbap#plural](~/includes/tla2sharptla-xbapsharpplural-md.md)]を実際に使用<xref:System.Windows.Navigation.NavigationWindow>ナビゲーター; として、<xref:System.Windows.Application.MainWindow%2A>のプロパティ、[!INCLUDE[TLA2#tla_xbap](~/includes/tla2sharptla-xbap-md.md)]で実行されている[!INCLUDE[TLA2#tla_ie7](~/includes/tla2sharptla-ie7-md.md)]への参照を返します、 <xref:System.Windows.Navigation.NavigationWindow>、および、によって管理されているナビゲーション履歴<xref:System.Windows.Navigation.NavigationWindow>によって管理されているナビゲーション履歴と統合されて[!INCLUDE[TLA2#tla_ie7](~/includes/tla2sharptla-ie7-md.md)]します。  
+ <xref:System.Windows.Navigation.NavigationWindow>は、WPF の2つのナビゲーターのうちの<xref:System.Windows.Controls.Frame>1 つであり、もう1つはです。 基本的に、ナビゲーターは、ナビゲーションとナビゲーションの履歴をサポートするクラスです。 視覚的に[!INCLUDE[TLA2#tla_xbap#plural](~/includes/tla2sharptla-xbapsharpplural-md.md)]は[!INCLUDE[TLA2#tla_ie7](~/includes/tla2sharptla-ie7-md.md)] 、ナビゲーターとしてを使用して、統合されたユーザーエクスペリエンスを提供します。 ただし、 [!INCLUDE[TLA2#tla_xbap#plural](~/includes/tla2sharptla-xbapsharpplural-md.md)]実際に<xref:System.Windows.Navigation.NavigationWindow>はナビゲーター <xref:System.Windows.Application.MainWindow%2A>としてを使用し[!INCLUDE[TLA2#tla_xbap](~/includes/tla2sharptla-xbap-md.md)]ます。 [!INCLUDE[TLA2#tla_ie7](~/includes/tla2sharptla-ie7-md.md)]で実行されている<xref:System.Windows.Navigation.NavigationWindow>のプロパティは、への参照と、によって<xref:System.Windows.Navigation.NavigationWindow>管理されるナビゲーション履歴を返します。は、によって[!INCLUDE[TLA2#tla_ie7](~/includes/tla2sharptla-ie7-md.md)]管理されるナビゲーション履歴と統合されています。  
   
- **コンテンツ モデル:** <xref:System.Windows.Navigation.NavigationWindow>は、 <xref:System.Windows.Controls.ContentControl>、つまり<xref:System.Windows.Navigation.NavigationWindow>テキスト、画像、またはパネルなどのコンテンツを含めることができます。 また、<xref:System.Windows.Navigation.NavigationWindow>はルート要素であり、その結果、もう 1 つの要素のコンテンツの一部をすることはできません。 コンテンツ モデルの詳細については<xref:System.Windows.Controls.Button>を参照してください[WPF コンテンツ モデル](~/docs/framework/wpf/controls/wpf-content-model.md)します。  
+ **コンテンツモデル:** <xref:System.Windows.Navigation.NavigationWindow>はです<xref:System.Windows.Controls.ContentControl>。これは、 <xref:System.Windows.Navigation.NavigationWindow>にテキスト、イメージ、パネルなどのコンテンツを含めることができることを意味します。 また、 <xref:System.Windows.Navigation.NavigationWindow>はルート要素であり、そのため別の要素のコンテンツの一部にすることはできません。 の<xref:System.Windows.Controls.Button>コンテンツモデルの詳細については、「 [WPF コンテンツモデル](~/docs/framework/wpf/controls/wpf-content-model.md)」を参照してください。  
   
-## <a name="customizing-the-navigationwindow-control"></a>NavigationWindow のコントロールをカスタマイズします。  
- 複数に同じプロパティの設定を適用する<xref:System.Windows.Navigation.NavigationWindow>コントロールを使用して、<xref:System.Windows.FrameworkElement.Style%2A>プロパティ。 既定値を変更する<xref:System.Windows.Controls.ControlTemplate>固有の外観を制御します。 作成の詳細については、<xref:System.Windows.Controls.ControlTemplate>を参照してください[ControlTemplate の作成による既存のコントロールの外観のカスタマイズ](~/docs/framework/wpf/controls/customizing-the-appearance-of-an-existing-control.md)します。  パーツとに固有の状態を表示する、<xref:System.Windows.Navigation.NavigationWindow>を参照してください[NavigationWindow のスタイルとテンプレート](~/docs/framework/wpf/controls/navigationwindow-styles-and-templates.md)します。  
+## <a name="customizing-the-navigationwindow-control"></a>NavigationWindow コントロールのカスタマイズ  
+ 複数の<xref:System.Windows.Navigation.NavigationWindow>コントロールに同じプロパティの設定を適用するには、<xref:System.Windows.FrameworkElement.Style%2A>プロパティを使用します。 <xref:System.Windows.Controls.ControlTemplate>の既定値を変更して外観を制御します。 <xref:System.Windows.Controls.ControlTemplate>作成の詳細については、「 [ControlTemplate の作成による既存コントロールの外観カスタマイズ](~/docs/framework/wpf/controls/customizing-the-appearance-of-an-existing-control.md)」を参照してください。  に<xref:System.Windows.Navigation.NavigationWindow>固有のパーツと状態については、「 [NavigationWindow のスタイルとテンプレート](~/docs/framework/wpf/controls/navigationwindow-styles-and-templates.md)」を参照してください。  
   
- コントロールの既定のスタイルでは、このコントロールの依存関係プロパティを設定する可能性があります。  プロパティが既定のスタイルによって設定されている場合は、アプリケーションでコントロールが表示されたら、既定値から、プロパティが変更可能性があります。 デスクトップ テーマでは、アプリケーションが実行されている場合は、使用、既定のスタイルが決定されます。  詳細については、次を参照してください。[既定の WPF テーマ](https://go.microsoft.com/fwlink/?LinkID=158252)します。  
+ このコントロールの依存関係のプロパティは、コントロールの既定のスタイルによって設定される可能性があります。  プロパティが既定のスタイルによって設定されている場合、アプリケーションにコントロールが表示されると、プロパティが既定値から変更されることがあります。 既定のスタイルは、アプリケーションの実行時に使用するデスクトップテーマによって決定されます。  詳しくは、「[既定の WPF テーマ](https://go.microsoft.com/fwlink/?LinkID=158252)」をご覧ください。  
   
 [!INCLUDE[setting-a-visual-property](~/includes/visual-property-note.md)]  
   
@@ -123,7 +123,7 @@
       <Docs>
         <summary><see cref="T:System.Windows.Navigation.NavigationWindow" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">安全でないネイティブ メソッドを呼び出すには、このオブジェクトで許可します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">このオブジェクトが unsafe ネイティブメソッドを呼び出すためのアクセス許可。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="AddBackEntry">
@@ -149,8 +149,8 @@
         <Parameter Name="state" Type="System.Windows.Navigation.CustomContentState" />
       </Parameters>
       <Docs>
-        <param name="state">A<see cref="T:System.Windows.Navigation.CustomContentState" />特定のコンテンツに関連付けられているアプリケーション定義の状態を表すオブジェクト。</param>
-        <summary>バックアップが含まれるナビゲーション履歴にエントリを追加、<see cref="T:System.Windows.Navigation.CustomContentState" />オブジェクト。</summary>
+        <param name="state">特定のコンテンツ フラグメントに関連付けられたアプリケーション定義の状態を表す <see cref="T:System.Windows.Navigation.CustomContentState" /> オブジェクト。</param>
+        <summary><see cref="T:System.Windows.Navigation.CustomContentState" /> オブジェクトを格納しているエントリを "戻る" ナビゲーション履歴に追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -159,7 +159,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><paramref name="state" /> <see langword="null" />、および<see cref="T:System.Windows.Navigation.CustomContentState" />からオブジェクトが返されません<see cref="M:System.Windows.Navigation.IProvideCustomContentState.GetContentState" />します。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="state" /> が <see langword="null" /> です。<see cref="T:System.Windows.Navigation.CustomContentState" /> から <see cref="M:System.Windows.Navigation.IProvideCustomContentState.GetContentState" /> オブジェクトが返されませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -185,7 +185,7 @@
         <param name="value">追加する子オブジェクト。</param>
         <summary>子オブジェクトを追加します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">このメソッドを呼び出すときにします。 これにより、コンテンツに追加されない<see cref="T:System.Windows.Navigation.NavigationWindow" />を使用して[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]します。</exception>
+        <exception cref="T:System.InvalidOperationException">このメソッドが呼び出されたとき。 これにより、[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] を使用して <see cref="T:System.Windows.Navigation.NavigationWindow" /> にコンテンツが追加されるのを防止できます。</exception>
         <altmember cref="M:System.Windows.Markup.IAddChild.AddChild(System.Object)" />
       </Docs>
     </Member>
@@ -236,21 +236,21 @@
         <ReturnType>System.Collections.IEnumerable</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:System.Collections.IEnumerable" />のナビゲーション履歴にエントリを列挙するために使用すること、<see cref="T:System.Windows.Navigation.NavigationWindow" />します。</summary>
-        <value><see cref="T:System.Collections.IEnumerable" /> ナビゲーション履歴のバックアップを作成するには少なくとも 1 つのエントリが追加された場合または<see langword="null" />エントリが存在しない場合、または<see cref="T:System.Windows.Navigation.NavigationWindow" />独自のナビゲーション履歴を所有していません。</value>
+        <summary><see cref="T:System.Collections.IEnumerable" /> の "戻る" ナビゲーション履歴のエントリを列挙するために使用する <see cref="T:System.Windows.Navigation.NavigationWindow" /> を取得します。</summary>
+        <value>1 つ以上のエントリが "戻る" ナビゲーション履歴に追加されている場合は <see cref="T:System.Collections.IEnumerable" />。エントリがない場合、または <see cref="T:System.Windows.Navigation.NavigationWindow" /> に独自のナビゲーション履歴がない場合は <see langword="null" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返されるエントリ<xref:System.Windows.Navigation.NavigationWindow.BackStack%2A>全体のコンテンツ、フラグメント ナビゲーション、およびカスタムの状態が含まれます。  
+ によって<xref:System.Windows.Navigation.NavigationWindow.BackStack%2A>返されるエントリには、コンテンツ全体、フラグメントナビゲーション、およびカスタム状態が含まれます。  
   
 <a name="dependencyPropertyInfo_NavigationWindowBackStack"></a>   
 ## <a name="dependency-property-information"></a>依存プロパティ情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Navigation.NavigationWindow.BackStack%2A>|  
-|メタデータのプロパティを設定するには `true`|なし|  
+|識別子フィールド|<xref:System.Windows.Navigation.NavigationWindow.BackStack%2A>|  
+|メタデータプロパティがに設定される`true`|None|  
   
  ]]></format>
         </remarks>
@@ -299,8 +299,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>"戻る"ナビゲーション履歴には少なくとも 1 つのエントリがあるかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> "戻る"ナビゲーション履歴に少なくとも 1 つのエントリがある場合<see langword="false" />ナビゲーション履歴にエントリがない場合、または<see cref="T:System.Windows.Navigation.NavigationWindow" />独自のナビゲーション履歴を所有していません。</value>
+        <summary>"戻る" ナビゲーション履歴にエントリが 1 つ以上あるかどうかを示す値を取得します。</summary>
+        <value>"戻る" ナビゲーション履歴にエントリが 1 つ以上ある場合は <see langword="true" />。"戻る" ナビゲーション履歴にエントリがない場合、または <see cref="T:System.Windows.Navigation.NavigationWindow" /> に独自のナビゲーション履歴がない場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -312,8 +312,8 @@
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A>|  
-|メタデータのプロパティを設定するには `true`|なし|  
+|識別子フィールド|<xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A>|  
+|メタデータプロパティがに設定される`true`|None|  
   
  ]]></format>
         </remarks>
@@ -363,8 +363,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>"進む"ナビゲーション履歴に少なくとも 1 つのエントリがあるかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> "進む"ナビゲーション履歴に少なくとも 1 つのエントリがある場合<see langword="false" /> "進む"ナビゲーション履歴にエントリがない場合、または<see cref="T:System.Windows.Navigation.NavigationWindow" />独自のナビゲーション履歴を所有していません。</value>
+        <summary>"進む" ナビゲーション履歴にエントリが 1 つ以上あるかどうかを示す値を取得します。</summary>
+        <value>"進む" ナビゲーション履歴にエントリが 1 つ以上ある場合は <see langword="true" />。"進む" ナビゲーション履歴にエントリがない場合、または <see cref="T:System.Windows.Navigation.NavigationWindow" /> に独自のナビゲーション履歴がない場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -375,8 +375,8 @@
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A>|  
-|メタデータのプロパティを設定するには `true`|なし|  
+|識別子フィールド|<xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A>|  
+|メタデータプロパティがに設定される`true`|None|  
   
  ]]></format>
         </remarks>
@@ -426,8 +426,8 @@
         <ReturnType>System.Uri</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]の最後に移動したコンテンツ。</summary>
-        <value>最後に、移動先 URI; を使用して移動した場合、コンテンツの URIそれ以外の場合、<see langword="null" />します。</value>
+        <summary>最後に移動した先のコンテンツの[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] を取得します。</summary>
+        <value>URI を使用して移動した場合、最後に移動したコンテンツの URI。それ以外<see langword="null" />の場合は。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -458,21 +458,21 @@
         <ReturnType>System.Collections.IEnumerable</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:System.Collections.IEnumerable" />のナビゲーション履歴にエントリを列挙するために使用すること、<see cref="T:System.Windows.Navigation.NavigationWindow" />します。</summary>
-        <value><see cref="T:System.Collections.IEnumerable" /> 少なくとも 1 つのエントリが追加された場合に"進む"ナビゲーション履歴、または null エントリがない場合、または<see cref="T:System.Windows.Navigation.NavigationWindow" />独自のナビゲーション履歴を所有していません。</value>
+        <summary><see cref="T:System.Collections.IEnumerable" /> の "戻る" ナビゲーション履歴のエントリを列挙するために使用する <see cref="T:System.Windows.Navigation.NavigationWindow" /> を取得します。</summary>
+        <value>1 つ以上のエントリが "進む" ナビゲーション履歴に追加されている場合は <see cref="T:System.Collections.IEnumerable" />。エントリがない場合、または <see cref="T:System.Windows.Navigation.NavigationWindow" /> に独自のナビゲーション履歴がない場合は null。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返されるエントリ<xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A>全体のコンテンツ、フラグメント ナビゲーション、およびカスタムの状態が含まれます。  
+ によって<xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A>返されるエントリには、コンテンツ全体、フラグメントナビゲーション、およびカスタム状態が含まれます。  
   
 <a name="dependencyPropertyInfo_NavigationWindowForwardStack"></a>   
 ## <a name="dependency-property-information"></a>依存プロパティ情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A>|  
-|メタデータのプロパティを設定するには `true`|なし|  
+|識別子フィールド|<xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A>|  
+|メタデータプロパティがに設定される`true`|None|  
   
  ]]></format>
         </remarks>
@@ -521,7 +521,7 @@
         <ReturnType>System.Windows.Navigation.FragmentNavigationEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コンテンツ フラグメントへのナビゲーションが始まるとすぐに、発生する場合は、目的のフラグメントが現在のコンテンツ ソースの後に発生する[!INCLUDE[TLA2#tla_titlexaml](~/includes/tla2sharptla-titlexaml-md.md)]場合、目的のフラグメントを別のコンテンツにコンテンツが読み込まれました。</summary>
+        <summary>コンテンツ フラグメントへのナビゲーションが開始されると発生します。目的のフラグメントが現在のコンテンツにある場合は直ちに発生し、目的のフラグメントが別のコンテンツにある場合はソース [!INCLUDE[TLA2#tla_titlexaml](~/includes/tla2sharptla-titlexaml-md.md)] コンテンツが読み込まれた後に発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -559,9 +559,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ナビゲーション履歴の最新の項目に戻るに移動します。</summary>
+        <summary>"戻る" ナビゲーション履歴の最新の項目に移動します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Windows.Navigation.NavigationWindow.GoBack" /> ナビゲーション履歴にエントリがないとき呼び出されます。</exception>
+        <exception cref="T:System.InvalidOperationException">"戻る" ナビゲーション履歴にエントリがないときに <see cref="M:System.Windows.Navigation.NavigationWindow.GoBack" /> が呼び出されました。</exception>
         <altmember cref="P:System.Windows.Navigation.NavigationWindow.CanGoBack" />
         <altmember cref="P:System.Windows.Navigation.NavigationWindow.CanGoForward" />
         <altmember cref="M:System.Windows.Navigation.NavigationWindow.GoForward" />
@@ -588,9 +588,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>"進む"ナビゲーション履歴の最新の項目に移動します。</summary>
+        <summary>"進む" ナビゲーション履歴の最新の項目に移動します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Windows.Navigation.NavigationWindow.GoForward" /> "進む"ナビゲーション履歴にエントリがないとき呼び出されます。</exception>
+        <exception cref="T:System.InvalidOperationException">"進む" ナビゲーション履歴にエントリがないときに <see cref="M:System.Windows.Navigation.NavigationWindow.GoForward" /> が呼び出されました。</exception>
         <altmember cref="P:System.Windows.Navigation.NavigationWindow.CanGoForward" />
         <altmember cref="P:System.Windows.Navigation.NavigationWindow.CanGoBack" />
         <altmember cref="M:System.Windows.Navigation.NavigationWindow.GoBack" />
@@ -616,7 +616,7 @@
         <ReturnType>System.Windows.Navigation.LoadCompletedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>移動したコンテンツが読み込まれ、解析されて、レンダリングが開始されると発生します。</summary>
+        <summary>移動先のコンテンツが読み込まれ、解析されて、描画が開始されると発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -665,9 +665,9 @@
         <Parameter Name="content" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="content"><see cref="T:System.Object" />移動先のコンテンツを格納しています。</param>
+        <param name="content">移動先のコンテンツを格納している <see cref="T:System.Object" />。</param>
         <summary>オブジェクトに格納されているコンテンツに非同期に移動します。</summary>
-        <returns><see langword="true" /> ナビゲーションがキャンセルされない場合それ以外の場合、<see langword="false" />します。</returns>
+        <returns>ナビゲーションがキャンセルされない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -677,7 +677,7 @@
    
   
 ## Examples  
- 次の例では、オブジェクトに格納されているコンテンツに移動する方法を示します。  
+ 次の例は、オブジェクトに格納されているコンテンツに移動する方法を示しています。  
   
  [!code-csharp[HOWTONavigationSnippets#NavigateToPageObjCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationSnippets/CSharp/MainWindow.xaml.cs#navigatetopageobjcode)]
  [!code-vb[HOWTONavigationSnippets#NavigateToPageObjCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTONavigationSnippets/visualbasic/mainwindow.xaml.vb#navigatetopageobjcode)]  
@@ -713,8 +713,8 @@
       </Parameters>
       <Docs>
         <param name="source">目的のコンテンツの URI で初期化された <see cref="T:System.Uri" /> オブジェクト。</param>
-        <summary>指定されているコンテンツに非同期に移動、[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]します。</summary>
-        <returns><see langword="true" /> ナビゲーションがキャンセルされない場合それ以外の場合、<see langword="false" />します。</returns>
+        <summary>[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] で指定されたコンテンツに非同期に移動します。</summary>
+        <returns>ナビゲーションがキャンセルされない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -722,12 +722,12 @@
  以下を参照してください。<xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=nameWithType>  
   
 > [!NOTE]
->  [!INCLUDE[TLA#tla_uri#initcap#plural](~/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] 相対または絶対のいずれかを指定できます。 詳細については、「[WPF におけるパック URI](~/docs/framework/wpf/app-development/pack-uris-in-wpf.md)」を参照してください。  
+>  [!INCLUDE[TLA#tla_uri#initcap#plural](~/includes/tlasharptla-urisharpinitcapsharpplural-md.md)]相対パスと絶対パスのどちらでも指定できます。 詳細については、「[WPF におけるパック URI](~/docs/framework/wpf/app-development/pack-uris-in-wpf.md)」を参照してください。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>に移動する方法、[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]します。  
+ 次の例は、 <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>メソッドを使用して[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]に移動する方法を示しています。  
   
  [!code-csharp[HOWTONavigationSnippets#NavigateToPageNavCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationSnippets/CSharp/MainWindow.xaml.cs#navigatetopagenavcode)]
  [!code-vb[HOWTONavigationSnippets#NavigateToPageNavCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTONavigationSnippets/visualbasic/mainwindow.xaml.vb#navigatetopagenavcode)]  
@@ -763,10 +763,10 @@
         <Parameter Name="extraData" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="content"><see cref="T:System.Object" />移動先のコンテンツを格納しています。</param>
-        <param name="extraData">A<see cref="T:System.Object" />ナビゲーション中の処理に使用するデータを格納しています。</param>
-        <summary>オブジェクトが含まれており、ナビゲーション中の処理に使用するデータを含むオブジェクトを渡しますコンテンツに非同期に移動します。</summary>
-        <returns><see langword="true" /> ナビゲーションがキャンセルされない場合それ以外の場合、<see langword="false" />します。</returns>
+        <param name="content">移動先のコンテンツを格納している <see cref="T:System.Object" />。</param>
+        <param name="extraData">ナビゲーション中の処理に使用するデータを格納している <see cref="T:System.Object" />。</param>
+        <summary>オブジェクトに格納されているコンテンツに非同期に移動して、ナビゲーション中の処理に使用するデータを格納しているオブジェクトを渡します。</summary>
+        <returns>ナビゲーションがキャンセルされない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -805,9 +805,9 @@
       </Parameters>
       <Docs>
         <param name="source">目的のコンテンツの URI で初期化された <see cref="T:System.Uri" /> オブジェクト。</param>
-        <param name="extraData">A<see cref="T:System.Object" />ナビゲーション中の処理に使用するデータを格納しています。</param>
-        <summary>あるソース コンテンツに非同期に移動、[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]ナビゲーション中の処理に使用するデータを格納しているオブジェクトを渡します。</summary>
-        <returns><see langword="true" /> ナビゲーションがキャンセルされない場合それ以外の場合、<see langword="false" />します。</returns>
+        <param name="extraData">ナビゲーション中の処理に使用するデータを格納している <see cref="T:System.Object" />。</param>
+        <summary>[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] にあるソース コンテンツに非同期に移動して、ナビゲーション中の処理に使用するデータを格納しているオブジェクトを渡します。</summary>
+        <returns>ナビゲーションがキャンセルされない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -841,7 +841,7 @@
         <ReturnType>System.Windows.Navigation.NavigatedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>移動先のコンテンツが見つかると、しから使用可能なときに発生、<see cref="P:System.Windows.Controls.ContentControl.Content" />プロパティが、これを完了していない読み込み。</summary>
+        <summary>移動先のコンテンツが見つかったときに発生します。この時点で <see cref="P:System.Windows.Controls.ContentControl.Content" /> プロパティからコンテンツを取得できますが、読み込みはまだ完了していない可能性があります。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -989,15 +989,15 @@
         <ReturnType>System.Windows.Navigation.NavigationService</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:System.Windows.Navigation.NavigationService" />これによって使用される<see cref="T:System.Windows.Navigation.NavigationWindow" />そのコンテンツへのナビゲーション サービスを提供します。</summary>
-        <value>これによって使用されるナビゲーション サービス<see cref="T:System.Windows.Navigation.NavigationWindow" />します。</value>
+        <summary>コンテンツにナビゲーション サービスを提供するためにこの <see cref="T:System.Windows.Navigation.NavigationService" /> によって使用される <see cref="T:System.Windows.Navigation.NavigationWindow" /> を取得します。</summary>
+        <value>この <see cref="T:System.Windows.Navigation.NavigationWindow" /> で使用されているナビゲーション サービス。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Navigation.NavigationWindow> 使用して、<xref:System.Windows.Navigation.NavigationService>によってホストされているコンテンツにナビゲーション サービスを提供する<xref:System.Windows.Navigation.NavigationWindow>します。 <xref:System.Windows.Navigation.NavigationWindow.NavigationService%2A>プロパティがカスタム コードで役立ちます<xref:System.Windows.Navigation.NavigationWindow>への参照を取得する、 <xref:System.Windows.Navigation.NavigationService>、たとえばナビゲーション イベントを処理します。  
+ <xref:System.Windows.Navigation.NavigationWindow>は、 <xref:System.Windows.Navigation.NavigationService>を使用して、でホストされて<xref:System.Windows.Navigation.NavigationWindow>いるコンテンツにナビゲーションサービスを提供します。 プロパティは、の参照<xref:System.Windows.Navigation.NavigationService>を取得したり<xref:System.Windows.Navigation.NavigationWindow> 、ナビゲーションイベントを処理したりするために、カスタムのコードに便利です。 <xref:System.Windows.Navigation.NavigationWindow.NavigationService%2A>  
   
- によってホストされているコンテンツを<xref:System.Windows.Navigation.NavigationWindow>など<xref:System.Windows.Controls.Page>、使用する必要があります、<xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=nameWithType>メソッドまたは<xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=nameWithType>への参照を取得するプロパティ、<xref:System.Windows.Navigation.NavigationService>します。  
+ などのに<xref:System.Windows.Navigation.NavigationWindow>よって<xref:System.Windows.Controls.Page>ホストされるコンテンツでは、 <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=nameWithType>メソッドまたは<xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=nameWithType>プロパティを使用してへの<xref:System.Windows.Navigation.NavigationService>参照を取得する必要があります。  
   
  ]]></format>
         </remarks>
@@ -1023,7 +1023,7 @@
         <ReturnType>System.Windows.Navigation.NavigationStoppedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>発生したときに、<see cref="M:System.Windows.Navigation.NavigationWindow.StopLoading" />メソッドが呼び出されると、または現在のナビゲーションの進行中に新しいナビゲーションが要求された場合。</summary>
+        <summary><see cref="M:System.Windows.Navigation.NavigationWindow.StopLoading" /> メソッドが呼び出されたときや、現在のナビゲーションの進行中に新しいナビゲーションが要求されたときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1063,7 +1063,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ビジュアル ツリーのテンプレートの生成が作成されるときに呼び出されます。</summary>
+        <summary>ビジュアル ツリーのテンプレート生成が作成されると呼び出されます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1093,7 +1093,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Navigation.NavigationWindow.OnClosed%2A> 解放、<xref:System.Windows.Navigation.NavigationService>発生する前に、ナビゲーションの管理に使用されていることをオブジェクト<xref:System.Windows.Window.Closed>イベント。  
+ <xref:System.Windows.Navigation.NavigationWindow.OnClosed%2A>イベントを発生させる<xref:System.Windows.Window.Closed>前に、ナビゲーションの管理に使用しているオブジェクトを解放します。<xref:System.Windows.Navigation.NavigationService>  
   
  ]]></format>
         </remarks>
@@ -1117,8 +1117,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>作成して返します、<see cref="T:System.Windows.Automation.Peers.NavigationWindowAutomationPeer" />オブジェクトの<see cref="T:System.Windows.Navigation.NavigationWindow" />します。</summary>
-        <returns>A<see cref="T:System.Windows.Automation.Peers.NavigationWindowAutomationPeer" />オブジェクトの<see cref="T:System.Windows.Navigation.NavigationWindow" />します。</returns>
+        <summary>この <see cref="T:System.Windows.Automation.Peers.NavigationWindowAutomationPeer" /> に対応する <see cref="T:System.Windows.Navigation.NavigationWindow" /> オブジェクトを作成して返します。</summary>
+        <returns>この <see cref="T:System.Windows.Automation.Peers.NavigationWindowAutomationPeer" /> に対応する <see cref="T:System.Windows.Navigation.NavigationWindow" /> オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1150,7 +1150,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在のコンテンツを再読み込みします。</summary>
+        <summary>現在のコンテンツを再度読み込みます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1160,7 +1160,7 @@
    
   
 ## Examples  
- 次の例を呼び出す方法を示しています、<xref:System.Windows.Navigation.NavigationWindow.Refresh%2A>でコンテンツを再読み込みする方法、<xref:System.Windows.Navigation.NavigationWindow>します。  
+ 次の例は、 <xref:System.Windows.Navigation.NavigationWindow.Refresh%2A>メソッドを呼び出して、 <xref:System.Windows.Navigation.NavigationWindow>のコンテンツを再読み込みする方法を示しています。  
   
  [!code-csharp[HOWTONavigationSnippets#NavigateRefreshCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationSnippets/CSharp/MainWindow.xaml.cs#navigaterefreshcode)]
  [!code-vb[HOWTONavigationSnippets#NavigateRefreshCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTONavigationSnippets/visualbasic/mainwindow.xaml.vb#navigaterefreshcode)]  
@@ -1190,8 +1190,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>戻る履歴から最新の履歴エントリを削除します。</summary>
-        <returns>最新<see cref="T:System.Windows.Navigation.JournalEntry" />ナビゲーション履歴、1 つを使用する必要がある場合。</returns>
+        <summary>"戻る" 履歴から最新の履歴項目を削除します。</summary>
+        <returns>"戻る" ナビゲーション履歴の最新の <see cref="T:System.Windows.Navigation.JournalEntry" /> (存在する場合)。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1220,30 +1220,30 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定を示す値かどうかを<see cref="T:System.Windows.Navigation.NavigationWindow" />分離される外部[!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)](既定のインターネット ゾーン アクセス許可セット) で部分信頼セキュリティ サンド ボックス内のコンテンツ。</summary>
-        <value><see langword="true" /> コンテンツは、部分信頼セキュリティ サンド ボックス内に分離する場合それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
+        <summary><see cref="T:System.Windows.Navigation.NavigationWindow" /> で外部の [!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)] コンテンツが、(既定のインターネット ゾーン アクセス許可が設定された) 部分信頼のセキュリティ サンドボックス内に分離されるかどうかを示す値を取得または設定します。</summary>
+        <value>コンテンツが部分信頼セキュリティ サンドボックス内に分離される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 外部コンテンツが[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]コンテンツがリソース ファイルまたはコンテンツ ファイルのいずれかとしてアプリケーションに含まれています (詳細については、次を参照してください。 [WPF アプリケーションのリソース、コンテンツ、およびデータ ファイル](~/docs/framework/wpf/app-development/wpf-application-resource-content-and-data-files.md))。  
+ 外部コンテンツは[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] 、リソースファイルまたはコンテンツファイルとしてアプリケーションに含まれていないコンテンツです (詳細については、「 [WPF アプリケーションのリソース、コンテンツ、およびデータファイル](~/docs/framework/wpf/app-development/wpf-application-resource-content-and-data-files.md)」を参照してください)。  
   
- ときに<xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent%2A>とのコンテンツが、<xref:System.Windows.Navigation.NavigationWindow>外部[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]ファイル、コンテンツがインターネット ゾーン アクセス許可セットの既定値に限定されている部分信頼セキュリティ サンド ボックスに読み込まれます。 さらに、外部コンテンツが別のプロセスに読み込まれます。 その結果、外部コンテンツは孤立し、リソース ディクショナリなどのアプリケーション スコープ リソースへのアクセスはありません (詳細については、次を参照してください。 <xref:System.Windows.ResourceDictionary>)。  
+ が<xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent%2A> true で、 <xref:System.Windows.Navigation.NavigationWindow>のコンテンツが外部[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]ファイルの場合、コンテンツは、既定のインターネットゾーンアクセス許可セットに制限されている部分信頼セキュリティサンドボックスに読み込まれます。 さらに、外部コンテンツは別のプロセスに読み込まれます。 その結果、外部コンテンツは分離され、リソースディクショナリなどのアプリケーションスコープのリソースにアクセスできなくなります (詳細につい<xref:System.Windows.ResourceDictionary>ては、「」を参照してください)。  
   
 > [!NOTE]
->  <xref:System.Windows.Navigation.NavigationWindow> 外部コンテンツ場合にのみが含まれています、<xref:System.Windows.Navigation.NavigationWindow.Source%2A>プロパティに設定されて、[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]外部の[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]ファイル。 <xref:System.Windows.Navigation.NavigationWindow> 使用して提供されるコンテンツ、<xref:System.Windows.Controls.ContentControl.Content%2A>プロパティは、内部のコンテンツと見なされ、その後、分離ではありません。  
+>  <xref:System.Windows.Navigation.NavigationWindow>外部[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] <xref:System.Windows.Navigation.NavigationWindow.Source%2A> ファイルのプロパティがに設定されている場合にのみ、外部コンテンツが含まれます。[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)] <xref:System.Windows.Navigation.NavigationWindow><xref:System.Windows.Controls.ContentControl.Content%2A>プロパティを使用して提供されるコンテンツは、内部コンテンツと見なされ、その後は分離されません。  
   
 <a name="dependencyPropertyInfo_NavigationWindowSandboxExternalContent"></a>   
 ## <a name="dependency-property-information"></a>依存プロパティ情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent%2A>|  
-|メタデータのプロパティを設定するには `true`|なし|  
+|識別子フィールド|<xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent%2A>|  
+|メタデータプロパティがに設定される`true`|None|  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException"><see cref="P:System.Windows.Navigation.NavigationWindow.SandboxExternalContent" /> アプリケーションが部分信頼で実行するときに設定されています。</exception>
+        <exception cref="T:System.Security.SecurityException">アプリケーションが部分信頼で実行されているときに、<see cref="P:System.Windows.Navigation.NavigationWindow.SandboxExternalContent" /> が設定されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="SandboxExternalContentProperty">
@@ -1296,7 +1296,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、`ShouldSerialize`メソッドが提供されますので、<xref:System.Windows.Controls.ContentControl.Content%2A>プロパティには、単純な既定値はありません。 このメソッドは、プロパティが既定値から変更されたかどうかを示します。 通常このメソッドを呼び出すか、用のデザイナーを開発している場合、<xref:System.Windows.Navigation.NavigationWindow>やコントロールを組み込む独自の開発、<xref:System.Windows.Navigation.NavigationWindow>します。  
+ この`ShouldSerialize`メソッドは、プロパティに<xref:System.Windows.Controls.ContentControl.Content%2A>単純な既定値がないために用意されています。 このメソッドは、プロパティが既定値から変更されたかどうかを示します。 のデザイナー <xref:System.Windows.Navigation.NavigationWindow>を開発している場合、またはを組み込んだ独自の<xref:System.Windows.Navigation.NavigationWindow>コントロールを開発している場合は、通常、このメソッドを呼び出します。  
   
  ]]></format>
         </remarks>
@@ -1320,20 +1320,20 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Windows.Navigation.NavigationWindow" /> のナビゲーション UI が表示されるかどうかを示す値を取得または設定します。</summary>
-        <value><see langword="true" /> ナビゲーション UI を表示する場合それ以外の場合、<see langword="false" />します。 既定値は <see langword="true" /> です。</value>
+        <value><see langword="true" />ナビゲーション UI が表示される場合は。それ以外<see langword="false" />の場合は。 既定値は、<see langword="true" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 後方に支援し、ナビゲーションを転送する<xref:System.Windows.Navigation.NavigationWindow>ナビゲーション UI が自動的に表示されます。 ナビゲーションが発生したかどうかは、ナビゲーション UI が表示されます。  
+ 後方移動および進むナビゲーションを支援<xref:System.Windows.Navigation.NavigationWindow>するために、は自動的にナビゲーション UI を表示します。 ナビゲーションが発生したかどうかにかかわらず、ナビゲーション UI が表示されます。  
   
 <a name="dependencyPropertyInfo_NavigationWindowShowsNavigationUI"></a>   
 ## <a name="dependency-property-information"></a>依存プロパティ情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>|  
-|メタデータのプロパティを設定するには `true`|なし|  
+|識別子フィールド|<xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>|  
+|メタデータプロパティがに設定される`true`|None|  
   
  ]]></format>
         </remarks>
@@ -1386,7 +1386,7 @@
       </ReturnValue>
       <Docs>
         <summary>現在のコンテンツの [!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] (移動中の場合は移動先の新しいコンテンツの URI) を取得または設定します。</summary>
-        <value>現在のコンテンツまたは現在移動先のコンテンツの URI。</value>
+        <value>現在のコンテンツの URI、または現在ナビゲートされているコンテンツ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1394,20 +1394,20 @@
  以下を参照してください。<xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=nameWithType>  
   
 > [!NOTE]
->  [!INCLUDE[TLA#tla_uri#initcap#plural](~/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] 相対または絶対のいずれかを指定できます。 詳細については、「[WPF におけるパック URI](~/docs/framework/wpf/app-development/pack-uris-in-wpf.md)」を参照してください。  
+>  [!INCLUDE[TLA#tla_uri#initcap#plural](~/includes/tlasharptla-urisharpinitcapsharpplural-md.md)]相対パスと絶対パスのどちらでも指定できます。 詳細については、「[WPF におけるパック URI](~/docs/framework/wpf/app-development/pack-uris-in-wpf.md)」を参照してください。  
   
 <a name="dependencyPropertyInfo_NavigationWindowSource"></a>   
 ## <a name="dependency-property-information"></a>依存プロパティ情報  
   
 |||  
 |-|-|  
-|識別子フィールドです。|<xref:System.Windows.Navigation.NavigationWindow.Source%2A>|  
-|メタデータのプロパティを設定するには `true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|  
+|識別子フィールド|<xref:System.Windows.Navigation.NavigationWindow.Source%2A>|  
+|メタデータプロパティがに設定される`true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|  
   
    
   
 ## Examples  
- 次の例に移動する方法を示しています、[!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)]を設定して、<xref:System.Windows.Navigation.NavigationWindow.Source%2A>プロパティ。  
+ 次の例は、 [!INCLUDE[TLA#tla_uri](~/includes/tlasharptla-uri-md.md)] <xref:System.Windows.Navigation.NavigationWindow.Source%2A>プロパティを設定してに移動する方法を示しています。  
   
  [!code-csharp[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationSnippets/CSharp/MainWindow.xaml.cs#navigatetopagesrccode)]
  [!code-vb[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTONavigationSnippets/visualbasic/mainwindow.xaml.vb#navigatetopagesrccode)]  
@@ -1458,19 +1458,19 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在のナビゲーション要求のコンテンツのダウンロードを中止します。</summary>
+        <summary>現在のナビゲーション要求に対応するコンテンツのダウンロードを中止します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Navigation.NavigationWindow.StopLoading%2A> 要求されたコンテンツのダウンロードを停止し、<xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>イベントが発生します。  
+ <xref:System.Windows.Navigation.NavigationWindow.StopLoading%2A>要求されたコンテンツのダウンロードを停止し、 <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>イベントを発生させます。  
   
  以下を参照してください。<xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=nameWithType>  
   
    
   
 ## Examples  
- 次の例を呼び出す方法を示しています、<xref:System.Windows.Navigation.NavigationWindow.StopLoading%2A>ダウンロードが完了前に、コンテンツへの移動を停止するメソッド。  
+ 次の例は、 <xref:System.Windows.Navigation.NavigationWindow.StopLoading%2A>メソッドを呼び出して、ダウンロードが完了する前にコンテンツへのナビゲーションを停止する方法を示しています。  
   
  [!code-csharp[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationSnippets/CSharp/MainWindow.xaml.cs#navigatestoploadingcode)]
  [!code-vb[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTONavigationSnippets/visualbasic/mainwindow.xaml.vb#navigatestoploadingcode)]  
@@ -1499,7 +1499,7 @@
         <ReturnType>System.Uri</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または現在のコンテキストの基本の uniform resource identifier (URI) を設定します。</summary>
+        <summary>現在のコンテキストのベース URI (Uniform Resource Identifier) を取得または設定します。</summary>
         <value>現在のコンテキストのベース URI。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  

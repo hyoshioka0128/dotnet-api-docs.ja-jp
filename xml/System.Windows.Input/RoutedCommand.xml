@@ -38,9 +38,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.RoutedCommand.Execute%2A>と<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッド、<xref:System.Windows.Input.RoutedCommand>コマンドのアプリケーション ロジックを含まない場合は、一般的な<xref:System.Windows.Input.ICommand>ではなく、これらのメソッドは、オブジェクトを参照して、要素ツリーを走査するイベントを発生させますただし、<xref:System.Windows.Input.CommandBinding>。  イベント ハンドラーがアタッチされている、<xref:System.Windows.Input.CommandBinding>コマンド ロジックを含めることができます。  
+ <xref:System.Windows.Input.RoutedCommand.Execute%2A>と<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッド、<xref:System.Windows.Input.RoutedCommand>コマンドのアプリケーション ロジックを含まない場合は、一般的な<xref:System.Windows.Input.ICommand>ではなく、これらのメソッドは、オブジェクトを参照して、要素ツリーを走査するイベントを発生させますただし、<xref:System.Windows.Input.CommandBinding>。  にアタッチされたイベント<xref:System.Windows.Input.CommandBinding>ハンドラーには、コマンドロジックが含まれています。  
   
- <xref:System.Windows.Input.RoutedCommand.Execute%2A>メソッド発生させ、<xref:System.Windows.Input.CommandManager.PreviewExecuted>と<xref:System.Windows.Input.CommandManager.Executed>イベント。  <xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッド発生させ、<xref:System.Windows.Input.CommandManager.PreviewCanExecute>と<xref:System.Windows.Input.CommandManager.CanExecute>イベント。  
+ メソッド<xref:System.Windows.Input.RoutedCommand.Execute%2A>は、イベント<xref:System.Windows.Input.CommandManager.PreviewExecuted>と<xref:System.Windows.Input.CommandManager.Executed>イベントを発生させます。  メソッド<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>は、イベント<xref:System.Windows.Input.CommandManager.PreviewCanExecute>と<xref:System.Windows.Input.CommandManager.CanExecute>イベントを発生させます。  
   
 <a name="xamlAttributeUsage_RoutedCommand"></a>   
 ## <a name="xaml-attribute-usage"></a>XAML 属性の使用方法  
@@ -57,16 +57,16 @@
 <a name="xamlValues_RoutedCommand"></a>   
 ## <a name="xaml-values"></a>XAML 値  
  *predefinedClassName*  
- 定義済みのコマンド クラスの 1 つ。  
+ 定義済みのコマンドクラスの1つ。  
   
  *predefinedCommandName*  
- 定義済みのコマンドのいずれか。  
+ 定義済みのコマンドの1つ。  
   
  *customClassName*  
- カスタム コマンドを含むカスタム クラスです。 カスタム クラスは一般に必要な`xlmns`プレフィックスのマッピングは、参照してください[XAML 名前空間および WPF XAML の Namespace マッピング](~/docs/framework/wpf/advanced/xaml-namespaces-and-namespace-mapping-for-wpf-xaml.md)します。  
+ カスタムコマンドを格納しているカスタムクラス。 通常、カスタムクラスに`xlmns`はプレフィックスマッピングが必要です。「 [WPF xaml の xaml 名前空間と名前空間のマッピング](~/docs/framework/wpf/advanced/xaml-namespaces-and-namespace-mapping-for-wpf-xaml.md)」を参照してください。  
   
  *customCommandName*  
- カスタム コマンド。  
+ カスタムコマンド。  
   
  ]]></format>
     </remarks>
@@ -131,12 +131,12 @@
         <Parameter Name="ownerType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="name">シリアル化のための宣言名。</param>
-        <param name="ownerType">このコマンドを登録するタイプ。</param>
-        <summary>指定した名前および所有者タイプで、<see cref="T:System.Windows.Input.RoutedCommand" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="name">シリアル化のために宣言された名前。</param>
+        <param name="ownerType">このコマンドを登録する型。</param>
+        <summary>指定した名前と所有者型を使用して、<see cref="T:System.Windows.Input.RoutedCommand" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="ownerType" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="ownerType" /> は <see langword="null" />です。</exception>
         <altmember cref="T:System.Windows.Input.CommandBinding" />
         <altmember cref="T:System.Windows.Input.InputBinding" />
         <altmember cref="T:System.Windows.Input.ExecutedRoutedEventArgs" />
@@ -162,15 +162,15 @@
         <Parameter Name="inputGestures" Type="System.Windows.Input.InputGestureCollection" />
       </Parameters>
       <Docs>
-        <param name="name">シリアル化のための宣言名。</param>
+        <param name="name">シリアル化のために宣言された名前。</param>
         <param name="ownerType">このコマンドを登録する型。</param>
-        <param name="inputGestures">このコマンドに関連付けられている入力ジェスチャを既定値。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Input.RoutedCommand" />クラスを指定した名前、所有者型、およびジェスチャのコレクションを使用します。</summary>
+        <param name="inputGestures">このコマンドに関連付けられた、既定の入力ジェスチャ。</param>
+        <summary>指定した名前、所有者型、およびジェスチャのコレクションを使用して、<see cref="T:System.Windows.Input.RoutedCommand" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException">長さ<paramref name="name" />は 0 です 
+        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="name" /> の長さが 0 です。 
 - または - 
- <paramref name="ownerType" /> は <see langword="null" /> です。</exception>
+ <paramref name="ownerType" /> は <see langword="null" />です。</exception>
         <altmember cref="T:System.Windows.Input.CommandBinding" />
         <altmember cref="T:System.Windows.Input.InputBinding" />
         <altmember cref="T:System.Windows.Input.ExecutedRoutedEventArgs" />
@@ -203,33 +203,33 @@
         <Parameter Name="target" Type="System.Windows.IInputElement" />
       </Parameters>
       <Docs>
-        <param name="parameter">ユーザーは、データ型を定義します。</param>
-        <param name="target">コマンド ターゲットです。</param>
-        <summary>決定かどうかこの<see cref="T:System.Windows.Input.RoutedCommand" />現在の状態で実行できます。</summary>
-        <returns><see langword="true" /> 現在のコマンド ターゲットでコマンドを実行できる場合それ以外の場合、<see langword="false" />します。</returns>
+        <param name="parameter">ユーザー定義のデータ型。</param>
+        <param name="target">コマンドの対象。</param>
+        <summary>現在の状態でこの <see cref="T:System.Windows.Input.RoutedCommand" /> を実行できるかどうかを判断します。</summary>
+        <returns>現在のコマンドの対象に対してコマンドを実行できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- かどうかを実際のロジックを<xref:System.Windows.Input.RoutedCommand>現在上で実行できるコマンド ターゲットに含まれていない、<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッドではなく<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>を発生させます、<xref:System.Windows.Input.CommandManager.PreviewCanExecute>と<xref:System.Windows.Input.CommandManager.CanExecute>をトンネリングおよびバブリング イベント要素ツリーを使用して、オブジェクトを調べて、<xref:System.Windows.Input.CommandBinding>します。  場合、<xref:System.Windows.Input.CommandBinding>を<xref:System.Windows.Input.RoutedCommand>が見つかると、次に、<xref:System.Windows.Input.CanExecuteRoutedEventHandler>にアタッチされている<xref:System.Windows.Input.CommandBinding>が呼び出されます。  これらのハンドラーを判断する際のプログラミング ロジックを提供する、<xref:System.Windows.Input.RoutedCommand>かどうかを実行することができます。  
+ 現在のコマンドターゲットで<xref:System.Windows.Input.RoutedCommand>を実行できるかどうかを判断する実際のロジックは、 <xref:System.Windows.Input.RoutedCommand.CanExecute%2A> <xref:System.Windows.Input.CommandManager.PreviewCanExecute>メソッド<xref:System.Windows.Input.RoutedCommand.CanExecute%2A> <xref:System.Windows.Input.CommandManager.CanExecute>には含まれていませんツリーで、を<xref:System.Windows.Input.CommandBinding>持つオブジェクトを探しています。  のが見つかった場合<xref:System.Windows.Input.CommandBinding>は、にアタッチされたが呼び出されます。<xref:System.Windows.Input.CanExecuteRoutedEventHandler> <xref:System.Windows.Input.RoutedCommand> <xref:System.Windows.Input.CommandBinding>  これらのハンドラーは、 <xref:System.Windows.Input.RoutedCommand>が実行できるかどうかを判断するためのプログラミングロジックを提供します。  
   
- <xref:System.Windows.Input.CommandManager.PreviewCanExecute>と<xref:System.Windows.Input.CommandManager.PreviewExecuted>でイベントが発生、<xref:System.Windows.Input.ICommandSource.CommandTarget%2A>します。  場合、<xref:System.Windows.Input.ICommandSource.CommandTarget%2A>が設定されておらず、 <xref:System.Windows.Input.ICommandSource>、<xref:System.Windows.Input.CommandManager.PreviewCanExecute>と<xref:System.Windows.Input.CommandManager.CanExecute>キーボード フォーカスを持つ要素でイベントが発生します。  
+ イベントとイベント<xref:System.Windows.Input.CommandManager.PreviewExecuted>がで発生します。<xref:System.Windows.Input.ICommandSource.CommandTarget%2A> <xref:System.Windows.Input.CommandManager.PreviewCanExecute>  がに設定されていない<xref:System.Windows.Input.CommandManager.CanExecute>場合<xref:System.Windows.Input.CommandManager.PreviewCanExecute>、およびイベントは、キーボードフォーカスを持つ要素で発生します。 <xref:System.Windows.Input.ICommandSource> <xref:System.Windows.Input.ICommandSource.CommandTarget%2A>  
   
    
   
 ## Examples  
- 次の例は、<xref:System.Windows.Input.ICommand.CanExecuteChanged>イベント ハンドラーからのカスタム実装を<xref:System.Windows.Input.ICommandSource>します。  
+ 次の例は、 <xref:System.Windows.Input.ICommand.CanExecuteChanged>の<xref:System.Windows.Input.ICommandSource>カスタム実装のイベントハンドラーです。  
   
- `this.Command` この例では、<xref:System.Windows.Input.ICommandSource.Command%2A>プロパティを<xref:System.Windows.Input.ICommandSource>します。  コマンドがない場合`null`、コマンドにキャスト、<xref:System.Windows.Input.RoutedCommand>します。  コマンドの場合、 <xref:System.Windows.Input.RoutedCommand>、<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>を渡すメソッドが呼び出される、 <xref:System.Windows.Input.ICommandSource.CommandTarget%2A> 、<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>します。  コマンドがない場合、<xref:System.Windows.Input.RoutedCommand>にキャストされた、<xref:System.Windows.Input.ICommand>と<xref:System.Windows.Input.ICommand.CanExecute%2A>メソッドが呼び出され、 <xref:System.Windows.Input.ICommandSource.CommandParameter%2A>。  
+ `this.Command`この例では<xref:System.Windows.Input.ICommandSource.Command%2A> 、の<xref:System.Windows.Input.ICommandSource>プロパティはです。  コマンドがでない`null`場合、コマンドは<xref:System.Windows.Input.RoutedCommand>にキャストされます。  コマンドが<xref:System.Windows.Input.RoutedCommand>の場合、 <xref:System.Windows.Input.RoutedCommand.CanExecute%2A> <xref:System.Windows.Input.ICommandSource.CommandTarget%2A>メソッドが<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>呼び出され、とが渡されます。  <xref:System.Windows.Input.RoutedCommand>コマンドがでない場合は、 <xref:System.Windows.Input.ICommand>にキャストされ、 <xref:System.Windows.Input.ICommand.CanExecute%2A>メソッドはを渡し<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>て呼び出されます。  
   
- 場合、<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッドを返します。 `true`、場合コントロールが有効になっている以外の場合、それ以外の場合、コントロールは disable です。  
+ メソッドがを返し`true`た場合は、コントロールが有効になります。それ以外の場合、コントロールは無効になります。 <xref:System.Windows.Input.RoutedCommand.CanExecute%2A>  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandCanExecuteChanged](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandcanexecutechanged)]
  [!code-vb[ImplementICommandSource#ImplementICommandCanExecuteChanged](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandcanexecutechanged)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><paramref name="target" /> <see cref="T:System.Windows.UIElement" />または<see cref="T:System.Windows.ContentElement" />します。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="target" /> が <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="CanExecuteChanged">
@@ -252,23 +252,23 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コマンド ソースへの変更がコマンド マネージャーによって検出されたときに発生します。 これらの変更は、多くの場合、現在のコマンド ターゲットでコマンドを実行するかどうかに影響します。</summary>
+        <summary>コマンド ソースに対する変更がコマンド マネージャーによって検出されたときに発生します。 これらの変更は、多くの場合、現在のコマンドの対象に対してコマンドを実行するかどうかに影響します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.RoutedCommand>リッスン、<xref:System.Windows.Input.CommandManager.RequerySuggested>によって発生するイベント、<xref:System.Windows.Input.CommandManager>します。 <xref:System.Windows.Input.CommandManager.RequerySuggested>条件が満たされるたびにイベントが発生したかどうかを変更することがありますキーボード フォーカスの変更など、コマンドを実行する必要があります。  コマンドを受信すると、<xref:System.Windows.Input.CommandManager.RequerySuggested>イベントが発生、<xref:System.Windows.Input.RoutedCommand.CanExecuteChanged>イベント。  一般に、コマンド ソースがこのイベントとクエリの待機、<xref:System.Windows.Input.RoutedCommand>での<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッド。  ほとんどのコマンド ソースが無効になります自体場合は、コマンド バインディングの一部として、コマンドを実行することはできません。  この例は、ときに、<xref:System.Windows.Controls.MenuItem>自体を淡色表示にすると、コマンドを実行できません。  
+ は<xref:System.Windows.Input.RoutedCommand> 、 <xref:System.Windows.Input.CommandManager.RequerySuggested>イベントをリッスンします。これは、 <xref:System.Windows.Input.CommandManager>によって発生します。 <xref:System.Windows.Input.CommandManager.RequerySuggested>イベントは、キーボードフォーカスの変更など、コマンドを実行する必要があるかどうかを変更する条件が満たされたときに発生します。  コマンドが<xref:System.Windows.Input.CommandManager.RequerySuggested>イベントを受け取ると、 <xref:System.Windows.Input.RoutedCommand.CanExecuteChanged>イベントが発生します。  一般に、コマンドソースはこのイベントをリッスンし、 <xref:System.Windows.Input.RoutedCommand> <xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッドを使用してクエリを実行します。  コマンドのバインドの一部として、コマンドを実行できない場合は、ほとんどのコマンドソースがそれ自体を無効にします。  この例として、コマンド<xref:System.Windows.Controls.MenuItem>を実行できないときにがグレーになる場合があります。  
   
- 一部の状況で、<xref:System.Windows.Input.CommandManager>は実行するコマンドの機能を変更する条件の変化を認識しません。  このような場合は、強制することができます、<xref:System.Windows.Input.CommandManager>が発生する、<xref:System.Windows.Input.CommandManager.RequerySuggested>イベントを呼び出すことによって、<xref:System.Windows.Input.CommandManager.InvalidateRequerySuggested%2A>メソッド、これはさらに、<xref:System.Windows.Input.RoutedCommand>させる、<xref:System.Windows.Input.RoutedCommand.CanExecuteChanged>イベント。  
+ 場合によっては<xref:System.Windows.Input.CommandManager> 、実行するコマンドの機能を変更する条件の変更がによって認識されないことがあります。  このような場合は、が<xref:System.Windows.Input.CommandManager> <xref:System.Windows.Input.CommandManager.InvalidateRequerySuggested%2A>メソッドを呼び出して<xref:System.Windows.Input.CommandManager.RequerySuggested>イベントを発生させるように強制することができ<xref:System.Windows.Input.RoutedCommand>ます。これ<xref:System.Windows.Input.RoutedCommand.CanExecuteChanged>により、によってイベントが発生します。  
   
    
   
 ## Examples  
- 次の例は、<xref:System.Windows.Input.ICommand.CanExecuteChanged>イベント ハンドラーからのカスタム実装を<xref:System.Windows.Input.ICommandSource>します。  
+ 次の例は、 <xref:System.Windows.Input.ICommand.CanExecuteChanged>の<xref:System.Windows.Input.ICommandSource>カスタム実装のイベントハンドラーです。  
   
- `this.Command` この例では、<xref:System.Windows.Input.ICommandSource.Command%2A>プロパティを<xref:System.Windows.Input.ICommandSource>します。  コマンドがない場合`null`、コマンドにキャスト、<xref:System.Windows.Input.RoutedCommand>します。  コマンドの場合、 <xref:System.Windows.Input.RoutedCommand>、<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>を渡すメソッドが呼び出される、 <xref:System.Windows.Input.ICommandSource.CommandTarget%2A> 、<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>します。  コマンドがない場合、<xref:System.Windows.Input.RoutedCommand>にキャストされた、<xref:System.Windows.Input.ICommand>と<xref:System.Windows.Input.ICommand.CanExecute%2A>メソッドが呼び出され、 <xref:System.Windows.Input.ICommandSource.CommandParameter%2A>。  
+ `this.Command`この例では<xref:System.Windows.Input.ICommandSource.Command%2A> 、の<xref:System.Windows.Input.ICommandSource>プロパティはです。  コマンドがでない`null`場合、コマンドは<xref:System.Windows.Input.RoutedCommand>にキャストされます。  コマンドが<xref:System.Windows.Input.RoutedCommand>の場合、 <xref:System.Windows.Input.RoutedCommand.CanExecute%2A> <xref:System.Windows.Input.ICommandSource.CommandTarget%2A>メソッドが<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>呼び出され、とが渡されます。  <xref:System.Windows.Input.RoutedCommand>コマンドがでない場合は、 <xref:System.Windows.Input.ICommand>にキャストされ、 <xref:System.Windows.Input.ICommand.CanExecute%2A>メソッドはを渡し<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>て呼び出されます。  
   
- 場合、<xref:System.Windows.Input.RoutedCommand.CanExecute%2A>メソッドを返します。 `true`、場合コントロールが有効になっている以外の場合、それ以外の場合、コントロールが無効になっています。  
+ メソッドがを返し`true`た場合は、コントロールが有効になります。それ以外の場合、コントロールは無効になります。 <xref:System.Windows.Input.RoutedCommand.CanExecute%2A>  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandCanExecuteChanged](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandcanexecutechanged)]
  [!code-vb[ImplementICommandSource#ImplementICommandCanExecuteChanged](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandcanexecutechanged)]  
@@ -303,30 +303,30 @@
         <Parameter Name="target" Type="System.Windows.IInputElement" />
       </Parameters>
       <Docs>
-        <param name="parameter">ユーザーは、ハンドラーに渡されるパラメーターを定義します。</param>
-        <param name="target">コマンド ハンドラーの検索を開始する位置の要素。</param>
-        <summary>実行、<see cref="T:System.Windows.Input.RoutedCommand" />現在のコマンド ターゲットにします。</summary>
+        <param name="parameter">ハンドラーに渡されるユーザー定義パラメーター。</param>
+        <param name="target">コマンド ハンドラーの検索を開始する要素。</param>
+        <summary>現在のコマンドの対象で <see cref="T:System.Windows.Input.RoutedCommand" /> を実行します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 実行される実際のロジック、<xref:System.Windows.Input.RoutedCommand>に含まれていない、<xref:System.Windows.Input.RoutedCommand.Execute%2A>メソッド。  <xref:System.Windows.Input.RoutedCommand.Execute%2A> 発生させる、<xref:System.Windows.Input.CommandManager.PreviewExecuted>と<xref:System.Windows.Input.CommandManager.Executed>イベントでは、トンネリングおよびバブリング、要素ツリーを持つオブジェクトを探して、 <xref:System.Windows.Input.CommandBinding>。  場合、<xref:System.Windows.Input.CommandBinding>を<xref:System.Windows.Input.RoutedCommand>が見つかると、次に、<xref:System.Windows.Input.ExecutedRoutedEventHandler>にアタッチされている<xref:System.Windows.Input.CommandBinding>が呼び出されます。  これらのハンドラーを実行するプログラミング ロジックを提供する、<xref:System.Windows.Input.RoutedCommand>します。  
+ を実行<xref:System.Windows.Input.RoutedCommand>する実際のロジックは、 <xref:System.Windows.Input.RoutedCommand.Execute%2A>メソッドには含まれていません。  <xref:System.Windows.Input.RoutedCommand.Execute%2A>イベントと<xref:System.Windows.Input.CommandManager.PreviewExecuted> <xref:System.Windows.Input.CommandManager.Executed>イベントを発生させます。このイベントは、要素ツリーを通じて、 <xref:System.Windows.Input.CommandBinding>を持つオブジェクトを検索します。  のが見つかった場合<xref:System.Windows.Input.CommandBinding>は、にアタッチされたが呼び出されます。<xref:System.Windows.Input.ExecutedRoutedEventHandler> <xref:System.Windows.Input.RoutedCommand> <xref:System.Windows.Input.CommandBinding>  これらのハンドラーは、 <xref:System.Windows.Input.RoutedCommand>を実行するプログラミングロジックを提供します。  
   
- <xref:System.Windows.Input.CommandManager.PreviewExecuted>と<xref:System.Windows.Input.CommandManager.Executed>でイベントが発生、<xref:System.Windows.Input.ICommandSource.CommandTarget%2A>します。  場合、<xref:System.Windows.Input.ICommandSource.CommandTarget%2A>が設定されておらず、 <xref:System.Windows.Input.ICommandSource>、<xref:System.Windows.Input.CommandManager.PreviewExecuted>と<xref:System.Windows.Input.CommandManager.Executed>キーボード フォーカスを持つ要素でイベントが発生します。  
+ イベントとイベント<xref:System.Windows.Input.CommandManager.Executed>がで発生します。<xref:System.Windows.Input.ICommandSource.CommandTarget%2A> <xref:System.Windows.Input.CommandManager.PreviewExecuted>  がに設定されていない<xref:System.Windows.Input.CommandManager.Executed>場合<xref:System.Windows.Input.CommandManager.PreviewExecuted>、およびイベントは、キーボードフォーカスを持つ要素で発生します。 <xref:System.Windows.Input.ICommandSource> <xref:System.Windows.Input.ICommandSource.CommandTarget%2A>  
   
    
   
 ## Examples  
- カスタム実装を次の例は<xref:System.Windows.Input.ICommandSource>サンプル。  
+ 次の例は、サンプルの<xref:System.Windows.Input.ICommandSource>カスタム実装からのものです。  
   
- `this.Command` Command プロパティは、この例では、<xref:System.Windows.Input.ICommandSource>します。  コマンドにキャストして、コマンドが null でない場合、<xref:System.Windows.Input.RoutedCommand>します。  ある場合、 <xref:System.Windows.Input.RoutedCommand>、<xref:System.Windows.Input.RoutedCommand.Execute%2A>メソッドが呼び出され、 <xref:System.Windows.Input.ICommandSource.CommandTarget%2A> 、 <xref:System.Windows.Input.ICommandSource.CommandParameter%2A>。  コマンドがない場合、<xref:System.Windows.Input.RoutedCommand>にキャストされた、<xref:System.Windows.Input.ICommand>と<xref:System.Windows.Input.ICommand.Execute%2A>を渡すメソッドが呼び出される、<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>します。  
+ `this.Command`この例では、の<xref:System.Windows.Input.ICommandSource>Command プロパティがです。  コマンドが null でない場合、コマンドはに<xref:System.Windows.Input.RoutedCommand>キャストされます。  が<xref:System.Windows.Input.RoutedCommand>の場合、 <xref:System.Windows.Input.RoutedCommand.Execute%2A>メソッドが呼び出され、 <xref:System.Windows.Input.ICommandSource.CommandTarget%2A>とが渡されます。 <xref:System.Windows.Input.ICommandSource.CommandParameter%2A>  <xref:System.Windows.Input.RoutedCommand>コマンドがでない場合は、 <xref:System.Windows.Input.ICommand>に<xref:System.Windows.Input.ICommand.Execute%2A>キャストされ、メソッドがを渡し<xref:System.Windows.Input.ICommandSource.CommandParameter%2A>て呼び出されます。  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandExecute](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandexecute)]
  [!code-vb[ImplementICommandSource#ImplementICommandExecute](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandexecute)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><paramref name="target" /> <see cref="T:System.Windows.UIElement" />または<see cref="T:System.Windows.ContentElement" />します。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="target" /> が <see cref="T:System.Windows.UIElement" /> または <see cref="T:System.Windows.ContentElement" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="InputGestures">
@@ -346,13 +346,13 @@
         <ReturnType>System.Windows.Input.InputGestureCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コレクションを取得<see cref="T:System.Windows.Input.InputGesture" />このコマンドに関連付けられているオブジェクト。</summary>
+        <summary>このコマンドに関連付けられている <see cref="T:System.Windows.Input.InputGesture" /> オブジェクトのコレクションを取得します。</summary>
         <value>入力ジェスチャ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、新しいを追加する方法を示しています。<xref:System.Windows.Input.MouseGesture>を、<xref:System.Windows.Input.RoutedCommand>します。  
+ 次の例は、 <xref:System.Windows.Input.MouseGesture> <xref:System.Windows.Input.RoutedCommand>に新しいを追加する方法を示しています。  
   
  [!code-csharp[commandlibrarysnippets#MouseBindingAddedCommand](~/samples/snippets/csharp/VS_Snippets_Wpf/CommandLibrarySnippets/CSharp/Window1.xaml.cs#mousebindingaddedcommand)]
  [!code-vb[commandlibrarysnippets#MouseBindingAddedCommand](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CommandLibrarySnippets/visualbasic/window1.xaml.vb#mousebindingaddedcommand)]  
@@ -395,7 +395,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 参照するときに、このプロパティを使用できます、<xref:System.Windows.Input.RoutedCommand>で[!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)]します。  
+ このプロパティは、の<xref:System.Windows.Input.RoutedCommand> [!INCLUDE[TLA#tla_titlexaml](~/includes/tlasharptla-titlexaml-md.md)]を参照するときに使用できます。  
   
  ]]></format>
         </remarks>
@@ -423,7 +423,7 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コマンドを使用して登録されている型を取得します。</summary>
+        <summary>このコマンドに登録された型を取得します。</summary>
         <value>コマンドの所有者の型。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -456,7 +456,7 @@
       </Parameters>
       <Docs>
         <param name="parameter">コマンドにより使用されるデータです。  コマンドにデータを渡す必要がない場合は、このオブジェクトを <see langword="null" /> に設定できます。</param>
-        <summary>このメンバーの説明は、次を参照してください。<see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)" />します。</summary>
+        <summary>このメンバーの説明については、<see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)" /> のトピックを参照してください。</summary>
         <returns>このコマンドを実行できる場合は、<see langword="true" />。それ以外の場合は、<see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -492,7 +492,7 @@
       </Parameters>
       <Docs>
         <param name="parameter">コマンドにより使用されるデータです。  コマンドにデータを渡す必要がない場合は、このオブジェクトを <see langword="null" /> に設定できます。</param>
-        <summary>このメンバーの説明は、次を参照してください。<see cref="M:System.Windows.Input.ICommand.Execute(System.Object)" />します。</summary>
+        <summary>このメンバーの説明については、<see cref="M:System.Windows.Input.ICommand.Execute(System.Object)" /> のトピックを参照してください。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -502,7 +502,7 @@
    
   
 ## Examples  
- 関連項目  
+ 参照  
   
  <xref:System.Windows.Input.RoutedCommand.Execute%2A>  
   

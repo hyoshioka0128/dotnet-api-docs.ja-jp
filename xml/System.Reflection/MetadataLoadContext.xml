@@ -1,5 +1,5 @@
 <Type Name="MetadataLoadContext" FullName="System.Reflection.MetadataLoadContext">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="2b6a57dbb5dc6a01c5eba76ff27d3fa458a46188" /><Meta Name="ms.sourcegitcommit" Value="93667418e6e77da6ba7109a407c61b8969cec4ec" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/05/2019" /><Meta Name="ms.locfileid" Value="67571127" /></Metadata><TypeSignature Language="C#" Value="public sealed class MetadataLoadContext : IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="6c766d4b2c1739afffb6f7a82bcfb218e9b85d29" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68436916" /></Metadata><TypeSignature Language="C#" Value="public sealed class MetadataLoadContext : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MetadataLoadContext extends System.Object implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.MetadataLoadContext" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MetadataLoadContext&#xA;Implements IDisposable" />
@@ -24,9 +24,9 @@
 
 ## Remarks
 
-A`MetadataLoadContext`ディクショナリにアセンブリ名をバインドする役割を果たします<xref:System.Reflection.Assembly>コンテキストまたはアンロードする必要のある以前に読み込まれたインスタンス。
+は`MetadataLoadContext` 、以前にコンテキストに読み込まれたか<xref:System.Reflection.Assembly> 、または読み込む必要があるインスタンスにアセンブリ名をバインドするディクショナリとして機能します。
 
-アセンブリは、メタデータとして厳密に扱われます。 ターゲット プラットフォーム、CPU アーキテクチャ、またはポインターのサイズに基づくアセンブリの読み込みに制限はありません。 コア アセンブリとして指定されたアセンブリに制限はありません (**mscorlib**)。
+アセンブリは、厳密にはメタデータとして扱われます。 ターゲットプラットフォーム、CPU アーキテクチャ、またはポインターのサイズに基づいてアセンブリを読み込む場合、制限はありません。 コアアセンブリ (**mscorlib**) として指定されたアセンブリには制限がありません。
 
 ]]></format>
     </remarks>
@@ -77,19 +77,19 @@ A`MetadataLoadContext`ディクショナリにアセンブリ名をバインド�
 
 ## Remarks
 
-これらの既知の型への参照に、通常の型とは異なり、アセンブリ参照が含まれていないために、他のアセンブリとは異なるコア アセンブリが扱われます。
+コアアセンブリは他のアセンブリとは異なる方法で処理されます。これは、これらの既知の型への参照には、通常の型とは異なり、アセンブリ参照が含まれないためです。
             
-通常、このアセンブリが名前付き"mscorlib"または"netstandard"。 コア アセンブリが見つからない場合、値になります`null`メソッドのシグネチャを解析するものも含め、その他の多くのリフレクション メソッドは例外をスローします。
+通常、このアセンブリには "mscorlib" または "netstandard" という名前が付けられます。 コアアセンブリが見つからない場合、値`null`はになり、その他の多くのリフレクションメソッド (メソッドシグネチャを解析するメソッドを含む) は例外をスローします。
             
-`CoreAssembly`を渡すことによって決定されますが、`coreAssemblyName`に渡されるパラメーター、<xref:System.Reflection.MetadataAssemblyResolver>コンス トラクターを<xref:System.Reflection.MetadataAssemblyResolver.Resolve%2A?displayProperty=nameWithType>メソッド。
+は、 `coreAssemblyName`コンストラクターに渡されたパラメーターを`CoreAssembly` <xref:System.Reflection.MetadataAssemblyResolver> メソッドに渡すこと<xref:System.Reflection.MetadataAssemblyResolver.Resolve%2A?displayProperty=nameWithType>によって決定されます。
 
-ない場合は`coreAssemblyName`のコンス トラクターの引数が指定されました<xref:System.Reflection.MetadataLoadContext>、"mscorlib"、"System.Runtime"および"netstandard"を含む、既定値が使用されます。
+のコンストラクター `coreAssemblyName`に引数が指定されて<xref:System.Reflection.MetadataLoadContext>いない場合は、"mscorlib"、"system.string"、"netstandard" などの既定値が使用されます。
             
-指定されたコア アセンブリは主要な型を直接格納する必要はありません。 入力が他のアセンブリに転送します。 そのため、完全に指定されたコア アセンブリと mscorlib ファサードを使用して許容されます。
+指定されたコアアセンブリには、コア型を直接含める必要はありません。 他のアセンブリに転送することができます。 そのため、指定されたコアアセンブリとして mscorlib ファサードを使用することは完全に許可されています。
             
-なお<xref:System.Runtime>など、相互運用機能に関連する擬似的なカスタム属性の型のいくつか除外するため、理想的なコア アセンブリでない<xref:System.Runtime.InteropServices.DllImportAttribute>します。 ただし、これらの属性に関心がない場合に役立ちます。 [Customattributes] API には、コア アセンブリに必要な型が含まれていない場合にこれらの属性はスキップします。
+は、 <xref:System.Runtime>のよう<xref:System.Runtime.InteropServices.DllImportAttribute>な相互運用関連の疑似カスタム属性型の一部を除外するため、理想的なコアアセンブリではありません。 ただし、これらの属性に関心がない場合は、サービスを提供できます。 コアアセンブリに必要な型が含まれていない場合、CustomAttributes API はこれらの属性をスキップします。
             
-コア アセンブリが必要になるまで読み込まれません。 次の Api では、コア アセンブリの検索はトリガーされません。
+コアアセンブリが必要になるまで読み込まれません。 次の Api は、コアアセンブリの検索をトリガーしません。
 
 * <xref:System.Reflection.MetadataLoadContext.LoadFromStream%2A?displayProperty=nameWithType>
 * <xref:System.Reflection.MetadataLoadContext.LoadFromAssemblyPath%2A?displayProperty=nameWithType>
@@ -106,18 +106,18 @@ A`MetadataLoadContext`ディクショナリにアセンブリ名をバインド�
 * <xref:System.Type.FullName?displayProperty=nameWithType>
 * <xref:System.Type.AssemblyQualifiedName?displayProperty=nameWithType>
             
-コア アセンブリが見つからないか、コア アセンブリには、型がないの動作に影響する場合、<xref:System.Reflection.MetadataLoadContext>次のようにします。
+コアアセンブリが見つからない場合、またはコアアセンブリに型が存在しない場合は、 <xref:System.Reflection.MetadataLoadContext>次のようにの動作に影響します。
             
-* Api を署名または typespecs を解析し、結果として返す必要がある<xref:System.Type>オブジェクトは例外をスローします。 次に例を示します。
+* 署名を解析する必要がある api または typecs を生成し<xref:System.Type> 、結果をオブジェクトとして返す場合は、例外がスローされます。 次に例を示します。
 
   * <xref:System.Reflection.MethodInfo.ReturnType?displayProperty=nameWithType>
   * <xref:System.Reflection.MethodBase.GetParameters%2A?displayProperty=nameWithType>
   * <xref:System.Type.BaseType?displayProperty-nameWithType>
   * <xref:System.Type.GetInterfaces%2A?displayProperty=nameWithType>
 
-* よく知られている中核となる型に型を比較する必要がある Api は、例外をスローしないと、比較が評価されます`false`します。 コア アセンブリを指定しない場合など<xref:System.Type.IsPrimitive>戻ります`false`という名前の型をも、すべての<xref:System.Int32>します。 同様に、<xref:System.Type.GetTypeCode%2A?displayProperty=nameWithType>戻ります<xref:System.TypeCode.Object>のすべてのものです。
+* 型を既知のコア型と比較する必要がある Api では、例外はスローされず、比較`false`はとして評価されます。 たとえば、コアアセンブリ<xref:System.Type.IsPrimitive>を指定しない場合、では、という名前<xref:System.Int32>の型も含め、すべてのが返さ`false`れます。 同様に<xref:System.Type.GetTypeCode%2A?displayProperty=nameWithType> 、は<xref:System.TypeCode.Object>すべてのを返します。
             
-* メタデータ エンティティは、擬似的なカスタム属性としてフラグにその画面を設定、擬似的なカスタム属性の型、必要なコンス トラクターまたはコンス トラクターのパラメーターの型のいずれかのコア アセンブリを含んでいない場合、<xref:System.Reflection.MetadataLoadContext>はスローされません。 返される属性の一覧から擬似的なカスタム属性が省略されます。
+* メタデータエンティティが擬似カスタム属性としてそのサーフェイスにフラグを設定し、コアアセンブリに擬似カスタム属性の型、必要なコンストラクター、またはコンストラクターのパラメーターの型のいずれかが含ま<xref:System.Reflection.MetadataLoadContext>れていない場合、はスローされません。 返される属性の一覧から、擬似カスタム属性が省略されます。
           ]]></format>
         </remarks>
       </Docs>
@@ -146,11 +146,11 @@ A`MetadataLoadContext`ディクショナリにアセンブリ名をバインド�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-後の破棄は、安全ではありませんを使用する<xref:System.Reflection.Assembly>によって管理されているオブジェクト、<xref:System.Reflection.MetadataLoadContext>ものによって管理されているすべてのリフレクション オブジェクトまたは<xref:System.Reflection.Assembly>オブジェクト。
+破棄した後、またはそれら<xref:System.Reflection.Assembly> <xref:System.Reflection.Assembly>の<xref:System.Reflection.MetadataLoadContext>オブジェクトによってディスペンサーされたリフレクションオブジェクトによってディスペンサーされたオブジェクトを使用するのは安全ではありません。
 
-によって提供されるオブジェクトが、<xref:System.Reflection.MetadataLoadContext>をスローするよう努力、 <xref:System.ObjectDisposedException>、これは保証されません。
+<xref:System.Reflection.MetadataLoadContext> を<xref:System.ObjectDisposedException>スローすることによって提供されるオブジェクトは保証されません。
 
-一部の Api は、固定または以前にキャッシュされたデータを返す可能性があります。 オブジェクトにアクセスする*中に*、<xref:System.Reflection.MetadataLoadContext.Dispose%2A>をアンマネージ アクセス違反と failfast メソッドの呼び出しがあります。
+一部の Api は、固定または以前にキャッシュされたデータを返す場合があります。 メソッド呼び出し*中に*オブジェクトにアクセスする<xref:System.Reflection.MetadataLoadContext.Dispose%2A>と、アンマネージアクセス違反と failfast が発生する可能性があります。
          ]]></format>
         </remarks>
       </Docs>
@@ -201,7 +201,7 @@ A`MetadataLoadContext`ディクショナリにアセンブリ名をバインド�
         <remarks>
           <format type="text/markdown"><![CDATA[
 ## Remarks
-このメソッドの動作がの動作と一致することに注意してください、<xref:System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName%2A?displayProperty=nameWithType>イベントを解決するには、動作と一致しません<xref:System.Reflection.Assembly.ReflectionOnlyLoad%2A?displayProperty=nameWithType>します。 (後者の場合はその解決イベントを発生させることがなく。)
+このメソッドの動作は<xref:System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName%2A?displayProperty=nameWithType> resolve イベントの動作と一致しますが、の<xref:System.Reflection.Assembly.ReflectionOnlyLoad%2A?displayProperty=nameWithType>動作とは一致しないことに注意してください。 (後者は、解決イベントを発生させずに起動します)。
           ]]></format>
         </remarks>
         <exception cref="T:System.IO.FileNotFoundException">リゾルバーは <see langword="null" /> を返します。</exception>
@@ -233,7 +233,7 @@ A`MetadataLoadContext`ディクショナリにアセンブリ名をバインド�
           <format type="text/markdown"><![CDATA[
 ## Remarks
 
-このメソッドの動作がの動作と一致することに注意してください、<xref:System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName%2A?displayProperty=nameWithType>イベントを解決するには、動作と一致しません<xref:System.Reflection.Assembly.ReflectionOnlyLoad%2A?displayProperty=nameWithType>します。 (後者の場合はその解決イベントを発生させることがなく。)
+このメソッドの動作は<xref:System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName%2A?displayProperty=nameWithType> resolve イベントの動作と一致しますが、の<xref:System.Reflection.Assembly.ReflectionOnlyLoad%2A?displayProperty=nameWithType>動作とは一致しないことに注意してください。 (後者は、解決イベントを発生させずに起動します)。
 
 ]]></format>
         </remarks>
@@ -318,7 +318,7 @@ A`MetadataLoadContext`ディクショナリにアセンブリ名をバインド�
 ## Remarks
 
 > [!IMPORTANT]
-> <xref:System.Reflection.MetadataLoadContext>の所有権を取得、<xref:System.IO.Stream>このメソッドに渡されます。 元の所有者の位置を変更、破棄する必要がありますいない、 <xref:System.IO.Stream>、またはその位置は変更しないでおくことを前提としています。
+> は<xref:System.Reflection.MetadataLoadContext> 、このメソッドに<xref:System.IO.Stream>渡されたの所有権を取得します。 元の所有者は、位置を変更したり<xref:System.IO.Stream>、を破棄したりすることはできません。また、その位置が変更されないようにする必要があります。
 
 ]]></format>
         </remarks>

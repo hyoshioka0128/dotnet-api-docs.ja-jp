@@ -40,40 +40,40 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 次の 4 種類のファイル IO アクセスがによって提供されるこのアクセス許可を識別するため<xref:System.Security.Permissions.FileIOPermissionAccess>:  
+ このアクセス許可は、によっ<xref:System.Security.Permissions.FileIOPermissionAccess>て提供される次の4種類のファイル IO アクセスを区別します。  
   
--   `Read`:ファイルまたはその長さや最終更新時刻など、ファイルに関する情報へのアクセスの内容への読み取りアクセス。  
+-   `Read`:ファイルの内容、またはファイルの長さや最終更新時刻などのファイルに関する情報へのアクセスを読み取ります。  
   
--   `Write`:ファイルや名前など、ファイルに関する情報を変更するアクセス権の内容への書き込みアクセス。 削除、および上書きすることもできます。  
+-   `Write`:ファイルまたはアクセスの内容への書き込みアクセスを許可して、ファイル名などのファイルに関する情報を変更します。 また、削除と上書きも許可されます。  
   
--   `Append`:ファイルの末尾に記述する機能。 読み取ることはできません。  
+-   `Append` :ファイルの末尾にのみ書き込むことができます。 読み取ることはできません。  
   
--   `PathDiscovery`:パス自体の情報にアクセスします。 これにより、ユーザー名など、パス内の機密情報と、パスで明らかになったディレクトリ構造に関する情報を保護します。 この値は、ファイルまたはフォルダーのパスで表されるへのアクセスを付与しません。  
-  
-> [!NOTE]
->  提供<xref:System.Security.Permissions.FileIOPermissionAccess.Write>アセンブリへのアクセスは完全な信頼を与えることに似ています。 必要ない場合は、アプリケーションは、ファイル システムには記述しないでください、<xref:System.Security.Permissions.FileIOPermissionAccess.Write>アクセスします。  
-  
- これらすべてのアクセス許可は独立しており、つまり 1 つに権限が別の権限を意味しません。 たとえば、`Write`権限へのアクセス許可を意味しません`Read`または`Append`します。 1 つ以上のアクセス許可が必要な場合、組み合わせることができます、ビットごとの OR を使用して次のコード例で示すようにします。 ファイル アクセス許可は、正規の絶対パスで定義されます。呼び出しは、常に標準のファイル パスで行われます。  
-  
- <xref:System.Security.Permissions.FileIOPermission> ファイルとフォルダーの保護された操作をについて説明します。 <xref:System.IO.File>クラスは、ファイルとフォルダーをセキュリティで保護されたアクセスを提供します。 ファイルへのハンドルが作成されたときに、セキュリティのアクセス チェックが実行されます。 作成時にチェックを行うことで、セキュリティ チェックのパフォーマンスに与える影響は最小限に抑えます。 ファイルを開く 1 回、中に発生読み取りと書き込みが複数回を実行できます。 ファイルを開くと、それ以上のチェックが行われます。 オブジェクトが、信頼されていない呼び出し元に渡された場合は誤用ことができます。 たとえば、ファイル ハンドルが、パブリックのグローバルな静的変数がより少ないアクセス許可を使用したコードがアクセスできる場所で格納する必要がありますされません。  
-  
- <xref:System.Security.Permissions.FileIOPermissionAccess> ファイルまたはフォルダーで実行できるアクションを指定します。 さらに、これらのアクションは、複雑なインスタンスをフォームにビットごとの OR を使用して組み合わせることができます。  
-  
- フォルダーへのアクセスは、すべてのファイルとそのサブフォルダー内のフォルダーへのアクセスとそれに含まれるすべてのファイルへのアクセスを意味します。 たとえば、 `Read` C:\folder1\ へのアクセスを意味`Read`C:\folder1\file1.txt、C:\folder1\folder2 へのアクセス\\C:\folder1\folder2\file2.txt、という具合です。  
+-   `PathDiscovery` :パス自体の情報にアクセスします。 これにより、パス内の機密情報 (ユーザー名など) や、パスで明らかになるディレクトリ構造に関する情報が保護されます。 この値は、パスによって表されたファイルまたはフォルダーへのアクセスを与えません。  
   
 > [!NOTE]
->  前に .NET Framework のバージョンでは、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、使用する可能性があります、<xref:System.Security.CodeAccessPermission.Deny%2A?displayProperty=nameWithType>にシステム リソースに信頼されたコードによって不注意によるアクセスを阻止する方法。 <xref:System.Security.CodeAccessPermission.Deny%2A> 残されていますし、リソースへのアクセスが付与されたアクセス許可がアセンブリのセットのだけで決定されるようになりました。 ファイルへのアクセスを制限するには、サンド ボックスで部分信頼コードを実行し、コードのアクセスが許可されているリソースにのみアクセス許可を割り当てる必要があります。 サンド ボックスで、アプリケーションを実行する方法の詳細については、次を参照してください。[方法。Run Partially Trusted Code in a Sandbox](~/docs/framework/misc/how-to-run-partially-trusted-code-in-a-sandbox.md)」 (方法: サンドボックスで部分信頼コードを実行する) を参照してください。  
+>  アセンブリへのアクセス権の付与は、完全な信頼を付与することに似ています。 <xref:System.Security.Permissions.FileIOPermissionAccess.Write> アプリケーションがファイルシステムに書き込む必要がない場合は、 <xref:System.Security.Permissions.FileIOPermissionAccess.Write>アクセスできません。  
+  
+ これらのアクセス許可はすべて独立しています。つまり、1つの権限は、別の権限に対する権限を意味しません。 たとえば、アクセス`Write`許可は、または`Append`に`Read`対するアクセス許可を意味しません。 複数のアクセス許可が必要な場合は、次のコード例に示すように、ビットごとの OR を使用して組み合わせることができます。 ファイルのアクセス許可は、正規の絶対パスの観点で定義されています。呼び出しは、常に標準のファイルパスを使用して行う必要があります。  
+  
+ <xref:System.Security.Permissions.FileIOPermission>ファイルとフォルダーに対する保護された操作について説明します。 クラス<xref:System.IO.File>は、ファイルおよびフォルダーへの安全なアクセスを提供するのに役立ちます。 セキュリティアクセスチェックは、ファイルへのハンドルが作成されるときに実行されます。 作成時にチェックを実行すると、セキュリティチェックのパフォーマンスへの影響が最小限に抑えられます。 ファイルを開く操作は1回だけ実行されますが、読み取りと書き込みは複数回発生する可能性があります。 ファイルが開かれると、それ以上のチェックは行われません。 信頼されていない呼び出し元にオブジェクトが渡されると、そのオブジェクトは誤用される可能性があります。 たとえば、ファイルハンドルは、アクセス許可の少ないコードがアクセスできるパブリックグローバルスタティックに格納しないでください。  
+  
+ <xref:System.Security.Permissions.FileIOPermissionAccess>ファイルまたはフォルダーに対して実行できるアクションを指定します。 さらに、ビットごとの OR を使用してこれらのアクションを組み合わせて、複雑なインスタンスを形成することもできます。  
+  
+ フォルダーへのアクセスは、そのフォルダーに含まれるすべてのファイルへのアクセスと、そのサブフォルダー内のすべてのファイルとフォルダーへのアクセスを意味します。 たとえば、c:\ `Read`フォルダー1\ へのアクセスは`Read` 、C:\folder1\file1.txt、C:\folder1\folder2\\、C:\folder1\folder2\file2.txt などへのアクセスを意味します。  
+  
+> [!NOTE]
+>  より前[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]のバージョンの .NET Framework では、 <xref:System.Security.CodeAccessPermission.Deny%2A?displayProperty=nameWithType>メソッドを使用して、信頼されたコードによってシステムリソースに誤ってアクセスすることを防ぐことができました。 <xref:System.Security.CodeAccessPermission.Deny%2A>は互換性のために残されています。また、リソースへのアクセスは、アセンブリに与えられたアクセス許可セットによってのみ決定されるようになりました。 ファイルへのアクセスを制限するには、サンドボックスで部分信頼コードを実行し、コードがアクセスできるリソースにのみアクセス許可を割り当てる必要があります。 サンドボックスでアプリケーションを実行する方法について[は、「方法:Run Partially Trusted Code in a Sandbox](~/docs/framework/misc/how-to-run-partially-trusted-code-in-a-sandbox.md)」 (方法: サンドボックスで部分信頼コードを実行する) を参照してください。  
   
    
   
 ## Examples  
- 次の例では、使用するコード<xref:System.Security.Permissions.FileIOPermission>します。 次の 2 行のコードをオブジェクトの後に`f`クライアント上のすべてのファイルをコンピューターのローカル ディスクに読み取りアクセス許可を表します。 コード例は、アプリケーションがファイルを読み取るアクセス許可を持つかどうかを判断するためのアクセス許可を要求します。  
+ 次の例は、を使用<xref:System.Security.Permissions.FileIOPermission>するコードを示しています。 次の2行のコードの後、オブジェクト`f`は、クライアントコンピューターのローカルディスクにあるすべてのファイルを読み取るためのアクセス許可を表します。 次に、このコード例では、アプリケーションにファイルを読み取るアクセス許可があるかどうかを判断するアクセス許可を要求します。  
   
  [!code-cpp[Classic FileIOPermission Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CPP/source.cpp#1)]
  [!code-csharp[Classic FileIOPermission Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CS/source.cs#1)]
  [!code-vb[Classic FileIOPermission Example#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_Classic/classic FileIOPermission Example/VB/source.vb#1)]  
   
- 次の 2 行のコードをオブジェクトの後に`f2`C:\test_r を読み取り、読み取りし、C:\example\out.txt への書き込みアクセス許可を表します。 `Read` `Write`前述したようにファイル/フォルダーのアクセス許可を表します。 アクセス許可を作成した後は、コードは、アプリケーションがファイルを読み書きする権限を持つかどうかを判断するためのアクセス許可を要求します。  
+ 次の2行のコードの後、オブジェクト`f2`は、C:\test_r を読み取り、C:\example\out.txt. に対して読み書きを行うためのアクセス許可を表します。 `Read`と`Write`は、前述のようにファイル/フォルダーのアクセス許可を表します。 アクセス許可を作成した後、コードはアクセス許可を要求して、アプリケーションにファイルの読み取りと書き込みの権限があるかどうかを判断します。  
   
  [!code-cpp[Classic FileIOPermission Example#2](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CPP/source.cpp#2)]
  [!code-csharp[Classic FileIOPermission Example#2](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CS/source.cs#2)]
@@ -126,12 +126,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 完全に制限されているいずれかを作成します (`None`) または`Unrestricted`ファイルとディレクトリへのアクセス。  
+ 完全に制限され`None`た ( `Unrestricted` )、またはファイルとディレクトリへのアクセスを作成します。  
   
    
   
 ## Examples  
- 次のコード例は、の新しいインスタンスを作成、<xref:System.Security.Permissions.FileIOPermission>完全制限付きの読み取りアクセス権を持つクラス。  
+ 次のコード例では、完全に制限<xref:System.Security.Permissions.FileIOPermission>された読み取りアクセス権を持つクラスの新しいインスタンスを作成します。  
   
  [!code-cpp[Classic FileIOPermission Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CPP/source.cpp#1)]
  [!code-csharp[Classic FileIOPermission Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CS/source.cs#1)]
@@ -180,12 +180,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、1 つだけの<xref:System.Security.Permissions.FileIOPermissionAccess>を指定したファイルまたはディレクトリを指定する値。 使用して、<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>複雑なアクセス許可を定義するメソッド。  
+ このコンストラクターでは、 <xref:System.Security.Permissions.FileIOPermissionAccess>指定されたファイルまたはディレクトリに対して1つの値のみを指定できます。 複雑な<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>権限を定義するには、メソッドを使用します。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.FileIOPermission.%23ctor%28System.Security.Permissions.FileIOPermissionAccess%2CSystem.String%29?displayProperty=nameWithType>の新しいインスタンスを作成するコンス トラクター、 <xref:System.Security.Permissions.FileIOPermission> C:\test_r ファイルへの完全なアクセスを提供するクラス。  
+ <xref:System.Security.Permissions.FileIOPermission.%23ctor%28System.Security.Permissions.FileIOPermissionAccess%2CSystem.String%29?displayProperty=nameWithType>コンストラクターを使用して、C:\test_r ファイルへの完全なアクセスを提供する<xref:System.Security.Permissions.FileIOPermission>クラスの新しいインスタンスを作成するコード例を次に示します。  
   
  [!code-cpp[Classic FileIOPermission Example#2](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CPP/source.cpp#2)]
  [!code-csharp[Classic FileIOPermission Example#2](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CS/source.cs#2)]
@@ -240,13 +240,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、1 つだけ<xref:System.Security.Permissions.FileIOPermissionAccess>を指定したファイルとディレクトリを指定する値。 使用して、<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>複雑なアクセス許可を定義するメソッド。  
+ このコンストラクターでは、 <xref:System.Security.Permissions.FileIOPermissionAccess>指定されたファイルとディレクトリに対して1つの値のみを指定できます。 複雑な<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>権限を定義するには、メソッドを使用します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="access" /> パラメーターが <see cref="T:System.Security.Permissions.FileIOPermissionAccess" /> の正しい値ではありません。  
   
-- または - 
+または 
 <paramref name="pathList" /> 配列内のエントリが、有効な文字列ではありません。</exception>
       </Docs>
     </Member>
@@ -297,12 +297,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、1 つだけ<xref:System.Security.Permissions.FileIOPermissionAccess>の値を指定したファイルまたはディレクトリを指定します。 使用して、<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>複雑なアクセス許可を定義するメソッド。  
+ このコンストラクターでは、 <xref:System.Security.Permissions.FileIOPermissionAccess>指定されたファイルまたはディレクトリに対して1つの値のみを指定できます。 複雑な<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>権限を定義するには、メソッドを使用します。  
   
- `control`パラメーターを指定するかどうかのアクセス制御リスト (ACL) で指定されたディレクトリまたはファイルの`path`変更できますが、表示またはアクセスできません。  
+ パラメーター `control`は、によって`path`指定されたファイルまたはディレクトリのアクセス制御リスト (ACL) を変更、表示、またはアクセスできないようにするかどうかを指定します。  
   
 > [!IMPORTANT]
->  アクセス制御リスト (ACL) には、個人またはグループがある、または権限がない、特定のファイルとそのプロパティに特定のアクションをユーザーがについて説明します。  変更または ACL を表示する機能は重要なアクセス許可し、慎重に付与する必要があります。  
+>  アクセス制御リスト (ACL) は、指定されたファイルとそのプロパティに対する特定のアクションに対する権限を持つ個人またはグループを表します。  ACL を変更または表示する機能は、重要なアクセス許可であるため、注意して付与する必要があります。  
   
  ]]></format>
         </remarks>
@@ -311,7 +311,7 @@
 - または - 
 <paramref name="path" /> パラメーターが有効な文字列ではありません。  
   
-- または - 
+または 
 <paramref name="path" /> パラメーターで、ファイルまたはディレクトリへの絶対パスが指定されませんでした。</exception>
       </Docs>
     </Member>
@@ -362,12 +362,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、1 つだけ<xref:System.Security.Permissions.FileIOPermissionAccess>を指定したファイルとディレクトリを指定する値。 使用して、<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>複雑なアクセス許可を定義するメソッド。  
+ このコンストラクターでは、 <xref:System.Security.Permissions.FileIOPermissionAccess>指定されたファイルとディレクトリに対して1つの値のみを指定できます。 複雑な<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>権限を定義するには、メソッドを使用します。  
   
- `control`パラメーターを指定するかどうかのアクセス制御リスト (ACL) で指定されたディレクトリまたはファイルの`path`変更できますが、表示またはアクセスできません。  
+ パラメーター `control`は、によって`path`指定されたファイルまたはディレクトリのアクセス制御リスト (ACL) を変更、表示、またはアクセスできないようにするかどうかを指定します。  
   
 > [!IMPORTANT]
->  アクセス制御リスト (ACL) には、個人またはグループがある、または権限がない、特定のファイルとそのプロパティに特定のアクションをユーザーがについて説明します。  変更または ACL を表示する機能は重要なアクセス許可し、慎重に付与する必要があります。  
+>  アクセス制御リスト (ACL) は、指定されたファイルとそのプロパティに対する特定のアクションに対する権限を持つ個人またはグループを表します。  ACL を変更または表示する機能は、重要なアクセス許可であるため、注意して付与する必要があります。  
   
  ]]></format>
         </remarks>
@@ -428,12 +428,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可の状態を追加してファイルとディレクトリのアクセスを変更するのにには、このメソッドを使用します。  
+ このメソッドを使用して、現在のアクセス許可の状態にを追加することによって、ファイルおよびディレクトリへのアクセスを変更します。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.FileIOPermission.AddPathList%28System.Security.Permissions.FileIOPermissionAccess%2CSystem.String%29?displayProperty=nameWithType>メソッド。  
+ 次のコード例は、 <xref:System.Security.Permissions.FileIOPermission.AddPathList%28System.Security.Permissions.FileIOPermissionAccess%2CSystem.String%29?displayProperty=nameWithType>メソッドの使用方法を示しています。  
   
  [!code-cpp[Classic FileIOPermission Example#2](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CPP/source.cpp#2)]
  [!code-csharp[Classic FileIOPermission Example#2](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CS/source.cs#2)]
@@ -443,7 +443,7 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="access" /> パラメーターが <see cref="T:System.Security.Permissions.FileIOPermissionAccess" /> の正しい値ではありません。  
   
-- または - 
+または 
 <paramref name="path" /> パラメーターが有効な文字列ではありません。  
   
 - または - 
@@ -493,13 +493,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可の状態を追加してファイルとディレクトリのアクセスを変更するのにには、このメソッドを使用します。  
+ このメソッドを使用して、現在のアクセス許可の状態にを追加することによって、ファイルおよびディレクトリへのアクセスを変更します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="access" /> パラメーターが <see cref="T:System.Security.Permissions.FileIOPermissionAccess" /> の正しい値ではありません。  
   
-- または - 
+または 
 <paramref name="pathList" /> 配列内のエントリが、有効ではありません。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="pathList" /> 配列内のエントリが、正しくない形式です。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="pathList" /> パラメーターが <see langword="null" /> です。</exception>
@@ -536,14 +536,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを取得またはローカル コンピューターとネットワーク ドライブ上のすべてのファイルへのアクセス許可を設定します。  
+ このプロパティは、ローカルコンピューターおよびネットワークドライブ上のすべてのファイルに対して許可されているアクセスを取得または設定します。  
   
- 個人<xref:System.Security.Permissions.FileIOPermissionAccess>のビットごとの AND 演算を使用して値をチェックすることができます。  
+ ビットごと<xref:System.Security.Permissions.FileIOPermissionAccess>の and 演算を使用して、個々の値をチェックできます。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.FileIOPermission.AllFiles%2A>プロパティ。  
+ 次のコード例は、 <xref:System.Security.Permissions.FileIOPermission.AllFiles%2A>プロパティの使用方法を示しています。  
   
  [!code-cpp[Classic FileIOPermission Example#3](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CPP/source.cpp#3)]
  [!code-csharp[Classic FileIOPermission Example#3](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CS/source.cs#3)]
@@ -584,14 +584,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ローカル ファイルは、ローカル コンピューター上に含まれているファイルです。 ネットワーク ドライブを通じてアクセスされていない任意のファイルは、ローカル ファイルです。  
+ ローカルファイルは、ローカルコンピューターに格納されているファイルです。 ネットワークドライブを介してアクセスされないファイルはすべてローカルファイルです。  
   
- 個人<xref:System.Security.Permissions.FileIOPermissionAccess>のビットごとの AND 演算を使用して値をチェックすることができます。  
+ ビットごと<xref:System.Security.Permissions.FileIOPermissionAccess>の and 演算を使用して、個々の値をチェックできます。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.FileIOPermission.AllLocalFiles%2A>プロパティ。  
+ 次のコード例は、 <xref:System.Security.Permissions.FileIOPermission.AllLocalFiles%2A>プロパティの使用方法を示しています。  
   
  [!code-cpp[Classic FileIOPermission Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CPP/source.cpp#1)]
  [!code-csharp[Classic FileIOPermission Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic FileIOPermission Example/CS/source.cs#1)]
@@ -633,7 +633,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アクセス許可のコピーは、元のアクセス許可とリソースに同じアクセス権を表します。  
+ アクセス許可のコピーは、元のアクセス許可と同じリソースへのアクセスを表します。  
   
  ]]></format>
         </remarks>
@@ -686,7 +686,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については、「 <xref:System.Object.Equals%2A> 」を参照してください。  
+ 詳細については、「<xref:System.Object.Equals%2A>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -771,7 +771,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 同じアクセス許可の 2 つのインスタンスのハッシュ コードが異なる可能性があります、ためハッシュ コードを比較する 2 つ使用するされません<xref:System.Security.Permissions.FileIOPermission>オブジェクト。  
+ 同じアクセス許可の2つのインスタンスのハッシュコードは異なる場合があるため、2つ<xref:System.Security.Permissions.FileIOPermission>のオブジェクトの比較にハッシュコードを使用することはできません。  
   
  ]]></format>
         </remarks>
@@ -817,15 +817,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可の状態を取得するのにには、このメソッドを使用します。 両方の状態を取得する`Read`と`Write`アクセスでは、このメソッドに 2 つの呼び出しが必要です。  
+ 現在のアクセス許可の状態を取得するには、このメソッドを使用します。 `Read` と`Write`の両方の状態を取得するには、このメソッドの2つの呼び出しが必要です。  
   
 > [!NOTE]
->  `access`パラメーターがの値に限定<xref:System.Security.Permissions.FileIOPermissionAccess>、1 つの種類のファイル アクセスを表します。 これらの値が<xref:System.Security.Permissions.FileIOPermissionAccess.Read>、 <xref:System.Security.Permissions.FileIOPermissionAccess.Write>、 <xref:System.Security.Permissions.FileIOPermissionAccess.Append>、および<xref:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery>します。 値を許容`access`は含めないでください<xref:System.Security.Permissions.FileIOPermissionAccess.NoAccess>と<xref:System.Security.Permissions.FileIOPermissionAccess.AllAccess>、1 つの種類のファイル アクセスを表していません。  
+>  パラメーターは、ファイルアクセスの単一の<xref:System.Security.Permissions.FileIOPermissionAccess>型を表すの値に制限されます。 `access` これらの値<xref:System.Security.Permissions.FileIOPermissionAccess.Read>は<xref:System.Security.Permissions.FileIOPermissionAccess.Write> <xref:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery> <xref:System.Security.Permissions.FileIOPermissionAccess.Append>、、、、およびです。 に`access`使用できる値には、ファイル<xref:System.Security.Permissions.FileIOPermissionAccess.AllAccess>アクセスの単一の型を表すおよびは含ま<xref:System.Security.Permissions.FileIOPermissionAccess.NoAccess>れません。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.FileIOPermission.GetPathList%2A>メソッド。 この例が示されている例の一部、<xref:System.Security.Permissions.FileIOPermission>クラス。  
+ 次のコード例は、 <xref:System.Security.Permissions.FileIOPermission.GetPathList%2A>メソッドの使用方法を示しています。 この例は、 <xref:System.Security.Permissions.FileIOPermission>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Permissions.FileIOPermission#7](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CPP/fileiopermission.cpp#7)]
  [!code-csharp[System.Security.Permissions.FileIOPermission#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CS/fileiopermission.cs#7)]
@@ -835,7 +835,7 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="access" /> が <see cref="T:System.Security.Permissions.FileIOPermissionAccess" /> の正しい値ではありません。  
   
-- または - 
+または 
  <paramref name="access" /> が <see cref="F:System.Security.Permissions.FileIOPermissionAccess.AllAccess" /> で、ファイル アクセスの 2 つ以上の型を表しているか、<see cref="F:System.Security.Permissions.FileIOPermissionAccess.NoAccess" /> がファイル アクセスのどの型も表していません。</exception>
       </Docs>
     </Member>
@@ -874,7 +874,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 2 つのアクセス許可の積集合は、両方に共通する操作のセットを説明する権限です。 元の両方の権限を通過する要求だけでは、積集合を渡します。  
+ 2つのアクセス許可の積集合は、両方が共通で記述する一連の操作を記述するアクセス許可です。 両方の元のアクセス許可を渡す要求だけが、積集合を渡します。  
   
  ]]></format>
         </remarks>
@@ -916,7 +916,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可は、現在のアクセス許可を指定した権限に含まれている一連の操作を指定する場合、指定したアクセス許可のサブセットです。 たとえば、C:\example.txt への読み取りアクセス権を表すアクセス許可は、c: 読み取りアクセス権を表すアクセス許可のサブセット\\します。 このメソッドが戻る場合`true`、現在のアクセス許可がない以上へのアクセスが保護されたリソースは、指定した権限を表します。  
+ 現在のアクセス許可が、指定したアクセス許可に含まれる一連の操作を指定している場合、現在のアクセス許可は、指定したアクセス許可のサブセットになります。 たとえば、C:\example.txt への読み取りアクセスを表すアクセス許可は、C:\\に対する読み取りアクセスを表すアクセス許可のサブセットです。 このメソッドがを`true`返す場合、現在のアクセス許可は、指定されたアクセス許可よりも保護されたリソースへのアクセスを許可しません。  
   
  ]]></format>
         </remarks>
@@ -958,7 +958,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 無制限のアクセス許可は、アクセス許可によって保護されているすべてのリソースにアクセスを表します。  
+ 無制限のアクセス許可は、アクセス許可によって保護されているすべてのリソースへのアクセスを表します。  
   
  ]]></format>
         </remarks>
@@ -1010,13 +1010,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定したアクセスの種類の現在のアクセス許可の以前の状態は上書きされます。 次のコードを C:\temp のアクセスを設定する<xref:System.Security.Permissions.FileIOPermissionAccess.Read>します。  
+ 指定されたアクセスの種類に対する現在のアクセス許可の以前の状態が上書きされます。 次のコードは、C:\temp のアクセスを<xref:System.Security.Permissions.FileIOPermissionAccess.Read>に設定します。  
   
  [!code-cpp[System.Security.Permissions.FileIOPermission#12](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CPP/remarks.cpp#12)]
  [!code-csharp[System.Security.Permissions.FileIOPermission#12](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CS/remarks.cs#12)]
  [!code-vb[System.Security.Permissions.FileIOPermission#12](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/VB/remarks.vb#12)]  
   
- アクセスの種類が同じではないために、このアクセスは、次のコードで上書きされません。  
+ アクセスの種類が同じではないため、このアクセスは次のコードでは上書きされません。  
   
  [!code-cpp[System.Security.Permissions.FileIOPermission#13](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CPP/remarks.cpp#13)]
  [!code-csharp[System.Security.Permissions.FileIOPermission#13](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CS/remarks.cs#13)]
@@ -1025,7 +1025,7 @@
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.FileIOPermission.SetPathList%28System.Security.Permissions.FileIOPermissionAccess%2CSystem.String%29?displayProperty=nameWithType>メソッド。  
+ 次のコード例は、 <xref:System.Security.Permissions.FileIOPermission.SetPathList%28System.Security.Permissions.FileIOPermissionAccess%2CSystem.String%29?displayProperty=nameWithType>メソッドの使用方法を示しています。  
   
  [!code-cpp[System.Security.Permissions.FileIOPermission#7](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CPP/fileiopermission.cpp#7)]
  [!code-csharp[System.Security.Permissions.FileIOPermission#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CS/fileiopermission.cs#7)]
@@ -1078,9 +1078,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定したアクセスの種類の現在のアクセス許可の以前の状態は上書きされます。 次のコードを C:\temp のアクセスを設定する<xref:System.Security.Permissions.FileIOPermissionAccess.Read>します。  
+ 指定されたアクセスの種類に対する現在のアクセス許可の以前の状態が上書きされます。 次のコードは、C:\temp のアクセスを<xref:System.Security.Permissions.FileIOPermissionAccess.Read>に設定します。  
   
- アクセスの種類が同じではないために、このアクセスは、次のコードで上書きされません。  
+ アクセスの種類が同じではないため、このアクセスは次のコードでは上書きされません。  
   
  [!code-cpp[System.Security.Permissions.FileIOPermission#15](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CPP/remarks.cpp#15)]
  [!code-csharp[System.Security.Permissions.FileIOPermission#15](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.FileIOPermission/CS/remarks.cs#15)]
@@ -1090,7 +1090,7 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="access" /> パラメーターが <see cref="T:System.Security.Permissions.FileIOPermissionAccess" /> の正しい値ではありません。  
   
-- または - 
+または 
 <paramref name="pathList" /> パラメーター内のエントリが正しい文字列ではありません。</exception>
       </Docs>
     </Member>
@@ -1160,7 +1160,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しの結果<xref:System.Security.Permissions.FileIOPermission.Union%2A>は現在のアクセス許可と指定した権限の両方で表されるすべての操作を表すアクセス許可。 いずれかのアクセス許可に適合する要求は、その共用体を渡します。  
+ の呼び出し<xref:System.Security.Permissions.FileIOPermission.Union%2A>の結果は、現在のアクセス許可と指定したアクセス許可の両方によって表されるすべての操作を表すアクセス許可です。 いずれかのアクセス許可を渡す要求では、その共用体が渡されます。  
   
  ]]></format>
         </remarks>

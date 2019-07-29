@@ -31,37 +31,37 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このクラスは、トランザクションの伝達のメソッドを提供します。 このプロセスのしくみの詳細については、次を参照してください。[トランザクションの伝達](https://msdn.microsoft.com/library/default.asp?url=/library/cossdk/html/b09541e6-4baf-4e37-b879-62884fbb0969.asp)します。  
+ このクラスは、トランザクションの伝達のためのメソッドを提供します。 このプロセスの動作の詳細については、「[トランザクションの伝達](https://msdn.microsoft.com/library/default.asp?url=/library/cossdk/html/b09541e6-4baf-4e37-b879-62884fbb0969.asp)」を参照してください。  
   
- このクラスによって提供されるメソッドを使用して、2 つの種類のトランザクションの反映、エクスポート/インポート (プッシュ モデル) と (プル モデル) の送信/受信側で取り組むことができます。  
+ このクラスに用意されているメソッドを使用して、2種類のトランザクションの伝達、エクスポート/インポート (プッシュモデル) と送信側/受信側 (プルモデル) に参加できます。  
   
- エクスポート/インポート (プッシュ モデル) の伝達は、次の手順  
+ エクスポート/インポート (プッシュモデル) の伝達には、次の手順が含まれます。  
   
-1.  リモートのコンピューター上で呼び出すことによってをそのコンピューターのトランザクション マネージャーの「行き先」取得、<xref:System.Transactions.TransactionInterop.GetWhereabouts%2A>メソッド。 将来の使用量のクライアント コンピューター上の情報をキャッシュできます。  
+1.  リモートコンピューターで、 <xref:System.Transactions.TransactionInterop.GetWhereabouts%2A>メソッドを呼び出して、そのコンピューターのトランザクションマネージャーの "行き先" を取得します。 その後、将来の使用に備えて、この情報をクライアントコンピューターにキャッシュすることができます。  
   
-2.  適切なメソッドを使用して、クライアント コンピューターに位置情報を含むデータを送信します。  
+2.  任意の方法を使用して、行き先を含むデータをクライアントコンピューターに送信する  
   
-3.  クライアント コンピューターにリモート コンピューターに、トランザクションの「エクスポート」トランザクション"cookie"を生成して、位置情報を使用します。  これは、呼び出すことで<xref:System.Transactions.TransactionInterop.GetExportCookie%2A>リモート コンピューターの位置情報を渡すとします。  
+3.  クライアントコンピューターで、所在地を使用してトランザクションをリモートコンピューターに "エクスポート" し、トランザクション "cookie" を生成します。  これを行うには<xref:System.Transactions.TransactionInterop.GetExportCookie%2A> 、を呼び出し、リモートコンピューターの所在地を渡します。  
   
-4.  適切なメソッドを使用してリモート コンピューターに、トランザクションを格納しているデータ"cookie"を送信します。  
+4.  任意の推奨方法を使用して、トランザクション "cookie" を含むデータをリモートコンピューターに送信します。  
   
-5.  リモート コンピューターでは、呼び出すことによって、クライアント トランザクションの複製を取得するトランザクション"cookie"を使用して、<xref:System.Transactions.TransactionInterop.GetTransactionFromExportCookie%2A>メソッド。  
+5.  リモートコンピューターで、トランザクション "cookie" を使用して、 <xref:System.Transactions.TransactionInterop.GetTransactionFromExportCookie%2A>メソッドを呼び出してクライアントトランザクションの複製を取得します。  
   
-6.  リモート コンピューターでは、複製のトランザクションを使用してを使用して、リソース マネージャーを参加させる、<xref:System.Transactions.Transaction.EnlistVolatile%2A>または<xref:System.Transactions.Transaction.EnlistDurable%2A>のメソッド、<xref:System.Transactions.Transaction>クラス。  
+6.  リモートコンピューターで、clone トランザクションを使用して、 <xref:System.Transactions.Transaction.EnlistVolatile%2A> <xref:System.Transactions.Transaction>クラスのメソッドまたは<xref:System.Transactions.Transaction.EnlistDurable%2A>メソッドを使用してリソースマネージャーを参加させます。  
   
- (プル モデル) のトランスミッターまたはレシーバーによる伝達は、次の手順  
+ 送信機/受信側 (プルモデル) の伝達には、次の手順が含まれます。  
   
--   クライアント コンピューターで、トランザクションを使用して対応する「伝達トークン」呼び出すことで生成します。 <xref:System.Transactions.TransactionInterop.GetTransmitterPropagationToken%2A>  
+-   クライアントコンピューターで、トランザクションを使用すると、を呼び出すことによって対応する "伝達トークン" が生成されます。<xref:System.Transactions.TransactionInterop.GetTransmitterPropagationToken%2A>  
   
--   トークンを含む、"伝達"トランザクションの適切なメソッドを使用してリモート マシンにデータを送信します。  
+-   任意の推奨方法を使用して、トランザクションの "伝達トークン" を含むデータをリモートコンピューターに送信します。  
   
--   リモート コンピューターでは、「伝達トークン」を使用して呼び出すことによって、クライアント トランザクションの複製を取得するには <xref:System.Transactions.TransactionInterop.GetTransactionFromTransmitterPropagationToken%2A>  
+-   リモートコンピューターで、"伝達トークン" を使用して、を呼び出してクライアントトランザクションの複製を取得します。<xref:System.Transactions.TransactionInterop.GetTransactionFromTransmitterPropagationToken%2A>  
   
- トランスミッタ/レシーバー モデルでは、トランザクション トークンが、リモート コンピューターに送信されるリモートのマシンではトランザクションの取得に使用しないシナリオでパフォーマンスの向上を提供します。  これは、トランザクションがまで反映されないため<xref:System.Transactions.TransactionInterop.GetTransactionFromTransmitterPropagationToken%2A>が呼び出されます。 他の利点は、エクスポート クッキーは、位置情報を提供しているコンピューターでのみ使用できますが、反映トークンを任意のリモート コンピューターに送信できることです。  
+ 送信側/受信側モデルでは、トランザクショントークンがリモートコンピューターに送信される場合のパフォーマンスが向上しますが、リモートコンピューターではトランザクショントークンを使用してトランザクションを取得することはできません。  これは、が呼び出されるまで<xref:System.Transactions.TransactionInterop.GetTransactionFromTransmitterPropagationToken%2A> 、トランザクションが伝達されないためです。 もう1つの利点は、伝達トークンを任意のリモートコンピューターに送信できるのに対し、エクスポートクッキーは、所在地を指定したコンピューターでのみ使用できることです。  
   
- ただし、するも注意してくださいリモート トランザクション マネージャーの位置情報は、すべての伝達トークンにカプセル化する、エクスポート/インポート モデルから対応するトランザクション cookie よりも大きくすることです。  
+ ただし、リモートトランザクションマネージャーの所在地がすべての伝達トークンにカプセル化され、エクスポート/インポートモデルの対応するトランザクション cookie よりも大きくなることにも注意してください。  
   
- **注**この型を使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand>されるを防ぐために信頼できないコードから呼び出されます。 ただし、直前の呼び出し元だけが所有する必要が、`FullTrust`アクセス許可セット。  
+ **メモ**この型は<xref:System.Security.Permissions.SecurityAction.LinkDemand> 、を使用して信頼されていないコードから呼び出されないようにします。 `FullTrust`ただし、アクセス許可セットを保持するには、直前の呼び出し元だけが必要です。  
   
  ]]></format>
     </remarks>
@@ -149,7 +149,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクションをエクスポートする場合は、このメソッドを呼び出します。 `transaction`渡されると共にトランザクション クッキーにマーシャ リングされます。 トランザクション cookie は、目的のプロセスに送信できます。 これをプロセスまたはシステム間でトランザクションの反映と呼びます。 伝達は、プッシュ モデルがローカル トランザクションを先にプッシュする場所と見なされます。  情報が含まれているため、`whereabouts`対象になるトランザクション マネージャーを記述する必要があります。  
+ トランザクションをエクスポートする場合は、このメソッドを呼び出します。 渡さ`transaction`れるは、トランザクションクッキーにマーシャリングされます。 その後、トランザクションクッキーを送信先プロセスに送信できます。 これは、プロセスまたはシステム間でのトランザクションの伝達と呼ばれます。 伝達は、ローカルトランザクションが宛先にプッシュされるプッシュモデルと見なされます。  したがって、に`whereabouts`含まれる情報には、転送先トランザクションマネージャーを記述する必要があります。  
   
  各種の伝達モデルの詳細については、<xref:System.Transactions.TransactionInterop> クラスの「解説」を参照してください。  
   
@@ -203,7 +203,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `transactionNative`のアンマネージ フォームとの互換性が[ITransaction](https://msdn.microsoft.com/library/default.asp?url=/library/cossdk/html/d40264be-f9b2-4044-aac6-84b43e5be666.asp)およびマネージ形式の MSDTC によって使用<xref:System.EnterpriseServices.ITransaction>で使用される<xref:System.EnterpriseServices>します。  
+ は`transactionNative` 、MSDTC によって使用されるアンマネージ形式の[ITransaction](https://msdn.microsoft.com/library/default.asp?url=/library/cossdk/html/d40264be-f9b2-4044-aac6-84b43e5be666.asp)と、によっ<xref:System.EnterpriseServices.ITransaction>て<xref:System.EnterpriseServices>使用されるマネージ形式と互換性があります。  
   
  ]]></format>
         </remarks>
@@ -307,13 +307,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- と共に、このメソッド、<xref:System.Transactions.TransactionInterop.GetTransmitterPropagationToken%2A>メソッドをトランザクションを「プル」リモートのコンピューターからこのメソッドを呼び出して、トランザクションのマーシャ リングを解除するときに、「プル」伝達の機能を提供します。  
+ このメソッドは、 <xref:System.Transactions.TransactionInterop.GetTransmitterPropagationToken%2A>メソッドと共に、このメソッドを呼び出してトランザクションのマーシャリングを解除するときに、リモートコンピューターからトランザクションを "プル" する機能を提供します。  
   
  各種の伝達モデルの詳細については、<xref:System.Transactions.TransactionInterop> クラスの「解説」を参照してください。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Transactions.TransactionManagerCommunicationException">トランザクション マネージャーに接続できないために、トランザクションの逆シリアル化が失敗します。 これは、ネットワーク ファイアウォールまたはセキュリティ設定によって発生する可能性があります。</exception>
+        <exception cref="T:System.Transactions.TransactionManagerCommunicationException">トランザクション マネージャーに接続できなかったため、トランザクションの逆シリアル化に失敗しました。 原因として、ネットワーク ファイアウォールまたはセキュリティ設定が考えられます。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetTransmitterPropagationToken">
@@ -389,7 +389,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 位置情報には、トランザクション マネージャーの場所を示すアドレスが含まれています。 このアドレスを使用することにより、2 つのトランザクション マネージャー間での相互通信が可能になり、これによってシステム間でのトランザクションの伝達が可能になります。 このメソッドによって返される情報でプッシュ モデルのトランザクションの伝達の場所の情報を提供するために使用できます、<xref:System.Transactions.TransactionInterop.GetExportCookie%2A>メソッド。  
+ 所在地には、トランザクションマネージャーの場所を説明するアドレスが含まれています。 このアドレスを使用することにより、2 つのトランザクション マネージャー間での相互通信が可能になり、これによってシステム間でのトランザクションの伝達が可能になります。 このメソッドによって返される情報を使用すると、 <xref:System.Transactions.TransactionInterop.GetExportCookie%2A>メソッドを使用したプッシュモデルトランザクションの伝達の場所情報を指定できます。  
   
  各種の伝達モデルの詳細については、<xref:System.Transactions.TransactionInterop> クラスの「解説」を参照してください。  
   
@@ -429,7 +429,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この値を使用、`Transaction.PromoterType`プロパティの場合は、トランザクションが MSDTC に昇格されますまたはと`Transaction.GetPromotedToken`メソッドの MSDTC トランザクションの伝達トークンを返します、`byte[]`結果。  
+ この値は、トランザクションが`Transaction.PromoterType` msdtc `Transaction.GetPromotedToken`に昇格された場合や、その`byte[]`結果に対して msdtc トランザクション伝達トークンが返された場合に、プロパティに対して使用されます。  
   
  ]]></format>
         </remarks>

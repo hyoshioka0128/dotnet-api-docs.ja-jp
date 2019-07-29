@@ -23,7 +23,7 @@
   </AssemblyInfo>
   <Interfaces />
   <Docs>
-    <summary>自動プロキシ検出用のスクリプトを実行する基本インターフェイスを提供します。</summary>
+    <summary>プロキシを自動的に検出するスクリプトを読み込んで実行するための基本インターフェイスを提供します。</summary>
     <remarks>To be added.</remarks>
     <forInternalUseOnly />
   </Docs>
@@ -95,11 +95,11 @@
         <Parameter Name="helperType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="scriptLocation">内部のみ。</param>
-        <param name="script">内部のみ。</param>
-        <param name="helperType">内部のみ。</param>
+        <param name="scriptLocation">内部でのみ使用されます。</param>
+        <param name="script">内部でのみ使用されます。</param>
+        <param name="helperType">内部でのみ使用されます。</param>
         <summary>スクリプトを読み込みます。</summary>
-        <returns>A<see cref="T:System.Boolean" />スクリプトが正常に読み込まれるかどうかを示します。</returns>
+        <returns>スクリプトが正常に読み込まれたかどうかを示す <see cref="T:System.Boolean" />。</returns>
         <remarks>To be added.</remarks>
         <forInternalUseOnly />
       </Docs>
@@ -136,19 +136,19 @@
         <Parameter Name="host" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="url">内部のみ。</param>
-        <param name="host">内部のみ。</param>
+        <param name="url">内部でのみ使用されます。</param>
+        <param name="host">内部でのみ使用されます。</param>
         <summary>スクリプトを実行します。</summary>
         <returns><see cref="T:System.String" />。  
   
-内部専用の値が返されます。</returns>
+返される内部専用の値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに、<xref:System.Net.HttpWebRequest>オブジェクトの実行は、プロキシが送信先 URL に到達するために必要かどうかを検出するために、WPAD (Web プロキシ自動検出) プロトコルを実行する必要があります。 このプロセス中には、システムはダウンロード、メモリで PAC (プロキシ自動構成) スクリプトをコンパイル、および PAC の仕様どおり FindProxyForURL 関数を実行しようとしています。  
+ <xref:System.Net.HttpWebRequest>オブジェクトが実行されている場合、宛先 URL に到達するためにプロキシが必要かどうかを検出するために、WPAD (Web プロキシ自動検出) プロトコルを実行することが必要になる場合があります。 この処理中に、システムによって PAC (プロキシ自動構成) スクリプトがメモリにダウンロードされてコンパイルされ、PAC 仕様に従って FindProxyForURL 関数の実行が試行されます。  
   
- システムが最小限の権限で実行されるアプリケーション内で内部のアプリケーション ドメインを作成してこれを行うときと、この新しいアプリケーション ドメイン、UI アクセス権を付与が最も重要なは。 システムは PAC の仕様どおりのいくつかのヘルパー関数を実行する必要があります、このプロセス中にこの新しいアプリケーション ドメインのコンテキストでのプロキシと FindProxyForURL javascript 関数を実行している評価が行われます。  
+ この場合、システムは、最小限のアクセス許可で実行されるアプリケーション内に内部アプリケーションドメインを作成します。最も重要なのは、この新しいアプリケーションドメインに UI アクセス許可を付与しないことです。 プロキシの評価と FindProxyForURL javascript 関数の実行は、この新しいアプリケーションドメインのコンテキストで行われます。このプロセスでは、PAC 仕様に従って、システムでいくつかのヘルパー関数を実行する必要がある場合があります。  
   
  ]]></format>
         </remarks>

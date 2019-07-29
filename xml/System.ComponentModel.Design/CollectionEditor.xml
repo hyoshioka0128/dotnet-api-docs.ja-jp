@@ -20,12 +20,12 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>デザイン時にほとんどの種類のコレクションを編集できるユーザー インターフェイスを提供します。</summary>
+    <summary>ほとんどの型のコレクションを編集するためにデザイン時に利用できるユーザー インターフェイスを提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、<xref:System.ComponentModel.EditorAttribute>に関連付ける、<xref:System.ComponentModel.Design.CollectionEditor>プロパティを使用します。  
+ 次のコード例では<xref:System.ComponentModel.EditorAttribute> 、を使用<xref:System.ComponentModel.Design.CollectionEditor>して、をプロパティに関連付けます。  
   
  [!code-cpp[EditorAttributesExample#1](~/samples/snippets/cpp/VS_Snippets_Winforms/EditorAttributesExample/CPP/class1.cpp#1)]
  [!code-csharp[EditorAttributesExample#1](~/samples/snippets/csharp/VS_Snippets_Winforms/EditorAttributesExample/CS/class1.cs#1)]
@@ -33,7 +33,7 @@
   
  ]]></format>
     </remarks>
-    <block subset="none" type="overrides"><para>このエディターが含まれるコレクションを編集できる、<see langword="Item" />プロパティ。 エディターからコレクションの型を決定できます、<see langword="Item" />が存在する場合は、プロパティ。 コレクションは、このプロパティを持っていない場合、または 1 つ以上の型のコレクションを提供したい場合は、その他の種類のコレクションをサポートするために、エディターをカスタマイズするこのクラスの特定の保護されたメンバーをオーバーライドできます。</para></block>
+    <block subset="none" type="overrides"><para>このエディターでは、 <see langword="Item" />プロパティを持つコレクションを編集できます。 コレクションが存在する場合は、その型を<see langword="Item" />プロパティから特定できます。 コレクションにこのプロパティがない場合、または複数の型のコレクションを提供する場合は、このクラスの特定のプロテクトメンバーをオーバーライドして、他の種類のコレクションをサポートするようにエディターをカスタマイズできます。</para></block>
     <altmember cref="T:System.Drawing.Design.UITypeEditor" />
   </Docs>
   <Members>
@@ -63,8 +63,8 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">編集するには、このエディターのコレクションの型。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.ComponentModel.Design.CollectionEditor" />クラスの指定したコレクションの種類を使用します。</summary>
+        <param name="type">エディターで編集するコレクションの型。</param>
+        <summary>指定したコレクション型を使用して、<see cref="T:System.ComponentModel.Design.CollectionEditor" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -90,9 +90,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>コレクションへの変更を取り消します。</summary>
+        <summary>コレクションへの変更をキャンセルします。</summary>
         <remarks>To be added.</remarks>
-        <block subset="none" type="overrides"><para>コレクションへの変更が取り消されたときに、追加処理を実行する必要がある場合は、このメソッドをオーバーライドします。</para></block>
+        <block subset="none" type="overrides"><para>コレクションへの変更が取り消されたときに追加の処理を実行する必要がある場合は、このメソッドをオーバーライドします。</para></block>
       </Docs>
     </Member>
     <Member MemberName="CanRemoveInstance">
@@ -122,14 +122,14 @@
       <Docs>
         <param name="value">削除する値。</param>
         <summary>コレクションの元のメンバーを削除できるかどうかを示します。</summary>
-        <returns><see langword="true" /> コレクションからこの値を削除できる場合はそれ以外の場合、<see langword="false" />します。 既定の実装では、常に <see langword="true" /> を返します。</returns>
+        <returns>コレクションからこの値を削除できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定の実装では、常に <see langword="true" /> を返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生クラスで実装された場合、このメソッドは、指定した値をコレクションから削除できるかどうかを示します。 既定では、このメソッドが常に返されます`true`します。  
+ 派生クラスで実装された場合、このメソッドは、指定した値をコレクションから削除できるかどうかを示します。 既定では、このメソッドは`true`常にを返します。  
   
- ユーザーが、コレクションの元のメンバーである項目を削除しようとしています。 このメソッドが呼び出されます。 現在ではないために、編集セッションまだコレクションの一部で追加された項目を削除するときに、このメソッドは呼び出されません。  
+ このメソッドは、ユーザーがコレクションの元のメンバーである項目を削除しようとしたときに呼び出されます。 現在の編集セッションに追加された項目がまだコレクションに含まれていないため、このメソッドは呼び出されません。  
   
  ]]></format>
         </remarks>
@@ -158,13 +158,13 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>複数のコレクション アイテムを一度に選択できるかどうかを示します。</summary>
-        <returns><see langword="true" /> 複数のコレクション メンバーができる場合は同時に選択されています。それ以外の場合、<see langword="false" />します。 既定ではこれを返します<see langword="true" />します。</returns>
+        <summary>複数のコレクション項目を同時に選択できるかどうかを示します。</summary>
+        <returns>複数のコレクション メンバーを同時に選択できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定では、<see langword="true" /> を返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コレクション エディターのダイアログ ボックス内で複数のコレクション メンバーを選択できるかどうかを示します。  
+ このメソッドは、[コレクションエディター] ダイアログボックス内で複数のコレクションメンバーを選択できるかどうかを示します。  
   
  ]]></format>
         </remarks>
@@ -193,7 +193,7 @@
       </ReturnValue>
       <Docs>
         <summary>コレクション内の各項目のデータ型を取得します。</summary>
-        <value>コレクション アイテムのデータ型。</value>
+        <value>コレクション項目のデータ型。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -237,7 +237,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、コレクション オブジェクトのデータ型を表します。  
+ このプロパティは、コレクションオブジェクトのデータ型を表します。  
   
  ]]></format>
         </remarks>
@@ -271,7 +271,7 @@
       </ReturnValue>
       <Docs>
         <summary>現在のコンテキストを示す型記述子を取得します。</summary>
-        <value><see cref="T:System.ComponentModel.ITypeDescriptorContext" />現在使用中のコンテキストを示すまたは<see langword="null" />コンテキストが使用できない場合。</value>
+        <value>現在使用中のコンテキストを示す <see cref="T:System.ComponentModel.ITypeDescriptorContext" />。コンテキストがない場合は <see langword="null" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -298,10 +298,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>表示し、現在のコレクションを編集する新しいフォームを作成します。</summary>
-        <returns>A<see cref="T:System.ComponentModel.Design.CollectionEditor.CollectionForm" />コレクションを編集するためのユーザー インターフェイスとして提供します。</returns>
+        <summary>現在のコレクションを表示および編集するための新しいフォームを作成します。</summary>
+        <returns>コレクションを編集するためのユーザー インターフェイスとして提供する <see cref="T:System.ComponentModel.Design.CollectionEditor.CollectionForm" />。</returns>
         <remarks>To be added.</remarks>
-        <block subset="none" type="overrides"><para>継承できます<see cref="T:System.ComponentModel.Design.CollectionEditor.CollectionForm" />独自形式を指定します。</para></block>
+        <block subset="none" type="overrides"><para>を<see cref="T:System.ComponentModel.Design.CollectionEditor.CollectionForm" />継承して、独自のフォームを提供できます。</para></block>
       </Docs>
     </Member>
     <Member MemberName="CreateCollectionItemType">
@@ -327,21 +327,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このコレクションに含まれるデータ型を取得します。</summary>
-        <returns>コレクション内の項目のデータ型または<see cref="T:System.Object" />いない場合<see langword="Item" />プロパティは、コレクションに配置することができます。</returns>
+        <summary>コレクションに格納されているデータ型を取得します。</summary>
+        <returns>コレクション内の項目のデータ型。コレクションで <see langword="Item" /> プロパティが見つからない場合は <see cref="T:System.Object" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コレクションの項目のデータ型を取得することができます、<xref:System.ComponentModel.Design.CollectionEditor.CollectionItemType%2A>プロパティで、このメソッドよりも高速です。  
+ <xref:System.ComponentModel.Design.CollectionEditor.CollectionItemType%2A>プロパティからコレクションの項目のデータ型を取得できますが、これはこのメソッドよりも高速です。  
   
- このメソッドは、このメソッドが、オーバーライドされ、実装されている派生クラスで以外のユーザーによって呼び出される必要はありません。  
+ このメソッドは、オーバーライドおよび実装されている派生クラス以外は、ユーザーが呼び出す必要はありません。  
   
- このメソッドの既定の実装でのデータ型を返します、`Item`が存在する場合は、コレクションのプロパティ。  
+ このメソッドの既定の実装では、コレクションが存在`Item`する場合、そのプロパティのデータ型が返されます。  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>開発者は、コレクションの一般的なサポートされているモデルに従っていないコレクションをサポートするには、このメソッドをオーバーライドできます。 またはパフォーマンスが重大、およびリフレクション ベースの型解決が遅すぎます。</para></block>
+        <block subset="none" type="overrides"><para>開発者は、このメソッドをオーバーライドして、一般的なおよびサポートされているコレクションモデルに従わないコレクションをサポートするか、パフォーマンスが重要で、リフレクションベースの型解決が遅すぎます。</para></block>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -370,10 +370,10 @@
       </Parameters>
       <Docs>
         <param name="itemType">作成するアイテムの型。</param>
-        <summary>指定したコレクション項目の種類の新しいインスタンスを作成します。</summary>
+        <summary>指定したコレクション項目の型の新しいインスタンスを作成します。</summary>
         <returns>指定したオブジェクトの新しいインスタンス。</returns>
         <remarks>To be added.</remarks>
-        <block subset="none" type="overrides"><para>指定した型の新しいインスタンスを作成できない場合、このメソッドは例外をスローする必要があります。</para></block>
+        <block subset="none" type="overrides"><para>このメソッドは、指定された型の新しいインスタンスを作成できない場合に、例外をスローする必要があります。</para></block>
       </Docs>
     </Member>
     <Member MemberName="CreateNewItemTypes">
@@ -399,21 +399,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このコレクション エディターが含むことができるデータ型を取得します。</summary>
-        <returns>このコレクションに格納できるデータ型の配列。</returns>
+        <summary>コレクション エディターでコレクションに格納できるデータ型を取得します。</summary>
+        <returns>コレクションに格納できるデータ型の配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コレクションの項目のデータ型を取得することができます、<xref:System.ComponentModel.Design.CollectionEditor.NewItemTypes%2A>プロパティで、このメソッドよりも高速です。  
+ <xref:System.ComponentModel.Design.CollectionEditor.NewItemTypes%2A>プロパティからコレクションの項目のデータ型を取得できますが、これはこのメソッドよりも高速です。  
   
- このメソッドは、このメソッドが、オーバーライドされ、実装されている派生クラスで以外のユーザーによって呼び出される必要はありません。  
+ このメソッドは、オーバーライドおよび実装されている派生クラス以外は、ユーザーが呼び出す必要はありません。  
   
- このメソッドの既定の実装では、型の配列にコレクションのすべての項目の種類を返します。  
+ このメソッドの既定の実装では、型配列内のすべてのコレクション項目の型が返されます。  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>このメソッドは、複数の型のコレクションをサポートするためにオーバーライドする必要があります。 このメソッドの既定の実装でのデータ型を返します、<see langword="Item" />が存在する場合は、コレクションのプロパティ。 既定の実装をオーバーライドするのにには、このメソッドを使用します。</para></block>
+        <block subset="none" type="overrides"><para>複数の型のコレクションをサポートするには、このメソッドをオーバーライドする必要があります。 このメソッドの既定の実装では、コレクションが存在<see langword="Item" />する場合、そのプロパティのデータ型が返されます。 既定の実装をオーバーライドするには、このメソッドを使用します。</para></block>
       </Docs>
     </Member>
     <Member MemberName="DestroyInstance">
@@ -442,7 +442,7 @@
       </Parameters>
       <Docs>
         <param name="instance">破棄するオブジェクト。</param>
-        <summary>指定したオブジェクトのインスタンスを破棄します。</summary>
+        <summary>オブジェクトの指定されたインスタンスを破棄します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -474,12 +474,12 @@
       </Parameters>
       <Docs>
         <param name="context">追加のコンテキスト情報を取得するために使用できる <see cref="T:System.ComponentModel.ITypeDescriptorContext" />。</param>
-        <param name="provider">使用される編集サービスを取得するサービス プロバイダー オブジェクト。</param>
-        <param name="value">値を編集するオブジェクト。</param>
+        <param name="provider">編集サービスを取得するために使用するサービス プロバイダー オブジェクト。</param>
+        <param name="value">値を編集する対象のオブジェクト。</param>
         <summary>指定したサービス プロバイダーおよびコンテキストを使用して、指定したオブジェクトの値を編集します。</summary>
         <returns>オブジェクトの新しい値。 オブジェクトの値が変更されていない場合は、このメソッドは渡されたオブジェクトと同じオブジェクトを返します。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ComponentModel.Design.CheckoutException">ソース コード管理プログラムにチェックインされているファイルをチェック アウトしようとはできませんでした。</exception>
+        <exception cref="T:System.ComponentModel.Design.CheckoutException">ソース コード管理プログラムにチェックインされているファイルのチェックアウトの試行が失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetDisplayText">
@@ -508,7 +508,7 @@
       <Docs>
         <param name="value">表示テキストを取得する対象のリスト項目。</param>
         <summary>特定のリスト項目の表示テキストを取得します。</summary>
-        <returns>表示するテキストを<paramref name="value" />します。</returns>
+        <returns><paramref name="value" /> の表示テキスト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -538,8 +538,8 @@
       </Parameters>
       <Docs>
         <param name="context">追加のコンテキスト情報を取得するために使用できる <see cref="T:System.ComponentModel.ITypeDescriptorContext" />。</param>
-        <summary>使用する編集スタイルを取得、<see cref="M:System.ComponentModel.Design.CollectionEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)" />メソッド。</summary>
-        <returns>A<see cref="T:System.Drawing.Design.UITypeEditorEditStyle" />提供されている編集を示す列挙値のスタイルを設定します。 かどうか、指定したコンテキストでは、メソッドがサポートされていません、このメソッドを返します、<see cref="F:System.Drawing.Design.UITypeEditorEditStyle.None" />識別子。</returns>
+        <summary><see cref="M:System.ComponentModel.Design.CollectionEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)" /> メソッドで使用する編集スタイルを取得します。</summary>
+        <returns>提供されている編集スタイルを示す <see cref="T:System.Drawing.Design.UITypeEditorEditStyle" /> 列挙値。 指定したコンテキストでメソッドがサポートされていない場合、このメソッドは <see cref="F:System.Drawing.Design.UITypeEditorEditStyle.None" /> 識別子を返します。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -568,9 +568,9 @@
         <Parameter Name="editValue" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="editValue">編集するコレクション。</param>
-        <summary>指定したコレクションを格納しているオブジェクトの配列を取得します。</summary>
-        <returns>コレクション オブジェクトを含む配列、または、指定したコレクションを継承しない場合は、空のオブジェクトの配列<see cref="T:System.Collections.ICollection" />します。</returns>
+        <param name="editValue">編集対象のコレクション。</param>
+        <summary>指定したコレクションを格納しているオブジェクト配列を取得します。</summary>
+        <returns>コレクション オブジェクトを格納している配列。指定したコレクションが <see cref="T:System.Collections.ICollection" /> から継承していない場合は空のオブジェクト配列。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -598,9 +598,9 @@
         <Parameter Name="instance" Type="System.Object" Index="0" FrameworkAlternate="netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="instance"><see cref="T:System.Collections.ArrayList" />オブジェクトとして返されます。</param>
-        <summary>指定したオブジェクトを含むリストを返します</summary>
-        <returns><see cref="T:System.Collections.ArrayList" />を含む個々 のオブジェクトを作成します。</returns>
+        <param name="instance">オブジェクトとして返される <see cref="T:System.Collections.ArrayList" />。</param>
+        <summary>特定のオブジェクトを含むリストを返します。</summary>
+        <returns>作成する個別のオブジェクトを含む <see cref="T:System.Collections.ArrayList" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -630,8 +630,8 @@
       </Parameters>
       <Docs>
         <param name="serviceType">取得するサービスの型。</param>
-        <summary>使用できる場合は、要求したサービスを取得します。</summary>
-        <returns>サービスのインスタンスまたは<see langword="null" />サービスが見つからない場合。</returns>
+        <summary>要求されたサービスがある場合は、そのサービスを取得します。</summary>
+        <returns>サービスのインスタンス。サービスが見つからない場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -657,13 +657,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ヘルプ トピックまたはトピック リストをエディターのダイアログ ボックスの [ヘルプ] ボタンまたは F1 キーが押されたときに表示するヘルプ キーワードを取得します。</summary>
-        <value>ヘルプ トピックまたはトピック リストをエディターからヘルプを要求するときに表示するヘルプ キーワード。</value>
+        <summary>エディターのダイアログ ボックスの [ヘルプ] ボタンまたは F1 キーが押されたときにヘルプ トピックまたはトピック リストを表示するためのヘルプ キーワードを取得します。</summary>
+        <value>エディターからヘルプが要求された場合にヘルプ トピックまたはトピック リストを表示するためのヘルプ キーワード。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 別のヘルプ トピックを表示するには、このプロパティをオーバーライドします。  
+ 別のヘルプトピックを表示するには、このプロパティをオーバーライドします。  
   
  ]]></format>
         </remarks>
@@ -691,13 +691,13 @@
         <ReturnType>System.Type[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このコレクションで使用できる作成できる項目の種類を取得します。</summary>
-        <value>作成できる項目の種類。</value>
+        <summary>コレクションに対して作成できる項目の有効な型を取得します。</summary>
+        <value>作成できる項目の型。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、コレクションに追加できるデータ型を示します。 既定では、1 つの型が返されます<xref:System.ComponentModel.Design.CollectionEditor.CollectionItemType%2A>します。 1 つ以上の型が返された場合、コレクション エディター UI は作成する項目の型を選択する方法を提供します。  
+ このプロパティは、コレクションに追加できるデータ型を示します。 既定では、1つの型の<xref:System.ComponentModel.Design.CollectionEditor.CollectionItemType%2A>が返されます。 複数の型が返された場合、コレクションエディターの UI には、作成する項目の種類を選択する方法が用意されています。  
   
  ]]></format>
         </remarks>
@@ -729,15 +729,15 @@
         <Parameter Name="value" Type="System.Object[]" />
       </Parameters>
       <Docs>
-        <param name="editValue">編集するコレクション。</param>
-        <param name="value">コレクション項目として設定するオブジェクトの配列。</param>
-        <summary>指定した配列をコレクションの項目として設定します。</summary>
-        <returns>新しく作成されたコレクション オブジェクトまたは、それ以外の場合、によって示されるコレクション、<paramref name="editValue" />パラメーター。</returns>
+        <param name="editValue">編集対象のコレクション。</param>
+        <param name="value">コレクション項目として設定するオブジェクト配列。</param>
+        <summary>指定した配列をコレクション内の項目として設定します。</summary>
+        <returns>新しく作成されたコレクション オブジェクト。新規コレクション オブジェクトがない場合は、<paramref name="editValue" /> パラメーターで示されるコレクション。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定は、新しいオブジェクトを作成する必要がある場合は、新しいオブジェクトが返されます。 それ以外の場合、`editValue`パラメーターが返されます。  
+ 設定で新しいオブジェクトを作成する必要がある場合は、新しいオブジェクトが返されます。 それ以外の`editValue`場合は、パラメーターが返されます。  
   
  ]]></format>
         </remarks>
@@ -766,7 +766,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>コレクション エディターの既定のヘルプ トピックが表示されます。</summary>
+        <summary>コレクション エディターの既定のヘルプ トピックを表示します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

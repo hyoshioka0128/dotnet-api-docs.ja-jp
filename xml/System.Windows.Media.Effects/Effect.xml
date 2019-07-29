@@ -15,16 +15,16 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>カスタム ビットマップ効果を提供します。</summary>
+    <summary>カスタム ビットマップ効果を実現します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生、<xref:System.Windows.Media.Effects.Effect>カスタム ビットマップ効果を実装するクラス。 ほとんどの場合から派生<xref:System.Windows.Media.Effects.ShaderEffect>します。  
+ クラスから派生<xref:System.Windows.Media.Effects.Effect>させて、カスタムビットマップ効果を実装します。 ほとんどの場合、から<xref:System.Windows.Media.Effects.ShaderEffect>派生させます。  
   
  ]]></format>
     </remarks>
-    <permission cref="T:System.Security.Permissions.UIPermission">UI のリソースへのフル アクセス。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+    <permission cref="T:System.Security.Permissions.UIPermission">UI リソースにフルアクセスできます。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
     <altmember cref="T:System.Windows.Media.Effects.ShaderEffect" />
     <altmember cref="T:System.Windows.Media.Effects.PixelShader" />
   </Docs>
@@ -76,7 +76,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Media.Effects.Effect.Clone%2A>の変更可能なコピーを生成するメソッドを使用できる固定<xref:System.Windows.Freezable>オブジェクト。 便宜上、このメソッドは、継承されたシャドウ<xref:System.Windows.Freezable.Clone%2A>厳密に型指定された実装を提供するメソッド。  
+ メソッド<xref:System.Windows.Media.Effects.Effect.Clone%2A>を使用すると、固定<xref:System.Windows.Freezable>されたオブジェクトの変更可能なコピーを作成できます。 便宜上、このメソッドは、厳密に<xref:System.Windows.Freezable.Clone%2A>型指定された実装を提供するために、継承されたメソッドをシャドウします。  
   
  ]]></format>
         </remarks>
@@ -108,9 +108,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 変更可能なコピーを生成するためにこのメソッドが使用される固定された<xref:System.Windows.Freezable>オブジェクト (またはその<xref:System.Windows.Freezable>オブジェクト)。 便宜上は、このメソッドは、厳密に型指定された実装と継承したバージョンをシャドウします。  
+ このメソッドを使用して、固定された <xref:System.Windows.Freezable> オブジェクト (または任意の <xref:System.Windows.Freezable> オブジェクト) の変更可能なコピーを作成します。 便宜上、このメソッドは、厳密に型指定された実装を使用して、継承されたバージョンをシャドウします。  
   
- 詳細については、「 <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -134,21 +134,21 @@
         <ReturnType>System.Windows.Media.GeneralTransform</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>派生クラスでオーバーライドされると、マウス入力と、効果によって座標系に変換します。</summary>
-        <value>適用する変換。 既定では、恒等変換です。</value>
+        <summary>派生クラスでオーバーライドされた場合は、効果によってマウス入力と座標系を変換します。</summary>
+        <value>適用される変換。 既定値は、恒等変換です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 上書き、<xref:System.Windows.Media.Effects.Effect.EffectMapping%2A>プロパティに割り当てる id の既定の変換とは異なる変換します。  
+ <xref:System.Windows.Media.Effects.Effect.EffectMapping%2A>プロパティをオーバーライドして、既定の id 変換とは異なる変換を割り当てます。  
   
- この変換の逆関数を使用して入力が変換します。 <xref:System.Windows.Media.Visual.TransformToAncestor%2A>と<xref:System.Windows.Media.Visual.TransformToDescendant%2A>メソッドがあることも、<xref:System.Windows.Media.Effects.Effect.EffectMapping%2A>適用される変換。  
+ この変換の逆方向に入力が変換されます。 メソッド<xref:System.Windows.Media.Visual.TransformToAncestor%2A>と<xref:System.Windows.Media.Visual.TransformToDescendant%2A>メソッドにも、 <xref:System.Windows.Media.Effects.Effect.EffectMapping%2A>変換が適用されています。  
   
- 受信ポイントである必要があります [0 - 1] の範囲、および発信のポイントが [0-1] にマップする必要があります範囲。 <xref:System.Windows.Media.GeneralTransform.Inverse%2A>プロパティを返す必要があります、<xref:System.Windows.Media.GeneralTransform>逆のマッピングを計算します。  
+ 受信ポイントは [0-1] の範囲内にある必要があり、送信ポイントは [0-1] 範囲にマップする必要があります。 プロパティ<xref:System.Windows.Media.GeneralTransform.Inverse%2A>は、逆マッピング<xref:System.Windows.Media.GeneralTransform>を計算するを返す必要があります。  
   
- ポイントからの送信に効果が適用された後、逆の変換マップからポイント効果の適用前に、。 非逆関数では、効果の適用前に、のポイントは、効果が適用された後に適用するマップを変換します。  
+ 逆変換は、効果が適用された時点から、その効果が適用される前の地点に適用された後の点をマップします。 非逆変換は、効果が適用された後に、その効果が適用される前の点をにマップします。  
   
- 変換に使用されている物理ピクセル サイズに関する情報が含まれていないことに注意してくださいし、単位の範囲で動作するだけです。  
+ 変換には、使用されている物理ピクセルのサイズに関する情報は含まれず、単位の範囲内でのみ動作します。  
   
  ]]></format>
         </remarks>
@@ -181,18 +181,18 @@
         <ReturnType>System.Windows.Media.Brush</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、 <see cref="T:System.Windows.Media.Brush" /> 、用の入力として使用される、<see cref="T:System.Windows.Media.Effects.Effect" />のビットマップ、<see cref="T:System.Windows.UIElement" />を<see cref="T:System.Windows.Media.Effects.Effect" />入力とするに適用されます。</summary>
-        <value><see cref="T:System.Windows.Media.Brush" />入力として機能します。</value>
+        <summary><see cref="T:System.Windows.Media.Brush" /> の入力として使用される場合に、<see cref="T:System.Windows.Media.Effects.Effect" /> が適用される <see cref="T:System.Windows.UIElement" /> のビットマップをその入力とする <see cref="T:System.Windows.Media.Effects.Effect" /> を取得します。</summary>
+        <value>入力として機能する <see cref="T:System.Windows.Media.Brush" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Windows.Media.Effects.Effect.ImplicitInput%2A>プロパティにブラシの値を持つ入力値として、<xref:System.Windows.Media.Effects.ShaderEffect>します。  
+ に対するブラシ値の入力の値として、 <xref:System.Windows.Media.Effects.Effect.ImplicitInput%2A>プロパティを使用します。 <xref:System.Windows.Media.Effects.ShaderEffect>  
   
- <xref:System.Windows.Media.Effects.Effect.ImplicitInput%2A>プロパティのレンダリングに由来するシェーダーの入力を表す、<xref:System.Windows.UIElement>を<xref:System.Windows.Media.Effects.Effect>に適用されます。  
+ プロパティ<xref:System.Windows.Media.Effects.Effect.ImplicitInput%2A>は<xref:System.Windows.UIElement> 、<xref:System.Windows.Media.Effects.Effect>が適用されているのレンダリングに由来するシェーダー入力を表します。  
   
 > [!NOTE]
->  ときに、動作は定義されていない<xref:System.Windows.Media.Effects.Effect.ImplicitInput%2A>他の WPF クラスで、ブラシとして使用されます。  
+>  が他の WPF クラス<xref:System.Windows.Media.Effects.Effect.ImplicitInput%2A>でブラシとして使用されている場合、動作は定義されていません。  
   
  ]]></format>
         </remarks>
