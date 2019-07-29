@@ -1,5 +1,5 @@
 <Type Name="DispatchRuntime" FullName="System.ServiceModel.Dispatcher.DispatchRuntime">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1740ad64f138a2a5e1416598374f03b0ef2b0eca" /><Meta Name="ms.sourcegitcommit" Value="7461f9e28c2f184bd1596e6f07c25a3f34984516" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/28/2019" /><Meta Name="ms.locfileid" Value="58552047" /></Metadata><TypeSignature Language="C#" Value="public sealed class DispatchRuntime" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="da7b654e06097062413bc339f3da27c482c4315d" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68398602" /></Metadata><TypeSignature Language="C#" Value="public sealed class DispatchRuntime" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit DispatchRuntime extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.Dispatcher.DispatchRuntime" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class DispatchRuntime" />
@@ -36,7 +36,7 @@
   
 2.  サービス操作呼び出しに対する応答から受信したオブジェクトを送信メッセージに変換します。  
   
- Windows Communication Foundation (WCF) で、チャネル ディスパッチャーとエンドポイント ディスパッチャーは新しいチャネルの受け入れを行うサービス コンポーネント メッセージ、メソッドのディスパッチと呼び出し、および応答の処理を受信します。 <xref:System.ServiceModel.ServiceHost> オブジェクトによって公開される各エンドポイントには、1 つのエンドポイント ディスパッチャーと、関連付けられた 1 つのチャネル ディスパッチャーがあります。さらに、双方向通信に参加する各クライアントには、各コールバック エンドポイントのエンドポイント ディスパッチャーとチャネル ディスパッチャーもあります。  
+ Windows Communication Foundation (WCF) では、チャネルおよびエンドポイントディスパッチャーは、新しいチャネルの受け入れ、メッセージの受信、メソッドのディスパッチと呼び出し、および応答処理を行うサービスコンポーネントです。 <xref:System.ServiceModel.ServiceHost> オブジェクトによって公開される各エンドポイントには、1 つのエンドポイント ディスパッチャーと、関連付けられた 1 つのチャネル ディスパッチャーがあります。さらに、双方向通信に参加する各クライアントには、各コールバック エンドポイントのエンドポイント ディスパッチャーとチャネル ディスパッチャーもあります。  
   
  <xref:System.ServiceModel.Dispatcher.DispatchRuntime> を使用すると、メッセージが認識されない場合でも、特定のコントラクト全体のすべてのメッセージについて、特定のチャネルまたはエンドポイント ディスパッチャーを途中受信および拡張できます。 コントラクト内で宣言されているどのメッセージとも一致しないメッセージが到着すると、<xref:System.ServiceModel.Dispatcher.DispatchRuntime.UnhandledDispatchOperation%2A> プロパティにより返された操作にディスパッチされます。 特定の操作についてすべてのメッセージを途中受信または拡張する方法については、<xref:System.ServiceModel.Dispatcher.DispatchOperation> クラスを参照してください。  
   
@@ -330,7 +330,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ServiceModel.Channels.TransactionMessageProperty>により、独自のトランザクションには、Windows Communication Foundation (WCF) を導入する、チャネルの独自のトランザクション フロー メカニズムを使用するサードパーティのチャネル開発者。 このプロパティを `true` に設定すると、サービス メソッドの実行時にトランザクションは無視されます。  
+ で<xref:System.ServiceModel.Channels.TransactionMessageProperty>は、チャネルに独自のトランザクションフローメカニズムを使用するサードパーティのチャネル開発者が、トランザクションを Windows Communication Foundation (WCF) に導入できます。 このプロパティを `true` に設定すると、サービス メソッドの実行時にトランザクションは無視されます。  
   
  ]]></format>
         </remarks>
@@ -534,7 +534,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ServiceModel.Dispatcher.IInstanceProvider> インターフェイスを実装し、その実装を <xref:System.ServiceModel.Dispatcher.DispatchRuntime.InstanceProvider%2A> プロパティに割り当てることで、既定のコンストラクター以外のコンストラクター (たとえば、インスタンス プールなどのカスタムのインスタンス生成モードを実装するコンストラクター) を用いてサービス型のインスタンスを制御します。  
+ インターフェイスを実装し、 <xref:System.ServiceModel.Dispatcher.DispatchRuntime.InstanceProvider%2A>プロパティに実装を割り当てて、パラメーターなしのコンストラクター以外のコンストラクターを使用してサービス型のインスタンスを制御します。たとえば、次のようなカスタムのインスタンス化モードを実装します。 <xref:System.ServiceModel.Dispatcher.IInstanceProvider>インスタンスプーリング。  
   
  通常、<xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> メソッドは、<xref:System.ServiceModel.InstanceContext> オブジェクトが最初に生成されたときに、一度だけ呼び出されます。 <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> メソッドも、<xref:System.ServiceModel.InstanceContext> がクローズされたときに、一度だけ呼び出されます。  
   
@@ -570,7 +570,7 @@
       </ReturnValue>
       <Docs>
         <summary>メッセージ認証成功イベントを <see cref="P:System.ServiceModel.Dispatcher.DispatchRuntime.SecurityAuditLogLocation" /> で指定されているイベント ログに書き込むかどうかを指定する値を取得または設定します。</summary>
-        <value><see cref="T:System.ServiceModel.AuditLevel" /> 値のいずれか。 既定値は、<see cref="F:System.ServiceModel.AuditLevel.None" /> です。</value>
+        <value><see cref="T:System.ServiceModel.AuditLevel" /> 値のいずれか 1 つ。 既定値は、<see cref="F:System.ServiceModel.AuditLevel.None" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -852,7 +852,7 @@
       </ReturnValue>
       <Docs>
         <summary>監査ログの場所を取得または設定します。</summary>
-        <value><see cref="T:System.ServiceModel.AuditLogLocation" /> 値のいずれか。</value>
+        <value><see cref="T:System.ServiceModel.AuditLogLocation" /> 値のいずれか 1 つ。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -918,7 +918,7 @@
       </ReturnValue>
       <Docs>
         <summary>監査するサービス承認イベントを制御する値を取得または設定します。</summary>
-        <value><see cref="T:System.ServiceModel.AuditLevel" /> 値のいずれか。 既定値は、<see cref="F:System.ServiceModel.AuditLevel.None" /> です。</value>
+        <value><see cref="T:System.ServiceModel.AuditLevel" /> 値のいずれか 1 つ。 既定値は、<see cref="F:System.ServiceModel.AuditLevel.None" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

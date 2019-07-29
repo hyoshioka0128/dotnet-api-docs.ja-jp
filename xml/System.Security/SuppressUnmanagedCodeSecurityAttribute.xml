@@ -1,5 +1,5 @@
 <Type Name="SuppressUnmanagedCodeSecurityAttribute" FullName="System.Security.SuppressUnmanagedCodeSecurityAttribute">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="60170840b96d5e63470d8b52472cb3fa7bd188c6" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67246185" /></Metadata><TypeSignature Language="C#" Value="public sealed class SuppressUnmanagedCodeSecurityAttribute : Attribute" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="4c4aeaae6c9f349d63c3fc5a6e682faee9360e70" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68398827" /></Metadata><TypeSignature Language="C#" Value="public sealed class SuppressUnmanagedCodeSecurityAttribute : Attribute" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SuppressUnmanagedCodeSecurityAttribute extends System.Attribute" />
   <TypeSignature Language="DocId" Value="T:System.Security.SuppressUnmanagedCodeSecurityAttribute" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SuppressUnmanagedCodeSecurityAttribute&#xA;Inherits Attribute" />
@@ -48,17 +48,17 @@
 ## Remarks  
   
 > [!CAUTION]
->  この属性を使用して、十分に注意します。 不適切な使用には、セキュリティ上の弱点を作成できます。  
+>  この属性は細心の注意を払って使用してください。 不適切な使用により、セキュリティ上の弱点が作成できます。  
   
- この属性は、そのときに、実行時のセキュリティ チェックのパフォーマンスの低下を発生させずにネイティブ コードへの呼び出しをメソッドに適用できます。 結果としてパフォーマンスが大幅に節約の実行時に、アンマネージ コードを呼び出すときに実行するスタック ウォークが省略されています。 クラスでこの属性の使用が含まれているすべてのメソッドに適用します。  
+ この属性は、ネイティブコードを呼び出すメソッドに適用できます。実行時のセキュリティチェックのパフォーマンスが低下することはありません。 アンマネージコードを呼び出すときに実行されるスタックウォークは実行時に省略されるため、パフォーマンスが大幅に低下します。 クラスでこの属性を使用すると、含まれているすべてのメソッドに適用されます。  
   
- 一般に、マネージ コードは、(PInvoke または COM 相互運用をネイティブ コードに) で、アンマネージ コードを呼び出す、ときに必ずはの需要、`UnmanagedCode`のアクセス権をすべての呼び出し元がこれを許可するために必要なアクセス許可を持っています。 この明示的な属性を適用すると、開発者は、実行時に要求を抑制できます。 開発者は、アンマネージ コードへの移行が他の方法で十分に保護されていることを確保するための責任を負う必要があります。 需要、`UnmanagedCode`アクセス許可はでもリンク時に実行されます。 場合、関数、呼び出しは、関数 B と、関数 B がでマークされたなど<xref:System.Security.SuppressUnmanagedCodeSecurityAttribute>関数 A のチェック対象となるアンマネージ ジャストイン タイムのコンパイル時に、実行時にそのコードのアクセス許可。  
+ 一般に、マネージコードがアンマネージコードを呼び出すときは (PInvoke または COM 相互運用機能によってネイティブコード`UnmanagedCode`で)、すべての呼び出し元にこのを許可するために必要なアクセス許可があることを保証するためのアクセス許可が必要です。 この明示的な属性を適用することにより、開発者は実行時に要求を抑制できます。 開発者は、アンマネージコードへの移行が他の方法で十分に保護されていることを保証する必要があります。 `UnmanagedCode`アクセス許可の要求は、リンク時にも発生します。 たとえば、関数 a が関数 b を呼び出し、関数 b がで<xref:System.Security.SuppressUnmanagedCodeSecurityAttribute>マークされている場合、just-in-time コンパイル中はアンマネージコードのアクセス許可に対して関数 a がチェックされますが、その後実行時にはチェックされません。  
   
- この属性は、効果的なは、PInvoke メソッド (または PInvoke メソッドを含むクラス) に適用される場合のみ、または相互運用呼び出しに使用するインターフェイスの定義。 その他のすべてのコンテキストでは無視されます。  
+ この属性は、PInvoke メソッド (または PInvoke メソッドを含むクラス)、または相互運用呼び出しを行うインターフェイスの定義に適用された場合にのみ有効です。 他のすべてのコンテキストでは無視されます。  
   
- この属性は、アンマネージ コードによって、システム リソースへのアクセスを提供するクラスを実装する場合に便利です。 アンマネージ コードへのアクセス許可を持たないコードは、アンマネージ コードにアクセスするには、この属性を持つクラスを呼び出すことができます。 これは、場合、この属性を持つクラスのライターのプログラムは、クラスをセキュリティで保護された安全なだけです。 存在しない場合、この属性は危険が不正に使用するコードを許可することができます。  
+ この属性は、アンマネージコードを介してシステムリソースへのアクセスを提供するクラスを実装する場合に便利です。 アンマネージコードにアクセスするためのアクセス許可を持たないコードは、この属性を持つクラスを呼び出して、アンマネージコードにアクセスできます。 これは、この属性を持つクラスのライターがセキュリティで保護されたクラスをプログラミングしている場合にのみ安全です。 そうでない場合、この属性は危険であり、それを使用するコードを誤用させることができます。  
   
- これはなく、宣言セキュリティ属性では、標準の属性 (から派生した<xref:System.Attribute>ではなく、 <xref:System.Security.Permissions.SecurityAttribute>)。  
+ これは宣言セキュリティ属性ではありませんが、通常の属性です<xref:System.Attribute>(から<xref:System.Security.Permissions.SecurityAttribute>派生します)。  
   
  ]]></format>
     </remarks>
@@ -96,7 +96,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のコンストラクターは、フィールドを既定値に初期化します。  
+ パラメーターなしのコンストラクターは、すべてのフィールドを既定値に初期化します。  
   
  ]]></format>
         </remarks>

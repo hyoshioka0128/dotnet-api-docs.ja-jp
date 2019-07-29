@@ -27,25 +27,25 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>リソース マネージャー内部非分散トランザクションのコミット デリゲートとして機能するオブジェクトについて説明します。</summary>
+    <summary>リソース マネージャー内部の非分散トランザクションのコミット デリゲートとして機能するオブジェクトを示します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 昇格可能参加リスト (PSPE) トランザクションに参加している唯一のエンティティである場合は、トランザクションの所有権を取得する、データベースなどのリソースを許可します。 後で、必要な場合は、<xref:System.Transactions>インフラストラクチャをトランザクションを MSDTC にエスカレートできます。 詳細については、次を参照してください。 [Optimization のを使用して 1 つのフェーズの Commit and Promotable Single Phase Notification](https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))します。  
+ 昇格可能な参加リスト (PSPE) を使用すると、データベースなどのリソースがトランザクションに参加している唯一のエンティティである場合に、トランザクションの所有権を取得できます。 その後、必要に応じ<xref:System.Transactions>て、インフラストラクチャはトランザクションを MSDTC にエスカレートすることができます。 詳細については、「[単一フェーズコミットを使用した最適化」と「昇格可能な単一フェーズ通知](https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))」を参照してください。  
   
- このインターフェイスを実装するリソース マネージャーで内部の非分散トランザクションに参加リストのコミットの制御の委任、<xref:System.Transactions>を介してトランザクション、<xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A>メソッドを<xref:System.Transactions.Transaction>クラス。  
+ このインターフェイスを実装するリソースマネージャーは、 <xref:System.Transactions> <xref:System.Transactions.Transaction>クラスの<xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A>メソッドを使用して、内部の非分散トランザクションのコミットの制御を、トランザクションの参加リストに委任します。  
   
- 場合、<xref:System.Transactions.ITransactionPromoter.Promote%2A?displayProperty=nameWithType>メソッドが呼び出されると、このインターフェイスの実装する必要があります、伝達トークンの形式で分散トランザクションを生成するように<xref:System.Transactions>します。  
+ メソッドが呼び出された場合、このインターフェイスの実装では、伝達トークンの形式で分散トランザクションを生成し、それをに<xref:System.Transactions>戻す必要があります。 <xref:System.Transactions.ITransactionPromoter.Promote%2A?displayProperty=nameWithType>  
   
- 使用して、トランザクションの参加者として、このインターフェイスを実装するオブジェクトを登録したら、<xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A>メソッドでは、トランザクション マネージャーと、通知されます参加者トランザクションの昇格、コミット、または、を呼び出すことによってロールバック<xref:System.Transactions.ITransactionPromoter.Promote%2A>メソッド、<xref:System.Transactions.IPromotableSinglePhaseNotification.SinglePhaseCommit%2A>メソッド、または<xref:System.Transactions.IPromotableSinglePhaseNotification.Rollback%2A>オブジェクトのメソッド。  
+ <xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A>メソッドを使用して、このインターフェイスを実装するオブジェクトをトランザクションの参加要素として参加させると、トランザクションマネージャーは、トランザクションが昇格、コミット、またはロールバックされたときに、<xref:System.Transactions.ITransactionPromoter.Promote%2A>メソッド、 <xref:System.Transactions.IPromotableSinglePhaseNotification.SinglePhaseCommit%2A> メソッド、または<xref:System.Transactions.IPromotableSinglePhaseNotification.Rollback%2A>オブジェクトのメソッド。  
   
- 詳細については、次を参照してください。 [Optimization のを使用して 1 つのフェーズの Commit and Promotable Single Phase Notification](https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))します。  
+ 詳細については、「[単一フェーズコミットを使用した最適化」と「昇格可能な単一フェーズ通知](https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))」を参照してください。  
   
  ]]></format>
     </remarks>
     <altmember cref="T:System.Transactions.Transaction" />
-    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85)">単一フェーズ コミットおよび昇格可能単一フェーズ通知を使用した最適化</related>
+    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85)">単一フェーズコミットと昇格可能単一フェーズ通知を使用した最適化</related>
   </Docs>
   <Members>
     <Member MemberName="Initialize">
@@ -77,16 +77,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>トランザクションの参加要素登録が正常に完了したことを通知します。</summary>
+        <summary>トランザクション参加要素に、参加が正常に完了したことを通知します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 初期化ロジックのトランザクションに参加する参加しているオブジェクトの準備が必要な場合は、コンス トラクターではなく、このメソッドでそのロジックを実装することをお勧めします。 これにより、初期化には、オブジェクトが正常にトランザクションの参加者として参加している場合にのみに発生します。  
+ トランザクションに参加するために参加オブジェクトを準備するために初期化ロジックが必要な場合は、コンストラクターではなく、このメソッドにそのロジックを実装することをお勧めします。 この方法では、オブジェクトがトランザクションの参加要素として正常に参加している場合にのみ、初期化が行われます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Transactions.TransactionException">参加またはトランザクションをシリアル化しようとします。</exception>
+        <exception cref="T:System.Transactions.TransactionException">トランザクションの参加またはシリアル化を行おうとしました。</exception>
       </Docs>
     </Member>
     <Member MemberName="Rollback">
@@ -127,14 +127,14 @@
         <Parameter Name="enlistment" Type="System.Transactions.SinglePhaseEnlistment" Index="0" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="singlePhaseEnlistment">A<see cref="T:System.Transactions.SinglePhaseEnlistment" />トランザクション マネージャーに応答を送信するために使用するオブジェクト。</param>
-        <param name="enlistment">A<see cref="T:System.Transactions.SinglePhaseEnlistment" />トランザクション マネージャーに応答を送信するために使用するオブジェクト。</param>
-        <summary>トランザクションがロールバックされていることを参加オブジェクトに通知します。</summary>
+        <param name="singlePhaseEnlistment">トランザクション マネージャーに応答を送信するために使用する <see cref="T:System.Transactions.SinglePhaseEnlistment" /> オブジェクト。</param>
+        <param name="enlistment">トランザクション マネージャーに応答を送信するために使用する <see cref="T:System.Transactions.SinglePhaseEnlistment" /> オブジェクト。</param>
+        <summary>トランザクションのロールバック中であることを参加オブジェクトに通知します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この通知を受信するは常にロールバックが内部トランザクションを伴うし応答に、PSPE、<xref:System.Transactions.SinglePhaseEnlistment.Aborted%2A>でコールバック メソッド、`singlePhaseEnlistment`パラメーター。  場合は、PSPE はで応答<xref:System.Transactions.SinglePhaseEnlistment.Committed%2A>または<xref:System.Transactions.SinglePhaseEnlistment.InDoubt%2A>、<xref:System.InvalidOperationException>コールバックからがスローされます。  
+ この通知を受信すると、pspe は常に内部トランザクションをロールバックし、次<xref:System.Transactions.SinglePhaseEnlistment.Aborted%2A> `singlePhaseEnlistment`にパラメーターのコールバックメソッドを使用して応答する必要があります。  Pspe がまたは<xref:System.Transactions.SinglePhaseEnlistment.Committed%2A> <xref:System.Transactions.SinglePhaseEnlistment.InDoubt%2A> <xref:System.InvalidOperationException>で応答する場合は、コールバックからがスローされます。  
   
  ]]></format>
         </remarks>
@@ -178,18 +178,18 @@
         <Parameter Name="enlistment" Type="System.Transactions.SinglePhaseEnlistment" Index="0" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="singlePhaseEnlistment">A<see cref="T:System.Transactions.SinglePhaseEnlistment" />インターフェイスがトランザクション マネージャーに応答を送信するために使用します。</param>
-        <param name="enlistment">A<see cref="T:System.Transactions.SinglePhaseEnlistment" />インターフェイスがトランザクション マネージャーに応答を送信するために使用します。</param>
-        <summary>参加している通知オブジェクトのトランザクションがコミットされていること。</summary>
+        <param name="singlePhaseEnlistment">トランザクション マネージャーに応答を送信するために使用する <see cref="T:System.Transactions.SinglePhaseEnlistment" /> インターフェイス。</param>
+        <param name="enlistment">トランザクション マネージャーに応答を送信するために使用する <see cref="T:System.Transactions.SinglePhaseEnlistment" /> インターフェイス。</param>
+        <summary>トランザクションがコミット中であることを参加オブジェクトに通知します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドでは、トランザクションがコミットされる参加オブジェクトに通知します。  
+ このメソッドは、トランザクションがコミットされることを参加オブジェクトに通知します。  
   
- `singlePhaseEnlistment`パラメーターは、トランザクション マネージャーがトランザクションの制御を委任するために、トランザクションを通知するには、このインターフェイスの実装、トランザクションの結果のマネージャーを許可するコールバックを含めることができます。 昇格されたトランザクションの場合は、トランザクション マネージャーは、トランザクションの結果をリッスンし、送信される応答よりも優先されます。  
+ パラメーター `singlePhaseEnlistment`には、トランザクションマネージャーがトランザクションの制御を委任したため、このインターフェイスの実装でトランザクションの結果をトランザクションマネージャーに通知するためのコールバックが含まれています。 昇格されたトランザクションの場合、トランザクションマネージャーはトランザクションの結果をリッスンし、送信される応答を上書きします。  
   
- この通知を受信するには、リソース マネージャーは内部トランザクション (または、エスカレートされている場合は、分散トランザクション) をコミットし、コールバック メソッドのいずれかで呼び出す試みる必要がある、`singlePhaseEnlistment`の結果に基づいてパラメータートランザクションのコミットします。  
+ この通知を受け取ると、リソースマネージャーは内部トランザクション (または、エスカレートされている場合は分散トランザクション) をコミットしようとし、 `singlePhaseEnlistment`パラメーターの結果に基づいて、パラメーターのコールバックメソッドの1つを呼び出します。トランザクションをコミットしています。  
   
  ]]></format>
         </remarks>

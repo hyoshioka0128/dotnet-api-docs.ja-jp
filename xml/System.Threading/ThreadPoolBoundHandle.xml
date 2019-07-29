@@ -1,5 +1,5 @@
 <Type Name="ThreadPoolBoundHandle" FullName="System.Threading.ThreadPoolBoundHandle">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="75bb512965bdf2ec946d87d335ea4b2998f6d4c3" /><Meta Name="ms.sourcegitcommit" Value="690605a2d62010b93e13edf329aafe2bdc57423a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/11/2019" /><Meta Name="ms.locfileid" Value="67801417" /></Metadata><TypeSignature Language="C#" Value="public sealed class ThreadPoolBoundHandle : IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="310a522514eab68c9606ce7810041ade02eb2e16" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68541798" /></Metadata><TypeSignature Language="C#" Value="public sealed class ThreadPoolBoundHandle : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ThreadPoolBoundHandle extends System.Object implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Threading.ThreadPoolBoundHandle" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ThreadPoolBoundHandle&#xA;Implements IDisposable" />
@@ -35,7 +35,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Represents an I/O handle that is bound to the system thread pool and enables low-level components to receive notifications for asynchronous I/O operations.</summary>
+    <summary>システムのスレッド プールにバインドし、低レベルのコンポーネントが非同期 I/O 操作の通知を受信できるようにする I/O ハンドルを表します。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -46,7 +46,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>Returns an unmanaged pointer to a <see cref="T:System.Threading.NativeOverlapped" /> structure.</summary>
+        <summary><see cref="T:System.Threading.NativeOverlapped" /> 構造体へのアンマネージ ポインターを返します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="AllocateNativeOverlapped">
@@ -87,23 +87,23 @@
         <Parameter Name="preAllocated" Type="System.Threading.PreAllocatedOverlapped" />
       </Parameters>
       <Docs>
-        <param name="preAllocated">An object from which to create the <see cref="T:System.Threading.NativeOverlapped" /> pointer.</param>
-        <summary>Returns an unmanaged pointer to a <see cref="T:System.Threading.NativeOverlapped" /> structure using the callback state and buffers associated with the specified <see cref="T:System.Threading.PreAllocatedOverlapped" /> object.</summary>
-        <returns>An unmanaged pointer to a <see cref="T:System.Threading.NativeOverlapped" /> structure.</returns>
+        <param name="preAllocated"><see cref="T:System.Threading.NativeOverlapped" /> ポインターの作成元のオブジェクト。</param>
+        <summary>指定した <see cref="T:System.Threading.PreAllocatedOverlapped" /> オブジェクトに関連付けられているコールバック状態とバッファーを使用して、アンマネージ ポインターを <see cref="T:System.Threading.NativeOverlapped" /> 構造体に返します。</summary>
+        <returns><see cref="T:System.Threading.NativeOverlapped" /> 構造体へのアンマネージ ポインター。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- オーバー ラップした I/O 操作で、オペレーティング システムには、このメソッドによって返されるアンマネージ ポインターを渡すことができます。 <xref:System.Threading.NativeOverlapped>まで物理メモリ内構造は固定されて、<xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A>メソッドが呼び出されます。  
+ このメソッドによって返されるアンマネージポインターは、重複 i/o 操作でオペレーティングシステムに渡すことができます。 構造体は、 <xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A>メソッドが呼び出されるまで物理メモリ内で固定されます。 <xref:System.Threading.NativeOverlapped>  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="preAllocated" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="preAllocated" /> is currently in use for another I/O operation.</exception>
-        <exception cref="T:System.ObjectDisposedException">This method was called after the <see cref="T:System.Threading.ThreadPoolBoundHandle" /> was disposed.  
+        <exception cref="T:System.ArgumentNullException"><paramref name="preAllocated" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="preAllocated" /> は現在別の I/O 操作で使用中です。</exception>
+        <exception cref="T:System.ObjectDisposedException">このメソッドは <see cref="T:System.Threading.ThreadPoolBoundHandle" /> が破棄された後に呼び出されました。  
   
--or- 
-This method was called after <paramref name="preAllocated" /> was disposed.</exception>
+または 
+このメソッドは <paramref name="preAllocated" /> が破棄された後に呼び出されました。</exception>
         <altmember cref="T:System.Threading.PreAllocatedOverlapped" />
       </Docs>
     </Member>
@@ -147,25 +147,25 @@ This method was called after <paramref name="preAllocated" /> was disposed.</exc
         <Parameter Name="pinData" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="callback">A delegate that represents the callback method to invoke when the asynchronous I/O operation completes.</param>
-        <param name="state">A user-provided object that distinguishes this <see cref="T:System.Threading.NativeOverlapped" /> instance from other <see cref="T:System.Threading.NativeOverlapped" /> instances.</param>
-        <param name="pinData">An object or array of objects that represent the input or output buffer for the operation, or <see langword="null" />. Each object represents a buffer, such an array of bytes.</param>
-        <summary>Returns an unmanaged pointer to a <see cref="T:System.Threading.NativeOverlapped" /> structure, specifying a delegate that is invoked when the asynchronous I/O operation is complete, a user-provided object that supplies context, and managed objects that serve as buffers.</summary>
-        <returns>An unmanaged pointer to a <see cref="T:System.Threading.NativeOverlapped" /> structure.</returns>
+        <param name="callback">非同期 I/O 操作が完了したときに呼び出すコールバック メソッドを表すデリゲート。</param>
+        <param name="state">この <see cref="T:System.Threading.NativeOverlapped" /> インスタンスを他の <see cref="T:System.Threading.NativeOverlapped" /> インスタンスと区別する、ユーザー指定のオブジェクト。</param>
+        <param name="pinData">操作の入力バッファーまたは出力バッファーを表す、1 つのオブジェクトまたはオブジェクトの配列、または <see langword="null" />。 各オブジェクトは、バイト配列などのバッファーを表します。</param>
+        <summary>アンマネージド ポインターを <see cref="T:System.Threading.NativeOverlapped" /> 構造体に返し、各非同期 I/O 操作が完了したときに呼び出されるデリゲート、コンテキストを提供するユーザー指定のオブジェクト、およびバッファーとして機能するマネージド オブジェクトを指定します。</summary>
+        <returns><see cref="T:System.Threading.NativeOverlapped" /> 構造体へのアンマネージ ポインター。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[
 
-オーバー ラップした I/O 操作で、オペレーティング システムには、このメソッドによって返されるアンマネージ ポインターを渡すことができます。 <xref:System.Threading.NativeOverlapped>まで物理メモリ内構造は固定<xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A?displayProperty=nameWithType>が呼び出されます。
+このメソッドによって返されるアンマネージポインターは、重複 i/o 操作でオペレーティングシステムに渡すことができます。 構造<xref:System.Threading.NativeOverlapped>体は、が呼び出されるまで<xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A?displayProperty=nameWithType> 、物理メモリ内で固定されます。
 
 > [!NOTE]
-> 指定されたバッファー <paramref name="pinData" /> I/O 操作の間のピン留めされています。
+> で<paramref name="pinData" />指定されたバッファーは、i/o 操作の間、固定されます。
 
-指定されたバッファーは<paramref name="pinData" />非同期 I/O を実行するオペレーティング システムのアンマネージ関数に渡されたものと同じである必要があります。 
+で<paramref name="pinData" />指定されたバッファーは、非同期 i/o を実行するアンマネージオペレーティングシステム関数に渡されたバッファーと同じである必要があります。 
 
         ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="callback" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.ObjectDisposedException">This method was called after the <see cref="T:System.Threading.ThreadPoolBoundHandle" /> object was disposed.</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="callback" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ObjectDisposedException">このメソッドは <see cref="T:System.Threading.ThreadPoolBoundHandle" /> オブジェクトが破棄された後に呼び出されました。</exception>
       </Docs>
     </Member>
     <Member MemberName="BindHandle">
@@ -204,30 +204,30 @@ This method was called after <paramref name="preAllocated" /> was disposed.</exc
         <Parameter Name="handle" Type="System.Runtime.InteropServices.SafeHandle" />
       </Parameters>
       <Docs>
-        <param name="handle">An object that holds the operating system handle. The handle must have been opened for overlapped I/O in unmanaged code.</param>
-        <summary>Returns a <see cref="T:System.Threading.ThreadPoolBoundHandle" /> for the specified handle, which is bound to the system thread pool.</summary>
-        <returns>A <see cref="T:System.Threading.ThreadPoolBoundHandle" /> for <paramref name="handle" />, which is bound to the system thread pool.</returns>
+        <param name="handle">オペレーティング システム ハンドルを保持するオブジェクト。 ハンドルは、アンマネージ コードの重複 I/O 用に開かれている必要があります。</param>
+        <summary>指定したハンドルに対し、<see cref="T:System.Threading.ThreadPoolBoundHandle" /> が返され、システム スレッド プールにバインドされます。</summary>
+        <returns><paramref name="handle" /> の <see cref="T:System.Threading.ThreadPoolBoundHandle" />。システム スレッド プールにバインドされます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、ハンドルごと 1 回呼び出す必要があります。  
+ このメソッドは、ハンドルごとに1回呼び出す必要があります。  
   
- <xref:System.Threading.ThreadPoolBoundHandle>オブジェクトの所有権を受け取らない`handle`; を呼び出す呼び出し元の責任は<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>します。  
+ オブジェクト<xref:System.Threading.ThreadPoolBoundHandle>は、の`handle`所有権を取得しません。呼び出し元はを呼び<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>出す必要があります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="handle" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="handle" /> has been disposed.  
+        <exception cref="T:System.ArgumentNullException"><paramref name="handle" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="handle" /> は破棄されています。  
   
--or- 
- <paramref name="handle" /> does not refer to a valid I/O handle.  
+- または - 
+ <paramref name="handle" /> は有効な I/O ハンドルを参照していません。  
   
--or- 
- <paramref name="handle" /> refers to a handle that has not been opened for overlapped I/O.  
+または 
+ <paramref name="handle" /> は重複 I/O 用に開かれていないハンドルを参照しています。  
   
--or- 
- <paramref name="handle" /> refers to a handle that has already been bound.</exception>
+または 
+ <paramref name="handle" /> は既にバインドされているハンドルを参照しています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -262,7 +262,7 @@ This method was called after <paramref name="preAllocated" /> was disposed.</exc
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Releases all unmanaged resources used by the <see cref="T:System.Threading.ThreadPoolBoundHandle" /> instance.</summary>
+        <summary><see cref="T:System.Threading.ThreadPoolBoundHandle" /> インスタンスによって使用されているすべてのアンマネージ リソースを解放します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -304,20 +304,20 @@ This method was called after <paramref name="preAllocated" /> was disposed.</exc
         <Parameter Name="overlapped" Type="System.Threading.NativeOverlapped*" />
       </Parameters>
       <Docs>
-        <param name="overlapped">An unmanaged pointer to the <see cref="T:System.Threading.NativeOverlapped" /> structure to be freed.</param>
-        <summary>Frees the memory associated with a <see cref="T:System.Threading.NativeOverlapped" /> structure allocated by the <see cref="Overload:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped" /> method.</summary>
+        <param name="overlapped">解放する <see cref="T:System.Threading.NativeOverlapped" /> 構造体へのアンマネージド ポインター。</param>
+        <summary><see cref="Overload:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped" /> メソッドによって割り当てられた <see cref="T:System.Threading.NativeOverlapped" /> 構造体と関連付けられたメモリを解放します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
   
 > [!CAUTION]
->  呼び出す必要があります、<xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A>メソッドを厳密に 1 回ですべて<xref:System.Threading.NativeOverlapped>を使用して割り当てられたアンマネージ ポインター、<xref:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped%2A>メソッド。 呼び出さない場合、<xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A>メソッドでは、メモリ リークが発生します。 呼び出す場合、<xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A>メソッドは、同じ 2 回以上<xref:System.Threading.NativeOverlapped>アンマネージ ポインターは、メモリが破損します。  
+>  メソッドを使用し<xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A> <xref:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped%2A>て割り当てられた<xref:System.Threading.NativeOverlapped>アンマネージポインターごとに、メソッドを1回だけ呼び出す必要があります。 <xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A>メソッドを呼び出さないと、メモリがリークします。 <xref:System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped%2A> 同じ<xref:System.Threading.NativeOverlapped>アンマネージポインターでメソッドを複数回呼び出すと、メモリが破損します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="overlapped" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.ObjectDisposedException">This method was called after the <see cref="T:System.Threading.ThreadPoolBoundHandle" /> object was disposed.</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="overlapped" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ObjectDisposedException">このメソッドは <see cref="T:System.Threading.ThreadPoolBoundHandle" /> オブジェクトが破棄された後に呼び出されました。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetNativeOverlappedState">
@@ -358,11 +358,11 @@ This method was called after <paramref name="preAllocated" /> was disposed.</exc
         <Parameter Name="overlapped" Type="System.Threading.NativeOverlapped*" />
       </Parameters>
       <Docs>
-        <param name="overlapped">An unmanaged pointer to the <see cref="T:System.Threading.NativeOverlapped" /> structure from which to return the associated user-provided object.</param>
-        <summary>Returns the user-provided object that was specified when the <see cref="T:System.Threading.NativeOverlapped" /> instance was allocated by calling the <see cref="M:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped(System.Threading.IOCompletionCallback,System.Object,System.Object)" /> method.</summary>
-        <returns>A user-provided object that distinguishes this <see cref="T:System.Threading.NativeOverlapped" /> instance from other <see cref="T:System.Threading.NativeOverlapped" /> instances, or <see langword="null" /> if one was not specified when the instance was allocated by calling the <see cref="Overload:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped" /> method.</returns>
+        <param name="overlapped">関連するユーザー指定のオブジェクトを返す <see cref="T:System.Threading.NativeOverlapped" /> 構造体へのアンマネージ ポインター。</param>
+        <summary><see cref="M:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped(System.Threading.IOCompletionCallback,System.Object,System.Object)" /> メソッドを呼び出して、<see cref="T:System.Threading.NativeOverlapped" /> インスタンスが割り当てられると、指定されたユーザー指定のオブジェクトが返されます。</summary>
+        <returns>この <see cref="T:System.Threading.NativeOverlapped" /> インスタンスを別の <see cref="T:System.Threading.NativeOverlapped" /> インスタンス、または <see langword="null" /> と区別する、ユーザー指定のオブジェクト (<see cref="Overload:System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped" /> メソッドを呼び出してインスタンスが割り当てられたときにオブジェクトが指定されていない場合)。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="overlapped" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="overlapped" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="Handle">
@@ -398,7 +398,7 @@ This method was called after <paramref name="preAllocated" /> was disposed.</exc
         <ReturnType>System.Runtime.InteropServices.SafeHandle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the bound operating system handle.</summary>
+        <summary>バインドされているオペレーティング システム ハンドルを取得します。</summary>
         <value>バインドされているオペレーティング システム ハンドルを保持するオブジェクト。</value>
         <remarks>To be added.</remarks>
       </Docs>

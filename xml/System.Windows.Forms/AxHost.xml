@@ -49,27 +49,27 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>ActiveX コントロールをラップし、全機能を備えた Windows フォーム コントロールとして公開されます。</summary>
+    <summary>ActiveX コントロールをラップし、完全な機能を備えた Windows フォーム コントロールとしてそのコントロールを公開します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 通常使用しない、<xref:System.Windows.Forms.AxHost>クラスを直接します。 使用することができます、 [Aximp.exe (Windows フォーム ActiveX コントロール インポーター)](~/docs/framework/tools/aximp-exe-windows-forms-activex-control-importer.md)を拡張するラッパーを生成する<xref:System.Windows.Forms.AxHost>します。  
+ 通常、クラスは<xref:System.Windows.Forms.AxHost>直接使用しません。 [Aximp.exe (ActiveX コントロールインポーター Windows フォーム)](~/docs/framework/tools/aximp-exe-windows-forms-activex-control-importer.md)を使用して、を拡張<xref:System.Windows.Forms.AxHost>するラッパーを生成できます。  
   
- ActiveX コントロール インポーターから派生したクラスを生成する、<xref:System.Windows.Forms.AxHost>クラス、およびアプリケーションへの参照として追加できるライブラリ ファイル (DLL) にコンパイルします。 また、使用することができます、 `/source` ActiveX コントロール インポーターに切り替えるし、c# ファイルが生成、<xref:System.Windows.Forms.AxHost>クラスを派生します。 コードを変更し、ライブラリ ファイルに再コンパイルします。  
-  
-> [!NOTE]
->  ActiveX コントロールのメンバーの名前が、.NET Framework で定義された名前と一致するかどうかは、ActiveX コントロール インポーターは、作成時に"ctl"メンバー名にプレフィックスは、<xref:System.Windows.Forms.AxHost>クラスを派生します。 たとえば、ActiveX コントロールに"Layout"という名前のメンバーがある場合は、名前の変更"CtlLayout"に、<xref:System.Windows.Forms.AxHost>派生クラスのため、`Layout`イベントは、.NET Framework 内で定義されています。  
-  
- ほとんどの共通プロパティの<xref:System.Windows.Forms.AxHost>クラスのみ有効ですし、基になる ActiveX コントロールは、これらのプロパティを公開している場合に使用します。 共通のプロパティのいくつかの例は、 <xref:System.Windows.Forms.Control.BackColor%2A>、 <xref:System.Windows.Forms.Control.Cursor%2A>、 <xref:System.Windows.Forms.Control.Font%2A>、および<xref:System.Windows.Forms.Control.Text%2A>します。  
+ ActiveX コントロールインポーターは、 <xref:System.Windows.Forms.AxHost>クラスから派生したクラスを生成し、アプリケーションへの参照として追加できるライブラリファイル (DLL) にコンパイルします。 または、ActiveX コントロールインポーター `/source`でスイッチを使用して、 <xref:System.Windows.Forms.AxHost>派生C#クラスのファイルが生成されるようにすることもできます。 その後、コードに変更を加えて、ライブラリファイルに再コンパイルできます。  
   
 > [!NOTE]
->  Windows フォームのデザイン環境として Visual Studio を使用する場合利用できる ActiveX コントロールをアプリケーションにコントロールをツールボックスに ActiveX コントロールを追加することで。 これを実現するを右クリックし、**ツールボックス**を選択します**ツールボックスのカスタマイズ**ActiveX の.ocx ファイルを参照します。 詳細については、Visual Studio のドキュメントで"を追加する ActiveX コントロールを Windows Forms"を参照してください。  
+>  Activex コントロールのメンバーの名前が .NET Framework で定義されている名前と一致する場合、activex コントロールインポーターは、派生クラスの<xref:System.Windows.Forms.AxHost>作成時にメンバー名の先頭に "Ctl" を付けます。 たとえば、ActiveX コントロールに "Layout" という名前のメンバーがある場合、その<xref:System.Windows.Forms.AxHost> `Layout`イベントは .NET Framework 内で定義されるため、派生クラスでは "CtlLayout" という名前に変更されます。  
+  
+ <xref:System.Windows.Forms.AxHost>クラスのほとんどの共通プロパティは、基になる ActiveX コントロールがこれらのプロパティを公開する場合にのみ有効で、使用されます。 共通プロパティの例と<xref:System.Windows.Forms.Control.BackColor%2A>して<xref:System.Windows.Forms.Control.Text%2A>、、 <xref:System.Windows.Forms.Control.Cursor%2A>、 <xref:System.Windows.Forms.Control.Font%2A>、があります。  
+  
+> [!NOTE]
+>  Windows フォームのデザイン環境として Visual Studio を使用している場合は、ActiveX コントロールをツールボックスに追加することによって、ActiveX コントロールをアプリケーションで使用できるようにすることができます。 これを行うには、**[ツールボックス]** を右クリックし、**[ツールボックスのカスタマイズ]** を選択してから、ActiveX コントロールの .ocx ファイルを参照します。 詳細については、Visual Studio のドキュメントの「Windows フォームへの ActiveX コントロールの追加」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例は、コンス トラクターをオーバーライドし、<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A>と<xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>のメソッド、 <xref:System.Windows.Forms.AxHost> Microsoft マスク エディット ActiveX コントロールをラップするクラスを派生します。 このコードでは、MSMask32.ocx ファイルに対して AxImp.exe を実行して生成されたソース コードを作成したことが必要です、`/source`スイッチを編集するラッパー クラスを生成します。 このコードはのみ表示 c# 構文でのみ言語の出力であるためです AxImp.exe によってされます。  
+ 次のコード例では、コンストラクター、および<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> Microsoft <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>マスクエディット ActiveX <xref:System.Windows.Forms.AxHost>コントロールをラップする派生クラスのメソッドとメソッドをオーバーライドします。 このコードでは、MSMask32 ファイル`/source`で aximp.exe を実行することで、生成されたソースコードを作成し、編集するラッパークラスを生成するスイッチを指定する必要があります。 このコードは、Aximp.exe にC#よって出力される唯一の言語であるため、構文でのみ表示されます。  
   
  [!code-csharp[AxHost_Wrap_MaskEdit#1](~/samples/snippets/csharp/VS_Snippets_Winforms/AxHost_Wrap_MaskEdit/CS/axmsmask.cs#1)]  
   
@@ -112,7 +112,7 @@
       </Parameters>
       <Docs>
         <param name="clsid">ラップする ActiveX コントロールの CLSID。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Forms.AxHost" />クラスは、指定された CLSID で ActiveX コントロールをラップします。</summary>
+        <summary>CLSID で指定された ActiveX コントロールをラップして、<see cref="T:System.Windows.Forms.AxHost" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -136,15 +136,15 @@
       </Parameters>
       <Docs>
         <param name="clsid">ラップする ActiveX コントロールの CLSID。</param>
-        <param name="flags"><see cref="T:System.Int32" />コントロールのショートカット メニューの動作を変更します。</param>
-        <summary>新しいインスタンスを初期化、 <see cref="T:System.Windows.Forms.AxHost" /> ActiveX コントロールをラップするクラスが、指定された CLSID で示され、ショートカット メニューの動作を使用して、指定したによって示される<paramref name="flags" />値。</summary>
+        <param name="flags">コントロールのショートカット メニューの動作を変更する <see cref="T:System.Int32" />。</param>
+        <summary>CLSID で指定された ActiveX コントロールをラップし、<paramref name="flags" /> 値で指定されたショートカット メニューの動作を使用して、<see cref="T:System.Windows.Forms.AxHost" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合のバイナリ表現、`flags`パラメーターの値が 0x1 の値によって表される、ビットを含む、コントロールのショートカット メニューは含まれません、**編集**ActiveX コントロールが明示的に提供しない限りオプションです。  
+ `flags`パラメーター値のバイナリ表現に値0x1 で表されるビットが含まれている場合、ActiveX コントロールによって明示的に指定されていない限り、コントロールのショートカットメニューには**編集**オプションが含まれません。  
   
- 場合のバイナリ表現、 `flags` 0x2 値によって表されるビットがパラメーターの値に含まれています、ActiveX コントロールが; のプロパティ ページのセットを提供する場合、コントロールのショートカット メニューはプロパティのオプションには、それ以外の場合、ショートカット メニューActiveX コントロールが明示的に提供する場合にのみ、[プロパティ] オプションが含まれます。  
+ `flags`パラメーター値のバイナリ表現に値0x2 で表されるビットが含まれている場合、ActiveX コントロールが一連のプロパティページを提供する場合は、コントロールのショートカットメニューに [プロパティ] オプションが表示されます。それ以外の場合は、ショートカットメニューには、ActiveX コントロールによって明示的に指定された場合にのみ、プロパティオプションが含まれます。  
   
  ]]></format>
         </remarks>
@@ -169,18 +169,18 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>派生クラスでオーバーライドされると、基になる ActiveX コントロールへのインターフェイスをアタッチします。</summary>
+        <summary>派生クラスでオーバーライドすると、基になる ActiveX コントロールにインターフェイスを追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、コンス トラクターをオーバーライドし、<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A>と<xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>のメソッド、 <xref:System.Windows.Forms.AxHost> Microsoft マスク エディット ActiveX コントロールをラップするクラスを派生します。 このコードでは、MSMask32.ocx ファイルに対して AxImp.exe を実行して生成されたソース コードを作成したことが必要です、`/source`スイッチを編集するラッパー クラスを生成します。 このコードはのみ表示 c# 構文でのみ言語の出力であるためです AxImp.exe によってされます。  
+ 次のコード例では、コンストラクター、および<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> Microsoft <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>マスクエディット ActiveX <xref:System.Windows.Forms.AxHost>コントロールをラップする派生クラスのメソッドとメソッドをオーバーライドします。 このコードでは、MSMask32 ファイル`/source`で aximp.exe を実行することで、生成されたソースコードを作成し、編集するラッパークラスを生成するスイッチを指定する必要があります。 このコードは、Aximp.exe にC#よって出力される唯一の言語であるため、構文でのみ表示されます。  
   
  [!code-csharp[AxHost_Wrap_MaskEdit#1](~/samples/snippets/csharp/VS_Snippets_Winforms/AxHost_Wrap_MaskEdit/CS/axmsmask.cs#1)]  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>拡張するクラス<see cref="T:System.Windows.Forms.AxHost" />このメソッドをオーバーライドする必要があります。 このメソッドのオーバーライドされたバージョンの拡張クラスを呼び出す必要があります<see cref="M:System.Windows.Forms.AxHost.GetOcx" />を独自のインターフェイスを取得します。 ほとんどの場合、<see cref="M:System.Windows.Forms.AxHost.GetOcx" />このメソッドが呼び出される前に、メソッドは呼び出されませんする必要があります。</para></block>
+        <block subset="none" type="overrides"><para>を拡張<see cref="T:System.Windows.Forms.AxHost" />するクラスは、このメソッドをオーバーライドする必要があります。 このメソッドのオーバーライドされたバージョンでは、拡張する<see cref="M:System.Windows.Forms.AxHost.GetOcx" />クラスはを呼び出して独自のインターフェイスを取得する必要があります。 ほとんどの場合、 <see cref="M:System.Windows.Forms.AxHost.GetOcx" />このメソッドを呼び出す前にメソッドを呼び出さないでください。</para></block>
         <altmember cref="M:System.Windows.Forms.AxHost.GetOcx" />
       </Docs>
     </Member>
@@ -241,12 +241,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.BackColorChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.BackColorChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.BackColorChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.BackColorChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -312,12 +312,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.BackgroundImageChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.BackgroundImageChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.BackgroundImageChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.BackgroundImageChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -417,7 +417,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- デザイン環境では、通常、このメソッドを使用してフォームまたはその他のコンポーネントで使用するコンポーネントの初期化を開始します。 <xref:System.Windows.Forms.AxHost.EndInit%2A>メソッドは、初期化を終了します。 使用して、<xref:System.Windows.Forms.AxHost.BeginInit%2A>と<xref:System.Windows.Forms.AxHost.EndInit%2A>メソッドにより、コントロールは完全に初期化される前に使用されているからです。 初期化は実行時に発生します。  
+ 通常、デザイン環境では、このメソッドを使用して、フォームまたは別のコンポーネントで使用されるコンポーネントの初期化を開始します。 メソッド<xref:System.Windows.Forms.AxHost.EndInit%2A>は、初期化を終了します。 メソッドとメソッド<xref:System.Windows.Forms.AxHost.EndInit%2A>を使用すると、完全に初期化される前に、コントロールが使用されなくなります。 <xref:System.Windows.Forms.AxHost.BeginInit%2A> 初期化は実行時に発生します。  
   
  ]]></format>
         </remarks>
@@ -450,12 +450,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.BindingContextChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.BindingContextChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.BindingContextChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.BindingContextChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -487,12 +487,12 @@
         <ReturnType>System.Windows.Forms.UICuesEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.ChangeUICues" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.ChangeUICues" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.ChangeUICues> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.ChangeUICues> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -524,12 +524,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.Click" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.Click" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.Click> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.Click> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -567,17 +567,17 @@
         <ReturnType>System.Windows.Forms.ContainerControl</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または ActiveX コントロールを格納しているコントロールを設定します。</summary>
-        <value>A <see cref="T:System.Windows.Forms.ContainerControl" /> ActiveX コントロールを格納しているコントロールを表します。</value>
+        <summary>ActiveX コントロールを格納しているコントロールを取得または設定します。</summary>
+        <value>ActiveX コントロールを格納しているコントロールを表す <see cref="T:System.Windows.Forms.ContainerControl" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.AxHost.ContainingControl%2A>プロパティの値が異なる場合があります、<xref:System.Windows.Forms.Control.Parent%2A>プロパティ。 <xref:System.Windows.Forms.ContainerControl> ActiveX コントロールの論理コンテナーは、このプロパティで表されます。 ActiveX コントロールがホストされている場合など、<xref:System.Windows.Forms.GroupBox>コントロール、および<xref:System.Windows.Forms.GroupBox>に含まれる、 <xref:System.Windows.Forms.Form>、 <xref:System.Windows.Forms.AxHost.ContainingControl%2A> ActiveX コントロールのプロパティの値が、 <xref:System.Windows.Forms.Form>、および<xref:System.Windows.Forms.Control.Parent%2A>プロパティの値が、<xref:System.Windows.Forms.GroupBox>コントロール。  
+ プロパティ値は、プロパティと<xref:System.Windows.Forms.Control.Parent%2A>は異なる場合があります。 <xref:System.Windows.Forms.AxHost.ContainingControl%2A> この<xref:System.Windows.Forms.ContainerControl>プロパティによって表されるは、ActiveX コントロールの論理コンテナーです。 たとえば、activex コントロールが<xref:System.Windows.Forms.GroupBox>コントロールでホストされてい<xref:System.Windows.Forms.GroupBox>て、が<xref:System.Windows.Forms.AxHost.ContainingControl%2A>に<xref:System.Windows.Forms.Form>含まれている場合、activex コントロールの<xref:System.Windows.Forms.Control.Parent%2A>プロパティ値はです<xref:System.Windows.Forms.Form>。プロパティ値はです。<xref:System.Windows.Forms.GroupBox>コントロール。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">このプロパティの値を取得するすべてのウィンドウ。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">すべてのウィンドウでこのプロパティ値を取得します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
         <altmember cref="T:System.Windows.Forms.Form" />
       </Docs>
     </Member>
@@ -638,12 +638,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.ContextMenuChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.ContextMenuChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.ContextMenuChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.ContextMenuChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -694,8 +694,8 @@
       </Parameters>
       <Docs>
         <param name="clsid">ActiveX コントロールの CLSID。</param>
-        <summary>ActiveX コントロールを作成する、システムによって呼び出されます。</summary>
-        <returns><see cref="T:System.Object" /> ActiveX コントロールを表します。</returns>
+        <summary>ActiveX コントロールを作成するために、システムによって呼び出されます。</summary>
+        <returns>ActiveX コントロールを表す <see cref="T:System.Object" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -815,12 +815,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.CursorChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.CursorChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.CursorChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.CursorChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -845,7 +845,7 @@
       </ReturnValue>
       <Docs>
         <summary>コントロールの既定のサイズを取得します。</summary>
-        <value>コントロールの既定の <see cref="T:System.Drawing.Size" />。</value>
+        <value>コントロールの既定の <see cref="T:System.Drawing.Size" /> 。</value>
         <remarks>To be added.</remarks>
         <altmember cref="P:System.Windows.Forms.Control.DefaultSize" />
       </Docs>
@@ -962,12 +962,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.DoubleClick" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.DoubleClick" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.DoubleClick> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.DoubleClick> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -994,18 +994,18 @@
         <Parameter Name="verb" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="verb">:Enumverbs のオブジェクトの列挙されるアクションの 1 つ。</param>
-        <summary>オブジェクトがエンドユーザーの操作に応答アクションを実行するように要求します。</summary>
+        <param name="verb">IOleObject::EnumVerbs のオブジェクトに対して列挙されるアクションのいずれか。</param>
+        <summary>エンド ユーザーのアクションに応答してオブジェクトがアクションを実行するように要求します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、指定された動詞を[IOleObject::DoVerb](https://go.microsoft.com/fwlink/?LinkId=166076)ホストされるコントロールのメソッド。  
+ このメソッドは、指定された動詞を、ホストされるコントロールの[IOleObject::D oVerb](https://go.microsoft.com/fwlink/?LinkId=166076)メソッドに渡します。  
   
  ]]></format>
         </remarks>
-        <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=166076">IOleObject::DoVerb</related>
-        <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=166077">:Enumverbs</related>
+        <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=166076">IOleObject::D oVerb</related>
+        <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=166077">IOleObject:: EnumVerbs</related>
       </Docs>
     </Member>
     <Member MemberName="DragDrop">
@@ -1034,12 +1034,12 @@
         <ReturnType>System.Windows.Forms.DragEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.DragDrop" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.DragDrop" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.DragDrop> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.DragDrop> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -1071,12 +1071,12 @@
         <ReturnType>System.Windows.Forms.DragEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.DragEnter" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.DragEnter" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.DragEnter> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.DragEnter> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -1108,12 +1108,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.DragLeave" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.DragLeave" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.DragLeave> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.DragLeave> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -1145,12 +1145,12 @@
         <ReturnType>System.Windows.Forms.DragEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.DragOver" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.DragOver" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.DragOver> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.DragOver> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -1217,8 +1217,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ホストされるコントロールが編集モードであるかどうかを示す値を返します。</summary>
-        <value><see langword="true" /> ホストされるコントロールが編集モード。それ以外の場合、<see langword="false" />します。</value>
+        <summary>ホストされるコントロールが編集モードかどうかを示す値を返します。</summary>
+        <value>ホストされるコントロールが編集モードの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1279,12 +1279,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.EnabledChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.EnabledChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.EnabledChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.EnabledChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -1322,7 +1322,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- デザイン環境では、通常、このメソッドを使用してフォームまたはその他のコンポーネントで使用するコンポーネントの初期化を終了します。 <xref:System.Windows.Forms.AxHost.EndInit%2A>メソッドは、初期化を終了します。 使用して、<xref:System.Windows.Forms.AxHost.BeginInit%2A>と<xref:System.Windows.Forms.AxHost.EndInit%2A>メソッドにより、コントロールは完全に初期化される前に使用されているからです。 初期化は実行時に発生します。  
+ 通常、デザイン環境では、このメソッドを使用して、フォームまたは別のコンポーネントで使用されるコンポーネントの初期化を完了します。 メソッド<xref:System.Windows.Forms.AxHost.EndInit%2A>は、初期化を終了します。 メソッドとメソッド<xref:System.Windows.Forms.AxHost.EndInit%2A>を使用すると、完全に初期化される前に、コントロールが使用されなくなります。 <xref:System.Windows.Forms.AxHost.BeginInit%2A> 初期化は実行時に発生します。  
   
  ]]></format>
         </remarks>
@@ -1386,12 +1386,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.FontChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.FontChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.FontChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.FontChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -1454,12 +1454,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.ForeColorChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.ForeColorChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.ForeColorChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.ForeColorChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -1493,9 +1493,9 @@
         <Parameter Name="color" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="color">変換する OLE カラー値。</param>
-        <summary>返します、<see cref="T:System.Drawing.Color" />指定した OLE カラー値に対応する構造体。</summary>
-        <returns><see cref="T:System.Drawing.Color" />翻訳済みの OLE カラー値を表す構造体です。</returns>
+        <param name="color">変換対象の OLE カラー値。</param>
+        <summary>指定した OLE カラー値に対応する <see cref="T:System.Drawing.Color" /> 構造体を返します。</summary>
+        <returns>変換した OLE カラー値を表す <see cref="T:System.Drawing.Color" /> 構造体。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Drawing.Color" />
       </Docs>
@@ -1525,7 +1525,7 @@
         <Parameter Name="font" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="font">作成する IFont、<see cref="T:System.Drawing.Font" />から。</param>
+        <param name="font"><see cref="T:System.Drawing.Font" /> の作成元の IFont。</param>
         <summary>指定した OLE [IFont](https://go.microsoft.com/fwlink/?LinkId=166075) オブジェクトから作成された <see cref="T:System.Drawing.Font" /> を返します。</summary>
         <returns>指定した <see href="https://docs.microsoft.com/windows/desktop/api/ocidl/nn-ocidl-ifont">IFont</see> から作成された <see cref="T:System.Drawing.Font" />。フォントを作成できなかった場合は <see cref="P:System.Windows.Forms.Control.DefaultFont" />。<paramref name="font" /> が <see langword="null" /> の場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
@@ -1559,7 +1559,7 @@
         <Parameter Name="font" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="font">作成する IFontDisp、<see cref="T:System.Drawing.Font" />から。</param>
+        <param name="font"><see cref="T:System.Drawing.Font" /> の作成元の IFontDisp。</param>
         <summary>指定した OLE [IFontDisp](https://go.microsoft.com/fwlink/?LinkId=166073) オブジェクトから作成された <see cref="T:System.Drawing.Font" /> を返します。</summary>
         <returns>指定した <see href="https://msdn.microsoft.com/library/ms692695(VS.85).aspx">IFontDisp</see> から作成された <see cref="T:System.Drawing.Font" />。フォントを作成できなかった場合は <see cref="P:System.Windows.Forms.Control.DefaultFont" />。<paramref name="font" /> が <see langword="null" /> の場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
@@ -1593,11 +1593,11 @@
         <Parameter Name="font" Type="System.Drawing.Font" />
       </Parameters>
       <Docs>
-        <param name="font">IFontDisp オブジェクトを作成するフォントです。</param>
+        <param name="font">IFontDisp オブジェクトの作成元となるフォント。</param>
         <summary>指定した <see cref="T:System.Drawing.Font" /> オブジェクトから作成された OLE [IFontDisp](https://go.microsoft.com/fwlink/?LinkId=166073) オブジェクトを返します。</summary>
         <returns>指定したフォントから作成された <see href="https://msdn.microsoft.com/library/ms692695(VS.85).aspx">IFontDisp</see> オブジェクト。<paramref name="font" /> が <see langword="null" /> の場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException"><see cref="P:System.Drawing.Font.Unit" />プロパティの値が<see cref="F:System.Drawing.GraphicsUnit.Point" />します。</exception>
+        <exception cref="T:System.ArgumentException"><see cref="P:System.Drawing.Font.Unit" /> プロパティ値が <see cref="F:System.Drawing.GraphicsUnit.Point" /> ではない。</exception>
         <altmember cref="T:System.Drawing.Font" />
         <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=166073">IFontDisp</related>
       </Docs>
@@ -1627,11 +1627,11 @@
         <Parameter Name="font" Type="System.Drawing.Font" />
       </Parameters>
       <Docs>
-        <param name="font">IFont オブジェクトを作成するフォントです。</param>
+        <param name="font">IFont オブジェクトの作成元となるフォント。</param>
         <summary>指定した <see cref="T:System.Drawing.Font" /> オブジェクトから作成された OLE [IFont](https://go.microsoft.com/fwlink/?LinkId=166075) オブジェクトを返します。</summary>
         <returns>指定したフォントから作成された <see href="https://docs.microsoft.com/windows/desktop/api/ocidl/nn-ocidl-ifont">IFont</see> オブジェクト。<paramref name="font" /> が <see langword="null" /> の場合または [IFont](https://go.microsoft.com/fwlink/?LinkId=166075) を作成できなかった場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException"><see cref="P:System.Drawing.Font.Unit" />プロパティの値が<see cref="F:System.Drawing.GraphicsUnit.Point" />します。</exception>
+        <exception cref="T:System.ArgumentException"><see cref="P:System.Drawing.Font.Unit" /> プロパティ値が <see cref="F:System.Drawing.GraphicsUnit.Point" /> ではない。</exception>
         <altmember cref="T:System.Drawing.Font" />
         <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=166075">IFont</related>
       </Docs>
@@ -1756,17 +1756,17 @@
       </Parameters>
       <Docs>
         <param name="time">変換対象の <see cref="T:System.DateTime" /> 構造体。</param>
-        <summary>指定した場合に対応する OLE オートメーション日付を返します<see cref="T:System.DateTime" />構造体。</summary>
-        <returns>倍精度浮動小数点数を指定すると同じ OLE オートメーション日付を含む<paramref name="time" />値。</returns>
+        <summary>指定した <see cref="T:System.DateTime" /> 構造体に対応する OLE オートメーション日付を返します。</summary>
+        <returns>指定した <paramref name="time" /> 値と等価の OLE オートメーション日付を格納している倍精度浮動小数点数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- OLE オートメーション日付は、値を持つから午前 0 時、1899 年 12 月の 30 日間の数は、浮動小数点数として実装されます。 たとえば、午前 0 時、1899 年 12 月の 31 で表される 1.0 です。午前 6 時、1900 年 1 月 1日は 2.25; によって表されます。午前 0 時 29 1899 年 12 月は、-1.0; で表される午前 6 時 29 1899 年 12 月が-1.25 で表されます。  
+ OLE オートメーション日付は、値が1899年12月30日の午前0時からの日数である浮動小数点数として実装されます。 たとえば、午前0時、1899年12月31日は1.0 によって表されます。午前6時、1900年1月1日は2.25 で表されます。午前0時 (1899 年12月29日) は-1.0 によって表されます。また、午前6時には、1899年12月29日は-1.25 で表されます。  
   
- 基本 OLE オートメーション日付は、午前 0 時、1899 年 12 月の 30 です。 最大 OLE オートメーション日付が同じ<xref:System.DateTime.MaxValue>、12 月 31 日の最後の瞬間 9999 です。  
+ 基本 OLE オートメーション日付は、1899年12月30日午前0時です。 OLE オートメーションの最大日付は、9999年<xref:System.DateTime.MaxValue>12 月31日の最後の瞬間と同じです。  
   
- OLE オートメーションの詳細については、次を参照してください。、 [MSDN ライブラリ](https://go.microsoft.com/fwlink/?linkid=37118)します。  
+ OLE オートメーションの詳細については、 [MSDN ライブラリ](https://go.microsoft.com/fwlink/?linkid=37118)を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1803,7 +1803,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、コンス トラクターをオーバーライドし、<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A>と<xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>のメソッド、 <xref:System.Windows.Forms.AxHost> Microsoft マスク エディット ActiveX コントロールをラップするクラスを派生します。 このコードでは、MSMask32.ocx ファイルに対して AxImp.exe を実行して生成されたソース コードを作成したことが必要です、`/source`スイッチを編集するラッパー クラスを生成します。 このコードはのみ表示 c# 構文でのみ言語の出力であるためです AxImp.exe によってされます。  
+ 次のコード例では、コンストラクター、および<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> Microsoft <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>マスクエディット ActiveX <xref:System.Windows.Forms.AxHost>コントロールをラップする派生クラスのメソッドとメソッドをオーバーライドします。 このコードでは、MSMask32 ファイル`/source`で aximp.exe を実行することで、生成されたソースコードを作成し、編集するラッパークラスを生成するスイッチを指定する必要があります。 このコードは、Aximp.exe にC#よって出力される唯一の言語であるため、構文でのみ表示されます。  
   
  [!code-csharp[AxHost_Wrap_MaskEdit#1](~/samples/snippets/csharp/VS_Snippets_Winforms/AxHost_Wrap_MaskEdit/CS/axmsmask.cs#1)]  
   
@@ -1841,8 +1841,8 @@
       </Parameters>
       <Docs>
         <param name="color">変換対象の <see cref="T:System.Drawing.Color" /> 構造体。</param>
-        <summary>指定した場合に対応する OLE カラー値を返します<see cref="T:System.Drawing.Color" />構造体。</summary>
-        <returns>OLE カラー値、翻訳を表す<see cref="T:System.Drawing.Color" />構造体。</returns>
+        <summary>指定した <see cref="T:System.Drawing.Color" /> 構造体に対応する OLE カラー値を返します。</summary>
+        <returns>変換後の <see cref="T:System.Drawing.Color" /> 構造体を表す OLE カラー値。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Drawing.Color" />
       </Docs>
@@ -1874,13 +1874,13 @@
       </Parameters>
       <Docs>
         <param name="picture">変換対象の <see langword="IPicture" />。</param>
-        <summary>返します、<see cref="T:System.Drawing.Image" />指定した OLE に対応する<see langword="IPicture" />オブジェクト。</summary>
-        <returns><see cref="T:System.Drawing.Image" />を表す、<see langword="IPicture" />します。</returns>
+        <summary>指定した OLE <see langword="IPicture" /> オブジェクトに対応する <see cref="T:System.Drawing.Image" /> を返します。</summary>
+        <returns><see langword="IPicture" /> を表す <see cref="T:System.Drawing.Image" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用するには変換する`IPictureDisp`オブジェクトに加え`IPicture`オブジェクト。 なので、 `IPictureDisp` OLE インターフェイスのサブセットである、`IPicture`インターフェイス。 変換する`IPictureDisp`このメソッドを持つオブジェクトが必要なため、<xref:System.Windows.Forms.AxHost.GetPictureFromIPictureDisp%2A>現時点では正しく動作しません。  
+ このメソッドを使用すると、 `IPictureDisp`オブジェクトに加えて`IPicture`オブジェクトを変換できます。 これは、 `IPictureDisp` OLE インターフェイスが`IPicture`インターフェイスのサブセットであるために機能します。 この`IPictureDisp`メソッドを使用してオブジェクトを変換<xref:System.Windows.Forms.AxHost.GetPictureFromIPictureDisp%2A>する必要があります。この時点では、が正しく機能しません。  
   
  ]]></format>
         </remarks>
@@ -1913,13 +1913,13 @@
       </Parameters>
       <Docs>
         <param name="picture">変換対象の <see langword="IPictureDisp" />。</param>
-        <summary>返します、<see cref="T:System.Drawing.Image" />指定した OLE に対応する<see langword="IPictureDisp" />オブジェクト。</summary>
-        <returns><see cref="T:System.Drawing.Image" />を表す、<see langword="IPictureDisp" />します。</returns>
+        <summary>指定した OLE <see langword="IPictureDisp" /> オブジェクトに対応する <see cref="T:System.Drawing.Image" /> を返します。</summary>
+        <returns><see langword="IPictureDisp" /> を表す <see cref="T:System.Drawing.Image" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは正しく機能しません。 使用することができます、<xref:System.Windows.Forms.AxHost.GetPictureFromIPicture%2A>に変換するメソッド、`IPictureDisp`オブジェクトを<xref:System.Drawing.Image>、ただし、ため、 `IPictureDisp` OLE インターフェイスのサブセットである、`IPicture`インターフェイス。  
+ このメソッドは正しく機能しません。 ただし、 <xref:System.Windows.Forms.AxHost.GetPictureFromIPicture%2A> `IPictureDisp` OLE インターフェイスは`IPictureDisp` インターフェイス`IPicture`のサブセットである<xref:System.Drawing.Image>ため、メソッドを使用してオブジェクトをに変換できます。  
   
  ]]></format>
         </remarks>
@@ -1956,13 +1956,13 @@
         <param name="bounds">ActiveX コントロールの元の境界。</param>
         <param name="factor">スケール ファクター。</param>
         <param name="specified"><see cref="T:System.Windows.Forms.BoundsSpecified" /> 値。</param>
-        <summary>ActiveX コントロールの現在の境界を取得する、システムによって呼び出されます。</summary>
-        <returns>変更されていない<paramref name="bounds" />値。</returns>
+        <summary>ActiveX コントロールの現在の境界を取得するために、システムによって呼び出されます。</summary>
+        <returns>未修整の <paramref name="bounds" /> 値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ActiveX コントロールのスケール、ため、このメソッドは、特別な計算を実行していない、無視、`factor`と`specified`、値を返します、`bounds`値を変更せずします。  
+ ActiveX コントロールは、それ自体をスケールするので、このメソッドは特別な`factor`計算`specified`を実行せず、 `bounds`値および値を無視し、値を変更せずに返します。  
   
  ]]></format>
         </remarks>
@@ -1994,18 +1994,18 @@
         <Parameter Name="date" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="date">変換する OLE オートメーション日付。</param>
-        <summary>返します、<see cref="T:System.DateTime" />指定した OLE オートメーション日付に対応する構造体。</summary>
-        <returns>A<see cref="T:System.DateTime" />を表し、同じ日付し、時刻を<paramref name="date" />します。</returns>
+        <param name="date">変換対象の OLE オートメーション日付。</param>
+        <summary>指定した OLE オートメーション日付に対応する <see cref="T:System.DateTime" /> 構造体を返します。</summary>
+        <returns><paramref name="date" /> と同じ日付と時刻を表す <see cref="T:System.DateTime" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `date`パラメーターは、前後の基本の日、午前 0 時、1899 年 12 月の 30 日間の数値として日付を表す倍精度浮動小数点数。 符号と整数部`date`から 1899 年 12 月 30日正または負の値の 1 日の移動距離と値の小数部分の絶対値として日付をエンコード`date`日午前 0 時から 1 日の移動距離の割合としての時間をエンコードします。 `date` エンコードまでの間で値を指定する必要があります。  
+ `date`パラメーターは、日付を基準日の前または後の日数として表す倍精度浮動小数点数で、1899年12月30日の午前0時を表します。 の`date`符号と整数部分は、1899年12月30日からの正または負の日のオフセットとして日付をエンコードし`date`ます。また、の小数部の絶対値は、午前0時からの時間を1日の割合でエンコードします。 `date`負の 657435.0 ~ 正の2958466.0 の間の値である必要があります。  
   
- 日付をエンコードする方法、によりが 30 1899 年 12 月 1 日の時刻を表す 2 つの方法に注意してください。 たとえば、-0.5 と 0.5 は 1899 年 12 月の 30 正午を意味またはプラスの基本の日から 0 日を差し引いた日変位が基本の日、午前 0 時から半日間の移動距離は正午。  
+ 日付のエンコード方法によっては、1899年12月30日の時刻を表す2つの方法があります。 たとえば、-0.5 と0.5 はどちらも、12 1899 月30日の正午を意味します。これは、底の日付から0日を加算するか、負の値を引いた値がまだ基本データであり、午前0時からの半期が正午であるためです。  
   
- OLE オートメーションの詳細については、次を参照してください。、 [MSDN ライブラリ](https://go.microsoft.com/fwlink/?linkid=37118)します。  
+ OLE オートメーションの詳細については、 [MSDN ライブラリ](https://go.microsoft.com/fwlink/?linkid=37118)を参照してください。  
   
  ]]></format>
         </remarks>
@@ -2038,12 +2038,12 @@
         <ReturnType>System.Windows.Forms.GiveFeedbackEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.GiveFeedback" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.GiveFeedback" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.GiveFeedback> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.GiveFeedback> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2079,17 +2079,17 @@
       </ReturnValue>
       <Docs>
         <summary>ActiveX コントロールに **[バージョン情報]** ダイアログ ボックスがあるかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> ActiveX コントロールに、**について**ダイアログ ボックスで、それ以外の<see langword="false" />します。</value>
+        <value><see langword="true" />ActiveX コントロールに **[バージョン情報]** ダイアログボックスがある場合は、それ以外<see langword="false" />の場合は。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- **について** ダイアログ ボックスは通常、ActiveX コントロールのバージョンと著作権情報を表示します。  
+ [バージョン**情報**] ダイアログボックスには、通常、ActiveX コントロールに関するバージョンおよび著作権情報が表示されます。  
   
    
   
 ## Examples  
- 次のコード例は、コンス トラクターをオーバーライドし、<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A>と<xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>のメソッド、 <xref:System.Windows.Forms.AxHost> Microsoft マスク エディット ActiveX コントロールをラップするクラスを派生します。 このコードでは、MSMask32.ocx ファイルに対して AxImp.exe を実行して生成されたソース コードを作成したことが必要です、`/source`スイッチを編集するラッパー クラスを生成します。 このコードはのみ表示 c# 構文でのみ言語の出力であるためです AxImp.exe によってされます。  
+ 次のコード例では、コンストラクター、および<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> Microsoft <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>マスクエディット ActiveX <xref:System.Windows.Forms.AxHost>コントロールをラップする派生クラスのメソッドとメソッドをオーバーライドします。 このコードでは、MSMask32 ファイル`/source`で aximp.exe を実行することで、生成されたソースコードを作成し、編集するラッパークラスを生成するスイッチを指定する必要があります。 このコードは、Aximp.exe にC#よって出力される唯一の言語であるため、構文でのみ表示されます。  
   
  [!code-csharp[AxHost_Wrap_MaskEdit#1](~/samples/snippets/csharp/VS_Snippets_Winforms/AxHost_Wrap_MaskEdit/CS/axmsmask.cs#1)]  
   
@@ -2119,13 +2119,13 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ActiveX コントロールにプロパティ ページがあるかどうかを決定します。</summary>
-        <returns><see langword="true" /> ActiveX コントロールにプロパティ ページがある場合それ以外の場合、<see langword="false" />します。</returns>
+        <summary>ActiveX コントロールにプロパティ ページがあるかどうかを判断します。</summary>
+        <returns>ActiveX コントロールにプロパティ ページがある場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- プロパティ ページを使用すると、ActiveX コントロールのユーザーを表示および ActiveX コントロールのプロパティを変更します。 これらのプロパティは、表示およびコントロールのプロパティを編集するため、カスタマイズされたグラフィカル インターフェイスを提供する 1 つまたは複数のプロパティ ページを含む、コントロールのプロパティのダイアログ ボックスを呼び出すことによってアクセスされます。  
+ プロパティページを使用すると、ActiveX コントロールユーザーは ActiveX コントロールのプロパティを表示および変更できます。 これらのプロパティにアクセスするには、[コントロールのプロパティ] ダイアログボックスを呼び出します。このダイアログボックスには、コントロールのプロパティを表示および編集するためのカスタマイズされたグラフィカルインターフェイスを提供する、1つまたは複数のプロパティページがあります。  
   
  ]]></format>
         </remarks>
@@ -2158,12 +2158,12 @@
         <ReturnType>System.Windows.Forms.HelpEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.HelpRequested" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.HelpRequested" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.HelpRequested> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.HelpRequested> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2228,12 +2228,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.ImeModeChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.ImeModeChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.ImeModeChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.ImeModeChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2263,7 +2263,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ホストされるコントロールの編集モードをアクティブ化を試みます。</summary>
+        <summary>ホストされるコントロールの編集モードのアクティブ化を試みます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2289,19 +2289,19 @@
       </Parameters>
       <Docs>
         <param name="charCode">テスト対象の文字。</param>
-        <summary>文字が ActiveX コントロールによって認識される入力文字かを調べます。</summary>
-        <returns><see langword="true" /> 文字が必要があります、ActiveX コントロールに直接送信する、プリプロセスしない場合それ以外の場合、<see langword="false" />します。</returns>
+        <summary>文字が、ActiveX コントロールによって認識される入力文字かどうかを判断します。</summary>
+        <returns>文字を ActiveX コントロールに直接送信する必要があり、プリプロセスしない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.AxHost.IsInputChar%2A>メソッドは、特定の入力文字を前処理または ActiveX コントロールに直接送信されるかどうかを判断するウィンドウ メッセージのプリプロセス時に呼び出されます。 文字の前処理では、文字は、別のコントロールのニーモニックかどうかをチェックが含まれています。  
+ メソッド<xref:System.Windows.Forms.AxHost.IsInputChar%2A>は、指定された入力文字がプリプロセスされるか、または ActiveX コントロールに直接送信されるかを判断するために、ウィンドウメッセージのプリプロセス中に呼び出されます。 文字のプリプロセスには、その文字が別のコントロールのニーモニックであるかどうかの確認が含まれます。  
   
- 実装されている、<xref:System.Windows.Forms.AxHost>クラス、<xref:System.Windows.Forms.AxHost.IsInputChar%2A>メソッドは常に返します`true`ので、指定した文字が ActiveX コントロールに直接送信されます。  
+ <xref:System.Windows.Forms.AxHost>クラスに実装されている<xref:System.Windows.Forms.AxHost.IsInputChar%2A>場合、メソッド`true`は常にを返します。これにより、指定した文字が ActiveX コントロールに直接送信されます。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">このメソッドを呼び出すクラスを継承するすべてのウィンドウ。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">継承クラスのすべてのウィンドウでこのメソッドを呼び出すために使用します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
         <altmember cref="M:System.Windows.Forms.Control.IsInputKey(System.Windows.Forms.Keys)" />
       </Docs>
     </Member>
@@ -2331,12 +2331,12 @@
         <ReturnType>System.Windows.Forms.KeyEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.KeyDown" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.KeyDown" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.KeyDown> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.KeyDown> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2368,12 +2368,12 @@
         <ReturnType>System.Windows.Forms.KeyPressEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.KeyPress" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.KeyPress" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.KeyPress> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.KeyPress> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2405,12 +2405,12 @@
         <ReturnType>System.Windows.Forms.KeyEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.KeyUp" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.KeyUp" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.KeyUp> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.KeyUp> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2442,12 +2442,12 @@
         <ReturnType>System.Windows.Forms.LayoutEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.Layout" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.Layout" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.Layout> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.Layout> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2477,7 +2477,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>コンポーネントに発表変更サービスに対して、<see cref="T:System.Windows.Forms.AxHost" />が変更されました。</summary>
+        <summary>コンポーネント変更サービスに対して、<see cref="T:System.Windows.Forms.AxHost" /> が変更されたことを通知します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2565,12 +2565,12 @@
         <ReturnType>System.Windows.Forms.MouseEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.MouseDown" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.MouseDown" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.MouseDown> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.MouseDown> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2602,12 +2602,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.MouseEnter" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.MouseEnter" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.MouseEnter> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.MouseEnter> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2639,12 +2639,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.MouseHover" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.MouseHover" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.MouseHover> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.MouseHover> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2676,12 +2676,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.MouseLeave" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.MouseLeave" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.MouseLeave> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.MouseLeave> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2713,12 +2713,12 @@
         <ReturnType>System.Windows.Forms.MouseEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.MouseMove" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.MouseMove" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.MouseMove> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.MouseMove> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2750,12 +2750,12 @@
         <ReturnType>System.Windows.Forms.MouseEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.MouseUp" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.MouseUp" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.MouseUp> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.MouseUp> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2787,12 +2787,12 @@
         <ReturnType>System.Windows.Forms.MouseEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.MouseWheel" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.MouseWheel" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.MouseWheel> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.MouseWheel> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -2830,17 +2830,17 @@
         <ReturnType>System.Windows.Forms.AxHost+State</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または ActiveX コントロールの永続化状態を設定します。</summary>
-        <value>A <see cref="T:System.Windows.Forms.AxHost.State" /> ActiveX コントロールの永続化された状態を表します。</value>
+        <summary>ActiveX コントロールの永続化された状態を取得または設定します。</summary>
+        <value>ActiveX コントロールの永続化された状態を表す <see cref="T:System.Windows.Forms.AxHost.State" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Windows.Forms.AxHost.OcxState%2A>コントロールが作成された後に表示される前に、プロパティを使用します。 基になる ActiveX コントロールの永続化状態が返される、<xref:System.Windows.Forms.AxHost.State>します。  
+ <xref:System.Windows.Forms.AxHost.OcxState%2A>プロパティの値は、コントロールが作成された後、表示される前に使用されます。 基に<xref:System.Windows.Forms.AxHost.State>なる ActiveX コントロールの永続化された状態がに返されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Exception">ActiveX コントロールは既に読み込まれています。</exception>
+        <exception cref="T:System.Exception">ActiveX コントロールが既に読み込まれています。</exception>
         <altmember cref="T:System.Windows.Forms.AxHost.State" />
         <altmember cref="M:System.Windows.Forms.AxHost.GetOcx" />
       </Docs>
@@ -2972,7 +2972,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>コントロールが、インプレース アクティブな状態に遷移しているときに呼び出されます。</summary>
+        <summary>コントロールが埋め込み先編集が有効な状態になると呼び出されます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -3041,12 +3041,12 @@
         <ReturnType>System.Windows.Forms.PaintEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.Paint" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.Paint" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.Paint> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.Paint> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -3159,8 +3159,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ホストされるコントロールがそのプロパティをアクセスできる状態かどうかを示す値を返します。</summary>
-        <returns><see langword="true" /> ホストされるコントロールのプロパティにアクセスできる場合それ以外の場合、<see langword="false" />します。</returns>
+        <summary>ホストされるコントロールのプロパティにアクセスできる状態であるかどうかを示す値を返します。</summary>
+        <returns>ホストされるコントロールのプロパティにアクセスできる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3190,12 +3190,12 @@
         <ReturnType>System.Windows.Forms.QueryAccessibilityHelpEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.QueryAccessibilityHelp" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.QueryAccessibilityHelp" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.QueryAccessibilityHelp> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.QueryAccessibilityHelp> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -3227,12 +3227,12 @@
         <ReturnType>System.Windows.Forms.QueryContinueDragEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.QueryContinueDrag" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.QueryContinueDrag" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.QueryContinueDrag> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.QueryContinueDrag> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -3276,11 +3276,11 @@
         <Parameter Name="y" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="button">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="button">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="shift">使用しません。</param>
-        <param name="x">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="y">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseDown" />を指定した 32 ビット符号付き整数を使用してイベント。</summary>
+        <param name="x">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="y">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定された 32 ビット符号付き整数を使用して、<see cref="E:System.Windows.Forms.AxHost.MouseDown" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3313,11 +3313,11 @@
         <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="button">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="button">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="shift">使用しません。</param>
-        <param name="x">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="y">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseDown" />を指定した単精度浮動小数点数値を使用してイベント。</summary>
+        <param name="x">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="y">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定された単精度浮動小数点数を使用して、<see cref="E:System.Windows.Forms.AxHost.MouseDown" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3350,11 +3350,11 @@
         <Parameter Name="o4" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="o1">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="o1">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="o2">使用しません。</param>
-        <param name="o3">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="o4">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseDown" />を指定したオブジェクトを使用してイベント。</summary>
+        <param name="o3">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="o4">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定したオブジェクトを使用して、<see cref="E:System.Windows.Forms.AxHost.MouseDown" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3396,11 +3396,11 @@
         <Parameter Name="y" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="button">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="button">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="shift">使用しません。</param>
-        <param name="x">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="y">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseMove" />を指定した 32 ビット符号付き整数を使用してイベント。</summary>
+        <param name="x">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="y">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定された 32 ビット符号付き整数を使用して、<see cref="E:System.Windows.Forms.AxHost.MouseMove" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3433,11 +3433,11 @@
         <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="button">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="button">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="shift">使用しません。</param>
-        <param name="x">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="y">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseMove" />を指定した単精度浮動小数点数値を使用してイベント。</summary>
+        <param name="x">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="y">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定された単精度浮動小数点数を使用して、<see cref="E:System.Windows.Forms.AxHost.MouseMove" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3470,11 +3470,11 @@
         <Parameter Name="o4" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="o1">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="o1">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="o2">使用しません。</param>
-        <param name="o3">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="o4">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseMove" />を指定したオブジェクトを使用してイベント。</summary>
+        <param name="o3">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="o4">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定したオブジェクトを使用して、<see cref="E:System.Windows.Forms.AxHost.MouseMove" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3516,11 +3516,11 @@
         <Parameter Name="y" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="button">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="button">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="shift">使用しません。</param>
-        <param name="x">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="y">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseUp" />を指定した 32 ビット符号付き整数を使用してイベント。</summary>
+        <param name="x">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="y">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定された 32 ビット符号付き整数を使用して、<see cref="E:System.Windows.Forms.AxHost.MouseUp" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3553,11 +3553,11 @@
         <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="button">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="button">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="shift">使用しません。</param>
-        <param name="x">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="y">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseUp" />を指定した単精度浮動小数点数値を使用してイベント。</summary>
+        <param name="x">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="y">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定された単精度浮動小数点数を使用して、<see cref="E:System.Windows.Forms.AxHost.MouseUp" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3590,11 +3590,11 @@
         <Parameter Name="o4" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="o1">1 つ、<see cref="T:System.Windows.Forms.MouseButtons" />押されたマウス ボタンを示す値。</param>
+        <param name="o1">どちらのマウス ボタンが押されたかを示す <see cref="T:System.Windows.Forms.MouseButtons" /> 値の 1 つ。</param>
         <param name="o2">使用しません。</param>
-        <param name="o3">マウスの x 座標 (ピクセル単位) をクリックします。</param>
-        <param name="o4">マウスの y 座標 (ピクセル単位) をクリックします。</param>
-        <summary>発生させる、<see cref="E:System.Windows.Forms.AxHost.MouseUp" />を指定したオブジェクトを使用してイベント。</summary>
+        <param name="o3">マウスがクリックされた位置の x 座標 (ピクセル単位)。</param>
+        <param name="o4">マウスがクリックされた位置の y 座標 (ピクセル単位)。</param>
+        <summary>指定したオブジェクトを使用して、<see cref="E:System.Windows.Forms.AxHost.MouseUp" /> イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3658,12 +3658,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.RightToLeftChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.RightToLeftChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.RightToLeftChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.RightToLeftChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -3690,24 +3690,24 @@
         <Parameter Name="d" Type="System.Windows.Forms.AxHost+AboutBoxDelegate" />
       </Parameters>
       <Docs>
-        <param name="d"><see cref="T:System.Windows.Forms.AxHost.AboutBoxDelegate" />を呼び出します。</param>
-        <summary>呼び出し、 <see cref="M:System.Windows.Forms.AxHost.ShowAboutBox" /> ActiveX コントロールのダイアログ ボックスの詳細を表示するメソッド。</summary>
+        <param name="d">呼び出す <see cref="T:System.Windows.Forms.AxHost.AboutBoxDelegate" />。</param>
+        <summary><see cref="M:System.Windows.Forms.AxHost.ShowAboutBox" /> メソッドを呼び出して、ActiveX コントロールの [バージョン情報] ダイアログ ボックスを表示します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A>メソッド派生クラスを処理することもできます、<xref:System.Windows.Forms.AxHost.ShowAboutBox%2A>メソッド デリゲートを結び付けずにします。 これは、処理のための手法をお勧め、<xref:System.Windows.Forms.AxHost.ShowAboutBox%2A>派生クラスのメソッド。  
+ また<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> 、メソッドは、デリゲートをアタッチせ<xref:System.Windows.Forms.AxHost.ShowAboutBox%2A>ずに、派生クラスがメソッドを処理できるようにします。 これは、派生クラスで<xref:System.Windows.Forms.AxHost.ShowAboutBox%2A>メソッドを処理する場合に推奨される手法です。  
   
    
   
 ## Examples  
- 次のコード例は、コンス トラクターをオーバーライドし、<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A>と<xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>のメソッド、 <xref:System.Windows.Forms.AxHost> Microsoft マスク エディット ActiveX コントロールをラップするクラスを派生します。 このコードでは、MSMask32.ocx ファイルに対して AxImp.exe を実行して生成されたソース コードを作成したことが必要です、`/source`スイッチを編集するラッパー クラスを生成します。 このコードはのみ表示 c# 構文でのみ言語の出力であるためです AxImp.exe によってされます。  
+ 次のコード例では、コンストラクター、および<xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> Microsoft <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A>マスクエディット ActiveX <xref:System.Windows.Forms.AxHost>コントロールをラップする派生クラスのメソッドとメソッドをオーバーライドします。 このコードでは、MSMask32 ファイル`/source`で aximp.exe を実行することで、生成されたソースコードを作成し、編集するラッパークラスを生成するスイッチを指定する必要があります。 このコードは、Aximp.exe にC#よって出力される唯一の言語であるため、構文でのみ表示されます。  
   
  [!code-csharp[AxHost_Wrap_MaskEdit#1](~/samples/snippets/csharp/VS_Snippets_Winforms/AxHost_Wrap_MaskEdit/CS/axmsmask.cs#1)]  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>オーバーライドするときに<see cref="M:System.Windows.Forms.AxHost.SetAboutBoxDelegate(System.Windows.Forms.AxHost.AboutBoxDelegate)" />、派生クラスでは、基本クラスを呼び出す、<see cref="M:System.Windows.Forms.AxHost.SetAboutBoxDelegate(System.Windows.Forms.AxHost.AboutBoxDelegate)" />メソッド デリゲートを登録するための受信、<see cref="M:System.Windows.Forms.AxHost.ShowAboutBox" />メソッド。</para></block>
+        <block subset="none" type="overrides"><para>派生クラス<see cref="M:System.Windows.Forms.AxHost.SetAboutBoxDelegate(System.Windows.Forms.AxHost.AboutBoxDelegate)" />でをオーバーライドする場合は、登録されているデリゲート<see cref="M:System.Windows.Forms.AxHost.SetAboutBoxDelegate(System.Windows.Forms.AxHost.AboutBoxDelegate)" />がメソッドを<see cref="M:System.Windows.Forms.AxHost.ShowAboutBox" />受け取るように、基本クラスのメソッドを呼び出す必要があります。</para></block>
         <altmember cref="P:System.Windows.Forms.AxHost.HasAboutBox" />
         <altmember cref="M:System.Windows.Forms.AxHost.ShowAboutBox" />
         <altmember cref="T:System.Windows.Forms.AxHost.AboutBoxDelegate" />
@@ -3769,7 +3769,7 @@
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="value">コントロールを表示する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
+        <param name="value">コントロールを表示する場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</param>
         <summary>コントロールを指定した表示状態に設定します。</summary>
         <remarks>To be added.</remarks>
         <altmember cref="M:System.Windows.Forms.Control.SetVisibleCore(System.Boolean)" />
@@ -3799,7 +3799,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合<xref:System.Windows.Forms.AxHost.HasAboutBox%2A>は`false`、**について** ダイアログ ボックスが表示されます。  
+ <xref:System.Windows.Forms.AxHost.HasAboutBox%2A> が`false`の場合、**[バージョン情報]** ダイアログボックスは表示されません。  
   
  ]]></format>
         </remarks>
@@ -3814,7 +3814,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ActiveX コントロールに関連付けられたプロパティ ページが表示されます。</summary>
+        <summary>ActiveX コントロールに関連付けられたプロパティ ページを表示します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="ShowPropertyPages">
@@ -3836,14 +3836,14 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ActiveX コントロールに関連付けられたプロパティ ページが表示されます。</summary>
+        <summary>ActiveX コントロールに関連付けられたプロパティ ページを表示します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合<xref:System.Windows.Forms.AxHost.HasPropertyPages%2A>は`false`、プロパティ ページは表示されません。  
+ <xref:System.Windows.Forms.AxHost.HasPropertyPages%2A> が`false`の場合、プロパティページは表示されません。  
   
- プロパティ ページを使用すると、ActiveX コントロールのユーザーを表示および ActiveX コントロールのプロパティを変更します。 これらのプロパティは、表示およびコントロールのプロパティを編集するため、カスタマイズされたグラフィカル インターフェイスを提供する 1 つまたは複数のプロパティ ページを含む、コントロールのプロパティのダイアログ ボックスを呼び出すことによってアクセスされます。  
+ プロパティページを使用すると、ActiveX コントロールユーザーは ActiveX コントロールのプロパティを表示および変更できます。 これらのプロパティにアクセスするには、[コントロールのプロパティ] ダイアログボックスを呼び出します。このダイアログボックスには、コントロールのプロパティを表示および編集するためのカスタマイズされたグラフィカルインターフェイスを提供する、1つまたは複数のプロパティページがあります。  
   
  ]]></format>
         </remarks>
@@ -3870,15 +3870,15 @@
         <Parameter Name="control" Type="System.Windows.Forms.Control" />
       </Parameters>
       <Docs>
-        <param name="control">親<see cref="T:System.Windows.Forms.Control" />の ActiveX コントロール。</param>
-        <summary>指定した親コントロールに割り当てられている ActiveX コントロールに関連付けられたプロパティ ページが表示されます。</summary>
+        <param name="control">ActiveX コントロールの親である <see cref="T:System.Windows.Forms.Control" />。</param>
+        <summary>指定した親コントロールに割り当てられている ActiveX コントロールに関連付けられたプロパティ ページを表示します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合<xref:System.Windows.Forms.AxHost.HasPropertyPages%2A>は`false`、プロパティ ページは表示されません。  
+ <xref:System.Windows.Forms.AxHost.HasPropertyPages%2A> が`false`の場合、プロパティページは表示されません。  
   
- プロパティ ページを使用すると、ActiveX コントロールのユーザーを表示および ActiveX コントロールのプロパティを変更します。 これらのプロパティは、表示およびコントロールのプロパティを編集するため、カスタマイズされたグラフィカル インターフェイスを提供する 1 つまたは複数のプロパティ ページを含む、コントロールのプロパティのダイアログ ボックスを呼び出すことによってアクセスされます。  
+ プロパティページを使用すると、ActiveX コントロールユーザーは ActiveX コントロールのプロパティを表示および変更できます。 これらのプロパティにアクセスするには、[コントロールのプロパティ] ダイアログボックスを呼び出します。このダイアログボックスには、コントロールのプロパティを表示および編集するためのカスタマイズされたグラフィカルインターフェイスを提供する、1つまたは複数のプロパティページがあります。  
   
  ]]></format>
         </remarks>
@@ -3936,12 +3936,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.StyleChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.StyleChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.StyleChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.StyleChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>
@@ -3973,8 +3973,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>型のコレクションを返します<see cref="T:System.Attribute" />現在のオブジェクト。</summary>
-        <returns><see cref="T:System.ComponentModel.AttributeCollection" />現在のオブジェクトの属性を使用します。</returns>
+        <summary>現在のオブジェクトの <see cref="T:System.Attribute" /> 型のコレクションを返します。</summary>
+        <returns>現在のオブジェクトの属性を保持する <see cref="T:System.ComponentModel.AttributeCollection" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4010,7 +4010,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値の代わりに、型名を使用する、<xref:System.Windows.Forms.AxHost.System%23ComponentModel%23ICustomTypeDescriptor%23GetClassName%2A>メソッドを返します。  
+ メソッドに<xref:System.Windows.Forms.AxHost.System%23ComponentModel%23ICustomTypeDescriptor%23GetClassName%2A>よって返される値の代わりに型名を使用します。  
   
  ]]></format>
         </remarks>
@@ -4048,7 +4048,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値の代わりに既定の名前を使用する、<xref:System.Windows.Forms.AxHost.System%23ComponentModel%23ICustomTypeDescriptor%23GetComponentName%2A>メソッドを返します。  
+ メソッドに<xref:System.Windows.Forms.AxHost.System%23ComponentModel%23ICustomTypeDescriptor%23GetComponentName%2A>よって返される値の代わりに、既定の名前を使用します。  
   
  ]]></format>
         </remarks>
@@ -4086,7 +4086,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値の代わりに、既定値の型コンバーターを使用している、<xref:System.Windows.Forms.AxHost.System%23ComponentModel%23ICustomTypeDescriptor%23GetConverter%2A>メソッドを返します。  
+ メソッドに<xref:System.Windows.Forms.AxHost.System%23ComponentModel%23ICustomTypeDescriptor%23GetConverter%2A>よって返される値の代わりに、既定の型コンバーターを使用します。  
   
  ]]></format>
         </remarks>
@@ -4119,7 +4119,7 @@
       <Parameters />
       <Docs>
         <summary>現在のオブジェクトの既定のイベントを返します。</summary>
-        <returns><see cref="T:System.ComponentModel.EventDescriptor" />を表す、現在のオブジェクトの既定のイベントまたは<see langword="null" />オブジェクトにイベントがあるない場合。</returns>
+        <returns>現在のオブジェクトの既定のイベントを表す <see cref="T:System.ComponentModel.EventDescriptor" />。オブジェクトにイベントが含まれない場合は、<see langword="null" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4150,7 +4150,7 @@
       <Parameters />
       <Docs>
         <summary>現在のオブジェクトの既定のプロパティを返します。</summary>
-        <returns>A<see cref="T:System.ComponentModel.PropertyDescriptor" />を表す、現在のオブジェクトの既定のプロパティまたは<see langword="null" />オブジェクトにプロパティがあるない場合。</returns>
+        <returns>現在のオブジェクトの既定のプロパティを表す <see cref="T:System.ComponentModel.PropertyDescriptor" />。オブジェクトにプロパティが含まれない場合は、<see langword="null" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4182,9 +4182,9 @@
         <Parameter Name="editorBaseType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="editorBaseType">A<see cref="T:System.Type" />を現在のオブジェクトのエディターを表します。</param>
+        <param name="editorBaseType">現在のオブジェクトのエディターを表す <see cref="T:System.Type" />。</param>
         <summary>現在のオブジェクトの指定した型のエディターを返します。</summary>
-        <returns>現在のオブジェクトのエディターは、指定した型のオブジェクトまたは<see langword="null" />エディターが見つからない場合。</returns>
+        <returns>現在のオブジェクトのエディターである指定された型のオブジェクト。エディターが見つからない場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4224,7 +4224,7 @@
       <Parameters />
       <Docs>
         <summary>現在のオブジェクトのイベントを返します。</summary>
-        <returns><see cref="T:System.ComponentModel.EventDescriptorCollection" />の現在のオブジェクトのイベントを表します。</returns>
+        <returns>現在のオブジェクトのイベントを表す <see cref="T:System.ComponentModel.EventDescriptorCollection" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4257,8 +4257,8 @@
       </Parameters>
       <Docs>
         <param name="attributes">フィルターとして使用される <see cref="T:System.Attribute" /> 型の配列。</param>
-        <summary>フィルターとして指定された属性配列を使用して現在のオブジェクトのイベントを返します。</summary>
-        <returns><see cref="T:System.ComponentModel.EventDescriptorCollection" />のイベントを表す、<see cref="T:System.Windows.Forms.AxHost" />指定した属性のセットに一致します。</returns>
+        <summary>指定した属性配列をフィルターとして使用して、現在のオブジェクトのイベントを返します。</summary>
+        <returns><see cref="T:System.ComponentModel.EventDescriptorCollection" /> のイベントのうち、指定した一連の属性と一致するイベントを表す <see cref="T:System.Windows.Forms.AxHost" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4301,7 +4301,7 @@
       <Parameters />
       <Docs>
         <summary>現在のオブジェクトのプロパティを返します。</summary>
-        <returns>A<see cref="T:System.ComponentModel.PropertyDescriptorCollection" />の現在のオブジェクトのイベントを表します。</returns>
+        <returns>現在のオブジェクトのイベントを表す <see cref="T:System.ComponentModel.PropertyDescriptorCollection" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4337,8 +4337,8 @@
       </Parameters>
       <Docs>
         <param name="attributes">フィルターとして使用される <see cref="T:System.Attribute" /> 型の配列。</param>
-        <summary>フィルターとして指定された属性配列を使用して現在のオブジェクトのプロパティを返します。</summary>
-        <returns>A <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> 、現在のイベントを表す<see cref="T:System.Windows.Forms.AxHost" />指定した属性のセットに一致します。</returns>
+        <summary>指定した属性配列をフィルターとして使用して、現在のオブジェクトのプロパティを返します。</summary>
+        <returns>現在の <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> のイベントのうち、指定した一連の属性と一致するイベントを表す <see cref="T:System.Windows.Forms.AxHost" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4495,12 +4495,12 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="E:System.Windows.Forms.AxHost.TextChanged" />では、イベントはサポートされていない、<see cref="T:System.Windows.Forms.AxHost" />クラス。</summary>
+        <summary><see cref="E:System.Windows.Forms.AxHost.TextChanged" /> イベントは、<see cref="T:System.Windows.Forms.AxHost" /> クラスではサポートされません。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 追加またはのハンドラーを削除する場合、 <xref:System.Windows.Forms.AxHost.TextChanged> 、イベント、<xref:System.NotSupportedException>がスローされます。 派生した、イベント、<xref:System.Windows.Forms.Control>クラスでサポートされていない、<xref:System.Windows.Forms.AxHost>クラス。 ActiveX によって公開されるイベントが制御、<xref:System.Windows.Forms.AxHost>ラッパーが作成されたイベントは、使用する必要があります。  
+ イベントのハンドラーを追加または削除しようとすると、がスローされます。<xref:System.NotSupportedException> <xref:System.Windows.Forms.AxHost.TextChanged> <xref:System.Windows.Forms.Control>クラスから派生したイベントは、 <xref:System.Windows.Forms.AxHost>クラスではサポートされていません。 ラッパーの<xref:System.Windows.Forms.AxHost>作成時に ActiveX コントロールによって公開されるイベントは、使用する必要があるイベントです。  
   
  ]]></format>
         </remarks>

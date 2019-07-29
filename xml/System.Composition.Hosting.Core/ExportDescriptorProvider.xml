@@ -1,5 +1,5 @@
 <Type Name="ExportDescriptorProvider" FullName="System.Composition.Hosting.Core.ExportDescriptorProvider">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="0b934fd60a55bf71244e97435d27a57d5e688bef" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56761209" /></Metadata><TypeSignature Language="C#" Value="public abstract class ExportDescriptorProvider" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="a27b837518aff5fa07fb1d3f62afc11b43875f58" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543742" /></Metadata><TypeSignature Language="C#" Value="public abstract class ExportDescriptorProvider" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit ExportDescriptorProvider extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Composition.Hosting.Core.ExportDescriptorProvider" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class ExportDescriptorProvider" />
@@ -18,7 +18,15 @@
   <Interfaces />
   <Docs>
     <summary>コンポジション エンジンが認識できるパートのエクスポート記述子を提供します。</summary>
-    <remarks></remarks>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+このクラスのインスタンスは、複数のスレッドによる同時アクセスに対して安全である必要はありません。
+
+      ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -42,7 +50,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、派生クラスから呼び出すことができるだけプロテクト コンス トラクターです。  
+ これは、派生クラスからのみ呼び出すことができるプロテクトコンストラクターです。  
   
  ]]></format>
         </remarks>
@@ -79,7 +87,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- プロバイダーは、エクスポートの一意キーごとに 1 回のみ照会されます。 記述子のアクセサーのみ照会できますすぐに約束する記述子が、アダプターなどに設定されている場合<see cref="Lazy{T}"/>。 それ以外の依存関係は、内に提供される関数の実行でのみ照会する必要があります、<xref:System.Composition.Hosting.Core.ExportDescriptorPromise>します。 このメソッドによって提供される実際の記述子は、閉じるまたはガベージ コレクトされない構造を妨げるためこれは、依存関係/promise 構造体のすべての側面を参照する必要がありますできません。  
+ プロバイダーは、一意のエクスポートキーごとに1回だけ照会されます。 記述子アクセサーは、約束されている記述子がアダプターである場合 (など<see cref="Lazy{T}"/>)、すぐにのみクエリを実行できます。それ以外の場合は、 <xref:System.Composition.Hosting.Core.ExportDescriptorPromise>に提供された関数の実行中にのみ、依存関係を照会する必要があります。 このメソッドによって提供される実際の記述子は、構造体がガベージコレクションされないようにするため、依存関係/promise 構造体のすべての側面を閉じたり参照したりすることはできません。  
   
  ]]></format>
         </remarks>

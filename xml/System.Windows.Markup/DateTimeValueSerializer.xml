@@ -28,9 +28,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Markup.ValueSerializer> 使用がなく<xref:System.ComponentModel.TypeConverter>場合の型変換が追加の状態が必要です。 <xref:System.Windows.Markup.DateTimeValueSerializer> 持つ型には属性化されません<xref:System.Windows.Markup.ValueSerializerAttribute>します。 これは、ため<xref:System.DateTime>mscorlib では、mscorlib 自体は定義しません属性クラスで依存関係を作成できません。 代わりに、使用状況の<xref:System.Windows.Markup.DateTimeValueSerializer>XAML プロセッサの動作では、.NET Framework XAML サービスの動作に特殊なケースです。  
+ <xref:System.Windows.Markup.ValueSerializer>は、型変換<xref:System.ComponentModel.TypeConverter>が追加の状態を必要とする場合に、ではなく使用されます。 <xref:System.Windows.Markup.DateTimeValueSerializer>がの型に属性付け<xref:System.Windows.Markup.ValueSerializerAttribute>されていません。 これは、 <xref:System.DateTime>が mscorlib に存在し、mscorlib が定義されていない属性クラスに対する依存関係を取得できないためです。 代わりに、の使用<xref:System.Windows.Markup.DateTimeValueSerializer>は、xaml サービスの動作の .NET Framework xaml プロセッサの動作に特別なケースがあります。  
   
- .NET Framework の以前のバージョンでは、このクラスは、WPF 固有の WindowsBase アセンブリに存在します。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、<xref:System.Windows.Markup.DateTimeValueSerializer>は System.Xaml アセンブリにします。 参照してください[WPF から System.Xaml に移行した型](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)します。  
+ 以前のバージョンの .NET Framework では、このクラスは WPF 固有のアセンブリ WindowsBase に存在していました。 で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]は<xref:System.Windows.Markup.DateTimeValueSerializer> 、は、システムの .xaml アセンブリにあります。 「 [WPF から app.xaml に移行](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)された型」を参照してください。  
   
  ]]></format>
     </remarks>
@@ -134,7 +134,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この実装を返します`true`場合にのみ、渡された`value`の種類は<xref:System.DateTime>します。  
+ この実装は`true` 、渡さ`value`れたが型<xref:System.DateTime>である場合にのみを返します。  
   
  ]]></format>
         </remarks>
@@ -172,13 +172,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 空の文字列を返します<xref:System.DateTime.MinValue?displayProperty=nameWithType>します。  
+ 空の文字列は<xref:System.DateTime.MinValue?displayProperty=nameWithType>を返します。  
   
- 現在の実装を使用して<xref:System.DateTime.Parse%2A>内部的には、また、次を使用して<xref:System.Globalization.DateTimeStyles>:`DateTimeStyles.RoundtripKind | DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AllowLeadingWhite | DateTimeStyles.AllowTrailingWhite`します。  
+ 現在の実装で<xref:System.DateTime.Parse%2A>は、を内部的に使用し<xref:System.Globalization.DateTimeStyles> `DateTimeStyles.RoundtripKind | DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AllowLeadingWhite | DateTimeStyles.AllowTrailingWhite`ます。また、も使用します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.NotSupportedException"><paramref name="value" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.NotSupportedException"><paramref name="value" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="ConvertToString">
@@ -208,16 +208,16 @@
         <param name="value">文字列に変換するオブジェクト。</param>
         <param name="context">変換に使用されるコンテキスト情報。</param>
         <summary><see cref="T:System.DateTime" /> のインスタンスを <see cref="T:System.String" /> に変換します。</summary>
-        <returns>指定された <see cref="T:System.DateTime" /> の文字列表記。</returns>
+        <returns>指定した <see cref="T:System.DateTime" /> の文字列表現。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `context` この実装では使用されません。  
+ `context`は、この実装では使用されません。  
   
- XAML 値の処理内で見つかったとしての日付の文字列表現がに基づいて、`en-US`カルチャ。 これは、XAML のカルチャに依存する情報の処理がコンパイル時と実行時のフェーズに概念的に分割されて、全体での既知の文字列表現を使用する必要があるためです。 詳細については、次を参照してください。 [WPF のグローバリゼーションおよびローカリゼーションの概要](~/docs/framework/wpf/advanced/wpf-globalization-and-localization-overview.md)します。  
+ XAML 値処理で見つかった日付の文字列表現は、 `en-US`カルチャに基づいています。 これは、カルチャに依存する情報の XAML 処理が、コンパイル時と実行時のフェーズの間で概念的に分割され、全体で既知の文字列形式を使用する必要があるためです。 詳細については、「 [WPF のグローバリゼーションとローカリゼーションの概要](~/docs/framework/wpf/advanced/wpf-globalization-and-localization-overview.md)」を参照してください。  
   
- 現在の実装がかどうかに応じて調整する書式指定文字列を使用して、指定された側面<xref:System.DateTime>値があります。 たとえば、次の値ではありません<xref:System.TimeSpan.TotalSeconds%2A>、形式で書式指定文字列は、`yyyy-MM-dd`時刻部分には値 0 は完全な詳細を記述します。  
+ 現在の実装では、指定<xref:System.DateTime>されたの要素に値があるかどうかに応じて調整される書式指定文字列を使用します。 たとえば、に<xref:System.TimeSpan.TotalSeconds%2A>値がない場合、書式指定文字列は、時間コンポーネントの完全`yyyy-MM-dd`な詳細値0を書き出すのではなく、フォーム内にあります。  
   
  ]]></format>
         </remarks>

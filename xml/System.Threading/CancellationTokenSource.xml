@@ -1,5 +1,5 @@
 <Type Name="CancellationTokenSource" FullName="System.Threading.CancellationTokenSource">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="2f931644632aee8098a42a234dd589783505b890" /><Meta Name="ms.sourcegitcommit" Value="690605a2d62010b93e13edf329aafe2bdc57423a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/11/2019" /><Meta Name="ms.locfileid" Value="67801628" /></Metadata><TypeSignature Language="C#" Value="public class CancellationTokenSource : IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="509f734265234b6b9cc1e250226f10c318bb1629" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68541278" /></Metadata><TypeSignature Language="C#" Value="public class CancellationTokenSource : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CancellationTokenSource extends System.Object implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Threading.CancellationTokenSource" />
   <TypeSignature Language="VB.NET" Value="Public Class CancellationTokenSource&#xA;Implements IDisposable" />
@@ -36,16 +36,16 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Signals to a <see cref="T:System.Threading.CancellationToken" /> that it should be canceled.</summary>
+    <summary>取り消す必要があることを <see cref="T:System.Threading.CancellationToken" /> に通知します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、.NET Framework では、2 つのオブジェクトを含む非同期または長時間同期操作の連携によるキャンセルの統一されたモデルを使用します。  
+ [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]以降、.NET Framework は、次の2つのオブジェクトを含む非同期または長時間実行される同期操作の共同キャンセルに統合モデルを使用します。  
   
--   A<xref:System.Threading.CancellationTokenSource>を通じてキャンセル トークンを提供するオブジェクトは、その<xref:System.Threading.CancellationTokenSource.Token%2A>プロパティおよび取り消しを呼び出すことによってメッセージ送信の<xref:System.Threading.CancellationTokenSource.Cancel%2A>または<xref:System.Threading.CancellationTokenSource.CancelAfter%2A>メソッド。  
+-   オブジェクト。 <xref:System.Threading.CancellationTokenSource.Token%2A>プロパティを使用してキャンセルトークンを提供し、メソッド<xref:System.Threading.CancellationTokenSource.Cancel%2A>または<xref:System.Threading.CancellationTokenSource.CancelAfter%2A>メソッドを呼び出すことによってキャンセルメッセージを送信します。 <xref:System.Threading.CancellationTokenSource>  
   
--   A<xref:System.Threading.CancellationToken>オブジェクトで、キャンセルが要求されたかどうかを示します。  
+-   キャンセルが要求されたかどうかを示すオブジェクト。<xref:System.Threading.CancellationToken>  
   
  連携によるキャンセル処理モデルを実装するための一般的なパターンは次のとおりです。  
   
@@ -53,30 +53,30 @@
   
 -   <xref:System.Threading.CancellationTokenSource.Token%2A?displayProperty=nameWithType> プロパティによって返されるトークンを、キャンセルをリッスンしているそれぞれのタスクまたはスレッドに渡します。  
   
--   呼び出す、<xref:System.Threading.CancellationToken.IsCancellationRequested%2A?displayProperty=nameWithType>キャンセル トークンを受信する操作からのメソッド。 各タスクまたはスレッドのキャンセル要求に応答するためのメカニズムを提供します。 キャンセル操作、および正確にその方法を選択するかどうかは、アプリケーション ロジックに依存します。  
+-   キャンセルトークンを受け取る操作からメソッドを呼び出します。<xref:System.Threading.CancellationToken.IsCancellationRequested%2A?displayProperty=nameWithType> 各タスクまたはスレッドがキャンセル要求に応答するためのメカニズムを提供します。 操作の取り消しを選択したかどうかは、アプリケーションロジックによって異なります。  
   
--   キャンセルの通知を提供する <xref:System.Threading.CancellationTokenSource.Cancel%2A?displayProperty=nameWithType> メソッドを呼び出します。 これにより設定、<xref:System.Threading.CancellationToken.IsCancellationRequested%2A?displayProperty=nameWithType>プロパティにキャンセル トークンのすべてのコピーを`true`します。  
+-   キャンセルの通知を提供する <xref:System.Threading.CancellationTokenSource.Cancel%2A?displayProperty=nameWithType> メソッドを呼び出します。 これにより<xref:System.Threading.CancellationToken.IsCancellationRequested%2A?displayProperty=nameWithType> 、キャンセルトークンのすべてのコピーのプロパティ`true`がに設定されます。  
   
--   呼び出す、<xref:System.Threading.CancellationTokenSource.Dispose%2A>メソッドが完了したら、<xref:System.Threading.CancellationTokenSource>オブジェクト。  
+-   オブジェクトの<xref:System.Threading.CancellationTokenSource.Dispose%2A> <xref:System.Threading.CancellationTokenSource>使用が終了したら、メソッドを呼び出します。  
   
  詳細については、「[マネージド スレッドのキャンセル](~/docs/standard/threading/cancellation-in-managed-threads.md)」を参照してください。  
   
 > [!IMPORTANT]
->  この型は <xref:System.IDisposable> インターフェイスを実装します。 型のインスタンスを使用してが完了したら、直接的または間接的にそれを破棄する必要があります。 直接的に型を破棄するには、`try` / `catch` ブロック内で <xref:System.IDisposable.Dispose%2A> メソッドを呼び出します。 間接的に型を破棄するには、`using` (C# の場合) または `Using` (Visual Basic 言語) などの言語構成要素を使用します。 詳細については、<xref:System.IDisposable> インターフェイスに関するトピック内の「IDisposable を実装するオブジェクトの使用」セクションを参照してください。  
+>  この型は <xref:System.IDisposable> インターフェイスを実装します。 型のインスタンスの使用が完了したら、直接または間接的に破棄する必要があります。 直接的に型を破棄するには、`try` / `catch` ブロック内で <xref:System.IDisposable.Dispose%2A> メソッドを呼び出します。 間接的に型を破棄するには、`using` (C# の場合) または `Using` (Visual Basic 言語) などの言語構成要素を使用します。 詳細については、<xref:System.IDisposable> インターフェイスに関するトピック内の「IDisposable を実装するオブジェクトの使用」セクションを参照してください。  
   
    
   
 ## Examples  
- 次の例では、乱数ジェネレーターを使用して、エミュレートを 11 個の異なる instruments から 10 個の整数値を読み取るデータ コレクションのアプリケーション。 値 0 は、測定が、操作を取り消す必要がある場合とない全体の平均を計算する必要が 1 つのインストルメント化に失敗したことを示します。  
+ 次の例では、乱数ジェネレーターを使用して、11個の異なる音色から10個の整数値を読み取るデータコレクションアプリケーションをエミュレートします。 値が0の場合は、測定が1つの音色で失敗したことを示します。この場合、操作はキャンセルされ、全体的な平均は計算されません。  
   
- 例では、インスタンス化可能な操作のキャンセルを処理するために、<xref:System.Threading.CancellationTokenSource>に渡されるキャンセル トークンを生成するオブジェクト、<xref:System.Threading.Tasks.TaskFactory>オブジェクト。 <xref:System.Threading.Tasks.TaskFactory>オブジェクトを渡しますキャンセル トークンのタスクのそれぞれに特定のインストルメント化の測定値の収集を担当します。 <xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%60%602%28System.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2CSystem.Func%7BSystem.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2C%60%601%7D%2CSystem.Threading.CancellationToken%29?displayProperty=nameWithType>メソッドが呼び出され、すべての測定値が正常に収集された後でのみ平均を計算することを確認します。 タスクがキャンセルされたためではなく、呼び出し、<xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%2A?displayProperty=nameWithType>メソッドが例外をスローします。  
+ この例では、操作の取り消しの可能性を処理する<xref:System.Threading.CancellationTokenSource>ために、 <xref:System.Threading.Tasks.TaskFactory>オブジェクトに渡されるキャンセルトークンを生成するオブジェクトをインスタンス化します。 その<xref:System.Threading.Tasks.TaskFactory>後、オブジェクトは、特定のインストルメントの読み取りを収集する各タスクにキャンセルトークンを渡します。 この<xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%60%602%28System.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2CSystem.Func%7BSystem.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2C%60%601%7D%2CSystem.Threading.CancellationToken%29?displayProperty=nameWithType>メソッドは、すべての読み取りが正常に収集された後にのみ平均が計算されるようにするために呼び出されます。 タスクが取り消されたことが原因でタスクが完了してい<xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%2A?displayProperty=nameWithType>ない場合、メソッドの呼び出しは例外をスローします。  
   
  [!code-csharp[System.Threading.CancellationTokenSource.Class#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.cancellationtokensource.class/cs/cancel1.cs#1)]
  [!code-vb[System.Threading.CancellationTokenSource.Class#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.cancellationtokensource.class/vb/cancel1.vb#1)]  
   
  ]]></format>
     </remarks>
-    <threadsafe>すべてのパブリックおよびプロテクト メンバー<see cref="T:System.Threading.CancellationTokenSource" />スレッド セーフでは、例外として、複数のスレッドから同時に使用できます<see cref="M:System.Threading.CancellationTokenSource.Dispose" />、ときに使用する必要がありますの他のすべての操作、<see cref="T:System.Threading.CancellationTokenSource" />オブジェクトが完了します。</threadsafe>
+    <threadsafe>の<see cref="T:System.Threading.CancellationTokenSource" />パブリックメンバーとプロテクトメンバーはすべてスレッドセーフであり、複数のスレッドから同時に使用することが<see cref="M:System.Threading.CancellationTokenSource.Dispose" />できます。ただし、は、 <see cref="T:System.Threading.CancellationTokenSource" />オブジェクトの他のすべての操作が完了している場合にのみ使用する必要があります。</threadsafe>
     <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
     <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
   </Docs>
@@ -89,7 +89,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>Initializes the <see cref="T:System.Threading.CancellationTokenSource" />.</summary>
+        <summary><see cref="T:System.Threading.CancellationTokenSource" /> を初期化します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName=".ctor">
@@ -123,7 +123,7 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>Initializes a new instance of the <see cref="T:System.Threading.CancellationTokenSource" /> class.</summary>
+        <summary><see cref="T:System.Threading.CancellationTokenSource" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
         <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
@@ -158,19 +158,19 @@
         <Parameter Name="millisecondsDelay" Type="System.Int32" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="millisecondsDelay">The time interval in milliseconds to wait before canceling this <see cref="T:System.Threading.CancellationTokenSource" />.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Threading.CancellationTokenSource" /> class that will be canceled after the specified delay in milliseconds.</summary>
+        <param name="millisecondsDelay">この <see cref="T:System.Threading.CancellationTokenSource" /> を取り消すまで待機する時間間隔 (ミリ秒単位)。</param>
+        <summary>指定した遅延 (ミリ秒単位) が経過した後にキャンセルされる <see cref="T:System.Threading.CancellationTokenSource" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- カウント ダウン、`millisecondsDelay`コンス トラクターの呼び出し中に開始します。  ときに、`millisecondsDelay`有効期限が切れる、構築された<xref:System.Threading.CancellationTokenSource>(既にキャンセルされていないいる) 場合は取り消されます。  
+ のカウントダウン`millisecondsDelay`は、コンストラクターの呼び出し中に開始されます。  が`millisecondsDelay`期限切れになると<xref:System.Threading.CancellationTokenSource> 、構築されたが取り消されます (まだキャンセルされていない場合)。  
   
- 後続の呼び出し<xref:System.Threading.CancellationTokenSource.CancelAfter%2A>はリセット、`millisecondsDelay`の構築された<xref:System.Threading.CancellationTokenSource>既にキャンセルされていない場合は、します。  
+ その後の<xref:System.Threading.CancellationTokenSource.CancelAfter%2A>への呼び出し`millisecondsDelay`では、 <xref:System.Threading.CancellationTokenSource>既にキャンセルされていない場合に、構築されたのがリセットされます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="millisecondsDelay" /> is less than -1.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="millisecondsDelay" /> が -1 未満です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -202,19 +202,19 @@
         <Parameter Name="delay" Type="System.TimeSpan" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="delay">The time interval to wait before canceling this <see cref="T:System.Threading.CancellationTokenSource" />.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Threading.CancellationTokenSource" /> class that will be canceled after the specified time span.</summary>
+        <param name="delay">この <see cref="T:System.Threading.CancellationTokenSource" /> を取り消すまで待機する時間間隔。</param>
+        <summary>指定した時間間隔の後にキャンセルされる <see cref="T:System.Threading.CancellationTokenSource" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンス トラクターの呼び出し中に、遅延のカウント ダウンを開始します。 遅延時間が経過した場合、構築された<xref:System.Threading.CancellationTokenSource>既にキャンセルされていない場合、キャンセルします。  
+ 遅延のカウントダウンは、コンストラクターの呼び出し中に開始されます。 遅延が期限切れになると<xref:System.Threading.CancellationTokenSource> 、構築されたが取り消されます (まだキャンセルされていない場合)。  
   
- 後続の呼び出し<xref:System.Threading.CancellationTokenSource.CancelAfter%2A>、構築済みの遅延がリセット<xref:System.Threading.CancellationTokenSource>既にキャンセルされていない場合は、します。  
+ に<xref:System.Threading.CancellationTokenSource.CancelAfter%2A>対する後続の呼び出しでは、既に<xref:System.Threading.CancellationTokenSource>キャンセルされていない場合に、構築されたの遅延がリセットされます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="delay" />.<see cref="P:System.TimeSpan.TotalMilliseconds" /> is less than -1 or greater than <see cref="F:System.Int32.MaxValue" />.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="delay" />.<see cref="P:System.TimeSpan.TotalMilliseconds" /> が -1 未満か、または <see cref="F:System.Int32.MaxValue" /> を超えています。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="Cancel">
@@ -225,7 +225,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>Communicates a request for cancellation.</summary>
+        <summary>キャンセル要求を伝えます。</summary>
         <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
         <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
       </Docs>
@@ -260,7 +260,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Communicates a request for cancellation.</summary>
+        <summary>キャンセル要求を伝えます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -275,17 +275,17 @@
    
   
 ## Examples  
- 次の例では、乱数ジェネレーターを使用して、エミュレートを 11 個の異なる instruments から 10 個の整数値を読み取るデータ コレクションのアプリケーション。 値 0 は、測定が、操作を取り消す必要がある場合とない全体の平均を計算する必要が 1 つのインストルメント化に失敗したことを示します。  
+ 次の例では、乱数ジェネレーターを使用して、11個の異なる音色から10個の整数値を読み取るデータコレクションアプリケーションをエミュレートします。 値が0の場合は、測定が1つの音色で失敗したことを示します。この場合、操作はキャンセルされ、全体的な平均は計算されません。  
   
- 例では、インスタンス化可能な操作のキャンセルを処理するために、<xref:System.Threading.CancellationTokenSource>に渡されるキャンセル トークンを生成するオブジェクト、<xref:System.Threading.Tasks.TaskFactory>オブジェクト。 <xref:System.Threading.Tasks.TaskFactory>オブジェクトを渡しますキャンセル トークンのタスクのそれぞれに特定のインストルメント化の測定値の収集を担当します。 <xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%60%602%28System.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2CSystem.Func%7BSystem.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2C%60%601%7D%2CSystem.Threading.CancellationToken%29?displayProperty=nameWithType>メソッドが呼び出され、すべての測定値が正常に収集された後でのみ平均を計算することを確認します。 タスクがキャンセルされたためではなく、呼び出し、<xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%2A?displayProperty=nameWithType>メソッドが例外をスローします。  
+ この例では、操作の取り消しの可能性を処理する<xref:System.Threading.CancellationTokenSource>ために、 <xref:System.Threading.Tasks.TaskFactory>オブジェクトに渡されるキャンセルトークンを生成するオブジェクトをインスタンス化します。 その<xref:System.Threading.Tasks.TaskFactory>後、オブジェクトは、特定のインストルメントの読み取りを収集する各タスクにキャンセルトークンを渡します。 この<xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%60%602%28System.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2CSystem.Func%7BSystem.Threading.Tasks.Task%7B%60%600%7D%5B%5D%2C%60%601%7D%2CSystem.Threading.CancellationToken%29?displayProperty=nameWithType>メソッドは、すべての読み取りが正常に収集された後にのみ平均が計算されるようにするために呼び出されます。 タスクが取り消されたことが原因でタスクが完了してい<xref:System.Threading.Tasks.TaskFactory.ContinueWhenAll%2A?displayProperty=nameWithType>ない場合、メソッドの呼び出しは例外をスローします。  
   
  [!code-csharp[System.Threading.CancellationTokenSource.Class#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.cancellationtokensource.class/cs/cancel1.cs#1)]
  [!code-vb[System.Threading.CancellationTokenSource.Class#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.cancellationtokensource.class/vb/cancel1.vb#1)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ObjectDisposedException">This <see cref="T:System.Threading.CancellationTokenSource" /> has been disposed.</exception>
-        <exception cref="T:System.AggregateException">An aggregate exception containing all the exceptions thrown by the registered callbacks on the associated <see cref="T:System.Threading.CancellationToken" />.</exception>
+        <exception cref="T:System.ObjectDisposedException">この <see cref="T:System.Threading.CancellationTokenSource" /> は破棄されています。</exception>
+        <exception cref="T:System.AggregateException">関連付けられた<see cref="T:System.Threading.CancellationToken" /> に登録されたコールバックがスローしたすべての例外を含む集計例外。</exception>
         <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
         <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
       </Docs>
@@ -322,8 +322,8 @@
         <Parameter Name="throwOnFirstException" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="throwOnFirstException"><see langword="true" /> if exceptions should immediately propagate; otherwise, <see langword="false" />.</param>
-        <summary>Communicates a request for cancellation, and specifies whether remaining callbacks and cancelable operations should be processed if an exception occurs.</summary>
+        <param name="throwOnFirstException">例外を直ちに伝達する場合は <see langword="true" /> 。それ以外の場合は <see langword="false" />。</param>
+        <summary>キャンセル要求を伝え、例外が発生した場合に残りのコールバックとキャンセル可能な操作を続けるかどうかを指定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -340,8 +340,8 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ObjectDisposedException">This <see cref="T:System.Threading.CancellationTokenSource" /> has been disposed.</exception>
-        <exception cref="T:System.AggregateException">An aggregate exception containing all the exceptions thrown by the registered callbacks on the associated <see cref="T:System.Threading.CancellationToken" />.</exception>
+        <exception cref="T:System.ObjectDisposedException">この <see cref="T:System.Threading.CancellationTokenSource" /> は破棄されています。</exception>
+        <exception cref="T:System.AggregateException">関連付けられた<see cref="T:System.Threading.CancellationToken" /> に登録されたコールバックがスローしたすべての例外を含む集計例外。</exception>
         <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
         <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
       </Docs>
@@ -354,7 +354,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>Schedules a cancel operation on this <see cref="T:System.Threading.CancellationTokenSource" />.</summary>
+        <summary>この <see cref="T:System.Threading.CancellationTokenSource" /> の取り消し操作をスケジュールします。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="CancelAfter">
@@ -389,20 +389,20 @@
         <Parameter Name="millisecondsDelay" Type="System.Int32" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="millisecondsDelay">The time span to wait before canceling this <see cref="T:System.Threading.CancellationTokenSource" />.</param>
-        <summary>Schedules a cancel operation on this <see cref="T:System.Threading.CancellationTokenSource" /> after the specified number of milliseconds.</summary>
+        <param name="millisecondsDelay">この <see cref="T:System.Threading.CancellationTokenSource" /> を取り消す前に待機する時間。</param>
+        <summary>指定したミリ秒数の経過後に、この <see cref="T:System.Threading.CancellationTokenSource" /> のキャンセル操作を設定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- カウント ダウン、`millisecondsDelay`この呼び出し中に起動します。 ときに、`millisecondsDelay`経過すると、この<xref:System.Threading.CancellationTokenSource>既にキャンセルされていない場合、キャンセルします。  
+ この呼び出し中に`millisecondsDelay` 、のカウントダウンが開始されます。 が`millisecondsDelay`期限切れになる<xref:System.Threading.CancellationTokenSource>と、この処理は取り消されます (まだキャンセルされていない場合)。  
   
- CancelAfter 後続の呼び出しはリセット、`millisecondsDelay`この<xref:System.Threading.CancellationTokenSource>既にキャンセルされていない場合は、します。  
+ その後の cancelafter の呼び出しで`millisecondsDelay`は、 <xref:System.Threading.CancellationTokenSource>既にキャンセルされていない場合、こののがリセットされます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ObjectDisposedException">The exception thrown when this <see cref="T:System.Threading.CancellationTokenSource" /> has been disposed.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The exception thrown when <paramref name="millisecondsDelay" /> is less than -1.</exception>
+        <exception cref="T:System.ObjectDisposedException">この <see cref="T:System.Threading.CancellationTokenSource" /> が破棄されているきにスローされる例外。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="millisecondsDelay" /> が -1 より小さいときにスローされる例外。</exception>
       </Docs>
     </Member>
     <Member MemberName="CancelAfter">
@@ -437,8 +437,8 @@
         <Parameter Name="delay" Type="System.TimeSpan" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="delay">The time span to wait before canceling this <see cref="T:System.Threading.CancellationTokenSource" />.</param>
-        <summary>Schedules a cancel operation on this <see cref="T:System.Threading.CancellationTokenSource" /> after the specified time span.</summary>
+        <param name="delay">この <see cref="T:System.Threading.CancellationTokenSource" /> を取り消す前に待機する時間。</param>
+        <summary>指定した時間間隔の経過後に、この <see cref="T:System.Threading.CancellationTokenSource" /> のキャンセル操作を設定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[
             The countdown for the delay starts during this call.  When the delay expires, 
@@ -449,8 +449,8 @@
 
             ]]></format>
         </remarks>
-        <exception cref="T:System.ObjectDisposedException">The exception thrown when this <see cref="T:System.Threading.CancellationTokenSource" /> has been disposed.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when <paramref name="delay" /> is less than -1 or greater than Int32.MaxValue.</exception>
+        <exception cref="T:System.ObjectDisposedException">この <see cref="T:System.Threading.CancellationTokenSource" /> が破棄されているきにスローされる例外。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="delay" /> が -1 より小さいか、Int32.MaxValue より大きい場合にスローされる例外。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="CreateLinkedTokenSource">
@@ -461,7 +461,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>Creates a <see cref="T:System.Threading.CancellationTokenSource" /> that will be in the canceled state when any of the source tokens are in the canceled state.</summary>
+        <summary>いずれかのソース トークンが取り消された状態であるときに、取り消された状態になる <see cref="T:System.Threading.CancellationTokenSource" /> を作成します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="CreateLinkedTokenSource">
@@ -502,13 +502,13 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="tokens">An array that contains the cancellation token instances to observe.</param>
-        <summary>Creates a <see cref="T:System.Threading.CancellationTokenSource" /> that will be in the canceled state when any of the source tokens in the specified array are in the canceled state.</summary>
-        <returns>A <see cref="T:System.Threading.CancellationTokenSource" /> that is linked to the source tokens.</returns>
+        <param name="tokens">観察するためのキャンセル トークン インスタンスを含む配列。</param>
+        <summary>指定された配列のいずれかのソース トークンが取り消された状態であるときに、取り消された状態になる <see cref="T:System.Threading.CancellationTokenSource" /> を作成します。</summary>
+        <returns>ソース トークンにリンクされている <see cref="T:System.Threading.CancellationTokenSource" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ObjectDisposedException">A <see cref="T:System.Threading.CancellationTokenSource" /> associated with one of the source tokens has been disposed.</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="tokens" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="tokens" /> is empty.</exception>
+        <exception cref="T:System.ObjectDisposedException">ソース トークンのいずれかに関連付けられている <see cref="T:System.Threading.CancellationTokenSource" /> は破棄されました。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="tokens" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="tokens" /> が空です。</exception>
         <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
         <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
         <related type="Article" href="https://msdn.microsoft.com/library/6f4f3804-2ed7-41b4-a97a-6e32b93f6e05">方法: 複数のキャンセル要求を待機する</related>
@@ -547,12 +547,12 @@
         <Parameter Name="token2" Type="System.Threading.CancellationToken" />
       </Parameters>
       <Docs>
-        <param name="token1">The first cancellation token to observe.</param>
-        <param name="token2">The second cancellation token to observe.</param>
-        <summary>Creates a <see cref="T:System.Threading.CancellationTokenSource" /> that will be in the canceled state when any of the source tokens are in the canceled state.</summary>
-        <returns>A <see cref="T:System.Threading.CancellationTokenSource" /> that is linked to the source tokens.</returns>
+        <param name="token1">観察する最初のキャンセル トークン。</param>
+        <param name="token2">観察する 2 番目のキャンセル トークン。</param>
+        <summary>いずれかのソース トークンが取り消された状態であるときに、取り消された状態になる <see cref="T:System.Threading.CancellationTokenSource" /> を作成します。</summary>
+        <returns>ソース トークンにリンクされている <see cref="T:System.Threading.CancellationTokenSource" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ObjectDisposedException">A <see cref="T:System.Threading.CancellationTokenSource" /> associated with one of the source tokens has been disposed.</exception>
+        <exception cref="T:System.ObjectDisposedException">ソース トークンのいずれかに関連付けられている <see cref="T:System.Threading.CancellationTokenSource" /> は破棄されました。</exception>
         <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
         <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
         <related type="Article" href="https://msdn.microsoft.com/library/6f4f3804-2ed7-41b4-a97a-6e32b93f6e05">方法: 複数のキャンセル要求を待機する</related>
@@ -566,7 +566,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>Releases all resources used by the current instance of the <see cref="T:System.Threading.CancellationTokenSource" /> class.</summary>
+        <summary><see cref="T:System.Threading.CancellationTokenSource" /> クラスの現在のインスタンスによって使用されているすべてのリソースを解放します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="Dispose">
@@ -602,7 +602,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Releases all resources used by the current instance of the <see cref="T:System.Threading.CancellationTokenSource" /> class.</summary>
+        <summary><see cref="T:System.Threading.CancellationTokenSource" /> クラスの現在のインスタンスによって使用されているすべてのリソースを解放します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -650,8 +650,8 @@
         <Parameter Name="disposing" Type="System.Boolean" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="disposing"><see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
-        <summary>Releases the unmanaged resources used by the <see cref="T:System.Threading.CancellationTokenSource" /> class and optionally releases the managed resources.</summary>
+        <param name="disposing">マネージド リソースとアンマネージド リソースの両方を解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <summary><see cref="T:System.Threading.CancellationTokenSource" /> クラスによって使用されているアンマネージド リソースを解放し、オプションでマネージド リソースも解放します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -689,15 +689,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets whether cancellation has been requested for this <see cref="T:System.Threading.CancellationTokenSource" />.</summary>
+        <summary>この <see cref="T:System.Threading.CancellationTokenSource" /> に対して取り消しが要求されているかどうかを取得します。</summary>
         <value>この <see cref="T:System.Threading.CancellationTokenSource" /> に対して取り消しが要求されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを示すかどうか取り消しが要求されたこのトークンのソースのように呼び出しによりその<xref:System.Threading.CancellationTokenSource.Cancel%2A>メソッド。  
+ このプロパティは、 <xref:System.Threading.CancellationTokenSource.Cancel%2A>メソッドの呼び出しなどによって、このトークンソースに対してキャンセルが要求されているかどうかを示します。  
   
- このプロパティを返す場合`true`取り消しが要求されていることのみ保証されます。 対応するトークンを使用して登録されているすべてのハンドラーの実行が完了したことも、キャンセル要求のすべての登録済みハンドラーへの伝達が完了したことは保証されません。 追加の同期は、特に関連するオブジェクトを同時にキャンセルされている状況で必要になる可能性があります。  
+ このプロパティがを`true`返す場合、キャンセルが要求されただけです。 対応するトークンに登録されているすべてのハンドラーが実行を完了したことを保証するわけではなく、すべての登録済みハンドラーへのキャンセル要求の反映も完了していません。 特に関連オブジェクトが同時にキャンセルされる場合は、追加の同期が必要になることがあります。  
   
  ]]></format>
         </remarks>
@@ -739,10 +739,10 @@
         <ReturnType>System.Threading.CancellationToken</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <see cref="T:System.Threading.CancellationToken" /> associated with this <see cref="T:System.Threading.CancellationTokenSource" />.</summary>
+        <summary>この <see cref="T:System.Threading.CancellationToken" /> に関連付けられている <see cref="T:System.Threading.CancellationTokenSource" /> を取得します。</summary>
         <value>この <see cref="T:System.Threading.CancellationToken" /> に関連付けられている <see cref="T:System.Threading.CancellationTokenSource" />。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ObjectDisposedException">The token source has been disposed.</exception>
+        <exception cref="T:System.ObjectDisposedException">トークンのソースは破棄されました。</exception>
         <related type="Article" href="~/docs/standard/threading/cancellation-in-managed-threads.md">キャンセル</related>
         <related type="Article" href="~/docs/standard/parallel-programming/task-cancellation.md">タスクのキャンセル</related>
       </Docs>

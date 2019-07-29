@@ -34,32 +34,32 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>複数のスレッドで共有される変数にアトミックの操作を提供します。</summary>
+    <summary>複数のスレッドで共有される変数に分割不可能な操作を提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このクラスのメソッドは、スレッドが他のスレッドによってアクセスできる変数を更新中にスケジューラがコンテキストを切り替えたとき、または 2 つのスレッドは別々 のプロセッサで同時に実行するときに発生する可能性があるエラーに対して保護します。 このクラスのメンバーは、例外をスローしません。  
+ このクラスのメソッドは、スレッドが他のスレッドからアクセスできる変数を更新しているとき、または別のプロセッサで同時に2つのスレッドが実行されているときに、スケジューラがコンテキストを切り替えるときに発生する可能性のあるエラーから保護するのに役立ちます。 このクラスのメンバーは、例外をスローしません。  
   
- <xref:System.Threading.Interlocked.Increment%2A>と<xref:System.Threading.Interlocked.Decrement%2A>メソッドの増減変数と、単一操作で、結果の値を格納します。 ほとんどのコンピューターで変数のインクリメント、次の手順を必要とする、分割不可能な操作ではありません。  
+ メソッド<xref:System.Threading.Interlocked.Increment%2A> と<xref:System.Threading.Interlocked.Decrement%2A>メソッドは、変数をインクリメントまたはデクリメントし、結果の値を1回の操作で格納します。 ほとんどのコンピューターでは、変数のインクリメントはアトミック操作ではないため、次の手順を実行する必要があります。  
   
-1.  レジスタにインスタンス変数から値を読み込みます。  
+1.  インスタンス変数からレジスタに値を読み込みます。  
   
-2.  インクリメントまたはデクリメント値。  
+2.  値をインクリメントまたはデクリメントします。  
   
 3.  インスタンス変数に値を格納します。  
   
- 使用しない場合<xref:System.Threading.Interlocked.Increment%2A>と<xref:System.Threading.Interlocked.Decrement%2A>スレッドは、最初の 2 つの手順を実行後に割り込まれることができます。 別のスレッドは、すべての 3 つの手順を実行できます。 最初のスレッドが実行を再開し、インスタンス変数の値が上書きされますインクリメントまたはデクリメントが 2 番目のスレッドによって実行されるの効果が失われます。  
+ <xref:System.Threading.Interlocked.Increment%2A> と<xref:System.Threading.Interlocked.Decrement%2A>を使用しない場合、最初の2つの手順を実行した後にスレッドを割り込ませることができます。 その後、別のスレッドが3つの手順をすべて実行できます。 最初のスレッドが実行を再開すると、インスタンス変数の値が上書きされ、2番目のスレッドによって実行されるインクリメントまたはデクリメントの影響は失われます。  
 
- <xref:System.Threading.Interlocked.Add%2A>メソッドはアトミックに整数値を整数変数を追加し、変数の新しい値を返します。  
+ メソッド<xref:System.Threading.Interlocked.Add%2A>は、整数値をアトミックに整数変数に追加し、変数の新しい値を返します。  
   
- <xref:System.Threading.Interlocked.Exchange%2A>メソッドが、指定された変数の値をアトミックに交換します。 <xref:System.Threading.Interlocked.CompareExchange%2A>メソッドで 2 つの操作を組み合わせています。 比較の結果に基づいて、変数のいずれかの値の 2 つの値を比較すると、3 つ目を格納します。 比較および交換操作はアトミック操作として実行されます。  
+ メソッド<xref:System.Threading.Interlocked.Exchange%2A>は、指定された変数の値をアトミックに交換します。 メソッド<xref:System.Threading.Interlocked.CompareExchange%2A>は、比較の結果に基づいて2つの値を比較し、変数の1つに3番目の値を格納します。 比較操作と交換操作は、分割不可能な操作として実行されます。  
 
- 任意の書き込みまたは共有変数への読み取りアクセスがアトミックであることを確認します。 それ以外の場合、データが壊れている可能性があります。 または読み込まれた値が正しくない可能性があります。    
+ 共有変数への書き込みまたは読み取りアクセスがアトミックであることを確認します。 それ以外の場合、データが破損しているか、読み込まれた値が正しくない可能性があります。    
    
   
 ## Examples  
- 次のコード例では、スレッド セーフであるリソースのロック機構を示します。  
+ 次のコード例は、スレッドセーフなリソースロック機構を示しています。  
   
  [!code-cpp[System.Threading.Interlocked.Exchange Int32 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Interlocked.Exchange Int32 Example/CPP/class1.cpp#1)]
  [!code-csharp[System.Threading.Interlocked.Exchange Int32 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Interlocked.Exchange Int32 Example/CS/class1.cs#1)]
@@ -125,15 +125,15 @@
         <Parameter Name="value" Type="System.Int32" Index="1" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="location1">加算する最初の値を含む変数。 2 つの値の合計が格納されている<paramref name="location1" />します。</param>
-        <param name="value">ある整数に加算する値<paramref name="location1" />します。</param>
+        <param name="location1">加算する最初の値を含む変数。 2 つの値の合計は、<paramref name="location1" /> に格納されます。</param>
+        <param name="value"><paramref name="location1" /> にある整数に加算する値。</param>
         <summary>分割不可能な操作として、2 つの 32 ビット整数を加算し、最初の整数を合計で置き換えます。</summary>
-        <returns>格納された新しい値<paramref name="location1" />します。</returns>
+        <returns><paramref name="location1" /> に格納された新しい値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドがラッピングによってオーバーフロー条件を処理: 場合に値`location1`は<xref:System.Int32.MaxValue?displayProperty=nameWithType>と`value`1 に設定されて、結果は<xref:System.Int32.MinValue?displayProperty=nameWithType>場合`value`が 2 の場合、結果は (<xref:System.Int32.MinValue?displayProperty=nameWithType> + 1)。 これにします。 例外をスローすることはありません。  
+ この`location1`メソッド`value` <xref:System.Int32.MinValue?displayProperty=nameWithType> <xref:System.Int32.MaxValue?displayProperty=nameWithType> は、をラップ<xref:System.Int32.MinValue?displayProperty=nameWithType>することによってオーバーフロー状態を処理します。の値がで、が1の場合、結果はになります。が2の場合、結果は(+1)になります。`value` 例外をスローすることはありません。  
   
  ]]></format>
         </remarks>
@@ -184,15 +184,15 @@
         <Parameter Name="value" Type="System.Int64" Index="1" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="location1">加算する最初の値を含む変数。 2 つの値の合計が格納されている<paramref name="location1" />します。</param>
-        <param name="value">ある整数に加算する値<paramref name="location1" />します。</param>
+        <param name="location1">加算する最初の値を含む変数。 2 つの値の合計は、<paramref name="location1" /> に格納されます。</param>
+        <param name="value"><paramref name="location1" /> にある整数に加算する値。</param>
         <summary>分割不可能な操作として、2 つの 64 ビット整数を加算し、最初の整数を合計で置き換えます。</summary>
-        <returns>格納された新しい値<paramref name="location1" />します。</returns>
+        <returns><paramref name="location1" /> に格納された新しい値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドがラッピングによってオーバーフロー条件を処理: 場合に値`location1`は<xref:System.Int64.MaxValue?displayProperty=nameWithType>と`value`1 に設定されて、結果は<xref:System.Int64.MinValue?displayProperty=nameWithType>場合`value`が 2 の場合、結果は (<xref:System.Int64.MinValue?displayProperty=nameWithType> + 1)。 これにします。 例外をスローすることはありません。  
+ この`location1`メソッド`value` <xref:System.Int64.MinValue?displayProperty=nameWithType> <xref:System.Int64.MaxValue?displayProperty=nameWithType> は、をラップ<xref:System.Int64.MinValue?displayProperty=nameWithType>することによってオーバーフロー状態を処理します。の値がで、が1の場合、結果はになります。が2の場合、結果は(+1)になります。`value` 例外をスローすることはありません。  
   
  ]]></format>
         </remarks>
@@ -264,14 +264,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`comparand`値`location1`しが等しいか、`value`に格納されて`location1`します。 それ以外の場合は演算が実行されません。 比較および交換操作はアトミック操作として実行されます。 戻り値<xref:System.Threading.Interlocked.CompareExchange%2A>の元の値は、`location1`交換が行われているかどうかを示す、します。  
+ と`comparand`の`location1`値が等しい場合、 `value`はに`location1`格納されます。 それ以外の場合は演算が実行されません。 比較操作と交換操作は、分割不可能な操作として実行されます。 の戻り値は<xref:System.Threading.Interlocked.CompareExchange%2A> 、交換が行われる`location1`かどうかにかかわらず、の元の値です。  
   
    
   
 ## Examples  
- 次のコード例は、累計を実行中のスレッド セーフな方法を示します<xref:System.Double>値。 2 つのスレッドの追加、一連の<xref:System.Double>スレッド セーフであるメソッドと通常の加算を使用して値を合計を比較する、スレッドが完了します。 デュアル プロセッサ コンピューターで、合計に大きな違いがあります。  
+ 次のコード例は、実行中の<xref:System.Double>合計値を累積するスレッドセーフなメソッドを示しています。 2つのスレッドは、 <xref:System.Double>スレッドセーフなメソッドと通常の加算を使用して一連の値を追加し、スレッドが完了すると合計が比較されます。 デュアルプロセッサコンピューターでは、合計に大きな違いがあります。  
   
- スレッド セーフな方法では、実行中の合計の初期値が保存をクリックし、<xref:System.Threading.Interlocked.CompareExchange%2A>メソッドは、古い合計新しく計算された合計の交換に使用されます。 戻り値で実行中の合計の保存された値と等しくない場合、別のスレッドが合計を更新したそれまでは。 その場合は、実行中の合計を更新しようとするを繰り返す必要があります。  
+ スレッドセーフなメソッドでは、実行中の合計の初期値が保存されます。 <xref:System.Threading.Interlocked.CompareExchange%2A>その後、メソッドを使用して、新しく計算された合計を古い合計と交換します。 戻り値が、実行中の合計の保存値と等しくない場合は、その間に別のスレッドによって合計が更新されます。 その場合は、実行中の合計を更新しようとする必要があります。  
   
  [!code-csharp[System.Threading.Interlocked CompareExchange Double#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Interlocked CompareExchange Double/cs/source.cs#1)]
  [!code-vb[System.Threading.Interlocked CompareExchange Double#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Interlocked CompareExchange Double/vb/source.vb#1)]  
@@ -336,15 +336,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`comparand`値`location1`しが等しいか、`value`に格納されて`location1`します。 それ以外の場合は演算が実行されません。 比較および交換操作はアトミック操作として実行されます。 戻り値<xref:System.Threading.Interlocked.CompareExchange%2A>の元の値は、`location1`交換が行われているかどうかを示す、します。  
+ と`comparand`の`location1`値が等しい場合、 `value`はに`location1`格納されます。 それ以外の場合は演算が実行されません。 比較操作と交換操作は、分割不可能な操作として実行されます。 の戻り値は<xref:System.Threading.Interlocked.CompareExchange%2A> 、交換が行われる`location1`かどうかにかかわらず、の元の値です。  
   
    
   
 ## Examples  
- 次のコード例では、実行中の合計を蓄積するスレッド セーフであるメソッドを示します。 実行中の合計の初期値を保存するをクリックし、<xref:System.Threading.Interlocked.CompareExchange%2A>メソッドは、古い合計新しく計算された合計の交換に使用されます。 戻り値で実行中の合計の保存された値と等しくない場合、別のスレッドが合計を更新したそれまでは。 その場合は、実行中の合計を更新しようとするを繰り返す必要があります。  
+ 次のコード例は、実行中の合計を累積したスレッドセーフなメソッドを示しています。 実行中の合計の初期値が保存されます。 <xref:System.Threading.Interlocked.CompareExchange%2A>その後、メソッドを使用して、新しく計算された合計を古い合計と交換します。 戻り値が、実行中の合計の保存値と等しくない場合は、その間に別のスレッドによって合計が更新されます。 その場合は、実行中の合計を更新しようとする必要があります。  
   
 > [!NOTE]
->  <xref:System.Threading.Interlocked.Add%2A> .NET Framework のバージョン 2.0 で導入されたメソッドがスレッド セーフである整数の合計を蓄積する方が便利を提供します。  
+>  .NET Framework <xref:System.Threading.Interlocked.Add%2A>のバージョン2.0 で導入されたメソッドは、整数のスレッドセーフな実行合計を累積するためのより便利な方法を提供します。  
   
  [!code-cpp[System.Threading.Interlocked CompareExchange0#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Interlocked CompareExchange0/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Interlocked CompareExchange0#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Interlocked CompareExchange0/CS/source.cs#1)]
@@ -406,7 +406,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`comparand`値`location1`しが等しいか、`value`に格納されて`location1`します。 それ以外の場合は演算が実行されません。 比較および交換操作はアトミック操作として実行されます。 戻り値<xref:System.Threading.Interlocked.CompareExchange%2A>の元の値は、`location1`交換が行われているかどうかを示す、します。  
+ と`comparand`の`location1`値が等しい場合、 `value`はに`location1`格納されます。 それ以外の場合は演算が実行されません。 比較操作と交換操作は、分割不可能な操作として実行されます。 の戻り値は<xref:System.Threading.Interlocked.CompareExchange%2A> 、交換が行われる`location1`かどうかにかかわらず、の元の値です。  
   
  ]]></format>
         </remarks>
@@ -458,19 +458,19 @@
         <Parameter Name="comparand" Type="System.IntPtr" Index="2" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="location1">宛先<see cref="T:System.IntPtr" />の値と比較値を持つ<paramref name="comparand" />され、場合によって置き換え<paramref name="value" />します。</param>
-        <param name="value"><see cref="T:System.IntPtr" />比較結果が等しい場合は、移行先の値を置き換えます。</param>
-        <param name="comparand"><see cref="T:System.IntPtr" />にある値と比較する<paramref name="location1" />します。</param>
+        <param name="location1">値を <paramref name="comparand" /> の値と比較し、場合によっては <paramref name="value" /> によって置き換える、比較先の <see cref="T:System.IntPtr" />。</param>
+        <param name="value">比較した結果が等しい場合に比較先の値を置き換える <see cref="T:System.IntPtr" />。</param>
+        <param name="comparand"><paramref name="location1" /> にある値と比較する <see cref="T:System.IntPtr" />。</param>
         <summary>2 つのプラットフォーム固有のハンドルまたはポインターが等しいかどうかを比較します。等しい場合は、最初の 1 つを置き換えます。</summary>
         <returns><paramref name="location1" /> の元の値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`comparand`値`location1`しが等しいか、`value`に格納されて`location1`します。 それ以外の場合は演算が実行されません。 比較および交換操作はアトミック操作として実行されます。 このメソッドの戻り値の元の値は、`location1`交換が行われているかどうかを示す、します。  
+ と`comparand`の`location1`値が等しい場合、 `value`はに`location1`格納されます。 それ以外の場合は演算が実行されません。 比較操作と交換操作は、分割不可能な操作として実行されます。 このメソッドの戻り値は、交換が行われる`location1`かどうかにかかわらず、の元の値です。  
   
 > [!NOTE]
->  <xref:System.IntPtr> プラットフォーム固有の型です。  
+>  <xref:System.IntPtr>はプラットフォーム固有の型です。  
   
  ]]></format>
         </remarks>
@@ -534,12 +534,12 @@
 ## Remarks
 
 > [!IMPORTANT]
-> .NET Framework 2.0 より、<xref:System.Threading.Interlocked.CompareExchange%60%601%28%60%600%40%2C%60%600%2C%60%600%29> メソッド オーバーロードから参照型に対してタイプ セーフの代替が提供されます。 このオーバー ロードではなく呼び出すことをお勧めします。
+> .NET Framework 2.0 より、<xref:System.Threading.Interlocked.CompareExchange%60%601%28%60%600%40%2C%60%600%2C%60%600%29> メソッド オーバーロードから参照型に対してタイプ セーフの代替が提供されます。 このオーバーロードの代わりに呼び出すことをお勧めします。
 
-場合`comparand`内のオブジェクトと`location1`しが参照によって等しい`value`に格納されて`location1`します。 それ以外の場合は演算が実行されません。 比較および交換操作はアトミック操作として実行されます。 戻り値<xref:System.Threading.Interlocked.CompareExchange%2A>の元の値は、`location1`交換が行われているかどうかを示す、します。  
+と`comparand`の`location1`オブジェクトが参照によって`value`等しい場合、はに`location1`格納されます。 それ以外の場合は演算が実行されません。 比較操作と交換操作は、分割不可能な操作として実行されます。 の戻り値は<xref:System.Threading.Interlocked.CompareExchange%2A> 、交換が行われる`location1`かどうかにかかわらず、の元の値です。  
 
 > [!NOTE]
->  オブジェクトは、値の等価性ではなく、参照の等価性と比較されます。 その結果、(たとえば、整数 3) 型の値の同じ 2 つのボックス化されたインスタンス常に等しくない場合に表示され、操作は実行されません。 値の型は、このオーバー ロードを使用しません。  
+>  オブジェクトは、値の等価性ではなく、参照の等価性が比較されます。 その結果、同じ値の型の2つのボックス化されたインスタンス (たとえば、整数 3) は常に等しくないように見え、操作は実行されません。 値型では、このオーバーロードを使用しないでください。  
   
  ]]></format>
         </remarks>
@@ -598,14 +598,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`comparand`値`location1`しが等しいか、`value`に格納されて`location1`します。 それ以外の場合は演算が実行されません。 比較および交換操作はアトミック操作として実行されます。 戻り値<xref:System.Threading.Interlocked.CompareExchange%2A>の元の値は、`location1`交換が行われているかどうかを示す、します。  
+ と`comparand`の`location1`値が等しい場合、 `value`はに`location1`格納されます。 それ以外の場合は演算が実行されません。 比較操作と交換操作は、分割不可能な操作として実行されます。 の戻り値は<xref:System.Threading.Interlocked.CompareExchange%2A> 、交換が行われる`location1`かどうかにかかわらず、の元の値です。  
   
    
   
 ## Examples  
- 次のコード例は、累計を実行中のスレッド セーフな方法を示します<xref:System.Single>値。 2 つのスレッドの追加、一連の<xref:System.Single>スレッド セーフであるメソッドと通常の加算を使用して値を合計を比較する、スレッドが完了します。 デュアル プロセッサ コンピューターで、合計に大きな違いがあります。  
+ 次のコード例は、実行中の<xref:System.Single>合計値を累積するスレッドセーフなメソッドを示しています。 2つのスレッドは、 <xref:System.Single>スレッドセーフなメソッドと通常の加算を使用して一連の値を追加し、スレッドが完了すると合計が比較されます。 デュアルプロセッサコンピューターでは、合計に大きな違いがあります。  
   
- スレッド セーフな方法では、実行中の合計の初期値が保存をクリックし、<xref:System.Threading.Interlocked.CompareExchange%2A>メソッドは、古い合計新しく計算された合計の交換に使用されます。 戻り値で実行中の合計の保存された値と等しくない場合、別のスレッドが合計を更新したそれまでは。 その場合は、実行中の合計を更新しようとするを繰り返す必要があります。  
+ スレッドセーフなメソッドでは、実行中の合計の初期値が保存されます。 <xref:System.Threading.Interlocked.CompareExchange%2A>その後、メソッドを使用して、新しく計算された合計を古い合計と交換します。 戻り値が、実行中の合計の保存値と等しくない場合は、その間に別のスレッドによって合計が更新されます。 その場合は、実行中の合計を更新しようとする必要があります。  
   
  [!code-csharp[System.Threading.Interlocked CompareExchange Single#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Interlocked CompareExchange Single/cs/source.cs#1)]
  [!code-vb[System.Threading.Interlocked CompareExchange Single#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Interlocked CompareExchange Single/vb/source.vb#1)]  
@@ -670,7 +670,7 @@
         <Parameter Name="comparand" Type="T" Index="2" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.0;netstandard-1.1;netstandard-1.2;netstandard-1.3;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <typeparam name="T">使用する型<paramref name="location1" />、 <paramref name="value" />、および<paramref name="comparand" />します。 この型は、参照型である必要があります。</typeparam>
+        <typeparam name="T"><paramref name="location1" />、<paramref name="value" />、および <paramref name="comparand" /> に使用する型。 この型は、参照型である必要があります。</typeparam>
         <param name="location1">参照によって値を <paramref name="comparand" /> と比較し、場合によっては置き換える比較先。 これは参照パラメーターです (C# では <see langword="ref" />、Visual Basic では <see langword="ByRef" />)。</param>
         <param name="value">参照によって比較した結果が等しい場合に比較先の値を置き換える値。</param>
         <param name="comparand"><paramref name="location1" /> にある値と参照によって比較される値。</param>
@@ -680,12 +680,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`comparand`値`location1`しが参照によって等しい`value`に格納されて`location1`します。 それ以外の場合は演算が実行されません。 比較と交換は、分割不可能な操作として実行されます。 このメソッドの戻り値の元の値は、`location1`交換が行われているかどうかを示す、します。  
+ と`comparand`の`location1`値が参照によって`value`等しい場合、はに`location1`格納されます。 それ以外の場合は演算が実行されません。 比較と交換は、分割不可能な操作として実行されます。 このメソッドの戻り値は、交換が行われる`location1`かどうかにかかわらず、の元の値です。  
   
- このメソッドは、参照型のみをサポートします。 オーバー ロードがあります、<xref:System.Threading.Interlocked.CompareExchange%2A>値型のメソッド<xref:System.Int32>、 <xref:System.Int64>、 <xref:System.IntPtr>、 <xref:System.Single>、および<xref:System.Double>、他の値型のサポートはありません。  
+ このメソッドは、参照型のみをサポートします。 <xref:System.Threading.Interlocked.CompareExchange%2A>値型<xref:System.IntPtr> 、、<xref:System.Double>、 、およびのメソッドのオーバーロードがありますが、その他の値型はサポートされていません。<xref:System.Single> <xref:System.Int32> <xref:System.Int64>  
   
 > [!NOTE]
->  このメソッドのオーバー ロードをお勧め、<xref:System.Threading.Interlocked.CompareExchange%28System.Object%40%2CSystem.Object%2CSystem.Object%29>後者に遅延バインディング アクセス先となるオブジェクトを必要とするため、メソッドのオーバー ロードします。  
+>  後者では、変換先の<xref:System.Threading.Interlocked.CompareExchange%28System.Object%40%2CSystem.Object%2CSystem.Object%29>オブジェクトに遅延バインディングでアクセスする必要があるため、このメソッドオーバーロードはメソッドのオーバーロードに適しています。  
   
  ]]></format>
         </remarks>
@@ -752,17 +752,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、ラップすることによってオーバーフロー状態を処理します。場合`location`  =  <xref:System.Int32.MinValue?displayProperty=nameWithType>、 `location` - 1 =<xref:System.Int32.MaxValue?displayProperty=nameWithType>します。 例外をスローすることはありません。  
+ このメソッドは、をラップすることでオーバーフロー状態を処理します。の`location`場合 =  、`location`- 1 =<xref:System.Int32.MaxValue?displayProperty=nameWithType>です。 <xref:System.Int32.MinValue?displayProperty=nameWithType> 例外をスローすることはありません。  
   
    
   
 ## Examples  
- 次の例は、中間値を 1,000 の乱数を生成する 0 から 1,000 までランダムな番号の数が必要ですかを判断します。 中間値、変数の数を追跡する`midpointCount`がセットの 1,000 個に等しいとデクリメントのたびに乱数ジェネレーターは、中間値を返します。 3 つのスレッド、乱数を生成するため、<xref:System.Threading.Interlocked.Decrement%28System.Int32%40%29>メソッドを呼び出して複数のスレッドを更新しないことを確認する`midpointCount`同時にします。 ロックも使用する乱数ジェネレーター、および保護することに注意してください、<xref:System.Threading.CountdownEvent>オブジェクトを使用することを確認、`Main`メソッドは、次の 3 つのスレッドの前に実行を終了しません。  
+ 次の例では、中間値を使用して1000の乱数を生成するために、0 ~ 1000 の範囲の乱数を指定する必要があるかどうかを判断します。 中間値の数を追跡するために、変数`midpointCount`は、ランダムな数値ジェネレーターが中間値を返すたびに1000に設定され、デクリメントされます。 3つのスレッドが乱数を生成する<xref:System.Threading.Interlocked.Decrement%28System.Int32%40%29>ため、メソッドが呼び出されて、複数の`midpointCount`スレッドが同時に更新されないようにします。 ロックは、乱数ジェネレーターを保護するためにも使用されます。また<xref:System.Threading.CountdownEvent> 、オブジェクトを使用して、 `Main`メソッドが3つのスレッドの前に実行を終了しないようにします。  
   
  [!code-csharp[System.Threading.Interlocked.Decrement#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.interlocked.decrement/cs/decrement1.cs#1)]
  [!code-vb[System.Threading.Interlocked.Decrement#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.interlocked.decrement/vb/decrement1.vb#1)]  
   
- 使用する点を除いて、次の例は、1 つ前のような<xref:System.Threading.Tasks.Task>50,000 の中間点をランダムな整数を生成するスレッドのプロシージャではなくクラス。 この例では、ラムダ式が置き換えられます、 `GenerateNumbers` 、スレッド プロシージャを呼び出すまで、<xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>のメソッドが不要、<xref:System.Threading.CountdownEvent>オブジェクト。  
+ 次の例は前の例と似ていますが、スレッド<xref:System.Threading.Tasks.Task>プロシージャの代わりにクラスを使用して、5万のランダムな中間整数を生成する点が異なります。 この例では、ラムダ式によっ`GenerateNumbers`てスレッドプロシージャが置き換えられ、 <xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>メソッド<xref:System.Threading.CountdownEvent>を呼び出すとオブジェクトが不要になります。  
   
  [!code-csharp[System.Threading.Interlocked.Decrement#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.interlocked.decrement/cs/decrement2.cs#2)]
  [!code-vb[System.Threading.Interlocked.Decrement#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.interlocked.decrement/vb/decrement2.vb#2)]  
@@ -820,7 +820,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドがラッピングによってオーバーフロー条件を処理します。 場合`location`  =  <xref:System.Int64.MinValue?displayProperty=nameWithType>、 `location` - 1 =<xref:System.Int64.MaxValue?displayProperty=nameWithType>します。 例外をスローすることはありません。  
+ このメソッドは、-1 = `location` <xref:System.Int64.MinValue?displayProperty=nameWithType>  =  `location`の場合、 をラップすることでオーバーフロー状態を処理します。<xref:System.Int64.MaxValue?displayProperty=nameWithType> 例外をスローすることはありません。  
   
  ]]></format>
         </remarks>
@@ -943,7 +943,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、スレッド セーフであるリソースのロック機構を示します。  
+ 次のコード例は、スレッドセーフなリソースロック機構を示しています。  
   
  [!code-cpp[System.Threading.Interlocked.Exchange Int32 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Interlocked.Exchange Int32 Example/CPP/class1.cpp#1)]
  [!code-csharp[System.Threading.Interlocked.Exchange Int32 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Interlocked.Exchange Int32 Example/CS/class1.cs#1)]
@@ -1110,7 +1110,7 @@
 ## Remarks
 
 > [!IMPORTANT]
-> .NET Framework 2.0 より、<xref:System.Threading.Interlocked.Exchange%60%601%28%60%600%40%2C%60%600%29> メソッド オーバーロードから参照型に対してタイプ セーフの代替が提供されます。 このオーバー ロードではなく呼び出すことをお勧めします。
+> .NET Framework 2.0 より、<xref:System.Threading.Interlocked.Exchange%60%601%28%60%600%40%2C%60%600%29> メソッド オーバーロードから参照型に対してタイプ セーフの代替が提供されます。 このオーバーロードの代わりに呼び出すことをお勧めします。
 
  ]]></format>
         </remarks>
@@ -1230,10 +1230,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、参照型のみをサポートします。 オーバー ロードがあります、<xref:System.Threading.Interlocked.Exchange%2A>のメソッド、 <xref:System.Int32>、 <xref:System.Int64>、 <xref:System.IntPtr>、 <xref:System.Single>、および<xref:System.Double>型の値が、他の値型はサポートされていません。  
+ このメソッドは、参照型のみをサポートします。 <xref:System.Int32>、 <xref:System.Threading.Interlocked.Exchange%2A> 、、<xref:System.Single>、および<xref:System.Double>の各値型に対するメソッドのオーバーロードがありますが、その他の値型はサポートされていません。 <xref:System.IntPtr> <xref:System.Int64>  
   
 > [!NOTE]
->  このメソッドのオーバー ロードをお勧め、<xref:System.Threading.Interlocked.Exchange%28System.Object%40%2CSystem.Object%29>後者の場合、変換先オブジェクトに遅延バインディング アクセスを必要とするため、メソッドのオーバー ロードします。  
+>  このメソッドのオーバーロードは、 <xref:System.Threading.Interlocked.Exchange%28System.Object%40%2CSystem.Object%29>メソッドのオーバーロードに適しています。後者では、変換先のオブジェクトへの遅延バインディングアクセスが必要になるためです。  
  ]]></format>
         </remarks>
         <exception cref="T:System.NullReferenceException"><paramref name="location1" /> のアドレスは null ポインターです。</exception>
@@ -1299,17 +1299,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドがラッピングによってオーバーフロー条件を処理します。 場合`location`  =  <xref:System.Int32.MaxValue?displayProperty=nameWithType>、 `location` + 1 =<xref:System.Int32.MinValue?displayProperty=nameWithType>します。 例外をスローすることはありません。  
+ この`location`メソッドは<xref:System.Int32.MaxValue?displayProperty=nameWithType>、を =  `location` ラップすることによってオーバーフロー状態を<xref:System.Int32.MinValue?displayProperty=nameWithType>処理します。 例外をスローすることはありません。  
   
    
   
 ## Examples  
- 次の例は、中間値を 1,000 の乱数を生成する 0 から 1,000 までランダムな番号の数が必要ですかを判断します。 中間値、変数の数を追跡する`midpointCount`を 0 に設定し、乱数ジェネレーターが 10,000 に達するまで、中間値を返しますたびに増分されます。 3 つのスレッド、乱数を生成するため、<xref:System.Threading.Interlocked.Increment%28System.Int32%40%29>メソッドを呼び出して複数のスレッドを更新しないことを確認する`midpointCount`同時にします。 ロックも使用する乱数ジェネレーター、および保護することに注意してください、<xref:System.Threading.CountdownEvent>オブジェクトを使用することを確認、`Main`メソッドは、次の 3 つのスレッドの前に実行を終了しません。  
+ 次の例では、中間値を使用して1000の乱数を生成するために、0 ~ 1000 の範囲の乱数を指定する必要があるかどうかを判断します。 中間値の数を追跡するために、変数`midpointCount`は0に設定され、乱数ジェネレーターが1万に達するまで中間値を返すたびに増加します。 3つのスレッドが乱数を生成する<xref:System.Threading.Interlocked.Increment%28System.Int32%40%29>ため、メソッドが呼び出されて、複数の`midpointCount`スレッドが同時に更新されないようにします。 ロックは、乱数ジェネレーターを保護するためにも使用されます。また<xref:System.Threading.CountdownEvent> 、オブジェクトを使用して、 `Main`メソッドが3つのスレッドの前に実行を終了しないようにします。  
   
  [!code-csharp[System.Threading.Interlocked.Increment2#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.interlocked.increment2/cs/increment3.cs#3)]
  [!code-vb[System.Threading.Interlocked.Increment2#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.interlocked.increment2/vb/Increment3.vb#3)]  
   
- 使用する点を除いて、次の例は、1 つ前のような<xref:System.Threading.Tasks.Task>50,000 の中間点をランダムな整数を生成するスレッドのプロシージャではなくクラス。 この例では、ラムダ式が置き換えられます、 `GenerateNumbers` 、スレッド プロシージャを呼び出すまで、<xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>のメソッドが不要、<xref:System.Threading.CountdownEvent>オブジェクト。  
+ 次の例は前の例と似ていますが、スレッド<xref:System.Threading.Tasks.Task>プロシージャの代わりにクラスを使用して、5万のランダムな中間整数を生成する点が異なります。 この例では、ラムダ式によっ`GenerateNumbers`てスレッドプロシージャが置き換えられ、 <xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>メソッド<xref:System.Threading.CountdownEvent>を呼び出すとオブジェクトが不要になります。  
   
  [!code-csharp[System.Threading.Interlocked.Increment2#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.interlocked.increment2/cs/increment4.cs#4)]
  [!code-vb[System.Threading.Interlocked.Increment2#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.interlocked.increment2/vb/Increment4.vb#4)]  
@@ -1370,7 +1370,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドがラッピングによってオーバーフロー条件を処理します。 場合`location`  =  <xref:System.Int64.MaxValue?displayProperty=nameWithType>、 `location` + 1 =<xref:System.Int64.MinValue?displayProperty=nameWithType>します。 例外をスローすることはありません。  
+ この`location`メソッドは<xref:System.Int64.MaxValue?displayProperty=nameWithType>、を =  `location` ラップすることによってオーバーフロー状態を<xref:System.Int64.MinValue?displayProperty=nameWithType>処理します。 例外をスローすることはありません。  
   
  ]]></format>
         </remarks>
@@ -1422,11 +1422,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドに追加された、<xref:System.Threading.Interlocked>クラス、 [!INCLUDE[net_v45](~/includes/net-v45-md.md)] ; 利便性のためのラッパーは、<xref:System.Threading.Thread.MemoryBarrier%2A?displayProperty=nameWithType>メソッド。  
+ このメソッドは、の便宜上<xref:System.Threading.Interlocked> 、の[!INCLUDE[net_v45](~/includes/net-v45-md.md)]クラスに追加されています。これは<xref:System.Threading.Thread.MemoryBarrier%2A?displayProperty=nameWithType> 、メソッドのラッパーです。  
   
- <xref:System.Threading.Interlocked.MemoryBarrier%2A> 順序付け (たとえば、複数の Intel Itanium プロセッサを使用するシステム) と弱いメモリ型マルチプロセッサ システムでのみが必要です。  
+ <xref:System.Threading.Interlocked.MemoryBarrier%2A>は、メモリの順序が脆弱なマルチプロセッサシステム (たとえば、複数の Intel Itanium プロセッサを使用するシステム) にのみ必要です。  
   
- ほとんどの場合、c#、`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、または<xref:System.Threading.Monitor>クラスは、簡単にデータを同期する方法を提供します。  
+ ほとんどのC# `lock`場合、ステートメント、Visual Basic `SyncLock`ステートメント、または<xref:System.Threading.Monitor>クラスを使用すると、データを簡単に同期できます。  
   
  ]]></format>
         </remarks>
@@ -1461,17 +1461,17 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-`MemoryBarrierProcessWide`メソッドは、"normal"によって異なります。<xref:System.Threading.Interlocked.MemoryBarrier%2A>メソッドとして、次のとおりです。
+メソッド`MemoryBarrierProcessWide`は、次のように " <xref:System.Threading.Interlocked.MemoryBarrier%2A> normal" メソッドとは異なります。
 
-- 通常のメモリ バリアはにより、読み取りと書き込みを現在の CPU からは、バリアの間で移動できません。 任意の読み取りまたは書き込みプロセス全体のメモリ バリアによって任意の CPU からプロセスで使用されている、境界を越えた移動できません。
+- 通常のメモリバリアでは、現在の CPU からの読み取りと書き込みがバリアをまたいで移動できないようにします。 プロセス全体のメモリバリアによって、プロセスで使用されている任意の CPU からの読み取りまたは書き込みをバリアで移動できないようにします。
 
-- 場合、通常メモリ バリアが妥当な共有アクセスを許可*すべて*データにアクセスするスレッドがバリアを使用します。 プロセス全体のメモリ バリア フォース*他 Cpu*プロセス メモリ (たとえば、フラッシュ バッファーの書き込みし、読み取りバッファーを同期する) と同期します。 これにより、一部のスレッドで非インタロックされた操作と、まだ適切な共有アクセスします。 
+- 通常のメモリバリアは、データにアクセスする*すべて*のスレッドがバリアを使用する場合に、適切な共有アクセスを可能にします。 プロセス全体のメモリバリアは、*他の cpu*とプロセスメモリを強制的に同期させます (たとえば、書き込みバッファーをフラッシュし、読み取りバッファーを同期します)。 これにより、一部のスレッドで非インタロック操作を行うことができ、それでも適切な共有アクセスが可能になります。 
 
-- 通常のメモリ バリアは、非常に小さいオーバーヘッドです。通常のインタロックされた操作では、サイクルの数が 100 よりも少ない可能性がありますコスト。 プロセス全体のメモリ バリアは非常に不経済です。 プロセス内のすべての CPU を強制する必要がある何千ものサイクルの予想されるコストに何を実行します。 
+- 通常のメモリバリアではオーバーヘッドがごくわずかです。通常のインタロック操作では、100サイクル未満のコストがかかることがあります。 プロセス全体のメモリバリアは、非常にコストが高くなります。 プロセス内のすべての CPU に対して何かを強制する必要があります。 
 
-`MemoryBarrierProcessWide`メソッドはロック制御不要のプログラミングのすべての微妙なからも低下します。 ただし、実際にはまれですを呼び出す必要がある場合、このメソッドは非常に便利なできます。
+また`MemoryBarrierProcessWide` 、このメソッドは、ロックフリープログラミングのすべての微妙な違いにも影響します。 ただし、このメソッドは、実際に呼び出す必要がある場合に非常に便利です。この方法はめったに発生しません。
 
-このメソッドの呼び出しをラップする[FlushProcessWriteBuffers](/windows/desktop/api/processthreadsapi/nf-processthreadsapi-flushprocesswritebuffers) Windows 上と[sys_membarrier](https://lore.kernel.org/patchwork/patch/188708/) Linux 上。
+このメソッドは、Windows では[Flushprocesswritebuffers](/windows/desktop/api/processthreadsapi/nf-processthreadsapi-flushprocesswritebuffers) 、Linux では[sys_membarrier](https://lore.kernel.org/patchwork/patch/188708/)の呼び出しをラップします。
 
          ]]></format>
         </remarks>
@@ -1517,7 +1517,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Interlocked.Read%2A>メソッドは、64 ビットの読み取り操作がアトミックであるため、64 ビット システムで必要ではありません。 32 ビット システムで 64 ビットの読み取り操作を使用して実行しない限り、アトミックいない<xref:System.Threading.Interlocked.Read%2A>します。  
+ 64ビットシステムでは、64ビットの読み取り操作は既にアトミックであるため、メソッドは不要です。<xref:System.Threading.Interlocked.Read%2A> 32ビットシステムでは、を使用して<xref:System.Threading.Interlocked.Read%2A>実行しない限り、64ビットの読み取り操作はアトミックではありません。  
   
  ]]></format>
         </remarks>
@@ -1563,7 +1563,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-`SpeculationBarrier`メソッドは、メモリ フェンスを定義します (、 `mfence` x86 および amd64 プロセッサ上の命令) をブロックする*投機*が完了するまで保留中の読み取りと書き込みには、このポイント以降を実行します。 
+メソッド`SpeculationBarrier`は、保留中の読み取りと`mfence`書き込みが完了するまで、*予測実行を*ブロックするメモリフェンス (x86 および amd64 プロセッサ上の命令) を定義します。 
 
  ]]></format>
         </remarks>

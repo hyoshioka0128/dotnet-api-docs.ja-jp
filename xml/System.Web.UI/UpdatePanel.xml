@@ -42,7 +42,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>ポストバックなしでページのセクションを部分的にレンダリングできるようにします。</summary>
+    <summary>ポストバックせずにページのセクションを部分的にレンダリングできるようにします。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -51,66 +51,66 @@
   
 -   [はじめに](#introduction)  
   
--   [UpdatePanel のコンテンツを更新します。](#refreshing_updatepanel_content)  
+-   [UpdatePanel コンテンツの更新](#refreshing_updatepanel_content)  
   
 -   [UpdatePanel の使用状況](#updatepanel_usage)  
   
 -   [スタイルの適用](#applying_styles)  
   
--   [宣言構文](#declarative_syntax)  
+-   [宣言型の構文](#declarative_syntax)  
   
 <a name="introduction"></a>   
 ## <a name="introduction"></a>はじめに  
- <xref:System.Web.UI.UpdatePanel> コントロールは、ASP.NET の AJAX 機能の中心部です。 使用する、<xref:System.Web.UI.ScriptManager>部分ページ レンダリングを有効にするコントロール。 部分ページ レンダリングでは、ページの一部のみがある更新する際に同期ポストバックとページ全体の更新の必要性が軽減されます。 部分ページ レンダリングでは、ページ全体のポストバック中に発生し、Web ページの対話性が向上する画面のちらつきが減るため、ユーザー エクスペリエンスが向上します。  
+ <xref:System.Web.UI.UpdatePanel>コントロールは、ASP.NET の AJAX 機能の中核となる部分です。 部分ページレンダリングを有効<xref:System.Web.UI.ScriptManager>にするために、コントロールと共に使用されます。 部分ページレンダリングを使用すると、ページの一部だけを更新する必要がある場合に、同期ポストバックとページ全体の更新の必要性が軽減されます。 部分ページレンダリングでは、ページ全体のポストバック中に発生する画面のちらつきを減らし、Web ページの対話機能を向上させるため、ユーザーエクスペリエンスが向上します。  
   
 <a name="refreshing_updatepanel_content"></a>   
-## <a name="refreshing-updatepanel-content"></a>UpdatePanel のコンテンツを更新します。  
- コントロールがページ全体を更新するポストバックまたは 1 つまたは複数のコンテンツを更新する非同期ポストバックを実行できます部分ページ レンダリングを有効にすると、<xref:System.Web.UI.UpdatePanel>コントロール。 コントロールが非同期ポストバックと更新プログラムを発生するかどうか、<xref:System.Web.UI.UpdatePanel>制御は、次に依存します。  
+## <a name="refreshing-updatepanel-content"></a>UpdatePanel コンテンツの更新  
+ 部分ページレンダリングが有効になっている場合、コントロールは、ページ全体または1つ<xref:System.Web.UI.UpdatePanel>以上のコントロールのコンテンツを更新する非同期ポストバックを更新するポストバックを実行できます。 コントロールが非同期ポストバックを発生させ、 <xref:System.Web.UI.UpdatePanel>コントロールを更新するかどうかは、次のように異なります。  
   
--   場合、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>のプロパティ、<xref:System.Web.UI.UpdatePanel>に設定されているコントロール<xref:System.Web.UI.UpdatePanelUpdateMode.Always>、<xref:System.Web.UI.UpdatePanel>コントロールの内容がページから発信されたポストバックのたびに更新されます。 その他の内部にあるコントロールからの非同期ポストバックが含まれます<xref:System.Web.UI.UpdatePanel>コントロールと内部ではないコントロールからポストバック<xref:System.Web.UI.UpdatePanel>コントロール。  
+-   コントロールのプロパティがに<xref:System.Web.UI.UpdatePanelUpdateMode.Always>設定されている場合、ページからのポストバックごとにコントロールのコンテンツが更新されます。<xref:System.Web.UI.UpdatePanel> <xref:System.Web.UI.UpdatePanel.UpdateMode%2A> <xref:System.Web.UI.UpdatePanel> これには、他のコントロール内にある<xref:System.Web.UI.UpdatePanel>コントロールからの非同期ポストバックや、コントロール<xref:System.Web.UI.UpdatePanel>の内部にないコントロールからのポストバックが含まれます。  
   
--   場合、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>、<xref:System.Web.UI.UpdatePanel>コントロールのコンテンツは、次の状況で更新されます。  
+-   プロパティがに設定され<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>ている<xref:System.Web.UI.UpdatePanel>場合、コントロールのコンテンツは次のような状況で更新されます。 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A>  
   
-    -   呼び出すと、<xref:System.Web.UI.UpdatePanel.Update%2A>のメソッド、<xref:System.Web.UI.UpdatePanel>明示的に制御します。  
+    -   コントロールのメソッドを<xref:System.Web.UI.UpdatePanel.Update%2A>明示的に呼び出すとき。 <xref:System.Web.UI.UpdatePanel>  
   
-    -   ときに、<xref:System.Web.UI.UpdatePanel>コントロールが別の内部で入れ子になった<xref:System.Web.UI.UpdatePanel>制御、および親パネルが更新されます。  
+    -   コントロールが別<xref:System.Web.UI.UpdatePanel>のコントロール内に入れ子になっていて、親パネルが更新された場合。 <xref:System.Web.UI.UpdatePanel>  
   
-    -   使用して、トリガーとして定義されているコントロールによってポストバックを発生する場合、`Triggers`のプロパティ、<xref:System.Web.UI.UpdatePanel>コントロール。 このシナリオでコントロールはパネルの内容の更新プログラムを明示的にトリガーされます。 コントロールが内部または外部のいずれかにすることができます、<xref:System.Web.UI.UpdatePanel>トリガーが関連付けられているコントロール。  
+    -   コントロールのプロパティ`Triggers`を使用して、トリガーとして定義されているコントロールがポストバックを発生させる場合。 <xref:System.Web.UI.UpdatePanel> このシナリオでは、コントロールによって、パネルコンテンツの更新が明示的にトリガーされます。 コントロールは、トリガーが関連付けられて<xref:System.Web.UI.UpdatePanel>いるコントロールの内側または外側に配置できます。  
   
-    -   ときに、<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティに設定されて`true`の子コントロールと、<xref:System.Web.UI.UpdatePanel>コントロールがポストバックを発生します。 子コントロールに入れ子になった<xref:System.Web.UI.UpdatePanel>コントロールでは、外側の更新が発生しない<xref:System.Web.UI.UpdatePanel>トリガーとして明示的に定義されている場合を除き、します。  
+    -   プロパティがに`true`設定され、 <xref:System.Web.UI.UpdatePanel>コントロールの子コントロールがポストバックを発生させる場合。 <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A> 入れ子になっ<xref:System.Web.UI.UpdatePanel>たコントロールの子コントロールは、明示的に<xref:System.Web.UI.UpdatePanel>トリガーとして定義されていない限り、外側のコントロールを更新しません。  
   
- 設定の組み合わせ、<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティを`false`と<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティを<xref:System.Web.UI.UpdatePanelUpdateMode.Always>は許可されていませんし、例外がスローされます。  
+ <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティを`false`に<xref:System.Web.UI.UpdatePanelUpdateMode.Always>設定し、プロパティをに設定することは許可されていないため、例外がスローされます。 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A>  
   
- ときに、<xref:System.Web.UI.UpdatePanel>コントロールが非同期の post を実行、カスタム HTTP ヘッダーを追加します。 一部のプロキシでは、このカスタム HTTP ヘッダーを削除します。 このような場合、サーバーは、クライアントのエラーが発生する通常のポストバックとして要求を処理します。 この問題を解決するには、非同期の投稿を実行するときにカスタム フォームのフィールドを挿入します。 ヘッダーまたはサーバー コードでカスタム フォームのフィールドを確認します。  
+ コントロールが<xref:System.Web.UI.UpdatePanel>非同期 post を実行すると、カスタム HTTP ヘッダーが追加されます。 プロキシによっては、このカスタム HTTP ヘッダーが削除する場合があります。 このような場合、サーバーは要求を通常のポストバックとして処理します。これにより、クライアントエラーが発生します。 この問題を解決するには、非同期ポストを実行するときにカスタムフォームフィールドを挿入します。 次に、サーバーコードでヘッダーまたはカスタムフォームフィールドを確認します。  
   
 <a name="updatepanel_usage"></a>   
 ## <a name="updatepanel-usage"></a>UpdatePanel の使用状況  
- 複数を使用する<xref:System.Web.UI.UpdatePanel>コントロール ページの複数のリージョンを個別に更新します。 ときに 1 つまたは複数を含むページ<xref:System.Web.UI.UpdatePanel>コントロールが最初に表示されたすべての内容をすべて<xref:System.Web.UI.UpdatePanel>コントロールが描画され、ブラウザーに送信します。 以降の非同期ポストバックでは、それぞれのコンテンツ<xref:System.Web.UI.UpdatePanel>パネルの設定や個別のパネルのクライアントまたはサーバーのロジックに基づいて、コントロールを更新しない可能性があります。  
+ 複数<xref:System.Web.UI.UpdatePanel>のコントロールを使用して、複数のページ領域を個別に更新できます。 1つ<xref:System.Web.UI.UpdatePanel>以上のコントロールを含むページが最初に表示されると、すべて<xref:System.Web.UI.UpdatePanel>のコントロールのすべてのコンテンツがレンダリングされ、ブラウザーに送信されます。 後続の非同期ポストバックでは、各<xref:System.Web.UI.UpdatePanel>コントロールのコンテンツが、パネルの設定、および個々のパネルのクライアントまたはサーバーのロジックに応じて更新されない場合があります。  
   
- 使用することも<xref:System.Web.UI.UpdatePanel>次のコントロール。
+ 次のコントロールを<xref:System.Web.UI.UpdatePanel>使用することもできます。
   
--   でユーザーを制御します。  
+-   ユーザーコントロールで。  
   
--   マスターおよびコンテンツのページ。  
+-   マスターページとコンテンツページ。  
   
--   その他の内部で入れ子になった<xref:System.Web.UI.UpdatePanel>コントロール。  
+-   他の<xref:System.Web.UI.UpdatePanel>コントロール内で入れ子になっています。  
   
--   内部テンプレートなどのコントロール、<xref:System.Web.UI.WebControls.GridView>または<xref:System.Web.UI.WebControls.Repeater>コントロール。  
+-   コントロールや<xref:System.Web.UI.WebControls.GridView> <xref:System.Web.UI.WebControls.Repeater>コントロールなど、テンプレート化されたコントロール内。  
   
- <xref:System.Web.UI.UpdatePanel> 宣言またはプログラムによっては、コントロールを追加することができます。  
+ <xref:System.Web.UI.UpdatePanel>コントロールは、宣言またはプログラムによって追加できます。  
   
- 追加することができます、<xref:System.Web.UI.UpdatePanel>をプログラムによって、制御が、プログラムでトリガーを追加することはできません。 トリガーのような動作を作成するには、非同期ポストバック コントロールとして、ページ上のコントロールを登録できます。 呼び出すことによって、これを行う、<xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A>のメソッド、<xref:System.Web.UI.ScriptManager>コントロール。 非同期ポストバックへの応答と、ハンドラーの呼び出しを実行しているイベント ハンドラーを作成し、<xref:System.Web.UI.UpdatePanel.Update%2A>のメソッド、<xref:System.Web.UI.UpdatePanel>コントロール。  
+ プログラムを使用し<xref:System.Web.UI.UpdatePanel>てコントロールを追加することはできますが、プログラムによってトリガーを追加することはできません。 トリガーに似た動作を作成するには、ページ上のコントロールを非同期ポストバックコントロールとして登録します。 これを行うには、 <xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A> <xref:System.Web.UI.ScriptManager>コントロールのメソッドを呼び出します。 その後、非同期ポストバックに応答して実行されるイベントハンドラーを作成し、ハンドラーで<xref:System.Web.UI.UpdatePanel.Update%2A> <xref:System.Web.UI.UpdatePanel>コントロールのメソッドを呼び出すことができます。  
   
 <a name="applying_styles"></a>   
 ## <a name="applying-styles"></a>スタイルの適用  
- <xref:System.Web.UI.UpdatePanel>コントロールは、expando 属性を使用できます。 これにより、コントロールをレンダリングする HTML 要素の CSS クラスを設定できます。 たとえば、次の例に示すようにマークアップを作成します。  
+ コントロール<xref:System.Web.UI.UpdatePanel>は expando 属性を受け入れます。 これにより、コントロールが表示する HTML 要素の CSS クラスを設定できます。 たとえば、次の例に示すようにマークアップを作成できます。  
   
 ```  
 <asp:UpdatePanel runat="server" class="myStyle">  
 </asp:UpdatePanel>   
 ```  
   
- 前の例のマークアップ HTML を表示、次のようなページの実行時。  
+ 前の例のマークアップでは、ページの実行時に次のような HTML がレンダリングされます。  
   
 ```  
 <div id="ctl00_MainContent_UpdatePanel1" class="MyStyle">  
@@ -118,7 +118,7 @@
 ```  
   
 <a name="declarative_syntax"></a>   
-## <a name="declarative-syntax"></a>宣言構文  
+## <a name="declarative-syntax"></a>宣言型の構文  
   
 ```  
 <asp:UpdatePanel  
@@ -156,27 +156,27 @@
    
   
 ## Examples  
- 次の例では、さまざまな使用、<xref:System.Web.UI.UpdatePanel>コントロール。  
+ 次の例は、 <xref:System.Web.UI.UpdatePanel>コントロールのさまざまな用途を示しています。  
   
  **UpdatePanel コントロール内のコントロール**  
   
- 次の例では、内部のコントロールを配置する方法を示しています、<xref:System.Web.UI.UpdatePanel>サーバーに投稿すると、画面のちらつきを軽減するコントロール。 この例で、<xref:System.Web.UI.WebControls.Calendar>と<xref:System.Web.UI.WebControls.DropDownList>コントロール内にある、<xref:System.Web.UI.UpdatePanel>コントロール。 既定で、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティは<xref:System.Web.UI.UpdatePanelUpdateMode.Always>と<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティは`true`します。 そのため、パネルの子コントロールには、非同期ポストバックが発生します。  
+ 次の例は、コントロール内<xref:System.Web.UI.UpdatePanel>にコントロールを配置して、サーバーへのポスト時に画面のちらつきを軽減する方法を示しています。 この例<xref:System.Web.UI.WebControls.Calendar> <xref:System.Web.UI.UpdatePanel>では、コントロールとコントロールがコントロール内にあります。<xref:System.Web.UI.WebControls.DropDownList> 既定<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>では、プロパティは<xref:System.Web.UI.UpdatePanelUpdateMode.Always> <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>であり、プロパティ`true`はです。 したがって、パネルの子コントロールは非同期ポストバックを発生させます。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel#1](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel/CS/UpdatePanelExample1CS.aspx#1)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel#1](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel/VB/UpdatePanelExample1VB.aspx#1)]  
   
- **UpdatePanel コントロールにマスター/詳細シナリオ**  
+ **UpdatePanel コントロールを使用したマスター/詳細シナリオ**  
   
- 次の例では、<xref:System.Web.UI.UpdatePanel>注文と、Northwind データベースから注文の詳細を表示するマスター/詳細シナリオでコントロールを使用します。 1 つ<xref:System.Web.UI.UpdatePanel>コントロールが含まれる、<xref:System.Web.UI.WebControls.GridView>注文の一覧を表示するコントロール。 1 秒あたり<xref:System.Web.UI.UpdatePanel>コントロールが含まれる、 <xref:System.Web.UI.WebControls.DetailsView> 1 つの注文の詳細を表示するコントロール。 最初のテーブルから注文を選択するときに、2 番目のテーブルに注文の詳細が表示されます。 2 番目のテーブルは、最初のテーブルの選択内容に基づいて、非同期的に更新されます。 注文の概要テーブルで並べ替えとページング操作には、部分的な更新プログラムもあります。  
+ 次の例では、 <xref:System.Web.UI.UpdatePanel> Northwind データベースの注文と注文の詳細を表示するマスター/詳細シナリオで、コントロールを使用します。 1 <xref:System.Web.UI.UpdatePanel>つのコントロール<xref:System.Web.UI.WebControls.GridView>には、注文の一覧を表示するコントロールが含まれています。 2つ<xref:System.Web.UI.UpdatePanel>目のコントロール<xref:System.Web.UI.WebControls.DetailsView>には、1つの注文の詳細を表示するコントロールが含まれています。 最初のテーブルから注文を選択すると、その注文の詳細が2番目のテーブルに表示されます。 2番目のテーブルは、最初のテーブルの選択に基づいて非同期的に更新されます。 Orders 概要テーブルの並べ替え操作とページング操作でも、部分的な更新が発生します。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel#2](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel/CS/UpdatePanelExample2CS.aspx#2)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel#2](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel/VB/UpdatePanelExample2VB.aspx#2)]  
   
- 配置した場合、<xref:System.Web.UI.WebControls.GridView>内の制御、<xref:System.Web.UI.UpdatePanel>コントロール、設定、<xref:System.Web.UI.WebControls.GridView>コントロールの<xref:System.Web.UI.WebControls.GridView.EnableSortingAndPagingCallbacks%2A>プロパティを`true`はサポートされていません。 ただし、ため、<xref:System.Web.UI.UpdatePanel>コントロールがサポートする任意のポストバックを変更する、非同期ポストバック、<xref:System.Web.UI.WebControls.GridView>内で制御、<xref:System.Web.UI.UpdatePanel>コントロールが並べ替えとページングのコールバックと同じ動作が発生します。  
+ コントロールを<xref:System.Web.UI.WebControls.GridView> <xref:System.Web.UI.UpdatePanel>コントロール内に配置した場合、コントロール<xref:System.Web.UI.WebControls.GridView>の<xref:System.Web.UI.WebControls.GridView.EnableSortingAndPagingCallbacks%2A>プロパティをに`true`設定することはできません。 ただし、コントロールで<xref:System.Web.UI.UpdatePanel>は非同期ポストバックがサポートされている<xref:System.Web.UI.WebControls.GridView>ため、コントロール<xref:System.Web.UI.UpdatePanel>内のコントロールを変更するポストバックでは、並べ替えとページングコールバックと同じ動作が発生します。  
   
- **テンプレートで、UpdatePanel コントロールの使用**  
+ **テンプレートでの UpdatePanel コントロールの使用**  
   
- 次の例では、<xref:System.Web.UI.UpdatePanel>の項目テンプレートにコントロールが使用される、<xref:System.Web.UI.WebControls.GridView>コントロール。 <xref:System.Web.UI.UpdatePanel> 各データ行のコントロールが自動的に生成されます。 各行の<xref:System.Web.UI.UpdatePanel>コントロールが含まれています、<xref:System.Web.UI.WebControls.Label>その行に、アイテムの数量を表示するコントロールと<xref:System.Web.UI.WebControls.Button>減少し、数量を増やすコントロール。  
+ 次の例では、 <xref:System.Web.UI.UpdatePanel>コントロール<xref:System.Web.UI.WebControls.GridView>の項目テンプレートでコントロールが使用されています。 <xref:System.Web.UI.UpdatePanel>各データ行のコントロールは自動的に生成されます。 各行の<xref:System.Web.UI.UpdatePanel>コントロールには<xref:System.Web.UI.WebControls.Label> 、その行の項目の数量を表示するコントロールと<xref:System.Web.UI.WebControls.Button> 、数量を減らすためのコントロールが含まれています。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel#3](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel/CS/UpdatePanelExample3CS.aspx#3)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel#3](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel/VB/UpdatePanelExample3VB.aspx#3)]  
@@ -184,8 +184,8 @@
  ]]></format>
     </remarks>
     <altmember cref="T:System.Web.UI.ScriptManager" />
-    <related type="Article" href="https://msdn.microsoft.com/library/29a2265d-9674-4c19-b70e-e5560ee9689a">UpdatePanel のテクノロジの概要</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/b0156068-0d33-48e4-80fe-9ef76670ed26">Scriptmanager コントロールのテクノロジの概要</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/29a2265d-9674-4c19-b70e-e5560ee9689a">UpdatePanel テクノロジの概要</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/b0156068-0d33-48e4-80fe-9ef76670ed26">ScriptManager テクノロジの概要</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -207,12 +207,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しいインスタンスを初期化するためにこのコンス トラクターを使用して、<xref:System.Web.UI.UpdatePanel>クラス。 動的に追加する、<xref:System.Web.UI.UpdatePanel>ページにコントロールを作成する新しい<xref:System.Web.UI.UpdatePanel>インスタンスし、インスタンスのによって公開される、コントロール オブジェクトに子コントロールを追加<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティ。  
+ このコンストラクターを使用して、 <xref:System.Web.UI.UpdatePanel>クラスの新しいインスタンスを初期化します。 <xref:System.Web.UI.UpdatePanel>コントロールをページに動的に追加するには、新しい<xref:System.Web.UI.UpdatePanel>インスタンスを作成し、そのインスタンスの<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティによって公開されるコントロールオブジェクトに子コントロールを追加します。  
   
    
   
 ## Examples  
- 次の例は、動的に作成する方法を示します、<xref:System.Web.UI.UpdatePanel>を制御し、ページに追加します。 内で、ボタンをクリックすると、<xref:System.Web.UI.UpdatePanel>コントロール、メッセージは、日付と時刻に更新します。 子コントロールを使用して、追加、<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティ。  
+ 次の例は、 <xref:System.Web.UI.UpdatePanel>コントロールを動的に作成してページに追加する方法を示しています。 <xref:System.Web.UI.UpdatePanel>コントロール内のボタンをクリックすると、メッセージが日付と時刻で更新されます。 子コントロールは、 <xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティを使用して追加されます。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel.Constructor#1](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.Constructor/CS/UpdatePanelConstructorCS.aspx#1)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel.Constructor#1](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.Constructor/VB/UpdatePanelConstructorVB.aspx#1)]  
@@ -249,13 +249,13 @@
         <ReturnType>System.Web.UI.AttributeCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>カスケード スタイル シート (CSS) の属性のコレクションを取得、<see cref="T:System.Web.UI.UpdatePanel" />コントロール。</summary>
-        <value>属性コレクションにスタイル ルールを CSS の名前。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールのカスケード スタイル シート (CSS: Cascading Style Sheet) 属性コレクションを取得します。</summary>
+        <value>属性コレクション内の CSS スタイル ルールの名前。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.Attributes%2A>プロパティには、囲んでいるで使用できる CSS スタイル属性のコレクションが含まれています。`div`の要素、<xref:System.Web.UI.UpdatePanel>コントロール。  
+ プロパティ<xref:System.Web.UI.UpdatePanel.Attributes%2A>は、 <xref:System.Web.UI.UpdatePanel>コントロールの外側`div`の要素で使用できる CSS スタイル属性のコレクションを格納します。  
   
  ]]></format>
         </remarks>
@@ -292,18 +292,18 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定の直接の子からポストバックを制御するかどうかを示す値を<see cref="T:System.Web.UI.UpdatePanel" />コントロール パネルのコンテンツを更新します。</summary>
-        <value><see langword="true" /> 直接の子からのポストバック コントロールのかどうか、<see cref="T:System.Web.UI.UpdatePanel" />コントロール更新パネルのコンテンツ。 それ以外<see langword="false" />します。 既定値は <see langword="true" /> です。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの直下にある子コントロールから発生したポストバックにより、パネルの内容が更新されるかどうかを示す値を取得または設定します。</summary>
+        <value><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの直下にある子コントロールから発生したポストバックにより、パネルの内容が更新される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="true" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定、<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティを`true`の直接の子コントロールからポストバックする場合、<xref:System.Web.UI.UpdatePanel>コントロール パネルのコンテンツの更新が発生します。 子コントロールに入れ子になった<xref:System.Web.UI.UpdatePanel>コントロールでは、親の更新プログラムは発生しません<xref:System.Web.UI.UpdatePanel>を呼び出さない限り、コントロールがコンテンツの<xref:System.Web.UI.UpdatePanel.Update%2A>メソッド明示的に子コントロールをトリガーとして定義することもできます。  
+ コントロールの`true` <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A> 直接の子コントロールからのポストバックがパネルのコンテンツを更新するようにする場合は、プロパティをに設定します。<xref:System.Web.UI.UpdatePanel> 入れ子になっ<xref:System.Web.UI.UpdatePanel>たコントロールの子コントロールは、明示的に<xref:System.Web.UI.UpdatePanel>メソッドを<xref:System.Web.UI.UpdatePanel.Update%2A>呼び出すか、または子コントロールをトリガーとして定義する場合を除き、親コントロールのコンテンツを更新しません。  
   
 > [!NOTE]
->  ときに、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelUpdateMode.Always>と<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティに設定されて`false`、<xref:System.InvalidOperationException>中に例外がスローされた、<xref:System.Web.UI.UpdatePanel.OnPreRender%2A>メソッド。 このプロパティの組み合わせは許可されていません、<xref:System.Web.UI.UpdatePanel>コントロール。  
+>  <xref:System.Web.UI.UpdatePanelUpdateMode.Always> `false` <xref:System.InvalidOperationException> <xref:System.Web.UI.UpdatePanel.OnPreRender%2A>プロパティがに<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>設定され、プロパティがに設定されている場合、メソッドの実行中に例外がスローされます。 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A> このプロパティの組み合わせは<xref:System.Web.UI.UpdatePanel>コントロールでは許可されていません。  
   
- シナリオを設定することがあります<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>に`false`が 2 つある場合は、<xref:System.Web.UI.UpdatePanel>コントロールし、2 番目のパネルのコンテンツの更新が、独自のコンテンツを更新するパネルを最初からポストバックします。 たとえば、最初のパネルを購入する製品の一覧があり、2 番目のパネルがショッピング カートにあります。  
+ をに<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A> `false`設定するシナリオは、2つ<xref:System.Web.UI.UpdatePanel>のコントロールがあり、最初のパネルからポストバックを使用して2番目のパネルのコンテンツを更新し、それ自体のコンテンツを更新しない場合です。 たとえば、最初のパネルが購入する製品の一覧であり、2番目のパネルがショッピングカートであることがあります。  
   
  ]]></format>
         </remarks>
@@ -342,25 +342,25 @@
         <ReturnType>System.Web.UI.ITemplate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定の内容を定義するテンプレート、<see cref="T:System.Web.UI.UpdatePanel" />コントロール。</summary>
-        <value><see cref="T:System.Web.UI.ITemplate" />インスタンスの内容を定義する、<see cref="T:System.Web.UI.UpdatePanel" />コントロール。 既定値は <see langword="null" /> です。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールのコンテンツを定義するテンプレートを取得または設定します。</summary>
+        <value><see cref="T:System.Web.UI.ITemplate" /> コントロールのコンテンツを定義する <see cref="T:System.Web.UI.UpdatePanel" /> インスタンス。 既定値は、<see langword="null" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.ContentTemplate%2A>プロパティには内に表示されるコンテンツが含まれています、<xref:System.Web.UI.UpdatePanel>表示されたときを制御します。 宣言またはプログラムによっては、テンプレートの内容を作成できます。 コンテンツ テンプレート、<xref:System.Web.UI.UpdatePanel>コントロールが単一インスタンス テンプレート。 そのため、含まれるコントロールのプロパティでアクセスできる直接ページを使用せず、<xref:System.Web.UI.Page.FindControl%2A>メソッド。 詳細については、次を参照してください。、<xref:System.Web.UI.TemplateInstanceAttribute>クラスの概要。  
+ プロパティ<xref:System.Web.UI.UpdatePanel.ContentTemplate%2A>は、 <xref:System.Web.UI.UpdatePanel>コントロールがレンダリングされるときに、コントロール内に表示されるコンテンツを格納します。 テンプレートのコンテンツは、宣言によって、またはプログラムによって作成できます。 <xref:System.Web.UI.UpdatePanel>コントロールのコンテンツテンプレートは、単一インスタンスのテンプレートです。 したがって、 <xref:System.Web.UI.Page.FindControl%2A>メソッドを使用しなくても、そのコントロールに含まれるコントロールのプロパティに直接アクセスできます。 詳細については、 <xref:System.Web.UI.TemplateInstanceAttribute>クラスの概要に関するトピックを参照してください。  
   
- 項目を追加する、<xref:System.Web.UI.UpdatePanel>宣言的にコントロールを追加、`<ContentTemplate>`要素開始タグと終了タグの間、<xref:System.Web.UI.UpdatePanel>コントロール。 内で、`<ContentTemplate>`要素タグでは、その他のコントロールと HTML 要素を宣言します。  
+ <xref:System.Web.UI.UpdatePanel>コントロールに項目を宣言によって追加する`<ContentTemplate>`には、 <xref:System.Web.UI.UpdatePanel>コントロールの開始タグと終了タグの間に要素を追加します。 `<ContentTemplate>`要素タグ内で、他のコントロールと HTML 要素を宣言します。  
   
- 項目を追加する、<xref:System.Web.UI.UpdatePanel>動的にコントロールを使用して、<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティを実装するカスタム テンプレートを作成することがなく、子コントロールを追加することができます、<xref:System.Web.UI.ITemplate>インターフェイス。  
+ <xref:System.Web.UI.UpdatePanel>コントロールに項目を動的に追加するには<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A> 、プロパティを使用します。これにより、 <xref:System.Web.UI.ITemplate>インターフェイスを実装するカスタムテンプレートを作成しなくても、子コントロールを追加できます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Web.UI.UpdatePanel.ContentTemplate" />のプロパティ、<see cref="T:System.Web.UI.UpdatePanel" />テンプレートのインスタンスを作成した後、またはコンテンツ テンプレート コンテナーの作成後にコントロールを設定します。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Web.UI.UpdatePanel.ContentTemplate" /> コントロールの <see cref="T:System.Web.UI.UpdatePanel" /> プロパティは、テンプレートのインスタンスが作成された後、またはコンテンツ テンプレート コンテナーが作成された後に設定されます。</exception>
         <altmember cref="P:System.Web.UI.UpdatePanel.ContentTemplateContainer" />
         <altmember cref="T:System.Web.UI.TemplateInstanceAttribute" />
         <altmember cref="T:System.Web.UI.ITemplate" />
-        <related type="Article" href="https://msdn.microsoft.com/library/f769d290-fd04-4084-85fc-4ea30dd2e8ae">ASP.NET Web サーバー コントロールのテンプレート</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/f769d290-fd04-4084-85fc-4ea30dd2e8ae">ASP.NET Web サーバーコントロールテンプレート</related>
       </Docs>
     </Member>
     <Member MemberName="ContentTemplateContainer">
@@ -385,18 +385,18 @@
         <ReturnType>System.Web.UI.Control</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>プログラムで子コントロールを追加することができます、コントロール オブジェクトを取得します。</summary>
-        <value>A<see cref="T:System.Web.UI.Control" />の内容を定義するオブジェクト、<see cref="T:System.Web.UI.UpdatePanel" />コントロール。</value>
+        <summary>子コントロールをプログラムにより追加可能なコントロール オブジェクトを取得します。</summary>
+        <value><see cref="T:System.Web.UI.Control" /> コントロールの内容を定義する <see cref="T:System.Web.UI.UpdatePanel" /> オブジェクト。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティでは、プログラムで子コントロールを追加することができます、<xref:System.Web.UI.UpdatePanel>コントロールから継承するカスタム テンプレートを定義することがなく、<xref:System.Web.UI.ITemplate>インターフェイス。 コンテンツを追加する場合、<xref:System.Web.UI.UpdatePanel>宣言によって制御や、デザイナーでは、コンテンツを追加する必要があります、<xref:System.Web.UI.UpdatePanel.ContentTemplate%2A>プロパティを使用して、`<ContentTemplate>`要素。  
+ プロパティを使用すると、 <xref:System.Web.UI.ITemplate>インターフェイスから継承するカスタム<xref:System.Web.UI.UpdatePanel>テンプレートを定義しなくても、プログラムによって子コントロールをコントロールに追加できます。 <xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A> <xref:System.Web.UI.UpdatePanel>コントロールにコンテンツを宣言によって、またはデザイナーを使用して追加する場合は<xref:System.Web.UI.UpdatePanel.ContentTemplate%2A> 、 `<ContentTemplate>`要素を使用してプロパティにコンテンツを追加する必要があります。  
   
    
   
 ## Examples  
- 次の例では、プログラムで指定する方法を示しています、<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>のプロパティ、<xref:System.Web.UI.UpdatePanel>コントロール。 <xref:System.Web.UI.WebControls.Label.Text%2A>のプロパティを<xref:System.Web.UI.WebControls.Label>場合、コントロールが設定`Button1`をクリックします。  
+ 次の例は、 <xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A> <xref:System.Web.UI.UpdatePanel>コントロールのプロパティをプログラムで指定する方法を示しています。 を<xref:System.Web.UI.WebControls.Label.Text%2A>クリックすると<xref:System.Web.UI.WebControls.Label> `Button1` 、コントロールのプロパティが設定されます。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel.Constructor#1](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.Constructor/CS/UpdatePanelConstructorCS.aspx#1)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel.Constructor#1](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.Constructor/VB/UpdatePanelConstructorVB.aspx#1)]  
@@ -429,11 +429,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.Controls%2A>ベースからプロパティをオーバーライド<xref:System.Web.UI.Control>クラスし、追加の派生を防ぐためにシールします。 コントロールを追加する、<xref:System.Web.UI.UpdatePanel>宣言的にコントロールを作成、`<ContentTemplate>`内の要素、<xref:System.Web.UI.UpdatePanel>コントロール マークアップ。 コントロールを追加する、<xref:System.Web.UI.UpdatePanel>プログラムでコントロールを使用して、<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティ。  
+ プロパティは、追加の派生を<xref:System.Web.UI.Control>防ぐために、基底クラスと sealed からオーバーライドされます。 <xref:System.Web.UI.UpdatePanel.Controls%2A> コントロールを宣言によっ<xref:System.Web.UI.UpdatePanel>てコントロールに追加する`<ContentTemplate>`には、 <xref:System.Web.UI.UpdatePanel>コントロールマークアップ内に要素を作成します。 コントロールをプログラムによっ<xref:System.Web.UI.UpdatePanel>てコントロールに追加する<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>には、プロパティを使用します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Web.UI.ControlCollection.Add(System.Web.UI.Control)" />、 <see cref="M:System.Web.UI.ControlCollection.AddAt(System.Int32,System.Web.UI.Control)" />、 <see cref="M:System.Web.UI.ControlCollection.Clear" />、 <see cref="M:System.Web.UI.ControlCollection.Remove(System.Web.UI.Control)" />、または<see cref="M:System.Web.UI.ControlCollection.RemoveAt(System.Int32)" />のメソッド、<see cref="T:System.Web.UI.ControlCollection" />クラスが呼び出されました。 内容を変更する、<see cref="T:System.Web.UI.UpdatePanel" />の子コントロールの変更、制御、<see cref="P:System.Web.UI.UpdatePanel.ContentTemplateContainer" />プロパティ。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="M:System.Web.UI.ControlCollection.Add(System.Web.UI.Control)" /> クラスの <see cref="M:System.Web.UI.ControlCollection.AddAt(System.Int32,System.Web.UI.Control)" />、<see cref="M:System.Web.UI.ControlCollection.Clear" />, <see cref="M:System.Web.UI.ControlCollection.Remove(System.Web.UI.Control)" />、<see cref="M:System.Web.UI.ControlCollection.RemoveAt(System.Int32)" />、または <see cref="T:System.Web.UI.ControlCollection" /> の各メソッドが呼び出されました。 <see cref="T:System.Web.UI.UpdatePanel" /> コントロールの内容を変更するには、<see cref="P:System.Web.UI.UpdatePanel.ContentTemplateContainer" /> プロパティの子コントロールを変更します。</exception>
         <altmember cref="P:System.Web.UI.UpdatePanel.ContentTemplateContainer" />
       </Docs>
     </Member>
@@ -455,25 +455,25 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>作成、<see cref="T:System.Web.UI.Control" />を定義する子コントロールのコンテナーとして機能するオブジェクト、<see cref="T:System.Web.UI.UpdatePanel" />コントロールの内容。</summary>
-        <returns>A<see cref="T:System.Web.UI.Control" />のコンテナー、<see cref="T:System.Web.UI.UpdatePanel" />コントロールの内容。</returns>
+        <summary><see cref="T:System.Web.UI.Control" /> コントロールの内容を定義する子コントロールのコンテナーとして機能する <see cref="T:System.Web.UI.UpdatePanel" /> オブジェクトを作成します。</summary>
+        <returns><see cref="T:System.Web.UI.Control" /> コントロールの内容の <see cref="T:System.Web.UI.UpdatePanel" /> コンテナー。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、使用するための拡張を希望するコントロールの開発者によって、<xref:System.Web.UI.UpdatePanel>コントロール。 たとえば、派生クラスで行うことができますのコンテナーとして機能する別のルート コントロール、<xref:System.Web.UI.UpdatePanel>コントロールの内容。 既定の実装を返します、<xref:System.Web.UI.Control>オブジェクト。  
+ このメソッドは、 <xref:System.Web.UI.UpdatePanel>コントロールを拡張する必要があるコントロールの開発者が使用するためのものです。 たとえば、派生クラスでは、 <xref:System.Web.UI.UpdatePanel>コントロールのコンテンツのコンテナーとして機能する別のルートコントロールを指定できます。 既定の実装では<xref:System.Web.UI.Control> 、オブジェクトが返されます。  
   
    
   
 ## Examples  
- 次の例は、オーバーライドする方法を示します、<xref:System.Web.UI.UpdatePanel.CreateContentTemplateContainer%2A>カスタム メソッド<xref:System.Web.UI.UpdatePanel>常に表示するためにコントロール、`<fieldset>`と`<legend>`パネルのコンテンツの要素。 カスタム<xref:System.Web.UI.UpdatePanel>コントロールという名前のパブリック プロパティを定義する`GroupingText`は文字列リテラル内で、`<legend>`要素。  
+ 次の<xref:System.Web.UI.UpdatePanel.CreateContentTemplateContainer%2A>例は、カスタム<xref:System.Web.UI.UpdatePanel> `<fieldset>`コントロールのメソッドをオーバーライドして、パネルのコンテンツの`<legend>`要素と要素を常にレンダリングする方法を示しています。 カスタム<xref:System.Web.UI.UpdatePanel>コントロールは、要素内の`<legend>`文字列`GroupingText`リテラルであるという名前のパブリックプロパティを定義します。  
   
- カスタム<xref:System.Web.UI.UpdatePanel>という名前のコントロール`CustomUpdatePanel`から派生した<xref:System.Web.UI.UpdatePanel>をオーバーライドし、<xref:System.Web.UI.UpdatePanel.CreateContentTemplateContainer%2A>メソッド。 配置、`CustomUpdatePanel`クラスの Web サイトの App_Code フォルダー内のソース コード。  
+ という<xref:System.Web.UI.UpdatePanel>名前`CustomUpdatePanel`のカスタムコントロール<xref:System.Web.UI.UpdatePanel>は、から<xref:System.Web.UI.UpdatePanel.CreateContentTemplateContainer%2A>派生し、メソッドをオーバーライドします。 クラスの`CustomUpdatePanel`ソースコードを Web サイトの App_Code フォルダーに配置します。  
   
  [!code-csharp[System.Web.UI.UpdatePanel.CreateContentTemplateContainer#2](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.CreateContentTemplateContainer/CS/App_Code/CustomUpdatePanel.cs#2)]
  [!code-vb[System.Web.UI.UpdatePanel.CreateContentTemplateContainer#2](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.CreateContentTemplateContainer/VB/App_Code/CustomUpdatePanel.vb#2)]  
   
- カスタム<xref:System.Web.UI.UpdatePanel>コントロール、ページは使用と同様、<xref:System.Web.UI.UpdatePanel>コントロールします。 次の例では、カスタムを含むページ<xref:System.Web.UI.UpdatePanel>コントロール。  
+ <xref:System.Web.UI.UpdatePanel>コントロールと<xref:System.Web.UI.UpdatePanel>同じように、カスタムコントロールがページで使用されます。 次の例は、カスタム<xref:System.Web.UI.UpdatePanel>コントロールを含むページを示しています。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel.CreateContentTemplateContainer#1](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.CreateContentTemplateContainer/CS/UpdatePanelCreateContentTemplateContainerCS.aspx#1)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel.CreateContentTemplateContainer#1](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.CreateContentTemplateContainer/VB/UpdatePanelCreateContentTemplateContainerVB.aspx#1)]  
@@ -503,14 +503,14 @@
       <Parameters />
       <Docs>
         <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールに含まれているすべてのコントロールのコレクションを返します。</summary>
-        <returns>A<see cref="T:System.Web.UI.ControlCollection" />オブジェクトの内容を定義するすべてのコントロールで構成される、<see cref="T:System.Web.UI.UpdatePanel" />コントロール。</returns>
+        <returns><see cref="T:System.Web.UI.ControlCollection" /> コントロールの内容を定義するすべてのコントロールで構成される <see cref="T:System.Web.UI.UpdatePanel" /> オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.CreateControlCollection%2A>メソッドは、コントロール開発者によって使用されます。  
+ メソッド<xref:System.Web.UI.UpdatePanel.CreateControlCollection%2A>は、コントロールの開発者によって使用されます。  
   
- 継承するクラスに表示されるため、このメソッドが保護され、シール、<xref:System.Web.UI.UpdatePanel>クラスが、これをオーバーライドすることはできません。 このメソッドのオーバーライドは基本実装を返す特殊な<xref:System.Web.UI.ControlCollection>をスローするオブジェクト、<xref:System.InvalidOperationException>ときに、 <xref:System.Web.UI.ControlCollection.Add%2A>、 <xref:System.Web.UI.ControlCollection.AddAt%2A>、 <xref:System.Web.UI.ControlCollection.Clear%2A>、 <xref:System.Web.UI.ControlCollection.Remove%2A>、または<xref:System.Web.UI.ControlCollection.RemoveAt%2A>のメソッド、 <xref:System.Web.UI.ControlCollection>クラスが呼び出されます。 内容を変更する、<xref:System.Web.UI.UpdatePanel>の子コントロールの変更、制御、<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A>プロパティ。  
+ このメソッドはプロテクトおよびシールされているため、 <xref:System.Web.UI.UpdatePanel>クラスを継承するクラスからは参照できますが、オーバーライドすることはできません。 このメソッドは、基本実装をオーバーライドして<xref:System.Web.UI.ControlCollection> 、の<xref:System.Web.UI.ControlCollection.Remove%2A> <xref:System.InvalidOperationException> <xref:System.Web.UI.ControlCollection.Clear%2A> <xref:System.Web.UI.ControlCollection.RemoveAt%2A> <xref:System.Web.UI.ControlCollection.AddAt%2A> 、、<xref:System.Web.UI.ControlCollection.Add%2A>、、またはの各メソッドで、をスローする特殊なオブジェクトを返します。<xref:System.Web.UI.ControlCollection>クラスが呼び出されます。 <xref:System.Web.UI.UpdatePanel> コントロールの内容を変更するには、<xref:System.Web.UI.UpdatePanel.ContentTemplateContainer%2A> プロパティの子コントロールを変更します。  
   
  ]]></format>
         </remarks>
@@ -535,16 +535,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>初期化します、<see cref="T:System.Web.UI.UpdatePanel" />部分ページ レンダリングが有効になっている場合は、トリガーのコレクションを制御します。</summary>
+        <summary>部分ページ レンダリングが有効な場合、<see cref="T:System.Web.UI.UpdatePanel" /> コントロール トリガー コレクションを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 部分ページ レンダリングが有効でない場合、トリガーで定義されている、<xref:System.Web.UI.UpdatePanel.Triggers%2A>効果がないために、プロパティが初期化されていません。 <xref:System.Web.UI.ScriptManager.EnablePartialRendering%2A>のプロパティ、<xref:System.Web.UI.ScriptManager>コントロールを取得または部分ページ レンダリングが有効になっているかどうかを示す値を設定します。 <xref:System.Web.UI.ScriptManager.SupportsPartialRendering%2A>のプロパティ、<xref:System.Web.UI.ScriptManager>コントロールを取得または部分ページ レンダリングがサポートされているかどうかを示す値を設定します。  
+ 部分ページレンダリングが有効になっていない場合、 <xref:System.Web.UI.UpdatePanel.Triggers%2A>プロパティで定義されているトリガーは動作しないため、初期化されません。 コントロールのプロパティは<xref:System.Web.UI.ScriptManager.EnablePartialRendering%2A> 、部分ページレンダリングが有効かどうかを示す値を取得または設定します。 <xref:System.Web.UI.ScriptManager> コントロールのプロパティは、部分ページレンダリングがサポートされているかどうかを示す値を取得または設定します。 <xref:System.Web.UI.ScriptManager.SupportsPartialRendering%2A> <xref:System.Web.UI.ScriptManager>  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>オーバーライドする場合、<see cref="M:System.Web.UI.UpdatePanel.Initialize" />メソッド、部分ページ レンダリングが有効になっている場合にトリガーが登録されているために、基底クラスを呼び出してください。</para></block>
+        <block subset="none" type="overrides"><para><see cref="M:System.Web.UI.UpdatePanel.Initialize" />メソッドをオーバーライドする場合は、部分ページレンダリングが有効になっている場合にトリガーが登録されるように、基本クラスを必ず呼び出してください。</para></block>
         <altmember cref="P:System.Web.UI.ScriptManager.EnablePartialRendering" />
         <altmember cref="P:System.Web.UI.ScriptManager.SupportsPartialRendering" />
       </Docs>
@@ -574,13 +574,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>示す値を取得するかどうか、<see cref="T:System.Web.UI.UpdatePanel" />コントロールが非同期ポストバックの結果として更新されます。</summary>
-        <value><see langword="true" /> 場合、現在<see cref="T:System.Web.UI.UpdatePanel" />非同期ポストバックの結果として更新された以外の場合、コントロールが表示される<see langword="false" />します。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールが非同期ポストバックの結果として更新されるかどうかを示す値を取得します。</summary>
+        <value>現在の <see cref="T:System.Web.UI.UpdatePanel" /> コントロールが非同期ポストバックの結果として更新される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.IsInPartialRendering%2A>時期を把握したいコントロールの開発者によってプロパティが使用は想定されて、<xref:System.Web.UI.UpdatePanel>コントロールが非同期ポストバックの結果として更新されます。 ページの開発シナ リオで使用して、<xref:System.Web.UI.ScriptManager.IsInAsyncPostBack%2A>非同期ポストバックの結果として、ページを処理するかどうかを決定するプロパティ。  
+ プロパティ<xref:System.Web.UI.UpdatePanel.IsInPartialRendering%2A>は、コントロールが非同期ポストバックの結果として更新さ<xref:System.Web.UI.UpdatePanel>れていることを知りたいコントロール開発者が使用するためのものです。 ページの開発シナリオでは、 <xref:System.Web.UI.ScriptManager.IsInAsyncPostBack%2A>プロパティを使用して、ページが非同期ポストバックの結果として処理されているかどうかを判断します。  
   
  ]]></format>
         </remarks>
@@ -613,15 +613,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel>コントロールの<xref:System.Web.UI.UpdatePanel.ContentTemplate%2A>中にプロパティがインスタンス化、<xref:System.Web.UI.UpdatePanel.OnInit%2A>メソッド。  
+ コントロールの<xref:System.Web.UI.UpdatePanel.ContentTemplate%2A>プロパティは、メソッドの<xref:System.Web.UI.UpdatePanel.OnInit%2A>実行時にインスタンス化されます。 <xref:System.Web.UI.UpdatePanel>  
   
- <xref:System.Web.UI.UpdatePanel.OnInit%2A>の機能を拡張するメソッドがコントロールの開発者によって使用される、<xref:System.Web.UI.UpdatePanel>コントロール。  
+ メソッドは、コントロール<xref:System.Web.UI.UpdatePanel>の機能を拡張するためにコントロールの開発者によって使用されます。 <xref:System.Web.UI.UpdatePanel.OnInit%2A>  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Web.UI.UpdatePanel.ContentTemplate" />プロパティが表示されている場合に定義、<see cref="P:System.Web.UI.UpdatePanel.ContentTemplateContainer" />プロパティが既に作成されています。</exception>
-        <block subset="none" type="overrides"><para>オーバーライドする場合、<see cref="M:System.Web.UI.UpdatePanel.OnInit(System.EventArgs)" />を呼び出して、派生クラスでメソッドが必ず、<see cref="M:System.Web.UI.UpdatePanel.OnInit(System.EventArgs)" />デリゲートを登録するための基本クラスのメソッドがイベントを受け取ることができます。</para></block>
-        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページ ライフ サイクルの概要</related>
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Web.UI.UpdatePanel.ContentTemplate" /> プロパティは、<see cref="P:System.Web.UI.UpdatePanel.ContentTemplateContainer" /> プロパティが既に作成されている場合に定義されます。</exception>
+        <block subset="none" type="overrides"><para>派生クラスの<see cref="M:System.Web.UI.UpdatePanel.OnInit(System.EventArgs)" />メソッドをオーバーライドする場合は、登録されている<see cref="M:System.Web.UI.UpdatePanel.OnInit(System.EventArgs)" />デリゲートがイベントを受け取ることができるように、基本クラスのメソッドを呼び出す必要があります。</para></block>
+        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページのライフサイクルの概要</related>
       </Docs>
     </Member>
     <Member MemberName="OnLoad">
@@ -645,9 +645,9 @@
       </Parameters>
       <Docs>
         <param name="e">イベント データを格納している <see cref="T:System.EventArgs" /> オブジェクト。</param>
-        <summary>発生させる、<see cref="E:System.Web.UI.Control.Load" />イベントを<see cref="T:System.Web.UI.UpdatePanel" />を制御し、呼び出します、<see cref="M:System.Web.UI.UpdatePanel.Initialize" />メソッドが部分ページ レンダリングが有効でない場合。</summary>
+        <summary>部分ページ レンダリングが有効でない場合、<see cref="E:System.Web.UI.Control.Load" /> コントロールの <see cref="T:System.Web.UI.UpdatePanel" /> イベントを発生させ、<see cref="M:System.Web.UI.UpdatePanel.Initialize" /> メソッドを呼び出します。</summary>
         <remarks>To be added.</remarks>
-        <block subset="none" type="overrides"><para>オーバーライドする場合、<see cref="M:System.Web.UI.UpdatePanel.OnLoad(System.EventArgs)" />メソッドでは、基本クラスを呼び出すことを確認するように、<see cref="E:System.Web.UI.Control.Load" />イベントが発生します。</para></block>
+        <block subset="none" type="overrides"><para><see cref="M:System.Web.UI.UpdatePanel.OnLoad(System.EventArgs)" />メソッドをオーバーライドする場合は、 <see cref="E:System.Web.UI.Control.Load" />イベントが発生するように、基本クラスを必ず呼び出してください。</para></block>
         <altmember cref="M:System.Web.UI.UpdatePanel.Initialize" />
         <altmember cref="P:System.Web.UI.ScriptManager.EnablePartialRendering" />
       </Docs>
@@ -678,11 +678,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.OnPreRender%2A>の機能を拡張するメソッドがコントロールの開発者によって使用される、<xref:System.Web.UI.UpdatePanel>コントロール。  
+ メソッドは、コントロール<xref:System.Web.UI.UpdatePanel>の機能を拡張するためにコントロールの開発者によって使用されます。 <xref:System.Web.UI.UpdatePanel.OnPreRender%2A>  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Web.UI.UpdatePanel.ChildrenAsTriggers" />プロパティに設定されて<see langword="false" />、および<see cref="P:System.Web.UI.UpdatePanel.UpdateMode" />プロパティに設定されて<see cref="F:System.Web.UI.UpdatePanelUpdateMode.Always" />します。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="P:System.Web.UI.UpdatePanel.ChildrenAsTriggers" /> プロパティが <see langword="false" /> に設定され、<see cref="P:System.Web.UI.UpdatePanel.UpdateMode" /> プロパティが <see cref="F:System.Web.UI.UpdatePanelUpdateMode.Always" /> に設定されます。</exception>
         <altmember cref="P:System.Web.UI.UpdatePanel.ChildrenAsTriggers" />
         <altmember cref="P:System.Web.UI.UpdatePanel.UpdateMode" />
       </Docs>
@@ -708,16 +708,16 @@
       </Parameters>
       <Docs>
         <param name="e">イベント データを格納する <see cref="T:System.EventArgs" /> オブジェクト。</param>
-        <summary>基本を発生させます。<see cref="E:System.Web.UI.Control.Unload" />イベント。</summary>
+        <summary>基本 <see cref="E:System.Web.UI.Control.Unload" /> イベントを発生させます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.OnUnload%2A>の機能を拡張するメソッドがコントロールの開発者によって使用される、<xref:System.Web.UI.UpdatePanel>コントロール  
+ コントロールの開発者は、この<xref:System.Web.UI.UpdatePanel.OnUnload%2A>メソッドを使用して、コントロールの機能を<xref:System.Web.UI.UpdatePanel>拡張します。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページ ライフ サイクルの概要</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページのライフサイクルの概要</related>
       </Docs>
     </Member>
     <Member MemberName="Render">
@@ -740,19 +740,19 @@
         <Parameter Name="writer" Type="System.Web.UI.HtmlTextWriter" />
       </Parameters>
       <Docs>
-        <param name="writer"><see cref="T:System.Web.UI.HtmlTextWriter" /> HTML コンテンツをレンダリングする出力ストリームを表すオブジェクト。</param>
+        <param name="writer">HTML コンテンツをレンダリングする出力ストリームを表す <see cref="T:System.Web.UI.HtmlTextWriter" /> オブジェクト。</param>
         <summary><see cref="M:System.Web.UI.Control.Render(System.Web.UI.HtmlTextWriter)" /> イベントを発生させます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.Render%2A>の機能を拡張するメソッドがコントロールの開発者によって使用される、<xref:System.Web.UI.UpdatePanel>コントロール。  
+ メソッドは、コントロール<xref:System.Web.UI.UpdatePanel>の機能を拡張するためにコントロールの開発者によって使用されます。 <xref:System.Web.UI.UpdatePanel.Render%2A>  
   
- <xref:System.Web.UI.UpdatePanel.Render%2A>の表示内容を書き込む、<xref:System.Web.UI.UpdatePanel>コントロールが、指定されたを使用してブラウザー<xref:System.Web.UI.HtmlTextWriter>オブジェクト。 オーバーライドする場合、<xref:System.Web.UI.UpdatePanel.Render%2A>を呼び出して、派生クラスでメソッドが必ず、<xref:System.Web.UI.UpdatePanel.Render%2A>ベースのメソッドの子を制御するためのクラス、<xref:System.Web.UI.UpdatePanel>コントロールが表示されます。  
+ メソッド<xref:System.Web.UI.UpdatePanel.Render%2A>は、 <xref:System.Web.UI.UpdatePanel> 指定<xref:System.Web.UI.HtmlTextWriter>されたオブジェクトを使用して、コントロールの描画されたコンテンツをブラウザーに書き込みます。 派生クラスの<xref:System.Web.UI.UpdatePanel.Render%2A>メソッドをオーバーライドする場合は、 <xref:System.Web.UI.UpdatePanel>コントロールの子コントロールが<xref:System.Web.UI.UpdatePanel.Render%2A>レンダリングされるように、基本クラスのメソッドを呼び出す必要があります。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページ ライフ サイクルの概要</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページのライフサイクルの概要</related>
       </Docs>
     </Member>
     <Member MemberName="RenderChildren">
@@ -775,19 +775,19 @@
         <Parameter Name="writer" Type="System.Web.UI.HtmlTextWriter" />
       </Parameters>
       <Docs>
-        <param name="writer"><see cref="T:System.Web.UI.HtmlTextWriter" /> HTML コンテンツをレンダリングする出力ストリームを表すオブジェクト。</param>
+        <param name="writer">HTML コンテンツをレンダリングする出力ストリームを表す <see cref="T:System.Web.UI.HtmlTextWriter" /> オブジェクト。</param>
         <summary><see cref="M:System.Web.UI.UpdatePanel.RenderChildren(System.Web.UI.HtmlTextWriter)" /> イベントを発生させます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.RenderChildren%2A>の機能を拡張するメソッドがコントロールの開発者によって使用される、<xref:System.Web.UI.UpdatePanel>コントロール。  
+ メソッドは、コントロール<xref:System.Web.UI.UpdatePanel>の機能を拡張するためにコントロールの開発者によって使用されます。 <xref:System.Web.UI.UpdatePanel.RenderChildren%2A>  
   
- <xref:System.Web.UI.UpdatePanel.RenderChildren%2A>の表示内容を書き込む、<xref:System.Web.UI.UpdatePanel>コントロールが、指定されたを使用してブラウザー<xref:System.Web.UI.HtmlTextWriter>オブジェクト。 オーバーライドする場合、<xref:System.Web.UI.UpdatePanel.RenderChildren%2A>メソッドは、派生クラスでは必ずを呼び出して、<xref:System.Web.UI.UpdatePanel.RenderChildren%2A>メソッド ベースのクラスに、子コントロールの<xref:System.Web.UI.UpdatePanel>コントロールが表示されます。  
+ メソッド<xref:System.Web.UI.UpdatePanel.RenderChildren%2A>は、 <xref:System.Web.UI.UpdatePanel> 指定<xref:System.Web.UI.HtmlTextWriter>されたオブジェクトを使用して、コントロールの描画されたコンテンツをブラウザーに書き込みます。 派生クラスで<xref:System.Web.UI.UpdatePanel.RenderChildren%2A>メソッドをオーバーライドする場合は、 <xref:System.Web.UI.UpdatePanel>コントロールの子コントロールが<xref:System.Web.UI.UpdatePanel.RenderChildren%2A>レンダリングされるように、基本クラスのメソッドを呼び出す必要があります。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページ ライフ サイクルの概要</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/7949d756-1a79-464e-891f-904b1cfc7991">ASP.NET ページのライフサイクルの概要</related>
       </Docs>
     </Member>
     <Member MemberName="RenderMode">
@@ -818,18 +818,18 @@
         <ReturnType>System.Web.UI.UpdatePanelRenderMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定を示す値かどうか、<see cref="T:System.Web.UI.UpdatePanel" />コントロールのコンテンツが HTML で囲まれた<see langword="&lt;div&gt;" />または<see langword="&lt;span&gt;" />要素。</summary>
-        <value><see cref="T:System.Web.UI.UpdatePanelRenderMode" /> 値のいずれか 1 つ。 既定値は<see cref="F:System.Web.UI.UpdatePanelRenderMode.Block" />パネルの内容は、HTML で囲まれるように<see langword="&lt;div&gt;" />要素。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの内容が、HTML <see langword="&lt;div&gt;" /> 要素または <see langword="&lt;span&gt;" /> 要素のどちらで囲まれているのかを示す値を取得または設定します。</summary>
+        <value><see cref="T:System.Web.UI.UpdatePanelRenderMode" /> 値のいずれか 1 つ。 既定値は、<see cref="F:System.Web.UI.UpdatePanelRenderMode.Block" /> のため、パネルの内容は HTML <see langword="&lt;div&gt;" /> 要素で囲まれています。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、<xref:System.Web.UI.UpdatePanel.RenderMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelRenderMode.Inline>のコンテンツ、<xref:System.Web.UI.UpdatePanel>コントロールが HTML 内で表示される`<span>`要素。 場合、<xref:System.Web.UI.UpdatePanel.RenderMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelRenderMode.Block>、HTML 内でレンダリングされる`<div>`要素。  
+ プロパティが<xref:System.Web.UI.UpdatePanel.RenderMode%2A>に<xref:System.Web.UI.UpdatePanelRenderMode.Inline>設定されている場合は<xref:System.Web.UI.UpdatePanel> 、コントロールの内容が HTML `<span>`要素内に表示されます。 プロパティがに<xref:System.Web.UI.UpdatePanelRenderMode.Block>設定されている場合は、HTML `<div>`要素内に表示されます。 <xref:System.Web.UI.UpdatePanel.RenderMode%2A>  
   
    
   
 ## Examples  
- 次の例は、設定する方法を示します、<xref:System.Web.UI.UpdatePanel.RenderMode%2A>プロパティ宣言します。 <xref:System.Web.UI.UpdatePanel>という名前のコントロール`UpdatePanel1`HTML でレンダリング`<span>`要素。 場合、<xref:System.Web.UI.UpdatePanel.RenderMode%2A>プロパティに設定された<xref:System.Web.UI.UpdatePanelRenderMode.Block>、する方法のため、結果として得られる段落に不整合な表示は、HTML`<div>`要素が表示されます。  
+ 次の例は、プロパティを宣言<xref:System.Web.UI.UpdatePanel.RenderMode%2A>によって設定する方法を示しています。 と<xref:System.Web.UI.UpdatePanel>いう名前`UpdatePanel1`のコントロールは、HTML `<span>`要素でレンダリングされます。 プロパティがに<xref:System.Web.UI.UpdatePanelRenderMode.Block>設定されている場合、HTML `<div>`要素のレンダリング方法により、結果として得られる段落が不整合として表示されます。 <xref:System.Web.UI.UpdatePanel.RenderMode%2A>  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel.RenderMode#1](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.RenderMode/CS/UpdatePanelRenderModeCS.aspx#1)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel.RenderMode#1](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.RenderMode/VB/UpdatePanelRenderModeVB.aspx#1)]  
@@ -856,15 +856,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>示す値を取得するかどうかのコンテンツ、<see cref="T:System.Web.UI.UpdatePanel" />コントロールが更新されます。</summary>
-        <value><see langword="true" /> 場合、<see cref="T:System.Web.UI.UpdatePanel" />コントロールの内容が更新された。 それ以外になります<see langword="false" />します。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの内容が更新されるかどうかを示す値を取得します。</summary>
+        <value><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの内容が更新される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定では、<xref:System.Web.UI.UpdatePanel.RequiresUpdate%2A>プロパティが返す`true`場合、<xref:System.Web.UI.UpdatePanel.Update%2A>メソッドが明示的に呼び出される場合は、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelUpdateMode.Always>します。  
+ 既定<xref:System.Web.UI.UpdatePanel.RequiresUpdate%2A>では、 <xref:System.Web.UI.UpdatePanel.Update%2A>メソッドが`true`明示的に呼び出された場合、また<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>はプロパティがに<xref:System.Web.UI.UpdatePanelUpdateMode.Always>設定されている場合、プロパティはを返します。  
   
- このプロパティは拡張を希望するコントロールの開発者によって使用するもの、<xref:System.Web.UI.UpdatePanel>コントロール。 たとえば、派生クラスで提供できますを判断するロジックを追加するかどうか、<xref:System.Web.UI.UpdatePanel>コントロールを更新する必要があります。  
+ このプロパティは、 <xref:System.Web.UI.UpdatePanel>コントロールを拡張する必要があるコントロールの開発者が使用することを目的としています。 たとえば、派生クラスでは、 <xref:System.Web.UI.UpdatePanel>コントロールを更新する必要があるかどうかを判断するための追加のロジックを指定できます。  
   
  ]]></format>
         </remarks>
@@ -892,7 +892,7 @@
       </Parameters>
       <Docs>
         <param name="key">属性の名前。</param>
-        <summary>指定した名前を使用して、Web コントロールの属性を返します。</summary>
+        <summary>指定された名前を使用して、Web コントロールの属性を取得します。</summary>
         <returns>属性の値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -976,17 +976,17 @@
         <ReturnType>System.Web.UI.UpdatePanelTriggerCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:System.Web.UI.UpdatePanelTriggerCollection" />オブジェクトを含む<see cref="T:System.Web.UI.AsyncPostBackTrigger" />と<see cref="T:System.Web.UI.PostBackTrigger" />の宣言によって登録されたオブジェクト、<see cref="T:System.Web.UI.UpdatePanel" />コントロール。</summary>
-        <value>型のオブジェクトのコレクション<see cref="T:System.Web.UI.AsyncPostBackTrigger" />と<see cref="T:System.Web.UI.PostBackTrigger" />します。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanelTriggerCollection" /> コントロールの、宣言によって登録された <see cref="T:System.Web.UI.AsyncPostBackTrigger" /> オブジェクトおよび <see cref="T:System.Web.UI.PostBackTrigger" /> オブジェクトを格納する <see cref="T:System.Web.UI.UpdatePanel" /> オブジェクトを取得します。</summary>
+        <value><see cref="T:System.Web.UI.AsyncPostBackTrigger" /> 型および <see cref="T:System.Web.UI.PostBackTrigger" /> 型のオブジェクトのコレクション。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.UI.UpdatePanel.Triggers%2A>プロパティに対して定義されているすべてのトリガーのコレクションを取得する、<xref:System.Web.UI.UpdatePanel>コントロール。 (を使用して宣言によってトリガーを定義することができます、 **UpdatePanelTrigger コレクション エディター**  ダイアログ ボックスを使用して、デザイナーで、`<Triggers>`の要素、<xref:System.Web.UI.UpdatePanel>コントロールです)。コレクションに含まれます<xref:System.Web.UI.AsyncPostBackTrigger>と<xref:System.Web.UI.PostBackTrigger>オブジェクト。  
+ プロパティ<xref:System.Web.UI.UpdatePanel.Triggers%2A>は、 <xref:System.Web.UI.UpdatePanel>コントロールに対して定義されているすべてのトリガーのコレクションを取得します。 (デザイナーの **[updateパネルトリガーコレクションエディター]** ダイアログボックスを使用するか、 `<Triggers>` <xref:System.Web.UI.UpdatePanel>コントロールの要素を使用して、トリガーを宣言によって定義できます)。コレクションには<xref:System.Web.UI.AsyncPostBackTrigger> 、 <xref:System.Web.UI.PostBackTrigger>オブジェクトとオブジェクトが含まれます。  
   
- 宣言型のトリガーで定義されている、<xref:System.Web.UI.UpdatePanel.Triggers%2A>コレクションは、ビュー ステートには追跡されません。  
+ コレクションで定義されている<xref:System.Web.UI.UpdatePanel.Triggers%2A>宣言型トリガーは、ビューステートでは追跡されません。  
   
- 名前付けコンテナーにあるコントロールは、トリガーとして使用する場合、ポストバックが発生するすべての子コントロールは、トリガーとして動作します。  
+ 名前付けコンテナーであるコントロールをトリガーとして使用すると、ポストバックを発生させるすべての子コントロールがトリガーとして動作します。  
   
  ]]></format>
         </remarks>
@@ -1015,21 +1015,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>コンテンツの更新、<see cref="T:System.Web.UI.UpdatePanel" />コントロール。</summary>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの内容の更新を行います。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出すと、部分ページ レンダリングには、ページが有効な場合、<xref:System.Web.UI.UpdatePanel.Update%2A>メソッド、<xref:System.Web.UI.UpdatePanel>コントロールのコンテンツは、ブラウザーで更新されます。 呼び出す、<xref:System.Web.UI.UpdatePanel.Update%2A>を決定するために実行する必要がありますサーバー コードがある場合、メソッドかどうか、<xref:System.Web.UI.UpdatePanel>コントロールを更新する必要があります。 使用する場合、<xref:System.Web.UI.UpdatePanel.Update%2A>方法、設定、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティを<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>します。 サーバー ロジック内のパネルを更新するかどうかを実行する場合に、ことを確認します。、<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティは`false`とパネルの明示的なトリガーが定義されていません。  
+ ページが部分ページレンダリングに対して有効になっている場合、 <xref:System.Web.UI.UpdatePanel.Update%2A>メソッド<xref:System.Web.UI.UpdatePanel>を呼び出すと、コントロールのコンテンツがブラウザーで更新されます。 コントロールを<xref:System.Web.UI.UpdatePanel.Update%2A>更新する必要があるかどうかを判断するためにを実行する必要があるサーバーコードがある場合は、メソッドを呼び出します。 <xref:System.Web.UI.UpdatePanel> <xref:System.Web.UI.UpdatePanel.Update%2A>メソッドを使用する場合は、 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティをに<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>設定します。 サーバーロジックのパネルを更新することを決定する場合は、 <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティが`false`であり、パネルに明示的なトリガーが定義されていないことを確認します。  
   
- ページの一般的な開発シナ リオでトリガーを定義する場合、または場合、<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティは`true`の<xref:System.Web.UI.UpdatePanel>コントロール、<xref:System.Web.UI.UpdatePanel.Update%2A>メソッドがページのライフ サイクル中に自動的に呼び出されます。  
+ 一般的なページ開発シナリオでは、トリガーを定義する場合や<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A> 、プロパティ`true`が<xref:System.Web.UI.UpdatePanel>コントロールの場合は<xref:System.Web.UI.UpdatePanel.Update%2A> 、ページのライフサイクル中にメソッドが自動的に呼び出されます。  
   
- 場合、<xref:System.Web.UI.UpdatePanel.ContentTemplate%2A>プロパティが定義されていません、<xref:System.Web.UI.UpdatePanel>コントロール パネルの更新が行われません。  
+ プロパティが<xref:System.Web.UI.UpdatePanel>コントロールに対して定義されていない場合、パネルの更新は行われません。 <xref:System.Web.UI.UpdatePanel.ContentTemplate%2A>  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Web.UI.UpdatePanel.Update%2A>のコンテンツを更新するメソッド、<xref:System.Web.UI.UpdatePanel>前回の更新以降 5 秒以上が経過したときを制御します。  
+ 次の例では<xref:System.Web.UI.UpdatePanel.Update%2A> 、前回の更新から5秒<xref:System.Web.UI.UpdatePanel>以上経過した場合に、メソッドを使用してコントロールのコンテンツを更新します。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel.UpdateMode#1](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.UpdateMode/CS/UpdatePanelUpdateModeCS.aspx#1)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel.UpdateMode#1](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.UpdateMode/VB/UpdatePanelUpdateModeVB.aspx#1)]  
@@ -1072,39 +1072,39 @@
         <ReturnType>System.Web.UI.UpdatePanelUpdateMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはタイミングを示す値を設定、<see cref="T:System.Web.UI.UpdatePanel" />コントロールの内容を更新します。</summary>
-        <value><see cref="T:System.Web.UI.UpdatePanelUpdateMode" /> 値のいずれか 1 つ。 既定値は <see cref="F:System.Web.UI.UpdatePanelUpdateMode.Always" /> です。</value>
+        <summary><see cref="T:System.Web.UI.UpdatePanel" /> コントロールの内容がいつ更新されるかを示す値を取得または設定します。</summary>
+        <value><see cref="T:System.Web.UI.UpdatePanelUpdateMode" /> 値のいずれか。 既定値は、<see cref="F:System.Web.UI.UpdatePanelUpdateMode.Always" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに、<xref:System.Web.UI.UpdatePanel>コントロールが別の内部にない<xref:System.Web.UI.UpdatePanel>コントロール、パネルが更新の設定によって決定される、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>と<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>と共にトリガーのコレクションのプロパティ。 ときに、<xref:System.Web.UI.UpdatePanel>別のコントロールが<xref:System.Web.UI.UpdatePanel>子パネル、コントロールは、親パネルが更新されたときに自動的に更新します。  
+ コントロールが別<xref:System.Web.UI.UpdatePanel>のコントロールの内側にない場合、パネルはプロパティ<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>と<xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティの設定によって、トリガーのコレクションと共に更新されます。 <xref:System.Web.UI.UpdatePanel> コントロールが別<xref:System.Web.UI.UpdatePanel>のコントロール内にある場合は、親パネルが更新されると、子パネルが自動的に更新されます。 <xref:System.Web.UI.UpdatePanel>  
   
- コンテンツ、<xref:System.Web.UI.UpdatePanel>コントロールは、次の状況で更新します。  
+ <xref:System.Web.UI.UpdatePanel>コントロールの内容は、次のような場合に更新されます。  
   
--   場合、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelUpdateMode.Always>、<xref:System.Web.UI.UpdatePanel>コントロールの内容がページで任意の場所から発信されたポストバックのたびに更新されます。 その他の内部のコントロールからの非同期ポストバックが含まれます<xref:System.Web.UI.UpdatePanel>コントロールと内部ではないコントロールからポストバック<xref:System.Web.UI.UpdatePanel>コントロール。  
+-   プロパティがに<xref:System.Web.UI.UpdatePanelUpdateMode.Always>設定されている<xref:System.Web.UI.UpdatePanel>場合、コントロールのコンテンツは、ページ上の任意の場所から発生したポストバックごとに更新されます。 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A> これには、他のコントロール内<xref:System.Web.UI.UpdatePanel>のコントロールからの非同期ポストバックや、 <xref:System.Web.UI.UpdatePanel>コントロールの内部にないコントロールからのポストバックが含まれます。  
   
--   場合、<xref:System.Web.UI.UpdatePanel>コントロールが別の内部で入れ子になった<xref:System.Web.UI.UpdatePanel>コントロールと親更新パネルが更新されます。  
+-   コントロールが別<xref:System.Web.UI.UpdatePanel>のコントロール内に入れ子になっており、親の更新パネルが更新されている場合は。 <xref:System.Web.UI.UpdatePanel>  
   
--   場合、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>、し、次の条件のいずれかが発生します。  
+-   プロパティがに<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>設定されている場合、次のいずれかの条件が発生します。 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A>  
   
-    -   呼び出す、<xref:System.Web.UI.UpdatePanel.Update%2A>のメソッド、<xref:System.Web.UI.UpdatePanel>明示的に制御します。  
+    -   コントロールのメソッド<xref:System.Web.UI.UpdatePanel.Update%2A>を明示的に呼び出します。 <xref:System.Web.UI.UpdatePanel>  
   
-    -   使用して、トリガーとして定義されているコントロールによってポストバックが原因となった、<xref:System.Web.UI.UpdatePanel.Triggers%2A>のプロパティ、<xref:System.Web.UI.UpdatePanel>コントロール。 このシナリオでコントロールはパネルの内容の更新プログラムを明示的にトリガーされます。 コントロールが内部または外部のいずれかにすることができます、<xref:System.Web.UI.UpdatePanel>コントロール トリガーを定義します。  
+    -   ポストバックは、 <xref:System.Web.UI.UpdatePanel.Triggers%2A> <xref:System.Web.UI.UpdatePanel>コントロールのプロパティを使用して、トリガーとして定義されたコントロールによって発生します。 このシナリオでは、コントロールによって、パネルコンテンツの更新が明示的にトリガーされます。 コントロールは、トリガーを定義するコントロールの<xref:System.Web.UI.UpdatePanel>内側または外側のいずれかになります。  
   
-    -   <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>プロパティに設定されて`true`の子コントロールと、<xref:System.Web.UI.UpdatePanel>コントロールがポストバックを発生します。 入れ子になったの子コントロール<xref:System.Web.UI.UpdatePanel>コントロールでは、外側の更新プログラムは発生しません<xref:System.Web.UI.UpdatePanel>トリガーとして明示的に定義されている場合を除き、します。  
+    -   プロパティがに`true`設定され、 <xref:System.Web.UI.UpdatePanel>コントロールの子コントロールがポストバックを発生させます。 <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A> 入れ子になっ<xref:System.Web.UI.UpdatePanel>たコントロールの子コントロールは、トリガーとして明示<xref:System.Web.UI.UpdatePanel>的に定義されていない限り、外側のコントロールを更新しません。  
   
    
   
 ## Examples  
- 次の例で 2 つ<xref:System.Web.UI.UpdatePanel>コントロール。 最初のパネルで、<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティに設定されて<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>します。 2 番目のパネルで<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>に設定されている<xref:System.Web.UI.UpdatePanelUpdateMode.Always>します。 両方のパネルの外部ボタンが呼び出すことによって、非同期ポストバック コントロールとして登録されている、<xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A>のメソッド、<xref:System.Web.UI.ScriptManager>コントロール。 ボタンの`Click`イベント ハンドラー、<xref:System.Web.UI.UpdatePanel.Update%2A>前回更新から 5 秒以上が経過した場合、最初のパネルのメソッドが呼び出されます。 このシナリオでは、前回のパネルの更新が 5 秒以上の場合にのみ、パネルの内容が更新されます。 2 番目のパネルの内容は常に更新します。  
+ 次の例では<xref:System.Web.UI.UpdatePanel> 、2つのコントロールを宣言します。 最初のパネルでは、 <xref:System.Web.UI.UpdatePanel.UpdateMode%2A>プロパティはに<xref:System.Web.UI.UpdatePanelUpdateMode.Conditional>設定されています。 2番目のパネル<xref:System.Web.UI.UpdatePanel.UpdateMode%2A>では、 <xref:System.Web.UI.UpdatePanelUpdateMode.Always>がに設定されています。 <xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A> 両方<xref:System.Web.UI.ScriptManager>のパネルの外側のボタンは、コントロールのメソッドを呼び出すことによって、非同期ポストバックコントロールとして登録されます。 ボタンの`Click`イベントハンドラーでは<xref:System.Web.UI.UpdatePanel.Update%2A> 、最後の更新から5秒以上経過した場合に、最初のパネルのメソッドが呼び出されます。 このシナリオでは、パネルの内容が更新されるのは、最後のパネル更新が5秒以上前であった場合のみです。 2番目のパネルのコンテンツは常に更新されます。  
   
  [!code-aspx-csharp[System.Web.UI.UpdatePanel.UpdateMode#1](~/samples/snippets/csharp/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.UpdateMode/CS/UpdatePanelUpdateModeCS.aspx#1)]
  [!code-aspx-vb[System.Web.UI.UpdatePanel.UpdateMode#1](~/samples/snippets/visualbasic/VS_Snippets_Atlas/System.Web.UI.UpdatePanel.UpdateMode/VB/UpdatePanelUpdateModeVB.aspx#1)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">指定した型でないのいずれか、<see cref="T:System.Web.UI.UpdatePanelUpdateMode" />値。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">指定した型が、<see cref="T:System.Web.UI.UpdatePanelUpdateMode" /> 値ではありません。</exception>
         <altmember cref="T:System.Web.UI.UpdatePanelUpdateMode" />
         <altmember cref="M:System.Web.UI.UpdatePanel.Update" />
         <altmember cref="P:System.Web.UI.UpdatePanel.ChildrenAsTriggers" />

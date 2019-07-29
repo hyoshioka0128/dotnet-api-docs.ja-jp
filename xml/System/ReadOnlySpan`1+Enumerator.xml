@@ -1,5 +1,5 @@
 <Type Name="ReadOnlySpan&lt;T&gt;+Enumerator" FullName="System.ReadOnlySpan&lt;T&gt;+Enumerator">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="bd1ce9d661ceaee8286bac06ad73466d6f1f1418" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58741137" /></Metadata><TypeSignature Language="C#" Value="public struct ReadOnlySpan&lt;T&gt;.Enumerator" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="305e67376bcf182225249c0d781fb20dffa4b445" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543176" /></Metadata><TypeSignature Language="C#" Value="public struct ReadOnlySpan&lt;T&gt;.Enumerator" />
   <TypeSignature Language="ILAsm" Value=".class nested public sequential ansi sealed beforefieldinit ReadOnlySpan`1/Enumerator&lt;T&gt; extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.ReadOnlySpan`1.Enumerator" />
   <TypeSignature Language="VB.NET" Value="Public Structure ReadOnlySpan(Of T).Enumerator" />
@@ -28,7 +28,11 @@
   <Docs>
     <summary><see cref="T:System.ReadOnlySpan`1" /> の要素の列挙子を提供します。</summary>
     <remarks>
-      <format type="text/markdown"><![CDATA[C# の[foreach](~/docs/csharp/language-reference/keywords/foreach-in.md)とVisual Basicの[For Each...Next](~/docs/visual-basic/language-reference/statements/for-each-next-statement.md)構造は、列挙子の複雑さを隠します。 列挙子を直接操作するのではなく、`foreach`または`For Each...Next`を使用することをお勧めします。 
+      <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+C# の[foreach](~/docs/csharp/language-reference/keywords/foreach-in.md)とVisual Basicの[For Each...Next](~/docs/visual-basic/language-reference/statements/for-each-next-statement.md)構造は、列挙子の複雑さを隠します。 列挙子を直接操作するのではなく、`foreach`または`For Each...Next`を使用することをお勧めします。 
 
 初期状態で、列挙子は<xref:System.ReadOnlySpan`1>内の最初の要素の前に配置されます。 この位置では、<xref:System.ReadOnlySpan`1.Enumerator.Current> は未定義です。 <xref:System.ReadOnlySpan`1.Enumerator.Current>の値を読み取る前に、<xref:System.ReadOnlySpan`1.Enumerator.MoveNext%2A>を呼び出し、列挙子を<xref:System.ReadOnlySpan`1>の最初の項目に進める必要があります。
 
@@ -36,13 +40,15 @@
 
 <xref:System.ReadOnlySpan`1.Enumerator.MoveNext%2A>が<xref:System.ReadOnlySpan`1>の末尾を超えた場合、<xref:System.ReadOnlySpan`1.Enumerator.MoveNext%2A>は`false`を返します。 列挙子がこの状態にある場合、<xref:System.ReadOnlySpan`1.Enumerator.MoveNext%2A>の後続の呼び出しも`false`を返し、<xref:System.ReadOnlySpan`1.Enumerator.Current>は未定義になります。 <xref:System.ReadOnlySpan`1.Enumerator.Current>に再度<xref:System.ReadOnlySpan`1>の最初の項目を設定することはできません。列挙子の新しいインスタンスを代わりに作成する必要があります。 
 
-<xref:System.ReadOnlySpan`1>はスタックに割り当てられますが、<xref:System.ReadOnlySpan`1>の指す基底データはそうでない可能性があります。 そのため、<xref:System.ReadOnlySpan`1>の列挙処理は、本質的にはスレッド セーフな手順ではありません。 列挙中にスレッド セーフを保証するために、独自の同期を実装する必要があります。
+<xref:System.ReadOnlySpan`1>はスタックに割り当てられますが、<xref:System.ReadOnlySpan`1>の指す基底データはそうでない可能性があります。 そのため、<xref:System.ReadOnlySpan`1>の列挙処理は、本質的にはスレッド セーフな手順ではありません。 列挙中のスレッドセーフを保証するには、独自の同期を実装する必要があります。
 
 <xref:System.ReadOnlySpan`1.Enumerator>は、.NETの他の列挙子構造体とは異なります。
 
 - <xref:System.Collections.IEnumerator>または<xref:System.Collections.Generic.IEnumerator`1>インターフェイスを実装しません。 これは、<xref:System.ReadOnlySpan`1.Enumerator>が[ref 構造体](~/docs/csharp/language-reference/keywords/ref.md#ref-struct-types)であり、ボックス化できないためです。
 
-- 列挙子をスパン内の最初の要素より前の初期位置に設定する、`Reset`メソッドは含まれません。 (<xref:System.Collections.IEnumerator.Reset?displayProperty=nameWithType>メソッドは、インターフェイスの一部として実装する必要がありますが、ほとんどの実装が例外をスローするか、実装されていません。)]]></format>
+- 列挙子をスパン内の最初の要素より前の初期位置に設定する、`Reset`メソッドは含まれません。 (<xref:System.Collections.IEnumerator.Reset?displayProperty=nameWithType>メソッドは、インターフェイスの一部として実装する必要がありますが、ほとんどの実装が例外をスローするか、実装されていません。)
+
+]]></format>
     </remarks>
   </Docs>
   <Members>
@@ -74,13 +80,19 @@
         <summary>列挙子の現在位置にある項目への参照を取得します。</summary>
         <value><see cref="T:System.ReadOnlySpan`1" /> のうち、列挙子の現在位置にある要素。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[`Current`は、次の条件のいずれかの場合に未定義です 
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+`Current`は、次の条件のいずれかの場合に未定義です 
 
 - 列挙子が作成された直後、列挙子はスパンの最初の要素の前に配置されます。 `Current`の値を読み取る前に、<xref:System.ReadOnlySpan`1.Enumerator.MoveNext*>を呼び出して、範囲の最初の要素へ列挙子を進める必要があります。
 
 - <xref:System.ReadOnlySpan`1.Enumerator.MoveNext*>の最後の呼び出しが`false`を返した。これはスパンの終わりを示します。 
 
-<xref:System.ReadOnlySpan`1.Enumerator.MoveNext*>が呼び出されるまで、`Current`は同じ値を返します。 <xref:System.ReadOnlySpan`1.Enumerator.MoveNext*>は`Current`をスパンの次の項目に設定します。]]></format>
+<xref:System.ReadOnlySpan`1.Enumerator.MoveNext*>が呼び出されるまで、`Current`は同じ値を返します。 <xref:System.ReadOnlySpan`1.Enumerator.MoveNext*>は`Current`をスパンの次の項目に設定します。
+
+]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -106,11 +118,17 @@
       <Parameters />
       <Docs>
         <summary>列挙子を <see cref="System.ReadOnlySpan`1" /> の次の項目に進めます。</summary>
-        <returns>列挙子が次の項目に正常に進んだ場合は `true`、範囲の末尾を超えた場合は `false` です。</returns>
+        <returns>列挙子が次の項目に正常に進んだ場合は <see langword="true" />、範囲の末尾を超えた場合は <see langword="false" /> です。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[列挙子が作成された後、列挙子はスパンの最初の要素の前に配置されます。`MoveNext`の最初の呼び出しで、列挙子をスパンの最初の項目に進めます。 
+          <format type="text/markdown"><![CDATA[
 
-`MoveNext`が範囲の末尾を超えた場合、`MoveNext`は`false`を返します。 列挙子がこの状態にある場合、`MoveNext`の後続の呼び出しも`false`を返します。]]></format>
+## Remarks
+
+列挙子が作成された後、列挙子はスパンの最初の要素の前に配置されます。`MoveNext`の最初の呼び出しで、列挙子をスパンの最初の項目に進めます。 
+
+`MoveNext`が範囲の末尾を超えた場合、`MoveNext`は`false`を返します。 列挙子がこの状態にある場合、`MoveNext`の後続の呼び出しも`false`を返します。
+
+]]></format>
         </remarks>
       </Docs>
     </Member>

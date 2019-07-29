@@ -1,5 +1,5 @@
 <Type Name="Thread" FullName="System.Threading.Thread">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3c6336f757382e846b962ab4c1a82ee9c84e86ef" /><Meta Name="ms.sourcegitcommit" Value="cfc0e4215fd0d259582ada2141878befd7c3c8c6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/12/2019" /><Meta Name="ms.locfileid" Value="67855501" /></Metadata><TypeSignature Language="C#" Value="public sealed class Thread : System.Runtime.ConstrainedExecution.CriticalFinalizerObject, System.Runtime.InteropServices._Thread" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="8020a66f5a49ad0563ff80959c003856711feebc" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68541058" /></Metadata><TypeSignature Language="C#" Value="public sealed class Thread : System.Runtime.ConstrainedExecution.CriticalFinalizerObject, System.Runtime.InteropServices._Thread" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Thread extends System.Runtime.ConstrainedExecution.CriticalFinalizerObject implements class System.Runtime.InteropServices._Thread" />
   <TypeSignature Language="DocId" Value="T:System.Threading.Thread" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Thread&#xA;Inherits CriticalFinalizerObject&#xA;Implements _Thread" />
@@ -49,23 +49,23 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- プロセスの開始時に、共通言語ランタイムは自動的にアプリケーション コードを実行する 1 つのフォア グラウンド スレッドを作成します。 このメインのフォア グラウンド スレッドとプロセスは、プロセスに関連付けられたプログラム コードの一部を実行する 1 つまたは複数のスレッドを作成できます。 これらのスレッドをフォア グラウンドまたはバック グラウンドで実行できます。 さらに、使用、<xref:System.Threading.ThreadPool>クラス、共通言語ランタイムによって管理されるワーカー スレッドでコードを実行します。  
+ プロセスが開始されると、共通言語ランタイムによって、アプリケーションコードを実行するためのフォアグラウンドスレッドが自動的に1つ作成されます。 プロセスでは、この主要なフォアグラウンドスレッドと共に、プロセスに関連付けられているプログラムコードの一部を実行するために1つ以上のスレッドを作成できます。 これらのスレッドは、フォアグラウンドまたはバックグラウンドで実行できます。 また、 <xref:System.Threading.ThreadPool>クラスを使用して、共通言語ランタイムによって管理されるワーカースレッドでコードを実行できます。  
   
  このセクションの内容  
   
  [スレッドの開始](#Starting)   
- [スレッド オブジェクトを取得します。](#Retrieving)   
- [フォア グラウンドとバック グラウンド スレッド](#Foreground)   
+ [スレッドオブジェクトの取得](#Retrieving)   
+ [フォアグラウンドスレッドとバックグラウンドスレッド](#Foreground)   
  [カルチャとスレッド](#Culture)   
- [情報を取得して、スレッドを制御します。](#Properties)   
+ [情報の取得とスレッドの制御](#Properties)   
    
 <a name="Starting"></a>   
 ## <a name="starting-a-thread"></a>スレッドの開始  
- スレッドを開始するには、スレッドは、そのクラス コンス トラクターで実行するメソッドを表すデリゲートを指定します。 呼び出して、<xref:System.Threading.Thread.Start%2A>実行を開始するメソッド。  
+ スレッドを開始するには、そのクラスコンストラクターでスレッドが実行するメソッドを表すデリゲートを指定します。 次に、メソッド<xref:System.Threading.Thread.Start%2A>を呼び出して、実行を開始します。  
   
- <xref:System.Threading.Thread>コンス トラクターが実行されるメソッドに引数を渡すかどうかに応じて、2 つのデリゲート型のいずれかを受け取ることができます。  
+ コンストラクター <xref:System.Threading.Thread>は、実行するメソッドに引数を渡すことができるかどうかに応じて、次の2つのデリゲート型のどちらかを受け取ることができます。  
   
--   渡す引数を持つメソッドがない場合、<xref:System.Threading.ThreadStart>コンス トラクターにデリゲートします。 署名があります。  
+-   メソッドに引数がない場合は、 <xref:System.Threading.ThreadStart>デリゲートをコンストラクターに渡します。 署名は次のとおりです。  
   
     ```csharp  
     public delegate void ThreadStart()  
@@ -75,12 +75,12 @@
     Public Delegate Sub ThreadStart()  
     ```  
   
-     次の例は、作成しを実行するスレッドを開始、`ExecuteInForeground`メソッド。 メソッドは、一部のスレッド プロパティに関する情報を表示しを 0.5 秒の一時停止して経過秒数を表示します。 ループを実行します。 少なくとも 5 秒間、スレッドが実行されたときに、ループが終了し、スレッドが実行を終了します。  
+     次の例では、 `ExecuteInForeground`メソッドを実行するスレッドを作成して開始します。 メソッドは、一部のスレッドプロパティに関する情報を表示した後、0.5 秒間一時停止するループを実行し、経過秒数を表示します。 スレッドが少なくとも5秒間実行されると、ループが終了し、スレッドが実行を終了します。  
   
      [!code-csharp[System.Threading.Thread#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Threading.Thread/cs/ThreadStart1.cs#1)]
      [!code-vb[System.Threading.Thread#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.Threading.Thread/vb/ThreadStart1.vb#1)]  
   
--   メソッドに引数がある場合は、渡す、<xref:System.Threading.ParameterizedThreadStart>コンス トラクターにデリゲートします。 署名があります。  
+-   メソッドに引数がある場合は、 <xref:System.Threading.ParameterizedThreadStart>デリゲートをコンストラクターに渡します。 署名は次のとおりです。  
   
     ```csharp  
     public delegate void ParameterizedThreadStart(object obj)  
@@ -90,98 +90,98 @@
     Public Delegate Sub ParameterizedThreadStart(obj As Object)  
     ```  
   
-     デリゲートが実行するメソッドが、キャスト (c#) または (Visual Basic) では、パラメーターを適切な型に変換できます。  
+     その後、デリゲートによって実行されるメソッドC#は、パラメーターを適切な型にキャスト (では) または変換 (Visual Basic) できます。  
   
-     呼び出すことを除いて、次の例は前のものと同じ、<xref:System.Threading.Thread.%23ctor%28System.Threading.ParameterizedThreadStart%29>コンス トラクター。 このバージョンの`ExecuteInForeground`メソッドには、ループは、実行するミリ秒単位の概数を表す 1 つのパラメーター。  
+     次の例は、 <xref:System.Threading.Thread.%23ctor%28System.Threading.ParameterizedThreadStart%29>コンストラクターを呼び出す点を除いて、前の例と同じです。 このバージョンの`ExecuteInForeground`メソッドには、ループが実行されるおおよそのミリ秒数を表す1つのパラメーターがあります。  
   
      [!code-csharp[System.Threading.Thread#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Threading.Thread/cs/ThreadStart2.cs#2)]
      [!code-vb[System.Threading.Thread#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.Threading.Thread/vb/ThreadStart2.vb#2)]  
   
- 参照を保持する必要はありません、<xref:System.Threading.Thread>オブジェクトのスレッドを開始するとします。 スレッドは、スレッド プロシージャが完了するまでの実行を継続します。  
+ スレッドを開始した後は、 <xref:System.Threading.Thread>オブジェクトへの参照を保持する必要はありません。 スレッドは、スレッドプロシージャが完了するまで実行を続けます。  
   
 <a name="Retrieving"></a>   
-## <a name="retrieving-thread-objects"></a>スレッド オブジェクトを取得します。  
- 静的なを使用することができます (`Shared` Visual Basic で)<xref:System.Threading.Thread.CurrentThread%2A>スレッドが実行されているコードから実行中のスレッドへの参照を取得するプロパティ。 次の例では、<xref:System.Threading.Thread.CurrentThread%2A>プロパティ、アプリケーションのメイン スレッド、もう 1 つのフォア グラウンド スレッド、バック グラウンド スレッドおよびスレッド プールのスレッドに関する情報を表示します。  
+## <a name="retrieving-thread-objects"></a>スレッドオブジェクトの取得  
+ 静的 (`Shared` Visual Basic) <xref:System.Threading.Thread.CurrentThread%2A>プロパティを使用して、スレッドが実行しているコードから現在実行中のスレッドへの参照を取得できます。 次の例では<xref:System.Threading.Thread.CurrentThread%2A> 、プロパティを使用して、メインアプリケーションスレッド、別のフォアグラウンドスレッド、バックグラウンドスレッド、スレッドプールスレッドに関する情報を表示します。  
   
  [!code-csharp[System.Threading.Thread#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Threading.Thread/cs/Instance1.cs#4)]
  [!code-vb[System.Threading.Thread#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.Threading.Thread/vb/Instance1.vb#4)]  
   
 <a name="Foreground"></a>   
-## <a name="foreground-and-background-threads"></a>フォア グラウンドとバック グラウンド スレッド  
- インスタンス、<xref:System.Threading.Thread>クラスは、フォア グラウンド スレッドまたはバック グラウンド スレッドを表します。 バック グラウンド スレッドは例外が 1 つのフォア グラウンド スレッドと同じです。 すべてのフォア グラウンド スレッドが終了した場合、バック グラウンド スレッドが実行されているプロセスを保持しません。 すべてのフォア グラウンド スレッドを停止すると、ランタイムはすべてのバック グラウンド スレッドを停止し、シャット ダウンします。  
+## <a name="foreground-and-background-threads"></a>フォアグラウンドスレッドとバックグラウンドスレッド  
+ <xref:System.Threading.Thread>クラスのインスタンスは、フォアグラウンドスレッドまたはバックグラウンドスレッドを表します。 バックグラウンドスレッドはフォアグラウンドスレッドと同じですが、例外が1つあります。すべてのフォアグラウンドスレッドが終了した場合、バックグラウンドスレッドはプロセスを実行したままにしません。 すべてのフォアグラウンドスレッドが停止されると、ランタイムはすべてのバックグラウンドスレッドを停止し、シャットダウンします。  
   
- 既定では、次のスレッドをフォア グラウンドで実行します。  
+ 既定では、次のスレッドがフォアグラウンドで実行されます。  
   
--   メイン アプリケーション スレッドです。  
+-   メインアプリケーションスレッド。  
   
--   呼び出すことによって作成されたすべてのスレッドを<xref:System.Threading.Thread>クラスのコンス トラクター。  
+-   クラスコンストラクターを<xref:System.Threading.Thread>呼び出すことによって作成されるすべてのスレッド。  
   
- 次のスレッドは、既定では、バック グラウンドで実行します。  
+ 既定では、次のスレッドがバックグラウンドで実行されます。  
   
--   ランタイムによって管理されるワーカー スレッドのプールはプールのスレッドをスレッドです。  使用してスレッド プール スレッドでスレッド プールとスケジュールの作業を構成することができます、<xref:System.Threading.ThreadPool>クラス。  
+-   スレッドプールスレッド。ランタイムによって管理されるワーカースレッドのプールです。  スレッドプールを構成し、 <xref:System.Threading.ThreadPool>クラスを使用してスレッドプールスレッドの作業をスケジュールすることができます。  
   
     > [!NOTE]
-    >  タスク ベースの非同期操作は、スレッド プールのスレッドで自動的に実行します。 タスク ベースの非同期操作を使用して、<xref:System.Threading.Tasks.Task>と<xref:System.Threading.Tasks.Task%601>を実装するクラス、[タスクベースの非同期パターン](~/docs/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap.md)します。  
+    >  スレッドプールのスレッドでは、タスクベースの非同期操作が自動的に実行されます。 タスクベースの非同期操作では<xref:System.Threading.Tasks.Task> 、 <xref:System.Threading.Tasks.Task%601>クラスとクラスを使用して、[タスクベースの非同期パターン](~/docs/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap.md)を実装します。  
   
--   アンマネージ コードからマネージ実行環境に入るすべてのスレッド。  
+-   アンマネージコードからマネージ実行環境に入るすべてのスレッド。  
   
- 設定して、バック グラウンドで実行するスレッドを変更することができます、<xref:System.Threading.Thread.IsBackground%2A>いつでもプロパティ。  バック グラウンド スレッドは、アプリケーションが実行されているが、終了、ファイル システムの変更、または受信ソケット接続の監視などのアプリケーションをしないようにする必要があります限り継続する必要がある操作を行う場合に便利です。  
+ バックグラウンドで実行するスレッドを変更するには、プロパティを<xref:System.Threading.Thread.IsBackground%2A>いつでも設定します。  バックグラウンドスレッドは、アプリケーションが実行されている間は続行する必要がありますが、ファイルシステムの変更や着信ソケット接続の監視など、アプリケーションの終了を防ぐ必要がない操作には便利です。  
   
- 次の例は、フォア グラウンドとバック グラウンド スレッドの違いを示しています。 最初の例のようなもの、[スレッドを開始](#Starting)セクションで、それを開始する前に、バック グラウンドで実行するスレッドを設定する点が異なります。 出力を 5 秒間の実行前に、ループが中断されます。  
+ 次の例は、フォアグラウンドスレッドとバックグラウンドスレッドの違いを示しています。 これは、スレッドを開始する前にバックグラウンドで実行するようにスレッドを設定している点を除いて、[スレッドの開始](#Starting)に関するセクションの最初の例と似ています。 出力に示されているように、ループは、5秒間実行される前に中断されます。  
   
  [!code-csharp[System.Threading.Thread#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Threading.Thread/cs/BackgroundEx1.cs#3)]
  [!code-vb[System.Threading.Thread#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.Threading.Thread/vb/BackgroundEx1.vb#3)]  
   
 <a name="Culture"></a>   
 ## <a name="culture-and-threads"></a>カルチャとスレッド  
- 各スレッドが、カルチャによって表される、<xref:System.Threading.Thread.CurrentCulture%2A>によって表されるプロパティ、および UI カルチャ、<xref:System.Threading.Thread.CurrentUICulture%2A>プロパティ。  現在のカルチャでは、解析および書式設定、文字列比較と並べ替えなどのカルチャに依存する操作をサポートしているしの書記体系やスレッドで使用する暦にも制御します。 現在の UI カルチャは、リソース ファイル内のリソースのカルチャの取得を提供します。  
+ 各スレッドには、 <xref:System.Threading.Thread.CurrentCulture%2A>プロパティによって表されるカルチャと、 <xref:System.Threading.Thread.CurrentUICulture%2A>プロパティによって表される UI カルチャがあります。  現在のカルチャでは、解析と書式設定、文字列の比較と並べ替えなど、カルチャに依存する操作をサポートしています。また、スレッドで使用される書記体系と暦も制御します。 現在の UI カルチャは、リソースファイル内のリソースのカルチャに依存した取得を提供します。  
 
 > [!IMPORTANT]
-> <xref:System.Threading.Thread.CurrentCulture>と<xref:System.Threading.Thread.CurrentUICulture>プロパティは、現在のスレッド以外の任意のスレッドを使用すると確実に機能しません。 .NET framework では、これらのプロパティを読み取り、信頼性が高くはありませんが、現在のスレッド以外のスレッドのこれらのプロパティを設定します。 .NET Core で、<xref:System.InvalidOperationException>スレッドが読み取りまたは別のスレッドでのこれらのプロパティの書き込みを試みるとスローされます。
-> 使用することをお勧め、<xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=nameWithType>と<xref:System.Globalization.CultureInfo.CurrentUICulture?displayProperty=nameWithType>プロパティを取得して、現在のカルチャを設定します。
+> プロパティ<xref:System.Threading.Thread.CurrentCulture> と<xref:System.Threading.Thread.CurrentUICulture>プロパティは、現在のスレッド以外のスレッドで使用する場合、確実に動作しません。 .NET Framework では、これらのプロパティの読み取りは信頼性がありますが、現在のスレッド以外のスレッドに対してこれらのプロパティを設定することはできません。 .Net Core <xref:System.InvalidOperationException>では、スレッドが別のスレッドでこれらのプロパティの読み取りまたは書き込みを行おうとすると、がスローされます。
+> 現在のカルチャを取得し<xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=nameWithType>て<xref:System.Globalization.CultureInfo.CurrentUICulture?displayProperty=nameWithType>設定するには、プロパティとプロパティを使用することをお勧めします。
 
- 新しいスレッドがインスタンス化されるときは、によって、現在のシステム カルチャと UI カルチャ、およびカルチャと、新しいスレッドの作成元のスレッドの UI カルチャではなく、そのカルチャおよび UI カルチャが定義されています。 つまり、たとえば、現在のシステム カルチャが英語 (米国) とプライマリ アプリケーションのスレッドの現在のカルチャがフランス語 (フランス)、呼び出すことによって作成された新しいスレッドのカルチャの場合、<xref:System.Threading.Thread.%23ctor%28System.Threading.ParameterizedThreadStart%29>プライマリ スレッドからコンス トラクター英語 (米国) とフランス語 (フランス)。 詳細については、の「カルチャとスレッド」セクションを参照してください、<xref:System.Globalization.CultureInfo>クラスに関するトピック。  
+ 新しいスレッドがインスタンス化されると、そのカルチャと UI カルチャは、現在のシステムカルチャと ui カルチャによって定義され、新しいスレッドの作成元のスレッドのカルチャおよび UI カルチャによっては定義されません。 これは、たとえば、現在のシステムカルチャが英語 (米国) で、プライマリアプリケーションスレッドの現在のカルチャがフランス語 (フランス) の場合、プライマリスレッドから<xref:System.Threading.Thread.%23ctor%28System.Threading.ParameterizedThreadStart%29>コンストラクターを呼び出すことによって作成される新しいスレッドのカルチャであることを意味します。は英語 (米国) で、フランス語 (フランス) ではありません。 詳細については、 <xref:System.Globalization.CultureInfo>クラスのトピックの「カルチャとスレッド」セクションを参照してください。  
   
 > [!IMPORTANT]
->  対象とするアプリの非同期操作を実行するスレッドの場合は true でない、[!INCLUDE[net_v46](~/includes/net-v46-md.md)]以降のバージョンでこのケースでは、カルチャおよび UI カルチャでは、非同期の一部と操作のコンテキスト; いるスレッドで非同期操作によって実行される既定のカルチャおよび非同期操作の起動元のスレッドの UI カルチャを継承します。 詳細については、<xref:System.Globalization.CultureInfo> クラスのトピックの「カルチャとタスク ベースの非同期の操作」セクションをご覧ください。  
+>  これは、以降の[!INCLUDE[net_v46](~/includes/net-v46-md.md)]バージョンを対象とするアプリに対して非同期操作を実行するスレッドには当てはまりません。この場合、カルチャと UI カルチャは非同期操作のコンテキスト (非同期操作が行われるスレッド) の一部になります。既定で実行されるは、非同期操作の開始元のスレッドのカルチャと UI カルチャを継承します。 詳細については、<xref:System.Globalization.CultureInfo> クラスのトピックの「カルチャとタスク ベースの非同期の操作」セクションをご覧ください。  
   
- いずれかを実行することのすべてのスレッドを確認するには、次は、同じカルチャおよび UI カルチャをアプリケーションで実行する共有します。  
+ アプリケーションで実行されているすべてのスレッドが同じカルチャと UI カルチャを共有するようにするには、次のいずれかを実行します。  
   
--   渡すことができます、<xref:System.Globalization.CultureInfo>そのカルチャを表すオブジェクト、<xref:System.Threading.ParameterizedThreadStart>委任または<xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29?displayProperty=nameWithType>メソッド。  
+-   そのカルチャを表す<xref:System.Globalization.CultureInfo>オブジェクトを<xref:System.Threading.ParameterizedThreadStart>デリゲートまたは<xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29?displayProperty=nameWithType>メソッドに渡すことができます。  
   
--   実行されるアプリ、 [!INCLUDE[net_v45](~/includes/net-v45-md.md)] 、以降のバージョン、カルチャおよび UI カルチャの値を設定して、アプリケーション ドメインで作成されるすべてのスレッドに割り当てられるを定義できます、<xref:System.Globalization.CultureInfo.DefaultThreadCurrentCulture%2A?displayProperty=nameWithType>と<xref:System.Globalization.CultureInfo.DefaultThreadCurrentUICulture%2A?displayProperty=nameWithType>プロパティ。 これはアプリケーションごとのドメインの設定であることに注意してください。  
+-   以降のバージョンで[!INCLUDE[net_v45](~/includes/net-v45-md.md)]実行されているアプリでは、プロパティ<xref:System.Globalization.CultureInfo.DefaultThreadCurrentCulture%2A?displayProperty=nameWithType>と<xref:System.Globalization.CultureInfo.DefaultThreadCurrentUICulture%2A?displayProperty=nameWithType>プロパティの値を設定することによって、アプリケーションドメインで作成されたすべてのスレッドに割り当てられるカルチャと UI カルチャを定義できます。 これはアプリケーションごとのドメイン設定であることに注意してください。  
 
- 詳細と例については、の「カルチャとスレッド」セクションを参照してください、<xref:System.Globalization.CultureInfo>クラスに関するトピック。
+ 詳細と例については、 <xref:System.Globalization.CultureInfo>クラスのトピックの「カルチャとスレッド」セクションを参照してください。
 
 <a name="Properties"></a>   
-## <a name="getting-information-about-and-controlling-threads"></a>情報を取得して、スレッドを制御します。  
- 数のスレッドに関する情報を提供するプロパティ値を取得することができます。 場合によっては、スレッドの操作を制御するこれらのプロパティ値を設定することもできます。 これらのスレッド プロパティは次のとおりです。  
+## <a name="getting-information-about-and-controlling-threads"></a>情報の取得とスレッドの制御  
+ スレッドに関する情報を提供する多数のプロパティ値を取得できます。 場合によっては、これらのプロパティ値を設定して、スレッドの操作を制御することもできます。 これらのスレッドプロパティは次のとおりです。  
   
--   名前。 <xref:System.Threading.Thread.Name%2A> 書き込みが可能-1 回、スレッドを識別するために使用できるプロパティです。  既定値は`null`します。  
+-   名前。 <xref:System.Threading.Thread.Name%2A>は、スレッドを識別するために使用できる1回の書き込みプロパティです。  既定値は`null`です。  
   
--   ハッシュ コードを呼び出すことによって取得できます、<xref:System.Threading.Thread.GetHashCode%2A>メソッド。 ハッシュ コードを使用してをスレッドを一意に識別することができます。スレッドの有効期間にわたって、そのハッシュ コードが、値を取得するアプリケーション ドメインに関係なく、他の任意のスレッドからの値の競合しません。  
+-   ハッシュコード。 <xref:System.Threading.Thread.GetHashCode%2A>メソッドを呼び出すことによって取得できます。 ハッシュコードは、スレッドを一意に識別するために使用できます。スレッドの有効期間にわたって、そのハッシュコードは、値の取得元のアプリケーションドメインに関係なく、他のスレッドの値と競合しません。  
   
--   スレッド id です。 読み取り専用の値<xref:System.Threading.Thread.ManagedThreadId%2A>プロパティは、ランタイムによって割り当てられているし、そのプロセス内のスレッドを一意に識別します。  
+-   スレッド ID。 読み取り<xref:System.Threading.Thread.ManagedThreadId%2A>専用プロパティの値は、ランタイムによって割り当てられ、プロセス内のスレッドを一意に識別します。  
   
     > [!NOTE]
-    >  オペレーティング システム [ThreadId](https://msdn.microsoft.com/library/windows/desktop/ms683233.aspx) とマネージド スレッドの間には固定的な関係はありません。これは、アンマネージド ホストがマネージド スレッドとアンマネージド スレッドの間の関係を制御できるためです。 具体的には、高度なホストが使用できる、 [CLR ホスティング API](https://msdn.microsoft.com/library/ms404385.aspx)同じオペレーティング システム スレッドに対して多くのマネージ スレッドをスケジュールする、または別のオペレーティング システムのスレッド間でのマネージ スレッドを移動します。  
+    >  オペレーティング システム [ThreadId](https://msdn.microsoft.com/library/windows/desktop/ms683233.aspx) とマネージド スレッドの間には固定的な関係はありません。これは、アンマネージド ホストがマネージド スレッドとアンマネージド スレッドの間の関係を制御できるためです。 具体的には、高度なホストは[CLR ホスティング API](https://msdn.microsoft.com/library/ms404385.aspx)を使用して、同じオペレーティングシステムスレッドに対して多数のマネージスレッドをスケジュールしたり、異なるオペレーティングシステムスレッド間でマネージスレッドを移動したりできます。  
   
--   スレッドの現在の状態。 その存在の期間、スレッドは常に 1 つ以上のによって定義されている状態で、<xref:System.Threading.ThreadState>プロパティ。  
+-   スレッドの現在の状態。 スレッドは、存在する間、常に<xref:System.Threading.ThreadState>プロパティによって定義された1つ以上の状態になります。  
   
--   定義されているスケジュールの優先度レベル、<xref:System.Threading.ThreadPriority>プロパティ。 スレッドの優先順位を要求するには、この値を設定できますが、オペレーティング システムによって受け入れられるには保証されません。  
+-   スケジュールの優先度レベル。 <xref:System.Threading.ThreadPriority>プロパティによって定義されます。 この値は、スレッドの優先順位を要求するように設定できますが、オペレーティングシステムによって受け入れられるとは限りません。  
   
--   読み取り専用<xref:System.Threading.Thread.IsThreadPoolThread%2A>プロパティで、スレッドがスレッド プールのスレッドでかどうかを示します。  
+-   スレッドがスレッドプール<xref:System.Threading.Thread.IsThreadPoolThread%2A>のスレッドであるかどうかを示す読み取り専用のプロパティ。  
   
--   <xref:System.Threading.Thread.IsBackground%2A> プロパティ。 詳細については、次を参照してください。、[フォア グラウンドとバック グラウンド スレッド](#Foreground)セクション。  
+-   <xref:System.Threading.Thread.IsBackground%2A> プロパティ。 詳細については、「[フォアグラウンドスレッドとバックグラウンドスレッド](#Foreground)」セクションを参照してください。  
   
 ## Examples  
- 次の例では、単純なスレッド処理の機能を示します。  
+ 次の例は、単純なスレッド機能を示しています。  
   
  [!code-cpp[Classic Thread Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic Thread Example/CPP/source.cpp#1)]
  [!code-csharp[Classic Thread Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic Thread Example/CS/source.cs#1)]
  [!code-vb[Classic Thread Example#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_Classic/classic Thread Example/VB/source.vb#1)]  
   
- このコードには、次のような出力が生成されます。  
+ このコードでは、次のような出力が生成されます。  
   
 ```  
 [VB, C++, C#]  
@@ -209,7 +209,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
     <threadsafe>この型はスレッド セーフです。</threadsafe>
     <related type="Article" href="~/docs/standard/threading/threads-and-threading.md">スレッドおよびスレッド処理</related>
     <related type="Article" href="~/docs/standard/threading/using-threads-and-threading.md">スレッドの使用とスレッド処理</related>
-    <related type="ExternalDocumentation" href="https://referencesource.microsoft.com/#mscorlib/system/threading/thread.cs#3980e012bae82e96">スレッド クラスのソースの参照</related>
+    <related type="ExternalDocumentation" href="https://referencesource.microsoft.com/#mscorlib/system/threading/thread.cs#3980e012bae82e96">Thread クラスの参照ソース</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -262,15 +262,15 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドでは、作成時にその実行は開始しません。 スレッドの実行をスケジュールするには、呼び出し、<xref:System.Threading.Thread.Start%2A>メソッド。 データ オブジェクトをスレッドに渡すを使用して、<xref:System.Threading.Thread.Start%28System.Object%29>メソッドのオーバー ロードします。  
+ スレッドが作成されても、実行は開始されません。 スレッドの実行をスケジュールするには、 <xref:System.Threading.Thread.Start%2A>メソッドを呼び出します。 データオブジェクトをスレッドに渡すには、 <xref:System.Threading.Thread.Start%28System.Object%29>メソッドオーバーロードを使用します。  
   
 > [!NOTE]
->  Visual Basic の場合は省略できます、<xref:System.Threading.ThreadStart>スレッドを作成するときに、コンス トラクター。 使用して、`AddressOf`演算子など、メソッドを渡すときに`Dim t As New Thread(AddressOf ThreadProc)`します。 Visual Basic を自動的に呼び出して、<xref:System.Threading.ThreadStart>コンス トラクター。  
+>  Visual Basic ユーザーは、 <xref:System.Threading.ThreadStart>スレッドの作成時にコンストラクターを省略できます。 `AddressOf` たとえば`Dim t As New Thread(AddressOf ThreadProc)`、メソッドを渡すときに演算子を使用します。 コンストラクターは、Visual Basic <xref:System.Threading.ThreadStart>によって自動的に呼び出されます。  
   
    
   
 ## Examples  
- 次の例の作成と使用の構文を示しています、<xref:System.Threading.ParameterizedThreadStart>静的メソッドとインスタンス メソッドを持つデリゲート。  
+ 次の例は、静的メソッドとインスタンスメソッドを<xref:System.Threading.ParameterizedThreadStart>使用してデリゲートを作成および使用するための構文を示しています。  
   
  [!code-cpp[System.Threading.ParameterizedThreadStart#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.ParameterizedThreadStart/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.ParameterizedThreadStart#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.ParameterizedThreadStart/CS/source.cs#1)]
@@ -278,7 +278,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="start" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="start" /> が <see langword="null" /> です。</exception>
         <altmember cref="T:System.Threading.ParameterizedThreadStart" />
         <altmember cref="Overload:System.Threading.Thread.Start" />
         <altmember cref="T:System.AppDomain" />
@@ -326,21 +326,21 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドでは、作成時にその実行は開始しません。 スレッドの実行をスケジュールするには、呼び出し、<xref:System.Threading.Thread.Start%2A>メソッド。  
+ スレッドが作成されても、実行は開始されません。 スレッドの実行をスケジュールするには、 <xref:System.Threading.Thread.Start%2A>メソッドを呼び出します。  
   
 > [!NOTE]
->  Visual Basic の場合は省略できます、<xref:System.Threading.ThreadStart>スレッドを作成するときに、コンス トラクター。 使用して、`AddressOf`演算子など、メソッドを渡すときに`Dim t As New Thread(AddressOf ThreadProc)`します。 Visual Basic を自動的に呼び出して、<xref:System.Threading.ThreadStart>コンス トラクター。  
+>  Visual Basic ユーザーは、 <xref:System.Threading.ThreadStart>スレッドの作成時にコンストラクターを省略できます。 `AddressOf` たとえば`Dim t As New Thread(AddressOf ThreadProc)`、メソッドを渡すときに演算子を使用します。 コンストラクターは、Visual Basic <xref:System.Threading.ThreadStart>によって自動的に呼び出されます。  
   
    
   
 ## Examples  
- 次のコード例では、静的メソッドを実行するスレッドを作成する方法を示します。  
+ 次のコード例は、静的メソッドを実行するスレッドを作成する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.ctor#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.ctor/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.ctor#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.ctor/CS/source.cs#1)]
  [!code-vb[System.Threading.Thread.ctor#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Thread.ctor/VB/source.vb#1)]  
   
- 次のコード例では、インスタンス メソッドを実行するスレッドを作成する方法を示します。  
+ インスタンスメソッドを実行するスレッドを作成する方法を次のコード例に示します。  
   
  [!code-cpp[System.Threading.Thread.ctor2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.ctor2/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.ctor2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.ctor2/CS/source.cs#1)]
@@ -397,20 +397,20 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクター オーバー ロードを使用しないでください。 使用される既定のスタック サイズ、<xref:System.Threading.Thread.%23ctor%28System.Threading.ParameterizedThreadStart%29>コンス トラクターのオーバー ロードは、スレッドの推奨されるスタック サイズ。 スレッドがある、メモリの問題、最も一般的な原因は無限再帰などのエラーをプログラミングします。  
+ このコンストラクターのオーバーロードは使用しないでください。 <xref:System.Threading.Thread.%23ctor%28System.Threading.ParameterizedThreadStart%29>コンストラクターのオーバーロードによって使用される既定のスタックサイズは、スレッドで推奨されるスタックサイズです。 スレッドにメモリの問題がある場合は、無限再帰などのプログラミングエラーが発生する可能性が最も高くなります。  
   
 > [!IMPORTANT]
->  以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、完全信頼コードで設定できる専用`maxStackSize`既定のスタック サイズ (1 メガバイト) よりも大きい値にします。 大きい値が指定されて場合`maxStackSize`部分信頼でコードが実行されているときに`maxStackSize`は無視されます、既定のスタック サイズを使用します。 例外をスローすることはありません。 すべての信頼レベルでコードを設定できます`maxStackSize`が既定のスタック サイズより小さい値にします。  
+>  以降で`maxStackSize`は、完全に信頼されたコードのみが既定のスタックサイズ(1メガバイト)より大きい値に[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]設定できます。 部分信頼でコードを実行する`maxStackSize`ときに、より大きな値を指定`maxStackSize`した場合、は無視され、既定のスタックサイズが使用されます。 例外をスローすることはありません。 任意の信頼レベルのコードは`maxStackSize` 、既定のスタックサイズよりも小さい値に設定できます。  
   
 > [!NOTE]
->  、部分的に信頼されたコードで使用される完全に信頼されたライブラリを開発しているし、スレッドを開始する必要がある場合は、大量の履歴を必要とするまたは、スレッドを作成する前に、完全な信頼をアサートする必要がありますが、既定のスタック サイズを使用します。 そうしないと、スレッドで実行されるコードを完全に制御する場合を除き、します。  
+>  部分的に信頼されるコードによって使用される完全に信頼されたライブラリを開発していて、大きなスタックを必要とするスレッドを開始する必要がある場合は、スレッドを作成する前に完全信頼をアサートする必要があります。または、既定のスタックサイズが使用されます。 スレッドで実行されるコードを完全に制御しない限り、この操作は行わないでください。  
   
- 場合`maxStackSize`が小さい最小スタックのサイズよりも、最小のスタック サイズが使用されます。 場合`maxStackSize`倍数ではない、ページ サイズの大きいページ サイズの倍数に丸められます。 たとえば、Windows Vista を .NET Framework version 2.0 を使用している場合 256 KB (262, 144 バイト) が最小のスタックのサイズとページ サイズは 64 KB (65,536 バイト)。  
+ が`maxStackSize`最小スタックサイズより小さい場合は、最小スタックサイズが使用されます。 が`maxStackSize`ページサイズの倍数でない場合は、ページサイズの次の大きな倍数に丸められます。 たとえば、Windows Vista で .NET Framework バージョン2.0 を使用している場合は、256 KB (262144 バイト) が最小スタックサイズで、ページサイズは 64 KB (65536 バイト) です。  
   
 > [!NOTE]
->  前に Windows XP および Windows Server 2003、Microsoft Windows のバージョンで`maxStackSize`は無視されますと、実行可能ファイルのヘッダーで指定されたスタック サイズが使用されます。  
+>  Windows XP および windows Server 2003 より前のバージョンの Microsoft Windows で`maxStackSize`は、は無視され、実行可能ヘッダーで指定されたスタックサイズが使用されます。  
   
- 非常に小さなスタック サイズを指定する場合は、スタック オーバーフローの検出を無効にする必要があります。 スタックが著しく制約されているときに、プローブできます自体、スタック オーバーフローが発生します。 スタック オーバーフローの検出を無効にするには、アプリケーション構成ファイルに、次を追加します。  
+ 非常に小さいスタックサイズを指定する場合は、スタックオーバーフロープローブを無効にする必要があります。 スタックが非常に制限されている場合、プローブによってスタックオーバーフローが発生する可能性があります。 スタックオーバーフロープローブを無効にするには、アプリケーション構成ファイルに次のを追加します。  
   
 ```xml  
 <configuration>  
@@ -469,20 +469,20 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクター オーバー ロードを使用しないでください。 使用される既定のスタック サイズ、<xref:System.Threading.Thread.%23ctor%28System.Threading.ThreadStart%29>コンス トラクターのオーバー ロードは、スレッドの推奨されるスタック サイズ。 スレッドがある、メモリの問題、最も一般的な原因は無限再帰などのエラーをプログラミングします。  
+ このコンストラクターのオーバーロードは使用しないでください。 <xref:System.Threading.Thread.%23ctor%28System.Threading.ThreadStart%29>コンストラクターのオーバーロードによって使用される既定のスタックサイズは、スレッドで推奨されるスタックサイズです。 スレッドにメモリの問題がある場合は、無限再帰などのプログラミングエラーが発生する可能性が最も高くなります。  
   
 > [!IMPORTANT]
->  以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、完全信頼コードで設定できる専用`maxStackSize`既定のスタック サイズ (1 メガバイト) よりも大きい値にします。 大きい値が指定されて場合`maxStackSize`部分信頼でコードが実行されているときに`maxStackSize`は無視されます、既定のスタック サイズを使用します。 例外をスローすることはありません。 すべての信頼レベルでコードを設定できます`maxStackSize`が既定のスタック サイズより小さい値にします。  
+>  以降で`maxStackSize`は、完全に信頼されたコードのみが既定のスタックサイズ(1メガバイト)より大きい値に[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]設定できます。 部分信頼でコードを実行する`maxStackSize`ときに、より大きな値を指定`maxStackSize`した場合、は無視され、既定のスタックサイズが使用されます。 例外をスローすることはありません。 任意の信頼レベルのコードは`maxStackSize` 、既定のスタックサイズよりも小さい値に設定できます。  
   
 > [!NOTE]
->  、部分的に信頼されたコードで使用される完全に信頼されたライブラリを開発しているし、スレッドを開始する必要がある場合は、大量の履歴を必要とするまたは、スレッドを作成する前に、完全な信頼をアサートする必要がありますが、既定のスタック サイズを使用します。 そうしないと、スレッドで実行されるコードを完全に制御する場合を除き、します。  
+>  部分的に信頼されるコードによって使用される完全に信頼されたライブラリを開発していて、大きなスタックを必要とするスレッドを開始する必要がある場合は、スレッドを作成する前に完全信頼をアサートする必要があります。または、既定のスタックサイズが使用されます。 スレッドで実行されるコードを完全に制御しない限り、この操作は行わないでください。  
   
- 場合`maxStackSize`が小さい最小スタックのサイズよりも、最小のスタック サイズが使用されます。 場合`maxStackSize`倍数ではない、ページ サイズの大きいページ サイズの倍数に丸められます。 たとえば、Windows Vista を .NET Framework version 2.0 を使用している場合 256 KB (262, 144 バイト) が最小のスタックのサイズとページ サイズは 64 KB (65,536 バイト)。  
+ が`maxStackSize`最小スタックサイズより小さい場合は、最小スタックサイズが使用されます。 が`maxStackSize`ページサイズの倍数でない場合は、ページサイズの次の大きな倍数に丸められます。 たとえば、Windows Vista で .NET Framework バージョン2.0 を使用している場合は、256 KB (262144 バイト) が最小スタックサイズで、ページサイズは 64 KB (65536 バイト) です。  
   
 > [!NOTE]
->  前に Windows XP および Windows Server 2003、Microsoft Windows のバージョンで`maxStackSize`は無視されますと、実行可能ファイルのヘッダーで指定されたスタック サイズが使用されます。  
+>  Windows XP および windows Server 2003 より前のバージョンの Microsoft Windows で`maxStackSize`は、は無視され、実行可能ヘッダーで指定されたスタックサイズが使用されます。  
   
- 非常に小さなスタック サイズを指定する場合は、スタック オーバーフローの検出を無効にする必要があります。 スタックが著しく制約されているときに、プローブできます自体、スタック オーバーフローが発生します。 スタック オーバーフローの検出を無効にするには、アプリケーション構成ファイルに、次を追加します。  
+ 非常に小さいスタックサイズを指定する場合は、スタックオーバーフロープローブを無効にする必要があります。 スタックが非常に制限されている場合、プローブによってスタックオーバーフローが発生する可能性があります。 スタックオーバーフロープローブを無効にするには、アプリケーション構成ファイルに次のを追加します。  
   
 ```xml  
 <configuration>  
@@ -512,9 +512,9 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!IMPORTANT]
-> `Thread.Abort`メソッドは、注意して使用する必要があります。 現在のスレッド以外のスレッドの中止を呼び出すときに特にわからないが、どのようなコードの実行またはときに実行する失敗した、<xref:System.Threading.ThreadAbortException>がスローされたものアプリケーションの状態の特定またはアプリケーションとユーザー状態ことができます維持を担当します。 たとえば、呼び出し`Thread.Abort`静的コンス トラクターが実行されないようにまたはアンマネージ リソースの解放を禁止する可能性があります。 
+> メソッド`Thread.Abort`は、注意して使用する必要があります。 特に、このメソッドを呼び出して、 <xref:System.Threading.ThreadAbortException>現在のスレッド以外のスレッドを中止する場合は、がスローされたときに実行されたコードや実行に失敗したコードを把握していないこと、またはアプリケーションの状態やアプリケーションとユーザーの状態を特定できないことがわかります。保持を担当します。 たとえば、を呼び`Thread.Abort`出すと、静的コンストラクターがアンマネージリソースの解放を実行したり、解放したりするのを防ぐことができます。 
 >
-> なお、`Thread.Abort`メソッドは .NET Core でサポートされていません。
+> .Net Core で`Thread.Abort`はメソッドがサポートされていないことに注意してください。
 
        ]]></format>
         </remarks>
@@ -560,32 +560,32 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドでこのメソッドが呼び出されると、システムがスローされます、<xref:System.Threading.ThreadAbortException>スレッドを中止することにします。 `ThreadAbortException` アプリケーションのコードでキャッチできる特殊な例外の最後に再スローされますが、`catch`しない限りブロック<xref:System.Threading.Thread.ResetAbort%2A>が呼び出されます。 `ResetAbort` 中止するには要求をキャンセルできず、`ThreadAbortException`のスレッドを終了します。 実行されていない`finally`ブロックは、スレッドが中止される前に実行されます。  
+ このメソッドがスレッドで呼び出されると、システムはスレッドで<xref:System.Threading.ThreadAbortException>をスローして中止します。 `ThreadAbortException`は、アプリケーションコードでキャッチできる特殊な例外ですが、が呼び出されない限り`catch` <xref:System.Threading.Thread.ResetAbort%2A> 、ブロックの末尾で再スローされます。 `ResetAbort`中止要求をキャンセルし、が`ThreadAbortException`スレッドを終了できないようにします。 Unexecuted `finally`ブロックは、スレッドが中止される前に実行されます。  
   
 > [!NOTE]
->  スレッドを呼び出すと`Abort`自体の効果は例外をスローすることに似ています、 <xref:System.Threading.ThreadAbortException> 、即座に実行され、結果は予測可能な。 ただし、1 つのスレッドを呼び出す場合`Abort`どのようなコードが実行されているが、中止、別のスレッドで中断します。 静的コンス トラクターが中断される可能性もあります。 まれに、そのクラスのインスタンスを防ぐため、そのアプリケーション ドメインで作成されない可能性がありますこれ。 スレッドが中止される可能性が可能性がある .NET Framework バージョン 1.0 および 1.1 では中、`finally`後者ブロックが実行されて、`finally`ブロックが中止されました。  
+>  スレッドがそれ自体`Abort`でを呼び出すと、その<xref:System.Threading.ThreadAbortException>効果は例外をスローするのと似ています。はすぐに発生し、結果は予測可能です。 ただし、あるスレッドが別`Abort`のスレッドでを呼び出すと、実行中のすべてのコードが中断されます。 また、静的コンストラクターが中断される可能性もあります。 まれに、そのクラスのインスタンスがそのアプリケーションドメインで作成されない場合があります。 .NET Framework バージョン1.0 および1.1 では、 `finally`ブロックが実行されている間にスレッドが中止される可能性があります。この`finally`場合、ブロックは中止されます。  
   
- スレッドは、すぐに、またはまったくを中止するは保証されません。 このような状況は、スレッドは計算量が境界のない場合に発生することができます、`finally`無期限のために、中止を遅延、中止手順の一部として呼び出されるブロック。 スレッドが中止されるまで待ってを呼び出すことができます、<xref:System.Threading.Thread.Join%2A>メソッドを呼び出した後、スレッド、<xref:System.Threading.Thread.Abort%2A>メソッド、待機が終了する保証はありません。  
+ スレッドはすぐに中止されるとは限りません。 この状況は、スレッドが中止プロシージャの一部として呼び出され`finally`たブロック内で無制限の計算を実行した場合に発生する可能性があります。これにより、中止が無期限に遅延されます。 スレッドが中止されるまで待機するには、 <xref:System.Threading.Thread.Join%2A> <xref:System.Threading.Thread.Abort%2A>メソッドを呼び出した後にスレッドでメソッドを呼び出すことができますが、待機が終了する保証はありません。  
   
 > [!NOTE]
->  呼び出すスレッド<xref:System.Threading.Thread.Abort%2A>場合などは、コードの保護領域で中止中のスレッドをブロックする可能性があります、`catch`ブロック、`finally`ブロック、または制約された実行領域。 かどうか、スレッドを呼び出す<xref:System.Threading.Thread.Abort%2A>デッドロックが発生することができますが、中止されたスレッドが必要なロックを保持します。  
+>  中断されて<xref:System.Threading.Thread.Abort%2A>いるスレッドが、 `catch`ブロック、 `finally`ブロック、または制約された実行領域などのコードの保護された領域内にある場合は、を呼び出すスレッドがブロックされる可能性があります。 を呼び出し<xref:System.Threading.Thread.Abort%2A>たスレッドが、中止されたスレッドが必要とするロックを保持している場合、デッドロックが発生する可能性があります。  
   
- 場合`Abort`と呼びますが開始されていないスレッドでスレッドが中止される場合<xref:System.Threading.Thread.Start%2A>が呼び出されます。 場合`Abort`と呼ばれるはブロックされているかスリープ状態のスレッドでスレッドが中断され、中止されました。  
+ が`Abort`開始されていないスレッドでが呼び出された場合、スレッドは<xref:System.Threading.Thread.Start%2A>が呼び出されると中止されます。 ブロック`Abort`されている、またはスリープ状態のスレッドでが呼び出された場合、スレッドは中断されてから中止されます。  
   
- 場合`Abort`が中断されたスレッドで呼び出されます、<xref:System.Threading.ThreadStateException>を呼び出したスレッドでスローされる<xref:System.Threading.Thread.Abort%2A>、および<xref:System.Threading.ThreadState.AbortRequested>に追加されます、<xref:System.Threading.Thread.ThreadState%2A>が中止されたスレッドのプロパティ。 A<xref:System.Threading.ThreadAbortException>まで中断されたスレッドではスローされません<xref:System.Threading.Thread.Resume%2A>が呼び出されます。  
+ <xref:System.Threading.Thread.Abort%2A> <xref:System.Threading.ThreadState.AbortRequested> <xref:System.Threading.Thread.ThreadState%2A>中断`Abort` されたスレッドでが呼び出されると、が呼び出されたスレッドでがスローされ、中止されるスレッドのプロパティにが追加されます。<xref:System.Threading.ThreadStateException> が呼び出されるまで<xref:System.Threading.Thread.Resume%2A> 、中断されたスレッドではスローされません。 <xref:System.Threading.ThreadAbortException>  
   
- 場合`Abort`、アンマネージ コードの実行中に、マネージ スレッドで呼び出されます、`ThreadAbortException`スレッドがマネージ コードに戻るまではスローされません。  
+ アン`Abort`マネージコードの実行中にマネージスレッドでが呼び出された場合`ThreadAbortException` 、スレッドがマネージコードに戻るまでは、がスローされません。  
   
- 呼び出しは 2 つの場合`Abort`ものでは、同時に、1 回の呼び出しの状態情報を設定すると、その他の呼び出しを実行することは、`Abort`します。 ただし、アプリケーションは、このような状況を検出することはできません。  
+ 2つの呼び出し`Abort`が同時に行われる場合は、1回の呼び出しで状態情報を設定し、もう一方の呼び出しで`Abort`を実行することができます。 ただし、アプリケーションでこの状況を検出することはできません。  
   
- 後`Abort`が呼び出されたスレッドでスレッドの状態が含まれます<xref:System.Threading.ThreadState.AbortRequested>します。 成功した呼び出しの結果として、スレッドが終了したら`Abort`、スレッドの状態に変更<xref:System.Threading.ThreadState.Stopped>します。 十分なアクセス許可を備えた、スレッドの対象となる、`Abort`中止を使用して、取り消すことができます、`ResetAbort`メソッド。 呼び出し元を示す例については、`ResetAbort`メソッドを参照してください、`ThreadAbortException`クラス。  
+ スレッド`Abort`でが呼び出された後、スレッドの状態には<xref:System.Threading.ThreadState.AbortRequested>が含まれます。 の呼び出し`Abort`が成功した結果としてスレッドが終了すると、スレッドの状態がに<xref:System.Threading.ThreadState.Stopped>変更されます。 十分なアクセス許可がある場合、の`Abort`ターゲットであるスレッドは、 `ResetAbort`メソッドを使用して中止を取り消すことができます。 メソッドの`ResetAbort`呼び出しを示す例につい`ThreadAbortException`ては、クラスを参照してください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: このメンバーはサポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
         <exception cref="T:System.Threading.ThreadStateException">中止しようとしているスレッドが現在中断されています。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドでの高度な操作。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドに対する高度な操作の場合。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
         <altmember cref="T:System.Threading.ThreadAbortException" />
         <altmember cref="F:System.Threading.ThreadState.Aborted" />
         <altmember cref="F:System.Threading.ThreadState.AbortRequested" />
@@ -637,30 +637,30 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドでこのメソッドが呼び出されると、システムがスローされます、<xref:System.Threading.ThreadAbortException>スレッドを中止することにします。 `ThreadAbortException` アプリケーションのコードでキャッチできる特殊な例外の最後に再スローされますが、`catch`しない限りブロック<xref:System.Threading.Thread.ResetAbort%2A>が呼び出されます。 `ResetAbort` 中止するには要求をキャンセルできず、`ThreadAbortException`のスレッドを終了します。 実行されていない`finally`ブロックは、スレッドが中止される前に実行されます。  
+ このメソッドがスレッドで呼び出されると、システムはスレッドで<xref:System.Threading.ThreadAbortException>をスローして中止します。 `ThreadAbortException`は、アプリケーションコードでキャッチできる特殊な例外ですが、が呼び出されない限り`catch` <xref:System.Threading.Thread.ResetAbort%2A> 、ブロックの末尾で再スローされます。 `ResetAbort`中止要求をキャンセルし、が`ThreadAbortException`スレッドを終了できないようにします。 Unexecuted `finally`ブロックは、スレッドが中止される前に実行されます。  
   
 > [!NOTE]
->  スレッドを呼び出すと`Abort`自体の効果は例外をスローすることに似ています、 <xref:System.Threading.ThreadAbortException> 、即座に実行され、結果は予測可能な。 ただし、1 つのスレッドを呼び出す場合`Abort`どのようなコードが実行されているが、中止、別のスレッドで中断します。 静的コンス トラクターが中断される可能性があります。 まれに、そのクラスのインスタンスを防ぐため、そのアプリケーション ドメインで作成されない可能性がありますこれ。 スレッドが中止される可能性が可能性がある .NET Framework バージョン 1.0 および 1.1 では中、`finally`後者ブロックが実行されて、`finally`ブロックが中止されました。  
+>  スレッドがそれ自体`Abort`でを呼び出すと、その<xref:System.Threading.ThreadAbortException>効果は例外をスローするのと似ています。はすぐに発生し、結果は予測可能です。 ただし、あるスレッドが別`Abort`のスレッドでを呼び出すと、実行中のすべてのコードが中断されます。 静的コンストラクターが中断される可能性があります。 まれに、そのクラスのインスタンスがそのアプリケーションドメインで作成されない場合があります。 .NET Framework バージョン1.0 および1.1 では、 `finally`ブロックが実行されている間にスレッドが中止される可能性があります。この`finally`場合、ブロックは中止されます。  
   
- スレッドは、すぐに、またはまったくを中止するは保証されません。 このような状況は、スレッドは計算量が境界のない場合に発生することができます、`finally`無期限のために、中止を遅延、中止手順の一部として呼び出されるブロック。 スレッドが中止されるまで待ってを呼び出すことができます、<xref:System.Threading.Thread.Join%2A>メソッドを呼び出した後、スレッド、<xref:System.Threading.Thread.Abort%2A>メソッド、待機が終了されるという保証はありません。  
+ スレッドはすぐに中止されるとは限りません。 この状況は、スレッドが中止プロシージャの一部として呼び出され`finally`たブロック内で無制限の計算を実行した場合に発生する可能性があります。これにより、中止が無期限に遅延されます。 スレッドが中止されるまで待機するには、 <xref:System.Threading.Thread.Join%2A> <xref:System.Threading.Thread.Abort%2A>メソッドを呼び出した後にスレッドでメソッドを呼び出すことができますが、待機が終了する保証はありません。  
   
 > [!NOTE]
->  呼び出すスレッド<xref:System.Threading.Thread.Abort%2A>場合などは、コードの保護領域で中止中のスレッドをブロックする可能性があります、`catch`ブロック、`finally`ブロック、または制約された実行領域。 かどうか、スレッドを呼び出す<xref:System.Threading.Thread.Abort%2A>デッドロックが発生することができますが、中止されたスレッドが必要なロックを保持します。  
+>  中断されて<xref:System.Threading.Thread.Abort%2A>いるスレッドが、 `catch`ブロック、 `finally`ブロック、または制約された実行領域などのコードの保護された領域内にある場合は、を呼び出すスレッドがブロックされる可能性があります。 を呼び出し<xref:System.Threading.Thread.Abort%2A>たスレッドが、中止されたスレッドが必要とするロックを保持している場合、デッドロックが発生する可能性があります。  
   
- 場合`Abort`と呼びますが開始されていないスレッドでスレッドが中止される場合<xref:System.Threading.Thread.Start%2A>が呼び出されます。 場合`Abort`と呼ばれるはブロックされているかスリープ状態のスレッドでスレッドが中断され、中止されました。  
+ が`Abort`開始されていないスレッドでが呼び出された場合、スレッドは<xref:System.Threading.Thread.Start%2A>が呼び出されると中止されます。 ブロック`Abort`されている、またはスリープ状態のスレッドでが呼び出された場合、スレッドは中断されてから中止されます。  
   
- 場合`Abort`が中断されたスレッドで呼び出されます、<xref:System.Threading.ThreadStateException>を呼び出したスレッドでスローされる<xref:System.Threading.Thread.Abort%2A>、および<xref:System.Threading.ThreadState.AbortRequested>に追加されます、<xref:System.Threading.Thread.ThreadState%2A>が中止されたスレッドのプロパティ。 A<xref:System.Threading.ThreadAbortException>まで中断されたスレッドではスローされません<xref:System.Threading.Thread.Resume%2A>が呼び出されます。  
+ <xref:System.Threading.Thread.Abort%2A> <xref:System.Threading.ThreadState.AbortRequested> <xref:System.Threading.Thread.ThreadState%2A>中断`Abort` されたスレッドでが呼び出されると、が呼び出されたスレッドでがスローされ、中止されるスレッドのプロパティにが追加されます。<xref:System.Threading.ThreadStateException> が呼び出されるまで<xref:System.Threading.Thread.Resume%2A> 、中断されたスレッドではスローされません。 <xref:System.Threading.ThreadAbortException>  
   
- 場合`Abort`、アンマネージ コードの実行中に、マネージ スレッドで呼び出されます、`ThreadAbortException`スレッドがマネージ コードに戻るまではスローされません。  
+ アン`Abort`マネージコードの実行中にマネージスレッドでが呼び出された場合`ThreadAbortException` 、スレッドがマネージコードに戻るまでは、がスローされません。  
   
- 呼び出しは 2 つの場合`Abort`ものでは、同時に、1 回の呼び出しの状態情報を設定すると、その他の呼び出しを実行することは、`Abort`します。 ただし、アプリケーションは、このような状況を検出することはできません。  
+ 2つの呼び出し`Abort`が同時に行われる場合は、1回の呼び出しで状態情報を設定し、もう一方の呼び出しで`Abort`を実行することができます。 ただし、アプリケーションでこの状況を検出することはできません。  
   
- 後`Abort`が呼び出されたスレッドでスレッドの状態が含まれます<xref:System.Threading.ThreadState.AbortRequested>します。 成功した呼び出しの結果として、スレッドが終了したら`Abort`、スレッドの状態に変更<xref:System.Threading.ThreadState.Stopped>します。 十分なアクセス許可を備えた、スレッドの対象となる、`Abort`中止を使用して、取り消すことができます、`ResetAbort`メソッド。 呼び出し元を示す例については、`ResetAbort`メソッドを参照してください、`ThreadAbortException`クラス。  
+ スレッド`Abort`でが呼び出された後、スレッドの状態には<xref:System.Threading.ThreadState.AbortRequested>が含まれます。 の呼び出し`Abort`が成功した結果としてスレッドが終了すると、スレッドの状態がに<xref:System.Threading.ThreadState.Stopped>変更されます。 十分なアクセス許可がある場合、の`Abort`ターゲットであるスレッドは、 `ResetAbort`メソッドを使用して中止を取り消すことができます。 メソッドの`ResetAbort`呼び出しを示す例につい`ThreadAbortException`ては、クラスを参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、中止中のスレッドに情報を渡す方法を示します。  
+ 次のコード例は、中断されているスレッドに情報を渡す方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.Abort2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Abort2/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Abort2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Abort2/CS/source.cs#1)]
@@ -671,7 +671,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
         <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: このメンバーはサポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
         <exception cref="T:System.Threading.ThreadStateException">中止しようとしているスレッドが現在中断されています。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドでの高度な操作。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドに対する高度な操作の場合。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
         <altmember cref="T:System.Threading.ThreadAbortException" />
         <altmember cref="F:System.Threading.ThreadState.Aborted" />
         <altmember cref="F:System.Threading.ThreadState.AbortRequested" />
@@ -718,28 +718,28 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!IMPORTANT]
->  .NET Framework には、スレッド ローカル ストレージ (TLS) を使用して 2 つのメカニズムが用意されています: スレッド相対静的フィールド (でマークされているフィールドは、<xref:System.ThreadStaticAttribute>属性) とデータ スロット。 スレッド相対静的フィールドは、データ スロットより優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 詳細については、TLS を使用して、次を参照してください。[スレッド ローカル ストレージ。スレッド相対静的フィールドとデータ スロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)します。  
+>  .NET Framework には、スレッドローカルストレージ (TLS) を使用するための2つのメカニズムが用意されています。スレッド相対<xref:System.ThreadStaticAttribute>静的フィールド (つまり、属性でマークされたフィールド) とデータスロットです。 スレッド相対静的フィールドは、データスロットよりもはるかに優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 TLS の使用方法の詳細につい[ては、「Thread Local Storage (スレッドローカルストレージ)」を参照してください。スレッド相対静的フィールドとデータスロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)。  
   
- スロットのすべてのスレッドが割り当てられます。  
+ スロットはすべてのスレッドに割り当てられます。  
   
- スレッドは、スレッド固有のデータを格納するのにローカル ストアのメモリ メカニズムを使用します。 共通言語ランタイムは、作成時に、各プロセスにマルチ スロットのデータ ストア配列を割り当てます。 スレッドは、データ ストア内のデータ スロットを割り当てることができますが、格納および取得するデータ スロットの値し、スレッドの有効期限が切れた後に再利用するため、スロットを解放します。 データ スロットは、スレッドごとに一意です。 他のスレッド (子スレッドであっても) はそのデータを取得できません。  
+ スレッドは、ローカルストアのメモリ機構を使用して、スレッド固有のデータを格納します。 共通言語ランタイムは、作成時に各プロセスに複数スロットのデータストア配列を割り当てます。 スレッドは、データストアにデータスロットを割り当て、スロットにデータ値を格納して取得し、スレッドの有効期限が切れた後で再利用できるようにスロットを解放します。 データスロットはスレッドごとに一意です。 他のスレッド (子スレッドでもありません) は、そのデータを取得できません。  
   
    
   
 ## Examples  
- このセクションには、2 つのコード例が含まれています。 最初の例でマークされているフィールドを使用する方法を示しています、<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持する属性。 2 番目の例では、同じことを行うデータ スロットを使用する方法を示します。  
+ このセクションには、2 つのコード例が含まれています。 最初の例は、 <xref:System.ThreadStaticAttribute>属性でマークされたフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 2番目の例では、データスロットを使用して同じ処理を行う方法を示します。  
   
  **最初の例**  
   
- 次の例でマークされているフィールドを使用する方法を示します<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持するためにします。 この手法は、2 番目の例で示す方法よりも優れたパフォーマンスを提供します。  
+ 次の例は、で<xref:System.ThreadStaticAttribute>マークされているフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 この手法は、2番目の例に示す手法よりもパフォーマンスが優れています。  
   
  [!code-cpp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CS/source.cs#1)]
  [!code-vb[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/vb/source.vb#1)]  
   
- **2 番目の例**  
+ **2番目の例**  
   
- 次のコード例では、スレッド固有の情報を格納するデータ スロットを使用する方法を示します。  
+ データスロットを使用してスレッド固有の情報を格納する方法を次のコード例に示します。  
   
  [!code-cpp[System.Threading.Thread.DataSlot#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DataSlot/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DataSlot#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DataSlot/CS/source.cs#1)]
@@ -792,36 +792,36 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!IMPORTANT]
->  .NET Framework には、スレッド ローカル ストレージ (TLS) を使用して 2 つのメカニズムが用意されています: スレッド相対静的フィールド (でマークされているフィールドは、<xref:System.ThreadStaticAttribute>属性) とデータ スロット。 スレッド相対静的フィールドは、データ スロットより優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 詳細については、TLS を使用して、次を参照してください。[スレッド ローカル ストレージ。スレッド相対静的フィールドとデータ スロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)します。  
+>  .NET Framework には、スレッドローカルストレージ (TLS) を使用するための2つのメカニズムが用意されています。スレッド相対<xref:System.ThreadStaticAttribute>静的フィールド (つまり、属性でマークされたフィールド) とデータスロットです。 スレッド相対静的フィールドは、データスロットよりもはるかに優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 TLS の使用方法の詳細につい[ては、「Thread Local Storage (スレッドローカルストレージ)」を参照してください。スレッド相対静的フィールドとデータスロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)。  
   
- スレッドは、スレッド固有のデータを格納するのにローカル ストアのメモリ メカニズムを使用します。 共通言語ランタイムは、作成時に、各プロセスにマルチ スロットのデータ ストア配列を割り当てます。 スレッドは、データ ストア内のデータ スロットを割り当てることができますが、格納および取得するデータ スロットの値し、スレッドの有効期限が切れた後に再利用するため、スロットを解放します。 データ スロットは、スレッドごとに一意です。 他のスレッド (子スレッドであっても) はそのデータを取得できません。  
+ スレッドは、ローカルストアのメモリ機構を使用して、スレッド固有のデータを格納します。 共通言語ランタイムは、作成時に各プロセスに複数スロットのデータストア配列を割り当てます。 スレッドは、データストアにデータスロットを割り当て、スロットにデータ値を格納して取得し、スレッドの有効期限が切れた後で再利用できるようにスロットを解放します。 データスロットはスレッドごとに一意です。 他のスレッド (子スレッドでもありません) は、そのデータを取得できません。  
   
- 使用する必要はありません、 <xref:System.Threading.Thread.AllocateNamedDataSlot%2A> 、名前付きデータ スロットを割り当てるため、メソッド、<xref:System.Threading.Thread.GetNamedDataSlot%2A>メソッドは、既に割り当てられていない場合に、スロットを割り当てます。  
+ メソッドを使用<xref:System.Threading.Thread.AllocateNamedDataSlot%2A>して名前付きデータスロットを割り当てる必要はありません。 <xref:System.Threading.Thread.GetNamedDataSlot%2A>これは、メソッドがまだ割り当てられていない場合にスロットが割り当てられるためです。  
   
 > [!NOTE]
->  場合、<xref:System.Threading.Thread.AllocateNamedDataSlot%2A>メソッドを使用して、指定した名前のスロットが既に割り当てられている場合に例外をスローしたためには、プログラムの起動時にメイン スレッドでという必要があります。 スロットが既に割り当てられているかどうかをテストする方法はありません。  
+>  <xref:System.Threading.Thread.AllocateNamedDataSlot%2A>メソッドを使用する場合は、プログラムの起動時にメインスレッドで呼び出す必要があります。これは、指定した名前のスロットが既に割り当てられている場合に例外がスローされるためです。 スロットが既に割り当てられているかどうかをテストする方法はありません。  
   
- このメソッドで割り当てられたスロットを解放する必要があります<xref:System.Threading.Thread.FreeNamedDataSlot%2A>します。  
+ このメソッドで割り当てられたスロットは<xref:System.Threading.Thread.FreeNamedDataSlot%2A>、を使用して解放する必要があります。  
   
    
   
 ## Examples  
- このセクションには、2 つのコード例が含まれています。 最初の例でマークされているフィールドを使用する方法を示しています、<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持する属性。 2 番目の例では、同じことを行うデータ スロットを使用する方法を示します。  
+ このセクションには、2 つのコード例が含まれています。 最初の例は、 <xref:System.ThreadStaticAttribute>属性でマークされたフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 2番目の例では、データスロットを使用して同じ処理を行う方法を示します。  
   
  **最初の例**  
   
- 次の例でマークされているフィールドを使用する方法を示します<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持するためにします。 この手法は、2 番目の例で示す方法よりも優れたパフォーマンスを提供します。  
+ 次の例は、で<xref:System.ThreadStaticAttribute>マークされているフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 この手法は、2番目の例に示す手法よりもパフォーマンスが優れています。  
   
  [!code-cpp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CS/source.cs#1)]
  [!code-vb[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/vb/source.vb#1)]  
   
- **2 番目の例**  
+ **2番目の例**  
   
- 次の例では、名前付きデータ スロットを使用して、スレッド固有の情報を格納する方法を示します。  
+ 次の例は、名前付きデータスロットを使用してスレッド固有の情報を格納する方法を示しています。  
   
 > [!NOTE]
->  コード例では使用しません、<xref:System.Threading.Thread.AllocateNamedDataSlot%2A>メソッド、ため、<xref:System.Threading.Thread.GetNamedDataSlot%2A>メソッドは、既に割り当てられていない場合に、スロットを割り当てます。 場合、<xref:System.Threading.Thread.AllocateNamedDataSlot%2A>メソッドを使用して、これは、プログラムの起動時にメイン スレッドで呼び出す必要があります。  
+>  コード例では、メソッドは<xref:System.Threading.Thread.AllocateNamedDataSlot%2A>使用しません<xref:System.Threading.Thread.GetNamedDataSlot%2A> 。これは、メソッドが割り当てられていない場合にスロットが割り当てられるためです。 <xref:System.Threading.Thread.AllocateNamedDataSlot%2A>メソッドを使用する場合は、プログラムの起動時にメインスレッドで呼び出す必要があります。  
   
  [!code-cpp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CS/source.cs#1)]
@@ -878,26 +878,26 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
       </ReturnValue>
       <Docs>
         <summary>このスレッドのアパートメント状態を取得または設定します。</summary>
-        <value><see cref="T:System.Threading.ApartmentState" /> 値のいずれか。 初期値は <see langword="Unknown" /> です。</value>
+        <value><see cref="T:System.Threading.ApartmentState" /> 値のいずれか 1 つ。 初期値は <see langword="Unknown" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- **<xref:System.Threading.Thread.ApartmentState%2A>プロパティは廃止されています。**  旧式でない代替手段は、<xref:System.Threading.Thread.GetApartmentState%2A>アパートメント状態を取得するメソッドと<xref:System.Threading.Thread.SetApartmentState%2A>アパートメント状態を設定します。  
+ **プロパティ<xref:System.Threading.Thread.ApartmentState%2A>は互換性のために残されています。**  旧式ではない代替手段は<xref:System.Threading.Thread.GetApartmentState%2A> 、アパートメント状態を取得するメソッド<xref:System.Threading.Thread.SetApartmentState%2A>とアパートメント状態を設定するメソッドです。  
   
- .NET Framework バージョン 1.0 および 1.1 で、`ApartmentState`プロパティは、スレッドを示すことがシングル スレッドまたはマルチ スレッド アパートメントで実行されます。 スレッドがの場合、このプロパティを設定できます、`Unstarted`または`Running`スレッドの状態です。 ただし、設定できます 1 回だけのスレッド。 プロパティが設定されていないかどうかが返されます`Unknown`します。  
+ .NET Framework バージョン1.0 および1.1 では、プロパティ`ApartmentState`は、スレッドがシングルスレッドまたはマルチスレッドアパートメントで実行されることを示すようにマークします。 このプロパティは、スレッドが`Unstarted`または`Running`スレッド状態のときに設定できます。ただし、スレッドに対して一度だけ設定できます。 プロパティが設定されていない場合は`Unknown`、が返されます。  
   
- 使用した場合、<xref:System.Threading.Thread.ApartmentState%2A>アパートメント状態が既に設定されているスレッドのアパートメント状態を設定するプロパティは無視されます。 ただし、<xref:System.Threading.Thread.SetApartmentState%2A>メソッドがスローされます、<xref:System.InvalidOperationException>ここでします。  
+ <xref:System.Threading.Thread.ApartmentState%2A>プロパティを使用して、アパートメント状態が既に設定されているスレッドのアパートメント状態を設定しようとしましたが、無視されます。 ただし、この<xref:System.Threading.Thread.SetApartmentState%2A>場合、メソッド<xref:System.InvalidOperationException>はをスローします。  
   
 > [!IMPORTANT]
->  として、.NET Framework version 2.0 で新しいスレッドの初期化<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>の開始される前に、そのアパートメント状態が設定されていない場合。 メイン アプリケーション スレッドに初期化<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>既定。 不要になったにメイン アプリケーション スレッドを設定できます<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>を設定して、<xref:System.Threading.ApartmentState?displayProperty=nameWithType>コードの最初の行のプロパティ。 使用して、<xref:System.STAThreadAttribute>代わりにします。  
+>  .NET Framework バージョン2.0 では、新しいスレッドは、アパートメント<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>状態が開始前に設定されていないかのように初期化されます。 メインアプリケーションスレッドは、既定で<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>に初期化されます。 最初のコード行で<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType> <xref:System.Threading.ApartmentState?displayProperty=nameWithType>プロパティを設定することによって、メインアプリケーションスレッドをに設定できなくなりました。 代わりにを<xref:System.STAThreadAttribute>使用してください。  
   
- .NET Framework version 2.0 では、COM スレッド モデルを使用して、C++ アプリケーションを指定することができます、 [/CLRTHREADATTRIBUTE (CLR スレッド属性の設定)](https://msdn.microsoft.com/library/4907e9ef-5031-446c-aecf-0a0b32fae1e8)リンカー オプション。  
+ .NET Framework バージョン2.0 では、 [/CLRTHREADATTRIBUTE (CLR スレッド属性の設定)](https://msdn.microsoft.com/library/4907e9ef-5031-446c-aecf-0a0b32fae1e8)リンカー C++オプションを使用して、アプリケーションの COM スレッドモデルを指定できます。  
   
    
   
 ## Examples  
- 次のコード例では、スレッドのアパートメント状態を設定する方法を示します。  
+ 次のコード例は、スレッドのアパートメント状態を設定する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.ApartmentState#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.ApartmentState/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.ApartmentState#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.ApartmentState/CS/source.cs#1)]
@@ -953,18 +953,18 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Microsoft SQL Server 2005 などの共通言語ランタイム (CLR) のホストには、コードの重要および重大でないリージョン内のエラーのさまざまなポリシーを確立できます。 クリティカル領域では、するスレッドの中止または処理されない例外の影響があります、現在のタスクに制限されています。 これに対し、中止または致命的でないコードの領域でエラーには、エラーが発生したタスクのみに影響します。  
+ Microsoft SQL Server 2005 などの共通言語ランタイム (CLR) のホストは、コードの重要な領域や重要ではない領域のエラーに対してさまざまなポリシーを確立できます。 クリティカルな領域とは、スレッドの中止またはハンドルされない例外の影響が現在のタスクに限定されない場合があることです。 これに対し、クリティカルでないコード領域の中止または失敗は、エラーが発生したタスクにのみ影響します。  
   
- たとえば、ロックを保持しているときにメモリを割り当てようとするタスクを検討してください。 メモリの割り当てが失敗した場合がの安定性を確保するための十分な現在のタスクを中止していますが、 <xref:System.AppDomain>、同じロックを待機しているドメインを他のタスクにすることができますがあります。 現在のタスクが終了した場合は、その他のタスクがデッドロックでした。  
+ たとえば、ロックを保持しながらメモリの割り当てを試みるタスクを考えてみます。 メモリの割り当てが失敗した場合は、同じロックを待機している他<xref:System.AppDomain>のタスクがドメイン内に存在する可能性があるため、現在のタスクを中止するだけでは十分ではありません。 現在のタスクが終了している場合は、他のタスクがデッドロックしている可能性があります。  
   
- 全体をアンロードするホストがありますクリティカル領域で、障害が発生したときに<xref:System.AppDomain>可能性がある不安定な状態で実行を続けることのリスクを冒すよりもします。 コードがクリティカル領域を入力することをホストに通知をするために呼び出す<xref:System.Threading.Thread.BeginCriticalRegion%2A>します。 呼び出す<xref:System.Threading.Thread.EndCriticalRegion%2A>と重大でないコードの領域への実行を返します。  
+ 重大なリージョンで障害が発生した場合、ホストは、不安定な状態<xref:System.AppDomain>で実行を継続するリスクを負うのではなく、全体をアンロードすることになる可能性があります。 コードがクリティカルな領域に入ることをホストに通知するに<xref:System.Threading.Thread.BeginCriticalRegion%2A>は、を呼び出します。 実行<xref:System.Threading.Thread.EndCriticalRegion%2A>がコードの重要でない領域に戻るときに、を呼び出します。  
   
- SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最上位のホストの保護レベルで実行されるコードが必要です。  
+ SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最高のホスト保護レベルでコードを実行する必要があります。  
   
    
   
 ## Examples  
- 次の例では、使用、<xref:System.Threading.Thread.BeginCriticalRegion%2A>と<xref:System.Threading.Thread.EndCriticalRegion%2A>重要および重大でない地域コードのブロックに分割する方法。  
+ 次の例では、メソッド<xref:System.Threading.Thread.BeginCriticalRegion%2A>と<xref:System.Threading.Thread.EndCriticalRegion%2A>メソッドを使用して、コードのブロックを重要な領域と重要でない領域に分割する方法を示します。  
   
  [!code-cpp[System.Threading.Thread.BeginCriticalRegion#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.BeginCriticalRegion/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.BeginCriticalRegion#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.BeginCriticalRegion/CS/source.cs#1)]
@@ -1017,16 +1017,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Microsoft SQL Server 2005 など、共通言語ランタイムの一部のホストでは、独自のスレッド管理を提供します。 独自のスレッド管理を提供するホストに移動できます実行中のタスク 1 つのオペレーティング システムの物理スレッドから別、いつでも。 ほとんどのタスクは、このを切り替えることでは受けません。 ただし、いくつかのタスクはスレッド アフィニティを設定する-は、オペレーティング システムの物理スレッドの id に依存します。 これらのタスクは、スイッチできないコードを実行するときをホストに通知する必要があります。  
+ Microsoft SQL Server 2005 などの共通言語ランタイムの一部のホストには、独自のスレッド管理が用意されています。 独自のスレッド管理を提供するホストは、実行中のタスクを1つの物理オペレーティングシステムスレッドから別のシステムスレッドにいつでも移動できます。 ほとんどのタスクはこの切り替えの影響を受けません。 ただし、スレッドアフィニティがあるタスクもあります。つまり、オペレーティングシステムの物理スレッドの id によって異なります。 これらのタスクは、切り替える必要があるコードを実行するときに、ホストに通知する必要があります。  
   
- 呼び出す必要がありますの例では、オペレーティング システムを取得する、アプリケーション呼び出しシステム API をロックする場合、Win32 CRITICAL_SECTION など、スレッドの関係のある<xref:System.Threading.Thread.BeginThreadAffinity%2A>、ロックを取得する前に、<xref:System.Threading.Thread.EndThreadAffinity%2A>ロックを解放した後。  
+ たとえば、アプリケーションが、Win32 CRITICAL_SECTION などのスレッドアフィニティを持つオペレーティングシステムロックを取得するためにシステム API を呼び出す場合は、ロック<xref:System.Threading.Thread.BeginThreadAffinity%2A>を取得する前、および<xref:System.Threading.Thread.EndThreadAffinity%2A>ロックを解放した後にを呼び出す必要があります。  
   
- SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最上位のホストの保護レベルで実行されるコードが必要です。  
+ SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最高のホスト保護レベルでコードを実行する必要があります。  
   
    
   
 ## Examples  
- 次の例では、使用、<xref:System.Threading.Thread.BeginThreadAffinity%2A>と<xref:System.Threading.Thread.EndThreadAffinity%2A>メソッドのコード ブロックは、オペレーティング システムの物理スレッドの id に依存しているホストに通知します。  
+ 次の例では、メソッド<xref:System.Threading.Thread.BeginThreadAffinity%2A>と<xref:System.Threading.Thread.EndThreadAffinity%2A>メソッドを使用して、コードのブロックが物理オペレーティングシステムスレッドの id に依存することをホストに通知します。  
   
  [!code-cpp[System.Threading.Thread.BeginThreadAffinity#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.BeginThreadAffinity/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.BeginThreadAffinity#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.BeginThreadAffinity/CS/source.cs#1)]
@@ -1035,7 +1035,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Threading.Thread.EndThreadAffinity" />
       </Docs>
     </Member>
@@ -1073,7 +1073,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
         <value>現在のスレッド コンテキストを表す <see cref="T:System.Runtime.Remoting.Contexts.Context" />。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="CurrentCulture">
@@ -1119,16 +1119,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Globalization.CultureInfo>と共にその関連付けられているオブジェクトでは、このプロパティによって返されるオブジェクトは、既定の日付の書式、時間、数値、通貨の値、テキストの順序を並べ替え、規則、大文字小文字の区別を特定し、文字列比較。 参照してください、<xref:System.Globalization.CultureInfo>クラスのカルチャの名前と識別子、インバリアント、中立、および特定のカルチャの違いについて説明し、スレッドとアプリケーション ドメインに影響を与える方法のカルチャ情報。 参照してください、<xref:System.Globalization.CultureInfo.CurrentCulture%2A?displayProperty=nameWithType>プロパティをスレッドの既定のカルチャを決定する方法と、ユーザーが自分のコンピューターのカルチャ情報を設定する方法について説明します。  
+ このプロパティによって返されるオブジェクトと、関連付けられたオブジェクトを使用して、日付、時刻、数値、通貨値、テキストの並べ替え順序、大文字小文字の表記規則、および文字列比較の既定の書式を決定します。<xref:System.Globalization.CultureInfo> <xref:System.Globalization.CultureInfo>クラスを参照して、カルチャの名前と識別子、インバリアント、ニュートラル、および特定のカルチャの違い、およびカルチャ情報がスレッドとアプリケーションドメインに与える影響について学習します。 スレッドの<xref:System.Globalization.CultureInfo.CurrentCulture%2A?displayProperty=nameWithType>既定のカルチャがどのように決定されるか、およびユーザーのコンピューターのカルチャ情報を設定する方法については、プロパティを参照してください。  
 
 > [!IMPORTANT]
-> <xref:System.Threading.Thread.CurrentCulture>プロパティは、現在のスレッド以外の任意のスレッドを使用すると確実に機能しません。 .NET framework のプロパティの読み取り、信頼性が高くはありませんが、現在のスレッド以外のスレッドを設定することです。 .NET Core で、<xref:System.InvalidOperationException>スレッドが読み取りまたは書き込みを試みる場合にスローされる、<xref:System.Threading.Thread.CurrentCulture>別のスレッドでのプロパティ。
-> 使用することをお勧め、<xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=nameWithType>プロパティを取得して、現在のカルチャを設定します。
+> 現在<xref:System.Threading.Thread.CurrentCulture>のスレッド以外のスレッドで使用する場合、プロパティは確実に動作しません。 .NET Framework では、プロパティの読み取りは信頼できますが、現在のスレッド以外のスレッドに対して設定することは可能です。 .Net Core <xref:System.InvalidOperationException>では、スレッドが別のスレッドでプロパティの<xref:System.Threading.Thread.CurrentCulture>読み取りまたは書き込みを行おうとすると、がスローされます。
+> 現在のカルチャを取得し<xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=nameWithType>て設定するには、プロパティを使用することをお勧めします。
 
- 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、設定することができます、<xref:System.Threading.Thread.CurrentCulture%2A>ニュートラル カルチャのプロパティ。 これは、ための動作、<xref:System.Globalization.CultureInfo>クラスが変更されました。ニュートラル カルチャで、プロパティの値を表す場合 (具体的には、 <xref:System.Globalization.CultureInfo.Calendar%2A>、 <xref:System.Globalization.CultureInfo.CompareInfo%2A>、 <xref:System.Globalization.CultureInfo.DateTimeFormat%2A>、<xref:System.Globalization.CultureInfo.NumberFormat%2A>と<xref:System.Globalization.CultureInfo.TextInfo%2A>プロパティ) のニュートラル カルチャに関連付けられている特定のカルチャを反映します。 .NET Framework の以前のバージョンで、<xref:System.Threading.Thread.CurrentCulture%2A>プロパティをスローしました、<xref:System.NotSupportedException>ニュートラル カルチャが割り当てられたときに例外。  
+ 以降では、 <xref:System.Threading.Thread.CurrentCulture%2A>プロパティをニュートラルカルチャに設定できます。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)] これは、 <xref:System.Globalization.CultureInfo>クラスの動作が変更されたためです。ニュートラルカルチャを表す場合、そのプロパティ値<xref:System.Globalization.CultureInfo.Calendar%2A>(特<xref:System.Globalization.CultureInfo.CompareInfo%2A> <xref:System.Globalization.CultureInfo.DateTimeFormat%2A> <xref:System.Globalization.CultureInfo.NumberFormat%2A>に、、、、、および<xref:System.Globalization.CultureInfo.TextInfo%2A>プロパティ) は、ニュートラルカルチャに関連付けられている特定のカルチャを反映するようになりました。 以前のバージョンの .NET Framework では、 <xref:System.Threading.Thread.CurrentCulture%2A>ニュートラルカルチャが<xref:System.NotSupportedException>割り当てられたときに、プロパティは例外をスローしました。  
   
 ## Examples  
- 次の例では、コントロール パネルで設定されているカルチャで表示する Windows フォーム アプリケーションのユーザー インターフェイス スレッドのステートメントを示します。 追加のコードが必要です。  
+ 次の例は、Windows フォームアプリケーションのユーザーインターフェイスを、コントロールパネルで設定されているカルチャで表示できるようにするスレッドステートメントを示しています。 追加のコードが必要です。  
   
  [!code-cpp[System.Threading.Thread.Culture#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Culture/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Culture#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Culture/CS/source.cs#1)]
@@ -1138,7 +1138,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
         </remarks>
         <exception cref="T:System.ArgumentNullException">プロパティが <see langword="null" /> に設定されています。</exception>
         <exception cref="T:System.InvalidOperationException">.NET Core のみ: 別のスレッドからのスレッドのカルチャの読み取りまたは書き込みはサポートされていません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">プロパティを設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">プロパティを設定します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CurrentPrincipal">
@@ -1187,7 +1187,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、設定およびスレッドのプリンシパルを取得する方法を示します。  
+ 次のコード例は、スレッドのプリンシパルを設定および取得する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.CurrentPrincipal#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.CurrentPrincipal/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.CurrentPrincipal#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.CurrentPrincipal/CS/source.cs#1)]
@@ -1196,7 +1196,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、プリンシパルを設定するために必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">プリンシパル オブジェクトを操作します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">プリンシパルオブジェクトを操作します。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlPrincipal" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="CurrentThread">
@@ -1246,14 +1246,14 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、さらに 20 件の子タスクを作成するタスクを作成します。 それぞれのタスクとして、アプリケーション自体を呼び出す、`ShowThreadInformation`メソッドを使用して、<xref:System.Threading.Thread.CurrentThread%2A>プロパティが実行されているスレッドに関する情報を表示します。  
+ 次の例では、20個の子タスクを作成するタスクを作成します。 アプリケーション自体と各タスクは、 `ShowThreadInformation`メソッドを呼び出します。このメソッドは、 <xref:System.Threading.Thread.CurrentThread%2A>プロパティを使用して、実行されているスレッドに関する情報を表示します。  
   
  [!code-csharp[System.Threading.Thread.CurrentThread#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.thread.currentthread/cs/currentthread2.cs#1)]
  [!code-vb[System.Threading.Thread.CurrentThread#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.thread.currentthread/vb/currentthread2.vb#1)]  
   
- 各子タスクでは、1 から 1,000,000 まで 100万乱数を生成し、平均値を返します。 親タスクの呼び出し、<xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>各タスクによって返される、平均値を表示する前に、子タスクが完了したことを確認する方法および手段の平均を計算します。  
+ 各子タスクは、1 ~ 100万の範囲で100万の乱数を生成し、その平均値を返します。 親タスクは、 <xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>メソッドを呼び出して、各タスクによって返される平均値を表示し、平均値を計算する前に、子タスクが完了したことを確認します。  
   
- アプリケーションがフォア グラウンド スレッドで実行中にスレッド プールのスレッドで各タスクが実行に注意してください。  
+ アプリケーションがフォアグラウンドスレッドで実行されている間、各タスクはスレッドプールのスレッドで実行されることに注意してください。  
   
  ]]></format>
         </remarks>
@@ -1302,26 +1302,26 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- UI カルチャでは、アプリケーションがユーザーの入力と出力をサポートするために必要があるあり、既定では、オペレーティング システムのカルチャと同じリソースを指定します。 参照してください、<xref:System.Globalization.CultureInfo>クラスのカルチャの名前と識別子、インバリアント、中立、および特定のカルチャの違いについて説明し、スレッドとアプリケーション ドメインに影響を与える方法のカルチャ情報。 参照してください、<xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=nameWithType>プロパティをスレッドの既定 UI カルチャを決定する方法について説明します。  
+ UI カルチャは、ユーザーの入力と出力をサポートするためにアプリケーションが必要とするリソースを指定します。既定では、オペレーティングシステムのカルチャと同じです。 <xref:System.Globalization.CultureInfo>クラスを参照して、カルチャの名前と識別子、インバリアント、ニュートラル、および特定のカルチャの違い、およびカルチャ情報がスレッドとアプリケーションドメインに与える影響について学習します。 スレッドの<xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=nameWithType>既定の UI カルチャがどのように決定されるかについては、プロパティを参照してください。  
 
 > [!IMPORTANT]
-> <xref:System.Threading.Thread.CurrentUICulture>プロパティは、現在のスレッド以外の任意のスレッドを使用すると確実に機能しません。 .NET framework のプロパティの読み取り、信頼性が高くはありませんが、現在のスレッド以外のスレッドを設定することです。 .NET Core で、<xref:System.InvalidOperationException>スレッドが読み取りまたは書き込みを試みる場合にスローされる、<xref:System.Threading.Thread.CurrentUICulture>別のスレッドでのプロパティ。
-> 使用することをお勧め、<xref:System.Globalization.CultureInfo.CurrentUICulture?displayProperty=nameWithType>プロパティを取得して、現在のカルチャを設定します。
+> 現在<xref:System.Threading.Thread.CurrentUICulture>のスレッド以外のスレッドで使用する場合、プロパティは確実に動作しません。 .NET Framework では、プロパティの読み取りは信頼できますが、現在のスレッド以外のスレッドに対して設定することは可能です。 .Net Core <xref:System.InvalidOperationException>では、スレッドが別のスレッドでプロパティの<xref:System.Threading.Thread.CurrentUICulture>読み取りまたは書き込みを行おうとすると、がスローされます。
+> 現在のカルチャを取得し<xref:System.Globalization.CultureInfo.CurrentUICulture?displayProperty=nameWithType>て設定するには、プロパティを使用することをお勧めします。
 
- <xref:System.Globalization.CultureInfo>ニュートラル カルチャは、このプロパティによって返されます。 ニュートラル カルチャは、メソッドなどの書式設定では使用できません<xref:System.String.Format%28System.IFormatProvider%2CSystem.String%2CSystem.Object%5B%5D%29?displayProperty=nameWithType>、 <xref:System.DateTime.ToString%28System.String%2CSystem.IFormatProvider%29?displayProperty=nameWithType>、および<xref:System.Convert.ToString%28System.Char%2CSystem.IFormatProvider%29?displayProperty=nameWithType>します。 使用して、 <xref:System.Globalization.CultureInfo.CreateSpecificCulture%2A?displayProperty=nameWithType> 、特定のカルチャを取得または使用するメソッド、<xref:System.Threading.Thread.CurrentCulture%2A>プロパティ。  
+ この<xref:System.Globalization.CultureInfo>プロパティによって返されるは、ニュートラルカルチャにすることができます。 ニュートラルカルチャは<xref:System.String.Format%28System.IFormatProvider%2CSystem.String%2CSystem.Object%5B%5D%29?displayProperty=nameWithType>、、 <xref:System.DateTime.ToString%28System.String%2CSystem.IFormatProvider%29?displayProperty=nameWithType>、 <xref:System.Convert.ToString%28System.Char%2CSystem.IFormatProvider%29?displayProperty=nameWithType>などの書式指定メソッドでは使用しないでください。 メソッドを<xref:System.Globalization.CultureInfo.CreateSpecificCulture%2A?displayProperty=nameWithType>使用して特定のカルチャを取得するか<xref:System.Threading.Thread.CurrentCulture%2A> 、プロパティを使用します。  
   
 > [!NOTE]
->  <xref:System.Globalization.CultureInfo.CreateSpecificCulture%2A?displayProperty=nameWithType>メソッドがスローされます<xref:System.ArgumentException>のニュートラル カルチャ"Zh-hant"("ZH-CHT") と"Zh-hans"("ZH-CHS")。  
+>  この<xref:System.Globalization.CultureInfo.CreateSpecificCulture%2A?displayProperty=nameWithType>メソッドは<xref:System.ArgumentException> 、ニュートラルカルチャ "zh-tw-zh-hant" ("zh-tw") と "zh-tw-Hans" ("zh-tw-CHS") に対してをスローします。  
   
    
   
 ## Examples  
- 次の例では、現在のスレッド UI カルチャの言語がフランス語でかどうかを判断します。 そうでない場合、現在のスレッド UI カルチャが英語 (米国) に設定します。  
+ 次の例では、現在のスレッドの UI カルチャの言語がフランス語であるかどうかを判断します。 そうでない場合は、現在のスレッドの UI カルチャを英語 (米国) に設定します。  
   
  [!code-csharp[System.Threading.Thread.CurrentUICulture#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Threading.Thread.CurrentUICulture/cs/CurrentUICulture1.cs#1)]
  [!code-vb[System.Threading.Thread.CurrentUICulture#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.Threading.Thread.CurrentUICulture/vb/CurrentUICulture1.vb#1)]  
   
- 次のコード例では、コントロール パネルで設定されているカルチャで表示する Windows フォームのユーザー インターフェイス スレッドのステートメントを示します。 追加のコードが必要です。  
+ 次のコード例は、Windows フォームのユーザーインターフェイスをコントロールパネルで設定されているカルチャで表示できるようにするスレッドステートメントを示しています。 追加のコードが必要です。  
   
  [!code-cpp[System.Threading.Thread.Culture#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Culture/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Culture#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Culture/CS/source.cs#1)]
@@ -1375,19 +1375,19 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定で、共通言語ランタイム (CLR) は自動的にクリーンアップするランタイム呼び出し可能ラッパー。 少数のアプリケーションの再入の問題が発生すると、クリーンアップ中に CLR ポンプ メッセージは、次の異常な条件を満たします。  
+ 既定では、共通言語ランタイム (CLR) はランタイム呼び出し可能ラッパーを自動的にクリーンアップします。 CLR はクリーンアップ中にメッセージをポンプするため、次のような通常とは異なる条件を満たす少数のアプリケーションに対して再入の問題が発生する可能性があります。  
   
--   アプリケーションは、独自のメッセージ ポンプは。  
+-   アプリケーションは、独自のメッセージポンプを行います。  
   
--   アプリケーションは、メッセージ ポンプが発生したときに正確に制御する必要があります。  
+-   アプリケーションは、メッセージポンプがいつ発生するかを正確に制御する必要があります。  
   
- このようなアプリケーションを使用できる、<xref:System.Threading.Thread.DisableComObjectEagerCleanup%2A>メソッドを CLR が呼び出し可能ラッパーの実行時の自動回復を実行するを防ぐためにします。  
+ このようなアプリケーションで<xref:System.Threading.Thread.DisableComObjectEagerCleanup%2A>は、メソッドを使用して、CLR がランタイム呼び出し可能ラッパーを自動再生できないようにすることができます。  
   
- このメソッドは、スレッドで呼び出されると、自動クリーンアップがそのスレッドに再度有効にすることはできません。 使用して、アプリケーションのランタイム呼び出し可能ラッパーをクリーンアップする準備ができたら、<xref:System.Runtime.InteropServices.Marshal.CleanupUnusedObjectsInCurrentContext%2A?displayProperty=nameWithType>現在のコンテキスト内のすべてのランタイム呼び出し可能ラッパーをクリーンアップするランタイムに指示するメソッド。 メッセージ ポンプは、メソッドの実行中に発生します。  
+ スレッドでこのメソッドが呼び出されると、そのスレッドに対して自動クリーンアップを再び有効にすることはできません。 アプリケーションでランタイム呼び出し可能ラッパーをクリーンアップする準備ができたら、 <xref:System.Runtime.InteropServices.Marshal.CleanupUnusedObjectsInCurrentContext%2A?displayProperty=nameWithType>メソッドを使用して、現在のコンテキストのすべてのランタイム呼び出し可能ラッパーをクリーンアップするようにランタイムに指示します。 メッセージポンプは、メソッドの実行中に発生します。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="EndCriticalRegion">
@@ -1432,18 +1432,18 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Microsoft SQL Server 2005 などの共通言語ランタイム (CLR) のホストには、コードの重要および重大でないリージョン内のエラーのさまざまなポリシーを確立できます。 クリティカル領域では、するスレッドの中止または処理されない例外の影響があります、現在のタスクに制限されています。 これに対し、中止または致命的でないコードの領域でエラーには、エラーが発生したタスクのみに影響します。  
+ Microsoft SQL Server 2005 などの共通言語ランタイム (CLR) のホストは、コードの重要な領域や重要ではない領域のエラーに対してさまざまなポリシーを確立できます。 クリティカルな領域とは、スレッドの中止またはハンドルされない例外の影響が現在のタスクに限定されない場合があることです。 これに対し、クリティカルでないコード領域の中止または失敗は、エラーが発生したタスクにのみ影響します。  
   
- たとえば、ロックを保持しているときにメモリを割り当てようとするタスクを検討してください。 メモリの割り当てが失敗した場合がの安定性を確保するための十分な現在のタスクを中止していますが、 <xref:System.AppDomain>、同じロックを待機しているドメインを他のタスクにすることができますがあります。 現在のタスクが終了した場合は、その他のタスクがデッドロックでした。  
+ たとえば、ロックを保持しながらメモリの割り当てを試みるタスクを考えてみます。 メモリの割り当てが失敗した場合は、同じロックを待機している他<xref:System.AppDomain>のタスクがドメイン内に存在する可能性があるため、現在のタスクを中止するだけでは十分ではありません。 現在のタスクが終了している場合は、他のタスクがデッドロックしている可能性があります。  
   
- 全体をアンロードするホストがありますクリティカル領域で、障害が発生したときに<xref:System.AppDomain>可能性がある不安定な状態で実行を続けることのリスクを冒すよりもします。 コードがクリティカル領域を入力することをホストに通知をするために呼び出す<xref:System.Threading.Thread.BeginCriticalRegion%2A>します。 呼び出す<xref:System.Threading.Thread.EndCriticalRegion%2A>と重大でないコードの領域への実行を返します。  
+ 重大なリージョンで障害が発生した場合、ホストは、不安定な状態<xref:System.AppDomain>で実行を継続するリスクを負うのではなく、全体をアンロードすることになる可能性があります。 コードがクリティカルな領域に入ることをホストに通知するに<xref:System.Threading.Thread.BeginCriticalRegion%2A>は、を呼び出します。 実行<xref:System.Threading.Thread.EndCriticalRegion%2A>がコードの重要でない領域に戻るときに、を呼び出します。  
   
- SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最上位のホストの保護レベルで実行されるコードが必要です。  
+ SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最高のホスト保護レベルでコードを実行する必要があります。  
   
    
   
 ## Examples  
- 次の例では、使用、<xref:System.Threading.Thread.BeginCriticalRegion%2A>と<xref:System.Threading.Thread.EndCriticalRegion%2A>重要および重大でない地域コードのブロックに分割する方法。  
+ 次の例では、メソッド<xref:System.Threading.Thread.BeginCriticalRegion%2A>と<xref:System.Threading.Thread.EndCriticalRegion%2A>メソッドを使用して、コードのブロックを重要な領域と重要でない領域に分割する方法を示します。  
   
  [!code-cpp[System.Threading.Thread.BeginCriticalRegion#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.BeginCriticalRegion/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.BeginCriticalRegion#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.BeginCriticalRegion/CS/source.cs#1)]
@@ -1496,16 +1496,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Microsoft SQL Server 2005 など、共通言語ランタイムの一部のホストでは、独自のスレッド管理を提供します。 独自のスレッド管理を提供するホストに移動できます実行中のタスク 1 つのオペレーティング システムの物理スレッドから別、いつでも。 ほとんどのタスクは、このを切り替えることでは受けません。 ただし、いくつかのタスクはスレッド アフィニティを設定する-は、オペレーティング システムの物理スレッドの id に依存します。 これらのタスクは、スイッチできないコードを実行するときをホストに通知する必要があります。  
+ Microsoft SQL Server 2005 などの共通言語ランタイムの一部のホストには、独自のスレッド管理が用意されています。 独自のスレッド管理を提供するホストは、実行中のタスクを1つの物理オペレーティングシステムスレッドから別のシステムスレッドにいつでも移動できます。 ほとんどのタスクはこの切り替えの影響を受けません。 ただし、スレッドアフィニティがあるタスクもあります。つまり、オペレーティングシステムの物理スレッドの id によって異なります。 これらのタスクは、切り替える必要があるコードを実行するときに、ホストに通知する必要があります。  
   
- 呼び出す必要がありますの例では、オペレーティング システムを取得する、アプリケーション呼び出しシステム API をロックする場合、Win32 CRITICAL_SECTION など、スレッドの関係のある<xref:System.Threading.Thread.BeginThreadAffinity%2A>、ロックを取得する前に、<xref:System.Threading.Thread.EndThreadAffinity%2A>ロックを解放した後。  
+ たとえば、アプリケーションが、Win32 CRITICAL_SECTION などのスレッドアフィニティを持つオペレーティングシステムロックを取得するためにシステム API を呼び出す場合は、ロック<xref:System.Threading.Thread.BeginThreadAffinity%2A>を取得する前、および<xref:System.Threading.Thread.EndThreadAffinity%2A>ロックを解放した後にを呼び出す必要があります。  
   
- SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最上位のホストの保護レベルで実行されるコードが必要です。  
+ SQL Server 2005 で実行されるコードでこのメソッドを使用するには、最高のホスト保護レベルでコードを実行する必要があります。  
   
    
   
 ## Examples  
- 次の例では、使用、<xref:System.Threading.Thread.BeginThreadAffinity%2A>と<xref:System.Threading.Thread.EndThreadAffinity%2A>メソッドのコード ブロックは、オペレーティング システムの物理スレッドの id に依存しているホストに通知します。  
+ 次の例では、メソッド<xref:System.Threading.Thread.BeginThreadAffinity%2A>と<xref:System.Threading.Thread.EndThreadAffinity%2A>メソッドを使用して、コードのブロックが物理オペレーティングシステムスレッドの id に依存することをホストに通知します。  
   
  [!code-cpp[System.Threading.Thread.BeginThreadAffinity#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.BeginThreadAffinity/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.BeginThreadAffinity#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.BeginThreadAffinity/CS/source.cs#1)]
@@ -1514,7 +1514,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Threading.Thread.BeginThreadAffinity" />
       </Docs>
     </Member>
@@ -1560,7 +1560,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.ExecutionContext>クラスは、実行の論理スレッドに関連するすべての情報の 1 つのコンテナーを提供します。 これには、セキュリティ コンテキスト、コンテキストを呼び出し、同期コンテキスト、ローカリゼーション コンテキスト、およびトランザクション コンテキストが含まれます。  
+ クラス<xref:System.Threading.ExecutionContext>は、実行の論理スレッドに関連するすべての情報に対して1つのコンテナーを提供します。 これには、セキュリティコンテキスト、呼び出しコンテキスト、同期コンテキスト、ローカリゼーションコンテキスト、およびトランザクションコンテキストが含まれます。  
   
  ]]></format>
         </remarks>
@@ -1607,7 +1607,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ガベージ コレクター<xref:System.Threading.Thread.Finalize%2A>と現在のオブジェクトが完了するを準備します。  
+ 現在のオブジェクトを<xref:System.Threading.Thread.Finalize%2A>完了する準備が整うと、ガベージコレクターはを呼び出します。  
   
  ]]></format>
         </remarks>
@@ -1653,30 +1653,30 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!IMPORTANT]
->  .NET Framework には、スレッド ローカル ストレージ (TLS) を使用して 2 つのメカニズムが用意されています: スレッド相対静的フィールド (でマークされているフィールドは、<xref:System.ThreadStaticAttribute>属性) とデータ スロット。 スレッド相対静的フィールドは、データ スロットより優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 詳細については、TLS を使用して、次を参照してください。[スレッド ローカル ストレージ。スレッド相対静的フィールドとデータ スロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)します。  
+>  .NET Framework には、スレッドローカルストレージ (TLS) を使用するための2つのメカニズムが用意されています。スレッド相対<xref:System.ThreadStaticAttribute>静的フィールド (つまり、属性でマークされたフィールド) とデータスロットです。 スレッド相対静的フィールドは、データスロットよりもはるかに優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 TLS の使用方法の詳細につい[ては、「Thread Local Storage (スレッドローカルストレージ)」を参照してください。スレッド相対静的フィールドとデータスロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)。  
   
- いずれかのスレッドの呼び出し後`FreeNamedDataSlot`、他のスレッドを呼び出す<xref:System.Threading.Thread.GetNamedDataSlot%2A>と同じ名前は、名前に関連付けられた新しいスロットを割り当てます。 後続の呼び出し`GetNamedDataSlot`任意のスレッドでは、新しいスロットを返します。 ただし、任意のスレッドをまだ、<xref:System.LocalDataStoreSlot?displayProperty=nameWithType>を以前の呼び出しによって返される`GetNamedDataSlot`を引き続き古いスロットを使用できます。  
+ 任意のスレッドが`FreeNamedDataSlot`を呼び出すと、同じ<xref:System.Threading.Thread.GetNamedDataSlot%2A>名前でを呼び出す他のスレッドは、その名前に関連付けられた新しいスロットを割り当てます。 その後、 `GetNamedDataSlot`任意のスレッドによってを呼び出すと、新しいスロットが返されます。 ただし、の<xref:System.LocalDataStoreSlot?displayProperty=nameWithType>以前の`GetNamedDataSlot`呼び出しによって返されたを保持しているスレッドは、引き続き古いスロットを使用できます。  
   
- 名前と関連付けられているスロットがリリースされた場合にのみすべて`LocalDataStoreSlot`への呼び出しの前に取得された`FreeNamedDataSlot`リリースされ、ガベージ コレクションします。  
+ 名前に関連付けられているスロットは、の`LocalDataStoreSlot` `FreeNamedDataSlot`呼び出しの前に取得されたすべてのスロットが解放され、ガベージコレクトされた場合にのみ解放されます。  
   
- スレッドは、スレッド固有のデータを格納するのにローカル ストアのメモリ メカニズムを使用します。 共通言語ランタイムは、作成時に、各プロセスにマルチ スロットのデータ ストア配列を割り当てます。 スレッドは、データ ストア内のデータ スロットを割り当てることができますが、格納および取得するデータ スロットの値し、スレッドの有効期限が切れた後に再利用するため、スロットを解放します。 データ スロットは、スレッドごとに一意です。 他のスレッド (子スレッドであっても) はそのデータを取得できません。  
+ スレッドは、ローカルストアのメモリ機構を使用して、スレッド固有のデータを格納します。 共通言語ランタイムは、作成時に各プロセスに複数スロットのデータストア配列を割り当てます。 スレッドは、データストアにデータスロットを割り当て、スロットにデータ値を格納して取得し、スレッドの有効期限が切れた後で再利用できるようにスロットを解放します。 データスロットはスレッドごとに一意です。 他のスレッド (子スレッドでもありません) は、そのデータを取得できません。  
   
    
   
 ## Examples  
- このセクションには、2 つのコード例が含まれています。 最初の例でマークされているフィールドを使用する方法を示しています、<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持する属性。 2 番目の例では、同じことを行うデータ スロットを使用する方法を示します。  
+ このセクションには、2 つのコード例が含まれています。 最初の例は、 <xref:System.ThreadStaticAttribute>属性でマークされたフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 2番目の例では、データスロットを使用して同じ処理を行う方法を示します。  
   
  **最初の例**  
   
- 次の例でマークされているフィールドを使用する方法を示します<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持するためにします。 この手法は、2 番目の例で示す方法よりも優れたパフォーマンスを提供します。  
+ 次の例は、で<xref:System.ThreadStaticAttribute>マークされているフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 この手法は、2番目の例に示す手法よりもパフォーマンスが優れています。  
   
  [!code-cpp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CS/source.cs#1)]
  [!code-vb[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/vb/source.vb#1)]  
   
- **2 番目の例**  
+ **2番目の例**  
   
- 次の例では、名前付きデータ スロットを使用して、スレッド固有の情報を格納する方法を示します。  
+ 次の例は、名前付きデータスロットを使用してスレッド固有の情報を格納する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CS/source.cs#1)]
@@ -1728,14 +1728,14 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、と共に、<xref:System.Threading.Thread.SetApartmentState%2A>メソッドと<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッド、置換、<xref:System.Threading.Thread.ApartmentState%2A>プロパティ。  
+ このメソッドは、 <xref:System.Threading.Thread.SetApartmentState%2A>メソッド<xref:System.Threading.Thread.TrySetApartmentState%2A>およびメソッドと共に、 <xref:System.Threading.Thread.ApartmentState%2A>プロパティを置き換えます。  
   
    
   
 ## Examples  
- 次のコード例に示します、 <xref:System.Threading.Thread.GetApartmentState%2A>、 <xref:System.Threading.Thread.SetApartmentState%2A>、および<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッド。 このコード例では、スレッドを作成します。 スレッドを開始すると、前に<xref:System.Threading.Thread.GetApartmentState%2A>初期表示<xref:System.Threading.ApartmentState.Unknown?displayProperty=nameWithType>状態と<xref:System.Threading.Thread.SetApartmentState%2A>状態に変更します<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>します。 <xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドが戻ります`false`に状態を変更しようとしています。<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>アパートメント状態が既に設定されているためです。 場合は、同じ操作で<xref:System.Threading.Thread.SetApartmentState%2A>、<xref:System.InvalidOperationException>がスローされました。  
+ 次のコード例は、 <xref:System.Threading.Thread.GetApartmentState%2A>、 <xref:System.Threading.Thread.SetApartmentState%2A>、および<xref:System.Threading.Thread.TrySetApartmentState%2A>の各メソッドを示しています。 このコード例では、スレッドを作成します。 スレッドが開始される前<xref:System.Threading.Thread.GetApartmentState%2A>に、に<xref:System.Threading.ApartmentState.Unknown?displayProperty=nameWithType>よって<xref:System.Threading.Thread.SetApartmentState%2A>初期状態が表示<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>され、状態がに変わります。 この<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドは、 `false`アパートメント状態が既に設定さ<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>れているために状態をに変更しようとすると、を返します。 同じ操作がによっ<xref:System.Threading.Thread.SetApartmentState%2A>て試行された場合、 <xref:System.InvalidOperationException>がスローされます。  
   
- スレッドを開始した後、<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドは、もう一度使用します。 これは、ときにスローします<xref:System.Threading.ThreadStateException>スレッドが既に開始されています。  
+ スレッドが開始されると、 <xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドが再び使用されます。 今回は、スレッド<xref:System.Threading.ThreadStateException>が既に開始されているためにスローします。  
   
  [!code-cpp[Thread.GetSetTrySetApartmentState#1](~/samples/snippets/cpp/VS_Snippets_CLR/Thread.GetSetTrySetApartmentState/cpp/source.cpp#1)]
  [!code-csharp[Thread.GetSetTrySetApartmentState#1](~/samples/snippets/csharp/VS_Snippets_CLR/Thread.GetSetTrySetApartmentState/cs/source.cs#1)]
@@ -1794,7 +1794,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">すべての場合。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="GetCurrentProcessorId">
@@ -1867,29 +1867,29 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!IMPORTANT]
->  .NET Framework には、スレッド ローカル ストレージ (TLS) を使用して 2 つのメカニズムが用意されています: スレッド相対静的フィールド (でマークされているフィールドは、<xref:System.ThreadStaticAttribute>属性) とデータ スロット。 スレッド相対静的フィールドは、データ スロットより優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 詳細については、TLS を使用して、次を参照してください。[スレッド ローカル ストレージ。スレッド相対静的フィールドとデータ スロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)します。  
+>  .NET Framework には、スレッドローカルストレージ (TLS) を使用するための2つのメカニズムが用意されています。スレッド相対<xref:System.ThreadStaticAttribute>静的フィールド (つまり、属性でマークされたフィールド) とデータスロットです。 スレッド相対静的フィールドは、データスロットよりもはるかに優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 TLS の使用方法の詳細につい[ては、「Thread Local Storage (スレッドローカルストレージ)」を参照してください。スレッド相対静的フィールドとデータスロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)。  
   
- スレッドは、スレッド固有のデータを格納するのにローカル ストアのメモリ メカニズムを使用します。 共通言語ランタイムは、作成時に、各プロセスにマルチ スロットのデータ ストア配列を割り当てます。 スレッドは、データ ストア内のデータ スロットを割り当てることができますが、格納および取得するデータ スロットの値し、スレッドの有効期限が切れた後に再利用するため、スロットを解放します。 データ スロットは、スレッドごとに一意です。 他のスレッド (子スレッドであっても) はそのデータを取得できません。  
+ スレッドは、ローカルストアのメモリ機構を使用して、スレッド固有のデータを格納します。 共通言語ランタイムは、作成時に各プロセスに複数スロットのデータストア配列を割り当てます。 スレッドは、データストアにデータスロットを割り当て、スロットにデータ値を格納して取得し、スレッドの有効期限が切れた後で再利用できるようにスロットを解放します。 データスロットはスレッドごとに一意です。 他のスレッド (子スレッドでもありません) は、そのデータを取得できません。  
   
 > [!NOTE]
->  <xref:System.Threading.Thread.GetData%2A> `Shared`別のスレッドを参照する変数を使用してメソッドを呼び出す場合でも常に、現在実行中のスレッドに適用されるメソッド。 混乱を回避するには、クラス名を呼び出すときに使用`Shared`メソッド:`Dim test As Object = Thread.GetData(testSlot)`します。  
+>  <xref:System.Threading.Thread.GetData%2A>は、別のスレッドを参照する変数を使用して呼び出した場合でも、常に現在実行中のスレッドに適用されるメソッドです。`Shared` 混乱を避けるには、 `Shared` `Dim test As Object = Thread.GetData(testSlot)`メソッドを呼び出すときにクラス名を使用します。  
   
    
   
 ## Examples  
- このセクションには、2 つのコード例が含まれています。 最初の例でマークされているフィールドを使用する方法を示しています、<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持する属性。 2 番目の例では、同じことを行うデータ スロットを使用する方法を示します。  
+ このセクションには、2 つのコード例が含まれています。 最初の例は、 <xref:System.ThreadStaticAttribute>属性でマークされたフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 2番目の例では、データスロットを使用して同じ処理を行う方法を示します。  
   
  **最初の例**  
   
- 次の例でマークされているフィールドを使用する方法を示します<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持するためにします。 この手法は、2 番目の例で示す方法よりも優れたパフォーマンスを提供します。  
+ 次の例は、で<xref:System.ThreadStaticAttribute>マークされているフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 この手法は、2番目の例に示す手法よりもパフォーマンスが優れています。  
   
  [!code-cpp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CS/source.cs#1)]
  [!code-vb[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/vb/source.vb#1)]  
   
- **2 番目の例**  
+ **2番目の例**  
   
- 次の例では、スレッド固有の情報を格納するデータ スロットを使用する方法を示します。  
+ 次の例は、データスロットを使用してスレッド固有の情報を格納する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.DataSlot#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DataSlot/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DataSlot#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DataSlot/CS/source.cs#1)]
@@ -1943,7 +1943,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例の ID と名前を取得する方法を示しています、`AppDomain`でスレッドが実行されています。  
+ 次のコード例は、スレッドが実行されているの`AppDomain`名前と ID を取得する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.Domain#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Domain/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Domain#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Domain/CS/source.cs#1)]
@@ -1994,7 +1994,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例の ID と名前を取得する方法を示しています、`AppDomain`でスレッドが実行されています。  
+ 次のコード例は、スレッドが実行されているの`AppDomain`名前と ID を取得する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.Domain#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Domain/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Domain#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Domain/CS/source.cs#1)]
@@ -2044,7 +2044,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ハッシュ コードは、一意であることは保証されません。 使用して、<xref:System.Threading.Thread.ManagedThreadId%2A>マネージ スレッドの一意の識別子が必要な場合のプロパティ。  
+ ハッシュコードが一意であることは保証されていません。 マネージスレッド<xref:System.Threading.Thread.ManagedThreadId%2A>の一意の識別子が必要な場合は、プロパティを使用します。  
   
  ]]></format>
         </remarks>
@@ -2091,28 +2091,28 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!IMPORTANT]
->  .NET Framework には、スレッド ローカル ストレージ (TLS) を使用して 2 つのメカニズムが用意されています: スレッド相対静的フィールド (でマークされているフィールドは、<xref:System.ThreadStaticAttribute>属性) とデータ スロット。 スレッド相対静的フィールドは、データ スロットより優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 詳細については、TLS を使用して、次を参照してください。[スレッド ローカル ストレージ。スレッド相対静的フィールドとデータ スロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)します。  
+>  .NET Framework には、スレッドローカルストレージ (TLS) を使用するための2つのメカニズムが用意されています。スレッド相対<xref:System.ThreadStaticAttribute>静的フィールド (つまり、属性でマークされたフィールド) とデータスロットです。 スレッド相対静的フィールドは、データスロットよりもはるかに優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 TLS の使用方法の詳細につい[ては、「Thread Local Storage (スレッドローカルストレージ)」を参照してください。スレッド相対静的フィールドとデータスロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)。  
   
- スレッドは、スレッド固有のデータを格納するのにローカル ストアのメモリ メカニズムを使用します。 共通言語ランタイムは、作成時に、各プロセスにマルチ スロットのデータ ストア配列を割り当てます。 スレッドは、データ ストア内のデータ スロットを割り当てることができますが、格納および取得するデータ スロットの値し、スレッドの有効期限が切れた後に再利用するため、スロットを解放します。 データ スロットは、スレッドごとに一意です。 他のスレッド (子スレッドであっても) はそのデータを取得できません。  
+ スレッドは、ローカルストアのメモリ機構を使用して、スレッド固有のデータを格納します。 共通言語ランタイムは、作成時に各プロセスに複数スロットのデータストア配列を割り当てます。 スレッドは、データストアにデータスロットを割り当て、スロットにデータ値を格納して取得し、スレッドの有効期限が切れた後で再利用できるようにスロットを解放します。 データスロットはスレッドごとに一意です。 他のスレッド (子スレッドでもありません) は、そのデータを取得できません。  
   
- 名前付きスロットが存在しない場合は、新しいスロットが割り当てられます。 名前付きデータ スロットをパブリックにしてすべてのユーザーによって操作されることができます。  
+ 名前付きスロットが存在しない場合は、新しいスロットが割り当てられます。 名前付きデータスロットはパブリックであり、だれでも操作できます。  
   
    
   
 ## Examples  
- このセクションには、2 つのコード例が含まれています。 最初の例でマークされているフィールドを使用する方法を示しています、<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持する属性。 2 番目の例では、同じことを行うデータ スロットを使用する方法を示します。  
+ このセクションには、2 つのコード例が含まれています。 最初の例は、 <xref:System.ThreadStaticAttribute>属性でマークされたフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 2番目の例では、データスロットを使用して同じ処理を行う方法を示します。  
   
  **最初の例**  
   
- 次の例でマークされているフィールドを使用する方法を示します<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持するためにします。 この手法は、2 番目の例で示す方法よりも優れたパフォーマンスを提供します。  
+ 次の例は、で<xref:System.ThreadStaticAttribute>マークされているフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 この手法は、2番目の例に示す手法よりもパフォーマンスが優れています。  
   
  [!code-cpp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CS/source.cs#1)]
  [!code-vb[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/vb/source.vb#1)]  
   
- **2 番目の例**  
+ **2番目の例**  
   
- 次の例では、名前付きデータ スロットを使用して、スレッド固有の情報を格納する方法を示します。  
+ 次の例は、名前付きデータスロットを使用してスレッド固有の情報を格納する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CS/source.cs#1)]
@@ -2164,14 +2164,14 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このスレッドが待機、スリープ、または結合状態で現在ブロックされていない場合は、次にブロックを開始すると中断されます。  
+ このスレッドが現在待機中、スリープ状態、または参加状態でブロックされていない場合は、次にブロックが開始されると中断されます。  
   
- <xref:System.Threading.ThreadInterruptedException> 中断されたスレッドでは、スレッドがブロックまでがスローされます。 スレッドがブロックされない場合、例外がスローされず、そのため、スレッドが中断されることがなく完了ことがあります。  
+ <xref:System.Threading.ThreadInterruptedException>は、中断されたスレッドでスローされますが、スレッドがブロックされるまではスローされません。 スレッドがブロックされない場合、例外はスローされないため、スレッドは中断されることなく完了する可能性があります。  
   
    
   
 ## Examples  
- 次のコード例が中断され、その後がブロックされたときに、実行中のスレッドの動作を示します。  
+ 次のコード例は、実行中のスレッドが中断され、その後ブロックされた場合の動作を示しています。  
   
  [!code-cpp[System.Threading.Thread.Interrupt#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Interrupt/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Interrupt#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Interrupt/CS/source.cs#1)]
@@ -2180,7 +2180,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に適切な <see cref="T:System.Security.Permissions.SecurityPermission" /> がありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドでの高度な操作。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドに対する高度な操作の場合。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
         <altmember cref="T:System.Threading.ThreadState" />
         <related type="Article" href="~/docs/standard/threading/pausing-and-resuming-threads.md">スレッドの一時中断および中断</related>
       </Docs>
@@ -2269,27 +2269,27 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドは、バック グラウンド スレッドまたはフォア グラウンド スレッドのいずれかです。 バック グラウンド スレッドが妨げられないプロセスを終了する点を除いて、バック グラウンド スレッドはフォア グラウンド スレッドと同じです。 プロセスに属するすべてのフォア グラウンド スレッドが終了すると、共通言語ランタイム プロセスを終了します。 残りのバック グラウンド スレッドはすべて、その実行しないでください。  
+ スレッドは、バックグラウンドスレッドまたはフォアグラウンドスレッドのいずれかです。 バックグラウンドスレッドは、プロセスが終了しないようにすることを除けば、フォアグラウンドスレッドと同じです。 プロセスに属するすべてのフォアグラウンドスレッドが終了すると、共通言語ランタイムによってプロセスが終了します。 残りのバックグラウンドスレッドは停止され、完了しません。  
   
- 既定では、次のスレッドはフォア グラウンドで実行 (つまり、その<xref:System.Threading.Thread.IsBackground%2A>プロパティが返す`false`)。  
+ 既定では、次のスレッドはフォアグラウンドで実行されます ( <xref:System.Threading.Thread.IsBackground%2A>つまり、 `false`プロパティはを返します)。  
   
--   プライマリ スレッド (またはメイン アプリケーション スレッド)。  
+-   プライマリスレッド (またはメインアプリケーションスレッド)。  
   
--   呼び出すことによって作成されたすべてのスレッドを<xref:System.Threading.Thread>クラスのコンス トラクター。  
+-   クラスコンストラクターを<xref:System.Threading.Thread>呼び出すことによって作成されるすべてのスレッド。  
   
- 既定では、次のスレッドがバック グラウンドで実行 (つまり、その<xref:System.Threading.Thread.IsBackground%2A>プロパティが返す`true`)。  
+ 既定では、次のスレッドがバックグラウンドで実行されます ( <xref:System.Threading.Thread.IsBackground%2A>つまり、 `true`プロパティはを返します)。  
   
--   ランタイムによって管理されるワーカー スレッドのプールはプールのスレッドをスレッドです。 使用してスレッド プール スレッドでスレッド プールとスケジュールの作業を構成することができます、<xref:System.Threading.ThreadPool>クラス。  
+-   スレッドプールスレッド。ランタイムによって管理されるワーカースレッドのプールです。 スレッドプールを構成し、 <xref:System.Threading.ThreadPool>クラスを使用してスレッドプールスレッドの作業をスケジュールすることができます。  
   
     > [!NOTE]
-    >  タスク ベースの非同期操作は、スレッド プールのスレッドで自動的に実行します。  
+    >  スレッドプールのスレッドでは、タスクベースの非同期操作が自動的に実行されます。  
   
--   アンマネージ コードからマネージ実行環境に入るすべてのスレッド。  
+-   アンマネージコードからマネージ実行環境に入るすべてのスレッド。  
   
    
   
 ## Examples  
- 次の例では、フォア グラウンドとバック グラウンド スレッドの動作を比較します。 フォア グラウンド スレッドとバック グラウンド スレッドを作成します。 フォア グラウンド スレッドはまでを実行しているプロセスが完了すると、`for`ループを終了します。 ただし、フォア グラウンド スレッドの実行が完了するための出力の例に示す、バック グラウンド スレッドの実行が完了する前に、のプロセスでは終了します。  
+ 次の例では、フォアグラウンドスレッドとバックグラウンドスレッドの動作を比較しています。 このメソッドは、フォアグラウンドスレッドとバックグラウンドスレッドを作成します。 フォアグラウンドスレッドは、 `for`ループが完了して終了するまでプロセスを実行し続けます。 ただし、この例の出力に示されているように、フォアグラウンドスレッドの実行が完了したため、バックグラウンドスレッドの実行が完了する前にプロセスが終了します。  
   
  [!code-cpp[System.Threading.Thread.IsBackground#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.IsBackground/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.IsBackground#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.IsBackground/CS/source.cs#1)]
@@ -2341,12 +2341,12 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については、次を参照してください。[マネージ スレッド プール](~/docs/standard/threading/the-managed-thread-pool.md)します。  
+ 詳細について[は、「マネージスレッドプール](~/docs/standard/threading/the-managed-thread-pool.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、スレッドがスレッド プールからかどうかを判断する方法を示します。  
+ スレッドがスレッドプールからのものかどうかを確認する方法を次のコード例に示します。  
   
  [!code-cpp[System.Threading.Thread.IsThreadPoolThread#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.IsThreadPoolThread/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.IsThreadPoolThread#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.IsThreadPoolThread/CS/source.cs#1)]
@@ -2409,17 +2409,17 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.Join%2A> スレッドまで (つまり、メソッドを呼び出すスレッド) の呼び出し元のスレッドをブロックする同期メソッドですが<xref:System.Threading.Thread.Join%2A>メソッドが呼び出されますが完了します。 このメソッドを使用すると、スレッドが終了されたことを確認します。 スレッドが終了しない場合、呼び出し元が無期限にブロックされます。 次の例では、`Thread1`スレッドの呼び出し、<xref:System.Threading.Thread.Join>メソッドの`Thread2`、原因となる`Thread1`までブロックする`Thread2`が完了します。  
+ <xref:System.Threading.Thread.Join%2A>は、 <xref:System.Threading.Thread.Join%2A>メソッドが呼び出されたスレッドが完了するまで、呼び出し元のスレッド (つまり、メソッドを呼び出すスレッド) をブロックする同期メソッドです。 スレッドが終了したことを確認するには、このメソッドを使用します。 スレッドが終了しない場合、呼び出し元は無期限にブロックされます。 次の例では、 `Thread1`スレッドがの<xref:System.Threading.Thread.Join> `Thread2`メソッドを呼び出します。 `Thread1`これにより`Thread2` 、が完了するまでブロックされます。  
   
  [!code-csharp[System.Threading.Thread.Join#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.thread.join/cs/join1a.cs#1)]
  [!code-vb[System.Threading.Thread.Join#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.thread.join/vb/join1a.vb#1)]  
   
- 場合は、スレッドが終了とき既に<xref:System.Threading.Thread.Join%2A>と呼ばれるメソッドをすぐに返します。  
+ が呼び出されたとき<xref:System.Threading.Thread.Join%2A>にスレッドが既に終了している場合、メソッドはすぐに制御を戻します。  
   
 > [!WARNING]
->  呼び出さないようにする必要があります、<xref:System.Threading.Thread.Join%2A>のメソッド、<xref:System.Threading.Thread>現在のスレッドからの現在のスレッドを表すオブジェクト。 これにより、アプリが、現在のスレッドは自身に無期限に待機するために応答しなくなります。  
+>  現在のスレッドから現在<xref:System.Threading.Thread.Join%2A>のスレッドを<xref:System.Threading.Thread>表すオブジェクトのメソッドを呼び出すことはできません。 これにより、現在のスレッドが無期限に待機しているため、アプリが応答しなくなることがあります。  
   
- このメソッドを含めるには、呼び出し元のスレッドの状態を変更する<xref:System.Threading.ThreadState.WaitSleepJoin?displayProperty=nameWithType>します。 呼び出すことはできません`Join`内にあるスレッドで、<xref:System.Threading.ThreadState.Unstarted?displayProperty=nameWithType>状態。  
+ このメソッドは、含ま<xref:System.Threading.ThreadState.WaitSleepJoin?displayProperty=nameWithType>れる呼び出し元スレッドの状態を変更します。 <xref:System.Threading.ThreadState.Unstarted?displayProperty=nameWithType>状態のスレッド`Join`でを呼び出すことはできません。  
   
  ]]></format>
         </remarks>
@@ -2473,16 +2473,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.Join%28System.Int32%29> いずれかのスレッドまで (つまり、メソッドを呼び出すスレッド) の呼び出し元のスレッドをブロックする同期メソッドが<xref:System.Threading.Thread.Join%2A>メソッドが呼び出されますが完了またはタイムアウト間隔が経過しました。 次の例では、`Thread1`スレッドの呼び出し、<xref:System.Threading.Thread.Join>メソッドの`Thread2`、原因となる`Thread1`までのいずれかをブロックする`Thread2`が完了したか、2 秒が経過しました。  
+ <xref:System.Threading.Thread.Join%28System.Int32%29>は、 <xref:System.Threading.Thread.Join%2A>メソッドが呼び出されたスレッドが完了するか、タイムアウト間隔が経過するまで、呼び出し元のスレッド (つまり、メソッドを呼び出すスレッド) をブロックする同期メソッドです。 次の例では、 `Thread1`スレッドがの<xref:System.Threading.Thread.Join> `Thread2` `Thread1`メソッドを呼び出します。このメソッドは、 `Thread2`が完了するか、2秒が経過するまでブロックします。  
   
  [!code-csharp[System.Threading.Thread.Join#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.thread.join/cs/join1b.cs#2)]
  [!code-vb[System.Threading.Thread.Join#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.thread.join/vb/join1b.vb#2)]  
   
- 場合<xref:System.Threading.Timeout.Infinite?displayProperty=nameWithType>が指定されて、`millisecondsTimeout`パラメーターでは、このメソッドの動作、<xref:System.Threading.Thread.Join>メソッド オーバー ロードで戻り値を除く。  
+ パラメーターにが指定されている場合<xref:System.Threading.Timeout.Infinite?displayProperty=nameWithType> 、この<xref:System.Threading.Thread.Join>メソッドは、戻り値を除いて、メソッドのオーバーロードと同じように動作します。 `millisecondsTimeout`  
   
- 場合は、スレッドが終了とき既に<xref:System.Threading.Thread.Join%2A>と呼ばれるメソッドをすぐに返します。  
+ が呼び出されたとき<xref:System.Threading.Thread.Join%2A>にスレッドが既に終了している場合、メソッドはすぐに制御を戻します。  
   
- このメソッドを含めるには、呼び出し元のスレッドの状態を変更する<xref:System.Threading.ThreadState.WaitSleepJoin?displayProperty=nameWithType>します。 呼び出すことはできません`Join`内にあるスレッドで、<xref:System.Threading.ThreadState.Unstarted?displayProperty=nameWithType>状態。  
+ このメソッドは、含ま<xref:System.Threading.ThreadState.WaitSleepJoin?displayProperty=nameWithType>れる呼び出し元スレッドの状態を変更します。 <xref:System.Threading.ThreadState.Unstarted?displayProperty=nameWithType>状態のスレッド`Join`でを呼び出すことはできません。  
   
  ]]></format>
         </remarks>
@@ -2532,21 +2532,21 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.Join%28System.TimeSpan%29> いずれかのスレッドまで (つまり、メソッドを呼び出すスレッド) の呼び出し元のスレッドをブロックする同期メソッドが<xref:System.Threading.Thread.Join%2A>メソッドが呼び出されますが完了またはタイムアウト間隔が経過しました。 次の例では、`Thread1`スレッドの呼び出し、<xref:System.Threading.Thread.Join>メソッドの`Thread2`、原因となる`Thread1`までのいずれかをブロックする`Thread2`が完了したか、2 秒が経過しました。  
+ <xref:System.Threading.Thread.Join%28System.TimeSpan%29>は、 <xref:System.Threading.Thread.Join%2A>メソッドが呼び出されたスレッドが完了するか、タイムアウト間隔が経過するまで、呼び出し元のスレッド (つまり、メソッドを呼び出すスレッド) をブロックする同期メソッドです。 次の例では、 `Thread1`スレッドがの<xref:System.Threading.Thread.Join> `Thread2` `Thread1`メソッドを呼び出します。このメソッドは、 `Thread2`が完了するか、2秒が経過するまでブロックします。  
   
  [!code-csharp[System.Threading.Thread.Join#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.thread.join/cs/join1c.cs#3)]
  [!code-vb[System.Threading.Thread.Join#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.threading.thread.join/vb/join1c.vb#3)]  
   
- 場合<xref:System.Threading.Timeout.Infinite?displayProperty=nameWithType>が指定されて`timeout`、このメソッドの動作、<xref:System.Threading.Thread.Join>メソッド オーバー ロードで戻り値を除く。  
+ が<xref:System.Threading.Timeout.Infinite?displayProperty=nameWithType>に`timeout`指定されている場合、この<xref:System.Threading.Thread.Join>メソッドは、戻り値を除いて、メソッドのオーバーロードと同じように動作します。  
   
- 場合は、スレッドが終了とき既に<xref:System.Threading.Thread.Join%2A>と呼ばれるメソッドをすぐに返します。  
+ が呼び出されたとき<xref:System.Threading.Thread.Join%2A>にスレッドが既に終了している場合、メソッドはすぐに制御を戻します。  
   
- このメソッドを含めるには、現在のスレッドの状態を変更する<xref:System.Threading.ThreadState.WaitSleepJoin>します。 呼び出すことはできません`Join`内にあるスレッドで、<xref:System.Threading.ThreadState.Unstarted?displayProperty=nameWithType>状態。  
+ このメソッドは、現在のスレッドの状態をに<xref:System.Threading.ThreadState.WaitSleepJoin>変更します。 <xref:System.Threading.ThreadState.Unstarted?displayProperty=nameWithType>状態のスレッド`Join`でを呼び出すことはできません。  
   
    
   
 ## Examples  
- 次のコード例は、使用する方法を示します、`TimeSpan`値を`Join`メソッド。  
+ 次のコード例は、 `TimeSpan` `Join`メソッドで値を使用する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.Timespan#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Timespan/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Timespan#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Timespan/CS/source.cs#1)]
@@ -2602,9 +2602,9 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドの<xref:System.Threading.Thread.ManagedThreadId%2A>プロパティの値がそのプロセス内でそのスレッドを一意に識別するために使用します。  
+ スレッドの<xref:System.Threading.Thread.ManagedThreadId%2A>プロパティ値は、プロセス内でそのスレッドを一意に識別するために機能します。  
   
- 値、<xref:System.Threading.Thread.ManagedThreadId%2A>プロパティでは、共通言語ランタイムをホストするアンマネージ コードは、ファイバーとスレッドを実装している場合でも、時間の経過と共に変化しません。  
+ 共通言語ランタイムを<xref:System.Threading.Thread.ManagedThreadId%2A>ホストするアンマネージコードでは、スレッドがファイバーとして実装されている場合でも、プロパティの値は時間の経過と共に変化しません。  
   
  ]]></format>
         </remarks>
@@ -2650,9 +2650,9 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.MemoryBarrier%2A> (複数の Intel Itanium プロセッサを使用するシステムなど) の順序付け脆弱なメモリ型マルチプロセッサ システムにのみ必要です。  
+ <xref:System.Threading.Thread.MemoryBarrier%2A>は、メモリの順序が弱い (たとえば、複数の Intel Itanium プロセッサを使用するシステム) 場合にのみ必要です。  
   
- ほとんどの場合、c#、`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、または<xref:System.Threading.Monitor>クラスは、簡単にデータを同期する方法を提供します。  
+ ほとんどのC# `lock`場合、ステートメント、Visual Basic `SyncLock`ステートメント、または<xref:System.Threading.Monitor>クラスを使用すると、データを簡単に同期できます。  
   
  ]]></format>
         </remarks>
@@ -2699,14 +2699,14 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは書き込み-とします。 のスレッドの既定値<xref:System.Threading.Thread.Name%2A>プロパティは`null`、かどうか、名前が既に明示的に割り当てられて、スレッドと比較して確認できます`null`します。  
+ このプロパティは1回だけ書き込まれます。 スレッドの<xref:System.Threading.Thread.Name%2A>プロパティの既定値は`null`であるため、と`null`比較することによって、既に名前がスレッドに割り当てられているかどうかを確認できます。  
   
- 割り当てられた文字列、<xref:System.Threading.Thread.Name%2A>プロパティは、任意の Unicode 文字を含めることができます。  
+ <xref:System.Threading.Thread.Name%2A>プロパティに割り当てられた文字列には、任意の Unicode 文字を含めることができます。  
   
    
   
 ## Examples  
- 次の例では、スレッドに名前を付ける方法を示します。  
+ 次の例は、スレッドに名前を指定する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.Name#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Name/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Name#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Name/CS/source.cs#1)]
@@ -2760,7 +2760,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 次の優先順位のいずれかのスレッドを割り当てることができる<xref:System.Threading.ThreadPriority>値。  
+ スレッドには、次のいずれかの優先順位<xref:System.Threading.ThreadPriority>値を割り当てることができます。  
   
 -   `Highest`  
   
@@ -2772,12 +2772,12 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
   
 -   `Lowest`  
   
- オペレーティング システムは、スレッドの優先度を優先する必要はありません。  
+ オペレーティングシステムは、スレッドの優先順位に従う必要はありません。  
   
    
   
 ## Examples  
- 次の例では、スレッドの優先度の変更の結果を示します。 3 つのスレッドが作成されると、1 つのスレッドの優先順位に設定されて<xref:System.Threading.ThreadPriority.BelowNormal?displayProperty=nameWithType>とに 1 秒あたりの優先順位が設定されて<xref:System.Threading.ThreadPriority.AboveNormal?displayProperty=nameWithType>します。 各スレッド内の変数をインクリメントする、`while`ループと、設定時間実行されます。  
+ 次の例は、スレッドの優先度を変更した結果を示しています。 3つのスレッドが作成され、1つのスレッド<xref:System.Threading.ThreadPriority.BelowNormal?displayProperty=nameWithType>の優先順位がに設定され、2 <xref:System.Threading.ThreadPriority.AboveNormal?displayProperty=nameWithType>番目のスレッドの優先順位がに設定されます。 各スレッドは、 `while`ループ内の変数をインクリメントし、設定された時間に実行します。  
   
  [!code-csharp[System.Threading.ThreadPriority#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Threading.ThreadPriority/cs/Example1.cs#1)]
  [!code-vb[System.Threading.ThreadPriority#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.Threading.ThreadPriority/vb/Example1.vb#1)]  
@@ -2832,16 +2832,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
  このメソッドは、適切なアクセス許可を持つコードによってのみ呼び出すことができます。  
   
- 呼び出しはに対して行われた場合`Abort`、スレッドを終了するには、システムがスローされます、<xref:System.Threading.ThreadAbortException>します。 `ThreadAbortException` アプリケーションのコードでキャッチできますが catch ブロックの最後に再スローされる場合を除き、特別な例外は、`ResetAbort`が呼び出されます。 `ResetAbort` 中止するには要求をキャンセルできず、`ThreadAbortException`のスレッドを終了します。  
+ スレッドを終了`Abort`するための呼び出しが行われると、システムによっ<xref:System.Threading.ThreadAbortException>てがスローされます。 `ThreadAbortException`は、アプリケーションコードでキャッチできる特殊な例外ですが、が呼び出されない限り`ResetAbort` 、catch ブロックの末尾で再スローされます。 `ResetAbort`中止要求をキャンセルし、が`ThreadAbortException`スレッドを終了できないようにします。  
   
- 参照してください<xref:System.Threading.ThreadAbortException>呼び出し元を示す例については、`ResetAbort`メソッド。  
+ メソッド<xref:System.Threading.ThreadAbortException> の`ResetAbort`呼び出しの例については、「」を参照してください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: このメンバーはサポートされていません。</exception>
         <exception cref="T:System.Threading.ThreadStateException"><see langword="Abort" /> は現在のスレッドで呼び出されませんでした。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元には、現在のスレッドに対する必要なセキュリティ アクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドでの高度な操作。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドに対する高度な操作の場合。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
         <related type="Article" href="~/docs/standard/threading/destroying-threads.md">スレッドの破棄</related>
         <altmember cref="T:System.Threading.ThreadState" />
       </Docs>
@@ -2894,14 +2894,14 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!CAUTION]
->  使用しないでください、<xref:System.Threading.Thread.Suspend%2A>と<xref:System.Threading.Thread.Resume%2A>のスレッドのアクティビティを同期する方法。 中断した場合、スレッドは、どのようなコードを実行するかを知ることがあるありません。 内の他のスレッドのセキュリティ権限の評価中にロックを保持している間にスレッドを中断した場合、<xref:System.AppDomain>ブロックされる可能性があります。 内の他のスレッド クラスのコンス トラクターが実行中にスレッドを中断した場合、<xref:System.AppDomain>クラスがブロックされていることを使用しようとします。 デッドロックは、非常に簡単に発生することができます。  
+>  スレッドのアクティビティの<xref:System.Threading.Thread.Suspend%2A>同期<xref:System.Threading.Thread.Resume%2A>には、メソッドとメソッドを使用しないでください。 スレッドを中断したときに実行されているコードを知ることはできません。 セキュリティアクセス許可の評価中にロックを保持している間にスレッドを中断する<xref:System.AppDomain>と、内の他のスレッドがブロックされる可能性があります。 クラスコンストラクターの実行中にスレッドを中断すると、そのクラスを使用し<xref:System.AppDomain>ようとしている内の他のスレッドがブロックされます。 デッドロックは非常に簡単に発生します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: このメンバーはサポートされていません。</exception>
         <exception cref="T:System.Threading.ThreadStateException">スレッドが開始されていないか、実行されていません。または中断状態にはありません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に適切な <see cref="T:System.Security.Permissions.SecurityPermission" /> がありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドでの高度な操作。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドに対する高度な操作の場合。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /></permission>
         <related type="Article" href="~/docs/standard/threading/pausing-and-resuming-threads.md">スレッドの一時中断および中断</related>
         <altmember cref="T:System.Threading.ThreadState" />
       </Docs>
@@ -2948,19 +2948,19 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しいスレッドとして初期化された<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>の開始される前に、そのアパートメント状態が設定されていない場合。 スレッドを開始する前に、アパートメント状態を設定する必要があります。  
+ 新しいスレッドは、アパートメント<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>状態が開始前に設定されていないかのように初期化されます。 アパートメント状態は、スレッドを開始する前に設定する必要があります。  
   
 > [!NOTE]
->  メイン アプリケーション スレッドに初期化<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>既定。 メイン アプリケーション スレッドのアパートメント状態を設定する唯一の方法<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>が適用される、<xref:System.STAThreadAttribute>エントリ ポイント メソッドに属性します。  
+>  メインアプリケーションスレッドは、既定で<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>に初期化されます。 メインアプリケーションスレッドのアパートメント状態をに<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>設定する唯一の方法は、エントリポイントメソッドに<xref:System.STAThreadAttribute>属性を適用することです。  
   
- <xref:System.Threading.Thread.SetApartmentState%2A>メソッドと共に、<xref:System.Threading.Thread.GetApartmentState%2A>メソッドと<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッド、置換、<xref:System.Threading.Thread.ApartmentState%2A>プロパティ。  
+ メソッドとメソッド<xref:System.Threading.Thread.ApartmentState%2A>および<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドを<xref:System.Threading.Thread.GetApartmentState%2A>使用して、プロパティを置き換えます。 <xref:System.Threading.Thread.SetApartmentState%2A>  
   
    
   
 ## Examples  
- 次のコード例に示します、 <xref:System.Threading.Thread.GetApartmentState%2A>、 <xref:System.Threading.Thread.SetApartmentState%2A>、および<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッド。 このコード例では、スレッドを作成します。 スレッドを開始すると、前に<xref:System.Threading.Thread.GetApartmentState%2A>初期表示<xref:System.Threading.ApartmentState.Unknown?displayProperty=nameWithType>状態と<xref:System.Threading.Thread.SetApartmentState%2A>状態に変更します<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>します。 <xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドが戻ります`false`に状態を変更しようとしています。<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>アパートメント状態が既に設定されているためです。 場合は、同じ操作で<xref:System.Threading.Thread.SetApartmentState%2A>、<xref:System.InvalidOperationException>がスローされました。  
+ 次のコード例は、 <xref:System.Threading.Thread.GetApartmentState%2A>、 <xref:System.Threading.Thread.SetApartmentState%2A>、および<xref:System.Threading.Thread.TrySetApartmentState%2A>の各メソッドを示しています。 このコード例では、スレッドを作成します。 スレッドが開始される前<xref:System.Threading.Thread.GetApartmentState%2A>に、に<xref:System.Threading.ApartmentState.Unknown?displayProperty=nameWithType>よって<xref:System.Threading.Thread.SetApartmentState%2A>初期状態が表示<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>され、状態がに変わります。 この<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドは、 `false`アパートメント状態が既に設定さ<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>れているために状態をに変更しようとすると、を返します。 同じ操作がによっ<xref:System.Threading.Thread.SetApartmentState%2A>て試行された場合、 <xref:System.InvalidOperationException>がスローされます。  
   
- スレッドを開始した後、<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドは、もう一度使用します。 これは、ときにスローします<xref:System.Threading.ThreadStateException>スレッドが既に開始されています。  
+ スレッドが開始されると、 <xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドが再び使用されます。 今回は、スレッド<xref:System.Threading.ThreadStateException>が既に開始されているためにスローします。  
   
  [!code-cpp[Thread.GetSetTrySetApartmentState#1](~/samples/snippets/cpp/VS_Snippets_CLR/Thread.GetSetTrySetApartmentState/cpp/source.cpp#1)]
  [!code-csharp[Thread.GetSetTrySetApartmentState#1](~/samples/snippets/csharp/VS_Snippets_CLR/Thread.GetSetTrySetApartmentState/cs/source.cs#1)]
@@ -3025,7 +3025,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">すべての場合。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="SetData">
@@ -3070,29 +3070,29 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
 ## Remarks  
   
 > [!IMPORTANT]
->  .NET Framework には、スレッド ローカル ストレージ (TLS) を使用して 2 つのメカニズムが用意されています: スレッド相対静的フィールド (でマークされているフィールドは、<xref:System.ThreadStaticAttribute>属性) とデータ スロット。 スレッド相対静的フィールドは、データ スロットより優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 詳細については、TLS を使用して、次を参照してください。[スレッド ローカル ストレージ。スレッド相対静的フィールドとデータ スロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)します。  
+>  .NET Framework には、スレッドローカルストレージ (TLS) を使用するための2つのメカニズムが用意されています。スレッド相対<xref:System.ThreadStaticAttribute>静的フィールド (つまり、属性でマークされたフィールド) とデータスロットです。 スレッド相対静的フィールドは、データスロットよりもはるかに優れたパフォーマンスを提供し、コンパイル時の型チェックを有効にします。 TLS の使用方法の詳細につい[ては、「Thread Local Storage (スレッドローカルストレージ)」を参照してください。スレッド相対静的フィールドとデータスロット](~/docs/standard/threading/thread-local-storage-thread-relative-static-fields-and-data-slots.md)。  
   
- スレッドは、スレッド固有のデータを格納するのにローカル ストアのメモリ メカニズムを使用します。 共通言語ランタイムは、作成時に、各プロセスにマルチ スロットのデータ ストア配列を割り当てます。 スレッドは、データ ストア内のデータ スロットを割り当てることができます、格納および取得するデータ スロットの値し、スレッド プロシージャの終了後に再利用するため、スロットを解放し、<xref:System.Threading.Thread>オブジェクトがガベージ コレクションによって解放されました。 データ スロットは、スレッドごとに一意です。 他のスレッド (子スレッドであっても) はそのデータを取得できません。  
+ スレッドは、ローカルストアのメモリ機構を使用して、スレッド固有のデータを格納します。 共通言語ランタイムは、作成時に各プロセスに複数スロットのデータストア配列を割り当てます。 スレッドは、データストアにデータスロットを割り当て、スロットにデータ値を格納して取得し、スレッドプロシージャが終了<xref:System.Threading.Thread>し、ガベージコレクションによってオブジェクトが解放された後で再利用できるようにスロットを解放します。 データスロットはスレッドごとに一意です。 他のスレッド (子スレッドでもありません) は、そのデータを取得できません。  
   
 > [!NOTE]
->  <xref:System.Threading.Thread.SetData%2A> `Shared`別のスレッドを参照する変数を使用してメソッドを呼び出す場合でも常に、現在実行中のスレッドに適用されるメソッド。 混乱を回避するには、クラス名を呼び出すときに使用`Shared`メソッド:`Thread.SetData(testSlot, "test data")`します。  
+>  <xref:System.Threading.Thread.SetData%2A>は、別のスレッドを参照する変数を使用して呼び出した場合でも、常に現在実行中のスレッドに適用されるメソッドです。`Shared` 混乱を避けるには、 `Shared` `Thread.SetData(testSlot, "test data")`メソッドを呼び出すときにクラス名を使用します。  
   
    
   
 ## Examples  
- このセクションには、2 つのコード例が含まれています。 最初の例でマークされているフィールドを使用する方法を示しています、<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持する属性。 2 番目の例では、同じことを行うデータ スロットを使用する方法を示します。  
+ このセクションには、2 つのコード例が含まれています。 最初の例は、 <xref:System.ThreadStaticAttribute>属性でマークされたフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 2番目の例では、データスロットを使用して同じ処理を行う方法を示します。  
   
  **最初の例**  
   
- 次の例でマークされているフィールドを使用する方法を示します<xref:System.ThreadStaticAttribute>スレッド固有の情報を保持するためにします。 この手法は、2 番目の例で示す方法よりも優れたパフォーマンスを提供します。  
+ 次の例は、で<xref:System.ThreadStaticAttribute>マークされているフィールドを使用して、スレッド固有の情報を保持する方法を示しています。 この手法は、2番目の例に示す手法よりもパフォーマンスが優れています。  
   
  [!code-cpp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/CS/source.cs#1)]
  [!code-vb[System.Threading.Thread.DoNotUseDataSlots#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.Thread.DoNotUseDataSlots/vb/source.vb#1)]  
   
- **2 番目の例**  
+ **2番目の例**  
   
- 次の例では、名前付きデータ スロットを使用して、スレッド固有の情報を格納する方法を示します。  
+ 次の例は、名前付きデータスロットを使用してスレッド固有の情報を格納する方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.NamedDataSlot#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.NamedDataSlot/CS/source.cs#1)]
@@ -3159,21 +3159,21 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドは、指定した時間、オペレーティング システムでの実行スケジュールされません。 このメソッドに含めるスレッドの状態を変更する<xref:System.Threading.ThreadState.WaitSleepJoin>します。  
+ スレッドは、指定された時間だけオペレーティングシステムによって実行されるようにスケジュールされません。 このメソッドは、含ま<xref:System.Threading.ThreadState.WaitSleepJoin>れるスレッドの状態を変更します。  
   
- 指定できる<xref:System.Threading.Timeout.Infinite?displayProperty=nameWithType>の`millisecondsTimeout`を無期限にスレッドを中断するパラメーター。 その他を使用することをお勧めただし、<xref:System.Threading?displayProperty=nameWithType>などのクラス<xref:System.Threading.Mutex>、 <xref:System.Threading.Monitor>、 <xref:System.Threading.EventWaitHandle>、または<xref:System.Threading.Semaphore>代わりにスレッドを同期したり、リソースを管理します。  
+ パラメーターにを<xref:System.Threading.Timeout.Infinite?displayProperty=nameWithType>指定して、スレッドを無期限に中断することができます。 `millisecondsTimeout` ただし、スレッドを同期したりリソース<xref:System.Threading?displayProperty=nameWithType>を管理したりするには<xref:System.Threading.Semaphore> <xref:System.Threading.Mutex>、代わりに、 <xref:System.Threading.Monitor> <xref:System.Threading.EventWaitHandle>、、、などの他のクラスを使用することをお勧めします。  
   
- 特定のレートでシステム クロックのティックには、時計の解像度が呼び出されます。 実際のタイムアウトできない可能性があります正確に指定されたタイムアウトを指定したタイムアウト時間を調整してクロック ティックと一致しているためです。 時計の解像度と待機時間の詳細については、次を参照してください。、[関数をスリープ状態](https://msdn.microsoft.com/library/windows/desktop/ms686298.aspx)トピック。 このメソッドは、[関数をスリープ状態](https://msdn.microsoft.com/library/windows/desktop/ms686298.aspx)から、Windows システム Api。  
+ クロック解像度と呼ばれる特定の速度でのシステムクロックティック。 指定されたタイムアウトはクロックティックと一致するように調整されるので、実際のタイムアウトは指定したタイムアウト値にならない可能性があります。 クロック解像度と待機時間の詳細については、「 [Sleep 関数](https://msdn.microsoft.com/library/windows/desktop/ms686298.aspx)」を参照してください。 このメソッドは、Windows システム Api から[スリープ関数](https://msdn.microsoft.com/library/windows/desktop/ms686298.aspx)を呼び出します。  
   
- このメソッドは、標準の COM および 1 つは実行されません。  
+ このメソッドでは、標準の COM および SendMessage ポンプは実行されません。  
   
 > [!NOTE]
->  かどうか必要のあるスレッドでスリープ状態を<xref:System.STAThreadAttribute>、標準の COM および 1 つの実行のオーバー ロードのいずれかの使用を検討するには、<xref:System.Threading.Thread.Join%2A>タイムアウト間隔を指定するメソッド。  
+>  を持つ<xref:System.STAThreadAttribute>スレッドでスリープする必要があり、標準の COM および SendMessage ポンプを実行する必要がある場合は、タイムアウト間隔を指定する<xref:System.Threading.Thread.Join%2A>メソッドのオーバーロードの1つを使用することを検討してください。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Threading.Thread.Sleep%2A>メソッドは、アプリケーションのメイン スレッドをブロックします。  
+ 次の例では<xref:System.Threading.Thread.Sleep%2A> 、メソッドを使用して、アプリケーションのメインスレッドをブロックします。  
   
  [!code-cpp[Thread.Sleep#1](~/samples/snippets/cpp/VS_Snippets_CLR/thread.sleep/cpp/example.cpp#1)]
  [!code-csharp[Thread.Sleep#1](~/samples/snippets/csharp/VS_Snippets_CLR/thread.sleep/cs/example.cs#1)]
@@ -3223,21 +3223,21 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドは、指定した時間、オペレーティング システムでの実行スケジュールされません。 このメソッドに含めるスレッドの状態を変更する<xref:System.Threading.ThreadState.WaitSleepJoin>します。  
+ スレッドは、指定された時間だけオペレーティングシステムによって実行されるようにスケジュールされません。 このメソッドは、含ま<xref:System.Threading.ThreadState.WaitSleepJoin>れるスレッドの状態を変更します。  
   
- 指定できる<xref:System.Threading.Timeout.InfiniteTimeSpan?displayProperty=nameWithType>の`timeout`を無期限にスレッドを中断するパラメーター。 その他を使用することをお勧めただし、<xref:System.Threading?displayProperty=nameWithType>などのクラス<xref:System.Threading.Mutex>、 <xref:System.Threading.Monitor>、 <xref:System.Threading.EventWaitHandle>、または<xref:System.Threading.Semaphore>代わりにスレッドを同期したり、リソースを管理します。  
+ パラメーターにを<xref:System.Threading.Timeout.InfiniteTimeSpan?displayProperty=nameWithType>指定して、スレッドを無期限に中断することができます。 `timeout` ただし、スレッドを同期したりリソース<xref:System.Threading?displayProperty=nameWithType>を管理したりするには<xref:System.Threading.Semaphore> <xref:System.Threading.Mutex>、代わりに、 <xref:System.Threading.Monitor> <xref:System.Threading.EventWaitHandle>、、、などの他のクラスを使用することをお勧めします。  
   
- このオーバー ロード<xref:System.Threading.Thread.Sleep%2A>で整数のミリ秒単位の合計数を使用して`timeout`します。 小数ミリ秒は破棄されます。  
+ の<xref:System.Threading.Thread.Sleep%2A>このオーバーロードでは、の全体の`timeout`ミリ秒数を使用します。 ミリ秒の小数部は破棄されます。  
   
- このメソッドは、標準の COM および 1 つは実行されません。  
+ このメソッドでは、標準の COM および SendMessage ポンプは実行されません。  
   
 > [!NOTE]
->  かどうか必要のあるスレッドでスリープ状態を<xref:System.STAThreadAttribute>、標準の COM および 1 つの実行のオーバー ロードのいずれかの使用を検討するには、<xref:System.Threading.Thread.Join%2A>タイムアウト間隔を指定するメソッド。  
+>  を持つ<xref:System.STAThreadAttribute>スレッドでスリープする必要があり、標準の COM および SendMessage ポンプを実行する必要がある場合は、タイムアウト間隔を指定する<xref:System.Threading.Thread.Join%2A>メソッドのオーバーロードの1つを使用することを検討してください。  
   
    
   
 ## Examples  
- 次の例では、 <xref:System.Threading.Thread.Sleep%28System.TimeSpan%29> 2 秒ごとに 5 回、アプリケーションのメイン スレッドをブロックするメソッドのオーバー ロードします。  
+ 次の例では<xref:System.Threading.Thread.Sleep%28System.TimeSpan%29> 、メソッドオーバーロードを使用して、2秒間、アプリケーションのメインスレッドを5回ブロックします。  
   
  [!code-cpp[Thread.Sleep_TimeSpan#1](~/samples/snippets/cpp/VS_Snippets_CLR/thread.sleep_timespan/cpp/example.cpp#1)]
  [!code-csharp[Thread.Sleep_TimeSpan#1](~/samples/snippets/csharp/VS_Snippets_CLR/thread.sleep_timespan/cs/example.cs#1)]
@@ -3294,14 +3294,14 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.SpinWait%2A>メソッドはロックを実装するために役立ちます。 などの .NET framework では、クラス<xref:System.Threading.Monitor>と<xref:System.Threading.ReaderWriterLock>、このメソッドを内部的に使用します。 <xref:System.Threading.Thread.SpinWait%2A> で指定されたループ カウントを非常に短いループに、プロセッサが本質的には、`iterations`パラメーター。 そのため、待機時間は、プロセッサの速度に依存します。  
+ メソッド<xref:System.Threading.Thread.SpinWait%2A>は、ロックを実装する場合に便利です。 .NET Framework のクラス ( <xref:System.Threading.Monitor>や<xref:System.Threading.ReaderWriterLock>など) では、このメソッドが内部で使用されます。 <xref:System.Threading.Thread.SpinWait%2A>実質的には、プロセッサは、 `iterations`パラメーターによって指定されたループカウントを使用して、非常に短いループに配置されます。 この待機時間は、プロセッサの速度によって異なります。  
   
- これと対照的に、<xref:System.Threading.Thread.Sleep%2A>メソッド。 呼び出すスレッド<xref:System.Threading.Thread.Sleep%2A>指定した間隔が 0 の場合でも、プロセッサ時間の現在のスライスの残りの部分を生成します。 0 以外の間隔を指定する<xref:System.Threading.Thread.Sleep%2A>時間間隔が経過するまでスレッドをスレッド スケジューラによって考慮の対象から削除します。  
+ これを<xref:System.Threading.Thread.Sleep%2A>メソッドと比較します。 を呼び出し<xref:System.Threading.Thread.Sleep%2A>たスレッドは、指定された間隔が0の場合でも、プロセッサ時間の残りの部分を生成します。 に<xref:System.Threading.Thread.Sleep%2A> 0 以外の間隔を指定すると、スレッドスケジューラは、時間間隔が経過するまでスレッドを考慮から除外します。  
   
- <xref:System.Threading.Thread.SpinWait%2A> 通常のアプリケーションの一般的に便利ではありません。 ほとんどの場合、.NET Framework で提供される同期クラスを使用する必要があります。たとえば、呼び出す<xref:System.Threading.Monitor.Enter%2A?displayProperty=nameWithType>またはラップするステートメント<xref:System.Threading.Monitor.Enter%2A?displayProperty=nameWithType>(`lock` (C#) または`SyncLock`Visual Basic で)。  
+ <xref:System.Threading.Thread.SpinWait%2A>通常のアプリケーションでは、は一般的には便利ではありません。 ほとんどの場合、.NET Framework によって提供される同期クラスを使用する必要があります。たとえば、または<xref:System.Threading.Monitor.Enter%2A?displayProperty=nameWithType>をラップ<xref:System.Threading.Monitor.Enter%2A?displayProperty=nameWithType>するステートメント (`lock` in C#または`SyncLock` in Visual Basic) を呼び出します。  
   
 > [!CAUTION]
->  まれなケースがわかっている場合、状態の変化が迫っていないかなどのコンテキスト スイッチを回避するへの呼び出しを行い、<xref:System.Threading.Thread.SpinWait%2A>ループ内のメソッド。 コード<xref:System.Threading.Thread.SpinWait%2A>実行は複数のプロセッサを搭載したコンピューターで発生する可能性がある問題を防ぐために設計されています。 たとえば、ハイパー スレッディング テクノロジを使用して複数の Intel プロセッサを搭載したコンピューター上<xref:System.Threading.Thread.SpinWait%2A>特定の状況でプロセッサの枯渇を防止します。  
+>  状態の変化が近づいていることがわかっている場合などに、コンテキストの切り替えを避けることが有益な場合は、ループ内で<xref:System.Threading.Thread.SpinWait%2A>メソッドを呼び出す必要があります。 コード<xref:System.Threading.Thread.SpinWait%2A>の実行は、複数のプロセッサを搭載したコンピューターで発生する可能性のある問題を回避するように設計されています。 たとえば、ハイパースレッディングテクノロジを採用している複数の Intel プロセッサを<xref:System.Threading.Thread.SpinWait%2A>搭載したコンピューターでは、特定の状況でプロセッサの枯渇を防ぐことができます。  
   
  ]]></format>
         </remarks>
@@ -3358,17 +3358,17 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドが開始すると、<xref:System.Threading.ThreadState.Running?displayProperty=nameWithType>状態では、オペレーティング システムを使用すると実行をスケジュールできます。 スレッドがによって表されるメソッドの最初の行で実行を開始、<xref:System.Threading.ThreadStart>または<xref:System.Threading.ParameterizedThreadStart>スレッド コンス トラクターに提供されるデリゲート。 なお、呼び出し<xref:System.Threading.Thread.Start%2A>呼び出し元のスレッドをブロックしません。  
+ スレッドが<xref:System.Threading.ThreadState.Running?displayProperty=nameWithType>状態になると、オペレーティングシステムは実行のスケジュールを設定できます。 スレッドは、スレッドコンストラクターに渡されたデリゲート<xref:System.Threading.ThreadStart>または<xref:System.Threading.ParameterizedThreadStart>デリゲートによって表されるメソッドの最初の行で実行を開始します。 の呼び出し<xref:System.Threading.Thread.Start%2A>では、呼び出し元のスレッドがブロックされないことに注意してください。  
   
 > [!NOTE]
->  使用して作成されたスレッドでこのオーバー ロードを使用するかどうか、<xref:System.Threading.ParameterizedThreadStart>デリゲート`null`スレッドによって実行されるメソッドに渡されます。  
+>  このオーバーロードが、 <xref:System.Threading.ParameterizedThreadStart>デリゲートを使用して作成されたスレッドで使用される場合、 `null`は、スレッドによって実行されるメソッドに渡されます。  
   
- スレッドが終了すると、別の呼び出しでは再開できません`Start`します。  
+ スレッドが終了した後は、の別の呼び出し`Start`で再起動することはできません。  
   
    
   
 ## Examples  
- 次の例では、作成し、スレッドを開始します。  
+ 次の例では、スレッドを作成して開始します。  
   
  [!code-cpp[ThreadStart#1](~/samples/snippets/cpp/VS_Snippets_CLR/ThreadStart/CPP/threadstart.cpp#1)]
  [!code-csharp[ThreadStart#1](~/samples/snippets/csharp/VS_Snippets_CLR/ThreadStart/CS/threadstart.cs#1)]
@@ -3425,16 +3425,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドが開始すると、<xref:System.Threading.ThreadState.Running?displayProperty=nameWithType>状態では、オペレーティング システムを使用すると実行をスケジュールできます。 スレッドがによって表されるメソッドの最初の行で実行を開始、<xref:System.Threading.ThreadStart>または<xref:System.Threading.ParameterizedThreadStart>スレッド コンス トラクターに提供されるデリゲート。 なお、呼び出し<xref:System.Threading.Thread.Start%2A>呼び出し元のスレッドをブロックしません。  
+ スレッドが<xref:System.Threading.ThreadState.Running?displayProperty=nameWithType>状態になると、オペレーティングシステムは実行のスケジュールを設定できます。 スレッドは、スレッドコンストラクターに渡されたデリゲート<xref:System.Threading.ThreadStart>または<xref:System.Threading.ParameterizedThreadStart>デリゲートによって表されるメソッドの最初の行で実行を開始します。 の呼び出し<xref:System.Threading.Thread.Start%2A>では、呼び出し元のスレッドがブロックされないことに注意してください。  
   
- スレッドが終了すると、別の呼び出しでは再開できません`Start`します。  
+ スレッドが終了した後は、の別の呼び出し`Start`で再起動することはできません。  
   
- このオーバー ロードと<xref:System.Threading.ParameterizedThreadStart>デリゲートをしやすく、スレッド プロシージャにデータを渡す、手法、タイプ セーフであるためは任意のオブジェクトは、このオーバー ロードに渡すことができます。 データをスレッド プロシージャに渡すより堅牢な方法は、ワーカーのオブジェクトにデータ フィールドとスレッド プロシージャの両方を格納します。 詳細については、次を参照してください。[スレッドの作成と開始時にデータを渡す](~/docs/standard/threading/creating-threads-and-passing-data-at-start-time.md)します。  
+ このオーバーロードと<xref:System.Threading.ParameterizedThreadStart>デリゲートを使用すると、スレッドプロシージャにデータを簡単に渡すことができますが、どのオブジェクトもこのオーバーロードに渡すことができるため、この手法はタイプセーフではありません。 スレッドプロシージャにデータを渡すより堅牢な方法は、スレッドプロシージャとデータフィールドの両方をワーカーオブジェクトに配置することです。 詳細については、「[開始時にスレッドを作成してデータを渡す](~/docs/standard/threading/creating-threads-and-passing-data-at-start-time.md)」を参照してください。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Threading.ParameterizedThreadStart>静的メソッドとインスタンス メソッドを持つデリゲート。  
+ 次の例では<xref:System.Threading.ParameterizedThreadStart> 、静的メソッドとインスタンスメソッドを使用してデリゲートを作成します。  
   
  [!code-cpp[System.Threading.ParameterizedThreadStart#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.ParameterizedThreadStart/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.ParameterizedThreadStart#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.ParameterizedThreadStart/CS/source.cs#1)]
@@ -3496,19 +3496,19 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スレッドが既に中断されている場合は、このメソッドに影響はありません。  
+ スレッドが既に中断されている場合、このメソッドによる影響はありません。  
   
 > [!CAUTION]
-> 使用しないでください、<xref:System.Threading.Thread.Suspend%2A>と<xref:System.Threading.Thread.Resume%2A>のスレッドのアクティビティを同期する方法。 中断した場合、スレッドは、どのようなコードを実行するかを知ることがあるありません。 内の他のスレッドのセキュリティ権限の評価中にロックを保持している間にスレッドを中断した場合、<xref:System.AppDomain>ブロックされる可能性があります。 内の他のスレッド クラスのコンス トラクターが実行中にスレッドを中断した場合、<xref:System.AppDomain>クラスがブロックされていることを使用しようとします。 デッドロックは、非常に簡単に発生することができます。
+> スレッドのアクティビティの<xref:System.Threading.Thread.Suspend%2A>同期<xref:System.Threading.Thread.Resume%2A>には、メソッドとメソッドを使用しないでください。 スレッドを中断したときに実行されているコードを知ることはできません。 セキュリティアクセス許可の評価中にロックを保持している間にスレッドを中断する<xref:System.AppDomain>と、内の他のスレッドがブロックされる可能性があります。 クラスコンストラクターの実行中にスレッドを中断すると、そのクラスを使用し<xref:System.AppDomain>ようとしている内の他のスレッドがブロックされます。 デッドロックは非常に簡単に発生します。
 
-呼び出すと、`Suspend`スレッドでメソッドをシステムはノートのスレッドの中断が要求されているし、スレッドが実際には、スレッドを中断する前にセーフ ポイントに達するまでを実行することができます。 スレッドのセーフ ポイントは、ガベージ コレクションを実行できる実行ポイントです。 セーフ ポイントに到達すると、ランタイムにより、中断されたスレッドがマネージド コードで続行されないことが保証されます。 マネージド コードの外部で実行中のスレッドは、通常、ガベージ コレクションでは安全であり、その実行はマネージド コードの実行再開が試行されるまで続行します。  
+スレッドで`Suspend`メソッドを呼び出すと、スレッドの中断が要求されたことがシステムに示され、スレッドを実際に中断する前にセーフポイントに到達するまでスレッドを実行できます。 スレッドのセーフ ポイントは、ガベージ コレクションを実行できる実行ポイントです。 セーフ ポイントに到達すると、ランタイムにより、中断されたスレッドがマネージド コードで続行されないことが保証されます。 マネージド コードの外部で実行中のスレッドは、通常、ガベージ コレクションでは安全であり、その実行はマネージド コードの実行再開が試行されるまで続行します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: このメンバーはサポートされていません。</exception>
         <exception cref="T:System.Threading.ThreadStateException">スレッドが開始していないか、または停止しています。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に適切な <see cref="T:System.Security.Permissions.SecurityPermission" /> がありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドでの高度な操作。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">スレッドに対する高度な操作の場合。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlThread" /> (関連する列挙体)</permission>
         <related type="Article" href="~/docs/standard/threading/pausing-and-resuming-threads.md">スレッドの一時中断および中断</related>
         <altmember cref="T:System.Threading.ThreadState" />
       </Docs>
@@ -3556,7 +3556,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetIDsOfNames`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetIDsOfNames`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -3602,7 +3602,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetTypeInfo`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfo`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -3644,7 +3644,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetTypeInfoCount`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfoCount`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -3700,7 +3700,7 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::Invoke`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::Invoke`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -3748,15 +3748,15 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.ThreadState%2A>プロパティよりも詳細な情報を提供する、<xref:System.Threading.Thread.IsAlive%2A>プロパティ。  
+ プロパティ<xref:System.Threading.Thread.ThreadState%2A>は、 <xref:System.Threading.Thread.IsAlive%2A>プロパティよりも具体的な情報を提供します。  
   
 > [!IMPORTANT]
->  スレッドの状態のみがデバッグ シナリオで重要です。 スレッドの動作を同期化する目的でコード内でスレッドの状態を使用しないでください。  
+>  スレッドの状態は、デバッグシナリオでのみ重要です。 スレッドの動作を同期化する目的でコード内でスレッドの状態を使用しないでください。  
   
    
   
 ## Examples  
- 次のコード例に示しますへのアクセス、`ThreadState`スレッドの。  
+ 次のコード例は、スレッド`ThreadState`のにアクセスする方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.ThreadState#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.threading.thread.threadstate/cpp/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.ThreadState#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.threading.thread.threadstate/cs/source.cs#1)]
@@ -3809,19 +3809,19 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しいスレッドとして初期化された<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>の開始される前に、そのアパートメント状態が設定されていない場合。 スレッドを開始する前に、アパートメント状態を設定する必要があります。  
+ 新しいスレッドは、アパートメント<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>状態が開始前に設定されていないかのように初期化されます。 アパートメント状態は、スレッドを開始する前に設定する必要があります。  
   
 > [!NOTE]
->  メイン アプリケーション スレッドに初期化<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>既定。 メイン アプリケーション スレッドのアパートメント状態を設定する唯一の方法<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>が適用される、<xref:System.STAThreadAttribute>エントリ ポイント メソッドに属性します。  
+>  メインアプリケーションスレッドは、既定で<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>に初期化されます。 メインアプリケーションスレッドのアパートメント状態をに<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>設定する唯一の方法は、エントリポイントメソッドに<xref:System.STAThreadAttribute>属性を適用することです。  
   
- <xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドと共に、<xref:System.Threading.Thread.GetApartmentState%2A>メソッドと<xref:System.Threading.Thread.SetApartmentState%2A>メソッド、置換、<xref:System.Threading.Thread.ApartmentState%2A>プロパティ。  
+ メソッドとメソッド<xref:System.Threading.Thread.ApartmentState%2A>および<xref:System.Threading.Thread.SetApartmentState%2A>メソッドを<xref:System.Threading.Thread.GetApartmentState%2A>使用して、プロパティを置き換えます。 <xref:System.Threading.Thread.TrySetApartmentState%2A>  
   
    
   
 ## Examples  
- 次のコード例に示します、 <xref:System.Threading.Thread.GetApartmentState%2A>、 <xref:System.Threading.Thread.SetApartmentState%2A>、および<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッド。 このコード例では、スレッドを作成します。 スレッドを開始すると、前に<xref:System.Threading.Thread.GetApartmentState%2A>初期表示<xref:System.Threading.ApartmentState.Unknown?displayProperty=nameWithType>状態と<xref:System.Threading.Thread.SetApartmentState%2A>状態に変更します<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>します。 <xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドが戻ります`false`に状態を変更しようとしています。<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>アパートメント状態が既に設定されているためです。 場合は、同じ操作で<xref:System.Threading.Thread.SetApartmentState%2A>、<xref:System.InvalidOperationException>がスローされました。  
+ 次のコード例は、 <xref:System.Threading.Thread.GetApartmentState%2A>、 <xref:System.Threading.Thread.SetApartmentState%2A>、および<xref:System.Threading.Thread.TrySetApartmentState%2A>の各メソッドを示しています。 このコード例では、スレッドを作成します。 スレッドが開始される前<xref:System.Threading.Thread.GetApartmentState%2A>に、に<xref:System.Threading.ApartmentState.Unknown?displayProperty=nameWithType>よって<xref:System.Threading.Thread.SetApartmentState%2A>初期状態が表示<xref:System.Threading.ApartmentState.STA?displayProperty=nameWithType>され、状態がに変わります。 この<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドは、 `false`アパートメント状態が既に設定さ<xref:System.Threading.ApartmentState.MTA?displayProperty=nameWithType>れているために状態をに変更しようとすると、を返します。 同じ操作がによっ<xref:System.Threading.Thread.SetApartmentState%2A>て試行された場合、 <xref:System.InvalidOperationException>がスローされます。  
   
- スレッドを開始した後、<xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドは、もう一度使用します。 これは、ときにスローします<xref:System.Threading.ThreadStateException>スレッドが既に開始されています。  
+ スレッドが開始されると、 <xref:System.Threading.Thread.TrySetApartmentState%2A>メソッドが再び使用されます。 今回は、スレッド<xref:System.Threading.ThreadStateException>が既に開始されているためにスローします。  
   
  [!code-cpp[Thread.GetSetTrySetApartmentState#1](~/samples/snippets/cpp/VS_Snippets_CLR/Thread.GetSetTrySetApartmentState/cpp/source.cpp#1)]
  [!code-csharp[Thread.GetSetTrySetApartmentState#1](~/samples/snippets/csharp/VS_Snippets_CLR/Thread.GetSetTrySetApartmentState/cs/source.cs#1)]
@@ -3883,16 +3883,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -3937,16 +3937,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -3991,16 +3991,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4045,16 +4045,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4099,16 +4099,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4153,16 +4153,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4207,16 +4207,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4266,16 +4266,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4320,16 +4320,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4379,16 +4379,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4438,16 +4438,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4497,16 +4497,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4556,16 +4556,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileRead%2A>いずれかのプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileRead%2A> 、は、任意のプロセッサによってメモリ位置に書き込まれた最新の値を取得します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4621,16 +4621,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4676,16 +4676,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4731,16 +4731,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4786,16 +4786,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4841,16 +4841,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4896,16 +4896,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -4951,16 +4951,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -5011,16 +5011,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -5066,16 +5066,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -5126,16 +5126,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -5186,16 +5186,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -5246,16 +5246,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -5306,16 +5306,16 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>は、同期の特殊なケースです。 通常の状況で、c#`lock`ステートメントでは、Visual Basic`SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスは、簡単な代替手段を提供します。  
+ <xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>は、特殊な同期を行う場合に使用します。 通常の状況ではC# `lock` 、ステートメント、Visual Basic `SyncLock`ステートメント、および<xref:System.Threading.Monitor>クラスを使用すると、簡単に代替できます。  
   
- マルチプロセッサ システムで<xref:System.Threading.Thread.VolatileWrite%2A>メモリ位置に書き込まれた値がすべてのプロセッサにすぐに表示することを確認します。 これにより、プロセッサのキャッシュのフラッシュが必要があります。  
+ マルチプロセッサシステムでは<xref:System.Threading.Thread.VolatileWrite%2A> 、メモリ位置に書き込まれた値がすべてのプロセッサに直ちに表示されることを保証します。 これには、プロセッサキャッシュのフラッシュが必要になる場合があります。  
   
- ユニプロセッサ システムでは、上であっても<xref:System.Threading.Thread.VolatileRead%2A>と<xref:System.Threading.Thread.VolatileWrite%2A>値の読み取りまたはメモリ、書き込みし、(たとえば、プロセッサのレジスタ) にキャッシュされていないことを確認します。 したがって、別のスレッドによって、またはハードウェアによって更新可能なフィールドへのアクセスを同期するのにことを使用することができます。  
+ ユニプロセッサシステム<xref:System.Threading.Thread.VolatileRead%2A> <xref:System.Threading.Thread.VolatileWrite%2A>であっても、値が読み取られ、メモリに書き込まれ、キャッシュされないことを確認します (たとえば、プロセッサレジスタなど)。 そのため、別のスレッドまたはハードウェアによって更新できるフィールドへのアクセスを同期するために使用できます。  
   
- このメソッドを呼び出すと、1 つのメモリ アクセスのみが影響します。 フィールドの効果的な同期を提供する、フィールドへのすべてのアクセスを使用する必要があります<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+ このメソッドを呼び出すと、1つのメモリアクセスだけに影響します。 フィールドへの有効な同期を提供するには、フィールドへの<xref:System.Threading.Thread.VolatileRead%2A>すべて<xref:System.Threading.Thread.VolatileWrite%2A>のアクセスでまたはを使用する必要があります。  
   
 > [!NOTE]
->  C# を使用して、`volatile`フィールド修飾子フィールドへのすべてのアクセスを使用していることを保証<xref:System.Threading.Thread.VolatileRead%2A>または<xref:System.Threading.Thread.VolatileWrite%2A>します。  
+>  でC#は、フィールド`volatile`に対して修飾子を使用すると、そのフィールドへ<xref:System.Threading.Thread.VolatileRead%2A>の<xref:System.Threading.Thread.VolatileWrite%2A>すべてのアクセスがまたはを使用することが保証されます。  
   
  ]]></format>
         </remarks>
@@ -5363,11 +5363,11 @@ Main thread: ThreadProc.Join has returned.  Press Enter to end program.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドが成功すると、スレッドの現在のタイム スライスの残りの部分が返されます。 オペレーティング システムでは、その優先順位と実行に使用できる他のスレッドの状態に応じて、別のタイム スライスの呼び出し元のスレッドをスケジュールします。  
+ このメソッドが成功すると、スレッドの現在のタイムスライスの残りの部分が生成されます。 オペレーティングシステムは、その優先順位と実行可能な他のスレッドの状態に応じて、別のタイムスライスの呼び出し元スレッドをスケジュールします。  
   
- 応答は、呼び出し元のスレッドを実行しているプロセッサに制限されます。 そのプロセッサがアイドル状態または優先順位の低いスレッドが実行されている場合でも、オペレーティング システムは、別のプロセッサに実行を切り替えられません。 現在のプロセッサで実行することができるその他のスレッドがないかどうか、オペレーティング システムでは、実行を作成しませんし、このメソッドが戻る`false`します。  
+ 生成は、呼び出し元のスレッドを実行しているプロセッサに限定されます。 オペレーティングシステムは、プロセッサがアイドル状態の場合や、優先順位の低いスレッドが実行されている場合でも、実行を別のプロセッサに切り替えません。 現在のプロセッサで実行する準備ができているスレッドが他にない場合、オペレーティングシステムは実行を生成せず、この`false`メソッドはを返します。  
   
- このメソッドは、ネイティブの Win32 プラットフォームを使用して呼び出し`SwitchToThread`関数。 呼び出す必要があります、<xref:System.Threading.Thread.Yield%2A>プラットフォーム呼び出しのバイパス、カスタム スレッドの動作、ホストが要求されたため、プラットフォームを使用する代わりにメソッドを呼び出します。  
+ このメソッドは、プラットフォーム呼び出しを使用してネイティブの Win32 `SwitchToThread`関数を呼び出すことと同じです。 プラットフォーム呼び出しは、 <xref:System.Threading.Thread.Yield%2A>ホストが要求したカスタムスレッド動作をバイパスするため、プラットフォーム呼び出しを使用するのではなく、メソッドを呼び出す必要があります。  
   
  ]]></format>
         </remarks>

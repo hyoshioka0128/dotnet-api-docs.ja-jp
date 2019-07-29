@@ -28,14 +28,14 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サポートが必要な UI オートメーション プロバイダーの実装、<xref:System.Windows.Automation.ScrollPattern>コントロール パターン。  
+ コントロールパターンを<xref:System.Windows.Automation.ScrollPattern>サポートする必要がある UI オートメーションプロバイダーに実装されます。  
   
  ]]></format>
     </remarks>
     <altmember cref="T:System.Windows.Automation.ScrollPattern" />
     <related type="Article" href="~/docs/framework/ui-automation/ui-automation-control-patterns-overview.md">UI オートメーション コントロール パターンの概要</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーション プロバイダーの実装</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーション プロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーションプロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーションプロバイダーの実装</related>
     <related type="Article" href="https://msdn.microsoft.com/library/0d635c35-ffa8-4dc8-bbc9-12fcd5445776">UI オートメーション プロバイダーでのコントロール パターンのサポート</related>
     <related type="Article" href="https://msdn.microsoft.com/library/73d64242-6cbb-424c-92dd-dc69530b7899">UI オートメーション Scroll コントロール パターンの実装</related>
   </Docs>
@@ -58,12 +58,12 @@
       </ReturnValue>
       <Docs>
         <summary>コントロールを水平方向にスクロールできるかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> コントロールを水平方向にスクロールできる場合それ以外の場合<see langword="false" />します。</value>
+        <value>コントロールを水平方向にスクロールできる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを動的にすることができます。 たとえば、コントロールのコンテンツ領域できない可能性がありますが現在表示可能な領域より意味<xref:System.Windows.Automation.Provider.IScrollProvider.HorizontallyScrollable%2A>は`false`します。 ただし、またはコントロールのサイズ変更のいずれかの子項目を追加することを意味し、表示可能領域を超えてコンテンツ領域の境界が増加できます<xref:System.Windows.Automation.Provider.IScrollProvider.HorizontallyScrollable%2A>は`true`します。  
+ このプロパティは動的にすることができます。 たとえば、コントロールのコンテンツ領域が現在の表示可能領域よりも大きくならないことがあり<xref:System.Windows.Automation.Provider.IScrollProvider.HorizontallyScrollable%2A>ます`false`。つまり、はです。 ただし、コントロールのサイズを変更するか、子項目を追加すると、表示可能な領域を超えてコンテンツ<xref:System.Windows.Automation.Provider.IScrollProvider.HorizontallyScrollable%2A>領域`true`の境界を増やすことができます。つまり、はになります。  
   
  ]]></format>
         </remarks>
@@ -167,21 +167,21 @@
         <Parameter Name="verticalPercent" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="horizontalPercent">コンテンツ領域の範囲全体のパーセンテージで示した水平位置。 コントロールをこの方向にスクロールできない場合、<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> を渡す必要があります。</param>
-        <param name="verticalPercent">コンテンツ領域の範囲全体のパーセンテージで示した垂直位置。 コントロールをこの方向にスクロールできない場合、<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> を渡す必要があります。</param>
+        <param name="horizontalPercent">コンテンツ領域の範囲全体のパーセンテージで示した水平位置。 コントロールをこの方向にスクロールできない場合は、<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> を渡す必要があります。</param>
+        <param name="verticalPercent">コンテンツ エリアの範囲全体のパーセンテージで示した垂直方向の位置。 コントロールをこの方向にスクロールできない場合、<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> を渡す必要があります。</param>
         <summary>水平方向および垂直方向のスクロール位置を、コントロール内のコンテンツ領域全域に対する割合として設定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コントロールのコンテンツ領域が表示領域よりも大きい場合にのみ役立ちます。  
+ このメソッドは、コントロールのコンテンツ領域が可視領域よりも大きい場合にのみ役立ちます。  
   
- 値を渡す<xref:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll>がないこと、指定した方向にスクロールすることを示します。  
+ 値<xref:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll>を渡すと、指定した方向にスクロールがないことを示します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">倍精度浮動小数点型に変換できない値が渡されています。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">100 を超える値または 0 未満の値 (<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> に相当する -1 を除く) が渡されています。 <see cref="P:System.Windows.Automation.Provider.IScrollProvider.HorizontalScrollPercent" />と<see cref="P:System.Windows.Automation.Provider.IScrollProvider.VerticalScrollPercent" />値 0% または 100% のいずれかに正規化されます。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">100 を超える値または 0 未満の値 (<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> に相当する -1 を除く) が渡されています。 <see cref="P:System.Windows.Automation.Provider.IScrollProvider.HorizontalScrollPercent" /> および <see cref="P:System.Windows.Automation.Provider.IScrollProvider.VerticalScrollPercent" /> の値は 100% または 0% に正規化されます。</exception>
         <exception cref="T:System.InvalidOperationException">サポートされていない方向にスクロールしようとしました。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/73d64242-6cbb-424c-92dd-dc69530b7899">UI オートメーション Scroll コントロール パターンの実装</related>
       </Docs>
@@ -204,12 +204,12 @@
       </ReturnValue>
       <Docs>
         <summary>コントロールを垂直方向にスクロールできるかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> コントロールを垂直方向にスクロールできる場合それ以外の場合<see langword="false" />します。</value>
+        <value>コントロールを垂直方向にスクロールできる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを動的にすることができます。 たとえば、コントロールのコンテンツ領域できない可能性があります、表示可能領域の意味を超える<xref:System.Windows.Automation.Provider.IScrollProvider.VerticallyScrollable%2A>は`false`します。 ただし、コントロールのサイズ変更、または子項目を追加することを示す、表示可能領域のコンテンツ エリアの境界が増加できます<xref:System.Windows.Automation.Provider.IScrollProvider.VerticallyScrollable%2A>は`true`します。  
+ このプロパティは動的にすることができます。 たとえば、コントロールのコンテンツ領域<xref:System.Windows.Automation.Provider.IScrollProvider.VerticallyScrollable%2A>が、表示可能領域よりも大きくない場合が`false`あります。 ただし、コントロールのサイズを変更するか、子項目を追加すると、表示可能な領域を超えて<xref:System.Windows.Automation.Provider.IScrollProvider.VerticallyScrollable%2A>コンテンツ`true`領域の境界が増加し、がであることが示されることがあります。  
   
  ]]></format>
         </remarks>
@@ -256,8 +256,8 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>縦表示サイズを取得します。</summary>
-        <value>コントロール内のコンテンツ エリア全体のパーセンテージで示した表示可能領域の縦のサイズ。</value>
+        <summary>垂直方向のビュー サイズを取得します。</summary>
+        <value>コントロール内のコンテンツ エリア全体のパーセンテージで示した表示可能領域の垂直方向のサイズ。</value>
         <remarks>To be added.</remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/73d64242-6cbb-424c-92dd-dc69530b7899">UI オートメーション Scroll コントロール パターンの実装</related>
       </Docs>

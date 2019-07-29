@@ -28,7 +28,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サポートが必要な UI オートメーション プロバイダーの実装、<xref:System.Windows.Automation.GridPattern>コントロール パターン。  
+ コントロールパターンを<xref:System.Windows.Automation.GridPattern>サポートする必要がある UI オートメーションプロバイダーに実装されます。  
   
  <xref:System.Windows.Automation.Provider.IGridProvider> はグリッドのアクティブな操作を有効にしないため、 <xref:System.Windows.Automation.Provider.ITransformProvider> を実装してこの機能を有効にする必要があります。  
   
@@ -36,8 +36,8 @@
     </remarks>
     <altmember cref="T:System.Windows.Automation.GridPattern" />
     <related type="Article" href="~/docs/framework/ui-automation/ui-automation-control-patterns-overview.md">UI オートメーション コントロール パターンの概要</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーション プロバイダーの実装</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーション プロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーションプロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーションプロバイダーの実装</related>
     <related type="Article" href="https://msdn.microsoft.com/library/0d635c35-ffa8-4dc8-bbc9-12fcd5445776">UI オートメーション プロバイダーでのコントロール パターンのサポート</related>
     <related type="Article" href="https://msdn.microsoft.com/library/234d11a0-7ce7-4309-8989-2f4720e02f78">UI オートメーション Grid コントロール パターンの実装</related>
   </Docs>
@@ -59,13 +59,13 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>グリッドの列の合計数を取得します。</summary>
+        <summary>グリッド内の列の合計数を取得します。</summary>
         <value>グリッド内の列の合計数。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非表示の行とプロバイダーの実装によって、列に読み込むことができます、[!INCLUDE[TLA2#tla_uiautomation](~/includes/tla2sharptla-uiautomation-md.md)]ツリーし、に反映されるため、<xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>と<xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>プロパティ。 読み込まれていない場合は、非表示の行および列の場合はカウントされません。  
+ 非表示の行と列は、プロバイダーの実装によっては、 [!INCLUDE[TLA2#tla_uiautomation](~/includes/tla2sharptla-uiautomation-md.md)]ツリーに読み込むことができます。 <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>したがっ<xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>て、プロパティとプロパティに反映されます。 非表示の行と列がまだ読み込まれていない場合は、カウントされません。  
   
    
   
@@ -110,19 +110,19 @@
   
 ## Remarks  
   
--   グリッド座標は、座標 (0, 0)、左上 (またはロケールに応じて上の適切なセル) は 0 から始まります。  
+-   グリッド座標は0から始まり、左上 (ロケールによっては右上隅のセル) が座標 (0, 0) を持ちます。  
   
--   セルが空の場合、UI オートメーション プロバイダーも、サポートするために、<xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A>そのセルのプロパティ。 これは、操作は、グリッド内の子要素のレイアウトが不調和配列に似ている場合に可能です。  
+-   セルが空の場合でも、そのセルの<xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A>プロパティをサポートするために、UI オートメーションプロバイダーが返される必要があります。 これは、グリッド内の子要素のレイアウトが不規則な配列に似ている場合に発生する可能性があります。  
   
- ![Windows エクスプ ローラー ビューが不規則なレイアウトを表示します。](~/add/media/uia-gridpattern-ragged-array.PNG "不規則なレイアウトを示す Windows エクスプ ローラー ビュー。")  
+ ![不規則レイアウトを表示するエクスプローラービュー。](~/add/media/uia-gridpattern-ragged-array.PNG "不規則レイアウトを表示するエクスプローラービュー。")  
 空の座標を持つグリッド コントロールの例  
   
--   非表示の行とプロバイダーの実装によって、列に読み込むことができます、[!INCLUDE[TLA2#tla_uiautomation](~/includes/tla2sharptla-uiautomation-md.md)]ツリーし、に反映されるため、<xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A>と<xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A>プロパティ。 読み込まれていない場合は、非表示の行および列の場合はカウントされません。  
+-   非表示の行と列は、プロバイダーの実装によっては、 [!INCLUDE[TLA2#tla_uiautomation](~/includes/tla2sharptla-uiautomation-md.md)]ツリーに読み込むことができます。 <xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A>したがっ<xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A>て、プロパティとプロパティに反映されます。 非表示の行と列がまだ読み込まれていない場合は、カウントされません。  
   
    
   
 ## Examples  
- 次のコードは、指定した位置に項目を表すオブジェクトを返す、このメソッドの実装例です。  
+ 次のコードは、指定した位置にある項目を表すオブジェクトを返す、このメソッドの実装例です。  
   
  [!code-csharp[UIAMiscPatternProviders_snip#101](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAMiscPatternProviders_snip/CSharp/CustomGrid.cs#101)]
  [!code-vb[UIAMiscPatternProviders_snip#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAMiscPatternProviders_snip/visualbasic/customgrid.vb#101)]  
@@ -155,7 +155,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非表示の行と列、プロバイダーの実装によって、論理ツリー内に読み込むことができるし、は、そのために反映されます、<xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>と<xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>プロパティ。 読み込まれていない場合は、非表示の行および列の場合はカウントされません。  
+ 非表示の行と列は、プロバイダーの実装によっては、論理ツリーに読み込むことができます。 <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>したがっ<xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>て、プロパティとプロパティに反映されます。 非表示の行と列がまだ読み込まれていない場合は、カウントされません。  
   
    
   

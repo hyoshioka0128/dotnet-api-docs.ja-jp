@@ -1,5 +1,5 @@
 <Type Name="TypeInitializationException" FullName="System.TypeInitializationException">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="1593c517175a34772b35a05f3770c0c79a61337c" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58737386" /></Metadata><TypeSignature Language="C#" Value="public sealed class TypeInitializationException : SystemException" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="30abbf6a789f74f57eff55cfa894c130f54e3446" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68398241" /></Metadata><TypeSignature Language="C#" Value="public sealed class TypeInitializationException : SystemException" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit TypeInitializationException extends System.SystemException" />
   <TypeSignature Language="DocId" Value="T:System.TypeInitializationException" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TypeInitializationException&#xA;Inherits SystemException" />
@@ -45,36 +45,36 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- クラス初期化子で型の初期化に失敗すると、<xref:System.TypeInitializationException> が作成され、その型のクラス初期化子でスローされる例外への参照が渡されます。 <xref:System.Exception.InnerException%2A>プロパティの<xref:System.TypeInitializationException>基になる例外を保持します。  
+ クラス初期化子で型の初期化に失敗すると、<xref:System.TypeInitializationException> が作成され、その型のクラス初期化子でスローされる例外への参照が渡されます。 <xref:System.Exception.InnerException%2A> の<xref:System.TypeInitializationException>プロパティは、基になる例外を保持します。  
   
- 通常、<xref:System.TypeInitializationException>例外には、重大な状態が反映されます (ランタイムは、型をインスタンス化できません)、アプリケーションを続行できません。  ほとんどの場合、<xref:System.TypeInitializationException>アプリケーションの実行中の環境での変更に応答がスローされます。 その結果、以外の可能性があります、コードのデバッグのトラブルシューティングのため、例外処理できないで、 `try` / `catch`ブロックします。 代わりに、例外の原因を調査し、削除する必要があります。  
+ 通常、例外<xref:System.TypeInitializationException>は、アプリケーションの続行を妨げる致命的な状態 (ランタイムが型をインスタンス化できない) を反映しています。  通常、は、 <xref:System.TypeInitializationException>アプリケーションの実行環境で何らかの変更が発生した場合にスローされます。 そのため、デバッグコードのトラブルシューティングを行う場合以外は、 `try` `catch`ブロックで/例外を処理することはできません。 代わりに、例外の原因を調査して削除する必要があります。  
   
- <xref:System.TypeInitializationException> 値は 0x80131534 HRESULT COR_E_TYPEINITIALIZATION を使用します。  
+ <xref:System.TypeInitializationException>は、値0x80131534 を持つ HRESULT COR_E_TYPEINITIALIZATION を使用します。  
   
- インスタンスの初期プロパティ値の一覧については<xref:System.TypeInitializationException>を参照してください、<xref:System.TypeInitializationException.%23ctor%2A>コンス トラクター。  
+ <xref:System.TypeInitializationException>インスタンスの初期プロパティ値の一覧については、<xref:System.TypeInitializationException.%23ctor%2A>コンストラクターを参照してください。  
   
- 次のセクションでは、いくつかの状況は、について説明します、<xref:System.TypeInitializationException>例外がスローされます。  
+ 以下のセクションでは、 <xref:System.TypeInitializationException>例外がスローされる状況について説明します。  
   
-- [静的コンス トラクターと TypeInitializationException 例外](#Static)   
-- [正規表現と一致するタイムアウト値](#Timeout)   
-- [予定表とカルチャのデータ](#Calendars)  
+- [静的コンストラクターと TypeInitializationException 例外](#Static)   
+- [正規表現の一致のタイムアウト値](#Timeout)   
+- [予定表と文化データ](#Calendars)  
   
 <a name="Static"></a>   
-## <a name="static-constructors-and-the-typeinitializationexception"></a>静的コンス トラクターと、TypeInitializationException
+## <a name="static-constructors-and-the-typeinitializationexception"></a>静的コンストラクターと TypeInitializationException
 
- 静的コンス トラクターでは、1 つが存在する場合は自動的にランタイムによって呼び出されます、型の新しいインスタンスを作成する前にします。 静的コンス トラクターは、開発者が明示的に定義することができます。 静的コンス トラクターが明示的に定義されていない場合のコンパイラを自動的に作成、初期化するために 1 つ`static`(で C# の場合) または`Shared`(Visual Basic) では、型のメンバー。  静的コンス トラクターの詳細については、次を参照してください。[静的コンス トラクター](~/docs/csharp/programming-guide/classes-and-structs/static-constructors.md)します。  
+ 静的コンストラクター (存在する場合) は、型の新しいインスタンスを作成する前に、ランタイムによって自動的に呼び出されます。 静的コンストラクターは、開発者が明示的に定義できます。 静的コンストラクターが明示的に定義されていない場合、コンパイラは`static` 、型C#の ( `Shared`の場合) または (Visual Basic) メンバーを初期化するためのを自動的に作成します。  静的コンストラクターの詳細については、「[静的コンストラクター](~/docs/csharp/programming-guide/classes-and-structs/static-constructors.md)」を参照してください。  
   
- ほとんどの場合、<xref:System.TypeInitializationException>静的コンス トラクターは、型をインスタンス化できない場合、例外がスローされます。  <xref:System.Exception.InnerException%2A>プロパティは、静的コンス トラクターが型をインスタンス化できない理由を示します。 一般的な原因の一部を<xref:System.TypeInitializationException>例外です。  
+ 一般に、 <xref:System.TypeInitializationException>静的コンストラクターが型をインスタンス化できない場合、例外がスローされます。  プロパティ<xref:System.Exception.InnerException%2A>は、静的コンストラクターが型をインスタンス化できなかった理由を示します。 <xref:System.TypeInitializationException>例外の一般的な原因のいくつかを次に示します。  
   
-- 静的コンス トラクターで未処理の例外  
+- 静的コンストラクターでのハンドルされない例外  
  
-   その例外がラップされた静的コンス トラクターで例外がスローされた場合、<xref:System.TypeInitializationException>例外、および種類をインスタンス化することはできません。  
+   静的コンストラクターで例外がスローされた場合、その例外は<xref:System.TypeInitializationException>例外でラップされ、型をインスタンス化することはできません。  
   
-   静的コンス トラクターは常に明示的に定義されていないことで、ソース コードは、どのような多くの場合は、この例外トラブルシューティングが困難です。 場合、型の静的コンス トラクターが存在します。  
+   多くの場合、この例外のトラブルシューティングが困難になるのは、静的コンストラクターがソースコードで明示的に定義されていないことです。 次の場合、型に静的コンストラクターが存在します。  
   
-   -   型のメンバーとして明示的に定義されています。  
+   -   これは、型のメンバーとして明示的に定義されています。  
   
-   -   型を持つ`static`(で C# の場合) または`Shared`(Visual Basic) で宣言され、1 つのステートメントで初期化される変数。 この場合は、言語コンパイラは、型の静的コンス トラクターを生成します。 などのユーティリティを使用して、検査して[IL 逆アセンブラー](~/docs/framework/tools/ildasm-exe-il-disassembler.md)します。 たとえば、C# と VB コンパイラは、次の例をコンパイル、ときに、このような静的コンス トラクターの IL が生成します。  
+   -   型には`static` 、1 C#つの`Shared`ステートメントで宣言および初期化される (in) または (Visual Basic) 変数があります。 この場合、言語コンパイラによって、型の静的コンストラクターが生成されます。 [IL 逆アセンブラー](~/docs/framework/tools/ildasm-exe-il-disassembler.md)などのユーティリティを使用して検査できます。 たとえば、と VB コンパイラC#が次の例をコンパイルすると、次のような静的コンストラクターの IL が生成されます。  
   
    ```  
    .method private specialname rtspecialname static   
@@ -89,16 +89,16 @@
    } // end of method Example::.cctor  
    ```  
   
-   次の例は、<xref:System.TypeInitializationException>コンパイラによって生成された静的コンス トラクターによってスローされる例外。 `Example`クラスが含まれています、 `static` (で C# の場合) または`Shared`(Visual Basic) で型のフィールド`TestClass`が 3 の値をそのクラス コンス トラクターに渡すことによってインスタンス化します。  その値、ただしは無効です。0 または 1 の値のみが許可されます。 結果として、`TestClass`クラスのコンス トラクターがスローされます、<xref:System.ArgumentOutOfRangeException>します。 この例外が処理されないためにラップする<xref:System.TypeInitializationException>例外。  
+   次の例は、 <xref:System.TypeInitializationException>コンパイラによって生成された静的コンストラクターによってスローされた例外を示しています。 C# `Shared` `TestClass`クラスには、 `static`クラスコンストラクターに値3を渡すことによってインスタンス化される型の (in) または (Visual Basic) フィールドが含まれています。 `Example`  ただし、この値は無効です。0または1の値のみが許可されます。 その結果、クラスコンストラクター `TestClass`はを<xref:System.ArgumentOutOfRangeException>スローします。 この例外は処理されないため、例外と<xref:System.TypeInitializationException>してラップされます。  
   
    [!code-csharp[System.TypeInitializationException#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.TypeInitializationException/cs/ctorException1.cs#3)]
    [!code-vb[System.TypeInitializationException#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.TypeInitializationException/vb/CtorException1.vb#3)]  
   
-   例外メッセージがに関する情報を表示することに注意してください、<xref:System.Exception.InnerException%2A>プロパティ。  
+   例外メッセージには、 <xref:System.Exception.InnerException%2A>プロパティに関する情報が表示されることに注意してください。  
   
-- アセンブリまたはデータ ファイルの欠落  
+- 見つからないアセンブリまたはデータファイル  
  
-   一般的な原因を<xref:System.TypeInitializationException>例外がアプリケーションの開発およびテスト環境に存在するアセンブリまたはデータ ファイルがそのランタイム環境から不足していることができます。 たとえば、このコマンドラインの構文を使用して Missing1a.dll をという名前のアセンブリには、次の例をコンパイルできます。  
+   <xref:System.TypeInitializationException>例外の一般的な原因として、アプリケーションの開発環境やテスト環境に存在していたアセンブリまたはデータファイルがランタイム環境に存在しないことが挙げられます。 たとえば、次のコマンドライン構文を使用して、Missing1a という名前のアセンブリに次の例をコンパイルできます。  
   
    ```csharp  
    csc -t:library Missing1a.cs  
@@ -111,7 +111,7 @@
    [!code-csharp[System.TypeInitializationException#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.TypeInitializationException/cs/Missing1a.cs#1)]
    [!code-vb[System.TypeInitializationException#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.TypeInitializationException/vb/Missing1a.vb#1)]  
   
-   Missing1a.dll への参照を含めることによって Missing1.exe を名前付き実行可能ファイルに次の例をコンパイルできます。  
+   次の例は、Missing1a への参照を含めることによって、Missing1 という名前の実行可能ファイルにコンパイルできます。  
   
    ```csharp
    csc Missing1.cs /r:Missing1a.dll  
@@ -121,34 +121,34 @@
    vbc Missing1.vb /r:Missing1a.dll  
    ```  
   
-   ただし、名前を変更、移動、または削除 Missing1a.dll して例を実行がスローされます、<xref:System.TypeInitializationException>例外および例に示した出力を示します。  例外メッセージがに関する情報を含めることに注意してください、<xref:System.Exception.InnerException%2A>プロパティ。 この例では、内部例外は、<xref:System.IO.FileNotFoundException>ランタイムは、依存アセンブリを検出できないため、スローされました。  
+   ただし、Missing1a の名前変更、移動、または削除を行ってこの例を実行すると<xref:System.TypeInitializationException> 、例外がスローされ、例に示されている出力が表示されます。  例外メッセージには、 <xref:System.Exception.InnerException%2A>プロパティに関する情報が含まれていることに注意してください。 この場合、内部例外<xref:System.IO.FileNotFoundException>は、ランタイムが依存アセンブリを見つけることができないためにスローされるです。  
   
    [!code-csharp[System.TypeInitializationException#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.TypeInitializationException/cs/Missing1.cs#2)]
    [!code-vb[System.TypeInitializationException#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.TypeInitializationException/vb/Missing1.vb#2)]  
   
    > [!NOTE]
-   >  この例で、<xref:System.TypeInitializationException>アセンブリは、読み込むことができないため、例外がスローされました。 例外は、静的コンス トラクターは、構成ファイル、XML ファイル、または含んでいるファイルが見つからないことを示すには、データをシリアル化など、データ ファイルを開こうとする場合にもスローされます。  
+   >  この例では、 <xref:System.TypeInitializationException>アセンブリを読み込むことができなかったため、例外がスローされました。 この例外は、静的コンストラクターが、構成ファイル、XML ファイル、シリアル化されたデータを含むファイルなど、見つからないデータファイルを開こうとした場合にもスローされることがあります。  
   
 <a name="Timeout"></a>   
-## <a name="regular-expression-match-timeout-values"></a>正規表現と一致するタイムアウト値  
- アプリケーションごとのドメインごとに操作に一致する正規表現パターンの既定のタイムアウト値を設定することができます。 指定することで、タイムアウトが定義されている、<xref:System.TimeSpan>に"REGEX_DEFAULT_MATCH_TIMEOUT"プロパティの値、<xref:System.AppDomain.SetData%2A?displayProperty=nameWithType>メソッド。 時間間隔を有効にする必要があります<xref:System.TimeSpan>が 0 未満に約 24 日より大きくするオブジェクト。 これらの要件が満たされていない場合、既定のタイムアウト値を設定しようとするがスローされます、<xref:System.ArgumentOutOfRangeException>が順番にラップされて、<xref:System.TypeInitializationException>例外。  
+## <a name="regular-expression-match-timeout-values"></a>正規表現の一致のタイムアウト値  
+ 正規表現パターン一致操作の既定のタイムアウト値は、アプリケーションドメインごとに設定できます。 タイムアウトは、 <xref:System.AppDomain.SetData%2A?displayProperty=nameWithType>メソッドに対して " <xref:System.TimeSpan> REGEX_DEFAULT_MATCH_TIMEOUT" プロパティの値を指定するによって定義されます。 時間間隔は、0より大きく<xref:System.TimeSpan> 、約24日未満の有効なオブジェクトである必要があります。 これらの要件が満たされていない場合、既定のタイムアウト値を設定<xref:System.ArgumentOutOfRangeException>しようとすると、がスロー <xref:System.TypeInitializationException>されます。これは、例外でラップされます。  
   
- 次の例は、 <xref:System.TypeInitializationException> "REGEX_DEFAULT_MATCH_TIMEOUT"プロパティに割り当てられた値が有効でない場合にスローされます。 例外を取り除くに"REGEX_DEFAULT_MATCH_TIMEOUT"プロパティを設定します。、<xref:System.TimeSpan>値が 0 とより小さい約 24 日よりも大きいです。  
+ 次の例は、 <xref:System.TypeInitializationException> "REGEX_DEFAULT_MATCH_TIMEOUT" プロパティに割り当てられた値が無効な場合にスローされるを示しています。 例外を除去するには、"REGEX_DEFAULT_MATCH_TIMEOUT" プロパティを 0 <xref:System.TimeSpan>より大きく、約24日未満の値に設定します。  
   
  [!code-csharp[System.TypeInitializationException#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.TypeInitializationException/cs/Regex1.cs#4)]
  [!code-vb[System.TypeInitializationException#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.TypeInitializationException/vb/Regex1.vb#4)]  
   
 <a name="Calendars"></a>   
-## <a name="calendars-and-cultural-data"></a>予定表とカルチャのデータ  
- カレンダーをインスタンス化しようとしたが、ランタイムがインスタンス化できない、<xref:System.Globalization.CultureInfo>カレンダーに対応するオブジェクトがスローされます、<xref:System.TypeInitializationException>例外。 次のカレンダー クラス コンス トラクターによって、この例外がスローされます。  
+## <a name="calendars-and-cultural-data"></a>予定表と文化データ  
+ カレンダーのインスタンスを作成しようとしても、そのカレンダーに<xref:System.Globalization.CultureInfo>対応するオブジェクトをランタイムがインスタンス化できない<xref:System.TypeInitializationException>場合は、例外がスローされます。 この例外は、次のカレンダークラスコンストラクターによってスローされる可能性があります。  
   
--   既定のコンス トラクター、<xref:System.Globalization.JapaneseCalendar>クラス。  
+-   <xref:System.Globalization.JapaneseCalendar>クラスのパラメーターなしのコンストラクター。  
   
--   既定のコンス トラクター、<xref:System.Globalization.KoreanCalendar>クラス。  
+-   <xref:System.Globalization.KoreanCalendar>クラスのパラメーターなしのコンストラクター。  
   
--   既定のコンス トラクター、<xref:System.Globalization.TaiwanCalendar>クラス。  
+-   <xref:System.Globalization.TaiwanCalendar>クラスのパラメーターなしのコンストラクター。  
   
- これらのカルチャのカルチャのデータは、すべてのシステムで使用可能なである必要があります、ためにがまれには場合、これまで例外が発生するこのします。  
+ これらのカルチャのカルチャデータはすべてのシステムで使用できる必要があるため、この例外が発生することはめったにありません。  
   
  ]]></format>
     </remarks>
@@ -199,7 +199,7 @@
 ## Remarks  
  前の例外の直接の結果としてスローされる例外は、<xref:System.Exception.InnerException%2A> プロパティに前の例外への参照を含んでいる場合があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`Nothing` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、null 参照 (Visual Basic の場合は <xref:System.Exception.InnerException%2A>) を返します。  
   
- <xref:System.TypeInitializationException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.TypeInitializationException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  
@@ -255,7 +255,7 @@
         <param name="context">転送元または転送先についてのコンテキスト情報を含む <see cref="T:System.Runtime.Serialization.StreamingContext" /> です。</param>
         <summary>型名と追加の例外情報を使用して <see cref="T:System.Runtime.Serialization.SerializationInfo" /> オブジェクトを設定します。</summary>
         <remarks>To be added.</remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="TypeName">

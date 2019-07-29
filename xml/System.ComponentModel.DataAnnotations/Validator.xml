@@ -1,5 +1,5 @@
 <Type Name="Validator" FullName="System.ComponentModel.DataAnnotations.Validator">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7cf4ce0eda96f26f40b831b4c357cbb90660b993" /><Meta Name="ms.sourcegitcommit" Value="690605a2d62010b93e13edf329aafe2bdc57423a" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/11/2019" /><Meta Name="ms.locfileid" Value="67800750" /></Metadata><TypeSignature Language="C#" Value="public static class Validator" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="d0890353e0adb72677b7e108ba31eace285fd3a6" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543133" /></Metadata><TypeSignature Language="C#" Value="public static class Validator" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Validator extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.ComponentModel.DataAnnotations.Validator" />
   <TypeSignature Language="VB.NET" Value="Public Class Validator" />
@@ -76,7 +76,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、各評価<xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類に関連付けられているインスタンス。 各プロパティがどうかを検査でマークされた<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>提供されます。 そうでない再帰的には、オブジェクトのプロパティ値を検証します。  
+ このメソッドは、 <xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類にアタッチされている各インスタンスを評価します。 また、で<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>マークされている各プロパティが指定されているかどうかも確認します。 オブジェクトのプロパティ値を再帰的に検証しません。  
   
  ]]></format>
         </remarks>
@@ -122,11 +122,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、各評価<xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類に関連付けられているインスタンス。 各プロパティがどうかを検査でマークされた<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>提供されます。 場合、オブジェクトのプロパティの値を検証します`validateAllProperties`は`true`いない再帰的には、プロパティによって返されるオブジェクトのプロパティを検証します。  
+ このメソッドは、 <xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類にアタッチされている各インスタンスを評価します。 また、で<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>マークされている各プロパティが指定されているかどうかも確認します。 がの場合`validateAllProperties` 、オブジェクトのプロパティ値を検証`true`しますが、プロパティによって返されるオブジェクトのプロパティを再帰的に検証しません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="instance" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="instance" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="instance" /> が <paramref name="validationContext" /> の <see cref="P:System.ComponentModel.DataAnnotations.ValidationContext.ObjectInstance" /> と一致しません。</exception>
       </Docs>
     </Member>
@@ -166,7 +166,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、各テスト<xref:System.ComponentModel.DataAnnotations.ValidationException.ValidationAttribute%2A>で識別されるプロパティに関連付けられているインスタンス、`validationContext`パラメーター。  
+ このメソッドは、 <xref:System.ComponentModel.DataAnnotations.ValidationException.ValidationAttribute%2A> `validationContext`パラメーターによって識別されるプロパティに関連付けられている各インスタンスをテストします。  
   
  ]]></format>
         </remarks>
@@ -215,7 +215,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドはテスト内の各検証属性、`validationAttributes`パラメーターに対して、`value`パラメーター。 場合、`validationResults`パラメーターでない`null`、このメソッドを追加、<xref:System.ComponentModel.DataAnnotations.ValidationResult>オブジェクトを検証するには、各検証エラーの結果のコレクション。 場合、`validationResults`パラメーターが`null`、このメソッドは追加されません、<xref:System.ComponentModel.DataAnnotations.ValidationResult>オブジェクトをコレクション。 場合、<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>に含まれる属性、`validationAttributes`パラメーター、<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>属性が最初に評価されます。  
+ このメソッドは、パラメーターの各検証`validationAttributes`属性を`value`パラメーターに対してテストします。 パラメーターがでない`null`場合、このメソッドは検証<xref:System.ComponentModel.DataAnnotations.ValidationResult>に失敗するたびにオブジェクトを検証結果のコレクションに追加します。 `validationResults` パラメーターが`null`の場合、この<xref:System.ComponentModel.DataAnnotations.ValidationResult>メソッドはオブジェクトをコレクションに追加しません。 `validationResults` パラメーターに属性が含まれている場合は<xref:System.ComponentModel.DataAnnotations.RequiredAttribute> 、最初に属性が評価されます。 <xref:System.ComponentModel.DataAnnotations.RequiredAttribute> `validationAttributes`  
   
  ]]></format>
         </remarks>
@@ -269,12 +269,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、各評価<xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類に関連付けられているインスタンス。  
+ このメソッドは、 <xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類にアタッチされている各インスタンスを評価します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ComponentModel.DataAnnotations.ValidationException">オブジェクトが無効です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="instance" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="instance" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="instance" /> が <paramref name="validationContext" /> の <see cref="P:System.ComponentModel.DataAnnotations.ValidationContext.ObjectInstance" /> と一致しません。</exception>
       </Docs>
     </Member>
@@ -313,12 +313,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、各評価<xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類に関連付けられているインスタンス。  
+ このメソッドは、 <xref:System.ComponentModel.DataAnnotations.ValidationAttribute>オブジェクトの種類にアタッチされている各インスタンスを評価します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ComponentModel.DataAnnotations.ValidationException"><paramref name="instance" /> が無効です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="instance" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="instance" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="instance" /> が <paramref name="validationContext" /> の <see cref="P:System.ComponentModel.DataAnnotations.ValidationContext.ObjectInstance" /> と一致しません。</exception>
       </Docs>
     </Member>
@@ -355,7 +355,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、各テスト<xref:System.ComponentModel.DataAnnotations.ValidationException.ValidationAttribute%2A>によって識別されたプロパティに関連付けられているインスタンス、`validationContext`パラメーター。  
+ このメソッドは、 <xref:System.ComponentModel.DataAnnotations.ValidationException.ValidationAttribute%2A> `validationContext`パラメーターによって識別されるプロパティに関連付けられている各インスタンスをテストします。  
   
  ]]></format>
         </remarks>
@@ -398,7 +398,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドはテスト内の各検証属性、`validationAttributes`パラメーターに対して、`value`パラメーター。  場合、<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>属性が含まれている、<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>属性が最初に評価されます。  
+ このメソッドは、パラメーターの各検証`validationAttributes`属性を`value`パラメーターに対してテストします。  属性が含まれている場合<xref:System.ComponentModel.DataAnnotations.RequiredAttribute>は、最初に属性が評価されます。 <xref:System.ComponentModel.DataAnnotations.RequiredAttribute>  
   
  ]]></format>
         </remarks>

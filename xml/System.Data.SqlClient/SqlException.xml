@@ -43,25 +43,25 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このクラスは、.NET Framework Data Provider for SQL Server は、サーバーから生成されたエラーを検出するたびに作成されます。 (クライアント側のエラーは、標準の共通言語ランタイム例外としてスローされます)。<xref:System.Data.SqlClient.SqlException>常に少なくとも 1 つのインスタンスを含む<xref:System.Data.SqlClient.SqlError>します。  
+ このクラスは、SQL Server の .NET Framework Data Provider がサーバーから生成されたエラーを検出するたびに作成されます。 (クライアント側のエラーは、標準の共通言語ランタイム例外としてスローされます)。には、常にのインスタンス<xref:System.Data.SqlClient.SqlError>が少なくとも1つ含まれています。 <xref:System.Data.SqlClient.SqlException>  
   
- レベルが 10 以下の重大度レベルをあるメッセージは、情報については、ユーザーの入力ミスによって生じる問題を示します。 重大度レベルが 11 ~ 16 は、ユーザーによって生成され、ユーザーによって修正できます。 重大度レベルが 17 ～ 25 のエラーは、ソフトウェアまたはハードウェアのエラーです。 レベルが 17 の操作は続行できますが、特定のステートメントを実行することができない、18 または 19 のエラーが発生します。  
+ 重大度レベルが10以下のメッセージは情報であり、ユーザーが入力した情報の誤りに起因する問題を示します。 重大度レベルが 11 ~ 16 の場合、ユーザーによって生成され、ユーザーが修正できます。 重大度レベルが 17 ～ 25 のエラーは、ソフトウェアまたはハードウェアのエラーです。 レベル17、18、または19のエラーが発生した場合でも、特定のステートメントを実行できないことがありますが、作業を続行できます。  
   
- 重大度レベルが 19 以下の場合、<xref:System.Data.SqlClient.SqlConnection> は開いたままです。 サーバーが通常閉じます重大度レベルが 20 以上の場合、<xref:System.Data.SqlClient.SqlConnection>します。 ただし、ユーザーは接続を再び開き、続行できます。 どちらの場合も、コマンドを実行しているメソッドによって <xref:System.Data.SqlClient.SqlException> が生成されます。  
+ 重大度レベルが 19 以下の場合、<xref:System.Data.SqlClient.SqlConnection> は開いたままです。 重大度レベルが20以上の場合、サーバーは通常、 <xref:System.Data.SqlClient.SqlConnection>を閉じます。 ただし、ユーザーは接続を再び開き、続行できます。 どちらの場合も、コマンドを実行しているメソッドによって <xref:System.Data.SqlClient.SqlException> が生成されます。  
   
- SQL Server によって送信された警告および情報メッセージについては、次を参照してください。[データベース エンジンのイベントとエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)します。 <xref:System.Data.SqlClient.SqlException>クラスの SQL Server の重大度にマップされます。  
+ SQL Server によって送信される警告メッセージと情報メッセージの詳細については、「[イベントとエラーのデータベースエンジン](/sql/relational-databases/errors-events/database-engine-events-and-errors)」を参照してください。 クラス<xref:System.Data.SqlClient.SqlException>は SQL Server 重大度にマップされます。  
   
- 例外の処理に関する一般情報を次に示します。 コードには、アプリケーションのクラッシュを防ぐために、ユーザーに関連するエラー メッセージの表示を許可する例外をキャッチする必要があります。  データベース トランザクションを使用すると、データが (クラッシュを含む) クライアント アプリケーションでの動作に関係なく一貫したことを確認します。 System.Transaction.TransactionScope または BeginTransaction メソッド (に System.Data.OleDb.OleDbConnection、System.Data.ODBC.ODBCConnection、および System.Data.SqlClient.SqlConnection) などの機能は、例外に関係なく一貫したデータを確認します。プロバイダーで発生します。 トランザクションできます失敗、そのためエラーをキャッチおよびトランザクションを再試行してください。  
+ 例外処理に関する一般的な情報を次に示します。 コードで例外をキャッチして、アプリケーションがクラッシュするのを防ぎ、関連するエラーメッセージをユーザーに表示できるようにする必要があります。  データベーストランザクションを使用すると、クライアントアプリケーションで何が発生したかに関係なく、データの整合性を保つことができます (クラッシュを含む)。 BeginTransaction メソッド (OleDbConnection、ODBCConnection、および) などの機能によって、例外に関係なく一貫性のあるデータが確保されるようになっています (、、および)。プロバイダーによって発生します。 トランザクションが失敗する可能性があるため、エラーをキャッチして、トランザクションを再試行してください。  
   
- .NET Framework 4.5 では、その先頭に注意してください<xref:System.Data.SqlClient.SqlException>内部を返すことができます<xref:System.ComponentModel.Win32Exception>します。  
+ .NET Framework 4.5 以降では、 <xref:System.Data.SqlClient.SqlException>は内部<xref:System.ComponentModel.Win32Exception>を返すことができることに注意してください。  
   
- .NET Framework データ プロバイダーの例外クラスは、プロバイダー固有のエラーを報告します。 たとえば System.Data.Odbc OdbcException、System.Data.OleDb OleDbException であり、System.Data.SqlClient が SqlException。 最高のレベルのエラーの詳細では、これらの例外をキャッチし、これらの例外クラスのメンバーを使用して、エラーの詳細を取得します。  
+ .NET Framework データプロバイダーの exception クラスは、プロバイダー固有のエラーを報告します。 たとえば、SqlException には OdbcException があり、system.string には OleDbException が含まれています。また、system.string にはがあります。 最高レベルのエラーの詳細については、これらの例外をキャッチし、これらの例外クラスのメンバーを使用してエラーの詳細を取得します。  
   
- .NET Framework データ プロバイダーの種類はプロバイダーに固有のエラーだけでなく、System.OutOfMemoryException System.Threading.ThreadAbortException などの .NET Framework の例外を生成できます。 これらの例外からの復旧は不可能になります。  
+ プロバイダー固有のエラーに加えて、.NET Framework データプロバイダーの型は、OutOfMemoryException や ThreadAbortException などの例外を .NET Framework 発生させることができます。 これらの例外からの回復が不可能な場合があります。  
   
- 不適切な入力には、.NET Framework データ プロバイダーの種類 System.ArgumentException や System.IndexOutOfRangeException など、例外を発生させる可能性があります。  不適切なタイミングでメソッドを呼び出す System.InvalidOperationException を発生させることができます。  
+ 入力が正しくないと、.NET Framework データプロバイダーの型によって ArgumentException や IndexOutOfRangeException などの例外が発生する可能性があります。  間違った時刻にメソッドを呼び出すと、InvalidOperationException が発生する可能性があります。  
   
- そのため、一般に、任意のプロバイダーをキャッチする例外ハンドラーを記述、共通言語ランタイムからの例外と同様に特定の例外。  これらには、次のように使用できます。  
+ そのため、一般に、共通言語ランタイムの例外だけでなく、プロバイダー固有の例外をキャッチする例外ハンドラーを記述します。  次のように階層化できます。  
   
 ```csharp  
 try {  
@@ -76,7 +76,7 @@ catch (Exception ex) {
   
 ```  
   
- または。  
+ または:  
   
 ```csharp  
 try {  
@@ -93,12 +93,12 @@ catch (Exception ex) {
   
 ```  
   
- スタックにユーザー コードがなくても、スレッド プールのスレッドで失敗する .NET Framework データ プロバイダー メソッド呼び出しのこともできます。 この場合は、および非同期メソッドの呼び出しを使用する場合、登録する必要があります、<xref:System.AppDomain.UnhandledException>イベントをそれらの例外を処理し、アプリケーションがクラッシュしないようにします。  
+ スタックにユーザーコードがないスレッドプールスレッドで、.NET Framework データプロバイダーのメソッド呼び出しが失敗する可能性もあります。 この場合、および非同期メソッド呼び出しを使用する場合は、イベントを<xref:System.AppDomain.UnhandledException>登録してこれらの例外を処理し、アプリケーションのクラッシュを回避する必要があります。  
   
    
   
 ## Examples  
- 次のコード生成、<xref:System.Data.SqlClient.SqlException>し、例外を表示します。  
+ 次の例では<xref:System.Data.SqlClient.SqlException> 、が生成され、例外が表示されます。  
   
  [!code-csharp[Classic WebData SqlException Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException Example/VB/source.vb#1)]  
@@ -141,24 +141,24 @@ catch (Exception ex) {
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>SQL Server 用 .NET Framework データ プロバイダーから返されたエラーの重大度レベルを取得します。</summary>
+        <summary>.NET Framework SQL Server 用データ プロバイダーが返したエラーの重大度レベルを取得します。</summary>
         <value>エラーの重大度レベルを示す 1 ～ 25 の値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- レベルが 10 以下の重大度レベルをあるメッセージは、情報については、ユーザーの入力ミスによって生じる問題を示します。 重大度レベルが 11 ~ 16 は、ユーザーによって生成され、ユーザーによって修正できます。 重大度レベルが 17 ～ 25 のエラーは、ソフトウェアまたはハードウェアのエラーです。 レベルが 17 の操作は続行できますが、特定のステートメントを実行することができない、18 または 19 のエラーが発生します。  
+ 重大度レベルが10以下のメッセージは情報であり、ユーザーが入力した情報の誤りに起因する問題を示します。 重大度レベルが 11 ~ 16 の場合、ユーザーによって生成され、ユーザーが修正できます。 重大度レベルが 17 ～ 25 のエラーは、ソフトウェアまたはハードウェアのエラーです。 レベル17、18、または19のエラーが発生した場合でも、特定のステートメントを実行できないことがありますが、作業を続行できます。  
   
- 重大度レベルが 19 以下の場合、<xref:System.Data.SqlClient.SqlConnection> は開いたままです。 サーバーが通常閉じます重大度レベルが 20 以上の場合、<xref:System.Data.SqlClient.SqlConnection>します。 ただし、ユーザーは接続を再び開き、続行できます。 どちらの場合も、コマンドを実行しているメソッドによって <xref:System.Data.SqlClient.SqlException> が生成されます。  
+ 重大度レベルが 19 以下の場合、<xref:System.Data.SqlClient.SqlConnection> は開いたままです。 重大度レベルが20以上の場合、サーバーは通常、 <xref:System.Data.SqlClient.SqlConnection>を閉じます。 ただし、ユーザーは接続を再び開き、続行できます。 どちらの場合も、コマンドを実行しているメソッドによって <xref:System.Data.SqlClient.SqlException> が生成されます。  
   
- SQL Server によって送信された警告および情報メッセージについては、SQL Server のドキュメントの「トラブルシューティング」を参照してください。  
+ SQL Server によって送信される警告メッセージと情報メッセージの詳細については、SQL Server のドキュメントのトラブルシューティングに関するセクションを参照してください。  
   
- これは、ラッパー、<xref:System.Data.SqlClient.SqlError.Class%2A>最初の<xref:System.Data.SqlClient.SqlError>で、<xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティ。  
+ これは、 <xref:System.Data.SqlClient.SqlError.Class%2A> <xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティの最初<xref:System.Data.SqlClient.SqlError>ののプロパティのラッパーです。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlException.State Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException.State Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/VB/source.vb#1)]  
@@ -203,8 +203,8 @@ catch (Exception ex) {
         <ReturnType>System.Guid</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クライアント接続 ID を表します。 詳細については、「<see href="https://docs.microsoft.com/dotnet/framework/data/adonet/data-tracing">ADO.NET のデータ追跡</see>」を参照してください。</summary>
-        <value>クライアント接続 id。</value>
+        <summary>クライアント接続 ID を表します 。 詳細については、「<see href="https://docs.microsoft.com/dotnet/framework/data/adonet/data-tracing">ADO.NET のデータ追跡</see>」を参照してください。</summary>
+        <value>クライアント接続 ID。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -251,20 +251,20 @@ catch (Exception ex) {
         <ReturnType>System.Data.SqlClient.SqlErrorCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>1 つまたは複数のコレクションを取得します<see cref="T:System.Data.SqlClient.SqlError" />for SQL Server、.NET Framework データ プロバイダーによって生成される例外に関する詳細情報を提供するオブジェクト。</summary>
-        <value>収集された、<see cref="T:System.Data.SqlClient.SqlError" />クラス。</value>
+        <summary>.NET Framework SQL Server 用データ プロバイダーが生成する例外の詳細情報を提供する、1 つ以上の <see cref="T:System.Data.SqlClient.SqlError" /> オブジェクトのコレクションを取得します。</summary>
+        <value>収集された、<see cref="T:System.Data.SqlClient.SqlError" /> クラスのインスタンス。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlErrorCollection>クラスには常に少なくとも 1 つのインスタンスが含まれています、<xref:System.Data.SqlClient.SqlError>クラス。  
+ クラスには、 <xref:System.Data.SqlClient.SqlError>常にクラスのインスタンスが少なくとも1つ含まれています。 <xref:System.Data.SqlClient.SqlErrorCollection>  
   
- これは、ラッパーを<xref:System.Data.SqlClient.SqlErrorCollection>します。 SQL Server エンジンのエラーの詳細については、次を参照してください。[データベース エンジンのイベントとエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)します。  
+ これはの<xref:System.Data.SqlClient.SqlErrorCollection>ラッパーです。 SQL Server エンジンエラーの詳細については、「[イベントとエラーのデータベースエンジン](/sql/relational-databases/errors-events/database-engine-events-and-errors)」を参照してください。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlError Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlError Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlError Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlError Example/VB/source.vb#1)]  
@@ -352,20 +352,20 @@ catch (Exception ex) {
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>TRANSACT-SQL コマンド バッチまたはエラーを生成したストアド プロシージャ内の行番号を取得します。</summary>
-        <value>TRANSACT-SQL コマンド バッチまたはエラーを生成したストアド プロシージャ内の行番号。</value>
+        <summary>Transact-SQL コマンドのバッチまたはストアド プロシージャ内の、エラーを生成した行の番号を取得します。</summary>
+        <value>Transact-SQL コマンドのバッチまたはストアド プロシージャ内の、エラーを生成した行の番号。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 行番号は 1 です。0 が返された場合、行番号は適用されません。  
+ 行番号は1から始まります。0が返された場合、行番号は適用されません。  
   
- これは、ラッパー、<xref:System.Data.SqlClient.SqlError.LineNumber%2A>最初の<xref:System.Data.SqlClient.SqlError>で、<xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティ。  
+ これは、 <xref:System.Data.SqlClient.SqlError.LineNumber%2A> <xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティの最初<xref:System.Data.SqlClient.SqlError>ののプロパティのラッパーです。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlException.State Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException.State Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/VB/source.vb#1)]  
@@ -444,12 +444,12 @@ catch (Exception ex) {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、ラッパー、<xref:System.Data.SqlClient.SqlError.Number%2A>最初の<xref:System.Data.SqlClient.SqlError>で、<xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティ。 SQL Server エンジンのエラーの詳細については、次を参照してください。[データベース エンジンのイベントとエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)します。  
+ これは、 <xref:System.Data.SqlClient.SqlError.Number%2A> <xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティの最初<xref:System.Data.SqlClient.SqlError>ののプロパティのラッパーです。 SQL Server エンジンエラーの詳細については、「[イベントとエラーのデータベースエンジン](/sql/relational-databases/errors-events/database-engine-events-and-errors)」を参照してください。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlException.State Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException.State Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/VB/source.vb#1)]  
@@ -502,12 +502,12 @@ catch (Exception ex) {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、ラッパー、<xref:System.Data.SqlClient.SqlError.Procedure%2A>最初の<xref:System.Data.SqlClient.SqlError>で、<xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティ。  
+ これは、 <xref:System.Data.SqlClient.SqlError.Procedure%2A> <xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティの最初<xref:System.Data.SqlClient.SqlError>ののプロパティのラッパーです。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlException.State Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException.State Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/VB/source.vb#1)]  
@@ -554,18 +554,18 @@ catch (Exception ex) {
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>エラーを生成した SQL Server のインスタンスを実行しているコンピューターの名前を取得します。</summary>
-        <value>SQL Server のインスタンスを実行しているコンピューターの名前。</value>
+        <summary>エラーを生成した SQL Server インスタンスを実行しているコンピューターの名前を取得します。</summary>
+        <value>SQL Server インスタンスを実行しているコンピューターの名前。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、ラッパー、<xref:System.Data.SqlClient.SqlError.Server%2A>最初の<xref:System.Data.SqlClient.SqlError>で、<xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティ。  
+ これは、 <xref:System.Data.SqlClient.SqlError.Server%2A> <xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティの最初<xref:System.Data.SqlClient.SqlError>ののプロパティのラッパーです。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlException.State Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException.State Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/VB/source.vb#1)]  
@@ -618,12 +618,12 @@ catch (Exception ex) {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、ラッパー、<xref:System.Data.SqlClient.SqlError.Source%2A>最初の<xref:System.Data.SqlClient.SqlError>で、<xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティ。  
+ これは、 <xref:System.Data.SqlClient.SqlError.Source%2A> <xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティの最初<xref:System.Data.SqlClient.SqlError>ののプロパティのラッパーです。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlException.State Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException.State Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/VB/source.vb#1)]  
@@ -670,18 +670,18 @@ catch (Exception ex) {
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>数値エラー コードは、エラー、警告または「データが見つかりません」メッセージを表す SQL Server から取得します。 これらの値のデコード方法について詳しくは、<see href="/sql/relational-databases/errors-events/database-engine-events-and-errors">データベース エンジンのイベントとエラー</see>に関するページをご覧ください。</summary>
-        <value>エラー コードを表す数値です。</value>
+        <summary>エラー、警告、または "データがありません" というメッセージを表す、数字によるエラー コードを SQL Server から取得します。 これらの値のデコード方法について詳しくは、<see href="/sql/relational-databases/errors-events/database-engine-events-and-errors">データベース エンジンのイベントとエラー</see>に関するページをご覧ください。</summary>
+        <value>エラー コードを表す数字。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、ラッパー、<xref:System.Data.SqlClient.SqlError.State%2A>最初の<xref:System.Data.SqlClient.SqlError>で、<xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティ。  
+ これは、 <xref:System.Data.SqlClient.SqlError.State%2A> <xref:System.Data.SqlClient.SqlException.Errors%2A>プロパティの最初<xref:System.Data.SqlClient.SqlError>ののプロパティのラッパーです。  
   
    
   
 ## Examples  
- 次の例は、各表示<xref:System.Data.SqlClient.SqlError>内、<xref:System.Data.SqlClient.SqlErrorCollection>コレクション。  
+ 次の例では<xref:System.Data.SqlClient.SqlError> 、各<xref:System.Data.SqlClient.SqlErrorCollection>をコレクション内に表示します。  
   
  [!code-csharp[Classic WebData SqlException.State Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlException.State Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlException.State Example/VB/source.vb#1)]  
@@ -732,7 +732,7 @@ catch (Exception ex) {
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の c# の例は、有効なサーバーへの接続試行の方法を示しますが、存在しないデータベースを<xref:System.Data.SqlClient.SqlException>、クライアント接続 ID が含まれます。  
+ 次C#の例では、有効なサーバーであるが存在しないデータベースに接続し<xref:System.Data.SqlClient.SqlException>ようとすると、クライアント接続 ID を含むが発生します。  
   
 ```csharp  
 using System.Data.SqlClient;  
@@ -754,7 +754,7 @@ public class A {
 }  
 ```  
   
- 次の Visual Basic のサンプルは、機能的には、前の (c#) サンプル。  
+ 次の Visual Basic サンプルは、機能的には前のC#() サンプルと同等です。  
   
 ```vb  
 Imports System.Data.SqlClient  

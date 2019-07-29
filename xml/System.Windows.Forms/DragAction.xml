@@ -20,25 +20,25 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>指定する方法、ドラッグ アンド ドロップ操作を続行する場合。</summary>
+    <summary>ドラッグ アンド ドロップ操作を継続するかどうか、および継続する場合はどのように継続するかを指定します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この列挙体を使って<xref:System.Windows.Forms.QueryContinueDragEventArgs>します。  
+ この列挙体は、 <xref:System.Windows.Forms.QueryContinueDragEventArgs>によって使用されます。  
   
    
   
 ## Examples  
- 次の例では、2 つの間でドラッグ アンド ドロップ操作<xref:System.Windows.Forms.ListBox>コントロール。 例では、<xref:System.Windows.Forms.Control.DoDragDrop%2A>ドラッグ操作の開始メソッド。 ドラッグ操作の開始、マウスが移動した場合は、複数の<xref:System.Windows.Forms.SystemInformation.DragSize%2A?displayProperty=nameWithType>中にマウスの位置から、<xref:System.Windows.Forms.Control.MouseDown>イベント。 <xref:System.Windows.Forms.ListBox.IndexFromPoint%2A>メソッドを使用中にドラッグする項目のインデックスを確認して、`MouseDown`イベント。  
+ 次の例は、2つ<xref:System.Windows.Forms.ListBox>のコントロール間のドラッグアンドドロップ操作を示しています。 この例では<xref:System.Windows.Forms.Control.DoDragDrop%2A> 、ドラッグ操作が開始されたときにメソッドを呼び出します。 マウスが<xref:System.Windows.Forms.SystemInformation.DragSize%2A?displayProperty=nameWithType> <xref:System.Windows.Forms.Control.MouseDown>イベント中にマウスの位置から移動した場合、ドラッグ操作が開始されます。 メソッドは、 `MouseDown`イベント中にドラッグする項目のインデックスを決定するために使用されます。 <xref:System.Windows.Forms.ListBox.IndexFromPoint%2A>  
   
- 例では、カスタム カーソルをドラッグ アンド ドロップ操作を使用しても示しています。 この例ではその 2 つカーソル ファイル、`3dwarro.cur`と`3dwno.cur`、カスタム ドラッグ用のアプリケーション ディレクトリ内に存在および非ドロップ カーソルの場合、それぞれします。 場合に使用されるカスタム カーソル、 `UseCustomCursorsCheck` <xref:System.Windows.Forms.CheckBox>がチェックされます。 カスタム カーソルが設定されて、<xref:System.Windows.Forms.Control.GiveFeedback>イベント ハンドラー。  
+ この例では、ドラッグアンドドロップ操作にカスタムカーソルを使用する方法も示しています。 この例では、 `3dwarro.cur`とと`3dwno.cur`いう2つのカーソルファイルがアプリケーションディレクトリに存在することを前提としています。これは、それぞれカスタムドラッグアンドドロップカーソルに対して行われます。 がオンになって`UseCustomCursorsCheck` <xref:System.Windows.Forms.CheckBox>いる場合は、カスタムカーソルが使用されます。 カスタムカーソルは、 <xref:System.Windows.Forms.Control.GiveFeedback>イベントハンドラーで設定されます。  
   
- キーボードの状態が評価される、<xref:System.Windows.Forms.Control.DragOver>右側のイベント ハンドラー `ListBox`、ドラッグ操作を決定する SHIFT、CTRL、alt キーを押し、または CTRL + ALT キーの状態に基づいています。 内の場所、`ListBox`中にも決定されますが、ドロップが発生、`DragOver`イベント。 削除するデータがない場合、 `String`、<xref:System.Windows.Forms.DragEventArgs.Effect%2A?displayProperty=nameWithType>に設定されている<xref:System.Windows.Forms.DragDropEffects.None?displayProperty=nameWithType>します。 ドロップダウンの状態を表示する最後に、 `DropLocationLabel`<xref:System.Windows.Forms.Label>します。  
+ キーボードの状態は、右<xref:System.Windows.Forms.Control.DragOver> `ListBox`のイベントハンドラーで評価され、SHIFT、ctrl、alt、ctrl + alt の各キーの状態に基づいてドラッグ操作がどのように行われるかを決定します。 ドロップが発生する`ListBox`内の場所は、 `DragOver`イベント中にも決定されます。 削除するデータがではない`String` <xref:System.Windows.Forms.DragEventArgs.Effect%2A?displayProperty=nameWithType>場合、はに<xref:System.Windows.Forms.DragDropEffects.None?displayProperty=nameWithType>設定されます。 最後に、ドロップの状態がに`DropLocationLabel` <xref:System.Windows.Forms.Label>表示されます。  
   
- 右側のドロップするデータ`ListBox`で決定されます、<xref:System.Windows.Forms.Control.DragDrop>イベント ハンドラーと`String`の適切な場所にある値を追加、`ListBox`します。 ドラッグ操作が、フォームの境界の外側に移動しでドラッグ アンド ドロップ操作を取り消したかどうか、<xref:System.Windows.Forms.Control.QueryContinueDrag>イベント ハンドラー。  
+ 右側`ListBox`にドロップするデータは<xref:System.Windows.Forms.Control.DragDrop>イベントハンドラー `String`で決定され、の適切な場所に値`ListBox`が追加されます。 ドラッグ操作がフォームの境界の外側に移動すると、 <xref:System.Windows.Forms.Control.QueryContinueDrag>イベントハンドラーでドラッグアンドドロップ操作が取り消されます。  
   
- このコードの抜粋では、使用方法を示します、<xref:System.Windows.Forms.DragAction>列挙体。 参照してください、<xref:System.Windows.Forms.Control.DoDragDrop%2A>完全なコード例のメソッド。  
+ このコード抜粋は、列挙<xref:System.Windows.Forms.DragAction>型の使用方法を示しています。 完全な<xref:System.Windows.Forms.Control.DoDragDrop%2A>コード例については、メソッドを参照してください。  
   
  [!code-cpp[System.Windows.Forms.Control.DoDragDrop#6](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Control.DoDragDrop/CPP/form1.cpp#6)]
  [!code-csharp[System.Windows.Forms.Control.DoDragDrop#6](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Control.DoDragDrop/CS/form1.cs#6)]
@@ -89,7 +89,7 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary>操作は続行されます。</summary>
+        <summary>操作を継続します。</summary>
       </Docs>
     </Member>
     <Member MemberName="Drop">
@@ -111,7 +111,7 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary>ドロップ操作が停止されます。</summary>
+        <summary>ドロップを伴って操作が停止されます。</summary>
       </Docs>
     </Member>
   </Members>
