@@ -25,12 +25,12 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.Design.ScrollableControlDesigner> スクロール メッセージに応答するコントロールのデザイナーの基本クラスを提供します。 メソッドとから継承された機能だけでなく、 <xref:System.Windows.Forms.Design.ParentControlDesigner>、 <xref:System.Windows.Forms.Design.ControlDesigner>、および<xref:System.ComponentModel.Design.ComponentDesigner>クラス、<xref:System.Windows.Forms.Design.ScrollableControlDesigner>提供、<xref:System.Windows.Forms.Control.WndProc%2A>しおよび WM_VSCROLL メッセージをコントロールにデザイン時に渡されるメソッドのオーバーライド.  
+ <xref:System.Windows.Forms.Design.ScrollableControlDesigner>スクロールメッセージに応答するコントロールのデザイナーの基本クラスを提供します。 <xref:System.Windows.Forms.Design.ParentControlDesigner>、、 <xref:System.Windows.Forms.Design.ScrollableControlDesigner>およびクラス<xref:System.ComponentModel.Design.ComponentDesigner>から<xref:System.Windows.Forms.Design.ControlDesigner>継承されたメソッドと機能に加えて、には、デザイン時に WM_HSCROLL メッセージと WM_VSCROLL メッセージをコントロールに渡すメソッドオーバーライドが用意されています<xref:System.Windows.Forms.Control.WndProc%2A>。  
   
 > [!NOTE]
->  フォームがある場合、<xref:System.Windows.Forms.Form.AutoScroll%2A>がアクティブに設定するプロパティ、スクロール バーは、デザイン時環境でアクティブでは常にします。  
+>  フォームの<xref:System.Windows.Forms.Form.AutoScroll%2A>プロパティが [アクティブ] に設定されている場合、デザイン時環境では、スクロールバーは常にアクティブになります。  
   
- 使用して型をデザイナーを関連付けることができます、<xref:System.ComponentModel.DesignerAttribute>します。 デザイン時の動作のカスタマイズの概要については、次を参照してください。[デザイン時サポートの拡張](https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/37899azc(v=vs.100))します。  
+ を<xref:System.ComponentModel.DesignerAttribute>使用して、デザイナーを型に関連付けることができます。 デザイン時の動作のカスタマイズの概要については、「[デザイン時サポートの拡張](https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/37899azc(v=vs.100))」を参照してください。  
   
  ]]></format>
     </remarks>
@@ -96,17 +96,17 @@
         <Parameter Name="pt" Type="System.Drawing.Point" />
       </Parameters>
       <Docs>
-        <param name="pt">A<see cref="T:System.Drawing.Point" />位置、マウス クリックしてされた位置を画面座標を示します。</param>
-        <summary>コントロールによって、指定したポイントでのマウス クリックを処理する必要があるかどうかを示します。</summary>
-        <returns><see langword="true" /> 指定したポイントでのクリックがコントロールによって処理される場合それ以外の場合、<see langword="false" />します。</returns>
+        <param name="pt">マウスがクリックされた位置を画面座標で示す <see cref="T:System.Drawing.Point" />。</param>
+        <summary>指定した点でのマウス クリックがコントロールによって処理されるかどうかを示します。</summary>
+        <returns>指定した点でのクリックがコントロールによって処理される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.Design.ScrollableControlDesigner.GetHitTest%2A>メソッドは、指定したポイントでのクリックをコントロールがデザイン モードのときに、コントロールに渡す必要があるかどうかを判断します。 オーバーライドして、デザイン時環境で数回のクリックを受信するコントロールを有効にするには、このメソッドを実装します。  
+ <xref:System.Windows.Forms.Design.ScrollableControlDesigner.GetHitTest%2A>メソッドは、コントロールがデザインモードであるときに、指定したポイントのクリックをコントロールに渡すかどうかを決定します。 このメソッドをオーバーライドして実装すると、コントロールがデザイン時環境でクリックを受け取ることができるようになります。  
   
 > [!NOTE]
->  画面座標の点を渡すことができます、<xref:System.Windows.Forms.Control.PointToClient%2A>のメソッド、<xref:System.Windows.Forms.Control>コントロールの左上隅に対する相対ポイントの座標を取得するクラス。  
+>  画面座標のポイントを<xref:System.Windows.Forms.Control.PointToClient%2A> <xref:System.Windows.Forms.Control>クラスのメソッドに渡して、コントロールの左上隅を基準としたポイントの座標を取得できます。  
   
  ]]></format>
         </remarks>
@@ -138,12 +138,12 @@
       </Parameters>
       <Docs>
         <param name="m">処理対象の <see cref="T:System.Windows.Forms.Message" />。</param>
-        <summary>Windows メッセージを処理し、デザイン時にコントロールを兄弟および WM_VSCROLL メッセージを渡します。</summary>
+        <summary>Windows メッセージを処理し、WM_HSCROLL メッセージおよび WM_VSCROLL メッセージをデザイン時にコントロールへ渡します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このオーバーライド、<xref:System.Windows.Forms.Design.ControlDesigner.WndProc%2A>メソッドは、デザイン時にコントロールに兄弟および WM_VSCROLL メッセージを渡します。 すべてのメッセージをベースに渡される最初<xref:System.Windows.Forms.Design.ControlDesigner.WndProc%2A>メソッド。  
+ このメソッドのオーバーライド<xref:System.Windows.Forms.Design.ControlDesigner.WndProc%2A>は、デザイン時に WM_HSCROLL メッセージと WM_VSCROLL メッセージをコントロールに渡します。 すべてのメッセージは、最初に基本<xref:System.Windows.Forms.Design.ControlDesigner.WndProc%2A>メソッドに渡されます。  
   
  ]]></format>
         </remarks>

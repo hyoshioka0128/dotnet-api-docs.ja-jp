@@ -1,5 +1,5 @@
 <Type Name="Progress&lt;T&gt;" FullName="System.Progress&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="e5c438868948eb28d656ed733935e34fee804c13" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58684491" /></Metadata><TypeSignature Language="C#" Value="public class Progress&lt;T&gt; : IProgress&lt;T&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="efb510d7a13ca823c9418eb6566c6e883e731d7c" /><Meta Name="ms.sourcegitcommit" Value="24f564114ee2fa9c63dbac1b25b82826cc4e320f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/25/2019" /><Meta Name="ms.locfileid" Value="68488597" /></Metadata><TypeSignature Language="C#" Value="public class Progress&lt;T&gt; : IProgress&lt;T&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Progress`1&lt;T&gt; extends System.Object implements class System.IProgress`1&lt;!T&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Progress`1" />
   <TypeSignature Language="VB.NET" Value="Public Class Progress(Of T)&#xA;Implements IProgress(Of T)" />
@@ -41,9 +41,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コンス トラクターまたはイベント ハンドラーに提供される任意のハンドラーに登録されて、<xref:System.Progress%601.ProgressChanged>を介してイベントが呼び出される、<xref:System.Threading.SynchronizationContext>インスタンス、インスタンスが作成されるときにキャプチャします。 現在がない場合は<xref:System.Threading.SynchronizationContext>での構築時に、コールバックが呼び出される、<xref:System.Threading.ThreadPool>します。  
+ <xref:System.Progress%601.ProgressChanged>イベントに登録されているコンストラクターまたはイベントハンドラーに提供されるすべて<xref:System.Threading.SynchronizationContext>のハンドラーは、インスタンスの構築時にキャプチャされたインスタンスによって呼び出されます。 構築時に現在<xref:System.Threading.SynchronizationContext>のが存在しない場合は、 <xref:System.Threading.ThreadPool>でコールバックが呼び出されます。  
   
- 詳細とコード例では、記事を参照してください。 [4.5 で非同期。進行状況と非同期 Api での取り消し処理を有効にする](https://go.microsoft.com/fwlink/p/?LinkId=267243)in the .NET Framework ブログ。  
+ 詳細とコード例については、「4.5 [の Async」を参照してください。.NET Framework ブログの非同期 api](https://go.microsoft.com/fwlink/p/?LinkId=267243)で進行状況とキャンセルを有効にします。  
   
  ]]></format>
     </remarks>
@@ -125,6 +125,7 @@
         <param name="handler">報告された各進行状況の値に対して起動するハンドラー。 このハンドラーは、<see cref="E:System.Progress`1.ProgressChanged" /> イベントに登録されている任意のデリゲートに加えて呼び出されます。 構築時に <see cref="T:System.Threading.SynchronizationContext" /> によってキャプチャされる <see cref="T:System.Progress`1" /> インスタンスによっては、このハンドラー インスタンスをそれ自体と同時に呼び出すことができる場合があります。</param>
         <summary>指定したコールバックを使用して <see cref="T:System.Progress`1" /> オブジェクトを初期化します。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="handler" /> が <see langword="null" /> (Visual Basic の場合は <see langword="Nothing" />) です。</exception>
       </Docs>
     </Member>
     <Member MemberName="OnReport">
@@ -200,7 +201,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このイベントに登録されたハンドラーが呼び出される、<xref:System.Threading.SynchronizationContext>インスタンスが作成されたときにキャプチャします。  
+ このイベントに登録されたハンドラーは、 <xref:System.Threading.SynchronizationContext>インスタンスが構築されたときにキャプチャされたで呼び出されます。  
   
  ]]></format>
         </remarks>

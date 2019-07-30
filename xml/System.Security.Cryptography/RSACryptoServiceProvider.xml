@@ -1,5 +1,5 @@
 <Type Name="RSACryptoServiceProvider" FullName="System.Security.Cryptography.RSACryptoServiceProvider">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d425ced83ee6e74be7fdddd2e5b03aeccef41b6a" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58721607" /></Metadata><TypeSignature Language="C#" Value="public sealed class RSACryptoServiceProvider : System.Security.Cryptography.RSA, System.Security.Cryptography.ICspAsymmetricAlgorithm" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="6432945b415ba22a4b18c991219b051dde50a1cb" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543026" /></Metadata><TypeSignature Language="C#" Value="public sealed class RSACryptoServiceProvider : System.Security.Cryptography.RSA, System.Security.Cryptography.ICspAsymmetricAlgorithm" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit RSACryptoServiceProvider extends System.Security.Cryptography.RSA implements class System.Security.Cryptography.ICspAsymmetricAlgorithm" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.RSACryptoServiceProvider" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class RSACryptoServiceProvider&#xA;Inherits RSA&#xA;Implements ICspAsymmetricAlgorithm" />
@@ -42,29 +42,29 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、既定の実装の<xref:System.Security.Cryptography.RSA>します。  
+ これは、の既定の<xref:System.Security.Cryptography.RSA>実装です。  
   
- <xref:System.Security.Cryptography.RSACryptoServiceProvider> Microsoft Enhanced Cryptographic Provider をインストールした場合、8 ビット間隔で 384 ビットから 16384 ビットのキーのサイズをサポートしています。  Microsoft Base Cryptographic Provider がインストールされているが 8 ビット間隔で 384 ビットから 512 ビットのキーのサイズをサポートします。  
+ Microsoft <xref:System.Security.Cryptography.RSACryptoServiceProvider> Enhanced Cryptographic Provider がインストールされている場合、では、384ビットから16384ビットまでのキーサイズを8ビット単位でサポートします。  Microsoft Base Cryptographic Provider がインストールされている場合、384ビットから512ビットまでのキーサイズを8ビット単位でサポートします。  
   
- 有効なキー サイズはによって使用される暗号化サービス プロバイダー (CSP) に依存、<xref:System.Security.Cryptography.RSACryptoServiceProvider>インスタンス。 Windows の Csp の有効化がより前の Windows バージョンの 16384 に 384 ビットのサイズをキー [!INCLUDE[win81](~/includes/win81-md.md)]、16384 を 512 ビットのサイズのキーと[!INCLUDE[win81](~/includes/win81-md.md)]します。 詳細については、次を参照してください。 [CryptGenKey](https://msdn.microsoft.com/library/aa379941\(v=vs.85\).aspx) Windows ドキュメント内の関数。  
+ 有効なキーサイズは、 <xref:System.Security.Cryptography.RSACryptoServiceProvider>インスタンスによって使用される暗号化サービスプロバイダー (CSP) に依存します。 Windows csp [!INCLUDE[win81](~/includes/win81-md.md)]では、より前の windows バージョンでは 384 ~ 16384 ビットのキーサイズが有効になり、で[!INCLUDE[win81](~/includes/win81-md.md)]は512から16384ビットのキーサイズが有効になります。 詳細については、Windows ドキュメントの「 [Cryptgenkey](https://msdn.microsoft.com/library/aa379941\(v=vs.85\).aspx)関数」を参照してください。  
   
 ## <a name="interoperation-with-the-microsoft-cryptographic-api-capi"></a>Microsoft Cryptographic API (CAPI) との相互運用  
- 非管理対象の CAPI で RSA 実装とは異なり、<xref:System.Security.Cryptography.RSACryptoServiceProvider>暗号化と復号化する前に、クラスが暗号化されたバイト配列の順序を反転させます。  既定では、データの暗号化によって、<xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスは、CAPI によって復号化することはできません`CryptDecrypt`関数と、CAPI で暗号化されたデータ`CryptEncrypt`メソッドはによって復号化することはできません、<xref:System.Security.Cryptography.RSACryptoServiceProvider>クラス。  
+ アンマネージ CAPI の RSA 実装とは異なり<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、クラスは、暗号化の後、復号化の前に、暗号化されたバイト配列の順序を逆にします。  既定<xref:System.Security.Cryptography.RSACryptoServiceProvider>では、クラスによって暗号化されたデータを capi `CryptDecrypt`関数で復号化することはできません。また<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、capi `CryptEncrypt`メソッドによって暗号化されたデータをクラスで復号化することはできません。  
   
- Api 間の相互運用時に、逆の順序を補正するにはない場合、<xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスがスローされます、<xref:System.Security.Cryptography.CryptographicException>します。  
+ Api 間の相互運用時に逆順の順序付けを補正しない<xref:System.Security.Cryptography.RSACryptoServiceProvider>場合、クラス<xref:System.Security.Cryptography.CryptographicException>はをスローします。  
   
- CAPI を相互運用するには、前に、暗号化されたデータが別の API と相互運用に暗号化されたバイト数の順序を手動で取り消す必要があります。  マネージ バイト配列の順序を呼び出すことによって簡単に取り消すことができます、<xref:System.Array.Reverse%2A?displayProperty=nameWithType>メソッド。  
+ CAPI と相互運用するには、暗号化されたデータを別の API と相互運用する前に、暗号化されたバイトの順序を手動で逆にする必要があります。  マネージバイト配列の順序を逆にするには、 <xref:System.Array.Reverse%2A?displayProperty=nameWithType>メソッドを呼び出します。  
   
    
   
 ## Examples  
- 次のコード例では、<xref:System.Security.Cryptography.RSACryptoServiceProvider>バイトの配列に文字列を暗号化し、文字列、バイトを復号化するクラス。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、クラスを使用して、文字列をバイト配列に暗号化した後、バイトを文字列に復号化します。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider/CPP/sample.cpp#1)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider/CS/sample.cs#1)]
  [!code-vb[System.Security.Cryptography.RSACryptoServiceProvider#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider/VB/sample.vb#1)]  
   
- 次のコード例を使用して作成されたキー情報をエクスポートする、<xref:System.Security.Cryptography.RSACryptoServiceProvider>に、<xref:System.Security.Cryptography.RSAParameters>オブジェクト。  
+ 次のコード例では、 <xref:System.Security.Cryptography.RSACryptoServiceProvider>を使用して作成されたキー情報を<xref:System.Security.Cryptography.RSAParameters>オブジェクトにエクスポートします。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider.ExportParameters#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.ExportParameters/CPP/sample.cpp#1)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider.ExportParameters#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.ExportParameters/CS/sample.cs#1)]
@@ -124,12 +124,12 @@
 ## Remarks  
  既定のキーが見つからない場合は、新しいキーが作成されます。  
   
- このコンス トラクターを作成、<xref:System.Security.Cryptography.KeyNumber.Exchange>セッションの暗号化に適切なキーのペアのキーが安全に格納し、他のユーザーと交換できるようにします。  生成されたキーを使用して生成されたキーに対応して、`AT_KEYEXCHANGE`で、アンマネージ Microsoft 暗号化 API (CAPI) を使用する値。  
+ このコンストラクターは、 <xref:System.Security.Cryptography.KeyNumber.Exchange>セッションキーを暗号化するのに適したキーペアを作成して、他のユーザーと安全に格納したり、他のユーザーと交換したりできるようにします。  生成されたキーは、アンマネージ Microsoft `AT_KEYEXCHANGE` Cryptographic API (CAPI) で使用される値を使用して生成されたキーに対応します。  
   
    
   
 ## Examples  
- 次のコード例では、<xref:System.Security.Cryptography.RSACryptoServiceProvider>バイトの配列に文字列を暗号化し、文字列、バイトを復号化するクラス。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、クラスを使用して、文字列をバイト配列に暗号化した後、バイトを文字列に復号化します。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider/CPP/sample.cpp#1)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider/CS/sample.cs#1)]
@@ -184,12 +184,12 @@
 ## Remarks  
  既定のキーが見つからない場合は、新しいキーが作成されます。  
   
- このコンス トラクターを作成、<xref:System.Security.Cryptography.KeyNumber.Exchange>セッションの暗号化に適切なキーのペアのキーが安全に格納し、他のユーザーと交換できるようにします。  生成されたキーを使用して生成されたキーに対応して、`AT_KEYEXCHANGE`で、アンマネージ Microsoft 暗号化 API (CAPI) を使用する値。  
+ このコンストラクターは、 <xref:System.Security.Cryptography.KeyNumber.Exchange>セッションキーを暗号化するのに適したキーペアを作成して、他のユーザーと安全に格納したり、他のユーザーと交換したりできるようにします。  生成されたキーは、アンマネージ Microsoft `AT_KEYEXCHANGE` Cryptographic API (CAPI) で使用される値を使用して生成されたキーに対応します。  
   
    
   
 ## Examples  
- 次のコード例を作成、 <xref:System.Security.Cryptography.RSACryptoServiceProvider>、新しいキーを生成し、キー コンテナーに格納します。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider>、を作成し、新しいキーを生成して、キーコンテナーに格納します。  
   
  [!code-cpp[Cryptography.RSACSP.ctor-int32-2#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.ctor-int32-2/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.ctor-int32-2#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.ctor-int32-2/CS/example.cs#1)]
@@ -242,20 +242,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成またはを使用して指定のキー コンテナーを再利用、<xref:System.Security.Cryptography.CspParameters.KeyContainerName>のフィールド、`parameters`パラメーター。  
+ このコンストラクターは、 <xref:System.Security.Cryptography.CspParameters.KeyContainerName> `parameters`パラメーターのフィールドを使用して指定されたキーコンテナーを作成または再利用します。  
   
- 既定では、このコンス トラクターの生成、<xref:System.Security.Cryptography.KeyNumber.Exchange>セッションの暗号化に適切なキーのペアのキーが安全に格納し、他のユーザーと交換できるようにします。  生成されたキーを使用して生成されたキーに対応して、`AT_KEYEXCHANGE`で、アンマネージ Microsoft 暗号化 API (CAPI) を使用する値。  
+ 既定では、このコンストラクターは<xref:System.Security.Cryptography.KeyNumber.Exchange> 、セッションキーを暗号化するのに適したキーペアを作成して、他のユーザーと安全に格納したり、他のユーザーと交換したりできるようにします。  生成されたキーは、アンマネージ Microsoft `AT_KEYEXCHANGE` Cryptographic API (CAPI) で使用される値を使用して生成されたキーに対応します。  
   
- 作成することができます、<xref:System.Security.Cryptography.KeyNumber.Signature>キーのペアを設定して (デジタル署名された) メッセージやファイルを認証するために適した、<xref:System.Security.Cryptography.CspParameters.KeyNumber>のフィールド、`parameters`パラメーターを<xref:System.Security.Cryptography.KeyNumber.Signature>値。 この種類のキーに対応する、 `AT_SIGNATURE` CAPI で使用される値。  
+ パラメーター`parameters` <xref:System.Security.Cryptography.KeyNumber.Signature> <xref:System.Security.Cryptography.CspParameters.KeyNumber> のフィールドを値に設定することによって、メッセージまたはファイルの認証(デジタル署名)に適したキーペアを<xref:System.Security.Cryptography.KeyNumber.Signature>作成できます。 この種類のキーは、CAPI `AT_SIGNATURE`で使用される値に対応しています。  
   
- 作成する場合、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトを<xref:System.Security.Cryptography.KeyNumber.Exchange>値が指定され、別に作成し、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトを<xref:System.Security.Cryptography.KeyNumber.Signature>値が指定されて、両方のキーは、両方のオブジェクトが同じキー コンテナー名を指定する場合は、単一のコンテナーに配置されます.  
+ 指定された<xref:System.Security.Cryptography.RSACryptoServiceProvider> <xref:System.Security.Cryptography.KeyNumber.Exchange>値を使用してオブジェクトを作成し<xref:System.Security.Cryptography.RSACryptoServiceProvider>た後で<xref:System.Security.Cryptography.KeyNumber.Signature> 、値を指定して別のオブジェクトを作成した場合、両方のオブジェクトが同じキーコンテナー名を指定すると、両方のキーが1つのコンテナーに配置されます。  
   
- 厳密な名前を使用する署名と互換性があるキーを作成する、<xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスを作成する必要がある、<xref:System.Security.Cryptography.KeyNumber.Signature>キーのペア。  
+ <xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスを使用して厳密な名前の署名と互換性のあるキーを作成するには<xref:System.Security.Cryptography.KeyNumber.Signature> 、キーペアを作成する必要があります。  
   
    
   
 ## Examples  
- 次のコード例を作成、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクト、新しいキーを生成し、キー コンテナーに格納されます。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、オブジェクトを作成し、新しいキーを生成して、キーコンテナーに格納します。  
   
  [!code-cpp[Cryptography.RSACSP.ctor-csp#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.ctor-csp/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.ctor-csp#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.ctor-csp/CS/example.cs#1)]
@@ -310,20 +310,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成またはを使用して指定のキー コンテナーを再利用、<xref:System.Security.Cryptography.CspParameters.KeyContainerName>のフィールド、`parameters`パラメーター。  
+ このコンストラクターは、 <xref:System.Security.Cryptography.CspParameters.KeyContainerName> `parameters`パラメーターのフィールドを使用して指定されたキーコンテナーを作成または再利用します。  
   
- 既定では、このコンス トラクターの生成、<xref:System.Security.Cryptography.KeyNumber.Exchange>セッションの暗号化に適切なキーのペアのキーが安全に格納し、他のユーザーと交換できるようにします。  生成されたキーを使用して生成されたキーに対応して、`AT_KEYEXCHANGE`で、アンマネージ Microsoft 暗号化 API (CAPI) を使用する値。  
+ 既定では、このコンストラクターは<xref:System.Security.Cryptography.KeyNumber.Exchange> 、セッションキーを暗号化するのに適したキーペアを作成して、他のユーザーと安全に格納したり、他のユーザーと交換したりできるようにします。  生成されたキーは、アンマネージ Microsoft `AT_KEYEXCHANGE` Cryptographic API (CAPI) で使用される値を使用して生成されたキーに対応します。  
   
- 作成することができます、<xref:System.Security.Cryptography.KeyNumber.Signature>キーのペアを設定して (デジタル署名された) メッセージやファイルを認証するために適した、<xref:System.Security.Cryptography.CspParameters.KeyNumber>のフィールド、`parameters`パラメーターを<xref:System.Security.Cryptography.KeyNumber.Signature>値。 この種類のキーに対応する、 `AT_SIGNATURE` CAPI で使用される値。  
+ パラメーター`parameters` <xref:System.Security.Cryptography.KeyNumber.Signature> <xref:System.Security.Cryptography.CspParameters.KeyNumber> のフィールドを値に設定することによって、メッセージまたはファイルの認証(デジタル署名)に適したキーペアを<xref:System.Security.Cryptography.KeyNumber.Signature>作成できます。 この種類のキーは、CAPI `AT_SIGNATURE`で使用される値に対応しています。  
   
- 作成する場合、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトを<xref:System.Security.Cryptography.KeyNumber.Exchange>値が指定され、別に作成し、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトを<xref:System.Security.Cryptography.KeyNumber.Signature>値が指定されて、両方のキーは、両方のオブジェクトが同じキー コンテナー名を指定する場合は、単一のコンテナーに配置されます.  
+ 指定された<xref:System.Security.Cryptography.RSACryptoServiceProvider> <xref:System.Security.Cryptography.KeyNumber.Exchange>値を使用してオブジェクトを作成し<xref:System.Security.Cryptography.RSACryptoServiceProvider>た後で<xref:System.Security.Cryptography.KeyNumber.Signature> 、値を指定して別のオブジェクトを作成した場合、両方のオブジェクトが同じキーコンテナー名を指定すると、両方のキーが1つのコンテナーに配置されます。  
   
- 厳密な名前を使用する署名と互換性があるキーを作成する、<xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスを作成する必要がある、<xref:System.Security.Cryptography.KeyNumber.Signature>キーのペア。  
+ <xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスを使用して厳密な名前の署名と互換性のあるキーを作成するには<xref:System.Security.Cryptography.KeyNumber.Signature> 、キーペアを作成する必要があります。  
   
    
   
 ## Examples  
- 次のコード例を作成、 <xref:System.Security.Cryptography.RSACryptoServiceProvider>、新しいキーを生成し、キー コンテナーに格納します。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider>、を作成し、新しいキーを生成して、キーコンテナーに格納します。  
   
  [!code-cpp[Cryptography.RSACSP.ctor-int32-csp#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.ctor-int32-csp/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.ctor-int32-csp#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.ctor-int32-csp/CS/example.cs#1)]
@@ -333,8 +333,9 @@
         </remarks>
         <exception cref="T:System.Security.Cryptography.CryptographicException">CSP を取得できません。  
   
-または 
-キーを作成できません。</exception>
+ - または -  
+  
+ キーを作成できません。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -384,14 +385,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Security.Cryptography.RSACryptoServiceProvider.CspKeyContainerInfo%2A>暗号化キーの組に関する追加情報を取得するプロパティ。  返された<xref:System.Security.Cryptography.CspKeyContainerInfo>オブジェクトについて説明します。 かどうか、キーをエクスポート可能なキー コンテナー名で、プロバイダーに関する情報とその他の情報を指定します。  
+ 暗号化キー <xref:System.Security.Cryptography.RSACryptoServiceProvider.CspKeyContainerInfo%2A>のペアに関する追加情報を取得するには、プロパティを使用します。  返される<xref:System.Security.Cryptography.CspKeyContainerInfo>オブジェクトは、キーがエクスポート可能かどうかを示し、キーコンテナー名、プロバイダーに関する情報、およびその他の情報を指定します。  
   
- ランダムなキーが生成される場所の場合、キー コンテナーは作成されません、キーを使用するメソッドを呼び出すまでです。  一部のプロパティ、<xref:System.Security.Cryptography.CspKeyContainerInfo>によって返されるオブジェクト、<xref:System.Security.Cryptography.DSACryptoServiceProvider.CspKeyContainerInfo%2A>プロパティがスローされます、<xref:System.Security.Cryptography.CryptographicException>キー コンテナーが作成されていない場合。  キー コンテナーが作成されたことを確認するにメソッドを呼び出すよう<xref:System.Security.Cryptography.RSACryptoServiceProvider.Encrypt%2A>、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.Decrypt%2A>、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.SignData%2A>、<xref:System.Security.Cryptography.DSACryptoServiceProvider.SignHash%2A>でを呼び出す前に、<xref:System.Security.Cryptography.DSACryptoServiceProvider.CspKeyContainerInfo%2A>プロパティ。  
+ ランダムキーが生成される場合、キーを使用するメソッドを呼び出すまで、キーコンテナーは作成されません。  プロパティによって<xref:System.Security.Cryptography.CspKeyContainerInfo>返されるオブジェクトのプロパティによって<xref:System.Security.Cryptography.CryptographicException>は、キーコンテナーが作成されていない場合にがスローされます。 <xref:System.Security.Cryptography.DSACryptoServiceProvider.CspKeyContainerInfo%2A>  キーコンテナーが確実に作成されていることを確認するには<xref:System.Security.Cryptography.RSACryptoServiceProvider.Encrypt%2A>、 <xref:System.Security.Cryptography.DSACryptoServiceProvider.CspKeyContainerInfo%2A>プロパティ<xref:System.Security.Cryptography.RSACryptoServiceProvider.SignData%2A>を<xref:System.Security.Cryptography.DSACryptoServiceProvider.SignHash%2A>呼び出す前に、、、、などのメソッド<xref:System.Security.Cryptography.RSACryptoServiceProvider.Decrypt%2A>を呼び出します。  
   
    
   
 ## Examples  
- 次のコード例を呼び出す方法を示します、<xref:System.Security.Cryptography.CspKeyContainerInfo>プロパティ。  
+ <xref:System.Security.Cryptography.CspKeyContainerInfo>プロパティを呼び出す方法を次のコード例に示します。  
   
  [!code-cpp[Cryptography.RsaCryptoServiceProvider.CspKeyContainerInfo#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RsaCryptoServiceProvider.CspKeyContainerInfo/CPP/sample.cpp#1)]
  [!code-csharp[Cryptography.RsaCryptoServiceProvider.CspKeyContainerInfo#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RsaCryptoServiceProvider.CspKeyContainerInfo/CS/sample.cs#1)]
@@ -459,14 +460,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Security.Cryptography.RSACryptoServiceProvider.Encrypt%2A>このメソッドを使用して復号化用のデータを暗号化します。  
+ この<xref:System.Security.Cryptography.RSACryptoServiceProvider.Encrypt%2A>メソッドを使用して復号化するデータを暗号化するには、を使用します。  
   
    
   
 ## Examples  
- 次のコード例では、暗号化し、データを復号化します。  
+ 次のコード例では、データの暗号化と復号化を行います。  
   
- この例では、<xref:System.Text.ASCIIEncoding>クラスです。 ただし、、<xref:System.Text.UnicodeEncoding>クラスは、大規模なデータの操作で望ましいことがあります。 暗号化された値として保存できる、 `nvarchar` Microsoft SQL Server 2005 でのデータ型。  
+ この例では<xref:System.Text.ASCIIEncoding>クラスを使用します<xref:System.Text.UnicodeEncoding>が、大規模なデータ操作ではクラスが適している場合があります。 暗号化された値は、Microsoft SQL Server `nvarchar` 2005 でデータ型として保存できます。  
   
  [!code-cpp[Cryptography.RSACSP.Decrypt#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.Decrypt/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.Decrypt#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.Decrypt/CS/example.cs#1)]
@@ -476,7 +477,7 @@
         </remarks>
         <exception cref="T:System.Security.Cryptography.CryptographicException">暗号化サービス プロバイダー (CSP) を取得できません。  
   
-または 
+- または - 
 <paramref name="fOAEP" /> パラメーターが <see langword="true" /> であり、<paramref name="rgb" /> パラメーターの長さが <see cref="P:System.Security.Cryptography.RSACryptoServiceProvider.KeySize" /> を超える値です。  
   
 または 
@@ -485,7 +486,7 @@
 または 
 キーが、暗号化されたデータと一致しません。 ただし、例外の表現は正確でない場合があります。 たとえば、<c>このコマンドを処理するのに必要な記憶域をサーバーで確保できません</c>と表示される場合があります。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="rgb" /> は <see langword="null" />です。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">暗号化を解除するアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Decrypt" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">暗号化を解除する権限。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.Demand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Decrypt" /></permission>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -529,7 +530,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `padding` いずれかである必要があります<xref:System.Security.Cryptography.RSAEncryptionPadding.Pkcs1%2A?displayProperty=nameWithType>または<xref:System.Security.Cryptography.RSAEncryptionPadding.OaepSHA1%2A?displayProperty=nameWithType>します。  
+ `padding`または<xref:System.Security.Cryptography.RSAEncryptionPadding.Pkcs1%2A?displayProperty=nameWithType> <xref:System.Security.Cryptography.RSAEncryptionPadding.OaepSHA1%2A?displayProperty=nameWithType>のいずれかである必要があります。  
   
  ]]></format>
         </remarks>
@@ -618,8 +619,8 @@
         <Parameter Name="disposing" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="disposing">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="disposing">マネージド リソースとアンマネージド リソースの両方を解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <summary><see cref="T:System.Security.Cryptography.RSACryptoServiceProvider" /> クラスによって使用されているアンマネージド リソースを解放し、オプションでマネージド リソースも解放します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -680,20 +681,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 次の表に、最大の長さと Microsoft Windows の異なるバージョンでサポートされている埋め込み`rgb`オペレーティング システムと埋め込みのさまざまな組み合わせで許可されています。  
+ 次の表では、さまざまなバージョンの Microsoft Windows でサポートされるパディングと`rgb` 、オペレーティングシステムと埋め込みのさまざまな組み合わせで許容される最大長について説明します。  
   
-|[間隔]|サポートされているオペレーティング システム|Rgb パラメーターの最大長|  
+|[間隔]|サポートされているオペレーティングシステム|Rgb パラメーターの最大長|  
 |-------------|--------------------------------|-------------------------------------|  
-|OAEP パディング (PKCS #1 v2)|Windows XP またはそれ以降。|剰余のサイズを-2-2 * hLen、hLen がハッシュのサイズが。|  
-|暗号化を直接 (PKCS 1 v1.5)|Microsoft Windows 2000 以降、高度暗号化パックがインストールされています。|モジュールのサイズ - 11。 (11 バイトは、埋め込み可能な最小値です)。|  
-|直接の暗号化と OAEP パディングがサポートされていません|Microsoft Windows 98、Windows Millennium Edition、または Windows 2000 以降、高度暗号化パックをインストールせずします。|対称キーに対して許容される最大サイズ。|  
+|OAEP padding (PKCS # 1 v2)|Windows XP 以降。|剰余サイズ-2-2 * hLen (hLen はハッシュのサイズ)。|  
+|直接暗号化 (PKCS # 1 v 1.5)|Microsoft Windows 2000 以降 (高暗号化パックがインストールされている)。|剰余サイズ-11。 (11 バイトは、可能な最小の埋め込みです)。|  
+|Direct Encryption と OAEP padding はサポートされていません|Microsoft Windows 98、Windows Millennium Edition、または Windows 2000 以降 (高暗号化パックがインストールされていない場合)。|対称キーに許可される最大サイズ。|  
   
- 使用<xref:System.Security.Cryptography.RSACryptoServiceProvider.Decrypt%2A>このメソッドの結果を復号化します。  
+ この<xref:System.Security.Cryptography.RSACryptoServiceProvider.Decrypt%2A>メソッドの結果の暗号化を解除するには、を使用します。  
   
    
   
 ## Examples  
- 次のコード例を初期化します、<xref:System.Security.Cryptography.RSACryptoServiceProvider>セッション キーを使用して、オブジェクトを (別のパーティに送信されます)、公開キーの値が生成されます、<xref:System.Security.Cryptography.RijndaelManaged>アルゴリズム、し、セッション キーを使用して、暗号化、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクト。  このスキームを使用して、セッション キーは RSA 秘密キーの所有者に送信でしたし、2 つのパーティがセッション キーを使用して暗号化されたデータを交換します。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、(別のパーティによって送信される) 公開キーの値にオブジェクトを初期化し<xref:System.Security.Cryptography.RijndaelManaged> 、アルゴリズムを使用してセッションキーを生成<xref:System.Security.Cryptography.RSACryptoServiceProvider>した後、オブジェクトを使用してセッションキーを暗号化します。  このスキームを使用して、セッションキーを秘密の RSA キーの所有者に送り返すことができます。また、この2つの当事者は、セッションキーを使用して暗号化されたデータを交換できます。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider.Encrypt#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.Encrypt/CPP/sample.cpp#1)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider.Encrypt#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.Encrypt/CS/sample.cs#1)]
@@ -703,12 +704,12 @@
         </remarks>
         <exception cref="T:System.Security.Cryptography.CryptographicException">暗号化サービス プロバイダー (CSP) を取得できません。  
   
-または 
+- または - 
 <paramref name="rgb" /> パラメーターの長さが、許容最大長を超えています。  
   
 または 
 <paramref name="fOAEP" /> パラメーターが <see langword="true" /> であり、OAEP がサポートされていません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="rgb" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="rgb" /> が <see langword="null" /> です。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -752,11 +753,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `padding` いずれかである必要があります<xref:System.Security.Cryptography.RSAEncryptionPadding.Pkcs1%2A?displayProperty=nameWithType>または<xref:System.Security.Cryptography.RSAEncryptionPadding.OaepSHA1%2A?displayProperty=nameWithType>します。  
+ `padding`または<xref:System.Security.Cryptography.RSAEncryptionPadding.Pkcs1%2A?displayProperty=nameWithType> <xref:System.Security.Cryptography.RSAEncryptionPadding.OaepSHA1%2A?displayProperty=nameWithType>のいずれかである必要があります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。  
   
 - または - 
  <paramref name="padding" /> は <see langword="null" />です。</exception>
@@ -853,11 +854,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.RSACryptoServiceProvider.ExportCspBlob%2A>メソッドで、アンマネージ Microsoft 暗号化 API (CAPI) 互換性のある重要な情報を格納している blob を返します。  
+ メソッド<xref:System.Security.Cryptography.RSACryptoServiceProvider.ExportCspBlob%2A>は、アンマネージ Microsoft Cryptographic API (CAPI) と互換性のあるキー情報を含む blob を返します。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">秘密キーをエクスポートするときにキー コンテナーにアクセスする権限。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Export" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">秘密キーをエクスポートするときに、キーコンテナーにアクセスするためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.Demand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Export" /></permission>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -906,7 +907,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例を使用して作成されたキー情報をエクスポートする、<xref:System.Security.Cryptography.RSACryptoServiceProvider>に、<xref:System.Security.Cryptography.RSAParameters>オブジェクト。  
+ 次のコード例では、 <xref:System.Security.Cryptography.RSACryptoServiceProvider>を使用して作成されたキー情報を<xref:System.Security.Cryptography.RSAParameters>オブジェクトにエクスポートします。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider.ExportParameters#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.ExportParameters/CPP/sample.cpp#1)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider.ExportParameters#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.ExportParameters/CS/sample.cs#1)]
@@ -915,7 +916,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートできません。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーをエクスポートする権限。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Export" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーをエクスポートする権限。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.Demand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Export" /></permission>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1089,11 +1090,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.RSACryptoServiceProvider.ImportCspBlob%2A>メソッドがキーのデータを初期化します、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトで、アンマネージ Microsoft 暗号化 API (CAPI) 互換性のある blob を使用します。  
+ メソッド<xref:System.Security.Cryptography.RSACryptoServiceProvider.ImportCspBlob%2A>は、アンマネージ Microsoft Cryptographic API <xref:System.Security.Cryptography.RSACryptoServiceProvider> (CAPI) と互換性のある blob を使用して、オブジェクトのキーデータを初期化します。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーをインポートするときにキー コンテナーにアクセスする権限。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Import" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーをインポートするときに、キーコンテナーにアクセスするためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.Demand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Import" /></permission>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1141,7 +1142,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例から作成されたキーの情報のインポート、<xref:System.Security.Cryptography.RSAParameters>オブジェクトを<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクト。  
+ 次のコード例では、 <xref:System.Security.Cryptography.RSAParameters>オブジェクトから作成されたキー情報<xref:System.Security.Cryptography.RSACryptoServiceProvider>をオブジェクトにインポートします。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider.ImportParameters#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.ImportParameters/CPP/sample.cpp#1)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider.ImportParameters#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.RSACryptoServiceProvider.ImportParameters/CS/sample.cs#1)]
@@ -1153,7 +1154,7 @@
   
 または 
 <paramref name="parameters" /> パラメーターに欠落しているフィールドがあります。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーをインポートするためのアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Import" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーをインポートする権限。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.Demand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Import" /></permission>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1192,7 +1193,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、アルゴリズムの種類が、名前を示します。 たとえば、RSA-PKCS1-KeyEx はキー交換アルゴリズムの名前です。  
+ このプロパティは、型ではなく、アルゴリズムの名前を示します。 たとえば、PKCS1-KeyEx はキー交換アルゴリズムの名前です。  
   
  ]]></format>
         </remarks>
@@ -1240,11 +1241,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.RSACryptoServiceProvider> Microsoft Enhanced Cryptographic Provider をインストールした場合、8 ビット間隔で 384 ビットから 16384 ビットのキーのサイズをサポートしています。  Microsoft Base Cryptographic Provider がインストールされているが 8 ビット間隔で 384 ビットから 512 ビットのキーのサイズをサポートします。  
+ Microsoft <xref:System.Security.Cryptography.RSACryptoServiceProvider> Enhanced Cryptographic Provider がインストールされている場合、では、384ビットから16384ビットまでのキーサイズを8ビット単位でサポートします。  Microsoft Base Cryptographic Provider がインストールされている場合、384ビットから512ビットまでのキーサイズを8ビット単位でサポートします。  
   
- 有効なキー サイズはによって使用される暗号化サービス プロバイダー (CSP) に依存、<xref:System.Security.Cryptography.RSACryptoServiceProvider>インスタンス。 Csp の Windows より前の Windows バージョンの 16384 に 384 ビットのキー サイズの有効にする[!INCLUDE[win81](~/includes/win81-md.md)]、16384 を 512 ビットのサイズのキーと[!INCLUDE[win81](~/includes/win81-md.md)]します。 詳細については、次を参照してください。 [CryptGenKey](https://msdn.microsoft.com/library/aa379941\(v=vs.85\).aspx) Windows ドキュメント内の関数。  
+ 有効なキーサイズは、 <xref:System.Security.Cryptography.RSACryptoServiceProvider>インスタンスによって使用される暗号化サービスプロバイダー (CSP) に依存します。 Windows csp [!INCLUDE[win81](~/includes/win81-md.md)]では、より前の windows バージョンでは 384 ~ 16384 ビットのキーサイズが有効になり、で[!INCLUDE[win81](~/includes/win81-md.md)]は512から16384ビットのキーサイズが有効になります。 詳細については、Windows ドキュメントの「 [Cryptgenkey](https://msdn.microsoft.com/library/aa379941\(v=vs.85\).aspx)関数」を参照してください。  
   
- <xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスでを使用してキーのサイズを変更することができません、<xref:System.Security.Cryptography.RSACryptoServiceProvider.KeySize%2A>プロパティ。  このプロパティに書き込まれる任意の値は失敗すると、エラーなしでプロパティを更新します。  キーのサイズを変更するには、コンス トラクター オーバー ロードのいずれかを使用します。  
+ クラスでは、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.KeySize%2A>プロパティを使用してキーのサイズを変更することはできません。 <xref:System.Security.Cryptography.RSACryptoServiceProvider>  このプロパティに書き込まれた値は、エラーなしでプロパティを更新できません。  キーサイズを変更するには、コンストラクターのオーバーロードのいずれかを使用します。  
   
  ]]></format>
         </remarks>
@@ -1325,16 +1326,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを使用して、キー コンテナー内のキーを保持します。  
+ キーコンテナーのキーを永続化するには、このプロパティを使用します。  
   
- <xref:System.Security.Cryptography.RSACryptoServiceProvider.PersistKeyInCsp%2A>プロパティが自動的に設定`true`でキー コンテナーの名前を指定すると、<xref:System.Security.Cryptography.CspParameters.KeyContainerName>のフィールドを<xref:System.Security.Cryptography.CspParameters>オブジェクトを初期化するためにこれを使用して、 <xref:System.Security.Cryptography.RSACryptoServiceProvider> のコンストラクターのいずれかを呼び出してオブジェクト`parameters`パラメーター。  
+ <xref:System.Security.Cryptography.RSACryptoServiceProvider.PersistKeyInCsp%2A> `true` <xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトのフィールド<xref:System.Security.Cryptography.CspParameters.KeyContainerName>にキーコンテナー名を指定し、それを使用してコンストラクターの1つを呼び出すことによってオブジェクトを初期化すると、プロパティは自動的にに設定されます。 <xref:System.Security.Cryptography.CspParameters> `parameters`パラメーター。  
   
- <xref:System.Security.Cryptography.RSACryptoServiceProvider.PersistKeyInCsp%2A>プロパティには効果がない場合、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトを作成すると、`null`キー コンテナーの名前。  
+ オブジェクトが<xref:System.Security.Cryptography.RSACryptoServiceProvider.PersistKeyInCsp%2A>キーコンテナー名を使用して作成されている場合、プロパティは無効です。`null` <xref:System.Security.Cryptography.RSACryptoServiceProvider>  
   
    
   
 ## Examples  
- 次のコード例を作成、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトし、キー コンテナーにキーを保持します。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、オブジェクトを作成し、キーをキーコンテナーに永続化します。  
   
  [!code-cpp[Cryptography.RSACSP.PersistKey#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.PersistKey/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.PersistKey#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.PersistKey/CS/example.cs#1)]
@@ -1342,10 +1343,10 @@
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーを削除する権限。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Delete" />  
+        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーを削除する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Delete" />  
   
-または 
-キーを作成する権限。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Create" /></permission>
+- または - 
+キーを作成する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Create" /></permission>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1392,7 +1393,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスが初期化されたか、公開キーのみまたは両方をパブリックとプライベート キーを指定できます。  使用して、<xref:System.Security.Cryptography.RSACryptoServiceProvider.PublicOnly%2A>プロパティを現在のインスタンスには、公開キーのみまたは公開および秘密キーの両方が含まれるかどうかを確認します。  
+ クラス<xref:System.Security.Cryptography.RSACryptoServiceProvider>は、公開キーのみを使用して、または公開キーと秘密キーの両方を指定して初期化できます。  <xref:System.Security.Cryptography.RSACryptoServiceProvider.PublicOnly%2A>プロパティを使用して、現在のインスタンスに公開キーのみ、または公開キーと秘密キーの両方が含まれているかどうかを確認します。  
   
  ]]></format>
         </remarks>
@@ -1434,7 +1435,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、アルゴリズムの URI を示す XML デジタル署名のクラスで使用されます。 この実装では、このプロパティは常に http://www.w3.org/2000/09/xmldsig#rsa-sha1 を返します。  
+ このプロパティは、アルゴリズム URI を示すために XML デジタル署名クラスで使用されます。 この実装では、このプロパティは常に http://www.w3.org/2000/09/xmldsig#rsa-sha1 を返します。  
   
  ]]></format>
         </remarks>
@@ -1498,14 +1499,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して検証されるデジタル署名を作成、<xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyData%2A>メソッド。  
+ このメソッドは、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyData%2A>メソッドを使用して検証されるデジタル署名を作成します。  
   
- `halg`パラメーターに使用できる、 <xref:System.String>、 <xref:System.Security.Cryptography.HashAlgorithm>、または<xref:System.Type>します。  
+ パラメーター `halg` <xref:System.String>は、<xref:System.Security.Cryptography.HashAlgorithm>、、またはを受け取ることができます。<xref:System.Type>  
   
    
   
 ## Examples  
- 次のコード例では、署名し、データを検証します。  
+ 次のコード例では、データの署名と検証を行います。  
   
  [!code-cpp[Cryptography.RSACSP.SignData2#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.SignData2/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.SignData2#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.SignData2/CS/example.cs#1)]
@@ -1565,12 +1566,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `halg`パラメーターに使用できる、 <xref:System.String>、 <xref:System.Security.Cryptography.HashAlgorithm>、または<xref:System.Type>します。  
+ パラメーター `halg` <xref:System.String>は、<xref:System.Security.Cryptography.HashAlgorithm>、、またはを受け取ることができます。<xref:System.Type>  
   
    
   
 ## Examples  
- 次のコード例では、署名し、データを検証します。  
+ 次のコード例では、データの署名と検証を行います。  
   
  [!code-cpp[Cryptography.RSACSP.SignData3#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.SignData3/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.SignData3#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.SignData3/CS/example.cs#1)]
@@ -1634,20 +1635,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して検証されるデジタル署名を作成、<xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyData%2A>メソッド。  
+ このメソッドは、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyData%2A>メソッドを使用して検証されるデジタル署名を作成します。  
   
- `halg`パラメーターに使用できる、 <xref:System.String>、 <xref:System.Security.Cryptography.HashAlgorithm>、または<xref:System.Type>します。 文字列値には、次のいずれかを指定できます。  
+ パラメーター `halg` <xref:System.String>は、<xref:System.Security.Cryptography.HashAlgorithm>、、またはを受け取ることができます。<xref:System.Type> 文字列値には、次のいずれかを指定できます。  
   
--   オブジェクト識別子 (OID) の名前を使用するハッシュ アルゴリズム、名かは、crypto の構成ファイルまたは Crypto API OID テーブルに 1 つに登録します。  
+-   使用するハッシュアルゴリズムのオブジェクト識別子 (OID) のフレンドリ名。暗号化構成ファイルに登録された名前、または Crypto API OID テーブル内の名前のいずれかです。  
   
--   OID の値。 OID は、Crypto API によって認識されるいずれかを指定する必要があります。  
+-   OID の値。 OID は、Crypto API によって認識される必要があります。  
   
- たとえば、SignData (新しい byte [5]、「1.3.14.3.2.26」) または SignData (新しい byte [5]、"sha1")、または SignData (新しい byte [5]、"SHA1") を使用できます。  
+ たとえば、SignData (new byte [5]、"1.3.14.3.2.26") または SignData (new byte [5]、"sha1")、または SignData (new byte [5], "SHA1") を使用できます。  
   
    
   
 ## Examples  
- 次のコード例では、署名し、データを検証します。  
+ 次のコード例では、データの署名と検証を行います。  
   
  [!code-cpp[Cryptography.RSACSP.SignData1#1](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.SignData1/CPP/example.cpp#1)]
  [!code-csharp[Cryptography.RSACSP.SignData1#1](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.SignData1/CS/example.cs#1)]
@@ -1717,14 +1718,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して検証されるデジタル署名を作成、<xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyHash%2A>メソッド。  
+ このメソッドは、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyHash%2A>メソッドを使用して検証されるデジタル署名を作成します。  
   
- 有効なハッシュ アルゴリズムは<xref:System.Security.Cryptography.SHA1>と<xref:System.Security.Cryptography.MD5>します。 アルゴリズム識別子を使用して、ハッシュ名から派生することができます、<xref:System.Security.Cryptography.CryptoConfig.MapNameToOID%2A>メソッド。  
+ 有効なハッシュアルゴリズムは<xref:System.Security.Cryptography.SHA1>と<xref:System.Security.Cryptography.MD5>です。 アルゴリズム識別子は、 <xref:System.Security.Cryptography.CryptoConfig.MapNameToOID%2A>メソッドを使用してハッシュ名から派生させることができます。  
   
    
   
 ## Examples  
- 次のコード例は、一部のデータ暗号化、暗号化されたデータのハッシュを作成し、し、デジタル署名でハッシュに署名します。  
+ 次のコード例では、一部のデータを暗号化し、暗号化されたデータのハッシュを作成した後、デジタル署名を使用してハッシュに署名します。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example/CPP/class1.cpp#1)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example/CS/class1.cs#1)]
@@ -1735,9 +1736,10 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="rgbHash" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">暗号化サービス プロバイダー (CSP) を取得できません。  
   
-または 
-秘密キーがありません。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーを使用してファイルに署名する権限。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
+ - または -  
+  
+ 秘密キーがありません。</exception>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">キーを使用してファイルに署名するためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.Demand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1824,12 +1826,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを設定`true`受け渡しと同じですが、<xref:System.Security.Cryptography.CspProviderFlags.UseMachineKeyStore>フラグを<xref:System.Security.Cryptography.CspParameters>オブジェクト。 <xref:System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore%2A>プロパティが現在のアプリケーション ドメイン内のすべてのコードには適用されますが、<xref:System.Security.Cryptography.CspParameters>オブジェクトがそれを明示的に参照するクラスにのみ適用されます。 これらの設定は、偽装するか、ユーザー プロファイルが読み込まれていないアカウントで実行されている場合に便利です。 設定<xref:System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore%2A>キー ストアの場所が場合のみに影響を与えます<xref:System.Security.Cryptography.RSACryptoServiceProvider>パラメーターなしで初期化されます。  
+ このプロパティをに`true`設定することは、 <xref:System.Security.Cryptography.CspProviderFlags.UseMachineKeyStore>フラグを<xref:System.Security.Cryptography.CspParameters>オブジェクトに渡すことと同じです。 プロパティ<xref:System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore%2A>は、現在のアプリケーションドメインのすべてのコードに適用さ<xref:System.Security.Cryptography.CspParameters>れます。一方、オブジェクトは、明示的に参照するクラスにのみ適用されます。 これらの設定は、ユーザープロファイルが読み込まれていないアカウントで権限を借用する場合や実行する場合に便利です。 設定<xref:System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore%2A>は、がパラメーターなしで初期化<xref:System.Security.Cryptography.RSACryptoServiceProvider>された場合にのみ、キーストアの場所に影響します。  
   
    
   
 ## Examples  
- 次のコード例を作成、<xref:System.Security.Cryptography.RSACryptoServiceProvider>オブジェクトし、設定、静的な<xref:System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore%2A>ユーザー プロファイルのキー ストアではなく、コンピューターのキー ストアを使用するプロパティ。  
+ 次のコード例では<xref:System.Security.Cryptography.RSACryptoServiceProvider> 、オブジェクトを作成し<xref:System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore%2A> 、ユーザープロファイルキーストアではなくコンピューターキーストアを使用するように静的プロパティを設定します。  
   
  [!code-cpp[Cryptography.RSACSP.UseMachineKey#2](~/samples/snippets/cpp/VS_Snippets_CLR/Cryptography.RSACSP.UseMachineKey/CPP/example2.cpp#2)]
  [!code-csharp[Cryptography.RSACSP.UseMachineKey#2](~/samples/snippets/csharp/VS_Snippets_CLR/Cryptography.RSACSP.UseMachineKey/CS/example2.cs#2)]
@@ -1899,14 +1901,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを確認、<xref:System.Security.Cryptography.RSA>によって生成されたデジタル署名、<xref:System.Security.Cryptography.RSACryptoServiceProvider.SignData%2A>メソッド。 使用すると、署名された公開キーを使用して署名のハッシュ値を取得することで、署名を検証して、指定されたデータのハッシュ値にその値を比較します。  
+ このメソッドは、 <xref:System.Security.Cryptography.RSA> <xref:System.Security.Cryptography.RSACryptoServiceProvider.SignData%2A>メソッドによって生成されたデジタル署名を検証します。 署名は、署名された公開キーを使用して署名からハッシュ値を取得し、その値を指定されたデータのハッシュ値と比較することによって検証されます。  
   
- `halg`パラメーターに使用できる、 <xref:System.String>、 <xref:System.Security.Cryptography.HashAlgorithm>、または<xref:System.Type>します。  
+ パラメーター `halg` <xref:System.String>は、<xref:System.Security.Cryptography.HashAlgorithm>、、またはを受け取ることができます。<xref:System.Type>  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyData%2A>メソッド署名を検証します。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.RSACryptoServiceProvider.SignHash%2A>メソッド。  
+ 次の例は、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyData%2A>メソッドを使用して署名を検証する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.SignHash%2A>メソッドに提供されているより大きな例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example/CPP/class1.cpp#2)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example/CS/class1.cs#2)]
@@ -1978,14 +1980,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを確認、<xref:System.Security.Cryptography.RSA>によって生成されたデジタル署名、<xref:System.Security.Cryptography.RSACryptoServiceProvider.SignHash%2A>メソッド。 使用すると、署名された公開キーを使用して署名のハッシュ値を取得することで、署名を検証して、指定されたデータのハッシュ値にその値を比較します。  
+ このメソッドは、 <xref:System.Security.Cryptography.RSA> <xref:System.Security.Cryptography.RSACryptoServiceProvider.SignHash%2A>メソッドによって生成されたデジタル署名を検証します。 署名は、署名された公開キーを使用して署名からハッシュ値を取得し、その値を指定されたデータのハッシュ値と比較することによって検証されます。  
   
- 有効なハッシュ アルゴリズムは<xref:System.Security.Cryptography.SHA1>と<xref:System.Security.Cryptography.MD5>します。 アルゴリズム識別子を使用して、ハッシュ名から派生することができます、<xref:System.Security.Cryptography.CryptoConfig.MapNameToOID%2A>メソッド。  
+ 有効なハッシュアルゴリズムは<xref:System.Security.Cryptography.SHA1>と<xref:System.Security.Cryptography.MD5>です。 アルゴリズム識別子は、 <xref:System.Security.Cryptography.CryptoConfig.MapNameToOID%2A>メソッドを使用してハッシュ名から派生させることができます。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyHash%2A>メソッド署名を検証します。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.RSACryptoServiceProvider.SignHash%2A>メソッド。  
+ 次の例は、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.VerifyHash%2A>メソッドを使用して署名を検証する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.RSACryptoServiceProvider.SignHash%2A>メソッドに提供されているより大きな例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example/CPP/class1.cpp#2)]
  [!code-csharp[System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Security.Cryptography.RSACryptoServiceProvider ManualHash Example/CS/class1.cs#2)]
@@ -1995,12 +1997,13 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="rgbHash" /> パラメーターが <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="rgbSignature" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">暗号化サービス プロバイダー (CSP) を取得できません。  
   
-または 
-署名を検証できません。</exception>
+ - または -  
+  
+ 署名を検証できません。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -2049,7 +2052,7 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="hash" /> は <see langword="null" />です。  
   
 - または - 
- <paramref name="padding" /> は <see langword="null" />です。</exception>
+ <paramref name="padding" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="padding" /> は <see cref="P:System.Security.Cryptography.RSASignaturePadding.Pkcs1" /> と一致しません。</exception>
       </Docs>
     </Member>
