@@ -19,14 +19,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>拡張メソッドを格納、<see cref="T:System.Data.TypedTableBase`1" />クラス。</summary>
+    <summary><see cref="T:System.Data.TypedTableBase`1" /> クラスの拡張メソッドを格納します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- クラスには定義する静的拡張メソッドが含まれています、<xref:System.Data.TypedTableBaseExtensions.AsEnumerable%2A>メソッドとの標準クエリ操作は、データ セットを入力します。  
+ クラスには、型指定された<xref:System.Data.TypedTableBaseExtensions.AsEnumerable%2A>データセットのメソッドと標準クエリ操作を定義する静的拡張メソッドが含まれています。  
   
- このクラスをインスタンス化することはできません。  
+ このクラスはインスタンス化できません。  
   
  ]]></format>
     </remarks>
@@ -65,10 +65,10 @@
         <Parameter Name="source" Type="System.Data.TypedTableBase&lt;TRow&gt;" RefType="this" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">元の要素を変換する型。</typeparam>
-        <param name="source">ソース<see cref="T:System.Data.TypedTableBase`1" />列挙可能にします。</param>
-        <summary>データ行の要素を列挙、<see cref="T:System.Data.TypedTableBase`1" />を返します、<see cref="T:System.Data.EnumerableRowCollection`1" />オブジェクト、場所、ジェネリック パラメーター<paramref name="T" />は<see cref="T:System.Data.DataRow" />します。 このオブジェクトは、[!INCLUDE[vbteclinq](~/includes/vbteclinq-md.md)] 式またはメソッド クエリで使用できます。</summary>
-        <returns><see cref="T:System.Data.EnumerableRowCollection`1" />オブジェクト、場所、ジェネリック パラメーター<paramref name="T" />は<see cref="T:System.Data.DataRow" />します。</returns>
+        <typeparam name="TRow">元の要素の変換後の型。</typeparam>
+        <param name="source">列挙可能にする対象のソース <see cref="T:System.Data.TypedTableBase`1" />。</param>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> のデータ行要素を列挙し、<see cref="T:System.Data.EnumerableRowCollection`1" /> オブジェクトを返します。ここで、ジェネリック パラメーター <paramref name="T" /> は <see cref="T:System.Data.DataRow" /> です。 このオブジェクトは、[!INCLUDE[vbteclinq](~/includes/vbteclinq-md.md)] 式またはメソッド クエリで使用できます。</summary>
+        <returns><see cref="T:System.Data.EnumerableRowCollection`1" /> オブジェクト。ここで、ジェネリック パラメーター <paramref name="T" /> は <see cref="T:System.Data.DataRow" /> です。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -104,10 +104,10 @@
       </Parameters>
       <Docs>
         <typeparam name="TRow">要素または行の型。</typeparam>
-        <param name="source">要素が返される列挙可能なオブジェクト。</param>
+        <param name="source">要素が返される列挙可能オブジェクト。</param>
         <param name="index">取得する要素の、0 から始まるインデックス。</param>
-        <summary>行が範囲外の場合は、シーケンスまたは既定値で指定した行にある要素を返します。</summary>
-        <returns>シーケンスの指定した行にある要素。</returns>
+        <summary>シーケンス内の指定された行にある要素を返します。行が範囲外の場合は既定値を返します。</summary>
+        <returns>シーケンス内の指定された行位置にある要素。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -117,7 +117,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>行を並べ替え、<see cref="T:System.Data.TypedTableBase`1" />で昇順に並べ替えます。</summary>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> の行を昇順に並べ替えます。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="OrderBy&lt;TRow,TKey&gt;">
@@ -153,12 +153,12 @@
         <Parameter Name="keySelector" Type="System.Func&lt;TRow,TKey&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">内の行要素の型<paramref name="source" />、通常<see cref="T:System.Data.DataRow" />します。</typeparam>
-        <typeparam name="TKey">によって返されるキーの種類<paramref name="keySelector" />します。</typeparam>
-        <param name="source">A<see cref="T:System.Data.TypedTableBase`1" />を格納している、<see cref="T:System.Data.DataRow" />要素を順に並べ替えられます。</param>
+        <typeparam name="TRow"><paramref name="source" /> の行要素の型。通常は、<see cref="T:System.Data.DataRow" />。</typeparam>
+        <typeparam name="TKey"><paramref name="keySelector" /> によって返されるキーの型。</typeparam>
+        <param name="source">順序付けする <see cref="T:System.Data.TypedTableBase`1" /> 要素が格納されている <see cref="T:System.Data.DataRow" />。</param>
         <param name="keySelector">要素からキーを抽出する関数。</param>
-        <summary>行を並べ替え、<see cref="T:System.Data.TypedTableBase`1" />指定したキーに従って昇順にします。</summary>
-        <returns><see cref="T:System.Data.OrderedEnumerableRowCollection`1" />要素は指定したキーによって並べ替えられます。</returns>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> の行を指定したキーに従って昇順に並べ替えます。</summary>
+        <returns>要素が指定したキーで並べ替えられている <see cref="T:System.Data.OrderedEnumerableRowCollection`1" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -196,13 +196,13 @@
         <Parameter Name="comparer" Type="System.Collections.Generic.IComparer&lt;TKey&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">内の行要素の型<paramref name="source" />、通常<see cref="T:System.Data.DataRow" />します。</typeparam>
-        <typeparam name="TKey">によって返されるキーの種類<paramref name="keySelector" />します。</typeparam>
-        <param name="source">A<see cref="T:System.Data.TypedTableBase`1" />を格納している、<see cref="T:System.Data.DataRow" />要素を順に並べ替えられます。</param>
+        <typeparam name="TRow"><paramref name="source" /> の行要素の型。通常は、<see cref="T:System.Data.DataRow" />。</typeparam>
+        <typeparam name="TKey"><paramref name="keySelector" /> によって返されるキーの型。</typeparam>
+        <param name="source">順序付けする <see cref="T:System.Data.TypedTableBase`1" /> 要素が格納されている <see cref="T:System.Data.DataRow" />。</param>
         <param name="keySelector">要素からキーを抽出する関数。</param>
         <param name="comparer">キーを比較する <see cref="T:System.Collections.Generic.IComparer`1" />。</param>
-        <summary>行を並べ替え、<see cref="T:System.Data.TypedTableBase`1" />指定したキーと比較子に従って昇順にします。</summary>
-        <returns><see cref="T:System.Data.OrderedEnumerableRowCollection`1" />要素は、指定したキーと比較子で並べ替えられます。</returns>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> の行を指定したキーと比較子に従って昇順に並べ替えます。</summary>
+        <returns>要素が指定したキーと比較子で並べ替えられている <see cref="T:System.Data.OrderedEnumerableRowCollection`1" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -212,7 +212,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>行を並べ替え、<see cref="T:System.Data.TypedTableBase`1" />降順にします。</summary>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> の行を降順に並べ替えます。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="OrderByDescending&lt;TRow,TKey&gt;">
@@ -248,12 +248,12 @@
         <Parameter Name="keySelector" Type="System.Func&lt;TRow,TKey&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">内の行要素の型<paramref name="source" />、通常<see cref="T:System.Data.DataRow" />します。</typeparam>
-        <typeparam name="TKey">によって返されるキーの種類<paramref name="keySelector" />します。</typeparam>
-        <param name="source">A<see cref="T:System.Data.TypedTableBase`1" />を格納している、<see cref="T:System.Data.DataRow" />要素を順に並べ替えられます。</param>
+        <typeparam name="TRow"><paramref name="source" /> の行要素の型。通常は、<see cref="T:System.Data.DataRow" />。</typeparam>
+        <typeparam name="TKey"><paramref name="keySelector" /> によって返されるキーの型。</typeparam>
+        <param name="source">順序付けする <see cref="T:System.Data.TypedTableBase`1" /> 要素が格納されている <see cref="T:System.Data.DataRow" />。</param>
         <param name="keySelector">要素からキーを抽出する関数。</param>
-        <summary>行を並べ替え、<see cref="T:System.Data.TypedTableBase`1" />指定したキーに従って降順にします。</summary>
-        <returns><see cref="T:System.Data.OrderedEnumerableRowCollection`1" />要素は指定したキーによって並べ替えられます。</returns>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> の行を指定したキーに従って降順に並べ替えます。</summary>
+        <returns>要素が指定したキーで並べ替えられている <see cref="T:System.Data.OrderedEnumerableRowCollection`1" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -291,13 +291,13 @@
         <Parameter Name="comparer" Type="System.Collections.Generic.IComparer&lt;TKey&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">内の行要素の型<paramref name="source" />、通常<see cref="T:System.Data.DataRow" />します。</typeparam>
-        <typeparam name="TKey">によって返されるキーの種類<paramref name="keySelector" />します。</typeparam>
-        <param name="source">A<see cref="T:System.Data.TypedTableBase`1" />を格納している、<see cref="T:System.Data.DataRow" />要素を順に並べ替えられます。</param>
+        <typeparam name="TRow"><paramref name="source" /> の行要素の型。通常は、<see cref="T:System.Data.DataRow" />。</typeparam>
+        <typeparam name="TKey"><paramref name="keySelector" /> によって返されるキーの型。</typeparam>
+        <param name="source">順序付けする <see cref="T:System.Data.TypedTableBase`1" /> 要素が格納されている <see cref="T:System.Data.DataRow" />。</param>
         <param name="keySelector">要素からキーを抽出する関数。</param>
         <param name="comparer">キーを比較する <see cref="T:System.Collections.Generic.IComparer`1" />。</param>
-        <summary>行を並べ替え、<see cref="T:System.Data.TypedTableBase`1" />指定したキーと比較子に従って降順にします。</summary>
-        <returns><see cref="T:System.Data.OrderedEnumerableRowCollection`1" />要素は、指定したキーと比較子で並べ替えられます。</returns>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> の行を指定したキーと比較子に従って降順に並べ替えます。</summary>
+        <returns>要素が指定したキーと比較子で並べ替えられている <see cref="T:System.Data.OrderedEnumerableRowCollection`1" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -334,17 +334,17 @@
         <Parameter Name="selector" Type="System.Func&lt;TRow,S&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">内の行要素の型<paramref name="source" />、<see cref="T:System.Data.DataRow" />します。</typeparam>
+        <typeparam name="TRow"><paramref name="source" />、<see cref="T:System.Data.DataRow" /> の行要素の型。</typeparam>
         <typeparam name="S">To be added.</typeparam>
-        <param name="source">A<see cref="T:System.Data.TypedTableBase`1" />を格納している、<see cref="T:System.Data.DataRow" />変換を呼び出す関数。</param>
+        <param name="source">変換関数を呼び出す <see cref="T:System.Data.TypedTableBase`1" /> 要素を格納する <see cref="T:System.Data.DataRow" />。</param>
         <param name="selector">各要素に適用する変換関数。</param>
-        <summary>各要素の射影を<see cref="T:System.Data.TypedTableBase`1" />を新しいフォームにします。</summary>
-        <returns><see cref="T:System.Data.EnumerableRowCollection`1" />要素は、結果の各要素に対して変換関数を呼び出したの<paramref name="source" />します。</returns>
+        <summary><see cref="T:System.Data.TypedTableBase`1" /> の各要素を新しいフォームに射影します。</summary>
+        <returns><paramref name="source" /> の各要素に対して変換関数を呼び出した結果として得られる要素を含む <see cref="T:System.Data.EnumerableRowCollection`1" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この投影手法は、変換関数を必要と`selector`、ソース シーケンス内の各値の 1 つの値を生成するために、`source`します。 場合`selector`コンシューマー、コレクション自体が値を返しますでは、サブ シーケンスを手動で走査する必要があります。  
+ この射影メソッドでは、変換関数`selector`() を使用して、ソース`source`シーケンスの値ごとに1つの値を生成する必要があります。 が`selector`コレクションである値を返す場合、コンシューマーは手動でサブシーケンスを走査する必要があります。  
   
  ]]></format>
         </remarks>
@@ -382,11 +382,11 @@
         <Parameter Name="predicate" Type="System.Func&lt;TRow,System.Boolean&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">内の行要素の型<paramref name="source" />、<see cref="T:System.Data.DataRow" />します。</typeparam>
-        <param name="source">A<see cref="T:System.Data.TypedTableBase`1" />を格納している、<see cref="T:System.Data.DataRow" />フィルター処理する要素。</param>
+        <typeparam name="TRow"><paramref name="source" />、<see cref="T:System.Data.DataRow" /> の行要素の型。</typeparam>
+        <param name="source">フィルター処理する <see cref="T:System.Data.TypedTableBase`1" /> 要素が格納されている <see cref="T:System.Data.DataRow" />。</param>
         <param name="predicate">各要素が条件を満たしているかどうかをテストする関数。</param>
-        <summary>指定された述語に基づいて行のシーケンスをフィルター処理します。</summary>
-        <returns><see cref="T:System.Data.OrderedEnumerableRowCollection`1" />条件を満たす入力シーケンスからの行を格納しています。</returns>
+        <summary>指定した述語に基づいて行のシーケンスをフィルター処理します。</summary>
+        <returns>条件を満たす、入力シーケンスの行を含む <see cref="T:System.Data.OrderedEnumerableRowCollection`1" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,10 +1,10 @@
 <Type Name="Utf8JsonWriter" FullName="System.Text.Json.Utf8JsonWriter">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="385cb760a73c83246471a467d05aea4d0123e51b" /><Meta Name="ms.sourcegitcommit" Value="61757d0366a172cdbc11436deb1c1ffa49d97238" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/28/2019" /><Meta Name="ms.locfileid" Value="67458296" /></Metadata><TypeSignature Language="C#" Value="public sealed class Utf8JsonWriter : IAsyncDisposable, IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="9f3fe7c9f43d78e08083ff3bf78a5adad02329b8" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68434910" /></Metadata><TypeSignature Language="C#" Value="public sealed class Utf8JsonWriter : IAsyncDisposable, IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Utf8JsonWriter extends System.Object implements class System.IAsyncDisposable, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.Utf8JsonWriter" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Utf8JsonWriter&#xA;Implements IAsyncDisposable, IDisposable" />
   <TypeSignature Language="C++ CLI" Value="public ref class Utf8JsonWriter sealed : IAsyncDisposable, IDisposable" />
-  <TypeSignature Language="F#" Value="type Utf8JsonWriter = class&#xA;    interface IDisposable&#xA;    interface IAsyncDisposable" />
+  <TypeSignature Language="F#" Value="type Utf8JsonWriter = class&#xA;    interface IAsyncDisposable&#xA;    interface IDisposable" />
   <AssemblyInfo>
     <AssemblyName>System.Text.Json</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -28,13 +28,13 @@
 
 ## Remarks
 
-`Utf8JsonWriter` 書き込みキャッシュなしの順番に、既定のテキストに準拠する、 [JSON RFC](https://tools.ietf.org/html/rfc8259)、を除き、コメントを記述します。
+`Utf8JsonWriter`キャッシュなしでテキストをシーケンシャルに書き込みます。また、コメントの書き込みを除き、既定では[JSON RFC](https://tools.ietf.org/html/rfc8259)に準拠します。
 
-検証が無効な JSON を記述しようとするメソッドがスローされますを有効になっている、<xref:System.InvalidOperationException>コンテキストに固有のエラー メッセージを使用します。
+検証が有効になっているときに無効な JSON を書き込もう<xref:System.InvalidOperationException>とするメソッドは、コンテキスト固有のエラーメッセージを使用してをスローします。
 
-この型が ref 構造体であるため、これは直接サポートしていません async です。 ただし、部分的なデータを書き込むチャンク単位での書き込みを続行して、再入のサポートは提供します。
+この型は ref 構造体であるため、非同期的には直接サポートされません。 ただし、部分的なデータを書き込めるように再入をサポートし、チャンクの書き込みを続行します。
 
-インスタンスを作成または検証をスキップするインデントおよび空白文字の出力を書式設定できる、<xref:System.Text.Json.JsonWriterOptions>をライターに渡します。
+出力をインデントおよび空白で書式設定したり、検証をスキップしたりできるようにするに<xref:System.Text.Json.JsonWriterOptions>は、のインスタンスを作成し、それをライターに渡します。
 
  ]]></format>
     </remarks>
@@ -103,13 +103,13 @@
       </ReturnValue>
       <Docs>
         <summary>現在のインスタンスによってこれまで出力にコミットされた合計バイト数を取得します。</summary>
-        <value>出力にコミットされたバイトの合計数、<see cref="T:System.Text.Json.Utf8JsonWriter" />これまでにします。</value>
+        <value>これまでにによって<see cref="T:System.Text.Json.Utf8JsonWriter" />出力にコミットされたバイトの合計数。</value>
         <remarks>
           <format><![CDATA[
           
-場合、 <xref:System.Buffers.IBufferWriter%601>、このプロパティは、IBufferWriter に高度な量を示します。
+の<xref:System.Buffers.IBufferWriter%601>場合、このプロパティは ibufferwriter がどの程度進んでいるかを示します。
 
-場合、 <xref:System.IO.Stream>、このプロパティは、データの量がストリームに書き込まれたことを示します。
+の<xref:System.IO.Stream>場合、このプロパティはストリームに書き込まれたデータの量を示します。
 
           ]]></format>
         </remarks>
@@ -153,13 +153,13 @@
       </ReturnValue>
       <Docs>
         <summary>現在のトークンの深度を取得します。</summary>
-        <value>現在のトークンの深度。</value>
+        <value>現在のトークンの深さ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
 ## Remarks
 
-`CurrentDepth`プロパティは入れ子になったオブジェクトの再帰の深さを追跡/これまでに記述する JSON テキスト内での配列。
+プロパティ`CurrentDepth`は、これまでに記述された JSON テキスト内の入れ子になったオブジェクトまたは配列の再帰的な深さを追跡します。
 
  ]]></format>
         </remarks>
@@ -189,11 +189,11 @@
         <remarks>
           <format><![CDATA[
           
-IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBufferWriter`1>た内容に基づいて、基になるを進めます。
 
-Stream の場合、これは、データをストリームに書き込み、フラッシュします。
+ストリームの場合、これによってデータがストリームに書き込まれ、フラッシュされます。
 
-<xref:System.Text.Json.Utf8JsonWriter>破棄した後、インスタンスを再利用することはできません。
+破棄<xref:System.Text.Json.Utf8JsonWriter>後にインスタンスを再利用することはできません。
 
           ]]></format>
         </remarks>
@@ -224,11 +224,11 @@ Stream の場合、これは、データをストリームに書き込み、フ�
         <remarks>
           <format><![CDATA[
           
-IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBufferWriter`1>た内容に基づいて、基になるを進めます。
           
-Stream の場合、これは、データをストリームに書き込み、フラッシュします。
+ストリームの場合、これによってデータがストリームに書き込まれ、フラッシュされます。
 
-<xref:System.Text.Json.Utf8JsonWriter>破棄した後、インスタンスを再利用することはできません。
+破棄<xref:System.Text.Json.Utf8JsonWriter>後にインスタンスを再利用することはできません。
             
             ]]></format>
         </remarks>
@@ -255,9 +255,9 @@ Stream の場合、これは、データをストリームに書き込み、フ�
         <remarks>
           <format><![CDATA[
           
-IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBufferWriter`1>た内容に基づいて、基になるを進めます。
 
-場合<xref:System.IO.Stream>、フラッシュとこのデータをストリームに書き込みます。
+の<xref:System.IO.Stream>場合、これによりデータがストリームに書き込まれ、フラッシュされます。
 
           ]]></format>
         </remarks>
@@ -287,9 +287,9 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.IBufferWriter`1>これまでに書き込まれた内容に基づいています。
+Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBufferWriter`1>た内容に基づいて、基になるを進めます。
 
-場合<xref:System.IO.Stream>、このデータをストリームに書き込み、キャンセル要求を監視しながら、非同期的にフラッシュします。
+の<xref:System.IO.Stream>場合は、キャンセル要求を監視しながら、データをストリームに書き込み、非同期的にフラッシュします。
 
           ]]></format>
         </remarks>
@@ -338,7 +338,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-<xref:System.Text.Json.Utf8JsonWriter>ライターの元のオプションと、元の出力を使用し続けます (か<xref:System.Buffers.IBufferWriter`1>または<xref:System.IO.Stream>) のエクスポート先として。
+は<xref:System.Text.Json.Utf8JsonWriter> 、元のライターオプションと元の出力 (または<xref:System.IO.Stream>のいずれ<xref:System.Buffers.IBufferWriter`1>か) を変換先として使用し続けます。
 
           ]]></format>
         </remarks>
@@ -369,11 +369,11 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-<xref:System.Text.Json.Utf8JsonWriter>ライターの元のオプションを使用し続けますが、書き込むようになりました`bufferWriter`新しい変換先として。
+は引き続き元のライターオプションを使用しますが、現在`bufferWriter`は新しい変換先としてに書き込まれます。<xref:System.Text.Json.Utf8JsonWriter>
 
           ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="bufferWriter" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="bufferWriter" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
@@ -401,11 +401,11 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-<xref:System.Text.Json.Utf8JsonWriter>ライターの元のオプションを使用してが今すぐに書き込むには引き続き`utf8Json`新しい変換先として。
+は引き続き元のライターオプションを使用しますが、現在`utf8Json`は新しい変換先としてに書き込まれます。<xref:System.Text.Json.Utf8JsonWriter>
 
           ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="utf8Json" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="utf8Json" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
@@ -563,7 +563,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -597,7 +597,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
           
           ]]></format>
         </remarks>
@@ -631,7 +631,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
           
           ]]></format>
         </remarks>
@@ -714,7 +714,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-コメントの値は書き込みの前にエスケープされていません。
+コメント値は、書き込みの前にエスケープされません。
           
           ]]></format>
         </remarks>
@@ -749,13 +749,13 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-コメントの値は書き込みの前にエスケープされていません。
+コメント値は、書き込みの前にエスケープされません。
           
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定した値は、過大な OR です。
         
-- または -
+または
 
 <paramref name="value" /> にコメント区切り記号 (つまり */) が含まれています。</exception>
       </Docs>
@@ -784,7 +784,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-コメントの値は書き込みの前にエスケープされていません。
+コメント値は、書き込みの前にエスケープされません。
           
           ]]></format>
         </remarks>
@@ -863,7 +863,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
           
           ]]></format>
         </remarks>
@@ -895,7 +895,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
           
           ]]></format>
         </remarks>
@@ -927,7 +927,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
           
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
           
           ]]></format>
         </remarks>
@@ -1007,7 +1007,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Decimal>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Decimal> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1041,7 +1041,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Double>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Double> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1075,7 +1075,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Int32>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Int32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1109,7 +1109,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Int64>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Int64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1143,7 +1143,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Single>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Single> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1182,7 +1182,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.UInt32>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.UInt32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1221,7 +1221,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.UInt64>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.UInt64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1255,7 +1255,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Decimal>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Decimal> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1289,7 +1289,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Double>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Double> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1323,7 +1323,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Int32>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Int32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1357,7 +1357,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Int64>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Int64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1391,7 +1391,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Single>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Single> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1430,7 +1430,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.UInt32>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.UInt32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1469,7 +1469,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.UInt64>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.UInt64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1503,7 +1503,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Decimal>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Decimal> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1537,7 +1537,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Double>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Double> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1571,7 +1571,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Int32>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Int32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1605,7 +1605,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Int64>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Int64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1639,7 +1639,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Single>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Single> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1678,7 +1678,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.UInt32>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.UInt32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1717,7 +1717,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.UInt64>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、"G")、たとえば。32767. プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.UInt64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1941,7 +1941,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.Decimal>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、' G' など)。
+このメソッドは、 <xref:System.Decimal>既定<xref:System.Buffers.StandardFormat>値 ("G") を使用して値を書き込みます。
 
           ]]></format>
         </remarks>
@@ -1972,7 +1972,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.Double>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、' G' など)。
+このメソッドは、 <xref:System.Double>既定<xref:System.Buffers.StandardFormat>値 ("G") を使用して値を書き込みます。
 
           ]]></format>
         </remarks>
@@ -2003,7 +2003,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.Int32>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、' G' など)。 たとえば、32767 です。
+このメソッドは、 <xref:System.Int32>既定<xref:System.Buffers.StandardFormat>値 ("G") を使用して値を書き込みます。 たとえば、32767のようになります。
 
           ]]></format>
         </remarks>
@@ -2034,7 +2034,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.Int64>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、' G' など)。 たとえば、32767 です。
+このメソッドは、 <xref:System.Int64>既定<xref:System.Buffers.StandardFormat>値 ("G") を使用して値を書き込みます。 たとえば、32767のようになります。
 
           ]]></format>
         </remarks>
@@ -2065,7 +2065,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.Single>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、' G' など)。
+このメソッドは、 <xref:System.Single>既定<xref:System.Buffers.StandardFormat>値 ("G") を使用して値を書き込みます。
 
           ]]></format>
         </remarks>
@@ -2101,7 +2101,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.UInt32>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、' G' など)。 たとえば、32767 です。
+このメソッドは、 <xref:System.UInt32>既定<xref:System.Buffers.StandardFormat>値 ("G") を使用して値を書き込みます。 たとえば、32767のようになります。
 
           ]]></format>
         </remarks>
@@ -2137,11 +2137,107 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.UInt64>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、' G' など)。 たとえば、32767 です。
+このメソッドは、 <xref:System.UInt64>既定<xref:System.Buffers.StandardFormat>値 ("G") を使用して値を書き込みます。 たとえば、32767のようになります。
 
           ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePropertyName">
+      <MemberSignature Language="C#" Value="public void WritePropertyName (ReadOnlySpan&lt;byte&gt; utf8PropertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WritePropertyName(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; utf8PropertyName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonWriter.WritePropertyName(System.ReadOnlySpan{System.Byte})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub WritePropertyName (utf8PropertyName As ReadOnlySpan(Of Byte))" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void WritePropertyName(ReadOnlySpan&lt;System::Byte&gt; utf8PropertyName);" />
+      <MemberSignature Language="F#" Value="member this.WritePropertyName : ReadOnlySpan&lt;byte&gt; -&gt; unit" Usage="utf8JsonWriter.WritePropertyName utf8PropertyName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="utf8PropertyName" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="utf8PropertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePropertyName">
+      <MemberSignature Language="C#" Value="public void WritePropertyName (ReadOnlySpan&lt;char&gt; propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WritePropertyName(valuetype System.ReadOnlySpan`1&lt;char&gt; propertyName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonWriter.WritePropertyName(System.ReadOnlySpan{System.Char})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub WritePropertyName (propertyName As ReadOnlySpan(Of Char))" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void WritePropertyName(ReadOnlySpan&lt;char&gt; propertyName);" />
+      <MemberSignature Language="F#" Value="member this.WritePropertyName : ReadOnlySpan&lt;char&gt; -&gt; unit" Usage="utf8JsonWriter.WritePropertyName propertyName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="propertyName" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePropertyName">
+      <MemberSignature Language="C#" Value="public void WritePropertyName (string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WritePropertyName(string propertyName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonWriter.WritePropertyName(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub WritePropertyName (propertyName As String)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void WritePropertyName(System::String ^ propertyName);" />
+      <MemberSignature Language="F#" Value="member this.WritePropertyName : string -&gt; unit" Usage="utf8JsonWriter.WritePropertyName propertyName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePropertyName">
+      <MemberSignature Language="C#" Value="public void WritePropertyName (System.Text.Json.JsonEncodedText propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WritePropertyName(valuetype System.Text.Json.JsonEncodedText propertyName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.Json.Utf8JsonWriter.WritePropertyName(System.Text.Json.JsonEncodedText)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub WritePropertyName (propertyName As JsonEncodedText)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void WritePropertyName(System::Text::Json::JsonEncodedText propertyName);" />
+      <MemberSignature Language="F#" Value="member this.WritePropertyName : System.Text.Json.JsonEncodedText -&gt; unit" Usage="utf8JsonWriter.WritePropertyName propertyName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Json</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="propertyName" Type="System.Text.Json.JsonEncodedText" />
+      </Parameters>
+      <Docs>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteStartArray">
@@ -2194,7 +2290,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2230,14 +2326,14 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
 
-- または -
+または
        
 検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
@@ -2266,14 +2362,14 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
 
-- または -
+または
        
 検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
@@ -2352,14 +2448,14 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。 
 
-- または -
+または
        
 検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
@@ -2388,14 +2484,14 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。 
 
-- または -
+または
        
 検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
@@ -2424,7 +2520,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-プロパティ名は、書き込みの前にエスケープされます。
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2486,7 +2582,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.DateTime>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>します。 たとえば、2017-06-12T05:30:45.7680000 します。 プロパティ名は、書き込みの前にエスケープされます。
+ラウンドトライ可能 (' O ') <xref:System.Buffers.StandardFormat>を使用してを書き込みます。<xref:System.DateTime> たとえば、2017-06-12T05:30: 45.7680000 のようになります。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2520,7 +2616,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.DateTimeOffset>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>など。2017-06-12T05:30:45.7680000-07:00. プロパティ名は、書き込みの前にエスケープされます。
+次の<xref:System.DateTimeOffset>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000-07:00. 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2554,7 +2650,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Guid>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、')、フォームと: この nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn します。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Guid> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、": Nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式で、")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2716,7 +2812,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.DateTime>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>など。2017-06-12T05:30:45.7680000. プロパティ名は、書き込みの前にエスケープされます。
+次の<xref:System.DateTime>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000. 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2750,7 +2846,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.DateTimeOffset>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>など。2017-06-12T05:30:45.7680000-07:00. プロパティ名は、書き込みの前にエスケープされます。
+次の<xref:System.DateTimeOffset>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000-07:00. 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2784,7 +2880,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Guid>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、')、フォームと: この nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn します。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Guid> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、": Nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式で、")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2946,7 +3042,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.DateTime>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>など。2017-06-12T05:30:45.7680000. プロパティ名は、書き込みの前にエスケープされます。
+次の<xref:System.DateTime>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000. 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2980,7 +3076,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.DateTimeOffset>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>など。2017-06-12T05:30:45.7680000-07:00. プロパティ名は、書き込みの前にエスケープされます。
+次の<xref:System.DateTimeOffset>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000-07:00. 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3014,7 +3110,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-書き込み、<xref:System.Guid>既定値を使用して<xref:System.Buffers.StandardFormat>(つまり、')、フォームと: この nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn します。 プロパティ名は、書き込みの前にエスケープされます。
+<xref:System.Guid> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、": Nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式で、")。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3356,7 +3452,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.DateTime>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>します。 たとえば、2017-06-12T05:30:45.7680000 します。
+このメソッドは、 <xref:System.DateTime>ラウンドトライ可能 (' O ') <xref:System.Buffers.StandardFormat>を使用してを書き込みます。 たとえば、2017-06-12T05:30: 45.7680000 のようになります。
 
           ]]></format>
         </remarks>
@@ -3387,7 +3483,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドは書き込みます、<xref:System.DateTimeOffset>復元可能を使用して (' o ')<xref:System.Buffers.StandardFormat>します。 たとえば、2017-06-12T05:30:45.7680000-07時 00分です。
+このメソッドは、 <xref:System.DateTimeOffset>ラウンドトライ可能 (' O ') <xref:System.Buffers.StandardFormat>を使用してを書き込みます。 たとえば、2017-06-12T05:30: 45.7680000-07:00 のようになります。
 
           ]]></format>
         </remarks>
@@ -3418,7 +3514,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[  
 
-このメソッドを書き込みます、<xref:System.Guid>値の既定値を使用して<xref:System.Buffers.StandardFormat>(つまりが ')、フォームと: nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn。
+このメソッドは、 <xref:System.Guid>次の形式で<xref:System.Buffers.StandardFormat>既定値 ("d") を使用して値を書き込みます: nnnnnnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn。
 
           ]]></format>
         </remarks>
@@ -3449,7 +3545,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-書き込みの前に、値はエスケープされます。
+値は、書き込みの前にエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3481,7 +3577,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-書き込みの前に、値はエスケープされます。
+値は、書き込みの前にエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3513,7 +3609,7 @@ IBufferWriter の場合に、基になる進めますこの<xref:System.Buffers.
         <remarks>
           <format><![CDATA[
 
-書き込みの前に、値はエスケープされます。
+値は、書き込みの前にエスケープされます。
 
           ]]></format>
         </remarks>

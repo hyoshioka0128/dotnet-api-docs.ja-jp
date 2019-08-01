@@ -19,24 +19,24 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>シリアライザー間でコンテキストの状態を渡す手段を提供します。 このクラスは継承できません。</summary>
+    <summary>シリアライザー間でコンテキストの状態を渡す方法を提供します。 このクラスは継承できません。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.ExpressionContext>コンテキスト スタックに配置され、シリアル化中に最も関連する式が含まれています。 次の c# コードでは、割り当てを示します。  
+ は、コンテキストスタックに配置され、シリアル化時に最も関連性の高い式を格納します。<xref:System.ComponentModel.Design.Serialization.ExpressionContext> 次C#のコードは、割り当ての例を示しています。  
   
 ```csharp  
 button1.Text = "Hello";  
 ```  
   
- シリアル化中のいくつかのシリアライザーには、この 1 つのステートメントを作成する責任を負います。 シリアライザーの 1 つは、「こんにちは」を作成する責任を負います。 そのシリアライザーが式を作成するコンテキストを知る必要があります。 前の例では、このコンテキストは必要ありません。 次の c# コードは、コンテキストのサポート技術情報のために必要な状況を示しています。  
+ シリアル化中に、複数のシリアライザーがこの1つのステートメントの作成を担当します。 これらのシリアライザーの1つは、"Hello" の作成を担当します。 そのシリアライザーが、式を作成しているコンテキストを認識している必要がある場合があります。 前の例では、このコンテキストは必要ありません。 次C#のコードは、コンテキストの知識が必要な状況を示しています。  
   
 ```csharp  
 button1.Text = rm.GetString("button1_Text");  
 ```  
   
- この場合、リソース式の作成を担当するシリアライザーでは、ターゲット オブジェクトの名前を通知する必要があります。 <xref:System.ComponentModel.Design.Serialization.ExpressionContext>このクラスを使用できます。 各シリアライザーでは、式を作成し、全体として、ステートメントの一部を処理するシリアライザーを呼び出す、シリアライザーは、式のコンテキストをコンテキスト スタックにプッシュします。 各式のコンテキストでは、スタック上の次の式のコンテキストを検索する親プロパティがあります。 これは、便利な検査機能を提供します。  
+ この場合、リソース式の作成を担当するシリアライザーには、ターゲットオブジェクトの名前が通知される必要があります。 これにはクラスを使用できます。 <xref:System.ComponentModel.Design.Serialization.ExpressionContext> 各シリアライザーが式を作成し、ステートメント全体を処理するシリアライザーを呼び出すと、シリアライザーはコンテキストスタックに式のコンテキストをプッシュします。 各式コンテキストには、スタックで次の式のコンテキストを検索する親プロパティがあります。 これにより、便利なトラバーサル機能が提供されます。  
   
  ]]></format>
     </remarks>
@@ -185,13 +185,13 @@ button1.Text = rm.GetString("button1_Text");
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:System.Type" />の式。</summary>
+        <summary>式の <see cref="T:System.Type" /> を取得します。</summary>
         <value>式の <see cref="T:System.Type" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用することができます<xref:System.ComponentModel.Design.Serialization.ExpressionContext>式を割り当てるときに、キャストが必要かどうかを判断します。  
+ を使用<xref:System.ComponentModel.Design.Serialization.ExpressionContext>すると、式にを代入するときにキャストが必要かどうかを判断できます。  
   
  ]]></format>
         </remarks>
@@ -231,7 +231,7 @@ button1.Text = rm.GetString("button1_Text");
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 式がプロパティ参照である場合、<xref:System.Windows.Forms.Control.Text%2A>のインスタンスのプロパティ<xref:System.Windows.Forms.Button>と呼ばれる`button1`、<xref:System.ComponentModel.Design.Serialization.ExpressionContext.Owner%2A>返します`button1`します。  
+ 式が、呼び出され<xref:System.Windows.Forms.Control.Text%2A> `button1`たの<xref:System.Windows.Forms.Button>インスタンスのプロパティへのプロパティ参照である<xref:System.ComponentModel.Design.Serialization.ExpressionContext.Owner%2A>場合`button1`、はを返します。  
   
  ]]></format>
         </remarks>
@@ -266,14 +266,14 @@ button1.Text = rm.GetString("button1_Text");
       </ReturnValue>
       <Docs>
         <summary>式の事前定義された値を取得します。</summary>
-        <value>この式の事前定義された値または<see langword="null" />割り当てられていない場合。</value>
+        <value>式の事前定義された値。割り当てられていない場合は <see langword="null" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 1 つ存在する必要があります、式の事前定義された値が含まれています。 たとえば、式が参照するプロパティ参照式の場合、<xref:System.Windows.Forms.Control.Controls%2A>のプロパティを<xref:System.Windows.Forms.Button>、<xref:System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue%2A>プロパティにはインスタンスが含まれています、<xref:System.Windows.Forms.Control.Controls%2A>プロパティ。 プロパティが読み取り専用と値を格納するオブジェクトを事前設定されたためにです。 その一方などのプロパティ<xref:System.Windows.Forms.Control.Text%2A>または<xref:System.Windows.Forms.Control.Visible%2A>に事前設定された値がないため、<xref:System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue%2A>プロパティが返す`null`します。  
+ 式の事前設定された値を格納します。 <xref:System.Windows.Forms.Control.Controls%2A>たとえば、式が<xref:System.Windows.Forms.Button>の<xref:System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue%2A>プロパティを参照するプロパティ参照式である場合、プロパティには<xref:System.Windows.Forms.Control.Controls%2A>プロパティのインスタンスが含まれます。 これは、プロパティが読み取り専用で、値を格納するためにオブジェクトによって事前に設定されているためです。 一方、 <xref:System.Windows.Forms.Control.Text%2A>や<xref:System.Windows.Forms.Control.Visible%2A>などのプロパティには<xref:System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue%2A>事前設定された値がないため、プロパティはを`null`返します。  
   
- 次の c# コードでは、シリアライザーがシリアル化のガイドにこの情報をどのように使用する方法を示します。  
+ 次C#のコードは、シリアライザーがこの情報を使用してシリアル化をガイドする方法を示しています。  
   
 ```csharp  
 Padding p = new Padding();  
@@ -283,7 +283,7 @@ button1.Padding = p;
 button1.Padding.Left = 5;  
 ```  
   
- シリアライザー、<xref:System.Windows.Forms.Padding>構造体は、最初または 2 番目のフォームを生成する場合に通知する必要があります。 既定では、最初のフォームが生成されます。 ある場合にのみ、2 番目の形式が生成、<xref:System.ComponentModel.Design.Serialization.ExpressionContext>コンテキスト スタックを含む、<xref:System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue%2A>の値と等しく、<xref:System.Windows.Forms.Padding>現在シリアル化されます。  
+ 最初または 2 <xref:System.Windows.Forms.Padding>番目の形式を生成する必要がある場合は、構造体のシリアライザーに通知される必要があります。 最初のフォームは、既定で生成されます。 2番目の形式は、 <xref:System.ComponentModel.Design.Serialization.ExpressionContext> <xref:System.Windows.Forms.Padding>現在シリアル化されているの値と<xref:System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue%2A>等しいを含むコンテキストスタックにがある場合にのみ生成されます。  
   
  ]]></format>
         </remarks>

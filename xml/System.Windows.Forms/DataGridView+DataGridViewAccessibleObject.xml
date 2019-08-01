@@ -24,18 +24,18 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Windows フォームは、組み込みのユーザー補助のサポートを備え、ユーザー補助クライアント アプリケーションを使用することを許可するアプリケーションに関する情報を提供します。 ユーザー補助クライアント アプリケーションの例については、ツールとレビュー担当者のユーティリティを画面には、音声入力ユーティリティ、オンスクリーン キーボード、代替入力デバイス、およびキーボード拡張ユーティリティ。  
+ Windows フォームには、ユーザー補助機能のサポートが組み込まれており、ユーザー補助クライアントアプリケーションと連携できるように、アプリケーションに関する情報を提供しています。 ユーザー補助クライアントアプリケーションの例としては、スクリーンたまにとレビューアーユーティリティ、音声入力ユーティリティ、スクリーンキーボード、代替入力デバイス、キーボード拡張ユーティリティなどがあります。  
   
- <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject>クラスから継承、<xref:System.Windows.Forms.AccessibleObject>に関する情報を提供するクラス、<xref:System.Windows.Forms.DataGridView>ユーザー補助クライアント アプリケーションを制御します。 各クラスの視覚的な部分を表す、 <xref:System.Windows.Forms.DataGridView>  -  <xref:System.Windows.Forms.DataGridViewColumnHeaderCell>、 <xref:System.Windows.Forms.DataGridViewRowHeaderCell>、 <xref:System.Windows.Forms.DataGridViewRow>、および<xref:System.Windows.Forms.DataGridViewCell>-も継承するクラスが含まれています<xref:System.Windows.Forms.AccessibleObject>格納している情報を提供するにはクラスし、ユーザー補助クライアント アプリケーションに代わって操作を実行します。  
+ クラス<xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject>は、 <xref:System.Windows.Forms.AccessibleObject>クラスから継承して、ユーザー補助<xref:System.Windows.Forms.DataGridView>クライアントアプリケーションにコントロールに関する情報を提供します。 <xref:System.Windows.Forms.DataGridViewColumnHeaderCell>、 <xref:System.Windows.Forms.DataGridView>  -  、、および<xref:System.Windows.Forms.DataGridViewCell>のビジュアル部分を表す各クラス<xref:System.Windows.Forms.AccessibleObject>には、を継承するクラスも含まれています。 <xref:System.Windows.Forms.DataGridViewRow> <xref:System.Windows.Forms.DataGridViewRowHeaderCell>クラスを実行し、ユーザー補助クライアントアプリケーションに代わってアクションを実行します。  
   
- 名前や説明などの追加情報を提供するインスタンスがある、<xref:System.Windows.Forms.DataGridView>コントロール、ユーザー補助クライアント アプリケーションにします。 この追加情報を提供するための 2 つの方法はあります。 既存のコントロールのアクセシビリティの制限に関する情報を提供する設定、コントロールの<xref:System.Windows.Forms.Control.AccessibleName%2A>と<xref:System.Windows.Forms.Control.AccessibleDescription%2A>プロパティの値は、ユーザー補助クライアント アプリケーションに報告されます。  
+ <xref:System.Windows.Forms.DataGridView>コントロールの名前や説明などの追加情報をユーザー補助クライアントアプリケーションに提供する場合は、インスタンスがあります。 この追加情報を提供するには、2つの方法があります。 既存のコントロールに限定されたアクセシビリティ情報を提供する<xref:System.Windows.Forms.Control.AccessibleName%2A>に<xref:System.Windows.Forms.Control.AccessibleDescription%2A>は、コントロールのプロパティとプロパティの値を設定します。これは、ユーザー補助クライアントアプリケーションに報告されます。  
   
 > [!NOTE]
->  変更する必要があります、<xref:System.Windows.Forms.Control.AccessibleDefaultActionDescription%2A>と<xref:System.Windows.Forms.Control.AccessibleRole%2A>プロパティがする場合などのまれな状況でのみ値こと、<xref:System.Windows.Forms.DataGridView>一覧のようになります。  
+>  プロパティと<xref:System.Windows.Forms.Control.AccessibleDefaultActionDescription%2A> <xref:System.Windows.Forms.Control.AccessibleRole%2A>プロパティの値は、リストのように表示する場合<xref:System.Windows.Forms.DataGridView>など、まれな状況でのみ変更する必要があります。  
   
- 場合によっては、詳細のアクセシビリティに関する情報や、カスタムに含まれる異なるアクセシビリティ アクションに必要な<xref:System.Windows.Forms.DataGridView>または<xref:System.Windows.Forms.DataGridViewCell>します。 アクセシビリティをカスタマイズするから派生した独自のクラスを記述することができます、<xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject>または<xref:System.Windows.Forms.DataGridViewCell.DataGridViewCellAccessibleObject>クラスとオーバーライド、<xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>メソッド。 など、セル内で特別なヒット テストなどの一意のカスタム アクションを実装するカスタム行ヘッダー セルを作成する場合は、継承するクラスを作成する必要があります、<xref:System.Windows.Forms.DataGridViewRowHeaderCell.DataGridViewRowHeaderCellAccessibleObject>クラスし、オーバーライド、<xref:System.Windows.Forms.DataGridViewRowHeaderCell.CreateAccessibilityInstance%2A>メソッド。  
+ 場合によっては、カスタム<xref:System.Windows.Forms.DataGridView>または<xref:System.Windows.Forms.DataGridViewCell>に含まれるユーザー補助情報またはユーザー補助操作が必要になることがあります。 アクセシビリティをカスタマイズするに<xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject>は、クラスまたは<xref:System.Windows.Forms.DataGridViewCell.DataGridViewCellAccessibleObject>クラスから派生した独自のクラスを<xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>作成し、メソッドをオーバーライドします。 たとえば、セル内で特殊なヒットテストなどの固有のカスタムアクションを実装するカスタムの行ヘッダーセルを作成する場合は、 <xref:System.Windows.Forms.DataGridViewRowHeaderCell.DataGridViewRowHeaderCellAccessibleObject>クラスを継承するクラスを作成し、メソッドを<xref:System.Windows.Forms.DataGridViewRowHeaderCell.CreateAccessibilityInstance%2A>オーバーライドする必要があります。  
   
- <xref:System.Windows.Forms.DataGridView>を使用してそのデータ構造を公開<xref:System.Windows.Forms.AccessibleRole>階層の表に、データを定義する値。 Microsoft Active Accessibility をデータ テーブルを公開する詳細については、"を公開するデータ テーブルを通じて Microsoft Active Accessibility"で、MSDN ライブラリを参照してください。http://msdn.microsoft.com/libraryします。  
+ は<xref:System.Windows.Forms.DataGridView> 、値を使用し<xref:System.Windows.Forms.AccessibleRole>てデータテーブル階層を定義することで、データ構造を公開します。 Microsoft Active Accessibility にデータテーブルを公開する方法の詳細については、MSDN ライブラリhttp://msdn.microsoft.com/library() の「microsoft Active Accessibility を使用したデータテーブルの公開」を参照してください。  
   
  ]]></format>
     </remarks>
@@ -99,13 +99,13 @@
       </Parameters>
       <Docs>
         <param name="index">子ユーザー補助オブジェクトの 0 から始まるインデックス。</param>
-        <summary>子を返します、指定したインデックスに対応するユーザー補助オブジェクト。</summary>
-        <returns><see cref="T:System.Windows.Forms.AccessibleObject" />を表す、指定したインデックスに対応する子ユーザー補助オブジェクト。</returns>
+        <summary>指定したインデックスに対応する子ユーザー補助オブジェクトを返します。</summary>
+        <returns>指定したインデックスに対応する子ユーザー補助オブジェクトを表す <see cref="T:System.Windows.Forms.AccessibleObject" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.GetChild%2A>メソッドの行にアクセスできるオブジェクトを返します<xref:System.Windows.Forms.DataGridViewColumnHeaderCell>オブジェクトと<xref:System.Windows.Forms.DataGridView.ColumnHeadersVisible%2A>は`true`と`index`は 0 です。 場合<xref:System.Windows.Forms.DataGridView.ColumnHeadersVisible%2A>は`false`と`index`は 0 です。 <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.GetChild%2A> 、最初のユーザー補助オブジェクトを返します<xref:System.Windows.Forms.DataGridViewRow>します。  
+ メソッド<xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.GetChild%2A>は、が<xref:System.Windows.Forms.DataGridViewColumnHeaderCell> で、`index`が0の場合<xref:System.Windows.Forms.DataGridView.ColumnHeadersVisible%2A>に、オブジェクトの行に対してアクセス可能なオブジェクトを返します。 `true` が<xref:System.Windows.Forms.DataGridView.ColumnHeadersVisible%2A> で`false` <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.GetChild%2A> <xref:System.Windows.Forms.DataGridViewRow>、が0の場合は、最初ののユーザー補助オブジェクトを返します。 `index`  
   
  ]]></format>
         </remarks>
@@ -134,13 +134,13 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ユーザー補助オブジェクトに属する子オブジェクトの数を返します。</summary>
-        <returns>ユーザー補助オブジェクトに属する子オブジェクトの数。</returns>
+        <summary>ユーザー補助オブジェトに属する子オブジェクトの数を返します。</summary>
+        <returns>ユーザー補助オブジェトに属する子オブジェクトの数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.GetChildCount%2A>メソッドで表示されている行の数を返します、 <xref:System.Windows.Forms.DataGridView>、列ヘッダー行が表示され、1 の場合 1 を加算にそれぞれ表示されるスクロール バー。 コントロールの列が存在しない場合、このメソッドは常に 0 を返します。  
+ メソッド<xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.GetChildCount%2A>は、 <xref:System.Windows.Forms.DataGridView>に表示されている行の数を返します。列ヘッダー行が表示されている場合は1、表示されているスクロールバーごとに1を加算した値を返します。 コントロールに列が存在しない場合、このメソッドは常に0を返します。  
   
  ]]></format>
         </remarks>
@@ -165,8 +165,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ユーザー補助オブジェクトを返します、<see cref="T:System.Windows.Forms.DataGridViewCell" />キーボード フォーカスを持っています。</summary>
-        <returns><see cref="T:System.Windows.Forms.AccessibleObject" />を指定する、<see cref="T:System.Windows.Forms.DataGridViewCell" />を持つ現在のフォーカスまたは<see langword="null" />場合、<see cref="T:System.Windows.Forms.DataGridView" />にフォーカスがないです。</returns>
+        <summary>キーボード フォーカスを持つ <see cref="T:System.Windows.Forms.DataGridViewCell" /> のユーザー補助オブジェクトを返します。</summary>
+        <returns>現在フォーカスを保持している <see cref="T:System.Windows.Forms.AccessibleObject" /> を指定する <see cref="T:System.Windows.Forms.DataGridViewCell" />。<see cref="T:System.Windows.Forms.DataGridView" /> にフォーカスがない場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Windows.Forms.AccessibleObject" />
         <altmember cref="T:System.Windows.Forms.DataGridView" />
@@ -196,8 +196,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>返します、<see cref="T:System.Windows.Forms.AccessibleObject" />で選択したセルを表す、<see cref="T:System.Windows.Forms.DataGridView" />コントロール。</summary>
-        <returns><see cref="T:System.Windows.Forms.AccessibleObject" /> 、現在選択されているセルを表すまたは<see langword="null" />セルが選択されていない場合、または、オブジェクト自体にフォーカスがない場合。</returns>
+        <summary><see cref="T:System.Windows.Forms.AccessibleObject" /> コントロールの選択されたセルを表す <see cref="T:System.Windows.Forms.DataGridView" /> を返します。</summary>
+        <returns>現在選択されているセルを表す <see cref="T:System.Windows.Forms.AccessibleObject" />。セルが選択されていないか、オブジェクト自体にフォーカスがない場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Windows.Forms.AccessibleObject" />
         <altmember cref="T:System.Windows.Forms.DataGridView" />
@@ -227,18 +227,18 @@
         <param name="x">水平画面座標。</param>
         <param name="y">垂直画面座標。</param>
         <summary>指定した画面座標にある子オブジェクトを取得します。</summary>
-        <returns><see cref="T:System.Windows.Forms.AccessibleObject" />を表す、指定した画面座標にあるオブジェクトまたは<see langword="null" />指定した位置にオブジェクトがない場合。</returns>
+        <returns>指定した画面座標にあるオブジェクトを表す <see cref="T:System.Windows.Forms.AccessibleObject" />。指定した画面座標にオブジェクトがない場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.HitTest%2A>メソッドが返す、<xref:System.Windows.Forms.AccessibleObject>の一部を表す、<xref:System.Windows.Forms.DataGridView>します。 オブジェクト自体が指定した場所にある場合、このメソッドは、呼び出し元のオブジェクトを返します。 次の表では、点について説明します、<xref:System.Windows.Forms.AccessibleObject>を表します。  
+ メソッド<xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.HitTest%2A>は<xref:System.Windows.Forms.AccessibleObject> 、<xref:System.Windows.Forms.DataGridView>の一部を表すを返します。 オブジェクト自体が指定した位置にある場合、このメソッドは呼び出し元のオブジェクトを返します。 次の表では、 <xref:System.Windows.Forms.AccessibleObject>が表す内容について説明します。  
   
-|クリックされた領域|ユーザー補助オブジェクトによって表されるオブジェクト|  
+|クリックされた領域|アクセス可能なオブジェクトによって表されるオブジェクト|  
 |------------------|---------------------------------------------|  
-|列ヘッダー セル|<xref:System.Windows.Forms.DataGridViewColumnHeaderCell>|  
-|行ヘッダー セル|<xref:System.Windows.Forms.DataGridViewRow>|  
-|セル|<xref:System.Windows.Forms.DataGridViewCell>|  
+|列ヘッダーセル|<xref:System.Windows.Forms.DataGridViewColumnHeaderCell>|  
+|行ヘッダーセル|<xref:System.Windows.Forms.DataGridViewRow>|  
+|Cell|<xref:System.Windows.Forms.DataGridViewCell>|  
 |スクロール バー|<xref:System.Windows.Forms.AccessibleObject>|  
   
  ]]></format>
@@ -295,16 +295,16 @@
       <Docs>
         <param name="navigationDirection"><see cref="T:System.Windows.Forms.AccessibleNavigation" /> 値のいずれか 1 つ。</param>
         <summary>他のユーザー補助オブジェクトに移動します。</summary>
-        <returns><see cref="T:System.Windows.Forms.AccessibleObject" />位置指定したオブジェクトを表す<see cref="T:System.Windows.Forms.AccessibleNavigation" />値。</returns>
+        <returns>指定した <see cref="T:System.Windows.Forms.AccessibleObject" /> 値の位置にあるオブジェクトを表す <see cref="T:System.Windows.Forms.AccessibleNavigation" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Windows.Forms.AccessibleNavigation.FirstChild>最初の子を取得する値のユーザー補助オブジェクト、<xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject>を使用して、<xref:System.Windows.Forms.AccessibleNavigation.LastChild>最後の子を取得します。 <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.Navigate%2A>メソッドが返す`null`の他のすべての値、<xref:System.Windows.Forms.AccessibleNavigation>列挙体。  
+ 値を使用して、 <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject>の最初の子ユーザー補助オブジェクトを取得<xref:System.Windows.Forms.AccessibleNavigation.LastChild>し、を使用して最後の子を取得します。 <xref:System.Windows.Forms.AccessibleNavigation.FirstChild> このメソッドは、 `null` <xref:System.Windows.Forms.AccessibleNavigation>列挙体の他のすべての値に対してを返します。 <xref:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject.Navigate%2A>  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出す。 要求値:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 アクセス許可の値。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出す。 要求の値<see cref="F:System.Security.Permissions.SecurityAction.Demand" />:。 アクセス許可値:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="T:System.Windows.Forms.AccessibleNavigation" />
         <altmember cref="T:System.Windows.Forms.AccessibleObject" />
         <altmember cref="T:System.Windows.Forms.DataGridView" />
@@ -327,7 +327,7 @@
         <ReturnType>System.Windows.Forms.AccessibleRole</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>ロールを取得、<see cref="T:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject" />します。</summary>
+        <summary><see cref="T:System.Windows.Forms.DataGridView.DataGridViewAccessibleObject" /> の役割を取得します。</summary>
         <value><see cref="F:System.Windows.Forms.AccessibleRole.Table" /> 値。</value>
         <remarks>To be added.</remarks>
         <altmember cref="F:System.Windows.Forms.AccessibleRole.Table" />

@@ -35,13 +35,13 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter>クラスは、一連のバイトとしての基本的な形式で値型を操作します。 バイトは 8 ビット符号なし整数として定義されます。 <xref:System.BitConverter>クラスに次の表に示すように、バイト配列との間の各プリミティブの種類を変換する静的メソッドが含まれます。  
+ クラス<xref:System.BitConverter>は、値型を基本的な形式で、一連のバイトとして操作するのに役立ちます。 1バイトは8ビット符号なし整数として定義されます。 <xref:System.BitConverter>クラスには、次の表に示すように、各プリミティブ型をバイト配列との間で変換する静的メソッドが含まれています。  
   
-|型|バイトへの変換|変換するバイト|  
+|型|To byte 変換|バイト変換から|  
 |----------|------------------------|--------------------------|  
 |<xref:System.Boolean>|<xref:System.BitConverter.GetBytes%28System.Boolean%29>|<xref:System.BitConverter.ToBoolean%2A>|  
 |<xref:System.Char>|<xref:System.BitConverter.GetBytes%28System.Char%29>|<xref:System.BitConverter.ToChar%2A>|  
-|<xref:System.Double>|<xref:System.BitConverter.GetBytes%28System.Double%29><br /><br /> - または -<br /><br /> <xref:System.BitConverter.DoubleToInt64Bits%28System.Double%29>|<xref:System.BitConverter.ToDouble%2A><br /><br /> - または -<br /><br /> <xref:System.BitConverter.Int64BitsToDouble%2A>|  
+|<xref:System.Double>|<xref:System.BitConverter.GetBytes%28System.Double%29><br /><br /> または<br /><br /> <xref:System.BitConverter.DoubleToInt64Bits%28System.Double%29>|<xref:System.BitConverter.ToDouble%2A><br /><br /> - または -<br /><br /> <xref:System.BitConverter.Int64BitsToDouble%2A>|  
 |<xref:System.Int16>|<xref:System.BitConverter.GetBytes%28System.Int16%29>|<xref:System.BitConverter.ToInt16%2A>|  
 |<xref:System.Int32>|<xref:System.BitConverter.GetBytes%28System.Int32%29>|<xref:System.BitConverter.ToInt32%2A>|  
 |<xref:System.Int64>|<xref:System.BitConverter.GetBytes%28System.Int64%29>|<xref:System.BitConverter.ToInt64%2A>|  
@@ -50,33 +50,33 @@
 |<xref:System.UInt32>|<xref:System.BitConverter.GetBytes%28System.UInt32%29>|<xref:System.BitConverter.ToUInt32%2A>|  
 |<xref:System.UInt64>|<xref:System.BitConverter.GetBytes%28System.UInt64%29>|<xref:System.BitConverter.ToUInt64%2A>|  
   
- 使用する場合<xref:System.BitConverter>メソッド、データのラウンド トリップをことを確認、<xref:System.BitConverter.GetBytes%2A>オーバー ロードと`To`*型*メソッドは、同じ型を指定します。 次の例に示すように、復元を呼び出すことによって、符号付き整数を表す、<xref:System.BitConverter.ToUInt32%2A>メソッドは、元とは異なる値になることができます。 詳細については、エントリを参照してください。[署名のない 10 進とビットごとの値を使用する](https://go.microsoft.com/fwlink/?LinkId=186999)BCL チームのブログにします。  
+ メソッドを使用<xref:System.BitConverter>してデータをラウンドトリップする場合は、 <xref:System.BitConverter.GetBytes%2A>オーバーロードと`To` *type*メソッドが同じ型を指定していることを確認してください。 次の例に示すように、 <xref:System.BitConverter.ToUInt32%2A>メソッドを呼び出すことによって符号付き整数を表す配列を復元すると、元のとは異なる値が返される可能性があります。 詳細については、「BCL チームのブログ」の「[符号付きの非10進数とビットごとの値の使用](https://go.microsoft.com/fwlink/?LinkId=186999)」を参照してください。  
   
  [!code-csharp[System.BitConverter.Class#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.Class/CS/example1.cs#3)]
  [!code-vb[System.BitConverter.Class#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.BitConverter.Class/VB/example1.vb#3)]  
   
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドのオーバー ロード (によって返された整数のビットの順序と、<xref:System.BitConverter.DoubleToInt64Bits%2A>メソッドと、によって返される文字列の 16 進数の順序、<xref:System.BitConverter.ToString%28System.Byte%5B%5D%29>メソッド) かどうかによって異なります、コンピューターのアーキテクチャとは、リトル エンディアンまたはビッグ エンディアンです。 同様に、配列内のバイトの順序によって返されると、 `To`*値をとります*メソッドと<xref:System.BitConverter.ToChar%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。 アーキテクチャのエンディアンがで示される、<xref:System.BitConverter.IsLittleEndian>を返すプロパティ`true`リトル エンディアンのシステムでと`false`ビッグ エンディアン システム。 リトル エンディアンのシステムでは、下位バイトには、上位バイトが前になります。 ビッグ エンディアンのシステムでは、上位バイトには、下位バイトが先頭に置きます。 次の表に 1,234,567,890 (0x499602D2) の整数を渡すことに起因するバイト配列の違いを示しています、<xref:System.BitConverter.GetBytes%28System.Int32%29>メソッド。 バイト数はインデックス 3 バイトのインデックスは 0 バイトから順に表示されます。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドのオーバーロードによって返される配列内のバイトの順序 (およびメソッドによって返される整数<xref:System.BitConverter.DoubleToInt64Bits%2A>のビットの順序、および<xref:System.BitConverter.ToString%28System.Byte%5B%5D%29>メソッドによって返される16進数の文字列の順序) は、コンピューターのアーキテクチャは、リトルエンディアンまたはビッグエンディアンです。 同様に、*整数値*のメソッドと<xref:System.BitConverter.ToChar%2A>メソッドによって返さ`To`れる配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。 アーキテクチャのエンディアンは<xref:System.BitConverter.IsLittleEndian>プロパティによって示されます。このプロパティは、リトルエンディアンシステムおよび`false`ビッグエンディアンシステムでを返し`true`ます。 リトルエンディアンシステムでは、上位バイトの前に下位バイトがあります。 ビッグエンディアンシステムでは、下位バイトの前に上位バイトがあります。 次の表は、整数 1234567890 (0x499602d2) を<xref:System.BitConverter.GetBytes%28System.Int32%29>メソッドに渡すことによって生成されるバイト配列の違いを示しています。 バイトは、インデックス0のバイトからインデックス3のバイトまでの順序で表示されます。  
   
 |||  
 |-|-|  
-|リトル エンディアン|D2 02 96 49|  
-|ビッグ エンディアン|49-96-02-D2|  
+|リトルエンディアン|D2-02-96-49|  
+|ビッグエンディアン|49-96-02-D2|  
   
- いくつかのメソッドの戻り値は、システム アーキテクチャに依存するためコンピューターの境界を超えるバイト データを送信するときに注意が必要になります。  
+ 一部のメソッドの戻り値はシステムアーキテクチャによって異なるため、コンピューターの境界を越えてバイトデータを送信する場合は注意が必要です。  
   
--   同じエンディアンがすべてのシステム データを送受信することが保証され場合、は、データを何も実行が。  
+-   データを送受信するすべてのシステムのエンディアンが同じであることが保証されている場合は、データに対して何も実行されません。  
   
--   エンディアンの異なるデータを送受信する際にシステムの場合は、常に、特定の順序でデータを転送します。 つまり、配列内のバイトの順序は、送信前に、または後を受信する元に戻す必要があります。 一般的な規則では、ネットワークのバイト順 (ビッグ エンディアン順) でデータを転送します。 次の例は、ネットワークのバイト順で整数値を送信するための実装を提供します。  
+-   データを送受信するシステムが異なるエンディアンを持つことができる場合、は常に特定の順序でデータを送信します。 つまり、配列内のバイトの順序は、送信前に、または受け取った後に、元に戻す必要がある場合があります。 一般的な規則では、データをネットワークのバイト順 (ビッグエンディアンの順序) で転送します。 次の例は、ネットワークのバイト順で整数値を送信するための実装を提供します。  
   
      [!code-csharp[System.BitConverter.Class#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.Class/CS/networkorder1.cs#4)]
      [!code-vb[System.BitConverter.Class#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.BitConverter.Class/VB/networkorder1.vb#4)]  
   
--   呼び出すシステム データを送受信することができる場合、別のエンディアンがあり、送信されるデータは、符号付き整数、<xref:System.Net.IPAddress.HostToNetworkOrder%2A?displayProperty=nameWithType>ネットワークのバイト順にデータを変換するメソッドと<xref:System.Net.IPAddress.NetworkToHostOrder%2A?displayProperty=nameWithType>必要な順序に変換する方法受信者。  
+-   データを送受信するシステムがさまざまなエンディアンを持つことができ、転送されるデータが符号<xref:System.Net.IPAddress.HostToNetworkOrder%2A?displayProperty=nameWithType>付き整数で構成されている場合は、 <xref:System.Net.IPAddress.NetworkToHostOrder%2A?displayProperty=nameWithType>メソッドを呼び出して、データをネットワークのバイト順に変換し、メソッドを呼び出して必要な順序に変換します。受信者。  
   
    
   
 ## Examples  
- 次のコード例は、いくつかの使用を示しています。<xref:System.BitConverter>クラス メソッド。  
+ 次のコード例は、いくつか<xref:System.BitConverter>のクラスメソッドの使用方法を示しています。  
   
  [!code-cpp[System.BitConverter.Class#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.Class/CPP/bitconv.cpp#1)]
  [!code-csharp[System.BitConverter.Class#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.Class/CS/bitconv.cs#1)]
@@ -129,17 +129,17 @@
       <Docs>
         <param name="value">変換する数値。</param>
         <summary>指定した倍精度浮動小数点数を 64 ビット符号付き整数に変換します。</summary>
-        <returns>64 ビット符号付き整数値が等しく<paramref name="value" />します。</returns>
+        <returns><paramref name="value" /> と等価の値を持つ 64 ビット符号付き整数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返された整数のビットの順序、<xref:System.BitConverter.DoubleToInt64Bits%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.DoubleToInt64Bits%2A>メソッドによって返される整数のビットの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例がいくつかのビット パターンに変換します<xref:System.Double>値<xref:System.Int64>値で、`DoubleToInt64Bits`メソッド。  
+ 次のコード例では、 <xref:System.Double> `DoubleToInt64Bits`メソッドを使用して<xref:System.Int64> 、複数の値のビットパターンを値に変換します。  
   
  [!code-cpp[System.BitConverter.DoubleInt64#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.DoubleInt64/CPP/dbltobits.cpp#2)]
  [!code-csharp[System.BitConverter.DoubleInt64#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.DoubleInt64/CS/dbltobits.cs#2)]
@@ -159,7 +159,7 @@
         <AssemblyVersion>4.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定されたデータをバイト配列に変換します。</summary>
+        <summary>指定したデータをバイト配列に変換します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="GetBytes">
@@ -204,12 +204,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- バイト配列に変換することができますに戻す、<xref:System.Boolean>値を呼び出すことによって、<xref:System.BitConverter.ToBoolean%2A>メソッド。  
+ メソッド<xref:System.BitConverter.ToBoolean%2A>を呼び出すことにより、バイト<xref:System.Boolean>配列を値に戻すことができます。  
   
    
   
 ## Examples  
- 次の例のビット パターンの変換<xref:System.Boolean>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次の例では、 <xref:System.Boolean> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.Others#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CPP/bytesbool.cpp#1)]
  [!code-csharp[System.BitConverter.GetBytes.Others#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CS/bytesbool.cs#1)]
@@ -256,18 +256,18 @@
       </Parameters>
       <Docs>
         <param name="value">変換する文字。</param>
-        <summary>バイト配列として指定した Unicode 文字値を返します。</summary>
+        <summary>指定した Unicode 文字値をバイト配列として返します。</summary>
         <returns>長さが 2 バイトの配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.Char>(Unicode 文字) の値を<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.Char> `GetBytes`メソッドを使用して、値の<xref:System.Byte>ビットパターン (Unicode 文字) を配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.Others#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CPP/byteschar.cpp#2)]
  [!code-csharp[System.BitConverter.GetBytes.Others#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CS/byteschar.cs#2)]
@@ -319,18 +319,18 @@
       </Parameters>
       <Docs>
         <param name="value">変換する数値。</param>
-        <summary>バイト配列として指定した倍精度浮動小数点値を返します。</summary>
+        <summary>指定した倍精度浮動小数点値をバイト配列として返します。</summary>
         <returns>長さが 8 バイトの配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.Double>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.Double> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.Others#4](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CPP/bytesdouble.cpp#4)]
  [!code-csharp[System.BitConverter.GetBytes.Others#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CS/bytesdouble.cs#4)]
@@ -382,18 +382,18 @@
       </Parameters>
       <Docs>
         <param name="value">変換する数値。</param>
-        <summary>指定した 16 ビット符号付き整数値のバイト配列として返します。</summary>
+        <summary>指定した 16 ビットの符号なし整数値をバイト配列として返します。</summary>
         <returns>長さが 2 バイトの配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.Int16>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.Int16> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.SInts#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.SInts/CPP/bytesint16.cpp#3)]
  [!code-csharp[System.BitConverter.GetBytes.SInts#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.SInts/CS/bytesint16.cs#3)]
@@ -451,12 +451,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.Int32>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.Int32> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.SInts#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.SInts/CPP/bytesint32.cpp#2)]
  [!code-csharp[System.BitConverter.GetBytes.SInts#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.SInts/CS/bytesint32.cs#2)]
@@ -514,12 +514,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.BitConverter.GetBytes%2A>内の各要素に変換するメソッド、<xref:System.Int64>配列を<xref:System.Byte>配列。  
+ 次の例では<xref:System.BitConverter.GetBytes%2A> 、メソッドを呼び出して、 <xref:System.Int64>配列内の各<xref:System.Byte>要素を配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.SInts#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.SInts/CPP/bytesint64.cpp#1)]
  [!code-csharp[System.BitConverter.GetBytes.SInts#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.SInts/CS/bytesint64.cs#1)]
@@ -571,18 +571,18 @@
       </Parameters>
       <Docs>
         <param name="value">変換する数値。</param>
-        <summary>バイト配列として指定した単精度浮動小数点値を返します。</summary>
+        <summary>指定した単精度浮動小数点値をバイト配列として返します。</summary>
         <returns>長さが 4 バイトの配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.Single>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.Single> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.Others#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CPP/bytessingle.cpp#3)]
  [!code-csharp[System.BitConverter.GetBytes.Others#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.Others/CS/bytessingle.cs#3)]
@@ -634,18 +634,18 @@
       </Parameters>
       <Docs>
         <param name="value">変換する数値。</param>
-        <summary>指定した 16 ビット符号なし整数値のバイト配列として返します。</summary>
+        <summary>指定した 16 ビットの符号なし整数値をバイト配列として返します。</summary>
         <returns>長さが 2 バイトの配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.UInt16>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.UInt16> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.UInts#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.UInts/CPP/bytesuint16.cpp#3)]
  [!code-csharp[System.BitConverter.GetBytes.UInts#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.UInts/CS/bytesuint16.cs#3)]
@@ -703,12 +703,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.UInt32>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.UInt32> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.UInts#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.UInts/CPP/bytesuint32.cpp#2)]
  [!code-csharp[System.BitConverter.GetBytes.UInts#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.UInts/CS/bytesuint32.cs#2)]
@@ -766,12 +766,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返される配列内のバイトの順序、<xref:System.BitConverter.GetBytes%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.GetBytes%2A>メソッドによって返される配列内のバイトの順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例のビット パターンの変換<xref:System.UInt64>値<xref:System.Byte>で配列、`GetBytes`メソッド。  
+ 次のコード例では、 <xref:System.UInt64> `GetBytes`メソッドを使用し<xref:System.Byte>て、値のビットパターンを配列に変換します。  
   
  [!code-cpp[System.BitConverter.GetBytes.UInts#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.UInts/CPP/bytesuint64.cpp#1)]
  [!code-csharp[System.BitConverter.GetBytes.UInts#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.GetBytes.UInts/CS/bytesuint64.cs#1)]
@@ -857,17 +857,17 @@
       <Docs>
         <param name="value">変換する数値。</param>
         <summary>指定した 64 ビット符号付き整数を倍精度浮動小数点数に変換します。</summary>
-        <returns>値は倍精度浮動小数点数<paramref name="value" />します。</returns>
+        <returns><paramref name="value" /> と等価の値を持つ倍精度浮動小数点数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 通常、`value`によって返される整数、<xref:System.BitConverter.DoubleToInt64Bits%2A>メソッド。  
+ 通常、 `value`は、 <xref:System.BitConverter.DoubleToInt64Bits%2A>メソッドによって返される整数です。  
   
    
   
 ## Examples  
- 次のコード例がいくつかのビット パターンに変換します<xref:System.Int64>値<xref:System.Double>値で、`Int64BitsToDouble`メソッド。  
+ 次のコード例では、 <xref:System.Int64> `Int64BitsToDouble`メソッドを使用して<xref:System.Double> 、複数の値のビットパターンを値に変換します。  
   
  [!code-cpp[System.BitConverter.DoubleInt64#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.DoubleInt64/CPP/bitstodbl.cpp#1)]
  [!code-csharp[System.BitConverter.DoubleInt64#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.DoubleInt64/CS/bitstodbl.cs#1)]
@@ -915,15 +915,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 異なるコンピューター アーキテクチャでは、異なるバイト順を使用してデータを格納します。 「ビッグ エンディアン」では、単語の左の端が最上位バイトを意味します。 「リトル エンディアン」では、単語の右端の位置が最上位バイトを意味します。  
+ コンピューターアーキテクチャによって、異なるバイト順を使用してデータが格納します。 "ビッグエンディアン" とは、最上位バイトが単語の左端にあることを意味します。 "リトルエンディアン" とは、最上位バイトが単語の右端にあることを意味します。  
   
 > [!NOTE]
->  値を取得せず、ホスト コンピューターのバイト順ネットワークのバイト順からを変換できます、<xref:System.BitConverter.IsLittleEndian?displayProperty=nameWithType>フィールドに 16 ビット、32 ビットまたは 64 ビット整数を渡すことによって、<xref:System.Net.IPAddress.HostToNetworkOrder%2A?displayProperty=nameWithType>メソッド。  
+>  16ビット、32ビット、または64ビットの整数を<xref:System.BitConverter.IsLittleEndian?displayProperty=nameWithType> <xref:System.Net.IPAddress.HostToNetworkOrder%2A?displayProperty=nameWithType>メソッドに渡すことによって、フィールドの値を取得せずに、ネットワークのバイト順からホストコンピューターのバイト順に変換できます。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、`IsLittleEndian`フィールド。  
+ 次のコード例は、 `IsLittleEndian`フィールドの使用方法を示しています。  
   
  [!code-cpp[System.BitConverter.Class#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.Class/CPP/littleend.cpp#2)]
  [!code-csharp[System.BitConverter.Class#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.Class/CS/littleend.cs#2)]
@@ -1037,17 +1037,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内のバイトのインデックス。</param>
         <summary>バイト配列内の指定位置にあるバイトから変換されたブール値を返します。</summary>
-        <returns><see langword="true" /> 場合にあるバイト<paramref name="startIndex" />で<paramref name="value" />が 0 以外。 それ以外の場合、<see langword="false" />します。</returns>
+        <returns><paramref name="startIndex" /> の <paramref name="value" /> にあるバイトが 0 以外の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 変換する、<xref:System.Boolean>を呼び出し、バイト形式の値、<xref:System.BitConverter.GetBytes(System.Boolean)>メソッド。  
+ 値を<xref:System.Boolean>バイト表現に変換するには、 <xref:System.BitConverter.GetBytes(System.Boolean)>メソッドを呼び出します。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.Boolean>値で、`ToBoolean`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.Boolean>使用して`ToBoolean` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.Others#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CPP/batobool.cpp#1)]
  [!code-csharp[System.BitConverter.ToXXX.Others#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CS/batobool.cs#1)]
@@ -1055,8 +1055,8 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.Boolean)" />
       </Docs>
     </Member>
@@ -1131,17 +1131,17 @@
         <param name="value">配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 2 バイトから変換された Unicode 文字を返します。</summary>
-        <returns>始まる 2 バイトで構成される文字<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 2 バイトで構成される文字。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToChar%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 1 に、<xref:System.Char>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください、<xref:System.BitConverter>クラスに関するトピック。  
+ メソッド<xref:System.BitConverter.ToChar%2A>は、インデックス`startIndex`から + 1 <xref:System.Char>に`startIndex`バイトを値に変換します。 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、 <xref:System.BitConverter>クラスのトピックの「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.Char>値 (Unicode 文字) を`ToChar`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.Char>使用して、 `ToChar`配列の要素を値 (Unicode 文字) に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.Others#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CPP/batochar.cpp#2)]
  [!code-csharp[System.BitConverter.ToXXX.Others#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CS/batochar.cs#2)]
@@ -1149,9 +1149,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> 長さと等しい<paramref name="value" />-1。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 1 を引いた値です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.Char)" />
       </Docs>
     </Member>
@@ -1231,17 +1231,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 8 バイトから変換された倍精度浮動小数点数を返します。</summary>
-        <returns>倍精度浮動小数点数がから始まる 8 バイトで構成される<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 8 バイトで構成される倍精度浮動小数点数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToDouble%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 7 を、<xref:System.Double>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください、<xref:System.BitConverter>クラスに関するトピック。  
+ メソッド<xref:System.BitConverter.ToDouble%2A>は、 `startIndex` インデックスの<xref:System.Double>バイトを+7から値に変換します。`startIndex` 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、 <xref:System.BitConverter>クラスのトピックの「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.Double>値で、`ToDouble`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.Double>使用して`ToDouble` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.Others#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CPP/batodouble.cpp#3)]
  [!code-csharp[System.BitConverter.ToXXX.Others#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CS/batodouble.cs#3)]
@@ -1249,9 +1249,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> 長さ以上<paramref name="value" />から 7 を引いたの長さ以下<paramref name="value" />-1。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 7 を引いた値以上で、<paramref name="value" /> の長さから 1 を引いた値以下です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.Double)" />
       </Docs>
     </Member>
@@ -1331,17 +1331,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 2 バイトから変換された 16 ビット符号付き整数を返します。</summary>
-        <returns>16 ビット符号付き整数がから始まる 2 バイトで構成される<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 2 バイトで構成される 16 ビット符号付き整数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToInt16%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 1 に、<xref:System.Int16>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください、<xref:System.BitConverter>クラスに関するトピック。  
+ メソッド<xref:System.BitConverter.ToInt16%2A>は、インデックス`startIndex`から + 1 <xref:System.Int16>に`startIndex`バイトを値に変換します。 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、 <xref:System.BitConverter>クラスのトピックの「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.Int16>値で、`ToInt16`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.Int16>使用して`ToInt16` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.SInts#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.SInts/CPP/batoint16.cpp#1)]
  [!code-csharp[System.BitConverter.ToXXX.SInts#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.SInts/CS/batoint16.cs#1)]
@@ -1349,9 +1349,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> 長さと等しい<paramref name="value" />-1。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 1 を引いた値です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.Int16)" />
       </Docs>
     </Member>
@@ -1431,17 +1431,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 4 バイトから変換された 32 ビット符号付き整数を返します。</summary>
-        <returns>32 ビット符号付き整数がから始まる 4 バイトで構成される<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 4 バイトで構成される 32 ビット符号付き整数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToInt32%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 3、<xref:System.Int32>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください。<xref:System.BitConverter>します。  
+ メソッド<xref:System.BitConverter.ToInt32%2A>は、インデックス`startIndex`から + 3 <xref:System.Int32>に`startIndex`バイトを値に変換します。 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、「」の<xref:System.BitConverter>「解説」を参照してください。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.BitConverter.ToInt32%2A>メソッドを作成する<xref:System.Int32>値と、8 バイトの配列の上限の 4 バイト 4 バイトの配列から。 また、使用、<xref:System.BitConverter.GetBytes%28System.Int32%29>と<xref:System.BitConverter.ToInt32%2A>ラウンドト リップさせる方法、<xref:System.Int32>値。  
+ 次の例では<xref:System.BitConverter.ToInt32%2A> 、メソッドを<xref:System.Int32>使用して、4バイト配列と8バイト配列の上位4バイトから値を作成します。 また、メソッド<xref:System.BitConverter.GetBytes%28System.Int32%29>と<xref:System.BitConverter.ToInt32%2A>メソッドを使用して<xref:System.Int32>値をラウンドトリップします。  
   
  [!code-csharp[System.BitConverter.ToInt32#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.bitconverter.toint32/cs/toint32.cs#1)]
  [!code-vb[System.BitConverter.ToInt32#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.bitconverter.toint32/vb/toint32.vb#1)]  
@@ -1449,8 +1449,8 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 3 を引いた値以上で、<paramref name="value" /> の長さから 1 を引いた値以下です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.Int32)" />
       </Docs>
     </Member>
@@ -1530,17 +1530,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 8 バイトから変換された 64 ビット符号付き整数を返します。</summary>
-        <returns>64 ビット符号付き整数がから始まる 8 バイトで構成される<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 8 バイトで構成される 64 ビット符号付き整数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToInt64%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 7 を、<xref:System.Int64>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください、<xref:System.BitConverter>クラスに関するトピック。  
+ メソッド<xref:System.BitConverter.ToInt64%2A>は、 `startIndex` インデックスの<xref:System.Int64>バイトを+7から値に変換します。`startIndex` 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、 <xref:System.BitConverter>クラスのトピックの「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.Int64>値で、`ToInt64`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.Int64>使用して`ToInt64` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.SInts#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.SInts/CPP/batoint64.cpp#3)]
  [!code-csharp[System.BitConverter.ToXXX.SInts#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.SInts/CS/batoint64.cs#3)]
@@ -1548,9 +1548,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> 長さ以上<paramref name="value" />から 7 を引いたの長さ以下<paramref name="value" />-1。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 7 を引いた値以上で、<paramref name="value" /> の長さから 1 を引いた値以下です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.Int64)" />
       </Docs>
     </Member>
@@ -1630,17 +1630,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 4 バイトから変換された単精度浮動小数点数を返します。</summary>
-        <returns>単精度浮動小数点数の形式で始まる 4 バイトで<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 4 バイトで構成される単精度浮動小数点数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToSingle%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 3、<xref:System.Single>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください。<xref:System.BitConverter>します。  
+ メソッド<xref:System.BitConverter.ToSingle%2A>は、インデックス`startIndex`から + 3 <xref:System.Single>に`startIndex`バイトを値に変換します。 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、「」の<xref:System.BitConverter>「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.Single>値で、`ToSingle`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.Single>使用して`ToSingle` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.Others#4](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CPP/batosingle.cpp#4)]
  [!code-csharp[System.BitConverter.ToXXX.Others#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.Others/CS/batosingle.cs#4)]
@@ -1649,8 +1649,8 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 3 を引いた値以上で、<paramref name="value" /> の長さから 1 を引いた値以下です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.Single)" />
       </Docs>
     </Member>
@@ -1663,7 +1663,7 @@
         <AssemblyVersion>4.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定されたバイト配列の各要素の数値の値を等価の 16 進数文字列形式に変換します。</summary>
+        <summary>指定されたバイト配列の各要素の数値をそれと等価な 16 進数文字列形式に変換します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="ToString">
@@ -1702,18 +1702,18 @@
       </Parameters>
       <Docs>
         <param name="value">バイト配列。</param>
-        <summary>指定されたバイト配列の各要素の数値の値を等価の 16 進数文字列形式に変換します。</summary>
-        <returns>16 進数のペアの文字列が対応する要素を表す、ハイフンで区切られた<paramref name="value" />。 たとえば、"7 f-2c-4A-00"です。</returns>
+        <summary>指定されたバイト配列の各要素の数値をそれと等価な 16 進数文字列形式に変換します。</summary>
+        <returns><paramref name="value" /> 内の対応する要素を表す 16 進値がハイフンで区切られている文字列 ("7F-2C-4A-00" など)。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- すべての要素`value`変換されます。 によって返される文字列の 16 進数の順序、<xref:System.BitConverter.ToString%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ のすべての`value`要素が変換されます。 <xref:System.BitConverter.ToString%2A>メソッドによって返される16進文字列の順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例に変換します<xref:System.Byte>に配列<xref:System.String>オブジェクトを`ToString`メソッド。  
+ 次のコード例で<xref:System.Byte>は、 <xref:System.String> `ToString`メソッドを使用して配列をオブジェクトに変換します。  
   
  [!code-cpp[System.BitConverter.ToString#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToString/CPP/batostring.cpp#1)]
  [!code-csharp[System.BitConverter.ToString#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToString/CS/batostring.cs#1)]
@@ -1721,7 +1721,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -1762,18 +1762,18 @@
       <Docs>
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
-        <summary>バイトの指定した部分配列の各要素の数値の値を等価の 16 進数文字列形式に変換します。</summary>
-        <returns>部分配列の対応する要素を表す、ハイフンで区切られた 16 進数のペアの文字列<paramref name="value" />。 たとえば、"7 f-2c-4A-00"です。</returns>
+        <summary>指定されたバイト サブ配列の各要素の数値をそれと等価な 16 進数文字列形式に変換します。</summary>
+        <returns><paramref name="value" /> のサブ配列内の対応する要素を表す 16 進値がハイフンで区切られている文字列 ("7F-2C-4A-00" など)。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 配列の位置から要素`startIndex`配列の末尾に変換されます。 によって返される文字列の 16 進数の順序、<xref:System.BitConverter.ToString%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ 配列の位置`startIndex`から配列の末尾までの要素が変換されます。 <xref:System.BitConverter.ToString%2A>メソッドによって返される16進文字列の順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次のコード例の一部の変換、 <xref:System.Byte> 、指定した配列`startIndex`を<xref:System.String>で、`ToString`メソッド。  
+ 次のコード例で<xref:System.Byte>は、 `ToString`メソッドを<xref:System.String>使用して、指定`startIndex`したで始まる配列の部分をに変換します。  
   
  [!code-cpp[System.BitConverter.ToString#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToString/CPP/batostringii.cpp#2)]
  [!code-csharp[System.BitConverter.ToString#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToString/CS/batostringii.cs#2)]
@@ -1781,8 +1781,8 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -1824,21 +1824,21 @@
       <Docs>
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
-        <param name="length">配列要素の数<paramref name="value" />に変換します。</param>
-        <summary>バイトの指定した部分配列の各要素の数値の値を等価の 16 進数文字列形式に変換します。</summary>
-        <returns>部分配列の対応する要素を表す、ハイフンで区切られた 16 進数のペアの文字列<paramref name="value" />。 たとえば、"7 f-2c-4A-00"です。</returns>
+        <param name="length">変換する <paramref name="value" /> の配列要素の数。</param>
+        <summary>指定されたバイト サブ配列の各要素の数値をそれと等価な 16 進数文字列形式に変換します。</summary>
+        <returns><paramref name="value" /> のサブ配列内の対応する要素を表す 16 進値がハイフンで区切られている文字列 ("7F-2C-4A-00" など)。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `length`要素配列位置から`startIndex`変換されます。 場合`length`が 0 を返します<xref:System.String.Empty?displayProperty=nameWithType>します。  
+ 配列の位置`startIndex`からの要素が変換されます。`length` が`length` 0 に等しい場合、メソッド<xref:System.String.Empty?displayProperty=nameWithType>はを返します。  
   
- によって返される文字列の 16 進数の順序、<xref:System.BitConverter.ToString%2A>メソッドは、コンピューターのアーキテクチャがリトル エンディアンまたはビッグ エンディアンがかどうかによって異なります。  
+ <xref:System.BitConverter.ToString%2A>メソッドによって返される16進文字列の順序は、コンピューターのアーキテクチャがリトルエンディアンであるか、ビッグエンディアンであるかによって異なります。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.BitConverter.ToString%2A>に、指定したバイト配列の一部を変換するメソッド`startIndex`と指定した`length`文字列にします。  
+ 次の例では<xref:System.BitConverter.ToString%2A> 、メソッドを使用して、指定さ`startIndex`れたで始まり、指定`length`したを使用して、バイト配列の一部を文字列に変換します。  
   
  [!code-cpp[System.BitConverter.ToString#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToString/CPP/batostringii.cpp#2)]
  [!code-csharp[System.BitConverter.ToString#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToString/CS/batostringii.cs#2)]
@@ -1846,12 +1846,12 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> または <paramref name="length" /> が 0 未満です。  
   
 - または - 
- <paramref name="startIndex" /> 0 より大きいがの長さ以上<paramref name="value" />します。</exception>
-        <exception cref="T:System.ArgumentException">組み合わせ<paramref name="startIndex" />と<paramref name="length" />内の位置を指定しない<paramref name="value" />。 つまり、<paramref name="startIndex" />パラメーターがの長さより大きい<paramref name="value" />マイナス、<paramref name="length" />パラメーター。</exception>
+ <paramref name="startIndex" /> が 0 より大きく、<paramref name="value" /> の長さ以上になっています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> と <paramref name="length" /> の組み合わせが、<paramref name="value" /> 内の位置を指定していません。つまり、<paramref name="startIndex" /> パラメーターが、<paramref name="value" /> の長さから <paramref name="length" /> パラメーターの値を減算した値より大きくなっています。</exception>
       </Docs>
     </Member>
     <Member MemberName="ToUInt16">
@@ -1935,17 +1935,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 2 バイトから変換された 16 ビット符号なし整数を返します。</summary>
-        <returns>16 ビット符号なし整数がから始まる 2 バイトで構成される<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 2 バイトで構成される 16 ビット符号なし整数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToUInt16%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 1 に、<xref:System.UInt16>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください、<xref:System.BitConverter>クラスに関するトピック。  
+ メソッド<xref:System.BitConverter.ToUInt16%2A>は、インデックス`startIndex`から + 1 <xref:System.UInt16>に`startIndex`バイトを値に変換します。 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、 <xref:System.BitConverter>クラスのトピックの「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.UInt16>値で、`ToUInt16`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.UInt16>使用して`ToUInt16` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.UInts#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.UInts/CPP/batouint16.cpp#1)]
  [!code-csharp[System.BitConverter.ToXXX.UInts#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.UInts/CS/batouint16.cs#1)]
@@ -1953,9 +1953,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> 長さと等しい<paramref name="value" />-1。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 1 を引いた値です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.UInt16)" />
       </Docs>
     </Member>
@@ -2040,17 +2040,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 4 バイトから変換された 32 ビット符号なし整数を返します。</summary>
-        <returns>32 ビット符号なし整数がから始まる 4 バイトで構成される<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 4 バイトで構成される 32 ビット符号なし整数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToUInt32%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 3、<xref:System.UInt32>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください、<xref:System.BitConverter>クラスに関するトピック。  
+ メソッド<xref:System.BitConverter.ToUInt32%2A>は、インデックス`startIndex`から + 3 <xref:System.UInt32>に`startIndex`バイトを値に変換します。 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、 <xref:System.BitConverter>クラスのトピックの「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.UInt32>値で、`ToUInt32`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.UInt32>使用して`ToUInt32` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.UInts#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.UInts/CPP/batouint32.cpp#2)]
  [!code-csharp[System.BitConverter.ToXXX.UInts#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.UInts/CS/batouint32.cs#2)]
@@ -2059,8 +2059,8 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 3 を引いた値以上で、<paramref name="value" /> の長さから 1 を引いた値以下です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.UInt32)" />
       </Docs>
     </Member>
@@ -2145,17 +2145,17 @@
         <param name="value">バイト配列。</param>
         <param name="startIndex"><paramref name="value" /> 内の開始位置。</param>
         <summary>バイト配列内の指定位置にある 8 バイトから変換された 64 ビット符号なし整数を返します。</summary>
-        <returns>64 ビット符号なし整数がから始まる 8 バイトで構成される<paramref name="startIndex" />します。</returns>
+        <returns><paramref name="startIndex" /> から始まる 8 バイトで構成される 64 ビット符号なし整数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.BitConverter.ToUInt64%2A>メソッドは、インデックスからのバイトを変換します。`startIndex`に`startIndex`+ 7 を、<xref:System.UInt64>値。 配列内のバイトの順序は、コンピューター システムのアーキテクチャのエンディアンを反映する必要があります。詳細については、の「解説」を参照してください、<xref:System.BitConverter>クラスに関するトピック。  
+ メソッド<xref:System.BitConverter.ToUInt64%2A>は、 `startIndex` インデックスの<xref:System.UInt64>バイトを+7から値に変換します。`startIndex` 配列内のバイトの順序は、コンピューターシステムのアーキテクチャのエンディアンを反映している必要があります。詳細については、 <xref:System.BitConverter>クラスのトピックの「解説」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例の要素を変換する<xref:System.Byte>に配列<xref:System.UInt64>値で、`ToUInt64`メソッド。  
+ 次のコード例では、 <xref:System.Byte>メソッドを<xref:System.UInt64>使用して`ToUInt64` 、配列の要素を値に変換します。  
   
  [!code-cpp[System.BitConverter.ToXXX.UInts#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.UInts/CPP/batouint64.cpp#3)]
  [!code-csharp[System.BitConverter.ToXXX.UInts#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.BitConverter.ToXXX.UInts/CS/batouint64.cs#3)]
@@ -2163,9 +2163,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> 長さ以上<paramref name="value" />から 7 を引いたの長さ以下<paramref name="value" />-1。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> 0 の長さより大きいか小さい<paramref name="value" />-1。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="startIndex" /> が <paramref name="value" /> の長さから 7 を引いた値以上で、<paramref name="value" /> の長さから 1 を引いた値以下です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex" /> が 0 未満か、<paramref name="value" /> の長さから 1 を引いた値より大きい値です。</exception>
         <altmember cref="M:System.BitConverter.GetBytes(System.UInt64)" />
       </Docs>
     </Member>

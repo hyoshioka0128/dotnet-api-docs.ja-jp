@@ -1,5 +1,5 @@
 <Type Name="PeerResolverMode" FullName="System.ServiceModel.PeerResolvers.PeerResolverMode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="91da328db795821ba359229931ca753b449909ce" /><Meta Name="ms.sourcegitcommit" Value="f1d16425528e237257ca3b58eb49217a514849ea" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="04/24/2019" /><Meta Name="ms.locfileid" Value="64031136" /></Metadata><TypeSignature Language="C#" Value="public enum PeerResolverMode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="b680a3da7acb95e131b0a6409eb5c578ead28816" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686333" /></Metadata><TypeSignature Language="C#" Value="public enum PeerResolverMode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PeerResolverMode extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.PeerResolvers.PeerResolverMode" />
   <TypeSignature Language="VB.NET" Value="Public Enum PeerResolverMode" />
@@ -18,9 +18,12 @@
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
-## Remarks  
- 指定したピア リゾルバーが使用できない場合、リゾルバーを使用しようとすると <xref:System.InvalidOperationException> がスローされます。  
-  
+## Remarks
+
+指定したピアリゾルバーが使用でき<xref:System.InvalidOperationException>ない場合は、競合回避モジュールを使用しようとしたときにがスローされます。
+
+`Auto`が指定されている場合は、カスタム競合回避モジュールが使用されます (使用可能な場合)。 利用できない場合は、PNRP ピア リゾルバーを使用します。 <xref:System.ServiceModel.PeerResolvers.PeerCustomResolverSettings.Address%2A?displayProperty=nameWithType> プロパティおよび <xref:System.ServiceModel.PeerResolvers.PeerCustomResolverSettings.Binding%2A?displayProperty=nameWithType> プロパティが設定されている場合、ピア リゾルバーは "利用できる" と見なされます。
+
  ]]></format>
     </remarks>
   </Docs>
@@ -44,14 +47,6 @@
       <MemberValue>0</MemberValue>
       <Docs>
         <summary>バインディングで設定されている情報から、使用するリゾルバーの種類を自動的に決定します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 利用できる場合は、カスタム リゾルバーを使用します。  利用できない場合は、PNRP ピア リゾルバーを使用します。 <xref:System.ServiceModel.PeerResolvers.PeerCustomResolverSettings.Address%2A> プロパティおよび <xref:System.ServiceModel.PeerResolvers.PeerCustomResolverSettings.Binding%2A> プロパティが設定されている場合、ピア リゾルバーは "利用できる" と見なされます。  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Custom">

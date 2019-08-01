@@ -41,26 +41,26 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>宣言型と命令型の両方のセキュリティ アクションに対して定義された言語コンストラクトを使用した、アクティブなプリンシパルに対するチェックを許可します (<see cref="T:System.Security.Principal.IPrincipal" /> を参照)。 このクラスは継承できません。</summary>
+    <summary>宣言セキュリティ アクションと強制セキュリティ アクションの両方のために定義された言語構成要素を使用して、アクティブ プリンシパル (<see cref="T:System.Security.Principal.IPrincipal" /> のトピックを参照) をチェックできるようにします。 このクラスは継承できません。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Id 情報 (ユーザー名とロール) をコンス トラクターに渡すことによって<xref:System.Security.Permissions.PrincipalPermission>アクティブなプリンシパルの id がこの情報と一致することを要求するために使用できます。  
+ Id 情報 (ユーザー名とロール) をコンストラクターに渡すことで<xref:System.Security.Permissions.PrincipalPermission> 、を使用して、アクティブなプリンシパルの id がこの情報と一致することを要求できます。  
   
- アクティブなを一致するように<xref:System.Security.Principal.IPrincipal>と関連付けられた<xref:System.Security.Principal.IIdentity>、指定した id とロールの両方に一致する必要があります。 場合`null`id 文字列を使用すると、任意の id に一致する要求として解釈されます。 使用`null`ロール文字列は任意のロールに一致します。 黙示的、渡す`null`パラメーター`name`または`role`に<xref:System.Security.Permissions.PrincipalPermission>は identity とロールのいずれかに一致<xref:System.Security.Principal.IPrincipal>。 構築することも、<xref:System.Security.Permissions.PrincipalPermission>のみを決定するかどうか、<xref:System.Security.Principal.IIdentity>認証済みまたは認証されていないエンティティを表します。 この場合、`name`と`role`は無視されます。  
+ アクティブな<xref:System.Security.Principal.IPrincipal>と関連付けら<xref:System.Security.Principal.IIdentity>れているを一致させるには、指定した id とロールの両方が一致する必要があります。 Id `null`文字列が使用されている場合は、任意の id と一致する要求として解釈されます。 Role 文字列`null`の使用は、どのロールとも一致します。 暗黙的に、また`null`は`name` `role` の<xref:System.Security.Permissions.PrincipalPermission>パラメーターを渡すと、任意<xref:System.Security.Principal.IPrincipal>のの id およびロールと一致します。 が、認証されたエンティティ<xref:System.Security.Permissions.PrincipalPermission>と認証されて<xref:System.Security.Principal.IIdentity>いないエンティティのどちらを表しているかを判断するためにのみ、を構築することもできます。 この場合、 `name`および`role`は無視されます。  
   
- その他のほとんどのアクセス許可とは異なり<xref:System.Security.Permissions.PrincipalPermission>は拡張されません<xref:System.Security.CodeAccessPermission>します。 ただし、実装して、<xref:System.Security.IPermission>インターフェイス。 これは、ため<xref:System.Security.Permissions.PrincipalPermission>; コード アクセス許可ではありませんは、それが付与されていない実行アセンブリの id に基づきます。 代わりに、操作を実行するコードを許可 (<xref:System.Security.Permissions.PrincipalPermission.Demand%2A>、 <xref:System.Security.Permissions.PrincipalPermission.Union%2A>、<xref:System.Security.Permissions.PrincipalPermission.Intersect%2A>など) コードへのアクセスとコードの id アクセス許可の方法と一貫性のある方法では、現在のユーザー id に対してこれらのアクションが実行されます。  
+ 他のほとんどのアクセス<xref:System.Security.Permissions.PrincipalPermission>許可とは<xref:System.Security.CodeAccessPermission>異なり、はを拡張しません。 ただし、インターフェイスは<xref:System.Security.IPermission>実装されています。 これは、 <xref:System.Security.Permissions.PrincipalPermission>がコードアクセス許可ではなく、実行しているアセンブリの id に基づいて付与されていないためです。 代わりに、コードアクセスとコード id のアクセス<xref:System.Security.Permissions.PrincipalPermission.Demand%2A>許可に<xref:System.Security.Permissions.PrincipalPermission.Intersect%2A>対するアクションの実行方法と一貫性のある方法で、コードが現在のユーザー id に対してアクション (、 <xref:System.Security.Permissions.PrincipalPermission.Union%2A>、など) を実行できるようにします。  
   
 > [!IMPORTANT]
->  プリンシパル アクセス許可を要求する前に、プリンシパルのポリシーを現在のアプリケーション ドメインの列挙値に設定するために必要な<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>します。 プリンシパルのポリシーの設定既定では、<xref:System.Security.Principal.PrincipalPolicy.UnauthenticatedPrincipal>します。 プリンシパルのポリシー設定しない場合<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>、プリンシパルのアクセス許可の要求が失敗します。 プリンシパルのアクセス許可を要求する前に、次のコードを実行する必要があります。  
+>  プリンシパルのアクセス許可を要求する前に、現在のアプリケーションドメインのプリンシパルポリシーを列挙値<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>に設定する必要があります。 既定では、プリンシパルポリシーはに<xref:System.Security.Principal.PrincipalPolicy.UnauthenticatedPrincipal>設定されています。 プリンシパルポリシーをに<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>設定しなかった場合、プリンシパルのアクセス許可に対する要求は失敗します。 プリンシパルのアクセス許可が要求される前に、次のコードを実行する必要があります。  
 >   
 >  `AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal).`  
   
    
   
 ## Examples  
- 次の例では、アクティブなプリンシパルには、管理者が必要です。 `name`パラメーターが`null`、これにより、管理者の要求を渡すには、すべてのユーザー。  
+ 次の例では、アクティブなプリンシパルが管理者である必要があります。 パラメーターはです`null`。これにより、管理者であるすべてのユーザーが要求を渡すことができます。 `name`  
   
 > [!NOTE]
 >  Windows Vista では、ユーザー アカウント制御 (UAC: User Account Control) でユーザーの権限が決定されます。 ユーザーが組み込みの Administrators グループのメンバーである場合、そのユーザーには標準ユーザー アクセス トークンおよび管理者アクセス トークンの 2 つのランタイム アクセス トークンが割り当てられています。 既定では、ユーザーは標準ユーザー ロールに所属します。 管理者であることを要求するコードを実行するには、最初に、ユーザーの権限を標準ユーザーから管理者に昇格させる必要があります。 この操作は、アプリケーションの起動時にアプリケーション アイコンを右クリックし、管理者として実行することを指定して行うことができます。  
@@ -115,10 +115,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `None` 認証されていないプリンシパルのみに一致 (<xref:System.Security.Permissions.PrincipalPermissionAttribute.Name%2A>空の文字列 ("")、no <xref:System.Security.Permissions.PrincipalPermissionAttribute.Role%2A>、<xref:System.Security.Permissions.PrincipalPermissionAttribute.Authenticated%2A>は`false`)。 `Unrestricted` すべてのプリンシパルと一致する (<xref:System.Security.Permissions.PrincipalPermissionAttribute.Name%2A>は`null`、<xref:System.Security.Permissions.PrincipalPermissionAttribute.Role%2A>は`null`)。  
+ `None`は、認証されて<xref:System.Security.Permissions.PrincipalPermissionAttribute.Name%2A>いないプリンシパルにのみ一致します (は空<xref:System.Security.Permissions.PrincipalPermissionAttribute.Authenticated%2A>の`false`文字列 ("")、no <xref:System.Security.Permissions.PrincipalPermissionAttribute.Role%2A>、is)。 `Unrestricted`すべてのプリンシパル (<xref:System.Security.Permissions.PrincipalPermissionAttribute.Name%2A> is `null`、 <xref:System.Security.Permissions.PrincipalPermissionAttribute.Role%2A> is `null`) に一致します。  
   
 > [!NOTE]
->  このコンス トラクターは、他のアクセス許可の設計との一貫性が含まれますが、実際の用途ではありません。  
+>  このコンストラクターは、他のアクセス許可の設計との一貫性を維持するために用意されていますが、実際には役に立ちません。  
   
  ]]></format>
         </remarks>
@@ -151,21 +151,21 @@
         <Parameter Name="role" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name"><see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーの名前</param>
-        <param name="role">管理者など、<see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーのロール。</param>
-        <summary>指定した <paramref name="name" /> および <paramref name="role" /> の <see cref="T:System.Security.Permissions.PrincipalPermission" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="name"><see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーの名前。</param>
+        <param name="role"><see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーのロール。たとえば、管理者。</param>
+        <summary>指定した <paramref name="name" /> と <paramref name="role" /> を使用して <see cref="T:System.Security.Permissions.PrincipalPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 両方の`name`パラメーターおよび`role`パラメーターは、アクティブなを一致するようにこのアクセス許可と一致する必要があります<xref:System.Security.Principal.IPrincipal>と関連付けられた<xref:System.Security.Principal.IIdentity>します。 設定`name`に`null`ロールの他のユーザーを確認します。  
+ このアクセス許可がアクティブ`role`な<xref:System.Security.Principal.IPrincipal>と関連付けられている<xref:System.Security.Principal.IIdentity>と一致するためには、パラメーターとパラメーターの両方が一致している必要があります。`name` ロール`name`内`null`のユーザーを確認するには、をに設定します。  
   
    
   
 ## Examples  
- 次の例では、アクティブなプリンシパルには、管理者が必要です。 `name`パラメーターが`null`、これにより、管理者の要求を渡すには、すべてのユーザー。  
+ 次の例では、アクティブなプリンシパルが管理者である必要があります。 パラメーターはです`null`。これにより、管理者であるすべてのユーザーが要求を渡すことができます。 `name`  
   
- **注**Windows Vista で、ユーザー アカウント制御 (UAC) は、ユーザーの権限を決定します。 ユーザーが組み込みの Administrators グループのメンバーである場合、そのユーザーには標準ユーザー アクセス トークンおよび管理者アクセス トークンの 2 つのランタイム アクセス トークンが割り当てられています。 既定では、ユーザーは標準ユーザー ロールに所属します。 管理者であることを要求するコードを実行するには、最初に、ユーザーの権限を標準ユーザーから管理者に昇格させる必要があります。 この操作は、アプリケーションの起動時にアプリケーション アイコンを右クリックし、管理者として実行することを指定して行うことができます。  
+ **メモ**Windows Vista では、ユーザーアカウント制御 (UAC) によってユーザーの特権が決定されます。 ユーザーが組み込みの Administrators グループのメンバーである場合、そのユーザーには標準ユーザー アクセス トークンおよび管理者アクセス トークンの 2 つのランタイム アクセス トークンが割り当てられています。 既定では、ユーザーは標準ユーザー ロールに所属します。 管理者であることを要求するコードを実行するには、最初に、ユーザーの権限を標準ユーザーから管理者に昇格させる必要があります。 この操作は、アプリケーションの起動時にアプリケーション アイコンを右クリックし、管理者として実行することを指定して行うことができます。  
   
  [!code-cpp[Classic PrincipalPermission Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic PrincipalPermission Example/CPP/source.cpp#1)]
  [!code-csharp[Classic PrincipalPermission Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic PrincipalPermission Example/CS/source.cs#1)]
@@ -202,15 +202,15 @@
         <Parameter Name="isAuthenticated" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="name"><see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーの名前</param>
-        <param name="role">管理者など、<see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーのロール。</param>
-        <param name="isAuthenticated">ユーザーが認証されていることを示す場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
-        <summary>指定した <paramref name="name" />、<paramref name="role" />、および認証ステータスの <see cref="T:System.Security.Permissions.PrincipalPermission" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="name"><see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーの名前。</param>
+        <param name="role"><see cref="T:System.Security.Principal.IPrincipal" /> オブジェクトのユーザーのロール。たとえば、管理者。</param>
+        <param name="isAuthenticated">ユーザーが認証されていることを示すには <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
+        <summary>指定した <paramref name="name" />、<paramref name="role" />、および認証ステータスを使用して <see cref="T:System.Security.Permissions.PrincipalPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 両方の`name`パラメーターおよび`role`パラメーターは、アクティブなを一致するようにこのアクセス許可と一致する必要があります<xref:System.Security.Principal.IPrincipal>と関連付けられた<xref:System.Security.Principal.IIdentity>します。  
+ このアクセス許可がアクティブ`role`な<xref:System.Security.Principal.IPrincipal>と関連付けられている<xref:System.Security.Principal.IIdentity>と一致するためには、パラメーターとパラメーターの両方が一致している必要があります。`name`  
   
  ]]></format>
         </remarks>
@@ -251,7 +251,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アクセス許可のコピーは、元のアクセス許可と、同一のプリンシパルとの id を表します。  
+ アクセス許可のコピーは、元のアクセス許可と同じプリンシパルと id を表します。  
   
  ]]></format>
         </remarks>
@@ -291,25 +291,25 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>実行時に、現在のプリンシパルが、現在のアクセス許可で指定されたプリンシパルと一致するかどうかを判別します。</summary>
+        <summary>現在のプリンシパルが、現在のアクセス許可によって指定されたプリンシパルと一致しているかどうかを実行時に判断します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ない場合は<xref:System.Security.SecurityException>が発生すると、<xref:System.Security.Permissions.PrincipalPermission.Demand%2A>が成功するとします。  
+ が発生しなかった<xref:System.Security.Permissions.PrincipalPermission.Demand%2A>場合、は成功します。 <xref:System.Security.SecurityException>  
   
- このメソッドは、呼び出し元のスレッドにアタッチされたプリンシパルに対しては機能します。  
+ このメソッドは、呼び出し元のスレッドにアタッチされているプリンシパルに対して機能します。  
   
 > [!IMPORTANT]
->  呼び出しの前に、<xref:System.Security.Permissions.PrincipalPermission.Demand%2A>プリンシパルのポリシーを現在のアプリケーション ドメインの列挙値に設定する必要があるメソッド、<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>します。 既定では、プリンシパルのポリシーに設定が<xref:System.Security.Principal.PrincipalPolicy.UnauthenticatedPrincipal>します。 プリンシパルのポリシー設定しない場合<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>、プリンシパルのアクセス許可の要求が失敗します。 プリンシパルのアクセス許可要求が発生する前に、次のコードを実行する必要があります。  
+>  <xref:System.Security.Permissions.PrincipalPermission.Demand%2A>メソッドを呼び出す前に、現在のアプリケーションドメインのプリンシパルポリシーを列挙値<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>に設定する必要があります。 既定では、プリンシパルポリシーはに<xref:System.Security.Principal.PrincipalPolicy.UnauthenticatedPrincipal>設定されています。 プリンシパルポリシーをに<xref:System.Security.Principal.PrincipalPolicy.WindowsPrincipal>設定しなかった場合、プリンシパルのアクセス許可に対する要求は失敗します。 プリンシパルアクセス許可の要求が発生する前に、次のコードを実行する必要があります。  
 >   
 >  `AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal).`  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">現在のプリンシパルは、現在のアクセス許可で指定されたプリンシパルに対するセキュリティ チェックに合格しません。  
+        <exception cref="T:System.Security.SecurityException">現在のプリンシパルが、現在のアクセス許可によって指定されるプリンシパルのセキュリティ チェックに合格していません。  
   
-- または - 
+または 
 現在の <see cref="T:System.Security.Principal.IPrincipal" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
@@ -360,7 +360,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については、「 <xref:System.Object.Equals%2A> 」を参照してください。  
+ 詳細については、「<xref:System.Object.Equals%2A>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -403,7 +403,7 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="elem" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="elem" /> パラメーターが有効なアクセス許可要素ではありません。  
   
-- または - 
+または 
 <paramref name="elem" /> パラメーターのバージョン番号が正しくありません。</exception>
       </Docs>
     </Member>
@@ -443,7 +443,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 同じアクセス許可の 2 つのインスタンスのハッシュ コードが異なる可能性があります、ためハッシュ コードを比較する 2 つ使用するされません<xref:System.Security.Permissions.PrincipalPermission>オブジェクト。  
+ 同じアクセス許可の2つのインスタンスのハッシュコードは異なる場合があるため、2つ<xref:System.Security.Permissions.PrincipalPermission>のオブジェクトの比較にハッシュコードを使用することはできません。  
   
  ]]></format>
         </remarks>
@@ -482,12 +482,12 @@
       <Docs>
         <param name="target">現在のアクセス許可との共通部分のあるアクセス許可。 これは、現在のアクセス許可と同じ型であることが必要です。</param>
         <summary>現在のアクセス許可と指定したアクセス許可の積集合となるアクセス許可を作成して返します。</summary>
-        <returns>現在のアクセス許可と指定したアクセス許可の共通部分を表す新しいアクセス許可。 積集合が空の場合、この新しいアクセス許可は <see langword="null" /> です。</returns>
+        <returns>現在のアクセス許可と指定したアクセス許可の共通部分を表す新しいアクセス許可。 積集合が空である場合、この新しいアクセス許可は <see langword="null" /> です。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 2 人のユーザーが交差しないため、このメソッドは適していません<xref:System.Security.Permissions.PrincipalPermission>します。 例えば以下のようにします。  
+ 2人のユーザーが交差しないため、この方法<xref:System.Security.Permissions.PrincipalPermission>はには適していません。 たとえば、オブジェクトに適用された  
   
  [!code-cpp[System.Security.Permissions.PrincipalPermission#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.security.permissions.principalpermission/cpp/remarks.cpp#1)]
  [!code-csharp[System.Security.Permissions.PrincipalPermission#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.security.permissions.principalpermission/cs/remarks.cs#1)]
@@ -499,11 +499,11 @@
  [!code-csharp[System.Security.Permissions.PrincipalPermission#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.security.permissions.principalpermission/cs/remarks.cs#2)]
  [!code-vb[System.Security.Permissions.PrincipalPermission#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.security.permissions.principalpermission/vb/remarks.vb#2)]  
   
- Bob と Louise の両方は、identity できます同時に表すないため。 実際には、`pp1.Demand()`プリンシパルを認証されていない場合にのみ成功 (空の文字列と同じ名前で ("")) は、管理者の役割で動作する許可。  
+ Bob と Louise の両方を同時に表すことができないためです。 実際には`pp1.Demand()` 、認証されていないプリンシパル (名前が空の文字列 ("")) が管理者ロールで動作することが許可されている場合にのみ、が成功します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="target" /> パラメーターは <see langword="null" /> ではなく、現在のアクセス許可と同じクラスのインスタンスでもありません。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="target" /> パラメーターが <see langword="null" /> ではなく、現在のアクセス許可と同じクラスのインスタンスでもありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="IsSubsetOf">
@@ -544,22 +544,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可は、現在のアクセス許可に対して成功したすべての要求は、指定した権限も成功した場合、指定したアクセス許可のサブセットです。  
+ 現在のアクセス許可に対して成功したすべての要求も、指定したアクセス許可に対して成功した場合、現在のアクセス許可は、指定したアクセス許可のサブセットになります。  
   
    
   
 ## Examples  
- 次の例のインスタンスを定義する<xref:System.Security.Permissions.PrincipalPermission>3 つの個別のユーザーに対応します。 2 つの追加インスタンスは、ユーザーのグループとして作成されます。 `pp1` Bob を表し、Louise `pp2` Bob、Louise、Greg を表します。  
+ 次の例では、 <xref:System.Security.Permissions.PrincipalPermission> 3 つの異なるユーザーに対応するのインスタンスを定義します。 その後、2つのインスタンスがユーザーのグループとして作成されます。 `pp1`bob、Louise、および`pp2` Greg を表す bob と Louise を表します。  
   
  [!code-cpp[Classic PrincipalPermission.IsSubsetOf Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic PrincipalPermission.IsSubsetOf Example/CPP/source.cpp#1)]
  [!code-csharp[Classic PrincipalPermission.IsSubsetOf Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic PrincipalPermission.IsSubsetOf Example/CS/source.cs#1)]
  [!code-vb[Classic PrincipalPermission.IsSubsetOf Example#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_Classic/classic PrincipalPermission.IsSubsetOf Example/VB/source.vb#1)]  
   
- 前の宣言で`pp1.IsSubsetOf(pp2)`返します`true`と`pp2.IsSubsetOf(pp1)`返します`false`します。  
+ 上記の宣言`pp1.IsSubsetOf(pp2)`では、はを`pp2.IsSubsetOf(pp1)`返し`false` `true`、はを返します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="target" /> パラメーターは現在のアクセス許可と同じ型ではないオブジェクトです。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="target" /> パラメーターが、現在のアクセス許可と異なる型のオブジェクトを指定しています。</exception>
       </Docs>
     </Member>
     <Member MemberName="IsUnrestricted">
@@ -597,7 +597,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 無制限<xref:System.Security.Permissions.PrincipalPermission>のすべてのプリンシパルと一致します。  
+ すべての<xref:System.Security.Permissions.PrincipalPermission>プリンシパルが無制限に一致します。  
   
  ]]></format>
         </remarks>
@@ -706,17 +706,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Permissions.PrincipalPermission.Union%2A> 個人の特定セットの条件を表すアクセス許可を作成<xref:System.Security.Permissions.PrincipalPermission>オブジェクト。 コンパクトに一連のテスト条件を表す場合に便利です。 宣言  
+ <xref:System.Security.Permissions.PrincipalPermission.Union%2A>個々<xref:System.Security.Permissions.PrincipalPermission>のオブジェクトの特定のセットの条件を表すアクセス許可を作成します。 これは、テストする一連の条件を表すコンパクトに便利です。 たとえば、宣言を使用して  
   
  [!code-cpp[System.Security.Permissions.PrincipalPermission#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.security.permissions.principalpermission/cpp/remarks.cpp#3)]
  [!code-csharp[System.Security.Permissions.PrincipalPermission#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.security.permissions.principalpermission/cs/remarks.cs#3)]
  [!code-vb[System.Security.Permissions.PrincipalPermission#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.security.permissions.principalpermission/vb/remarks.vb#3)]  
   
- `(ppBob.Union(ppLouise)).Demand()` 現在のプリンシパルが管理者の役割を担う管理者または Louise のロールで Bob を表している場合は成功します。  
+ `(ppBob.Union(ppLouise)).Demand()`現在のプリンシパルが管理者のロールまたは管理者ロールの Louise の Bob を表している場合、は成功します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="other" /> パラメーターは現在のアクセス許可と同じ型ではないオブジェクトです。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="other" /> パラメーターが、現在のアクセス許可と異なる型のオブジェクトを指定しています。</exception>
       </Docs>
     </Member>
   </Members>

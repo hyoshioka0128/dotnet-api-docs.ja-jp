@@ -1,5 +1,5 @@
 <Type Name="SettingsPropertyValue" FullName="System.Configuration.SettingsPropertyValue">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="8247def34944fe471d8ec279d0d297b1aadde11c" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63864315" /></Metadata><TypeSignature Language="C#" Value="public class SettingsPropertyValue" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="4c17d09f5db077b7dddfba9404cb41d0bf706b4b" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68395819" /></Metadata><TypeSignature Language="C#" Value="public class SettingsPropertyValue" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SettingsPropertyValue extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Configuration.SettingsPropertyValue" />
   <TypeSignature Language="VB.NET" Value="Public Class SettingsPropertyValue" />
@@ -26,7 +26,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- プロファイル データの実際の一部のクラスの表現。 A<xref:System.Configuration.SettingsProperty>インスタンスのインスタンス内で格納されている値の説明、<xref:System.Configuration.SettingsPropertyValue>オブジェクト。  
+ プロファイルデータの実際の部分のクラス表現。 インスタンス<xref:System.Configuration.SettingsProperty>は、 <xref:System.Configuration.SettingsPropertyValue>オブジェクトのインスタンス内に格納されている値を表します。  
   
  ]]></format>
     </remarks>
@@ -64,7 +64,7 @@
   
 [!INCLUDE [untrusted-data-method-note](~/includes/untrusted-data-method-note.md)]
   
- <xref:System.Configuration.SettingsProperty>オブジェクトに格納される値に関する情報を説明する、<xref:System.Configuration.SettingsPropertyValue>オブジェクト。  
+ オブジェクト<xref:System.Configuration.SettingsProperty>は、 <xref:System.Configuration.SettingsPropertyValue>オブジェクトによって格納された値に関する情報を記述します。  
   
  ]]></format>
         </remarks>
@@ -107,7 +107,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- プロパティの値の逆シリアル化はオンデマンドでのみ実行されます。  
+ プロパティ値の逆シリアル化は、要求時にのみ実行されます。  
   
  ]]></format>
         </remarks>
@@ -151,11 +151,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Configuration.SettingsPropertyValue.IsDirty%2A>プロパティは、このクラスが格納されている値が変更されたことを示します。 既定値は、`false` です。 <xref:System.Configuration.SettingsPropertyValue.IsDirty%2A>プロパティに設定されて`true`次の条件。  
+ プロパティ<xref:System.Configuration.SettingsPropertyValue.IsDirty%2A>は、このクラスによって格納されている値が変更されたことを示します。 既定値は、`false` です。 プロパティは、次の`true`条件下でに設定されます。 <xref:System.Configuration.SettingsPropertyValue.IsDirty%2A>  
   
-1.  含まれる値、<xref:System.Configuration.SettingsPropertyValue>オブジェクトを変更します。  
+1.  <xref:System.Configuration.SettingsPropertyValue>オブジェクトに格納されている値が変更されます。  
   
-2.  含まれる値、<xref:System.Configuration.SettingsPropertyValue>オブジェクトにアクセスし、値が文字列またはプリミティブ型など`int`、 `float`、 `real`、または`DateTime`します。 によって、値を管理するときに、<xref:System.Configuration.SettingsPropertyValue>オブジェクトは、複雑な型 (たとえば、 <xref:System.Collections.ArrayList>)、方法はありません、<xref:System.Configuration.SettingsPropertyValue>変更が行われたタイミングを検出するオブジェクト。 結果として、<xref:System.Configuration.SettingsPropertyValue>オブジェクト排他が想定する複合型はダーティがからアクセスされた後、<xref:System.Configuration.SettingsPropertyValue.PropertyValue%2A>プロパティ。  
+2.  <xref:System.Configuration.SettingsPropertyValue>オブジェクトに格納されている値にアクセスし、値が文字列またはプリミティブ型`int`(、 `float` `real` `DateTime`、、など) ではありません。 <xref:System.Configuration.SettingsPropertyValue>オブジェクトによって管理される値が複合型である場合 ( <xref:System.Collections.ArrayList>たとえば、)、 <xref:System.Configuration.SettingsPropertyValue>オブジェクトで変更が行われたことを検出する方法はありません。 このため、オブジェクト pessimistically <xref:System.Configuration.SettingsPropertyValue>は、 <xref:System.Configuration.SettingsPropertyValue.PropertyValue%2A>プロパティからアクセスされた複合型がダーティであると想定しています。  
   
  ]]></format>
         </remarks>
@@ -252,7 +252,7 @@
   
 この一連のイベントが ASP.NET の下で発生し、逆シリアル化の処理中にエラーが発生した場合は、ASP.NET の状態監視機能を使用してエラーがログに記録されます。 つまり、ASP.NET で実行している場合、既定では、逆シリアル化のエラーはアプリケーション イベント ログに表示されます。 この処理が ASP.NET の外部で行われた場合は、逆シリアル化中にエラーが発生しても、そのエラーは出力されず、逆シリアル化の残りのロジックが実行されます。 逆シリアル化が試行されたときに逆シリアル化対象のシリアル化された値がない場合、<see cref="T:System.Configuration.SettingsPropertyValue" /> オブジェクトは、既定値が、関連付けられている <see cref="T:System.Configuration.SettingsProperty" /> インスタンスで定義されて構成されていれば、代わりにその既定値を返そうとします。 その際に <see cref="P:System.Configuration.SettingsProperty.DefaultValue" /> プロパティが <see langword="null" /> または文字列 "[null]" に設定されていると、<see cref="T:System.Configuration.SettingsPropertyValue" /> オブジェクトは <see cref="P:System.Configuration.SettingsPropertyValue.PropertyValue" /> プロパティを、参照型の場合は <see langword="null" />、関連付けられている値型の場合は既定値に初期化します。  一方、<see cref="P:System.Configuration.SettingsProperty.DefaultValue" /> プロパティに有効なオブジェクト参照または文字列値 ("[null]" 以外) が格納されている場合は、<see cref="P:System.Configuration.SettingsProperty.DefaultValue" /> プロパティが返されます。  
   
-逆シリアル化が試行されたときに逆シリアル化対象のシリアル化された値がなく、既定値も指定されていない場合、文字列型については空の文字列が返されます。 呼び出すことによって他のすべての種類では、既定のインスタンスが返される<see cref="M:System.Activator.CreateInstance(System.Type)" />- 参照型の既定のコンス トラクターを使用してオブジェクト インスタンスを作成を試行ことを意味します。  この試行が失敗した場合は、<see langword="null" /> が返されます。</value>
+逆シリアル化が試行されたときに逆シリアル化対象のシリアル化された値がなく、既定値も指定されていない場合、文字列型については空の文字列が返されます。 それ以外のすべての型では、を呼び出す<see cref="M:System.Activator.CreateInstance(System.Type)" />ことによって既定のインスタンスが返されます。これは、パラメーターなしのコンストラクターを使用してオブジェクトインスタンスを作成しようとしたことを意味します。  この試行が失敗した場合は、<see langword="null" /> が返されます。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentException"><see cref="P:System.Configuration.SettingsProperty.DefaultValue" /> プロパティの既定値を使用しようとしているときにエラーが発生しました。  <see cref="P:System.Configuration.SettingsProperty.DefaultValue" /> プロパティを有効な型に変換しようとして失敗したか、結果の値が <see cref="P:System.Configuration.SettingsProperty.PropertyType" /> で定義されている型と互換性がないかのいずれかです。</exception>
       </Docs>
@@ -286,12 +286,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、<xref:System.Configuration.SettingsPropertyValue>インスタンスを検出する、<xref:System.Configuration.SettingsPropertyValue.PropertyValue%2A>プロパティが前回変更された、<xref:System.Configuration.SettingsPropertyValue.SerializedValue%2A>プロパティが呼び出されると、これにより<xref:System.Configuration.SettingsPropertyValue.PropertyValue%2A>プロパティをシリアル化された表現に変換します。 使用する特定のシリアル化メカニズムが定義されている、<xref:System.Configuration.SettingsProperty.SerializeAs%2A>プロパティを<xref:System.Configuration.SettingsProperty>インスタンスに関連付けられている、<xref:System.Configuration.SettingsPropertyValue>インスタンス。 現在のシリアル化がサポートされているオプションは、オブジェクトを文字列型コンバーターを使用して文字列に変換を使用してシリアル化が、 <xref:System.Xml.Serialization.XmlSerializer>、またはバイナリのシリアル化を実行します。  
+ プロパティが<xref:System.Configuration.SettingsPropertyValue>前回<xref:System.Configuration.SettingsPropertyValue.SerializedValue%2A>呼び出されて<xref:System.Configuration.SettingsPropertyValue.PropertyValue%2A>から変更されたことがインスタンスによって検出されると<xref:System.Configuration.SettingsPropertyValue.PropertyValue%2A> 、プロパティはシリアル化された表現に変換されます。 使用される特定のシリアル化機構は、 <xref:System.Configuration.SettingsProperty.SerializeAs%2A> <xref:System.Configuration.SettingsPropertyValue>インスタンスに関連付け<xref:System.Configuration.SettingsProperty>られたインスタンスのプロパティによって定義されます。 現在サポートされているシリアル化オプションでは、文字列型コンバーターを使用してオブジェクトを文字列<xref:System.Xml.Serialization.XmlSerializer>に変換する、を使用してシリアル化する、またはバイナリシリアル化を実行することができます。  
   
 > [!NOTE]
->  基になるシリアライザーは、シリアル化プロセス中に例外をスローする可能性があります。  
+>  基になるシリアライザーは、シリアル化処理中に例外をスローする場合があります。  
   
- 直前の呼び出し元コードに必要な<xref:System.Security.Permissions.SecurityPermissionFlag.SerializationFormatter>権限 (として利用可能なアクセス許可のいずれかの一部<xref:System.Security.Permissions.SecurityPermission>) をこのプロパティの get アクセス操作子または set アクセス操作子を呼び出します。  によって、このアクセス許可が適用される、<xref:System.Security.Permissions.SecurityAction.LinkDemand>列挙値。  
+ 直前の呼び出し元コードで<xref:System.Security.Permissions.SecurityPermissionFlag.SerializationFormatter>は、このプロパティの getter または setter を<xref:System.Security.Permissions.SecurityPermission>呼び出すために、アクセス許可 (の一部として使用できるアクセス許可の1つ) が必要です。  このアクセス許可は、 <xref:System.Security.Permissions.SecurityAction.LinkDemand>列挙値を使用して強制されます。  
   
  ]]></format>
         </remarks>

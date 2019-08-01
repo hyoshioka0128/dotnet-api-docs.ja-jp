@@ -1,5 +1,5 @@
 <Type Name="LockRecursionException" FullName="System.Threading.LockRecursionException">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="779cee47263d3b30948982dbbbace95f61826ecc" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58715695" /></Metadata><TypeSignature Language="C#" Value="public class LockRecursionException : Exception" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="eb83d41b26be9b811a0a7dd090a6828590e9a9f2" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68392212" /></Metadata><TypeSignature Language="C#" Value="public class LockRecursionException : Exception" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit LockRecursionException extends System.Exception" />
   <TypeSignature Language="DocId" Value="T:System.Threading.LockRecursionException" />
   <TypeSignature Language="VB.NET" Value="Public Class LockRecursionException&#xA;Inherits Exception" />
@@ -44,18 +44,18 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Threading.LockRecursionException> いくつかの理由から、次のようがスローされます。  
+ <xref:System.Threading.LockRecursionException>は、次のようないくつかの理由でスローされます。  
   
--   インスタンスを入力しようとすると、スレッド<xref:System.Threading.ReaderWriterLockSlim>を再帰的には、インスタンスが再帰をサポートしていません。  
+-   スレッドがの<xref:System.Threading.ReaderWriterLockSlim>インスタンスを再帰的に入力しようとしても、インスタンスが再帰をサポートしていない場合。  
   
--   スレッドが入力しようとすると、<xref:System.Threading.ReaderWriterLockSlim>書き込みモードまたはスレッドは最初に読み取りモードでロックに入ったときに、アップグレード可能モードのインスタンス。 これは、デッドロックの可能性を表しは許可されません。  
+-   スレッドが読み取りモードで最初に<xref:System.Threading.ReaderWriterLockSlim>ロックに入ったときに、書き込みモードまたはアップグレード可能モードでインスタンスに入ろうとした場合。 これは潜在的なデッドロックを表しているため、許可されていません。  
   
--   再帰を追跡するために使用される内部記憶域のカウンターの最大値を超える再帰の 1 つ以上のレベルします。 場合、 この容量は非常に大きいので、アプリケーションでこの状況が発生することは通常はありません。  
+-   1レベルの再帰を許可すると、再帰の追跡に使用される内部ストレージカウンターの最大値を超える可能性があります。 この容量は非常に大きいので、アプリケーションでこの状況が発生することは通常はありません。  
   
    
   
 ## Examples  
- 次の例は、2 つの原因を示しています。<xref:System.Threading.LockRecursionException>を使用する場合、<xref:System.Threading.ReaderWriterLockSlim>クラス。 プログラムを作成、<xref:System.Threading.ReaderWriterLockSlim>再帰を禁止する既定のコンス トラクターを使用します。 読み取りモードでロックに入るスレッドを開始します。 スレッドは読み取りモードで再帰的にロックに入ろうとし、結果の例外をキャッチします。 最後に、スレッドがデッドロックの可能性を作成する書き込みモードを開始しようとします。 スレッドは、結果の例外をキャッチします。  
+ クラスを使用する場合の 2 <xref:System.Threading.LockRecursionException>つの原因を次の例に示します。 <xref:System.Threading.ReaderWriterLockSlim> プログラムは、パラメーター <xref:System.Threading.ReaderWriterLockSlim>なしのコンストラクターを使用してを作成します。これにより、再帰が禁止されます。 次に、プログラムは、読み取りモードでロックに入るスレッドを開始します。 スレッドは、読み取りモードでロックに再帰的に入ろうとし、結果として生成される例外をキャッチします。 最後に、スレッドは書き込みモードに入ろうとします。これにより、デッドロックの可能性が生じます。 スレッドは、生成された例外をキャッチします。  
   
  [!code-csharp[System.Threading.LockRecursionException#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.LockRecursionException/cs/source.cs#1)]
  [!code-vb[System.Threading.LockRecursionException#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Threading.LockRecursionException/vb/source.vb#1)]  
@@ -111,9 +111,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの初期化、 <xref:System.Exception.Message%2A> 「再帰の読み取りロックの取得がこのモードでは使用できません」などに、エラーを説明するシステム提供のメッセージの新しいインスタンスのプロパティ。 このメッセージは、現在のシステム カルチャは考慮されます。  
+ このコンストラクターは、 <xref:System.Exception.Message%2A>新しいインスタンスのプロパティを、"このモードでは許可されていない再帰的な読み取りロックの取得" などのエラーを説明するシステム提供のメッセージに初期化します。 このメッセージでは、現在のシステムのカルチャが考慮されます。  
   
- <xref:System.InsufficientMemoryException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.InsufficientMemoryException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  
@@ -164,9 +164,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの初期化、<xref:System.Exception.Message%2A?displayProperty=nameWithType>して新しい例外のプロパティ、`message`パラメーター。 `message` の内容は、ユーザーが理解できる内容にします。 このコンストラクターの呼び出し元は、この文字列が現在のシステムのカルチャに合わせてローカライズ済みであることを確認しておく必要があります。  
+ このコンストラクターは、 <xref:System.Exception.Message%2A?displayProperty=nameWithType> `message`パラメーターを使用して、新しい例外のプロパティを初期化します。 `message` の内容は、ユーザーが理解できる内容にします。 このコンストラクターの呼び出し元は、この文字列が現在のシステムのカルチャに合わせてローカライズ済みであることを確認しておく必要があります。  
   
- <xref:System.Threading.LockRecursionException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.Threading.LockRecursionException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  
@@ -217,7 +217,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、ストリームを介して送信される例外オブジェクトを再構成するには、逆シリアル化中に呼び出されます。 詳細については、次を参照してください。 [XML および SOAP シリアル化](~/docs/standard/serialization/xml-and-soap-serialization.md)します。  
+ このコンストラクターは、逆シリアル化中に、ストリームで送信される例外オブジェクトを再構築するために呼び出されます。 詳細については、次を参照してください。 [XML および SOAP シリアル化](~/docs/standard/serialization/xml-and-soap-serialization.md)します。  
   
  ]]></format>
         </remarks>
@@ -265,13 +265,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 前の例外の直接の結果としてスローされる例外については、<xref:System.Exception.InnerException%2A> プロパティに、前の例外への参照が格納されます。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
+ 前の例外の直接の結果としてスローされる例外については、<xref:System.Exception.InnerException%2A> プロパティに、前の例外への参照を含める必要があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
   
- <xref:System.Threading.LockRecursionException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.Threading.LockRecursionException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  
-|<xref:System.Exception.InnerException%2A>|指定された例外`innerException`します。|  
+|<xref:System.Exception.InnerException%2A>|で`innerException`指定された例外。|  
 |<xref:System.Exception.Message%2A>|`message` に指定されたエラー メッセージ文字列。|  
   
  ]]></format>

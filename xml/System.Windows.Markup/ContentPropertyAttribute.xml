@@ -26,24 +26,24 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>型のどのプロパティが XAML コンテンツ プロパティであるかを示します。 この情報を使用して、XAML プロセッサは属性付き型の XAML 表現の XAML 子要素を処理します。</summary>
+    <summary>型のどのプロパティが XAML コンテンツ プロパティであるかを示します。 XAML プロセッサは、属性付き型の XAML 表現の XAML 子要素を処理するときに、この情報を使用します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合の関連付けられているプロパティ、<xref:System.Windows.Markup.ContentPropertyAttribute>の種類はありません`string`または`object`、XAML プロセッサは、値の変換手法を特定しようとしています。 最初のチェックは、ネイティブな型変換は、XAML 言語プリミティブのまたはその特定の XAML ライター実装によって有効になっている特定のネイティブ変換のいずれかです。 次の手順では、型コンバーターを探します。 に基づいて、.NET 実装の型コンバーターが識別される<xref:System.ComponentModel.TypeConverterAttribute>かメンバー レベルまたは型レベル定義に適用されます。 値の変換を識別できない場合、XAML オブジェクト ライターは例外をスローします。  
+ の<xref:System.Windows.Markup.ContentPropertyAttribute>関連付けられたプロパティの型`string`がまた`object`はでない場合、XAML プロセッサは値の変換手法を識別しようとします。 最初のチェックでは、XAML 言語プリミティブまたは特定の XAML ライター実装によって有効にされた特定のネイティブ変換のいずれかについて、ネイティブ型変換を行います。 次の手順では、型コンバーターを探します。 .Net 実装では、型コンバーターは、適用される<xref:System.ComponentModel.TypeConverterAttribute>メンバーレベルまたは型レベルの定義に基づいて識別されます。 値の変換を識別できない場合、通常、XAML オブジェクトライターは例外をスローします。  
   
- そのまま使用するために複数のコンテンツとして 1 つのオブジェクト要素 XAML コンテンツ プロパティの型がありますコレクション型としてサポート可能です。  
+ 複数のオブジェクト要素をコンテンツとして受け入れるには、XAML コンテンツプロパティの型がコレクション型としてサポート可能である必要があります。  
   
- ため、`Inherited=true`属性の値の宣言を<xref:System.Windows.Markup.ContentPropertyAttribute>通常コンテンツ プロパティの指定をすべての派生クラスに適用します。 空の適用<xref:System.Windows.Markup.ContentPropertyAttribute>派生クラスを基底クラスで content プロパティ属性の宣言を削除する (および、クラスにコンテンツ プロパティが含まれていないことに注意してください) を有効にします。 異なる名前を適用する<xref:System.Windows.Markup.ContentPropertyAttribute>、継承された置換<xref:System.Windows.Markup.ContentPropertyAttribute>を新しいものです。  
+ 属性の<xref:System.Windows.Markup.ContentPropertyAttribute>宣言により、の値は通常、すべての派生クラスにコンテンツプロパティの指定を適用します。 `Inherited=true` 空<xref:System.Windows.Markup.ContentPropertyAttribute>のを適用すると、派生クラスは、基本クラスによってコンテンツプロパティ属性の宣言を削除できます (および、クラスにコンテンツプロパティがないことに注意してください)。 別の名前<xref:System.Windows.Markup.ContentPropertyAttribute>を適用すると<xref:System.Windows.Markup.ContentPropertyAttribute> 、継承されたが新しいものに置き換えられます。  
   
- .NET Framework の以前のバージョンでは、このクラスは、WindowsBase、WPF 固有のアセンブリに存在して、Windows Communication Foundation (WCF) で並列実装もありました。 以降、.NET Framework 4.0 で<xref:System.Windows.Markup.ContentPropertyAttribute>は System.Xaml アセンブリにします。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
+ 以前のバージョンの .NET Framework では、このクラスは WPF 固有のアセンブリ WindowsBase に存在していましたが、Windows Communication Foundation (WCF) でも並列実装されていました。 .NET Framework 4.0 以降では、 <xref:System.Windows.Markup.ContentPropertyAttribute>は、システムの .xaml アセンブリにあります。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
   
 ## <a name="wpf-usage-notes"></a>WPF の使用上の注意  
- クラスを使用して、Windows Presentation Foundation (WPF) での例、<xref:System.Windows.Markup.ContentPropertyAttribute>は<xref:System.Windows.Controls.ContentControl>を<xref:System.Windows.Controls.Button>クラスから継承します。  <xref:System.Windows.Controls.ContentControl.Content%2A?displayProperty=nameWithType>プロパティは、コンテンツのプロパティ設定、<xref:System.Windows.Markup.ContentPropertyAttribute>します。  場合、 <xref:System.Windows.Controls.Button> 、XAML でインスタンス化は、<xref:System.Windows.Controls.ContentControl.Content%2A>の<xref:System.Windows.Controls.Button>はボタンの開始と終了タグ間にある要素に設定されます。  
+ を使用<xref:System.Windows.Markup.ContentPropertyAttribute>する Windows Presentation Foundation (WPF) のクラスの例として<xref:System.Windows.Controls.ContentControl>、 <xref:System.Windows.Controls.Button>クラスはから継承されます。  プロパティは、 <xref:System.Windows.Markup.ContentPropertyAttribute>によって設定されたコンテンツプロパティです。 <xref:System.Windows.Controls.ContentControl.Content%2A?displayProperty=nameWithType>  が XAML でインスタンス化されて<xref:System.Windows.Controls.ContentControl.Content%2A>いる場合<xref:System.Windows.Controls.Button> 、のは開始ボタンと終了タグの間にある要素に設定されます。 <xref:System.Windows.Controls.Button>  
     
 ## Examples  
- 次の例では、という名前のクラスを作成する`Film`を持つ、<xref:System.Windows.Markup.ContentPropertyAttribute>適用します。  という名前のプロパティ`Title`content プロパティとして示されます。  
+ 次の例では、 `Film` <xref:System.Windows.Markup.ContentPropertyAttribute>が適用されたという名前のクラスを作成します。  という名前`Title`のプロパティは、content プロパティとして指定されます。  
   
  [!code-csharp[MarkupSnippets#MarkupContentPropertyAttribute](~/samples/snippets/csharp/VS_Snippets_Wpf/MarkupSnippets/CSharp/Window1.xaml.cs#markupcontentpropertyattribute)]
  [!code-vb[MarkupSnippets#MarkupContentPropertyAttribute](~/samples/snippets/visualbasic/VS_Snippets_Wpf/MarkupSnippets/visualbasic/window1.xaml.vb#markupcontentpropertyattribute)]  
@@ -52,7 +52,7 @@
     </remarks>
     <related type="Article" href="https://msdn.microsoft.com/library/5dfb299a-b6e2-41b8-8694-e6ac987547f1">カスタム型およびライブラリの XAML 関連の CLR 属性</related>
     <related type="Article" href="https://msdn.microsoft.com/library/c2667cbd-2f46-4a7f-9dfc-53696e35e8e4">.NET Framework XAML サービスで使用するためのカスタム型の定義</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">NET XAML サービスの概念に関するドキュメント</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">NET XAML サービスの概念説明ドキュメント</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -91,7 +91,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ため、`Inherited=true`属性の値の宣言を<xref:System.Windows.Markup.ContentPropertyAttribute>通常コンテンツ プロパティの指定をすべての派生クラスに適用します。 この署名を使用して、または、空の適用<xref:System.Windows.Markup.ContentPropertyAttribute>、派生クラスを基底クラスで content プロパティ属性の宣言を削除 (および、クラスにコンテンツ プロパティが含まれていないことに注意してください) を有効にします。  
+ 属性の<xref:System.Windows.Markup.ContentPropertyAttribute>宣言により、の値は通常、すべての派生クラスにコンテンツプロパティの指定を適用します。 `Inherited=true` このシグネチャを使用するか、空<xref:System.Windows.Markup.ContentPropertyAttribute>のを適用すると、派生クラスは、基底クラスによってコンテンツプロパティ属性の宣言を削除できます (また、クラスにコンテンツプロパティがないことに注意してください)。  
   
  ]]></format>
         </remarks>
@@ -128,7 +128,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- CLR バッキングの前提とすると、指定された`name`と一致する必要があります、 <xref:System.Reflection.MemberInfo.Name%2A?displayProperty=nameWithType> CLR に関連するプロパティのシステムを入力します。  
+ Clr のバッキングと想定する`name`と、指定<xref:System.Reflection.MemberInfo.Name%2A?displayProperty=nameWithType>されたは clr 型システムの関連プロパティのと一致している必要があります。  
   
  ]]></format>
         </remarks>

@@ -20,21 +20,21 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Media.Imaging.BitmapDecoder> <xref:System.Windows.Media.Imaging.BitmapFrame>自体は、コンテナーを<xref:System.Windows.Media.Imaging.BitmapFrame>オブジェクト。 各<xref:System.Windows.Media.Imaging.BitmapFrame>コンテナー内のさまざまなサイズ、解像度、パレットなどのさまざまな属性可能性のある同じであることができます。  
+ <xref:System.Windows.Media.Imaging.BitmapDecoder>はそれ自体ではなく、オブジェクトの<xref:System.Windows.Media.Imaging.BitmapFrame>コンテナーです。 <xref:System.Windows.Media.Imaging.BitmapFrame> コンテナー <xref:System.Windows.Media.Imaging.BitmapFrame>内の各は、さまざまなサイズ、解像度、パレットなど、異なる属性を持つ可能性があります。  
   
- 特定のコーデックが選択されていない[!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)]実行時の自動検出を使用して、イメージの形式を識別し、適切なコーデックと一致します。 この検出プロセスにより、開発したコーデック、[!INCLUDE[TLA#tla_isv](~/includes/tlasharptla-isv-md.md)]システムによって自動的に検出可能にします。 派生した特定のコーデックを選択する<xref:System.Windows.Media.Imaging.BitmapDecoder>または<xref:System.Windows.Media.Imaging.BitmapEncoder>など、<xref:System.Windows.Media.Imaging.TiffBitmapDecoder>クラスを使用する必要があります。  
+ 特定のコーデックを選択しない[!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)]限り、は自動ランタイム検出を使用してイメージの形式を識別し、適切なコーデックと照合します。 この検出プロセスにより、 [!INCLUDE[TLA#tla_isv](~/includes/tlasharptla-isv-md.md)]によって開発されたコーデックがシステムによって自動的に検出できるようになります。 特定のコーデックを選択するには<xref:System.Windows.Media.Imaging.BitmapDecoder> 、 <xref:System.Windows.Media.Imaging.BitmapEncoder> <xref:System.Windows.Media.Imaging.TiffBitmapDecoder>クラスなどの派生クラスまたはクラスを使用する必要があります。  
   
- [!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)] [!INCLUDE[TLA#tla_gif](~/includes/tlasharptla-gif-md.md)]は、複数のフレームをサポートするイメージ形式を実装します。  
+ [!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]と[!INCLUDE[TLA#tla_gif](~/includes/tlasharptla-gif-md.md)]は、複数のフレームをサポートする、実装されている唯一のイメージ形式です。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Windows.Media.Imaging.BitmapDecoder.Create%28System.Uri%2CSystem.Windows.Media.Imaging.BitmapCreateOptions%2CSystem.Windows.Media.Imaging.BitmapCacheOption%29>特定のイメージのデコーダーを作成します。 最初の<xref:System.Windows.Media.Imaging.BitmapFrame>のイメージのソースとして使用されます、<xref:System.Windows.Controls.Image>コントロール。  
+ 次の例は、 <xref:System.Windows.Media.Imaging.BitmapDecoder.Create%28System.Uri%2CSystem.Windows.Media.Imaging.BitmapCreateOptions%2CSystem.Windows.Media.Imaging.BitmapCacheOption%29>メソッドを使用して、特定のイメージのデコーダーを作成する方法を示しています。 イメージの<xref:System.Windows.Media.Imaging.BitmapFrame>最初のは、 <xref:System.Windows.Controls.Image>コントロールのソースとして使用されます。  
   
  [!code-csharp[imagingsnippetgallery_procedural_snip#BitmapDecoderCreate](~/samples/snippets/csharp/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/CSharp/BitmapDecoderExample.cs#bitmapdecodercreate)]
  [!code-vb[imagingsnippetgallery_procedural_snip#BitmapDecoderCreate](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/VB/BitmapDecoderExample.vb#bitmapdecodercreate)]  
   
- 次のコード例で、ビルドを使用する方法を示します<xref:System.Windows.Media.Imaging.TiffBitmapDecoder>を開き、デコード、[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]ビットマップ。 その結果、<xref:System.Windows.Media.Imaging.BitmapSource>として提供される、<xref:System.Windows.Controls.Image.Source%2A>の<xref:System.Windows.Controls.Image>要素。  
+ 組み込み<xref:System.Windows.Media.Imaging.TiffBitmapDecoder>のを使用してビットマップを[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]開いたりデコードしたりする方法を次のコード例に示します。 結果と<xref:System.Windows.Media.Imaging.BitmapSource>し<xref:System.Windows.Controls.Image.Source%2A>て得られるは<xref:System.Windows.Controls.Image> 、要素のとして使用されます。  
   
  [!code-csharp[bitmapframeexample#4](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#4)]
  [!code-vb[bitmapframeexample#4](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#4)]  
@@ -93,12 +93,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- A<xref:System.Windows.Media.Imaging.BitmapCodecInfo>実装はすべてコーデックの必須です。  
+ すべてのコーデックに実装が必要です。<xref:System.Windows.Media.Imaging.BitmapCodecInfo>  
   
    
   
 ## Examples  
- 次のコード例からの情報を読み取る方法を示しています、<xref:System.Windows.Media.Imaging.BitmapCodecInfo>オブジェクトを文字列に送信します。  
+ 次のコード例は、 <xref:System.Windows.Media.Imaging.BitmapCodecInfo>オブジェクトから情報を読み取り、それを文字列に送信する方法を示しています。  
   
  [!code-csharp[bitmapframeexample#3](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#3)]
  [!code-vb[bitmapframeexample#3](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#3)]  
@@ -141,7 +141,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>作成、<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />指定して<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />と<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />します。</summary>
+        <summary>指定した <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> および <see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> を使用して <see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" /> を作成します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="Create">
@@ -167,20 +167,20 @@
       </Parameters>
       <Docs>
         <param name="bitmapStream">デコードするビットマップを識別するファイル ストリーム。</param>
-        <param name="createOptions">識別、<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />このデコーダーです。</param>
-        <param name="cacheOption">識別、<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />このデコーダーです。</param>
-        <summary>作成、<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />から、<see cref="T:System.IO.Stream" />指定を使用して<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />と<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />します。</summary>
-        <returns>A<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />から、<see cref="T:System.IO.Stream" />指定して<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />と<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />します。</returns>
+        <param name="createOptions">このデコーダーの <see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> を識別します。</param>
+        <param name="cacheOption">このデコーダーの <see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" /> を識別します。</param>
+        <summary>指定した <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> および <see cref="T:System.IO.Stream" /> を使用して、<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> から <see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" /> を作成します。</summary>
+        <returns>指定した <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> および <see cref="T:System.IO.Stream" /> を使用した、<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> からの <see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Windows.Media.Imaging.BitmapCacheOption.OnLoad>を閉じる場合の cache オプション、`bitmapStream`デコーダーを作成した後。 既定の<xref:System.Windows.Media.Imaging.BitmapCacheOption.OnDemand>キャッシュ オプションは、ビットマップは、必要なクリーンアップはガベージ コレクターによって処理されるまで、ストリームへのアクセスが保持されます。  
+ デコーダーが作成され`bitmapStream`た後にを閉じる場合は、 cacheオプションを使用します。<xref:System.Windows.Media.Imaging.BitmapCacheOption.OnLoad> 既定<xref:System.Windows.Media.Imaging.BitmapCacheOption.OnDemand>のキャッシュオプションは、ビットマップが必要になるまでストリームへのアクセスを保持し、クリーンアップはガベージコレクターによって処理されます。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Windows.Media.Imaging.BitmapDecoder.Create%2A>特定のイメージのデコーダーを作成します。 最初の<xref:System.Windows.Media.Imaging.BitmapFrame>のイメージのソースとして使用されます、<xref:System.Windows.Controls.Image>コントロール。  
+ 次の例は、 <xref:System.Windows.Media.Imaging.BitmapDecoder.Create%2A>メソッドを使用して、特定のイメージのデコーダーを作成する方法を示しています。 イメージの<xref:System.Windows.Media.Imaging.BitmapFrame>最初のは、 <xref:System.Windows.Controls.Image>コントロールのソースとして使用されます。  
   
  [!code-csharp[imagingsnippetgallery_procedural_snip#BitmapDecoderCreateStream](~/samples/snippets/csharp/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/CSharp/BitmapDecoderExample.cs#bitmapdecodercreatestream)]
  [!code-vb[imagingsnippetgallery_procedural_snip#BitmapDecoderCreateStream](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/VB/BitmapDecoderExample.vb#bitmapdecodercreatestream)]  
@@ -217,16 +217,16 @@
         <Parameter Name="cacheOption" Type="System.Windows.Media.Imaging.BitmapCacheOption" />
       </Parameters>
       <Docs>
-        <param name="bitmapUri"><see cref="T:System.Uri" />のデコードするビットマップ。</param>
-        <param name="createOptions">識別、<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />このデコーダーです。</param>
-        <param name="cacheOption">識別、<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />このデコーダーです。</param>
-        <summary>作成、<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />から、<see cref="T:System.Uri" />指定を使用して<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />と<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />します。</summary>
-        <returns>A<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />から、<see cref="T:System.Uri" />指定して<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />と<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />します。</returns>
+        <param name="bitmapUri">デコードするビットマップの <see cref="T:System.Uri" />。</param>
+        <param name="createOptions">このデコーダーの <see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> を識別します。</param>
+        <param name="cacheOption">このデコーダーの <see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" /> を識別します。</param>
+        <summary>指定した <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> および <see cref="T:System.Uri" /> を使用して、<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> から <see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" /> を作成します。</summary>
+        <returns>指定した <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> および <see cref="T:System.Uri" /> を使用した、<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> からの <see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Windows.Media.Imaging.BitmapDecoder.Create%28System.Uri%2CSystem.Windows.Media.Imaging.BitmapCreateOptions%2CSystem.Windows.Media.Imaging.BitmapCacheOption%29>特定のイメージのデコーダーを作成します。 最初の<xref:System.Windows.Media.Imaging.BitmapFrame>のイメージのソースとして使用されます、<xref:System.Windows.Controls.Image>コントロール。  
+ 次の例は、 <xref:System.Windows.Media.Imaging.BitmapDecoder.Create%28System.Uri%2CSystem.Windows.Media.Imaging.BitmapCreateOptions%2CSystem.Windows.Media.Imaging.BitmapCacheOption%29>メソッドを使用して、特定のイメージのデコーダーを作成する方法を示しています。 イメージの<xref:System.Windows.Media.Imaging.BitmapFrame>最初のは、 <xref:System.Windows.Controls.Image>コントロールのソースとして使用されます。  
   
  [!code-csharp[imagingsnippetgallery_procedural_snip#BitmapDecoderCreate](~/samples/snippets/csharp/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/CSharp/BitmapDecoderExample.cs#bitmapdecodercreate)]
  [!code-vb[imagingsnippetgallery_procedural_snip#BitmapDecoderCreate](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/VB/BitmapDecoderExample.vb#bitmapdecodercreate)]  
@@ -234,7 +234,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="bitmapUri" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.IO.FileFormatException"><paramref name="bitmapUri" />形式がサポートされていない型のクラス ID を指定します。</exception>
+        <exception cref="T:System.IO.FileFormatException"><paramref name="bitmapUri" /> に、サポートされていない形式の種類のクラス ID が指定されます。</exception>
         <altmember cref="T:System.Windows.Media.Imaging.BitmapSource" />
       </Docs>
     </Member>
@@ -261,17 +261,17 @@
         <Parameter Name="uriCachePolicy" Type="System.Net.Cache.RequestCachePolicy" />
       </Parameters>
       <Docs>
-        <param name="bitmapUri">元のビットマップの位置、<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />が作成されます。</param>
-        <param name="createOptions">この作成に使用されるオプション<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />します。</param>
-        <param name="cacheOption">これを作成するために使用するキャッシュ オプション<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />します。</param>
-        <param name="uriCachePolicy">このキャッシュ要件<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />します。</param>
-        <summary>作成、<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />から、<see cref="T:System.Uri" />指定を使用して<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />、<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />と<see cref="T:System.Net.Cache.RequestCachePolicy" />します。</summary>
-        <returns>A<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />から、<see cref="T:System.Uri" />指定して<see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" />、<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" />と<see cref="T:System.Net.Cache.RequestCachePolicy" />します。</returns>
+        <param name="bitmapUri">ビットマップの位置。ここから <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> が作成されます。</param>
+        <param name="createOptions">この <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> を作成する際に使用するオプション。</param>
+        <param name="cacheOption">この <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> を作成する際に使用するキャッシュ オプション。</param>
+        <param name="uriCachePolicy">この <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> のキャッシュ要件。</param>
+        <summary>指定した <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />、<see cref="T:System.Uri" />、および <see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> を使用して、<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" /> から <see cref="T:System.Net.Cache.RequestCachePolicy" /> を作成します。</summary>
+        <returns>指定した <see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />、<see cref="T:System.Uri" />、および <see cref="T:System.Windows.Media.Imaging.BitmapCreateOptions" /> を使用した、<see cref="T:System.Windows.Media.Imaging.BitmapCacheOption" /> からの <see cref="T:System.Net.Cache.RequestCachePolicy" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Media.Imaging.BitmapDecoder.Create%28System.Uri%2CSystem.Windows.Media.Imaging.BitmapCreateOptions%2CSystem.Windows.Media.Imaging.BitmapCacheOption%2CSystem.Net.Cache.RequestCachePolicy%29> .NET Framework version 3.5 で導入されました。  
+ <xref:System.Windows.Media.Imaging.BitmapDecoder.Create%28System.Uri%2CSystem.Windows.Media.Imaging.BitmapCreateOptions%2CSystem.Windows.Media.Imaging.BitmapCacheOption%2CSystem.Net.Cache.RequestCachePolicy%29>は .NET Framework バージョン3.5 で導入されました。  
   
  ]]></format>
         </remarks>
@@ -301,7 +301,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、作成する方法を示します、<xref:System.Windows.Media.Imaging.InPlaceBitmapMetadataWriter>ビットマップ イメージに関連付けられているメタデータを更新するためにします。  
+ ビットマップイメージに関連付けられている<xref:System.Windows.Media.Imaging.InPlaceBitmapMetadataWriter>メタデータを更新するためにを作成する方法を次のコード例に示します。  
   
  [!code-cpp[bitmapmetadata#SetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#setquery)]
  [!code-csharp[bitmapmetadata#SetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#setquery)]
@@ -337,7 +337,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ビットマップ コンテンツのすべての種類、このイベントを発生しません可能性があります。  
+ このイベントは、すべての種類のビットマップコンテンツに対して発生するとは限りません。  
   
  ]]></format>
         </remarks>
@@ -367,8 +367,8 @@
 ## Remarks  
   
 <a name="xamlTextUsage_DownloadFailed"></a>   
-## <a name="xaml-text-usage"></a>XAML テキストの使用状況  
- \<*オブジェクト*DownloadFailed ="*EventHandler*".../>  
+## <a name="xaml-text-usage"></a>XAML テキストの使用  
+ \<*オブジェクト*DownloadFailed = "*EventHandler*".../>  
   
  ]]></format>
         </remarks>
@@ -396,11 +396,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ビットマップ コンテンツのすべての種類、このイベントを発生しません可能性があります。  
+ このイベントは、すべての種類のビットマップコンテンツに対して発生するとは限りません。  
   
 <a name="xamlTextUsage_DownloadProgress"></a>   
-## <a name="xaml-text-usage"></a>XAML テキストの使用状況  
- \<*object* DownloadProgress="*EventHandler*" .../>  
+## <a name="xaml-text-usage"></a>XAML テキストの使用  
+ \<*オブジェクト*DownloadProgress = "*EventHandler*".../>  
   
  ]]></format>
         </remarks>
@@ -436,13 +436,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、<xref:System.Object.Finalize%2A> をオーバーライドします。 アプリケーション コードは、このメソッドを呼び出さないでください。オブジェクトの`Finalize`への呼び出しによって、ガベージ コレクターによって終了処理が無効になっている場合を除き、ガベージ コレクション中にメソッドが自動的に起動、<xref:System.GC.SuppressFinalize%2A>メソッド。  
+ このメソッドは、<xref:System.Object.Finalize%2A> をオーバーライドします。 アプリケーションコードはこのメソッドを呼び出すことはできません。オブジェクトの`Finalize`メソッドは、ガベージコレクションの実行中に、メソッドの<xref:System.GC.SuppressFinalize%2A>呼び出しによってガベージコレクターによる終了処理が無効にされていない限り、自動的に呼び出されます。  
   
- 詳細については、次を参照してください。 [Finalize メソッドおよびデストラクター](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/0s71x931(v%3dvs.100))、[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)、および[Finalize メソッドをオーバーライドする](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))します。  
+ 詳細については、「 [Finalize メソッドとデストラクター](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/0s71x931(v%3dvs.100))」、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」、および「 [finalize メソッドのオーバーライド](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))」を参照してください。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ リソースにアクセスします。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージリソースへのアクセスを許可します。 セキュリティアクション:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="Frames">
@@ -468,14 +468,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- のみ[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]と[!INCLUDE[TLA#tla_gif](~/includes/tlasharptla-gif-md.md)]イメージが 1 つ以上のフレームをサポートします。  
+ と[!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]の[!INCLUDE[TLA#tla_gif](~/includes/tlasharptla-gif-md.md)]イメージのみが、複数のフレームをサポートしています。  
   
- すべて<xref:System.Windows.Media.Imaging.BitmapFrame>このプロパティによって返されるオブジェクトが固定されています。  
+ この<xref:System.Windows.Media.Imaging.BitmapFrame>プロパティによって返されるオブジェクトはすべて固定されます。  
   
    
   
 ## Examples  
- 次のコード例は、使用する方法を示します、<xref:System.Windows.Media.Imaging.BitmapFrame>として、<xref:System.Windows.Media.Imaging.BitmapSource>します。  
+ <xref:System.Windows.Media.Imaging.BitmapFrame> を<xref:System.Windows.Media.Imaging.BitmapSource>として使用する方法を次のコード例に示します。  
   
  [!code-csharp[bitmapframeexample#4](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#4)]
  [!code-vb[bitmapframeexample#4](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#4)]  
@@ -503,8 +503,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>デコーダーが現在コンテンツをダウンロードしてかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> デコーダーがコンテンツをダウンロードする場合それ以外の場合、<see langword="false" />します。</value>
+        <summary>デコーダーが現在コンテンツをダウンロードしているかどうかを示す値を取得します。</summary>
+        <value>デコーダーがコンテンツをダウンロードする場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -536,7 +536,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生した、組み込みのいずれも<xref:System.Windows.Media.Imaging.BitmapDecoder>クラスはグローバル メタデータをサポートします。 メタデータは、イメージの個別のフレームに追加する必要があります。  
+ グローバルメタデータをサポートして<xref:System.Windows.Media.Imaging.BitmapDecoder>いる組み込みの派生クラスはありません。 メタデータは、イメージの個々のフレームに追加する必要があります。  
   
  ]]></format>
         </remarks>
@@ -600,7 +600,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Media.Imaging.BitmapSource>これによって返されるプロパティが固定されています。  
+ この<xref:System.Windows.Media.Imaging.BitmapSource>プロパティによって返されたは固定されています。  
   
  ]]></format>
         </remarks>
@@ -630,14 +630,14 @@
       </ReturnValue>
       <Docs>
         <summary>ビットマップのサムネイルを表す <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> を取得します (定義されている場合)。</summary>
-        <value>ビットマップのサムネイルを表す <see cref="T:System.Windows.Media.Imaging.BitmapSource" />。 サムネイルが定義されていない場合、このプロパティは <see langword="null" /> を返します。 このプロパティには既定値はありません。</value>
+        <value>ビットマップのサムネイルを表す <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> 。 サムネイルが定義されていない場合、このプロパティは <see langword="null" /> を返します。 このプロパティには既定値はありません。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ネイティブ形式のいずれもは、グローバルのサムネイルをサポートします。 [!INCLUDE[TLA#tla_jpegorg](~/includes/tlasharptla-jpegorg-md.md)]、 [!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]、および[!INCLUDE[TLA#tla_wdp](~/includes/tlasharptla-wdp-md.md)]を使用してアクセスできるフレーム レベル サムネールをサポートして、<xref:System.Windows.Media.Imaging.BitmapFrame.Thumbnail%2A>プロパティ。  
+ グローバルサムネイルは、ネイティブ形式ではサポートされません。 [!INCLUDE[TLA#tla_jpegorg](~/includes/tlasharptla-jpegorg-md.md)]、 [!INCLUDE[TLA#tla_tiff](~/includes/tlasharptla-tiff-md.md)]、および[!INCLUDE[TLA#tla_wdp](~/includes/tlasharptla-wdp-md.md)]では<xref:System.Windows.Media.Imaging.BitmapFrame.Thumbnail%2A> 、プロパティを使用してアクセスできるフレームレベルのサムネイルがサポートされています。  
   
- <xref:System.Windows.Media.Imaging.BitmapSource>これによって返されるプロパティが固定されています。  
+ この<xref:System.Windows.Media.Imaging.BitmapSource>プロパティによって返されたは固定されています。  
   
  ]]></format>
         </remarks>
@@ -662,7 +662,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在の値に変換する<see cref="T:System.Windows.Media.Imaging.BitmapDecoder" />を<see cref="T:System.String" />。</summary>
+        <summary><see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> の現在の値を <see cref="T:System.String" /> に変換します。</summary>
         <returns><see cref="T:System.Windows.Media.Imaging.BitmapDecoder" /> の文字列形式。</returns>
         <remarks>To be added.</remarks>
       </Docs>

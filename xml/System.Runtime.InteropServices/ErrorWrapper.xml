@@ -49,39 +49,39 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>として、マーシャラーはマーシャ リング オブジェクトをラップする<see langword="VT_ERROR" />します。</summary>
+    <summary>マーシャラーが <see langword="VT_ERROR" /> としてマーシャリングする必要があるオブジェクトをラップします。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定では、<xref:System.Object>としてマーシャ リングされる型引数を`VARIANT`型、オブジェクトの種類を決定、`VARTYPE`の値、`VARIANT`します。  
+ 既定<xref:System.Object>では、型引数は`VARIANT`型としてマーシャリングされ、オブジェクト型`VARTYPE`によって`VARIANT`の値が決まります。  
   
- <xref:System.Runtime.InteropServices.ErrorWrapper>入力として渡される必要があります、<xref:System.Object>型としてマーシャ リングされる、`VARIANT`型の`VT_ERROR`、それ以外の場合、<xref:System.Runtime.InteropServices.ErrorWrapper>型は整数としてマーシャ リングします。  
+ `VT_ERROR` <xref:System.Object> `VARIANT`型は、型のとしてマーシャリングされる型として渡す必要があり<xref:System.Runtime.InteropServices.ErrorWrapper>ます。それ以外の場合は、型が整数としてマーシャリングされます。 <xref:System.Runtime.InteropServices.ErrorWrapper>  
   
- 次の表は、ネイティブ関数へのマネージ呼び出しのマーシャ リング プラットフォームを使用してを起動します。  
+ 次の表は、プラットフォーム呼び出しを使用したネイティブ関数のマネージ呼び出しでのマーシャリングを示しています。  
   
-|マネージ シグネチャのパラメーター|pArr 値|としてマーシャ リング|  
+|マネージシグネチャパラメーター|pArr 値|マーシャリング|  
 |---------------------------------|----------------|------------------|  
-|ErrorWrapper:operator[] pArr|ErrorWrapper(77) の ErrorWrapper [10]|`Int[10]`|  
-|オブジェクト [pArr|ErrorWrapper(77) の ErrorWrapper [10]|`VARIANT[10]` の `VT_ERROR`|  
-|オブジェクト [pArr|ErrorWrapper(77) のオブジェクト [10]|`VARIANT[10]` の `VT_ERROR`|  
+|ErrorWrapper [] pArr|Errorwrapper の ErrorWrapper [10] (77)|`Int[10]`|  
+|オブジェクト [] pArr|Errorwrapper の ErrorWrapper [10] (77)|`VARIANT[10]` の `VT_ERROR`|  
+|オブジェクト [] pArr|ErrorWrapper のオブジェクト [10] (77)|`VARIANT[10]` の `VT_ERROR`|  
   
- 次の表は、COM ランタイム呼び出し可能ラッパー (RCW) を使用して、ネイティブ関数へのマネージ呼び出しのマーシャ リング データを示しています。  
+ 次の表は、COM ランタイム呼び出し可能ラッパー (RCW) を使用したネイティブ関数のマネージ呼び出しでのデータのマーシャリングを示しています。  
   
-|マネージ シグネチャのパラメーター|pArr 値|としてマーシャ リング|  
+|マネージシグネチャパラメーター|pArr 値|マーシャリング|  
 |---------------------------------|----------------|------------------|  
-|ErrorWrapper:operator[] pArr|ErrorWrapper(77) の ErrorWrapper [10]|`Int[10]`|  
-|オブジェクト [pArr|ErrorWrapper(77) の ErrorWrapper [10]|`SafeArrayTypeMismatch` 例外|  
-|オブジェクト [pArr|ErrorWrapper(77) のオブジェクト [10]|`SAFEARRAY(VARIANT)`|  
+|ErrorWrapper [] pArr|Errorwrapper の ErrorWrapper [10] (77)|`Int[10]`|  
+|オブジェクト [] pArr|Errorwrapper の ErrorWrapper [10] (77)|`SafeArrayTypeMismatch`例外的|  
+|オブジェクト [] pArr|ErrorWrapper のオブジェクト [10] (77)|`SAFEARRAY(VARIANT)`|  
   
- なお<xref:System.Runtime.InteropServices.ErrorWrapper>オブジェクト型としてマーシャ リングされない`VT_ERROR`COM から返されるため後  1 つの値がから COM 型としてマーシャ リング`VT_I4`型として COM から返された配列がマーシャ リングされるときに、`VT_UI4`します。  
+ COM から<xref:System.Runtime.InteropServices.ErrorWrapper>渡されたオブジェクトは型`VT_ERROR`としてマーシャリングされないことに注意してください。  単一の値は、com から型`VT_I4`としてマーシャリングされますが、配列は com から型`VT_UI4`としてマーシャリングされます。  
   
- 詳細については`VT_ERROR`、既存のドキュメントをご覧ください`VARENUM::VT_ERROR`MSDN ライブラリ。  
+ の詳細につい`VT_ERROR`ては、MSDN ライブラリのの`VARENUM::VT_ERROR`既存のドキュメントを参照してください。  
   
    
   
 ## Examples  
- 次のコード例は最初、唯一示します<xref:System.Int32>として COM からオブジェクトを<xref:System.Int32>オブジェクト。 後を示しています、<xref:System.Int32>として COM から配列を<xref:System.UInt32>配列。  
+ 次のコード例では、最初<xref:System.Int32>に COM から<xref:System.Int32>オブジェクトとしてマーシャリングされる唯一のオブジェクトを示します。 次に、COM <xref:System.Int32>から<xref:System.UInt32>配列としてマーシャリングされた配列を示します。  
   
 ```  
 // Scenario 1:  
@@ -158,13 +158,13 @@ UInt32[ ] arr2 = (UInt32[])o;
       </Parameters>
       <Docs>
         <param name="e">エラー コードに変換する例外。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Runtime.InteropServices.ErrorWrapper" />クラスが提供される例外に対応する HRESULT を使用します。</summary>
+        <summary><see cref="T:System.Runtime.InteropServices.ErrorWrapper" /> クラスの新しいインスタンスを、提供される例外に対応する HRESULT を使用して初期化します。</summary>
         <remarks>To be added.</remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。  
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。  
   
-セキュリティ アクション。必要に応じて。  
+セキュリティアクション:要望.  
   
-関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -202,7 +202,7 @@ UInt32[ ] arr2 = (UInt32[])o;
       </Parameters>
       <Docs>
         <param name="errorCode">エラーの HRESULT。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Runtime.InteropServices.ErrorWrapper" />エラーの HRESULT を持つクラス。</summary>
+        <summary><see cref="T:System.Runtime.InteropServices.ErrorWrapper" /> クラスの新しいインスタンスを、エラーの HRESULT を使用して初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -240,8 +240,8 @@ UInt32[ ] arr2 = (UInt32[])o;
         <Parameter Name="errorCode" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="errorCode">エラーの HRESULT を格納するオブジェクト。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Runtime.InteropServices.ErrorWrapper" />エラーの HRESULT を格納するオブジェクトを持つクラス。</summary>
+        <param name="errorCode">エラーの HRESULT を格納しているオブジェクト。</param>
+        <summary><see cref="T:System.Runtime.InteropServices.ErrorWrapper" /> クラスの新しいインスタンスを、エラーの HRESULT を格納しているオブジェクトを使用して初期化します。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentException"><paramref name="errorCode" /> パラメーターが <see cref="T:System.Int32" /> 型ではありません。</exception>
       </Docs>

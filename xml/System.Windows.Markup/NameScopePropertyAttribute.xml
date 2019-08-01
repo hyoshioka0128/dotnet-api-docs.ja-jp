@@ -31,22 +31,22 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 一般的なオブジェクト モデルで/アプリケーション モデルの組み合わせ、XAML が使用されている XAML 名前スコープとして使用されるクラスは、一般に、ルート要素として使用する、またはページのメタファをサポートするクラス。 一般にこれらのクラスを実装<xref:System.Windows.Markup.INameScope>XAML 名前スコープで作成され、ルートに対応するフレームワークのプログラミング モデルとアプリケーション モデルのコンテキストでの一般的な XAML 処理動作します。  
+ XAML を使用する典型的なオブジェクトモデル/アプリケーションモデルの組み合わせでは、XAML 名前スコープとして使用されるクラスは、一般にルート要素として使用されるクラス、またはページの比喩をサポートするクラスです。 これらのクラスは<xref:System.Windows.Markup.INameScope> 、一般にを実装し、フレームワークのプログラミングモデルとアプリケーションモデルのコンテキストでの xaml 処理の一般的な動作によって、ルートに対応する xaml 名前スコープを作成します。  
   
- 場合<xref:System.Windows.Markup.NameScopePropertyAttribute>が使用すると、XAML 名前スコープのプロパティの値を実装するオブジェクトを指定する必要が<xref:System.Windows.Markup.INameScope>し、実際の XAML 名前スコープとその動作を保持します。  
+ を<xref:System.Windows.Markup.NameScopePropertyAttribute>使用する場合、xaml 名前スコーププロパティの値は、実際の xaml 名前<xref:System.Windows.Markup.INameScope>スコープとその動作を実装して保持するオブジェクトであると想定されます。  
   
- この属性の 2 つの形式があります。 プロパティ名のみ、または型とプロパティ。 後者の形式は、XAML 名前スコープを保持するプロパティが、アタッチ可能なメンバーである場合にのみ使用する必要があります。 アタッチされたメンバーの手法では、サービス クラスがいくつかの異なるオブジェクトの種類をサポートできる XAML 名前スコープの概念を実装できるという利点があります。 オブジェクトの種類は、[クラスの継承で明示的に関連付けるには必要ありません。  
+ この属性には、プロパティ名のみ、または型とプロパティという2つの形式があります。 後者の形式は、XAML 名前スコープを保持するプロパティがアタッチ可能なメンバーである場合にのみ使用してください。 アタッチされたメンバーの手法には、サービスクラスが、いくつかの異なるオブジェクト型をサポートする XAML 名前スコープの概念を実装できるという利点があります。 これらのオブジェクトの種類は、クラスの継承で明示的に関連付けられている必要はありません。  
   
- .NET Framework の以前のバージョンでは、このクラスは、WPF 固有の WindowsBase アセンブリに存在します。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、<xref:System.Windows.Markup.NameScopePropertyAttribute>は System.Xaml アセンブリにします。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
+ 以前のバージョンの .NET Framework では、このクラスは WPF 固有のアセンブリ WindowsBase に存在していました。 で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]は<xref:System.Windows.Markup.NameScopePropertyAttribute> 、は、システムの .xaml アセンブリにあります。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
   
 ## <a name="wpf-usage-notes"></a>WPF の使用上の注意  
- WPF では、この属性は単一の型のみに適用<xref:System.Windows.DependencyObject>します。 この場合、属性付きプロパティは、サービス クラス<xref:System.Windows.NameScope>とその<xref:System.Windows.NameScope.NameScope%2A?displayProperty=nameWithType>添付プロパティ。  
+ WPF では、この属性は1つの型<xref:System.Windows.DependencyObject>にのみ適用されます。 この場合、属性付きプロパティは、サービスクラス<xref:System.Windows.NameScope>とその<xref:System.Windows.NameScope.NameScope%2A?displayProperty=nameWithType>添付プロパティです。  
   
  ]]></format>
     </remarks>
     <related type="Article" href="https://msdn.microsoft.com/library/5dfb299a-b6e2-41b8-8694-e6ac987547f1">カスタム型およびライブラリの XAML 関連の CLR 属性</related>
     <related type="Article" href="https://msdn.microsoft.com/library/c2667cbd-2f46-4a7f-9dfc-53696e35e8e4">.NET Framework XAML サービスで使用するためのカスタム型の定義</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">NET XAML サービスの概念に関するドキュメント</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">NET XAML サービスの概念説明ドキュメント</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -113,8 +113,8 @@
         <Parameter Name="type" Type="System.Type" Index="1" FrameworkAlternate="netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="name">XAML 名前スコープを提供する添付可能なメンバーの名前。</param>
-        <param name="type">XAML 名前スコープを提供する添付可能なメンバーの所有者の種類。</param>
+        <param name="name">XAML 名前スコープを提供するアタッチ可能なメンバーの名前。</param>
+        <param name="type">XAML 名前スコープを提供するアタッチ可能なメンバーの所有者型。</param>
         <summary>指定した名前および型を使用して、<see cref="T:System.Windows.Markup.NameScopePropertyAttribute" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -150,7 +150,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 意味<xref:System.Windows.Markup.NameScopePropertyAttribute.Name%2A>かどうかによって異なります<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A>設定されます。 場合<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A>が null の場合、<xref:System.Windows.Markup.NameScopePropertyAttribute.Name%2A>属性を付ける型のプロパティを参照します。 場合<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A>し、値を含む<xref:System.Windows.Markup.NameScopePropertyAttribute.Name%2A>のプロパティを指定された参照<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A>します。  
+ の<xref:System.Windows.Markup.NameScopePropertyAttribute.Name%2A>意味は、が設定<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A>されているかどうかによって異なります。 が<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A> null の場合、 <xref:System.Windows.Markup.NameScopePropertyAttribute.Name%2A>は、属性が設定されている型のプロパティを参照します。 に<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A>値が含まれて<xref:System.Windows.Markup.NameScopePropertyAttribute.Name%2A>いる場合、は、指定<xref:System.Windows.Markup.NameScopePropertyAttribute.Type%2A>されたのプロパティを参照します。  
   
  ]]></format>
         </remarks>
@@ -181,13 +181,13 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>XAML 名前スコープのサポートを提供する添付プロパティの所有者の種類を取得します。</summary>
-        <value>XAML 名前スコープのサポートを提供する添付プロパティの所有者の種類である <see cref="T:System.Type" /> 値、または <see langword="null" />。</value>
+        <summary>XAML 名前スコープのサポートを提供する添付プロパティの所有者タイプを取得します。</summary>
+        <value>XAML 名前スコープのサポートを提供する添付プロパティの所有者タイプである <see cref="T:System.Type" /> 値。または <see langword="null" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティである場合、アタッチ可能なメンバーの所有者の種類は、この XAML 名前スコープの実装するプロパティが、アタッチ可能なメンバーである場合は、関連するだけです。 それ以外の場合、この値は null にすることがあります。 名前スコープのプロパティの型を定義する場合は、報告される一般的なリフレクション ベースのロジックが必要なかどうかは、発生するたびに、属性が適用される型を置き換えることができます`null`このプロパティの。  
+ このプロパティは、XAML 名前スコープの実装プロパティがアタッチ可能なメンバーである場合にのみ適用されます。この場合、これはアタッチ可能なメンバーの所有者の種類です。 それ以外の場合、この値は null になることがあります。 すべての場合に、名前スコーププロパティの定義型を報告する一般的なリフレクションベースのロジックが必要な場合は、このプロパティが発生`null`するたびに属性が適用される型を置き換えることができます。  
   
  ]]></format>
         </remarks>

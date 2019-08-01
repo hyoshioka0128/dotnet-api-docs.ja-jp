@@ -1,5 +1,5 @@
 <Type Name="RegexMatchTimeoutException" FullName="System.Text.RegularExpressions.RegexMatchTimeoutException">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="8d17e24ceb87e5d6d02bfd87c99424dc1cdfc325" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58722444" /></Metadata><TypeSignature Language="C#" Value="public class RegexMatchTimeoutException : TimeoutException" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f95f0f02283855200579c730c6c506505b52ee2e" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68393635" /></Metadata><TypeSignature Language="C#" Value="public class RegexMatchTimeoutException : TimeoutException" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit RegexMatchTimeoutException extends System.TimeoutException implements class System.Runtime.Serialization.ISerializable" />
   <TypeSignature Language="DocId" Value="T:System.Text.RegularExpressions.RegexMatchTimeoutException" />
   <TypeSignature Language="VB.NET" Value="Public Class RegexMatchTimeoutException&#xA;Inherits TimeoutException" />
@@ -43,24 +43,24 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- プレゼンスを<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>例外が一般に、次の条件のいずれかを示します。  
+ <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>例外の存在は、通常、次のいずれかの条件を示します。  
   
--   正規表現エンジンは過度にバックトラッ キング正規表現パターンに入力テキストに一致するものとします。  
+-   正規表現エンジンは、入力テキストを正規表現パターンと照合しようとするため、過度にバックトラッキングが行われます。  
   
--   タイムアウト間隔が設定されて低すぎる、特に高いマシンの負荷を指定します。  
+-   タイムアウト間隔の設定が低すぎる (特にコンピューターの負荷が高い場合)。  
   
  例外ハンドラーが例外を処理する方法は、例外の原因によって異なります。  
   
--   タイムアウトは、過度なバックトラッ キングの結果、例外ハンドラーは、入力に一致して、ユーザーに、正規表現パターン一致メソッドでタイムアウトが発生したことを通知しようを放棄する必要があります。 可能であれば、提供されている正規表現パターンについては、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Pattern%2A>プロパティ、および提供されている入力過度なバックトラッ キングの原因となった、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Input%2A>問題をできるように、プロパティを記録する必要があります調査し、正規表現パターンを変更します。 過度なバックトラッ キングのためのタイムアウトは、常に再現可能です。  
+-   タイムアウトが過剰なバックトラッキングによって発生した場合は、例外ハンドラーが入力を照合する試行を破棄し、正規表現パターン一致メソッドでタイムアウトが発生したことをユーザーに通知する必要があります。 可能であれば、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Pattern%2A>プロパティから使用できる正規表現パターンに関する情報と、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Input%2A>プロパティから取得できる過剰なバックトラッキングを引き起こした入力をログに記録して、問題を解決できるようにする必要があります。調査済みで、正規表現パターンが変更されました。 過度なバックトラッキングによるタイムアウトは常に再現可能です。  
   
--   設定のタイムアウトしきい値が低すぎるから結果が、タイムアウト場合、は、タイムアウト間隔を長くし、一致する操作をやり直してください。 現在のタイムアウト間隔はから利用可能な<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.MatchTimeout%2A>プロパティ。 ときに、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>例外がスローされます、正規表現エンジンその状態を保持、今後の呼び出しは、同じ結果を返すように、例外が発生しなかったかのようです。 推奨されるパターンでは、一致するメソッドを再度呼び出す前に、例外がスローされた後、簡単なランダムな期間待機します。 これは複数回繰り返すことができます。 ただし、繰り返しの数を小さい過度なバックトラッ キングによって、タイムアウトが原因となった場合があります。  
+-   タイムアウトのしきい値を設定した結果が小さすぎる場合は、タイムアウト間隔を長くして、照合操作を再試行することができます。 現在のタイムアウト間隔は、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.MatchTimeout%2A>プロパティから取得できます。 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>例外がスローされると、正規表現エンジンはその状態を維持するので、例外が発生しなかった場合と同じ結果が返されます。 推奨されるパターンは、一致するメソッドを再度呼び出す前に、例外がスローされた後のランダムな時間間隔を短くすることです。 これは、複数回繰り返すことができます。 ただし、タイムアウトが過剰なバックトラッキングによって引き起こされる場合は、繰り返し回数が小さくなる必要があります。  
   
- 次のセクションの例では、両方の処理方法を示しています、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>します。  
+ 次のセクションの例では、を<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>処理する方法について説明します。  
   
    
   
 ## Examples  
- 次の例では、処理する 2 つのアプローチ、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>例外。 2 秒の値が定数では、最大タイムアウト間隔を定義します。 <xref:System.Text.RegularExpressions.Regex.IsMatch%28System.String%2CSystem.String%2CSystem.Text.RegularExpressions.RegexOptions%2CSystem.TimeSpan%29?displayProperty=nameWithType>メソッドが 1 秒のタイムアウト間隔で最初に呼び出されます。 各<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>例外が 1 秒間に延長するタイムアウト間隔し、別の呼び出しをされ、<xref:System.Text.RegularExpressions.Regex.IsMatch%2A?displayProperty=nameWithType>メソッド、現在のタイムアウト間隔が最大タイムアウト間隔よりも小さい場合。 ただし、現在のタイムアウト間隔が最大タイムアウト間隔を超えている場合、例外ハンドラー、イベント ログに情報を書き込みます、正規表現の処理を破棄します。  
+ 次の例は、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>例外を処理する2つの方法を示しています。 値が2秒の定数は、最大タイムアウト間隔を定義します。 メソッド<xref:System.Text.RegularExpressions.Regex.IsMatch%28System.String%2CSystem.String%2CSystem.Text.RegularExpressions.RegexOptions%2CSystem.TimeSpan%29?displayProperty=nameWithType>は、1秒のタイムアウト間隔で最初に呼び出されます。 例外<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>が発生するたびに、タイムアウト間隔が1秒に増加し、現在のタイムアウト間隔が<xref:System.Text.RegularExpressions.Regex.IsMatch%2A?displayProperty=nameWithType>最大タイムアウト時間よりも短い場合、メソッドが別の呼び出しになります。 ただし、現在のタイムアウト間隔が最大タイムアウト時間を超える場合、例外ハンドラーは情報をイベントログに書き込み、正規表現の処理を破棄します。  
   
  [!code-csharp[System.Text.RegularExpressions.RegexMatchTimeoutException#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.text.regularexpressions.regexmatchtimeoutexception/cs/class1.cs#1)]
  [!code-vb[System.Text.RegularExpressions.RegexMatchTimeoutException#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.text.regularexpressions.regexmatchtimeoutexception/vb/class1.vb#1)]  
@@ -117,7 +117,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、既定のコンス トラクター、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>クラス。 このコンストラクターは、新しいインスタンスの <xref:System.Exception.Message%2A> プロパティをシステム提供のエラー記述メッセージに初期化します。 このメッセージは、システムの現在のカルチャにローカライズされます。  
+ これは、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>クラスのパラメーターなしのコンストラクターです。 このコンストラクターは、新しいインスタンスの <xref:System.Exception.Message%2A> プロパティをシステム提供のエラー記述メッセージに初期化します。 このメッセージは、現在のシステムのカルチャに対してローカライズされています。  
   
  ]]></format>
         </remarks>
@@ -160,7 +160,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `message`に文字列が割り当てられている、<xref:System.Exception.Message%2A?displayProperty=nameWithType>プロパティ。 現在のカルチャの文字列をローカライズする必要があります。  
+ 文字列は、 <xref:System.Exception.Message%2A?displayProperty=nameWithType>プロパティに割り当てられます。 `message` 文字列は、現在のカルチャにローカライズされている必要があります。  
   
  ]]></format>
         </remarks>
@@ -201,7 +201,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターはインスタンス化するコードによって直接呼び出されません、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>オブジェクト。 代わりに、によって呼び出されますが、<xref:System.Runtime.Serialization.IFormatter.Deserialize%2A?displayProperty=nameWithType>メソッドの逆シリアル化時、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>ストリームからのオブジェクト。  
+ このコンストラクターは、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>オブジェクトをインスタンス化するためにコードによって直接呼び出されるわけではありません。 代わりに、ストリームから<xref:System.Runtime.Serialization.IFormatter.Deserialize%2A?displayProperty=nameWithType> <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>オブジェクトを逆シリアル化するときに、メソッドによって呼び出されます。  
   
  ]]></format>
         </remarks>
@@ -246,9 +246,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 通常での例外を処理するためにこのオーバー ロードを使用する`try/catch`ブロックします。 `innerException`で処理される例外オブジェクトへの参照がパラメーターにすることは、`catch`ブロック、またはそのできます`null`します。 この値が割り当てられますし、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>オブジェクトの<xref:System.Exception.InnerException%2A?displayProperty=nameWithType>プロパティ。  
+ 通常、このオーバーロードを使用して、 `try/catch`ブロック内の例外を処理します。 パラメーターは、 `catch`ブロックで処理さ`null`れる例外オブジェクトへの参照であるか、またはにする必要があります。 `innerException` この値は、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>オブジェクトの<xref:System.Exception.InnerException%2A?displayProperty=nameWithType>プロパティに割り当てられます。  
   
- `message`に文字列が割り当てられている、<xref:System.Exception.Message%2A?displayProperty=nameWithType>プロパティ。 現在のカルチャの文字列をローカライズする必要があります。  
+ 文字列は、 <xref:System.Exception.Message%2A?displayProperty=nameWithType>プロパティに割り当てられます。 `message` 文字列は、現在のカルチャにローカライズされている必要があります。  
   
  ]]></format>
         </remarks>
@@ -295,7 +295,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `regexInput`、 `regexPattern`、および`matchTimeout`に値が割り当てられている、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Input%2A>、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Pattern%2A>、および<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.MatchTimeout%2A>プロパティの新しい<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>オブジェクト。  
+ <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Input%2A> <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.MatchTimeout%2A> <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Pattern%2A>、、およびの各<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>値は、新しいオブジェクトの、、およびの各プロパティに割り当てられます。 `matchTimeout` `regexPattern` `regexInput`  
   
  ]]></format>
         </remarks>
@@ -338,9 +338,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティの値の反映、`regexInput`のパラメーター、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.%23ctor%28System.String%2CSystem.String%2CSystem.TimeSpan%29>コンス トラクター。 このパラメーターがコンス トラクターの呼び出しで明示的に初期化されていない場合、値は<xref:System.String.Empty?displayProperty=nameWithType>します。  
+ このプロパティは、 `regexInput` <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.%23ctor%28System.String%2CSystem.String%2CSystem.TimeSpan%29>コンストラクターのパラメーターの値を反映します。 このパラメーターがコンストラクター呼び出しで明示的に初期化されていない<xref:System.String.Empty?displayProperty=nameWithType>場合、その値はになります。  
   
- 正規表現によって、例外がスローされたときにエンジンの値、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Input%2A>入力文字列全体が正規表現エンジンに渡されるプロパティに反映されます。 メソッドへの呼び出しでなど、エンジンを検索するサブスト リングなどの部分文字列は反映されません<xref:System.Text.RegularExpressions.Regex.Match%28System.String%2CSystem.Int32%29?displayProperty=nameWithType>します。  
+ 正規表現エンジンによって例外がスローされた場合、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.Input%2A>プロパティの値は、正規表現エンジンに渡された入力文字列全体を反映します。 エンジンがなど<xref:System.Text.RegularExpressions.Regex.Match%28System.String%2CSystem.Int32%29?displayProperty=nameWithType>のメソッドの呼び出しを検索する部分文字列など、部分文字列は反映されません。  
   
  ]]></format>
         </remarks>
@@ -383,9 +383,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティの値の反映、`matchTimeout`のパラメーター、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.%23ctor%28System.String%2CSystem.String%2CSystem.TimeSpan%29>コンス トラクター。 コンス トラクターの呼び出しでパラメーターが正しく初期化されていない場合、値は`Timespan.FromTicks(-1)`します。  
+ このプロパティは、 `matchTimeout` <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.%23ctor%28System.String%2CSystem.String%2CSystem.TimeSpan%29>コンストラクターのパラメーターの値を反映します。 コンストラクターの呼び出しでパラメーターが適切に初期化されていない場合`Timespan.FromTicks(-1)`、その値はになります。  
   
- このプロパティの値への呼び出しで設定されたタイムアウト期間を反映する、<xref:System.Text.RegularExpressions.Regex>コンス トラクターまたは静的メソッド。 例外がスローされた時刻に、メソッド呼び出しの開始から経過した正確な間隔は反映されません。  
+ このプロパティの値は、 <xref:System.Text.RegularExpressions.Regex>コンストラクターまたは静的メソッドの呼び出しで設定されたタイムアウト時間を反映します。 メソッド呼び出しの最初から例外がスローされた時点までの経過時間を正確に反映していません。  
   
  ]]></format>
         </remarks>
@@ -428,7 +428,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティの値の反映、`regexPattern`のパラメーター、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException.%23ctor%28System.String%2CSystem.String%2CSystem.TimeSpan%29>コンス トラクター。 コンス トラクターの呼び出しでパラメーターが正しく初期化されていない場合、値は<xref:System.String.Empty?displayProperty=nameWithType>します。  
+ このプロパティは、 `regexPattern` <xref:System.Text.RegularExpressions.RegexMatchTimeoutException.%23ctor%28System.String%2CSystem.String%2CSystem.TimeSpan%29>コンストラクターのパラメーターの値を反映します。 コンストラクターの呼び出しでパラメーターが適切に初期化されていない場合<xref:System.String.Empty?displayProperty=nameWithType>、その値はになります。  
   
  ]]></format>
         </remarks>
@@ -474,9 +474,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーは、明示的なインターフェイス メンバーの実装です。 使用できる場合にのみ、<xref:System.Text.RegularExpressions.RegexMatchTimeoutException>インスタンスにキャスト、<xref:System.Runtime.Serialization.ISerializable>インターフェイス オブジェクト。  
+ このメンバーは、明示的なインターフェイス メンバーの実装です。 このメソッドは、 <xref:System.Text.RegularExpressions.RegexMatchTimeoutException>インスタンスが<xref:System.Runtime.Serialization.ISerializable>インターフェイスオブジェクトにキャストされている場合にのみ使用できます。  
   
- 含まれているすべてのオブジェクト、<xref:System.Runtime.Serialization.SerializationInfo>オブジェクトが自動的に追跡し、フォーマッタがシリアル化します。  
+ <xref:System.Runtime.Serialization.SerializationInfo>オブジェクトに含まれるオブジェクトは、フォーマッタによって自動的に追跡およびシリアル化されます。  
   
  ]]></format>
         </remarks>

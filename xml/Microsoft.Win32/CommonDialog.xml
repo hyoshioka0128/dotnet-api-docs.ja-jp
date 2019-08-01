@@ -33,7 +33,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>派生クラスのコンス トラクターによって呼び出されたときに、基本クラスの値を初期化します。</summary>
+        <summary>派生クラスのコンストラクターによって呼び出されるときに基本クラスの値を初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -63,10 +63,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ダイアログ ボックスを表示するための十分なアクセス許可があるかどうかを判断します。</summary>
+        <summary>ダイアログ ボックスを表示するための十分なアクセス許可が存在するかどうかを確認します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.Security.SecurityException">ダイアログを表示するための十分なアクセス許可がありませんでした。 場合、</exception>
-        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずには、このメソッドを実行します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <exception cref="T:System.Security.SecurityException">ダイアログ ボックスを表示するための十分なアクセス許可が存在しない場合。</exception>
+        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずにこのメソッドを実行する場合は。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
       </Docs>
     </Member>
     <Member MemberName="HookProc">
@@ -97,17 +97,17 @@
         <Parameter Name="lParam" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="hwnd">[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)] ダイアログのウィンドウ ハンドル。</param>
-        <param name="msg">によって処理される Windows メッセージ、[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]ダイアログ。</param>
-        <param name="wParam">ダイアログでのアクションのパラメーター。</param>
-        <param name="lParam">ダイアログでのアクションのパラメーター。</param>
+        <param name="hwnd">[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)] ダイアログ ボックスのウィンドウ ハンドル。</param>
+        <param name="msg">[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)] ダイアログ ボックスで処理される Windows メッセージ。</param>
+        <param name="wParam">ダイアログ ボックスでのアクションのパラメーター。</param>
+        <param name="lParam">ダイアログ ボックスでのアクションのパラメーター。</param>
         <summary>コモン ダイアログ ボックスに特定の機能を追加するためにオーバーライドされる、コモン ダイアログ ボックスのフック プロシージャを定義します。</summary>
         <returns>常に <see cref="F:System.IntPtr.Zero" /> を返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.Win32.CommonDialog.HookProc%2A> ダイアログ ウィンドウで、既定のコントロールにフォーカスを設定して、画面を基準と中央に配置して、ダイアログの初期化を処理します。  
+ <xref:Microsoft.Win32.CommonDialog.HookProc%2A>ダイアログウィンドウを画面の中央に揃え、既定のコントロールにフォーカスを設定することにより、ダイアログの初期化を処理します。  
   
  ]]></format>
         </remarks>
@@ -136,7 +136,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>派生クラスでオーバーライドされると、コモン ダイアログ ボックスのプロパティを既定値にリセットします。</summary>
+        <summary>派生クラスでオーバーライドされるときに、コモン ダイアログ ボックスのプロパティを既定値にリセットします。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -160,14 +160,14 @@
         <Parameter Name="hwndOwner" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="hwndOwner">ダイアログ ボックスを所有するウィンドウへのハンドルします。</param>
-        <summary>派生クラスでオーバーライドされるが特定の種類を表示すると呼ばれる[!INCLUDE[TLA#tla_win32](~/includes/tlasharptla-win32-md.md)]コモン ダイアログ ボックス。</summary>
+        <param name="hwndOwner">ダイアログ ボックスを所有するウィンドウを識別するハンドル。</param>
+        <summary>派生クラスでオーバーライドされるときに、[!INCLUDE[TLA#tla_win32](~/includes/tlasharptla-win32-md.md)] コモン ダイアログ ボックスの特定の種類を表示するために呼び出されます。</summary>
         <returns>表示されているダイアログ (<see cref="T:Microsoft.Win32.OpenFileDialog" /> や <see cref="T:Microsoft.Win32.SaveFileDialog" /> など) でユーザーが **[OK]** ボタンをクリックした場合は <see langword="true" />、それ以外の場合は <see langword="false" /> が返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 最終的に表示されるダイアログ ボックスには、によって指定される、オーナー ウィンドウが割り当てられている、`hwndOwner`パラメーター。  
+ 最終的に表示されるダイアログには、 `hwndOwner`パラメーターによって指定された所有者ウィンドウが割り当てられます。  
   
  ]]></format>
         </remarks>
@@ -179,19 +179,19 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずには、このメソッドを実行します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
-        <summary>コモン ダイアログ ボックスが表示されます。</summary>
+        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずにこのメソッドを実行する場合は。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <summary>コモン ダイアログ ボックスを表示します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.Win32.CommonDialog.ShowDialog%2A> 呼び出しの前にすべてのコモン ダイアログの初期化タスクを実行します。<xref:Microsoft.Win32.CommonDialog.RunDialog%2A>します。 <xref:Microsoft.Win32.CommonDialog.RunDialog%2A> 、オーナー ウィンドウが必要です<xref:Microsoft.Win32.CommonDialog.ShowDialog%2A>次の優先順位で 1 つを代入しようとします。  
+ <xref:Microsoft.Win32.CommonDialog.ShowDialog%2A>を呼び出す<xref:Microsoft.Win32.CommonDialog.RunDialog%2A>前に、すべての共通ダイアログの初期化タスクを実行します。 に<xref:Microsoft.Win32.CommonDialog.RunDialog%2A>は所有者ウィンドウが<xref:Microsoft.Win32.CommonDialog.ShowDialog%2A>必要であるため、は次の優先順位で1つを割り当てようとします。  
   
--   現在のアプリケーションの*アクティブなウィンドウ*します。  
+-   現在のアプリケーションの*アクティブウィンドウ*。  
   
--   現在のアプリケーションの*駐車ウィンドウ*します。  
+-   現在のアプリケーションの*パーキングウィンドウ*。  
   
--   内部的に生成された非表示のウィンドウ。  
+-   内部で生成された非表示のウィンドウ。  
   
  ]]></format>
         </remarks>
@@ -220,19 +220,19 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>コモン ダイアログ ボックスが表示されます。</summary>
+        <summary>コモン ダイアログ ボックスを表示します。</summary>
         <returns>表示されているダイアログ (<see cref="T:Microsoft.Win32.OpenFileDialog" /> や <see cref="T:Microsoft.Win32.SaveFileDialog" /> など) でユーザーが [OK] ボタンをクリックした場合は <see langword="true" />、それ以外の場合は <see langword="false" /> が返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.Win32.CommonDialog.ShowDialog%2A> 呼び出しの前にすべてのコモン ダイアログの初期化タスクを実行します。<xref:Microsoft.Win32.CommonDialog.RunDialog%2A>します。  
+ <xref:Microsoft.Win32.CommonDialog.ShowDialog%2A>を呼び出す<xref:Microsoft.Win32.CommonDialog.RunDialog%2A>前に、すべての共通ダイアログの初期化タスクを実行します。  
   
- 現在の実装では、派生クラスで (<xref:Microsoft.Win32.OpenFileDialog>と<xref:Microsoft.Win32.SaveFileDialog>) のみを返すは`true`または`false`します。  
+ 現在の実装では、派生クラス (<xref:Microsoft.Win32.OpenFileDialog>および<xref:Microsoft.Win32.SaveFileDialog>) はまたは`true` `false`のみを返します。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずには、このメソッドを実行します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずにこのメソッドを実行する場合は。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
       </Docs>
     </Member>
     <Member MemberName="ShowDialog">
@@ -260,20 +260,20 @@
         <Parameter Name="owner" Type="System.Windows.Window" />
       </Parameters>
       <Docs>
-        <param name="owner">ダイアログを所有するウィンドウを識別するハンドル。</param>
-        <summary>コモン ダイアログ ボックスが表示されます。</summary>
+        <param name="owner">ダイアログ ボックスを所有するウィンドウを識別するハンドル。</param>
+        <summary>コモン ダイアログ ボックスを表示します。</summary>
         <returns>表示されているダイアログ (<see cref="T:Microsoft.Win32.OpenFileDialog" /> や <see cref="T:Microsoft.Win32.SaveFileDialog" /> など) でユーザーが [OK] ボタンをクリックした場合は <see langword="true" />、それ以外の場合は <see langword="false" /> が返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.Win32.CommonDialog.ShowDialog%2A> 呼び出しの前にすべてのコモン ダイアログの初期化タスクを実行します。<xref:Microsoft.Win32.CommonDialog.RunDialog%2A>します。 によって指定される、オーナー ウィンドウを最終的に表示されるダイアログ ボックスがさらに、割り当てられている、`owner`パラメーター。  
+ <xref:Microsoft.Win32.CommonDialog.ShowDialog%2A>を呼び出す<xref:Microsoft.Win32.CommonDialog.RunDialog%2A>前に、すべての共通ダイアログの初期化タスクを実行します。 また、最終的に表示されるダイアログには、 `owner`パラメーターによって指定された所有者ウィンドウが割り当てられます。  
   
- 現在の実装では、派生クラスで (<xref:Microsoft.Win32.OpenFileDialog>と<xref:Microsoft.Win32.SaveFileDialog>) のみを返すは`true`または`false`します。  
+ 現在の実装では、派生クラス (<xref:Microsoft.Win32.OpenFileDialog>および<xref:Microsoft.Win32.SaveFileDialog>) はまたは`true` `false`のみを返します。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずには、このメソッドを実行します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">例外を発生させずにこのメソッドを実行する場合は。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
         <altmember cref="P:System.Windows.Window.Owner" />
       </Docs>
     </Member>
@@ -302,13 +302,13 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定ダイアログに関連付けられているオブジェクト。 これは、ダイアログ ボックスに、任意のオブジェクトをアタッチする機能を提供します。</summary>
-        <value>A<see cref="T:System.Object" />をアタッチまたはダイアログ ボックスに関連付けられています。</value>
+        <summary>ダイアログ ボックスに関連付けられているオブジェクトを取得または設定します。 これにより、ダイアログ ボックスに任意のオブジェクトを結びつけることができます。</summary>
+        <value>ダイアログ ボックスに結び付けられている (関連付けられている) <see cref="T:System.Object" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 関連項目  
+ 参照  
   
  ]]></format>
         </remarks>

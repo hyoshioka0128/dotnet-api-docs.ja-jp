@@ -20,23 +20,23 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 入力イベントの処理へのアクセスを有効にする、<xref:System.Windows.Input.InputManager>ステージング領域。  
+ 入力イベントを処理すると、 <xref:System.Windows.Input.InputManager>ステージング領域にアクセスできるようになります。  
   
- 入力のステージング領域に生の入力を処理する[!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)]イベント。  
+ 入力ステージング領域は、未加工の入力[!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)]をイベントに処理します。  
   
- <xref:System.Windows.Input.ProcessInputEventArgs> 使用されて、<xref:System.Windows.Input.InputManager.PostProcessInput>イベント。  
+ <xref:System.Windows.Input.ProcessInputEventArgs>は、 <xref:System.Windows.Input.InputManager.PostProcessInput>イベントで使用されます。  
   
- 入力の処理で[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]次の段階で。  
+ 入力は、次[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]の段階でで処理されます。  
   
-1.  前処理段階です。  入力マネージャー発生させ、<xref:System.Windows.Input.InputManager.PreProcessInput>イベント。  
+1.  プロセス前の段階。  入力マネージャーによって<xref:System.Windows.Input.InputManager.PreProcessInput>イベントが発生します。  
   
-2.  ステージを事前に通知します。  入力マネージャー発生させ、<xref:System.Windows.Input.InputManager.PreNotifyInput>イベント。  
+2.  事前通知段階。  入力マネージャーによって<xref:System.Windows.Input.InputManager.PreNotifyInput>イベントが発生します。  
   
 3.  [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]入力イベントまたはイベントが発生します。  
   
-4.  後のステージを通知します。  入力マネージャー発生させ、<xref:System.Windows.Input.InputManager.PostNotifyInput>イベント。  
+4.  通知後の段階。  入力マネージャーによって<xref:System.Windows.Input.InputManager.PostNotifyInput>イベントが発生します。  
   
-5.  処理後の段階です。  入力マネージャー発生させ、<xref:System.Windows.Input.InputManager.PostProcessInput>イベント。  
+5.  プロセス後の段階。  入力マネージャーによって<xref:System.Windows.Input.InputManager.PostProcessInput>イベントが発生します。  
   
  ]]></format>
     </remarks>
@@ -70,17 +70,17 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>取得するがポップアップするステージング領域のスタックの上部にある入力イベント。</summary>
+        <summary>ステージング領域のスタックの一番上にある入力イベントを、ポップせずに取得します。</summary>
         <returns>ステージング領域のスタックの一番上にある入力イベント。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 戻り値になります`null`ステージング領域が空の場合。  
+ ステージング領域が空の`null`場合、戻り値はになります。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">上部の入力を取得する権限。  関連付けられた列挙体。  <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">上位の入力を取得します。  関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="M:System.Windows.Input.ProcessInputEventArgs.PopInput" />
         <altmember cref="Overload:System.Windows.Input.ProcessInputEventArgs.PushInput" />
       </Docs>
@@ -108,10 +108,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ステージング領域のスタックの上部にある入力イベントを削除します。</summary>
-        <returns>ステージング領域のスタックの一番上にあった入力イベント。 これになります<see langword="null" />ステージング領域が空の場合。</returns>
+        <summary>ステージング領域のスタックの一番上にある入力イベントを削除します。</summary>
+        <returns>ステージング領域のスタックの一番上にあった入力イベント。 ステージング領域が空の場合は <see langword="null" /> になります。</returns>
         <remarks>To be added.</remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">入力イベントをポップする権限。  関連付けられた列挙体。  <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">入力イベントをポップします。  関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="M:System.Windows.Input.ProcessInputEventArgs.PeekInput" />
         <altmember cref="Overload:System.Windows.Input.ProcessInputEventArgs.PushInput" />
       </Docs>
@@ -122,12 +122,12 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ステージング領域のスタックの上部には、入力イベントを書き込みます。</summary>
+        <summary>入力イベントを、ステージング領域のスタックの一番上に配置します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ステージング領域に配置する入力できない`null`と、ステージング領域に存在できません。  
+ ステージング領域に配置する入力をにする`null`ことはできません。また、ステージング領域に既に存在することはできません。  
   
  ]]></format>
         </remarks>
@@ -161,17 +161,17 @@
       </Parameters>
       <Docs>
         <param name="input">ステージング領域のスタックに配置する入力イベント。</param>
-        <summary>ステージング領域のスタックの一番上には、指定した入力イベントを配置します。</summary>
+        <summary>指定した入力イベントを、ステージング領域のスタックの一番上に配置します。</summary>
         <returns>ステージング領域の入力項目。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `input` ことはできません`null`と、ステージング領域に存在できません。  
+ `input`をに`null`することはできません。また、ステージング領域に既に存在することもできません。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">入力イベントをプッシュします。  関連付けられた列挙体。  <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">入力イベントをプッシュするために使用します。  関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="M:System.Windows.Input.ProcessInputEventArgs.PeekInput" />
         <altmember cref="M:System.Windows.Input.ProcessInputEventArgs.PopInput" />
       </Docs>
@@ -203,18 +203,18 @@
       </Parameters>
       <Docs>
         <param name="input">ステージング領域のスタックに配置する入力イベント。</param>
-        <param name="promote">既存のステージング領域から状態を昇格する項目。</param>
-        <summary>指定したステージング領域のスタックの一番上には、指定した入力イベントを配置します。</summary>
-        <returns>ステージング領域は、指定された入力をラップする項目を入力します。</returns>
+        <param name="promote">状態を昇格する、既存のステージング領域の項目。</param>
+        <summary>指定した入力イベントを、指定したステージング領域のスタックの一番上に配置します。</summary>
+        <returns>指定した入力をラップする、ステージング領域の入力項目。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `input` ことはできません`null`と、ステージング領域に存在できません。  
+ `input`をに`null`することはできません。また、ステージング領域に既に存在することもできません。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">入力イベントをプッシュします。 関連付けられた列挙体。  <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">入力イベントをプッシュするために使用します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="M:System.Windows.Input.ProcessInputEventArgs.PeekInput" />
         <altmember cref="M:System.Windows.Input.ProcessInputEventArgs.PopInput" />
       </Docs>

@@ -38,22 +38,22 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 本体のブロックは、try ブロックによって保護されます。  
+ Body ブロックは try ブロックによって保護されています。  
   
- ハンドラーのセットから成る<xref:System.Linq.Expressions.CatchBlock>いずれかを指定する式がステートメントまたはフィルターをキャッチします。  
+ ハンドラーは、catch ステートメントまたは<xref:System.Linq.Expressions.CatchBlock>フィルターのいずれかを指定できる一連の式で構成されます。  
   
- Fault ブロックは、例外がスローされた場合に実行されます。  
+ 例外がスローされると、エラーブロックが実行されます。  
   
- 制御が本体を終了する方法に関係なくブロックが最後に実行されます。  
+ Finally ブロックは、コントロールが本文を終了する方法に関係なく実行されます。  
   
- エラーまたは finally ブロックの 1 つだけを指定することができます。  
+ 1つの fault ブロックまたは finally ブロックだけを指定できます。  
   
- Try ブロックの戻り値の型は、すべての関連する catch ステートメントの戻り値の型と一致する必要があります。  
+ Try ブロックの戻り値の型は、関連するすべての catch ステートメントの戻り値の型と一致している必要があります。  
   
    
   
 ## Examples  
- 次の例では、作成する方法、<xref:System.Linq.Expressions.TryExpression>オブジェクトを使用して、catch ステートメントを含む、<xref:System.Linq.Expressions.Expression.TryCatch%2A>メソッド。  
+ 次の例では、 <xref:System.Linq.Expressions.TryExpression> <xref:System.Linq.Expressions.Expression.TryCatch%2A>メソッドを使用して、catch ステートメントを含むオブジェクトを作成する方法を示します。  
   
  [!code-csharp[System.Linq.Expressions.ExpressionDev10#47](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.linq.expressions.expressiondev10/cs/program.cs#47)]
  [!code-vb[System.Linq.Expressions.ExpressionDev10#47](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.linq.expressions.expressiondev10/vb/module1.vb#47)]  
@@ -136,8 +136,8 @@
         <ReturnType>System.Linq.Expressions.Expression</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、 <see cref="T:System.Linq.Expressions.Expression" /> try ブロックの本体を表します。</summary>
-        <value><see cref="T:System.Linq.Expressions.Expression" /> Try ブロックの本体を表します。</value>
+        <summary>try ブロックの本体を表す <see cref="T:System.Linq.Expressions.Expression" /> を取得します。</summary>
+        <value>try ブロックの本体を表す <see cref="T:System.Linq.Expressions.Expression" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -176,8 +176,8 @@
         <ReturnType>System.Linq.Expressions.Expression</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、 <see cref="T:System.Linq.Expressions.Expression" /> fault ブロックを表します。</summary>
-        <value><see cref="T:System.Linq.Expressions.Expression" /> Fault ブロックを表します。</value>
+        <summary>fault ブロックを表す <see cref="T:System.Linq.Expressions.Expression" /> を取得します。</summary>
+        <value>fault ブロックを表す <see cref="T:System.Linq.Expressions.Expression" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -216,8 +216,8 @@
         <ReturnType>System.Linq.Expressions.Expression</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:System.Linq.Expressions.Expression" />を表す、finally ブロックします。</summary>
-        <value><see cref="T:System.Linq.Expressions.Expression" />を表す、finally ブロックします。</value>
+        <summary>finally ブロックを表す <see cref="T:System.Linq.Expressions.Expression" /> を取得します。</summary>
+        <value>finally ブロックを表す <see cref="T:System.Linq.Expressions.Expression" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -256,8 +256,8 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Linq.Expressions.CatchBlock&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コレクションを取得<see cref="T:System.Linq.Expressions.CatchBlock" />try ブロックに関連付けられている式。</summary>
-        <value>コレクション<see cref="T:System.Linq.Expressions.CatchBlock" />try ブロックに関連付けられている式。</value>
+        <summary>try ブロックに関連付けられている <see cref="T:System.Linq.Expressions.CatchBlock" /> 式のコレクションを取得します。</summary>
+        <value>try ブロックに関連付けられている <see cref="T:System.Linq.Expressions.CatchBlock" /> 式のコレクション。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -376,8 +376,8 @@
         <param name="handlers">結果の <see cref="P:System.Linq.Expressions.TryExpression.Handlers" /> プロパティ。</param>
         <param name="finally">結果の <see cref="P:System.Linq.Expressions.TryExpression.Finally" /> プロパティ。</param>
         <param name="fault">結果の <see cref="P:System.Linq.Expressions.TryExpression.Fault" /> プロパティ。</param>
-        <summary>これに似た式ですが、指定された子を使用する、新しい式を作成します。 すべての子が同じである場合、この式を返します。</summary>
-        <returns>子が変更されていない場合はこの式。あるいは、更新された子を持つ式。</returns>
+        <summary>この式に似た新しい式を作成しますが、指定された子を使用します。 すべての子が同じであれば、この式が返されます。</summary>
+        <returns>更新された子を使用した式。子が変更されていない場合はこの式。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

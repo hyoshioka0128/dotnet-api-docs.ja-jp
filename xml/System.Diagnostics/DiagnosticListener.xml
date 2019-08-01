@@ -1,5 +1,5 @@
 <Type Name="DiagnosticListener" FullName="System.Diagnostics.DiagnosticListener">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="f0ca1d8fc3384f636938fa376747be0e95d7412c" /><Meta Name="ms.sourcegitcommit" Value="cfc0e4215fd0d259582ada2141878befd7c3c8c6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/12/2019" /><Meta Name="ms.locfileid" Value="67855029" /></Metadata><TypeSignature Language="C#" Value="public class DiagnosticListener : System.Diagnostics.DiagnosticSource, IDisposable, IObservable&lt;System.Collections.Generic.KeyValuePair&lt;string,object&gt;&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="4763ab72c8ad9e4816cfcecd2fa46cbf44e165de" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543200" /></Metadata><TypeSignature Language="C#" Value="public class DiagnosticListener : System.Diagnostics.DiagnosticSource, IDisposable, IObservable&lt;System.Collections.Generic.KeyValuePair&lt;string,object&gt;&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DiagnosticListener extends System.Diagnostics.DiagnosticSource implements class System.IDisposable, class System.IObservable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, object&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Diagnostics.DiagnosticListener" />
   <TypeSignature Language="VB.NET" Value="Public Class DiagnosticListener&#xA;Inherits DiagnosticSource&#xA;Implements IDisposable, IObservable(Of KeyValuePair(Of String, Object))" />
@@ -30,7 +30,7 @@
     <remarks>
       <format type="text/markdown"><![CDATA[
         
-詳細については、<xref:System.Diagnostics.DiagnosticSource>と<xref:System.Diagnostics.DiagnosticListener>クラスを参照してください[DiagnosticSource ユーザー ガイド](https://github.com/dotnet/corefx/blob/d3942d4671919edb0cca6ddc1840190f524a809d/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)します。
+クラス<xref:System.Diagnostics.DiagnosticSource> と<xref:System.Diagnostics.DiagnosticListener>クラスの詳細については、「 [DiagnosticSource User Guide](https://github.com/dotnet/corefx/blob/d3942d4671919edb0cca6ddc1840190f524a809d/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)」を参照してください。
 
         ]]></format>
     </remarks>
@@ -62,7 +62,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-`DiagnosticListener` NotificationSource、つまり、通知をログに返された結果を使用できますがも、<xref:System.Diagnostics.DiagnosticListener.Subscribe%2A>メソッド通知を任意に転送できるようにします。 したがって、すべてのリスナー (マルチキャスト) に、プロデューサーからモ ノを転送することがそのジョブです。 一般を行うことができません独自<see cref="T:System.Diagnostics.DiagnosticListener" />が、通知が可能な限り、パブリックになるように、既定値を使用します。
+`DiagnosticListener`は notificationsource です。つまり、返された結果を使用して通知をログに記録できます<xref:System.Diagnostics.DiagnosticListener.Subscribe%2A>が、通知を任意の方法で転送できるようにする方法もあります。 そのため、ジョブはプロデューサーからすべてのリスナー (マルチキャスト) に項目を転送します。 一般に、独自<see cref="T:System.Diagnostics.DiagnosticListener" />のを作成するのではなく、既定値を使用して、通知が可能な限りパブリックになるようにする必要があります。
  
          ]]></format>
         </remarks>
@@ -94,7 +94,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[
 
-これをサブスクライブするときに、appdomain だけでなく、過去に発生したものすべて NotificationListeners のコールバックを取得して、将来のすべてのリスナーが、今後作成します。
+これをサブスクライブすると、appdomain 内のすべての NotificationListeners のコールバックと、過去に発生したすべての NotificationListeners、および今後作成されるすべてのリスナーのコールバックが取得されます。
 
         ]]></format>
         </remarks>
@@ -126,7 +126,7 @@
       <Parameters />
       <Docs>
         <summary>NotificationListeners を破棄します。</summary>
-        <remarks>(検出) のグローバル リストに含まれているため、通知リスナーは、独自の命をしないでください。 これらを明示的に破棄する必要があります。 実行しないことに注意してください、 <c>dispose (bool)</c>しない管理対象外の状態を持つサブクラスをサポートするためのパターンします。</remarks>
+        <remarks>通知リスナーは、グローバルリスト (探索可能) にあるため、独自には死んでいません。 それらを明示的に破棄する必要があります。 管理されていない状態のサブクラスはサポートしないため、 <c>Dispose (bool)</c>パターンは行わないことに注意してください。</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEnabled">
@@ -154,7 +154,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[
 
-通知のセットアップが高価な場合は、呼び出す`IsEnabled`このセットアップを実行する前にします。 プロデューサーを呼び出すことが必要に応じて`IsEnabled`呼び出す前に<xref:System.Diagnostics.DiagnosticListener.IsEnabled(System.String) in performance-critical parts of the application to determine whether there are any listeners to the <xref:System.Diagnostics.DiagnosticListener>します。
+通知のセットアップに負荷がかかる場合は、この`IsEnabled`セットアップを実行する前にを呼び出すことができます。 プロデューサーは、を`IsEnabled`呼び出す<xref:System.Diagnostics.DiagnosticListener.IsEnabled(System.String) in performance-critical parts of the application to determine whether there are any listeners to the <xref:System.Diagnostics.DiagnosticListener>前にを呼び出すことができます。
 
           ]]></format>
         </remarks>
@@ -360,17 +360,17 @@
         <remarks>
           <format type="text/markdown"><![CDATA[
 
-場合`isEnabled`ない`null`、一部のイベントが興味深いいないことを示しますの効率性をスキップすることができます。
+が`isEnabled`でない`null`場合は、一部のイベントが無視されて効率が低下する可能性があることを示します。
 
-インストルメンテーションを特定のサイトが 1 つまたは複数を呼び出すこと<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>引数として他の 2 つの (特定のサイト instrumentation) オブジェクトまでイベントの名前を渡しますがオーバー ロードします。 これらのいずれか<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>呼び出しが行われる、この`isEnabled`述語が渡された値で呼び出されます (短いオーバー ロードを使用している場合`null`のコンテキスト オブジェクトの不足が渡されます)。
+特定のインストルメンテーションサイトでは、1つまたは複数<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>のオーバーロードを呼び出すことができます。このオーバーロードでは、イベントの名前と、他の2つの (インストルメンテーションサイト固有の) オブジェクトを引数として渡します。 これら<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>の呼び出しのいずれかが行われ`isEnabled`た場合は、渡された値を使用してこの`null`述語が呼び出されます (短いオーバーロードが使用されている場合は、不足しているコンテキストオブジェクトに対してが渡されます)。
 
-これにより、任意のインストルメンテーションを特定のサイトは、効率的な高度なフィルター処理を実行するサブスクライバーに最大 2 つの情報を渡す機能。 これには、インストルメンテーション サイトとサブスクライバーのコード間の複数の結合が必要です。
+これにより、特定のインストルメンテーションサイトは、高度で効率的なフィルター処理を行うために、サブスクライバーに2つの情報を渡すことができます。 そのためには、インストルメンテーションサイトとサブスクライバーコードの間により多くの結合が必要になります。
 
-インストルメンテーションを特定のサイトでのさまざまなオーバー ロードを呼び出すことことが必要です`IsEnabled`、同じイベントの最初に呼び出す<xref:System.Diagnostics.DiagnosticListener.IsEnabled(System.String)>、2 つのフィルターを呼び出し`null`コンテキスト オブジェクト。 場合`isEnabled`返します`true`、コンテキスト オブジェクトをもう一度呼び出します。 `isEnabled`を考慮してこれをフィルターを設計する必要があります。
+特定のインストルメンテーションサイトで、同じイベントに対しての`IsEnabled`異なるオーバーロードを呼び出すことが想定されています。最初にを呼び出し<xref:System.Diagnostics.DiagnosticListener.IsEnabled(System.String)>、2つ`null`のコンテキストオブジェクトを含むフィルターを呼び出します。 が`isEnabled`を`true`返した場合は、コンテキストオブジェクトを使用して再度を呼び出します。 フィルター `isEnabled`は、この点を念頭に置いて設計する必要があります。
 
-なお、`isEnabled`述語は、ペイロードを設定して、呼び出しを回避するために、インストルメンテーションのサイトを許可する、省略可能な最適化<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>ときにサブスクライバー気にしないことです。 特に、インストルメンテーション サイトにを無視すること、<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>述語 (呼ばなかった) と、単に呼び出し<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>。 そのため、サブスクライバーは、フィルター処理を必要とする場合に必要なこと自体。
+`isEnabled`述語はオプションの最適化であり、インストルメンテーションサイトがペイロードの設定を回避し、サブスクライバーが関心を持たない場合はを呼び出す<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>ことができないことに注意してください。 具体的には、インストルメンテーションサイトには、述語を<xref:System.Diagnostics.DiagnosticListener.IsEnabled%2A>無視し、を呼び出す<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>だけのオプションがあります。 そのため、サブスクライバーがフィルター処理を必要とする場合は、サブスクライバー自体を処理する必要があります。
 
-このパラメーターが場合`null`、フィルター処理は行われません (のすべてのオーバー ロード<xref:System.Diagnostics.DiagnosticSource.IsEnabled%2A>返す`true`)。
+このパラメーターが`null`の場合、フィルター処理は行われません ( `true`すべての<xref:System.Diagnostics.DiagnosticSource.IsEnabled%2A>オーバーロードが返されます)。
 
           ]]></format>
         </remarks>
@@ -408,9 +408,9 @@
         <remarks>
           <format type="text/markdown"><![CDATA[
 
-場合`isEnabled`ない`null`、一部のイベントは興味深いと効率性をスキップすることができます。 `isEnabled`述語は、ペイロードを設定して、呼び出しを回避するために、インストルメンテーションのサイトを許可する、省略可能な最適化<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>ときにサブスクライバー気にしないことです。 インストルメンテーションのサイトを無視することが特に、<xref:System.Diagnostics.DiagnosticListener.IsEnabled>述語 (呼ばなかった) と単純に呼び出して<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>します。 そのため、サブスクライバーは、フィルター処理を必要とする場合これを行う必要が自体。
+が`isEnabled`でない`null`場合、一部のイベントは無意味で、効率を上げるためにスキップできます。 述語`isEnabled`はオプションの最適化であり、インストルメンテーションサイトがペイロードの設定を回避し、 <xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>サブスクライバーが関心を持っていないときにを呼び出すことができないようにします。 特に、インストルメンテーションサイトには、述語を<xref:System.Diagnostics.DiagnosticListener.IsEnabled>無視し、を呼び出す<xref:System.Diagnostics.DiagnosticListener.Write(System.String,System.Object)>だけのオプションがあります。 したがって、サブスクライバーがフィルター処理を必要とする場合は、それ自体を行う必要があります。
 
-場合`isEnabled`は`null`、フィルター処理は行われません (のすべてのオーバー ロード<xref:System.Diagnostics.DiagnosticSource.IsEnabled%2A>返す`true`)。
+が`isEnabled` <xref:System.Diagnostics.DiagnosticSource.IsEnabled%2A> `true`の場合、フィルター処理は行われません (すべてのオーバーロードが返されます)。 `null`
 
           ]]></format>
         </remarks>
@@ -443,15 +443,15 @@
         <param name="onActivityExport">To be added.</param>
         <summary>サブスクライバーを追加し、任意で、その名前と最大 2 つのコンテキスト オブジェクトに基づいてイベントをフィルタリングし、プロバイダーがプロセスの外からアクティビティをインポートまたはエクスポートするときに呼び出すメソッドを指定します。</summary>
         <returns><see cref="T:System.Diagnostics.DiagnosticSource" /> が通知の送信を完了する前に、リスナーが通知の受信を停止できるインターフェイスへの参照。</returns>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
-場合`isEnabled`が null 以外の場合、一部のイベントは、興味深いは効率性をスキップすることができます。  
+が`isEnabled` null 以外の場合は、一部のイベントが無視されて効率が低下する可能性があります。  
 
-ときに呼び出される 'onActivityImport' と 'onActivityExport' のメソッドを指定することもできます。 プロバイダーからのアクティビティ (たとえば、HTTP 要求) からプロセスの外部のインポートまたはエクスポートします。 これらのメソッドは、インポートまたはエクスポート、アクティビティの後に呼び出され、アクティビティまたはポリシーを追加する送信要求を変更するために使用できます。
+また、プロセスの外部から (たとえば、HTTP 要求から) アクティビティをインポートまたはエクスポートするときに呼び出される "onActivityImport" メソッドと "Onactivityimport" メソッドを指定することもできます。 これらのメソッドは、アクティビティをインポートまたはエクスポートした後に呼び出され、アクティビティまたは送信要求を変更してポリシーを追加するために使用できます。
 
          ]]></format>
-         </remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -513,14 +513,13 @@
         <param name="value">イベントのペイロードを表すオブジェクト。</param>
         <param name="parameters">イベントのペイロードを表すオブジェクト。</param>
         <summary>通知をログ記録します。</summary>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
 詳細については、<xref:System.Diagnostics.DiagnosticSource.Write%2A?displayProperty=nameWithType> メソッドを参照してください。
 
          ]]></format>
-         </remarks>
-
+        </remarks>
       </Docs>
     </Member>
   </Members>

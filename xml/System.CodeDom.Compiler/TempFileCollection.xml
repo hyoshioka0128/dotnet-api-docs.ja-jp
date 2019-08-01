@@ -1,5 +1,5 @@
 <Type Name="TempFileCollection" FullName="System.CodeDom.Compiler.TempFileCollection">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3d5e612930becd3f073a77ce82eb5fc98a9a4aed" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63912353" /></Metadata><TypeSignature Language="C#" Value="public class TempFileCollection : IDisposable, System.Collections.ICollection" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="9d11404f9142dac12b1f5bf29c22969c3ca029bc" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68396345" /></Metadata><TypeSignature Language="C#" Value="public class TempFileCollection : IDisposable, System.Collections.ICollection" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit TempFileCollection extends System.Object implements class System.Collections.ICollection, class System.Collections.IEnumerable, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.CodeDom.Compiler.TempFileCollection" />
   <TypeSignature Language="VB.NET" Value="Public Class TempFileCollection&#xA;Implements ICollection, IDisposable" />
@@ -42,34 +42,34 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.CodeDom.Compiler.TempFileCollection> 一意のファイル名を生成して、ファイルの一覧を追跡するのには使用できます。 これに役に立ちます<xref:System.CodeDom.Compiler.ICodeCompiler>コンパイラによって生成された中間ファイルを使用して後が削除される場合がありますの一覧を管理する場合に実装します。  
+ <xref:System.CodeDom.Compiler.TempFileCollection>一意のファイル名を生成したり、ファイルの一覧を追跡したりするために使用できます。 これは、コンパイラに<xref:System.CodeDom.Compiler.ICodeCompiler>よって生成される中間ファイルのリストを管理する場合に便利です。これは、使用後に削除されることがあります。  
   
- 一意の一時ファイル名を生成するディレクトリを指定するには、適切にオーバー ロードされたコンス トラクターを使用します。 示すかどうか、コレクションに追加されたファイル、する必要があります。 指定しない場合はそれ以外の場合を使用する場合、コンス トラクター オーバー ロードを使用することも、<xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A>または<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>メソッド、コレクションが破棄されたときに削除または<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>メソッドが呼び出されます。  
+ で一意の一時ファイル名を生成するディレクトリを指定するには、適切にオーバーロードされたコンストラクターを使用します。 また、コンストラクターのオーバーロードを使用して、コレクションに追加されたファイルを指定する必要があるかどう<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>かを示すこともできます。またはメソッド<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>を使用するときに指定しない場合は、コレクションが破棄されたとき、またはメソッドが呼び出されたときに削除されます。 <xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A>  
   
- インスタンスに任意のディレクトリにファイルを追加することができます<xref:System.CodeDom.Compiler.TempFileCollection>を使用して、<xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A>メソッド。  
+ 任意のディレクトリ内のファイルは、 <xref:System.CodeDom.Compiler.TempFileCollection> <xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A>メソッドを使用してのインスタンスに追加できます。  
   
- 特定のファイル拡張子の一時ファイルの一意の名前を生成するには、呼び出す<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>を生成するファイル名の拡張機能を指定します。 <xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>メソッドで指定されたディレクトリ内の指定した拡張子のファイル名への完全パスから成る文字列が返されます、<xref:System.CodeDom.Compiler.TempFileCollection.TempDir%2A>プロパティ。 <xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>メソッドは 1 つのファイル名拡張子に 1 つの一意のファイル名のみを返します。  
+ 特定のファイル拡張子の一時ファイルの一意な名前を生成するには<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A> 、を呼び出し、生成するファイル名の拡張子を指定します。 メソッド<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>は、 <xref:System.CodeDom.Compiler.TempFileCollection.TempDir%2A>プロパティによって指定されたディレクトリ内の指定された拡張子のファイル名への完全パスで構成される文字列を返します。 メソッド<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>は、ファイル名拡張子ごとに一意のファイル名を1つだけ返します。  
   
- 両方の<xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A>と<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>メソッドがあるコレクションが破棄されたときに、ファイルを削除するかどうかを指定できるオーバー ロードまたは<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>メソッドが呼び出されます。  
+ メソッドと<xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A> <xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>メソッドの両方にオーバーロードがあり、 <xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>コレクションが破棄されたとき、またはメソッドが呼び出されたときに、ファイルを削除するかどうかを指定できます。  
   
- <xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>メソッドを維持するとマークされているものを除き、コレクション内のすべてのファイルが削除されます。  
+ メソッド<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>は、保持するようにマークされているファイルを除く、コレクション内のすべてのファイルを削除します。  
   
- <xref:System.CodeDom.Compiler.TempFileCollection.BasePath%2A>プロパティによって返されるファイル名を生成するために使用するファイル名拡張子を除いた、基本ファイル名への完全パスを示す、<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>メソッド。  
+ プロパティ<xref:System.CodeDom.Compiler.TempFileCollection.BasePath%2A>は、 <xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>メソッドによって返されるファイル名を生成するために使用される、ファイル名拡張子のないベースファイル名への完全パスを示します。  
   
 > [!NOTE]
->  このクラスには、リンク確認要求と、すべてのメンバーに適用されるクラス レベルの継承確認要求が含まれています。 直接の呼び出し元か派生クラスのいずれかに完全信頼アクセス許可がない場合、<xref:System.Security.SecurityException> がスローされます。 セキュリティ要求の詳細については、次を参照してください。[リンク確認要求](~/docs/framework/misc/link-demands.md)と[継承確認要求](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/x4yx82e6(v=vs.100))します。  
+>  このクラスには、リンク確認要求と、すべてのメンバーに適用されるクラス レベルの継承確認要求が含まれています。 直接の呼び出し元か派生クラスのいずれかに完全信頼アクセス許可がない場合、<xref:System.Security.SecurityException> がスローされます。 セキュリティ要求の詳細については、「[リンク](~/docs/framework/misc/link-demands.md)確認要求と[継承の要求](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/x4yx82e6(v=vs.100))」を参照してください。  
   
    
   
 ## Examples  
- 次の例では、使用、<xref:System.CodeDom.Compiler.TempFileCollection>クラスおよび<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>と<xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A>メソッド。  
+ クラス、メソッド、 <xref:System.CodeDom.Compiler.TempFileCollection.AddFile%2A>およびメソッドの使用例を次に示します。 <xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A> <xref:System.CodeDom.Compiler.TempFileCollection>  
   
  [!code-csharp[System.CodeDom.Compiler.TempFileCollection#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.CodeDom.Compiler.TempFileCollection/CS/program.cs#1)]
  [!code-vb[System.CodeDom.Compiler.TempFileCollection#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.CodeDom.Compiler.TempFileCollection/VB/program.vb#1)]  
   
  ]]></format>
     </remarks>
-    <permission cref="T:System.Security.Permissions.SecurityPermission">派生させるため、<see cref="T:System.CodeDom.Compiler.TempFileCollection" />クラス。 要求値: <see cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand" />;<see cref="T:System.Security.PermissionSet" />: <see langword="FullTrust" />.</permission>
+    <permission cref="T:System.Security.Permissions.SecurityPermission"><see cref="T:System.CodeDom.Compiler.TempFileCollection" />クラスから派生するために使用します。 要求の値<see cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand" />:、<see cref="T:System.Security.PermissionSet" />: <see langword="FullTrust" />.</permission>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -78,7 +78,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">直前の呼び出し元に対する完全な信頼。 このクラスは、部分的に信頼されたコードでは使用できません。</permission>
+        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">直前の呼び出し元に対する完全な信頼。 このクラスは、部分的に信頼されているコードでは使用できません。</permission>
         <summary><see cref="T:System.CodeDom.Compiler.TempFileCollection" /> クラスの新しいインスタンスを初期化します。</summary>
       </Docs>
     </MemberGroup>
@@ -113,7 +113,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、既定の設定を使用して、コレクションを初期化する既定のコンス トラクターです。 既定では、この一時ファイルのコレクションは、既定の一時ディレクトリにファイルを保管して、生成および使用された後に一時ファイルを削除します。  
+ これは、既定の設定を使用してコレクションを初期化するパラメーターなしのコンストラクターです。 既定では、この一時ファイルコレクションによってファイルが既定の一時ディレクトリに格納され、一時ファイルが生成されて使用された後に削除されます。  
   
  ]]></format>
         </remarks>
@@ -151,7 +151,7 @@
         <param name="tempDir">一時ファイルを格納するために使用する一時ディレクトリへのパス。</param>
         <summary>既定では、一時ファイルを生成して使用した後、それらの一時ファイルを削除するように設定されている一時ディレクトリを使用して、<see cref="T:System.CodeDom.Compiler.TempFileCollection" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">直前の呼び出し元に対する完全な信頼。 このクラスは、部分的に信頼されたコードでは使用できません。</permission>
+        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">直前の呼び出し元に対する完全な信頼。 このクラスは、部分的に信頼されているコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -186,11 +186,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値`keepFiles`設定に使用される、<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>パラメーター。 コレクション内の一時ファイルを保持するかの値に基づいてコンパイラ アクティビティの完了時に削除された、<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>コレクション内のプロパティ。 各ファイルが、現在の値のコレクションに追加される<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>を持つメソッドを使用して追加されていない場合にそれに関連付けられて、`keepFile`パラメーター、その特定のファイルに対して値を使用する場合。 ときに、<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>メソッドが呼び出されると場合、<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>は`true`を使用して追加ものも含めすべてのファイルを削除する、<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>の値`true`します。 これにより、一時的にエラーを報告するなどのためのコンパイル後に保持し、不要になったときに削除する、ファイルを保持されているとして識別された特定のファイルができます。  
+ の`keepFiles`値は、 <xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>パラメーターを設定するために使用されます。 コレクション内の一時ファイルは、コレクション内の<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>プロパティの値に基づいて、コンパイラアクティビティの完了時に保持または削除されます。 各ファイルがコレクションに追加されると、の現在の<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>値が関連付けられます。ただし、 `keepFile`パラメーターを持つメソッドを使用して追加した場合は、その特定のファイルに対してその値が使用されます。 `true` <xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A> `true`メソッドが呼び出されると、がの場合は、の<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>値を使用して追加されたファイルも含めて、すべてのファイルが削除されます。 <xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A> これにより、ファイルを保持していると識別された特定のファイルが、コンパイル後にエラーレポートなどの目的で一時的に保持され、不要になったときに削除されます。  
   
  ]]></format>
         </remarks>
-        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">直前の呼び出し元に対する完全な信頼。 このクラスは、部分的に信頼されたコードでは使用できません。</permission>
+        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">直前の呼び出し元に対する完全な信頼。 このクラスは、部分的に信頼されているコードでは使用できません。</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="AddExtension">
@@ -236,9 +236,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、一時ファイルのコレクションに追加されている、指定した拡張子のファイル名を返します。 使用する、他のコードは、ファイルを作成してする必要があります。  
+ このメソッドは、一時ファイルコレクションに追加された、指定された拡張子を持つファイル名を返します。 他のコードでは、ファイルを使用する前に作成する必要があります。  
   
- このメソッドは、同じ拡張機能を使用して呼び出した場合は、同じ名前を返すために、各ファイル名拡張子に対して一度だけ呼び出すことができます。  
+ このメソッドを呼び出すことができるのは、ファイル名の拡張子ごとに1回だけです。同じ拡張子で呼び出された場合は、同じ名前が返されるからです。  
   
  ]]></format>
         </remarks>
@@ -280,9 +280,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、一時ファイルのコレクションに追加されている、指定した拡張子のファイル名を返します。 使用する、他のコードは、ファイルを作成してする必要があります。  
+ このメソッドは、一時ファイルコレクションに追加された、指定された拡張子を持つファイル名を返します。 他のコードでは、ファイルを使用する前に作成する必要があります。  
   
- このメソッドは、同じ拡張機能を使用して呼び出した場合は、同じ名前を返すために、各ファイル名拡張子に対して一度だけ呼び出すことができます。  
+ このメソッドを呼び出すことができるのは、ファイル名の拡張子ごとに1回だけです。同じ拡張子で呼び出された場合は、同じ名前が返されるからです。  
   
  ]]></format>
         </remarks>
@@ -324,7 +324,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、使用、<xref:System.CodeDom.Compiler.TempFileCollection.AddFile%28System.String%2CSystem.Boolean%29>コレクションを保持するのには、ファイルを追加するメソッド。 このコード例が示されている例の一部、<xref:System.CodeDom.Compiler.TempFileCollection>クラス。  
+ 次の例は、 <xref:System.CodeDom.Compiler.TempFileCollection.AddFile%28System.String%2CSystem.Boolean%29>メソッドを使用して、コレクションに保持するファイルを追加する方法を示しています。 このコード例は、 <xref:System.CodeDom.Compiler.TempFileCollection>クラスに対して提供される大規模な例の一部です。  
   
  [!code-csharp[System.CodeDom.Compiler.TempFileCollection#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.CodeDom.Compiler.TempFileCollection/CS/program.cs#2)]
  [!code-vb[System.CodeDom.Compiler.TempFileCollection#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.CodeDom.Compiler.TempFileCollection/VB/program.vb#2)]  
@@ -333,7 +333,7 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="fileName" /> は、<see langword="null" /> または空の文字列です。  
   
-または 
+- または - 
  <paramref name="fileName" /> は重複しています。</exception>
       </Docs>
     </Member>
@@ -463,7 +463,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>メソッドは、個別には、かどうかをファイルを保持または削除するコレクション内の各ファイルをチェックします。 追加メソッドを使用して、コレクションに追加する際に、ファイルを明示的にマークすることができます、`keepFile`パラメーター。 使用してコレクションにファイルを追加するとき、<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>がないオーバー ロードを`keepFile`パラメーター値の<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>プロパティが既定の保持ファイル インジケーターとして使用されます。  
+ メソッド<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>は、コレクション内の各ファイルを調べて、ファイルを保持するか削除するかを個別に決定します。 パラメーターを`keepFile`受け取る add メソッドを使用してコレクションに追加されたときに、ファイルを明示的に保持するようにマークすることができます。 パラメーターのない<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>オーバーロードを使用してコレクションにファイルを追加する場合、プロパティの値は、既定のファイルを保存するインジケーターとして使用されます。<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A> `keepFile`  
   
  ]]></format>
         </remarks>
@@ -507,16 +507,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パブリック`Dispose()`メソッドと<xref:System.Object.Finalize%2A>メソッド。 `Dispose()` 保護された起動`Dispose(Boolean)`メソッドを`disposing`パラメーターに設定`true`します。 <xref:System.Object.Finalize%2A> 呼び出す`Dispose`で`disposing`に設定`false`します。  
+ このメソッドは、パブリック`Dispose()`メソッド<xref:System.Object.Finalize%2A>とメソッドによって呼び出されます。 `Dispose()``disposing`パラメーターをに`Dispose(Boolean)` 設定して、保護されたメソッド`true`を呼び出します。 <xref:System.Object.Finalize%2A>をに`disposing` `Dispose` 設定してを呼び出します`false`。  
   
  `disposing` パラメーターが `true` の場合、このメソッドは、この <xref:System.CodeDom.Compiler.TempFileCollection> が参照しているすべてのマネージド オブジェクトによって保持されているリソースをすべて解放します。 このメソッドは、参照される各オブジェクトの `Dispose()` メソッドを呼び出します。  
   
  ]]></format>
         </remarks>
         <block subset="none" type="overrides"><para>
-            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see langword="Dispose(Boolean)" /> をオーバーライドする場合は、以前に <see langword="Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 実装する方法についての詳細は<see langword="Dispose(Boolean)" />を参照してください[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。  
+            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see langword="Dispose(Boolean)" /> をオーバーライドする場合は、以前に <see langword="Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 を実装<see langword="Dispose(Boolean)" />する方法の詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。  
   
-詳細については<see langword="Dispose" />と<see cref="M:System.Object.Finalize" />を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)と[Finalize メソッドをオーバーライドする](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))します。</para></block>
+<see langword="Dispose" /> および<see cref="M:System.Object.Finalize" />の詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」と「 [Finalize メソッドのオーバーライド](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))」を参照してください。</para></block>
         <related type="Article" href="~/docs/standard/garbage-collection/implementing-dispose.md">Dispose メソッドの実装</related>
         <related type="Article" href="~/docs/standard/garbage-collection/unmanaged.md">アンマネージ リソースのクリーンアップ</related>
       </Docs>
@@ -551,11 +551,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは<xref:System.Object.Finalize%2A?displayProperty=nameWithType>を呼び出してリソースをクリーンアップし、`Dispose(false)`します。 `Dispose(Boolean)` をオーバーライドしてクリーンアップをカスタマイズします。  
+ このメソッドは<xref:System.Object.Finalize%2A?displayProperty=nameWithType> 、を呼び出し`Dispose(false)`てリソースをオーバーライドし、クリーンアップします。 `Dispose(Boolean)` をオーバーライドしてクリーンアップをカスタマイズします。  
   
- アプリケーション コードは、このメソッドを呼び出さないでください。オブジェクトの`Finalize`への呼び出しによって、ガベージ コレクターによって終了処理が無効になっている場合を除き、ガベージ コレクション中にメソッドが自動的に起動、<xref:System.GC.SuppressFinalize%2A?displayProperty=nameWithType>メソッド。  
+ アプリケーションコードはこのメソッドを呼び出すことはできません。オブジェクトの`Finalize`メソッドは、ガベージコレクションの実行中に、メソッドの<xref:System.GC.SuppressFinalize%2A?displayProperty=nameWithType>呼び出しによってガベージコレクターによる終了処理が無効にされていない限り、自動的に呼び出されます。  
   
- 詳細については、次を参照してください。 [Finalize メソッドおよびデストラクター](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/0s71x931(v%3dvs.100))、[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)、および[Finalize メソッドをオーバーライドする](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))します。  
+ 詳細については、「 [Finalize メソッドとデストラクター](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/0s71x931(v%3dvs.100))」、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」、および「 [finalize メソッドのオーバーライド](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -632,7 +632,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>プロパティが既定値として使用されるときの値、<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>がないオーバー ロードを`keepFile`パラメーターが、コレクションに一時ファイルを追加すると呼ばれます。 コレクション内の各の一時ファイルには、そのファイルを保持するか、削除がかどうかをファイルごとに決定する関連付けられた保持ファイル フラグがあります。 ファイルが自動的に保持または、関連付けられている保持ファイル値に基づいて、コンパイルの完了時に削除します。 ただし、コンパイルが完了したら、ファイルが保持されているリリースできるを設定して<xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>false と呼び出し元、<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A>メソッド。  これにより、すべてのファイルが削除されているが発生します。  
+ <xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A>プロパティの値は、一時ファイルをコレクションに追加するため<xref:System.CodeDom.Compiler.TempFileCollection.AddExtension%2A>にパラメーターを`keepFile`持たないオーバーロードが呼び出されるときに既定値として使用されます。 コレクション内の各一時ファイルには、関連付けられた keep file フラグがあります。このフラグは、ファイルを保持するか削除するかをファイル単位で決定します。 ファイルは、関連付けられた ファイルの保存期間の値に基づいて、コンパイルの完了時に自動的に保持または削除されます。 ただし、コンパイルが完了した後、保持されたファイルは、 <xref:System.CodeDom.Compiler.TempFileCollection.KeepFiles%2A> false を設定し<xref:System.CodeDom.Compiler.TempFileCollection.Delete%2A> 、メソッドを呼び出すことによって解放できます。  これにより、すべてのファイルが削除されます。  
   
  ]]></format>
         </remarks>

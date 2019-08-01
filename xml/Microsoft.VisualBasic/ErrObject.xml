@@ -20,17 +20,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary><see langword="ErrObject" />モジュールには、プロパティやプロシージャを識別およびを使用して実行時エラーを処理するために使用が含まれています、<see langword="Err" />オブジェクト。</summary>
+    <summary><see langword="ErrObject" /> モジュールに含まれているプロパティおよびプロシージャを使用して、<see langword="Err" /> オブジェクトによる実行時エラーの識別と処理を実行します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `ErrObject`モジュールは、サポート、`Err`オブジェクト。 詳細については、「 <xref:Microsoft.VisualBasic.Information.Err%2A> 」を参照してください。  
+ モジュール`ErrObject`はオブジェクトを`Err`サポートしています。 詳細については、「<xref:Microsoft.VisualBasic.Information.Err%2A>」を参照してください。  
   
    
   
 ## Examples  
- この例のプロパティを使用して、`Err`エラー メッセージ ダイアログ ボックスを作成するオブジェクト。 使用するときの動作に注意してください、`Clear`メソッド最初。Visual Basic エラーを生成すると、`Raise`メソッドでは、Visual Basic の既定値のプロパティになります、`Err`オブジェクト。  
+ この例では、 `Err`オブジェクトのプロパティを使用して、エラーメッセージダイアログボックスを構築します。 最初にメソッドを使用すると`Clear` 、次のような結果になります。その後、 `Raise`メソッドを使用して Visual Basic エラーを生成すると、Visual Basic の既定値が`Err`オブジェクトのプロパティになります。  
   
 ```vb  
 Dim Msg As String  
@@ -52,7 +52,7 @@ End If
     <related type="Article" href="~/docs/visual-basic/language-reference/statements/on-error-statement.md">On Error ステートメント (Visual Basic)</related>
     <related type="Article" href="~/docs/visual-basic/language-reference/statements/try-catch-finally-statement.md">Try...Catch...Finally ステートメント (Visual Basic)</related>
     <related type="Article" href="~/docs/visual-basic/language-reference/keywords/index.md">キーワード (Visual Basic)</related>
-    <related type="Article" href="~/docs/visual-basic/language-reference/runtime-library-members.md">Visual Basic ランタイム ライブラリ メンバー</related>
+    <related type="Article" href="~/docs/visual-basic/language-reference/runtime-library-members.md">ランタイムライブラリのメンバーの Visual Basic</related>
   </Docs>
   <Members>
     <Member MemberName="Clear">
@@ -86,28 +86,28 @@ End If
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>すべてのプロパティ設定を消去、<see langword="Err" />オブジェクト。</summary>
+        <summary><see langword="Err" /> オブジェクトのプロパティ設定をすべてクリアします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、`Clear`を明示的にオフに、`Err`オブジェクトの遅延のエラーの処理を使用する場合など、エラーが処理された後`On Error Resume Next`します。 `Clear`メソッドが自動的に呼び出されるたびに、次のステートメントのいずれかを実行します。  
+ `Err`で`Clear` 遅延エラー処理を使用する場合など、エラーが処理された後にオブジェクトを明示的にクリアするには、を使用します。`On Error Resume Next` `Clear`メソッドは、次のいずれかのステートメントが実行されるたびに自動的に呼び出されます。  
   
--   任意の種類の`Resume`ステートメント  
+-   任意の種類`Resume`のステートメント  
   
 -   `Exit Sub`、 `Exit Function`、または `Exit Property`  
   
--   すべて`On Error`ステートメント  
+-   任意`On Error`のステートメント  
   
--   すべて`Try...Catch...Finally`ステートメント  
+-   任意`Try...Catch...Finally`のステートメント  
   
     > [!NOTE]
-    >  `On Error Resume Next`コンストラクトことをお勧めする`On Error GoTo`他のオブジェクトへのアクセス中にエラーを処理するときにします。 チェック`Err`オブジェクトと対話は、コードによってアクセスされたオブジェクトがあいまいさを削除します。確認するオブジェクトのエラー コードを配置する`Err.Number`、どのオブジェクトが最初に、エラーを生成および (で指定されたオブジェクト`Err.Source`)。  
+    >  他`On Error Resume Next`のオブジェクトへのアクセス`On Error GoTo`中に発生したエラーを処理する場合は、コンストラクトの方が適している場合があります。 オブジェクト`Err`との各操作を実行した後に、コードによってアクセスされたオブジェクトがあいまいになることを確認します。エラーコード`Err.Number`を配置したオブジェクトと、最初にエラーを生成したオブジェクト (で`Err.Source`指定されたオブジェクト) を確認できます。  
   
    
   
 ## Examples  
- この例では、`Err`オブジェクトの`Clear`の数値プロパティをリセットする方法、`Err`が 0 の文字列プロパティは、長さ 0 の文字列をオブジェクト。 呼び出さずに`Clear`、2 番目の呼び出し`MsgBox`同じエラー メッセージが表示されます。  
+ この例では`Err` 、 `Clear`オブジェクトのメソッドを使用して、 `Err`オブジェクトの数値プロパティを0に、その文字列プロパティを長さ0の文字列にリセットします。 を`Clear`呼び出さないと、へ`MsgBox`の2回目の呼び出しで同じエラーメッセージが表示されます。  
   
  [!code-vb[VbVbalrErrorHandling#4](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#4)]  
   
@@ -140,18 +140,18 @@ End If
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>返すか設定を<see langword="String" />エラーに関連付けられているわかりやすい文字列を含む式を指定します。 読み取り/書き込み。</summary>
-        <value>返すか設定を<see langword="String" />エラーに関連付けられているわかりやすい文字列を含む式を指定します。 読み取り/書き込み。</value>
+        <summary>エラーに関連する説明文字列を含む <see langword="String" /> 型の式を返すか、または設定します。 読み取り/書き込み。</summary>
+        <value>エラーに関連する説明文字列を含む <see langword="String" /> 型の式を返すか、または設定します。 読み取り/書き込み。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `Description`エラーの簡単な説明のプロパティの設定で構成されます。 このプロパティを使用して、エラーを処理したくない、またはできないユーザーに警告します。 ユーザー定義のエラーを生成するときに、エラーの簡単な説明を割り当てる、`Description`プロパティ。 場合、`Description`プロパティには、設定しないとの値、<xref:Microsoft.VisualBasic.ErrObject.Number%2A>プロパティは、Visual Basic 実行時エラーに対応し、によって返される文字列、<xref:Microsoft.VisualBasic.Conversion.ErrorToString%2A>で関数が設定されて、`Description`エラーが生成されたときに、プロパティ。  
+ プロパティ`Description`の設定は、エラーの簡単な説明で構成されます。 このプロパティを使用して、ユーザーに処理することができない、または処理しないエラーを通知します。 ユーザー定義エラーを生成する場合は、エラーの簡単な説明を`Description`プロパティに割り当てます。 プロパティに値が設定されておらず、 <xref:Microsoft.VisualBasic.ErrObject.Number%2A>プロパティの値が Visual Basic ランタイムエラーに対応している場合は、エラーが生成<xref:Microsoft.VisualBasic.Conversion.ErrorToString%2A>されたときに`Description` 、関数によって返された文字列がプロパティに設定されます。 `Description`  
   
    
   
 ## Examples  
- この例では、ユーザー定義メッセージを`Description`のプロパティ、`Err`オブジェクト。  
+ この例では、 `Description` `Err`オブジェクトのプロパティにユーザー定義メッセージを割り当てます。  
   
  [!code-vb[VbVbalrErrorHandling#5](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#5)]  
   
@@ -194,12 +194,12 @@ End If
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Visual Basic に行番号がない場合は、0 を返します。  
+ Visual Basic で行番号が検出されなかった場合は、0を返します。  
   
    
   
 ## Examples  
- この例では、`Erl`プロパティを行番号を指定します。  
+ この例では`Erl` 、プロパティを使用して行番号を示しています。  
   
 ```  
 10:     On Error Resume Next  
@@ -237,18 +237,18 @@ End If
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>例外が発生したエラーを表すを返します。</summary>
+        <summary>発生したエラーを表す例外を返します。</summary>
         <returns>発生したエラーを表す例外。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `GetException`関数はからのみ使用できます、`Err`オブジェクト クラス。 動作する、`Exception`のプロパティ、`Err`発生したエラーを表示するオブジェクト。  
+ 関数は、 `Err` object クラスからのみ使用できます。 `GetException` オブジェクトのプロパティ`Exception`と連携して、発生したエラーを表示します。 `Err`  
   
    
   
 ## Examples  
- 次のコードで例外に割り当てられているメッセージを表示する、`Err`オブジェクト。  
+ 次のコードは、 `Err`オブジェクトの例外に割り当てられたメッセージを表示します。  
   
  [!code-vb[VbVbalrCatRef#66](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrCatRef/VB/Class1.vb#66)]  
   
@@ -279,21 +279,21 @@ End If
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>返すか設定、<see langword="Integer" />ヘルプ ファイルのトピックのコンテキスト ID を格納しています。 読み取り/書き込み。</summary>
-        <value>返すか設定、<see langword="Integer" />ヘルプ ファイルのトピックのコンテキスト ID を格納しています。 読み取り/書き込み。</value>
+        <summary>ヘルプ ファイルのトピックのコンテキスト ID を含む <see langword="Integer" /> を返すか、または設定します。 読み取り/書き込み。</summary>
+        <value>ヘルプ ファイルのトピックのコンテキスト ID を含む <see langword="Integer" /> を返すか、または設定します。 読み取り/書き込み。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `HelpContext`プロパティを使用して、アプリケーションの状況依存のヘルプを表示します。 ヘルプ ファイルがで指定されている場合`HelpFile`、`HelpContext`特定されたヘルプ ファイルを自動的に表示するプロパティを使用します。 どちらの場合、`HelpFile`と`HelpContext`プロパティが空の値、<xref:Microsoft.VisualBasic.ErrObject.Number%2A>プロパティがチェックされます。 場合の値、`Number`プロパティは、Visual Basic ランタイム エラー値に対応し、エラーの Visual Basic のヘルプ コンテキスト ID を使用します。 場合の値、`Number`プロパティは、Visual Basic エラーに対応していない、Visual Basic ヘルプ ファイルの内容の画面が表示されます。  
+ プロパティ`HelpContext`は、アプリケーションの状況依存のヘルプを表示するために使用されます。 ヘルプファイルがで`HelpFile`指定されて`HelpContext`いる場合、プロパティは、識別されたヘルプファイルを自動的に表示するために使用されます。 プロパティ`HelpFile` <xref:Microsoft.VisualBasic.ErrObject.Number%2A>と`HelpContext`プロパティの両方が空の場合、プロパティの値がチェックされます。 `Number`プロパティの値が Visual Basic の実行時エラー値に対応している場合は、エラーの Visual Basic ヘルプコンテキスト ID が使用されます。 `Number`プロパティの値が Visual Basic エラーに対応していない場合は、Visual Basic ヘルプファイルの [コンテンツ] 画面が表示されます。  
   
 > [!NOTE]
->  一般的なエラーを処理するために、アプリケーションでルーチンを記述する必要があります。 オブジェクトを使用したプログラミング、ときに、エラー処理の品質を向上させるために、またはエラーが回復可能でない場合にユーザーにわかりやすいメッセージを表示するオブジェクトのヘルプ ファイルを使用することができます。  
+>  一般的なエラーを処理するには、アプリケーションにルーチンを記述する必要があります。 オブジェクトを使用してプログラミングする場合は、オブジェクトのヘルプファイルを使用してエラー処理の品質を向上させたり、エラーが回復できない場合にユーザーにわかりやすいメッセージを表示したりすることができます。  
   
    
   
 ## Examples  
- この例では、`HelpContext`のプロパティ、`Err`の Visual Basic ヘルプ トピックを表示するオブジェクト、`Overflow`エラー。  
+ この例では`HelpContext` 、 `Err`オブジェクトのプロパティを使用して、 `Overflow`エラーの Visual Basic ヘルプトピックを表示します。  
   
  [!code-vb[VbVbalrErrorHandling#7](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#7)]  
   
@@ -324,21 +324,21 @@ End If
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>返すか設定、<see langword="String" />ヘルプ ファイルへの完全修飾パスを含む式を指定します。 読み取り/書き込み。</summary>
-        <value>返すか設定、<see langword="String" />ヘルプ ファイルへの完全修飾パスを含む式を指定します。 読み取り/書き込み。</value>
+        <summary>ヘルプ ファイルへの絶対パスを含む <see langword="String" /> 型の式を返すか、または設定します。 読み取り/書き込み。</summary>
+        <value>ヘルプ ファイルへの絶対パスを含む <see langword="String" /> 型の式を返すか、または設定します。 読み取り/書き込み。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ヘルプ ファイルを指定する場合、`HelpFile`プロパティ、自動的にで呼び出された、ユーザーがヘルプ キー (または F1 キー) を押すと、エラー メッセージ ダイアログ ボックス。 場合、`HelpContext`プロパティには、このトピックで、指定したファイルの ID が自動的に表示される有効なコンテキストが含まれています。 ない場合は`HelpFile`を指定すると、Visual Basic ヘルプ ファイルが表示されます。  
+ ヘルプファイルが`HelpFile`プロパティによって指定されている場合は、ユーザーが [エラーメッセージ] ダイアログボックスでヘルプキー (または F1 キー) を押したときに自動的に呼び出されます。 `HelpContext`プロパティに、指定したファイルの有効なコンテキスト ID が格納されている場合は、そのトピックが自動的に表示されます。 `HelpFile`が指定されていない場合は、Visual Basic ヘルプファイルが表示されます。  
   
 > [!NOTE]
->  一般的なエラーを処理するために、アプリケーションでルーチンを記述する必要があります。 オブジェクトを使用したプログラミング、ときに、エラー処理の品質を向上させるために、またはエラーが回復可能でない場合にユーザーにわかりやすいメッセージを表示するオブジェクトのヘルプ ファイルを使用することができます。  
+>  一般的なエラーを処理するには、アプリケーションにルーチンを記述する必要があります。 オブジェクトを使用してプログラミングする場合は、オブジェクトのヘルプファイルを使用してエラー処理の品質を向上させたり、エラーが回復できない場合にユーザーにわかりやすいメッセージを表示したりすることができます。  
   
    
   
 ## Examples  
- この例では、`HelpFile`のプロパティ、`Err`ヘルプ システムを起動するオブジェクト。 既定で、`HelpFile`プロパティには、Visual Basic のヘルプ ファイルの名前が含まれています。  
+ この例では`HelpFile` 、 `Err`オブジェクトのプロパティを使用して、ヘルプシステムを起動します。 既定では、 `HelpFile`プロパティに Visual Basic ヘルプファイルの名前が含まれています。  
   
  [!code-vb[VbVbalrErrorHandling#7](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#7)]  
   
@@ -376,24 +376,24 @@ End If
       </ReturnValue>
       <Docs>
         <summary>ダイナミック リンク ライブラリ (DLL) の呼び出しによって生成されたシステム エラー コードを取得します。</summary>
-        <value>ダイナミック リンク ライブラリ (DLL) への呼び出しによって生成されたシステム エラー コード。</value>
+        <value>ダイナミックリンクライブラリ (DLL) への呼び出しによって生成されたシステムエラーコード。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>プロパティは、Visual Basic コードから DLL の呼び出しにのみ適用されます。 このような呼び出しが行われたときに、呼び出された関数は、通常、成功または失敗を示すコードが返されます、<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>プロパティを設定します。 成功または失敗を示す戻り値を決定する DLL の関数のマニュアルを確認します。 Visual Basic アプリケーションをすぐに確認するエラー コードが返されるたびに、<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>プロパティ。 例外が発生しなかったときに、<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>プロパティを設定します。  
+ プロパティ<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>は、Visual Basic コードから行われた DLL 呼び出しにのみ適用されます。 このような呼び出しが行われると、呼び出された関数は、通常は成功または失敗<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>を示すコードを返し、プロパティが入力されます。 DLL の関数のドキュメントを参照して、成功または失敗を示す戻り値を確認します。 エラーコードが返されるたびに、Visual Basic アプリケーションはプロパティを<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>すぐに確認する必要があります。 プロパティが設定されて<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>いる場合、例外は発生しません。  
   
 > [!NOTE]
->  <xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>プロパティは保護されて<xref:System.Security.Permissions.SecurityAction.LinkDemand>から信頼されていないコードからアクセスされるようにするのに役立ちます。 ただし、<xref:System.Security.Permissions.SecurityAction.LinkDemand>が直前の呼び出し元のみが必要です<xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A>権限。 値を公開する場合は、コードは、部分的に信頼されたコードから呼び出すことができます、<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>検証は、セキュリティ上のリスクなし。  
+>  プロパティ<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>はによって<xref:System.Security.Permissions.SecurityAction.LinkDemand>保護されるため、信頼されていないコードからのアクセスを防ぐことができます。 ただし、 <xref:System.Security.Permissions.SecurityAction.LinkDemand>には、直接の呼び出し元<xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A>だけがアクセス許可を持っている必要があります。 部分的に信頼されているコードからコードを呼び出すことが<xref:Microsoft.VisualBasic.ErrObject.LastDllError%2A>できる場合、検証せずにの値を公開すると、セキュリティ上のリスクがあります。  
 >   
->  使用する方法についての重要な制限については、 <xref:System.Security.Permissions.SecurityAction.LinkDemand> 、メンバーを参照してください[Demand とします。LinkDemand](https://msdn.microsoft.com/library/1ab877f2-70f4-4e0d-8116-943999dfe8f5)します。 アクセス許可の詳細については、次を参照してください。<xref:System.Security.Permissions.SecurityPermission>と[コード アクセス許可](https://msdn.microsoft.com/library/e5ae402f-6dda-4732-bbe8-77296630f675)します。  
+>  メンバーの<xref:System.Security.Permissions.SecurityAction.LinkDemand>使用方法に関する重要な制限事項に[ついては、「Demand vs」を参照してください。LinkDemand](https://msdn.microsoft.com/library/1ab877f2-70f4-4e0d-8116-943999dfe8f5)。 アクセス許可の詳細について<xref:System.Security.Permissions.SecurityPermission>は、「」および「[コードアクセス許可](https://msdn.microsoft.com/library/e5ae402f-6dda-4732-bbe8-77296630f675)」を参照してください。  
   
- スマート デバイスのこのプロパティは常に 0 を返しますに注意してください。  
+ 注: スマートデバイスの場合、このプロパティは常に0を返します。  
   
    
   
 ## Examples  
- 次の例を使用する方法を示しています、 `LastDllError` Windows api 関数を呼び出した後のプロパティ。 `PrintWindowCoordinates`プロシージャは、ウィンドウを呼び出し、ハンドルを取得、`GetWindowRect`関数。 `GetWindowRect` RECT データ構造体をウィンドウを構成する四角形の辺の長さに設定します。 エラーが発生して、エラー番号は無効なハンドルを渡す場合、`LastDllError`プロパティ。  
+ 次の例は、Windows API で関数`LastDllError`を呼び出した後にプロパティを使用する方法を示しています。 プロシージャ`PrintWindowCoordinates`はウィンドウへのハンドルを受け取り、 `GetWindowRect`関数を呼び出します。 `GetWindowRect`ウィンドウを構成する四角形の辺の長さを四角形のデータ構造体に塗りつぶします。 無効なハンドルを渡した場合、エラーが発生し、エラー番号はプロパティを`LastDllError`通じて取得できます。  
   
  [!code-vb[VbVbalrErrorHandling#8](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#8)]  
 [!code-vb[VbVbalrErrorHandling#9](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#9)]  
@@ -429,34 +429,34 @@ End If
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>返すか、エラーを示す数値を設定します。 読み取り/書き込み。</summary>
-        <value>返すか、エラーを示す数値を設定します。 読み取り/書き込み。</value>
+        <summary>エラーを示す数値を返すか、または設定します。 読み取り/書き込み。</summary>
+        <value>エラーを示す数値を返すか、または設定します。 読み取り/書き込み。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- すべての`Raise`以外で引数`Number`は省略可能です。 省略可能な引数、およびのプロパティの設定を省略した場合、`Err`オブジェクトが消去されていない値を含めることが、その値、エラーの値として使用します。  
+ `Raise` 以外`Number`のすべての引数は省略可能です。 省略可能な引数を省略し、 `Err`オブジェクトのプロパティ設定にクリアされていない値が含まれている場合、それらの値はエラーの値として機能します。  
   
- `Err`オブジェクトでエラーを生成する場合よりも豊富な情報を提供する、`Error`ステートメントでは、`Raise`はクラス モジュールを記述するときにエラーを生成するために便利です。 たとえば、`Raise`メソッドでは、エラーを生成したソースで指定できます、`Source`プロパティ、エラーのオンライン ヘルプは、参照できるし、具合です。  
+ オブジェクトは`Err` 、 `Error`ステートメントを使用してエラーを生成する場合よりも`Raise`豊富な情報を提供するので、はクラスモジュールの記述時にエラーを生成するのに役立ちます。 たとえば、 `Raise`メソッドを使用すると、エラーを生成したソースを`Source`プロパティで指定できます。エラーのオンラインヘルプを参照することもできます。  
   
- オブジェクトから、ユーザー定義のエラーを返すときに設定`Err.Number`エラー コードとして選択した数を加算して、`VbObjectError`定数。 たとえば、次のコードを使用して、1051 エラー コードとしての数を返します。  
+ オブジェクトからユーザー定義エラーを返す場合は、選択し`Err.Number`た数値をエラーコードとして`VbObjectError`定数に追加してを設定します。 たとえば、次のコードを使用して、エラーコードとして数値1051を返します。  
   
  [!code-vb[VbVbalrErrorHandling#13](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#13)]  
   
    
   
 ## Examples  
- この例での一般的な使用、`Number`エラー処理ルーチン内のプロパティ。  
+ この例は、エラー処理ルーチンで`Number`のプロパティの一般的な使用方法を示しています。  
   
  [!code-vb[VbVbalrErrorHandling#12](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#12)]  
   
- この例では、`Err`オブジェクトの`Raise`Visual Basic で記述された関数内で元のエラーを生成します。 呼び出し元の関数は、エラーをキャッチし、ユーザーに報告できます。 そのプロシージャに注意してください`CallingProcedure`から派生できる情報の種類の比較、`Err`オブジェクトから派生できる情報を`Exception`オブジェクト。  
+ この例では`Err` 、オブジェクト`Raise`のメソッドを使用して、Visual Basic で記述された関数内で元のエラーを生成します。 呼び出し元の関数は、エラーをキャッチしてユーザーに報告できます。 このプロシージャ`CallingProcedure`は、オブジェクト`Err`から派生できる情報の種類と、 `Exception`オブジェクトから派生できる情報を比較することに注意してください。  
   
  [!code-vb[VbVbalrErrorHandling#14](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#14)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="Number" /> 65535 を超えています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="Number" /> が 65535 より大きい値です。</exception>
         <altmember cref="M:Microsoft.VisualBasic.Information.Err" />
         <altmember cref="M:Microsoft.VisualBasic.Conversion.ErrorToString" />
       </Docs>
@@ -489,24 +489,24 @@ End If
         <Parameter Name="HelpContext" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="Number">必須。 <see langword="Long" /> エラーの性質を識別する整数。 Visual Basic エラーの番号は 0 から 65535 の範囲です。0 から 512 はシステム エラー用に予約されています。513 から 65535 はユーザー定義エラーに使用できます。 設定するときに、<see langword="Number" />にエラー コード番号を追加するプロパティをクラス モジュールに独自のエラー コードは、<see langword="vbObjectError" />定数。 たとえば、エラー番号 513 を生成するには、<c>vbObjectError + 513</c> を <see langword="Number" /> プロパティに割り当てます。</param>
-        <param name="Source">省略可能です。 <see langword="String" /> オブジェクトまたはエラーを生成したアプリケーションの名前付けの式。 オブジェクトに対してこのプロパティを設定する場合は、<c>project</c>.<c>class</c> の形式を使用します。 場合<paramref name="Source" />が指定されていない、現在の Visual Basic プロジェクトのプロセス ID を使用します。</param>
-        <param name="Description">省略可能です。 <see langword="String" /> エラーを説明する式。 値を指定しない場合、<see langword="Number" />プロパティが検査されます。 Visual Basic 実行時のエラーにマップできる場合は、コード、によって返される文字列、<see langword="Error" />として関数を使用、<see langword="Description" />プロパティ。 対応する Visual Basic エラーがない場合、 <see langword="Number" /> 「アプリケーション定義またはオブジェクト定義エラー」メッセージ プロパティを使用します。</param>
-        <param name="HelpFile">省略可能です。 このエラーのヘルプの含まれているヘルプ ファイルへの完全修飾パス。 指定しない場合、Visual Basic は、完全修飾のドライブ、パス、および Visual Basic ヘルプ ファイルのファイル名を使用します。</param>
-        <param name="HelpContext">省略可能です。 内のトピックを識別するコンテキスト ID<paramref name="HelpFile" />エラーのヘルプを提供します。 省略すると、Visual Basic ヘルプ ファイル コンテキスト ID に対応するエラーの場合、<see langword="Number" />プロパティが存在する場合に使用されています。</param>
-        <summary>実行時エラー; が生成されます。代わりに使用できる、<see langword="Error" />ステートメント。</summary>
+        <param name="Number">必須です。 エラーの性質を識別する <see langword="Long" /> 型の整数。 Visual Basic エラーの番号は 0 から 65535 の範囲です。0 から 512 はシステム エラー用に予約されています。513 から 65535 はユーザー定義エラーに使用できます。 クラス モジュールの <see langword="Number" /> プロパティに固有のエラー コードを設定する場合は、エラー コード番号を <see langword="vbObjectError" /> 定数に追加する必要があります。 たとえば、エラー番号 513 を生成するには、<c>vbObjectError + 513</c> を <see langword="Number" /> プロパティに割り当てます。</param>
+        <param name="Source">任意。 エラーが生成されたオブジェクトまたはアプリケーションを指定する <see langword="String" /> 型の式。 オブジェクトに対してこのプロパティを設定する場合は、<c>project</c>.<c>class</c> の形式を使用します。 <paramref name="Source" /> が指定されていない場合は、現在の Visual Basic プロジェクトのプロセス ID が使用されます。</param>
+        <param name="Description">任意。 エラーを説明する <see langword="String" /> 型の式。 省略した場合、<see langword="Number" /> プロパティの値が調べられます。 Visual Basic 実行時エラー コードに対応する可能性がある場合、<see langword="Error" /> 関数によって返される文字列は <see langword="Description" /> プロパティとして使用されます。 <see langword="Number" /> プロパティに対応する Visual Basic エラーがなかった場合は、"アプリケーション定義エラーまたはオブジェクト定義エラー" メッセージが使用されます。</param>
+        <param name="HelpFile">任意。 このエラーのヘルプが含まれているヘルプ ファイルへの絶対パス。 省略した場合、Visual Basic は Visual Basic ヘルプ ファイルの完全修飾されたドライブ、パス、およびファイル名を使用します。</param>
+        <param name="HelpContext">任意。 エラーのヘルプを提供する <paramref name="HelpFile" /> 内のトピックを識別するコンテキスト ID。 省略した場合、<see langword="Number" /> プロパティに対応するエラーの Visual Basic ヘルプ ファイルのコンテキスト ID が使用されます (存在する場合)。</param>
+        <summary>実行時エラーを生成します。<see langword="Error" /> ステートメントの代わりに使用できます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- すべての`Raise`以外で引数`Number`は省略可能です。 省略可能な引数、およびのプロパティの設定を省略した場合、`Err`オブジェクトが消去されていない値を含めることが、その値、エラーの値として使用します。  
+ `Raise` 以外`Number`のすべての引数は省略可能です。 省略可能な引数を省略し、 `Err`オブジェクトのプロパティ設定にクリアされていない値が含まれている場合、それらの値はエラーの値として機能します。  
   
- `Err`オブジェクトでエラーを生成する場合よりも豊富な情報を提供する、`Error`ステートメントでは、`Raise`はクラス モジュールを記述するときにエラーを生成するために便利です。 たとえば、`Raise`メソッドでは、エラーを生成したソースで指定できます、`Source`プロパティ、エラーのオンライン ヘルプは、参照できるし、具合です。  
+ オブジェクトは`Err` 、 `Error`ステートメントを使用してエラーを生成する場合よりも`Raise`豊富な情報を提供するので、はクラスモジュールの記述時にエラーを生成するのに役立ちます。 たとえば、 `Raise`メソッドを使用すると、エラーを生成したソースを`Source`プロパティで指定できます。エラーのオンラインヘルプを参照することもできます。  
   
    
   
 ## Examples  
- この例では、`Err`オブジェクトの`Raise`Visual Basic で記述された関数内でエラーを生成します。 呼び出し元の関数は、エラーをキャッチし、それをメッセージ ボックスでユーザーに報告できます。  
+ この例では`Err` 、オブジェクト`Raise`のメソッドを使用して、Visual Basic で記述された関数内でエラーを生成します。 呼び出し元の関数は、エラーをキャッチし、メッセージボックスを使用してユーザーに報告できます。  
   
  [!code-vb[VbVbalrErrorHandling#14](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#14)]  
   
@@ -540,20 +540,20 @@ End If
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>返すか設定を<see langword="String" />オブジェクトまたはアプリケーション エラーの発生源の名前を指定する式。 読み取り/書き込み。</summary>
-        <value>返すか設定を<see langword="String" />オブジェクトまたはアプリケーション エラーの発生源の名前を指定する式。 読み取り/書き込み。</value>
+        <summary>最初にエラーを生成したオブジェクトまたはアプリケーションの名前を示す <see langword="String" /> 型の式を返すか、または設定します。 読み取り/書き込み。</summary>
+        <value>最初にエラーを生成したオブジェクトまたはアプリケーションの名前を示す <see langword="String" /> 型の式を返すか、または設定します。 読み取り/書き込み。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `Source`プロパティを指定します、`String`オブジェクトを表す式のエラーを生成した; 式は、通常、オブジェクトのクラス名またはプロセス id です。 使用して、`Source`プロパティをコードがアクセス先のオブジェクトで生成されたエラーを処理できない場合は、情報を提供します。 例では、Microsoft Excel にアクセスすることが生成される場合、`Division by zero`エラー、Microsoft Excel を設定`Err.Number`エラーとセットの場合は、そのエラー コードを`Source`"Excel.Application"にします。  
+ プロパティ`Source`は、エラー `String`を生成したオブジェクトを表す式を指定します。通常、式は、オブジェクトのクラス名またはプロセス ID です。 プロパティは`Source` 、アクセスされたオブジェクトで生成されるエラーをコードが処理できない場合に情報を提供するために使用します。 たとえば、microsoft excel にアクセスして`Division by zero`エラーが生成された場合、microsoft excel はそのエラーのエラーコードをに設定`Err.Number`し、を "Excel. アプリケーション" に設定`Source`します。  
   
- アプリケーションが、コードからエラーを生成するときに`Source`は、アプリケーションのプログラム ID です。 クラス内で`Source`形式を持つ名前を含める必要があります*プロジェクト*.*クラス*します。 コードで、予期しないエラーが発生した場合、`Source`プロパティ自動的に入力します。 モジュールの場合にエラー`Source`プロジェクト名が含まれています。  
+ アプリケーションがコードからエラーを生成している`Source`場合、はアプリケーションのプログラム ID です。 クラス内には`Source` 、フォーム*プロジェクト*を持つ名前が含まれている必要があります。*クラス*。 コードで予期しないエラーが発生すると`Source` 、プロパティは自動的に入力されます。 モジュールのエラーの場合は`Source` 、プロジェクト名が含まれます。  
   
    
   
 ## Examples  
- この例の使用、`Source`一般的なエラー処理ルーチンにします。 エラーが発生したとき`Class1`、文字列`"Class1"`に割り当てられている、`Source`のプロパティ、`Err`オブジェクト。 この文字列は、ソースと、エラーの数を示す情報メッセージに表示されます。  
+ この例では、一般的な`Source`エラー処理ルーチンでプロパティを使用する方法を示します。 から`Class1`エラーが発生した場合、文字列`"Class1"`は`Err`オブジェクトの`Source`プロパティに割り当てられます。 この文字列は、エラーのソースと番号を示す情報メッセージに表示されます。  
   
  [!code-vb[VbVbalrErrorHandling#15](~/samples/snippets/visualbasic/VS_Snippets_VBCSharp/VbVbalrErrorHandling/VB/Class1.vb#15)]  
   

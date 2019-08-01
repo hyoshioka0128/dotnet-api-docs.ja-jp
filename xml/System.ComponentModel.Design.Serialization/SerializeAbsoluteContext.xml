@@ -1,5 +1,5 @@
 <Type Name="SerializeAbsoluteContext" FullName="System.ComponentModel.Design.Serialization.SerializeAbsoluteContext">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="9ec15dc860dfb5e0d5438abd32be6c8c85366070" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65001383" /></Metadata><TypeSignature Language="C#" Value="public sealed class SerializeAbsoluteContext" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="0eceed3ebcb77bec7454a54f54946f2ce5875539" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68396264" /></Metadata><TypeSignature Language="C#" Value="public sealed class SerializeAbsoluteContext" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SerializeAbsoluteContext extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.ComponentModel.Design.Serialization.SerializeAbsoluteContext" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SerializeAbsoluteContext" />
@@ -19,12 +19,12 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>シリアライザーが既定値を処理する必要がありますを指定します。 このクラスは継承できません。</summary>
+    <summary>シリアライザーが既定値を処理する必要があるかどうかを指定します。 このクラスは継承できません。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.ComponentSerializationService>絶対シリアル化をサポートしています。 これは、オブジェクトの既定値と異なる値のみをシリアル化ではなくすべての値がシリアル化されることが既に初期化されているオブジェクトの既定値にリセットする対象の値を許可することを意味します。 コンポーネントのシリアル化サービスがこの動作を示すたい<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>オブジェクトの場合、配置、<xref:System.ComponentModel.Design.Serialization.SerializeAbsoluteContext>コンテキスト スタック上のオブジェクト。 このコンテキストでメンバー可能性があります`null`をすべてのメンバーはシリアル化、または特定のメンバーのみがこの時点でシリアル化されることを示している可能性を示しています。  
+ は<xref:System.ComponentModel.Design.Serialization.ComponentSerializationService> 、絶対シリアル化をサポートします。 これは、オブジェクトの既定値とは異なる値のみをシリアル化するのではなく、すべての値をシリアル化して、既に初期化されている可能性のあるオブジェクトの値を既定値にリセットできることを意味します。 コンポーネントシリアル化サービスがオブジェクトに<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>対してこの動作を示す場合は、 <xref:System.ComponentModel.Design.Serialization.SerializeAbsoluteContext>オブジェクトがコンテキストスタックに配置されます。 このコンテキスト`null`のメンバーは、すべてのメンバーがシリアル化されていることを示す、または特定のメンバーのみがシリアル化されていることを示すことができます。  
   
  ]]></format>
     </remarks>
@@ -69,7 +69,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のコンス トラクターを使用すると、このコンテキストがすべてのメンバーに使用することを示します。  
+ パラメーターなしのコンストラクターを使用すると、このコンテキストをすべてのメンバーに対して使用する必要があることを示します。  
   
  ]]></format>
         </remarks>
@@ -101,13 +101,13 @@
         <Parameter Name="member" Type="System.ComponentModel.MemberDescriptor" />
       </Parameters>
       <Docs>
-        <param name="member">このコンテキストがバインドされているメンバー。 <see langword="null" /> の可能性があります。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.ComponentModel.Design.Serialization.SerializeAbsoluteContext" />クラスの特定のメンバーにバインディング オプションを使用します。</summary>
+        <param name="member">このコンテキストのバインド先となるメンバー。 <see langword="null" /> の可能性があります。</param>
+        <summary>特定のメンバーにバインドするオプションを指定して、<see cref="T:System.ComponentModel.Design.Serialization.SerializeAbsoluteContext" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`member`は`null`、すべてのメンバーをこのコンテキストが使用されます。  
+ `member` が`null`の場合、このコンテキストはすべてのメンバーに対して使用されます。  
   
  ]]></format>
         </remarks>
@@ -142,8 +142,8 @@
         <ReturnType>System.ComponentModel.MemberDescriptor</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このコンテキストがバインドされているメンバーを取得します。</summary>
-        <value>このコンテキストのバインド先のメンバーまたは<see langword="null" />コンテキストがオブジェクトのすべてのメンバーにバインドされている場合。</value>
+        <summary>このコンテキストのバインド先となるメンバーを取得します。</summary>
+        <value>このコンテキストのバインド先となるメンバー。このコンテキストがオブジェクトのすべてのメンバーにバインドされる場合は <see langword="null" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -171,9 +171,9 @@
         <Parameter Name="member" Type="System.ComponentModel.MemberDescriptor" />
       </Parameters>
       <Docs>
-        <param name="member">シリアル化を調べるメンバー。</param>
-        <summary>このコンテキストでは指定されたメンバーをシリアル化するかどうかを示す値を取得します。</summary>
-        <returns><see langword="true" /> このコンテキストでは指定されたメンバーをシリアル化する場合それ以外の場合、<see langword="false" />します。</returns>
+        <param name="member">シリアル化のためにチェックされるメンバー。</param>
+        <summary>指定したメンバーをこのコンテキストでシリアル化するかどうかを示す値を取得します。</summary>
+        <returns>指定したメンバーをこのコンテキストでシリアル化する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.ComponentModel.Design.Serialization.ComponentSerializationService" />
         <altmember cref="T:System.ComponentModel.Design.Serialization.CodeDomSerializer" />

@@ -140,7 +140,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `configurationName` が`null` の場合は、サービス エンドポイントに指定された動作だけが読み込まれます。 ワイルドカード "*" を指定すると、クライアント構成ファイル内のエンドポイントの構成が 1 つだけである場合に限り、その構成が使用されます。 それ以外の場合は、例外がスローされます。 `configurationName` の、空の文字列  "" を含むその他の値は、同名のエンドポイント構成と一致します。 参照してください、 [WCF クライアント構成](~/docs/framework/wcf/feature-details/client-configuration.md)クライアント構成の詳細についてはトピック。  
+ `configurationName` が`null` の場合は、サービス エンドポイントに指定された動作だけが読み込まれます。 ワイルドカード "*" を指定すると、クライアント構成ファイル内のエンドポイントの構成が 1 つだけである場合に限り、その構成が使用されます。 それ以外の場合は、例外がスローされます。 `configurationName` の、空の文字列  "" を含むその他の値は、同名のエンドポイント構成と一致します。 クライアント構成の詳細については、「 [WCF クライアントの構成](~/docs/framework/wcf/feature-details/client-configuration.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -454,7 +454,7 @@
       <Parameters />
       <Docs>
         <typeparam name="T">メソッドが照会している、型指定されたオブジェクト。</typeparam>
-        <summary>チャネル スタックの適切な層から、要求のあった型指定されたオブジェクト (ある場合) を返します。ない場合は <see langword="null" /> を返します。</summary>
+        <summary>チャネル スタックの適切な層から、要求のあった型指定されたオブジェクト (存在する場合) を返します。存在しない場合は <see langword="null" /> を返します。</summary>
         <returns>要求される型指定されたオブジェクト <paramref name="T" /> がある場合は、そのオブジェクト。ない場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -526,7 +526,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="endpoint" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="endpoint" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="InitializeEndpoint">
@@ -698,7 +698,7 @@
         <param name="timeout">操作がタイムアウトまでに完了する必要がある時間を指定する <see cref="T:System.TimeSpan" />。</param>
         <param name="callback">非同期操作の完了通知を受信する <see cref="T:System.AsyncCallback" /> デリゲート。</param>
         <param name="state">非同期操作に関連付けられている状態情報を格納するオブジェクト。アプリケーションで指定します。</param>
-        <summary>現在のチャネル ファクトリに関連付けられた開始オブジェクトを持つ内部チャネルファクトリに対して、非同期のクローズ操作を開始します。</summary>
+        <summary>現在のチャネル ファクトリに関連付けられた状態オブジェクトを持つ内部チャネル ファクトリに対して、非同期のクローズ操作を開始します。</summary>
         <returns>非同期操作を参照する <see cref="T:System.IAsyncResult" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -745,7 +745,7 @@
         <param name="timeout">操作がタイムアウトまでに完了する必要がある時間を指定する <see cref="T:System.TimeSpan" />。</param>
         <param name="callback">非同期操作の完了通知を受信する <see cref="T:System.AsyncCallback" /> デリゲート。</param>
         <param name="state">非同期操作に関連付けられている状態情報を格納するオブジェクト。アプリケーションで指定します。</param>
-        <summary>現在のチャネル ファクトリに関連付けられた開始オブジェクトを持つ内部チャネル ファクトリに対して、非同期の open 操作を開始します。</summary>
+        <summary>現在のチャネル ファクトリに関連付けられた状態オブジェクトを持つ内部チャネル ファクトリに対して、非同期のオープン操作を開始します。</summary>
         <returns>非同期操作を参照する <see cref="T:System.IAsyncResult" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -858,7 +858,7 @@
       </Parameters>
       <Docs>
         <param name="result"><see cref="T:System.IAsyncResult" /> メソッドの呼び出しで返された <see cref="M:System.ServiceModel.ChannelFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)" />。</param>
-        <summary>現在のチャネル ファクトリの内部チャネル ファクトリに対する非同期の open 操作を完了します。</summary>
+        <summary>現在のチャネル ファクトリの内部チャネル ファクトリに対する非同期のオープン操作を完了します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -965,7 +965,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>現在のチャネルの内部チャネルを構築します。</summary>
+        <summary>現在のチャネルの内部チャネル ファクトリを構築します。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">チャネル ファクトリの内部チャネル ファクトリが <see langword="null" /> です。</exception>
       </Docs>

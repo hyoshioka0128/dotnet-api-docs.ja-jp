@@ -20,16 +20,16 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このクラスのメンバーにより、呼び出し元への内部に、 [!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)] HWND と HWND の親の[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]<xref:System.Windows.Window>します。  適切なセキュリティ チェックは、それらのメンバーによって実行されます。  
+ このクラスのメンバーを使用すると、呼び出し元は[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)] [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Window>の hwnd および親 hwnd への内部アクセスを持つことができます。  これらのメンバーによって、適切なセキュリティチェックが実行されます。  
   
- 具体的なオブジェクトと HWND の分離に基づく必要がある場合は、このクラスを使用します。  
+ このクラスは、HWND に基づいてより具体的なオブジェクトが必要な場合に使用します。  
   
- シナリオの例をホストする必要があるかどうか、 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]  ダイアログ ボックスで、[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]アプリケーション。 初期化、<xref:System.Windows.Interop.WindowInteropHelper>で、 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]  ダイアログ ボックスのウィンドウ オブジェクト。 表示する、[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]からウィンドウのハンドル (HWND)、<xref:System.Windows.Interop.WindowInteropHelper.Handle%2A>プロパティの所有者を指定し、[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]ウィンドウで、<xref:System.Windows.Interop.WindowInteropHelper.Owner%2A>プロパティ。 次のコード例は、使用する方法を示しています。<xref:System.Windows.Interop.WindowInteropHelper>をホストする場合、 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]  ダイアログ ボックスで、[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]アプリケーション。  
+ たとえば、 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] [!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]アプリケーションでダイアログボックスをホストする必要がある場合です。 ダイアログボックス<xref:System.Windows.Interop.WindowInteropHelper>の[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]ウィンドウオブジェクトを使用して、を初期化します。 その後、 <xref:System.Windows.Interop.WindowInteropHelper.Handle%2A>プロパティから[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]ウィンドウのハンドル (HWND) を取得し、 <xref:System.Windows.Interop.WindowInteropHelper.Owner%2A>プロパティを使用して[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]ウィンドウの所有者を指定できます。 次のコード例は、 <xref:System.Windows.Interop.WindowInteropHelper> [!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]アプリケーションでダイアログボックスを[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]ホストするときにを使用する方法を示しています。  
   
  [!code-csharp[CorePseudocode#WindowInteropHelper](~/samples/snippets/csharp/VS_Snippets_Wpf/CorePseudocode/CSharp/corepseudocode.cs#windowinterophelper)]
  [!code-vb[CorePseudocode#WindowInteropHelper](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CorePseudocode/visualbasic/corepseudocode.vb#windowinterophelper)]  
   
- このクラスでサポートされているもう 1 つのシナリオでは取得する、<xref:System.Windows.Interop.HwndSource>オブジェクトから、 [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Window>オブジェクト。 <xref:System.Windows.Interop.HwndSource>有効の処理を指示する[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]メッセージを通じて、<xref:System.Windows.Interop.HwndSource.AddHook%2A>メソッド。 使用して<xref:System.Windows.Interop.HwndSource>と<xref:System.Windows.Interop.HwndSource.AddHook%2A>の代わりに、<xref:System.Windows.Window>いいえ同等またはで処理を持つメッセージを処理することができますも[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]します。 作成、<xref:System.Windows.Interop.WindowInteropHelper>で、<xref:System.Windows.Window>ソースを呼び出して<xref:System.Windows.Interop.WindowInteropHelper.Handle%2A>上、<xref:System.Windows.Interop.WindowInteropHelper>から HWND を取得する<xref:System.Windows.Interop.HwndSource>します。  
+ このクラスでサポートされているもう 1 <xref:System.Windows.Interop.HwndSource>つのシナリオ[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]は、オブジェクト<xref:System.Windows.Window>からオブジェクトを取得することです。 で<xref:System.Windows.Interop.HwndSource>は、メソッドを[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)] <xref:System.Windows.Interop.HwndSource.AddHook%2A>使用してメッセージを直接処理できます。 の<xref:System.Windows.Interop.HwndSource> <xref:System.Windows.Interop.HwndSource.AddHook%2A> [!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]代わりにとを使用すると、に同等のメッセージや処理がないメッセージを処理できます。<xref:System.Windows.Window> <xref:System.Windows.Interop.WindowInteropHelper> <xref:System.Windows.Interop.WindowInteropHelper.Handle%2A> <xref:System.Windows.Interop.WindowInteropHelper> <xref:System.Windows.Interop.HwndSource>ソースを使用してを作成し、でを呼び出して HWND からにアクセスします。 <xref:System.Windows.Window>  
   
  ]]></format>
     </remarks>
@@ -54,13 +54,13 @@
         <Parameter Name="window" Type="System.Windows.Window" />
       </Parameters>
       <Docs>
-        <param name="window">A[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]ウィンドウ オブジェクト。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Interop.WindowInteropHelper" />指定したクラス[!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)]ウィンドウ。</summary>
+        <param name="window">[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)] ウィンドウ オブジェクト。</param>
+        <summary>指定した [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] ウィンドウの <see cref="T:System.Windows.Interop.WindowInteropHelper" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ウィンドウは、ダイアログ ボックスで、またはそれ以外の場合に適していませんの境界内でホストされているウィンドウを指定できます、[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]アプリケーション。  
+ ウィンドウには、ダイアログボックス、または[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]アプリケーションの境界内でホストするのに適さないウィンドウを指定できます。  
   
  ]]></format>
         </remarks>
@@ -88,27 +88,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>HWND が作成されていない場合は、ウィンドウの HWND を作成します。</summary>
-        <returns><see cref="T:System.IntPtr" /> HWND を表します。</returns>
+        <summary>ウィンドウの HWND がまだ作成されていない場合は HWND を作成します。</summary>
+        <returns>HWND を表す <see cref="T:System.IntPtr" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッド、管理対象の実際の表示のウィンドウ ハンドル (HWND) の作成を分離する場合に<xref:System.Windows.Window>します。 これは、ウィンドウを表示するため必要としないタスクを実行するオートメーション クライアントがある場合に便利です。  
+ <xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A> マネージ<xref:System.Windows.Window>の実際の表示からウィンドウハンドル (HWND) の作成を分離する場合は、メソッドを使用します。 これは、ウィンドウを表示せずにタスクを実行できるオートメーションクライアントがある場合に便利です。  
   
- ネイティブ ウィンドウが作成されていない場合、このメソッドはネイティブのウィンドウでは、セットを作成、<xref:System.Windows.Interop.WindowInteropHelper.Handle%2A>プロパティ、および HWND を返します。 ネイティブ ウィンドウを既に作成されている場合は、既存のネイティブ ウィンドウのハンドルが返されます。  
+ ネイティブウィンドウがまだ作成されていない場合、このメソッドはネイティブウィンドウを作成<xref:System.Windows.Interop.WindowInteropHelper.Handle%2A>し、プロパティを設定して、HWND を返します。 ネイティブウィンドウが既に作成されている場合は、既存のネイティブウィンドウのハンドルが返されます。  
   
- ネイティブ ウィンドウが、このメソッドの呼び出しの結果として作成された場合、<xref:System.Windows.Window.SourceInitialized>イベントが発生します。  
+ このメソッドを呼び出した結果としてネイティブウィンドウが作成され<xref:System.Windows.Window.SourceInitialized>た場合、イベントが発生します。  
   
- クエリを実行する、<xref:System.Windows.Interop.WindowInteropHelper.Handle%2A>プロパティの後、<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッドが呼び出された既存のウィンドウ ハンドルを返します。 ビジュアル ツリーは、後まで、ウィンドウにアタッチされていない、<xref:System.Windows.Window.Show%2A>メソッドが呼び出されます。  
+ メソッドが<xref:System.Windows.Interop.WindowInteropHelper.Handle%2A>呼び出された後にプロパティを照会すると、既存のウィンドウハンドルが返されます。 <xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A> ビジュアルツリーは、 <xref:System.Windows.Window.Show%2A>メソッドが呼び出されるまでウィンドウにアタッチされません。  
   
- 呼び出す、<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッド 1 つ以上の時間は新しいウィンドウのハンドルを作成しません。 呼び出す、<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッドを呼び出してハンドルが作成されて既に、<xref:System.Windows.Window.Show%2A>メソッドが新しいウィンドウ ハンドルを作成できません。 ハンドルが存在しない場合にのみ、ネイティブのウィンドウが作成時に、<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッドが呼び出されます。  
+ メソッドを<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>複数回呼び出すと、新しいウィンドウハンドルは作成されません。 <xref:System.Windows.Window.Show%2A>メソッドの呼び出しによってハンドルが既に作成されている場合にメソッドを呼び出すと、新しいウィンドウハンドルは作成されません。<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A> ネイティブウィンドウは、 <xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッドが呼び出されたときにハンドルが存在しない場合にのみ作成されます。  
   
- P/invoke でネイティブ ウィンドウの Api を使用して設定されているウィンドウのプロパティは、Api の管理 ウィンドウでされない可能性があります。 後にネイティブ MS_EX_TOPMOST フラグを使用して最上位にあるウィンドウを設定する場合など、<xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッドを呼び出すと、<xref:System.Windows.Window.Topmost%2A>プロパティは、ネイティブの設定を反映するためには保証されません。  
+ P/invoke を使用してネイティブウィンドウ Api を使用して設定されたウィンドウプロパティは、マネージドウィンドウの Api に表示されない場合があります。 たとえば、 <xref:System.Windows.Interop.WindowInteropHelper.EnsureHandle%2A>メソッドの呼び出し<xref:System.Windows.Window.Topmost%2A>後にネイティブの MS_EX_TOPMOST フラグを使用してウィンドウを最上位に設定すると、プロパティにネイティブ設定が反映されるとは限りません。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">作成し、ウィンドウ ハンドルにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">ウィンドウハンドルを作成してアクセスする場合は。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
       </Docs>
     </Member>
     <Member MemberName="Handle">
@@ -134,9 +134,9 @@
       </ReturnValue>
       <Docs>
         <summary>この <see cref="T:System.Windows.Interop.WindowInteropHelper" /> を作成するために使用された [!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] ウィンドウのウィンドウ ハンドルを取得します。</summary>
-        <value>[!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)]ウィンドウ ハンドル (HWND)。</value>
+        <value>[!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] ウィンドウ ハンドル (HWND)。</value>
         <remarks>To be added.</remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">ウィンドウ ハンドルを取得します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">ウィンドウハンドルを取得する場合は。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
         <altmember cref="T:System.Windows.Window" />
       </Docs>
     </Member>
@@ -166,16 +166,16 @@
       </ReturnValue>
       <Docs>
         <summary>[!INCLUDE[TLA#tla_winclient](~/includes/tlasharptla-winclient-md.md)] オーナー ウィンドウのハンドルを取得または設定します。</summary>
-        <value>所有者のウィンドウ ハンドル (HWND)。</value>
+        <value>オーナー ウィンドウ ハンドル (HWND)。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Windows の親を変更するには、このプロパティを設定します。 True は一般的な[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]プログラミングと、既に使用されている windows いない親を変更しないでください。  
+ このプロパティを設定すると、ウィンドウの親を設定できます。 一般的な[!INCLUDE[TLA2#tla_win32](~/includes/tla2sharptla-win32-md.md)]プログラミングの場合と同様に、既に使用されているウィンドウを親にしないようにします。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">取得またはこのプロパティの値を設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">このプロパティ値を取得または設定します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
         <altmember cref="T:System.Windows.Window" />
       </Docs>
     </Member>

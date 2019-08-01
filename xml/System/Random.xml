@@ -1,5 +1,5 @@
 <Type Name="Random" FullName="System.Random">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="adf29f522d3625dba7e4bd956743ac3e35b25683" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58716531" /></Metadata><TypeSignature Language="C#" Value="public class Random" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="1882888454ba893e09e07a3982a51c8cd49b656c" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68398248" /></Metadata><TypeSignature Language="C#" Value="public class Random" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit Random extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Random" />
   <TypeSignature Language="VB.NET" Value="Public Class Random" />
@@ -43,256 +43,256 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 数値の有限のセットから等しい確率で擬似乱数が選択されます。 選択し、数学的アルゴリズムが使用されるが、実際には十分にランダムなために、選択した番号は完全にランダムではありません。 現在の実装、<xref:System.Random>クラスは E. Donald Knuth の減算乱数ジェネレーター アルゴリズムの変更版に基づいています。 詳細については、D. E. を参照してください。 クヌースします。 *コンピューターのプログラミングでは、ボリューム 2 のアート:Seminumerical アルゴリズム*します。 Addison Wesley、読み取り、MA、3 番目のエディション、1997 です。  
+ 擬似乱数は、少数の数値から等しい確率で選択されます。 選択した数値は、数学的アルゴリズムを使用して選択するため、完全にはランダムではありませんが、実用的な目的では十分にランダムです。 <xref:System.Random>クラスの現在の実装は、変更されたバージョンの Donald クヌースの減法乱数ジェネレーターアルゴリズムに基づいています。 詳細については、「d. e.」を参照してください。 クヌース. *コンピュータープログラミング、ボリューム 2:Seminumerical アルゴリズム*。 Addison-Wesley、読み取り、MA、第3版、1997。  
   
- ランダムなパスワードを作成するのに適したものなどの暗号強度が高いランダムな数値を生成するには使用、<xref:System.Security.Cryptography.RNGCryptoServiceProvider>クラスまたは派生クラスを<xref:System.Security.Cryptography.RandomNumberGenerator?displayProperty=nameWithType>します。  
+ ランダムなパスワードの作成に適したランダムな値など、暗号的に安全な乱数を生成する<xref:System.Security.Cryptography.RNGCryptoServiceProvider>には、クラスを使用<xref:System.Security.Cryptography.RandomNumberGenerator?displayProperty=nameWithType>するか、からクラスを派生させます。  
   
  このトピックの内容:  
   
- [乱数ジェネレーターをインスタンス化します。](#Instantiate)   
- [複数のインスタンス化を回避します。](#Multiple)   
- [System.Random クラスおよびスレッドの安全性](#ThreadSafety)   
- [さまざまな種類の乱数を生成します。](#Functionality)   
- [独自のアルゴリズムの置換](#Overriding)   
- [System.Random を使用するには.](#Operations)   
- [ランダムな値の同じシーケンスを取得します。](#Same)  
- [ランダムな値の一意のシーケンスを取得します。](#Unique)  
- [指定した範囲の整数を取得します。](#Range)  
- [指定した桁数を持つ整数を取得します。](#Digits)  
- [指定した範囲の浮動小数点値を取得します。](#Floats)  
- [ランダムなブール値を生成します。](#Boolean)  
- [64 ビットの整数の乱数を生成します。](#Long)  
- [指定した範囲内のバイトを取得します。](#Bytes)  
- [配列またはコレクションから要素をランダムに取得します。](#Array)  
- [配列またはコレクションからの一意の要素を取得します。](#UniqueArray)  
+ [乱数ジェネレーターのインスタンス化](#Instantiate)   
+ [複数のインスタンス化の回避](#Multiple)   
+ [Random クラスとスレッドセーフ](#ThreadSafety)   
+ [さまざまな種類の乱数を生成する](#Functionality)   
+ [独自のアルゴリズムを使用する](#Overriding)   
+ [使用する方法を教えてください。](#Operations)   
+ [同じランダムな値のシーケンスを取得します。](#Same)  
+ [ランダムな値の一意のシーケンスを取得する](#Unique)  
+ [指定された範囲の整数を取得します。](#Range)  
+ [指定された桁数の整数を取得します](#Digits)  
+ [指定された範囲の浮動小数点値を取得します。](#Floats)  
+ [ランダムなブール値の生成](#Boolean)  
+ [ランダムな64ビット整数の生成](#Long)  
+ [指定した範囲のバイトを取得します。](#Bytes)  
+ [配列またはコレクションからランダムに要素を取得する](#Array)  
+ [配列またはコレクションから一意の要素を取得する](#UniqueArray)  
   
 <a name="Instantiate"></a>   
-## <a name="instantiating-the-random-number-generator"></a>乱数ジェネレーターをインスタンス化します。  
- シード値 (擬似乱数生成アルゴリズムの開始値) を提供することで、乱数ジェネレーターをインスタンス化する、<xref:System.Random.%23ctor%2A>クラスのコンス トラクター。  明示的または暗黙的にシード値を指定できます。  
+## <a name="instantiating-the-random-number-generator"></a>乱数ジェネレーターのインスタンス化  
+ 乱数ジェネレーターをインスタンス化するには、シード値 (疑似乱数生成アルゴリズムの開始値) を<xref:System.Random.%23ctor%2A>クラスコンストラクターに渡します。  シード値は、明示的または暗黙的に指定できます。  
   
--   <xref:System.Random.%23ctor%28System.Int32%29>コンス トラクターは指定する明示的なシード値を使用します。  
+-   コンストラクター <xref:System.Random.%23ctor%28System.Int32%29>は、明示的に指定したシード値を使用します。  
   
--   <xref:System.Random.%23ctor>コンス トラクターでは、システム クロックを使用して、シード値を提供します。 これは、乱数ジェネレーターをインスタンス化する最も一般的な方法です。  
+-   コンストラクター <xref:System.Random.%23ctor>は、システムクロックを使用してシード値を指定します。 これは、乱数ジェネレーターをインスタンス化する最も一般的な方法です。  
   
- 同じシードが個別に使用される場合<xref:System.Random>オブジェクト、同じ一連のランダムな番号が生成されます。 乱数値を処理するテスト スイートを作成するため、またはそのデータをランダムな数値から派生したゲームを再生するために役立ちます。 ことができます。 ただし、<xref:System.Random>同一のシード値がインスタンス化している場合でも、異なるバージョンの .NET Framework で実行されているプロセス内のオブジェクトが別の一連のランダムな数値を返す可能性があります。  
+ 異なる<xref:System.Random>オブジェクトに対して同じシードを使用すると、同じ一連の乱数が生成されます。 これは、ランダムな値を処理するテストスイートを作成する場合や、ランダムな数値からデータを派生するゲームを再生する場合に便利です。 ただし、異なるバージョン<xref:System.Random>の .NET Framework で実行されているプロセス内のオブジェクトは、同じシード値を使用してインスタンス化されている場合でも、異なる一連の乱数を返す可能性があることに注意してください。  
   
- ランダムな数値のさまざまなシーケンスを生成するために行うことができます、シード値時間に依存のための新しいインスタンスごとに別の系列を生成<xref:System.Random>します。 パラメーター化された<xref:System.Random.%23ctor%28System.Int32%29>コンス トラクターがかかることができます、<xref:System.Int32>値に基づいてタイマー刻みの数、現在の時刻では、パラメーターなし<xref:System.Random.%23ctor>コンス トラクターでは、システム クロックを使用して、シード値を生成します。 ただし、クロックは有限の解像度があるために、このパラメーターなしのコンス トラクターを異なるを作成する使用<xref:System.Random>連続でオブジェクトが同一のシーケンスのランダムな数値を生成する乱数ジェネレーターを作成します。 次の例 2 つ<xref:System.Random>連続でインスタンス化されるオブジェクトは、同一の一連のランダムな数値を生成します。 ほとんどの Windows システムで<xref:System.Random>互いの 15 ミリ秒以内に作成されたオブジェクトが同一のシード値を持つ可能性があります。  
+ 乱数の異なるシーケンスを生成するには、シード値を時間に依存させることができます。これにより、の<xref:System.Random>新しいインスタンスごとに異なる系列が生成されます。 パラメーター化<xref:System.Random.%23ctor%28System.Int32%29>されたコンストラクター <xref:System.Int32>は、現在の時刻のタイマー刻みの数に基づいて値を<xref:System.Random.%23ctor>受け取ることができます。一方、パラメーターなしのコンストラクターは、システムクロックを使用してシード値を生成します。 ただし、クロックには有限の解決があるため、パラメーターなしのコンストラクター <xref:System.Random>を使用して、連続して異なるオブジェクトを作成すると、ランダムな数値のシーケンスを生成する乱数ジェネレーターが作成されます。 次の例は、連続<xref:System.Random>してインスタンス化された2つのオブジェクトが、同一の連続する乱数を生成する方法を示しています。 ほとんどの Windows システムで<xref:System.Random>は、1つのオブジェクトで15ミリ秒以内に作成されたオブジェクトのシード値が同一である可能性があります。  
   
  [!code-cpp[System.Random#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/random1.cpp#1)]
  [!code-csharp[System.Random#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/Random1.cs#1)]
  [!code-vb[System.Random#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/Random1.vb#1)]  
   
- この問題を回避するには、1 つを作成<xref:System.Random>複数のオブジェクトではなくオブジェクト。  
+ この問題を回避するには、 <xref:System.Random>複数のオブジェクトではなく、単一のオブジェクトを作成します。  
   
 <a name="Multiple"></a>   
-## <a name="avoiding-multiple-instantiations"></a>複数のインスタンス化を回避します。  
- 2 つの random number generator または立て続けに短いループ内の初期化中には、ランダムな数値の同一のシーケンスを生成できる 2 つの random number generator が作成されます。 ほとんどの場合、これは、開発者の意図でありをインスタンス化し、乱数ジェネレーターの初期化がプロセスが比較的安価であるため、パフォーマンスの問題につながることができます。  
+## <a name="avoiding-multiple-instantiations"></a>複数のインスタンス化の回避  
+ 2つの乱数ジェネレーターを密ループまたは高速連続で初期化すると、2つの乱数ジェネレーターが作成され、乱数の同一シーケンスが生成されます。 ほとんどの場合、これは開発者の意図ではなく、ランダムな数値ジェネレーターのインスタンス化と初期化は比較的コストのかかるプロセスであるため、パフォーマンスの問題が発生する可能性があります。  
   
- 両方のパフォーマンスを向上させるために、誤って同じ数値のシーケンスを生成する別の random number generator を作成しないようにする、1 つを作成すること勧め<xref:System.Random>オブジェクトを作成する代わりに、時間の経過と共に多くの乱数を生成するには新しい<xref:System.Random>1 つの乱数を生成するオブジェクト。  
+ パフォーマンスを向上させ、同一の数値シーケンスを生成する個別の乱数ジェネレーターが誤って作成されない<xref:System.Random>ようにするために、1つのオブジェクトを作成し、時間の経過と共に多数の乱数を生成することをお勧めします。1 <xref:System.Random>つの乱数を生成する新しいオブジェクト。  
   
- ただし、<xref:System.Random>クラスは、スレッド セーフであります。 呼び出す場合<xref:System.Random>、複数のスレッドからメソッドが次のセクションで説明されているガイドラインに従います。  
+ ただし、クラス<xref:System.Random>はスレッドセーフではありません。 複数のスレッド<xref:System.Random>からメソッドを呼び出す場合は、次のセクションで説明するガイドラインに従ってください。  
   
 <a name="ThreadSafety"></a>   
-## <a name="the-systemrandom-class-and-thread-safety"></a>System.Random クラスおよびスレッドの安全性  
- 個々 のインスタンス化するのではなく<xref:System.Random>オブジェクト、1 つを作成することをお勧めします。<xref:System.Random>インスタンスにより、アプリが必要なすべての乱数を生成します。 ただし、<xref:System.Random>オブジェクトはスレッド セーフではありません。 アプリを呼び出す場合<xref:System.Random>複数のスレッドからメソッド、1 つのスレッドが一度に乱数ジェネレーターをアクセスできるようにする同期オブジェクトを使用する必要があります。 いることを確認しない場合、<xref:System.Random>オブジェクトがスレッド セーフな方法でアクセスされる、ランダムな数値を返すメソッドを呼び出すには 0 が返されます。  
+## <a name="the-systemrandom-class-and-thread-safety"></a>Random クラスとスレッドセーフ  
+ 個々<xref:System.Random>のオブジェクトをインスタンス化するのではなく、1 <xref:System.Random>つのインスタンスを作成して、アプリに必要なすべての乱数を生成することをお勧めします。 ただし、 <xref:System.Random>オブジェクトはスレッドセーフではありません。 アプリが複数の<xref:System.Random>スレッドからメソッドを呼び出す場合は、同期オブジェクトを使用して、一度に1つのスレッドだけが乱数ジェネレーターにアクセスできるようにする必要があります。 <xref:System.Random>オブジェクトがスレッドセーフな方法でアクセスされていることを確認しない場合、ランダムな数値を返すメソッドを呼び出すと0が返されます。  
   
- 次の例では、c# 使用[lock ステートメント](~/docs/csharp/language-reference/keywords/lock-statement.md)および Visual Basic [SyncLock ステートメント](~/docs/visual-basic/language-reference/statements/synclock-statement.md)を 1 つ乱数ジェネレーターにスレッド セーフ方式で 11 のスレッドによってアクセスすることを確認します。 各スレッドで 200万の乱数を生成し生成されたランダムな数字の数をカウント、その合計を計算し、実行が完了すると、すべてのスレッドの合計を更新します。  
+ 次の例ではC# 、 [lock ステートメント](~/docs/csharp/language-reference/keywords/lock-statement.md)と Visual Basic [SyncLock ステートメント](~/docs/visual-basic/language-reference/statements/synclock-statement.md)を使用して、スレッドセーフな方法で、1つのランダムな数値ジェネレーターが11個のスレッドによってアクセスされるようにします。 各スレッドは、200万の乱数を生成し、生成された乱数の数をカウントし、合計を計算した後、実行が終了したときにすべてのスレッドの合計を更新します。  
   
  [!code-cpp[System.Random#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/threadsafeex1.cpp#3)]
  [!code-csharp[System.Random#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/threadsafeex1.cs#3)]
  [!code-vb[System.Random#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/threadsafeex1.vb#3)]  
   
- 例では、次の方法でスレッド セーフを保証します。  
+ この例では、次の方法でスレッドセーフを確保します。  
   
--   <xref:System.ThreadStaticAttribute>乱数を生成し、スレッドごとに、その合計の合計数を追跡するスレッド ローカル変数を定義する属性を使用します。  
+-   属性<xref:System.ThreadStaticAttribute>は、生成された乱数の合計数と各スレッドの合計を追跡するスレッドローカル変数を定義するために使用されます。  
   
--   ロック (、 `lock` (C#) ステートメント、 `SyncLock` Visual Basic でのステートメント) の合計数とすべてのスレッドで生成されたすべてのランダムな数の合計、変数へのアクセスを保護します。  
+-   ロック ( `lock`のC#ステートメントと Visual Basic の`SyncLock`ステートメント) によって、すべてのスレッドで生成されたすべてのランダムな数値の合計数と合計の変数へのアクセスが保護されます。  
   
--   セマフォ (、<xref:System.Threading.CountdownEvent>オブジェクト)、メイン スレッドがブロックまで他のすべてのスレッドが実行を完了することを確認するために使用します。  
+-   セマフォ ( <xref:System.Threading.CountdownEvent>オブジェクト) を使用して、他のすべてのスレッドが実行を完了するまでメインスレッドがブロックされるようにします。  
   
--   この例では、かどうか、乱数ジェネレーターが破損を特定することにランダムな番号の生成方法の 2 つの連続した呼び出しは、0 を返すかどうかを確認します。 破損が検出された場合の例では、<xref:System.Threading.CancellationTokenSource>オブジェクトからすべてのスレッドを取り消す必要があることを通知します。  
+-   この例では、乱数生成メソッドの2回の連続呼び出しが0を返すかどうかを判断することによって、乱数ジェネレーターが破損しているかどうかを確認します。 破損が検出された場合、この<xref:System.Threading.CancellationTokenSource>例ではオブジェクトを使用して、すべてのスレッドがキャンセルされることを通知します。  
   
--   状態を調べ、各スレッドごとの乱数を生成する前に、<xref:System.Threading.CancellationToken>オブジェクト。 キャンセルが要求される場合の例では、<xref:System.Threading.CancellationToken.ThrowIfCancellationRequested%2A?displayProperty=nameWithType>スレッドをキャンセルするメソッド。  
+-   各スレッドは、ランダムな数値を生成する前に、 <xref:System.Threading.CancellationToken>オブジェクトの状態を確認します。 キャンセルが要求された場合、この<xref:System.Threading.CancellationToken.ThrowIfCancellationRequested%2A?displayProperty=nameWithType>例ではメソッドを呼び出してスレッドをキャンセルします。  
   
- 使用する点を除いて、次の例は、最初と同じ、<xref:System.Threading.Tasks.Task>オブジェクトとラムダ式の代わりに<xref:System.Threading.Thread>オブジェクト。  
+ 次の例は、オブジェクトでは<xref:System.Threading.Tasks.Task> <xref:System.Threading.Thread>なくオブジェクトとラムダ式を使用する点を除いて、最初の例と同じです。  
   
  [!code-csharp[System.Random#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/threadsafeex2.cs#4)]
  [!code-vb[System.Random#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/threadsafeex2.vb#4)]  
   
- 最初の例から次の方法で異なります。  
+ これは、次の方法の最初の例とは異なります。  
   
--   使用する必要はありませんので、生成されたランダムな数字の数と各タスクでは、その合計を追跡する変数はタスクは、ローカル、<xref:System.ThreadStaticAttribute>属性。  
+-   生成される乱数の数と各タスクの合計を追跡する変数は、タスクに対してローカルであるため、 <xref:System.ThreadStaticAttribute>属性を使用する必要はありません。  
   
--   静的な<xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>メソッドを使用して、すべてのタスクが完了する前に、メイン スレッドが完了しないことを確認します。 必要はありません、<xref:System.Threading.CountdownEvent>オブジェクト。  
+-   静的<xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>メソッドは、すべてのタスクが完了する前にメインスレッドが完了していないことを確認するために使用されます。 <xref:System.Threading.CountdownEvent>オブジェクトは必要ありません。  
   
--   タスクのキャンセルに起因する例外が表示される、<xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType>メソッド。 前の例では、各スレッドで処理されます。  
+-   タスクのキャンセルによって生成される例外は<xref:System.Threading.Tasks.Task.WaitAll%2A?displayProperty=nameWithType> 、メソッドで表示されます。 前の例では、各スレッドによって処理されます。  
   
 <a name="Functionality"></a>   
-## <a name="generating-different-types-of-random-numbers"></a>さまざまな種類の乱数を生成します。  
- 乱数ジェネレーターは、次の種類の乱数を生成できるメソッドを提供します。  
+## <a name="generating-different-types-of-random-numbers"></a>さまざまな種類の乱数を生成する  
+ 乱数ジェネレーターには、次の種類の乱数を生成できるメソッドが用意されています。  
   
--   一連の<xref:System.Byte>値。 メソッドに戻るようにする要素の数に初期化された配列を渡すことによってバイト値の数を決定する、<xref:System.Random.NextBytes%2A>メソッド。 次の例では、20 バイトを生成します。  
+-   一連の<xref:System.Byte>値。 バイト値の数を決定するには、メソッドがメソッドに<xref:System.Random.NextBytes%2A>返す要素の数に初期化された配列を渡します。 次の例では、20バイトが生成されます。  
   
      [!code-cpp[System.Random#5](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/nextbytes1.cpp#5)]
      [!code-csharp[System.Random#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/nextbytes1.cs#5)]
      [!code-vb[System.Random#5](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/nextbytes1.vb#5)]  
   
--   1 つの整数。 最大値は 0 から整数にするかどうかを選択できます (<xref:System.Int32.MaxValue?displayProperty=nameWithType> - 1) を呼び出して、<xref:System.Random.Next>メソッドは、0 から呼び出すことによって、特定の値までの整数、<xref:System.Random.Next%28System.Int32%29>メソッド、または、を呼び出すことによって値の範囲内の整数<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッド。 パラメーター化されたオーバー ロードで指定された最大値は排他的です。生成された実際の最大数は、1 つは、指定した値より小さくします。  
+-   単一の整数。 メソッドを<xref:System.Random.Next%28System.Int32%29> <xref:System.Int32.MaxValue?displayProperty=nameWithType> <xref:System.Random.Next>呼び出すことによって0から最大値 (-1) までの整数を指定できます。また<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>、メソッドを呼び出して0から特定の値までの整数を指定するか、メソッド。 パラメーター化されたオーバーロードでは、指定された最大値は排他的です。つまり、生成される実際の最大数は、指定された値より1だけ少なくなります。  
   
-     次の例では、 <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29> -10 ~ 10 の間の 10 個の乱数を生成します。 メソッドの 2 番目の引数がメソッドによって返されるランダムな値の範囲の上限を指定することに注意してください。 つまり、メソッドは、1 つを返すことができる最大の整数値よりも小さい値です。  
+     次の例では<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29> 、メソッドを呼び出して、-10 ~ 10 の範囲の10個の乱数を生成します。 メソッドの2番目の引数は、メソッドによって返されるランダム値の範囲の排他的上限を指定することに注意してください。 言い換えると、メソッドが返すことができる最大の整数は、この値より1小さい値になります。  
   
      [!code-cpp[System.Random#6](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/nextex1.cpp#6)]
      [!code-csharp[System.Random#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/nextex1.cs#6)]
      [!code-vb[System.Random#6](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/nextex1.vb#6)]  
   
--   呼び出すことによって 1.0 より小さい 0.0 から 1 つの浮動小数点値、<xref:System.Random.NextDouble%2A>メソッド。 メソッドによって返される乱数の排他的上限値は、その実際の上限は 0.99999999999999978 1 です。 次の例では、10 個のランダムな浮動小数点数値を生成します。  
+-   <xref:System.Random.NextDouble%2A>メソッドを呼び出すことによって、0.0 ~ 1.0 未満の1つの浮動小数点値。 メソッドによって返される乱数の排他的上限は1であるため、実際の上限は0.99999999999999978 です。 次の例では、10個のランダムな浮動小数点数が生成されます。  
   
      [!code-cpp[System.Random#7](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/nextdoubleex1.cpp#7)]
      [!code-csharp[System.Random#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/nextdoubleex1.cs#7)]
      [!code-vb[System.Random#7](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/nextdoubleex1.vb#7)]  
   
 > [!IMPORTANT]
->  <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドでは、返される乱数の範囲を指定できます。 ただし、`maxValue`範囲の上限に返される数値を指定するには、パラメーターは、排他、包括、いない値。 つまり、メソッドの呼び出し`Next(0, 100)`0 ~ 99 の範囲演算子と not between 0 と 100 の値を返します。  
+>  <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドを使用すると、返される乱数値の範囲を指定できます。 ただし、返される上限の数値を指定するパラメーターは、包含的な値ではなく、排他的です。`maxValue` これは、メソッド呼び出し`Next(0, 100)`が 0 ~ 99 の範囲の値を返すことを意味します。0と100の間では返されません。  
   
- 使用することも、<xref:System.Random>などのタスクを生成するためのクラス[ランダム T:System.Boolean 値](#Boolean)生成、[ランダムな浮動小数点値以外の 0 ~ 1 の範囲で](#Floats)を生成する[64 ビットの整数の乱数](#Long)、および[の一意の要素を配列またはコレクションからランダムに取得](#UniqueArray)します。 これらおよびその他の一般的なタスクは、次を参照してください、 [System.Random を使用する.。](#Operations) セクション。  
+ また、このような<xref:System.Random>タスクには、ランダムな[T:System.Boolean 値](#Boolean)の生成、 [0 ~ 1 以外の範囲を持つランダム浮動小数点値](#Floats)の生成、[ランダムな64ビット整数](#Long)の生成、ランダムに使用することもできます。 [配列またはコレクションから一意の要素を取得](#UniqueArray)します。 これらのタスクおよびその他の一般的なタスクについては、「 [How to use The Random to..](#Operations) . 下.  
   
 <a name="Overriding"></a>   
-## <a name="substituting-your-own-algorithm"></a>独自のアルゴリズムの置換  
- 継承することによって、独自の乱数を実装することができます、<xref:System.Random>クラスと乱数の生成アルゴリズムを指定します。 オーバーライドする必要があります、独自のアルゴリズムを指定する、<xref:System.Random.Sample%2A>メソッドで、乱数生成アルゴリズムを実装します。 オーバーライドすることも必要があります、 <xref:System.Random.Next>、 <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>、および<xref:System.Random.NextBytes%2A>メソッドのオーバーライドを呼び出すことを確認する<xref:System.Random.Sample%2A>メソッド。 オーバーライドする必要はありません、<xref:System.Random.Next%28System.Int32%29>と<xref:System.Random.NextDouble%2A>メソッド。  
+## <a name="substituting-your-own-algorithm"></a>独自のアルゴリズムを使用する  
+ 独自の乱数ジェネレーターを実装するには、 <xref:System.Random>クラスから継承し、乱数生成アルゴリズムを指定します。 独自のアルゴリズムを提供するには、乱数<xref:System.Random.Sample%2A>生成アルゴリズムを実装するメソッドをオーバーライドする必要があります。 また、 <xref:System.Random.Next>、、および<xref:System.Random.NextBytes%2A>の<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>各メソッドをオーバーライドして、オーバーライド<xref:System.Random.Sample%2A>されたメソッドを呼び出すようにする必要もあります。 メソッド<xref:System.Random.Next%28System.Int32%29> と<xref:System.Random.NextDouble%2A>メソッドをオーバーライドする必要はありません。  
   
- 派生する例については、<xref:System.Random>クラスし、その既定擬似乱数ジェネレーター、変更を参照してください、<xref:System.Random.Sample%2A>リファレンス ページです。  
+ <xref:System.Random>クラスから派生し、既定の擬似乱数ジェネレーターを変更する例につい<xref:System.Random.Sample%2A>ては、リファレンスページを参照してください。  
   
 <a name="Operations"></a>   
-## <a name="how-do-you-use-systemrandom-to"></a>System.Random を使用するには.  
- 次のセクションでは、説明し、ランダムな数値をアプリで使用する方法のいくつかのサンプル コードを提供します。  
+## <a name="how-do-you-use-systemrandom-to"></a>使用する方法を教えてください。  
+ 以下のセクションでは、アプリで乱数を使用するいくつかの方法のサンプルコードについて説明します。  
   
 <a name="Same"></a>   
-### <a name="retrieve-the-same-sequence-of-random-values"></a>ランダムな値の同じシーケンスを取得します。  
- ゲームのプレイとソフトウェア テスト シナリオで同じランダムな数値のシーケンスを生成することがあります。 ランダムな数値のシーケンスが同じテストを使用すると、回帰を検出し、バグの修正を確認できます。 ゲームで同じランダムな数値のシーケンスを使用して以前のゲームを再生することができます。  
+### <a name="retrieve-the-same-sequence-of-random-values"></a>同じランダムな値のシーケンスを取得します。  
+ ソフトウェアテストシナリオとゲームプレイで、同じ乱数シーケンスを生成することが必要になる場合があります。 乱数の同じシーケンスを使用してテストすることで、回帰を検出し、バグ修正を確認することができます。 ゲームで同じ乱数シーケンスを使用すると、以前のゲームを再生できます。  
   
- 同じシード値を提供することで同じランダムな数値のシーケンスを生成することができます、<xref:System.Random.%23ctor%28System.Int32%29>コンス トラクター。 シード値は、擬似乱数生成アルゴリズムの開始値を提供します。 次の例では、任意のシード値として 100100 をでインスタンス化する、<xref:System.Random>オブジェクト、20 個のランダムな浮動小数点値を表示およびシード値が引き続き発生します。 シード値を復元する、新しいランダムな番号ジェネレーターのインスタンスを作成し、20 同じのランダムな浮動小数点値を表示します。  例も、異なるバージョンの .NET Framework 上で実行する場合に、ランダムな数値のさまざまなシーケンスを生成可能性がありますに注意してください。  
+ 同じシード値を<xref:System.Random.%23ctor%28System.Int32%29>コンストラクターに渡すことによって、同じ乱数シーケンスを生成することができます。 シード値は、擬似乱数生成アルゴリズムの開始値を提供します。 次の例では、任意の<xref:System.Random>シード値として100100を使用してオブジェクトをインスタンス化し、20個のランダムな浮動小数点値を表示し、シード値を保持します。 次に、シード値を復元し、新しい乱数ジェネレーターをインスタンス化し、同じ20個のランダムな浮動小数点値を表示します。  この例では、異なるバージョンの .NET Framework で実行した場合に、異なる乱数シーケンスが生成される可能性があることに注意してください。  
   
  [!code-cpp[System.Random#12](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/same1.cpp#12)]
  [!code-csharp[System.Random#12](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/same1.cs#12)]
  [!code-vb[System.Random#12](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/same1.vb#12)]  
   
 <a name="Unique"></a>   
-### <a name="retrieve-unique-sequences-of-random-numbers"></a>乱数の一意のシーケンスを取得します。  
- インスタンスに異なるシード値を提供する、<xref:System.Random>クラスにより各乱数ジェネレーターの値のさまざまなシーケンスを生成します。 シード値を明示的に呼び出していずれかで行うことができます、<xref:System.Random.%23ctor%28System.Int32%29>コンス トラクター、または暗黙的に呼び出して、<xref:System.Random.%23ctor>コンス トラクター。 ほとんどの開発者は、システム クロックを使用してパラメーターなしのコンス トラクターを呼び出します。 次の例では、このアプローチを使用して 2 つのインスタンスを作成する<xref:System.Random>インスタンス。 各インスタンスは、一連の 10 個のランダムな整数を表示します。  
+### <a name="retrieve-unique-sequences-of-random-numbers"></a>ランダムな数値の一意のシーケンスを取得する  
+ クラスのインスタンスに異なるシード値を<xref:System.Random>指定すると、各乱数ジェネレーターによって異なる値のシーケンスが生成されます。 シード値は、 <xref:System.Random.%23ctor%28System.Int32%29>コンストラクターを呼び出すことによって明示的に指定することも、 <xref:System.Random.%23ctor>コンストラクターを呼び出すことによって暗黙的に指定することもできます。 ほとんどの開発者は、システムクロックを使用するパラメーターなしのコンストラクターを呼び出します。 次の例では、この方法を<xref:System.Random>使用して、2つのインスタンスをインスタンス化します。 各インスタンスには、10個のランダムな整数が表示されます。  
   
  [!code-cpp[System.Random#13](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/unique.cpp#13)]
  [!code-csharp[System.Random#13](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/unique.cs#13)]
  [!code-vb[System.Random#13](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/unique.vb#13)]  
   
- ただし、有限の解像度のため、システム クロックが約 15 ミリ秒未満である時間の相違点を検出しません。 そのため、コードを呼び出す場合、 <xref:System.Random.%23ctor> 2 つのインスタンスを作成するオーバー ロード<xref:System.Random>する可能性がありますが誤ってするオブジェクトを提供する、同一のシード値を連続してオブジェクトします。 前の例では、これを参照してくださいをコメント アウト、<xref:System.Threading.Thread.Sleep%2A?displayProperty=nameWithType>メソッドの呼び出しとコンパイルと実行の例をもう一度です。  
+ ただし、このような制限があるため、システムクロックでは、約15ミリ秒未満の時間差は検出されません。 したがって、2つ<xref:System.Random.%23ctor> <xref:System.Random>のオブジェクトを連続してインスタンス化するためにコードがオーバーロードを呼び出した場合、誤って同じシード値を持つオブジェクトを提供することがあります。 前の例でこれを確認するには、 <xref:System.Threading.Thread.Sleep%2A?displayProperty=nameWithType>メソッド呼び出しをコメントアウトし、この例をもう一度コンパイルして実行します。  
   
- これが事態を防ぐためにお勧め、1 つのインスタンスを作成する<xref:System.Random>複数のではなくオブジェクトします。 ただし、<xref:System.Random>いないスレッド セーフであるためにアクセスする場合は、いくつかの同期デバイスを使用する必要があります、<xref:System.Random>詳細については複数のスレッドからのインスタンスは、「 [、ランダムなクラスおよびスレッドの安全性](#ThreadSafety)この以前トピックです。 など、遅延メカニズムを使用する代わりに、<xref:System.Threading.Thread.Sleep%2A>メソッドの前の例では、インスタンス化には、15 を超えるミリ秒間隔が発生することを確認するために使用します。  
+ これが起こらないようにするために、複数のオブジェクト<xref:System.Random>ではなく、単一のオブジェクトをインスタンス化することをお勧めします。 ただし、は<xref:System.Random>スレッドセーフではないため、複数のスレッドからインスタンスに<xref:System.Random>アクセスする場合は、同期デバイスを使用する必要があります。詳細については、このトピックで前述した「[ランダムクラスとスレッドセーフ](#ThreadSafety)」を参照してください。 または、前の例で使用した<xref:System.Threading.Thread.Sleep%2A>メソッドなどの遅延メカニズムを使用して、インスタンス化が15ミリ秒以上離れていることを確認することもできます。  
   
 <a name="Range"></a>   
-### <a name="retrieve-integers-in-a-specified-range"></a>指定した範囲の整数を取得します。  
- 指定した範囲の整数を取得するには呼び出すことによって、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドは、返される乱数ジェネレーターの数値の上限と下限を指定することができます。 上限は、排他、包括、いない値です。 つまり、メソッドによって返される値の範囲に含まれていません。 次の例では、このメソッドを使用して、-10 ~ 10 の間の整数の乱数を生成します。 1 つの値として、目的の値よりも大きい値である、11 を指定しているメモの`maxValue`メソッド呼び出しの引数。  
+### <a name="retrieve-integers-in-a-specified-range"></a>指定された範囲の整数を取得します。  
+ 指定された範囲の整数を取得するに<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>は、メソッドを呼び出します。これにより、乱数ジェネレーターが返す数値の下限と上限の両方を指定できます。 上限は、包含的な値ではなく、排他的です。 つまり、メソッドによって返される値の範囲には含まれません。 次の例では、このメソッドを使用して、-10 ~ 10 の間のランダムな整数を生成します。 これは、メソッド呼び出しの`maxValue`引数の値として、目的の値より1大きい1を示す11を指定することに注意してください。  
   
  [!code-cpp[System.Random#15](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/range1.cpp#15)]
  [!code-csharp[System.Random#15](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/range1.cs#15)]
  [!code-vb[System.Random#15](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/range1.vb#15)]  
   
 <a name="Digits"></a>   
-### <a name="retrieve-integers-with-a-specified-number-of-digits"></a>指定した桁数を持つ整数を取得します。  
- 呼び出すことができます、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>指定した桁数で数値を取得します。 呼び出すこと (1000 から 9999 の範囲数) の 4 桁の番号を取得するには、たとえば、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドを`minValue`値は 1000 と`maxValue`として次の例は、10000 の値。  
+### <a name="retrieve-integers-with-a-specified-number-of-digits"></a>指定された桁数の整数を取得します  
+ <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドを呼び出して、指定した桁数の数値を取得できます。 たとえば、4桁の数字 (つまり、1000 ~ 9999 の範囲の数値) を取得するには、次の<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>例に示す`minValue`ように、1000の`maxValue`値と1万の値を使用してメソッドを呼び出します。  
   
  [!code-cpp[System.Random#16](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/range2.cpp#16)]
  [!code-csharp[System.Random#16](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/range2.cs#16)]
  [!code-vb[System.Random#16](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/range2.vb#16)]  
   
 <a name="Floats"></a>   
-### <a name="retrieve-floating-point-values-in-a-specified-range"></a>指定した範囲の浮動小数点値を取得します。  
- <xref:System.Random.NextDouble%2A>メソッド 0 を返しますランダムな浮動小数点値の範囲を 1 未満にします。 ただし、多くの場合、たいその他のいくつかの範囲にランダムな値を生成します。  
+### <a name="retrieve-floating-point-values-in-a-specified-range"></a>指定された範囲の浮動小数点値を取得します。  
+ この<xref:System.Random.NextDouble%2A>メソッドは、0から1未満の範囲のランダム浮動小数点値を返します。 ただし、多くの場合、他の範囲でランダムな値を生成することをお勧めします。  
   
- によって返される数に必要な開始時間間隔と 0 の違いを追加するには必要な最小値と最大値までの間隔が 1 の場合、<xref:System.Random.NextDouble%2A>メソッド。 次の例は、-1 から 0 までの 10 個の乱数を生成します。  
+ 最小値と最大値の間の間隔が1の場合は、目的の開始間隔と0の差を<xref:System.Random.NextDouble%2A>メソッドによって返される数値に加算できます。 次の例では、-1 から0までの10個の乱数を生成します。  
   
  [!code-cpp[System.Random#17](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/doublerange2.cpp#17)]
  [!code-csharp[System.Random#17](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/doublerange2.cs#17)]
  [!code-vb[System.Random#17](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/doublerange2.vb#17)]  
   
- 浮動小数点乱数を生成する下限は 0 が、上限は 1 より大きい (または、負の数値の場合の下限の境界が-1 未満です、上限は 0)、0 以外のバインドでランダムな数値を乗算します。 次の例はこれを 2,000万浮動小数点乱数を生成する範囲 0 ~<xref:System.Int64.MaxValue?displayProperty=nameWithType>します。 も、メソッドによって生成されるランダムな値の分布を表示します。  
+ 下限が0で、上限が1より大きい (負の値の場合、下限が-1 より小さく、上限が0である) ランダム浮動小数点数を生成するには、0以外の値で乱数を乗算します。 次の例では、0 <xref:System.Int64.MaxValue?displayProperty=nameWithType>~ の範囲の2000万のランダム浮動小数点数を生成します。 では、メソッドによって生成されるランダム値の分布も表示されます。  
   
  [!code-cpp[System.Random#18](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/doublerange1.cpp#18)]
  [!code-csharp[System.Random#18](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/doublerange1.cs#18)]
  [!code-vb[System.Random#18](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/doublerange1.vb#18)]  
   
- などの任意の 2 つの値の間で浮動小数点乱数を生成する、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドは、整数の場合は、次の数式を使用します。  
+ 整数のメソッドの<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>ように、任意の2つの値の間にランダムな浮動小数点数を生成するには、次の式を使用します。  
   
 ```csharp  
 Random.NextDouble() * (maxValue - minValue) + minValue  
 ```  
   
- 次の例では、11.0 に 10.0 から 100万の乱数の範囲を生成し、その分布が表示されます。  
+ 次の例では、10.0 から11.0 までの範囲の100万乱数を生成し、それらの分布を表示します。  
   
  [!code-cpp[System.Random#19](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/doublerange3.cpp#19)]
  [!code-csharp[System.Random#19](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/doublerange3.cs#19)]
  [!code-vb[System.Random#19](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/doublerange3.vb#19)]  
   
 <a name="Boolean"></a>   
-### <a name="generate-random-boolean-values"></a>ランダムなブール値を生成します。  
- <xref:System.Random>クラスを生成するメソッドを提供しません<xref:System.Boolean>値。 ただし、独自のクラスまたはそのメソッドを定義できます。 次の例では、クラスを定義する`BooleanGenerator`、単一のメソッドと`NextBoolean`します。 `BooleanGenerator`ストア クラス、<xref:System.Random>秘密の変数としてのオブジェクト。 `NextBoolean`メソッドの呼び出し、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29?displayProperty=nameWithType>メソッドにより、結果と、<xref:System.Convert.ToBoolean%28System.Int32%29?displayProperty=nameWithType>メソッド。 ランダムな数の上限を指定する引数として 2 が使用されることに注意してください。 これは、排他的な値であるため、メソッドの呼び出しは、0 または 1 を返します。  
+### <a name="generate-random-boolean-values"></a>ランダムなブール値の生成  
+ クラス<xref:System.Random>には、値を生成<xref:System.Boolean>するメソッドが用意されていません。 ただし、独自のクラスまたはメソッドを定義して、それを行うことができます。 次の例では、単一`BooleanGenerator`の`NextBoolean`メソッドを使用して、クラスを定義しています。 クラス`BooleanGenerator`は、オブジェクト<xref:System.Random>をプライベート変数として格納します。 メソッドはメソッドを<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29?displayProperty=nameWithType>呼び出し、結果を<xref:System.Convert.ToBoolean%28System.Int32%29?displayProperty=nameWithType>メソッドに渡します。 `NextBoolean` 2を引数として使用して、乱数の上限を指定することに注意してください。 これは排他的な値であるため、メソッドの呼び出しは0または1のいずれかを返します。  
   
  [!code-cpp[System.Random#8](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/booleans1.cpp#8)]
  [!code-csharp[System.Random#8](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/booleans1.cs#8)]
  [!code-vb[System.Random#8](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/booleans1.vb#8)]  
   
- 乱数を生成する別のクラスを作成する代わりに<xref:System.Boolean>値、例では、1 つのメソッドが定義だけでした。 ただし、その場合、<xref:System.Random>オブジェクトを新しいをインスタンス化を回避するためにクラス レベルの変数として定義する必要があります<xref:System.Random>各メソッド呼び出し内のインスタンス。 Visual basic でとして Random インスタンスを定義することができます、[静的](~/docs/visual-basic/language-reference/modifiers/static.md)変数、`NextBoolean`メソッド。  次の例は、実装を提供します。  
+ 個別のクラスを作成してランダム<xref:System.Boolean>な値を生成するのではなく、単に1つのメソッドを定義するだけで済みます。 ただし、この場合、オブジェクトは<xref:System.Random>クラスレベル変数として定義されている必要があります。 <xref:System.Random>これは、各メソッドの呼び出しで新しいインスタンスがインスタンス化されるのを回避するためです。 Visual Basic では、ランダムインスタンスを`NextBoolean`メソッドの[静的](~/docs/visual-basic/language-reference/modifiers/static.md)変数として定義できます。  次の例は、の実装を示しています。  
   
  [!code-cpp[System.Random#20](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/booleans2.cpp#20)]
  [!code-csharp[System.Random#20](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/booleans2.cs#20)]
  [!code-vb[System.Random#20](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/booleans2.vb#20)]  
   
 <a name="Long"></a>   
-### <a name="generate-random-64-bit-integers"></a>64 ビットの整数の乱数を生成します。  
- オーバー ロード、<xref:System.Random.Next%2A>メソッドは、32 ビット整数を返します。 ただし、場合によっては、64 ビット整数を使用する必要があります。 このことは次のように実行できます。  
+### <a name="generate-random-64-bit-integers"></a>ランダムな64ビット整数の生成  
+ <xref:System.Random.Next%2A>メソッドのオーバーロードは、32ビットの整数を返します。 ただし、場合によっては、64ビットの整数を使用する必要があります。 このことは次のように実行できます。  
   
-1.  呼び出す、<xref:System.Random.NextDouble%2A>取得倍精度浮動小数点値。  
+1.  メソッドを<xref:System.Random.NextDouble%2A>呼び出して、倍精度浮動小数点値を取得します。  
   
-2.  その値に乗算<xref:System.Int64.MaxValue?displayProperty=nameWithType>します。  
+2.  この値をで<xref:System.Int64.MaxValue?displayProperty=nameWithType>乗算します。  
   
- 次の例では、この手法を使用して、20 件の長整数の乱数を生成するし、10 個のと同じグループ内に分類されています。 0 から、各グループ内の数をカウントすることによってランダムな数値の分布を評価し、<xref:System.Int64.MaxValue?displayProperty=nameWithType>します。 例の出力に示すよう番号が長整数の範囲を増減均等に分散されます。  
+ 次の例では、この手法を使用して、2000万のランダムな長整数を生成し、10個の等しいグループに分類しています。 次に、各グループの数値を0からにカウントする<xref:System.Int64.MaxValue?displayProperty=nameWithType>ことで、乱数の分布を評価します。 この例の出力に示すように、数値は長整数の範囲によってより均等に分布されます。  
   
  [!code-cpp[System.Random#14](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/long1.cpp#14)]
  [!code-csharp[System.Random#14](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/long1.cs#14)]
  [!code-vb[System.Random#14](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/long1.vb#14)]  
   
- ビットの操作を使用する代替手法は、真の乱数を生成しません。 この手法を呼び出す<xref:System.Random.Next>2 つの整数、左シフト 1 で 32 ビット、および Or を生成することです。 この手法では、2 つの制限があります。  
+ ビット操作を使用する別の手法では、真の乱数は生成されません。 この手法で<xref:System.Random.Next>は、を呼び出して2つの整数を生成し、32ビットずつ左シフトして、それらをまとめています。 この手法には、次の2つの制限があります。  
   
-1.  31 ビットは符号ビットであるため、結果の長整数のビット 31 の値は常に 0 です。  これは、31 ビット、および論理和をランダムな 0 または 1、左シフトを生成することによって対処できますで元のランダムな long 整数。  
+1.  ビット31は符号ビットであるため、結果として得られる長整数のビット31の値は常に0になります。  これを解決するには、ランダムな0または1を生成し、31ビットを左にシフトして、それを元のランダム長整数にします。  
   
-2.  重大、ため、によって返される値の確率<xref:System.Random.Next>の場合は 0 には存在する場合は、少数のランダムな数値範囲 0x0 0x00000000FFFFFFFF で。  
+2.  より真剣に言えば、によって<xref:System.Random.Next>返される値が0になる可能性があるため、範囲 0x0 ~ 0x00000000ffffffff の乱数が少ない場合は、数が少なくなります。  
   
 <a name="Bytes"></a>   
-### <a name="retrieve-bytes-in-a-specified-range"></a>指定した範囲内のバイトを取得します。  
- オーバー ロード、<xref:System.Random.Next%2A>メソッドを使用する乱数の範囲を指定できますが、<xref:System.Random.NextBytes%2A>メソッドはありません。 次の例では、実装、`NextBytes`メソッドが返されるバイトの範囲を指定することができます。 定義、`Random2`クラスから派生した<xref:System.Random>オーバー ロードとその`NextBytes`メソッド。  
+### <a name="retrieve-bytes-in-a-specified-range"></a>指定した範囲のバイトを取得します。  
+ <xref:System.Random.Next%2A>メソッドのオーバーロードでは、乱数の範囲を指定できます<xref:System.Random.NextBytes%2A>が、メソッドでは指定できません。 次の例では`NextBytes` 、返されるバイトの範囲を指定できるメソッドを実装しています。 このクラスは`Random2` 、から<xref:System.Random>派生し、その`NextBytes`メソッドをオーバーロードするクラスを定義します。  
   
  [!code-cpp[System.Random#9](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/bytes1.cpp#9)]
  [!code-csharp[System.Random#9](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/bytes1.cs#9)]
  [!code-vb[System.Random#9](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/bytes1.vb#9)]  
   
- `NextBytes(Byte[], Byte, Byte)`メソッドへの呼び出しをラップします、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッド最小値と最大値よりも大きい 1 つを指定します (この場合は、0 と 101) バイト配列で返されるようにします。 整数値がによって返されることを確認していますので、<xref:System.Random.Next%2A>の範囲内のメソッドは、<xref:System.Byte>データ型、おできます安全にキャストに (c#) に変換したり (Visual Basic) で整数からバイト。  
+ メソッド`NextBytes(Byte[], Byte, Byte)`は、メソッドの<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>呼び出しをラップし、最小値と最大値 (この場合は0と 101) をバイト配列に返すことを指定します。 <xref:System.Random.Next%2A>メソッドによって返される整数値は<xref:System.Byte>データ型の範囲内にあることが確実であるため、(でC#は) それらを安全にキャストするか、(Visual Basic) 整数からバイトに変換することができます。  
   
 <a name="Array"></a>   
-### <a name="retrieve-an-element-from-an-array-or-collection-at-random"></a>配列またはコレクションから要素をランダムに取得します。  
- ランダムな数値は、多くの場合、配列またはコレクションから値を取得するインデックスとして機能します。 ランダムなインデックス値を取得するを呼び出すことができます、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドをおよびの値としての配列の下限値を使用してその`minValue`引数と 1 つの値として、配列の上限を超えるその`maxValue`引数。 これに相当の 0 から始まる配列の場合は、その<xref:System.Array.Length%2A>プロパティ、またはいずれかによって返される値より大きい、<xref:System.Array.GetUpperBound%2A?displayProperty=nameWithType>メソッド。 次の例は、都市の配列からランダムに米国の州の都市の名前を取得します。  
+### <a name="retrieve-an-element-from-an-array-or-collection-at-random"></a>配列またはコレクションからランダムに要素を取得する  
+ ランダムな数値は、多くの場合、配列またはコレクションから値を取得するためのインデックスとして機能します。 ランダムインデックス値を取得するには、 <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>メソッドを呼び出し、配列の下限を引数`minValue`の値として使用します。また、配列の上限を`maxValue`引数の値として1つ大きくします。 0から始まる配列の場合、これは<xref:System.Array.Length%2A>プロパティと同じか、または<xref:System.Array.GetUpperBound%2A?displayProperty=nameWithType>メソッドによって返される値よりも1だけ大きくなります。 次の例では、都市の配列から米国にある市区町村の名前をランダムに取得します。  
   
  [!code-cpp[System.Random#10](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/array1.cpp#10)]
  [!code-csharp[System.Random#10](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/array1.cs#10)]
  [!code-vb[System.Random#10](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/array1.vb#10)]  
   
 <a name="UniqueArray"></a>   
-### <a name="retrieve-a-unique-element-from-an-array-or-collection"></a>配列またはコレクションからの一意の要素を取得します。  
- 乱数ジェネレーターは、重複する値を常に返すことができます。 番号の範囲が小さくなります。 または、生成された値の数が大きくなる、重複の確率が大きくなります。 ランダムな値は一意である必要があります、他の番号は、パフォーマンスが低下ますます重複を補正するために生成されます。  
+### <a name="retrieve-a-unique-element-from-an-array-or-collection"></a>配列またはコレクションから一意の要素を取得する  
+ 乱数ジェネレーターは、常に重複する値を返すことができます。 数値の範囲が小さくなるか、生成される値の数が多いほど、重複の可能性が大きくなります。 ランダムな値を一意にする必要がある場合は、重複を補正するためにより多くの数値が生成されるため、パフォーマンスが低下します。  
   
- このシナリオを処理するための手法を数多くあります。 1 つの一般的な解決策では、配列やコレクションを取得する値を格納する浮動小数点乱数を格納する並列配列を作成します。 2 番目の配列はランダムな数値では、最初の配列の作成時に設定されます。 および<xref:System.Array.Sort%28System.Array%2CSystem.Array%29?displayProperty=nameWithType>メソッドは並列配列の値を使用して、最初の配列を並べ替えに使用します。  
+ このシナリオに対処するための手法がいくつかあります。 一般的な解決策の1つは、取得する値を格納する配列またはコレクション、およびランダムな浮動小数点数を含む並列配列を作成することです。 2番目の配列には、最初の配列が作成<xref:System.Array.Sort%28System.Array%2CSystem.Array%29?displayProperty=nameWithType>された時点で乱数が格納され、メソッドを使用して、並列配列の値を使用して最初の配列が並べ替えられます。  
   
- など、ソリティア ゲームを開発する場合に各カードが 1 回だけ使用されるようにします。 カードとカードが処理済みかどうかを追跡を取得する乱数を生成するには、代わりに、デッキの並べ替えに使用できるランダムな数値の並列配列を作成できます。 デッキが並べ替えられると、アプリは次のカード デッキでのインデックスを示しますへのポインターを維持できます。  
+ たとえば、ソリティアゲームを開発している場合は、各カードが1回だけ使用されていることを確認する必要があります。 カードを取得するために乱数を生成する代わりに、カードが既に処理されているかどうかを追跡するには、デッキの並べ替えに使用できるランダムな数値の並列配列を作成します。 デッキが並べ替えられると、アプリは、デッキの次のカードのインデックスを示すポインターを維持できます。  
   
- このアプローチの例を次に示します。 定義、`Card`クラスとトランプを表す`Dealer`トランプのシャッフルを処理するクラス。 `Dealer`クラスのコンス トラクターは 2 つの配列を設定します、`deck`クラス スコープを持つと、すべてのカード デッキ; とローカルを表す配列`order`を持つ同じ数の要素の配列、`deck`配列とは設定されます。ランダムに生成された<xref:System.Double>値。  <xref:System.Array.Sort%28System.Array%2CSystem.Array%29?displayProperty=nameWithType>並べ替えメソッドが呼び出されてから、`deck`内の値に基づいて配列、`order`配列。  
+ このアプローチの例を次に示します。 再生カードを`Card`表すクラス`Dealer`と、シャッフルされたカードのデッキを扱うクラスを定義します。 クラス`Dealer`コンストラクターは、2つの配列`deck` (クラススコープを持ち、デッキ内のすべてのカードを表す配列) と、 `order` `deck`配列と同じ数の要素を持ち、値が設定されるローカル配列を作成します。ランダムに生成<xref:System.Double>された値を持つ。  次<xref:System.Array.Sort%28System.Array%2CSystem.Array%29?displayProperty=nameWithType>に、メソッドを呼び出して、 `deck`配列内`order`の値に基づいて配列を並べ替えます。  
   
  [!code-cpp[System.Random#11](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/uniquearray1.cpp#11)]
  [!code-csharp[System.Random#11](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/uniquearray1.cs#11)]
@@ -301,13 +301,13 @@ Random.NextDouble() * (maxValue - minValue) + minValue
    
   
 ## Examples  
- 次の例では、単一乱数ジェネレーターと呼び出しを作成します。 その<xref:System.Random.NextBytes%2A>、 <xref:System.Random.Next%2A>、および<xref:System.Random.NextDouble%2A>さまざまな範囲内のランダムな数値のシーケンスを生成するメソッド。  
+ 次の例では<xref:System.Random.NextBytes%2A>、乱数ジェネレーターを1つ作成し、、、および<xref:System.Random.NextDouble%2A>の各メソッドを呼び出して、 <xref:System.Random.Next%2A>異なる範囲内の乱数のシーケンスを生成します。  
   
  [!code-cpp[System.Random#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random/cpp/random2.cpp#2)]
  [!code-csharp[System.Random#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random/cs/Random2.cs#2)]
  [!code-vb[System.Random#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random/vb/Random2.vb#2)]  
   
- 次の例は、インデックスとして使用される整数の乱数を生成する、配列から文字列値を取得します。  
+ 次の例では、配列から文字列値を取得するためにインデックスとして使用されるランダムな整数が生成されます。  
   
  [!code-cpp[System.Random.Next#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Next/CPP/next1.cpp#3)]
  [!code-csharp[System.Random.Next#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Next/CS/next1.cs#3)]
@@ -315,10 +315,10 @@ Random.NextDouble() * (maxValue - minValue) + minValue
   
  ]]></format>
     </remarks>
-    <block subset="none" type="overrides"><para>派生したクラスの最低限の実装では、.NET Framework 1.0 および 1.1 では、<see cref="T:System.Random" />をオーバーライドするために必要な<see cref="M:System.Random.Sample" />乱数を生成するための新しいまたは変更されたアルゴリズムを定義するメソッド。 派生クラスの基本クラスの実装に任せるでした、 <see cref="M:System.Random.Next" />、 <see cref="M:System.Random.Next(System.Int32)" />、 <see cref="M:System.Random.Next(System.Int32,System.Int32)" />、 <see cref="M:System.Random.NextBytes(System.Byte[])" />、および<see cref="M:System.Random.NextDouble" />の派生クラスの実装を呼び出すメソッドを<see cref="M:System.Random.Sample" />メソッド。  
+    <block subset="none" type="overrides"><para>.NET Framework 1.0 および1.1 では、から<see cref="T:System.Random" />派生したクラスの最小実装で、メソッドを<see cref="M:System.Random.Sample" />オーバーライドして、乱数を生成するための新しいまたは変更されたアルゴリズムを定義します。 <see cref="M:System.Random.Next" />派生クラスは<see cref="M:System.Random.Next(System.Int32)" /> <see cref="M:System.Random.NextDouble" /> 、 、<see cref="M:System.Random.NextBytes(System.Byte[])" />、、、およびの各メソッドの基本クラスの実装に依存して、メソッドの派生クラスの実装を呼び出すことができます。<see cref="M:System.Random.Sample" /> <see cref="M:System.Random.Next(System.Int32,System.Int32)" />  
   
-.NET Framework 2.0 以降の動作で、 <see cref="M:System.Random.Next" />、 <see cref="M:System.Random.Next(System.Int32,System.Int32)" />、および<see cref="M:System.Random.NextBytes(System.Byte[])" />メソッドがこれらのメソッドの派生クラスの実装を必ずしも呼び出すはありませんができるように変更されて、<see cref="M:System.Random.Sample" />メソッド。 派生するクラスの結果として、 <see cref="T:System.Random" /> .NET Framework 2.0 をターゲットして、後でこれら 3 つのメソッドをオーバーライドする必要がありますもします。</para></block>
-    <block subset="none" type="usage"><para>乱数ジェネレーターの実装、<see cref="T:System.Random" />クラスは、同じままで、.NET Framework のメジャー バージョン間で保証されません。 その結果、同じシードは、.NET Framework のさまざまなバージョンで同じ擬似乱数シーケンスになりますとは考えないでください。</para></block>
+.NET Framework 2.0 以降<see cref="M:System.Random.Next" />では、これらのメソッドが<see cref="M:System.Random.Sample" />メソッドの<see cref="M:System.Random.Next(System.Int32,System.Int32)" />派生クラス<see cref="M:System.Random.NextBytes(System.Byte[])" />の実装を呼び出すことがないように、、、およびメソッドの動作が変更されています。 その結果、.NET Framework 2.0 以降を<see cref="T:System.Random" />対象とするから派生したクラスでも、これら3つのメソッドをオーバーライドする必要があります。</para></block>
+    <block subset="none" type="usage"><para><see cref="T:System.Random" />クラスの乱数ジェネレーターの実装は、.NET Framework のメジャーバージョン間で同じままであることは保証されていません。 その結果、同じシードによって、.NET Framework の異なるバージョンで同じ擬似ランダムシーケンスが生成されるとは限りません。</para></block>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -367,16 +367,16 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のシード値では、システム クロックからは派生し、有限の解像度があります。 その結果、異なる<xref:System.Random>連続で既定のコンス トラクターへの呼び出しによって作成されるオブジェクトと同じ既定のシード値になり、そのため、まったく同じ乱数のセットが生成されます。 この問題を回避するには、1 つを使用して<xref:System.Random>すべての乱数を生成するオブジェクト。 システム クロックによって返されるシード値を変更しをこの新しいシード値を明示的に提供することによって、対処することも、<xref:System.Random.%23ctor%28System.Int32%29>コンス トラクター。 詳細については、次を参照してください。、<xref:System.Random.%23ctor%28System.Int32%29>コンス トラクター。  
+ 既定のシード値は、システムクロックから派生し、有限の解決があります。 結果として、 <xref:System.Random>パラメーターなしのコンストラクターの呼び出しによって連続して作成された異なるオブジェクトの既定のシード値は同じになります。したがって、では、同一の乱数セットが生成されます。 この問題を回避するには、単一<xref:System.Random>のオブジェクトを使用してすべての乱数を生成します。 また、システムクロックによって返されたシード値を変更し、この新しいシード値を<xref:System.Random.%23ctor%28System.Int32%29>コンストラクターに明示的に指定することによって回避することもできます。 詳細については、 <xref:System.Random.%23ctor%28System.Int32%29>コンストラクターを参照してください。  
   
- 乱数ジェネレーターのランダム シーケンスを生成する場合は、このコンス トラクターを呼び出します。 異なる乱数ジェネレーターの同じ乱数の固定のシーケンスを生成するには、呼び出し、<xref:System.Random.%23ctor%28System.Int32%29>固定のシード値を持つコンス トラクター。 これは、<xref:System.Random>コンス トラクター オーバー ロードは、ランダムな数字を使用するアプリをテストするときによく使用します。  
+ 乱数ジェネレーターでランダムな数値シーケンスを生成する場合は、このコンストラクターを呼び出します。 異なる乱数ジェネレーターに対して同じである固定シーケンスの乱数を生成するには、固定<xref:System.Random.%23ctor%28System.Int32%29>のシード値を使用してコンストラクターを呼び出します。 この<xref:System.Random>コンストラクターのオーバーロードは、ランダムな数値を使用するアプリをテストするときによく使用されます。  
   
- 各を呼び出す、乱数ジェネレーターをインスタンス化した後<xref:System.Random>メソッドなど<xref:System.Random.Next>または<xref:System.Random.NextDouble>乱数を生成します。  
+ 乱数ジェネレーターをインスタンス化したら、や<xref:System.Random> <xref:System.Random.NextDouble>などの個別のメソッドを呼び出し<xref:System.Random.Next>て、乱数を生成します。  
   
    
   
 ## Examples  
- 次の例では、3 つのインスタンスを作成する既定のコンス トラクターを使用して<xref:System.Random>オブジェクトし、それぞれの 5 つのランダムな整数のシーケンスが表示されます。 ため、最初の 2 つ<xref:System.Random>オブジェクトが作成連続で、システム クロックに基づく同一のシード値を使用してインスタンス化され、そのため、ランダムな数値のシーケンスが同じ生成します。 その一方で、3 つ目の既定のコンス トラクター<xref:System.Random>オブジェクトが呼び出すことによって引き起こされる 2 秒間遅延後に呼び出されると、<xref:System.Threading.Thread.Sleep%2A?displayProperty=nameWithType>メソッド。 3 番目の異なるシード値が生成されますので<xref:System.Random>オブジェクトのさまざまな一連のランダムな数値が生成されます。  
+ 次の例では、パラメーターなしのコンストラクター <xref:System.Random>を使用して、3つのオブジェクトをインスタンス化し、それぞれに対して5つのランダムな整数のシーケンスを表示します。 最初の2つ<xref:System.Random>のオブジェクトは、連続して作成されるので、システムクロックに基づいて同一のシード値を使用してインスタンス化されるため、同じシーケンスの乱数が生成されます。 一方、3番目<xref:System.Random>のオブジェクトのパラメーターなしのコンストラクターは、メソッドの<xref:System.Threading.Thread.Sleep%2A?displayProperty=nameWithType>呼び出しによって発生する2秒の遅延の後に呼び出されます。 これにより、3番目<xref:System.Random>のオブジェクトに対して異なるシード値が生成されるため、異なる乱数シーケンスが生成されます。  
   
  [!code-csharp[System.Random.Ctor#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Ctor/CS/ctor1.cs#2)]
  [!code-vb[System.Random.Ctor#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random.Ctor/VB/ctor1.vb#2)]  
@@ -423,19 +423,19 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 別の同一のシード値を提供する<xref:System.Random>と、ランダムな数値の同一のシーケンスを生成するために各インスタンスのオブジェクト。 乱数ジェネレーターに依存するアプリをテストするときにこれは多くの場合です。  
+ 異なる<xref:System.Random>オブジェクトに対して同一のシード値を指定すると、各インスタンスは同じシーケンスの乱数を生成します。 これは、ランダムな数値ジェネレーターに依存するアプリをテストする場合によく行われます。  
   
- アプリケーションは、さまざまなランダムな番号のシーケンスを必要とする場合は、異なるシード値を繰り返し、このコンス トラクターを呼び出します。 一意のシード値を生成する方法の 1 つは、時間に依存するようにすることです。 たとえば、として、システム クロックからシード値の取得、<xref:System.Random.%23ctor>オーバー ロードは。 ただし、システム クロックは異なるシード値にこのコンス トラクターの別の呼び出しを提供するための十分な解決策があります。 最初の 2 つに示すように、擬似乱数のと同じシーケンスを生成する乱数ジェネレーターでこの結果<xref:System.Random>次の例では、内のオブジェクト。 これを回避するには、各呼び出しでは、または呼び出しでシード値を区別するアルゴリズムを適用、<xref:System.Threading.Thread.Sleep%2A?displayProperty=nameWithType>メソッドを異なるシード値を持つ各コンス トラクターを提供することを確認します。  
+ アプリケーションで異なる乱数シーケンスが必要な場合は、別のシード値を使用してこのコンストラクターを繰り返し呼び出します。 一意のシード値を生成する方法の1つは、時間に依存するようにすることです。 たとえば、オーバーロードの<xref:System.Random.%23ctor>場合と同じように、システムクロックからシード値を派生させます。 ただし、システムクロックには、別のシード値を持つこのコンストラクターの異なる呼び出しを提供するための十分な解決策がない可能性があります。 この結果、次の例の最初の2つ<xref:System.Random>のオブジェクトに示すように、擬似乱数の同じシーケンスを生成する乱数ジェネレーターが生成されます。 これを回避するには、各呼び出しのシード値を区別するためのアルゴリズムを<xref:System.Threading.Thread.Sleep%2A?displayProperty=nameWithType>適用するか、またはメソッドを呼び出して、各コンストラクターに異なるシード値を指定していることを確認します。  
   
  [!code-csharp[System.Random.Ctor#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Ctor/CS/ctor4.cs#4)]
  [!code-vb[System.Random.Ctor#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random.Ctor/VB/ctor4.vb#4)]  
   
- 1 つのインスタンスを作成することも<xref:System.Random>オブジェクト使用して、アプリケーションですべての乱数を生成することです。 かなり安価では、乱数ジェネレーターのインスタンス化であるために、若干優れたパフォーマンスが得られます。  
+ もう1つの方法は、 <xref:System.Random>アプリケーションのすべての乱数を生成するために使用する単一のオブジェクトをインスタンス化することです。 乱数ジェネレーターのインスタンス化にはかなりのコストがかかるため、パフォーマンスが若干向上します。  
   
    
   
 ## Examples  
- 次の例では、作成<xref:System.Random>シード パラメーターを受け取るし、ランダムな整数と double のシーケンスを生成するクラスのコンス トラクターを持つオブジェクト。 例を示しますが、同じシーケンスを生成するときに、<xref:System.Random>コンス トラクターとシード パラメーターを使用してオブジェクトを再作成します。  
+ 次の例で<xref:System.Random>は、シードパラメーターを受け取り、ランダムな整数と倍精度のシーケンスを生成するクラスコンストラクターを使用してオブジェクトを作成します。 この例では、コンストラクターとシードパラメーターを使用<xref:System.Random>してオブジェクトを再作成するときに、同じシーケンスが生成されることを示しています。  
   
  [!code-cpp[System.Random.Ctor#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Ctor/CPP/ctor.cpp#1)]
  [!code-csharp[System.Random.Ctor#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Ctor/CS/ctor.cs#1)]
@@ -501,18 +501,18 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Random.Next%2A?displayProperty=nameWithType> 0 ~ 値の範囲の乱数を生成します。 より小さい<xref:System.Int32.MaxValue?displayProperty=nameWithType>します。 その他のいくつかの正の数を 0 から値の範囲の乱数を生成するには、使用、<xref:System.Random.Next%28System.Int32%29?displayProperty=nameWithType>メソッドのオーバー ロードします。 別の範囲内の乱数を生成するには、使用、<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29?displayProperty=nameWithType>メソッドのオーバー ロードします。  
+ <xref:System.Random.Next%2A?displayProperty=nameWithType>0からより<xref:System.Int32.MaxValue?displayProperty=nameWithType>小さい値までの範囲の乱数を生成します。 0から他の正の値までの範囲の乱数を生成するには<xref:System.Random.Next%28System.Int32%29?displayProperty=nameWithType> 、メソッドオーバーロードを使用します。 異なる範囲内の乱数を生成するには、 <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29?displayProperty=nameWithType>メソッドオーバーロードを使用します。  
   
    
   
 ## Examples  
- 次の例を繰り返し呼び出すので、<xref:System.Random.Next%2A>特定の数のユーザーによって要求された乱数を生成します。 <xref:System.Console.ReadLine%2A?displayProperty=nameWithType>メソッドを使用して、顧客の入力を取得します。  
+ 次の例では、 <xref:System.Random.Next%2A>メソッドを繰り返し呼び出して、ユーザーによって要求された特定の数の乱数を生成します。 メソッド<xref:System.Console.ReadLine%2A?displayProperty=nameWithType>は、顧客の入力を取得するために使用されます。  
   
  [!code-cpp[System.Random.Next#5](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Next/CPP/next3.cpp#5)]
  [!code-csharp[System.Random.Next#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Next/CS/next3.cs#5)]
  [!code-vb[System.Random.Next#5](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random.Next/VB/next3.vb#5)]  
   
- 次の例では、派生クラスを<xref:System.Random>によって生成された一様分布からの配布とは異なるランダムな数値のシーケンスを生成する、<xref:System.Random.Sample%2A>基本クラスのメソッド。 これは、上書き、<xref:System.Random.Sample%2A>ランダムな数字、および上書きの分布を提供するメソッドを<xref:System.Random.Next%2A?displayProperty=nameWithType>一連のランダムな数字を使用する方法。  
+ 次の例では、から<xref:System.Random>クラスを派生させる<xref:System.Random.Sample%2A>ことにより、基底クラスのメソッドによって生成される均一分布とは異なる分布を持つ乱数のシーケンスを生成します。 <xref:System.Random.Sample%2A>メソッドをオーバーライドして乱数の分布を指定し、 <xref:System.Random.Next%2A?displayProperty=nameWithType>メソッドをオーバーライドして一連の乱数を使用します。  
   
  [!code-cpp[System.Random.Sample#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Sample/cpp/sampleex.cpp#1)]
  [!code-csharp[System.Random.Sample#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Sample/CS/sample.cs#1)]
@@ -520,7 +520,7 @@ Random.NextDouble() * (maxValue - minValue) + minValue
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>クラスを派生させる場合は、.NET Framework version 2.0 では、以降<see cref="T:System.Random" />をオーバーライドし、<see cref="M:System.Random.Sample" />メソッドは、の派生クラスの実装によって提供されているディストリビューション、<see cref="M:System.Random.Sample" />メソッドが基底クラスへの呼び出しで使用されていません。実装、<see cref="M:System.Random.Next" />メソッド。 一様分布がベースによって返される代わりに、<see cref="T:System.Random" />クラスを使用します。 この動作の全体的なパフォーマンスの向上、<see cref="T:System.Random" />クラス。 呼び出すには、この動作を変更する、<see cref="M:System.Random.Sample" />派生クラスでメソッドをオーバーライドすることする必要がありますも、<see cref="M:System.Random.Next" />メソッド。</para></block>
+        <block subset="none" type="overrides"><para>.NET Framework バージョン2.0 以降では、から<see cref="T:System.Random" />クラスを派生させ、メソッドを<see cref="M:System.Random.Sample" />オーバーライドした場合、 <see cref="M:System.Random.Sample" />メソッドの派生クラス実装によって提供される分布は、基本クラスの呼び出しでは使用されません。<see cref="M:System.Random.Next" />メソッドの実装。 代わりに、基本<see cref="T:System.Random" />クラスによって返される一様分布が使用されます。 この動作により、 <see cref="T:System.Random" />クラスの全体的なパフォーマンスが向上します。 派生クラスで<see cref="M:System.Random.Sample" />メソッドを呼び出すようにこの動作を変更するには、 <see cref="M:System.Random.Next" />メソッドもオーバーライドする必要があります。</para></block>
         <altmember cref="T:System.Int32" />
       </Docs>
     </Member>
@@ -566,18 +566,18 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Random.Next%28System.Int32%29>オーバー ロードは 0 からランダムな整数の範囲を返します`maxValue`- 1。 ただし場合、`maxValue`が 0 の場合、メソッドは 0 を返します。  
+ オーバーロード<xref:System.Random.Next%28System.Int32%29>は、 `maxValue` 0 ~-1 の範囲のランダムな整数を返します。 ただし、が`maxValue` 0 の場合、メソッドは0を返します。  
   
    
   
 ## Examples  
- 次の例では、ランダムな整数のさまざまなオーバー ロードを持つ、<xref:System.Random.Next%2A>メソッド。  
+ 次の例では、 <xref:System.Random.Next%2A>メソッドのさまざまなオーバーロードを使用して、ランダムな整数を生成します。  
   
  [!code-cpp[System.Random.Next#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Next/CPP/next.cpp#1)]
  [!code-csharp[System.Random.Next#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Next/CS/next.cs#1)]
  [!code-vb[System.Random.Next#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random.Next/VB/next.vb#1)]  
   
- 次の例は、インデックスとして使用される整数の乱数を生成する、配列から文字列値を取得します。 配列の最も大きいインデックスが 1 つ未満の長さ、値のため、<xref:System.Array.Length%2A?displayProperty=nameWithType>としてプロパティを指定する、`maxValue`パラメーター。  
+ 次の例では、配列から文字列値を取得するためにインデックスとして使用されるランダムな整数が生成されます。 配列の最大インデックスはその長さよりも小さいため、 <xref:System.Array.Length%2A?displayProperty=nameWithType>プロパティの値は`maxValue`パラメーターとして指定されます。  
   
  [!code-cpp[System.Random.Next#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Next/CPP/next1.cpp#3)]
  [!code-csharp[System.Random.Next#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Next/CS/next1.cs#3)]
@@ -633,20 +633,20 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>オーバー ロードはその範囲からランダムな整数を返します`minValue`に`maxValue`- 1。 ただし場合、 `maxValue` equals `minValue`、メソッドを返します`minValue`します。  
+ オーバーロード<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29>は、 `minValue`から-1 までの範囲のランダムな整数を返します。 `maxValue` ただし、が`maxValue`に`minValue`等しい場合、メソッド`minValue`はを返します。  
   
- その他のオーバー ロードとは異なり、<xref:System.Random.Next%2A>のみ負でない値を返すには、メソッドは、このメソッドは負の整数の乱数を返すことができます。  
+ 負でない値のみを<xref:System.Random.Next%2A>返すメソッドの他のオーバーロードとは異なり、このメソッドは負の整数を返すことができます。  
   
    
   
 ## Examples  
- 次の例では、 <xref:System.Random.Next%28System.Int32%2CSystem.Int32%29?displayProperty=nameWithType> 3 つの異なる範囲の整数の乱数を生成します。 例では、実際の出力に渡されるシステム提供のシード値によって異なります、<xref:System.Random>クラスのコンス トラクター。  
+ 次の例では<xref:System.Random.Next%28System.Int32%2CSystem.Int32%29?displayProperty=nameWithType> 、メソッドを使用して、3つの異なる範囲を持つランダムな整数を生成します。 この例の正確な出力は、 <xref:System.Random>クラスコンストラクターに渡されるシステム指定のシード値によって異なります。  
   
  [!code-cpp[System.Random.Next#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Next/CPP/next2.cpp#2)]
  [!code-csharp[System.Random.Next#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Next/CS/Next2.cs#2)]
  [!code-vb[System.Random.Next#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random.Next/VB/next2.vb#2)]  
   
- 次の例は、インデックスとして使用される整数の乱数を生成する、配列から文字列値を取得します。 配列の最も大きいインデックスが 1 つ未満の長さ、値のため、<xref:System.Array.Length%2A?displayProperty=nameWithType>としてプロパティを指定する、`maxValue`パラメーター。  
+ 次の例では、配列から文字列値を取得するためにインデックスとして使用されるランダムな整数が生成されます。 配列の最大インデックスはその長さよりも小さいため、 <xref:System.Array.Length%2A?displayProperty=nameWithType>プロパティの値は`maxValue`パラメーターとして指定されます。  
   
  [!code-cpp[System.Random.Next#4](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Next/CPP/next4.cpp#4)]
  [!code-csharp[System.Random.Next#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Next/CS/next4.cs#4)]
@@ -655,7 +655,7 @@ Random.NextDouble() * (maxValue - minValue) + minValue
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="minValue" /> が <paramref name="maxValue" /> より大きくなっています。</exception>
-        <block subset="none" type="overrides"><para>クラスを派生させる場合は、.NET Framework version 2.0 では、以降<see cref="T:System.Random" />をオーバーライドし、<see cref="M:System.Random.Sample" />メソッドは、の派生クラスの実装によって提供されているディストリビューション、<see cref="M:System.Random.Sample" />メソッドが基底クラスへの呼び出しで使用されていません。実装、<see cref="M:System.Random.Next(System.Int32,System.Int32)" />場合、メソッドがオーバー ロードの違い、<paramref name="minValue" />と<paramref name="maxValue" />パラメーターがより大きい<see cref="F:System.Int32.MaxValue" />します。 一様分布がベースによって返される代わりに、<see cref="T:System.Random" />クラスを使用します。 この動作の全体的なパフォーマンスの向上、<see cref="T:System.Random" />クラス。 呼び出すには、この動作を変更する、<see cref="M:System.Random.Sample" />派生クラスでメソッドをオーバーライドすることする必要がありますも、<see cref="M:System.Random.Next(System.Int32,System.Int32)" />メソッドのオーバー ロードします。</para></block>
+        <block subset="none" type="overrides"><para>.NET Framework バージョン2.0 以降では、から<see cref="T:System.Random" />クラスを派生させ、メソッドを<see cref="M:System.Random.Sample" />オーバーライドした場合、 <see cref="M:System.Random.Sample" />メソッドの派生クラス実装によって提供される分布は、基本クラスの呼び出しでは使用されません。パラメーター <see cref="M:System.Random.Next(System.Int32,System.Int32)" /> <paramref name="minValue" /> <see cref="F:System.Int32.MaxValue" />とパラメーターの差がより大きい場合のメソッドオーバーロードの実装。<paramref name="maxValue" /> 代わりに、基本<see cref="T:System.Random" />クラスによって返される一様分布が使用されます。 この動作により、 <see cref="T:System.Random" />クラスの全体的なパフォーマンスが向上します。 派生クラスで<see cref="M:System.Random.Sample" />メソッドを呼び出すようにこの動作を変更するには、 <see cref="M:System.Random.Next(System.Int32,System.Int32)" />メソッドのオーバーロードもオーバーライドする必要があります。</para></block>
         <altmember cref="T:System.Int32" />
       </Docs>
     </Member>
@@ -700,14 +700,14 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- バイトの配列の各要素に設定されているランダムな数より大きいまたは 0 に等しいまたはそれよりも小さいと<xref:System.Byte.MaxValue>します。  
+ バイト配列の各要素は、0以上かつ以下の乱数に設定されて<xref:System.Byte.MaxValue>います。  
   
- たとえば、ランダムなパスワードを作成するための適切な暗号で保護されたランダムな数値を生成するメソッドなど、使用<xref:System.Security.Cryptography.RNGCryptoServiceProvider.GetBytes%2A?displayProperty=nameWithType>します。  
+ たとえば、ランダムなパスワードの作成に適した暗号的に保護さ<xref:System.Security.Cryptography.RNGCryptoServiceProvider.GetBytes%2A?displayProperty=nameWithType>れたランダムな数値を生成するには、などのメソッドを使用します。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Random.NextBytes%2A>メソッドでランダムなバイト値を含むバイト配列を設定します。  
+ 次の例は、メソッドを使用<xref:System.Random.NextBytes%2A>して、バイト配列にランダムバイト値を格納する方法を示しています。  
   
  [!code-cpp[Classic Random.NextBytes Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic Random.NextBytes Example/CPP/source.cpp#1)]
  [!code-csharp[Classic Random.NextBytes Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic Random.NextBytes Example/CS/source.cs#1)]
@@ -716,7 +716,7 @@ Random.NextDouble() * (maxValue - minValue) + minValue
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="buffer" /> は <see langword="null" />です。</exception>
-        <block subset="none" type="overrides"><para>クラスを派生させる場合は、.NET Framework version 2.0 では、以降<see cref="T:System.Random" />をオーバーライドし、<see cref="M:System.Random.Sample" />メソッドは、の派生クラスの実装によって提供されているディストリビューション、<see cref="M:System.Random.Sample" />メソッドが基底クラスへの呼び出しで使用されていません。実装、<see cref="M:System.Random.NextBytes(System.Byte[])" />メソッド。 一様分布がベースによって返される代わりに、<see cref="T:System.Random" />クラスを使用します。 この動作の全体的なパフォーマンスの向上、<see cref="T:System.Random" />クラス。 呼び出すには、この動作を変更する、<see cref="M:System.Random.Sample" />派生クラスでメソッドをオーバーライドすることする必要がありますも、<see cref="M:System.Random.NextBytes(System.Byte[])" />メソッド。</para></block>
+        <block subset="none" type="overrides"><para>.NET Framework バージョン2.0 以降では、から<see cref="T:System.Random" />クラスを派生させ、メソッドを<see cref="M:System.Random.Sample" />オーバーライドした場合、 <see cref="M:System.Random.Sample" />メソッドの派生クラス実装によって提供される分布は、基本クラスの呼び出しでは使用されません。<see cref="M:System.Random.NextBytes(System.Byte[])" />メソッドの実装。 代わりに、基本<see cref="T:System.Random" />クラスによって返される一様分布が使用されます。 この動作により、 <see cref="T:System.Random" />クラスの全体的なパフォーマンスが向上します。 派生クラスで<see cref="M:System.Random.Sample" />メソッドを呼び出すようにこの動作を変更するには、 <see cref="M:System.Random.NextBytes(System.Byte[])" />メソッドもオーバーライドする必要があります。</para></block>
         <altmember cref="T:System.Byte" />
       </Docs>
     </Member>
@@ -795,22 +795,22 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドによって返される乱数の実際の上限は、0.99999999999999978 です。  
+ このメソッドによって返される乱数の実際の上限は0.99999999999999978 です。  
   
- 0.0 と 1.0 以外の範囲内のランダムな浮動小数点値を取得するには、「指定された範囲の浮動小数点値を取得」のセクションを参照してください。、<xref:System.Random>クラスに関するトピック。  
+ 0.0 および1.0 以外の範囲内のランダムな浮動小数点値を取得するには、 <xref:System.Random>クラスのトピックの「指定された範囲の浮動小数点値を取得する」セクションを参照してください。  
   
- このメソッドは、保護されたメソッドのパブリック バージョン<xref:System.Random.Sample%2A>します。  
+ このメソッドは、保護されたメソッド<xref:System.Random.Sample%2A>のパブリックバージョンです。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Random.NextDouble%2A>ランダムな倍精度小数点数のシーケンスを生成するメソッド。  
+ 次の例では<xref:System.Random.NextDouble%2A> 、メソッドを使用して、ランダムな倍精度のシーケンスを生成します。  
   
  [!code-cpp[System.Random.Ctor#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Ctor/CPP/ctor.cpp#1)]
  [!code-csharp[System.Random.Ctor#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Ctor/CS/ctor.cs#1)]
  [!code-vb[System.Random.Ctor#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Random.Ctor/VB/ctor.vb#1)]  
   
- 次の例では、 <xref:System.Random.NextDouble%2A> 100 の乱数を生成するメソッドを番号し、その頻度分布が表示されます。  
+ 次の例では<xref:System.Random.NextDouble%2A> 、メソッドを呼び出して、100の乱数を生成し、その頻度分布を表示します。  
   
  [!code-csharp[System.Random.NextDouble#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.random.nextdouble/cs/nextdouble1.cs#2)]
  [!code-vb[System.Random.NextDouble#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.random.nextdouble/vb/nextdouble1.vb#2)]  
@@ -863,15 +863,15 @@ Random.NextDouble() * (maxValue - minValue) + minValue
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生クラスを別のランダムな配布や、異なる乱数ジェネレーターの原則を生成する、<xref:System.Random>クラスし、オーバーライド、<xref:System.Random.Sample%2A>メソッド。  
+ 異なるランダム分布または異なる乱数ジェネレーターの原則を生成するには、 <xref:System.Random>クラスからクラスを派生させ、 <xref:System.Random.Sample%2A>メソッドをオーバーライドします。  
   
 > [!IMPORTANT]
->  <xref:System.Random.Sample%2A>メソッドは`protected`、内でのみアクセス可能であることを意味する、<xref:System.Random>クラスとその派生クラス。 0 から 1 の乱数を生成する、<xref:System.Random>インスタンスを呼び出し、<xref:System.Random.NextDouble%2A>メソッド。  
+>  メソッドはです`protected`。これは、 <xref:System.Random>クラスとその派生クラス内でのみアクセスできることを意味します。 <xref:System.Random.Sample%2A> <xref:System.Random>インスタンスから0と1の間の乱数を生成するには<xref:System.Random.NextDouble%2A> 、メソッドを呼び出します。  
   
    
   
 ## Examples  
- 次の例では、派生クラスを<xref:System.Random>をオーバーライドし、<xref:System.Random.Sample%2A>ランダムな数値の分布を生成します。 この分布はによって生成された一様分布とは異なる、<xref:System.Random.Sample%2A>基本クラスのメソッド。  
+ 次の例では、から<xref:System.Random>クラスを派生<xref:System.Random.Sample%2A>し、メソッドをオーバーライドして、乱数の分布を生成します。 この分布は、基本クラスの<xref:System.Random.Sample%2A>メソッドによって生成される均一分布とは異なります。  
   
  [!code-cpp[System.Random.Sample#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Random.Sample/cpp/sampleex.cpp#1)]
  [!code-csharp[System.Random.Sample#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Random.Sample/CS/sample.cs#1)]
@@ -879,14 +879,14 @@ Random.NextDouble() * (maxValue - minValue) + minValue
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>クラスを派生させる場合は、.NET Framework version 2.0 では、以降<see cref="T:System.Random" />をオーバーライドし、<see cref="M:System.Random.Sample" />メソッドは、の派生クラスの実装によって提供されているディストリビューション、<see cref="M:System.Random.Sample" />メソッドが基底クラスへの呼び出しで使用されていません。次のメソッドの実装: 
+        <block subset="none" type="overrides"><para>.NET Framework バージョン2.0 以降では、から<see cref="T:System.Random" />クラスを派生させ、メソッドを<see cref="M:System.Random.Sample" />オーバーライドした場合、 <see cref="M:System.Random.Sample" />メソッドの派生クラス実装によって提供される分布は、基本クラスの呼び出しでは使用されません。次のメソッドの実装。 
 -   <see cref="M:System.Random.NextBytes(System.Byte[])" /> メソッド。  
   
 -   <see cref="M:System.Random.Next" /> メソッド。  
   
--<see cref="M:System.Random.Next(System.Int32,System.Int32)" />メソッド場合 (<paramref name="maxValue" /> - <paramref name="minValue" />) よりも大きい<see cref="F:System.Int32.MaxValue" />します。  
+<see cref="M:System.Random.Next(System.Int32,System.Int32)" /> -メソッド ((<paramref name="maxValue" /> - ) がより<see cref="F:System.Int32.MaxValue" />大きい場合。<paramref name="minValue" />  
   
-一様分布がベースによって提供される代わりに、<see cref="T:System.Random" />クラスを使用します。 この動作の全体的なパフォーマンスの向上、<see cref="T:System.Random" />クラス。 実装を呼び出すには、この動作を変更する、<see cref="M:System.Random.Sample" />メソッド、派生クラスでは、これら 3 つのメンバーの動作もオーバーライドする必要があります。 具体的な例を次に示します。</para></block>
+代わりに、基本<see cref="T:System.Random" />クラスによって提供される一様分布が使用されます。 この動作により、 <see cref="T:System.Random" />クラスの全体的なパフォーマンスが向上します。 派生クラスの<see cref="M:System.Random.Sample" />メソッドの実装を呼び出すようにこの動作を変更するには、これら3つのメンバーの動作もオーバーライドする必要があります。 具体的な例を次に示します。</para></block>
         <altmember cref="M:System.Random.NextDouble" />
       </Docs>
     </Member>

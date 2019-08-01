@@ -1,5 +1,5 @@
 <Type Name="RequestValidator" FullName="System.Web.Util.RequestValidator">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d88ccda7a61f7ed1b21be5b988dd4a612e29625d" /><Meta Name="ms.sourcegitcommit" Value="bac13a81377b1c4ebf3990e3287a6f1700f73751" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/19/2019" /><Meta Name="ms.locfileid" Value="57940906" /></Metadata><TypeSignature Language="C#" Value="public class RequestValidator" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="29d685906a74d328e000bd2a4b72898d6f83dde4" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68392940" /></Metadata><TypeSignature Language="C#" Value="public class RequestValidator" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RequestValidator extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Web.Util.RequestValidator" />
   <TypeSignature Language="VB.NET" Value="Public Class RequestValidator" />
@@ -19,26 +19,26 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定では、ASP.NET は要求を検証しないコードが、要求からの値を明示的に要求されるまでです。 たとえば、ASP.NET は検証されませんクエリ文字列の値のコードにアクセスするまで、<xref:System.Web.HttpRequest.QueryString%2A>コレクション。 既定では、ASP.NET も検証しませんフォーム値、cookie、HTTP、およびの値を使用してアップロードされたファイルの名前などの要求データの種類によって、<xref:System.Web.HttpRequest.RawUrl%2A>プロパティ。  
+ 既定では、ASP.NET は、コードが要求から値を明示的に要求するまで、要求を検証しません。 たとえば、ASP.NET は、コードがコレクションに<xref:System.Web.HttpRequest.QueryString%2A>アクセスするまで、クエリ文字列の値を検証しません。 既定では、ASP.NET は、フォーム値、cookie、HTTP を使用してアップロードされたファイルの名前、 <xref:System.Web.HttpRequest.RawUrl%2A>プロパティの値など、一部の種類の要求データも検証しません。  
   
- <xref:System.Web.Util.RequestValidator>クラスはカスタム要求の検証を提供するために実装できる基本クラスです。 このクラスを実装すると、検証が発生したときと検証を実行する要求データの種類を指定できます。  
+ <xref:System.Web.Util.RequestValidator>クラスは、カスタム要求の検証を提供するために実装できる基本クラスです。 このクラスを実装することで、検証を実行するタイミングと検証を実行する要求データの種類を決定できます。  
   
- 既定では、ASP.NET は、クロス サイト スクリプティング (XSS) のチェックを提供します。 ただし、補完したり、XSS のカスタム実装を作成して、ASP.NET で提供される要求の検証ロジックを置き換えます。 たとえば、XSS 攻撃のチェックだけでなく、SQL インジェクション攻撃をスキャンするカスタムの要求検証の実装を記述できます。  
+ 既定では、ASP.NET はクロスサイトスクリプティング (XSS) チェックを提供します。 ただし、XSS のカスタム実装を作成することによって、ASP.NET に用意されている要求検証ロジックを補完したり、置き換えたりすることができます。 たとえば、XSS 攻撃を確認するだけでなく、SQL インジェクション攻撃をスキャンするカスタム要求検証実装を作成することができます。  
   
- 派生したカスタム クラスを記述するカスタム要求の検証を作成する、<xref:System.Web.Util.RequestValidator>基本クラス。 アプリケーション レベルの Web.config ファイルでカスタム要求の検証コントロールを使用する ASP.NET を構成します。 カスタム クラスは、GAC にコンパイル済みのクラス ライブラリまたは App_Code フォルダーの Bin フォルダーに、コンパイル済みのクラス ライブラリ内に配置できます。  
+ カスタム要求の検証を作成するには、 <xref:System.Web.Util.RequestValidator>基本クラスから派生するカスタムクラスを記述します。 次に、アプリケーションレベルの Web.config ファイルでカスタム要求検証を使用するように ASP.NET を構成します。 カスタムクラスは、App_Code フォルダー、Bin フォルダー内のコンパイル済みクラスライブラリ、または GAC 内のコンパイル済みクラスライブラリに配置できます。  
   
 > [!NOTE]
->  アプリケーションの 1 つだけのカスタム要求検証の種類を構成できます。 個々 の仮想パスまたはページの別の要求検証の種類を構成することはできません。  
+>  アプリケーションに対して構成できるカスタム要求の検証の種類は1つだけです。 個々の仮想パスまたはページに対して異なる要求の検証の種類を構成することはできません。  
   
    
   
 ## Examples  
- 次の例では、クエリ文字列の値に使用する特定の文字列のみを許可するカスタム要求の検証コントロールを作成する方法を示します。  
+ 次の例では、クエリ文字列の値に特定の文字列のみを使用できるようにするカスタム要求検証コントロールを作成する方法を示します。  
   
  [!code-csharp[System.Web.Util.RequestValidator#1](~/samples/snippets/csharp/VS_Snippets_WebNet/system.web.util.requestvalidator/cs/requestvalidator.cs#1)]
  [!code-vb[System.Web.Util.RequestValidator#1](~/samples/snippets/visualbasic/VS_Snippets_WebNet/system.web.util.requestvalidator/vb/requestvalidator.vb#1)]  
   
- 次の例では、アプリケーションの Web.config ファイルでカスタム検証を使用する ASP.NET を構成する方法を示します。  
+ 次の例は、アプリケーションの web.config ファイルでカスタム検証を使用するように ASP.NET を構成する方法を示しています。  
   
 ```  
 <system.web>  
@@ -74,9 +74,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.Util.RequestValidator>クラスに既定のコンス トラクター。 クラスの新しいインスタンスを初期化すると、内部メソッドは、アプリケーションの構成情報からカスタム検証の詳細を取得します。 構成の詳細に含まれる、<xref:System.Web.Configuration.HttpRuntimeSection>セクション。 詳細については、次を参照してください。 [httpRuntime 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/e9b81350-8aaf-47cc-9843-5f7d0c59f369)と<xref:System.Web.Configuration.HttpRuntimeSection.RequestValidationType%2A>属性。  
+ クラス<xref:System.Web.Util.RequestValidator>にはパラメーターなしのコンストラクターがあります。 クラスの新しいインスタンスが初期化されると、内部メソッドは、アプリケーションの構成情報からカスタム検証の詳細を取得します。 構成の詳細については<xref:System.Web.Configuration.HttpRuntimeSection> 、「」セクションを参照してください。 詳細については、「 [httpRuntime 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/e9b81350-8aaf-47cc-9843-5f7d0c59f369) 」と<xref:System.Web.Configuration.HttpRuntimeSection.RequestValidationType%2A> 「属性」を参照してください。  
   
- 1 つのインスタンスの初期化中に、<xref:System.Web.Util.RequestValidator>クラスが作成され、インスタンスへの参照が保持、<xref:System.Web.Util.RequestValidator.Current%2A>プロパティ。 ASP.NET では、要求ごとに新しい要求の検証コントロール インスタンスは作成されません。 そのため、カスタム実装の<xref:System.Web.Util.RequestValidator>クラスはスレッド セーフである必要があります。  
+ 初期化中に、 <xref:System.Web.Util.RequestValidator>クラスの1つのインスタンスが作成され、インスタンスへの参照が<xref:System.Web.Util.RequestValidator.Current%2A>プロパティに保持されます。 ASP.NET では、要求ごとに新しい要求検証のインスタンスは作成されません。 そのため、 <xref:System.Web.Util.RequestValidator>クラスのカスタム実装はスレッドセーフである必要があります。  
   
  ]]></format>
         </remarks>
@@ -104,12 +104,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.Util.RequestValidator.Current%2A>プロパティの保持の許可されている 1 つのインスタンスへの参照、<xref:System.Web.Util.RequestValidator>クラス。 インスタンスが存在しない場合、新しいリソースが作成されます。 インスタンスが既に存在する場合は、現在のインスタンスが返されます。  
+ プロパティ<xref:System.Web.Util.RequestValidator.Current%2A>は、 <xref:System.Web.Util.RequestValidator>クラスの許可された1つのインスタンスへの参照を保持します。 インスタンスが存在しない場合は、新しいインスタンスが作成されます。 インスタンスが既に存在する場合は、現在のインスタンスが返されます。  
   
- 1 つのインスタンスの初期化中に、<xref:System.Web.Util.RequestValidator>クラスが作成され、インスタンスへの参照はで利用可能になって、<xref:System.Web.Util.RequestValidator.Current%2A>プロパティ。 ASP.NET では、要求ごとに新しい要求の検証コントロール インスタンスは作成されません。 そのため、カスタム実装の<xref:System.Web.Util.RequestValidator>クラスはスレッド セーフである必要があります。  
+ 初期化中に、 <xref:System.Web.Util.RequestValidator>クラスの1つのインスタンスが作成され、そのインスタンスへの参照が<xref:System.Web.Util.RequestValidator.Current%2A>プロパティで使用できるようになります。 ASP.NET では、要求ごとに新しい要求検証のインスタンスは作成されません。 そのため、 <xref:System.Web.Util.RequestValidator>クラスのカスタム実装はスレッドセーフである必要があります。  
   
 > [!NOTE]
->  <xref:System.Web.Util.RequestValidator.Current%2A>プロパティはスレッド セーフであるプロパティを設定すると、現在参照中に<xref:System.Web.Util.RequestValidator>クラス。  
+>  プロパティ<xref:System.Web.Util.RequestValidator.Current%2A>は、現在<xref:System.Web.Util.RequestValidator>のクラスへの参照を設定している間、スレッドセーフではありません。  
   
  ]]></format>
         </remarks>
@@ -162,9 +162,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.Util.RequestValidator.InvokeIsValidRequestString%2A>メソッドは、保護されたへのパブリック アクセスを提供します<xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>メソッド。 カスタム ラッパー クラスを作成できます、<xref:System.Web.Util.RequestValidator>クラスと呼び出し、<xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>メソッドから継承することがなく、<xref:System.Web.Util.RequestValidator>クラス。  
+ メソッド<xref:System.Web.Util.RequestValidator.InvokeIsValidRequestString%2A>は、保護さ<xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>れたメソッドへのパブリックアクセスを提供します。 これにより、 <xref:System.Web.Util.RequestValidator>クラスのカスタムラッパークラスを作成し、 <xref:System.Web.Util.RequestValidator>クラス<xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>から継承せずにメソッドを呼び出すことができます。  
   
- 要求の検証については、次を参照してください。<xref:System.Web.UnvalidatedRequestValues>します。  
+ 要求の検証の詳細につい<xref:System.Web.UnvalidatedRequestValues>ては、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -211,17 +211,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 要求データのカスタム検証を実行するには、このメソッドを実装するとします。 基本動作、<xref:System.Web.Util.RequestValidator.IsValidRequestString%28System.Web.HttpContext%2CSystem.String%2CSystem.Web.Util.RequestValidationSource%2CSystem.String%2CSystem.Int32%40%29>メソッドはクロスサイト スクリプティングの検証で危険な文字列をチェックする ASP.NET が内部的に実装する動作に似ています。 詳細については、次を参照してください[How To:。ASP.NET でのクロスサイト スクリプティングの防止](https://go.microsoft.com/fwlink/?LinkID=178708)します。  
+ このメソッドは、要求データのカスタム検証を実行するために実装します。 <xref:System.Web.Util.RequestValidator.IsValidRequestString%28System.Web.HttpContext%2CSystem.String%2CSystem.Web.Util.RequestValidationSource%2CSystem.String%2CSystem.Int32%40%29>メソッドの基本動作は、クロスサイトスクリプトの検証で危険な文字列を確認するために ASP.NET が内部で実装する動作に似ています。 詳細については[、「方法:ASP.NET](https://go.microsoft.com/fwlink/?LinkID=178708)でクロスサイトスクリプティングを防止します。  
   
- かどうか、カスタム検証ロジックには、エラーが検出される、このメソッドが返す必要があります`false`で値を指定し、`validationFailureIndex`をエラーの原因となったテキストの開始点を示します。 値`validationFailureIndex`0 または正の整数にする必要があります。  
+ カスタム検証ロジックによってエラーが検出された`false`場合、このメソッドは`validationFailureIndex`を返し、に値を指定して、エラーの原因となったテキストの開始点を示す必要があります。 の`validationFailureIndex`値は、0または正の整数である必要があります。  
   
- 要求の検証チェックのロジックは次のとおり進行します。  
+ 要求の検証チェックのロジックは、次のように処理されます。  
   
--   <xref:System.Web.HttpRequest>クラスは、入力データの null 文字削除チェックを実行します。  
+-   クラス<xref:System.Web.HttpRequest>は、受信データに対して null 文字の削除チェックを実行します。  
   
--   <xref:System.Web.HttpRequest>クラスは、いずれかを呼び出し、<xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>メソッド (基本メソッドの既定の実装) または派生バージョンのメソッドを呼び出します。  
+-   クラス<xref:System.Web.HttpRequest>は、 <xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>メソッド (基本メソッドの既定の実装) を呼び出すか、メソッドの派生バージョンを呼び出します。  
   
--   場合<xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>メソッドを返します。`false`を検証の失敗を示すために ASP.NET エラー文字列を構築します (必要に応じて) をスローします、<xref:System.Web.HttpRequestValidationException>例外。  
+-   メソッド<xref:System.Web.Util.RequestValidator.IsValidRequestString%2A>がを`false`返して検証エラーを示す場合、ASP.NET は、 <xref:System.Web.HttpRequestValidationException>必要に応じてエラー文字列を構築し、例外をスローします。  
   
  ]]></format>
         </remarks>

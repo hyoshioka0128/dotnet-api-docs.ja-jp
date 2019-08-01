@@ -20,22 +20,22 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>WPF XAML パーサーからパーサー固有の例外の例外クラスを表します。 この例外は、.NET Framework 3.0 および .NET Framework 3.5 からの XAML API または WPF XAML パーサーの操作で使用されるか、または <see cref="T:System.Windows.Markup.XamlReader" /> API を呼び出すことによって WPF XAML パーサーの特定の用途に使用されます。</summary>
+    <summary>WPF XAML パーサーからのパーサー固有の例外の例外クラスを表します。 この例外は、.NET Framework 3.0 および .NET Framework 3.5 からの XAML API または WPF XAML パーサーの操作で使用されるか、または <see cref="T:System.Windows.Markup.XamlReader" /> API を呼び出すことによって WPF XAML パーサーの特定の用途に使用されます。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Markup.XamlParseException> WPF アプリケーションの解析と読み込みの XAML を実行する XAML の WPF 実装パーサーにのみ使用されます。 具体的には、例外は対象とするアプリケーションに関連する、のみ[!INCLUDE[net_v30_short](~/includes/net-v30-short-md.md)]と[!INCLUDE[net_v35_short](~/includes/net-v35-short-md.md)]します。 例外が実行時の呼び出しを実行中の WPF アプリケーション内から XAML を読み込む XAML の WPF 実装パーサーをフックする Api でユーザー コードから取得できますも (たとえば、呼び出し<xref:System.Windows.Markup.XamlReader.Load%2A?displayProperty=nameWithType>)。  
+ <xref:System.Windows.Markup.XamlParseException>は、wpf アプリケーションに対して XAML の解析と読み込みを実行する WPF で実装された XAML パーサーに対してのみ使用されます。 具体的には、例外は、アプリケーションがおよびを[!INCLUDE[net_v30_short](~/includes/net-v30-short-md.md)]対象[!INCLUDE[net_v35_short](~/includes/net-v35-short-md.md)]としている場合にのみ関連します。 この例外は、WPF に実装された XAML パーサーをフックして、実行中の WPF アプリケーション (たとえば、の呼び出し<xref:System.Windows.Markup.XamlReader.Load%2A?displayProperty=nameWithType>) 内から Xaml を読み込む api に対するランタイム呼び出しのユーザーコードから発生することもあります。  
   
- [!INCLUDE[net_v40_short](~/includes/net-v40-short-md.md)]、<xref:System.Xaml.XamlParseException>通常 XAML 処理例外を報告する例外が別の名前空間で定義されている (<xref:System.Xaml>) と別のアセンブリ (System.Xaml)。  
+ では、通常、XAML 処理例外を報告する<xref:System.Xaml>例外が別の名前空間()と別のアセンブリ(app.xaml)に定義されています。<xref:System.Xaml.XamlParseException> [!INCLUDE[net_v40_short](~/includes/net-v40-short-md.md)]  
   
- WPF XAML パーサーへの同等の書き込みまたはを使用する場合を除き、[!INCLUDE[net_v30_short](~/includes/net-v30-short-md.md)]と[!INCLUDE[net_v35_short](~/includes/net-v35-short-md.md)]を対象とする一般的にはスローされません<xref:System.Windows.Markup.XamlParseException>独自のコードから。 ただし、例外の処理は必要があります。 アプリケーションのシナリオで、XAML の解析エラーを抑制することがあります、 <xref:System.Windows.Threading.Dispatcher> <xref:System.Windows.Threading.Dispatcher.UnhandledException>アプリケーション レベルのイベント ハンドラーが実行時に処理する方法の 1 つ<xref:System.Windows.Markup.XamlParseException>します。 またはそれらのユーザー コードにセキュリティ例外を抑制するかどうかは、XAML の読み込みのためにアプリケーションを設計する方法に依存し、アプリケーション、XAML に割り当てることの信頼レベルを読み込みます。 詳細については、次を参照してください。 [XAML セキュリティの考慮事項](~/docs/framework/xaml-services/xaml-security-considerations.md)または"XAML セキュリティ」セクションの[XAML の概要 (WPF)](~/docs/framework/wpf/advanced/xaml-overview-wpf.md)します。  
+ WPF XAML パーサーと同等のを記述する場合、または[!INCLUDE[net_v30_short](~/includes/net-v30-short-md.md)]とを使用し[!INCLUDE[net_v35_short](~/includes/net-v35-short-md.md)]てターゲットを設定する<xref:System.Windows.Markup.XamlParseException>場合を除き、通常は独自のコードからはスローされません。 ただし、例外の処理が必要になる場合があります。 XAML 解析エラー <xref:System.Windows.Threading.Dispatcher> <xref:System.Windows.Threading.Dispatcher.UnhandledException>を抑制する必要があるアプリケーションシナリオでは、アプリケーションレベルのイベントハンドラーが実行時<xref:System.Windows.Markup.XamlParseException>を処理する方法の1つです。 例外を抑制するか、ユーザーコードに表示させるかは、XAML を読み込む目的でアプリケーションを設計する方法と、アプリケーションが読み込む XAML に割り当てる信頼レベルによって異なります。 詳細については、「xaml の[概要 (WPF)](~/docs/framework/wpf/advanced/xaml-overview-wpf.md)」の「 [xaml のセキュリティに関する考慮事項](~/docs/framework/xaml-services/xaml-security-considerations.md)」または「xaml のセキュリティ」を参照してください。  
   
- アプリケーションのページのときに、<xref:System.Windows.Markup.XamlParseException>がスローされると、それは通常のコンテキストで、`InitializeComponent`ページごとのレベルでの WPF XAML パーサーの WPF アプリケーション モデルの使用法のエントリ ポイントは、ページ クラスによって行われた呼び出しです。 そのためもう 1 つの可能な処理方法は、配置する`try/catch`ブロック`InitializeComponent`します。 ただし、この手法は、テンプレート、ビジュアル デザイン画面では統合されませんおよびをそのフックをソース生成他`InitializeComponent`します。  
+ アプリケーションのページの場合、 <xref:System.Windows.Markup.XamlParseException>がスローされると、通常はページクラスによって行われた`InitializeComponent`呼び出しのコンテキストになります。これは、wpf アプリケーションモデルがページごとに wpf XAML パーサーを使用する場合のエントリポイントです。 そのため、別の方法とし`try/catch`て、 `InitializeComponent`ブロックをに配置することもできます。 ただし、この手法は、テンプレート、ビジュアルデザインサーフェイス、およびフック`InitializeComponent`するその他の生成されたソースとは適切には統合されません。  
   
  ]]></format>
     </remarks>
-    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">System.Xaml の概要</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/0e11f386-808c-4eae-9ba6-029ad7ba2211">App.xaml の概要</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -93,7 +93,7 @@
       </Parameters>
       <Docs>
         <param name="message">例外メッセージ。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Markup.XamlParseException" />クラス、指定した例外メッセージ文字列を使用します。</summary>
+        <summary>指定した例外メッセージ文字列を使用して、<see cref="T:System.Windows.Markup.XamlParseException" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -115,14 +115,14 @@
         <Parameter Name="context" Type="System.Runtime.Serialization.StreamingContext" />
       </Parameters>
       <Docs>
-        <param name="info">オブジェクトを逆シリアル化または逆シリアル化に必要なすべての情報が含まれています。</param>
-        <param name="context">ソースとシリアル化されたストリームの転送先。</param>
+        <param name="info">オブジェクトのシリアル化または逆シリアル化に必要な情報をすべて含みます。</param>
+        <param name="context">シリアル化ストリームの転送元および転送先。</param>
         <summary><see cref="T:System.Windows.Markup.XamlParseException" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この型の例外をアプリケーション ドメインまたはコンピューターの境界を越えてマーシャ リングする場合、このコンス トラクターはシリアル化に使用します。  
+ このコンストラクターは、アプリケーションドメインまたはコンピューターの境界を越えてこの型の例外をマーシャリングするときに、シリアル化に使用されます。  
   
  ]]></format>
         </remarks>
@@ -152,13 +152,13 @@
       </Parameters>
       <Docs>
         <param name="message">例外メッセージ。</param>
-        <param name="innerException">最初の発生した例外。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Markup.XamlParseException" />クラス、指定した例外メッセージ文字列と内部例外を使用します。</summary>
+        <param name="innerException">発生した最初の例外。</param>
+        <summary>指定した例外メッセージ文字列と内部例外を使用して、<see cref="T:System.Windows.Markup.XamlParseException" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 前回の例外の直接の結果としてスローされる例外は、前の例外への参照を含める必要があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
+ 前の例外の直接的な結果としてスローされる例外には、前の例外への参照が含まれている必要があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
   
  ]]></format>
         </remarks>
@@ -190,8 +190,8 @@
       <Docs>
         <param name="message">例外メッセージ。</param>
         <param name="lineNumber">例外が発生した行番号。</param>
-        <param name="linePosition">例外が発生した行の位置。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Markup.XamlParseException" />クラスは、これは、指定した例外メッセージ文字列と、指定されたを使用して行番号、および行の位置します。</summary>
+        <param name="linePosition">例外が発生した行内の位置。</param>
+        <summary>指定した例外メッセージ文字列、指定した行番号、および行の位置を使用して、<see cref="T:System.Windows.Markup.XamlParseException" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -222,14 +222,14 @@
       <Docs>
         <param name="message">例外メッセージ。</param>
         <param name="lineNumber">例外が発生した行番号。</param>
-        <param name="linePosition">例外が発生した行の位置。</param>
-        <param name="innerException">最初の発生した例外。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Windows.Markup.XamlParseException" />クラス、指定した例外メッセージ、内部例外、行番号、および行の位置を使用します。</summary>
+        <param name="linePosition">例外が発生した行内の位置。</param>
+        <param name="innerException">発生した最初の例外。</param>
+        <summary>指定した例外メッセージ、内部例外、行番号、および行の位置を使用して、<see cref="T:System.Windows.Markup.XamlParseException" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 前回の例外の直接の結果としてスローされる例外は、前の例外への参照を含める必要があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
+ 前の例外の直接的な結果としてスローされる例外には、前の例外への参照が含まれている必要があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
   
  ]]></format>
         </remarks>
@@ -260,13 +260,13 @@
         <ReturnType>System.Uri</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得のベース URI を例外がスローされたときにします。</summary>
+        <summary>例外がスローされたときのベース URI を取得します。</summary>
         <value>パーサー コンテキストのベース URI。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ベース URI は、例外が発生したときに、パーサー コンテキストのため利用可能な可能性があります。 ベースを知ること URI はリソースの解決エラーが原因である場合のデバッグに役に立ちます。  
+ ベース URI は、例外が発生したときにパーサーコンテキストが原因で使用できる可能性があります。 ベース URI を知っておくと、リソース解決エラーが根本的な原因である場合のデバッグに役立ちます。  
   
  ]]></format>
         </remarks>
@@ -303,16 +303,16 @@
       <Docs>
         <param name="info">シリアル化データを追加するシリアル化情報オブジェクト。</param>
         <param name="context">このシリアル化のシリアル化先。</param>
-        <summary>指定した設定で指定したオブジェクトをシリアル化するために必要なデータを取得<see cref="T:System.Runtime.Serialization.SerializationInfo" />オブジェクト。</summary>
+        <summary>指定した <see cref="T:System.Runtime.Serialization.SerializationInfo" /> オブジェクトを設定することにより、指定したオブジェクトのシリアル化に必要なデータを取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Markup.XamlParseException.GetObjectData%2A> 設定、<xref:System.Runtime.Serialization.SerializationInfo>オブジェクトをシリアル化の対象となるすべての例外オブジェクト データ。 逆シリアル化中に、ストリームで転送された <xref:System.Runtime.Serialization.SerializationInfo> から例外が再構成されます。  
+ <xref:System.Windows.Markup.XamlParseException.GetObjectData%2A>シリアル化<xref:System.Runtime.Serialization.SerializationInfo>の対象となるすべての例外オブジェクトデータを含むオブジェクトを設定します。 逆シリアル化中に、ストリームで転送された <xref:System.Runtime.Serialization.SerializationInfo> から例外が再構成されます。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">シリアル化サービスを提供します。 関連付けられた列挙体。<see cref="F:System.Security.Permissions.SecurityPermissionFlag.SerializationFormatter" /> セキュリティ アクション:<see cref="M:System.Security.PermissionSet.Demand" />します。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">シリアル化サービスを提供します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.SerializationFormatter" />セキュリティアクション: <see cref="M:System.Security.PermissionSet.Demand" />。</permission>
       </Docs>
     </Member>
     <Member MemberName="KeyContext">
@@ -340,11 +340,11 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または例外が発生したディクショナリの項目のキー値を設定します。</summary>
-        <value>関連する XAML<see langword="x:Key" />値。</value>
+        <summary>例外が発生したディクショナリにある項目のキーの値を取得または設定します。</summary>
+        <value>関連する XAML の <see langword="x:Key" /> 値。</value>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Windows.ResourceDictionary" />
-        <related type="Article" href="https://msdn.microsoft.com/library/1985cd45-f197-42d5-b75e-886add64b248">X:key 属性</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/1985cd45-f197-42d5-b75e-886add64b248">x:Key 属性</related>
       </Docs>
     </Member>
     <Member MemberName="LineNumber">
@@ -402,8 +402,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>例外が発生した行の位置を取得します。</summary>
-        <value>行の位置。</value>
+        <summary>例外が発生した行内の位置を取得します。</summary>
+        <value>行番号。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -432,7 +432,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または例外が発生したオブジェクトの XAML 名を設定します。</summary>
+        <summary>例外が発生したオブジェクトの XAML 名を取得または設定します。</summary>
         <value>オブジェクトの XAML 名。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -463,7 +463,7 @@
       </ReturnValue>
       <Docs>
         <summary>例外が発生したオブジェクトの <see href="https://docs.microsoft.com/dotnet/framework/xaml-services/x-uid-directive">x:Uid ディレクティブ</see>を取得または設定します。</summary>
-        <value>値、<see langword="Uid" />文字列。</value>
+        <value><see langword="Uid" /> 文字列の値。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

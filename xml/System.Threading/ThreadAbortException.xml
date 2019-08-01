@@ -1,5 +1,5 @@
 <Type Name="ThreadAbortException" FullName="System.Threading.ThreadAbortException">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="c63e23e12a420cd7f1fba7fe8266956341a846bc" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58720683" /></Metadata><TypeSignature Language="C#" Value="public sealed class ThreadAbortException : SystemException" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="223645db6d3f0a32779a09530c04ad6aaa0e4959" /><Meta Name="ms.sourcegitcommit" Value="24f564114ee2fa9c63dbac1b25b82826cc4e320f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/25/2019" /><Meta Name="ms.locfileid" Value="68488074" /></Metadata><TypeSignature Language="C#" Value="public sealed class ThreadAbortException : SystemException" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit ThreadAbortException extends System.SystemException" />
   <TypeSignature Language="DocId" Value="T:System.Threading.ThreadAbortException" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ThreadAbortException&#xA;Inherits SystemException" />
@@ -40,20 +40,22 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しはに対して行われた場合、<xref:System.Threading.Thread.Abort%2A>を共通言語ランタイムのスレッドを破棄するメソッドがスローされます、<xref:System.Threading.ThreadAbortException>します。 <xref:System.Threading.ThreadAbortException> 特別な例外をキャッチできますが、そのは自動的に再度発生の最後に、`catch`ブロックします。 この例外が発生したときにすべてのランタイムが実行されます、`finally`スレッドを終了するまでブロックします。 スレッドで無制限の計算を実行できるため、`finally`ブロックや呼び出し<xref:System.Threading.Thread.ResetAbort%2A?displayProperty=nameWithType>abort を取り消す場合に、スレッドがこれまでに終了される保証はありません。 中止されたスレッドが終了するまで待機する場合は、呼び出すことが、<xref:System.Threading.Thread.Join%2A?displayProperty=nameWithType>メソッド。 <xref:System.Threading.Thread.Join%2A> ブロッキング呼び出しスレッドが実際に実行を停止するまで戻りませんです。  
+ <xref:System.Threading.Thread.Abort%2A>メソッドに呼び出しを行ってスレッドを破棄すると、共通言語ランタイムはを<xref:System.Threading.ThreadAbortException>スローします。 <xref:System.Threading.ThreadAbortException>は、キャッチできる特殊な例外ですが、 `catch`ブロックの最後に再び自動的に発生します。 この例外が発生すると、ランタイムはスレッドを`finally`終了する前にすべてのブロックを実行します。 スレッドは`finally`ブロック内で無制限の計算を実行できるため、 <xref:System.Threading.Thread.ResetAbort%2A?displayProperty=nameWithType>またはを呼び出して中止をキャンセルすることはできないため、スレッドが終了する保証はありません。 中止されたスレッドが終了するまで待機する場合は、 <xref:System.Threading.Thread.Join%2A?displayProperty=nameWithType>メソッドを呼び出すことができます。 <xref:System.Threading.Thread.Join%2A>は、スレッドが実際に実行を停止するまで戻らないブロック呼び出しです。  
+  
+**.NET Core のみ:** この型は .net Core に存在してい<xref:System.Threading.Thread.Abort%2A>ますが、はサポートされていないため<xref:System.Threading.ThreadAbortException>、共通言語ランタイムではスローされません。
+
+> [!NOTE]
+>  マネージ実行可能ファイルのすべてのフォアグラウンドスレッドが終了した後に、共通言語ランタイム (CLR) がバックグラウンドスレッドを<xref:System.Threading.Thread.Abort%2A?displayProperty=nameWithType>停止すると、は使用されません。 したがって、を使用<xref:System.Threading.ThreadAbortException>して、バックグラウンドスレッドが CLR によって終了されていることを検出することはできません。  
+  
+ <xref:System.Threading.ThreadAbortException>は、値0x80131530 の HRESULT COR_E_THREADABORTED を使用します。  
   
 > [!NOTE]
->  共通言語ランタイム (CLR) は、マネージ実行可能ファイル内のすべてのフォア グラウンド スレッドが終了した後に、バック グラウンド スレッドを停止する場合は使用されません<xref:System.Threading.Thread.Abort%2A?displayProperty=nameWithType>します。 そのため、使用することはできません<xref:System.Threading.ThreadAbortException>バック グラウンド スレッドが CLR によって終了されるタイミングを検出します。  
-  
- <xref:System.Threading.ThreadAbortException> 値は 0x80131530 HRESULT COR_E_THREADABORTED を使用します。  
-  
-> [!NOTE]
->  継承された値<xref:System.Exception.Data%2A>プロパティは常に`null`します。  
+>  継承<xref:System.Exception.Data%2A>されたプロパティの値は`null`常にです。  
   
    
   
 ## Examples  
- 次の例では、スレッドの中止を示します。 スレッドを受信する、`ThreadAbortException`を使用して、<xref:System.Threading.Thread.ResetAbort%2A>メソッドを中断要求をキャンセルし、実行を続行します。  
+ 次の例は、スレッドを中止する方法を示しています。 を受け取る`ThreadAbortException`スレッドは、 <xref:System.Threading.Thread.ResetAbort%2A>メソッドを使用して abort 要求をキャンセルし、実行を続行します。  
   
  [!code-cpp[ThreadAbEx#1](~/samples/snippets/cpp/VS_Snippets_CLR/ThreadAbEx/CPP/threadabex.cpp#1)]
  [!code-csharp[ThreadAbEx#1](~/samples/snippets/csharp/VS_Snippets_CLR/ThreadAbEx/CS/threadabex.cs#1)]
@@ -118,12 +120,12 @@ Main ending.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティによって返されるオブジェクトがで指定された、`stateInfo`のパラメーター、<xref:System.Threading.Thread.Abort%2A>メソッド。 正確な内容と、このオブジェクトの使用方法が定義されているアプリケーションです。通常、スレッドの中止にわかりやすい情報を伝達するために使用されます。  
+ このプロパティによって返されるオブジェクトは、 `stateInfo` <xref:System.Threading.Thread.Abort%2A>メソッドのパラメーターによって指定されます。 このオブジェクトの正確な内容と使用方法は、アプリケーションで定義されています。通常、このメソッドは、中断されるスレッドにとって意味のある情報を伝えるために使用されます。  
   
    
   
 ## Examples  
- 次のコード例では、中止中のスレッドに情報を渡す方法を示します。  
+ 次のコード例は、中断されているスレッドに情報を渡す方法を示しています。  
   
  [!code-cpp[System.Threading.Thread.Abort2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Threading.Thread.Abort2/CPP/source.cpp#1)]
  [!code-csharp[System.Threading.Thread.Abort2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Threading.Thread.Abort2/CS/source.cs#1)]

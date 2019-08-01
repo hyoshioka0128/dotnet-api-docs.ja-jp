@@ -42,24 +42,24 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- C# 言語の `foreach` ステートメント (Visual Basic の場合は `for each`) を使用することで列挙子の複雑さを回避できます。  したがってを使用して`foreach`列挙子を直接操作するのではなくをお勧めします。  
+ C# 言語の `foreach` ステートメント (Visual Basic の場合は `for each`) を使用することで列挙子の複雑さを回避できます。  そのため、 `foreach`列挙子を直接操作するのではなく、を使用することをお勧めします。  
   
  列挙子を使用すると、コレクション内のデータを読み取ることができますが、基になるコレクションを変更することはできません。  
   
- 最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 <xref:System.Collections.IEnumerator.Reset%2A>メソッドは、この位置に戻さ列挙子を表示することもできます。 この位置では、<xref:System.Collections.IEnumerator.Current%2A> が未定義です。 そのため、呼び出す必要がある、<xref:System.Collections.IEnumerator.MoveNext%2A>メソッドの値を読み取る前に、コレクションの最初の要素を列挙子を進める<xref:System.Collections.IEnumerator.Current%2A>します。  
+ 最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 <xref:System.Collections.IEnumerator.Reset%2A> メソッドは、この位置に列挙子を戻します。 この位置では、<xref:System.Collections.IEnumerator.Current%2A> は未定義です。 そのため、<xref:System.Collections.IEnumerator.Current%2A> の値を読み取る前に、<xref:System.Collections.IEnumerator.MoveNext%2A> メソッドを呼び出し、列挙子をコレクションの最初の要素に進める必要があります。  
   
- <xref:System.Collections.IEnumerator.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> または <xref:System.Collections.IEnumerator.Reset%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IEnumerator.Current%2A> を次の要素に進めます。  
+ <xref:System.Collections.IEnumerator.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> または <xref:System.Collections.IEnumerator.Reset%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IEnumerator.Current%2A> を次の要素に設定します。  
   
- 場合<xref:System.Collections.IEnumerator.MoveNext%2A>列挙子、コレクションの末尾がコレクション内の最後の要素の後に配置されているパスと<xref:System.Collections.IEnumerator.MoveNext%2A>返します`false`します。 この位置では、後続の呼び出しで列挙子の場合<xref:System.Collections.IEnumerator.MoveNext%2A>を返すことも`false`します。 最後の呼び出し場合<xref:System.Collections.IEnumerator.MoveNext%2A>返される`false`、<xref:System.Collections.IEnumerator.Current%2A>が定義されていません。 <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
+ <xref:System.Collections.IEnumerator.MoveNext%2A> がコレクションの末尾を通過した場合、列挙子がコレクション内の最後の要素の後に配置され、<xref:System.Collections.IEnumerator.MoveNext%2A> は `false` を返します。 列挙子がこの位置にある場合、後続の <xref:System.Collections.IEnumerator.MoveNext%2A> 呼び出しも `false` を返します。 の最後の呼び出し<xref:System.Collections.IEnumerator.MoveNext%2A>が返さ`false`れた場合、 <xref:System.Collections.IEnumerator.Current%2A>が未定義になります。 <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
   
- コレクションが変更されない限り、列挙子は有効です。 無効になり、次の呼び出しは変更を追加するなど、コレクション変更、または要素を削除するには、列挙子が不可能<xref:System.Collections.IEnumerator.MoveNext%2A>または<xref:System.Collections.IEnumerator.Reset%2A>スロー、<xref:System.InvalidOperationException>します。
+ コレクションが変更されない限り、列挙子は有効です。 要素の追加、変更、削除などの変更がコレクションに対して行われた場合、列挙子はなりに<xref:System.Collections.IEnumerator.MoveNext%2A>無効化され、次のまたは<xref:System.Collections.IEnumerator.Reset%2A>の呼び出しでがスロー <xref:System.InvalidOperationException>されます。
   
  列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 コレクションの同期がとられている場合でも、別のスレッドによってそのコレクションを変更できるため、変更の結果として列挙子は例外をスローします。 列挙処理を確実にスレッド セーフに行うには、列挙中にコレクションをロックするか、他のスレッドによって行われた変更によってスローされる例外をキャッチします。  
   
    
   
 ## Examples  
- このコード例は、実装するディクショナリ列挙子を定義する方法を示します、<xref:System.Collections.IDictionaryEnumerator>インターフェイス。  
+ このコード例では、 <xref:System.Collections.IDictionaryEnumerator>インターフェイスを実装するディクショナリ列挙子を定義する方法を示します。  
   
  [!code-cpp[Dictionary#1](~/samples/snippets/cpp/VS_Snippets_CLR/Dictionary/cpp/Dictionary.cpp#1)]
  [!code-csharp[Dictionary#1](~/samples/snippets/csharp/VS_Snippets_CLR/Dictionary/CS/Dictionary.cs#1)]
@@ -67,7 +67,7 @@
   
  ]]></format>
     </remarks>
-    <block subset="none" type="overrides"><para><see cref="P:System.Collections.IEnumerator.Current" />プロパティから継承される<see cref="T:System.Collections.IEnumerator" />を返します、<see cref="T:System.Object" />はボックス化された<see cref="T:System.Collections.DictionaryEntry" />します。 似ています、<see cref="P:System.Collections.IDictionaryEnumerator.Entry" />プロパティの点を除いて、`Entry`を返します、<see cref="T:System.Collections.DictionaryEntry" />なく<see cref="T:System.Object" />します。</para></block>
+    <block subset="none" type="overrides"><para><see cref="T:System.Object" /> <see cref="T:System.Collections.DictionaryEntry" />から<see cref="P:System.Collections.IEnumerator.Current" /> 継承されたプロパティは、ボックス化されたを返します。<see cref="T:System.Collections.IEnumerator" /> これは<see cref="P:System.Collections.IDictionaryEnumerator.Entry" />プロパティに似てい<see cref="T:System.Object" />ますが`Entry` 、で<see cref="T:System.Collections.DictionaryEntry" />はなくが返される点が異なります。</para></block>
     <altmember cref="T:System.Collections.IDictionary" />
     <altmember cref="T:System.Collections.IEnumerator" />
     <altmember cref="T:System.Collections.Generic.IEnumerator`1" />
@@ -106,31 +106,31 @@
         <ReturnType>System.Collections.DictionaryEntry</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>キーと現在のディクショナリ エントリの値の両方を取得します。</summary>
-        <value>A<see cref="T:System.Collections.DictionaryEntry" />キーと現在のディクショナリ エントリの値の両方を含むです。</value>
+        <summary>現在のディクショナリ エントリのキーと値の両方を取得します。</summary>
+        <value>現在のディクショナリ エントリのキーと値の両方を格納している <see cref="T:System.Collections.DictionaryEntry" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
 
- <xref:System.Collections.IDictionaryEnumerator.Entry%2A> 次の条件のいずれかは未定義です。  
+ <xref:System.Collections.IDictionaryEnumerator.Entry%2A>は、次のいずれかの条件下では未定義です。  
   
--   列挙子の作成後すぐに、列挙子は、コレクション内の最初の要素の前に位置します。 <xref:System.Collections.IEnumerator.MoveNext%2A> 値を読み取る前に、コレクションの最初の要素を列挙子を進めるに呼び出す必要がある<xref:System.Collections.IDictionaryEnumerator.Entry%2A>します。  
+-   列挙子は、列挙子が作成された直後に、コレクション内の最初の要素の前に配置されます。 <xref:System.Collections.IEnumerator.MoveNext%2A>の<xref:System.Collections.IDictionaryEnumerator.Entry%2A>値を読み取る前に、列挙子をコレクションの最初の要素に進めるには、を呼び出す必要があります。  
   
--   最後の呼び出し<xref:System.Collections.IEnumerator.MoveNext%2A>返される`false`コレクションの末尾を示します。  
+-   コレクションの末尾を<xref:System.Collections.IEnumerator.MoveNext%2A>示す`false`、返されたの最後の呼び出し。  
   
--   列挙子は追加、変更、または削除する要素など、コレクションで行われた変更が原因で無効になります。  
+-   コレクションに加えられた変更 (要素の追加、変更、削除など) が原因で、列挙子が無効になります。  
   
- <xref:System.Collections.IDictionaryEnumerator.Entry%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IDictionaryEnumerator.Entry%2A> を次の要素に進めます。  
+ <xref:System.Collections.IDictionaryEnumerator.Entry%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IDictionaryEnumerator.Entry%2A> を次の要素に設定します。  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para><see cref="P:System.Collections.IEnumerator.Current" />プロパティから継承される<see cref="T:System.Collections.IEnumerator" />を返します、<see cref="T:System.Object" />はボックス化された<see cref="T:System.Collections.DictionaryEntry" />します。 似ています、<see cref="P:System.Collections.IDictionaryEnumerator.Entry" />プロパティの点を除いて、`Entry`を返します、<see cref="T:System.Collections.DictionaryEntry" />なく<see cref="System.Object" />します。</para></block>
+        <block subset="none" type="overrides"><para><see cref="T:System.Object" /> <see cref="T:System.Collections.DictionaryEntry" />から<see cref="P:System.Collections.IEnumerator.Current" /> 継承されたプロパティは、ボックス化されたを返します。<see cref="T:System.Collections.IEnumerator" /> これは<see cref="P:System.Collections.IDictionaryEnumerator.Entry" />プロパティに似てい<see cref="System.Object" />ますが`Entry` 、で<see cref="T:System.Collections.DictionaryEntry" />はなくが返される点が異なります。</para></block>
         <altmember cref="M:System.Collections.IEnumerator.Reset" />
         <altmember cref="M:System.Collections.IEnumerator.MoveNext" />
         <altmember cref="P:System.Collections.IDictionaryEnumerator.Key" />
         <altmember cref="P:System.Collections.IDictionaryEnumerator.Value" />
-        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Collections.IDictionaryEnumerator" />または最後のエントリ後に、ディクショナリの最初のエントリの前に配置されます。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Collections.IDictionaryEnumerator" /> が、ディクショナリの最初のエントリの前、または最後のエントリの後に位置しています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Key">
@@ -173,15 +173,15 @@
   
 ## Remarks  
  
- <xref:System.Collections.IDictionaryEnumerator.Key%2A> 次の条件のいずれかは未定義です。  
+ <xref:System.Collections.IDictionaryEnumerator.Key%2A>は、次のいずれかの条件下では未定義です。  
   
--   列挙子の作成後すぐに、列挙子は、コレクション内の最初の要素の前に位置します。 <xref:System.Collections.IEnumerator.MoveNext%2A> 値を読み取る前に、コレクションの最初の要素を列挙子を進めるに呼び出す必要がある<xref:System.Collections.IDictionaryEnumerator.Key%2A>します。  
+-   列挙子は、列挙子が作成された直後に、コレクション内の最初の要素の前に配置されます。 <xref:System.Collections.IEnumerator.MoveNext%2A>の<xref:System.Collections.IDictionaryEnumerator.Key%2A>値を読み取る前に、列挙子をコレクションの最初の要素に進めるには、を呼び出す必要があります。  
   
--   最後の呼び出し<xref:System.Collections.IEnumerator.MoveNext%2A>返される`false`コレクションの末尾を示します。  
+-   コレクションの末尾を<xref:System.Collections.IEnumerator.MoveNext%2A>示す`false`、返されたの最後の呼び出し。  
   
--   列挙子は追加、変更、または削除する要素など、コレクションで行われた変更が原因で無効になります。  
+-   コレクションに加えられた変更 (要素の追加、変更、削除など) が原因で、列挙子が無効になります。  
   
- <xref:System.Collections.IDictionaryEnumerator.Key%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> 設定<xref:System.Collections.IDictionaryEnumerator.Key%2A>列挙体の次の要素のキーにします。  
+ <xref:System.Collections.IDictionaryEnumerator.Key%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A>は<xref:System.Collections.IDictionaryEnumerator.Key%2A> 、列挙体の次の要素のキーに設定されます。  
   
  ]]></format>
         </remarks>
@@ -189,7 +189,7 @@
         <altmember cref="M:System.Collections.IEnumerator.MoveNext" />
         <altmember cref="P:System.Collections.IDictionaryEnumerator.Value" />
         <altmember cref="P:System.Collections.IDictionaryEnumerator.Entry" />
-        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Collections.IDictionaryEnumerator" />または最後のエントリ後に、ディクショナリの最初のエントリの前に配置されます。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Collections.IDictionaryEnumerator" /> が、ディクショナリの最初のエントリの前、または最後のエントリの後に位置しています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Value">
@@ -231,15 +231,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Collections.IDictionaryEnumerator.Value%2A> 次の条件のいずれかは未定義です。  
+ <xref:System.Collections.IDictionaryEnumerator.Value%2A>は、次のいずれかの条件下では未定義です。  
   
--   列挙子の作成後すぐに、列挙子は、コレクション内の最初の要素の前に位置します。 <xref:System.Collections.IEnumerator.MoveNext%2A> 値を読み取る前に、コレクションの最初の要素を列挙子を進めるに呼び出す必要がある<xref:System.Collections.IDictionaryEnumerator.Value%2A>します。  
+-   列挙子は、列挙子が作成された直後に、コレクション内の最初の要素の前に配置されます。 <xref:System.Collections.IEnumerator.MoveNext%2A>の<xref:System.Collections.IDictionaryEnumerator.Value%2A>値を読み取る前に、列挙子をコレクションの最初の要素に進めるには、を呼び出す必要があります。  
   
--   最後の呼び出し<xref:System.Collections.IEnumerator.MoveNext%2A>返される`false`コレクションの末尾を示します。  
+-   コレクションの末尾を<xref:System.Collections.IEnumerator.MoveNext%2A>示す`false`、返されたの最後の呼び出し。  
   
--   列挙子は追加、変更、または削除する要素など、コレクションで行われた変更が原因で無効になります。  
+-   コレクションに加えられた変更 (要素の追加、変更、削除など) が原因で、列挙子が無効になります。  
   
- <xref:System.Collections.IDictionaryEnumerator.Value%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> 設定<xref:System.Collections.IDictionaryEnumerator.Value%2A>列挙体の次の要素の値にします。  
+ <xref:System.Collections.IDictionaryEnumerator.Value%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A>は<xref:System.Collections.IDictionaryEnumerator.Value%2A> 、列挙体の次の要素の値に設定されます。  
   
  ]]></format>
         </remarks>
@@ -247,7 +247,7 @@
         <altmember cref="M:System.Collections.IEnumerator.MoveNext" />
         <altmember cref="P:System.Collections.IDictionaryEnumerator.Key" />
         <altmember cref="P:System.Collections.IDictionaryEnumerator.Entry" />
-        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Collections.IDictionaryEnumerator" />または最後のエントリ後に、ディクショナリの最初のエントリの前に配置されます。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Collections.IDictionaryEnumerator" /> が、ディクショナリの最初のエントリの前、または最後のエントリの後に位置しています。</exception>
       </Docs>
     </Member>
   </Members>

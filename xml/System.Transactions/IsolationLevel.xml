@@ -1,5 +1,5 @@
 <Type Name="IsolationLevel" FullName="System.Transactions.IsolationLevel">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d1176e5be29a4b8e279db5cfaa5d4e608a7dbf0e" /><Meta Name="ms.sourcegitcommit" Value="9170ef1c277dbe29b425d453dc133624b156d393" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/01/2019" /><Meta Name="ms.locfileid" Value="67488072" /></Metadata><TypeSignature Language="C#" Value="public enum IsolationLevel" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="3719d48611b14255a610d885cd372389907dc5bc" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68437559" /></Metadata><TypeSignature Language="C#" Value="public enum IsolationLevel" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed IsolationLevel extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Transactions.IsolationLevel" />
   <TypeSignature Language="VB.NET" Value="Public Enum IsolationLevel" />
@@ -30,11 +30,11 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクションによって影響を受けたデータは、揮発性で呼び出されます。 トランザクションの作成時に、トランザクションに適用する分離レベルを指定できます。 他のトランザクションをトランザクションの前に、揮発性データへのアクセスのレベルが完了すると、トランザクションの分離レベルを決定します。  
+ トランザクションの影響を受けるデータは、volatile と呼ばれます。 トランザクションの作成時に、トランザクションに適用する分離レベルを指定できます。 トランザクションの分離レベルによって、トランザクションが完了する前に、他のトランザクションが揮発性データに対して持つアクセスレベルが決まります。  
   
- 最も低い分離レベル、 `ReadUncommitted`、により、データ ストアに同時に動作する多くのトランザクションとトランザクションの中断が原因のデータの破損に対する保護は提供されません。 最も高い分離レベル、`Serializable`高度なトランザクションの中断を防ぐには、各トランザクションが他のトランザクションは、データを操作する前に実行する必要があります。  
+ 最も低い分離レベルで`ReadUncommitted`は、データストアに対して多くのトランザクションを同時に実行でき、伴わトランザクションによるデータ破損に対する保護は提供されません。 最大の分離レベルで`Serializable`は、伴わトランザクションに対する高度な保護が提供されますが、他のトランザクションがデータに対して操作できるようになるには、各トランザクションが完了する必要があります。  
   
- トランザクションが作成されたときに、トランザクションの分離レベルが決まります。 既定で、<xref:System.Transactions>インフラストラクチャを作成します`Serializable`トランザクション。 使用して、既存のトランザクションの分離レベルを特定することができます、<xref:System.Transactions.Transaction.IsolationLevel%2A?displayProperty=nameWithType>トランザクションのプロパティ。  
+ トランザクションの分離レベルは、トランザクションが作成されるときに決定されます。 既定では、 <xref:System.Transactions>インフラストラクチャに`Serializable`よってトランザクションが作成されます。 トランザクションの<xref:System.Transactions.Transaction.IsolationLevel%2A?displayProperty=nameWithType>プロパティを使用して、既存のトランザクションの分離レベルを特定できます。  
   
  ]]></format>
     </remarks>
@@ -229,7 +229,8 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary><para>揮発性データを読み取ることができます。 トランザクションがデータを変更する前に、データを最初に読み取った後に別のトランザクションがそれを変更していないかどうかを検査します。 データが更新されている場合は、エラーが発生します。 これにより、トランザクションは、データの前回コミットされた値に到達できます。</para><para><see langword="Snapshot" /> 分離レベルを使用して作成したトランザクションを昇格させようとすると、エラー メッセージ「IsolationLevel スナップショットのあるトランザクションは上位変換できません」と共に <see cref="T:System.InvalidOperationException" /> がスローされます。</para></summary>
+        <summary><para>揮発性データを読み取ることができます。 トランザクションがデータを変更する前に、データを最初に読み取った後に別のトランザクションがそれを変更していないかどうかを検査します。 データが更新されている場合は、エラーが発生します。 これにより、トランザクションは、データの前回コミットされた値に到達できます。</para>
+          <para><see langword="Snapshot" /> 分離レベルを使用して作成したトランザクションを昇格させようとすると、エラー メッセージ「IsolationLevel スナップショットのあるトランザクションは上位変換できません」と共に <see cref="T:System.InvalidOperationException" /> がスローされます。</para></summary>
       </Docs>
     </Member>
     <Member MemberName="Unspecified">

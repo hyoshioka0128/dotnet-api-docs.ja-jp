@@ -26,17 +26,17 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.Control>クラスをパブリックでは公開<xref:System.Windows.Forms.Control.QueryAccessibilityHelp>イベント。 プロパティを使用することができます、<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs>スクリーン リーダーなどのアクセスをクライアントに特定のコントロールのカスタムのヘルプを取得するクラス。 処理するとき、<xref:System.Windows.Forms.Control.QueryAccessibilityHelp>イベントの値を設定する必要があります、 <xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpNamespace%2A>、 <xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpKeyword%2A>、および<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpString%2A>プロパティを適切な値にします。  
+ クラス<xref:System.Windows.Forms.Control>は、パブリック<xref:System.Windows.Forms.Control.QueryAccessibilityHelp>イベントを公開します。 <xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs>クラスのプロパティを使用して、スクリーンリーダーなどのアクセス可能なクライアントに特定のコントロールのカスタムヘルプを返すことができます。 <xref:System.Windows.Forms.Control.QueryAccessibilityHelp>イベントを処理する場合は<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpNamespace%2A>、、 <xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpKeyword%2A>、および<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpString%2A>の各プロパティの値を適切な値に設定する必要があります。  
   
 > [!NOTE]
->  <xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpKeyword%2A>プロパティでは、ヘルプ トピックの数値 ID の文字列形式を指定します。  
+>  プロパティ<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs.HelpKeyword%2A>は、数値ヘルプトピック ID の文字列表現である必要があります。  
   
    
   
 ## Examples  
- ユーザー補助対応のグラフの作成を次のコード例に示しますを使用して、制御、<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>アクセス可能な情報を公開するクラス。 コントロールは、凡例と共に 2 つの曲線をプロットします。 `ChartControlAccessibleObject`から派生したクラス`ControlAccessibleObject`で使用されて、<xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>グラフ コントロールのカスタムのアクセス可能な情報を提供するメソッド。 グラフの凡例の実績がないため<xref:System.Windows.Forms.Control>-ベースの制御が描画される代わりに、グラフ コントロールではなく組み込みアクセス可能な情報。 このため、`ChartControlAccessibleObject`オーバーライド、<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>を返すメソッドを`CurveLegendAccessibleObject`凡例の各部分にアクセスできる情報を表します。 ユーザー補助対応アプリケーションでは、このコントロールを使用すると、コントロールは、アクセスに必要な情報を提供できます。  
+ 次のコード例は、クラス<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>クラスを使用してアクセス可能な情報を公開する、アクセシビリティ対応のグラフコントロールを作成する方法を示しています。 コントロールは、凡例と共に2つの曲線をプロットします。 から`ChartControlAccessibleObject` <xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>派生したクラスは、グラフコントロールにカスタムのアクセス可能な情報を提供するために、メソッドで使用されます。 `ControlAccessibleObject` グラフの凡例は実際<xref:System.Windows.Forms.Control>のコントロールではなく、グラフコントロールによって描画されるため、組み込みのアクセス可能な情報は含まれません。 このため、クラスは`ChartControlAccessibleObject`メソッドを<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>オーバーライドして、 `CurveLegendAccessibleObject`凡例の各部分のアクセス可能な情報を表すを返します。 アクセス可能なアプリケーションがこのコントロールを使用する場合、コントロールは必要なアクセス可能な情報を提供できます。  
   
- この例では、<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs>クラス、<xref:System.Windows.Forms.Control.QueryAccessibilityHelp>イベント。 参照してください、<xref:System.Windows.Forms.AccessibleObject>完全なコード例では、クラスの概要。  
+ この例<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs> <xref:System.Windows.Forms.Control.QueryAccessibilityHelp>では、イベントでクラスを使用する方法を示します。 完全な<xref:System.Windows.Forms.AccessibleObject>コード例については、クラスの概要を参照してください。  
   
  [!code-cpp[System.Windows.Forms.AccessibleObject#3](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CPP/chartcontrol.cpp#3)]
  [!code-csharp[System.Windows.Forms.AccessibleObject#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CS/chartcontrol.cs#3)]
@@ -106,9 +106,9 @@
         <Parameter Name="helpKeyword" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="helpNamespace">ヘルプを含むファイル、<see cref="T:System.Windows.Forms.AccessibleObject" />します。</param>
-        <param name="helpString">ヘルプの取得を定義する文字列、<see cref="T:System.Windows.Forms.AccessibleObject" />します。</param>
-        <param name="helpKeyword">に対するヘルプ要求に関連付けるキーワード、<see cref="T:System.Windows.Forms.AccessibleObject" />します。</param>
+        <param name="helpNamespace"><see cref="T:System.Windows.Forms.AccessibleObject" /> のヘルプを格納しているファイル。</param>
+        <param name="helpString"><see cref="T:System.Windows.Forms.AccessibleObject" /> に対してどのヘルプを取得するかを定義している文字列。</param>
+        <param name="helpKeyword"><see cref="T:System.Windows.Forms.AccessibleObject" /> に対するヘルプ要求に関連付けるキーワード。</param>
         <summary><see cref="T:System.Windows.Forms.QueryAccessibilityHelpEventArgs" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -139,15 +139,15 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または指定したコントロールのヘルプ キーワードを設定します。</summary>
-        <value>関連付けられているヘルプ トピック、<see cref="T:System.Windows.Forms.AccessibleObject" />をクエリが実行されました。</value>
+        <summary>指定したコントロールのヘルプ キーワードを取得または設定します。</summary>
+        <value>問い合わせた <see cref="T:System.Windows.Forms.AccessibleObject" /> に関連付けられているヘルプ トピック。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、このメンバーの使用を示します。 例では、イベント ハンドラーが発生するときに報告、<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベント。 このレポートでは、イベントが発生してデバッグに役立つについて説明します。 複数のイベントまたは頻繁に発生するイベントを報告する、交換を検討<xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=nameWithType>で<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>またはメッセージを複数行に追加<xref:System.Windows.Forms.TextBox>します。  
+ このメンバーの使用例を次のコード例に示します。 この例では、イベントハンドラーが<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベントの発生を報告します。 このレポートは、イベントがいつ発生し、デバッグに役立つかを理解するのに役立ちます。 複数のイベントまたは頻繁に発生するイベントについてレポート<xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=nameWithType>する<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>には、メッセージをに置き換える<xref:System.Windows.Forms.TextBox>か、または複数行に追加することを検討してください。  
   
- コード例を実行するから継承する型のインスタンスを含むプロジェクトに貼り付けること<xref:System.Windows.Forms.Control>などを<xref:System.Windows.Forms.Button>または<xref:System.Windows.Forms.ComboBox>します。 インスタンスの名前を`Control1`イベント ハンドラーに関連付けられていることを確認してください、<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベント。  
+ コード例を実行するに<xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.Button>は、や<xref:System.Windows.Forms.ComboBox>など、から継承された型のインスタンスを含むプロジェクトに貼り付けます。 次に、インスタンス`Control1`にという名前を付け、イベントハンドラーが<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベントに関連付けられていることを確認します。  
   
  [!code-csharp[System.Windows.Forms.EventExamples#44](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.EventExamples/CS/EventExamples.cs#44)]
  [!code-vb[System.Windows.Forms.EventExamples#44](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.EventExamples/VB/EventExamples.vb#44)]  
@@ -183,15 +183,15 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはヘルプ ファイルの名前を指定する値を設定します。</summary>
-        <value>ヘルプ ファイルの名前。 この名前は、C:\path\sample.chm または/folder/file.htm の形式であることができます。</value>
+        <summary>ヘルプ ファイルの名前を指定する値を取得または設定します。</summary>
+        <value>ヘルプ ファイルの名前。 この名前は、C:\path\sample.chm または /folder/file.htm の形式で指定できます。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、このメンバーの使用を示します。 例では、イベント ハンドラーが発生するときに報告、<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベント。 このレポートでは、イベントが発生してデバッグに役立つについて説明します。 複数のイベントまたは頻繁に発生するイベントを報告する、交換を検討<xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=nameWithType>で<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>またはメッセージを複数行に追加<xref:System.Windows.Forms.TextBox>します。  
+ このメンバーの使用例を次のコード例に示します。 この例では、イベントハンドラーが<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベントの発生を報告します。 このレポートは、イベントがいつ発生し、デバッグに役立つかを理解するのに役立ちます。 複数のイベントまたは頻繁に発生するイベントについてレポート<xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=nameWithType>する<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>には、メッセージをに置き換える<xref:System.Windows.Forms.TextBox>か、または複数行に追加することを検討してください。  
   
- コード例を実行するから継承する型のインスタンスを含むプロジェクトに貼り付けること<xref:System.Windows.Forms.Control>などを<xref:System.Windows.Forms.Button>または<xref:System.Windows.Forms.ComboBox>します。 インスタンスの名前を`Control1`イベント ハンドラーに関連付けられていることを確認してください、<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベント。  
+ コード例を実行するに<xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.Button>は、や<xref:System.Windows.Forms.ComboBox>など、から継承された型のインスタンスを含むプロジェクトに貼り付けます。 次に、インスタンス`Control1`にという名前を付け、イベントハンドラーが<xref:System.Windows.Forms.Control.QueryAccessibilityHelp?displayProperty=nameWithType>イベントに関連付けられていることを確認します。  
   
  [!code-csharp[System.Windows.Forms.EventExamples#44](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.EventExamples/CS/EventExamples.cs#44)]
  [!code-vb[System.Windows.Forms.EventExamples#44](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.EventExamples/VB/EventExamples.vb#44)]  
@@ -227,15 +227,15 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定するためのヘルプを定義する文字列、<see cref="T:System.Windows.Forms.AccessibleObject" />します。</summary>
-        <value>ヘルプのユーザー補助オブジェクトを取得します。</value>
+        <summary><see cref="T:System.Windows.Forms.AccessibleObject" /> に対してどのヘルプを取得するかを定義している文字列を取得または設定します。</summary>
+        <value>アクセスできるオブジェクトに対して取得するヘルプ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- ユーザー補助対応のグラフの作成を次のコード例に示しますを使用して、制御、<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>アクセス可能な情報を公開するクラス。 コントロールは、凡例と共に 2 つの曲線をプロットします。 `ChartControlAccessibleObject`から派生したクラス`ControlAccessibleObject`で使用されて、<xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>グラフ コントロールのカスタムのアクセス可能な情報を提供するメソッド。 グラフの凡例の実績がないため<xref:System.Windows.Forms.Control>-ベースの制御が描画される代わりに、グラフ コントロールではなく組み込みアクセス可能な情報。 このため、`ChartControlAccessibleObject`オーバーライド、<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>を返すメソッドを`CurveLegendAccessibleObject`凡例の各部分にアクセスできる情報を表します。 ユーザー補助対応アプリケーションでは、このコントロールを使用すると、コントロールは、アクセスに必要な情報を提供できます。  
+ 次のコード例は、クラス<xref:System.Windows.Forms.AccessibleObject>と<xref:System.Windows.Forms.Control.ControlAccessibleObject>クラスを使用してアクセス可能な情報を公開する、アクセシビリティ対応のグラフコントロールを作成する方法を示しています。 コントロールは、凡例と共に2つの曲線をプロットします。 から`ChartControlAccessibleObject` <xref:System.Windows.Forms.Control.CreateAccessibilityInstance%2A>派生したクラスは、グラフコントロールにカスタムのアクセス可能な情報を提供するために、メソッドで使用されます。 `ControlAccessibleObject` グラフの凡例は実際<xref:System.Windows.Forms.Control>のコントロールではなく、グラフコントロールによって描画されるため、組み込みのアクセス可能な情報は含まれません。 このため、クラスは`ChartControlAccessibleObject`メソッドを<xref:System.Windows.Forms.AccessibleObject.GetChild%2A>オーバーライドして、 `CurveLegendAccessibleObject`凡例の各部分のアクセス可能な情報を表すを返します。 アクセス可能なアプリケーションがこのコントロールを使用する場合、コントロールは必要なアクセス可能な情報を提供できます。  
   
- この例では、<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs>クラス、<xref:System.Windows.Forms.Control.QueryAccessibilityHelp>イベント。 参照してください、<xref:System.Windows.Forms.AccessibleObject>完全なコード例では、クラスの概要。  
+ この例<xref:System.Windows.Forms.QueryAccessibilityHelpEventArgs> <xref:System.Windows.Forms.Control.QueryAccessibilityHelp>では、イベントでクラスを使用する方法を示します。 完全な<xref:System.Windows.Forms.AccessibleObject>コード例については、クラスの概要を参照してください。  
   
  [!code-cpp[System.Windows.Forms.AccessibleObject#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CPP/chartcontrol.cpp#2)]
  [!code-csharp[System.Windows.Forms.AccessibleObject#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.AccessibleObject/CS/chartcontrol.cs#2)]

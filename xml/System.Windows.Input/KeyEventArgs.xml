@@ -20,7 +20,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このイベント データ クラスは、次の添付イベントと共に使用します。  
+ このイベントデータクラスは、次の添付イベントで使用されます。  
   
 -   <xref:System.Windows.Input.Keyboard.KeyUp?displayProperty=nameWithType>  
   
@@ -30,7 +30,7 @@
   
 -   <xref:System.Windows.Input.Keyboard.PreviewKeyDown?displayProperty=nameWithType>  
   
- このイベント データ クラスは基本要素の次のルーティング イベントにも使用します。 これらのルーティング イベントで一般的な要素のモデルにアクセスできるようにする上記の添付イベントを転送する[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]します。  
+ このイベントデータクラスは、基本要素の次のルーティングイベントでも使用されます。 これらのルーティングイベントは、前に示した添付イベントを転送して、の[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]一般的な要素モデルによりアクセスできるようにします。  
   
 -   <xref:System.Windows.UIElement.KeyUp?displayProperty=nameWithType>  
   
@@ -48,9 +48,9 @@
   
 -   <xref:System.Windows.ContentElement.PreviewKeyDown?displayProperty=nameWithType>  
   
- 添付イベントおよび基本要素のルーティング イベントは、それぞれのイベント データを共有し、バブルとトンネル ルーティング イベントのバージョンは、イベント データを共有もします。 これはイベント ルートをたどる際、イベントの処理の特性に影響することができます。 詳細については、次を参照してください。[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)します。  
+ 添付イベントと基本要素のルーティングイベントは、イベントデータを共有します。また、ルーティングイベントのバブルおよびトンネリングバージョンも、イベントデータを共有します。 これは、イベントがルーティングされるときにイベントの処理される特性に影響を与える可能性があります。 詳細については、「[入力の概要](~/docs/framework/wpf/advanced/input-overview.md)」を参照してください。  
   
- キーでは、切り替えを稼働状態と、リストの両方ででき、状態を切り替えます。 このため、キーが起動またはダウンがチェックするだけのかどうかを決定する、<xref:System.Windows.Input.KeyEventArgs.KeyStates%2A>を数値として値。 代わりに、フラグ列挙体として扱うことにより、値をチェックする必要があります。 使用して、`AND`最初のビットを比較します。 代わりに、ヘルパー プロパティを使用して、 <xref:System.Windows.Input.KeyEventArgs.IsUp%2A>、 <xref:System.Windows.Input.KeyEventArgs.IsDown%2A>、および<xref:System.Windows.Input.KeyEventArgs.IsToggled%2A>を決定するかどうかを指定のキーが上、下、または切り替え。  
+ キーは、上下の状態またはダウン状態と切り替え状態の両方にできます。 このため、キーが上または下にあるかどうかを判断することは<xref:System.Windows.Input.KeyEventArgs.KeyStates%2A> 、値を数値としてチェックするだけではありません。 代わりに、値をフラグの列挙体として扱うことによって、値を確認する必要があります。 最初のビットの比較を使用します。`AND` または、ヘルパープロパティ<xref:System.Windows.Input.KeyEventArgs.IsUp%2A> <xref:System.Windows.Input.KeyEventArgs.IsDown%2A>、、およびを<xref:System.Windows.Input.KeyEventArgs.IsToggled%2A>使用して、特定のキーが稼働しているかどうかを判断します。  
   
  ]]></format>
     </remarks>
@@ -86,7 +86,7 @@
         <param name="keyboard">このイベントに関連付けられた論理キーボード デバイス。</param>
         <param name="inputSource">入力ソース。</param>
         <param name="timestamp">入力が発生した時刻。</param>
-        <param name="key">イベントによって参照されるキー。</param>
+        <param name="key">イベントが参照するキー。</param>
         <summary><see cref="T:System.Windows.Input.KeyEventArgs" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Windows.Input.KeyEventHandler" />
@@ -117,7 +117,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- デッド キーは、押された場合、表示されている文字は生成されませんが、キーが押された次の文字キーによって生成される文字と組み合わせる必要があることを示します。  場合<xref:System.Windows.Input.KeyEventArgs.Key%2A>返します<xref:System.Windows.Input.Key.DeadCharProcessed?displayProperty=nameWithType>、このプロパティを使用して入力された実際のキーを取得することができます。  
+ 押されたキーを押すと、表示される文字は生成されませんが、キーが、次の文字キーが押されたときに生成される文字と結合されることを示します。  が<xref:System.Windows.Input.KeyEventArgs.Key%2A>を<xref:System.Windows.Input.Key.DeadCharProcessed?displayProperty=nameWithType>返す場合は、このプロパティを使用して、入力された実際のキーを取得できます。  
   
  ]]></format>
         </remarks>
@@ -140,8 +140,8 @@
         <ReturnType>System.Windows.Input.Key</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>キーはによって処理される場合、イベントによって参照されるキーボード キーを取得、[!INCLUDE[TLA#tla_ime](~/includes/tlasharptla-ime-md.md)]します。</summary>
-        <value><see cref="T:System.Windows.Input.Key" />イベントによって参照されています。</value>
+        <summary>キーが [!INCLUDE[TLA#tla_ime](~/includes/tlasharptla-ime-md.md)] によって処理される場合、イベントで参照されるキーボード キーを取得します。</summary>
+        <value>イベントが参照する <see cref="T:System.Windows.Input.Key" />。</value>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Windows.Input.KeyEventHandler" />
         <altmember cref="T:System.Windows.Input.KeyboardEventArgs" />
@@ -170,10 +170,10 @@
         <ReturnType>System.Windows.PresentationSource</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>この入力を提供する入力ソースを取得します。</summary>
+        <summary>この入力を提供した入力ソースを取得します。</summary>
         <value>入力ソース。</value>
         <remarks>To be added.</remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">入力ソースを取得します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">入力ソースを取得するための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="T:System.Windows.Input.KeyEventHandler" />
         <altmember cref="T:System.Windows.Input.KeyboardEventArgs" />
         <altmember cref="T:System.Windows.Input.KeyboardEventHandler" />
@@ -200,14 +200,14 @@
         <Parameter Name="genericTarget" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="genericHandler">型固有の方法で呼び出すジェネリック ハンドラー。</param>
-        <param name="genericTarget">ハンドラーを呼び出すターゲット。</param>
-        <summary>イベント システムの効率を高めることができます、型固有の方法でイベント ハンドラーを呼び出します。</summary>
+        <param name="genericHandler">型固有の方法で呼び出しを行うジェネリック ハンドラー。</param>
+        <param name="genericTarget">ハンドラーを呼び出す対象。</param>
+        <summary>型固有の方法でイベント ハンドラーを呼び出します。これにより、イベント システムの効率を高めることができます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この実装は、ジェネリック ハンドラー、キャスト、<xref:System.Windows.Input.KeyEventHandler>してそれを呼び出します。 この実装パターンとその理由の詳細については、次を参照してください。<xref:System.Windows.RoutedEventArgs.InvokeEventHandler%2A>と[ルーティング イベントの概要](~/docs/framework/wpf/advanced/routed-events-overview.md)します。  
+ この実装は、 <xref:System.Windows.Input.KeyEventHandler>ジェネリックハンドラーをとしてキャストした後、それを呼び出します。 この実装パターンとその理由の詳細については、 <xref:System.Windows.RoutedEventArgs.InvokeEventHandler%2A> 「」および「[ルーティングイベントの概要](~/docs/framework/wpf/advanced/routed-events-overview.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -231,17 +231,17 @@
       </ReturnValue>
       <Docs>
         <summary>イベントによって参照されるキーが押された状態かどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> キーがダウンすると、場合それ以外の場合、<see langword="false" />します。</value>
+        <value>キーが押されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.Keyboard>クラスは、キーボードのキーの状態に関する情報を提供することもできます。 たとえば、<xref:System.Windows.Input.Keyboard.IsKeyDown%2A>メソッドは、指定したキーが押されているかどうかを返します。  
+ クラス<xref:System.Windows.Input.Keyboard>は、キーボードのキーの状態に関する情報も提供します。 たとえば、メソッドは<xref:System.Windows.Input.Keyboard.IsKeyDown%2A> 、指定されたキーが押されているかどうかを返します。  
   
    
   
 ## Examples  
- 次の例は、キーがのインスタンスに関連付けられているかどうかを確認します。<xref:System.Windows.Input.KeyEventArgs>が停止の状態を取得することによって、<xref:System.Windows.Input.KeyEventArgs.IsDown%2A>プロパティ。  
+ 次の例では、 <xref:System.Windows.Input.KeyEventArgs> <xref:System.Windows.Input.KeyEventArgs.IsDown%2A>プロパティの状態を取得することによって、のインスタンスに関連付けられているキーが押されているかどうかを確認します。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsIsDown](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargsisdown)]
  [!code-vb[keyargssnippetsample#KeyEventArgsIsDown](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargsisdown)]  
@@ -275,13 +275,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>イベントによって参照されるキーボード キーが繰り返されたキーであるかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> 場合は、キーが繰り返されます。それ以外の場合、<see langword="false" />します。  既定値はありません。</value>
+        <summary>イベントによって参照されるキーボード キーが繰り返されたキーかどうかを示す値を取得します。</summary>
+        <value>キーが繰り返されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。  既定値はありません。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、キーがのインスタンスに関連付けられているかどうかを確認します。<xref:System.Windows.Input.KeyEventArgs>繰り返されたキーは、の状態を取得することによって、<xref:System.Windows.Input.KeyEventArgs.IsRepeat%2A>プロパティ。  
+ 次の例では、 <xref:System.Windows.Input.KeyEventArgs> <xref:System.Windows.Input.KeyEventArgs.IsRepeat%2A>プロパティの状態を取得することによって、のインスタンスに関連付けられたキーが繰り返されたキーであるかどうかを確認します。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsIsRepeat](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargsisrepeat)]
  [!code-vb[keyargssnippetsample#KeyEventArgsIsRepeat](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargsisrepeat)]  
@@ -311,17 +311,17 @@
       </ReturnValue>
       <Docs>
         <summary>イベントによって参照されるキーが切り替わった状態かどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> 場合は、キーが切り替わった状態です。それ以外の場合、<see langword="false" />します。  既定値はありません。</value>
+        <value>キーが切り替わっている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。  既定値はありません。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.Keyboard>クラスは、キーボードのキーの状態に関する情報を提供することもできます。 たとえば、<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A>メソッドは、指定したキーが切り替えられたかどうかを返します。  
+ クラス<xref:System.Windows.Input.Keyboard>は、キーボードのキーの状態に関する情報も提供します。 たとえば、メソッドは<xref:System.Windows.Input.Keyboard.IsKeyToggled%2A> 、指定されたキーが切り替わっているかどうかを返します。  
   
    
   
 ## Examples  
- 次の例は、キーがのインスタンスに関連付けられているかどうかを確認します。<xref:System.Windows.Input.KeyEventArgs>の状態を取得することによって切り替えられた、<xref:System.Windows.Input.KeyEventArgs.IsToggled%2A>プロパティ。  
+ 次の例では、 <xref:System.Windows.Input.KeyEventArgs> <xref:System.Windows.Input.KeyEventArgs.IsToggled%2A>プロパティの状態を取得して、のインスタンスに関連付けられているキーを切り替えるかどうかを確認します。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsIsToggled](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargsistoggled)]
  [!code-vb[keyargssnippetsample#KeyEventArgsIsToggled](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargsistoggled)]  
@@ -351,17 +351,17 @@
       </ReturnValue>
       <Docs>
         <summary>イベントによって参照されるキーが離された状態かどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> キーが以外の場合それ以外の場合、<see langword="false" />します。  既定値はありません。</value>
+        <value>キーが離されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。  既定値はありません。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Input.Keyboard>クラスは、キーボードのキーの状態に関する情報を提供することもできます。  たとえば、<xref:System.Windows.Input.Keyboard.IsKeyUp%2A>メソッドは、指定したソフトウェアが起動するかどうかを返します。  
+ クラス<xref:System.Windows.Input.Keyboard>は、キーボードのキーの状態に関する情報も提供します。  たとえば、 <xref:System.Windows.Input.Keyboard.IsKeyUp%2A>メソッドは、指定されたが稼働しているかどうかを返します。  
   
    
   
 ## Examples  
- 次の例は、キーがのインスタンスに関連付けられているかどうかを確認します。<xref:System.Windows.Input.KeyEventArgs>の状態を取得することでは、<xref:System.Windows.Input.KeyEventArgs.IsUp%2A>プロパティ。  
+ 次の例では、 <xref:System.Windows.Input.KeyEventArgs> <xref:System.Windows.Input.KeyEventArgs.IsUp%2A>プロパティの状態を取得することによってのインスタンスに関連付けられているキーを確認します。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsIsUp](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargsisup)]
  [!code-vb[keyargssnippetsample#KeyEventArgsIsUp](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargsisup)]  
@@ -396,12 +396,12 @@
       </ReturnValue>
       <Docs>
         <summary>イベントに関連付けられているキーボード キーを取得します。</summary>
-        <value><see cref="T:System.Windows.Input.Key" />イベントによって参照されています。</value>
+        <value>イベントが参照する <see cref="T:System.Windows.Input.Key" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、作成、<xref:System.Windows.Input.KeyEventHandler>にキーが関連付けられているかどうかをチェックし、<xref:System.Windows.Input.KeyEventArgs>は、<xref:System.Windows.Input.Key.Return>キー。  
+ 次の例では<xref:System.Windows.Input.KeyEventHandler> 、を作成し、に関連付け<xref:System.Windows.Input.KeyEventArgs>られ<xref:System.Windows.Input.Key.Return>ているキーがキーであるかどうかを確認します。  
   
  [!code-csharp[keydown#KeyDownSample](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyDown/CSharp/Window1.xaml.cs#keydownsample)]
  [!code-vb[keydown#KeyDownSample](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyDown/VisualBasic/Window1.xaml.vb#keydownsample)]  
@@ -436,12 +436,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- キーでは、切り替えを稼働状態と、リストの両方ででき、状態を切り替えます。 このため、キーが起動またはダウンがチェックするだけのかどうかを決定する、<xref:System.Windows.Input.KeyEventArgs.KeyStates%2A>を数値として値。 代わりに、フラグ列挙体として扱うことにより、値をチェックする必要があります。 使用して、`AND`最初のビットを比較します。 代わりに、ヘルパー プロパティを使用して、 <xref:System.Windows.Input.KeyEventArgs.IsUp%2A>、 <xref:System.Windows.Input.KeyEventArgs.IsDown%2A>、および<xref:System.Windows.Input.KeyEventArgs.IsToggled%2A>を決定するかどうかを指定のキーが上、下、または切り替え。  
+ キーは、上下の状態またはダウン状態と切り替え状態の両方にできます。 このため、キーが上または下にあるかどうかを判断することは<xref:System.Windows.Input.KeyEventArgs.KeyStates%2A> 、値を数値としてチェックするだけではありません。 代わりに、値をフラグの列挙体として扱うことによって、値を確認する必要があります。 最初のビットの比較を使用します。`AND` または、ヘルパープロパティ<xref:System.Windows.Input.KeyEventArgs.IsUp%2A> <xref:System.Windows.Input.KeyEventArgs.IsDown%2A>、、およびを<xref:System.Windows.Input.KeyEventArgs.IsToggled%2A>使用して、特定のキーが稼働しているかどうかを判断します。  
   
    
   
 ## Examples  
- 次の例は、キーがのインスタンスに関連付けられているかどうかを確認します。<xref:System.Windows.Input.KeyEventArgs>がダウンして、演算を実行する`AND`の比較、<xref:System.Windows.Input.KeyEventArgs.KeyStates%2A>キーの、<xref:System.Windows.Input.KeyStates.Down>列挙値。  
+ 次の例では、 <xref:System.Windows.Input.KeyEventArgs>キーと<xref:System.Windows.Input.KeyStates.Down>列挙値<xref:System.Windows.Input.KeyEventArgs.KeyStates%2A>のでビットごと`AND`の比較を実行して、のインスタンスに関連付けられているキーがダウンしているかどうかを確認します。  
   
  [!code-csharp[keyargssnippetsample#KeyEventArgsKeyStatesDown](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargskeystatesdown)]
  [!code-vb[keyargssnippetsample#KeyEventArgsKeyStatesDown](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargskeystatesdown)]  
@@ -470,8 +470,8 @@
         <ReturnType>System.Windows.Input.Key</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>キーがシステムによって処理される場合、イベントによって参照されるキーボード キーを取得します。</summary>
-        <value><see cref="T:System.Windows.Input.Key" />イベントによって参照されています。</value>
+        <summary>キーがシステムによって処理される場合、イベントで参照されるキーボード キーを取得します。</summary>
+        <value>イベントが参照する <see cref="T:System.Windows.Input.Key" />。</value>
         <remarks>To be added.</remarks>
         <altmember cref="T:System.Windows.Input.KeyEventHandler" />
         <altmember cref="T:System.Windows.Input.KeyboardEventArgs" />

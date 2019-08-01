@@ -1,5 +1,5 @@
 <Type Name="AssemblyBuilder" FullName="System.Reflection.Emit.AssemblyBuilder">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="730b1f5c888ea1da98651c76585221a891bb2949" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58687749" /></Metadata><TypeSignature Language="C#" Value="public sealed class AssemblyBuilder : System.Reflection.Assembly, System.Runtime.InteropServices._AssemblyBuilder" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="5fd9c28bb0e8db26f819ca539eb90d16aafb3c10" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68437240" /></Metadata><TypeSignature Language="C#" Value="public sealed class AssemblyBuilder : System.Reflection.Assembly, System.Runtime.InteropServices._AssemblyBuilder" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit AssemblyBuilder extends System.Reflection.Assembly implements class System.Runtime.InteropServices._AssemblyBuilder" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.Emit.AssemblyBuilder" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class AssemblyBuilder&#xA;Inherits Assembly&#xA;Implements _AssemblyBuilder" />
@@ -47,51 +47,51 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 動的アセンブリはリフレクション Emit Api を使用して作成されたアセンブリです。 使用して動的アセンブリを保存するときに、アセンブリの動的モジュールを保存、<xref:System.Reflection.Emit.AssemblyBuilder.Save%2A>メソッド。 実行可能ファイルを生成する、<xref:System.Reflection.Emit.AssemblyBuilder.SetEntryPoint%2A>アセンブリへのエントリ ポイント メソッドを識別するメソッドを呼び出す必要があります。 アセンブリは、既定では、しない限りで、Dll として保存は、<xref:System.Reflection.Emit.AssemblyBuilder.SetEntryPoint%2A>メソッドは、コンソール アプリケーションまたは Windows ベースのアプリケーションの生成を要求します。  
+ 動的アセンブリは、リフレクション出力 Api を使用して作成されるアセンブリです。 アセンブリ内の動的モジュールは、 <xref:System.Reflection.Emit.AssemblyBuilder.Save%2A>メソッドを使用して動的アセンブリを保存するときに保存されます。 実行可能ファイル<xref:System.Reflection.Emit.AssemblyBuilder.SetEntryPoint%2A>を生成するには、メソッドを呼び出して、アセンブリへのエントリポイントであるメソッドを識別する必要があります。 アセンブリは、メソッドが<xref:System.Reflection.Emit.AssemblyBuilder.SetEntryPoint%2A>コンソールアプリケーションまたは Windows ベースのアプリケーションの生成を要求しない限り、既定で dll として保存されます。  
   
- アセンブリのマニフェスト ファイル名が最初の引数として指定されているモジュールの名前に一致する必要があります、動的アセンブリに 1 つ以上の動的モジュールが含まれている場合、<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>メソッド。  
+ 動的アセンブリに複数の動的モジュールが含まれている場合、アセンブリのマニフェストファイル名は、メソッドの<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>最初の引数として指定されているモジュールの名前と一致している必要があります。  
   
- いくつかのメソッド ベース<xref:System.Reflection.Assembly>クラスなど、`GetModules`と`GetLoadedModules`が正しく動作しませんから呼び出されたときに<xref:System.Reflection.Emit.AssemblyBuilder>オブジェクト。 定義されている動的アセンブリを読み込むし、読み込まれたアセンブリのメソッドを呼び出すことができます。 たとえば、返されたモジュールの一覧で、リソース モジュールが含まれていることを確認するを呼び出す`GetModules`で読み込まれた<xref:System.Reflection.Assembly>オブジェクト。  
+ `GetModules`や<xref:System.Reflection.Assembly> <xref:System.Reflection.Emit.AssemblyBuilder>などの基底クラスのメソッドの中には、オブジェクトから呼び出されたときに正しく機能しないものがあります。 `GetLoadedModules` 定義済みの動的アセンブリを読み込み、読み込まれたアセンブリに対してメソッドを呼び出すことができます。 たとえば、返されたモジュールの一覧にリソースモジュールが含まれていること`GetModules`を確認する<xref:System.Reflection.Assembly>には、読み込まれたオブジェクトに対してを呼び出します。  
   
- 使用して動的アセンブリの署名<xref:System.Reflection.AssemblyName.KeyPair%2A>アセンブリが保存されるまで有効ではありませんをディスクにします。 そのため、厳密な名前は、一時動的アセンブリでは機能しません。  
+ を使用し<xref:System.Reflection.AssemblyName.KeyPair%2A>た動的アセンブリの署名は、アセンブリがディスクに保存されるまで有効ではありません。 したがって、厳密な名前は、一時的な動的アセンブリでは機能しません。  
   
- 取得する、<xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトを使用して、<xref:System.AppDomain.DefineDynamicAssembly%2A?displayProperty=nameWithType>メソッド。  
+ <xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトを取得するには、 <xref:System.AppDomain.DefineDynamicAssembly%2A?displayProperty=nameWithType>メソッドを使用します。  
   
 ## <a name="reflection-emit-dynamic-assembly-scenarios"></a>リフレクション出力による動的アセンブリのシナリオ  
- 使用する場合の考慮事項を次に、<xref:System.Reflection.Emit.AssemblyBuilder>動的アセンブリを作成するクラス。  
+ <xref:System.Reflection.Emit.AssemblyBuilder>クラスを使用して動的アセンブリを作成する場合は、次の点を考慮する必要があります。  
   
 ### <a name="dynamic-modules"></a>動的モジュール  
- リフレクション出力をサポートしている動的アセンブリで定義されている動的モジュールを作成します。 動的アセンブリで作成された動的モジュールは、一時的または永続化できます。  
+ リフレクション出力は、動的アセンブリで定義された動的モジュールの作成をサポートします。 動的アセンブリで作成される動的モジュールは、一時的なものでも、永続化することもできます。  
   
-### <a name="restrictions-on-type-references"></a>型の参照に関する制約  
- アセンブリには、別のアセンブリで定義された型を参照できます。 一時動的アセンブリは、別の一時動的アセンブリや永続化できる動的アセンブリでは、静的アセンブリで定義された型に安全に参照できます。 ただし、共通言語ランタイムでは、永続する動的モジュール、一時動的モジュールで定義されている型を参照できません。 これは、ランタイム、ディスクに保存された後、永続動的モジュールが読み込まれるときに一時動的モジュールで定義された型への参照を解決できないためにです。  
+### <a name="restrictions-on-type-references"></a>型参照に関する制限事項  
+ アセンブリは、別のアセンブリで定義されている型を参照できます。 一時的な動的アセンブリは、別の一時動的アセンブリ、永続化動的アセンブリ、または静的アセンブリで定義されている型を安全に参照できます。 ただし、共通言語ランタイムでは、永続動的モジュールが、transient 動的モジュールで定義されている型を参照することはできません。 これは、永続化された動的モジュールがディスクに保存された後に読み込まれると、ランタイムは、transient 動的モジュールで定義されている型への参照を解決できないためです。  
   
-### <a name="restrictions-on-emitting-to-remote-application-domains"></a>リモート アプリケーション ドメインへの出力の制限  
- 一部のシナリオでは、動的アセンブリを作成し、リモート アプリケーション ドメインで実行する必要があります。 リフレクション出力による動的アセンブリをリモート アプリケーション ドメインに直接出力されることはできません。 ソリューションでは、現在のアプリケーション ドメインで動的アセンブリの生成、生成された、動的アセンブリをディスクに保存し、リモート アプリケーション ドメインに動的アセンブリを読み込みます。  
+### <a name="restrictions-on-emitting-to-remote-application-domains"></a>リモートアプリケーションドメインへの出力に関する制限事項  
+ 一部のシナリオでは、動的アセンブリを作成し、リモートアプリケーションドメインで実行する必要があります。 リフレクション出力では、動的アセンブリをリモートアプリケーションドメインに直接出力することはできません。 解決策は、現在のアプリケーションドメインに動的アセンブリを出力し、出力された動的アセンブリをディスクに保存してから、動的アセンブリをリモートアプリケーションドメインに読み込むことです。  
   
-### <a name="dynamic-assembly-access-modes"></a>動的アセンブリのアクセス モード  
- 動的アセンブリは、次のアクセス モードのいずれかを使用して作成できます。  
+### <a name="dynamic-assembly-access-modes"></a>動的アセンブリアクセスモード  
+ 動的アセンブリは、次のアクセスモードのいずれかを使用して作成できます。  
   
 -   <xref:System.Reflection.Emit.AssemblyBuilderAccess.Run?displayProperty=nameWithType>  
   
-     表される動的アセンブリを<xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトは一時的なものです。 動的アセンブリは、生成されたコードの実行にのみ使用できます。  
+     <xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトによって表される動的アセンブリは一時的です。 動的アセンブリは、出力されたコードの実行にのみ使用できます。  
   
 -   <xref:System.Reflection.Emit.AssemblyBuilderAccess.Save?displayProperty=nameWithType>  
   
-     表される動的アセンブリを<xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトは永続化できるが、保存されているポータブル実行可能 (PE) ファイルがディスクから読み込まれるまでは実行できません。  
+     <xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトによって表される動的アセンブリは永続化できますが、保存された移植可能な実行可能 (PE) ファイルがディスクから読み込まれるまでは実行できません。  
   
 -   <xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave?displayProperty=nameWithType>  
   
-     表される動的アセンブリを<xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトが永続化できる、オブジェクトが、アセンブリが保存された後または前に実行こともできますをディスクにします。  
+     <xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトによって表される動的アセンブリは永続化されますが、アセンブリがディスクに保存される前または後に実行することもできます。  
   
- により、適切なアクセス モードを指定する必要があります<xref:System.Reflection.Emit.AssemblyBuilderAccess>値への呼び出しで、<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicAssembly%2A?displayProperty=nameWithType>メソッド動的アセンブリが定義されているし、後で変更することはできません。 ランタイムは、アセンブリの内部表現を最適化するために、動的アセンブリのアクセス モードを使用します。  
+ アクセスモードは、動的アセンブリが定義され<xref:System.Reflection.Emit.AssemblyBuilderAccess> 、後で変更できない<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicAssembly%2A?displayProperty=nameWithType>場合に、メソッドの呼び出しに適切な値を指定することによって指定する必要があります。 ランタイムは、動的アセンブリのアクセスモードを使用して、アセンブリの内部表現を最適化します。  
   
    
   
 ## Examples  
- 次のコード例では、1 つのモジュールを使用して動的アセンブリを定義する方法を示します。 アセンブリ内のモジュールには、1 つの型が含まれています`MyDynamicType`、プライベート フィールド、取得して、プライベート フィールドを設定するプロパティ、private のフィールドを初期化するコンス トラクターおよびプライベート フィールドでユーザーが指定した数を乗算するメソッドがある。値し、結果を返します。  
+ 次のコード例は、1つのモジュールで動的アセンブリを定義する方法を示しています。 例のアセンブリのモジュールには、プライベートフィールド`MyDynamicType`を持つ、プライベートフィールドを取得して設定するプロパティ、プライベートフィールドを初期化するコンストラクター、プライベートフィールドによってユーザー指定の数値を乗算するメソッドなど、1つの型が含まれています。値を返し、結果を返します。  
   
- <xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave?displayProperty=nameWithType> アセンブリを作成するときに指定します。 アセンブリ コードは、すぐに使用され、アセンブリは保存もで検証できるようにディスクに[Ildasm.exe (IL Disassembler)](~/docs/framework/tools/ildasm-exe-il-disassembler.md)または別のプログラムで使用します。  
+ <xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave?displayProperty=nameWithType>は、アセンブリの作成時に指定されます。 アセンブリコードはすぐに使用されます。アセンブリは、 [ildasm.exe (IL 逆アセンブラー)](~/docs/framework/tools/ildasm-exe-il-disassembler.md)を使用して検査したり、別のプログラムで使用したりできるように、ディスクにも保存されます。  
   
  [!code-cpp[AssemblyBuilderClass#1](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilderClass/cpp/24895.cpp#1)]
  [!code-csharp[AssemblyBuilderClass#1](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilderClass/cs/24895.cs#1)]
@@ -99,7 +99,7 @@
   
  ]]></format>
     </remarks>
-    <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+    <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
     <altmember cref="Overload:System.AppDomain.DefineDynamicAssembly" />
     <related type="Article" href="https://msdn.microsoft.com/library/8e8e2631-62fd-40e7-a8ee-0039b06749bc">動的メソッドおよびアセンブリの出力</related>
   </Docs>
@@ -178,19 +178,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `fileName` 他の永続化できるモジュール、スタンドアロン マネージ リソース、またはスタンドアロンのマニフェスト ファイルと同じしないでください。  
+ `fileName`は、他の永続モジュール、スタンドアロンマネージリソース、またはスタンドアロンマニフェストファイルと同じにすることはできません。  
   
- マネージ リソース ファイルには、パブリックであると見なされます。  
+ ファイル内のマネージリソースは、パブリックであると見なされます。  
   
- 指定したリソース ファイルは、アセンブリを保存するディレクトリでなければなりません。  
+ 指定されたリソースファイルは、アセンブリが保存されるディレクトリに存在する必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次のコード サンプルを使用して、動的に作成されたアセンブリにリソース ファイルを添付する方法を示します`AddResourceFile`します。  
+ 次のコードサンプルは、を使用して、動的に作成されたアセンブリ`AddResourceFile`にリソースファイルをアタッチする方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.AssemblyBuilder.AddResourceFile Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.AddResourceFile Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.AssemblyBuilder.AddResourceFile Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.AddResourceFile Example/CS/source.cs#1)]
@@ -200,19 +200,19 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="name" /> が既に定義されています。  
   
-または 
+- または - 
 アセンブリには、<paramref name="fileName" /> という名前の別のファイルがあります。  
   
 または 
 <paramref name="name" /> の長さが 0 です。  
   
-または 
+- または - 
 <paramref name="fileName" /> の長さが 0 か、または <paramref name="fileName" /> にパスが含まれる場合。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> または <paramref name="fileName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.IO.FileNotFoundException">ファイル <paramref name="fileName" /> が見つかりません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">FileIOPermissionAccess.Read アクセス許可がリソース ファイルにアクセスするために必要な<paramref name="resourceFileName" />します。</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">リソースファイル<paramref name="resourceFileName" />にアクセスするには、FileIOPermissionAccess アクセス許可が必要です。</permission>
       </Docs>
     </Member>
     <Member MemberName="AddResourceFile">
@@ -258,19 +258,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `fileName` 他の永続化できるモジュール、スタンドアロン マネージ リソース、またはスタンドアロンのマニフェスト ファイルと同じしないでください。  
+ `fileName`は、他の永続モジュール、スタンドアロンマネージリソース、またはスタンドアロンマニフェストファイルと同じにすることはできません。  
   
  マネージド リソースには属性を指定できます。  
   
- 指定したリソース ファイルは、アセンブリを保存するディレクトリでなければなりません。  
+ 指定されたリソースファイルは、アセンブリが保存されるディレクトリに存在する必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次のコード サンプルを使用して、動的に作成されたアセンブリにリソース ファイルを添付する方法を示します`AddResourceFile`します。  
+ 次のコードサンプルは、を使用して、動的に作成されたアセンブリ`AddResourceFile`にリソースファイルをアタッチする方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.AssemblyBuilder.AddResourceFile Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.AddResourceFile Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.AssemblyBuilder.AddResourceFile Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.AddResourceFile Example/CS/source.cs#1)]
@@ -280,10 +280,10 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="name" /> が既に定義されています。  
   
-または 
+- または - 
 アセンブリには、<paramref name="fileName" /> という名前の別のファイルがあります。  
   
-または 
+- または - 
 <paramref name="name" /> の長さが 0、または <paramref name="fileName" /> の長さが 0 の場合。  
   
 または 
@@ -291,8 +291,8 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> または <paramref name="fileName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.IO.FileNotFoundException">ファイル <paramref name="fileName" /> が見つからない場合。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">FileIOPermissionAccess.Read アクセス許可がリソース ファイルにアクセスするために必要な<paramref name="resourceFileName" />します。</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">リソースファイル<paramref name="resourceFileName" />にアクセスするには、FileIOPermissionAccess アクセス許可が必要です。</permission>
       </Docs>
     </Member>
     <Member MemberName="CodeBase">
@@ -312,6 +312,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -331,13 +332,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 読み込み済みのマニフェストを含むファイルへの絶対パスを取得する、<xref:System.Reflection.Assembly.Location%2A?displayProperty=nameWithType>プロパティ。  
+ 読み込まれたマニフェストを含むファイルへの絶対パスを取得するに<xref:System.Reflection.Assembly.Location%2A?displayProperty=nameWithType>は、プロパティを使用します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは現在サポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="DefinedTypes">
@@ -519,22 +520,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アセンブリに同じ名前の複数の動的モジュールを定義するとエラーになります。  
+ アセンブリに同じ名前の複数の動的モジュールを定義すると、エラーになります。  
   
- 定義された動的モジュールは、一時的なものです。 親の動的アセンブリが作成された場合でも、動的モジュールは保存されません<xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>します。  
-  
-> [!NOTE]
->  動的モジュールをデバッグするときに、最適化を非表示に適用、<xref:System.Diagnostics.DebuggableAttribute>属性を呼び出す前に、動的アセンブリ<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>します。 インスタンスを作成<xref:System.Diagnostics.DebuggableAttribute>で、<xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations>フラグを設定しを使用して、適用、<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>メソッド。 属性は、動的アセンブリに適用する必要があります。 影響を与えませんモジュールに適用されている場合。  
+ 定義された動的モジュールは一時的です。 親の動的アセンブリがで<xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>作成されている場合でも、動的モジュールは保存されません。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  動的モジュールをデバッグするときに最適化を抑制<xref:System.Diagnostics.DebuggableAttribute>するには、を呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>前に、動的アセンブリに属性を適用します。 フラグを使用し<xref:System.Diagnostics.DebuggableAttribute>ての<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>インスタンスを作成し、メソッドを使用してを適用します。 <xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations> 動的アセンブリに属性を適用する必要があります。 モジュールに適用しても効果はありません。  
+  
+> [!NOTE]
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
  [Visual Basic、 C#]  
   
- 次のコード例を使用して一時動的モジュールを作成する方法を示します`DefineDynamicModule`します。  
+ 次のコード例は、を使用して、一時的な`DefineDynamicModule`動的モジュールを作成する方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CS/source.cs#1)]
@@ -544,18 +545,19 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="name" /> の先頭が空白です。  
   
-または 
+- または - 
 <paramref name="name" /> の長さが 0 です。  
   
-または 
+- または - 
 <paramref name="name" /> の長さがシステム定義の最大長を超えています。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
         <exception cref="T:System.ExecutionEngineException">既定のシンボル ライターのアセンブリを読み込むことができません。  
   
-または 
-既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+ - または -  
+  
+ 既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="DefineDynamicModule">
@@ -600,22 +602,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アセンブリに同じ名前の複数の動的モジュールを定義するとエラーになります。  
+ アセンブリに同じ名前の複数の動的モジュールを定義すると、エラーになります。  
   
- 親の動的アセンブリが作成された場合でも、動的モジュールは保存されません<xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>します。  
-  
-> [!NOTE]
->  動的モジュールをデバッグするときに、最適化を非表示に適用、<xref:System.Diagnostics.DebuggableAttribute>属性を呼び出す前に、動的アセンブリ<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>します。 インスタンスを作成<xref:System.Diagnostics.DebuggableAttribute>で、<xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations>フラグを設定しを使用して、適用、<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>メソッド。 属性は、動的アセンブリに適用する必要があります。 影響を与えませんモジュールに適用されている場合。  
+ 親の動的アセンブリがで<xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>作成されている場合でも、動的モジュールは保存されません。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  動的モジュールをデバッグするときに最適化を抑制<xref:System.Diagnostics.DebuggableAttribute>するには、を呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>前に、動的アセンブリに属性を適用します。 フラグを使用し<xref:System.Diagnostics.DebuggableAttribute>ての<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>インスタンスを作成し、メソッドを使用してを適用します。 <xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations> 動的アセンブリに属性を適用する必要があります。 モジュールに適用しても効果はありません。  
+  
+> [!NOTE]
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
  [Visual Basic、 C#]  
   
- 次のコード例を使用して一時動的モジュールを作成する方法を示します`DefineDynamicModule`、シンボル情報を抑制します。  
+ 次のコード例は、を使用して一時動的モジュール`DefineDynamicModule`を作成する方法を示しています。シンボル情報は抑制されています。  
   
  [!code-cpp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CPP/source.cpp#2)]
  [!code-csharp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CS/source.cs#2)]
@@ -630,13 +632,14 @@
   
 または 
 <paramref name="name" /> の長さがシステム定義の最大長を超えています。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ExecutionEngineException">既定のシンボル ライターのアセンブリを読み込むことができません。  
   
-または 
-既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
+ - または -  
+  
+ 既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="DefineDynamicModule">
@@ -681,24 +684,24 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このアセンブリを永続する動的モジュールを定義するで作成される必要がある、<xref:System.Reflection.Emit.AssemblyBuilderAccess.Save>または<xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>属性。  
+ 永続動的モジュールを定義するに<xref:System.Reflection.Emit.AssemblyBuilderAccess.Save> <xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>は、属性または属性を使用してこのアセンブリを作成する必要があります。  
   
- 場合は、アセンブリ マニフェストを格納するモジュール`name`アセンブリの名前と同じである必要があります (つまり、<xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>のプロパティ、<xref:System.Reflection.AssemblyName>動的アセンブリを作成するために使用) と`fileName`と同じである必要があります、アセンブリを保存するときを指定したファイル名。  
+ モジュールにアセンブリマニフェストを含める`name`場合、は、アセンブリの名前と同じである必要があります ( <xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>つまり、動的アセンブリの作成に<xref:System.Reflection.AssemblyName>使用されるのプロパティ)。また`fileName` 、アセンブリを保存するときに指定するファイル名。  
   
- モジュールの 1 つだけを持つアセンブリ、モジュールは、アセンブリ マニフェストを含める必要があります。  
-  
-> [!NOTE]
->  動的モジュールをデバッグするときに、最適化を非表示に適用、<xref:System.Diagnostics.DebuggableAttribute>属性を呼び出す前に、動的アセンブリ<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>します。 インスタンスを作成<xref:System.Diagnostics.DebuggableAttribute>で、<xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations>フラグを設定しを使用して、適用、<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>メソッド。 属性は、動的アセンブリに適用する必要があります。 影響を与えませんモジュールに適用されている場合。  
+ モジュールが1つだけのアセンブリでは、そのモジュールにアセンブリマニフェストが含まれている必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  動的モジュールをデバッグするときに最適化を抑制<xref:System.Diagnostics.DebuggableAttribute>するには、を呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>前に、動的アセンブリに属性を適用します。 フラグを使用し<xref:System.Diagnostics.DebuggableAttribute>ての<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>インスタンスを作成し、メソッドを使用してを適用します。 <xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations> 動的アセンブリに属性を適用する必要があります。 モジュールに適用しても効果はありません。  
+  
+> [!NOTE]
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
  [Visual Basic、 C#]  
   
- 次のコード例は、永続的な動的モジュールを作成する方法を示します`DefineDynamicModule`します。  
+ 次のコード例は、を使用して永続的な動的`DefineDynamicModule`モジュールを作成する方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CPP/source.cpp#3)]
  [!code-csharp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CS/source.cs#3)]
@@ -709,23 +712,24 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> または <paramref name="fileName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="name" /> または <paramref name="fileName" /> の長さが 0 です。  
   
-または 
+- または - 
 <paramref name="name" /> の長さがシステム定義の最大長を超えています。  
   
-または 
+- または - 
  <paramref name="fileName" /> にパス指定 (ディレクトリ コンポーネントなど) が含まれています。  
   
-または 
+- または - 
 このアセンブリに属する別のファイルの名前と衝突します。</exception>
         <exception cref="T:System.InvalidOperationException">このアセンブリは既に保存されています。</exception>
         <exception cref="T:System.NotSupportedException">このアセンブリは、<see cref="F:System.Reflection.Emit.AssemblyBuilderAccess.Run" /> 属性の動的アセンブリで呼び出されています。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
         <exception cref="T:System.ExecutionEngineException">既定のシンボル ライターのアセンブリを読み込むことができません。  
   
-または 
-既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">書き込む = true を設定または追加 = true がモジュールを保存するために必要な</permission>
+ - または -  
+  
+ 既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">モジュールを保存するには Write = true または Append = true が必要です</permission>
       </Docs>
     </Member>
     <Member MemberName="DefineDynamicModule">
@@ -772,24 +776,24 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このアセンブリを永続する動的モジュールを定義するで作成される必要がある、<xref:System.Reflection.Emit.AssemblyBuilderAccess.Save>または<xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>属性。  
+ 永続動的モジュールを定義するに<xref:System.Reflection.Emit.AssemblyBuilderAccess.Save> <xref:System.Reflection.Emit.AssemblyBuilderAccess.RunAndSave>は、属性または属性を使用してこのアセンブリを作成する必要があります。  
   
- 場合は、アセンブリ マニフェストを格納するモジュール`name`アセンブリの名前と同じである必要があります (つまり、<xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>のプロパティ、<xref:System.Reflection.AssemblyName>動的アセンブリを作成するために使用) と`fileName`と同じである必要があります、アセンブリを保存するときを指定したファイル名。  
+ モジュールにアセンブリマニフェストを含める`name`場合、は、アセンブリの名前と同じである必要があります ( <xref:System.Reflection.AssemblyName.Name%2A?displayProperty=nameWithType>つまり、動的アセンブリの作成に<xref:System.Reflection.AssemblyName>使用されるのプロパティ)。また`fileName` 、アセンブリを保存するときに指定するファイル名。  
   
- モジュールの 1 つだけを持つアセンブリ、モジュールは、アセンブリ マニフェストを含める必要があります。  
-  
-> [!NOTE]
->  動的モジュールをデバッグするときに、最適化を非表示に適用、<xref:System.Diagnostics.DebuggableAttribute>属性を呼び出す前に、動的アセンブリ<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>します。 インスタンスを作成<xref:System.Diagnostics.DebuggableAttribute>で、<xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations>フラグを設定しを使用して、適用、<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>メソッド。 属性は、動的アセンブリに適用する必要があります。 影響を与えませんモジュールに適用されている場合。  
+ モジュールが1つだけのアセンブリでは、そのモジュールにアセンブリマニフェストが含まれている必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  動的モジュールをデバッグするときに最適化を抑制<xref:System.Diagnostics.DebuggableAttribute>するには、を呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule%2A>前に、動的アセンブリに属性を適用します。 フラグを使用し<xref:System.Diagnostics.DebuggableAttribute>ての<xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>インスタンスを作成し、メソッドを使用してを適用します。 <xref:System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations> 動的アセンブリに属性を適用する必要があります。 モジュールに適用しても効果はありません。  
+  
+> [!NOTE]
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
  [Visual Basic、 C#]  
   
- 次のコード例は、シンボルの出力を使用して、永続的な動的モジュールを作成する方法を示します`DefineDynamicModule`します。  
+ 次のコード例は、を使用して`DefineDynamicModule`、シンボルの出力を持つ永続的な動的モジュールを作成する方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#4](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CPP/source.cpp#4)]
  [!code-csharp[System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.DefineDynamicModule Example/CS/source.cs#4)]
@@ -800,7 +804,7 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> または <paramref name="fileName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="name" /> または <paramref name="fileName" /> の長さが 0 です。  
   
-または 
+- または - 
 <paramref name="name" /> の長さがシステム定義の最大長を超えています。  
   
 または 
@@ -812,11 +816,12 @@
         <exception cref="T:System.NotSupportedException">このアセンブリは、<see cref="F:System.Reflection.Emit.AssemblyBuilderAccess.Run" /> 属性の動的アセンブリで呼び出されています。</exception>
         <exception cref="T:System.ExecutionEngineException">既定のシンボル ライターのアセンブリを読み込むことができません。  
   
-または 
-既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
+ - または -  
+  
+ 既定のシンボル ライター インターフェイスを実装する型が見つかりません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">書き込む = true を設定または追加 = true は、このモジュールを保存するために必要な</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">このモジュールを保存するには、Write = true または Append = true が必要です</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="DefineResource">
@@ -873,19 +878,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細なリソースを追加することができます、返された<xref:System.Resources.ResourceWriter>呼び出して<xref:System.Resources.ResourceWriter.AddResource%2A>します。  
+ を呼び出す<xref:System.Resources.ResourceWriter.AddResource%2A>ことによって返され<xref:System.Resources.ResourceWriter>たを使用して、粒度の細かいリソースを追加できます。  
   
- `fileName` 他の永続化できるモジュール、スタンドアロン マネージ リソース、またはスタンドアロンのマニフェスト ファイルと同じしないでください。  
+ `fileName`は、他の永続モジュール、スタンドアロンのマネージリソース、またはスタンドアロンのマニフェストファイルのものと同じにすることはできません。  
   
- ランタイム呼び出し、<xref:System.Resources.ResourceWriter.Close%2A>メソッド動的アセンブリを保存するとします。  
+ ランタイムは、動的<xref:System.Resources.ResourceWriter.Close%2A>アセンブリが保存されるときにメソッドを呼び出します。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Reflection.Emit.AssemblyBuilder.DefineResource%2A>リソース ライターを取得します。 例では、次の 3 つのリソース文字列を追加するのにリソース ライターを使用します。  
+ 次の例では<xref:System.Reflection.Emit.AssemblyBuilder.DefineResource%2A> 、メソッドを使用してリソースライターを取得します。 この例では、リソースライターを使用して、3つのリソース文字列を追加します。  
   
  [!code-cpp[AssemblyBuilder.DefineResource Example 2#1](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilder.DefineResource Example 2/CPP/assemblybuilder_defineresource.cpp#1)]
  [!code-csharp[AssemblyBuilder.DefineResource Example 2#1](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilder.DefineResource Example 2/CS/assemblybuilder_defineresource.cs#1)]
@@ -895,21 +900,21 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="name" /> が既に定義されています。  
   
-または 
+- または - 
 アセンブリには、<paramref name="fileName" /> という名前の別のファイルがあります。  
   
-または 
+- または - 
 <paramref name="name" /> の長さが 0 です。  
   
-または 
+- または - 
 <paramref name="fileName" /> の長さが 0 です。  
   
-または 
+- または - 
  <paramref name="fileName" /> にパスが含まれています。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> または <paramref name="fileName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">書き込む = true を設定または追加 = true</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">Write = true または Append = true</permission>
       </Docs>
     </Member>
     <Member MemberName="DefineResource">
@@ -958,14 +963,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 粒度が細かいリソースを追加することができます、返された<xref:System.Resources.ResourceWriter>呼び出して<xref:System.Resources.ResourceWriter.AddResource%2A>します。  
+ を呼び出す<xref:System.Resources.ResourceWriter> <xref:System.Resources.ResourceWriter.AddResource%2A>ことによって返されたを使用して、粒度の細かいリソースを追加できます。  
   
- `fileName` 他の永続化できるモジュール、スタンドアロン マネージ リソース、またはスタンドアロンのマニフェスト ファイルと同じしないでください。  
+ `fileName`は、他の永続モジュール、スタンドアロンマネージリソース、またはスタンドアロンマニフェストファイルと同じにすることはできません。  
   
- ランタイム呼び出し、<xref:System.Resources.ResourceWriter.Close%2A>メソッド動的アセンブリを保存するとします。  
+ ランタイムは、動的<xref:System.Resources.ResourceWriter.Close%2A>アセンブリが保存されるときにメソッドを呼び出します。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
  ]]></format>
         </remarks>
@@ -974,15 +979,15 @@
 または 
 <paramref name="name" /> の長さが 0 です。  
   
-または 
+- または - 
 <paramref name="fileName" /> の長さが 0 です。  
   
-または 
+- または - 
  <paramref name="fileName" /> にパスが含まれています。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> または <paramref name="fileName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">書き込む = true を設定または追加 = true</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">Write = true または Append = true</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="DefineUnmanagedResource">
@@ -1029,12 +1034,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アセンブリは、アンマネージ リソースを 1 つだけ関連付けることができます。 つまり、呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>または<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のいずれかが呼び出された後にいずれか以前スローされている System.ArgumentException がスローされます。 複数のアンマネージ リソースを (共通言語ランタイムでは提供されません)、Microsoft ResMerge ユーティリティなどのツールとマージする必要があります。  
+ アセンブリは、1つのアンマネージリソースのみに関連付けることができます。 これは、いずれ<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>か<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のメソッドが呼び出された後、またはを呼び出すと、ArgumentException がスローされることを意味します。 複数のアンマネージリソースを Microsoft ResMerge ユーティリティなどのツールとマージする必要があります (共通言語ランタイムでは提供されません)。  
   
    
   
 ## Examples  
- 次のコード サンプルを作成し、使用して、動的アセンブリへのアンマネージ リソースを表すバイト配列をアタッチします`DefineUnmanagedResource`します。  
+ 次のコードサンプルでは、を使用して`DefineUnmanagedResource`、アンマネージリソースを表すバイト配列を作成し、動的アセンブリにアタッチします。  
   
  [!code-cpp[AssemblyBuilder_DefineUnmanagedResource2#1](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilder_DefineUnmanagedResource2/CPP/assemblybuilder_defineunmanagedresource2.cpp#1)]
  [!code-csharp[AssemblyBuilder_DefineUnmanagedResource2#1](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilder_DefineUnmanagedResource2/CS/assemblybuilder_defineunmanagedresource2.cs#1)]
@@ -1043,9 +1048,9 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">アンマネージ リソースが既に定義されています。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="resource" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="resource" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="DefineUnmanagedResource">
@@ -1087,15 +1092,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アセンブリは、アンマネージ リソースを 1 つだけ関連付けることができます。 つまり、呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>または<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のいずれかが呼び出された後にいずれか以前、System.ArgumentException がスローされます。 複数のアンマネージ リソースを (共通言語ランタイムでは提供されません)、Microsoft ResMerge ユーティリティなどのツールとマージする必要があります。  
+ アセンブリは、1つのアンマネージリソースのみに関連付けることができます。 これは、いずれ<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>か<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のメソッドが呼び出された後、またはを呼び出すと、ArgumentException がスローされることを意味します。 複数のアンマネージリソースを Microsoft ResMerge ユーティリティなどのツールとマージする必要があります (共通言語ランタイムでは提供されません)。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次の例への呼び出しを示して`DefineUnmanagedResource`、外部のリソース ファイルを渡します。  
+ 次の例は`DefineUnmanagedResource`、外部リソースファイルを渡すの呼び出しを示しています。  
   
  [!code-cpp[AssemblyBuilder_DefineUnmanagedResource#3](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilder_DefineUnmanagedResource/CPP/assemblybuilder_defineunmanagedresource.cpp#3)]
  [!code-csharp[AssemblyBuilder_DefineUnmanagedResource#3](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilder_DefineUnmanagedResource/CS/assemblybuilder_defineunmanagedresource.cs#3)]
@@ -1105,10 +1110,10 @@
         </remarks>
         <exception cref="T:System.ArgumentException">アンマネージ リソースが既に定義されています。  
   
-または 
+- または - 
 ファイル <paramref name="resourceFileName" /> が読み取り可能ではありません。  
   
-または 
+- または - 
  <paramref name="resourceFileName" /> が空の文字列 ("") です。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="resourceFileName" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.IO.FileNotFoundException"><paramref name="resourceFileName" /> が見つかりません。  
@@ -1116,8 +1121,8 @@
 または 
  <paramref name="resourceFileName" /> はディレクトリです。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">FileIOPermissionAccess.Read アクセス許可がリソース ファイルにアクセスするために必要な<paramref name="resourceFileName" />します。</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">リソースファイル<paramref name="resourceFileName" />にアクセスするには、FileIOPermissionAccess アクセス許可が必要です。</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="DefineVersionInfoResource">
@@ -1161,19 +1166,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アセンブリは、アンマネージ リソースを 1 つだけ関連付けることができます。 つまり、呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>または<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のいずれかが呼び出された後にいずれか以前、System.ArgumentException がスローされます。 複数のアンマネージ リソースを (共通言語ランタイム SDK では提供されません)、Microsoft ResMerge ユーティリティなどのツールとマージする必要があります。  
+ アセンブリは、1つのアンマネージリソースのみに関連付けることができます。 これは、いずれ<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>か<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のメソッドが呼び出された後、またはを呼び出すと、ArgumentException がスローされることを意味します。 複数のアンマネージリソースを Microsoft ResMerge ユーティリティなどのツールにマージする必要があります (共通言語ランタイム SDK では提供されません)。  
   
- 空の引数の文字列は単一の空白として書き込まれます。 スペースは、引数の文字列内の null 文字に置き換えられます。  
+ 空の引数文字列は、1つのスペースとして書き込まれます。 引数文字列では、null 文字の代わりにスペースが使用されます。  
   
- 情報の推論は、`AssemblyName`オブジェクトがこの動的アセンブリを定義するために使用します。 このアセンブリのカスタム属性で指定された情報を上書きする、`AssemblyName`オブジェクト。  
+ この情報は、この動的`AssemblyName`アセンブリを定義するために使用されるオブジェクトから推論されます。 このアセンブリのカスタム属性は、オブジェクトで指定`AssemblyName`されている情報をオーバーライドします。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次の例は、の使用方法を示します`DefineVersionInfoResource`します。  
+ 次の例は、の`DefineVersionInfoResource`使用方法を示しています。  
   
  [!code-cpp[AssemblyBuilder_DefineVersionInfoResource#1](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilder_DefineVersionInfoResource/CPP/assemblybuilder_defineversioninforesource.cpp#1)]
  [!code-csharp[AssemblyBuilder_DefineVersionInfoResource#1](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilder_DefineVersionInfoResource/CS/assemblybuilder_defineversioninforesource.cs#1)]
@@ -1183,10 +1188,11 @@
         </remarks>
         <exception cref="T:System.ArgumentException">アンマネージ バージョン情報リソースが既に定義されています。  
   
-または 
-アンマネージ バージョン情報が大きすぎて、永続化できません。</exception>
+ - または -  
+  
+ アンマネージ バージョン情報が大きすぎて、永続化できません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="DefineVersionInfoResource">
@@ -1231,19 +1237,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アセンブリは、アンマネージ リソースを 1 つだけ関連付けることができます。 つまり、呼び出す<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>または<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のいずれかが呼び出された後にいずれか以前、System.ArgumentException がスローされます。 複数のアンマネージ リソースは、Microsoft などのツールとマージする必要があります`ResMerge`ユーティリティ (共通言語ランタイム SDK では提供されません)。  
+ アセンブリは、1つのアンマネージリソースのみに関連付けることができます。 これは、いずれ<xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource%2A>か<xref:System.Reflection.Emit.AssemblyBuilder.DefineUnmanagedResource%2A>のメソッドが呼び出された後、またはを呼び出すと、ArgumentException がスローされることを意味します。 複数のアンマネージリソースを Microsoft `ResMerge`ユーティリティなどのツールにマージする必要があります (共通言語ランタイム SDK では提供されません)。  
   
- 空の引数の文字列は単一の空白として書き込まれます。 スペースは、引数の文字列内の null 文字に置き換えられます。  
+ 空の引数文字列は、1つのスペースとして書き込まれます。 引数文字列では、null 文字の代わりにスペースが使用されます。  
   
- バージョン リソースの構造には、バージョン、言語、およびファイルの配布を識別するデータが含まれます。 インストール プログラム (バージョンのライブラリ ファイルのインストールで関数を使用します。DLL) ファイルからバージョン情報リソースを取得して、リソースからバージョン情報ブロックを抽出します。  
+ バージョンリソースの構造には、ファイルのバージョン、言語、および配布を識別するデータが含まれます。 インストールプログラムでは、ファイルインストールライブラリ (VER) の関数を使用します。DLL) を呼び出して、ファイルからバージョン情報リソースを取得し、リソースからバージョン情報ブロックを抽出します。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次の例は、の使用方法を示します`DefineVersionInfoResource`します。  
+ 次の例は、の`DefineVersionInfoResource`使用方法を示しています。  
   
  [!code-cpp[AssemblyBuilder_DefineVersionInfoResource#1](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilder_DefineVersionInfoResource/CPP/assemblybuilder_defineversioninforesource.cpp#1)]
  [!code-csharp[AssemblyBuilder_DefineVersionInfoResource#1](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilder_DefineVersionInfoResource/CS/assemblybuilder_defineversioninforesource.cs#1)]
@@ -1253,10 +1259,11 @@
         </remarks>
         <exception cref="T:System.ArgumentException">アンマネージ バージョン情報リソースが既に定義されています。  
   
-または 
-アンマネージ バージョン情報が大きすぎて、永続化できません。</exception>
+ - または -  
+  
+ アンマネージ バージョン情報が大きすぎて、永続化できません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="EntryPoint">
@@ -1276,6 +1283,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1288,7 +1296,7 @@
         <value>このアセンブリのエントリ ポイント。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -1387,7 +1395,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 参照してください<xref:System.Reflection.AssemblyName>アセンブリの表示名の形式の説明についてはします。  
+ アセンブリ<xref:System.Reflection.AssemblyName>の表示名の形式の説明については、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1418,6 +1426,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1426,7 +1435,7 @@
         <ReturnType>System.Object[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="inherit" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="inherit" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="inherit">この型のオブジェクトでは、この引数は無視されます。</param>
@@ -1450,6 +1459,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1458,8 +1468,8 @@
         <ReturnType>System.Object[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attributeType" Type="System.Type" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
-        <Parameter Name="inherit" Type="System.Boolean" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="attributeType" Type="System.Type" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
+        <Parameter Name="inherit" Type="System.Boolean" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="attributeType">属性の派生元となる基本型。</param>
@@ -1485,6 +1495,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1500,7 +1511,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- リフレクションのみのコンテキストに読み込まれるコードでカスタム属性そのものが定義されている場合、リフレクションのみのコンテキスト内のコードのカスタム属性を調べるには、このメソッドを使用します。 などのメソッド<xref:System.Attribute.GetCustomAttributes%2A?displayProperty=nameWithType>と<xref:System.Reflection.Assembly.GetCustomAttributes%2A?displayProperty=nameWithType>属性のインスタンスを作成するため、このような場合では使用できません。 リフレクションのみのコンテキストでコードを実行できません。 詳細と例のコードについて、次を参照してください。、<xref:System.Reflection.CustomAttributeData>クラス。  
+ このメソッドは、リフレクションのみのコンテキストでコードのカスタム属性を確認するために使用します。ただし、カスタム属性自体がリフレクションのみのコンテキストに読み込まれているコードで定義されている場合に使用します。 <xref:System.Attribute.GetCustomAttributes%2A?displayProperty=nameWithType> や<xref:System.Reflection.Assembly.GetCustomAttributes%2A?displayProperty=nameWithType>などのメソッドは、属性のインスタンスを作成するため、このような場合には使用できません。 リフレクションのみのコンテキストでコードを実行することはできません。 詳細とコード例については、 <xref:System.Reflection.CustomAttributeData>クラスを参照してください。  
   
  ]]></format>
         </remarks>
@@ -1542,10 +1553,10 @@
         <summary>指定した名前の動的モジュールを返します。</summary>
         <returns>要求された動的モジュールを表す ModuleBuilder オブジェクト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="name" /> の長さが 0 です。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="GetExportedTypes">
@@ -1565,6 +1576,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1579,7 +1591,7 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは実装されていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="GetFile">
@@ -1599,6 +1611,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1612,7 +1625,7 @@
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="name">指定されたファイルの名前。</param>
@@ -1622,13 +1635,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `name` ファイルへのパスを含めないでください。  
+ `name`ファイルへのパスを含めないでください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは現在サポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="GetFiles">
@@ -1648,6 +1661,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1661,7 +1675,7 @@
         <ReturnType>System.IO.FileStream[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="getResourceModules" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="getResourceModules" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="getResourceModules">リソース モジュールを含める場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
@@ -1670,7 +1684,7 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは現在サポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -1721,6 +1735,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1729,7 +1744,7 @@
         <ReturnType>System.Reflection.Module[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="getResourceModules" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="getResourceModules" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="getResourceModules">リソース モジュールを含める場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
@@ -1776,7 +1791,7 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは現在サポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="GetManifestResourceNames">
@@ -1812,9 +1827,9 @@
         <summary>このアセンブリから、指定されたマニフェスト リソースを読み込みます。</summary>
         <returns>すべてのリソースの名前を格納している文字列型の配列。<see langword="String" /></returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.NotSupportedException">このメソッドは、動的アセンブリではサポートされていません。 マニフェスト リソース名を取得するには、<see cref="M:System.Reflection.Assembly.GetManifestResourceNames" /> を使用します。</exception>
+        <exception cref="T:System.NotSupportedException">このメソッドは、動的アセンブリではサポートされていません。 マニフェスト リソース名を取得するには、 <see cref="M:System.Reflection.Assembly.GetManifestResourceNames" />を使用します。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="GetManifestResourceStream">
@@ -1865,7 +1880,7 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは現在サポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="GetManifestResourceStream">
@@ -1884,6 +1899,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1892,8 +1908,8 @@
         <ReturnType>System.IO.Stream</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="System.Type" Index="0" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
-        <Parameter Name="name" Type="System.String" Index="1" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="type" Type="System.Type" Index="0" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
+        <Parameter Name="name" Type="System.String" Index="1" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="type">マニフェスト リソース名のスコープを指定するために名前空間を使用する型。</param>
@@ -1904,18 +1920,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 返された<xref:System.IO.Stream>はリソースの先頭に設定、ファイル ポインターがあります。  
+ 返される<xref:System.IO.Stream>は、ファイルポインターがリソースの先頭に設定されています。  
   
    
   
 ## Examples  
- 場合の完全名`type`"MyNameSpace.MyClasses"と`name`「ドット」 `GetManifestResourceStream` MyNameSpace.Dot という名前のリソースが検索されます。  
+ の完全名が " `type` MyNameSpace `name` " で、が "Dot" の場合、 `GetManifestResourceStream`は MyNameSpace という名前のリソースを検索します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは現在サポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
         <related type="Article" href="~/docs/framework/app-domains/assembly-manifest.md">アセンブリ マニフェスト</related>
       </Docs>
     </Member>
@@ -1934,6 +1950,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1947,7 +1964,7 @@
         <ReturnType>System.Reflection.Module</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="name">要求するモジュールの名前。</param>
@@ -1971,6 +1988,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1979,7 +1997,7 @@
         <ReturnType>System.Reflection.Module[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="getResourceModules" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="getResourceModules" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="getResourceModules">リソース モジュールを含める場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
@@ -2003,6 +2021,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2011,7 +2030,7 @@
         <ReturnType>System.Reflection.AssemblyName</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="copiedName" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="copiedName" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="copiedName">シャドウ コピーの後でコード ベースをアセンブリの場所に設定する場合は <see langword="true" />。コード ベースを元の場所に設定する場合は <see langword="false" />。</param>
@@ -2035,6 +2054,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2050,9 +2070,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、参照先アセンブリの完全な一覧を返しません。 カスタム属性を適用する場合など、<xref:System.Reflection.Emit.AssemblyBuilder>属性が定義されているアセンブリは、このメソッドによって返される一覧に含まれています。 ただし、使用する場合、<xref:System.Type>型が含まれていないこと、メソッドのパラメーターの型を指定するオブジェクト。  
+ このメソッドは、参照されたアセンブリの完全な一覧を返しません。 たとえば、カスタム属性をに<xref:System.Reflection.Emit.AssemblyBuilder>適用する場合、属性が定義されているアセンブリは、このメソッドによって返されるリストに含まれます。 ただし、オブジェクトを<xref:System.Type>使用してメソッドパラメーターの型を指定する場合、その型は含まれません。  
   
- 参照アセンブリの完全な一覧を入手するには、アセンブリを保存、別のアプリケーション ドメイン、および呼び出しに読み込む、<xref:System.Reflection.Assembly.GetReferencedAssemblies%2A?displayProperty=nameWithType>メソッド。  
+ 参照アセンブリの完全な一覧を取得するには、アセンブリを保存し、別のアプリケーションドメインに読み込ん<xref:System.Reflection.Assembly.GetReferencedAssemblies%2A?displayProperty=nameWithType>で、メソッドを呼び出します。  
   
  ]]></format>
         </remarks>
@@ -2083,6 +2103,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2091,7 +2112,7 @@
         <ReturnType>System.Reflection.Assembly</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="culture" Type="System.Globalization.CultureInfo" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="culture" Type="System.Globalization.CultureInfo" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="culture">指定されたカルチャ。</param>
@@ -2101,9 +2122,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サテライト アセンブリには、メイン アプリケーション アセンブリは、ローカライズできない実行可能コードと、既定またはニュートラル カルチャとして機能する単一カルチャ用のリソースを格納、ローカライズされたリソースが含まれます。  
+ サテライトアセンブリにはローカライズされたリソースが含まれています。メインアプリケーションアセンブリには、ローカライズできない実行可能コードと、既定のカルチャまたはニュートラルカルチャとして機能する単一カルチャ用のリソースが含まれています。  
   
- 現在のアセンブリ バージョンを使用するには、このメソッドを呼び出します。  
+ 現在のアセンブリバージョンを使用するには、このメソッドを呼び出します。  
   
  ]]></format>
         </remarks>
@@ -2127,6 +2148,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2135,8 +2157,8 @@
         <ReturnType>System.Reflection.Assembly</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="culture" Type="System.Globalization.CultureInfo" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
-        <Parameter Name="version" Type="System.Version" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="culture" Type="System.Globalization.CultureInfo" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
+        <Parameter Name="version" Type="System.Version" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="culture">指定されたカルチャ。</param>
@@ -2147,9 +2169,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サテライト アセンブリには、メイン アプリケーション アセンブリは、ローカライズできない実行可能コードと、既定またはニュートラル カルチャとして機能する単一カルチャ用のリソースを格納、ローカライズされたリソースが含まれます。  
+ サテライトアセンブリにはローカライズされたリソースが含まれています。メインアプリケーションアセンブリには、ローカライズできない実行可能コードと、既定のカルチャまたはニュートラルカルチャとして機能する単一カルチャ用のリソースが含まれています。  
   
- 呼び出す、<xref:System.Reflection.Assembly.GetSatelliteAssembly%28System.Globalization.CultureInfo%29>の現在のアセンブリ バージョンを使用するオーバー ロードします。  
+ <xref:System.Reflection.Assembly.GetSatelliteAssembly%28System.Globalization.CultureInfo%29>オーバーロードを呼び出して、現在のアセンブリバージョンを使用します。  
   
  ]]></format>
         </remarks>
@@ -2174,6 +2196,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2182,9 +2205,9 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
-        <Parameter Name="throwOnError" Type="System.Boolean" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
-        <Parameter Name="ignoreCase" Type="System.Boolean" Index="2" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
+        <Parameter Name="throwOnError" Type="System.Boolean" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
+        <Parameter Name="ignoreCase" Type="System.Boolean" Index="2" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="name">検索する型の名前。</param>
@@ -2196,7 +2219,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出すことによって作成されるまで、型が見つかりません、<xref:System.Reflection.Emit.TypeBuilder.CreateType%2A>メソッド。  
+ <xref:System.Reflection.Emit.TypeBuilder.CreateType%2A>メソッドを呼び出すことによって作成されるまで、型は見つかりません。  
   
  ]]></format>
         </remarks>
@@ -2217,6 +2240,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2231,7 +2255,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Reflection.Emit.AssemblyBuilder> オブジェクトは、常に、動的アセンブリを表すし、そのためは読み込まれたアセンブリをグローバル アセンブリ キャッシュから。  
+ <xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトは常に動的アセンブリを表しているため、グローバルアセンブリキャッシュから読み込まれることはありません。  
   
  ]]></format>
         </remarks>
@@ -2251,6 +2275,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2281,6 +2306,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2293,7 +2319,7 @@
         <value>共通言語ランタイムのバージョンを表す文字列。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="IsDefined">
@@ -2311,6 +2337,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2319,8 +2346,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attributeType" Type="System.Type" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
-        <Parameter Name="inherit" Type="System.Boolean" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
+        <Parameter Name="attributeType" Type="System.Type" Index="0" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
+        <Parameter Name="inherit" Type="System.Boolean" Index="1" FrameworkAlternate="netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0;netcore-3.0" />
       </Parameters>
       <Docs>
         <param name="attributeType">テストする属性の型。</param>
@@ -2363,7 +2390,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Reflection.Emit.AssemblyBuilder>オブジェクトは常に、動的アセンブリを表します。  
+ オブジェクト<xref:System.Reflection.Emit.AssemblyBuilder>は、常に動的アセンブリを表します。  
   
  ]]></format>
         </remarks>
@@ -2386,6 +2413,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2399,7 +2427,7 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">このメソッドは現在サポートされていません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="ManifestModule">
@@ -2494,11 +2522,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.PermissionSet> オブジェクトは、パスなどの機密情報を含めることができます。 そのため、これらのオブジェクトにアクセスするには、完全な信頼が必要です。  
+ <xref:System.Security.PermissionSet>オブジェクトには、パスなどの機密情報を含めることができます。 そのため、これらのオブジェクトにアクセスするには完全な信頼が必要です。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="ReflectionOnly">
@@ -2516,6 +2544,7 @@
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -2530,10 +2559,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- リフレクションのみのコンテキストでの動的アセンブリを出力する次のように指定します。<xref:System.Reflection.Emit.AssemblyBuilderAccess.ReflectionOnly?displayProperty=nameWithType>を作成するとき、<xref:System.Reflection.Emit.AssemblyBuilder>します。 動的アセンブリがリフレクションのみのコンテキストで発生した場合は、そのコードを実行できません。  
+ リフレクションのみのコンテキストで動的アセンブリを出力するには<xref:System.Reflection.Emit.AssemblyBuilderAccess.ReflectionOnly?displayProperty=nameWithType> <xref:System.Reflection.Emit.AssemblyBuilder>、を作成するときにを指定します。 動的アセンブリがリフレクションのみのコンテキストで生成される場合、そのコードを実行することはできません。  
   
 > [!NOTE]
->  使用することができます、動的アセンブリをディスクに保存した後、<xref:System.Reflection.Assembly.ReflectionOnlyLoad%2A?displayProperty=nameWithType>メソッドをリフレクションのみのコンテキストに完了したアセンブリを読み込みます。 ただし、アセンブリが変更不要になったことができます。  
+>  動的アセンブリをディスクに保存した後は、 <xref:System.Reflection.Assembly.ReflectionOnlyLoad%2A?displayProperty=nameWithType>メソッドを使用して、完成したアセンブリをリフレクションのみのコンテキストに読み込むことができます。 ただし、アセンブリを変更することはできません。  
   
  ]]></format>
         </remarks>
@@ -2591,18 +2620,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、この動的アセンブリで定義されているすべての一時的ではない動的モジュールを保存します。 一時動的モジュールは保存されません。 アセンブリ ファイル名、モジュールのいずれかの名前と同じことができます。 そうである場合は、そのモジュール内で、アセンブリ マニフェストが格納されています。 `assemblyFileName` すべてのアセンブリ内に含まれるモジュールの名前を異なっていてもかまいません。 そうである場合、アセンブリ ファイルには、アセンブリ マニフェストだけが含まれています。  
+ このメソッドは、この動的アセンブリで定義されている非遷移的動的モジュールをすべて保存します。 一時的な動的モジュールは保存されません。 アセンブリファイル名は、モジュールの1つの名前と同じにすることができます。 その場合、アセンブリマニフェストはそのモジュール内に格納されます。 `assemblyFileName`は、アセンブリ内に含まれるすべてのモジュールの名前とは異なる場合があります。 その場合、アセンブリファイルにはアセンブリマニフェストだけが格納されます。  
   
- 各<xref:System.Resources.ResourceWriter>を使用して取得<xref:System.Reflection.Emit.AssemblyBuilder.DefineResource%2A>、このメソッドは、.resources ファイルと呼び出しを書き込みます<xref:System.Resources.ResourceWriter.Close%2A>ストリームを閉じます。  
+ を使用<xref:System.Resources.ResourceWriter>して<xref:System.Reflection.Emit.AssemblyBuilder.DefineResource%2A>取得されたごとに、このメソッドは<xref:System.Resources.ResourceWriter.Close%2A> .resources ファイルを書き込み、を呼び出してストリームを閉じます。  
   
- `assemblyFileName`ドライブまたはディレクトリのコンポーネントがない場合、単純なファイル名を指定する必要があります。 特定のディレクトリにアセンブリを作成するには、いずれかを使用、<xref:System.AppDomain.DefineDynamicAssembly%2A>ターゲット ディレクトリの引数を受け取るメソッド。  
+ は`assemblyFileName` 、ドライブまたはディレクトリコンポーネントのない単純なファイル名である必要があります。 特定のディレクトリにアセンブリを作成するには、ターゲットディレクトリ<xref:System.AppDomain.DefineDynamicAssembly%2A>引数を受け取るメソッドのいずれかを使用します。  
   
- .NET Framework version 2.0 では、このオーバー ロードで、<xref:System.Reflection.Emit.AssemblyBuilder.Save%2A>メソッドの呼び出しと同じですが、<xref:System.Reflection.Emit.AssemblyBuilder.Save%28System.String%2CSystem.Reflection.PortableExecutableKinds%2CSystem.Reflection.ImageFileMachine%29>メソッドのオーバー ロードで<xref:System.Reflection.PortableExecutableKinds.ILOnly>の`portableExecutableKind`パラメーターと<xref:System.Reflection.ImageFileMachine.I386>の`imageFileMachine`パラメーター。  
+ .NET Framework バージョン2.0 で<xref:System.Reflection.Emit.AssemblyBuilder.Save%2A>は、メソッドのこのオーバーロードは、 `portableExecutableKind`パラメーターと`imageFileMachine` <xref:System.Reflection.ImageFileMachine.I386>パラメーターに<xref:System.Reflection.Emit.AssemblyBuilder.Save%28System.String%2CSystem.Reflection.PortableExecutableKinds%2CSystem.Reflection.ImageFileMachine%29> <xref:System.Reflection.PortableExecutableKinds.ILOnly>対してメソッドオーバーロードを呼び出すことと同じです。  
   
    
   
 ## Examples  
- 次のコード サンプルは、動的アセンブリを作成し、しを使用してローカル ディスクに永続化`Save`します。  
+ 次のコードサンプルでは、動的アセンブリを作成し、を使用して`Save`ローカルディスクに永続化します。  
   
  [!code-cpp[System.Reflection.Emit.AssemblyBuilder.Save Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.Save Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.AssemblyBuilder.Save Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.AssemblyBuilder.Save Example/CS/source.cs#1)]
@@ -2612,26 +2641,26 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="assemblyFileName" /> の長さは 0 です。  
   
-または 
+- または - 
 アセンブリに同じ名前で複数のモジュール リソース ファイルがあります。  
   
-または 
+- または - 
 アセンブリの保存先ディレクトリが無効です。  
   
-または 
+- または - 
  <paramref name="assemblyFileName" /> が単純なファイル名 (たとえば、ディレクトリまたはドライブのコンポーネントを持つ) でないか、複数のアンマネージ リソース (バージョン情報のリソースを含む) がこのアセンブリで定義されています。  
   
-または 
+- または - 
 <see cref="T:System.Reflection.AssemblyCultureAttribute" /> の <see langword="CultureInfo" /> 文字列が有効な文字列ではなく、かつ、このメソッドを呼び出す前に <see cref="M:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource(System.String,System.String,System.String,System.String,System.String)" /> が呼び出されました。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="assemblyFileName" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.InvalidOperationException">このアセンブリは既に保存されています。  
   
-または 
+- または - 
 このアセンブリのアクセスは <see langword="Run" /><see cref="T:System.Reflection.Emit.AssemblyBuilderAccess" /> です</exception>
         <exception cref="T:System.IO.IOException">保存中に出力エラーが発生しました。</exception>
         <exception cref="T:System.NotSupportedException">ディスクに書き込まれるアセンブリのモジュール内のいずれの型についても <see cref="M:System.Reflection.Emit.TypeBuilder.CreateType" /> が呼び出されませんでした。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">書き込む = true を設定または追加 = true が指定したファイル名にこのアセンブリを保存するために必要な。</permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">このアセンブリを指定されたファイル名に保存するには、Write = true または Append = true が必要です。</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="Save">
@@ -2675,13 +2704,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`imageFileMachine`と`portableExecutableKind`、互換性のない`imageFileMachine`よりも優先`portableExecutableKind`します。 例外をスローすることはありません。 たとえば、指定した<xref:System.Reflection.ImageFileMachine.I386?displayProperty=nameWithType>で<xref:System.Reflection.PortableExecutableKinds.PE32Plus?displayProperty=nameWithType>、<xref:System.Reflection.PortableExecutableKinds.PE32Plus?displayProperty=nameWithType>は無視されます。  
+ と`imageFileMachine` `imageFileMachine` `portableExecutableKind`の互換性がない場合、はよりも優先されます。 `portableExecutableKind` 例外をスローすることはありません。 たとえば、を指定<xref:System.Reflection.ImageFileMachine.I386?displayProperty=nameWithType> <xref:System.Reflection.PortableExecutableKinds.PE32Plus?displayProperty=nameWithType>した場合、は無視されます。<xref:System.Reflection.PortableExecutableKinds.PE32Plus?displayProperty=nameWithType>  
   
- このメソッドは、この動的アセンブリで定義されているすべての一時的ではない動的モジュールを保存します。 一時動的モジュールは保存されません。 アセンブリ ファイル名、モジュールのいずれかの名前と同じことができます。 そうである場合は、そのモジュール内で、アセンブリ マニフェストが格納されています。 `assemblyFileName` すべてのアセンブリ内に含まれるモジュールの名前を異なっていてもかまいません。 そうである場合、アセンブリ ファイルには、アセンブリ マニフェストだけが含まれています。  
+ このメソッドは、この動的アセンブリで定義されている非遷移的動的モジュールをすべて保存します。 一時的な動的モジュールは保存されません。 アセンブリファイル名は、モジュールの1つの名前と同じにすることができます。 その場合、アセンブリマニフェストはそのモジュール内に格納されます。 `assemblyFileName`は、アセンブリ内に含まれるすべてのモジュールの名前とは異なる場合があります。 その場合、アセンブリファイルにはアセンブリマニフェストだけが格納されます。  
   
- 各<xref:System.Resources.ResourceWriter>を使用して取得<xref:System.Reflection.Emit.AssemblyBuilder.DefineResource%2A>、このメソッドは、.resources ファイルと呼び出しを書き込みます<xref:System.Resources.ResourceWriter.Close%2A>ストリームを閉じます。  
+ を使用<xref:System.Resources.ResourceWriter>して<xref:System.Reflection.Emit.AssemblyBuilder.DefineResource%2A>取得されたごとに、このメソッドは<xref:System.Resources.ResourceWriter.Close%2A> .resources ファイルを書き込み、を呼び出してストリームを閉じます。  
   
- `assemblyFileName`ドライブまたはディレクトリのコンポーネントがない場合、単純なファイル名を指定する必要があります。 特定のディレクトリにアセンブリを作成するには、いずれかを使用、<xref:System.AppDomain.DefineDynamicAssembly%2A>ターゲット ディレクトリの引数を受け取るメソッド。  
+ は`assemblyFileName` 、ドライブまたはディレクトリコンポーネントのない単純なファイル名である必要があります。 特定のディレクトリにアセンブリを作成するには、ターゲットディレクトリ<xref:System.AppDomain.DefineDynamicAssembly%2A>引数を受け取るメソッドのいずれかを使用します。  
   
  ]]></format>
         </remarks>
@@ -2690,23 +2719,23 @@
 または 
 アセンブリに同じ名前で複数のモジュール リソース ファイルがあります。  
   
-または 
+- または - 
 アセンブリの保存先ディレクトリが無効です。  
   
 または 
  <paramref name="assemblyFileName" /> が単純なファイル名 (たとえば、ディレクトリまたはドライブのコンポーネントを持つ) でないか、複数のアンマネージ リソース (バージョン情報のリソースを含む) がこのアセンブリで定義されています。  
   
-または 
+- または - 
 <see cref="T:System.Reflection.AssemblyCultureAttribute" /> の <see langword="CultureInfo" /> 文字列が有効な文字列ではなく、かつ、このメソッドを呼び出す前に <see cref="M:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource(System.String,System.String,System.String,System.String,System.String)" /> が呼び出されました。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="assemblyFileName" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.InvalidOperationException">このアセンブリは既に保存されています。  
   
-または 
+- または - 
 このアセンブリのアクセスは <see langword="Run" /><see cref="T:System.Reflection.Emit.AssemblyBuilderAccess" /> です</exception>
         <exception cref="T:System.IO.IOException">保存中に出力エラーが発生しました。</exception>
         <exception cref="T:System.NotSupportedException">ディスクに書き込まれるアセンブリのモジュール内のいずれの型についても <see cref="M:System.Reflection.Emit.TypeBuilder.CreateType" /> が呼び出されませんでした。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">書き込む = true を設定または追加 = true が指定したファイル名にこのアセンブリを保存するために必要な。</permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">このアセンブリを指定されたファイル名に保存するには、Write = true または Append = true が必要です。</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="SecurityRuleSet">
@@ -2737,7 +2766,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]レベル 2 の透過性を常に強制 (<xref:System.Security.SecurityRuleSet.Level2?displayProperty=nameWithType>) 動的アセンブリを生成します。  
+ は[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)] 、生成する動的アセンブリに<xref:System.Security.SecurityRuleSet.Level2?displayProperty=nameWithType>対して常にレベル2の透過性 () を適用します。  
   
  ]]></format>
         </remarks>
@@ -2798,15 +2827,15 @@
 ## Remarks  
   
 > [!NOTE]
->  <xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A> 宣言セキュリティ属性を設定するのには使用できません。 オーバー ロードのいずれかを使用して、<xref:System.AppDomain.DefineDynamicAssembly%2A>かかりますが必要に応じて、省略可能なし、アクセス許可が拒否されました。  
+>  <xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>宣言セキュリティ属性の設定には使用できません。 必須、オプション、および拒否<xref:System.AppDomain.DefineDynamicAssembly%2A>された権限を受け取るのオーバーロードのいずれかを使用します。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次のコード サンプルの使用を示します`SetCustomAttribute`内<xref:System.Reflection.Emit.AssemblyBuilder>を使用して、<xref:System.Reflection.Emit.CustomAttributeBuilder>します。  
+ 次のコードサンプルは、を使用`SetCustomAttribute`し<xref:System.Reflection.Emit.AssemblyBuilder>て<xref:System.Reflection.Emit.CustomAttributeBuilder>内でを使用する方法を示しています。  
   
  [!code-cpp[AssemblyBuilder_SetCustomAttribute1#1](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilder_SetCustomAttribute1/CPP/assemblybuilder_setcustomattribute1.cpp#1)]
  [!code-csharp[AssemblyBuilder_SetCustomAttribute1#1](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilder_SetCustomAttribute1/CS/assemblybuilder_setcustomattribute1.cs#1)]
@@ -2814,9 +2843,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="con" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="con" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="SetCustomAttribute">
@@ -2867,20 +2896,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 書式を設定する方法の詳細については、ECMA Partition II ドキュメント メタデータの仕様を参照してください`binaryAttribute`します。 ドキュメントはオンラインで入手できます。MSDN の「[ECMA C# and Common Language Infrastructure Standards](https://go.microsoft.com/fwlink/?LinkID=99212)」 (ECMA の C# および共通言語基盤の標準規格) と、ECMA のインターナショナル Web サイトにある「[Standard ECMA-335 - Common Language Infrastructure (CLI)](https://go.microsoft.com/fwlink/?LinkID=65552)」を参照してください。  
+ 書式設定`binaryAttribute`方法の詳細については、ECMA Partition II のドキュメントのメタデータの仕様を参照してください。 ドキュメントはオンラインで入手できます。MSDN の「[ECMA C# and Common Language Infrastructure Standards](https://go.microsoft.com/fwlink/?LinkID=99212)」 (ECMA の C# および共通言語基盤の標準規格) と、ECMA のインターナショナル Web サイトにある「[Standard ECMA-335 - Common Language Infrastructure (CLI)](https://go.microsoft.com/fwlink/?LinkID=65552)」を参照してください。  
   
- `RuntimeConstructorInfo` 特殊な種類は、システムによって生成されます。 派生した、<xref:System.Reflection.ConstructorInfo>クラス、および<xref:System.Reflection.ConstructorInfo>リフレクションを通じて取得したオブジェクトのインスタンスでは実際には、`RuntimeConstructorInfo`します。  
-  
-> [!NOTE]
->  <xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A> 宣言セキュリティ属性を設定するのには使用できません。 オーバー ロードのいずれかを使用して、<xref:System.AppDomain.DefineDynamicAssembly%2A>かかりますが必要に応じて、省略可能なし、アクセス許可が拒否されました。  
+ `RuntimeConstructorInfo`は、システムによって生成される特殊な型です。 これは<xref:System.Reflection.ConstructorInfo>クラスから派生し、リフレクション<xref:System.Reflection.ConstructorInfo>を通じて取得したすべてのオブジェクトは`RuntimeConstructorInfo`、実際にはのインスタンスです。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  <xref:System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute%2A>宣言セキュリティ属性の設定には使用できません。 必須、オプション、および拒否<xref:System.AppDomain.DefineDynamicAssembly%2A>された権限を受け取るのオーバーロードのいずれかを使用します。  
+  
+> [!NOTE]
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次のコード サンプルの使用を示します`SetCustomAttribute`を動的に生成されたアセンブリにカスタム属性を追加します。  
+ 次の`SetCustomAttribute`コードサンプルは、を使用して、動的に生成されたアセンブリにカスタム属性をアタッチする方法を示しています。  
   
  [!code-cpp[AssemblyBuilder_SetCustomAttribute2#1](~/samples/snippets/cpp/VS_Snippets_CLR/AssemblyBuilder_SetCustomAttribute2/CPP/assemblybuilder_setcustomattribute2.cpp#1)]
  [!code-csharp[AssemblyBuilder_SetCustomAttribute2#1](~/samples/snippets/csharp/VS_Snippets_CLR/AssemblyBuilder_SetCustomAttribute2/CS/assemblybuilder_setcustomattribute2.cs#1)]
@@ -2891,7 +2920,7 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="con" /> または <paramref name="binaryAttribute" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="con" /> は <see langword="RuntimeConstructorInfo" /> オブジェクトではありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="SetEntryPoint">
@@ -2939,7 +2968,7 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="entryMethod" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="entryMethod" /> は、このアセンブリ内に含まれません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="SetEntryPoint">
@@ -2980,14 +3009,14 @@
 ## Remarks  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーが不要<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>フラグ。 (を参照してください[出力のセキュリティ関連事項リフレクション](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md))。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメンバーはフラグを<xref:System.Security.Permissions.ReflectionPermission>使用する<xref:System.Security.Permissions.ReflectionPermissionFlag.ReflectionEmit?displayProperty=nameWithType>必要がなくなりました。 (「[リフレクション出力のセキュリティの問題」を](~/docs/framework/reflection-and-codedom/security-issues-in-reflection-emit.md)参照してください)。この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="entryMethod" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.InvalidOperationException"><paramref name="entryMethod" /> は、このアセンブリ内に含まれません。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">呼び出されたときに遅延バインディング メカニズムを通じてなど<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />します。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">などの機構を<see cref="M:System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])" />使用して遅延バインディングが呼び出された場合。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /> (関連する列挙体)</permission>
       </Docs>
     </Member>
     <Member MemberName="System.Runtime.InteropServices._AssemblyBuilder.GetIDsOfNames">
@@ -3034,7 +3063,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetIDsOfNames`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetIDsOfNames`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -3081,7 +3110,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetTypeInfo`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfo`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -3124,7 +3153,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::GetTypeInfoCount`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfoCount`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -3181,7 +3210,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、およびマネージ コードから呼び出さないでいます。 詳細については`IDispatch::Invoke`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::Invoke`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>

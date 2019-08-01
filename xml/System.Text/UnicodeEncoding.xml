@@ -1,5 +1,5 @@
 <Type Name="UnicodeEncoding" FullName="System.Text.UnicodeEncoding">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="5d2ec214f93cb27c6af80a6fcdc63bc0bb415411" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58714083" /></Metadata><TypeSignature Language="C#" Value="public class UnicodeEncoding : System.Text.Encoding" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="7fa0095e2b87ad54c8fa9c769e28a678a69cf69c" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68438701" /></Metadata><TypeSignature Language="C#" Value="public class UnicodeEncoding : System.Text.Encoding" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit UnicodeEncoding extends System.Text.Encoding" />
   <TypeSignature Language="DocId" Value="T:System.Text.UnicodeEncoding" />
   <TypeSignature Language="VB.NET" Value="Public Class UnicodeEncoding&#xA;Inherits Encoding" />
@@ -42,59 +42,59 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- エンコーディングは、Unicode 文字のセットをバイト シーケンスに変換するプロセスです。 デコードは、Unicode 文字のセットにエンコードされたバイトのシーケンスを変換するプロセスです。  
+ エンコーディングは、Unicode 文字のセットをバイト シーケンスに変換するプロセスです。 デコードとは、エンコードされたバイトシーケンスを Unicode 文字のセットに変換するプロセスです。  
   
- [Unicode 標準](https://go.microsoft.com/fwlink/?linkid=37123)コード ポイント (数値) をすべてサポートされているスクリプト内の各文字に割り当てます。 Unicode 変換形式 (UTF) は、そのコード ポイントをエンコードする方法です。 [Unicode 標準](https://go.microsoft.com/fwlink/?linkid=37123)次 UTFs を使用します。  
+ [Unicode 規格](https://go.microsoft.com/fwlink/?linkid=37123)では、サポートされているすべてのスクリプトの各文字にコードポイント (数値) が割り当てられます。 Unicode 変換形式 (UTF) は、そのコードポイントをエンコードする方法です。 [Unicode 標準](https://go.microsoft.com/fwlink/?linkid=37123)では、次の utfs を使用します。  
   
--   1 ~ 4 バイトのシーケンスとして各コード ポイントを表現する utf-8、します。  
+-   UTF-8。各コードポイントを 1 ~ 4 バイトのシーケンスとして表します。  
   
--   Utf-16、各コード ポイントを表す 1 ~ 2 の 16 ビット整数のシーケンスとして。  
+-   UTF-16。各コードポイントを 1 ~ 2 16 ビットの整数のシーケンスとして表します。  
   
--   Utf-32、32 ビット整数として各コード ポイントを表します。  
+-   32 UTF-8。各コードポイントを32ビット整数として表します。  
   
- UTFs とでサポートされているその他のエンコーディングの詳細については<xref:System.Text>を参照してください[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)します。  
+ Utfs およびで<xref:System.Text>サポートされているその他のエンコーディングの詳細については、「 [.NET Framework の文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」を参照してください。  
   
- <xref:System.Text.UnicodeEncoding>クラスは、utf-16 エンコーディングを表します。 エンコーダーは、いずれかビッグ エンディアン バイト順を使用できます (最上位バイト最初) またはリトル エンディアン バイト順 (最下位バイト最初)。 たとえば、としてシリアル化されます (コード ポイント u+0041) Latin Capital Letter は (16 進数) で次に示します。  
+ クラス<xref:System.Text.UnicodeEncoding>は utf-16 エンコーディングを表します。 エンコーダーでは、ビッグエンディアンバイト順 (最初に最上位バイト) またはリトルエンディアンバイト順 (最下位バイトを先頭) を使用できます。 たとえば、ラテン文字の大文字 A (コードポイント U + 0041 という) は、次のようにシリアル化されます (16 進数)。  
   
--   ビッグ エンディアン バイト順:00 00 00 41  
+-   ビッグエンディアンバイト順:00 00 00 41  
   
--   リトル エンディアン バイト順:41 00 00 00  
+-   リトルエンディアンバイト順:41 00 00 00  
   
- 特定のプラットフォームのネイティブのバイト順を使用して Unicode 文字を格納する方が効率的になります。 たとえば、intel ベースのコンピューターなど、リトル エンディアンのプラットフォームでリトル エンディアン バイト順を使用することをお勧めします。 <xref:System.Text.UnicodeEncoding>クラスは、Windows コード ページ (リトル エンディアン バイト順) の 1200 と 1201 (ビッグ エンディアン バイト順) に対応します。 呼び出すことによって、特定のアーキテクチャの「エンディアン」を指定できます、<xref:System.BitConverter.IsLittleEndian?displayProperty=nameWithType>メソッド。  
+ 一般に、特定のプラットフォームのネイティブバイト順序を使用して Unicode 文字を格納する方が効率的です。 たとえば、Intel コンピューターなどのリトルエンディアンプラットフォームでは、リトルエンディアンのバイト順を使用することをお勧めします。 クラス<xref:System.Text.UnicodeEncoding>は、Windows コードページ 1200 (リトルエンディアンバイト順) と 1201 (ビッグエンディアンバイト順) に対応しています。 特定のアーキテクチャの "エンディアン" を確認するには<xref:System.BitConverter.IsLittleEndian?displayProperty=nameWithType> 、メソッドを呼び出します。  
   
- 必要に応じて、<xref:System.Text.UnicodeEncoding>オブジェクトがバイト エンコーディング プロセスの結果のシーケンスに先頭バイトの配列、バイト順マーク (BOM) を提供します。 Preamble にバイト オーダー マーク (BOM) が含まれている場合は、バイト順と変換形式または UTF デコーダーが役立ちます。  
+ 必要に応じ<xref:System.Text.UnicodeEncoding>て、オブジェクトはバイト順マーク (BOM) を提供します。これは、エンコーディングプロセスによって生成されるバイトシーケンスにプレフィックスを付けることができるバイトの配列です。 プリアンブルにバイトオーダーマーク (BOM) が含まれている場合は、デコーダーがバイト順序と変換形式または UTF を決定するのに役立ちます。  
   
- 場合、<xref:System.Text.UnicodeEncoding>インスタンスが BOM を提供するよう構成を呼び出すことで取得することができます、<xref:System.Text.UnicodeEncoding.GetPreamble%2A>メソッド、メソッドは空の配列を返しますそれ以外の場合、します。 なお、場合でも、 <xref:System.Text.UnicodeEncoding> BOM のサポートのために、オブジェクトが構成されている、適切な; としてエンコードされたバイト ストリームの先頭の BOM を含める必要がありますのエンコード方法、<xref:System.Text.UnicodeEncoding>クラスしないで自動的にします。  
+ インスタンスが BOM を提供するように構成されている場合は、メソッド<xref:System.Text.UnicodeEncoding.GetPreamble%2A>を呼び出すことによって取得できます。それ以外の場合、メソッドは空の配列を返します。 <xref:System.Text.UnicodeEncoding> <xref:System.Text.UnicodeEncoding>オブジェクトが bom サポート用に構成されている場合でも、必要に応じて、エンコードされたバイトストリームの先頭に bom を含める必要が<xref:System.Text.UnicodeEncoding>あることに注意してください。クラスのエンコーディングメソッドでは、これは自動的には行われません。  
 
 > [!CAUTION]
-> エラーの検出を有効にして、クラスのインスタンスのセキュリティを強化するには、インスタンス化、<xref:System.Text.UnicodeEncoding>オブジェクトを呼び出すことによって、<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンス トラクターと設定、`throwOnInvalidBytes`引数`true`。 エラーの検出の無効な文字またはバイトのシーケンスを検出するメソッドがスローされます、<xref:System.ArgumentException>します。 エラーの検出、例外がスローされないと、無効なシーケンスは、通常は無視されます。  
+> エラー検出を有効にし、クラスインスタンスのセキュリティを強化するには、 <xref:System.Text.UnicodeEncoding> <xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンストラクターを呼び出し、その`throwOnInvalidBytes`引数をに`true`設定して、オブジェクトをインスタンス化する必要があります。 エラー検出を使用すると、無効な文字またはバイトのシーケンスを検出<xref:System.ArgumentException>するメソッドがをスローします。 エラー検出を行わないと、例外はスローされず、無効なシーケンスは通常は無視されます。  
   
- インスタンス化することができます、<xref:System.Text.UnicodeEncoding>するかどうか、バイト順マーク (BOM) を提供する、ビッグ エンディアンまたはリトル エンディアン エンコーディングするかどうか、およびエラーの検出を有効にするかどうかに応じて、方法数のオブジェクト。 次の表、<xref:System.Text.UnicodeEncoding>コンス トラクターと<xref:System.Text.Encoding>プロパティを返す、<xref:System.Text.UnicodeEncoding>オブジェクト。  
+ オブジェクトを<xref:System.Text.UnicodeEncoding>インスタンス化するには、バイト順マーク (BOM) を提供するかどうか、ビッグエンディアンまたはリトルエンディアンエンコーディングを使用するかどうか、エラー検出を有効にするかどうかなど、さまざまな方法があります。 次の表に、 <xref:System.Text.UnicodeEncoding>オブジェクトを<xref:System.Text.UnicodeEncoding>返す<xref:System.Text.Encoding>コンストラクターとプロパティを示します。  
   
-|メンバー|エンディアン|BOM|エラーの検出|  
+|メンバー|エンディアン|消費|エラー検出|  
 |------------|----------------|---------|---------------------|  
-|<xref:System.Text.Encoding.BigEndianUnicode%2A>|ビッグ エンディアン|はい|なし (置換フォールバック)|  
-|<xref:System.Text.Encoding.Unicode%2A?displayProperty=nameWithType>|リトル エンディアン|はい|なし (置換フォールバック)|  
-|<xref:System.Text.UnicodeEncoding.%23ctor?displayProperty=nameWithType>|リトル エンディアン|はい|なし (置換フォールバック)|  
-|<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%29>|構成可能|構成可能|なし (置換フォールバック)|  
+|<xref:System.Text.Encoding.BigEndianUnicode%2A>|ビッグエンディアン|はい|いいえ (置換フォールバック)|  
+|<xref:System.Text.Encoding.Unicode%2A?displayProperty=nameWithType>|リトルエンディアン|はい|いいえ (置換フォールバック)|  
+|<xref:System.Text.UnicodeEncoding.%23ctor?displayProperty=nameWithType>|リトルエンディアン|はい|いいえ (置換フォールバック)|  
+|<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%29>|構成可能|構成可能|いいえ (置換フォールバック)|  
 |<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29?displayProperty=nameWithType>|構成可能|構成可能|構成可能|  
   
- <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドでは、バイト数が、Unicode 文字のセットがエンコードされるかを判断します。 および<xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッドは、実際のエンコードを実行します。  
+ メソッドによって、Unicode 文字のセットをエンコードするバイト数が決定さ<xref:System.Text.UnicodeEncoding.GetBytes%2A>れ、メソッドは実際のエンコーディングを実行します。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- 同様に、<xref:System.Text.UnicodeEncoding.GetCharCount%2A>メソッドでは、文字数が発生するシーケンス (バイト単位) をデコードするかを判断します。 および<xref:System.Text.UnicodeEncoding.GetChars%2A>と<xref:System.Text.UnicodeEncoding.GetString%2A>メソッドは、実際のデコードを実行します。  
+ 同様に、 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>メソッドはバイトシーケンスをデコードする文字数を決定し、メソッドと<xref:System.Text.UnicodeEncoding.GetChars%2A> <xref:System.Text.UnicodeEncoding.GetString%2A>メソッドは実際のデコードを実行します。  
   
- エンコーダーまたはデコーダーがエンコードまたはデコード (100,000 文字のセグメントにエンコードされている 1,000,000 文字の文字列) などの複数のブロックにわたるデータと状態情報を保存、使用できる、<xref:System.Text.UnicodeEncoding.GetEncoder%2A>と<xref:System.Text.UnicodeEncoding.GetDecoder%2A>プロパティそれぞれします。  
+ 複数のブロックにまたがるデータをエンコードまたはデコードするときに状態情報を保存できるエンコーダーまたはデコーダー (10万文字セグメントでエンコードされた100万文字の文字列など) では<xref:System.Text.UnicodeEncoding.GetEncoder%2A> 、 <xref:System.Text.UnicodeEncoding.GetDecoder%2A>プロパティとプロパティを使用します。4.3.  
   
    
   
 ## Examples  
- 次の例では、バイト配列を使用して Unicode 文字の文字列をエンコードする方法、<xref:System.Text.UnicodeEncoding>オブジェクト。 バイト配列は、データの損失がないことを示す文字列にデコードされます。  
+ 次の例は、 <xref:System.Text.UnicodeEncoding>オブジェクトを使用して Unicode 文字の文字列をバイト配列にエンコードする方法を示しています。 バイト配列は、データが失われていないことを示すために文字列にデコードされます。  
   
  [!code-cpp[System.Text.UnicodeEncoding Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding Example/CPP/snippet.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding Example/CS/snippet.cs#1)]
  [!code-vb[System.Text.UnicodeEncoding Example#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Text.UnicodeEncoding Example/VB/snippet.vb#1)]  
   
- ファイルにエンコードされたバイトを書き込みます、バイト順マーク (BOM) をバイト ストリームをプレフィックスする点を除いて次の例は、前と同じ文字列を使用します。 これは、後、2 つの方法でファイルを読み取ります: を使用してテキスト ファイルとして、<xref:System.IO.StreamReader>オブジェクト、およびバイナリ ファイルとして。 期待どおりには、どちらも新しく読み取り文字列には、BOM が含まれています。  
+ 次の例では、前の例と同じ文字列を使用します。ただし、エンコードされたバイトをファイルに書き込み、バイトストリームのプレフィックスをバイト順マーク (BOM) にします。 次に、 <xref:System.IO.StreamReader>オブジェクトを使用したテキストファイルとして、およびバイナリファイルとして、ファイルを2つの異なる方法で読み取ります。 予想どおり、新しく読み込まれた文字列には BOM が含まれていません。  
   
  [!code-csharp[System.Text.UnicodeEncoding Example#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding Example/CS/bom1.cs#2)]
  [!code-vb[System.Text.UnicodeEncoding Example#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Text.UnicodeEncoding Example/VB/bom1.vb#2)]  
@@ -110,7 +110,7 @@
     <altmember cref="T:System.Text.ASCIIEncoding" />
     <altmember cref="T:System.Globalization.UnicodeCategory" />
     <altmember cref="T:System.Globalization.CharUnicodeInfo" />
-    <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングの理解</related>
+    <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングについて</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -157,13 +157,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、リトル エンディアン バイト順を使用し、Unicode バイト順マークし、無効なエンコーディングが検出されたときに、例外をスローしないインスタンスを作成します。  
+ このコンストラクターは、リトルエンディアンバイト順を使用するインスタンスを作成し、Unicode バイト順マークを提供します。また、無効なエンコーディングが検出された場合に例外をスローしません。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、呼び出すことによってエラー検出を有効する必要があります、<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンス トラクターと設定、`throwOnInvalidBytes`引数`true`します。
+>  セキュリティ上の理由から、 <xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンストラクターを呼び出し、その`throwOnInvalidBytes`引数をに設定する`true`ことによって、エラーの検出を有効にする必要があります。
   
 ## Examples  
- 次の例は、新たに作成する方法を示します<xref:System.Text.UnicodeEncoding>インスタンスし、エンコーディングの名前を表示します。  
+ 次の例は、新しい<xref:System.Text.UnicodeEncoding>インスタンスを作成し、エンコーディングの名前を表示する方法を示しています。  
   
  [!code-cpp[System.Text.UnicodeEncoding.ctor Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ctor Example/CPP/ctor.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.ctor Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ctor Example/CS/ctor.cs#1)]
@@ -212,17 +212,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、無効なエンコーディングが検出されたときに例外をスローしないインスタンスを作成します。  
+ このコンストラクターは、無効なエンコーディングが検出された場合に例外をスローしないインスタンスを作成します。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、呼び出すことによってエラー検出を有効する必要があります、<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンス トラクターと設定、`throwOnInvalidBytes`引数`true`します。  
+>  セキュリティ上の理由から、 <xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンストラクターを呼び出し、その`throwOnInvalidBytes`引数をに設定する`true`ことによって、エラーの検出を有効にする必要があります。  
   
- `byteOrderMark`の操作を制御するパラメーター、<xref:System.Text.UnicodeEncoding.GetPreamble%2A>メソッド。 場合`true`、utf-16 形式で Unicode バイト順マーク (BOM) を格納するバイト配列を返します。  場合`false`長さが 0 バイトの配列を返します。 ただし、設定`byteOrderMark`に`true`は行われません、<xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッド、バイト配列の先頭の BOM のプレフィックスを発生しても、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>バイト数をバイト数で BOM に含めるメソッド。  
+ パラメーター `byteOrderMark`は、 <xref:System.Text.UnicodeEncoding.GetPreamble%2A>メソッドの操作を制御します。 の`true`場合、メソッドは Unicode バイト順マーク (BOM) を utf-16 形式で格納しているバイト配列を返します。  の`false`場合は、長さ0のバイト配列を返します。 ただし、を`byteOrderMark`に`true`設定しても<xref:System.Text.UnicodeEncoding.GetBytes%2A> 、メソッドは、 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>バイト配列の先頭にある bom にプレフィックスを付けることはできません。また、メソッドが bom のバイト数をバイト数に含めることもありません。  
   
    
   
 ## Examples  
- 次の例は、新たに作成する方法を示します<xref:System.Text.UnicodeEncoding>リトル エンディアンまたはビッグ エンディアン バイト順がサポートするかどうかを指定してインスタンスと、Unicode バイト オーダー マークします。  
+ 次の例では、リトルエンディ<xref:System.Text.UnicodeEncoding>アンまたはビッグエンディアンのバイト順と Unicode バイト順マークをサポートするかどうかを指定して、新しいインスタンスを作成する方法を示します。  
   
  [!code-cpp[System.Text.UnicodeEncoding.ctor2 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ctor2 Example/CPP/ctor-boolean-boolean.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.ctor2 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ctor2 Example/CS/ctor-boolean-boolean.cs#1)]
@@ -273,15 +273,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `byteOrderMark`の操作を制御するパラメーター、<xref:System.Text.UnicodeEncoding.GetPreamble%2A>メソッド。 場合`true`、utf-16 形式で Unicode バイト順マーク (BOM) を格納するバイト配列を返します。  場合`false`長さが 0 バイトの配列を返します。 ただし、設定`byteOrderMark`に`true`は行われません、<xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッド、バイト配列の先頭の BOM のプレフィックスを発生しても、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>バイト数をバイト数で BOM に含めるメソッド。  
+ パラメーター `byteOrderMark`は、 <xref:System.Text.UnicodeEncoding.GetPreamble%2A>メソッドの操作を制御します。 の`true`場合、メソッドは Unicode バイト順マーク (BOM) を utf-16 形式で格納しているバイト配列を返します。  の`false`場合は、長さ0のバイト配列を返します。 ただし、を`byteOrderMark`に`true`設定しても<xref:System.Text.UnicodeEncoding.GetBytes%2A> 、メソッドは、 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>バイト配列の先頭にある bom にプレフィックスを付けることはできません。また、メソッドが bom のバイト数をバイト数に含めることもありません。  
   
- 場合、`throwOnInvalidBytes`パラメーターが`true`、無効なバイト シーケンスを検出するメソッドをスローします<xref:System.ArgumentException?displayProperty=nameWithType>します。 それ以外の場合、メソッドが例外をスローしないと、無効なシーケンスが無視されます。  
+ パラメーターが`true`の場合、無効なバイトシーケンスを検出するメソッドは<xref:System.ArgumentException?displayProperty=nameWithType>をスローします。 `throwOnInvalidBytes` それ以外の場合、メソッドは例外をスローせず、無効なシーケンスは無視されます。  
   
 > [!CAUTION]
->  セキュリティ上の理由のインスタンスを作成するこのコンス トラクターを使用する必要があります、<xref:System.Text.UnicodeEncoding>クラスを設定してエラーの検出を有効に`throwOnInvalidBytes`に`true`します。  
+>  セキュリティ上の理由から、このコンストラクターを使用して<xref:System.Text.UnicodeEncoding>クラスのインスタンスを作成し、をに`true`設定`throwOnInvalidBytes`してエラー検出を有効にする必要があります。  
   
 ## Examples  
- 次の例の動作を示します<xref:System.Text.UnicodeEncoding>エラーの検出を有効になっているのとなしの両方。  
+ 次の例は、の<xref:System.Text.UnicodeEncoding>動作を示しています。エラー検出が有効になっているか、使用されていません。  
   
  [!code-cpp[System.Text.UnicodeEncoding.ErrorDetection#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ErrorDetection/CPP/errordetection.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.ErrorDetection#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ErrorDetection/CS/errordetection.cs#1)]
@@ -327,12 +327,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このフィールドの値は、2 という値の 32 ビット符号付き定数です。  
+ このフィールドの値は32ビット符号付き定数で、値は2です。  
   
    
   
 ## Examples  
- 次の例は、の値を返す方法を示します<xref:System.Text.UnicodeEncoding.CharSize>し表示します。  
+ 次の例は、の<xref:System.Text.UnicodeEncoding.CharSize>値を取得して表示する方法を示しています。  
   
  [!code-cpp[System.Text.UnicodeEncoding.CharSize Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.CharSize Example/CPP/charsize.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.CharSize Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.CharSize Example/CS/charsize.cs#1)]
@@ -383,20 +383,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 2 つ<xref:System.Text.UnicodeEncoding>オブジェクトは、次の条件がすべて当てはまる場合に等価と見なされます。  
+ 次<xref:System.Text.UnicodeEncoding>の条件がすべて当てはまる場合は、2つのオブジェクトが等しいと見なされます。  
   
--   両方のオブジェクトは、同じバイト順序 (リトル エンディアンまたはビッグ エンディアン) を使用します。  
+-   どちらのオブジェクトも、同じバイト順 (リトルエンディアンまたはビッグエンディアン) を使用します。  
   
--   両方のオブジェクトがバイト順マークを指定するか、両方はありません。  
+-   両方のオブジェクトがバイト順マークを提供するか、両方とも指定しません。  
   
--   両方のオブジェクトは、同じエンコーダー フォールバックを使用します。  
+-   どちらのオブジェクトも、同じエンコーダーフォールバックを使用します。  
   
--   両方のオブジェクトは、同じデコーダーのフォールバックを使用します。  
+-   どちらのオブジェクトも、同じデコーダーフォールバックを使用します。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.UnicodeEncoding.Equals%2A>メソッドをテストするかどうか、現在<xref:System.Text.UnicodeEncoding>オブジェクトが異なると等しい<xref:System.Text.UnicodeEncoding>オブジェクト。 5 つ<xref:System.Text.UnicodeEncoding>オブジェクトが作成され、比較、および比較の結果が表示されます。  
+ 次の例は、 <xref:System.Text.UnicodeEncoding.Equals%2A>メソッドを使用して、現在<xref:System.Text.UnicodeEncoding>のオブジェクトが別<xref:System.Text.UnicodeEncoding>のオブジェクトと等しいかどうかをテストする方法を示しています。 5 <xref:System.Text.UnicodeEncoding>つのオブジェクトが作成され、比較され、比較の結果が表示されます。  
   
  [!code-cpp[System.Text.UnicodeEncoding.ctor2 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ctor2 Example/CPP/ctor-boolean-boolean.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.ctor2 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.ctor2 Example/CS/ctor-boolean-boolean.cs#1)]
@@ -465,17 +465,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetBytes%2A>呼び出す結果のバイトを格納する、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッド。 配列の最大サイズを計算するを呼び出す、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッド。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ が結果のバイトを格納<xref:System.Text.UnicodeEncoding.GetBytes%2A>するために必要な配列の正確なサイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドを呼び出します。 配列の最大サイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドを呼び出します。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
 > [!IMPORTANT]
->  ファイルまたはストリームとして保存されるときに、エンコード済みバイトが正しくデコードするためには、プリアンブルとエンコードされたバイトのストリーム プレフィックスにすることができます。 バイト ストリームの先頭に、preamble を挿入 (など、一連のファイルに書き込まれるバイトの先頭に)、開発者の責任であり、preamble のバイト数がによって返される値に反映されていない、<xref:System.Text.UnicodeEncoding.GetByteCount%28System.String%29>メソッド。  
+>  エンコードされたバイトがファイルまたはストリームとして保存されるときに正しくデコードされるようにするには、エンコードされたバイトのストリームにプリアンブルを付けることができます。 ファイルに書き込む一連のバイトの先頭に、プリアンブルをバイトストリームの先頭に挿入することは、開発者の責任であり、プリアンブル内のバイト数は<xref:System.Text.UnicodeEncoding.GetByteCount%28System.String%29>メソッドによって返される値には反映されません。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>と<xref:System.Text.UnicodeEncoding.GetByteCount%28System.String%29>文字列をエンコードするために必要なバイトの最大値と実際の数を計算するメソッド。 実際のバイト順マークを付けるバイト ストリームを格納するために必要なバイト数も表示されます。  
+ 次の例では<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A> 、 <xref:System.Text.UnicodeEncoding.GetByteCount%28System.String%29>メソッドとメソッドを呼び出して、文字列をエンコードするために必要な最大バイト数と実際のバイト数を計算します。 また、バイト順マーク付きでバイトストリームを格納するために必要な実際のバイト数も表示されます。  
   
  [!code-csharp[System.Text.UnicodeEncoding.GetByteCount#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.text.unicodeencoding.getbytecount/cs/getbytecount1.cs#1)]
  [!code-vb[System.Text.UnicodeEncoding.GetByteCount#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.text.unicodeencoding.getbytecount/vb/getbytecount1.vb#1)]  
@@ -543,25 +543,25 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 計算する正確な配列のサイズを<xref:System.Text.UnicodeEncoding.GetBytes%2A>必要がありますを呼び出し、結果のバイトを格納する、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッド。 配列の最大サイズを計算するを呼び出す、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッド。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するため<xref:System.Text.UnicodeEncoding.GetBytes%2A>に必要な配列の正確なサイズを計算<xref:System.Text.UnicodeEncoding.GetByteCount%2A>するには、メソッドを呼び出します。 配列の最大サイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドを呼び出します。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
 > [!IMPORTANT]
->  ファイルまたはストリームとして保存されるときに、エンコード済みバイトが正しくデコードするためには、プリアンブルとエンコードされたバイトのストリーム プレフィックスにすることができます。 バイト ストリームの先頭に、preamble を挿入 (など、一連のファイルに書き込まれるバイトの先頭に)、開発者の責任であり、preamble のバイト数がによって返される値に反映されていない、<xref:System.Text.UTF8Encoding.GetByteCount%2A>メソッド。  
+>  エンコードされたバイトがファイルまたはストリームとして保存されるときに正しくデコードされるようにするには、エンコードされたバイトのストリームにプリアンブルを付けることができます。 ファイルに書き込む一連のバイトの先頭に、プリアンブルをバイトストリームの先頭に挿入することは、開発者の責任であり、プリアンブル内のバイト数は<xref:System.Text.UTF8Encoding.GetByteCount%2A>メソッドによって返される値には反映されません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="chars" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="chars" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.ArgumentException">エラー検出が有効であり、<paramref name="chars" /> に無効な文字シーケンスが含まれています。</exception>
         <exception cref="T:System.Text.EncoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
 および 
  <see cref="P:System.Text.Encoding.EncoderFallback" /> が <see cref="T:System.Text.EncoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Text.UnicodeEncoding.GetBytes(System.String,System.Int32,System.Int32,System.Byte[],System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetMaxByteCount(System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetEncoder" />
@@ -617,16 +617,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するを呼び出す、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッド。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.UnicodeEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.UnicodeEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドを呼び出します。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- 無効なシーケンス エラーの検出が有効になっているで、このメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出が有効になっていると、無効なシーケンスに<xref:System.ArgumentException>よって、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
- ファイルまたはストリームとして保存されるときに、エンコード済みバイトが正しくデコードするためには、プリアンブルとエンコードされたバイトのストリーム プレフィックスにすることができます。 バイト ストリームの先頭に、preamble を挿入 (など、一連のファイルに書き込まれるバイトの先頭に)、開発者の責任であり、preamble のバイト数がによって返される値に反映されていない、<xref:System.Text.UnicodeEncoding.GetByteCount%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>メソッド。  
+ エンコードされたバイトがファイルまたはストリームとして保存されるときに正しくデコードされるようにするには、エンコードされたバイトのストリームにプリアンブルを付けることができます。 ファイルに書き込む一連のバイトの先頭に、プリアンブルをバイトストリームの先頭に挿入することは、開発者の責任であり、プリアンブル内のバイト数は<xref:System.Text.UnicodeEncoding.GetByteCount%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>メソッドによって返される値には反映されません。  
   
    
   
 ## Examples  
- 次の例では、配列 Latin の大文字と小文字および呼び出しを設定します、<xref:System.Text.UnicodeEncoding.GetByteCount%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>ラテン文字の小文字の文字をエンコードするために必要なバイト数を判断するメソッド。 バイト順マークが追加された場合に必要なバイトの合計数と共にこの情報が表示されます。 この番号によって返される値の比較、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは、ラテン文字の小文字の文字をエンコードするために必要なバイトの最大数を示します。 次の例では、ギリシャ語、キリル文字と呼び出しの組み合わせを含む配列を設定します、<xref:System.Text.UnicodeEncoding.GetByteCount%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>キリル文字をエンコードするために必要なバイト数を判断するメソッド。 バイト順マークが追加された場合に必要なバイトの合計数と共にこの情報が表示されます。 この番号によって返される値の比較、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは、キリル文字をエンコードするために必要なバイトの最大数を示します。  
+ 次の例では、アルファベットの大文字と小文字を含む配列<xref:System.Text.UnicodeEncoding.GetByteCount%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>を設定し、メソッドを呼び出して、ラテン文字の小文字をエンコードするために必要なバイト数を決定します。 次に、バイトオーダーマークが追加された場合に、必要な合計バイト数と共にこの情報が表示されます。 この数値と、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドによって返される値を比較します。これは、ラテンの小文字をエンコードするために必要な最大バイト数を示します。 次の例では、ギリシャ語とキリル文字の組み合わせを使用して<xref:System.Text.UnicodeEncoding.GetByteCount%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>配列を設定し、メソッドを呼び出して、キリル文字をエンコードするために必要なバイト数を決定します。 次に、バイトオーダーマークが追加された場合に、必要な合計バイト数と共にこの情報が表示されます。 この数値と、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドによって返される値を比較します。これは、キリル文字をエンコードするために必要な最大バイト数を示します。  
   
  [!code-csharp[System.Text.UnicodeEncoding.GetByteCount#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.text.unicodeencoding.getbytecount/cs/getbytecount2.cs#2)]
  [!code-vb[System.Text.UnicodeEncoding.GetByteCount#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.text.unicodeencoding.getbytecount/vb/getbytecount2.vb#2)]  
@@ -745,14 +745,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 計算する正確な配列のサイズを<xref:System.Text.UnicodeEncoding.GetBytes%2A>必要がありますを呼び出し、結果のバイトを格納する、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッド。 配列の最大サイズを計算するを呼び出す、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッド。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するため<xref:System.Text.UnicodeEncoding.GetBytes%2A>に必要な配列の正確なサイズを計算<xref:System.Text.UnicodeEncoding.GetByteCount%2A>するには、メソッドを呼び出します。 配列の最大サイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドを呼び出します。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
- など、ストリームから読み取られるデータを変換するデータは、シーケンシャル ブロック内でのみ使用可能な可能性があります。 この場合、またはデータの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションを使用する必要があります、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>が提供するオブジェクト、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>または<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できる可能性があります。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある場合、アプリケーションでは、または<xref:System.Text.Decoder> <xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッドに<xref:System.Text.Encoder>よっ<xref:System.Text.UnicodeEncoding.GetDecoder%2A>て提供されるオブジェクトをそれぞれ使用する必要があります。  
   
 > [!IMPORTANT]
->  ファイルまたはストリームとして保存されるときに、エンコード済みバイトが正しくデコードするためには、プリアンブルとエンコードされたバイトのストリーム プレフィックスにすることができます。 Preamble をバイト ストリームの先頭に挿入 (など、一連のファイルに書き込まれるバイトの先頭に) 開発者の役目です。 <xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッドがエンコードされたバイト シーケンスの先頭に、preamble を追加しません。  
+>  エンコードされたバイトがファイルまたはストリームとして保存されるときに正しくデコードされるようにするには、エンコードされたバイトのストリームにプリアンブルを付けることができます。 ファイルに書き込む一連のバイトの先頭に、プリアンブルをバイトストリームの先頭に挿入することは、開発者の責任です。 メソッド<xref:System.Text.UnicodeEncoding.GetBytes%2A>は、エンコードされたバイトシーケンスの先頭にプリアンブルを付加しません。  
   
  ]]></format>
         </remarks>
@@ -768,7 +768,7 @@
         <exception cref="T:System.Text.EncoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
 および 
  <see cref="P:System.Text.Encoding.EncoderFallback" /> が <see cref="T:System.Text.EncoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Text.UnicodeEncoding.GetEncoder" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetByteCount(System.Char[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetMaxByteCount(System.Int32)" />
@@ -828,19 +828,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetBytes%2A>呼び出す結果のバイトを格納する、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッド。 配列の最大サイズを計算するを呼び出す、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッド。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ が結果のバイトを格納<xref:System.Text.UnicodeEncoding.GetBytes%2A>するために必要な配列の正確なサイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドを呼び出します。 配列の最大サイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドを呼び出します。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
- など、ストリームから読み取られるデータを変換するデータは、シーケンシャル ブロック内でのみ使用可能な可能性があります。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できる可能性があります。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.UnicodeEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
 > [!IMPORTANT]
->  ファイルまたはストリームとして保存されるときに、エンコード済みバイトが正しくデコードするためには、プリアンブルとエンコードされたバイトのストリーム プレフィックスにすることができます。 Preamble をバイト ストリームの先頭に挿入 (など、一連のファイルに書き込まれるバイトの先頭に) 開発者の役目です。 <xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッドがエンコードされたバイト シーケンスの先頭に、preamble を追加しません。  
+>  エンコードされたバイトがファイルまたはストリームとして保存されるときに正しくデコードされるようにするには、エンコードされたバイトのストリームにプリアンブルを付けることができます。 ファイルに書き込む一連のバイトの先頭に、プリアンブルをバイトストリームの先頭に挿入することは、開発者の責任です。 メソッド<xref:System.Text.UnicodeEncoding.GetBytes%2A>は、エンコードされたバイトシーケンスの先頭にプリアンブルを付加しません。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.UnicodeEncoding.GetBytes%2A>から文字の範囲をエンコードする方法、<xref:System.String>し、バイト配列内の要素の範囲内でエンコードされたバイトを格納します。  
+ 次の例では<xref:System.Text.UnicodeEncoding.GetBytes%2A> <xref:System.String> 、メソッドを使用してからの範囲の文字をエンコードし、バイト配列の要素範囲にエンコードされたバイトを格納する方法を示します。  
   
  [!code-cpp[System.Text.UnicodeEncoding.GetBytes3 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetBytes3 Example/CPP/getbytes-string-int32-int32-byte[]-int32.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.GetBytes3 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetBytes3 Example/CS/getbytes-string-int32-int32-byte[]-int32.cs#1)]
@@ -925,19 +925,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetBytes%2A>呼び出す結果のバイトを格納する、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッド。 配列の最大サイズを計算するを呼び出す、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッド。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ が結果のバイトを格納<xref:System.Text.UnicodeEncoding.GetBytes%2A>するために必要な配列の正確なサイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドを呼び出します。 配列の最大サイズを計算するには、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドを呼び出します。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
- など、ストリームから読み取られるデータを変換するデータは、シーケンシャル ブロック内でのみ使用可能な可能性があります。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できる可能性があります。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.UnicodeEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
 > [!IMPORTANT]
->  ファイルまたはストリームとして保存されるときに、エンコード済みバイトが正しくデコードするためには、プリアンブルとエンコードされたバイトのストリーム プレフィックスにすることができます。 Preamble をバイト ストリームの先頭に挿入 (など、一連のファイルに書き込まれるバイトの先頭に) 開発者の役目です。 <xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッドがエンコードされたバイト シーケンスの先頭に、preamble を追加しません。  
+>  エンコードされたバイトがファイルまたはストリームとして保存されるときに正しくデコードされるようにするには、エンコードされたバイトのストリームにプリアンブルを付けることができます。 ファイルに書き込む一連のバイトの先頭に、プリアンブルをバイトストリームの先頭に挿入することは、開発者の責任です。 メソッド<xref:System.Text.UnicodeEncoding.GetBytes%2A>は、エンコードされたバイトシーケンスの先頭にプリアンブルを付加しません。  
   
    
   
 ## Examples  
- 次の例では、範囲の Unicode 文字配列から要素をエンコードおよびバイト配列内の要素の範囲内でエンコードされたバイトを格納する方法を示します。  
+ 次の例は、Unicode 文字の配列から要素の範囲をエンコードし、バイト配列の要素範囲にエンコードされたバイトを格納する方法を示しています。  
   
  [!code-cpp[System.Text.UnicodeEncoding.GetBytes1 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetBytes1 Example/CPP/getbytes-char[]-int32-int32-byte[]-int32.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.GetBytes1 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetBytes1 Example/CS/getbytes-char[]-int32-int32-byte[]-int32.cs#1)]
@@ -945,9 +945,9 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="s" /> は <see langword="null" />です。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="s" /> が <see langword="null" /> です。  
   
-または 
+- または - 
  <paramref name="bytes" /> が <see langword="null" /> (<see langword="Nothing" />) です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="charIndex" />、<paramref name="charCount" />、または <paramref name="byteIndex" /> が 0 未満です。  
   
@@ -958,7 +958,7 @@
  <paramref name="byteIndex" /> が <paramref name="bytes" /> の有効なインデックスではありません。</exception>
         <exception cref="T:System.ArgumentException">エラーの検出が有効になり、<paramref name="s" /> に無効な文字のシーケンスが含まれています。  
   
-または 
+- または - 
  <paramref name="bytes" /> には、<paramref name="byteIndex" /> から配列の末尾までに十分なサイズがなく、結果のバイトを格納できません。</exception>
         <exception cref="T:System.Text.EncoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
 および 
@@ -1028,22 +1028,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 計算する正確な配列のサイズを<xref:System.Text.UnicodeEncoding.GetChars%2A>アプリケーションは、結果として得られる文字を格納する必要があります<xref:System.Text.UnicodeEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するため<xref:System.Text.UnicodeEncoding.GetChars%2A>にが必要とする配列の正確なサイズ<xref:System.Text.UnicodeEncoding.GetCharCount%2A>を計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="bytes" /> が <see langword="null" /> (<see langword="Nothing" />) です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.ArgumentException">エラーの検出が有効になり、<paramref name="bytes" /> に無効なバイト シーケンスが含まれています。</exception>
         <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
 および 
  <see cref="P:System.Text.Encoding.DecoderFallback" /> が <see cref="T:System.Text.DecoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="Overload:System.Text.UnicodeEncoding.GetChars" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetMaxCharCount(System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetDecoder" />
@@ -1099,14 +1099,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetChars%2A>アプリケーションが使用するには、結果の文字を格納するには、<xref:System.Text.UnicodeEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するために<xref:System.Text.UnicodeEncoding.GetChars%2A>に必要な配列の正確なサイズを<xref:System.Text.UnicodeEncoding.GetCharCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.UnicodeEncoding.GetCharCount%2A>を使用してバイト配列内の要素の範囲をデコードすることによって生成される文字数を返すメソッド<xref:System.Text.UnicodeEncoding>します。  
+ 次の例は、を使用し<xref:System.Text.UnicodeEncoding.GetCharCount%2A> <xref:System.Text.UnicodeEncoding>て、メソッドを使用して、バイト配列内の要素の範囲をデコードすることによって生成される文字数を返す方法を示しています。  
   
  [!code-cpp[System.Text.UnicodeEncoding.GetCharCount Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetCharCount Example/CPP/getcharcount-byte[]-int32-int32.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.GetCharCount Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetCharCount Example/CS/getcharcount-byte[]-int32-int32.cs#1)]
@@ -1120,7 +1120,7 @@
 - または - 
  <paramref name="index" /> および <paramref name="count" /> は <paramref name="bytes" /> において有効な範囲を表していません。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.ArgumentException">エラーの検出が有効になり、<paramref name="bytes" /> に無効なバイト シーケンスが含まれています。</exception>
         <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
@@ -1195,29 +1195,29 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 計算する正確な配列のサイズを<xref:System.Text.UnicodeEncoding.GetChars%2A>アプリケーションは、結果として得られる文字を格納する必要があります<xref:System.Text.UnicodeEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するため<xref:System.Text.UnicodeEncoding.GetChars%2A>にが必要とする配列の正確なサイズ<xref:System.Text.UnicodeEncoding.GetCharCount%2A>を計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
- デコードするバイトの範囲にはバイト順マーク (BOM) が含まれていて、バイト配列が BOM 非対応の型のメソッドによって返される、このメソッドによって返される文字配列内で文字 U + FFFE が含まれます。 これを削除するには呼び出すことによって、<xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッド。  
+ デコードするバイト範囲にバイトオーダーマーク (BOM) が含まれており、そのバイト配列が非 BOM 対応型のメソッドによって返された場合は、このメソッドによって返される文字配列に U + FFFE という文字が含まれます。 <xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッドを呼び出すことで削除できます。  
   
- など、ストリームから読み取られるデータを変換するデータは、シーケンシャル ブロック内でのみ使用可能な可能性があります。 この場合、またはデータの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションを使用する必要があります、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>が提供するオブジェクト、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>または<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できる可能性があります。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある場合、アプリケーションでは、または<xref:System.Text.Decoder> <xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッドに<xref:System.Text.Encoder>よっ<xref:System.Text.UnicodeEncoding.GetDecoder%2A>て提供されるオブジェクトをそれぞれ使用する必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="bytes" /> が <see langword="null" /> (<see langword="Nothing" />) です。  
   
-または 
+- または - 
  <paramref name="chars" /> が <see langword="null" /> (<see langword="Nothing" />) です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="byteCount" /> または <paramref name="charCount" /> が 0 未満です。</exception>
         <exception cref="T:System.ArgumentException">エラーの検出が有効になり、<paramref name="bytes" /> に無効なバイト シーケンスが含まれています。  
   
-または 
+- または - 
  <paramref name="charCount" /> が結果の文字数より少なくなっています。</exception>
         <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
 および 
  <see cref="P:System.Text.Encoding.DecoderFallback" /> が <see cref="T:System.Text.DecoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Text.UnicodeEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetMaxCharCount(System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetDecoder" />
@@ -1278,18 +1278,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetChars%2A>アプリケーションが使用するには、結果の文字を格納するには、<xref:System.Text.UnicodeEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するために<xref:System.Text.UnicodeEncoding.GetChars%2A>に必要な配列の正確なサイズを<xref:System.Text.UnicodeEncoding.GetCharCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>  
   
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
- デコードするバイトの範囲にはバイト順マーク (BOM) が含まれていて、バイト配列が BOM 非対応の型のメソッドによって返される、このメソッドによって返される文字配列内で文字 U + FFFE が含まれます。 これを削除するには呼び出すことによって、<xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッド。  
+ デコードするバイト範囲にバイトオーダーマーク (BOM) が含まれており、そのバイト配列が非 BOM 対応型のメソッドによって返された場合は、このメソッドによって返される文字配列に U + FFFE という文字が含まれます。 <xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッドを呼び出すことで削除できます。  
   
- など、ストリームから読み取られるデータを変換するデータは、シーケンシャル ブロック内でのみ使用可能な可能性があります。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できる可能性があります。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.UnicodeEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.UnicodeEncoding.GetChars%2A>メソッドをバイト配列内の要素の範囲をデコードし、結果を文字配列に格納します。  
+ 次の例は、 <xref:System.Text.UnicodeEncoding.GetChars%2A>メソッドを使用して、バイト配列内の要素の範囲をデコードし、その結果を文字配列に格納する方法を示しています。  
   
  [!code-cpp[System.Text.UnicodeEncoding.GetChars Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetChars Example/CPP/getchars-byte[]-int32-int32-char[]-int32.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.GetChars Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetChars Example/CS/getchars-byte[]-int32-int32-char[]-int32.cs#1)]
@@ -1299,7 +1299,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="bytes" /> が <see langword="null" /> (<see langword="Nothing" />) です。  
   
-または 
+- または - 
  <paramref name="chars" /> が <see langword="null" /> (<see langword="Nothing" />) です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="byteIndex" />、<paramref name="byteCount" />、または <paramref name="charIndex" /> が 0 未満です。  
   
@@ -1310,7 +1310,7 @@
  <paramref name="charIndex" /> が <paramref name="chars" /> の有効なインデックスではありません。</exception>
         <exception cref="T:System.ArgumentException">エラーの検出が有効になり、<paramref name="bytes" /> に無効なバイト シーケンスが含まれています。  
   
-または 
+- または - 
  <paramref name="chars" /> には、<paramref name="charIndex" /> から配列の末尾までに十分なサイズがなく、結果の文字を格納できません。</exception>
         <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
 および 
@@ -1359,14 +1359,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.Decoder.GetChars%2A?displayProperty=nameWithType>メソッドと同様の方法で、文字のシーケンシャル ブロックにバイトのシーケンシャル ブロックを変換する、<xref:System.Text.UnicodeEncoding.GetChars%2A>します。 ただし、<xref:System.Text.Decoder>のブロックをまたぐバイト シーケンスが正しくデコードするための呼び出しの間の状態情報を保持します。 <xref:System.Text.Decoder>もデータ ブロックの末尾にある後続バイトが保持され、[次へ] のデコード操作で末尾のバイトを使用します。 そのため、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>と<xref:System.Text.UnicodeEncoding.GetEncoder%2A>は完全なデータ ストリームではなくデータのブロックを頻繁にこれらの操作を処理するためにネットワーク転送と、ファイル操作に便利です。  
+ メソッド<xref:System.Text.Decoder.GetChars%2A?displayProperty=nameWithType>は、 <xref:System.Text.UnicodeEncoding.GetChars%2A>と同様の方法で、バイトのシーケンシャルブロックを文字の連続するブロックに変換します。 ただし、は<xref:System.Text.Decoder> 、複数のブロックにまたがるバイトシーケンスを正しくデコードできるように、呼び出し間で状態情報を保持します。 また<xref:System.Text.Decoder> 、は、データブロックの末尾で末尾のバイトを保持し、次のデコード操作で末尾のバイトを使用します。 そのため<xref:System.Text.UnicodeEncoding.GetDecoder%2A> 、 <xref:System.Text.UnicodeEncoding.GetEncoder%2A>とは、ネットワークの転送およびファイル操作に役立ちます。これらの操作は、多くの場合、完全なデータストリームではなく、データのブロックを処理するためです。  
   
- エラーの検出が有効なかどうか、つまり、`throwOnInvalidBytes`にコンス トラクターのパラメーターが設定されている`true`でエラーの検出が有効にも、<xref:System.Text.Decoder>このメソッドによって返されます。 エラー検出が有効に無効なシーケンスが発生した場合は、デコーダーの状態が定義されていないと、処理を停止する必要があります。  
+ エラー検出が有効になっている場合 ( `throwOnInvalidBytes`つまり、コンストラクターのパラメーターがに`true`設定されている場合)、 <xref:System.Text.Decoder>このメソッドによって返されるでもエラー検出が有効になります。 エラー検出が有効になっていて、無効なシーケンスが検出された場合、デコーダーの状態は未定義となり、処理を停止する必要があります。  
   
    
   
 ## Examples  
- 次の例では、(バイト単位) の配列を文字列にエンコードし、文字の配列にバイトをデコードするエンコーダーとデコーダーを使用します。  
+ 次の例では、エンコーダーとデコーダーを使用して、文字列をバイト配列にエンコードし、バイトを文字配列にデコードします。  
   
  [!code-cpp[System.Text.UnicodeEncoding.EncDec#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.EncDec/CPP/encdec.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.EncDec#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.EncDec/CS/encdec.cs#1)]
@@ -1379,7 +1379,7 @@
         <altmember cref="M:System.Text.UnicodeEncoding.GetString(System.Byte[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetEncoder" />
-        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングの理解</related>
+        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングについて</related>
       </Docs>
     </Member>
     <Member MemberName="GetEncoder">
@@ -1424,14 +1424,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.Encoder.GetBytes%2A?displayProperty=nameWithType>メソッドと同様の方法のバイト数のシーケンシャル ブロックに文字のシーケンシャル ブロックを変換する、<xref:System.Text.UnicodeEncoding.GetBytes%2A>このクラスのメソッド。 ただし、<xref:System.Text.Encoder>のブロックをまたぐ文字シーケンスを正しくエンコードすることができるように、オブジェクトが呼び出しの間の状態情報を保持します。 <xref:System.Text.Encoder>オブジェクトはまたデータ ブロックの最後に末尾の文字を保持し、末尾の文字を次のエンコードの操作に使用されます。 たとえば、データ ブロック上位サロゲートで終了し、[次へ] のデータ ブロックに一致する下位サロゲートがあります。 そのため、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>と<xref:System.Text.UnicodeEncoding.GetEncoder%2A>は完全なデータ ストリームではなくデータのブロックを頻繁にこれらの操作を処理するためにネットワーク転送と、ファイル操作に便利です。  
+ メソッド<xref:System.Text.Encoder.GetBytes%2A?displayProperty=nameWithType>は、このクラスの<xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッドと同様の方法で、一連の文字を連続するバイトのブロックに変換します。 ただし、オブジェクト<xref:System.Text.Encoder>は、複数のブロックにまたがる文字シーケンスを正しくエンコードできるように、呼び出しの間に状態情報を保持します。 また<xref:System.Text.Encoder> 、オブジェクトは、データブロックの末尾で末尾の文字を保持し、次のエンコーディング操作で末尾の文字を使用します。 たとえば、データブロックの末尾が一致していない上位サロゲートで、一致する下位サロゲートが次のデータブロックに含まれている可能性があります。 そのため<xref:System.Text.UnicodeEncoding.GetDecoder%2A> 、 <xref:System.Text.UnicodeEncoding.GetEncoder%2A>とは、ネットワークの転送およびファイル操作に役立ちます。これらの操作は、多くの場合、完全なデータストリームではなく、データのブロックを処理するためです。  
   
- エラーの検出が有効なかどうか、つまり、`throwOnInvalidBytes`にコンス トラクターのパラメーターが設定されている`true`でエラーの検出が有効にも、<xref:System.Text.Encoder>このメソッドによって返されるオブジェクト。 エラー検出が有効に無効なシーケンスが発生した場合は、エンコーダーの状態が定義されていないと、処理を停止する必要があります。  
+ エラー検出が有効になっている場合 ( `throwOnInvalidBytes`つまり、コンストラクターのパラメーターがに`true`設定されている場合)、 <xref:System.Text.Encoder>このメソッドによって返されるオブジェクトでもエラー検出が有効になります。 エラー検出が有効になっていて、無効なシーケンスが検出された場合、エンコーダーの状態は未定義となり、処理を停止する必要があります。  
   
    
   
 ## Examples  
- 次の例では、(バイト単位) の配列を文字列にエンコードし、文字の配列にバイトをデコードするエンコーダーとデコーダーを使用します。  
+ 次の例では、エンコーダーとデコーダーを使用して、文字列をバイト配列にエンコードし、バイトを文字配列にデコードします。  
   
  [!code-cpp[System.Text.UnicodeEncoding.EncDec#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.EncDec/CPP/encdec.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.EncDec#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.EncDec/CS/encdec.cs#1)]
@@ -1443,7 +1443,7 @@
         <altmember cref="M:System.Text.UnicodeEncoding.GetBytes(System.String,System.Int32,System.Int32,System.Byte[],System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetByteCount(System.Char[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetDecoder" />
-        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングの理解</related>
+        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングについて</related>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -1525,21 +1525,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>します。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.UnicodeEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.UnicodeEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>でを使用する必要があります。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>  
   
- <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A> 現在選択されているは、最悪のケースを含む、最悪の数を取得<xref:System.Text.EncoderFallback>します。 フォールバックが大きくなる可能性の文字列で選択されている場合<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>大きな値を返すことができます。  
+ <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>現在選択さ<xref:System.Text.EncoderFallback>れているの最悪のケースを含む、最悪のケース番号を取得します。 大きな文字列を使用してフォールバックを選択した<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>場合、は大きな値を返すことがあります。  
   
- ほとんどの場合は、このメソッドは、短い文字列では適切な数値を取得します。 大きな文字列の場合は、非常に大きなバッファーを使用してより適切なバッファーを超えているまれなケースでのエラーのキャッチを選択する必要があります。 使用して、別のアプローチを検討する可能性がありますも<xref:System.Text.UnicodeEncoding.GetByteCount%2A>または<xref:System.Text.Encoder.Convert%2A?displayProperty=nameWithType>します。  
+ ほとんどの場合、このメソッドは小さい文字列に対して適切な数値を取得します。 大きな文字列の場合は、非常に大きなバッファーを使用するか、より適切なバッファーを超えた場合に、まれにエラーをキャッチするかを選択する必要があります。 または<xref:System.Text.UnicodeEncoding.GetByteCount%2A> <xref:System.Text.Encoder.Convert%2A?displayProperty=nameWithType>を使用して別の方法を検討することもできます。  
   
- <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A> 関係を持たない<xref:System.Text.UnicodeEncoding.GetChars%2A>します。 アプリケーションで使用するような関数が必要なかどうか<xref:System.Text.UnicodeEncoding.GetChars%2A>、どちらを使用する<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>します。  
+ <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>に<xref:System.Text.UnicodeEncoding.GetChars%2A>は関係がありません。 アプリケーションがと共<xref:System.Text.UnicodeEncoding.GetChars%2A>にを使用するために同様の機能を必要とする場合は、を使用<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>する必要があります。  
   
 > [!NOTE]
->  `GetMaxByteCount(N)` 同じ値とは限りません`N* GetMaxByteCount(1)`します。  
+>  `GetMaxByteCount(N)`はと同じ値であると`N* GetMaxByteCount(1)`は限りません。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>指定数の文字をエンコードするために必要なバイトの最大数を返します。  
+ 次の例は、 <xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>メソッドを使用して、指定された文字数をエンコードするために必要な最大バイト数を返す方法を示しています。  
   
  [!code-cpp[System.Text.UnicodeEncoding.GetMaxByteCount Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetMaxByteCount Example/CPP/getmaxbytecount-int32.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.GetMaxByteCount Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetMaxByteCount Example/CS/getmaxbytecount-int32.cs#1)]
@@ -1549,7 +1549,7 @@
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="charCount" /> が 0 未満です。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.Text.EncoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください)。 
 および 
@@ -1600,21 +1600,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.UnicodeEncoding.GetChars%2A>アプリケーションが使用するには、結果の文字を格納するには、<xref:System.Text.UnicodeEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するために<xref:System.Text.UnicodeEncoding.GetChars%2A>に必要な配列の正確なサイズを<xref:System.Text.UnicodeEncoding.GetCharCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッドは通常、より少ないメモリを割り当て<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.UnicodeEncoding.GetCharCount%2A>  
   
- <xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A> 現在選択されているは、最悪のケースを含む、最悪の数を取得<xref:System.Text.DecoderFallback>します。 フォールバックが大きくなる可能性の文字列で選択されている場合<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>大きな値を取得します。  
+ <xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>現在選択さ<xref:System.Text.DecoderFallback>れているの最悪のケースを含む、最悪のケース番号を取得します。 場合によっては大きな文字列を使用して<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>フォールバックを選択すると、大きな値を取得します。  
   
- ほとんどの場合は、このメソッドは、短い文字列では適切な数値を取得します。 大きな文字列の場合は、非常に大きなバッファーを使用してより適切なバッファーを超えているまれなケースでのエラーのキャッチを選択する必要があります。 使用して、別のアプローチを検討する可能性がありますも<xref:System.Text.UnicodeEncoding.GetCharCount%2A>または<xref:System.Text.Decoder.Convert%2A>します。  
+ ほとんどの場合、このメソッドは小さい文字列に対して適切な数値を取得します。 大きな文字列の場合は、非常に大きなバッファーを使用するか、より適切なバッファーを超えた場合に、まれにエラーをキャッチするかを選択する必要があります。 または<xref:System.Text.UnicodeEncoding.GetCharCount%2A> <xref:System.Text.Decoder.Convert%2A>を使用して別の方法を検討することもできます。  
   
- <xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A> 関係を持たない<xref:System.Text.UnicodeEncoding.GetBytes%2A>します。 アプリケーションで使用するような関数が必要なかどうか<xref:System.Text.UnicodeEncoding.GetBytes%2A>、どちらを使用する<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>します。  
+ <xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>に<xref:System.Text.UnicodeEncoding.GetBytes%2A>は関係がありません。 アプリケーションがと共<xref:System.Text.UnicodeEncoding.GetBytes%2A>にを使用するために同様の機能を必要とする場合は、を使用<xref:System.Text.UnicodeEncoding.GetMaxByteCount%2A>する必要があります。  
   
 > [!NOTE]
->  `GetMaxCharCount(N)` 同じ値とは限りません`N* GetMaxCharCount(1)`します。  
+>  `GetMaxCharCount(N)`はと同じ値であると`N* GetMaxCharCount(1)`は限りません。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>指定したバイト数をデコードすることによって生成される最大文字数を返すメソッド。  
+ 次の例は、 <xref:System.Text.UnicodeEncoding.GetMaxCharCount%2A>メソッドを使用して、指定したバイト数をデコードすることによって生成される最大文字数を返す方法を示しています。  
   
  [!code-cpp[System.Text.UnicodeEncoding.GetMaxCharCount Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetMaxCharCount Example/CPP/getmaxcharcount-int32.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.GetMaxCharCount Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetMaxCharCount Example/CS/getmaxcharcount-int32.cs#1)]
@@ -1673,44 +1673,44 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.UnicodeEncoding>オブジェクトが、プリアンブルは、バイト配列であり、エンコード処理の結果のバイトのシーケンスに付けることができますを提供します。 バイト オーダー マーク (コード ポイント U+FEFF) でエンコードされたバイトのシーケンスを付けるには、バイト順と変換形式または UTF デコーダーことができます。 Unicode バイト順マーク (BOM) が (16 進数) で、次のようにシリアル化されます。  
+ オブジェクト<xref:System.Text.UnicodeEncoding>はプリアンブルを提供できます。これは、エンコーディングプロセスによって生成されるバイトシーケンスにプレフィックスを付けることができるバイト配列です。 バイト順マーク (コードポイント U + FEFF) を使用してエンコードされたバイトシーケンスを前に付けると、デコーダーはバイト順と変換形式または UTF を決定するのに役立ちます。 Unicode バイト順マーク (BOM) は、次のようにシリアル化されます (16 進数)。  
   
--   ビッグ エンディアン バイト順:FE FF  
+-   ビッグエンディアンバイト順:FE FF  
   
--   リトル エンディアン バイト順:FF FE  
+-   リトルエンディアンバイト順:FF FE  
   
- インスタンス化することができます、<xref:System.Text.UnicodeEncoding>オブジェクト<xref:System.Text.UnicodeEncoding.GetPreamble%2A>メソッドは、次の方法で有効な BOM を返します。  
+ 次の方法で<xref:System.Text.UnicodeEncoding>有効な<xref:System.Text.UnicodeEncoding.GetPreamble%2A> BOM を返すメソッドを持つオブジェクトをインスタンス化できます。  
   
--   取得することによって、<xref:System.Text.UnicodeEncoding>によって返されるオブジェクト、<xref:System.Text.Encoding.Unicode%2A?displayProperty=nameWithType>または<xref:System.Text.Encoding.BigEndianUnicode%2A?displayProperty=nameWithType>プロパティ。  
+-   プロパティ<xref:System.Text.Encoding.Unicode%2A?displayProperty=nameWithType>または<xref:System.Text.UnicodeEncoding> プロパティによって返されたオブジェクトを取得する。<xref:System.Text.Encoding.BigEndianUnicode%2A?displayProperty=nameWithType>  
   
--   パラメーターなしで呼び出すことによって<xref:System.Text.UnicodeEncoding.%23ctor>インスタンスを作成するコンス トラクター、<xref:System.Text.UnicodeEncoding>オブジェクト。  
+-   パラメーターなし<xref:System.Text.UnicodeEncoding.%23ctor>のコンストラクターを呼び出して、 <xref:System.Text.UnicodeEncoding>オブジェクトをインスタンス化します。  
   
--   指定することによって`true`の値として、`byteOrderMark`への引数、<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%29>または<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンス トラクター。  
+-   引数の値として、 `true` <xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%29>または<xref:System.Text.UnicodeEncoding.%23ctor%28System.Boolean%2CSystem.Boolean%2CSystem.Boolean%29>コンストラクターにを指定する。 `byteOrderMark`  
   
- Web データまたはおランダムなテキスト ファイルがありませんでしたので、特定の id が失われた場合、参照、エンコード、または不適切なタグなしなどのファイルのエンコーディングのほとんどを提供して、BOM を使用することをお勧め国際対応の問題。 データが一貫して適切なタグとは、多くの場合、ユーザーの問題を回避できる可能性があります。  
+ BOM を使用することをお勧めします。そうしないと、タグ付けされていない、または不適切なタグの付いた web データや、ビジネスに含まれていなかったときにランダムなテキストファイルが格納されているファイルについては、エンコードのほとんど特定の id が提供されます。国際的な関心事。 データが一貫して適切にタグ付けされている場合、ユーザーの問題が回避されることがよくあります。  
   
- エンコードの種類を提供する標準では、BOM は、少し冗長です。 ただし、server を正しくエンコード ヘッダーを送信するために使用できます。 または、そのできますフォールバックとして、エンコードを紛失するそれ以外の場合。  
+ エンコードの種類を提供する標準の場合、BOM はやや冗長です。 ただし、このメソッドを使用して、サーバーが正しいエンコードヘッダーを送信できるようにすることができます。 または、エンコードが失われた場合にフォールバックとして使用することもできます。  
   
- BOM を使用するいくつかのデメリットがあります。 たとえば、BOM を使用するデータベース フィールドを制限する方法を知ることは困難なできます。 ファイルの連結問題になる可能性も、たとえば、ファイルを結合するように、不要な文字データの途中で終了できるようにします。 いくつかの短所にもかかわらずただし、部品表の使用が強くお勧めします。  
+ BOM の使用にはいくつかの欠点があります。 たとえば、BOM を使用するデータベースフィールドを制限する方法を理解することは困難です。 ファイルの連結も問題になることがあります。たとえば、不要な文字がデータの途中で終了するような方法でファイルをマージする場合などです。 ただし、いくつかの欠点がありますが、BOM を使用することを強くお勧めします。  
   
 > [!IMPORTANT]
->  エンコードされたバイトが正しくデコードするためには、プリアンブルとエンコードされたバイトのストリームの先頭プレフィックスにする必要があります。 なお、<xref:System.Text.UnicodeEncoding.GetBytes%2A>メソッドでエンコードされたバイトのシーケンスに BOM が付加しない; 開発者の責任には、適切なバイト ストリームの先頭の BOM を指定します。  
+>  エンコードされたバイトが正しくデコードされるようにするには、エンコードされたバイトのストリームの先頭にプリアンブルでプレフィックスを付ける必要があります。 メソッドは、 <xref:System.Text.UnicodeEncoding.GetBytes%2A> bom をエンコードされたバイトシーケンスに付加しないことに注意してください。適切なバイトストリームの先頭に bom を指定することは、開発者の責任です。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.UnicodeEncoding.GetPreamble%2A>ビッグ エンディアンまたはのインスタンスのリトル エンディアン バイト順で Unicode バイト順マークを取得するメソッドを<xref:System.Text.UnicodeEncoding>します。  
+ 次の例では、 <xref:System.Text.UnicodeEncoding.GetPreamble%2A>メソッドを使用して、 <xref:System.Text.UnicodeEncoding>のインスタンスのビッグエンディアンまたはリトルエンディアンバイト順の Unicode バイト順マークを取得する方法を示します。  
   
  [!code-cpp[System.Text.UnicodeEncoding.GetPreamble Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetPreamble Example/CPP/getpreamble-.cpp#1)]
  [!code-csharp[System.Text.UnicodeEncoding.GetPreamble Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetPreamble Example/CS/getpreamble-.cs#1)]
  [!code-vb[System.Text.UnicodeEncoding.GetPreamble Example#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Text.UnicodeEncoding.GetPreamble Example/VB/getpreamble-.vb#1)]  
   
- 次の例では、2 つのインスタンス化します<xref:System.Text.UnicodeEncoding>オブジェクト、最初は、BOM との行われますが、2 つ目は提供しません。 呼び出して、<xref:System.Text.UnicodeEncoding.GetPreamble%2A>ファイルに Unicode でエンコードされた文字列を書き込む前に、BOM を書き込む方法。 出力例では、元のコンソールに表示されます、2 つ目のエンコーダーからのバイトを保存するファイルが最初よりもより多くの容量を 3 つあります。  
+ 次の例では<xref:System.Text.UnicodeEncoding> 、2つのオブジェクトをインスタンス化します。最初のオブジェクトは BOM を提供せず、2番目のオブジェクトはを使用します。 次に、メソッド<xref:System.Text.UnicodeEncoding.GetPreamble%2A>を呼び出して、Unicode でエンコードされた文字列を書き込む前に BOM をファイルに書き込みます。 この例のコンソール出力に示されているように、2番目のエンコーダーからバイトを保存するファイルには、最初のエンコーダーよりも3バイトが含まれています。  
   
  [!code-csharp[System.Text.UnicodeEncoding.GetPreamble#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/System.Text.UnicodeEncoding.GetPreamble/cs/GetPreamble1.cs#1)]
  [!code-vb[System.Text.UnicodeEncoding.GetPreamble#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/System.Text.UnicodeEncoding.GetPreamble/vb/GetPreamble1.vb#1)]  
   
- 使用して、ファイルを比較することもできます、`fc`するか、コンソール ウィンドウでコマンドを含む 16 進表示モードをテキスト エディターでファイルを検査できます。 Utf-16 エンコーディングをサポートするエディターでファイルが開かれるときに、BOM が表示されないことに注意してください。  
+ また、コンソールウィンドウで`fc`コマンドを使用してファイルを比較したり、16進数の表示モードを含むテキストエディターでファイルを検査したりすることもできます。 UTF-16 エンコードをサポートするエディターでファイルを開くと、BOM が表示されないことに注意してください。  
   
  ]]></format>
         </remarks>
@@ -1768,21 +1768,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 無効なシーケンス エラーの検出でこのメソッドをスローすると、<xref:System.ArgumentException>します。 エラーの検出、無効なシーケンスは無視され、例外はスローされません。  
+ エラー検出を使用すると、無効なシーケンスによって<xref:System.ArgumentException>、このメソッドによってがスローされます。 エラー検出を行わないと、無効なシーケンスは無視され、例外はスローされません。  
   
- デコードするバイトの範囲にはバイト順マーク (BOM) が含まれていて、バイト配列が BOM 非対応の型のメソッドによって返される、このメソッドによって返される文字配列内で文字 U + FFFE が含まれます。 これを削除するには呼び出すことによって、<xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッド。  
+ デコードするバイト範囲にバイトオーダーマーク (BOM) が含まれており、そのバイト配列が非 BOM 対応型のメソッドによって返された場合は、このメソッドによって返される文字配列に U + FFFE という文字が含まれます。 <xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッドを呼び出すことで削除できます。  
   
- など、ストリームから読み取られるデータを変換するデータは、シーケンシャル ブロック内でのみ使用可能な可能性があります。 この場合、またはデータの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションを使用する必要があります、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>が提供するオブジェクト、<xref:System.Text.UnicodeEncoding.GetDecoder%2A>または<xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できる可能性があります。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある場合、アプリケーションでは、または<xref:System.Text.Decoder> <xref:System.Text.UnicodeEncoding.GetEncoder%2A>メソッドに<xref:System.Text.Encoder>よっ<xref:System.Text.UnicodeEncoding.GetDecoder%2A>て提供されるオブジェクトをそれぞれ使用する必要があります。  
   
    
   
 ## Examples  
- 次の例では、呼び出すことによって、配列を初期化します、<xref:System.Text.UnicodeEncoding.GetByteCount%2A>正確にエンコードされた文字列とバイト順マーク (BOM) のサイズを追加し、必要なのバイト数を調べます。 例を呼び出して、<xref:System.Text.UnicodeEncoding.GetPreamble%2A>は BOM を呼び出す前に配列を格納する方法、<xref:System.Text.Encoding.GetBytes%2A>配列にエンコードされたバイトを格納するメソッド。 例を呼び出して、<xref:System.Text.UnicodeEncoding.GetString%2A>文字列をデコードするメソッド。  
+ 次の例では、 <xref:System.Text.UnicodeEncoding.GetByteCount%2A>メソッドを呼び出して、エンコードされた文字列に必要なバイト数を正確に特定し、バイト順マーク (BOM) のサイズを追加することによって、配列を初期化します。 次に、メソッドを<xref:System.Text.UnicodeEncoding.GetPreamble%2A>呼び出して、エンコードされたバイトを配列に<xref:System.Text.Encoding.GetBytes%2A>格納する前に、メソッドを呼び出して BOM を配列に格納します。 次に、 <xref:System.Text.UnicodeEncoding.GetString%2A>メソッドを呼び出して文字列をデコードします。  
   
  [!code-csharp[System.Text.UTF8Encoding.GetString#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.text.utf8encoding.getstring/cs/getstring1.cs#1)]
  [!code-vb[System.Text.UTF8Encoding.GetString#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.text.utf8encoding.getstring/vb/getstring1.vb#1)]  
   
- ここでデコードされた文字列が異なることから元の文字列では、16 ビットのバイト順マーク U+FFFD で始まっているので注意してください。 つまり、2 つの文字列が、等しくないものとして比較されます、文字列が出力の場合、BOM は置換文字として表示されることと"?"。 削除するには、文字列の先頭の BOM を呼び出すことができます、<xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッド。  
+ この場合、デコードされた文字列は、16ビットのバイトオーダーマーク (U + FFFD) で始まるため、元の文字列とは異なります。 つまり、2つの文字列は等しくないものとして比較され、文字列が出力されると、BOM は置換文字 "?" として表示されます。 文字列の先頭にある BOM を削除するには、 <xref:System.String.TrimStart%2A?displayProperty=nameWithType>メソッドを呼び出すことができます。  
   
  ]]></format>
         </remarks>
@@ -1799,6 +1799,33 @@
         <altmember cref="M:System.Text.UnicodeEncoding.GetDecoder" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.UnicodeEncoding.GetMaxCharCount(System.Int32)" />
+      </Docs>
+    </Member>
+    <Member MemberName="Preamble">
+      <MemberSignature Language="C#" Value="public override ReadOnlySpan&lt;byte&gt; Preamble { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; Preamble" />
+      <MemberSignature Language="DocId" Value="P:System.Text.UnicodeEncoding.Preamble" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Preamble As ReadOnlySpan(Of Byte)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual property ReadOnlySpan&lt;System::Byte&gt; Preamble { ReadOnlySpan&lt;System::Byte&gt; get(); };" />
+      <MemberSignature Language="F#" Value="member this.Preamble : ReadOnlySpan&lt;byte&gt;" Usage="System.Text.UnicodeEncoding.Preamble" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Encoding.Extensions</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.ReadOnlySpan&lt;System.Byte&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

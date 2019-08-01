@@ -15,17 +15,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>入力に関する情報を提供します、<see cref="T:System.Windows.Input.StylusDevice" />を<see cref="T:System.Windows.Input.StylusPlugIns.StylusPlugIn" />します。</summary>
+    <summary><see cref="T:System.Windows.Input.StylusDevice" /> から <see cref="T:System.Windows.Input.StylusPlugIns.StylusPlugIn" /> への入力に関する情報を提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Windows.Input.StylusPlugIns.RawStylusInput>入力に関する情報を取得、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>スタイラスを動かしたときに受信します。  
+ を使用して、ユーザーがスタイラスを<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>動かしたときに受信した入力に関する情報を取得します。<xref:System.Windows.Input.StylusPlugIns.RawStylusInput>  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>をチェックする、<xref:System.Windows.Ink.ApplicationGesture.Down>ジェスチャ。 <xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>呼び出し<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>で<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUp%2A>をサブスクライブする、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUpProcessed%2A>アプリケーション スレッドから呼び出されるメソッド。  
+ 次の例では<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn> 、 <xref:System.Windows.Ink.ApplicationGesture.Down>ジェスチャをチェックするを作成します。 は<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn> 、 <xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>アプリケーション<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUp%2A>スレッドから呼び出される<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUpProcessed%2A>メソッドをサブスクライブするために、でを呼び出します。  
   
  [!code-csharp[StylusPluginSamples#12](~/samples/snippets/csharp/VS_Snippets_Wpf/StylusPluginSamples/CSharp/RecognizerPlugin.cs#12)]
  [!code-vb[StylusPluginSamples#12](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StylusPluginSamples/VisualBasic/RecognizerPlugin.vb#12)]  
@@ -58,7 +58,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、スタイラス ポイントを変更する方法、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusDown%2A>メソッド。 作成する、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>特定の部分にインクを制限しているを参照してください、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>の概要。  
+ 次の例は、 <xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusDown%2A>メソッドでスタイラスポイントを変更する方法を示しています。 インクを特定<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>の領域に制限するを作成するには<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn> 、「概要」を参照してください。  
   
  [!code-csharp[StylusPluginSamples#8](~/samples/snippets/csharp/VS_Snippets_Wpf/StylusPluginSamples/CSharp/FilterPlugin.cs#8)]
  [!code-vb[StylusPluginSamples#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StylusPluginSamples/VisualBasic/FilterPlugin.vb#8)]  
@@ -93,9 +93,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 要素のルーティングは、ペンの入力<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>ペン スレッド上でします。 正確なヒット テストは、ペン スレッド上で実行されることはできません、ためにによっては、いくつかの要素がスタイラス入力が他の要素のためのものを受け取ることがあります。 操作を実行する前に、入力が正しく回送されたことを確認する必要がある場合、呼び出し、<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>ペン スレッド上で発生するメソッド内のメソッド。 次の表に、呼び出し先<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>アプリケーション スレッドのメソッドにサブスクライブします。  
+ ペンの入力は、ペンスレッド<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>上の要素にルーティングされます。 ペンスレッドでは正確なヒットテストを実行できないため、一部の要素は、他の要素を対象としたスタイラス入力を受け取ることがあります。 操作を実行する前に入力が正しくルーティングされていることを確認する<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>必要がある場合は、ペンスレッドで発生するメソッドでメソッドを呼び出します。 次の表は、アプリケーションスレッド<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>のメソッドをサブスクライブするを呼び出す場所を示しています。  
   
-|呼び出す<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>でこのメソッド|このメソッドにサブスクライブするには|  
+|この<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>メソッドでの呼び出し|このメソッドをサブスクライブするには|  
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|  
 |<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusDown%2A>|<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusDownProcessed%2A>|  
 |<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusMove%2A>|<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusMoveProcessed%2A>|  
@@ -104,7 +104,7 @@
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>をチェックする、<xref:System.Windows.Ink.ApplicationGesture.Down>ジェスチャ。 <xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>呼び出し<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>で<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUp%2A>をサブスクライブする、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUpProcessed%2A>アプリケーション スレッドから呼び出されるメソッド。  
+ 次の例では<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn> 、 <xref:System.Windows.Ink.ApplicationGesture.Down>ジェスチャをチェックするを作成します。 は<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn> 、 <xref:System.Windows.Input.StylusPlugIns.RawStylusInput.NotifyWhenProcessed%2A>アプリケーション<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUp%2A>スレッドから呼び出される<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusUpProcessed%2A>メソッドをサブスクライブするために、でを呼び出します。  
   
  [!code-csharp[StylusPluginSamples#12](~/samples/snippets/csharp/VS_Snippets_Wpf/StylusPluginSamples/CSharp/RecognizerPlugin.cs#12)]
  [!code-vb[StylusPluginSamples#12](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StylusPluginSamples/VisualBasic/RecognizerPlugin.vb#12)]  
@@ -144,19 +144,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ようなイベント<xref:System.Windows.UIElement.StylusDown>と<xref:System.Windows.UIElement.StylusMove>、取得できます、<xref:System.Windows.Input.StylusPointCollection>によって設定<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.SetStylusPoints%2A>呼び出すことによって、<xref:System.Windows.Input.StylusEventArgs.GetStylusPoints%2A>メソッド。  
+ <xref:System.Windows.Input.StylusEventArgs.GetStylusPoints%2A> <xref:System.Windows.Input.StylusPointCollection> <xref:System.Windows.Input.StylusPlugIns.RawStylusInput.SetStylusPoints%2A>やなどのイベントは、メソッドを呼び出すことによって、によってセットを取得できます。 <xref:System.Windows.UIElement.StylusMove> <xref:System.Windows.UIElement.StylusDown>  
   
    
   
 ## Examples  
- 次の例では、スタイラス ポイントを変更する方法、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusDown%2A>メソッド。 作成する、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>特定の部分にインクを制限しているを参照してください、<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>の概要。  
+ 次の例は、 <xref:System.Windows.Input.StylusPlugIns.StylusPlugIn.OnStylusDown%2A>メソッドでスタイラスポイントを変更する方法を示しています。 インクを特定<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn>の領域に制限するを作成するには<xref:System.Windows.Input.StylusPlugIns.StylusPlugIn> 、「概要」を参照してください。  
   
  [!code-csharp[StylusPluginSamples#8](~/samples/snippets/csharp/VS_Snippets_Wpf/StylusPluginSamples/CSharp/FilterPlugin.cs#8)]
  [!code-vb[StylusPluginSamples#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StylusPluginSamples/VisualBasic/FilterPlugin.vb#8)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">スタイラス ポイントを設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">スタイラスポイントを設定する場合は。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
       </Docs>
     </Member>
     <Member MemberName="StylusDeviceId">
@@ -177,12 +177,12 @@
       </ReturnValue>
       <Docs>
         <summary>現在のスタイラス デバイスの識別子を取得します。</summary>
-        <value>現在の識別子<see cref="T:System.Windows.Input.StylusDevice" />します。</value>
+        <value>現在の <see cref="T:System.Windows.Input.StylusDevice" /> の識別子。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、収集されるスタイラス ポイントが、同じようになります<xref:System.Windows.Input.StylusDevice>します。 この例でより大きな例の一部は、<xref:System.Windows.Input.StylusPlugIns.RawStylusInput>クラスの概要。  
+ 次の例では、収集されたスタイラスポイントが<xref:System.Windows.Input.StylusDevice>同じであることを保証します。 この例は、 <xref:System.Windows.Input.StylusPlugIns.RawStylusInput>クラスの概要の大きな例の一部です。  
   
  [!code-csharp[StylusPluginSamples#15](~/samples/snippets/csharp/VS_Snippets_Wpf/StylusPluginSamples/CSharp/RecognizerPlugin.cs#15)]
  [!code-vb[StylusPluginSamples#15](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StylusPluginSamples/VisualBasic/RecognizerPlugin.vb#15)]  
@@ -209,7 +209,7 @@
       </ReturnValue>
       <Docs>
         <summary>現在のタブレット デバイスの識別子を取得します。</summary>
-        <value>現在の識別子<see cref="T:System.Windows.Input.TabletDevice" />します。</value>
+        <value>現在の <see cref="T:System.Windows.Input.TabletDevice" /> の識別子。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -236,7 +236,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値、<xref:System.Windows.Input.StylusPlugIns.RawStylusInput.Timestamp%2A>プロパティの値である、<xref:System.Environment.TickCount%2A?displayProperty=nameWithType>プロパティ スタイラス イベントが発生しました。  
+ <xref:System.Windows.Input.StylusPlugIns.RawStylusInput.Timestamp%2A>プロパティの値は、スタイラスイベントが発生し<xref:System.Environment.TickCount%2A?displayProperty=nameWithType>たプロパティの値です。  
   
  ]]></format>
         </remarks>

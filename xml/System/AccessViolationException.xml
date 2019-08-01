@@ -39,34 +39,34 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コードでは、読み取りまたは書き込みのメモリを割り当てられていないか、先がアクセスしようとした場合、アンマネージ コードまたはアンセーフ コードでアクセス違反が発生します。 これは通常、ポインターが無効な値を持つために発生します。 無効なポインターによる読み取りまたは書き込みがすべてアクセス違反になるとは限らないため、通常、アクセス違反は、無効なポインターによって複数の読み取りまたは書き込みが発生したこと、およびメモリが破損している可能性があることを示します。 そのため、アクセス違反では、ほとんどの場合に重大なプログラミング エラーを示します。 <xref:System.AccessViolationException>明確にこれらの重大なエラーを特定します。  
+ アンマネージコードまたはアンセーフコードでアクセス違反が発生するのは、割り当てられていないメモリに対してコードが読み取りまたは書き込みを試みた場合、またはアクセスできない場合です。 これは通常、ポインターの値が正しくないために発生します。 無効なポインターによる読み取りまたは書き込みがすべてアクセス違反になるとは限らないため、通常、アクセス違反は、無効なポインターによって複数の読み取りまたは書き込みが発生したこと、およびメモリが破損している可能性があることを示します。 したがって、アクセス違反は、ほとんどの場合、プログラミングエラーが深刻であることを示します。 は<xref:System.AccessViolationException> 、これらの重大なエラーを明確に識別します。  
   
- プログラム全体が検証可能なマネージ コードで構成される、すべての参照が有効であるか、または null、およびアクセス違反が発生することはできません。 Null 参照では検証可能なコードがスローされますを参照しようとするすべての操作を<xref:System.NullReferenceException>例外。 <xref:System.AccessViolationException>今後、マネージ コードの検証可能な操作またはアンセーフ マネージ コードとアンマネージ コードとするときはのみに発生します。  
+ 検証可能なマネージコードだけで構成されるプログラムでは、すべての参照が有効または null であり、アクセス違反は不可能です。 検証可能なコード内の null 参照を参照しようとする<xref:System.NullReferenceException>操作では、例外がスローされます。 は<xref:System.AccessViolationException> 、検証可能なマネージコードがアンマネージコードまたはアンセーフマネージコードと対話する場合にのみ発生します。  
   
-## <a name="troubleshooting-accessviolationexception-exceptions"></a>AccessViolationException 例外のトラブルシューティング  
- <xref:System.AccessViolationException>アンセーフ マネージ コードでのみ例外が発生したか、コードがアンマネージ コードとやり取りするときに、検証可能な管理します。  
+## <a name="troubleshooting-accessviolationexception-exceptions"></a>Accessが発生する例外のトラブルシューティング  
+ 例外<xref:System.AccessViolationException>は、アンセーフマネージコードでのみ、または検証可能なマネージコードがアンマネージコードと対話するときにのみ発生します。  
   
--   アンセーフ マネージ コード内で発生したアクセス違反は、いずれかとして表現できます、<xref:System.NullReferenceException>例外または<xref:System.AccessViolationException>例外は、プラットフォームによって異なります。  
+-   アンセーフマネージコードで発生するアクセス違反は、プラットフォームによって<xref:System.NullReferenceException> <xref:System.AccessViolationException>は、例外または例外として表すことができます。  
   
--   マネージ コードにバブルアップするアンマネージ コードでアクセス違反は、常にラップする<xref:System.AccessViolationException>例外。  
+-   マネージコードにバブルアップするアンマネージコードのアクセス違反は、常に<xref:System.AccessViolationException>例外でラップされます。  
   
- いずれの場合も、識別し、の原因を修正、<xref:System.AccessViolationException>例外として次のとおりです。  
+ どちらの場合も、次のように、 <xref:System.AccessViolationException>例外の原因を特定して修正することができます。  
   
  アクセスしようとしているメモリが割り当て済みであることを確認します。  
- <xref:System.AccessViolationException>は保護されたメモリにアクセスする、メモリを割り当てられていないか、プロセスを所有していないアクセス試行が常に例外をスローします。  
+ <xref:System.AccessViolationException>例外は、割り当てられていない、またはプロセスによって所有されていないメモリにアクセスするために、保護されたメモリにアクセスしようとしたときに常にスローされます。  
   
- 自動メモリ管理は、共通言語ランタイムが提供するサービスの 1 つです。 マネージ コードでは、アンマネージ コードと同じ機能を提供する場合は、この機能を活用するために、マネージ コードに移動したい場合があります。 詳細については、「 [Automatic Memory Management](~/docs/standard/automatic-memory-management.md)」を参照してください。  
+ 自動メモリ管理は、共通言語ランタイムが提供するサービスの 1 つです。 マネージコードがアンマネージコードと同じ機能を提供する場合は、この機能を利用するために、マネージコードに移行することをお勧めします。 詳細については、「 [Automatic Memory Management](~/docs/standard/automatic-memory-management.md)」を参照してください。  
   
  アクセスしようとしているメモリが破損していないことを確認します。  
- 無効なポインターによって複数の読み取り操作または書き込み操作が発生すると、メモリが破損する場合があります。 これは通常、定義済みのバッファーの外部アドレスに対する読み取りまたは書き込み時に発生します。  
+ 無効なポインターによって複数の読み取り操作または書き込み操作が発生すると、メモリが破損する場合があります。 これは通常、事前定義されたバッファーの外部のアドレスの読み取りまたは書き込みを行う場合に発生します。  
   
-## <a name="accessviolationexception-and-trycatch-blocks"></a>AccessViolationException および try/catch ブロック  
- 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、<xref:System.AccessViolationException>で共通言語ランタイムによってスローされた例外は処理されない、`catch`共通の言語によって予約されるメモリの外部で例外が発生した場合は、構造化例外ハンドラー内のステートメントランタイム。 などを処理するために、 <xref:System.AccessViolationException> 、例外を適用する必要がある、<xref:System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute>属性をメソッドの例外がスローされます。 この変更には影響しません<xref:System.AccessViolationException>でキャッチすることが引き続きユーザー コードによってスローされた例外、`catch`ステートメント。 再コンパイルし、変更なしに実行する .NET Framework の以前のバージョン用に記述されたコードに対して、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、追加することができます、 [ \<legacyCorruptedStateExceptionsPolicy >](~/docs/framework/configure-apps/file-schema/runtime/legacycorruptedstateexceptionspolicy-element.md)要素をアプリの構成ファイル。 また、ハンドラーを定義している場合にも、例外の通知が表示されることができます、<xref:System.AppDomain.FirstChanceException?displayProperty=nameWithType>または<xref:System.AppDomain.UnhandledException?displayProperty=nameWithType>イベント。  
+## <a name="accessviolationexception-and-trycatch-blocks"></a>Accessている例外と try/catch ブロック  
+ 以降、共通言語ランタイムによってスロー `catch`された例外は、共通言語によって予約されているメモリの外部で例外が発生した場合に、構造化例外ハンドラーのステートメントによって処理されません。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)] <xref:System.AccessViolationException>ランタイム. このような<xref:System.AccessViolationException>例外を処理するには、 <xref:System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute>例外がスローされるメソッドに属性を適用する必要があります。 この変更は、ユーザー <xref:System.AccessViolationException>コードによってスローされた`catch`例外には影響しません。これは、ステートメントによって引き続きキャッチされる可能性があります。 を変更[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]せずに再コンパイルして実行する .NET Framework の以前のバージョン用に記述されたコードについては、アプリの構成に[ \<legacyCorruptedStateExceptionsPolicy >](~/docs/framework/configure-apps/file-schema/runtime/legacycorruptedstateexceptionspolicy-element.md)要素を追加できます。拡張子. イベント<xref:System.AppDomain.FirstChanceException?displayProperty=nameWithType>または<xref:System.AppDomain.UnhandledException?displayProperty=nameWithType>イベントのハンドラーを定義している場合は、例外の通知を受け取ることもできます。  
   
 ## <a name="version-information"></a>バージョン情報  
- .NET Framework 2.0 およびそれ以降のバージョンでは、この例外がスローされます。 .NET Framework の以前のバージョンで、アンマネージ コードまたはアンセーフ マネージ コードでアクセス違反がによって表される、<xref:System.NullReferenceException>マネージ コードでします。 A<xref:System.NullReferenceException>検証可能なマネージ コード、データの破損を含まないの発生で、null 参照が逆参照し、バージョン 1.0 または 1.1 では、2 つの状況を区別する手段がないときにスローされます。  
+ この例外は、.NET Framework 2.0 以降のバージョンでスローされます。 以前のバージョンの .NET Framework では、アンマネージコードまたはアンセーフマネージコードのアクセス違反は<xref:System.NullReferenceException> 、マネージコードので表現されます。 また<xref:System.NullReferenceException> 、は、検証可能なマネージコードで null 参照が逆参照される場合、データの破損が発生しない場合に、バージョン1.0 または1.1 の2つの状況を区別する方法がない場合にもスローされます。  
   
- 管理者は、.NET Framework version 1.1 の動作に戻すには、選択したアプリケーションを許可できます。 次の行を配置、 [&lt;ランタイム&gt;要素](~/docs/framework/configure-apps/file-schema/runtime/runtime-element.md)アプリケーションの構成ファイルのセクション。  
+ 管理者は、選択したアプリケーションを .NET Framework バージョン1.1 の動作に戻すことを許可できます。 アプリケーションの構成ファイルの[ &lt;runtime&gt; Element](~/docs/framework/configure-apps/file-schema/runtime/runtime-element.md)セクションに次の行を配置します。  
   
 ```  
 <legacyNullReferenceExceptionPolicy enabled = "1"/>  
@@ -117,11 +117,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの初期化、<xref:System.Exception.Message%2A>エラーを説明するシステム提供のメッセージの新しいインスタンスのプロパティなど"しようとした読み取りまたは書き込み保護されているメモリ。 これは、多くの場合、その他のメモリが破損していることを示す値。" このメッセージには、現在のシステムのカルチャが考慮されます。  
+ このコンストラクターは、 <xref:System.Exception.Message%2A>新しいインスタンスのプロパティを、"保護されたメモリの読み取りまたは書き込みを試行しました。" などのエラーを説明するシステム提供のメッセージに初期化します。 これは、多くの場合、他のメモリが破損していることを示しています。 " このメッセージには、現在のシステムのカルチャが考慮されます。  
   
- <xref:System.AccessViolationException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.AccessViolationException> インスタンスの初期プロパティ値を次の表に示します。  
   
-|プロパティ|値|  
+|プロパティ|[値]|  
 |--------------|-----------|  
 |<xref:System.Exception.InnerException%2A>|`null`。|  
 |<xref:System.Exception.Message%2A>|ローカライズされたエラー メッセージ文字列。|  
@@ -165,9 +165,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.AccessViolationException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.AccessViolationException> インスタンスの初期プロパティ値を次の表に示します。  
   
-|プロパティ|値|  
+|プロパティ|[値]|  
 |--------------|-----------|  
 |<xref:System.Exception.InnerException%2A>|`null`。|  
 |<xref:System.Exception.Message%2A>|`message` に指定されたエラー メッセージ文字列。|  
@@ -261,11 +261,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 前の例外の直接の結果としてスローされる例外については、<xref:System.Exception.InnerException%2A> プロパティに、前の例外への参照が格納されます。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
+ 前の例外の直接の結果としてスローされる例外については、<xref:System.Exception.InnerException%2A> プロパティに、前の例外への参照を含める必要があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
   
- <xref:System.AccessViolationException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.AccessViolationException> インスタンスの初期プロパティ値を次の表に示します。  
   
-|プロパティ|値|  
+|プロパティ|[値]|  
 |--------------|-----------|  
 |<xref:System.Exception.InnerException%2A>|`null`。|  
 |<xref:System.Exception.Message%2A>|`message` に指定されたエラー メッセージ文字列。|  

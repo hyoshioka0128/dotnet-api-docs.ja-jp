@@ -1,5 +1,5 @@
 <Type Name="SafeHandle" FullName="System.Runtime.InteropServices.SafeHandle">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d2b9e9ff0e52b9e5a2e934301d96f816c0615296" /><Meta Name="ms.sourcegitcommit" Value="2dd0eede6edd6dd3d2aa8f79010848658b967609" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="04/17/2019" /><Meta Name="ms.locfileid" Value="59676521" /></Metadata><TypeSignature Language="C#" Value="public abstract class SafeHandle : System.Runtime.ConstrainedExecution.CriticalFinalizerObject, IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="5dceaeed82ca5d29e78b39e45bf6f4f8be4766a2" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68393971" /></Metadata><TypeSignature Language="C#" Value="public abstract class SafeHandle : System.Runtime.ConstrainedExecution.CriticalFinalizerObject, IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi abstract beforefieldinit SafeHandle extends System.Runtime.ConstrainedExecution.CriticalFinalizerObject implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.InteropServices.SafeHandle" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class SafeHandle&#xA;Inherits CriticalFinalizerObject&#xA;Implements IDisposable" />
@@ -50,74 +50,74 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.InteropServices.SafeHandle>ハンドル リソース、およびガベージ コレクションによって途中で回収されてから意図しないアンマネージ オブジェクトを参照する Windows では、リサイクル中にハンドルを防止のクリティカル ファイナライズがクラスに用意されています。  
+ クラス<xref:System.Runtime.InteropServices.SafeHandle>は、ハンドルリソースの重大な終了処理を提供します。これにより、ガベージコレクションによって処理が途中で解放されるのを防ぎ、Windows によって意図しないアンマネージオブジェクトを参照することを防止できます。  
   
  このトピックには、次のセクションがあります。  
   
- [なぜ SafeHandle でしょうか。](#Why)   
- [SafeHandle の特長](#Does)   
+ [SafeHandle の理由](#Why)   
+ [SafeHandle の機能](#Does)   
  [SafeHandle から派生したクラス](#Derived)  
   
 <a name="Why"></a>   
-## <a name="why-safehandle"></a>なぜ SafeHandle でしょうか。  
- .NET Framework version 2.0 では、すべてのオペレーティング システム ハンドルでしたのみにカプセル化する前に、<xref:System.IntPtr>マネージ ラッパー オブジェクト。 これは、ネイティブ コードと相互運用する便利な方法でしたが予期せず中止されたスレッドまたはスタック オーバーフローなどの非同期例外によってハンドルがリークする可能性があります。 これらの非同期例外は妨げにオペレーティング システムのリソースをクリーンアップして、アプリでほぼどこでも発生することができます。  
+## <a name="why-safehandle"></a>SafeHandle の理由  
+ .NET Framework バージョン2.0 より前では、すべてのオペレーティングシステムハンドルを<xref:System.IntPtr>マネージラッパーオブジェクトにカプセル化することしかできませんでした。 これはネイティブコードとの相互運用に便利な方法ですが、予期しないスレッドの中止やスタックオーバーフローなどの非同期例外によってハンドルがリークする可能性があります。 これらの非同期例外は、オペレーティングシステムのリソースをクリーンアップするのには問題があり、アプリ内のほぼすべての場所で発生する可能性があります。  
   
- 上書きを<xref:System.Object.Finalize%2A?displayProperty=nameWithType>オブジェクトがガベージ コレクション、状況によってをされているときに、メソッドがアンマネージ リソースのクリーンアップを許可する、ファイナライズ可能なオブジェクトは、プラットフォーム内でのメソッドの実行中にガベージ コレクションによって解放することができますを呼び出す呼び出します。 ファイナライザーは、そのプラットフォームに渡されるハンドルを解放する場合は、呼び出し、ハンドルの破損する可能性が。 プラットフォームの中に、メソッドがブロックされている間、ハンドルが解放もされるなど、ファイルの読み取り中に呼び出しを起動します。  
+ <xref:System.Object.Finalize%2A?displayProperty=nameWithType>メソッドをオーバーライドすると、オブジェクトがガベージコレクションされるときにアンマネージリソースのクリーンアップを許可しますが、場合によっては、プラットフォーム呼び出し内でメソッドを実行している間に、ファイナライズ可能なオブジェクトをガベージコレクションによって再利用できます。発信. ファイナライザーがそのプラットフォーム呼び出しに渡されたハンドルを解放すると、処理が破損する可能性があります。 また、ファイルの読み取り中など、プラットフォーム呼び出しの間にメソッドがブロックされている間に、ハンドルを再利用することもできます。  
   
- 非常により、Windows では、積極的にハンドルを再利用、ため、ハンドルはリサイクルされ、機密データを含む可能性がある別のリソースをポイントが。 これは、リサイクルの攻撃と呼ばれますとできますデータが破損する可能性のあるセキュリティの脅威となります。  
+ Windows が積極的にハンドルをリサイクルするため、ハンドルがリサイクルされ、機密データが含まれている可能性のある別のリソースを指している可能性があります。 これはリサイクル攻撃と呼ばれ、データが破壊され、セキュリティ上の脅威となる可能性があります。  
   
 <a name="Does"></a>   
-## <a name="what-safehandle-does"></a>SafeHandle の特長  
- <xref:System.Runtime.InteropServices.SafeHandle>クラスは、これらオブジェクトの有効期間に関する問題のいくつかを簡素化し、プラットフォームと統合されて起動オペレーティング システムのリソースがリークしないようにします。 <xref:System.Runtime.InteropServices.SafeHandle>クラスは、割り当てと解放を中断することがなくハンドルによってオブジェクトの有効期間に関する問題を解決します。 によって、ハンドルが閉じられるし、予期しない時に実行することが保証 クリティカル ファイナライザーが含まれている<xref:System.AppDomain>アンロードされると、プラットフォーム呼び出しの場合であってが破損した状態であると見なされます。  
+## <a name="what-safehandle-does"></a>SafeHandle の機能  
+ クラス<xref:System.Runtime.InteropServices.SafeHandle>は、これらのオブジェクトの有効期間の問題のいくつかを簡略化し、オペレーティングシステムのリソースがリークしないように、プラットフォーム呼び出しに統合されています。 クラス<xref:System.Runtime.InteropServices.SafeHandle>は、中断せずにハンドルの割り当てと解放を行うことによって、オブジェクトの有効期間の問題を解決します。 これには、プラットフォーム呼び出しが破損したと見なされる場合でも、ハンドルが<xref:System.AppDomain>閉じられ、予期しないアンロード中に確実に実行されることを保証するクリティカルファイナライザーが含まれます。  
   
- <xref:System.Runtime.InteropServices.SafeHandle>継承<xref:System.Runtime.ConstrainedExecution.CriticalFinalizerObject>、クリティカル ファイナライザーの前に、すべてのクリティカル ファイナライザーと呼ばれます。 同じガベージ コレクションの実行中にライブは不要になったオブジェクトでは、ファイナライザーが呼び出されます。 たとえば、<xref:System.IO.FileStream>オブジェクトがリークまたはリサイクルされるハンドルのリスクを負うことがなくバッファー内の既存のデータをフラッシュする通常のファイナライザーを実行できます。 一般的な用途は、重要および重大でないファイナライザーの間でこの非常に弱い順序付けすることはありません。 使用するこれらのライブラリを許可することで既存のライブラリの移行を支援するには、主に存在する<xref:System.Runtime.InteropServices.SafeHandle>のセマンティクスを変更することがなく。 さらに、クリティカル ファイナライザーと何も呼び出してなど、<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle?displayProperty=nameWithType>メソッドが制約された実行領域である必要があります。 これには、ファイナライザーの呼び出しグラフ内でどのようなコードを記述する制約が適用されます。  
+ は<xref:System.Runtime.InteropServices.SafeHandle> から<xref:System.Runtime.ConstrainedExecution.CriticalFinalizerObject>継承されるため、すべての重要でないファイナライザーは、重要なファイナライザーの前に呼び出されます。 ファイナライザーは、同じガベージコレクションパスの間に存在しなくなったオブジェクトに対して呼び出されます。 たとえば、オブジェクトは<xref:System.IO.FileStream>通常のファイナライザーを実行して、ハンドルがリークしたりリサイクルされたりすることなく、既存のバッファーデータをフラッシュすることができます。 クリティカルファイナライザーとクリティカルでないファイナライザーとの間の非常に弱い順序は、一般的な使用を目的としたものではありません。 これは主に、既存のライブラリを移行する際に、セマンティクスを変更<xref:System.Runtime.InteropServices.SafeHandle>せずに使用できるようにするために存在します。 さらに、クリティカルなファイナライザーと、この<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle?displayProperty=nameWithType>メソッドが呼び出すすべてのものは、制約された実行領域に存在する必要があります。 これにより、ファイナライザーの呼び出しグラフ内に記述できるコードに制約が課されます。  
   
- プラットフォームが自動的に操作を呼び出しによってカプセル化されたハンドルの参照カウントをインクリメント、<xref:System.Runtime.InteropServices.SafeHandle>と完了時にそれらをデクリメントします。 これにより、ハンドル リサイクルまたはされませんを閉じました。  
+ プラットフォーム呼び出し操作は、 <xref:System.Runtime.InteropServices.SafeHandle>によってカプセル化されたハンドルの参照カウントを自動的にインクリメントし、完了時にデクリメントします。 これにより、ハンドルが予期せずリサイクルまたは閉じられることがなくなります。  
   
- 基になるハンドルの所有権を指定するには、構築するときに<xref:System.Runtime.InteropServices.SafeHandle>オブジェクトに値を指定して、`ownsHandle`引数、<xref:System.Runtime.InteropServices.SafeHandle>クラスのコンス トラクター。 これを制御するかどうか、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクトは、オブジェクトが破棄された後に、ハンドルが解放されます。  これは特殊な有効期間の要件でのハンドルまたは有効期限が他のユーザーによって制御されるハンドルを使用するために役立ちます。  
+ クラスコンストラクターの<xref:System.Runtime.InteropServices.SafeHandle> `ownsHandle`引数に値を指定することによって、オブジェクトを構築するときに、基になるハンドルの所有権を指定できます。 <xref:System.Runtime.InteropServices.SafeHandle> オブジェクトが破棄さ<xref:System.Runtime.InteropServices.SafeHandle>れた後に、オブジェクトがハンドルを解放するかどうかを制御します。  これは、特別な有効期間要件を持つハンドルや、有効期間が他のユーザーによって制御されるハンドルを使用する場合に便利です。  
   
 <a name="Derived"></a>   
 ## <a name="classes-derived-from-safehandle"></a>SafeHandle から派生したクラス  
- <xref:System.Runtime.InteropServices.SafeHandle> オペレーティング システム ハンドルの抽象ラッパー クラスです。 このクラスからの派生は困難です。 代わりに、次のセーフ ハンドルを提供する <xref:Microsoft.Win32.SafeHandles> 名前空間の派生クラスを使用してください。  
+ <xref:System.Runtime.InteropServices.SafeHandle>は、オペレーティングシステムハンドルの抽象ラッパークラスです。 このクラスからの派生は困難です。 代わりに、次のセーフ ハンドルを提供する <xref:Microsoft.Win32.SafeHandles> 名前空間の派生クラスを使用してください。  
   
--   ファイル (、<xref:Microsoft.Win32.SafeHandles.SafeFileHandle>クラス)。  
+-   ファイル ( <xref:Microsoft.Win32.SafeHandles.SafeFileHandle>クラス)。  
   
--   メモリ マップ ファイル (、<xref:Microsoft.Win32.SafeHandles.SafeMemoryMappedFileHandle>クラス)。  
+-   メモリマップファイル ( <xref:Microsoft.Win32.SafeHandles.SafeMemoryMappedFileHandle>クラス)。  
   
--   パイプ (、<xref:Microsoft.Win32.SafeHandles.SafePipeHandle>クラス)。  
+-   パイプ ( <xref:Microsoft.Win32.SafeHandles.SafePipeHandle>クラス)。  
   
--   メモリ ビュー (、<xref:Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle>クラス)。  
+-   メモリビュー ( <xref:Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle>クラス)。  
   
--   暗号の構成要素 (、 <xref:Microsoft.Win32.SafeHandles.SafeNCryptHandle>、 <xref:Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle>、 <xref:Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle>、および<xref:Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle>クラス)。  
+-   暗号化<xref:Microsoft.Win32.SafeHandles.SafeNCryptHandle> <xref:Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle>の構成<xref:Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle>体 (、、 、およびの<xref:Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle>各クラス)。  
   
--   プロセス (、<xref:Microsoft.Win32.SafeHandles.SafeProcessHandle>クラス)。  
+-   プロセス ( <xref:Microsoft.Win32.SafeHandles.SafeProcessHandle>クラス)。  
   
--   レジストリ キー (、<xref:Microsoft.Win32.SafeHandles.SafeRegistryHandle>クラス)。  
+-   レジストリキー ( <xref:Microsoft.Win32.SafeHandles.SafeRegistryHandle>クラス)。  
   
--   待機ハンドル (、<xref:Microsoft.Win32.SafeHandles.SafeWaitHandle>クラス)。  
+-   待機ハンドル ( <xref:Microsoft.Win32.SafeHandles.SafeWaitHandle>クラス)。  
   
    
   
 ## Examples  
- 次のコード例から派生するオペレーティング システム ファイル ハンドル用のカスタムのセーフ ハンドルを作成します。<xref:Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid>します。 ファイルからバイトを読み取るし、16 進数の値が表示されます。 テスト ハーネスの障害も含まれています。 スレッドを中止するには、原因となったが、ハンドル値は解放されます。  使用する場合、<xref:System.IntPtr>ハンドルを表す、ハンドルが非同期のスレッドの中止のためリーク場合があります。  
+ 次のコード例では、から<xref:Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid>派生するオペレーティングシステムファイルハンドルのカスタムセーフハンドルを作成します。 ファイルからバイトを読み取り、16進値を表示します。 また、スレッドを中止する障害テストハーネスも含まれていますが、ハンドル値は解放されます。  を使用し<xref:System.IntPtr>てハンドルを表す場合、非同期スレッドの中止によってハンドルがリークすることがあります。  
   
- コンパイル済みのアプリケーションと同じフォルダー内のテキスト ファイルを必要があります。 コマンドラインの使用方法は、"hexviewer"だというアプリケーションの名前を入力すると仮定した場合です。  
+ コンパイル済みアプリケーションと同じフォルダーにテキストファイルが必要になります。 アプリケーションに "HexViewer" という名前を指定した場合、コマンドラインの使用法は次のようになります。  
   
  `HexViewer <filename> -Fault`  
   
- 必要に応じて指定`-Fault`意図的に特定のウィンドウでスレッドを中止することによって、ハンドルをリークしようとします。 Windows Perfmon.exe ツールを使用すると、エラーを作り出す中にハンドル カウントを監視できます。  
+ 必要に`-Fault`応じて、特定のウィンドウでスレッドを中止してハンドルのリークを意図的に試みるように指定します。 Windows Perfmon.exe ツールを使用して、フォールトを挿入するときのハンドル数を監視します。  
   
  [!code-csharp[SafeHandle#1](~/samples/snippets/csharp/VS_Snippets_CLR/SafeHandle/CS/program.cs#1)]  
   
  ]]></format>
     </remarks>
-    <permission cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand">継承クラスの完全な信頼。 部分的に信頼されたコードでは、このメンバーを継承できません。</permission>
-    <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
-    <block subset="none" type="overrides"><para>派生したクラスを作成する<see cref="T:System.Runtime.InteropServices.SafeHandle" />を作成し、オペレーティング システム ハンドルを解放する方法を理解する必要があります。 別のハンドル型の一部を使用しているために、このプロセスは異なる、 [CloseHandle](https://msdn.microsoft.com/library/windows/desktop/ms724211.aspx)関数などのより特定の機能を使用しながら[unmapviewoffile に](https://msdn.microsoft.com/library/windows/desktop/aa366882.aspx)または[FindClose](https://msdn.microsoft.com/library/windows/desktop/aa364413.aspx). このための派生クラスを作成する必要があります<see cref="T:System.Runtime.InteropServices.SafeHandle" />でセーフ ハンドルをラップするオペレーティング システム ハンドルの種類ごとにします。  
+    <permission cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand">継承に対する完全な信頼。 このメンバーは、部分的に信頼されたコードによって継承することはできません。</permission>
+    <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
+    <block subset="none" type="overrides"><para>から<see cref="T:System.Runtime.InteropServices.SafeHandle" />派生したクラスを作成するには、オペレーティングシステムハンドルの作成方法と解放方法を把握しておく必要があります。 このプロセスは、 [CloseHandle](https://msdn.microsoft.com/library/windows/desktop/ms724211.aspx)関数を使用する場合や、 [Unmapviewoffile に](https://msdn.microsoft.com/library/windows/desktop/aa366882.aspx)や[findclose](https://msdn.microsoft.com/library/windows/desktop/aa364413.aspx)などのより具体的な関数を使用する場合があるので、ハンドルの種類によって異なります。 このため、セーフハンドルでラップするオペレーティングシステムハンドル<see cref="T:System.Runtime.InteropServices.SafeHandle" />の種類ごとに、の派生クラスを作成する必要があります。  
   
 <see cref="T:System.Runtime.InteropServices.SafeHandle" /> から継承する場合は、<see cref="P:System.Runtime.InteropServices.SafeHandle.IsInvalid" /> メンバーと <see cref="M:System.Runtime.InteropServices.SafeHandle.ReleaseHandle" /> メンバーをオーバーライドする必要があります。  
   
-値は、無効なハンドル値を表す、基本コンス トラクターを呼び出す既定のコンス トラクターを提供することも必要があります、<see cref="T:System.Boolean" />ネイティブ ハンドルを所有するかどうかを示す値、<see cref="T:System.Runtime.InteropServices.SafeHandle" />され、その結果はときに解放する必要があります<see cref="T:System.Runtime.InteropServices.SafeHandle" />は破棄されています。</para></block>
+また、無効なハンドル値を表す値を使用して基底コンストラクターを呼び出すパラメーターなしのコンストラクターと<see cref="T:System.Boolean" /> 、ネイティブハンドルがに<see cref="T:System.Runtime.InteropServices.SafeHandle" />よって所有され、その結果解放される必要があるかどうかを示す値を指定する必要があります。<see cref="T:System.Runtime.InteropServices.SafeHandle" />このが破棄された場合。</para></block>
     <altmember cref="N:Microsoft.Win32.SafeHandles" />
     <altmember cref="T:System.Runtime.InteropServices.CriticalHandle" />
     <altmember cref="T:System.Runtime.ConstrainedExecution.CriticalFinalizerObject" />
@@ -202,13 +202,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、`ownsHandle`パラメーターが`false`、<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>は呼び出されません。 したがって、これは使用しないでリソース リークが発生する、コードとしては、このパラメーターの値を使用します。  
+ パラメーターが`false`の場合、 <xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>は呼び出されません。したがって、コードがリソースをリークする可能性があるため、このパラメーター値を使用しないことをお勧めします。 `ownsHandle`  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.TypeLoadException">派生クラスがアンマネージ コードのアクセス許可なしにアセンブリに存在しています。</exception>
-        <permission cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand">継承クラスの完全な信頼。 部分的に信頼されたコードでは、このメンバーを継承できません。</permission>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand">継承に対する完全な信頼。 このメンバーは、部分的に信頼されたコードによって継承することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="Close">
@@ -259,16 +259,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出す、<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>または<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>メソッドにより、リソースを解放します。 これにより、他のスレッドが同じのセーフ ハンドル オブジェクトを使用している場合は、すぐに行われない可能性がありますが、できなくなるとすぐに実行されます。 ほとんどのクラスを使用するが、<xref:System.Runtime.InteropServices.SafeHandle>クラスは、これが必要になる、ファイナライザーを用意する必要はありません (たとえば、ファイル バッファーをフラッシュするかを記述するいくつかのデータ バックアップをメモリに)。 この場合は、クラスの前に実行することが保証されるファイナライザーを提供、<xref:System.Runtime.InteropServices.SafeHandle>クリティカル ファイナライザーを実行します。  
+ メソッドまた<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>は<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>メソッドを呼び出すと、リソースを解放できます。 他のスレッドが同じセーフハンドルオブジェクトを使用している場合、この処理はすぐには行われませんが、その場合はすぐに発生します。 <xref:System.Runtime.InteropServices.SafeHandle>クラスを使用するほとんどのクラスはファイナライザーを提供する必要はありませんが、これは必要になることがあります (たとえば、ファイルバッファーをフラッシュする場合や、データをメモリに書き戻す場合など)。 この場合、クラスは、 <xref:System.Runtime.InteropServices.SafeHandle>クリティカルファイナライザーが実行される前に実行が保証されるファイナライザーを提供できます。  
   
- 呼び出す、<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>または<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>が完了したら、メソッドを使用して、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクト。  
+ オブジェクトの<xref:System.Runtime.InteropServices.SafeHandle.Close%2A> <xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A> 使用が終了したら、メソッドまたはメソッド<xref:System.Runtime.InteropServices.SafeHandle>を呼び出します。  
   
 > [!NOTE]
->  常に呼び出す<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>または<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>への参照を解放する前に、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクト。 そうしないと、ガベージ コレクターが <xref:System.Runtime.InteropServices.SafeHandle> オブジェクトの <xref:System.Runtime.InteropServices.SafeHandle.Finalize%2A> メソッドを呼び出すまで、使用されているリソースは解放されません。  
+>  オブジェクトへ<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>の<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A> 最後の参照を解放する前に、常にまたは<xref:System.Runtime.InteropServices.SafeHandle>を呼び出します。 そうしないと、ガベージ コレクターが <xref:System.Runtime.InteropServices.SafeHandle> オブジェクトの <xref:System.Runtime.InteropServices.SafeHandle.Finalize%2A> メソッドを呼び出すまで、使用されているリソースは解放されません。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="DangerousAddRef">
@@ -319,20 +319,20 @@
         <Parameter Name="success" Type="System.Boolean" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="success">参照カウンターが正常にインクリメントされた場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
+        <param name="success">参照カウンターが正常にインクリメントされた場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</param>
         <summary><see cref="T:System.Runtime.InteropServices.SafeHandle" /> インスタンスの参照カウンターを手動でインクリメントします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>メソッドでは、共通言語ランタイムを防ぎますハンドルによって使用されるメモリを再利用 (ランタイムが呼び出す場合に発生する、<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>メソッド)。 このメソッドの参照カウントを手動でインクリメントを使用することができます、<xref:System.Runtime.InteropServices.SafeHandle>インスタンス。 <xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A> 使用してブール値を返します、`ref`パラメーター (`success`)、参照カウントが正常にインクリメントされたかどうかを示します。 これにより、障害発生時に、プログラム ロジックです。 設定する必要があります`success`に`false`呼び出す前に<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>します。 場合`success`は`true`への呼び出しを照合することによってリソースのリークを避けるため<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>に対応する呼び出しで<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>します。  
+ メソッド<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>は、共通言語ランタイムがハンドルによって使用されるメモリを再利用できないように<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>します (ランタイムがメソッドを呼び出したときに発生します)。 このメソッドを使用すると、 <xref:System.Runtime.InteropServices.SafeHandle>インスタンスの参照カウントを手動でインクリメントできます。 <xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>参照カウントが正常にインクリメント`ref`され`success`たかどうかを示すパラメーター () を使用してブール値を返します。 これにより、エラーが発生した場合にプログラムロジックを戻すことができます。 を呼び出す`success` `false` 前<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>に、をに設定する必要があります。 が`success` <xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A> <xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>の場合は、への呼び出しをの対応する呼び出しと照合することで、リソースのリークを回避します。 `true`  
   
 > [!CAUTION]
->  このメソッドは、高度なユーザーのためのものでは、常に慎重に使用する必要があります。 ハンドル リソースのリークを避けるため、常に、スレッドの中止が処理を中断できない制約された実行領域 (CER) 内でこのメソッドを呼び出します。  
+>  この方法は上級ユーザーを対象としており、常に慎重に使用する必要があります。 ハンドルリソースがリークしないようにするには、常に、制約された実行領域 (CER) 内でこのメソッドを呼び出します。この場合、スレッドの中止で処理を中断することはできません。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:System.Runtime.InteropServices.SafeHandle.DangerousRelease" />
       </Docs>
     </Member>
@@ -388,14 +388,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- インスタンスから実際のハンドル値を取得するこのメソッドを使用することができます、<xref:System.Runtime.InteropServices.SafeHandle>クラスを派生します。 このメソッドは、必要な下位互換性、.NET Framework のプロパティの多くを返すため`IntPtr`型を処理します。 `IntPtr` ハンドル型は、プラットフォーム固有の型のポインターまたはハンドルを表すために使用します。  
+ このメソッドを使用して、 <xref:System.Runtime.InteropServices.SafeHandle>派生クラスのインスタンスから実際のハンドル値を取得できます。 このメソッドは、.NET Framework の多くのプロパティがハンドル型を返す`IntPtr`ため、下位互換性を保つために必要です。 `IntPtr`ハンドル型は、ポインターまたはハンドルを表すために使用されるプラットフォーム固有の型です。  
   
 > [!CAUTION]
->  使用して、<xref:System.Runtime.InteropServices.SafeHandle.DangerousGetHandle%2A>メソッドはセキュリティ上のリスクをもたらすことができますので、ハンドルが設定されている場合に無効として、 <xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid%2A>、<xref:System.Runtime.InteropServices.SafeHandle.DangerousGetHandle%2A>も古い可能性がある、元のハンドル値を返します。 返されたハンドルは、任意の時点でリサイクルされることもできます。 せいぜい、ハンドルが突然動作を停止した可能性がありますこれを意味します。 最悪の場合、ハンドルまたはハンドルを表すリソースは、信頼されていないコードに公開されるが、これで、再利用または返されるハンドル リサイクル セキュリティ攻撃につながることができます。 など、信頼されていない呼び出し元はハンドルで、返されるデータのクエリを実行し、まったく関係のないリソースの情報を受信できます。 参照してください、<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>と<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>メソッド使用の詳細について、 <xref:System.Runtime.InteropServices.SafeHandle.DangerousGetHandle%2A> methodsafely します。  
+>  メソッドを使用するとセキュリティ上のリスクが生じる可能性があります。これは<xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid%2A>、 <xref:System.Runtime.InteropServices.SafeHandle.DangerousGetHandle%2A>でハンドルが無効とマークされている場合でも、元の古いハンドル値が返されるためです。 <xref:System.Runtime.InteropServices.SafeHandle.DangerousGetHandle%2A> 返されたハンドルは、どの時点でもリサイクルできます。 つまり、ハンドルが突然動作しなくなる可能性があります。 最悪の場合、ハンドルが表すハンドルまたはリソースが信頼されていないコードに公開されると、再利用または返されたハンドルに対するセキュリティ攻撃のリサイクルが発生する可能性があります。 たとえば、信頼されていない呼び出し元は、返されただけのハンドルのデータに対してクエリを実行し、完全に関連のないリソースに関する情報を受け取ることができます。 Methodsafely に使用<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>する方法の<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>詳細については、メソッドとメソッドを参照し<xref:System.Runtime.InteropServices.SafeHandle.DangerousGetHandle%2A>てください。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="DangerousRelease">
@@ -449,14 +449,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>メソッドに対応するは<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>します。 呼び出しを常に一致する必要があります、<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>メソッド呼び出しは成功を<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>します。  
+ メソッドは、に<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>相当します。 <xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A> を正常に<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>呼び出すには、メソッド<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>の呼び出しを常に一致させる必要があります。  
   
 > [!CAUTION]
->  このメソッドは、高度なユーザーのためのものでは、常に慎重に使用する必要があります。 ハンドル リソースのリークを避けるため、常に、スレッドの中止が処理を中断できない制約された実行領域 (CER) 内でこのメソッドを呼び出します。 同じ方法を比類のない<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>呼び出しによりリソースのリーク、比類のない<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>呼び出しを他のスレッドを表示するに無効なハンドルの状態が発生することができます。 公開しない<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>または<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>信頼されていないコードへの呼び出し。  
+>  この方法は上級ユーザーを対象としており、常に慎重に使用する必要があります。 ハンドルリソースがリークしないようにするには、常に、制約された実行領域 (CER) 内でこのメソッドを呼び出します。この場合、スレッドの中止で処理を中断することはできません。 一致<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>しない呼び出しによってリソースリークが発生するの<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>と同じように、一致しない呼び出しによって無効なハンドル状態が他のスレッドに表示されることがあります。 信頼され<xref:System.Runtime.InteropServices.SafeHandle.DangerousAddRef%2A>て<xref:System.Runtime.InteropServices.SafeHandle.DangerousRelease%2A>いないコードを公開したり呼び出したりしないでください。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:System.Runtime.InteropServices.SafeHandle.DangerousAddRef(System.Boolean@)" />
       </Docs>
     </Member>
@@ -523,16 +523,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出す、<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>または<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>メソッドにより、リソースを解放します。 これにより、他のスレッドは、セーフ ハンドルの同じインスタンスを使用している場合は、すぐに行われない可能性がありますが、できなくなるとすぐに実行されます。 クラスの使用の最も<xref:System.Runtime.InteropServices.SafeHandle>ファイナライザーを提供する必要はありません、これは (たとえば、ファイル バッファをフラッシュするまたは一部のデータをメモリに書き戻す) 必要があります。 この場合は、前に実行することが保証されるファイナライザーを提示できます、<xref:System.Runtime.InteropServices.SafeHandle>クリティカル ファイナライザーを実行します。  
+ メソッドまた<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>は<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>メソッドを呼び出すと、リソースを解放できます。 他のスレッドがセーフハンドルの同じインスタンスを使用している場合、この動作はすぐには行われませんが、その場合はすぐに発生します。 を使用<xref:System.Runtime.InteropServices.SafeHandle>するほとんどのクラスではファイナライザーを提供する必要はありませんが、これが必要になることがあります (たとえば、ファイルバッファーをフラッシュする場合や、データをメモリに書き戻す場合など)。 この場合、 <xref:System.Runtime.InteropServices.SafeHandle>クリティカルファイナライザーが実行される前に実行が保証されるファイナライザーを提供できます。  
   
- 呼び出す、<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>または<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>が完了したら、メソッドを使用して、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクト。 <xref:System.Runtime.InteropServices.SafeHandle.Close%2A>メソッドによって、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクトを使用できない状態です。  
+ オブジェクトの<xref:System.Runtime.InteropServices.SafeHandle.Close%2A> <xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A> 使用が終了したら、メソッドまたはメソッド<xref:System.Runtime.InteropServices.SafeHandle>を呼び出します。 メソッド<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>は、オブジェクト<xref:System.Runtime.InteropServices.SafeHandle>を使用できない状態のままにします。  
   
 > [!NOTE]
->  常に呼び出し、<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>または<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>メソッドへの参照を解放する前に、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクト。 そうしないと、ガベージ コレクターが <xref:System.Runtime.InteropServices.SafeHandle> オブジェクトの <xref:System.Runtime.InteropServices.SafeHandle.Finalize%2A> メソッドを呼び出すまで、使用されているリソースは解放されません。  
+>  オブジェクトへの<xref:System.Runtime.InteropServices.SafeHandle.Close%2A> <xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A> 最後の参照を解放する前に、常にメソッドまたはメソッドを<xref:System.Runtime.InteropServices.SafeHandle>呼び出してください。 そうしないと、ガベージ コレクターが <xref:System.Runtime.InteropServices.SafeHandle> オブジェクトの <xref:System.Runtime.InteropServices.SafeHandle.Finalize%2A> メソッドを呼び出すまで、使用されているリソースは解放されません。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -589,11 +589,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 明示的に呼び出す必要があります、<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>メソッドを`disposing`パラメーターに設定`false`します。  
+ `disposing`パラメーターをに<xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A> 設定`false`して、メソッドを明示的に呼び出すことは避けてください。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -644,11 +644,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.InteropServices.SafeHandle.Finalize%2A>メソッドは、デストラクター、<xref:System.Runtime.InteropServices.SafeHandle>クラス。 アプリケーション コードでは、このメソッドを直接呼び出さないでください。  
+ メソッドは、 <xref:System.Runtime.InteropServices.SafeHandle>クラスのデストラクターです。 <xref:System.Runtime.InteropServices.SafeHandle.Finalize%2A> アプリケーションコードでは、このメソッドを直接呼び出すことはできません。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:System.Runtime.InteropServices.SafeHandle.Dispose" />
       </Docs>
     </Member>
@@ -694,7 +694,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ハンドルをパブリックに公開しません (つまり、派生クラスの外部で)。  
+ ハンドルを公開しないでください (つまり、派生クラスの外部)。  
   
  ]]></format>
         </remarks>
@@ -746,20 +746,20 @@
       </ReturnValue>
       <Docs>
         <summary>ハンドルが閉じているかどうかを示す値を取得します。</summary>
-        <value>ハンドルが閉じている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>ハンドルが閉じている場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.InteropServices.SafeHandle.IsClosed%2A>メソッドを示す値を返すかどうか、<xref:System.Runtime.InteropServices.SafeHandle>オブジェクトのハンドルは、ネイティブ リソースに関連付けられてが不要になった。 定義からこれに対し、<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>プロパティで、計算するかどうか指定したハンドルが常に無効と見なされます。 <xref:System.Runtime.InteropServices.SafeHandle.IsClosed%2A>メソッドを返します。 を`true`値は、次の場合。  
+ メソッドは、 <xref:System.Runtime.InteropServices.SafeHandle>オブジェクトのハンドルがネイティブリソースに関連付けられていないかどうかを示す値を返します。 <xref:System.Runtime.InteropServices.SafeHandle.IsClosed%2A> これは、指定された<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>ハンドルが常に無効と見なされるかどうかを計算するプロパティの定義とは異なります。 メソッド<xref:System.Runtime.InteropServices.SafeHandle.IsClosed%2A>は、次`true`の場合に値を返します。  
   
 -   <xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid%2A>メソッドが呼び出されました。  
   
--   <xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>メソッドまたは<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>メソッドが呼び出されへの参照がない、<xref:System.Runtime.InteropServices.SafeHandle>他のスレッド上のオブジェクト。  
+-   メソッドまたは<xref:System.Runtime.InteropServices.SafeHandle.Close%2A>メソッドが呼び出されましたが、他の<xref:System.Runtime.InteropServices.SafeHandle>スレッドにオブジェクトへの参照がありません。 <xref:System.Runtime.InteropServices.SafeHandle.Dispose%2A>  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="IsInvalid">
@@ -810,20 +810,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生クラスで実装する必要があります、<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>プロパティ、共通言語ランタイムはクリティカル ファイナライズが必要かどうかを確認できるようにします。 派生クラスでサポートされるハンドルの一般的な型に合った実装を提供する必要があります (0 または-1 が無効です)。 これらのクラスは、特定のセーフ ハンドルの種類をさらに派生します。  
+ 派生クラスはプロパティを<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>実装する必要があります。これにより、共通言語ランタイムは、重要な終了処理が必要かどうかを判断できるようになります。 派生クラスは、サポートするハンドルの一般的な種類に適した実装を提供する必要があります (0 または-1 は無効です)。 これらのクラスは、特定のセーフハンドル型に対してさらに派生させることができます。  
   
- 異なり、<xref:System.Runtime.InteropServices.SafeHandle.IsClosed%2A>プロパティ、報告するかどうか、 <xref:System.Runtime.InteropServices.SafeHandle> 、基になるハンドルを使用してオブジェクトが完了した、<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>プロパティを計算するかどうか指定したハンドルの値は常に無効と見なされます。 そのため、<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>プロパティは常に任意の 1 つのハンドル値に対して同じ値を返します。  
+ オブジェクトが基になるハンドルの使用を終了した<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A> <xref:System.Runtime.InteropServices.SafeHandle.IsClosed%2A>かどうかを報告するプロパティとは異なり、プロパティは、指定されたハンドル値が常に無効と見なされるかどうかを計算<xref:System.Runtime.InteropServices.SafeHandle>します。 したがって、 <xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>プロパティは常に1つのハンドル値に対して同じ値を返します。  
   
    
   
 ## Examples  
- 次の例では、ファイルが正常に開かれたかどうかを確認します。 このコード例が示されている例の一部、<xref:System.Runtime.InteropServices.SafeHandle>クラス。  
+ 次の例では、ファイルが正常に開かれたかどうかを確認します。 このコード例は、 <xref:System.Runtime.InteropServices.SafeHandle>クラスに対して提供される大規模な例の一部です。  
   
  [!code-csharp[SafeHandle#2](~/samples/snippets/csharp/VS_Snippets_CLR/SafeHandle/CS/program.cs#2)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="ReleaseHandle">
@@ -875,26 +875,26 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>メソッドだけで、ハンドルがによって定義されている有効な場合にのみと呼び出されることが保証、<xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>プロパティ。 このメソッドの実装、<xref:System.Runtime.InteropServices.SafeHandle>ハンドルを解放するために必要なすべてのコードを実行するクラスを派生します。 の関数の 1 つ<xref:System.Runtime.InteropServices.SafeHandle>、コードの実装では、リソースのリークの防止を保証するためには、<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>失敗しない必要があります。 ガベージ コレクター<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>ガベージ コレクションで同時に収集されたオブジェクトの通常のファイナライザーが実行された後にします。 ガベージ コレクターは、このメソッドを呼び出すためのリソースを保証する間に、メソッドは中断されませんが進行中. このメソッドは、(その静的に特定の呼び出しグラフですべてのメソッド) およびインスタンスの構築時に制約された実行領 (域 CER) として準備されます。 オーバーライドされたどのエラー パスを導入しないように注意する必要がありますが、これには、スレッドの中止の割り込みが防止されますが、<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>メソッド。 具体的には、適用、<xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute>から呼び出すメソッドが存在する属性<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>します。 ほとんどの場合、このコードがあります。  
+ メソッドは、 <xref:System.Runtime.InteropServices.SafeHandle.IsInvalid%2A>プロパティで定義されているとおりにハンドルが有効である場合にのみ、1回だけ呼び出されることが保証されます。 <xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A> このメソッドを<xref:System.Runtime.InteropServices.SafeHandle>派生クラスに実装して、ハンドルを解放するために必要なすべてのコードを実行します。 の<xref:System.Runtime.InteropServices.SafeHandle>関数の1つはリソースリークの防止を保証することであるため、の<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>実装のコードは失敗しないようにする必要があります。 ガベージコレクターは、 <xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>同時にガベージコレクションされたオブジェクトに対して通常のファイナライザーを実行した後に、を呼び出します。 ガベージコレクターは、このメソッドを呼び出すためのリソースを保証し、処理中にメソッドが中断されないようにします。 このメソッドは、インスタンスの構築時に制約された実行領域 (CER) として準備されます (静的な determinable 呼び出しグラフ内のすべてのメソッドと共に)。 これにより、スレッドの中止が中断されることはありませんが、オーバーライド<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>されたメソッドにエラーパスを導入しないように注意する必要があります。 特に、から<xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute> <xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>呼び出すメソッドに属性を適用します。 ほとんどの場合、このコードは次のようになります。  
   
  `ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)`  
   
- 単純なクリーンアップのさらに、(たとえば、Windows API の呼び出し`CloseHandle`ファイル ハンドルで) 1 つのプラットフォーム呼び出しの戻り値を確認することができます。 複雑なクリーンアップは、多くのプログラム ロジックとその一部が失敗する多くのメソッド呼び出しがあります。 プログラム ロジックでは、そのような場合の各フォールバック コードはことを確認する必要があります。  
+ また、単純なクリーンアップ (ファイルハンドルで Windows API `CloseHandle`を呼び出すなど) の場合は、単一のプラットフォーム呼び出しの戻り値を確認できます。 複雑なクリーンアップでは、多くのプログラムロジックと多くのメソッド呼び出しがあり、その一部が失敗する可能性があります。 プログラムロジックにそれぞれのケースのフォールバックコードがあることを確認する必要があります。  
   
- 場合<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>返します`false`生成何らかの理由で、 [releaseHandleFailed](~/docs/framework/debug-trace-profile/releasehandlefailed-mda.md)マネージ デバッグ アシスタントです。  これにより、リソースを解放しようとすると、失敗した場合を検出できます。  
+ 何ら<xref:System.Runtime.InteropServices.SafeHandle.ReleaseHandle%2A>か`false`の理由でがを返した場合、 [releasehandlefailed](~/docs/framework/debug-trace-profile/releasehandlefailed-mda.md)マネージデバッグアシスタントが生成されます。  これは、リソースを解放しようとすると失敗するケースを検出するのに役立ちます。  
   
    
   
 ## Examples  
- 次のコード例はハンドルを解放し、示されている例の一部である、<xref:System.Runtime.InteropServices.SafeHandle>クラス。  
+ 次のコード例では、ハンドルを解放します。これは、 <xref:System.Runtime.InteropServices.SafeHandle>クラスで提供されるより大きな例の一部です。  
   
  [!code-csharp[SafeHandle#3](~/samples/snippets/csharp/VS_Snippets_CLR/SafeHandle/CS/program.cs#3)]  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <related type="Article" href="https://msdn.microsoft.com/library/76994ee6-9fa9-4059-b813-26578d24427c">マネージ デバッグ アシスタントによるランタイム エラーを診断します。</related>
-        <related type="Article" href="https://msdn.microsoft.com/library/44cd98ba-95e5-40a1-874d-e8e163612c51">releaseHandleFailed</related>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <related type="Article" href="https://msdn.microsoft.com/library/76994ee6-9fa9-4059-b813-26578d24427c">マネージデバッグアシスタントによる実行時エラーの診断</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/44cd98ba-95e5-40a1-874d-e8e163612c51">ReleaseHandleFailed</related>
       </Docs>
     </Member>
     <Member MemberName="SetHandle">
@@ -951,11 +951,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.InteropServices.SafeHandle.SetHandle%2A>メソッド、.NET Framework の COM 相互運用機能のインフラストラクチャがマーシャ リングをサポートしていないため (たとえば、構造体には、ハンドルが返されます) 場合、既存のハンドルをサポートする必要がある場合にのみ出力構造体のハンドル。  
+ メソッドは<xref:System.Runtime.InteropServices.SafeHandle.SetHandle%2A> 、既存のハンドルをサポートする必要がある場合にのみ使用します (たとえば、ハンドルが構造体で返される場合)。 .NET Framework COM 相互運用インフラストラクチャでは、構造体の出力ハンドルのマーシャリングはサポートされないためです。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="SetHandleAsInvalid">
@@ -1009,13 +1009,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出す、<xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid%2A>メソッド ハンドルが不要になったリソースを参照することがわかっている場合にのみです。 値は変更は、<xref:System.Runtime.InteropServices.SafeHandle.handle>フィールド; 終了としてのみ、ハンドルがマークされます。 ハンドル、値が古い可能性がある値があります。 この呼び出しの効果は、リソースを解放する試行が行われませんことです。  
+ ハンドルが<xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid%2A>リソースを参照しなくなったことがわかっている場合にのみ、メソッドを呼び出します。 この操作を行っても、 <xref:System.Runtime.InteropServices.SafeHandle.handle>フィールドの値は変更されず、ハンドルは closed とマークされるだけです。 このハンドルには、古くなった可能性のある値が含まれている可能性があります。 この呼び出しの結果として、リソースの解放は行われません。  
   
- 同様、<xref:System.Runtime.InteropServices.SafeHandle.SetHandle%2A>メソッドを使用して<xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid%2A>既存のハンドルをサポートする必要がある場合にのみです。  
+ メソッドと同様に、既存<xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid%2A>のハンドルをサポートする必要がある場合にのみ、を使用します。 <xref:System.Runtime.InteropServices.SafeHandle.SetHandle%2A>  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージ コードを呼び出すアクセス許可。 セキュリティ アクション:<see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">アンマネージコードを呼び出すためのアクセス許可。 セキュリティアクション: <see cref="F:System.Security.Permissions.SecurityAction.LinkDemand" />。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
   </Members>

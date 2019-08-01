@@ -20,10 +20,10 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Automation.Peers.DocumentAutomationPeer>ドキュメントを表し、サポート、<xref:System.Windows.Automation.TextPattern>します。  などのオブジェクトを<xref:System.Windows.Documents.FixedDocument>または<xref:System.Windows.Documents.FlowDocument>イメージとハイパーリンクなど、埋め込みオブジェクトを含めることができます。  最初に、子、ドキュメントの要素を取得しようと<xref:System.Windows.Automation.Peers.DocumentAutomationPeer.GetChildrenCore%2A?displayProperty=nameWithType>埋め込みオブジェクトは返されません。  埋め込まれた要素を取得するには、取得、<xref:System.Windows.Automation.Text.TextPatternRange>から、<xref:System.Windows.Automation.TextPattern>を呼び出すと<xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A?displayProperty=nameWithType>します。  後<xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A?displayProperty=nameWithType>を呼び出すと、任意の要素を<xref:System.Windows.Automation.Text.TextPatternRange>によって返される<xref:System.Windows.Automation.Peers.DocumentAutomationPeer.GetChildrenCore%2A?displayProperty=nameWithType>します。  
+ は<xref:System.Windows.Automation.Peers.DocumentAutomationPeer>ドキュメントを表し、を<xref:System.Windows.Automation.TextPattern>サポートします。  やなどの<xref:System.Windows.Documents.FixedDocument>オブジェクトに<xref:System.Windows.Documents.FlowDocument>は、画像やハイパーリンクなどの埋め込みオブジェクトを含めることができます。  最初は、ドキュメントの子要素を取得しようとすると<xref:System.Windows.Automation.Peers.DocumentAutomationPeer.GetChildrenCore%2A?displayProperty=nameWithType> 、は埋め込みオブジェクトを返しません。  埋め込み要素を取得するには<xref:System.Windows.Automation.Text.TextPatternRange> 、 <xref:System.Windows.Automation.TextPattern>からを取得<xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A?displayProperty=nameWithType>し、を呼び出します。  が<xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A?displayProperty=nameWithType>呼び出された後、 <xref:System.Windows.Automation.Text.TextPatternRange>のすべての要素が<xref:System.Windows.Automation.Peers.DocumentAutomationPeer.GetChildrenCore%2A?displayProperty=nameWithType>によって返されます。  
   
 > [!NOTE]
->  ドキュメントがわかっていない場合は、 <xref:System.Windows.Documents.FlowDocument>、呼び出す必要はありません<xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A>上、<xref:System.Windows.Automation.TextPattern.DocumentRange%2A?displayProperty=nameWithType>プロパティ。 呼び出して、ドキュメントがネットワークの場所から読み込まれる場合<xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A>ドキュメント全体に対してリソースではない場合。  代わりに、する必要がありますを使用して、いずれかで<xref:System.Windows.Automation.TextPattern>を返す、<xref:System.Windows.Automation.Text.TextPatternRange>ドキュメントの一部を表します。  
+>  ドキュメントがであることが<xref:System.Windows.Documents.FlowDocument>わかっている場合を除き、 <xref:System.Windows.Automation.TextPattern.DocumentRange%2A?displayProperty=nameWithType>プロパティでを呼び出さ<xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A>ないでください。 ドキュメントがネットワークの場所から読み込まれた場合、 <xref:System.Windows.Automation.Text.TextPatternRange.GetChildren%2A>ドキュメント全体でを呼び出すと、リソースが大量に消費されます。  代わりに、のメソッド<xref:System.Windows.Automation.TextPattern>のいずれかを使用して、ドキュメントの一部を表すを<xref:System.Windows.Automation.Text.TextPatternRange>返します。  
   
  ]]></format>
     </remarks>
@@ -101,7 +101,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>取得、<see cref="T:System.Windows.Rect" />これに関連付けられている要素の画面座標を表す<see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" />します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetBoundingRectangle" /> によって呼び出されます。</summary>
+        <summary>この <see cref="T:System.Windows.Rect" /> に関連付けられている要素の画面座標を表す <see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" /> を取得します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetBoundingRectangle" /> によって呼び出されます。</summary>
         <returns>外接する四角形。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -124,8 +124,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>子要素のコレクションを取得、<see cref="T:System.Windows.FrameworkContentElement" />これに関連付けられている<see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" />します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetChildren" /> によって呼び出されます。</summary>
-        <returns><see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" />使用してそのコンテンツにアクセス<see cref="T:System.Windows.Automation.TextPattern" />、このメソッドは常に返します<see langword="null" />します。</returns>
+        <summary>この <see cref="T:System.Windows.FrameworkContentElement" /> に関連付けられている <see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" /> の子要素のコレクションを取得します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetChildren" /> によって呼び出されます。</summary>
+        <returns><see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" /> は、<see cref="T:System.Windows.Automation.TextPattern" /> を使用してそのコンテンツへのアクセス権を付与するので、このメソッドは常に <see langword="null" /> を返します。</returns>
         <remarks>To be added.</remarks>
         <altmember cref="M:System.Windows.Automation.Peers.AutomationPeer.GetChildrenCore" />
       </Docs>
@@ -149,7 +149,7 @@
       <Parameters />
       <Docs>
         <summary>この <see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" /> と関連付けられた <see cref="T:System.Windows.FrameworkContentElement" /> の名前を取得します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" /> によって呼び出されます。</summary>
-        <returns>"Document"を含む文字列。</returns>
+        <returns>"Document" を格納する文字列。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -180,7 +180,7 @@
       <Parameters />
       <Docs>
         <summary>この <see cref="T:System.Windows.Automation.Peers.ContentElementAutomationPeer" /> に関連付けられた <see cref="T:System.Windows.FrameworkContentElement" /> 上にあるクリック可能なスペースを表す <see cref="T:System.Windows.Point" /> を取得します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClickablePoint" /> によって呼び出されます。</summary>
-        <returns>要素上のクリックできる領域を表すポイント。</returns>
+        <returns>要素上のクリック可能な領域を表すポイント。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -227,7 +227,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>取得または設定を示す値かどうか、<see cref="T:System.Windows.FrameworkContentElement" />これに関連付けられている<see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" />対話的なものとしてエンドユーザーが認識またはユーザーが認識、 <see cref="T:System.Windows.FrameworkContentElement" /> 内のコントロールの論理構造に利用できるもの[!INCLUDE[TLA2#tla_gui](~/includes/tla2sharptla-gui-md.md)]. このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.IsControlElement" /> によって呼び出されます。</summary>
+        <summary>この <see cref="T:System.Windows.FrameworkContentElement" /> に関連付けられている <see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" /> を対話的なものとしてエンド ユーザーが認識するかどうか、または <see cref="T:System.Windows.FrameworkContentElement" /> を [!INCLUDE[TLA2#tla_gui](~/includes/tla2sharptla-gui-md.md)] に含まれるコントロールの論理構造に利用できるものとしてユーザーが認識するかどうかを示す値を取得または設定します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.IsControlElement" /> によって呼び出されます。</summary>
         <returns>常に <see langword="true" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -250,13 +250,13 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>示す値を取得するかどうか、<see cref="T:System.Windows.FrameworkContentElement" />これに関連付けられている<see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" />画面から外れています。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.IsOffscreen" /> によって呼び出されます。</summary>
+        <summary>この <see cref="T:System.Windows.FrameworkContentElement" /> に関連付けられている <see cref="T:System.Windows.Automation.Peers.DocumentAutomationPeer" /> が画面から外れているかどうかを示す値を取得します。 このメソッドは <see cref="M:System.Windows.Automation.Peers.AutomationPeer.IsOffscreen" /> によって呼び出されます。</summary>
         <returns>要素が画面上にない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティでは、要素が表示されるかどうかは示されません。 状況によっては、要素は画面が表示されていません。 たとえば、要素が他の要素によって隠されている場合、可能性があります表示されません。 この場合、メソッドを返します`false`します。  
+ このプロパティは、要素を表示するかどうかを示しません。 状況によっては、要素が画面上にあり、まだ表示されていない場合があります。 たとえば、要素が他の要素によって隠されている場合、その要素は表示されない可能性があります。 この場合、メソッドはを返し`false`ます。  
   
  ]]></format>
         </remarks>

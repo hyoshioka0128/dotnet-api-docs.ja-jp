@@ -43,14 +43,14 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Transactions>名前空間には明示的なプログラミング モデルに基づく、<xref:System.Transactions.Transaction>クラスだけでなく、暗黙的なプログラミング モデルを使用して、<xref:System.Transactions.TransactionScope>トランザクションを自動的にインフラストラクチャによって管理するクラス。 高、開発を容易に暗黙的なモデルを使用することお勧めします。 最初に、次を参照してください。、[実装 An Implicit Transaction Using Transaction Scope](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。 トランザクション アプリケーションの作成の詳細については、次を参照してください。 [Writing A Transactional Application](~/docs/framework/data/transactions/writing-a-transactional-application.md)します。  
+ <xref:System.Transactions>名前空間には明示的なプログラミング モデルに基づく、<xref:System.Transactions.Transaction>クラスだけでなく、暗黙的なプログラミング モデルを使用して、<xref:System.Transactions.TransactionScope>トランザクションを自動的にインフラストラクチャによって管理するクラス。 開発には、より簡単な暗黙的なモデルを使用することを強くお勧めします。 開始するには、「[トランザクションスコープを使用した暗黙的なトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」を参照してください。 トランザクションアプリケーションの作成の詳細については、「[トランザクションアプリケーションの作成](~/docs/framework/data/transactions/writing-a-transactional-application.md)」を参照してください。  
   
- <xref:System.Transactions.Transaction>クラスには、リソース マネージャーの参加を実装する開発者によって使用されるメソッドが含まれています。 トランザクションの複製および現在のトランザクション コンテキストを制御するための機能も提供します。 現在のトランザクションを取得するには、設定されている場合、静的なを使用して<xref:System.Transactions.Transaction.Current%2A>プロパティ。  
+ クラス<xref:System.Transactions.Transaction>には、参加リストのリソースマネージャーを実装する開発者が使用するメソッドが含まれています。 また、トランザクションを複製し、現在のトランザクションコンテキストを制御する機能も提供します。 現在のトランザクションが設定されている場合は、静的<xref:System.Transactions.Transaction.Current%2A>なプロパティを使用して取得できます。  
   
  ]]></format>
     </remarks>
     <threadsafe>この型はスレッド セーフです。</threadsafe>
-    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ee818750(v=vs.100)">トランザクションに参加しています。</related>
+    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ee818750(v=vs.100)">トランザクションへの参加</related>
   </Docs>
   <Members>
     <Member MemberName="BeginCommitInternal">
@@ -115,12 +115,12 @@
       <Parameters />
       <Docs>
         <summary>トランザクションの複製を作成します。</summary>
-        <returns>A<see cref="T:System.Transactions.Transaction" />の現在のトランザクション オブジェクトのコピーであります。</returns>
+        <returns>現在のトランザクション オブジェクトのコピーである <see cref="T:System.Transactions.Transaction" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 複製は、トランザクションを渡すために作成されます。  たとえば、たくないを渡す、<xref:System.Transactions.CommittableTransaction>他のアプリケーション場合、そのトランザクションをコミットするためです。  マーシャ リングまたはトランザクションをシリアル化しようとすると、複製は自動的が作成されます。  
+ トランザクションを渡すために、複製が作成されます。  たとえば、他のアプリケーションがトランザクションをコミットし<xref:System.Transactions.CommittableTransaction>ないようにするため、を他のアプリケーションに渡すことはできません。  トランザクションをマーシャリングまたはシリアル化しようとすると、自動的に複製が作成されます。  
   
  ]]></format>
         </remarks>
@@ -160,11 +160,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アンビエント トランザクションの詳細については、「TransactionScopeOption を使用してトランザクション フローの管理」のセクションを参照してください、 [Implementing an Implicit Transaction のトランザクション スコープを使用して](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。  
+ アンビエントトランザクションの詳細については、「[トランザクションスコープを使用した暗黙的なトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」の「TransactionScopeOption を使用したトランザクションフローの管理」セクションを参照してください。  
   
- このプロパティを使用してアンビエント トランザクションを設定できますが使用すること、<xref:System.Transactions.TransactionScope>可能であれば、アンビエント トランザクションを操作するオブジェクト。  
+ このプロパティを使用してアンビエントトランザクションを設定することもできます<xref:System.Transactions.TransactionScope>が、可能な限りアンビエントトランザクションを操作するにはオブジェクトを使用する必要があります。  
   
- このプロパティは、スレッドが静的です。 内でこのプロパティを使用してアンビエント トランザクションを変更するかどうか、 <xref:System.Transactions.TransactionScope> 、<xref:System.InvalidOperationException>ときにスローされる<xref:System.Transactions.TransactionScope.Dispose%2A>が呼び出されると前のトランザクションをアンビエント値が復元されます。  
+ このプロパティは、thread static です。 の<xref:System.Transactions.TransactionScope> 内部で<xref:System.Transactions.TransactionScope.Dispose%2A>このプロパティを使用してアンビエントトランザクションを変更すると、が呼び出されたときにがスローされ、前のアンビエントトランザクション値が復元されます。<xref:System.InvalidOperationException>  
   
  ]]></format>
         </remarks>
@@ -208,17 +208,17 @@
         <Parameter Name="option" Type="System.Transactions.DependentCloneOption" Index="0" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="cloneOption">A<see cref="T:System.Transactions.DependentCloneOption" />を作成する依存トランザクションの種類を制御します。</param>
-        <param name="option">A<see cref="T:System.Transactions.DependentCloneOption" />を作成する依存トランザクションの種類を制御します。</param>
+        <param name="cloneOption">作成する依存トランザクションの種類を制御する <see cref="T:System.Transactions.DependentCloneOption" />。</param>
+        <param name="option">作成する依存トランザクションの種類を制御する <see cref="T:System.Transactions.DependentCloneOption" />。</param>
         <summary>トランザクションの依存する複製を作成します。</summary>
-        <returns>A<see cref="T:System.Transactions.DependentTransaction" />依存している複製を表します。</returns>
+        <returns>依存する複製を表す <see cref="T:System.Transactions.DependentTransaction" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 依存トランザクションは、その結果は、その複製元のトランザクションの結果によって異なります。 トランザクションです。  
+ 依存トランザクションは、その結果が複製元のトランザクションの結果に依存するトランザクションです。  
   
- `cloneoption`パラメーターは、作成する依存トランザクションの種類を制御します。 依存トランザクションが作成された場合<xref:System.Transactions.DependentCloneOption.BlockCommitUntilComplete>、トランザクションがタイムアウトするまでは、トランザクションのコミット プロセスをブロックまたは<xref:System.Transactions.DependentTransaction.Complete%2A>で呼び出される、<xref:System.Transactions.DependentTransaction>します。 作成されて場合<xref:System.Transactions.DependentCloneOption.RollbackIfNotComplete>場合、トランザクションを自動的に中止<xref:System.Transactions.CommittableTransaction.Commit%2A>前に呼び出されます<xref:System.Transactions.DependentTransaction.Complete%2A>で呼び出される、 <xref:System.Transactions.DependentTransaction>。  
+ パラメーター `cloneoption`は、作成する依存トランザクションの種類を制御します。 依存トランザクションがで<xref:System.Transactions.DependentCloneOption.BlockCommitUntilComplete>作成された場合、トランザクションがタイムアウトするまで、また<xref:System.Transactions.DependentTransaction.Complete%2A>はに対し<xref:System.Transactions.DependentTransaction>て呼び出されるまで、トランザクションのコミットプロセスはブロックされます。 がで<xref:System.Transactions.DependentCloneOption.RollbackIfNotComplete>作成されている場合、が呼び出される<xref:System.Transactions.CommittableTransaction.Commit%2A> <xref:System.Transactions.DependentTransaction>前<xref:System.Transactions.DependentTransaction.Complete%2A>にが呼び出されると、トランザクションは自動的に中止されます。  
   
    
   
@@ -230,7 +230,7 @@
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://msdn.microsoft.com/library/bdad8468-2a90-4b81-8375-278067120cab">DependentTransaction による同時実行を管理します。</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/bdad8468-2a90-4b81-8375-278067120cab">DependentTransaction による同時実行の管理</related>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -270,7 +270,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アンビエント トランザクションを設定して変更する場合<xref:System.Transactions.Transaction.Current%2A>内で、 <xref:System.Transactions.TransactionScope> 、<xref:System.InvalidOperationException>ときにスローされる<xref:System.Transactions.TransactionScope.Dispose%2A>が呼び出されと前のトランザクションをアンビエント値が復元されます。  
+ <xref:System.Transactions.Transaction.Current%2A> の<xref:System.Transactions.TransactionScope>内部でを設定してアンビエントトランザクションを変更すると、 <xref:System.Transactions.TransactionScope.Dispose%2A>が呼び出されたときにがスローされ、前のアンビエントトランザクション値が復元されます。<xref:System.InvalidOperationException>  
   
  ]]></format>
         </remarks>
@@ -319,7 +319,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- **注**このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand>されるを防ぐために信頼できないコードから呼び出されます。 ただし、直前の呼び出し元だけが所有する必要が、`FullTrust`アクセス許可セット。  
+ **メモ**このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand> 、を使用して信頼されていないコードから呼び出されないようにします。 `FullTrust`ただし、アクセス許可セットを保持するには、直前の呼び出し元だけが必要です。  
   
  ]]></format>
         </remarks>
@@ -367,21 +367,21 @@
         <Parameter Name="options" Type="System.Transactions.EnlistmentOptions" Index="2" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="resourceManagerIdentifier">リソース マネージャーのエラーになるか再起動する必要がありますリソース マネージャーの一意の識別子。</param>
-        <param name="manager">リソース マネージャーのエラーになるか再起動する必要がありますリソース マネージャーの一意の識別子。</param>
-        <param name="enlistmentNotification">実装するオブジェクト、 <see cref="T:System.Transactions.IEnlistmentNotification" /> 2 フェーズ コミットの通知を受信するインターフェイス。</param>
-        <param name="notification">実装するオブジェクト、 <see cref="T:System.Transactions.IEnlistmentNotification" /> 2 フェーズ コミットの通知を受信するインターフェイス。</param>
+        <param name="resourceManagerIdentifier">リソース マネージャーのエラーの保持または再起動を必要とするリソース マネージャーの一意の識別子。</param>
+        <param name="manager">リソース マネージャーのエラーの保持または再起動を必要とするリソース マネージャーの一意の識別子。</param>
+        <param name="enlistmentNotification">2 フェーズ コミットの通知を受け取るために <see cref="T:System.Transactions.IEnlistmentNotification" /> インターフェイスを実装するオブジェクト。</param>
+        <param name="notification">2 フェーズ コミットの通知を受け取るために <see cref="T:System.Transactions.IEnlistmentNotification" /> インターフェイスを実装するオブジェクト。</param>
         <param name="enlistmentOptions">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
         <param name="options">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
-        <summary>トランザクションに参加する 2 フェーズ コミットをサポートする永続的リソース マネージャーを参加させます。</summary>
+        <summary>2 フェーズ コミットをサポートし、トランザクションに参加する永続的リソース マネージャーを参加させます。</summary>
         <returns>参加リストについて記述している <see cref="T:System.Transactions.Enlistment" />オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 永続参加リストを持つリソース マネージャーは、エラーが発生した場合、回復を実行できる必要があります。 回復の詳細については、次を参照してください。 [Performing Recovery](https://msdn.microsoft.com/library/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)します。 永続的な揮発性のリソースとリソースを参加させる方法の詳細については、次を参照してください。 [Implementing A Resource Manager](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)します。  リソース マネージャーがコミット通知し、2 フェーズ コミットのコミットの準備にどのように応答する方法の詳細については、次を参照してください。 [Committing A Transaction In Single-Phase and Multi-phase](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)します。  
+ 持続性のある参加リストを持つリソースマネージャーは、障害が発生した場合に回復を実行できる必要があります。 回復の詳細については、「[回復の実行](https://msdn.microsoft.com/library/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)」を参照してください。 揮発性リソースと持続性のあるリソースの詳細、およびリソースの参加方法については、「[リソースマネージャーの実装](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)」を参照してください。  リソースマネージャーがコミット通知に応答し、2フェーズコミットでコミットを準備する方法の詳細については、「[単一フェーズおよび複数フェーズでのトランザクションのコミット](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)」を参照してください。  
   
- このメソッドを使用するトランザクションに参加するために参加しているリソース マネージャーで定義されたメソッドに対応する 2 フェーズ コミットの通知を受信する、<xref:System.Transactions.IEnlistmentNotification>インターフェイス。  
+ このメソッドを使用してトランザクションに参加するために参加しているリソースマネージャーは、 <xref:System.Transactions.IEnlistmentNotification>インターフェイスで定義されたメソッドに対応する2フェーズコミット通知を受け取ります。  
   
  ]]></format>
         </remarks>
@@ -429,21 +429,21 @@
         <Parameter Name="options" Type="System.Transactions.EnlistmentOptions" Index="2" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="resourceManagerIdentifier">リソース マネージャーのエラーになるか再起動する必要がありますリソース マネージャーの一意の識別子。</param>
-        <param name="manager">リソース マネージャーのエラーになるか再起動する必要がありますリソース マネージャーの一意の識別子。</param>
-        <param name="singlePhaseNotification">実装するオブジェクト、<see cref="T:System.Transactions.ISinglePhaseNotification" />単一フェーズ コミットと 2 フェーズ コミットの通知を受信できる必要があるインターフェイスです。</param>
-        <param name="notification">実装するオブジェクト、<see cref="T:System.Transactions.ISinglePhaseNotification" />単一フェーズ コミットと 2 フェーズ コミットの通知を受信できる必要があるインターフェイスです。</param>
+        <param name="resourceManagerIdentifier">リソース マネージャーのエラーの保持または再起動を必要とするリソース マネージャーの一意の識別子。</param>
+        <param name="manager">リソース マネージャーのエラーの保持または再起動を必要とするリソース マネージャーの一意の識別子。</param>
+        <param name="singlePhaseNotification"><see cref="T:System.Transactions.ISinglePhaseNotification" /> インターフェイスを実装し、単一フェーズ コミットと 2 フェーズ コミットの通知を受け取ることができる必要のあるオブジェクト。</param>
+        <param name="notification"><see cref="T:System.Transactions.ISinglePhaseNotification" /> インターフェイスを実装し、単一フェーズ コミットと 2 フェーズ コミットの通知を受け取ることができる必要のあるオブジェクト。</param>
         <param name="enlistmentOptions">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
         <param name="options">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
-        <summary>トランザクションで参加する単一フェーズ コミットの最適化をサポートする永続的リソース マネージャーを参加させます。</summary>
+        <summary>単一フェーズ コミットの最適化をサポートし、トランザクションに参加する永続的リソース マネージャーを参加させます。</summary>
         <returns>参加リストについて記述している <see cref="T:System.Transactions.Enlistment" />オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 永続参加リストを持つリソース マネージャーは、エラーが発生した場合、回復を実行できる必要があります。 回復の詳細については、次を参照してください。 [Performing Recovery](https://msdn.microsoft.com/library/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)します。 永続的な揮発性のリソースとリソースを参加させる方法の詳細については、次を参照してください。 [Implementing A Resource Manager](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)します。  
+ 持続性のある参加リストを持つリソースマネージャーは、障害が発生した場合に回復を実行できる必要があります。 回復の詳細については、「[回復の実行](https://msdn.microsoft.com/library/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)」を参照してください。 揮発性リソースと持続性のあるリソースの詳細、およびリソースの参加方法については、「[リソースマネージャーの実装](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)」を参照してください。  
   
- リソース マネージャーの実装は、このメソッドに登録、できなくては保証されません単一フェーズ コミットを受け取ることに注意してください。 トランザクション マネージャーは、2 フェーズ コミットの通知を代わりに送信することができますも。 単一フェーズ コミットの最適化の詳細については、次を参照してください。[最適化を使用して単一フェーズ コミットおよび昇格可能単一フェーズ通知](https://msdn.microsoft.com/library/https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))します。  
+ Resource manager の実装がこのメソッドに参加している場合でも、1つのフェーズコミットを受信する保証はないことに注意してください。 トランザクションマネージャーは、代わりに2フェーズコミット通知を送信できます。 単一フェーズコミットの最適化の詳細については、「[単一フェーズコミットを使用した最適化」と「昇格可能な単一フェーズ通知](https://msdn.microsoft.com/library/https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -498,9 +498,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 値が指定されている場合、`promoterType`パラメーターが`TransactionInterop.PromoterTypeDtc`、トランザクション**する必要があります**MSDTC によって昇格と`byte[]`から返される、`IPromotableSinglePhaseNotification.Promote`メソッド**する必要があります**MSDTC トランザクションの伝達トークンであること。  
+ `promoterType`パラメーターに指定された値が`TransactionInterop.PromoterTypeDtc`の場合、トランザクションは`IPromotableSinglePhaseNotification.Promote` msdtc によって昇格`byte[]`される**必要があり**、メソッドから返されるは msdtc トランザクション伝達トークンである**必要**があります。  
   
- 値が指定されている場合、`promoterType`パラメーターが**いない**`TransactionInterop.PromoterTypeDTC`、MSDTC によってが呼び出し元の実装ではなく、トランザクションは昇格されません`IPromotableSinglePhaseNotification`します。 この呼び出しが成功した場合は、後続の処理を返すトランザクションのセットがある、`TransactionPromotionException`します。 これらの操作は次のとおりです。  
+ `promoterType`パラメーターに指定された値がで**ない**`TransactionInterop.PromoterTypeDTC`場合、トランザクションは MSDTC によって昇格されるのではなく、の`IPromotableSinglePhaseNotification`呼び出し元の実装によって行われます。 この呼び出しが成功した場合は、を`TransactionPromotionException`返すトランザクションに対する後続の操作のセットが存在します。 これらの操作は次のとおりです。  
   
 -   `Transaction.EnlistDurable`  
   
@@ -510,7 +510,7 @@
   
 -   `TransactionInterop.GetTransmitterPropagationToken`  
   
--   トランザクション オブジェクトのシリアル化  
+-   トランザクションオブジェクトのシリアル化  
   
  ]]></format>
         </remarks>
@@ -562,13 +562,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクションの参加リストは揮発性です。つまり、参加者の障害は保持されません。 さらに、このメソッドは制御をエスカレートするトランザクション マネージャーのみを提示しますが、エスカレーション自体は保証されません。 エスカレーションが失敗した場合、ユーザーは通知されませんし、トランザクションがロールバックします。  
+ トランザクションの参加は揮発性です。つまり、参加者の失敗には参加しません。 また、このメソッドはトランザクションマネージャーに対してのみ制御をエスカレートすることを提案しますが、エスカレーション自体は保証されません。 エスカレーションに失敗した場合、ユーザーには通知されず、トランザクションはロールバックされます。  
   
- パラメーター`promotableSinglePhaseNotification`トランザクション マネージャーに、リソース マネージャーの内部トランザクションをコミットしようとしての結果を通信するために使用します。  一貫性のないデータが報告された場合、トランザクション マネージャーは例外をスローします。 場合、<xref:System.Transactions.TransactionStatus.InDoubt>結果が報告された、トランザクション マネージャーが、独自の社内参加リストの結果の通知の外観し報告された応答を無視します。  
+ パラメーター `promotableSinglePhaseNotification`は、リソースマネージャーの内部トランザクションをコミットしようとした結果をトランザクションマネージャーに通知するために使用されます。  一貫性のないデータが報告されると、トランザクションマネージャーは例外をスローします。 <xref:System.Transactions.TransactionStatus.InDoubt>結果が報告された場合、トランザクションマネージャーは、その結果通知を独自の内部参加リストで検索し、報告された応答を無視します。  
   
- 参加リストと、トランザクションのエスカレーションの詳細についてを参照してください[Transaction Management Escalation](https://msdn.microsoft.com/library/5b87ae58-8ccf-4b9b-9715-41e4aade89b7)します。 PSPE の詳細については、次を参照してください。 [Optimization のを使用して 1 つのフェーズの Commit and Promotable Single Phase Notification](https://msdn.microsoft.com/library/https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))します。  
+ トランザクションの参加とエスカレーションの詳細については、「[トランザクション管理のエスカレーション](https://msdn.microsoft.com/library/5b87ae58-8ccf-4b9b-9715-41e4aade89b7)」を参照してください。 PSPE の詳細については、「[単一フェーズコミットを使用した最適化」と「昇格可能な単一フェーズ通知](https://msdn.microsoft.com/library/https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))」を参照してください。  
   
- **注**このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand>されるを防ぐために信頼できないコードから呼び出されます。 ただし、直前の呼び出し元だけが所有する必要が、`FullTrust`アクセス許可セット。  
+ **メモ**このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand> 、を使用して信頼されていないコードから呼び出されないようにします。 `FullTrust`ただし、アクセス許可セットを保持するには、直前の呼び出し元だけが必要です。  
   
  ]]></format>
         </remarks>
@@ -586,7 +586,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 揮発性リソース マネージャーでは、関与してトランザクションを完了する障害からの復旧はできません。 永続的な揮発性のリソースとリソースを参加させる方法の詳細については、次を参照してください。 [Implementing A Resource Manager](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)します。 リソース マネージャーがコミット通知と、コミットの準備にどのように応答する方法の詳細については、次を参照してください。 [Committing A Transaction In Single-Phase and Multi-phase](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)します。  
+ 揮発性リソースマネージャーは、障害から復旧して、参加しているトランザクションを完了することはできません。 揮発性リソースと持続性のあるリソースの詳細、およびリソースの参加方法については、「[リソースマネージャーの実装](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)」を参照してください。 リソースマネージャーがコミット通知に応答してコミットを準備する方法の詳細については、「[単一フェーズおよび複数フェーズでのトランザクションのコミット](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -642,14 +642,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 揮発性リソース マネージャーでは、関与してトランザクションを完了する障害からの復旧はできません。 トランザクションで永続参加リストを取得する、<xref:System.Transactions.Transaction.EnlistDurable%2A>メソッド。  
+ 揮発性リソースマネージャーは、障害から復旧して、参加しているトランザクションを完了することはできません。 トランザクションの永続参加リストを取得するには、 <xref:System.Transactions.Transaction.EnlistDurable%2A>メソッドを使用します。  
   
- このメソッドを使用するトランザクションに参加するために参加しているリソース マネージャーで定義されたメソッドに対応する 2 フェーズ コミットの通知を受信する、<xref:System.Transactions.IEnlistmentNotification>インターフェイス。  
+ このメソッドを使用してトランザクションに参加するために参加しているリソースマネージャーは、 <xref:System.Transactions.IEnlistmentNotification>インターフェイスで定義されたメソッドに対応する2フェーズコミット通知を受け取ります。  
   
    
   
 ## Examples  
- 次の例の実装を示しています。<xref:System.Transactions.IEnlistmentNotification>インターフェイスとしてを使用して、トランザクションの参加者として、オブジェクトへの参加、<xref:System.Transactions.Transaction.EnlistVolatile%2A>メソッド。  
+ 次の例は、インターフェイスの<xref:System.Transactions.IEnlistmentNotification>実装と、 <xref:System.Transactions.Transaction.EnlistVolatile%2A>メソッドを使用して、オブジェクトをトランザクションの参加要素として参加させる方法を示しています。  
   
  [!code-csharp[Tx_Enlist#1](~/samples/snippets/csharp/VS_Snippets_CFX/tx_enlist/cs/enlist.cs#1)]
  [!code-vb[Tx_Enlist#1](~/samples/snippets/visualbasic/VS_Snippets_CFX/tx_enlist/vb/enlist.vb#1)]  
@@ -698,19 +698,19 @@
         <Parameter Name="options" Type="System.Transactions.EnlistmentOptions" Index="1" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="singlePhaseNotification">実装するオブジェクト、<see cref="T:System.Transactions.ISinglePhaseNotification" />単一フェーズ コミットと 2 フェーズ コミットの通知を受信できる必要があるインターフェイスです。</param>
-        <param name="notification">実装するオブジェクト、<see cref="T:System.Transactions.ISinglePhaseNotification" />単一フェーズ コミットと 2 フェーズ コミットの通知を受信できる必要があるインターフェイスです。</param>
+        <param name="singlePhaseNotification"><see cref="T:System.Transactions.ISinglePhaseNotification" /> インターフェイスを実装し、単一フェーズ コミットと 2 フェーズ コミットの通知を受け取ることができる必要のあるオブジェクト。</param>
+        <param name="notification"><see cref="T:System.Transactions.ISinglePhaseNotification" /> インターフェイスを実装し、単一フェーズ コミットと 2 フェーズ コミットの通知を受け取ることができる必要のあるオブジェクト。</param>
         <param name="enlistmentOptions">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
         <param name="options">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
-        <summary>トランザクションで単一フェーズ コミットの最適化をサポートしている揮発性リソース マネージャーを参加させます。</summary>
+        <summary>単一フェーズ コミットの最適化をサポートし、トランザクションに参加する揮発性リソース マネージャーを参加させます。</summary>
         <returns>参加リストについて記述している <see cref="T:System.Transactions.Enlistment" />オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 揮発性リソース マネージャーでは、関与してトランザクションを完了する障害からの復旧はできません。 トランザクションで永続参加リストを取得する、<xref:System.Transactions.Transaction.EnlistDurable%2A>メソッド。 永続的な揮発性のリソースとリソースを参加させる方法の詳細については、次を参照してください。 [Implementing A Resource Manager](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)します。 リソース マネージャーがコミット通知と、コミットの準備にどのように応答する方法の詳細については、次を参照してください。 [Committing A Transaction In Single-Phase and Multi-phase](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)します。  
+ 揮発性リソースマネージャーは、障害から復旧して、参加しているトランザクションを完了することはできません。 トランザクションの永続参加リストを取得するには、 <xref:System.Transactions.Transaction.EnlistDurable%2A>メソッドを使用します。 揮発性リソースと持続性のあるリソースの詳細、およびリソースの参加方法については、「[リソースマネージャーの実装](https://msdn.microsoft.com/library/81509719-d579-4530-831e-42e1acdef63e)」を参照してください。 リソースマネージャーがコミット通知に応答してコミットを準備する方法の詳細については、「[単一フェーズおよび複数フェーズでのトランザクションのコミット](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)」を参照してください。  
   
- リソース マネージャーの実装は、このメソッドに登録、できなくては保証されません単一フェーズ コミットを受け取ることに注意してください。 トランザクション マネージャーは、2 フェーズ コミットの通知を代わりに送信することができますも。 単一フェーズ コミットの最適化の詳細については、次を参照してください。[最適化を使用して単一フェーズ コミットおよび昇格可能単一フェーズ通知](https://msdn.microsoft.com/library/https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))します。  
+ Resource manager の実装がこのメソッドに参加している場合でも、1つのフェーズコミットを受信する保証はないことに注意してください。 トランザクションマネージャーは、代わりに2フェーズコミット通知を送信できます。 単一フェーズコミットの最適化の詳細については、「[単一フェーズコミットを使用した最適化」と「昇格可能な単一フェーズ通知](https://msdn.microsoft.com/library/https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms229980(v=vs.85))」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -749,8 +749,8 @@
       </Parameters>
       <Docs>
         <param name="obj">このインスタンスと比較するオブジェクト。</param>
-        <summary>このトランザクションと、指定したオブジェクトが等しいかどうかを判断します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="obj" />とこのトランザクションが同じです。 それ以外と<see langword="false" />します。</returns>
+        <summary>このトランザクションと指定したオブジェクトが等しいかどうかを判断します。</summary>
+        <returns><paramref name="obj" /> とこのトランザクションが同一である場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -822,9 +822,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドでは、既に昇格していない場合、トランザクションの昇格の原因の副作用があります。  
+ このメソッドは、まだ昇格されていない場合に、トランザクションの上位変換が発生するという副作用をもたらします。  
   
- 返されるの形式`byte[]`の値によって定義されている場合は、`Transaction.PromoterType`プロパティ。 場合の値、`Transaction.PromoterType`プロパティは`TransactionInterop.PromoterTypeDtc`または`Guid.Empty`、 `byte[]` MSDTC トランスミッター伝達トークンは、このメソッドによって返されます。 その他の値、`Transaction.PromoterType`プロパティの呼び出し元によって定義されている形式を指定する`Transaction.EnlistPromotableSinglePhase`プロパティ型の値が指定されています。 昇格を解釈するためにこの後者の場合、トークンが必要行ったコードのマニュアルを参照、`EnlistPromotableSinglePhase`呼び出します。  
+ 返される`byte[]`の形式は、 `Transaction.PromoterType`プロパティの値によって定義されます。 `Transaction.PromoterType`プロパティの値が`TransactionInterop.PromoterTypeDtc`または`Guid.Empty`の場合、このメソッド`byte[]`によって返されるは MSDTC 送信者の伝達トークンです。 `Transaction.PromoterType`プロパティのその他の値は、プロパティの型の値を指定し`Transaction.EnlistPromotableSinglePhase`たの呼び出し元によって定義される形式を指定します。 この後者の場合は、昇格されたトークンを解釈するために、 `EnlistPromotableSinglePhase`呼び出しを行ったコードのドキュメントを参照する必要があります。  
   
  ]]></format>
         </remarks>
@@ -859,12 +859,12 @@
       </ReturnValue>
       <Docs>
         <summary>トランザクションの分離レベルを取得します。</summary>
-        <value>1 つ、<see cref="T:System.Transactions.IsolationLevel" />トランザクションの分離レベルを示す値。</value>
+        <value>トランザクションの分離レベルを示す <see cref="T:System.Transactions.IsolationLevel" /> 値のいずれか。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 他のトランザクションをトランザクションの前に、揮発性データへのアクセスのレベルが完了すると、トランザクションの分離レベルを決定します。 分離レベルの詳細については、ドキュメントを参照してください、<xref:System.Transactions.IsolationLevel>列挙体。  
+ トランザクションの分離レベルによって、トランザクションが完了する前に、他のトランザクションが揮発性データに対して持つアクセスレベルが決まります。 分離レベルの詳細については、 <xref:System.Transactions.IsolationLevel>列挙体のドキュメントを参照してください。  
   
  ]]></format>
         </remarks>
@@ -902,12 +902,12 @@
         <Parameter Name="y" Type="System.Transactions.Transaction" />
       </Parameters>
       <Docs>
-        <param name="x"><see cref="T:System.Transactions.Transaction" />等値演算子の左側にあるインスタンス。</param>
-        <param name="y"><see cref="T:System.Transactions.Transaction" />等値演算子の右側にあるインスタンス。</param>
-        <summary>指定した 2 つかどうかをテスト<see cref="T:System.Transactions.Transaction" />インスタンスは同等です。</summary>
+        <param name="x">等値演算子の左側に表示される <see cref="T:System.Transactions.Transaction" /> インスタンス。</param>
+        <param name="y">等値演算子の右側に表示される <see cref="T:System.Transactions.Transaction" /> インスタンス。</param>
+        <summary>指定した 2 つの <see cref="T:System.Transactions.Transaction" /> インスタンスが等価であるかどうかをテストします。</summary>
         <returns><see langword="true" /> と <paramref name="x" /> が等しい場合は <paramref name="y" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[この演算子を同等のメソッドは<xref:System.Transactions.Transaction.Equals%2A?displayProperty=nameWithType>します。]]></format>
+          <format type="text/markdown"><![CDATA[この演算子の同等のメソッドは<xref:System.Transactions.Transaction.Equals%2A?displayProperty=nameWithType>です。]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -943,12 +943,12 @@
         <Parameter Name="y" Type="System.Transactions.Transaction" />
       </Parameters>
       <Docs>
-        <param name="x"><see cref="T:System.Transactions.Transaction" />非等値演算子の左側にあるインスタンス。</param>
-        <param name="y"><see cref="T:System.Transactions.Transaction" />非等値演算子の右側にあるインスタンス。</param>
+        <param name="x">非等値演算子の左側に表示される <see cref="T:System.Transactions.Transaction" /> インスタンス。</param>
+        <param name="y">非等値演算子の右側に表示される <see cref="T:System.Transactions.Transaction" /> インスタンス。</param>
         <summary>2 つの <see cref="T:System.Transactions.Transaction" /> インスタンスが等しくないかどうかを示す値を返します。</summary>
         <returns><paramref name="x" /> と <paramref name="y" /> が等しくない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[この演算子を同等のメソッドは<xref:System.Transactions.Transaction.Equals%2A?displayProperty=nameWithType>します。]]></format>
+          <format type="text/markdown"><![CDATA[この演算子の同等のメソッドは<xref:System.Transactions.Transaction.Equals%2A?displayProperty=nameWithType>です。]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -994,14 +994,14 @@
         <Parameter Name="options" Type="System.Transactions.EnlistmentOptions" Index="3" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="resourceManagerIdentifier">リソース マネージャーのエラーになるか再起動する必要がありますリソース マネージャーの一意の識別子。</param>
-        <param name="manager">リソース マネージャーのエラーになるか再起動する必要がありますリソース マネージャーの一意の識別子。</param>
-        <param name="promotableNotification">リソース マネージャー内部非分散トランザクションのコミット デリゲートとして機能するオブジェクト。</param>
-        <param name="enlistmentNotification">実装するオブジェクト、 <see cref="T:System.Transactions.IEnlistmentNotification" /> 2 フェーズ コミットの通知を受信するインターフェイス。</param>
-        <param name="notification">実装するオブジェクト、 <see cref="T:System.Transactions.IEnlistmentNotification" /> 2 フェーズ コミットの通知を受信するインターフェイス。</param>
+        <param name="resourceManagerIdentifier">リソース マネージャーのエラーの保持または再起動を必要とするリソース マネージャーの一意の識別子。</param>
+        <param name="manager">リソース マネージャーのエラーの保持または再起動を必要とするリソース マネージャーの一意の識別子。</param>
+        <param name="promotableNotification">リソース マネージャー内部の非分散トランザクションのコミット デリゲートとして機能するオブジェクト。</param>
+        <param name="enlistmentNotification">2 フェーズ コミットの通知を受け取るために <see cref="T:System.Transactions.IEnlistmentNotification" /> インターフェイスを実装するオブジェクト。</param>
+        <param name="notification">2 フェーズ コミットの通知を受け取るために <see cref="T:System.Transactions.IEnlistmentNotification" /> インターフェイスを実装するオブジェクト。</param>
         <param name="enlistmentOptions">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
         <param name="options">リソース マネージャーが、準備フェーズ中に追加の処理を実行する場合 <see cref="F:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired" />。</param>
-        <summary>昇格およびトランザクションに参加する 2 フェーズ コミットをサポートする永続的リソース マネージャーを参加させます。</summary>
+        <summary>2 フェーズ コミットをサポートし、トランザクションに参加する永続的リソース マネージャーを昇格および参加させます。</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1034,12 +1034,12 @@
       </ReturnValue>
       <Docs>
         <summary>トランザクションを昇格するときに、Promote メソッドで返される <c>byte[]</c> の形式を一意に識別します。</summary>
-        <value>形式を一意に識別する guid、 <c>byte[]</c>トランザクションを昇格するときに、Promote メソッドで返されます。</value>
+        <value>トランザクションが昇格されるときに、Promote メソッドによって返される<c>byte []</c>の形式を一意に識別する guid。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクションが昇格されていない、昇格可能単一フェーズの参加リストがない場合は、このプロパティの値になります`Guid.Empty`します。 トランザクションがされているかは、MSDTC に昇格かどうか、このプロパティの値である`TransactionInterop.PromoterTypeDtc`します。 このプロパティの値が、以前の呼び出しに指定された値をする場合は、トランザクションは MSDTC 以外のプロモーターによって昇格されますまたはされて、`Transaction.EnlistPromotableSinglePhase`します。  
+ トランザクションがまだ昇格されておらず、昇格可能`Guid.Empty`な単一フェーズの参加リストがまだない場合、このプロパティの値はになります。 トランザクションが既に実行されているか、MSDTC に昇格される場合、このプロパティ`TransactionInterop.PromoterTypeDtc`の値はになります。 トランザクションが MSDTC 以外のプロモーターによって昇格されたか、昇格された場合、このプロパティの値は、以前のの呼び出し`Transaction.EnlistPromotableSinglePhase`に指定された値になります。  
   
  ]]></format>
         </remarks>
@@ -1052,7 +1052,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ロールバック (中止) トランザクション。</summary>
+        <summary>トランザクションをロールバック (中止) します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="Rollback">
@@ -1084,12 +1084,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>ロールバック (中止) トランザクション。</summary>
+        <summary>トランザクションをロールバック (中止) します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクション オブジェクトのコピーは、このメソッドを呼び出すことによって、トランザクションのロールバックを開始できます。 元のトランザクション オブジェクトのみ、これは、<xref:System.Transactions.CommittableTransaction>オブジェクト、トランザクションをコミットする試みを開始するために使用できます。 トランザクションの結果は既に確定した後、このメソッドが呼び出されたときに、例外がスローされます。  
+ トランザクションオブジェクトのコピーでは、このメソッドを呼び出すことによってトランザクションのロールバックを開始できます。 トランザクションのコミットの試行を開始するため<xref:System.Transactions.CommittableTransaction>に使用できるのは、オブジェクトである元のトランザクションオブジェクトだけです。 例外は、トランザクションの結果が既に決定された後にこのメソッドが呼び出された場合にスローされます。  
   
  ]]></format>
         </remarks>
@@ -1135,7 +1135,7 @@
       <Docs>
         <param name="e">ロールバックが発生した理由の説明。</param>
         <param name="ex">ロールバックが発生した理由の説明。</param>
-        <summary>ロールバック (中止) トランザクション。</summary>
+        <summary>トランザクションをロールバック (中止) します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1177,9 +1177,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、正常にのみ呼び出すことが中に、`IPromotableSinglePhaseNotification.Promote`メソッドを処理中です。 その他の任意の時点でこのメソッドが呼び出された場合、`TransactionException`がスローされます。  
+ このメソッドは、メソッドの処理中に`IPromotableSinglePhaseNotification.Promote`のみ、正常に呼び出すことができます。 このメソッドが他のタイミング`TransactionException`で呼び出されると、がスローされます。  
   
- 指定した値、`promotableNotification`パラメーターが指定されていたものと同じオブジェクトにする必要があります、`Transaction.EnlistPromotableSinglePhase`呼び出し。 そうでない場合、`InvalidOperationException`がスローされます。  
+ `promotableNotification`パラメーターの指定された値は、最初`Transaction.EnlistPromotableSinglePhase`に呼び出しに指定されたオブジェクトと同じである必要があります。 そうで`InvalidOperationException`ない場合は、がスローされます。  
   
  ]]></format>
         </remarks>
@@ -1228,7 +1228,7 @@
         <param name="serializationInfo">データの読み込み先となる <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</param>
         <param name="info">データの読み込み先となる <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</param>
         <param name="context">このシリアル化のシリアル化先 (<see cref="T:System.Runtime.Serialization.StreamingContext" /> を参照)。</param>
-        <summary>取得、<see cref="T:System.Runtime.Serialization.SerializationInfo" />このトランザクションをシリアル化するために必要なデータ。</summary>
+        <summary>このトランザクションのシリアル化に必要なデータを含む <see cref="T:System.Runtime.Serialization.SerializationInfo" /> を取得します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1265,21 +1265,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 揮発性参加リストを使用して、トランザクションの結果情報を取得するのではなく、このイベントを登録することができます。 渡されるパラメーター、<xref:System.Transactions.TransactionCompletedEventHandler>デリゲートは、<xref:System.Transactions.Transaction>インスタンス。 クエリを実行できます、<xref:System.Transactions.Transaction.TransactionInformation%2A>のインスタンスを取得する特定のインスタンスのプロパティを<xref:System.Transactions.TransactionInformation>が<xref:System.Transactions.TransactionInformation.Status%2A>プロパティには、いずれかでトランザクションの状態が含まれています、<xref:System.Transactions.TransactionStatus.Committed>または<xref:System.Transactions.TransactionStatus.Aborted>値。  
+ 揮発性の参加リストを使用してトランザクションの結果情報を取得する代わりに、このイベントに登録できます。 <xref:System.Transactions.TransactionCompletedEventHandler>デリゲートに渡されるパラメーター <xref:System.Transactions.Transaction>はインスタンスです。 次に、特定の<xref:System.Transactions.Transaction.TransactionInformation%2A>インスタンスのプロパティに対してクエリを実行し<xref:System.Transactions.TransactionInformation>、 <xref:System.Transactions.TransactionInformation.Status%2A>のインスタンスを取得します。このプロパティに<xref:System.Transactions.TransactionStatus.Committed>は、 <xref:System.Transactions.TransactionStatus.Aborted>またはのいずれかの値を持つトランザクションの状態が含まれています。  
   
- **注意**悪影響このイベントのサインアップにアタッチされているトランザクションのパフォーマンスに影響を与えます。  
+ **注意**このイベントにサインアップすると、アタッチされているトランザクションのパフォーマンスに悪影響を及ぼします。  
   
    
   
 ## Examples  
- 次の例は、サブスクライブすることで、アプリケーションがトランザクションの結果を取得する方法を示しています、<xref:System.Transactions.Transaction.TransactionCompleted>イベント。  
+ 次のサンプルは、 <xref:System.Transactions.Transaction.TransactionCompleted>イベントをサブスクライブすることによって、アプリケーションがトランザクションの結果を取得する方法を示しています。  
   
  [!code-csharp[Tx_Outcome#1](~/samples/snippets/csharp/VS_Snippets_CFX/tx_outcome/cs/txoutcome.cs#1)]
  [!code-vb[Tx_Outcome#1](~/samples/snippets/visualbasic/VS_Snippets_CFX/tx_outcome/vb/txoutcome.vb#1)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ObjectDisposedException">破棄されているトランザクションでは、このイベントをサブスクライブしようとしました。</exception>
+        <exception cref="T:System.ObjectDisposedException">破棄されたトランザクションでこのイベントをサブスクライブしようとしました。</exception>
       </Docs>
     </Member>
     <Member MemberName="TransactionInformation">
@@ -1310,8 +1310,8 @@
         <ReturnType>System.Transactions.TransactionInformation</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>トランザクションに関する追加情報を取得します。</summary>
-        <value>A<see cref="T:System.Transactions.TransactionInformation" />トランザクションに関する追加情報を格納します。</value>
+        <summary>トランザクションの追加情報を取得します。</summary>
+        <value>トランザクションの追加情報を格納する <see cref="T:System.Transactions.TransactionInformation" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

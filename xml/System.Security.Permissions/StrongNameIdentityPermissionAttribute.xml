@@ -1,5 +1,5 @@
 <Type Name="StrongNameIdentityPermissionAttribute" FullName="System.Security.Permissions.StrongNameIdentityPermissionAttribute">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="797afea947c64e80abc4cdd941607e779e3938de" /><Meta Name="ms.sourcegitcommit" Value="087e7080a3f8a7cb9729f7cd398931df8ca81797" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/26/2019" /><Meta Name="ms.locfileid" Value="67399437" /></Metadata><TypeSignature Language="C#" Value="public sealed class StrongNameIdentityPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="34f119d9655435c0bc51d0fbc10e5119ebf1478c" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68435671" /></Metadata><TypeSignature Language="C#" Value="public sealed class StrongNameIdentityPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit StrongNameIdentityPermissionAttribute extends System.Security.Permissions.CodeAccessSecurityAttribute" />
   <TypeSignature Language="DocId" Value="T:System.Security.Permissions.StrongNameIdentityPermissionAttribute" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class StrongNameIdentityPermissionAttribute&#xA;Inherits CodeAccessSecurityAttribute" />
@@ -44,15 +44,15 @@
 ## Remarks  
   
 > [!IMPORTANT]
->  以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、id アクセス許可は使用されません。  
+>  以降では、id 権限は使用されません。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]  
 >   
->  .NET Framework バージョン 1.0 および 1.1 では、id アクセス許可の要求は、呼び出し元のアセンブリが完全に信頼されている場合でも、効果的なは。 つまり、呼び出し元のアセンブリに完全な信頼関係が id アクセス許可を要求は、アセンブリが要求の基準を満たしていない場合失敗します。 .NET Framework のバージョンでは、id アクセス許可の 2.0 以降の要求は呼び出し元のアセンブリに完全な信頼がある場合は、有効ではありません。 これには、特殊なケースとしての id アクセス許可の扱いをなくして、すべてのアクセス許可の一貫性が保証されします。  
+>  .NET Framework バージョン1.0 および1.1 では、呼び出し元のアセンブリが完全に信頼されている場合でも、id アクセス許可に対する要求が有効になります。 つまり、呼び出し元のアセンブリには完全な信頼があるにもかかわらず、アセンブリが要求された条件を満たしていない場合、id アクセス許可の要求は失敗します。 .NET Framework バージョン2.0 以降では、呼び出し元のアセンブリに完全な信頼がある場合、id 権限の要求は無効になります。 これにより、すべてのアクセス許可の一貫性が確保され、特殊なケースとしての id アクセス許可の処理が不要になります。  
   
- 許可されている宣言のスコープによって異なります、<xref:System.Security.Permissions.SecurityAction>のために使用します。 厳密名ツール (Sn.exe) を実行してこの属性のキー文字列を取得するにはトークンと公開キーのオプションを (**Sn** **-tp** *keyfile* `)`ファイルに対しては、Authenticode 署名を持ちます。 詳細については、「[Sn.exe (厳密名ツール)](~/docs/framework/tools/sn-exe-strong-name-tool.md)」を参照してください。  
+ 許可される宣言のスコープは、 <xref:System.Security.Permissions.SecurityAction>使用されているによって異なります。 この属性のキー文字列を取得するには、厳密名ツール (sn.exe) をトークンと公開キーのオプション (Authenticode 署名を持つファイル**** ** `)`に対して**sn** ) を指定して実行します。 詳細については、「[Sn.exe (厳密名ツール)](~/docs/framework/tools/sn-exe-strong-name-tool.md)」を参照してください。  
   
- セキュリティ属性で宣言されているセキュリティ情報は、属性のターゲットのメタデータに格納され、実行時に、システムによってアクセスされます。 セキュリティ属性は、宣言型セキュリティに対してのみ使用されます。 強制セキュリティは、対応するアクセス許可クラスを使用します。  
+ セキュリティ属性によって宣言されたセキュリティ情報は、属性ターゲットのメタデータに格納され、実行時にシステムによってアクセスされます。 セキュリティ属性は、宣言セキュリティに対してのみ使用されます。 命令型のセキュリティについては、対応するアクセス許可クラスを使用します。  
   
- <xref:System.Security.Permissions.StrongNameIdentityPermissionAttribute>属性を使用して、アセンブリ レベルのパブリック メンバーのアクセス要件を厳密な名前を定義することができます。 .NET framework バージョン 2.0 以降では、使用することも、<xref:System.Runtime.CompilerServices.InternalsVisibleToAttribute>属性をそのアセンブリ内のすべての非パブリックな型を別のアセンブリを表示することを指定します。 詳細については、[Friend アセンブリ](~/docs/standard/assembly/friend-assemblies.md)に関するページを参照してください。  
+ 属性<xref:System.Security.Permissions.StrongNameIdentityPermissionAttribute>は、アセンブリレベルでパブリックメンバーにアクセスするための厳密な名前の要件を定義するために使用できます。 .NET Framework バージョン2.0 以降では、 <xref:System.Runtime.CompilerServices.InternalsVisibleToAttribute>属性を使用して、そのアセンブリ内のすべての非パブリック型を別のアセンブリから参照できるように指定することもできます。 詳細については、[Friend アセンブリ](~/docs/standard/assembly/friend-assemblies.md)に関するページを参照してください。  
   
  ]]></format>
     </remarks>
@@ -89,7 +89,7 @@
         <Parameter Name="action" Type="System.Security.Permissions.SecurityAction" />
       </Parameters>
       <Docs>
-        <param name="action"><see cref="T:System.Security.Permissions.SecurityAction" /> 値のいずれか 1 つ。</param>
+        <param name="action"><see cref="T:System.Security.Permissions.SecurityAction" /> 値のいずれか。</param>
         <summary><see cref="T:System.Security.Permissions.StrongNameIdentityPermissionAttribute" /> を指定して、<see cref="T:System.Security.Permissions.SecurityAction" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -126,9 +126,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アプリケーション コードからではなく、セキュリティ システムによってのみ呼び出す必要があります。  
+ このメソッドは、アプリケーションコードではなく、セキュリティシステムによってのみ呼び出される必要があります。  
   
- コンパイル時に、属性は、セキュリティ宣言をメタデータにシリアル化された形式に変換されます。 メタデータの宣言型セキュリティ データは、この属性に対応するこのメソッドから返される権限から作成されます。  
+ コンパイル時に、属性はセキュリティ宣言をメタデータ内のシリアル化された形式に変換します。 メタデータの宣言型セキュリティデータは、このメソッドが返すアクセス許可から、この属性に対応するように作成されます。  
   
  ]]></format>
         </remarks>
@@ -166,7 +166,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 厳密な名前のアセンブリには、公開キー、名前、およびバージョンが含まれています。 厳密な名前の名前の部分は、アセンブリの簡易名です。ファイル拡張子のないアセンブリの名前。 たとえば、mylibrary.dll を参照するには、次のように設定します。、<xref:System.Security.Permissions.StrongNameIdentityPermissionAttribute.Name%2A>プロパティを"mylibrary"。  
+ 厳密な名前付きのアセンブリには、公開キー、名前、およびバージョンが含まれています。 厳密な名前の名前部分は、アセンブリの簡易名です。これは、ファイル拡張子のないアセンブリの名前です。 たとえば、mylibrary .dll を参照するには、 <xref:System.Security.Permissions.StrongNameIdentityPermissionAttribute.Name%2A>プロパティを "mylibrary" に設定します。  
   
  ]]></format>
         </remarks>

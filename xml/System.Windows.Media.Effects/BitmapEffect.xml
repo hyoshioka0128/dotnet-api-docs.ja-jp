@@ -24,24 +24,24 @@
 ## Remarks  
   
 > [!NOTE]
->  [!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)] ソフトウェアでレンダリングされたビットマップ効果とは。 効果を適用するオブジェクトも、ソフトウェアでレンダリングされます。 パフォーマンスが低下する可能性があるために、ビットマップ効果を大規模なビジュアルや、アニメーションに適用されませんする必要があります。  
+>  [!INCLUDE[TLA2#tla_wpf](~/includes/tla2sharptla-wpf-md.md)]ビットマップ効果は、レンダリングされたソフトウェアです。 効果を適用するオブジェクトも、ソフトウェアでレンダリングされます。 ビットマップ効果は、パフォーマンスが低下する可能性があるため、大きな視覚エフェクトやアニメーションには適用しないでください。  
   
 > [!CAUTION]
->  ビットマップ効果は、部分信頼の実行をサポートしていません。 ビットマップ効果を使うには、アプリケーションが完全な信頼のアクセス許可を持つ必要があります。  
+>  ビットマップ効果では、部分信頼実行はサポートされていません。 ビットマップ効果を使うには、アプリケーションが完全な信頼のアクセス許可を持つ必要があります。  
   
- スケール変換は、効果が適用される前に、ビジュアルに適用されます。 一様ではないスケール変換が発生した場合、効果はスケール値のうち、大きい方に使用されます。  
+ スケール変換は、効果が適用される前にビジュアルに適用されます。 一様でないスケール変換が発生した場合、その効果では、より大きなスケール値が使用されます。  
   
- ビジュアル ツリーの更新を<xref:System.Windows.Media.VisualBrush>場合に伝達されません、<xref:System.Windows.Media.Effects.BitmapEffect>ブラシの親チェーンにします。 この制限は、効果の親オブジェクトで、シーンの更新の強制することで回避できます。 呼び出すことができます<xref:System.Windows.UIElement.InvalidateVisual%2A>シーンの update を強制するアニメーションが含まれますか。  
+ がブラシの親チェーン内に<xref:System.Windows.Media.VisualBrush>ある場合、のビジュアルツリーの更新は反映されません。 <xref:System.Windows.Media.Effects.BitmapEffect> この制限を回避するには、効果の親オブジェクトのシーンを強制的に更新します。 シーンの更新<xref:System.Windows.UIElement.InvalidateVisual%2A>を強制するには、アニメーションを呼び出すか、含めることができます。  
   
- カスタム効果は、アンマネージ効果のマネージ インターフェイスを作成するには、このクラスを継承します。 詳細については、次を参照してください。、[アンマネージ BitmapEffect](https://msdn.microsoft.com/library/ms735092.aspx) API。  
+ カスタム効果は、このクラスを継承して、アンマネージ効果に対するマネージインターフェイスを作成します。 詳細については、「[アンマネージ BitmapEffect](https://msdn.microsoft.com/library/ms735092.aspx) API」を参照してください。  
   
  ]]></format>
     </remarks>
-    <permission cref="T:System.Security.Permissions.UIPermission">継承、<see cref="T:System.Windows.Media.Effects.BitmapEffect" />クラス。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+    <permission cref="T:System.Security.Permissions.UIPermission"><see cref="T:System.Windows.Media.Effects.BitmapEffect" />クラスを継承するための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
     <block subset="none" type="overrides"><para>
-        <see cref="M:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect" /> マネージ コードでアンマネージ効果を初期化するためにオーバーライドする必要があります。  
+        <see cref="M:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect" />マネージコードでアンマネージ効果を初期化するには、オーバーライドする必要があります。  
   
- <see cref="M:System.Windows.Media.Effects.BitmapEffect.UpdateUnmanagedPropertyState(System.Runtime.InteropServices.SafeHandle)" /> アンマネージ効果が、ユーザーが変更できるプロパティはオーバーライドする必要があります。 このメソッドを組み合わせて使用して<see cref="M:System.Windows.Media.Effects.BitmapEffect.SetValue(System.Runtime.InteropServices.SafeHandle,System.String,System.Object)" />非管理対象のプロパティを更新します。</para></block>
+ <see cref="M:System.Windows.Media.Effects.BitmapEffect.UpdateUnmanagedPropertyState(System.Runtime.InteropServices.SafeHandle)" />アンマネージ効果にユーザーが変更できるプロパティがある場合は、オーバーライドする必要があります。 このメソッドをと組み合わせて<see cref="M:System.Windows.Media.Effects.BitmapEffect.SetValue(System.Runtime.InteropServices.SafeHandle,System.String,System.Object)" />使用して、アンマネージプロパティを更新します。</para></block>
     <altmember cref="T:System.Windows.Media.Effects.BitmapEffectInput" />
   </Docs>
   <Members>
@@ -92,9 +92,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 変更可能なコピーを生成するためにこのメソッドが使用される固定された<xref:System.Windows.Freezable>オブジェクト (またはその<xref:System.Windows.Freezable>オブジェクト)。 便宜上は、このメソッドは、継承したバージョンをシャドウします。  
+ このメソッドを使用して、固定された <xref:System.Windows.Freezable> オブジェクト (または任意の <xref:System.Windows.Freezable> オブジェクト) の変更可能なコピーを作成します。 便宜上、このメソッドは継承されたバージョンをシャドウします。  
   
- 詳細については、「 <xref:System.Windows.Freezable.Clone%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.Clone%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -124,9 +124,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 変更可能なコピーを生成するためにこのメソッドが使用される固定された<xref:System.Windows.Freezable>オブジェクト (またはその<xref:System.Windows.Freezable>オブジェクト)。 便宜上は、このメソッドは、継承したバージョンをシャドウします。  
+ このメソッドを使用して、固定された <xref:System.Windows.Freezable> オブジェクト (または任意の <xref:System.Windows.Freezable> オブジェクト) の変更可能なコピーを作成します。 便宜上、このメソッドは継承されたバージョンをシャドウします。  
   
- 詳細については、「 <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -167,12 +167,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- カスタム効果とフレームワークの対話はを介して処理され、 [IMILBitmapEffect](/windows/desktop/api/mileffects/nn-mileffects-imilbitmapeffect)オブジェクト。 外部の効果がを通じてカスタム効果で初期化されて、<xref:System.Windows.Media.Effects.BitmapEffect.InitializeBitmapEffect%2A>メソッド。  
+ フレームワークとカスタム効果の相互作用は、 [IMILBitmapEffect](/windows/desktop/api/mileffects/nn-mileffects-imilbitmapeffect)オブジェクトを介して処理されます。 外側の効果は、メソッドを<xref:System.Windows.Media.Effects.BitmapEffect.InitializeBitmapEffect%2A>使用してカスタム効果を使用して初期化されます。  
   
    
   
 ## Examples  
- 次の例の実装を示しています。<xref:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect%2A>を使用して、<xref:System.Windows.Media.Effects.BitmapEffect.CreateBitmapEffectOuter%2A>効果のラッパー オブジェクトを取得します。  
+ 次の例は、 <xref:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect%2A> <xref:System.Windows.Media.Effects.BitmapEffect.CreateBitmapEffectOuter%2A>メソッドを使用してラッパー効果オブジェクトを取得するの実装を示しています。  
   
  [!code-csharp[RGBFilterEffectAssembly_snip#CreateUnmanagedEffect](~/samples/snippets/csharp/VS_Snippets_Wpf/RGBFilterEffectAssembly_snip/CSharp/RGBFilterBitmapEffect.cs#createunmanagedeffect)]
  [!code-vb[RGBFilterEffectAssembly_snip#CreateUnmanagedEffect](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RGBFilterEffectAssembly_snip/visualbasic/rgbfilterbitmapeffect.vb#createunmanagedeffect)]  
@@ -213,7 +213,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例でのオーバーライド、<xref:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect%2A>メソッド。  
+ 次の例は、 <xref:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect%2A>メソッドのオーバーライドを示しています。  
   
  [!code-csharp[RGBFilterEffectAssembly_snip#CreateUnmanagedEffect](~/samples/snippets/csharp/VS_Snippets_Wpf/RGBFilterEffectAssembly_snip/CSharp/RGBFilterBitmapEffect.cs#createunmanagedeffect)]
  [!code-vb[RGBFilterEffectAssembly_snip#CreateUnmanagedEffect](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RGBFilterEffectAssembly_snip/visualbasic/rgbfilterbitmapeffect.vb#createunmanagedeffect)]  
@@ -248,8 +248,8 @@
       </Parameters>
       <Docs>
         <param name="input">効果を適用する入力。</param>
-        <summary>返します、<see cref="T:System.Windows.Media.Imaging.BitmapSource" />に効果を適用した結果を指定した<see cref="T:System.Windows.Media.Effects.BitmapEffectInput" />します。</summary>
-        <returns><see cref="T:System.Windows.Media.Imaging.BitmapSource" />効果を入力に適用します。</returns>
+        <summary>指定した <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> に効果を適用した結果の <see cref="T:System.Windows.Media.Effects.BitmapEffectInput" /> を返します。</summary>
+        <returns>入力に効果を適用した <see cref="T:System.Windows.Media.Imaging.BitmapSource" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -292,7 +292,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例の実装を示しています。<xref:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect%2A>を使用して、<xref:System.Windows.Media.Effects.BitmapEffect.InitializeBitmapEffect%2A>カスタム効果のラッパー オブジェクトを初期化します。  
+ 次の例は、 <xref:System.Windows.Media.Effects.BitmapEffect.CreateUnmanagedEffect%2A> <xref:System.Windows.Media.Effects.BitmapEffect.InitializeBitmapEffect%2A>メソッドを使用して、カスタム効果でラッパーオブジェクトを初期化するの実装を示しています。  
   
  [!code-csharp[RGBFilterEffectAssembly_snip#CreateUnmanagedEffect](~/samples/snippets/csharp/VS_Snippets_Wpf/RGBFilterEffectAssembly_snip/CSharp/RGBFilterBitmapEffect.cs#createunmanagedeffect)]
  [!code-vb[RGBFilterEffectAssembly_snip#CreateUnmanagedEffect](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RGBFilterEffectAssembly_snip/visualbasic/rgbfilterbitmapeffect.vb#createunmanagedeffect)]  
@@ -334,15 +334,15 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="effect">変更するプロパティを含む効果のハンドルです。</param>
+        <param name="effect">変更するプロパティを含む効果のハンドル。</param>
         <param name="propertyName">変更するプロパティの名前。</param>
-        <param name="value">プロパティの設定を使用する値。</param>
-        <summary>指定された値を指定したプロパティを設定します。</summary>
+        <param name="value">プロパティを設定するために使用する値。</param>
+        <summary>指定したプロパティを指定した値に設定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドのためのヘルパー メソッドは、<xref:System.Windows.Media.Effects.BitmapEffect.UpdateUnmanagedPropertyState%2A>します。 オーバーライドする場合<xref:System.Windows.Media.Effects.BitmapEffect.UpdateUnmanagedPropertyState%2A>を使用して、<xref:System.Windows.Media.Effects.BitmapEffect.SetValue%2A>アンマネージ プロパティの値を更新します。  
+ このメソッドは、のヘルパーメソッドとし<xref:System.Windows.Media.Effects.BitmapEffect.UpdateUnmanagedPropertyState%2A>て使用されます。 をオーバーライド<xref:System.Windows.Media.Effects.BitmapEffect.UpdateUnmanagedPropertyState%2A>する場合は<xref:System.Windows.Media.Effects.BitmapEffect.SetValue%2A> 、を使用してアンマネージプロパティ値を更新します。  
   
  ]]></format>
         </remarks>
@@ -376,13 +376,13 @@
         <Parameter Name="unmanagedEffect" Type="System.Runtime.InteropServices.SafeHandle" />
       </Parameters>
       <Docs>
-        <param name="unmanagedEffect">更新するプロパティを含む効果のハンドルです。</param>
-        <summary>派生クラスでオーバーライドされると、効果のアンマネージ プロパティのプロパティの状態を更新します。</summary>
+        <param name="unmanagedEffect">更新するプロパティを含む効果のハンドル。</param>
+        <summary>派生クラスでオーバーライドされると、効果のアンマネージ プロパティの状態を更新します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドのオーバーライド内で管理されていないプロパティを設定するときに、ヘルパー メソッドを使用して、<xref:System.Windows.Media.Effects.BitmapEffect.SetValue%2A>します。  
+ このメソッドのオーバーライドでアンマネージプロパティを設定する場合は、ヘルパー <xref:System.Windows.Media.Effects.BitmapEffect.SetValue%2A>メソッドを使用します。  
   
  ]]></format>
         </remarks>

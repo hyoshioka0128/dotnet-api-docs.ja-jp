@@ -27,12 +27,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>印刷システムのハードウェアまたはソフトウェア コンポーネントのプロパティ (およびプロパティの値) を表します。</summary>
+    <summary>印刷システムのハードウェア コンポーネントまたはソフトウェア コンポーネントのプロパティ (およびこのプロパティの値) を表します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、このクラスを使用して、リフレクションを使用せず、プロパティ、および印刷システム オブジェクトでは、これらのプロパティの種類の実行時に検出する方法を示しています。  
+ 次の例では、リフレクションを使用せずに、このクラスを使用して、印刷システムオブジェクトのプロパティおよびそれらのプロパティの型を検出する方法を示します。  
   
  [!code-csharp[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/samples/snippets/csharp/VS_Snippets_Wpf/GetPrintObjectPropertyTypesWithoutReflection/CSharp/Program.cs#showpropertytypeswithoutreflection)]
  [!code-vb[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/samples/snippets/visualbasic/VS_Snippets_Wpf/GetPrintObjectPropertyTypesWithoutReflection/visualbasic/program.vb#showpropertytypeswithoutreflection)]  
@@ -64,7 +64,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `attributeName` 、大文字と小文字を含め、印刷システム オブジェクトの特定のプロパティの名前とまったく同じスペルする必要があります。 たとえば、<xref:System.Printing.PrintQueue.QueuePort%2A>のプロパティを<xref:System.Printing.PrintQueue>"QueuePort"、"された PrintPort"、"Port"または"Queueport"オブジェクトを記述する必要があります。  
+ の`attributeName`スペルは、印刷システムオブジェクトの特定のプロパティ (大文字と小文字の区別を含む) の名前とまったく同じにする必要があります。 たとえば、 <xref:System.Printing.PrintQueue>オブジェクトの<xref:System.Printing.PrintQueue.QueuePort%2A>プロパティは、"printport"、"Port"、または "queueport" ではなく、"queueport" のスペルにする必要があります。  
   
  ]]></format>
         </remarks>
@@ -76,7 +76,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>によって使用されているリソースを解放、<see cref="T:System.Printing.IndexedProperties.PrintProperty" />します。</summary>
+        <summary><see cref="T:System.Printing.IndexedProperties.PrintProperty" /> によって使用されているリソースを解放します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="Dispose">
@@ -100,7 +100,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>使用されているすべてのリソースを解放、<see cref="T:System.Printing.IndexedProperties.PrintProperty" />します。</summary>
+        <summary><see cref="T:System.Printing.IndexedProperties.PrintProperty" /> によって使用されているすべてのリソースを解放します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -136,23 +136,23 @@
         <Parameter Name="" Type="System.Boolean" Index="0" FrameworkAlternate="netframework-3.0;netframework-3.5;netframework-4.0" />
       </Parameters>
       <Docs>
-        <param name=""><see langword="true" /> マネージ リソースとアンマネージ リソースの両方を解放するには<see langword="false" />にアンマネージ リソースだけを解放します。</param>
-        <param name="A_0"><see langword="true" /> マネージ リソースとアンマネージ リソースの両方を解放するには<see langword="false" />にアンマネージ リソースだけを解放します。</param>
-        <summary>によって使用されているアンマネージ リソースを解放、<see cref="T:System.Printing.IndexedProperties.PrintProperty" />でマネージ リソースも解放できます。</summary>
+        <param name="">マネージド リソースとアンマネージド リソースの両方を解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <param name="A_0">マネージド リソースとアンマネージド リソースの両方を解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <summary><see cref="T:System.Printing.IndexedProperties.PrintProperty" /> によって使用されているアンマネージド リソースを解放します。オプションでマネージド リソースも解放できます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パブリック`Dispose()`メソッドと<xref:System.Object.Finalize%2A>メソッド。 `Dispose()` 保護された起動`Dispose(Boolean)`無名のブール型パラメーターを設定したメソッド`true`します。 <xref:System.Object.Finalize%2A> 呼び出す`Dispose`パラメーターを設定して`false`します。  
+ このメソッドは、パブリック`Dispose()`メソッド<xref:System.Object.Finalize%2A>とメソッドによって呼び出されます。 `Dispose()`名前のない`Dispose(Boolean)`ブール型パラメーターをに`true`設定して、保護されたメソッドを呼び出します。 <xref:System.Object.Finalize%2A>パラメーター `Dispose`をに設定して`false`を呼び出します。  
   
- ブール型パラメーターがの場合`true`、このメソッドは、すべてのマネージ オブジェクトによって保持されているすべてのリソースを解放します。 この<xref:System.Printing.IndexedProperties.PrintProperty>参照。 このメソッドは、参照される各オブジェクトの `Dispose()` メソッドを呼び出します。  
+ ブール型パラメーターがの`true`場合、このメソッドは、この<xref:System.Printing.IndexedProperties.PrintProperty>が参照するすべてのマネージオブジェクトによって保持されているすべてのリソースを解放します。 このメソッドは、参照される各オブジェクトの `Dispose()` メソッドを呼び出します。  
   
  ]]></format>
         </remarks>
         <block subset="none" type="overrides"><para>
-            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see langword="Dispose(Boolean)" /> をオーバーライドする場合は、以前に <see langword="Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 実装する方法についての詳細は<see langword="Dispose(Boolean)" />を参照してください[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。  
+            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see langword="Dispose(Boolean)" /> をオーバーライドする場合は、以前に <see langword="Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 を実装<see langword="Dispose(Boolean)" />する方法の詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。  
   
-詳細については<see langword="Dispose" />と<see cref="M:System.Object.Finalize" />を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)と[Finalize メソッドをオーバーライドする](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))します。</para></block>
+<see langword="Dispose" /> および<see cref="M:System.Object.Finalize" />の詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」と「 [Finalize メソッドのオーバーライド](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))」を参照してください。</para></block>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -178,7 +178,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>により、<see cref="T:System.Printing.IndexedProperties.PrintProperty" />しようとリソースを解放する前に他のクリーンアップ操作を実行し、<see cref="T:System.Printing.IndexedProperties.PrintProperty" />がガベージ コレクションによって回収されます。</summary>
+        <summary><see cref="T:System.Printing.IndexedProperties.PrintProperty" /> がガベージ コレクションによって収集される前に、その <see cref="T:System.Printing.IndexedProperties.PrintProperty" /> がリソースを解放し、その他のクリーンアップ操作を実行できるようにします。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -202,8 +202,8 @@
         <Parameter Name="disposing" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="disposing"><see langword="true" /> マネージ リソースとアンマネージ リソースの両方を解放するには<see langword="false" />にアンマネージ リソースだけを解放します。</param>
-        <summary>によって使用されているアンマネージ リソースを解放、<see cref="T:System.Printing.IndexedProperties.PrintProperty" />マネージ リソースも解放します。</summary>
+        <param name="disposing">マネージド リソースとアンマネージド リソースの両方を解放する場合は <see langword="true" />。アンマネージド リソースだけを解放する場合は <see langword="false" />。</param>
+        <summary><see cref="T:System.Printing.IndexedProperties.PrintProperty" /> によって使用されているアンマネージド リソースを解放します。オプションでマネージド リソースも解放できます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -232,8 +232,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはオブジェクトが破棄されたかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> 場合は、オブジェクトが破棄されています。それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
+        <summary>オブジェクトが破棄されたかどうかを示す値を取得または設定します。</summary>
+        <value>オブジェクトが破棄されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -262,8 +262,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはオブジェクトが初期化されたかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> 場合は、オブジェクトが初期化されています。それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
+        <summary>オブジェクトが初期化されているかどうかを示す値を取得または設定します。</summary>
+        <value>オブジェクトが初期化されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -290,12 +290,12 @@
       </ReturnValue>
       <Docs>
         <summary>派生クラスでオーバーライドされると、オブジェクトが表すプロパティの名前を取得します。</summary>
-        <value>A<see cref="T:System.String" />プロパティの名前を表します。</value>
+        <value>プロパティの名前を表す <see cref="T:System.String" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、このプロパティを使用して、リフレクションを使用せず、プロパティ、および印刷システム オブジェクトでは、これらのプロパティの種類の実行時に検出する方法を示しています。  
+ 次の例では、このプロパティを使用して、印刷システムオブジェクトのプロパティおよびプロパティの型を、リフレクションを使用せずに検出する方法を示します。  
   
  [!code-csharp[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/samples/snippets/csharp/VS_Snippets_Wpf/GetPrintObjectPropertyTypesWithoutReflection/CSharp/Program.cs#showpropertytypeswithoutreflection)]
  [!code-vb[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/samples/snippets/visualbasic/VS_Snippets_Wpf/GetPrintObjectPropertyTypesWithoutReflection/visualbasic/program.vb#showpropertytypeswithoutreflection)]  
@@ -328,7 +328,7 @@
       </Parameters>
       <Docs>
         <param name="sender">イベントのソース。</param>
-        <summary>派生クラスでオーバーライドされると、実装、<see cref="T:System.Runtime.Serialization.ISerializable" />インターフェイスし、逆シリアル化が完了すると、逆シリアル化イベントを発生させます。</summary>
+        <summary>派生クラスでオーバーライドされると、<see cref="T:System.Runtime.Serialization.ISerializable" /> インターフェイスを実装し、逆シリアル化が完了したときに逆シリアル化イベントを発生させます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -355,7 +355,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例は、このプロパティを使用して、リフレクションを使用せず、プロパティ、および印刷システム オブジェクトでは、これらのプロパティの種類の実行時に検出する方法を示しています。  
+ 次の例では、このプロパティを使用して、印刷システムオブジェクトのプロパティおよびプロパティの型を、リフレクションを使用せずに検出する方法を示します。  
   
  [!code-csharp[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/samples/snippets/csharp/VS_Snippets_Wpf/GetPrintObjectPropertyTypesWithoutReflection/CSharp/Program.cs#showpropertytypeswithoutreflection)]
  [!code-vb[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/samples/snippets/visualbasic/VS_Snippets_Wpf/GetPrintObjectPropertyTypesWithoutReflection/visualbasic/program.vb#showpropertytypeswithoutreflection)]  

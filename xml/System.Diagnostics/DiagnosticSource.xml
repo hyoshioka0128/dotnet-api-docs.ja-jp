@@ -1,5 +1,5 @@
 <Type Name="DiagnosticSource" FullName="System.Diagnostics.DiagnosticSource">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d79c7605daf68e0c4169c32fac48c2c1ac277dad" /><Meta Name="ms.sourcegitcommit" Value="cfc0e4215fd0d259582ada2141878befd7c3c8c6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/12/2019" /><Meta Name="ms.locfileid" Value="67854879" /></Metadata><TypeSignature Language="C#" Value="public abstract class DiagnosticSource" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="e4e02866434c5d718f1e5b5791fa4eb7fa1c5428" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68540884" /></Metadata><TypeSignature Language="C#" Value="public abstract class DiagnosticSource" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DiagnosticSource extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Diagnostics.DiagnosticSource" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class DiagnosticSource" />
@@ -20,7 +20,7 @@
   <Interfaces />
   <Docs>
     <summary>コードが、インストルメント化されたプロセスで使用されるために、リッチ データのペイロードの生産時間のログ記録に使用されるのをインストルメント化する抽象クラスです。</summary>
-    <remarks>詳細については、次を参照してください。 [DiagnosticSource ユーザー ガイド](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)します。</remarks>
+    <remarks>詳細については、「 [DiagnosticSource User Guide](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)」を参照してください。</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -75,7 +75,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[
 
-高価なセットアップの通知がある場合は、このセットアップを実行する前に IsEnabled を呼び出すことができます。 コンシューマーは、IsEnabled が true の通知をのみ取得したことを想定しないでください。 ただし、この API を呼び出すプロデューサーでは省略可能です。 渡されると同じ名前には<see cref="M:System.Diagnostics.DiagnosticSource.Write(System.String,System.Object)" />します。
+通知に対して高額なセットアップが行われている場合は、このセットアップを実行する前に IsEnabled を呼び出すことができます。 コンシューマーは、IsEnabled が true の場合にのみ通知を受け取ることを想定しないでください。 ただし、プロデューサーがこの API を呼び出す場合は省略可能です。 名前は、に<see cref="M:System.Diagnostics.DiagnosticSource.Write(System.String,System.Object)" />渡されたものと同じである必要があります。
 
            ]]></format>
         </remarks>
@@ -112,7 +112,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[
           
-高価なセットアップの通知がある場合は、このメソッドを呼び出すし、セットアップを実行する前にコンテキストを提供します。
+通知に対して高額なセットアップが行われている場合は、セットアップを実行する前にこのメソッドを呼び出してコンテキストを指定できます。
           
            ]]></format>
         </remarks>
@@ -140,22 +140,22 @@
         <param name="activity">To be added.</param>
         <param name="payload">To be added.</param>
         <summary>送信される HTTP 要求など、プロセスの外で発生するイベントまたは操作にアクティビティから状態を転送します。</summary>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
-Instumentation サイトは、アクティビティが (HTTP 要求の送信) などのプロセスをままの場所には、そのサイトは、アクティビティから送信要求に状態を転送するとします。
+アクティビティがプロセスを終了する場所 (発信 HTTP 要求など) にあるサイトがある場合、そのサイトはアクティビティから発信要求に状態を転送する必要があります。
 
-可能な限り、する必要がありますこれをインストルメンテーション サイト間のコントラクトがあるため、<xref:System.Diagnostics.Activity>とインストルメンテーションのサイトで ougoing 要求ロジック。   ただし、インストルメンテーション サイトは、ポリシー (たとえば、かどうかアクティビティ情報する必要がありますが無効になっているまたは互換性の理由から、以前の形式で記述された) を処理することはできません。
-これは、インストルメンテーション サイトはログ記録システム コールバックし、ポリシーを解決するように指示する必要があります。 目的は、これは、`OnActivityExport`メソッド。
+これは、インストルメンテーションサイトによって実行される必要があります。これは、 <xref:System.Diagnostics.Activity>と、インストルメンテーションサイトでの ougoing 要求ロジックとの間にコントラクトがあるためです。   ただし、インストルメンテーションサイトでは、ポリシーを処理することはできません (たとえば、互換性上の理由から、アクティビティ情報を無効にするか、古い形式で記述する必要があるかなど)。
+この場合、インストルメンテーションサイトでは、ログシステムにコールバックし、ポリシーを解決するように要求する必要があります。 これは、 `OnActivityExport`メソッドの目的です。
 
-`OnActivityExport`メソッドが指定された、<xref:System.Diagnostics.Activity>と送信要求を表すペイロード オブジェクト。 A<xref:System.Diagnostics.DiagnosticSource>サブスクライバーが送信される前に、送信要求を更新する機能。
+メソッド`OnActivityExport`には、 <xref:System.Diagnostics.Activity>送信要求を表すペイロードオブジェクトと共にが与えられます。 サブスクライバー <xref:System.Diagnostics.DiagnosticSource>は、送信前に送信要求を更新することができます。
  
-インストルメンテーションのサイト (プロセスの出力方向の境界上にあるサイトのみ) でこのメソッドが使用されますめったに注意してください。   さらに、通常、インストルメンテーションのサイトが (たとえば、特定の送信規則では、すべてのアクティビティ状態を転送する場合など) が実行する既定のポリシーは正常である可能性があります。 このメソッドは、問題は、ケースに対してのみは。 したがって、このメソッドは非常にまれに使用する必要がありで symetry のほとんどの場合、ここでは`OnActivityImport`将来とします。
+この方法は、インストルメンテーションサイト (プロセスの送信境界上にあるサイトのみ) ではほとんど使用されないことに注意してください。   さらに、通常、インストルメンテーションサイトで実行される既定のポリシー (特定の送信規則ですべてのアクティビティ状態を転送する場合など) は、問題ありません。 このメソッドは、問題が発生した場合にのみ使用します。 このため、このメソッドはごくまれに使用する必要がありますが`OnActivityImport` 、ほとんどの場合、symetry と将来の校正に使用します。
 
-なお`payload`として型指定された、<xref:System.Object>が、ここでは、特定インストルメンテーション サイトおよびサブスクライバーする必要がありますペイロードの型を認識し、したがってキャストをデコードし、必要な場合。
+`payload`は<xref:System.Object>ここではとして型指定されていますが、特定のインストルメンテーションサイトとサブスクライバーはペイロードの種類を認識している必要があるため、必要に応じてキャストしてデコードします。
 
          ]]></format>
-         </remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnActivityImport">
@@ -180,19 +180,19 @@ Instumentation サイトは、アクティビティが (HTTP 要求の送信) �
         <param name="activity">外部イベントの影響を受けるアクティビティ。</param>
         <param name="payload">受信した要求を表すペイロード。</param>
         <summary>プロセスの外で発生した、受信要求など、イベントまたは操作からアクティビティに状態を転送します。</summary>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
-Instumentation サイトをプロセスの外部イベントに応答で新しいアクティビティを作成する場合、着信 HTTP など) を要求、`OnActivityImport`メソッドにより、そのサイトが受信した要求から新しいアクティビティおよび転送の状態を作成する必要が、アクティビティ。 
+着信 HTTP 要求など、プロセス外のイベントに応答して新しいアクティビティを作成する場合は、 `OnActivityImport`メソッドを使用して、そのサイトで新しいアクティビティを作成し、状態を受信要求からに転送することができます。演習. 
 
-可能なの範囲の間のコントラクトがあるために、インストルメンテーションのサイトでこれ行う必要が、<xref:System.Diagnostics.Activity>とインストルメンテーションのサイトでの着信要求ロジック。   ただし、インストルメンテーション サイトは、ポリシーを処理することはできません。 (たとえば、サンプリングが行われた場合、正確にどの要求をサンプリングするでしょうか。)このような場合は、インストルメンテーション サイトはログ記録システム コールバックし、(たとえば、アクティビティの「サンプリング」ビットを設定するかどうかを決定する) ポリシーを解決するように指示する必要があります。 目的は、これは、`OnActivityImport`メソッド。 着信要求を表すペイロード オブジェクトと同様に、アクティビティが与えられます。 サブスクライバーを<xref:System.Diagnostics.DiagnosticSource>し、必要に応じて、この活動を更新する機会が提供されています。 
+インストルメンテーションサイトでは、 <xref:System.Diagnostics.Activity>との間の要求ロジックとの間にコントラクトがあるため、これは可能な限りインストルメンテーションサイトで行う必要があります。   ただし、インストルメンテーションサイトではポリシーを処理できません。 (たとえば、サンプリングが実行された場合は、どの要求をサンプリングする必要がありますか。)このような場合、インストルメンテーションサイトでは、ログシステムにコールバックし、ポリシーを解決するように要求する必要があります (たとえば、アクティビティの "サンプリング" ビットを設定する必要があるかどうかを判断する場合など)。 これは、 `OnActivityImport`メソッドの目的です。 これには、アクティビティと、着信要求を表すペイロードオブジェクトが付与されます。 その後、の<xref:System.Diagnostics.DiagnosticSource>サブスクライバーは、このアクティビティを必要に応じて更新できます。 
 
-インストルメンテーションのサイト (サイトのみのプロセスの境界上にある)、このメソッドが使用されることはほとんどありませんし、instrumetation サイトがいくつかの既定のポリシーを実装 (内のアクティビティに設定*一部*方法)、する必要はありませんので、十分な場合はその既定のポリシーは、このメソッドをオーバーライドします。 つまり、このメソッドは、非常にまれな (ただし、多くの場合、重要な) 場合にオーバーライドする必要があります。
+この方法は、インストルメンテーションサイト (プロセスの境界上にあるサイトのみ) で使用されることはほとんどなく、instrumetation サイトはいくつかの既定のポリシー (*何らか*の方法でアクティビティを設定します) を実装します。したがって、このメソッドをオーバーライドする必要はありません。この既定のポリシーは問題ありません。 つまり、このメソッドは非常にまれなケースでオーバーライドする必要があります。
 
-なお`payload`として型指定された<xref:System.Object>が、ここでは、特定インストルメンテーション サイトとサブスクライバーがペイロードの型を認識し、したがってキャストをデコードし、必要な場合。
+がここ`payload`で入力さ<xref:System.Object>れていることに注意してください。ただし、特定のインストルメンテーションサイトとサブスクライバーはペイロードの種類を認識するため、必要に応じてキャストしてデコードします。
 
          ]]></format>
-         </remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartActivity">
@@ -224,11 +224,11 @@ Instumentation サイトをプロセスの外部イベントに応答で新し�
         <remarks>
           <format type="text/markdown"><![CDATA[
            
-<xref:System.Diagnostics.Activity>論理演算、そのコンテキスト、および親の関係について説明します、現在<xref:System.Diagnostics.Activity>操作の処理を経由して送信します。
+は<xref:System.Diagnostics.Activity> 、論理操作、そのコンテキスト、および親の関係を記述し<xref:System.Diagnostics.Activity>ます。現在のは操作処理を通じてフローします。
 
-このメソッドは、開始、特定<xref:System.Diagnostics.Activity>、グローバル管理<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>と<xref:System.Diagnostics.Activity.Parent?displayProperty=nameWithType>アクティビティを指定された<xref:System.Diagnostics.Activity>、コンシューマーに通知し、、新しい<xref:System.Diagnostics.Activity>が開始されました。 コンシューマーがアクセスできる<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>コンテキストを追加またはテレメトリを強化します。
+このメソッドは、指定<xref:System.Diagnostics.Activity>されたを<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>開始<xref:System.Diagnostics.Activity.Parent?displayProperty=nameWithType>し、指定さ<xref:System.Diagnostics.Activity>れたのグローバルおよびアクティビティを<xref:System.Diagnostics.Activity>保持し、新しいが開始されたことをコンシューマーに通知します。 コンシューマーは、 <xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>にアクセスしてコンテキストを追加したり、テレメトリを補強したりすることができます。
 
-プロデューサーは、ペイロードにコンシューマーに追加の詳細情報を渡すことがあります。
+プロデューサーは、ペイロード内のコンシューマーに追加の詳細を渡すことができます。
 
            ]]></format>
         </remarks>
@@ -262,9 +262,9 @@ Instumentation サイトをプロセスの外部イベントに応答で新し�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-プロデューサーは、ペイロードにコンシューマーに追加の詳細情報を渡すことがあります。
+プロデューサーは、ペイロード内のコンシューマーに追加の詳細を渡すことができます。
 
-コンシューマーがアクセスできる<xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>コンテキストを追加またはテレメトリを強化します。
+コンシューマーは、 <xref:System.Diagnostics.Activity.Current?displayProperty=nameWithType>にアクセスしてコンテキストを追加したり、テレメトリを補強したりすることができます。
 
 
          ]]></format>
@@ -302,13 +302,13 @@ Instumentation サイトをプロセスの外部イベントに応答で新し�
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-各通知には、それだけでなく、通知に渡す任意の情報を提供するオブジェクト (通常、匿名型) を識別する名前が付けられます。  
+各通知には、それを識別する名前と、通知に渡す任意の情報を提供するオブジェクト (通常は匿名型) が与えられます。  
 
-`name` 短い必要があります。 以降、あいまいさを回避するにがない限り、完全修飾名を使用しない`name`グローバルに一意である必要があります。 通常、 *componentName.eventName*ここで、 *componentName*と*eventName*未満の 10 文字を文字列には、適切な妥協が。
+`name`短くする必要があります。 あいまいさを避ける必要がある場合は、グローバルに一意である`name`必要があるため、完全修飾名は使用しないでください。 通常、 *componentName*は、 *componentName*と*eventName*が10文字未満の文字列であるため、適切なセキュリティ侵害が発生します。
 
-通知の名前のない`.`コンポーネント名がドット、およびそれらの両方がドットであいまいさを潜在顧客にします。 使用することをお勧めします。`_`代わりにします。
+コンポーネント名にドットが`.`含まれていて、その両方にドットがあるとあいまいさが生じるため、通知名には含まれません。 代わりにを使用`_`することをお勧めします。
 
-グループをフィルター文字列をプレフィックスとしてリスナーが使用することを想定しています。 そのため、コンポーネント名の階層構造のことをお勧めします。
+リスナーが文字列プレフィックスを使用してグループをフィルター処理するとします。 したがって、コンポーネント名の階層構造を用意することをお勧めします。
 
          ]]></format>
         </remarks>

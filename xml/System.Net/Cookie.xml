@@ -1,5 +1,5 @@
 <Type Name="Cookie" FullName="System.Net.Cookie">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="185e51bec516466bf95f75178470a7adcfd1288f" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58744480" /></Metadata><TypeSignature Language="C#" Value="public sealed class Cookie" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="612a03ad6d3eefba1f8bce92466fa05cb1ab962b" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68392662" /></Metadata><TypeSignature Language="C#" Value="public sealed class Cookie" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit Cookie extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Net.Cookie" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Cookie" />
@@ -43,9 +43,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Net.Cookie>クラスは、HTTP 応答で受信した cookie に関する情報を取得するクライアント アプリケーションによって使用されます。 HTTP 応答ヘッダーの解析中に、次の cookie の形式がサポートされています。 元の Netscape 仕様、RFC 2109、および RFC 2965 します。  
+ クラス<xref:System.Net.Cookie>は、HTTP 応答で受信された cookie に関する情報を取得するために、クライアントアプリケーションによって使用されます。 HTTP 応答ヘッダーの解析中に、元の Netscape 仕様、RFC 2109、RFC 2965 の各 cookie 形式がサポートされます。  
   
- インスタンスの初期プロパティ値の一覧については<xref:System.Net.Cookie>を参照してください、さまざまな<xref:System.Net.Cookie>コンス トラクター。  
+ の<xref:System.Net.Cookie>インスタンスの初期プロパティ値の一覧については、さまざまな<xref:System.Net.Cookie>コンストラクターを参照してください。  
   
    
   
@@ -112,7 +112,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定のコンス トラクターが空の文字列を使用して、既定値にすべてのフィールドを初期化します ("") の`name`、 `value`、 `path`、および`domain`します。 なお、少なくとも<xref:System.Net.Cookie.Name%2A>のインスタンスを使用する前にプロパティを初期化する必要があります、<xref:System.Net.Cookie>クラス。  
+ パラメーターなしの`name`コンストラクターは`path`、、 `value`、、および`domain`の空の文字列 ("") を使用して、すべてのフィールドを既定値に初期化します。 クラスのインスタンスを使用<xref:System.Net.Cookie.Name%2A>する前に、少なくともプロパティを初期化する必要があることに注意してください。 <xref:System.Net.Cookie>  
   
  ]]></format>
         </remarks>
@@ -161,9 +161,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定値は、`value`パラメーターは空の文字列を使用して ("")。  
+ `value`パラメーターの既定値では、空の文字列 ("") が使用されます。  
   
- `value`のパラメーターを<xref:System.Net.Cookie>必要があります、`null`参照 (Visual Basic では Nothing) です。 セミコロン (「;」) とコンマ (「,」) 文字は予約されておりに渡されることはできません、`value`パラメーターで、文字列が渡されない限り、`value`パラメーターが二重引用符で囲まれています。 したがって、次の例のコンス トラクターは成功しますが、これを追加しようとすると<xref:System.Net.Cookie>を<xref:System.Net.CookieContainer>インスタンス、<xref:System.Net.CookieContainer.Add(System.Net.Cookie)>または<xref:System.Net.CookieContainer.Add(System.Uri,System.Net.Cookie)>メソッド、操作は失敗し、例外をスローします。  
+ のパラメーターを`null`参照 (Visual Basic では Nothing) にすることはできません。 `value` <xref:System.Net.Cookie> セミコロン (";") とコンマ (",") は予約されており、パラメーターで渡`value` `value`される文字列が二重引用符で囲まれていない限り、パラメーターに渡すことはできません。 次のコンストラクターの例は成功しますが<xref:System.Net.Cookie> 、メソッド<xref:System.Net.CookieContainer.Add(System.Net.Cookie)>または<xref:System.Net.CookieContainer.Add(System.Uri,System.Net.Cookie)>メソッドを使用<xref:System.Net.CookieContainer>してインスタンスにこれを追加しようとすると、操作は失敗し、例外がスローされます。  
   
  ```csharp
  System.Net.Cookie cookie = new System.Net.Cookie("contoso", "123,456");
@@ -171,7 +171,7 @@
  new CookieContainer().Add(cookie);
  ```  
   
- ただし、これらの特殊文字エスケープを次のコンス トラクターで作成、<xref:System.Net.Cookie>に追加できる、<xref:System.Net.CookieContainer>インスタンス。  
+ ただし、これらの特殊文字をエスケープした次のコンストラクター <xref:System.Net.Cookie>は、 <xref:System.Net.CookieContainer>インスタンスに追加できるを作成します。  
  
  ```csharp
  System.Net.Cookie cookie = new System.Net.Cookie("contoso", "\"123,456\"");
@@ -179,7 +179,7 @@
  new CookieContainer().Add(cookie);
  ```
   
- コンマ文字は、同じ行に個別の cookie の間の区切り記号として使用されます。  
+ コンマ文字は、同じ行の個別の cookie 間の区切り記号として使用されます。  
   
  ]]></format>
         </remarks>
@@ -188,10 +188,10 @@
 または 
 <paramref name="name" /> パラメーターの長さが 0 です。  
   
-または 
+- または - 
 <paramref name="name" /> パラメーターに無効な文字が含まれています。  
   
-または 
+- または - 
 <paramref name="value" /> パラメーターが <see langword="null" /> です。  
   
 または 
@@ -246,9 +246,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定値は、`path`パラメーターは空の文字列を使用して ("")。  
+ `path`パラメーターの既定値では、空の文字列 ("") が使用されます。  
   
- `value`のパラメーターを<xref:System.Net.Cookie>必要があります、`null`参照 (Visual Basic では Nothing) です。 セミコロン (「;」) とコンマ (「,」) 文字は予約されておりに渡されることはできません、`value`パラメーターで、文字列が渡されない限り、`value`パラメーターが二重引用符で囲まれています。 したがって、次の例のコンス トラクターは成功しますが、これを追加しようとすると<xref:System.Net.Cookie>を<xref:System.Net.CookieContainer>インスタンス、<xref:System.Net.CookieContainer.Add(System.Net.Cookie)>または<xref:System.Net.CookieContainer.Add(System.Uri,System.Net.Cookie)>メソッド、操作は失敗し、例外をスローします。  
+ のパラメーターを`null`参照 (Visual Basic では Nothing) にすることはできません。 `value` <xref:System.Net.Cookie> セミコロン (";") とコンマ (",") は予約されており、パラメーターで渡`value` `value`される文字列が二重引用符で囲まれていない限り、パラメーターに渡すことはできません。 次のコンストラクターの例は成功しますが<xref:System.Net.Cookie> 、メソッド<xref:System.Net.CookieContainer.Add(System.Net.Cookie)>または<xref:System.Net.CookieContainer.Add(System.Uri,System.Net.Cookie)>メソッドを使用<xref:System.Net.CookieContainer>してインスタンスにこれを追加しようとすると、操作は失敗し、例外がスローされます。  
   
  ```csharp
  System.Net.Cookie cookie = new System.Net.Cookie("contoso", "123,456", "");
@@ -256,7 +256,7 @@
  new CookieContainer().Add(cookie);
  ```  
   
- ただし、これらの特殊文字エスケープを次のコンス トラクターで作成、<xref:System.Net.Cookie>に追加できる、<xref:System.Net.CookieContainer>インスタンス。  
+ ただし、これらの特殊文字をエスケープした次のコンストラクター <xref:System.Net.Cookie>は、 <xref:System.Net.CookieContainer>インスタンスに追加できるを作成します。  
  
  ```csharp
  System.Net.Cookie cookie = new System.Net.Cookie("contoso", "\"123,456\"", "");
@@ -264,7 +264,7 @@
  new CookieContainer().Add(cookie);
  ``` 
   
- コンマ文字は、同じ行に個別の cookie の間の区切り記号として使用されます。  
+ コンマ文字は、同じ行の個別の cookie 間の区切り記号として使用されます。  
   
  ]]></format>
         </remarks>
@@ -273,10 +273,10 @@
 または 
 <paramref name="name" /> パラメーターの長さが 0 です。  
   
-または 
+- または - 
 <paramref name="name" /> パラメーターに無効な文字が含まれています。  
   
-または 
+- または - 
 <paramref name="value" /> パラメーターが <see langword="null" /> です。  
   
 または 
@@ -333,32 +333,32 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定値は、`domain`と`path`パラメーターは空の文字列を使用して ("")。  
+ パラメーター `domain` と`path`パラメーターの既定値では、空の文字列 ("") が使用されます。  
   
- `value`のパラメーターを<xref:System.Net.Cookie>必要があります、`null`参照 (Visual Basic では Nothing) です。 セミコロン (「;」) とコンマ (「,」) 文字は予約されておりに渡されることはできません、`value`パラメーターで、文字列が渡されない限り、`value`パラメーターが二重引用符で囲まれています。 したがって、次の例のコンス トラクターは成功しますが、これを追加しようとすると<xref:System.Net.Cookie>を<xref:System.Net.CookieContainer>インスタンス、<xref:System.Net.CookieContainer.Add(System.Net.Cookie)>または<xref:System.Net.CookieContainer.Add(System.Uri,System.Net.Cookie)>メソッド、操作は失敗し、例外をスローします。  
+ のパラメーターを`null`参照 (Visual Basic では Nothing) にすることはできません。 `value` <xref:System.Net.Cookie> セミコロン (";") とコンマ (",") は予約されており、パラメーターで渡`value` `value`される文字列が二重引用符で囲まれていない限り、パラメーターに渡すことはできません。 次のコンストラクターの例は成功しますが<xref:System.Net.Cookie> 、メソッド<xref:System.Net.CookieContainer.Add(System.Net.Cookie)>または<xref:System.Net.CookieContainer.Add(System.Uri,System.Net.Cookie)>メソッドを使用<xref:System.Net.CookieContainer>してインスタンスにこれを追加しようとすると、操作は失敗し、例外がスローされます。  
   
  ```csharp
  System.Net.Cookie cookie = new System.Net.Cookie("contoso", "123,456", "", "contoso.com");
  new CookieContainer().Add(cookie);
  ```  
   
- ただし、これらの特殊文字エスケープを次のコンス トラクターで作成、<xref:System.Net.Cookie>に追加できる、<xref:System.Net.CookieContainer>インスタンス。  
+ ただし、これらの特殊文字をエスケープした次のコンストラクター <xref:System.Net.Cookie>は、 <xref:System.Net.CookieContainer>インスタンスに追加できるを作成します。  
  
  ```csharp
  System.Net.Cookie cookie = new System.Net.Cookie("contoso", "\"123,456\"", "", "contoso.com");
  new CookieContainer().Add(cookie);
  ```  
   
- コンマ文字は、同じ行に個別の cookie の間の区切り記号として使用されます。  
+ コンマ文字は、同じ行の個別の cookie 間の区切り記号として使用されます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.Net.CookieException"><paramref name="name" /> パラメーターが <see langword="null" /> です。  
   
-または 
+- または - 
 <paramref name="name" /> パラメーターの長さが 0 です。  
   
-または 
+- または - 
 <paramref name="name" /> パラメーターに無効な文字が含まれています。  
   
 または 
@@ -417,12 +417,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- クライアントは、このオプションのコメントについては、サーバーによって追加を検査できます。 たとえば、サーバーは、プライバシー ポリシーや使用法などの問題に関する情報を含めることができます。  
+ クライアントは、このオプションのコメントを検査して、サーバーによって追加された情報を確認できます。 たとえば、サーバーには、プライバシーポリシーや使用目的などの問題に関する情報を含めることができます。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -484,12 +484,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- URI は、サーバーでの使用方法などの省略可能な情報を提供できます、<xref:System.Net.Cookie>します。  
+ URI は、サーバーがを<xref:System.Net.Cookie>使用する方法など、オプションの情報を提供できます。  
   
    
   
 ## Examples  
- 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されるクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -551,12 +551,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに`true`、このプロパティを保存しないようにクライアント アプリケーションに指示、<xref:System.Net.Cookie>にユーザーのハード_ディスク、セッションが終了します。  
+ の`true`場合、このプロパティは、 <xref:System.Net.Cookie>セッションが終了したときにをユーザーのハードディスクに保存しないようにクライアントアプリケーションに指示します。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -615,12 +615,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サーバーは、独自の URI 以外のドメインを示すことはできません。 ただし、そのドメイン内の 1 つ以上のサーバーを指定できます。 既定値は、この cookie がから受信されたホストです。  
+ サーバーは、独自の URI 以外のドメインを示すことはできません。 ただし、ドメイン内の複数のサーバーを示すことはできます。 既定値は、この cookie が受信されたホストです。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -721,12 +721,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 期限切れの cookie、受信した場合は、クライアント アプリケーションによって破棄する必要があります。  
+ 期限切れの cookie を受信した場合は、クライアントアプリケーションによって破棄される必要があります。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -788,14 +788,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定、<xref:System.Net.Cookie.Expires%2A>プロパティを<xref:System.DateTime>このセッション<xref:System.Net.Cookie>、これは、既定値です。  
+ プロパティをに設定<xref:System.DateTime>すると、この<xref:System.Net.Cookie>セッションが既定値になります。 <xref:System.Net.Cookie.Expires%2A>  
   
- <xref:System.DateTimeKind>プロパティの<xref:System.Net.Cookie.Expires%2A>かを判断するために使用、<xref:System.Net.Cookie>設定されている<xref:System.DateTimeKind>または<xref:System.DateTimeKind>します。 場合、<xref:System.DateTimeKind>プロパティに設定されて<xref:System.DateTimeKind>、し<xref:System.DateTimeKind>と見なされます。  
+ <xref:System.DateTimeKind> <xref:System.Net.Cookie>の<xref:System.DateTimeKind> プロパティ<xref:System.Net.Cookie.Expires%2A>は、がまたは<xref:System.DateTimeKind>で設定されているかどうかを判断するために使用されます。 プロパティが<xref:System.DateTimeKind>に<xref:System.DateTimeKind>設定されている<xref:System.DateTimeKind>場合、はと見なされます。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -850,7 +850,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ハッシュ テーブル内のキーとして使用されるクラスは、このメソッドで、独自のハッシュ コードを生成するハッシュ テーブル内のキーとして使用されるオブジェクトが必要なためこのオーバーライドを提供する必要があります。  
+ ハッシュテーブルのキーとして使用されるオブジェクトでは、このメソッドを使用して独自のハッシュコードを生成する必要があるため、ハッシュテーブルのキーとして使用されるクラスは、このオーバーライドを提供する必要があります。  
   
  ]]></format>
         </remarks>
@@ -904,7 +904,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティに設定しているときに`true`、ページ スクリプトまたは他のアクティブ コンテンツがこの cookie にアクセスできません。  
+ このプロパティがに設定さ`true`れている場合、ページスクリプトまたはその他のアクティブなコンテンツは、この cookie にアクセスできません。  
   
  ]]></format>
         </remarks>
@@ -958,12 +958,12 @@
 ## Remarks  
  <xref:System.Net.Cookie.Name%2A> プロパティは、<xref:System.Net.Cookie> クラスのインスタンスを使用する前に初期化される必要があります。  
   
- 次の文字は予約されており、この属性値は使用できません。 等号 (=)、セミコロン、コンマ、改行 (\n)、リターン (\r)、タブ (\t)、および空白文字。 ドル記号 ($) は最初の文字として使用できません。  
+ 次の文字は予約されており、この属性値には使用できません: 等号、セミコロン、コンマ、改行 (\n)、リターン (\r)、タブ (\t)、および空白文字。 ドル記号 ($) は最初の文字として使用できません。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -972,7 +972,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.Net.CookieException">設定操作として指定した値が、<see langword="null" /> または空の文字列です。 
-または 
+- または - 
 設定操作として指定した値に無効な文字が含まれていました。 等号 (=)、セミコロン (;)、コンマ (,)、改行 (\n)、リターン (\r)、タブ (\t)、および空白文字は、<see cref="P:System.Net.Cookie.Name" /> プロパティ内で使用しないでください。 ドル記号文字 ("$") を最初の文字にすることはできません。</exception>
         <altmember cref="T:System.Net.CookieCollection" />
         <altmember cref="T:System.Net.CookieContainer" />
@@ -1025,12 +1025,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Net.Cookie.Path%2A>プロパティは、この配信元サーバーの Uri のサブセットを指定<xref:System.Net.Cookie>適用されます。 このプロパティが指定されていない場合、この<xref:System.Net.Cookie>は配信元サーバーまたはサーバーのすべてのページに送信されます。  
+ プロパティ<xref:System.Net.Cookie.Path%2A>は、この<xref:System.Net.Cookie>が適用される配信元サーバー上の uri のサブセットを指定します。 このプロパティが指定されていない<xref:System.Net.Cookie>場合は、配信元サーバーまたはサーバー上のすべてのページに送信されます。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -1089,12 +1089,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この属性はこのポートを制限<xref:System.Net.Cookie>が送信されます。 既定値は、制限がないことを示します。 これを空の文字列に設定 ("")、HTTP 応答で使用するポートを制限します。 それ以外の場合、値は、二重引用符で囲まれた文字列をコンマで区切られたポート値を含む場合があります。  
+ この属性は、この<xref:System.Net.Cookie>が送信されるポートを制限します。 既定値は、制限がないことを示します。 この値を空の文字列 ("") に設定すると、ポートは HTTP 応答で使用されているものに制限されます。 それ以外の場合、値は、コンマで区切られたポート値を含む二重引用符で囲まれた文字列である必要があります。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -1157,12 +1157,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 実際には、このプロパティが`true`https:// 要求でのみこの cookie を送信することがあります。  
+ 実際には、このプロパティが`true`である場合、このクッキーは https://requests でのみ送信される可能性があります。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -1226,7 +1226,7 @@
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -1281,12 +1281,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 文字列の正確な形式は、RFC に準拠しているこの cookie に依存します。  
+ 文字列の正確な形式は、このクッキーが準拠している RFC によって異なります。  
   
    
   
 ## Examples  
- 次の例では、応答で返されるクッキーの文字列値が表示されます。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーの文字列値を表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#4](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#4)]
  [!code-csharp[NCLCookies#4](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#4)]
@@ -1342,14 +1342,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Net.Cookie.Value%2A>の<xref:System.Net.Cookie>必要があります`null`します。 場合、`null`値は、このプロパティに割り当てられている、空の文字列に置き換えられます。 
+ の<xref:System.Net.Cookie.Value%2A>は、であっ`null`てはなりません。 <xref:System.Net.Cookie> このプロパティに値が割り当てられている場合は、空の文字列に置き換えられます。 `null` 
 
- コンマ、セミコロンは、このプロパティの値では使用できませんの予約文字です。 このプロパティに無効な文字を割り当てることで例外をスローしません。これを追加しようとすると、<xref:System.Net.Cookie>を<xref:System.Net.CookieContainer>インスタンス、<xref:System.Net.CookieContainer.Add%2A>メソッド、操作は失敗し、例外をスローします。
+ セミコロンとコンマは、このプロパティの値で使用できない予約文字です。 このプロパティに無効な文字を割り当てると、例外はスローされません。ただし、メソッドを使用し<xref:System.Net.Cookie> <xref:System.Net.CookieContainer.Add%2A>てこの<xref:System.Net.CookieContainer>をインスタンスに追加しようとすると、操作は失敗し、例外がスローされます。
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]
@@ -1408,14 +1408,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定値、<xref:System.Net.Cookie.Version%2A>プロパティが 0 の場合、元の Netscape 仕様に準拠します。 値が明示的に設定し、これを 1 に<xref:System.Net.Cookie>RFC 2109 に準拠している必要があります。 されている場合、<xref:System.Net.Cookie>によって準拠セット Cookie2 HTTP 応答ヘッダーが RFC 2965 に設定されて自動的に作成されました。  
+ <xref:System.Net.Cookie.Version%2A>プロパティの既定値は0で、元の Netscape 仕様に準拠しています。 値が明示的に1に設定されて<xref:System.Net.Cookie>いる場合は、RFC 2109 に準拠している必要があります。 Cookie2 HTTP 応答ヘッダー <xref:System.Net.Cookie>を受け取ることによってが自動的に作成された場合、準拠は RFC 2965 に設定されていることに注意してください。  
   
- 設定の試行、<xref:System.Net.Cookie.Version%2A>プロパティを 0 より小さい値に例外がスローされます。  
+ <xref:System.Net.Cookie.Version%2A>プロパティを0未満の値に設定しようとすると、例外がスローされます。  
   
    
   
 ## Examples  
- 次の例は、応答で返されるクッキーのプロパティを表示します。 完全な例では、次を参照してください。、<xref:System.Net.Cookie>クラスに関するトピック。  
+ 次の例では、応答で返されたクッキーのプロパティを表示します。 完全な例については<xref:System.Net.Cookie> 、クラスのトピックを参照してください。  
   
  [!code-cpp[NCLCookies#3](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLCookies/CPP/cookiessnippets.cpp#3)]
  [!code-csharp[NCLCookies#3](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLCookies/CS/cookiessnippets.cs#3)]

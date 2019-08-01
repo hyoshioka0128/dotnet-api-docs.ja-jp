@@ -1,5 +1,5 @@
 <Type Name="MemoryMarshal" FullName="System.Runtime.InteropServices.MemoryMarshal">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="8544b5c5b9524ba2fdb2b7e901c5dfe2c4e92c74" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67248157" /></Metadata><TypeSignature Language="C#" Value="public static class MemoryMarshal" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="10291d94526466a6a071d4ad6764465616a0532c" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68542993" /></Metadata><TypeSignature Language="C#" Value="public static class MemoryMarshal" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit MemoryMarshal extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.InteropServices.MemoryMarshal" />
   <TypeSignature Language="VB.NET" Value="Public Class MemoryMarshal" />
@@ -58,7 +58,7 @@
         <Parameter Name="span" Type="System.ReadOnlySpan&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">読み取り専用の範囲内の項目の種類。</typeparam>
+        <typeparam name="T">読み取り専用スパン内の項目の種類。</typeparam>
         <param name="span">変換するソース スライス。</param>
         <summary>1 つのプリミティブ型 (<paramref name="T" />) の <see cref="T:System.ReadOnlySpan`1" /> を、<see langword="ReadOnlySpan&lt;Byte&gt;" /> にキャストします。</summary>
         <returns><see cref="T:System.Byte" /> 型の読み取り専用スパン。</returns>
@@ -67,7 +67,7 @@
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 `T` タイプ セーフを維持するために、実行時にチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 `T`は、タイプセーフを維持するために実行時にチェックされます。  
 
       ]]></format>
         </remarks>
@@ -109,7 +109,7 @@
         <Parameter Name="span" Type="System.Span&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">範囲内の項目の種類。</typeparam>
+        <typeparam name="T">スパン内の項目の種類。</typeparam>
         <param name="span">変換するソース スライス。</param>
         <summary>1 つのプリミティブ型 (<paramref name="T" />) の <see cref="T:System.Span`1" /> を、<see langword="Span&lt;Byte&gt;" /> にキャストします。</summary>
         <returns><see cref="T:System.Byte" /> 型のスパン。</returns>
@@ -118,7 +118,7 @@
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 `T` タイプ セーフを維持するために、実行時にチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 `T`は、タイプセーフを維持するために実行時にチェックされます。  
 
        ]]></format>
         </remarks>
@@ -154,7 +154,7 @@
         <Parameter Name="memory" Type="System.ReadOnlyMemory&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">読み取り専用メモリ バッファー内の項目の種類。</typeparam>
+        <typeparam name="T">読み取り専用メモリバッファー内の項目の型。</typeparam>
         <param name="memory">読み取り専用メモリ バッファー。</param>
         <summary><see cref="T:System.ReadOnlyMemory`1" /> から <see cref="T:System.Memory`1" /> インスタンスを作成します。</summary>
         <returns><see cref="T:System.ReadOnlyMemory`1" /> と同じメモリを表すメモリ ブロック。</returns>
@@ -163,7 +163,7 @@
   
 ## Remarks  
 
-このメソッドは、十分注意して使用する必要があります。 <xref:System.ReadOnlyMemory%601> 変更不可のデータとその他のメモリに書き込むことができませんを表すために使用します。 <xref:System.Memory%601> このメソッドによって作成されたインスタンスは必要がありますには書き込まれません。 このメソッドの目的は、変数として型指定を許可する<xref:System.Memory%601>がのみを格納する読み取りの使用、<xref:System.ReadOnlyMemory%601>します。 
+このメソッドは、細心の注意を払って使用する必要があります。 <xref:System.ReadOnlyMemory%601>は、変更できないデータや、書き込みを意図していないその他のメモリを表すために使用されます。 <xref:System.Memory%601>このメソッドによって作成されたインスタンスに書き込むことはできません。 このメソッドの目的は、として<xref:System.Memory%601>型指定された変数を許可することですが、 <xref:System.ReadOnlyMemory%601>を格納するためにのみ使用します。 
 
        ]]></format>
         </remarks>
@@ -202,7 +202,7 @@
         <Parameter Name="span" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <typeparam name="T">返される参照の型。</typeparam>
+        <typeparam name="T">返された参照の型。</typeparam>
         <param name="span">再解釈する読み取り専用スパン。</param>
         <summary>読み取り専用スパンのバイトを、<paramref name="T" /> 型の構造体への読み取り専用参照として再解釈します。</summary>
         <returns><paramref name="T" /> 型の構造体への読み取り専用参照。</returns>
@@ -211,9 +211,9 @@
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 これは、実行時にタイプ セーフを維持するためにチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 型の安全性を維持するために、実行時にチェックされます。  
 
-このメソッドがずれているメモリのアクセスをサポートするプラットフォームでのみサポートされているまたは他の方法で配置すると、メモリ ブロックします。
+このメソッドは、メモリアクセスの不整合をサポートするプラットフォームでのみサポートされています。また、メモリブロックが他の方法でアラインされている場合にのみサポートされます。
 
        ]]></format>
         </remarks>
@@ -250,7 +250,7 @@
         <Parameter Name="span" Type="System.Span&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <typeparam name="T">返される参照の型。</typeparam>
+        <typeparam name="T">返された参照の型。</typeparam>
         <param name="span">再解釈するスパン。</param>
         <summary>スパンのバイトを、<paramref name="T" /> 型の構造体への参照として再解釈します。</summary>
         <returns><paramref name="T" /> 型の構造体への参照。</returns>
@@ -259,9 +259,9 @@
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 これは、実行時にタイプ セーフを維持するためにチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 型の安全性を維持するために、実行時にチェックされます。  
 
-このメソッドがずれているメモリのアクセスをサポートするプラットフォームでのみサポートされているまたは他の方法で配置すると、メモリ ブロックします。
+このメソッドは、メモリアクセスの不整合をサポートするプラットフォームでのみサポートされています。また、メモリブロックが他の方法でアラインされている場合にのみサポートされます。
 
        ]]></format>
         </remarks>
@@ -308,8 +308,8 @@
         <Parameter Name="span" Type="System.ReadOnlySpan&lt;TFrom&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TFrom">ソース スパンの種類。</typeparam>
-        <typeparam name="TTo">ターゲット スパンの種類。</typeparam>
+        <typeparam name="TFrom">ソーススパンの種類。</typeparam>
+        <typeparam name="TTo">ターゲットスパンの種類。</typeparam>
         <param name="span">変換するソース スライス。</param>
         <summary>1 つのプリミティブ型の読み取り専用スパンを、別のプリミティブ型の読み取り専用スパンにキャストします。</summary>
         <returns>変換された読み取り専用スパン。</returns>
@@ -318,9 +318,9 @@
   
 ## Remarks  
 
-どちらも`TFrom`も`TTo`ポインターまたは参照を含めることができます。 `TFrom` `TTo`タイプ セーフを維持するために、実行時にチェックされます。  
+とのどちらにも、ポインターまたは参照`TFrom` を含めることはできません。`TTo` `TFrom`と`TTo`は、タイプセーフを維持するために実行時にチェックされます。  
 
-このメソッドがずれているメモリのアクセスをサポートするプラットフォームでのみサポートされているまたは他の方法で配置すると、メモリ ブロックします。
+このメソッドは、メモリアクセスの不整合をサポートするプラットフォームでのみサポートされています。また、メモリブロックが他の方法でアラインされている場合にのみサポートされます。
 
        ]]></format>
         </remarks>
@@ -368,8 +368,8 @@
         <Parameter Name="span" Type="System.Span&lt;TFrom&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TFrom">ソース スパンの種類。</typeparam>
-        <typeparam name="TTo">ターゲット スパンの種類。</typeparam>
+        <typeparam name="TFrom">ソーススパンの種類。</typeparam>
+        <typeparam name="TTo">ターゲットスパンの種類。</typeparam>
         <param name="span">変換するソース スライス。</param>
         <summary>1 つのプリミティブ型のスパンを、別のプリミティブ型のスパンにキャストします。</summary>
         <returns>変換されたスパン。</returns>
@@ -378,11 +378,11 @@
   
 ## Remarks  
 
-どちらも`TFrom`も`TTo`ポインターまたは参照を含めることができます。 `TFrom` `TTo`タイプ セーフを維持するために、実行時にチェックされます。  
+とのどちらにも、ポインターまたは参照`TFrom` を含めることはできません。`TTo` `TFrom`と`TTo`は、タイプセーフを維持するために実行時にチェックされます。  
 
-Unchecked コンテキストでキャストが行われます。 場合の範囲`TTo`の範囲より小さい`TFrom`、データ損失が発生することができます。 たとえば場合、`TFrom`は<xref:System.Int64>、1 つの`ReadOnlySpan<Int32>`0x100001111110F0F の値と`TTo`は<xref:System.Int32>、結果の値は 11110F0F。
+キャストは unchecked コンテキストで発生します。 の`TTo`範囲がの`TFrom`範囲よりも小さい場合、データ損失が発生する可能性があります。 たとえば、が<xref:System.Int64>の`TFrom`場合、いずれかの`ReadOnlySpan<Int32>`値が`TTo` 0x100001111110f0f で、が<xref:System.Int32>の場合、結果の値は11110f0f になります。
 
-このメソッドがずれているメモリのアクセスをサポートするプラットフォームでのみサポートされているまたは他の方法で配置すると、メモリ ブロックします。
+このメソッドは、メモリアクセスの不整合をサポートするプラットフォームでのみサポートされています。また、メモリブロックが他の方法でアラインされている場合にのみサポートされます。
 
        ]]></format>
         </remarks>
@@ -429,7 +429,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-このメソッドが呼び出され、その配列を中に固定解除することはできません前に、配列を固定する必要があります既に、<xref:System.Memory%601>から返されるバッファーが使用中でします。 ピンを外した配列にこのメソッドを呼び出すと、メモリの破損する可能性があります。
+配列は、このメソッドが呼び出される前に既にピン留めされている必要があり<xref:System.Memory%601>ます。また、返されたバッファーが使用中であっても、配列の固定を解除することはできません。 固定解除された配列に対してこのメソッドを呼び出すと、メモリが破損する可能性があります。
 
        ]]></format>
         </remarks>
@@ -466,7 +466,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="length" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <typeparam name="T">データ項目の種類。</typeparam>
+        <typeparam name="T">データ項目の型。</typeparam>
         <param name="reference">データへの参照。</param>
         <param name="length"><paramref name="reference" /> に含まれる <paramref name="T" /> 要素の数。</param>
         <summary>定期的なマネージド オブジェクトの一部に対する新しい読み取り専用スパンを作成します。</summary>
@@ -476,10 +476,10 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-このメソッドは、管理対象のオブジェクトの一部は、固定長配列を表している場合に役立ちます。 
+このメソッドは、マネージオブジェクトの一部が固定配列を表す場合に便利です。 
 
 > [!WARNING]
-> このメソッドは、注意して使用する必要があります。 これは危険ですので、`length`引数はチェックされません。 さらに、スパンに対応した言語で、返されたスパンの有効期間は安全のために検証されません。
+> このメソッドは、注意して使用する必要があります。 `length`引数がチェックされないため、これは危険です。 さらに、スパンを認識する言語によって、返されるスパンの有効期間の安全性が検証されません。
 
        ]]></format>
         </remarks>
@@ -514,7 +514,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="length" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <typeparam name="T">データ項目の種類。</typeparam>
+        <typeparam name="T">データ項目の型。</typeparam>
         <param name="reference">データへの参照。</param>
         <param name="length"><paramref name="reference" /> に含まれる <paramref name="T" /> 要素の数。</param>
         <summary>定期的なマネージド オブジェクトの一部に対する新しいスパンを作成します。</summary>
@@ -524,10 +524,10 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-このメソッドは、管理対象のオブジェクトの一部は、固定長配列を表している場合に役立ちます。 
+このメソッドは、マネージオブジェクトの一部が固定配列を表す場合に便利です。 
 
 > [!WARNING]
-> このメソッドは、注意して使用する必要があります。 これは危険ですので、`length`引数はチェックされません。 さらに、スパンに対応した言語で、返されたスパンの有効期間は安全のために検証されません。
+> このメソッドは、注意して使用する必要があります。 `length`引数がチェックされないため、これは危険です。 さらに、スパンを認識する言語によって、返されるスパンの有効期間の安全性が検証されません。
 
        ]]></format>
         </remarks>
@@ -560,7 +560,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="span" Type="System.ReadOnlySpan&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">範囲内の項目の種類。</typeparam>
+        <typeparam name="T">スパン内の項目の種類。</typeparam>
         <param name="span">参照の取得元となる読み取り専用スパン。</param>
         <summary>インデックス 0 にある読み取り専用スパンの要素の参照を返します。</summary>
         <returns>インデックス 0 にある要素の参照。</returns>
@@ -569,7 +569,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-読み取り専用の範囲が空の場合、このメソッドは、インデックス 0 位置にある要素が格納されている場所への参照を返します。 このような参照が可能性がありますまたはできない可能性があります`null`します。 ピン留めすると、返される参照を使用できますが、これは逆しない必要があります。
+読み取り専用スパンが空の場合、このメソッドは、インデックス0の要素が格納されている場所への参照を返します。 このような参照は、または`null`でない場合があります。 返された参照はピン留めに使用できますが、逆参照することはできません。
 
        ]]></format>
         </remarks>
@@ -602,7 +602,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="span" Type="System.Span&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">範囲内の項目の種類。</typeparam>
+        <typeparam name="T">スパン内の項目の種類。</typeparam>
         <param name="span">参照の取得元となるスパン。</param>
         <summary>インデックス 0 にあるスパンの要素の参照を返します。</summary>
         <returns>インデックス 0 にある要素の参照。</returns>
@@ -611,7 +611,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-スパンが空の場合、このメソッドは、インデックス 0 位置にある要素が格納されている場所への参照を返します。 このような参照が可能性がありますまたはできない可能性があります`null`します。 ピン留めすると、返される参照を使用できますが、これは逆しない必要があります。
+Span が空の場合、このメソッドは、インデックス0の要素が格納されている場所への参照を返します。 このような参照は、または`null`でない場合があります。 返された参照はピン留めに使用できますが、逆参照することはできません。
 
        ]]></format>
         </remarks>
@@ -651,7 +651,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="source" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">読み取り専用の範囲から取得する項目の種類。</typeparam>
+        <typeparam name="T">読み取り専用スパンから取得する項目の型。</typeparam>
         <param name="source">読み取り専用スパン。</param>
         <summary>型の構造体を読み取ります <param name="T" /> バイト型の読み取り専用スパンから。</summary>
         <returns>読み取り専用スパンから取得される構造体。</returns>
@@ -660,7 +660,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 これは、実行時にタイプ セーフを維持するためにチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 型の安全性を維持するために、実行時にチェックされます。  
 
        ]]></format>
         </remarks>
@@ -696,7 +696,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="memory" Type="System.ReadOnlyMemory&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="T">読み取り専用メモリ バッファー内の項目の種類。</typeparam>
+        <typeparam name="T">読み取り専用メモリバッファー内の項目の型。</typeparam>
         <param name="memory">読み取り専用メモリ バッファー。</param>
         <summary>指定した読み取り専用メモリ バッファーの <see cref="T:System.Collections.Generic.IEnumerable`1" /> ビューを作成します。</summary>
         <returns><paramref name="memory" /> の列挙可能なビュー。</returns>
@@ -705,7 +705,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-この方法により、型のパラメーターを必要とする既存の Api で使用される読み取り専用メモリ バッファー<xref:System.Collections.Generic.IEnumerable%601>します。 
+このメソッドは、型<xref:System.Collections.Generic.IEnumerable%601>のパラメーターを必要とする既存の api で、読み取り専用のメモリバッファーを使用できるようにします。 
 
        ]]></format>
         </remarks>
@@ -740,7 +740,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="segment" Type="System.ArraySegment&lt;T&gt;" RefType="out" />
       </Parameters>
       <Docs>
-        <typeparam name="T">読み取り専用メモリ バッファー内の項目の種類。</typeparam>
+        <typeparam name="T">読み取り専用メモリバッファー内の項目の型。</typeparam>
         <param name="memory">読み取り専用メモリ バッファー。</param>
         <param name="segment">このメソッドが戻ると、基になる読み取り専用メモリ バッファーから取得した配列セグメントが含まれています。 メソッドが失敗した場合、メソッドは既定の配列セグメントを返します。</param>
         <summary>基になるメモリ バッファーから配列セグメントの取得を試みます。 戻り値は、操作の成功を示します。</summary>
@@ -781,8 +781,8 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="manager" Type="TManager" RefType="out" Index="1" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <typeparam name="T">読み取り専用メモリ バッファー内の項目の種類。</typeparam>
-        <typeparam name="TManager">種類、<see cref="T:System.Buffers.MemoryManager`1" />を取得します。</typeparam>
+        <typeparam name="T">読み取り専用メモリバッファー内の項目の型。</typeparam>
+        <typeparam name="TManager">取得<see cref="T:System.Buffers.MemoryManager`1" />するの型。</typeparam>
         <param name="memory">メモリ マネージャーを取得する対象の読み取り専用メモリ バッファー。</param>
         <param name="manager">メソッドから戻るときは、<paramref name="memory" /> のマネージャー。</param>
         <summary>基になる読み取り専用メモリ バッファーから <see cref="T:System.Buffers.MemoryManager`1" /> の取得を試みます。</summary>
@@ -825,8 +825,8 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
         <Parameter Name="length" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <typeparam name="T">読み取り専用メモリ バッファー内の項目の種類。</typeparam>
-        <typeparam name="TManager">種類、<see cref="T:System.Buffers.MemoryManager`1" />を取得します。</typeparam>
+        <typeparam name="T">読み取り専用メモリバッファー内の項目の型。</typeparam>
+        <typeparam name="TManager">取得<see cref="T:System.Buffers.MemoryManager`1" />するの型。</typeparam>
         <param name="memory">メモリ マネージャーを取得する対象の読み取り専用メモリ バッファー。</param>
         <param name="manager">メソッドから戻るときは、<paramref name="memory" /> のマネージャー。</param>
         <param name="start">メソッドから戻るときは、<paramref name="memory" /> が表す <paramref name="manager" /> の先頭からのオフセット。</param>
@@ -918,7 +918,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 これは、実行時にタイプ セーフを維持するためにチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 型の安全性を維持するために、実行時にチェックされます。  
 
        ]]></format>
         </remarks>
@@ -970,11 +970,11 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 これは、実行時にタイプ セーフを維持するためにチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 型の安全性を維持するために、実行時にチェックされます。  
 
        ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="TFrom" /> または <paramref name="TTo" /> には参照またはポインターが含まれています。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="T" /> には参照またはポインターが含まれています。</exception>
       </Docs>
     </Member>
     <Member MemberName="Write&lt;T&gt;">
@@ -1021,7 +1021,7 @@ Unchecked コンテキストでキャストが行われます。 場合の範囲
   
 ## Remarks  
 
-`T` ポインターまたは参照を含めることはできません。 これは、実行時にタイプ セーフを維持するためにチェックされます。  
+`T`ポインターまたは参照を含めることはできません。 型の安全性を維持するために、実行時にチェックされます。  
 
        ]]></format>
         </remarks>

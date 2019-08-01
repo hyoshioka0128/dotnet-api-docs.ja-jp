@@ -35,19 +35,19 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>レジストリ変数へのアクセスを制御します。 このクラスは継承できません。</summary>
+    <summary>レジストリ変数にアクセスする権利を制御します。 このクラスは継承できません。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Permissions.RegistryPermission> レジストリ変数に対する保護の操作について説明します。 レジストリ変数は、<xref:System.Security.Permissions.RegistryPermission> を持たないコードがアクセスできるメモリの場所には格納しないようにする必要があります。 レジストリ オブジェクトが、信頼されていない呼び出し元に渡された場合は誤用ことができます。  
+ <xref:System.Security.Permissions.RegistryPermission>レジストリ変数に対する保護された操作について説明します。 レジストリ変数は、<xref:System.Security.Permissions.RegistryPermission> を持たないコードがアクセスできるメモリの場所には格納しないようにする必要があります。 信頼されていない呼び出し元にレジストリオブジェクトが渡された場合は、誤用される可能性があります。  
   
- 許可されているレジストリ アクセスの種類によって定義されます<xref:System.Security.Permissions.RegistryPermissionAccess>します。 アクセスの種類を 1 つ以上が必要な場合は、組み合わせることができます後のコード例のように、ビットごとの OR 演算を使用しています。  
+ 許可されるレジストリアクセスの種類は<xref:System.Security.Permissions.RegistryPermissionAccess>、によって定義されます。 複数の種類のアクセスが必要な場合は、次のコードサンプルに示すように、ビットごとの OR 演算を使用して組み合わせることができます。  
   
- レジストリのアクセス許可は、正規の絶対パスで定義されます。チェックは、標準パス名で常に作成する必要があります。 キーへのアクセスは、含まれるすべての値とその下にあるすべての変数へのアクセスを意味します。  
+ レジストリアクセス許可は、正規の絶対パスの観点で定義されています。チェックは常に標準のパス名を使用して行う必要があります。 キーアクセスは、含まれるすべての値とその下のすべての変数にアクセスすることを意味します。  
   
 > [!NOTE]
->  前に .NET Framework のバージョンでは、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、使用する可能性があります、<xref:System.Security.CodeAccessPermission.Deny%2A?displayProperty=nameWithType>にシステム リソースに信頼されたコードによって不注意によるアクセスを阻止する方法。 <xref:System.Security.CodeAccessPermission.Deny%2A> 残されていますし、リソースへのアクセスが付与されたアクセス許可がアセンブリのセットのだけで決定されるようになりました。 ファイルへのアクセスを制限するには、サンド ボックスで部分信頼コードを実行し、コードのアクセスが許可されているリソースにのみアクセス許可を割り当てる必要があります。 サンド ボックスで、アプリケーションを実行する方法の詳細については、次を参照してください。[方法。Run Partially Trusted Code in a Sandbox](~/docs/framework/misc/how-to-run-partially-trusted-code-in-a-sandbox.md)」 (方法: サンドボックスで部分信頼コードを実行する) を参照してください。  
+>  より前[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]のバージョンの .NET Framework では、 <xref:System.Security.CodeAccessPermission.Deny%2A?displayProperty=nameWithType>メソッドを使用して、信頼されたコードによってシステムリソースに誤ってアクセスすることを防ぐことができました。 <xref:System.Security.CodeAccessPermission.Deny%2A>は互換性のために残されています。また、リソースへのアクセスは、アセンブリに与えられたアクセス許可セットによってのみ決定されるようになりました。 ファイルへのアクセスを制限するには、サンドボックスで部分信頼コードを実行し、コードがアクセスできるリソースにのみアクセス許可を割り当てる必要があります。 サンドボックスでアプリケーションを実行する方法について[は、「方法:Run Partially Trusted Code in a Sandbox](~/docs/framework/misc/how-to-run-partially-trusted-code-in-a-sandbox.md)」 (方法: サンドボックスで部分信頼コードを実行する) を参照してください。  
   
  ]]></format>
     </remarks>
@@ -90,18 +90,18 @@
         <Parameter Name="state" Type="System.Security.Permissions.PermissionState" />
       </Parameters>
       <Docs>
-        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか 1 つ。</param>
-        <summary>指定に従って完全に制限されているか、または無制限のアクセス許可を持つ、<see cref="T:System.Security.Permissions.RegistryPermission" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか。</param>
+        <summary>制限されたアクセス許可か無制限のアクセス許可のいずれかを指定して、<see cref="T:System.Security.Permissions.RegistryPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 完全に制限されているいずれかを作成します (`None`) または`Unrestricted`レジストリ変数へのアクセス。  
+ 完全に制限され`None`た ( `Unrestricted` ) またはレジストリ変数へのアクセスのいずれかを作成します。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.RegistryPermission.%23ctor%28System.Security.Permissions.PermissionState%29>コンス トラクター。  
+ <xref:System.Security.Permissions.RegistryPermission.%23ctor%28System.Security.Permissions.PermissionState%29>コンストラクターの使用方法を次のコード例に示します。  
   
  [!code-csharp[System.Security.Permissions.RegistryPermission#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/CS/registrypermission.cs#7)]
  [!code-vb[System.Security.Permissions.RegistryPermission#7](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/VB/registrypermission.vb#7)]  
@@ -143,18 +143,18 @@
       </Parameters>
       <Docs>
         <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか 1 つ。</param>
-        <param name="pathList">アクセスが許可されているレジストリ変数の一覧 (セミコロン区切り)。</param>
-        <summary>指定したレジストリ変数への指定したアクセスを使用して、<see cref="T:System.Security.Permissions.RegistryPermission" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="pathList">アクセス許可が与えられているレジストリ変数の (セミコロン区切りの) リスト。</param>
+        <summary>指定したレジストリ変数への指定したアクセスで <see cref="T:System.Security.Permissions.RegistryPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、1 つだけの<xref:System.Security.Permissions.RegistryPermissionAccess>値を指定します。 このアクセスは、表示されているレジストリ変数すべてに適用されます。 使用<xref:System.Security.Permissions.RegistryPermission.AddPathList%2A>より複雑なアクセス許可を定義します。  
+ このコンストラクターでは、 <xref:System.Security.Permissions.RegistryPermissionAccess>値の1つだけを指定できます。 このアクセスは、表示されているすべてのレジストリ変数に適用されます。 より<xref:System.Security.Permissions.RegistryPermission.AddPathList%2A>複雑なアクセス許可を定義するには、を使用します。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.RegistryPermission.%23ctor%28System.Security.Permissions.RegistryPermissionAccess%2CSystem.String%29>コンス トラクター。  
+ <xref:System.Security.Permissions.RegistryPermission.%23ctor%28System.Security.Permissions.RegistryPermissionAccess%2CSystem.String%29>コンストラクターの使用方法を次のコード例に示します。  
   
  [!code-csharp[System.Security.Permissions.RegistryPermission#10](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/CS/registrypermission.cs#10)]
  [!code-vb[System.Security.Permissions.RegistryPermission#10](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/VB/registrypermission.vb#10)]  
@@ -198,26 +198,26 @@
         <Parameter Name="pathList" Type="System.String" Index="2" FrameworkAlternate="dotnet-plat-ext-2.1;dotnet-plat-ext-2.2;dotnet-plat-ext-3.0;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか 1 つ。</param>
+        <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか。</param>
         <param name="control"><see cref="T:System.Security.AccessControl.AccessControlActions" /> 値のビットごとの組み合わせ。</param>
-        <param name="pathList">アクセスが許可されているレジストリ変数の一覧 (セミコロン区切り)。</param>
-        <summary>指定されたレジストリ変数への指定のアクセスと、レジストリ制御情報への指定のアクセス権を使用して、<see cref="T:System.Security.Permissions.RegistryPermission" /> クラスの新しいインスタンスを初期化します。</summary>
+        <param name="pathList">アクセス許可が与えられているレジストリ変数の (セミコロン区切りの) リスト。</param>
+        <summary>レジストリ変数へのアクセスと、レジストリ コントロール情報へのアクセス許可を指定して、<see cref="T:System.Security.Permissions.RegistryPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターは、1 つだけの<xref:System.Security.Permissions.RegistryPermissionAccess>値を指定します。 このアクセスは、表示されているレジストリ変数すべてに適用されます。 使用<xref:System.Security.Permissions.RegistryPermission.AddPathList%2A>より複雑なアクセス許可を定義します。  
+ このコンストラクターでは、 <xref:System.Security.Permissions.RegistryPermissionAccess>値の1つだけを指定できます。 このアクセスは、表示されているすべてのレジストリ変数に適用されます。 より<xref:System.Security.Permissions.RegistryPermission.AddPathList%2A>複雑なアクセス許可を定義するには、を使用します。  
   
- `control`パラメーターを指定するかどうかのアクセス制御リスト (ACL) で指定されたレジストリ キーの`pathList`変更できますが、表示またはアクセスできません。  
+ パラメーター `control`は、によって`pathList`指定されたレジストリキーのアクセス制御リスト (ACL) を変更、表示、またはアクセスできないようにするかどうかを指定します。  
   
 > [!IMPORTANT]
->  アクセス制御リスト (ACL) には、個人またはグループがある、または権限がない、指定したレジストリ キーの特定のアクションをユーザーがについて説明します。  変更または ACL を表示する機能は重要なアクセス許可し、慎重に付与する必要があります。  
+>  アクセス制御リスト (ACL) は、指定されたレジストリキーに対する特定の操作に対する権限を持っている、または所有していない個人またはグループを表します。  ACL を変更または表示する機能は、重要なアクセス許可であるため、注意して付与する必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="access" /> パラメーターが <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> の正しい値ではありません。  
   
-- または - 
+または 
 <paramref name="pathList" /> パラメーターが有効な文字列ではありません。</exception>
       </Docs>
     </Member>
@@ -233,7 +233,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可オブジェクトの状態にそのパスのセットを追加してレジストリ変数へのアクセスを変更するのにには、このメソッドを使用します。  
+ このメソッドを使用して、そのパスのセットを現在のアクセス許可オブジェクトの状態に追加することによって、レジストリ変数へのアクセスを変更します。  
   
  ]]></format>
         </remarks>
@@ -273,19 +273,19 @@
         <Parameter Name="pathList" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか 1 つ。</param>
+        <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか。</param>
         <param name="pathList">レジストリ変数の一覧 (セミコロン区切り)。</param>
         <summary>指定したレジストリ変数へのアクセス権を既存のアクセス許可の状態に追加します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可オブジェクトの状態を追加して、レジストリ変数へのアクセスを変更するのにには、このメソッドを使用します。  
+ このメソッドを使用して、現在のアクセス許可オブジェクトの状態にを追加することによって、レジストリ変数へのアクセスを変更します。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.RegistryPermission.AddPathList%28System.Security.Permissions.RegistryPermissionAccess%2CSystem.String%29>メソッド。  
+ 次のコード例は、 <xref:System.Security.Permissions.RegistryPermission.AddPathList%28System.Security.Permissions.RegistryPermissionAccess%2CSystem.String%29>メソッドの使用方法を示しています。  
   
  [!code-csharp[System.Security.Permissions.RegistryPermission#9](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/CS/registrypermission.cs#9)]
  [!code-vb[System.Security.Permissions.RegistryPermission#9](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/VB/registrypermission.vb#9)]  
@@ -339,27 +339,27 @@
         <Parameter Name="pathList" Type="System.String" Index="2" FrameworkAlternate="dotnet-plat-ext-2.1;dotnet-plat-ext-2.2;dotnet-plat-ext-3.0;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか 1 つ。</param>
-        <param name="actions"><see cref="T:System.Security.AccessControl.AccessControlActions" /> 値のいずれか 1 つ。</param>
+        <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか。</param>
+        <param name="actions"><see cref="T:System.Security.AccessControl.AccessControlActions" /> 値のいずれか。</param>
         <param name="control"><see cref="T:System.Security.AccessControl.AccessControlActions" /> 値のいずれか 1 つ。</param>
-        <param name="pathList">レジストリ変数の一覧 (セミコロン区切り)。</param>
-        <summary>指定されたレジストリ変数のために、権限の既存の状態へのアクセスを追加し、レジストリのアクセス許可とアクセス制御のアクションを指定します。</summary>
+        <param name="pathList">レジストリ変数の (セミコロン区切りの) リスト。</param>
+        <summary>指定したレジストリ変数のアクセスを既存のアクセス許可の状態に追加し、レジストリ アクセス許可のアクセスとアクセス コントロールのアクションを指定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可オブジェクトの状態にそのパスのセットを追加してレジストリ変数へのアクセスを変更するのにには、このメソッドを使用します。 このオーバー ロードを使用して、アクセス制御の操作だけでなく、レジストリのアクセス許可を指定できます。  
+ このメソッドを使用して、そのパスのセットを現在のアクセス許可オブジェクトの状態に追加することによって、レジストリ変数へのアクセスを変更します。 このオーバーロードでは、アクセス制御アクションをレジストリアクセス許可のアクセスとして指定できます。  
   
- `control`パラメーターを指定するかどうかのアクセス制御リスト (ACL) で指定されたレジストリ キーの`pathList`変更できますが、表示またはアクセスできません。  
+ パラメーター `control`は、によって`pathList`指定されたレジストリキーのアクセス制御リスト (ACL) を変更、表示、またはアクセスできないようにするかどうかを指定します。  
   
 > [!IMPORTANT]
->  アクセス制御リスト (ACL) には、個人またはグループがある、または権限がない、指定したレジストリ キーの特定のアクションをユーザーがについて説明します。  変更または ACL を表示する機能は重要なアクセス許可し、慎重に付与する必要があります。  
+>  アクセス制御リスト (ACL) は、指定されたレジストリキーに対する特定の操作に対する権限を持っている、または所有していない個人またはグループを表します。  ACL を変更または表示する機能は、重要なアクセス許可であるため、注意して付与する必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="access" /> パラメーターが <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> の正しい値ではありません。  
   
-- または - 
+または 
 <paramref name="pathList" /> パラメーターが有効な文字列ではありません。</exception>
       </Docs>
     </Member>
@@ -395,7 +395,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アクセス許可のコピーを元のアクセス許可リソースに対して同じアクセス権を表します。  
+ アクセス許可のコピーは、元のアクセス許可と同じリソースへのアクセスを表します。  
   
  ]]></format>
         </remarks>
@@ -448,7 +448,7 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="elem" /> パラメーターが <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="elem" /> パラメーターが有効なアクセス許可要素ではありません。  
   
-- または - 
+または 
 <paramref name="elem" /> パラメーターのバージョン番号が正しくありません。</exception>
       </Docs>
     </Member>
@@ -485,22 +485,22 @@
         <Parameter Name="access" Type="System.Security.Permissions.RegistryPermissionAccess" />
       </Parameters>
       <Docs>
-        <param name="access">レジストリ変数アクセスの単一の型を表す <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値の 1 つです。</param>
-        <summary>指定した <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> を含むレジストリ変数すべてのパスを取得します。</summary>
-        <returns>指定した <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> を含むレジストリ変数の一覧 (セミコロン区切り)。</returns>
+        <param name="access">単一の種類のレジストリ変数アクセス許可を表す <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値の 1 つ。</param>
+        <summary>指定した <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> を持つすべてのレジストリ変数のパスを取得します。</summary>
+        <returns>指定した <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> を示す、レジストリ変数の (セミコロン区切りの) リスト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可の状態を取得するのにには、このメソッドを使用します。 このメソッドは、アクセスの種類ごとに個別に呼び出す必要があります。  
+ 現在のアクセス許可の状態を取得するには、このメソッドを使用します。 アクセスの種類ごとに、このメソッドを個別に呼び出す必要があります。  
   
 > [!NOTE]
->  `access`パラメーターがの値に限定<xref:System.Security.Permissions.RegistryPermissionAccess>、レジストリ変数アクセスの 1 つの型を表します。 これらの値が<xref:System.Security.Permissions.RegistryPermissionAccess.Read>、 <xref:System.Security.Permissions.RegistryPermissionAccess.Write>、および<xref:System.Security.Permissions.RegistryPermissionAccess.Create>します。 値を許容できる`access`含めない<xref:System.Security.Permissions.RegistryPermissionAccess.NoAccess>と<xref:System.Security.Permissions.RegistryPermissionAccess.AllAccess>、レジストリ変数アクセスの 1 つの型を表していません。  
+>  パラメーターは、レジストリ変数アクセスの単一<xref:System.Security.Permissions.RegistryPermissionAccess>の型を表すの値に制限されます。 `access` これらの値<xref:System.Security.Permissions.RegistryPermissionAccess.Read>は<xref:System.Security.Permissions.RegistryPermissionAccess.Write>、、 <xref:System.Security.Permissions.RegistryPermissionAccess.Create>、およびです。 に`access`許容される値には<xref:System.Security.Permissions.RegistryPermissionAccess.NoAccess> 、 <xref:System.Security.Permissions.RegistryPermissionAccess.AllAccess>およびは含まれません。これは、レジストリ変数アクセスの単一の型を表すものではありません。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.RegistryPermission.GetPathList%2A>メソッド。  
+ 次のコード例は、 <xref:System.Security.Permissions.RegistryPermission.GetPathList%2A>メソッドの使用方法を示しています。  
   
  [!code-csharp[System.Security.Permissions.RegistryPermission#9](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/CS/registrypermission.cs#9)]
  [!code-vb[System.Security.Permissions.RegistryPermission#9](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/VB/registrypermission.vb#9)]  
@@ -510,7 +510,7 @@
         <exception cref="T:System.ArgumentException"><paramref name="access" /> が <see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> の正しい値ではありません。  
   
 - または - 
- <paramref name="access" /> が <see cref="F:System.Security.Permissions.RegistryPermissionAccess.AllAccess" /> で、レジストリ変数アクセスの 2 つ以上の型を表しているか、<see cref="F:System.Security.Permissions.RegistryPermissionAccess.NoAccess" /> で、レジストリ変数アクセスのどの型も表していません。</exception>
+ <paramref name="access" /> が、複数の種類のレジストリ変数アクセス許可を表す <see cref="F:System.Security.Permissions.RegistryPermissionAccess.AllAccess" /> か、どの種類のレジストリ変数アクセス許可も表さない <see cref="F:System.Security.Permissions.RegistryPermissionAccess.NoAccess" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="Intersect">
@@ -553,7 +553,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 2 つのアクセス許可の積集合は、両方に共通する操作のセットを説明する権限です。 元の両方の権限を通過する要求だけでは、積集合を渡します。  
+ 2つのアクセス許可の積集合は、両方が共通で記述する一連の操作を記述するアクセス許可です。 両方の元のアクセス許可を渡す要求だけが、積集合を渡します。  
   
  ]]></format>
         </remarks>
@@ -600,7 +600,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のアクセス許可は、現在のアクセス許可を指定した権限によって完全に含まれる一連の操作を指定する場合、指定したアクセス許可のサブセットです。 たとえば、C:\example.txt へのアクセスを表すアクセス許可は、c: へのアクセスを表すアクセス許可のサブセット\\します。 このメソッドが戻る場合`true`、現在のアクセス許可がない以上へのアクセスが保護されたリソースは、指定した権限を表します。  
+ 現在のアクセス許可が、指定したアクセス許可によって完全に含まれる一連の操作を指定している場合、現在のアクセス許可は、指定したアクセス許可のサブセットになります。 たとえば、C:\example.txt へのアクセスを表すアクセス許可は、C:\\へのアクセスを表すアクセス許可のサブセットです。 このメソッドがを`true`返す場合、現在のアクセス許可は、指定されたアクセス許可よりも保護されたリソースへのアクセスを許可しません。  
   
  ]]></format>
         </remarks>
@@ -684,7 +684,7 @@
       <Docs>
         <param name="access"><see cref="T:System.Security.Permissions.RegistryPermissionAccess" /> 値のいずれか 1 つ。</param>
         <param name="pathList">レジストリ変数の一覧 (セミコロン区切り)。</param>
-        <summary>指定したレジストリの変数名の新しいアクセス権を、既存のアクセス許可の状態に設定します。</summary>
+        <summary>指定したレジストリ変数名への新しいアクセスを、アクセス許可の既存の状態に設定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -694,7 +694,7 @@
    
   
 ## Examples  
- 次のコード例の使用を示しています、<xref:System.Security.Permissions.RegistryPermission.SetPathList%2A>メソッド。  
+ 次のコード例は、 <xref:System.Security.Permissions.RegistryPermission.SetPathList%2A>メソッドの使用方法を示しています。  
   
  [!code-csharp[System.Security.Permissions.RegistryPermission#9](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/CS/registrypermission.cs#9)]
  [!code-vb[System.Security.Permissions.RegistryPermission#9](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Permissions.RegistryPermission/VB/registrypermission.vb#9)]  
@@ -783,7 +783,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出しの結果<xref:System.Security.Permissions.RegistryPermission.Union%2A>は現在のアクセス許可と指定した権限の両方で表されるすべての操作を表すアクセス許可。 いずれかのアクセス許可に適合する要求は、その共用体を渡します。  
+ の呼び出し<xref:System.Security.Permissions.RegistryPermission.Union%2A>の結果は、現在のアクセス許可と指定したアクセス許可の両方によって表されるすべての操作を表すアクセス許可です。 いずれかのアクセス許可を渡す要求では、その共用体が渡されます。  
   
  ]]></format>
         </remarks>

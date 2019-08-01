@@ -43,7 +43,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>メイン アセンブリにニュートラル カルチャのリソースが含まれていないと、適切なサテライト アセンブリが見つからない場合にスローされる例外。</summary>
+    <summary>メイン アセンブリにニュートラル カルチャ リソースが含まれておらず、適切なサテライト アセンブリがない場合にスローされる例外。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -51,40 +51,40 @@
   
 ## <a name="net-apps"></a>.NET アプリ  
 
-.NET Framework と .NET Core アプリで<xref:System.Resources.MissingManifestResourceException>ニュートラル カルチャのリソース セットが特定のアセンブリから読み込めなかったため、リソースを取得する試みが失敗したときにスローされます。 特定のリソースを取得しようとすると、例外がスローされたが、リソースを検索する障害ではなく、リソース セットの読み込みに失敗した原因が。  
+.NET Framework と .net Core アプリでは<xref:System.Resources.MissingManifestResourceException> 、ニュートラルカルチャのリソースセットを特定のアセンブリから読み込むことができなかったために、リソースを取得しようとして失敗した場合にがスローされます。 この例外は、特定のリソースを取得しようとしたときにスローされますが、リソースを見つけることができなかったため、リソースセットの読み込みに失敗したことが原因で発生します。  
   
 > [!NOTE]
->  詳細については、「MissingManifestResourceException 例外を処理」のセクションを参照してください、<xref:System.Resources.ResourceManager>クラスに関するトピック。  
+>  詳細については、クラスの<xref:System.Resources.ResourceManager>トピックの「MissingManifestResourceException Exception の処理」セクションを参照してください。  
   
- 例外の主な原因を以下に示します。  
+ 例外の主な原因は次のとおりです。  
   
--   リソース セットは、完全修飾名で識別されません。 たとえば場合、`baseName`への呼び出しでパラメーター、<xref:System.Resources.ResourceManager.%23ctor%28System.String%2CSystem.Reflection.Assembly%29?displayProperty=nameWithType>メソッドは、名前空間のない設定、リソースのルート名を指定しますが、リソース セットを呼び出し、そのアセンブリに格納されているときに、名前空間が割り当てられている、<xref:System.Resources.ResourceManager.GetString%2A?displayProperty=nameWithType>メソッドこの例外をスローします。  
+-   リソースセットは、完全修飾名で識別されません。 たとえば、メソッドの`baseName` <xref:System.Resources.ResourceManager.%23ctor%28System.String%2CSystem.Reflection.Assembly%29?displayProperty=nameWithType>呼び出しのパラメーターが名前空間を使用せずにリソースセットのルート名を指定していても、そのアセンブリに格納されているときにリソースセットに名前空間が<xref:System.Resources.ResourceManager.GetString%2A?displayProperty=nameWithType>割り当てられている場合、メソッドへの呼び出しこの例外をスローします。  
   
-     実行可能ファイルの既定のカルチャのリソースを含む .resources ファイルが埋め込まれているし、アプリをスローしている場合、<xref:System.Resources.MissingManifestResourceException>などのリフレクションのツールを使用できます、 [IL 逆アセンブラー (Ildasm.exe)](~/docs/framework/tools/ildasm-exe-il-disassembler.md)を決定するにはリソースの完全修飾名。 Ildasm、ダブルクリックしますで実行可能ファイルの**マニフェスト**ラベルを開く、**マニフェスト**ウィンドウ。 リソースの表示として`.mresource`外部アセンブリの参照とアセンブリ レベルのカスタム属性の後に表示されている項目とは。 コマンド ライン パラメーターとして渡される名前のアセンブリ内の埋め込みリソースの完全修飾名の一覧を表示する次の単純なユーティリティをコンパイルすることもできます。  
+     既定のカルチャのリソースを含む .resources ファイルが実行可能ファイルに埋め込まれていて、アプリがを<xref:System.Resources.MissingManifestResourceException>スローしている場合は、 [IL 逆アセンブラー (ildasm.exe)](~/docs/framework/tools/ildasm-exe-il-disassembler.md)などのリフレクションツールを使用して、完全修飾名を特定できます。リソースの名前。 ILDasm で、実行可能ファイルの**マニフェスト**ラベルをダブルクリックして、**[マニフェスト]** ウィンドウを開きます。 リソースは項目`.mresource`として表示され、外部アセンブリ参照とカスタムアセンブリレベル属性の後に一覧表示されます。 また、次の単純なユーティリティをコンパイルすることもできます。このユーティリティには、コマンドラインパラメーターとして名前が渡されるアセンブリ内の埋め込みリソースの完全修飾名が一覧表示されます。  
   
      [!code-csharp[System.Resources.ResourceManager.Class#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.resources.resourcemanager.class/cs/resourcenames.cs#4)]
      [!code-vb[System.Resources.ResourceManager.Class#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.resources.resourcemanager.class/vb/resourcenames.vb#4)]  
   
--   リソース名前空間とルート ファイル名ではなく、(省略可能な名前空間) と共に、リソース ファイル名とそのファイル拡張子を単独でセットを識別します。 場合は、ニュートラル カルチャのリソース セットの名前はたとえば、この例外がスローされます`GlobalResources`の値を指定して`GlobalResources.resources`(の代わりに`GlobalResources`) に、`baseName`のパラメーター、<xref:System.Resources.ResourceManager.%23ctor%28System.String%2CSystem.Reflection.Assembly%29?displayProperty=nameWithType>コンス トラクター。  
+-   リソースファイル名 (オプションの名前空間を含む) とそのファイル拡張子 (名前空間とルートファイル名のみではなく) によって、リソースセットを識別します。 たとえば、ニュートラルカルチャのリソースセットがという`GlobalResources`名前で、 <xref:System.Resources.ResourceManager.%23ctor%28System.String%2CSystem.Reflection.Assembly%29?displayProperty=nameWithType>コンストラクターの`baseName`パラメーターに (ではなく`GlobalResources`) `GlobalResources.resources`の値を指定した場合、この例外がスローされます。  
   
--   メソッドの呼び出しで指定されているカルチャ固有のリソース セットが見つからないし、フォールバック リソース セットを読み込むことができません。 たとえば、英語 (米国)、ロシア (ロシア) カルチャのサテライト アセンブリを作成する場合は、ニュートラル カルチャのリソース セットを指定しないと、この例外は、アプリの現在のカルチャが英語 (英国) の場合。  
+-   メソッド呼び出しで指定されているカルチャ固有のリソースセットが見つからず、フォールバックリソースセットを読み込むことができません。 たとえば、英語 (米国) カルチャおよびロシア語 (ロシア) カルチャ用のサテライトアセンブリを作成しても、ニュートラルカルチャのリソースセットを提供できなかった場合、アプリの現在のカルチャが英語 (英国) であると、この例外がスローされます。  
   
- <xref:System.Resources.MissingManifestResourceException> 値は 0x80131532 HRESULT COR_E_MISSINGMANIFESTRESOURCE を使用します。  
+ <xref:System.Resources.MissingManifestResourceException>は、値0x80131532 を持つ HRESULT COR_E_MISSINGMANIFESTRESOURCE を使用します。  
   
- <xref:System.Resources.MissingManifestResourceException> 既定値を使用して<xref:System.Object.Equals%2A>実装で、参照の等価性をサポートしています。  
+ <xref:System.Resources.MissingManifestResourceException>は、参照<xref:System.Object.Equals%2A>の等価性をサポートする既定の実装を使用します。  
   
- インスタンスの初期プロパティ値の一覧については<xref:System.Resources.MissingManifestResourceException>を参照してください、<xref:System.Resources.MissingManifestResourceException.%23ctor%2A>コンス トラクター。  
+ <xref:System.Resources.MissingManifestResourceException>インスタンスの初期プロパティ値の一覧については、<xref:System.Resources.MissingManifestResourceException.%23ctor%2A>コンストラクターを参照してください。  
   
 > [!NOTE]
->  サテライト アセンブリが使用できない場合、アプリが失敗しないように、中立的な一連のリソースをメイン アセンブリに含めることをお勧めします。  
+>  メインアセンブリにニュートラルリソースのセットを含めることをお勧めします。これにより、サテライトアセンブリが使用できない場合、アプリは失敗しません。  
   
 ## <a name="universal-windows-platform-uwp-apps"></a>ユニバーサル Windows プラットフォーム (UWP) アプリ 
 
-UWP アプリでは、1 つのパッケージ リソース インデックス (.pri) ファイルに、ニュートラル カルチャを含む複数のカルチャのリソースをデプロイします。 その結果、UWP アプリの場合の優先カルチャのリソースが見つからない場合に、<xref:System.Resources.MissingManifestResourceException>次の条件のいずれかでスローされます。  
+UWP アプリは、ニュートラルカルチャを含む複数のカルチャのリソースを1つのパッケージリソースインデックス (pri) ファイルにデプロイします。 その結果、UWP アプリで、優先カルチャのリソースが見つからない場合は、 <xref:System.Resources.MissingManifestResourceException>次のいずれかの条件でがスローされます。  
   
-- アプリでは、.pri ファイルは含まれませんまたは .pri ファイルを開くことができませんでした。  
+- アプリケーションに .pri ファイルが含まれていないか、または .pri ファイルを開けませんでした。  
   
-- アプリの .pri ファイルでは、特定のルート名のリソース セットは含まれません。  
+- アプリの pri ファイルには、指定されたルート名のリソースセットが含まれていません。  
   
  ]]></format>
     </remarks>
@@ -136,12 +136,12 @@ UWP アプリでは、1 つのパッケージ リソース インデックス (.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Resources.MissingManifestResourceException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.Resources.MissingManifestResourceException> インスタンスの初期プロパティ値を次の表に示します。  
   
-|プロパティ|値|  
+|プロパティ|[値]|  
 |--------------|-----------|  
 |<xref:System.Exception.InnerException%2A>|`null`。|  
-|<xref:System.Exception.Message%2A>|ローカライズされたエラー メッセージ<xref:System.Resources.MissingManifestResourceException>します。|  
+|<xref:System.Exception.Message%2A>|の<xref:System.Resources.MissingManifestResourceException>ローカライズされたエラーメッセージ。|  
   
  ]]></format>
         </remarks>
@@ -183,9 +183,9 @@ UWP アプリでは、1 つのパッケージ リソース インデックス (.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Resources.MissingManifestResourceException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.Resources.MissingManifestResourceException> インスタンスの初期プロパティ値を次の表に示します。  
   
-|プロパティ|値|  
+|プロパティ|[値]|  
 |--------------|-----------|  
 |<xref:System.Exception.InnerException%2A>|`null`。|  
 |<xref:System.Exception.Message%2A>|`message`文字列。|  
@@ -230,7 +230,7 @@ UWP アプリでは、1 つのパッケージ リソース インデックス (.
       </Parameters>
       <Docs>
         <param name="info">シリアル化されたオブジェクト データを保持するオブジェクト。</param>
-        <param name="context">ソースまたは例外の変換先に関するコンテキスト情報。</param>
+        <param name="context">例外の発生元または発生先に関するコンテキスト情報。</param>
         <summary>シリアル化したデータから、<see cref="T:System.Resources.MissingManifestResourceException" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -280,9 +280,9 @@ UWP アプリでは、1 つのパッケージ リソース インデックス (.
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 前の例外の直接の結果としてスローされる例外については、<xref:System.Exception.InnerException%2A> プロパティに、前の例外への参照が格納されます。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
+ 前の例外の直接の結果としてスローされる例外については、<xref:System.Exception.InnerException%2A> プロパティに、前の例外への参照を含める必要があります。 <xref:System.Exception.InnerException%2A> プロパティは、コンストラクターに渡されたものと同じ値を返します。`null` プロパティによって内部例外値がコンストラクターに渡されなかった場合は、<xref:System.Exception.InnerException%2A> を返します。  
   
- <xref:System.Resources.MissingManifestResourceException> のインスタンスの初期プロパティ値を次の表に示します。  
+ <xref:System.Resources.MissingManifestResourceException> インスタンスの初期プロパティ値を次の表に示します。  
   
 |プロパティ|[値]|  
 |--------------|-----------|  

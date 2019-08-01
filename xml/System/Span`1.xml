@@ -1,5 +1,5 @@
 <Type Name="Span&lt;T&gt;" FullName="System.Span&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="803bd441bc38213f4fa96e5e062b6bb6e5453f5c" /><Meta Name="ms.sourcegitcommit" Value="61757d0366a172cdbc11436deb1c1ffa49d97238" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/28/2019" /><Meta Name="ms.locfileid" Value="67458077" /></Metadata><TypeSignature Language="C#" Value="public struct Span&lt;T&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="0d2c736a3c79e351ad3d54609d7e75129b73467e" /><Meta Name="ms.sourcegitcommit" Value="5c332e8417c001736f7e2f33a84791feebba2cd7" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/30/2019" /><Meta Name="ms.locfileid" Value="68632974" /></Metadata><TypeSignature Language="C#" Value="public struct Span&lt;T&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Span`1&lt;T&gt; extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Span`1" />
   <TypeSignature Language="VB.NET" Value="Public Structure Span(Of T)" />
@@ -63,9 +63,9 @@
 
 [!code-csharp[Creating a Span\<Byte> from stack-allocated memory](~/samples/snippets/csharp/api/system/span/program.cs#4)]
 
-## <a name="spant-and-arrays"></a>スパン\<T > と配列
+## <a name="spant-and-arrays"></a>Span\<T > と配列
 
-配列をラップして場合、`Span<T>`と同じ例では、配列全体をラップすることができます、[スパン\<T > とメモリ](#spant-and-memory)セクション。 スライスをサポートするため、`Span<T>`配列内の任意の連続する範囲を指すこともできます。  
+が配列をラップすると`Span<T>` 、は[Span\<T > と memory](#spant-and-memory)セクションの例のように、配列全体をラップすることができます。 スライスがサポートされる`Span<T>`ため、は配列内の連続する範囲を指すこともできます。  
 
 次の例では、10 要素ある整数配列の中間 5 つの要素のスライスを作成します。 コードがスライス内の各整数の値を 2 倍することに注意してください。 出力のとおり、スパンで加えられた変更は、配列の値に反映されます。
 
@@ -75,9 +75,9 @@
 
 `Span<T>`には、現在のスパンより、指定したインデックスから始まるスライスを形成する<xref:System.Span%601.Slice%2A>メソッドの 2 つのオーバー ロードが含まれています。 これにより、`Span<T>`のデータを、パフォーマンスの影響を最小限にしながら、データ処理パイプラインの一部で必要に応じて処理できる、一連の論理的なまとまりとして扱うことができます。 たとえば、最新のサーバー プロトコルは多くの場合、テキスト ベースであるため、文字列と部分文字列の操作は特に重要です。 <xref:System.String>クラスの場合、部分文字列の抽出に使う主要なメソッドは<xref:System.String.Substring%2A>です。 広範な文字列操作に依存するデータ パイプラインは、次のように、いくつかのパフォーマンスの低下を招きます。
 
-1. 部分文字列を保持するために新しい文字列を作成します。
+1. 部分文字列を格納する新しい文字列を作成します。
 
-2. 元の文字列から文字のサブセットを新しい文字列にコピーします。
+2. 元の文字列の文字のサブセットを新しい文字列にコピーします。
 
 次の例に示すように、この割り当てとコピー操作は、`Span<T>`または<xref:System.ReadOnlySpan%601>いずれかを使用して削除できます。
 
@@ -197,14 +197,22 @@
         <param name="start">新しい <see cref="T:System.Span`1" /> に含める最初の要素のインデックス。</param>
         <param name="length">新しい <see cref="T:System.Span`1" /> に含める要素の数。</param>
         <summary>指定インデックスで始まる配列の指定要素数を含む新しい <see cref="T:System.Span`1" /> オブジェクトを作成します。</summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+### Remarks
+
+がの場合`default` `array` 、この`null`メソッドはを返します。
+
+            ]]></format>
+        </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="array" /> は <see langword="null" /> ですが、<paramref name="start" /> または <paramref name="length" /> は 0 以外です。
 
 - または -
 
 <paramref name="start" /> は配列の境界の外側にあります。
 
-- または -
+または
 
 <paramref name="start" /> と <paramref name="length" /> は配列の要素数を超えています。</exception>
         <exception cref="T:System.ArrayTypeMismatchException"><paramref name="T" /> は参照型です。<paramref name="array" /> は型 <paramref name="T" /> の配列ではありません。</exception>
@@ -355,7 +363,7 @@
           <format type="text/markdown"><![CDATA[  
 <xref:System.Span%601.Equals%2A>メソッドの呼び出しはサポートされていません。 <xref:System.Span%601.Equals%2A>メソッド呼び出しは 2 つの結果のいずれかを生成します。
 
-- 場合`obj`は、<xref:System.Span%601>メソッドの呼び出しには、コンパイラ エラー CS1503 が生成されます:「に変換できません 'System.Span' から 'object'.」これは、ため<xref:System.Span%601>は、 [ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)をボックス化することはできず、変換することはできません、<xref:System.Object>します。
+- が`obj` の<xref:System.Span%601>場合、メソッドの呼び出しによってコンパイラエラー CS1503: "' system.object ' から ' object ' に変換できません。" が生成されます。これは、 <xref:System.Span%601>がボックス化できないため、 <xref:System.Object>に変換できない[ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)であるためです。
 
 - `obj`の型が<xref:System.Span%601>でない場合、メソッド呼び出しは<xref:System.NotSupportedException>をスローします。 
 
@@ -498,7 +506,7 @@
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
-`GetPinnableReference`メソッドを返します。 を[ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)します。 ピン留めできます、<xref:System.Span%601>メモリにします。 使用をサポートするために必要なこと、<xref:System.Span%601>内、[固定](~/docs/csharp/language-reference/keywords/fixed-statement.md)ステートメント。
+メソッド`GetPinnableReference`は[ref 構造体](~/docs/csharp/reference-semantics-with-value-types.md#ref-struct-type)を返します。 メモリ内でを<xref:System.Span%601>ピン留めするために使用できます。 これは、 <xref:System.Span%601> [fixed](~/docs/csharp/language-reference/keywords/fixed-statement.md)ステートメント内でのの使用をサポートするために必要です。
 
        ]]></format>
         </remarks>
@@ -529,7 +537,7 @@
       </ReturnValue>
       <Docs>
         <summary>現在の <see cref="T:System.Span`1" /> が空かどうかを示す値を返します。</summary>
-        <value><see langword="true" /> 現在の範囲が空である場合それ以外の場合、<see langword="false" />します。</value>
+        <value><see langword="true" />現在のスパンが空の場合は。それ以外<see langword="false" />の場合は。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -908,7 +916,7 @@
         <summary>指定のインデックスで始まる現在のスパンからスライスを形成します。</summary>
         <returns><paramref name="start" /> からスパンの終わりまで、現在のスパンの全要素で構成されるスパン。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="start" /> が 0 未満であるか、<see cref="T:System.Span`1.Length" /> を超えています。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="start" /> が 0 より小さいか、<see cref="T:System.Span`1.Length" /> より大きいです。</exception>
       </Docs>
     </Member>
     <Member MemberName="Slice">

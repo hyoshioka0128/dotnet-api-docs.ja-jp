@@ -14,16 +14,16 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Wsa:EndpointReference 要素を表します。</summary>
+    <summary>wsa:EndpointReference 要素を表します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Wsa:EndpointReference 要素は、エンドポイント参照を指定する wst:OnBehalfOf および wp:AppliesTo の要素を wsp:RequestSecurityToken 要素内で使用できます。  
+ Wsa: EndpointReference 要素は、エンドポイント参照を指定するために、wsp: RequestSecurityToken 要素内の wst: OnBehalfOf および wp: AppliesTo 要素で使用できます。  
   
- いずれかの操作をサポートしている、[標準スキーマの名前空間の Ws-addressing](https://schemas.xmlsoap.org/ws/2004/08/addressing)または[Ws-addressing 1.0 スキーマ名前空間](https://www.w3.org/2005/08/addressing)を読み取るときにします。 書き込み専用で、 [Ws-addressing 1.0 名前空間](https://www.w3.org/2005/08/addressing)はサポートされています。  
+ では、読み取り時に[ws-addressing 標準スキーマ名前空間](https://schemas.xmlsoap.org/ws/2004/08/addressing)または[ws-addressing 1.0 スキーマ名前空間](https://www.w3.org/2005/08/addressing)のいずれかがサポートされます。 書き込み時にのみ、 [ws-addressing 1.0 名前空間](https://www.w3.org/2005/08/addressing)がサポートされます。  
   
- Wsa:EndpointReference 要素の詳細については、Web サービスへのアクセスのコア仕様を参照してください。 Ws-trust プロトコルでの使用の詳細については、実際のシナリオに適用される Ws-trust 仕様のバージョンを参照してください。  
+ Wsa: EndpointReference 要素の詳細については、Web サービスのアドレス指定に関する説明を参照してください。 WS-TRUST プロトコルでの使用方法の詳細については、シナリオに適用される WS-TRUST 仕様のバージョンを参照してください。  
   
  ]]></format>
     </remarks>
@@ -45,11 +45,11 @@
         <Parameter Name="uri" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="uri">エンドポイント参照のアドレスを指定する絶対 URI。 初期化します、<see cref="P:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri" />プロパティ。</param>
+        <param name="uri">エンドポイント参照のアドレスを指定する絶対 URI。 <see cref="P:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri" /> プロパティを初期化します。</param>
         <summary>指定した URI を使用して、<see cref="T:System.IdentityModel.Protocols.WSTrust.EndpointReference" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentException"><paramref name="uri" /> は絶対 URI ではありません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="uri" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="uri" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="Details">
@@ -68,15 +68,15 @@
         <ReturnType>System.Collections.ObjectModel.Collection&lt;System.Xml.XmlElement&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>エンドポイント参照に含まれている XML 要素のコレクションを取得します。 Wsa: アドレス要素がコレクションに含まれません。</summary>
-        <value>エンドポイント参照に格納されている XML 要素のコレクション。</value>
+        <summary>エンドポイント参照に含まれるすべての XML 要素のコレクションを取得します。 wsa: アドレス要素がコレクションに含まれていません。</summary>
+        <value>エンドポイント参照に含まれるすべての XML 要素のコレクション。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コレクションには、wsa: アドレス要素以外 wsa:EndpointReference 要素の子要素のすべてが含まれます。 コレクションの設定によって、<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.ReadFrom%2A>メソッド。  
+ コレクションには、wsa: Address 要素を除く、wsa: EndpointReference 要素のすべての子要素が含まれています。 コレクションは、 <xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.ReadFrom%2A>メソッドによって設定されます。  
   
- <xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri%2A>プロパティには wsa: アドレス要素の値が含まれています。  
+ プロパティ<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri%2A>は、wsa: Address 要素の値を格納します。  
   
  ]]></format>
         </remarks>
@@ -88,12 +88,12 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定したリーダーから wsa:EndpointReference 要素を読み取ります。</summary>
+        <summary>指定した XML リーダーから wsa:EndpointReference 要素を読み取ります。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Wsa:EndpointReference 要素の内容を読み取って返します、<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference>オブジェクト。 Ws-addressing 名前空間には、いずれかを指定できる、[標準スキーマの Ws-addressing](https://schemas.xmlsoap.org/ws/2004/08/addressing)または[Ws-addressing 1.0 標準スキーマ](https://www.w3.org/2005/08/addressing)します。 Wsa: アドレス要素は、wsa:EndpointReference 要素の最初の子要素である必要があります。 <xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri%2A> 、返されるプロパティ<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference>wsa: アドレス要素で指定された URI に設定されます。 その他のすべての子要素に追加されます、<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Details%2A>コレクション。  
+ Wsa: EndpointReference 要素の内容を読み取り、 <xref:System.IdentityModel.Protocols.WSTrust.EndpointReference>オブジェクトを返します。 Ws-addressing 名前空間には、 [ws-addressing 標準スキーマ](https://schemas.xmlsoap.org/ws/2004/08/addressing)または[ws-addressing 1.0 標準スキーマ](https://www.w3.org/2005/08/addressing)のいずれかを指定できます。 Wsa: Address 要素は、wsa: EndpointReference 要素の最初の子要素である必要があります。 <xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri%2A> 返さ<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference>れたのプロパティは、wsa: Address 要素によって指定された URI に設定されます。 その他のすべての子要素は<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Details%2A> 、コレクションに追加されます。  
   
  ]]></format>
         </remarks>
@@ -119,13 +119,13 @@
       </Parameters>
       <Docs>
         <param name="reader">エンドポイント参照の読み取り元となる XML ディクショナリ リーダー。</param>
-        <summary>指定した XML ディクショナリ リーダーから wsa:EndpointReference 要素を読み取ります。</summary>
-        <returns>XML ディクショナリ リーダーからエンドポイント参照を読み取るまたは<see langword="null" />場合 wsa:EndpointReference 要素を読み取ることができません。</returns>
+        <summary>指定したディクショナリ リーダーから wsa:EndpointReference 要素を読み取ります。</summary>
+        <returns>XML ディクショナリ リーダーから読み取られるエンドポイント参照。wsa:EndpointReference 要素を読み取れない場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 参照してください、<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.ReadFrom%2A>オーバー ロードの詳細についてはトピック。  
+ 詳細に<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.ReadFrom%2A>ついては、「オーバーロード」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -150,14 +150,14 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">エンドポイント参照の読み取り元となる XML リーダー。</param>
+        <param name="reader">エンドポイント参照の読み取り元である XML リーダー。</param>
         <summary>指定した XML リーダーから wsa:EndpointReference 要素を読み取ります。</summary>
-        <returns>XML ディクショナリ リーダーからエンドポイント参照を読み取るまたは<see langword="null" />場合 wsa:EndpointReference 要素を読み取ることができません。</returns>
+        <returns>XML ディクショナリ リーダーから読み取られるエンドポイント参照。wsa:EndpointReference 要素を読み取れない場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 参照してください、<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.ReadFrom%2A>オーバー ロードの詳細についてはトピック。  
+ 詳細に<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.ReadFrom%2A>ついては、「オーバーロード」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -179,13 +179,13 @@
         <ReturnType>System.Uri</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>エンドポイント参照のアドレスを指定する URI を取得します。</summary>
+        <summary>エンドポイント参照のアドレスを指定す URI を取得します。</summary>
         <value>エンドポイント参照のアドレス。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Wsa:EndpointReference 要素の子要素で wsa: アドレスの内容を表します。  
+ Wsa: EndpointReference 要素の wsa: Address 子要素の内容を表します。  
   
  ]]></format>
         </remarks>
@@ -216,7 +216,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- のみが書き込みをサポート、 [Ws-addressing 1.0 標準スキーマの名前空間](https://www.w3.org/2005/08/addressing)します。 `wsa:Address`の値を持つ要素が最初に書き込まれます、<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri%2A>プロパティ、その他の要素で指定された、<xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Details%2A>コレクションが書き込まれます。  
+ では、 [ws-addressing 1.0 標準スキーマ名前空間](https://www.w3.org/2005/08/addressing)の書き込みのみがサポートされています。 要素は、 <xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Uri%2A>プロパティの値を使用して最初に記述され、 <xref:System.IdentityModel.Protocols.WSTrust.EndpointReference.Details%2A>コレクションに指定されている他の要素が書き込まれます。 `wsa:Address`  
   
  ]]></format>
         </remarks>

@@ -20,25 +20,25 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>特定の XAML 名前スコープ内で要素の名前にアクセスする方法、およびその XAML 名前スコープ内で名前の一意性を確保する方法のコントラクトを定義します。</summary>
+    <summary>特定の XAML 名前スコープ内の要素の名前にアクセスする方法およびその XAML 名前スコープ内で名前が一意になるように強制する方法に関するコントラクトを定義します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このインターフェイスは、テンプレートを使って再利用またはメタファを延期するためのものが子要素を持つクラスによって実装されます。 テンプレート、ファクトリと同様の構造は、主要なオブジェクト グラフから切り離されたは、XAML のルートを一意の XAML 名前スコープが必要です。 ここでの原則がすることはありません、名前の衝突とそれらの子要素から作成されたオブジェクトは、アプリケーションのオブジェクト グラフを導入するときに、DOM 操作と名前の識別子に依存する XAML の参照方法は、名前に依存できるように各 XAML 名前スコープ内の一意性します。  
+ このインターフェイスは、テンプレートまたは遅延比喩を通じて再利用することを意図した子要素を持つクラスによって実装されます。 テンプレート、ファクトリ、および類似の構成体には、メインオブジェクトグラフとルート XAML とは別の一意の XAML 名前スコープが必要です。 ここでの原則は、これらの子要素から作成されたオブジェクトがアプリケーションのオブジェクトグラフに導入されるときに名前の競合が発生しないようにすることです。これにより、名前識別子に依存する DOM 操作および XAML 参照手法が名前に依存する可能性があります。各 XAML 名前スコープの一意性。  
   
- .NET Framework の以前のバージョンでは、このインターフェイスは、WPF 固有の WindowsBase アセンブリに存在します。 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、<xref:System.Windows.Markup.INameScope>は System.Xaml アセンブリにします。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
+ 以前のバージョンの .NET Framework では、このインターフェイスは WPF 固有のアセンブリ WindowsBase に存在していました。 で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]は<xref:System.Windows.Markup.INameScope> 、は、システムの .xaml アセンブリにあります。 詳細については、「 [Types Migrated from WPF to System.Xaml](~/docs/framework/xaml-services/types-migrated-from-wpf-to-system-xaml.md)」を参照してください。  
   
 ## <a name="wpf-usage-notes"></a>WPF の使用上の注意  
- このインターフェイスは、WPF クラス<xref:System.Windows.NameScope>します。 ほとんどの XAML 名前スコープ操作[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]を使用して操作<xref:System.Windows.NameScope>情報は、インスタンスでは、そのを使用しては内部的に伝達場合によっては<xref:System.Windows.Markup.INameScope>参照。  
+ このインターフェイスは、WPF クラス<xref:System.Windows.NameScope>によって実装されます。 の XAML 名前スコープ操作[!INCLUDE[TLA2#tla_winclient](~/includes/tla2sharptla-winclient-md.md)]のほとんどは<xref:System.Windows.NameScope> 、インスタンスを使用して動作しますが<xref:System.Windows.Markup.INameScope> 、情報は参照を使用して内部的に伝達されることがあります。  
   
- ファクトリを使用してまたは XAML 表現と組み合わせるメタファを延期する WPF クラスの例は、<xref:System.Windows.Style>と<xref:System.Windows.FrameworkTemplate>します。 これらの実装は、通常はから利用可能なインターフェイス メソッドの明示的なバージョンに依存、<xref:System.Windows.NameScope>クラス。  
+ ファクトリまたは遅延メタファを使用する WPF クラスの例として<xref:System.Windows.Style> 、 <xref:System.Windows.FrameworkTemplate>XAML 表現との組み合わせがあります。 これらの実装は、通常、 <xref:System.Windows.NameScope>クラスから使用可能なインターフェイスメソッドの明示的なバージョンに依存しています。  
   
  ]]></format>
     </remarks>
     <altmember cref="T:System.Windows.NameScope" />
     <altmember cref="T:System.Windows.Markup.INameScopeDictionary" />
-    <related type="Article" href="https://msdn.microsoft.com/library/b7e61222-e8cf-48d2-acd0-6df3b7685d48">X:name 属性</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/b7e61222-e8cf-48d2-acd0-6df3b7685d48">x:Name 属性</related>
   </Docs>
   <Members>
     <Member MemberName="FindName">
@@ -64,19 +64,19 @@
         <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="name">要求されたオブジェクトの名前の識別子。</param>
+        <param name="name">要求されているオブジェクトの名前識別子。</param>
         <summary>指定された識別名を持つオブジェクトを返します。</summary>
         <returns>見つかった場合はオブジェクト。 その名前のオブジェクトが見つからなかった場合は <see langword="null" /> を返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- XAML マークアップで有効な名前の文字列に記載されている要件を満たす必要があります[XamlName の文法](~/docs/framework/xaml-services/xamlname-grammar.md)します。  
+ XAML マークアップ内の有効な名前文字列は、「 [XamlName 文法](~/docs/framework/xaml-services/xamlname-grammar.md)」に記載されている要件と一致する必要があります。  
   
  ]]></format>
         </remarks>
         <altmember cref="T:System.Windows.NameScope" />
-        <related type="Article" href="https://msdn.microsoft.com/library/b7e61222-e8cf-48d2-acd0-6df3b7685d48">X:name 属性</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/b7e61222-e8cf-48d2-acd0-6df3b7685d48">x:Name 属性</related>
       </Docs>
     </Member>
     <Member MemberName="RegisterName">
@@ -104,19 +104,19 @@
       </Parameters>
       <Docs>
         <param name="name">登録する名前。</param>
-        <param name="scopedElement">指定した <paramref name="name" /> が参照する特定の要素。</param>
-        <summary>現在の XAML 名前スコープに指定された名前を登録します。</summary>
+        <param name="scopedElement">指定された <paramref name="name" /> が参照する特定の要素。</param>
+        <summary>指定された名前を現在の XAML 名前スコープに登録します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- XAML 名前スコープ内の重複する名前を指定することはできません。  
+ XAML 名前スコープ内の重複する名前は許可されません。  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>重複する名前の登録を許可されていません。 場合、入力<paramref name="name" />XAML 名前スコープのコレクションの内部表現での既存の要素が既に割り当てられている (と同じである場合でも<paramref name="scopedElement" />)、例外をスローします。  
+        <block subset="none" type="overrides"><para>重複する名前の登録を許可しないでください。 XAML 名前スコープ<paramref name="name" />の内部コレクション表現内の既存の要素に入力が既に割り当てられている場合 (と<paramref name="scopedElement" />同じ場合でも)、例外をスローします。  
   
-例外がスローされるには、指定された名前は準拠していない場合も検討[XamlName の文法](~/docs/framework/xaml-services/xamlname-grammar.md)します。</para></block>
+また、指定された名前が[XamlName 文法](~/docs/framework/xaml-services/xamlname-grammar.md)に準拠していない場合は、例外をスローすることも検討してください。</para></block>
         <altmember cref="T:System.Windows.NameScope" />
       </Docs>
     </Member>
@@ -143,12 +143,12 @@
         <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="name">登録解除する名前。</param>
-        <summary>指定された名前を現在の XAML 名前スコープから登録解除します。</summary>
+        <param name="name">登録を解除する名前。</param>
+        <summary>指定された名前の登録を現在の XAML 名前スコープから解除します。</summary>
         <remarks>To be added.</remarks>
         <block subset="none" type="overrides"><para>入力名が存在しない場合は、例外をスローします。  
   
-今後、同じ名前をもう一度登録できるように、名前と、以前に登録された要素の XAML 名前スコープのコレクションの表現から参照を削除する必要があります。</para></block>
+同じ名前が今後再登録される可能性があるように、名前と、それが参照する以前に登録した要素を XAML 名前スコープのコレクション表現から削除する必要があります。</para></block>
         <altmember cref="T:System.Windows.NameScope" />
       </Docs>
     </Member>

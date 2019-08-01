@@ -30,30 +30,30 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>コード ブロック トランザクションを使用します。 このクラスは継承できません。</summary>
+    <summary>コード ブロックをトランザクションにします。 このクラスは継承できません。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Transactions>インフラストラクチャは、明示的なプログラミング モデルに基づく、<xref:System.Transactions.Transaction>クラスだけでなく、暗黙的なプログラミング モデルを使用して、<xref:System.Transactions.TransactionScope>トランザクションを自動的にインフラストラクチャによって管理するクラス。  
+ このインフラストラクチャには、 <xref:System.Transactions.Transaction>クラスに基づく明示的なプログラミングモデルと、トランザクションがインフラストラクチャによって自動的<xref:System.Transactions.TransactionScope>に管理されるクラスを使用した暗黙的なプログラミングモデルが用意されています。 <xref:System.Transactions>  
   
 > [!IMPORTANT]
->  使用して暗黙のトランザクションを作成することをお勧め、<xref:System.Transactions.TransactionScope>クラスのアンビエント トランザクション コンテキストが自動的に管理できるようにします。 使用することも必要があります、<xref:System.Transactions.TransactionScope>と<xref:System.Transactions.DependentTransaction>を複数の関数呼び出しまたは複数のスレッド呼び出しの間で、同じトランザクションの使用を必要とするアプリケーションのクラス。 このモデルの詳細については、次を参照してください。、[実装 An Implicit Transaction Using Transaction Scope](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。 トランザクション アプリケーションの作成の詳細については、次を参照してください。 [Writing A Transactional Application](~/docs/framework/data/transactions/writing-a-transactional-application.md)します。  
+>  アンビエントトランザクションコンテキストが自動的に管理される<xref:System.Transactions.TransactionScope>ように、クラスを使用して暗黙のトランザクションを作成することをお勧めします。 また、複数の関数<xref:System.Transactions.TransactionScope>呼び出し<xref:System.Transactions.DependentTransaction>または複数のスレッド呼び出しで同じトランザクションを使用する必要があるアプリケーションには、クラスとクラスを使用する必要があります。 このモデルの詳細については、「[トランザクションスコープを使用した暗黙的なトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」を参照してください。 トランザクションアプリケーションの作成の詳細については、「[トランザクションアプリケーションの作成](~/docs/framework/data/transactions/writing-a-transactional-application.md)」を参照してください。  
   
- インスタンス化時に、<xref:System.Transactions.TransactionScope>によって、`new`ステートメントでは、トランザクション マネージャーで参加するトランザクションを決定します。 いったん決定されると、このスコープは常にそのトランザクションに参加します。 この決定は 2 つの要因に基づいて行われます。1 つはアンビエント トランザクションが存在するかどうか、もう 1 つはコンストラクターの `TransactionScopeOption` パラメーターの値です。  アンビエント トランザクションとは、トランザクションで、コードを実行します。 <xref:System.Transactions.Transaction.Current%2A?displayProperty=nameWithType> クラスの静的 <xref:System.Transactions.Transaction> プロパティを呼び出すことによってアンビエント トランザクションへの参照を取得できます。 このパラメーターの使用方法の詳細については、の「トランザクション フローの管理」セクションを参照してください、[実装 An Implicit Transaction Using Transaction Scope](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。  
+ `new`ステートメントを使用してを<xref:System.Transactions.TransactionScope>インスタンス化すると、トランザクションマネージャーによって、参加するトランザクションが決まります。 いったん決定されると、このスコープは常にそのトランザクションに参加します。 この決定は 2 つの要因に基づいて行われます。1 つはアンビエント トランザクションが存在するかどうか、もう 1 つはコンストラクターの `TransactionScopeOption` パラメーターの値です。  アンビエントトランザクションは、コードが実行されるトランザクションです。 <xref:System.Transactions.Transaction.Current%2A?displayProperty=nameWithType> クラスの静的 <xref:System.Transactions.Transaction> プロパティを呼び出すことによってアンビエント トランザクションへの参照を取得できます。 このパラメーターの使用方法の詳細については、「[トランザクションスコープを使用した暗黙的なトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」トピックの「トランザクションフロー管理」セクションを参照してください。  
   
- トランザクション スコープ内で例外が発生しない場合 (つまりの初期化の間、<xref:System.Transactions.TransactionScope>オブジェクトと、呼び出し元の<xref:System.Transactions.TransactionScope.Dispose%2A>メソッド)、スコープが参加するトランザクションの実行を許可し、します。 トランザクション スコープ内で例外が発生した場合、参加しているトランザクションをロールバックします。  
+ トランザクションスコープ内で例外が発生しない場合 (つまり、 <xref:System.Transactions.TransactionScope>オブジェクトの初期化と<xref:System.Transactions.TransactionScope.Dispose%2A>メソッドの呼び出しの間)、スコープが参加しているトランザクションの処理を続行できます。 トランザクションスコープ内で例外が発生すると、その例外が参加しているトランザクションがロールバックされます。  
   
- アプリケーションがすべての作業を完了すると、トランザクション内で実行する、呼び出す必要があります、<xref:System.Transactions.TransactionScope.Complete%2A>そのトランザクション マネージャーがトランザクションをコミットできることを通知するために 1 回だけ使用するメソッド。 このメソッドの呼び出しに失敗すると、トランザクションが中止します。  
+ アプリケーションがトランザクションで実行しようとしているすべての作業を完了したら<xref:System.Transactions.TransactionScope.Complete%2A> 、メソッドを1回だけ呼び出して、トランザクションをコミットできることをトランザクションマネージャーに通知する必要があります。 このメソッドを呼び出さないと、トランザクションが中止されます。  
   
- 呼び出し、<xref:System.Transactions.TransactionScope.Dispose%2A>メソッドがトランザクション スコープの終了をマークします。 このメソッドの呼び出し後に発生した例外は、トランザクションに影響しない場合があります。  
+ <xref:System.Transactions.TransactionScope.Dispose%2A>メソッドを呼び出すと、トランザクションスコープの終了がマークされます。 このメソッドの呼び出し後に発生した例外は、トランザクションに影響しない場合があります。  
   
- 値を変更する場合<xref:System.Transactions.Transaction.Current%2A>、スコープ内で例外がスローされて場合<xref:System.Transactions.TransactionScope.Dispose%2A>が呼び出されます。 ただし、スコープの末尾には、前の値が復元されます。 さらに、呼び出した場合<xref:System.Transactions.TransactionScope.Dispose%2A>で<xref:System.Transactions.Transaction.Current%2A>スコープの最後に、トランザクションを作成したトランザクション スコープ内でトランザクションが中止されました。  
+ スコープ内のの<xref:System.Transactions.Transaction.Current%2A>値を変更すると、が呼び出されたときに<xref:System.Transactions.TransactionScope.Dispose%2A>例外がスローされます。 ただし、スコープの最後では、前の値が復元されます。 さらに、トランザクションを作成<xref:System.Transactions.TransactionScope.Dispose%2A>し<xref:System.Transactions.Transaction.Current%2A>たトランザクションスコープ内でを呼び出すと、そのトランザクションはスコープの終了時に中止されます。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Transactions.TransactionScope>トランザクションに参加するためのコードのブロックを定義するクラス。  
+ 次の例は、クラスを使用<xref:System.Transactions.TransactionScope>して、トランザクションに参加するコードのブロックを定義する方法を示しています。  
   
  [!code-csharp[TransactionScope#1](~/samples/snippets/csharp/VS_Snippets_Remoting/TransactionScope/cs/ScopeWithSQL.cs#1)]
  [!code-vb[TransactionScope#1](~/samples/snippets/visualbasic/VS_Snippets_Remoting/TransactionScope/vb/ScopeWithSQL.vb#1)]  
@@ -61,7 +61,7 @@
  ]]></format>
     </remarks>
     <threadsafe>この型はスレッド セーフです。</threadsafe>
-    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+    <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -104,11 +104,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成、新しいトランザクション スコープ トランザクション スコープのオプションと等しい<xref:System.Transactions.TransactionScopeOption.Required>します。 つまり、トランザクションが、新しいスコープに必要であり、既に存在する場合、アンビエント トランザクションを使用します。 それ以外の場合、スコープに入る前に新しいトランザクションを作成します。  
+ このコンストラクターは、と同じ<xref:System.Transactions.TransactionScopeOption.Required>トランザクションスコープオプションを使用して、新しいトランザクションスコープを作成します。 これは、新しいスコープによってトランザクションが要求され、アンビエントトランザクションが既に存在する場合にそのトランザクションが使用されることを意味します。 トランザクションが存在しない場合は、スコープに入る前に新しいトランザクションが作成されます。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -145,11 +145,11 @@
         <Parameter Name="transaction" Type="System.Transactions.Transaction" Index="0" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <param name="transaction">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />クラスし、スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、指定のトランザクションをアンビエント トランザクションとして設定します。</summary>
+        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <param name="transaction">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <summary><see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化し、指定したトランザクションをアンビエント トランザクションとして設定します。これによって、スコープ内で実行されるトランザクション作業でこのトランザクションが使用されます。</summary>
         <remarks>To be added.</remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -180,10 +180,10 @@
         <Parameter Name="asyncFlowOption" Type="System.Transactions.TransactionScopeAsyncFlowOption" Index="1" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <param name="asyncFlowOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
+        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <param name="asyncFlowOption">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
         <summary>[.NET Framework 4.5.1 以降のバージョンでサポート] 
-新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />クラスし、スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、指定のトランザクションをアンビエント トランザクションとして設定します。</summary>
+<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化し、指定したトランザクションをアンビエント トランザクションとして設定します。これによって、スコープ内で実行されるトランザクション作業でこのトランザクションが使用されます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -221,9 +221,9 @@
         <Parameter Name="asyncFlow" Type="System.Transactions.TransactionScopeAsyncFlowOption" Index="0" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="asyncFlowOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
-        <param name="asyncFlow">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />クラス、非同期フロー オプションを使用します。</summary>
+        <param name="asyncFlowOption">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
+        <param name="asyncFlow">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
+        <summary><see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを、非同期フロー オプションを使用して初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -262,11 +262,11 @@
         <Parameter Name="option" Type="System.Transactions.TransactionScopeOption" Index="0" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="scopeOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="option">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />指定した要件を持つクラス。</summary>
+        <param name="scopeOption">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="option">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <summary>要件を指定して、<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -298,11 +298,11 @@
         <Parameter Name="asyncFlowOption" Type="System.Transactions.TransactionScopeAsyncFlowOption" Index="2" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <param name="scopeTimeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <param name="asyncFlowOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
+        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <param name="scopeTimeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <param name="asyncFlowOption">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
         <summary>[.NET Framework 4.5.1 以降のバージョンでサポート] 
-新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />指定したタイムアウト値を持つクラスと、スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、指定のトランザクションをアンビエント トランザクションとして設定します。</summary>
+タイムアウト値を指定して <see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化し、指定したトランザクションをアンビエント トランザクションとして設定します。これによって、スコープ内で実行されるトランザクション作業でこのトランザクションが使用されます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -342,19 +342,19 @@
         <Parameter Name="options" Type="System.Transactions.TransactionOptions" Index="1" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="scopeOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="transactionOptions">A<see cref="T:System.Transactions.TransactionOptions" />新しいトランザクションが作成された場合に使用するトランザクション オプションを記述する構造体。 既存のトランザクションを使用する場合、このパラメーターのタイムアウト値は、トランザクション スコープに適用されます。 その時点では、スコープが破棄される前に期限が切れると、トランザクションが中止されました。</param>
-        <param name="options">A<see cref="T:System.Transactions.TransactionOptions" />新しいトランザクションが作成された場合に使用するトランザクション オプションを記述する構造体。 既存のトランザクションを使用する場合、このパラメーターのタイムアウト値は、トランザクション スコープに適用されます。 その時点では、スコープが破棄される前に期限が切れると、トランザクションが中止されました。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />指定した要件を持つクラス。</summary>
+        <param name="scopeOption">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="transactionOptions">新しいトランザクションが作成された場合に使用するトランザクション オプションを示す <see cref="T:System.Transactions.TransactionOptions" /> 構造体。 既存のトランザクションを使用する場合は、このパラメーターのタイムアウト値がトランザクション スコープに適用されます。 スコープを破棄する前にその時間が経過してしまうと、トランザクションは中止されます。</param>
+        <param name="options">新しいトランザクションが作成された場合に使用するトランザクション オプションを示す <see cref="T:System.Transactions.TransactionOptions" /> 構造体。 既存のトランザクションを使用する場合は、このパラメーターのタイムアウト値がトランザクション スコープに適用されます。 スコープを破棄する前にその時間が経過してしまうと、トランザクションは中止されます。</param>
+        <summary>要件を指定して、<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用すると、`transactionOptions`を指定するパラメーター、<xref:System.Transactions.IsolationLevel>スコープが後でトランザクションを作成、新しいトランザクションは指定された分離レベルに関連付けられました。 と共に、トランザクション分離レベルが渡された場合は、トランザクションは、同一の分離レベルが必要または例外がスローされます。  
+ `transactionOptions`パラメーターを使用してを<xref:System.Transactions.IsolationLevel>指定し、スコープで後でトランザクションを作成する場合、新しいトランザクションは指定した分離レベルに関連付けられます。 分離レベルがトランザクションと共に渡される場合、トランザクションの分離レベルは同じである必要があります。それ以外の場合は、例外がスローされます。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -385,11 +385,11 @@
         <Parameter Name="asyncFlowOption" Type="System.Transactions.TransactionScopeAsyncFlowOption" Index="2" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="scopeOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="transactionOptions">A<see cref="T:System.Transactions.TransactionOptions" />新しいトランザクションが作成された場合に使用するトランザクション オプションを記述する構造体。 既存のトランザクションを使用する場合、このパラメーターのタイムアウト値は、トランザクション スコープに適用されます。 その時点では、スコープが破棄される前に期限が切れると、トランザクションが中止されました。</param>
-        <param name="asyncFlowOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
+        <param name="scopeOption">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="transactionOptions">新しいトランザクションが作成された場合に使用するトランザクション オプションを示す <see cref="T:System.Transactions.TransactionOptions" /> 構造体。 既存のトランザクションを使用する場合は、このパラメーターのタイムアウト値がトランザクション スコープに適用されます。 スコープを破棄する前にその時間が経過してしまうと、トランザクションは中止されます。</param>
+        <param name="asyncFlowOption">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
         <summary>[.NET Framework 4.5.1 以降のバージョンでサポート] 
-新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />クラスを指定した要件と非同期フロー オプションを使用します。</summary>
+タイムアウト値と要件、非同期フロー オプションを指定して、<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -429,13 +429,13 @@
         <Parameter Name="timeout" Type="System.TimeSpan" Index="1" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <param name="transaction">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <param name="scopeTimeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <param name="timeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />指定したタイムアウト値を持つクラスと、スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、指定のトランザクションをアンビエント トランザクションとして設定します。</summary>
+        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <param name="transaction">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <param name="scopeTimeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <param name="timeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <summary>タイムアウト値を指定して <see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化し、指定したトランザクションをアンビエント トランザクションとして設定します。これによって、スコープ内で実行されるトランザクション作業でこのトランザクションが使用されます。</summary>
         <remarks>To be added.</remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -475,13 +475,13 @@
         <Parameter Name="timeout" Type="System.TimeSpan" Index="1" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="scopeOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="option">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="scopeTimeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <param name="timeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />指定したタイムアウト値と要件を持つクラス。</summary>
+        <param name="scopeOption">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="option">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="scopeTimeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <param name="timeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <summary>タイムアウト値と要件を指定して、<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -520,11 +520,11 @@
         <Parameter Name="asyncFlow" Type="System.Transactions.TransactionScopeAsyncFlowOption" Index="1" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="scopeOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="option">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="asyncFlowOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
-        <param name="asyncFlow">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />クラスを指定した要件と非同期フロー オプションを使用します。</summary>
+        <param name="scopeOption">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="option">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="asyncFlowOption">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
+        <param name="asyncFlow">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
+        <summary>タイムアウト値と要件、非同期フロー オプションを指定して、<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -566,24 +566,24 @@
         <Parameter Name="opt" Type="System.Transactions.EnterpriseServicesInteropOption" Index="2" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="scopeOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="transactionOptions">A<see cref="T:System.Transactions.TransactionOptions" />新しいトランザクションが作成された場合に使用するトランザクション オプションを記述する構造体。 既存のトランザクションを使用する場合、このパラメーターのタイムアウト値は、トランザクション スコープに適用されます。 その時点では、スコープが破棄される前に期限が切れると、トランザクションが中止されました。</param>
-        <param name="options">A<see cref="T:System.Transactions.TransactionOptions" />新しいトランザクションが作成された場合に使用するトランザクション オプションを記述する構造体。 既存のトランザクションを使用する場合、このパラメーターのタイムアウト値は、トランザクション スコープに適用されます。 その時点では、スコープが破棄される前に期限が切れると、トランザクションが中止されました。</param>
-        <param name="interopOption">インスタンス、<see cref="T:System.Transactions.EnterpriseServicesInteropOption" />関連付けられているトランザクションが COM + トランザクションと対話する方法について説明する列挙体。</param>
-        <param name="opt">インスタンス、<see cref="T:System.Transactions.EnterpriseServicesInteropOption" />関連付けられているトランザクションが COM + トランザクションと対話する方法について説明する列挙体。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />クラスが指定されたスコープ、COM + 相互運用性要件、およびトランザクション オプションを使用します。</summary>
+        <param name="scopeOption">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="transactionOptions">新しいトランザクションが作成された場合に使用するトランザクション オプションを示す <see cref="T:System.Transactions.TransactionOptions" /> 構造体。 既存のトランザクションを使用する場合は、このパラメーターのタイムアウト値がトランザクション スコープに適用されます。 スコープを破棄する前にその時間が経過してしまうと、トランザクションは中止されます。</param>
+        <param name="options">新しいトランザクションが作成された場合に使用するトランザクション オプションを示す <see cref="T:System.Transactions.TransactionOptions" /> 構造体。 既存のトランザクションを使用する場合は、このパラメーターのタイムアウト値がトランザクション スコープに適用されます。 スコープを破棄する前にその時間が経過してしまうと、トランザクションは中止されます。</param>
+        <param name="interopOption">関連付けられているトランザクションが COM+ トランザクションとやり取りする方法を示す <see cref="T:System.Transactions.EnterpriseServicesInteropOption" /> 列挙体のインスタンス。</param>
+        <param name="opt">関連付けられているトランザクションが COM+ トランザクションとやり取りする方法を示す <see cref="T:System.Transactions.EnterpriseServicesInteropOption" /> 列挙体のインスタンス。</param>
+        <summary>スコープ、COM+ 相互運用性要件、およびトランザクション オプションを指定して、<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
 
-使用すると、`transactionOptions`を指定するパラメーター、<xref:System.Transactions.IsolationLevel>スコープが後でトランザクションを作成、新しいトランザクションは指定された分離レベルに関連付けられました。 と共に、トランザクション分離レベルが渡された場合は、トランザクションは、同一の分離レベルが必要または例外がスローされます。
+`transactionOptions`パラメーターを使用してを<xref:System.Transactions.IsolationLevel>指定し、スコープで後でトランザクションを作成する場合、新しいトランザクションは指定した分離レベルに関連付けられます。 分離レベルがトランザクションと共に渡される場合、トランザクションの分離レベルは同じである必要があります。それ以外の場合は、例外がスローされます。
   
-**注**このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand>されるを防ぐために信頼できないコードから呼び出されます。 ただし、直前の呼び出し元だけが所有する必要が、`FullTrust`アクセス許可セット。
+**メモ**このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand> 、を使用して信頼されていないコードから呼び出されないようにします。 `FullTrust`ただし、アクセス許可セットを保持するには、直前の呼び出し元だけが必要です。
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -624,23 +624,23 @@
         <Parameter Name="opt" Type="System.Transactions.EnterpriseServicesInteropOption" Index="2" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <param name="transaction">スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、アンビエント トランザクションとして設定するトランザクション。</param>
-        <param name="scopeTimeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <param name="timeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <param name="interopOption">インスタンス、<see cref="T:System.Transactions.EnterpriseServicesInteropOption" />関連付けられているトランザクションが COM + トランザクションと対話する方法について説明する列挙体。</param>
-        <param name="opt">インスタンス、<see cref="T:System.Transactions.EnterpriseServicesInteropOption" />関連付けられているトランザクションが COM + トランザクションと対話する方法について説明する列挙体。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />指定したタイムアウト値と COM + 相互運用性要件を持つクラスと、スコープ内で実行されるトランザクション作業でこのトランザクションを使用するように、指定のトランザクションをアンビエント トランザクションとして設定.</summary>
+        <param name="transactionToUse">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <param name="transaction">スコープ内で実行されるトランザクション作業でこのトランザクションが使用されるように、アンビエント トランザクションとして設定するトランザクション。</param>
+        <param name="scopeTimeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <param name="timeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <param name="interopOption">関連付けられているトランザクションが COM+ トランザクションとやり取りする方法を示す <see cref="T:System.Transactions.EnterpriseServicesInteropOption" /> 列挙体のインスタンス。</param>
+        <param name="opt">関連付けられているトランザクションが COM+ トランザクションとやり取りする方法を示す <see cref="T:System.Transactions.EnterpriseServicesInteropOption" /> 列挙体のインスタンス。</param>
+        <summary>タイムアウト値と COM+ 相互運用性要件を指定して <see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化し、指定したトランザクションをアンビエント トランザクションとして設定します。これによって、スコープ内で実行されるトランザクション作業でこのトランザクションが使用されます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
 
-**注**このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand>されるを防ぐために信頼できないコードから呼び出されます。 ただし、直前の呼び出し元だけが所有する必要が、`FullTrust`アクセス許可セット。
+**メモ**このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand> 、を使用して信頼されていないコードから呼び出されないようにします。 `FullTrust`ただし、アクセス許可セットを保持するには、直前の呼び出し元だけが必要です。
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -681,13 +681,13 @@
         <Parameter Name="asyncFlow" Type="System.Transactions.TransactionScopeAsyncFlowOption" Index="2" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="scopeOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="option">インスタンス、<see cref="T:System.Transactions.TransactionScopeOption" />列挙体のこのトランザクション スコープに関連付けられているトランザクション要件について説明します。</param>
-        <param name="scopeTimeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <param name="timeout"><see cref="T:System.TimeSpan" />をトランザクション スコープがタイムアウトになると、トランザクションを中止します。</param>
-        <param name="asyncFlowOption">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
-        <param name="asyncFlow">インスタンス、<see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" />タスクまたは非同期/待機の .NET 非同期プログラミング パターンを使用する場合に、トランザクション スコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローがかどうかを示す列挙体。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Transactions.TransactionScope" />クラスを指定したタイムアウト値、要件、および非同期フロー オプションを使用します。</summary>
+        <param name="scopeOption">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="option">このトランザクション スコープに関連付けられているトランザクション要件を示す <see cref="T:System.Transactions.TransactionScopeOption" /> 列挙体のインスタンス。</param>
+        <param name="scopeTimeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <param name="timeout">トランザクション スコープがタイムアウトしてトランザクションが中止されるまでの <see cref="T:System.TimeSpan" />。</param>
+        <param name="asyncFlowOption">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
+        <param name="asyncFlow">タスク、async と、await .NET プログラミングを使用するときに、トランザクションのスコープに関連付けられたアンビエント トランザクションがスレッドの継続でフローするかどうかを表す <see cref="T:System.Transactions.TransactionScopeAsyncFlowOption" /> 列挙体のインスタンス。</param>
+        <summary>タイムアウト値と要件、非同期フロー オプションを指定して、<see cref="T:System.Transactions.TransactionScope" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -725,26 +725,26 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 問題がないことをスコープ内のすべての操作が正常に完了するすべてのリソースの状態に一貫性があり、トランザクションをコミットすることができます、そのトランザクション マネージャーを通知するために 1 回だけ、このメソッドを呼び出す必要があります。 最後のステートメントとして、呼び出しを配置することを非常に良好なは、`using`ブロックします。  
+ スコープ内のすべての操作が正常に完了したことがわかったら、このメソッドを1回だけ呼び出して、すべてのリソースの状態が一貫していることと、トランザクションをコミットできることをトランザクションマネージャーに通知します。 呼び出しを`using`ブロックの最後のステートメントとして配置することをお勧めします。  
   
- このメソッドを使用する方法の詳細については、次を参照してください。、[実装 An Implicit Transaction Using Transaction Scope](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。  
+ このメソッドの使用方法の詳細については、「[トランザクションスコープを使用した暗黙のトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」を参照してください。  
   
- このメソッドの呼び出しに失敗すると、トランザクション マネージャーのシステム障害時、これが解釈されるので、またはトランザクションのスコープ内でスローされた例外に、トランザクションが中止します。 ただし、このメソッドを呼び出すことも、トランザクションのコミットは保証されませんを注意する必要があります。 これはトランザクション マネージャーにステータスを通知する手段にすぎません。 このメソッドを呼び出した後、アンビエント トランザクションを使用してを不要になったにアクセスできる、<xref:System.Transactions.Transaction.Current%2A>プロパティ、およびその結果、例外がスローされているを実行しようとします。  
+ このメソッドを呼び出さないと、トランザクションマネージャーはこれをシステム障害として、またはトランザクションのスコープ内でスローされた例外として解釈するので、トランザクションを中止します。 ただし、このメソッドを呼び出すと、トランザクションのコミットは保証されないことにも注意してください。 これはトランザクション マネージャーにステータスを通知する手段にすぎません。 このメソッドを呼び出した後、 <xref:System.Transactions.Transaction.Current%2A>プロパティを使用してアンビエントトランザクションにアクセスすることはできなくなります。実行しようとすると、例外がスローされます。  
   
- リソース マネージャー間のコミットの実際の作業するとき、`End Using`ステートメント場合、<xref:System.Transactions.TransactionScope>オブジェクトは、トランザクションを作成します。 このオブジェクトによってトランザクションが作成されていない場合、<xref:System.Transactions.CommittableTransaction.Commit%2A> オブジェクトの所有者によって <xref:System.Transactions.CommittableTransaction> が呼び出されるたびにコミットが発生します。 その時点でトランザクション マネージャーのリソース マネージャーを呼び出して、コミットまたはでこのメソッドが呼び出されたかどうかに基づいて、ロールバックすることを通知、<xref:System.Transactions.TransactionScope>オブジェクト。  
+ リソースマネージャー間のコミットの実際の作業は、オブジェクト`End Using`に<xref:System.Transactions.TransactionScope>よってトランザクションが作成された場合に、ステートメントで発生します。 このオブジェクトによってトランザクションが作成されていない場合、<xref:System.Transactions.CommittableTransaction.Commit%2A> オブジェクトの所有者によって <xref:System.Transactions.CommittableTransaction> が呼び出されるたびにコミットが発生します。 この時点で、トランザクションマネージャーはリソースマネージャーを呼び出し、 <xref:System.Transactions.TransactionScope>オブジェクトでこのメソッドが呼び出されたかどうかに基づいて、コミットまたはロールバックのいずれかに通知します。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Transactions.TransactionScope>トランザクションに参加するためのコードのブロックを定義するクラス。  
+ 次の例は、クラスを使用<xref:System.Transactions.TransactionScope>して、トランザクションに参加するコードのブロックを定義する方法を示しています。  
   
  [!code-csharp[TransactionScope#1](~/samples/snippets/csharp/VS_Snippets_Remoting/TransactionScope/cs/ScopeWithSQL.cs#1)]
  [!code-vb[TransactionScope#1](~/samples/snippets/visualbasic/VS_Snippets_Remoting/TransactionScope/vb/ScopeWithSQL.vb#1)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">このメソッドは既に 1 回呼び出されています。</exception>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <exception cref="T:System.InvalidOperationException">このメソッドは、既に一度呼び出されています。</exception>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -784,25 +784,25 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを呼び出して、トランザクション スコープの末尾をマークします。 場合、<xref:System.Transactions.TransactionScope>オブジェクトは、トランザクションを作成し、<xref:System.Transactions.TransactionScope.Complete%2A>スコープで呼び出された、<xref:System.Transactions.TransactionScope>オブジェクトはこのメソッドが呼び出されたときにトランザクションをコミットしようとしています。 この場合、トランザクション処理の最初のフェーズまでこのメソッド ブロックが完了しました。 すべてのリソース マネージャーの後に最初のフェーズが終了し、トランザクションの参加リストがトランザクションの結果を報告しました、<xref:System.Transactions.TransactionManager>は永続的ことにコミットするか、トランザクションを中止しました。 2 番目のフェーズの処理は常に非同期です。 そのためから特定のトランザクション内でコミットされたばかりのデータはすぐに使用できる後でこのデータを表示する別のトランザクションを使用していないときに保証することはありません。  
+ このメソッドを呼び出すと、トランザクションスコープの終了がマークされます。 オブジェクトによって<xref:System.Transactions.TransactionScope.Complete%2A>トランザクションが作成され、スコープで呼び出され<xref:System.Transactions.TransactionScope>た場合、このメソッドが呼び出されると、オブジェクトはトランザクションのコミットを試みます。 <xref:System.Transactions.TransactionScope> この場合、このメソッドは、トランザクション処理の最初のフェーズが完了するまでブロックします。 最初のフェーズは、トランザクション内のすべての<xref:System.Transactions.TransactionManager>リソースマネージャーと参加リストがトランザクションの結果に投票し、永続的にがトランザクションのコミットまたは中止を決定した後に終了します。 処理の2番目のフェーズは常に非同期です。 そのため、このデータを表示するために別のトランザクションを使用しない場合、特定のトランザクション内からコミットされたばかりのデータをすぐに使用できる保証はありません。  
   
- C# の使用`using`例外が発生した場合でもこのメソッドを呼び出すことにより、構築します。 このメソッドの呼び出し後に発生した例外は、トランザクションに影響しない場合があります。 このメソッドも、アンビエント トランザクションを元の状態を復元します。 A<xref:System.Transactions.TransactionAbortedException>トランザクションを実際にコミットしない場合にスローされます。  
+ `using`構築を使用C#すると、例外が発生した場合でもこのメソッドが呼び出されるようになります。 このメソッドの呼び出し後に発生した例外は、トランザクションに影響しない場合があります。 このメソッドは、アンビエントトランザクションを元の状態に復元することもできます。 トランザクション<xref:System.Transactions.TransactionAbortedException>が実際にコミットされていない場合は、がスローされます。  
   
- トランザクション処理の最初のフェーズが完了するまで、細心の注意する必要があります (WinForm) の Windows フォーム アプリケーションでは、またはデッドロックでこのメソッドを使用する場合、このメソッドはブロックが発生することができます。 (たとえば、ボタンをクリックして)、1 つの WinForm コントロール イベント内では、このメソッドの呼び出しし、同期を使用して、<xref:System.Windows.Forms.Control.Invoke%2A>トランザクションの処理の途中でいくつかの UI タスク (たとえば、変化する色) を実行するコントロールに出力するためのメソッド、デッドロックは発生します。 これは、ため、<xref:System.Windows.Forms.Control.Invoke%2A>メソッドは同期であり、UI スレッドがそのジョブが完了するまでにワーカー スレッドをブロックします。 ただし、ここでは、UI スレッド側も、ワーカー スレッドがトランザクションをコミットするまで待機しようとします。 結果は、スコープがコミットが完了するは無期限に待機を none は続行できません。 使用する必要があります<xref:System.Windows.Forms.Control.BeginInvoke%2A>なく<xref:System.Windows.Forms.Control.Invoke%2A>可能な限り、非同期およびそのため、デッドロックに陥りやすい未満であるためです。  
+ このメソッドは、トランザクション処理の最初のフェーズが完了するまでブロックするので、Windows フォーム (WinForm) アプリケーションでこのメソッドを使用する場合は細心の注意が必要です。または、デッドロックが発生する可能性があります。 1つの WinForm コントロールイベント内でこのメソッドを呼び出し (ボタンをクリックするなど)、同期<xref:System.Windows.Forms.Control.Invoke%2A>メソッドを使用して、トランザクションの処理中にいくつかの UI タスク (色の変更など) を実行するようコントロールに指示する場合は、デッドロックが発生します。 これは、 <xref:System.Windows.Forms.Control.Invoke%2A>メソッドが同期され、UI スレッドがジョブを完了するまでワーカースレッドがブロックされるためです。 ただし、このシナリオでは、UI スレッドもワーカースレッドがトランザクションをコミットするのを待機しています。 結果として、何も続行できず、コミットが終了するまでスコープが無期限に待機することになります。 非同期である<xref:System.Windows.Forms.Control.BeginInvoke%2A>ため、 <xref:System.Windows.Forms.Control.Invoke%2A>デッドロックが発生しにくくなるため、可能な限りを使用する必要があります。  
   
- このメソッドを使用する方法の詳細については、次を参照してください。、[実装 An Implicit Transaction Using Transaction Scope](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)トピック。  
+ このメソッドの使用方法の詳細については、「[トランザクションスコープを使用した暗黙のトランザクションの実装](~/docs/framework/data/transactions/implementing-an-implicit-transaction-using-transaction-scope.md)」を参照してください。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Transactions.TransactionScope>トランザクションに参加するためのコードのブロックを定義するクラス。  
+ 次の例は、クラスを使用<xref:System.Transactions.TransactionScope>して、トランザクションに参加するコードのブロックを定義する方法を示しています。  
   
  [!code-csharp[TransactionScope#1](~/samples/snippets/csharp/VS_Snippets_Remoting/TransactionScope/cs/ScopeWithSQL.cs#1)]
  [!code-vb[TransactionScope#1](~/samples/snippets/visualbasic/VS_Snippets_Remoting/TransactionScope/vb/ScopeWithSQL.vb#1)]  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクション スコープを使用して、暗黙のトランザクションを実装します。</related>
+        <related type="Article" href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/ms172152(v=vs.85)">トランザクションスコープを使用した暗黙的なトランザクションの実装</related>
       </Docs>
     </Member>
   </Members>

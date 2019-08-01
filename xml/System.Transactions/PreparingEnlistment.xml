@@ -26,16 +26,16 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>トランザクションの準備フェーズ中に参加しているトランザクションの参加要素と、トランザクション マネージャー間の通信を容易になります。</summary>
+    <summary>トランザクションの準備フェーズにおいて、参加するトランザクションの参加要素とトランザクション マネージャーの間の通信を容易にします。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 最初の (準備) フェーズ、トランザクションのトランザクション マネージャーこの型に渡し、resource manager を呼び出す、<xref:System.Transactions.IEnlistmentNotification.Prepare%2A>トランザクションに対するリソースの選択を取得します。 リソース マネージャーの実装を呼び出す必要があるかどうかがコミットまたはロールバックする投票、によって、<xref:System.Transactions.PreparingEnlistment.Prepared%2A>または<xref:System.Transactions.PreparingEnlistment.ForceRollback%2A>この種類のメソッド。  
+ トランザクションの初期 (準備) フェーズでは、トランザクションマネージャーは、メソッドを<xref:System.Transactions.IEnlistmentNotification.Prepare%2A>呼び出してトランザクションに対するリソースの投票を取得することによって、この型をリソースマネージャーに渡します。 コミットまたはロールバックするかどうかに応じて、リソースマネージャーの実装で<xref:System.Transactions.PreparingEnlistment.Prepared%2A>は、この型のメソッドまたは<xref:System.Transactions.PreparingEnlistment.ForceRollback%2A>メソッドを呼び出す必要があります。  
   
- リソース マネージャーを呼び出すことも、<xref:System.Transactions.Enlistment.Done%2A>でいつでも前にメソッドが呼び出されますが、<xref:System.Transactions.PreparingEnlistment.Prepared%2A>メソッド。 これにより、参加リスト投票のトランザクションのコミットが、最終結果を受信する必要はありません、つまり読み取り専用の決定をキャストします。  
+ リソースマネージャーは、 <xref:System.Transactions.Enlistment.Done%2A> <xref:System.Transactions.PreparingEnlistment.Prepared%2A>メソッドを呼び出す前に、いつでもメソッドを呼び出すことができます。 これにより、参加リストは読み取り専用の投票にキャストします。つまり、トランザクションに対してコミットを投票しますが、最終的な結果を受け取る必要はありません。  
   
- 永続的リソース マネージャーがいる情報を取得できますでトランザクション マネージャーからの再参加を必要となる、<xref:System.Transactions.PreparingEnlistment.RecoveryInformation%2A>プロパティ。 回復の詳細については、次を参照してください。 [Performing Recovery](https://msdn.microsoft.com/library/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)します。  
+ 持続性のあるリソースマネージャーは、トランザクションマネージャーが<xref:System.Transactions.PreparingEnlistment.RecoveryInformation%2A>プロパティから再参加するために必要な情報を取得できます。 回復の詳細については、「[回復の実行](https://msdn.microsoft.com/library/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)」を参照してください。  
   
    
   
@@ -46,7 +46,7 @@
  ]]></format>
     </remarks>
     <threadsafe>この型はスレッド セーフです。</threadsafe>
-    <related type="Article" href="https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d">単一フェースおよび複数フェーズでトランザクションをコミットします。</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d">単一フェーズおよび複数フェーズでのトランザクションのコミット</related>
   </Docs>
   <Members>
     <MemberGroup MemberName="ForceRollback">
@@ -93,7 +93,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 実装、<xref:System.Transactions.IEnlistmentNotification.Prepare%2A>のメソッド、<xref:System.Transactions.IEnlistmentNotification>インターフェイスは、トランザクションをロールバックする必要があることを示すには、このメソッドを呼び出します。  
+ インターフェイスのメソッド<xref:System.Transactions.IEnlistmentNotification.Prepare%2A>の実装では、このメソッドを呼び出して、トランザクションをロールバックする必要があることを示します。 <xref:System.Transactions.IEnlistmentNotification>  
   
    
   
@@ -143,8 +143,8 @@
         <Parameter Name="ex" Type="System.Exception" Index="0" FrameworkAlternate="xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="e">ロールバックがトリガーされた理由の説明。</param>
-        <param name="ex">ロールバックがトリガーされた理由の説明。</param>
+        <param name="e">ロールバックを発生させる理由の説明。</param>
+        <param name="ex">ロールバックを発生させる理由の説明。</param>
         <summary>トランザクションをロールバックする必要があることを示します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -178,16 +178,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>トランザクションがコミットされることを示します。</summary>
+        <summary>トランザクションをコミットできることを示します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 最初の (準備) を実装するリソース マネージャー、2 フェーズ コミットのフェーズ、<xref:System.Transactions.IEnlistmentNotification.Prepare%2A>のメソッド、<xref:System.Transactions.IEnlistmentNotification>インターフェイスをトランザクションがコミットされることを示すには、このメソッドを呼び出します。  
+ 2フェーズコミットの最初の (準備) フェーズでは、 <xref:System.Transactions.IEnlistmentNotification.Prepare%2A> <xref:System.Transactions.IEnlistmentNotification>インターフェイスのメソッドを実装するリソースマネージャーがこのメソッドを呼び出して、トランザクションをコミットできることを示します。  
   
- リソース マネージャーを呼び出すことができます、<xref:System.Transactions.Enlistment.Done%2A>より前に、のメソッドには、このメソッドが呼び出されています。  これにより、参加リスト投票のトランザクションのコミットが、最終結果を受信する必要はありません、つまり読み取り専用の決定をキャストします。  
+ リソースマネージャーは、このメソッド<xref:System.Transactions.Enlistment.Done%2A>を呼び出す前に、いつでもメソッドを呼び出すことができます。  これにより、参加リストは読み取り専用の投票にキャストします。つまり、トランザクションに対してコミットを投票しますが、最終的な結果を受け取る必要はありません。  
   
- このメソッドは参加リストによって呼び出され、返されると前、に、考えられるとその他のスレッドまたはこの同じスレッドでしたを呼び出すことが同じ参加メソッドなど<xref:System.Transactions.IEnlistmentNotification.Rollback%2A>ロールバックを実行します。 これは、結果、このメソッドが返された後に、リソース マネージャーの実装がリソース ロックを解放しない場合、デッドロック状態に。  
+ このメソッドが参加リストによって呼び出され、制御が戻る前に、別のスレッドまたは同じスレッドが、などの同じ参加メソッドを呼び出して<xref:System.Transactions.IEnlistmentNotification.Rollback%2A>ロールバックを実行できる可能性があります。 このメソッドが返されるまで、リソースマネージャーの実装でリソースロックが解放されない場合は、デッドロック状態が発生する可能性があります。  
   
    
   
@@ -228,10 +228,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>参加リストの回復情報を取得します。</summary>
-        <returns>参加リストの回復情報。</returns>
+        <summary>参加リストの修復情報を取得します。</summary>
+        <returns>参加リストの修復情報。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException">任意の回復情報を生成しない揮発性参加リスト内の回復情報を取得しようとしました。</exception>
+        <exception cref="T:System.InvalidOperationException">修復情報を生成しない揮発性の参加リストで修復情報を取得しようとしました。</exception>
       </Docs>
     </Member>
   </Members>

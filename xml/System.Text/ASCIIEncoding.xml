@@ -1,5 +1,5 @@
 <Type Name="ASCIIEncoding" FullName="System.Text.ASCIIEncoding">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="53f6fde96c7f2bfa991e14cfa851c8ca19008215" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58711708" /></Metadata><TypeSignature Language="C#" Value="public class ASCIIEncoding : System.Text.Encoding" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="03f9628965f0def34cf1ea1a02000027ee728017" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68434815" /></Metadata><TypeSignature Language="C#" Value="public class ASCIIEncoding : System.Text.Encoding" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit ASCIIEncoding extends System.Text.Encoding" />
   <TypeSignature Language="DocId" Value="T:System.Text.ASCIIEncoding" />
   <TypeSignature Language="VB.NET" Value="Public Class ASCIIEncoding&#xA;Inherits Encoding" />
@@ -41,27 +41,27 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- エンコーディングは、Unicode 文字のセットをバイト シーケンスに変換するプロセスです。 デコードは、Unicode 文字のセットにエンコードされたバイトのシーケンスを変換するプロセスです。  
+ エンコーディングは、Unicode 文字のセットをバイト シーケンスに変換するプロセスです。 デコードとは、エンコードされたバイトシーケンスを Unicode 文字のセットに変換するプロセスです。  
   
- <xref:System.Text.ASCIIEncoding> Windows コード ページ 20127 に対応します。 ASCII は、7 ビットのエンコーディングであるために、ASCII 文字は、u+0000 U + 007F ~ から下位 128 Unicode 文字に制限されます。 によって返される既定のエンコーダーを使用する場合、<xref:System.Text.Encoding.ASCII%2A?displayProperty=nameWithType>プロパティまたは<xref:System.Text.ASCIIEncoding.%23ctor%2A>エンコード処理を実行する前にコンス トラクター、その範囲外の文字は疑問符 (?) に置き換えられます。  <xref:System.Text.ASCIIEncoding>クラスは、制限付きの文字セットのみをサポートしている、 <xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、および<xref:System.Text.UTF32Encoding>クラスは、グローバル化されたアプリケーションに適しています。 次の考慮事項を使用するかどうかを決定する際に役立つ<xref:System.Text.ASCIIEncoding>:  
+ <xref:System.Text.ASCIIEncoding>Windows コードページ20127に対応します。 ASCII は7ビットエンコードであるため、ASCII 文字は、U + 0000 から U + 007F までの 128 Unicode 文字に制限されます。 <xref:System.Text.Encoding.ASCII%2A?displayProperty=nameWithType> プロパティ<xref:System.Text.ASCIIEncoding.%23ctor%2A>またはコンストラクターによって返される既定のエンコーダーを使用する場合、エンコード操作が実行される前に、その範囲外の文字が疑問符 (?) に置き換えられます。  クラスは<xref:System.Text.ASCIIEncoding>制限された文字セットのみをサポートする<xref:System.Text.UnicodeEncoding>ため、 <xref:System.Text.UTF32Encoding> 、、およびの各クラスは、グローバル化された<xref:System.Text.UTF8Encoding>アプリケーションに適しています。 次の考慮事項は、を使用<xref:System.Text.ASCIIEncoding>するかどうかを判断するのに役立ちます。  
   
--   一部のプロトコルでは、ASCII または ASCII のサブセットが必要です。 このような場合の ASCII エンコードが適切です。  
+-   一部のプロトコルでは、ASCII または ASCII のサブセットが必要です。 このような場合は、ASCII エンコーディングが適しています。  
   
--   8 ビット エンコードが必要ですが場合、し ASCII は正しい選択をおそらくありません。 代わりに、ASCII ではなく UTF8 の使用を検討してください。 U + 007F ~ 文字 u+0000、結果は同じですが、すべての Unicode 文字は、データの損失を回避する utf-8 で表現できます。  
+-   8ビットのエンコーディングが想定されている場合、ASCII は正しい選択ではない可能性があります。 代わりに、ASCII ではなく UTF8 の使用を検討してください。 文字 U + 0000 ~ U + 007F の場合、結果は同じですが、すべての Unicode 文字が UTF-8 で表現できるため、データの損失を回避できます。  
   
 > [!CAUTION]
->  <xref:System.Text.ASCIIEncoding> エラーの検出は提供されません。 セキュリティ上の理由から、使用する必要があります<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>し、エラーの検出を有効にします。  
+>  <xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 セキュリティ上の理由から、、 <xref:System.Text.UTF8Encoding> <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>を使用して、エラー検出を有効にする必要があります。  
   
- <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドでは、バイト数が、Unicode 文字のセットがエンコードされるかを判断します。 および<xref:System.Text.ASCIIEncoding.GetBytes%2A>メソッドは、実際のエンコードを実行します。  
+ メソッドによって、Unicode 文字のセットをエンコードするバイト数が決定さ<xref:System.Text.ASCIIEncoding.GetBytes%2A>れ、メソッドは実際のエンコーディングを実行します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>  
   
- 同様に、<xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドでは、文字数が発生するシーケンス (バイト単位) をデコードするかを判断します。 および<xref:System.Text.ASCIIEncoding.GetChars%2A>と<xref:System.Text.ASCIIEncoding.GetString%2A>メソッドは、実際のデコードを実行します。  
+ 同様に、 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドはバイトシーケンスをデコードする文字数を決定し、メソッドと<xref:System.Text.ASCIIEncoding.GetChars%2A> <xref:System.Text.ASCIIEncoding.GetString%2A>メソッドは実際のデコードを実行します。  
   
- なお、既定<xref:System.Text.ASCIIEncoding>コンス トラクター自体では、アプリケーションの適切な動作がありません。 設定を検討したい場合があります、<xref:System.Text.Encoding.EncoderFallback%2A>または<xref:System.Text.Encoding.DecoderFallback%2A>プロパティを<xref:System.Text.EncoderExceptionFallback>または<xref:System.Text.DecoderExceptionFallback>を 8 ビットが設定されたシーケンスを防ぐためにします。 カスタム動作は、このような場合の適切な場合もあります。  
+ 既定<xref:System.Text.ASCIIEncoding>のコンストラクター自体には、アプリケーションに対する適切な動作がない場合があることに注意してください。 <xref:System.Text.Encoding.EncoderFallback%2A>また<xref:System.Text.EncoderExceptionFallback>は<xref:System.Text.Encoding.DecoderFallback%2A>プロパティをまたは<xref:System.Text.DecoderExceptionFallback>に設定して、8番目のビットが設定されているシーケンスを防ぐことを検討してください。 このような場合には、カスタム動作が適していることもあります。  
   
    
   
 ## Examples  
- 次の例では、ASCII に Unicode 文字をエンコードする方法を示します。 アプリケーションで使用するときに発生するデータの損失に注意してください<xref:System.Text.ASCIIEncoding>ASCII 範囲外の Unicode 文字をエンコードします。  
+ Unicode 文字を ASCII にエンコードする方法を次の例に示します。 アプリケーションがを使用<xref:System.Text.ASCIIEncoding>して ASCII の範囲外の Unicode 文字をエンコードするときに発生するデータが失われることに注意してください。  
   
  [!code-cpp[System.Text.ASCIIEncoding Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding Example/CPP/snippet.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding Example/CS/snippet.cs#1)]
@@ -71,7 +71,7 @@
     </remarks>
     <altmember cref="T:System.Text.Decoder" />
     <altmember cref="T:System.Text.Encoder" />
-    <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングの理解</related>
+    <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングについて</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -108,17 +108,17 @@
 ## Remarks  
   
 > [!CAUTION]
->  <xref:System.Text.ASCIIEncoding>クラスは、エラーの検出を提供しません。 セキュリティ上の理由から、使用する必要があります、 <xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>クラスし、エラーの検出を有効にします。  
+>  クラス<xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 セキュリティ上の理由から、 <xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>クラスを使用して、エラー検出を有効にする必要があります。  
   
- ASCII エンコーディングを使用する場合は、このコンス トラクターが、アプリケーションの適切なフォールバック動作を提供可能性がありますされません。 使用して、<xref:System.Text.EncoderReplacementFallback>と<xref:System.Text.DecoderReplacementFallback>クラスに u+0000 U + 007F 経由の範囲外のすべての文字を疑問符 (?) に置き換えます。 代わりに、呼び出すことができます、<xref:System.Text.Encoding.GetEncoding%28System.Int32%2CSystem.Text.EncoderFallback%2CSystem.Text.DecoderFallback%29?displayProperty=nameWithType>または<xref:System.Text.Encoding.GetEncoding%28System.String%2CSystem.Text.EncoderFallback%2CSystem.Text.DecoderFallback%29?displayProperty=nameWithType>メソッドを渡して<xref:System.Text.EncoderExceptionFallback>と<xref:System.Text.DecoderExceptionFallback>例外フォールバックを使用するオブジェクト。  
+ ASCII エンコーディングの使用を選択した場合、このコンストラクターはアプリケーションに適切なフォールバック動作を提供しない可能性があります。 <xref:System.Text.EncoderReplacementFallback>また、クラスと<xref:System.Text.DecoderReplacementFallback>クラスを使用して、u + 0000 から u + 007f の範囲外のすべての文字を疑問符 (?) に置き換えます。 代わりに、メソッド<xref:System.Text.Encoding.GetEncoding%28System.Int32%2CSystem.Text.EncoderFallback%2CSystem.Text.DecoderFallback%29?displayProperty=nameWithType>または<xref:System.Text.Encoding.GetEncoding%28System.String%2CSystem.Text.EncoderFallback%2CSystem.Text.DecoderFallback%29?displayProperty=nameWithType>メソッドを呼び出して、例外<xref:System.Text.EncoderExceptionFallback>フォールバック<xref:System.Text.DecoderExceptionFallback>を使用するようにそのメソッドとオブジェクトを渡すことができます。  
   
 > [!NOTE]
->  <xref:System.Text.ASCIIEncoding> Unicode 文字値間 U + 0000 と 007F のみサポートされます。 そのため、 <xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、および<xref:System.Text.UTF32Encoding>グローバル化されたアプリケーションはやりやすくなります。  
+>  <xref:System.Text.ASCIIEncoding>では、U + 0000 から U + 007F までの Unicode 文字値のみがサポートされています。 そのため、、、 <xref:System.Text.UTF32Encoding>およびは、グローバル化されたアプリケーションに適しています。 <xref:System.Text.UTF8Encoding> <xref:System.Text.UnicodeEncoding>  
   
    
   
 ## Examples  
- 次の例は、新たに作成する方法を示します<xref:System.Text.ASCIIEncoding>インスタンスし、エンコーディングの名前を表示します。  
+ 次の例は、新しい<xref:System.Text.ASCIIEncoding>インスタンスを作成し、エンコーディングの名前を表示する方法を示しています。  
   
  [!code-cpp[System.Text.ASCIIEncoding.ctor Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.ctor Example/CPP/ctor.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.ctor Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.ctor Example/CS/ctor.cs#1)]
@@ -138,6 +138,37 @@
         <summary>文字のセットをエンコードすることによって生成されるバイト数を計算します。</summary>
       </Docs>
     </MemberGroup>
+    <Member MemberName="GetByteCount">
+      <MemberSignature Language="C#" Value="public override int GetByteCount (ReadOnlySpan&lt;char&gt; chars);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetByteCount(valuetype System.ReadOnlySpan`1&lt;char&gt; chars) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.ASCIIEncoding.GetByteCount(System.ReadOnlySpan{System.Char})" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetByteCount (chars As ReadOnlySpan(Of Char)) As Integer" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override int GetByteCount(ReadOnlySpan&lt;char&gt; chars);" />
+      <MemberSignature Language="F#" Value="override this.GetByteCount : ReadOnlySpan&lt;char&gt; -&gt; int" Usage="aSCIIEncoding.GetByteCount chars" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Encoding.Extensions</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="chars" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="chars">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetByteCount">
       <MemberSignature Language="C#" Value="public override int GetByteCount (string chars);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetByteCount(string chars) cil managed" />
@@ -183,12 +214,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.ASCIIEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetByteCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドを使用して文字列をエンコードするために必要なバイト数を返す<xref:System.Text.ASCIIEncoding>します。  
+ 次の例は、 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドを使用して、を使用して<xref:System.Text.ASCIIEncoding>文字列をエンコードするために必要なバイト数を返す方法を示しています。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetByteCount2 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetByteCount2 Example/CPP/getbytecount-string.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetByteCount2 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetByteCount2 Example/CS/getbytecount-string.cs#1)]
@@ -204,7 +235,7 @@
         <altmember cref="M:System.Text.ASCIIEncoding.GetBytes(System.String,System.Int32,System.Int32,System.Byte[],System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetMaxByteCount(System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetEncoder" />
-        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングの理解</related>
+        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングについて</related>
       </Docs>
     </Member>
     <Member MemberName="GetByteCount">
@@ -258,7 +289,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.ASCIIEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetByteCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
  ]]></format>
         </remarks>
@@ -266,12 +297,12 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="chars" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.Text.EncoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください) 
 および 
  <see cref="P:System.Text.Encoding.EncoderFallback" /> が <see cref="T:System.Text.EncoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Text.ASCIIEncoding.GetBytes(System.String,System.Int32,System.Int32,System.Byte[],System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetMaxByteCount(System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetEncoder" />
@@ -326,12 +357,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.ASCIIEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetByteCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドを使用して Unicode 文字の配列をエンコードするために必要なバイト数を返す<xref:System.Text.ASCIIEncoding>します。  
+ 次の例では、を使用<xref:System.Text.ASCIIEncoding.GetByteCount%2A>して<xref:System.Text.ASCIIEncoding>、Unicode 文字の配列をエンコードするために必要なバイト数を返すメソッドを使用する方法を示します。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetByteCount1 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetByteCount1 Example/CPP/getbytecount-char[]-int32-int32.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetByteCount1 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetByteCount1 Example/CS/getbytecount-char[]-int32-int32.cs#1)]
@@ -339,13 +370,13 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="chars" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="chars" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index" /> または <paramref name="count" /> が 0 未満です。  
   
 - または - 
  <paramref name="index" /> および <paramref name="count" /> は <paramref name="chars" /> において有効な範囲を表していません。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.Text.EncoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください) 
 および 
@@ -365,6 +396,39 @@
         <summary>文字のセットをバイト シーケンスにエンコードします。</summary>
       </Docs>
     </MemberGroup>
+    <Member MemberName="GetBytes">
+      <MemberSignature Language="C#" Value="public override int GetBytes (ReadOnlySpan&lt;char&gt; chars, Span&lt;byte&gt; bytes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetBytes(valuetype System.ReadOnlySpan`1&lt;char&gt; chars, valuetype System.Span`1&lt;unsigned int8&gt; bytes) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.ASCIIEncoding.GetBytes(System.ReadOnlySpan{System.Char},System.Span{System.Byte})" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetBytes (chars As ReadOnlySpan(Of Char), bytes As Span(Of Byte)) As Integer" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override int GetBytes(ReadOnlySpan&lt;char&gt; chars, Span&lt;System::Byte&gt; bytes);" />
+      <MemberSignature Language="F#" Value="override this.GetBytes : ReadOnlySpan&lt;char&gt; * Span&lt;byte&gt; -&gt; int" Usage="aSCIIEncoding.GetBytes (chars, bytes)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Encoding.Extensions</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="chars" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytes" Type="System.Span&lt;System.Byte&gt;" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="chars">To be added.</param>
+        <param name="bytes">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetBytes">
       <MemberSignature Language="C#" Value="public override int GetBytes (char* chars, int charCount, byte* bytes, int byteCount);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetBytes(char* chars, int32 charCount, unsigned int8* bytes, int32 byteCount) cil managed" />
@@ -420,14 +484,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.ASCIIEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetByteCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
- シーケンシャル ブロック内でのみ使用できるは、ストリームから読み取られるデータなど、変換するデータ。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できます。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
- <xref:System.Text.ASCIIEncoding> エラーの検出は提供されません。 U + 007F よりも大きい任意の Unicode 文字が ASCII の疑問符 () に変換されます ("?")。  
+ <xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 U + 007F を超える Unicode 文字は、ASCII 疑問符 ("?") に変換されます。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、使用するアプリケーションが推奨<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>し、エラーの検出を有効にします。  
+>  セキュリティ上の理由から、アプリケーションでは、 <xref:System.Text.UTF8Encoding> <xref:System.Text.UnicodeEncoding>、、また<xref:System.Text.UTF32Encoding>はを使用してエラー検出を有効にすることをお勧めします。  
   
  ]]></format>
         </remarks>
@@ -441,7 +505,7 @@
         <exception cref="T:System.Text.EncoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください) 
 および 
  <see cref="P:System.Text.Encoding.EncoderFallback" /> が <see cref="T:System.Text.EncoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Text.ASCIIEncoding.GetEncoder" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetByteCount(System.Char[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetMaxByteCount(System.Int32)" />
@@ -500,19 +564,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.ASCIIEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetByteCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
- シーケンシャル ブロック内でのみ使用できるは、ストリームから読み取られるデータなど、変換するデータ。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できます。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
- <xref:System.Text.ASCIIEncoding> エラーの検出は提供されません。 U + 007F よりも大きい任意の Unicode 文字が ASCII の疑問符 () としてエンコードされます ("?")。  
+ <xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 U + 007F を超える Unicode 文字は、ASCII 疑問符 ("?") としてエンコードされます。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、使用するアプリケーションが推奨<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>し、エラーの検出を有効にします。  
+>  セキュリティ上の理由から、アプリケーションでは、 <xref:System.Text.UTF8Encoding> <xref:System.Text.UnicodeEncoding>、、また<xref:System.Text.UTF32Encoding>はを使用してエラー検出を有効にすることをお勧めします。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetBytes%2A>メソッドを文字列から文字の範囲をエンコードし、バイト配列内の要素の範囲内でエンコードされた文字を格納します。  
+ 次の例では、 <xref:System.Text.ASCIIEncoding.GetBytes%2A>メソッドを使用して文字列から範囲の文字をエンコードし、エンコードされた文字をバイト配列の要素範囲に格納する方法を示します。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetBytes1 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetBytes1 Example/CPP/getbytes-string-int32-int32-byte[]-int32.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetBytes1 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetBytes1 Example/CS/getbytes-string-int32-int32-byte[]-int32.cs#1)]
@@ -593,19 +657,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetBytes%2A>アプリケーションが使用するには、結果のバイトを格納するには、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ 結果のバイトを格納するために<xref:System.Text.ASCIIEncoding.GetBytes%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetByteCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetByteCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
- シーケンシャル ブロック内でのみ使用できるは、ストリームから読み取られるデータなど、変換するデータ。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できます。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
- <xref:System.Text.ASCIIEncoding> エラーの検出は提供されません。 U + 007F よりも大きい任意の Unicode 文字が ASCII の疑問符 () としてエンコードされます ("?")。  
+ <xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 U + 007F を超える Unicode 文字は、ASCII 疑問符 ("?") としてエンコードされます。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、使用するアプリケーションが推奨<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>し、エラーの検出を有効にします。  
+>  セキュリティ上の理由から、アプリケーションでは、 <xref:System.Text.UTF8Encoding> <xref:System.Text.UnicodeEncoding>、、また<xref:System.Text.UTF32Encoding>はを使用してエラー検出を有効にすることをお勧めします。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetBytes%2A>範囲の Unicode 文字配列から要素をエンコードおよびバイト配列内の要素の範囲内でエンコードされたバイトを格納するメソッド。  
+ 次の例は、 <xref:System.Text.ASCIIEncoding.GetBytes%2A>メソッドを使用して、Unicode 文字配列から要素の範囲をエンコードし、バイト配列の要素範囲にエンコードされたバイトを格納する方法を示しています。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetBytes2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetBytes2/CPP/getbytes-char[]-int32-int32-byte[]-int32.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetBytes2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetBytes2/CS/getbytes-char[]-int32-int32-byte[]-int32.cs#1)]
@@ -643,6 +707,37 @@
         <summary>バイト シーケンスをデコードすることによって生成される文字数を計算します。</summary>
       </Docs>
     </MemberGroup>
+    <Member MemberName="GetCharCount">
+      <MemberSignature Language="C#" Value="public override int GetCharCount (ReadOnlySpan&lt;byte&gt; bytes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetCharCount(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; bytes) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.ASCIIEncoding.GetCharCount(System.ReadOnlySpan{System.Byte})" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetCharCount (bytes As ReadOnlySpan(Of Byte)) As Integer" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override int GetCharCount(ReadOnlySpan&lt;System::Byte&gt; bytes);" />
+      <MemberSignature Language="F#" Value="override this.GetCharCount : ReadOnlySpan&lt;byte&gt; -&gt; int" Usage="aSCIIEncoding.GetCharCount bytes" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Encoding.Extensions</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="bytes">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetCharCount">
       <MemberSignature Language="C#" Value="public override int GetCharCount (byte* bytes, int count);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetCharCount(unsigned int8* bytes, int32 count) cil managed" />
@@ -694,20 +789,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetChars%2A>アプリケーションが使用するには、結果の文字を格納するには、<xref:System.Text.ASCIIEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するために<xref:System.Text.ASCIIEncoding.GetChars%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetCharCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetCharCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
  ]]></format>
         </remarks>
         <altCompliant cref="M:System.Text.ASCIIEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)" />
-        <exception cref="T:System.ArgumentNullException"><paramref name="bytes" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="bytes" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください) 
 および 
  <see cref="P:System.Text.Encoding.DecoderFallback" /> が <see cref="T:System.Text.DecoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="Overload:System.Text.ASCIIEncoding.GetChars" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetMaxCharCount(System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetDecoder" />
@@ -762,12 +857,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetChars%2A>アプリケーションが使用するには、結果の文字を格納するには、<xref:System.Text.ASCIIEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するために<xref:System.Text.ASCIIEncoding.GetChars%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetCharCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetCharCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetCharCount%2A>バイト配列内の要素の範囲をデコードすることによって生成される文字数を返すメソッド。  
+ 次の例は、 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドを使用して、バイト配列内の要素の範囲をデコードすることによって生成される文字数を返す方法を示しています。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetCharCount Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetCharCount Example/CPP/getcharcount-byte[]-int32-int32.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetCharCount Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetCharCount Example/CS/getcharcount-byte[]-int32-int32.cs#1)]
@@ -781,7 +876,7 @@
 - または - 
  <paramref name="index" /> および <paramref name="count" /> は <paramref name="bytes" /> において有効な範囲を表していません。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください) 
 および 
@@ -801,6 +896,39 @@
         <summary>バイト シーケンスを文字のセットにデコードします。</summary>
       </Docs>
     </MemberGroup>
+    <Member MemberName="GetChars">
+      <MemberSignature Language="C#" Value="public override int GetChars (ReadOnlySpan&lt;byte&gt; bytes, Span&lt;char&gt; chars);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetChars(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; bytes, valuetype System.Span`1&lt;char&gt; chars) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Text.ASCIIEncoding.GetChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetChars (bytes As ReadOnlySpan(Of Byte), chars As Span(Of Char)) As Integer" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override int GetChars(ReadOnlySpan&lt;System::Byte&gt; bytes, Span&lt;char&gt; chars);" />
+      <MemberSignature Language="F#" Value="override this.GetChars : ReadOnlySpan&lt;byte&gt; * Span&lt;char&gt; -&gt; int" Usage="aSCIIEncoding.GetChars (bytes, chars)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Text.Encoding.Extensions</AssemblyName>
+        <AssemblyVersion>4.1.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="chars" Type="System.Span&lt;System.Char&gt;" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="bytes">To be added.</param>
+        <param name="chars">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetChars">
       <MemberSignature Language="C#" Value="public override int GetChars (byte* bytes, int byteCount, char* chars, int charCount);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetChars(unsigned int8* bytes, int32 byteCount, char* chars, int32 charCount) cil managed" />
@@ -856,14 +984,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetChars%2A>アプリケーションが使用するには、結果の文字を格納するには、<xref:System.Text.ASCIIEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するために<xref:System.Text.ASCIIEncoding.GetChars%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetCharCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetCharCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
- シーケンシャル ブロック内でのみ使用できるは、ストリームから読み取られるデータなど、変換するデータ。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できます。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
- <xref:System.Text.ASCIIEncoding> エラーの検出は提供されません。 16 進数の 0x7F よりも大きい任意のバイトが Unicode の疑問符 () としてデコード ("?")。  
+ <xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 16進数の0x7F を超えるバイトは、Unicode の疑問符 ("?") としてデコードされます。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、使用するアプリケーションが推奨<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>し、エラーの検出を有効にします。  
+>  セキュリティ上の理由から、アプリケーションでは、 <xref:System.Text.UTF8Encoding> <xref:System.Text.UnicodeEncoding>、、また<xref:System.Text.UTF32Encoding>はを使用してエラー検出を有効にすることをお勧めします。  
   
  ]]></format>
         </remarks>
@@ -877,7 +1005,7 @@
         <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください) 
 および 
  <see cref="P:System.Text.Encoding.DecoderFallback" /> が <see cref="T:System.Text.DecoderExceptionFallback" /> に設定されます。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="M:System.Text.ASCIIEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetMaxCharCount(System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetDecoder" />
@@ -937,19 +1065,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な正確な配列のサイズを計算する<xref:System.Text.ASCIIEncoding.GetChars%2A>アプリケーションが使用するには、結果の文字を格納するには、<xref:System.Text.ASCIIEncoding.GetCharCount%2A>します。 配列の最大サイズを計算するアプリケーションを使用する必要があります<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>します。 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドは、一般に、メモリの割り当てを使用するときに、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ 結果の文字を格納するために<xref:System.Text.ASCIIEncoding.GetChars%2A>に必要な配列の正確なサイズを<xref:System.Text.ASCIIEncoding.GetCharCount%2A>計算するために、アプリケーションはを使用します。 配列の最大サイズを計算するには、アプリケーション<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>でを使用する必要があります。 メソッド<xref:System.Text.ASCIIEncoding.GetCharCount%2A>は一般に、より少ないメモリの割り当てを<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>可能にしますが、メソッドは通常、より高速に実行されます。  
   
- シーケンシャル ブロック内でのみ使用できるは、ストリームから読み取られるデータなど、変換するデータ。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できます。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
- <xref:System.Text.ASCIIEncoding> エラーの検出は提供されません。 16 進数の 0x7F よりも大きい任意のバイトが Unicode の疑問符 () としてデコード ("?")。  
+ <xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 16進数の0x7F を超えるバイトは、Unicode の疑問符 ("?") としてデコードされます。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、使用するアプリケーションが推奨<xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>し、エラーの検出を有効にします。  
+>  セキュリティ上の理由から、アプリケーションでは、 <xref:System.Text.UTF8Encoding> <xref:System.Text.UnicodeEncoding>、、また<xref:System.Text.UTF32Encoding>はを使用してエラー検出を有効にすることをお勧めします。  
   
    
   
 ## Examples  
- 次の例では、バイト配列から要素の範囲をデコードし、一連の Unicode 文字配列内の要素の結果を格納する方法を示します。  
+ 次の例では、バイト配列から要素の範囲をデコードし、その結果を Unicode 文字配列の要素のセットに格納する方法を示します。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetChars Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetChars Example/CPP/getchars-byte[]-int32-int32-char[]-int32.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetChars Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetChars Example/CS/getchars-byte[]-int32-int32-char[]-int32.cs#1)]
@@ -1019,7 +1147,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.Decoder.GetChars%2A?displayProperty=nameWithType>メソッドと同様の方法で、文字のシーケンシャル ブロックにバイトのシーケンシャル ブロックを変換する、<xref:System.Text.ASCIIEncoding.GetChars%2A>このクラスのメソッド。 ただし、<xref:System.Text.Decoder>のブロックをまたぐバイト シーケンスが正しくデコードするための呼び出しの間の状態情報を保持します。 <xref:System.Text.Decoder>もデータ ブロックの末尾にある後続バイトが保持され、[次へ] のデコード操作で末尾のバイトを使用します。 そのため、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>と<xref:System.Text.ASCIIEncoding.GetEncoder%2A>は完全なデータ ストリームではなくデータのブロックを頻繁にこれらの操作を処理するためにネットワーク転送と、ファイル操作に便利です。  
+ メソッド<xref:System.Text.Decoder.GetChars%2A?displayProperty=nameWithType>は、このクラスの<xref:System.Text.ASCIIEncoding.GetChars%2A>メソッドと同様の方法で、バイトのシーケンシャルブロックを文字の連続するブロックに変換します。 ただし、は<xref:System.Text.Decoder> 、複数のブロックにまたがるバイトシーケンスを正しくデコードできるように、呼び出し間で状態情報を保持します。 また<xref:System.Text.Decoder> 、は、データブロックの末尾で末尾のバイトを保持し、次のデコード操作で末尾のバイトを使用します。 そのため<xref:System.Text.ASCIIEncoding.GetDecoder%2A> 、 <xref:System.Text.ASCIIEncoding.GetEncoder%2A>とは、ネットワークの転送およびファイル操作に役立ちます。これらの操作は、多くの場合、完全なデータストリームではなく、データのブロックを処理するためです。  
   
  ]]></format>
         </remarks>
@@ -1028,7 +1156,7 @@
         <altmember cref="M:System.Text.ASCIIEncoding.GetString(System.Byte[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetEncoder" />
-        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングの理解</related>
+        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングについて</related>
       </Docs>
     </Member>
     <Member MemberName="GetEncoder">
@@ -1072,7 +1200,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.Encoder.GetBytes%2A?displayProperty=nameWithType>メソッドと同様の方法で、バイトのブロックをシーケンシャルに文字のシーケンシャル ブロックを変換する、<xref:System.Text.ASCIIEncoding.GetBytes%2A>このクラスのメソッド。 ただし、<xref:System.Text.Encoder>のブロックをまたぐ文字シーケンスを正しくエンコードすることができますので、呼び出しの間の状態情報を保持します。 <xref:System.Text.Encoder>も末尾の保持のデータ ブロックの末尾に文字し、末尾の文字を次のエンコードの操作に使用されます。 たとえば、データ ブロック上位サロゲートで終了し、[次へ] のデータ ブロックに一致する下位サロゲートがあります。 そのため、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>と<xref:System.Text.ASCIIEncoding.GetEncoder%2A>は完全なデータ ストリームではなくデータのブロックを頻繁にこれらの操作を処理するためにネットワーク転送と、ファイル操作に便利です。  
+ メソッド<xref:System.Text.Encoder.GetBytes%2A?displayProperty=nameWithType>は、このクラスの<xref:System.Text.ASCIIEncoding.GetBytes%2A>メソッドと同様の方法で、一連の文字を連続するバイトのブロックに変換します。 ただし、は<xref:System.Text.Encoder> 、ブロックにまたがる文字シーケンスを正しくエンコードできるように、呼び出しの間に状態情報を保持します。 また<xref:System.Text.Encoder> 、はデータブロックの末尾で末尾の文字を保持し、次のエンコーディング操作で末尾の文字を使用します。 たとえば、データブロックの末尾が一致していない上位サロゲートで、一致する下位サロゲートが次のデータブロックに含まれている可能性があります。 そのため<xref:System.Text.ASCIIEncoding.GetDecoder%2A> 、 <xref:System.Text.ASCIIEncoding.GetEncoder%2A>とは、ネットワークの転送およびファイル操作に役立ちます。これらの操作は、多くの場合、完全なデータストリームではなく、データのブロックを処理するためです。  
   
  ]]></format>
         </remarks>
@@ -1080,7 +1208,7 @@
         <altmember cref="M:System.Text.ASCIIEncoding.GetBytes(System.String,System.Int32,System.Int32,System.Byte[],System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetByteCount(System.Char[],System.Int32,System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetDecoder" />
-        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングの理解</related>
+        <related type="Article" href="~/docs/standard/base-types/character-encoding.md">エンコーディングについて</related>
       </Docs>
     </Member>
     <Member MemberName="GetMaxByteCount">
@@ -1123,21 +1251,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドで必要な正確な配列のサイズを計算、<xref:System.Text.ASCIIEncoding.GetBytes%2A>は結果のバイトを格納する方法、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは配列の最大サイズを計算します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A>メソッドは一般に、メモリが少ないを割り当てますが、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドは通常、高速に実行されます。  
+ メソッドは<xref:System.Text.ASCIIEncoding.GetBytes%2A> 、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>結果のバイトを格納するために、メソッドに必要な配列の正確なサイズを計算します。一方、メソッドは配列の最大サイズを計算します。 <xref:System.Text.ASCIIEncoding.GetByteCount%2A> 通常<xref:System.Text.ASCIIEncoding.GetByteCount%2A> 、メソッドはメモリの割り当てを少なく<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>しますが、メソッドは通常、より高速に実行されます。  
   
- <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A> 現在選択されているは、最悪のケースを含め、最悪の番号は、<xref:System.Text.EncoderFallback>します。  置換フォールバックが大きくなる可能性の文字列を選択した場合<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>大きな値を返すことができます。  
+ <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>は、現在選択さ<xref:System.Text.EncoderFallback>れているの最悪のケースを含む、最悪の数値です。  大きな文字列を含む置換フォールバックを選択した場合、 <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>は大きな値を返すことがあります。  
   
- <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドが、前のエンコード操作から潜在的なサロゲートが残っていると見なします。 その結果場合、<xref:System.Text.ASCIIEncoding>オブジェクトは、既定値の置換フォールバックを使用して、置換フォールバックのカスタムが可能なフォールバック文字を 1 つで定義されている場合、メソッドを返しますまたは`charCount`+ 1 です。 場合、<xref:System.Text.ASCIIEncoding>オブジェクトは、1 つ以上の可能なフォールバック文字を置換フォールバックを使用するメソッドを返します*n* * (`charCount` + 1) ここで、 *n*フォールバックの最大数は、文字。  
+ メソッド<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>は、前のエンコード操作から残されている可能性のあるサロゲートを考慮します。 その結果、オブジェクトが<xref:System.Text.ASCIIEncoding>既定の置換フォールバックを使用する場合、またはカスタム置換フォールバックが1つの可能なフォールバック文字で定義されている場合、このメソッドは + 1 を返し`charCount`ます。 オブジェクトが<xref:System.Text.ASCIIEncoding> 、可能な2つ以上のフォールバック文字で置換フォールバックを使用する場合** 、メソッドは`charCount` n * (+ 1) を返します。ここで、 *n*はフォールバック文字の最大数です。  
   
- <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A> 関係を持たない<xref:System.Text.ASCIIEncoding.GetChars%2A>します。 アプリケーションで使用するような関数が必要なかどうか<xref:System.Text.ASCIIEncoding.GetChars%2A>、どちらを使用する<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>します。  
+ <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>に<xref:System.Text.ASCIIEncoding.GetChars%2A>は関係がありません。 アプリケーションがと共<xref:System.Text.ASCIIEncoding.GetChars%2A>にを使用するために同様の機能を必要とする場合は、を使用<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>する必要があります。  
   
 > [!NOTE]
->  `GetMaxByteCount(N)` 同じ値とは限りません`N* GetMaxByteCount(1)`します。  
+>  `GetMaxByteCount(N)`はと同じ値であると`N* GetMaxByteCount(1)`は限りません。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>指定数の文字をエンコードするために必要なバイト数を計算するメソッド。  
+ 次の例は、 <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>メソッドを使用して、指定された文字数をエンコードするために必要なバイトを計算する方法を示しています。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetMaxByteCount Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetMaxByteCount Example/CPP/getmaxbytecount-int32.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetMaxByteCount Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetMaxByteCount Example/CS/getmaxbytecount-int32.cs#1)]
@@ -1147,7 +1275,7 @@
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="charCount" /> が 0 未満です。  
   
-または 
+- または - 
 結果のバイト数が、整数として返すことのできる最大数を超えています。</exception>
         <altmember cref="M:System.Text.ASCIIEncoding.GetBytes(System.String,System.Int32,System.Int32,System.Byte[],System.Int32)" />
         <altmember cref="M:System.Text.ASCIIEncoding.GetByteCount(System.Char[],System.Int32,System.Int32)" />
@@ -1194,19 +1322,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドで必要な正確な配列のサイズを計算、 <xref:System.Text.ASCIIEncoding.GetChars%2A> 、その結果を格納する方法の文字は、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドは配列の最大サイズを計算します。 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>メソッドが一般に、メモリが少ないを割り当てるときに、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドは通常、高速に実行されます。  
+ メソッドは<xref:System.Text.ASCIIEncoding.GetChars%2A> 、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>結果の文字を格納するためにメソッドに必要な配列の正確なサイズを計算します。一方、メソッドは配列の最大サイズを計算します。 <xref:System.Text.ASCIIEncoding.GetCharCount%2A> メソッドは通常、より少ないメモリを割り当て<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>ますが、メソッドは通常、より高速に実行されます。 <xref:System.Text.ASCIIEncoding.GetCharCount%2A>  
   
- <xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A> 現在選択されているは、最悪のケースを含む、最悪の数を取得<xref:System.Text.DecoderFallback>します。 デコーダーのフォールバックが存在する場合の最大のフォールバック長を持つ*n*、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドを返します。 *n* * `byteCount`します。  
+ <xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>現在選択さ<xref:System.Text.DecoderFallback>れているの最悪のケースを含む、最悪のケース番号を取得します。 最大フォールバック長が*n*のデコーダーフォールバックが存在する場合、このメソッドは<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A> *n* * `byteCount`を返します。  
   
- <xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A> 関係を持たない<xref:System.Text.ASCIIEncoding.GetBytes%2A>します。 アプリケーションで使用するような関数が必要なかどうか<xref:System.Text.ASCIIEncoding.GetBytes%2A>、どちらを使用する<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>します。  
+ <xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>に<xref:System.Text.ASCIIEncoding.GetBytes%2A>は関係がありません。 アプリケーションがと共<xref:System.Text.ASCIIEncoding.GetBytes%2A>にを使用するために同様の機能を必要とする場合は、を使用<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>する必要があります。  
   
 > [!NOTE]
->  `GetMaxCharCount(N)` 同じ値とは限りません`N* GetMaxCharCount(1)`します。  
+>  `GetMaxCharCount(N)`はと同じ値であると`N* GetMaxCharCount(1)`は限りません。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドを指定したバイト数をデコードするために必要な文字の最大数を計算します。  
+ 次の例は、 <xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>メソッドを使用して、指定されたバイト数をデコードするために必要な最大文字数を計算する方法を示しています。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetMaxCharCount Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetMaxCharCount Example/CPP/getmaxcharcount-int32.cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetMaxCharCount Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetMaxCharCount Example/CS/getmaxcharcount-int32.cs#1)]
@@ -1304,17 +1432,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シーケンシャル ブロック内でのみ使用できるは、ストリームから読み取られるデータなど、変換するデータ。 ここでは、データの量が非常に大きいため、小さなブロックに分割する必要がある場合、アプリケーションで使用するか、<xref:System.Text.Decoder>または<xref:System.Text.Encoder>によって提供される、<xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッド、それぞれします。  
+ ストリームから読み取られたデータなど、変換されるデータは、連続したブロックでのみ使用できます。 この場合、またはデータ量が非常に大きく、小さいブロックに分割する必要がある<xref:System.Text.Decoder>場合、アプリケーションで<xref:System.Text.Encoder>は、 <xref:System.Text.ASCIIEncoding.GetDecoder%2A>メソッドまたは<xref:System.Text.ASCIIEncoding.GetEncoder%2A>メソッドによって提供されるまたはをそれぞれ使用する必要があります。  
   
- <xref:System.Text.ASCIIEncoding> エラーの検出は提供されません。 16 進数の 0x7F よりも大きい任意のバイトが Unicode の疑問符 () としてデコード ("?")。  
+ <xref:System.Text.ASCIIEncoding>では、エラー検出は提供されません。 16進数の0x7F を超えるバイトは、Unicode の疑問符 ("?") としてデコードされます。  
   
 > [!CAUTION]
->  セキュリティ上の理由から、使用する必要があります、 <xref:System.Text.UTF8Encoding>、 <xref:System.Text.UnicodeEncoding>、または<xref:System.Text.UTF32Encoding>クラスを使用する代わりに、エラーの検出を有効にし、<xref:System.Text.ASCIIEncoding>クラス。  
+>  セキュリティ上の理由<xref:System.Text.UTF8Encoding>から、 <xref:System.Text.ASCIIEncoding>クラス、クラス<xref:System.Text.UnicodeEncoding>、また<xref:System.Text.UTF32Encoding>はクラスを使用し、クラスを使用する代わりにエラー検出を有効にする必要があります。  
   
    
   
 ## Examples  
- 次の例では、使用する方法、<xref:System.Text.ASCIIEncoding.GetString%2A>にバイト配列に変換するメソッド、<xref:System.String>します。  
+ 次の例は、 <xref:System.Text.ASCIIEncoding.GetString%2A>メソッドを使用して、 <xref:System.String>バイト配列をに変換する方法を示しています。  
   
  [!code-cpp[System.Text.ASCIIEncoding.GetString1 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetString1 Example/CPP/getstring-byte[].cpp#1)]
  [!code-csharp[System.Text.ASCIIEncoding.GetString1 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Text.ASCIIEncoding.GetString1 Example/CS/getstring-byte[].cs#1)]
@@ -1322,12 +1450,12 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="bytes" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="bytes" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index" /> または <paramref name="count" /> が 0 未満です。  
   
 - または - 
  <paramref name="index" /> および <paramref name="count" /> は <paramref name="bytes" /> において有効な範囲を表していません。</exception>
-        <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (詳細な説明は、「[.NET Framework における文字エンコーディング](~/docs/standard/base-types/character-encoding.md)」をご覧ください) 
+        <exception cref="T:System.Text.DecoderFallbackException">フォールバックが発生しました (完全な説明については [.NET Framework の文字エンコーディング](~/docs/standard/base-types/character-encoding.md) を参照してください) 
 および 
  <see cref="P:System.Text.Encoding.DecoderFallback" /> が <see cref="T:System.Text.DecoderExceptionFallback" /> に設定されます。</exception>
         <altmember cref="M:System.Text.ASCIIEncoding.GetChars(System.Byte[],System.Int32,System.Int32,System.Char[],System.Int32)" />
@@ -1376,7 +1504,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用する代わりに、<xref:System.Text.ASCIIEncoding.IsSingleByte%2A>エンコード操作およびデコード操作の文字配列のサイズをバイト配列のサイズを決定するプロパティ (バイト配列のサイズはようになど<xref:System.Text.ASCIIEncoding.IsSingleByte%2A>* する文字の数エンコード) を呼び出す必要があります、<xref:System.Text.ASCIIEncoding.GetByteCount%2A>または<xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>エンコード操作のメソッドと<xref:System.Text.ASCIIEncoding.GetCharCount%2A>または<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A>デコード操作のメソッド。 これらのメソッドは、<xref:System.Text.ASCIIEncoding>に必要な配列のサイズを計算するときにアカウントのオブジェクトの置換フォールバック ストラテジです。  
+ <xref:System.Text.ASCIIEncoding.IsSingleByte%2A>プロパティを使用して、エンコード操作のバイト配列のサイズと、デコード操作のための文字配列のサイズを決定するのではなく (たとえば、バイト配列のサイズが<xref:System.Text.ASCIIEncoding.IsSingleByte%2A> * の文字数であるため)、エンコードされた<xref:System.Text.ASCIIEncoding.GetByteCount%2A> ) では、エンコード操作<xref:System.Text.ASCIIEncoding.GetCharCount%2A>の場合はメソッドまた<xref:System.Text.ASCIIEncoding.GetMaxCharCount%2A> <xref:System.Text.ASCIIEncoding.GetMaxByteCount%2A>はメソッドを、デコード操作の場合はメソッドまたはメソッドを呼び出す必要があります。 これらのメソッドは<xref:System.Text.ASCIIEncoding> 、必要な配列のサイズを計算するときに、オブジェクトの置換フォールバック戦略を考慮します。  
   
  ]]></format>
         </remarks>

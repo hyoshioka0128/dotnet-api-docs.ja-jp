@@ -1,5 +1,5 @@
 <Type Name="DbConnection" FullName="System.Data.Common.DbConnection">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d9eae00a19ddb04143f39dd8645f8c66fbd095c1" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67240876" /></Metadata><TypeSignature Language="C#" Value="public abstract class DbConnection : System.ComponentModel.Component, IDisposable, System.Data.IDbConnection" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="9da4369b329ee9a2630950166793dc348f6d6da3" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68438447" /></Metadata><TypeSignature Language="C#" Value="public abstract class DbConnection : System.ComponentModel.Component, IDisposable, System.Data.IDbConnection" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DbConnection extends System.ComponentModel.Component implements class System.Data.IDbConnection, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Data.Common.DbConnection" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class DbConnection&#xA;Inherits Component&#xA;Implements IDbConnection, IDisposable" />
@@ -38,7 +38,7 @@
   <Docs>
     <summary>データベースへの接続を表します。</summary>
     <remarks>To be added.</remarks>
-    <block subset="none" type="overrides"><para>継承する場合<see cref="T:System.Data.Common.DbConnection" />、次のメンバーをオーバーライドする必要があります: <see cref="M:System.Data.Common.DbConnection.Close" />、 <see cref="M:System.Data.Common.DbConnection.BeginDbTransaction(System.Data.IsolationLevel)" />、 <see cref="M:System.Data.Common.DbConnection.ChangeDatabase(System.String)" />、 <see cref="M:System.Data.Common.DbConnection.CreateDbCommand" />、 <see cref="M:System.Data.Common.DbConnection.Open" />、および<see cref="E:System.Data.Common.DbConnection.StateChange" />します。 次のプロパティを指定することも必要があります: <see cref="P:System.Data.Common.DbConnection.ConnectionString" />、 <see cref="P:System.Data.Common.DbConnection.Database" />、 <see cref="P:System.Data.Common.DbConnection.DataSource" />、 <see cref="P:System.Data.Common.DbConnection.ServerVersion" />、および<see cref="P:System.Data.Common.DbConnection.State" />します。</para></block>
+    <block subset="none" type="overrides"><para><see cref="T:System.Data.Common.DbConnection" />から継承する場合は<see cref="M:System.Data.Common.DbConnection.BeginDbTransaction(System.Data.IsolationLevel)" /> <see cref="M:System.Data.Common.DbConnection.CreateDbCommand" />、、、 、<see cref="M:System.Data.Common.DbConnection.Open" />、、および<see cref="E:System.Data.Common.DbConnection.StateChange" />の各メンバーをオーバーライドする必要があります。 <see cref="M:System.Data.Common.DbConnection.ChangeDatabase(System.String)" /> <see cref="M:System.Data.Common.DbConnection.Close" /> また、、、 <see cref="P:System.Data.Common.DbConnection.ConnectionString" /> <see cref="P:System.Data.Common.DbConnection.DataSource" /> <see cref="P:System.Data.Common.DbConnection.Database" />、 、<see cref="P:System.Data.Common.DbConnection.ServerVersion" />およびの各プロパティも指定する必要<see cref="P:System.Data.Common.DbConnection.State" />があります。</para></block>
     <related type="Article" href="https://msdn.microsoft.com/library/2a8e2640-3a49-42a1-a3a9-b43026907ae1">DbProviderFactories (ADO.NET)</related>
     <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
   </Docs>
@@ -115,7 +115,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 独自の接続の種類を作成する場合は、トランザクションを開始するために必要なコードを実装するには、このメソッドをオーバーライドします。  
+ 独自の接続の種類を作成する場合は、このメソッドをオーバーライドして、トランザクションを開始するために必要なコードを実装します。  
   
  ]]></format>
         </remarks>
@@ -165,7 +165,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 分離レベルを指定しない場合は、特定の接続の種類の既定の分離レベルが使用されます。  
+ 分離レベルを指定しない場合は、特定の種類の接続の既定の分離レベルが使用されます。  
   
  ]]></format>
         </remarks>
@@ -210,7 +210,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 分離レベルを指定しない場合は、特定の接続の種類の既定の分離レベルが使用されます。  
+ 分離レベルを指定しない場合は、特定の種類の接続の既定の分離レベルが使用されます。  
   
  ]]></format>
         </remarks>
@@ -360,7 +360,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定された値、`databaseName`パラメーターは現在のインスタンスの有効なデータベース名である必要があります。  
+ `databaseName`パラメーターに指定する値は、現在のインスタンスの有効なデータベース名である必要があります。  
   
  ]]></format>
         </remarks>
@@ -437,14 +437,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.Common.DbConnection.Close%2A>メソッドが保留中のトランザクションをロールバックします。 接続プールへの接続を解放し、または接続プールが無効になっている場合、接続を閉じます。  
+ メソッド<xref:System.Data.Common.DbConnection.Close%2A>は、保留中のトランザクションをロールバックします。 次に、接続プールへの接続を解放するか、接続プールが無効になっている場合は接続を閉じます。  
   
- アプリケーションが呼び出すことができます<xref:System.Data.Common.DbConnection.Close%2A>1 つ以上の時間。 例外は生成されません。  
+ アプリケーションが複数回<xref:System.Data.Common.DbConnection.Close%2A>呼び出すことができます。 例外は生成されません。  
   
- 場合、<xref:System.Data.Common.DbConnection>帯がスコープが閉じられていません。 そのため、する必要があります明示的に閉じる接続呼び出して`Close`または`Dispose`、機能的に同等であります。 値、接続プール場合、`Pooling`に設定されている`true`または`yes`、これも、物理的な接続を解放します。  
+ が<xref:System.Data.Common.DbConnection>スコープ外に出ると、閉じられません。 そのため、または`Close` `Dispose`を呼び出すことによって、接続を明示的に閉じる必要があります。これは機能的には同等です。 接続プールの値`Pooling`がまたは`yes`に`true`設定されている場合は、物理接続も解放されます。  
   
 > [!CAUTION]
->  呼び出さないでください`Close`または`Dispose`上、**接続**、 **DataReader**、またはその他のマネージ オブジェクトで、`Finalize`クラスのメソッド。 ファイナライザーで、クラスが直接所有しているアンマネージ リソースだけを解放する必要があります。 クラスがアンマネージ リソースを所有していない場合は、クラス定義に `Finalize` メソッドを含めないでください。 詳細については、次を参照してください。[ガベージ コレクション](~/docs/standard/garbage-collection/index.md)します。  
+>  クラスの`Close` メソッド`Finalize`で`Dispose` 、**接続**、 **DataReader**、またはその他のマネージオブジェクトでまたはを呼び出さないでください。 ファイナライザーでは、クラスが直接所有しているアンマネージリソースのみを解放する必要があります。 クラスがアンマネージ リソースを所有していない場合は、クラス定義に `Finalize` メソッドを含めないでください。 詳細については、「[ガベージコレクション](~/docs/standard/garbage-collection/index.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -454,10 +454,12 @@
       </Docs>
     </Member>
     <Member MemberName="CloseAsync">
-      <MemberSignature Language="C#" Value="public virtual System.Threading.Tasks.Task CloseAsync (System.Threading.CancellationToken cancellationToken = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.Task CloseAsync(valuetype System.Threading.CancellationToken cancellationToken) cil managed" />
-      <MemberSignature Language="DocId" Value="M:System.Data.Common.DbConnection.CloseAsync(System.Threading.CancellationToken)" />
-      <MemberSignature Language="F#" Value="abstract member CloseAsync : System.Threading.CancellationToken -&gt; System.Threading.Tasks.Task&#xA;override this.CloseAsync : System.Threading.CancellationToken -&gt; System.Threading.Tasks.Task" Usage="dbConnection.CloseAsync cancellationToken" />
+      <MemberSignature Language="C#" Value="public virtual System.Threading.Tasks.Task CloseAsync ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.Task CloseAsync() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Data.Common.DbConnection.CloseAsync" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Function CloseAsync () As Task" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual System::Threading::Tasks::Task ^ CloseAsync();" />
+      <MemberSignature Language="F#" Value="abstract member CloseAsync : unit -&gt; System.Threading.Tasks.Task&#xA;override this.CloseAsync : unit -&gt; System.Threading.Tasks.Task" Usage="dbConnection.CloseAsync " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Data.Common</AssemblyName>
@@ -472,11 +474,8 @@
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="0" FrameworkAlternate="netcore-3.0" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="cancellationToken">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -535,7 +534,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 接続文字列の正確な内容は、この接続の特定のデータ ソースに応じて異なります。 どの設定が有効で調べるには、特定の種類を使用する接続のドキュメントを参照してください。  
+ 接続文字列の正確な内容は、この接続の特定のデータ ソースに応じて異なります。 有効な設定を確認するには、使用している特定の種類の接続に関するドキュメントを参照してください。  
   
  ]]></format>
         </remarks>
@@ -657,7 +656,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 独自の接続を実装する場合を作成して返すために必要なコードを実装するには、このメソッドをオーバーライドする<xref:System.Data.Common.DbCommand>オブジェクト。  
+ 独自の接続を実装する場合は、このメソッドをオーバーライドして、 <xref:System.Data.Common.DbCommand>オブジェクトを作成して返すために必要なコードを実装します。  
   
  ]]></format>
         </remarks>
@@ -704,7 +703,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 通常、接続は動的にこのプロパティを更新し、現在のデータベースが変更されたときにします。  
+ 通常、接続では、現在のデータベースが変更されたときに、このプロパティが動的に更新されます。  
   
  ]]></format>
         </remarks>
@@ -747,7 +746,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- データベースへの接続が閉じている場合、<xref:System.Data.Common.DbConnection.DataSource%2A>にいる、<xref:System.Data.Common.DbConnection.ConnectionString%2A>の`DataSource`キーワード。 接続が開いている場合、<xref:System.Data.Common.DbConnection.ConnectionString%2A>データ ソースのキーワードの値で始まる"&#124;`datadirectory`&#124;"、いるプロパティを返す、<xref:System.Data.Common.DbConnection.ConnectionString%2A>の`DataSource`キーワードのみです。 ネイティブ プロバイダーを返しますのプロパティを返す、データベースへの接続が開いている場合、 `DBPROP_INIT_DATASOURCE`、空である場合と、ネイティブ プロバイダーの`DBPROP_DATASOURCENAME`が返されます。  
+ データベースへの接続が閉じ<xref:System.Data.Common.DbConnection.DataSource%2A>ている場合、は`DataSource`キーワードのに含まれる<xref:System.Data.Common.DbConnection.ConnectionString%2A>すべてのものを返します。 接続が<xref:System.Data.Common.DbConnection.ConnectionString%2A>開いていて、データソースキーワードの値が "&#124;`datadirectory`&#124;" で始まる場合、 <xref:System.Data.Common.DbConnection.ConnectionString%2A> `DataSource`プロパティは、キーワードに対してのみに含まれるすべてのものを返します。 データベースへの接続が開いている場合、プロパティは、 `DBPROP_INIT_DATASOURCE`に対してネイティブプロバイダーが返す内容を返します。この値が空の場合は、ネイティブプロバイダーの`DBPROP_DATASOURCENAME`が返されます。  
   
  ]]></format>
         </remarks>
@@ -915,7 +914,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しい ADO.NET 2.0 では、サポートを使用するため、`EnlistTransaction`分散トランザクションに参加するメソッド。 これにより、接続しているため、<xref:System.Transactions.Transaction>インスタンス、`EnlistTransaction`で利用できる機能を活用、<xref:System.Transactions>名前空間を管理するための分散トランザクション。 接続は明示的にトランザクションに参加するは、参加解除または最初のトランザクションが完了するまで、別のトランザクションに参加していることはできません。  
+ ADO.NET 2.0 の新機能では、 `EnlistTransaction`メソッドを使用した分散トランザクションへの参加がサポートされています。 は<xref:System.Transactions.Transaction>インスタンスに接続を参加させるため`EnlistTransaction` 、は、 <xref:System.Transactions>名前空間で使用できる機能を利用して分散トランザクションを管理します。 トランザクションに明示的に参加した接続は、最初のトランザクションが完了するまで、参加を解除したり、別のトランザクションに参加させたりすることはできません。  
   
  ]]></format>
         </remarks>
@@ -935,11 +934,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 接続がトランザクションに関連付けられている場合は、実行`GetSchema`呼び出しが発生する一部のプロバイダー例外をスローする可能性があります。  
+ 接続がトランザクションに関連付けられている`GetSchema`場合、呼び出しを実行すると、一部のプロバイダーが例外をスローする可能性があります。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </MemberGroup>
@@ -978,11 +977,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 接続がトランザクションに関連付けられている場合は、実行`GetSchema`呼び出しが発生する一部のプロバイダー例外をスローする可能性があります。  
+ 接続がトランザクションに関連付けられている`GetSchema`場合、呼び出しを実行すると、一部のプロバイダーが例外をスローする可能性があります。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -1024,12 +1023,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 接続がトランザクションに関連付けられている場合は、実行`GetSchema`呼び出しが発生する一部のプロバイダー例外をスローする可能性があります。  
+ 接続がトランザクションに関連付けられている`GetSchema`場合、呼び出しを実行すると、一部のプロバイダーが例外をスローする可能性があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="collectionName" /> は null として指定されます。</exception>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -1073,16 +1072,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `restrictionValues`パラメーターを指定できます*n* 、特定のコレクションに対する制限のコレクションで指定された値の深さ。 指定された制限の値を設定し、その他の制限の値を設定できません、ために、配置の値を指定するには制限の適切な値を null には、前述の制限を設定する必要があります。  
+ パラメーター `restrictionValues`では、特定のコレクションの制限コレクションによって指定される値の*n*の深さを指定できます。 特定の制限に対して値を設定し、他の制限値を設定しないようにするには、上記の制限を null に設定し、値を指定する制限のに適切な値を設定する必要があります。  
   
- この例では、"Tables"コレクションです。 次の値以上で渡す必要があります"Tables"コレクションが 3 つの制限 (データベース、所有者、およびテーブルの名前)、"Carl"の所有者に関連付けられているテーブルのみを取得する場合は、:"Carl"は null です。 制限値が渡されたしない場合は、既定値がその制限に使用されます。 これは、null を渡すことと同じマッピングとは異なるパラメーター値に空の文字列を渡すことができます。 その場合、空の文字列 ("") は、指定されたパラメーターの値であると見なされます。  
+ この例として、"Tables" コレクションがあります。 "Tables" コレクションに3つの制限 (データベース、所有者、およびテーブル名) があり、所有者 "Carl" に関連付けられているテーブルのみを取得する場合は、少なくとも null、"Carl" の値を渡す必要があります。 制限値が渡されない場合は、その制限に既定値が使用されます。 これは、null を渡す場合と同じマッピングです。これは、パラメーター値として空の文字列を渡すこととは異なります。 その場合、空の文字列 ("") は、指定されたパラメーターの値と見なされます。  
   
- 接続がトランザクションに関連付けられている場合は、実行`GetSchema`呼び出しが発生する一部のプロバイダー例外をスローする可能性があります。  
+ 接続がトランザクションに関連付けられている`GetSchema`場合、呼び出しを実行すると、一部のプロバイダーが例外をスローする可能性があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="collectionName" /> は null として指定されます。</exception>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -1125,11 +1124,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- イベントを発生させると、イベント ハンドラーがデリゲートから呼び出されます。 概要については、次を参照してください。[処理とイベントの発生](~/docs/standard/events/index.md)します。  
+ イベントを発生させると、イベント ハンドラーがデリゲートから呼び出されます。 概要については、「[イベントの処理と発生](~/docs/standard/events/index.md)」を参照してください。  
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>オーバーライドするときに<see cref="M:System.Data.Common.DbConnection.OnStateChange(System.Data.StateChangeEventArgs)" />、派生クラスでは、基本クラスを呼び出す、<see cref="M:System.Data.Common.DbConnection.OnStateChange(System.Data.StateChangeEventArgs)" />メソッド。</para></block>
+        <block subset="none" type="overrides"><para>派生クラス<see cref="M:System.Data.Common.DbConnection.OnStateChange(System.Data.StateChangeEventArgs)" />でをオーバーライドする場合は、必ず基底クラスの<see cref="M:System.Data.Common.DbConnection.OnStateChange(System.Data.StateChangeEventArgs)" />メソッドを呼び出してください。</para></block>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -1172,7 +1171,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、ユーザー定義の動作をオーバーライドする必要があります。 <xref:System.Data.SqlClient.SqlConnection.Open%2A?displayProperty=nameWithType> もう一度せずに呼び出された場合、例外がスローされます最初に終了しています。  
+ このメソッドは、ユーザー定義の動作でオーバーライドする必要があります。 <xref:System.Data.SqlClient.SqlConnection.Open%2A?displayProperty=nameWithType>は、最初に閉じずにもう一度呼び出された場合に、例外をスローします。  
   
  ]]></format>
         </remarks>
@@ -1191,7 +1190,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- .NET Framework Data provider for SQL Server の非同期プログラミングの詳細については、次を参照してください。[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)します。  
+ SQL Server の .NET Framework Data Provider での非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1234,11 +1233,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出した後<xref:System.Data.Common.DbConnection.OpenAsync%2A>、<xref:System.Data.Common.DbConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Connecting>、返されるまで<xref:System.Threading.Tasks.Task>が完了します。 次に、接続が成功すると場合、<xref:System.Data.Common.DbConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Open>します。 接続が失敗した場合、<xref:System.Data.Common.DbConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Closed>します。  
+ を呼び出し<xref:System.Data.Common.DbConnection.OpenAsync%2A>た<xref:System.Data.Common.DbConnection.State%2A>後、 <xref:System.Data.ConnectionState.Connecting> 返さ<xref:System.Threading.Tasks.Task>れたが完了するまで、はを返す必要があります。 次に、接続が成功した<xref:System.Data.Common.DbConnection.State%2A>場合、 <xref:System.Data.ConnectionState.Open>はを返す必要があります。 接続に失敗した<xref:System.Data.Common.DbConnection.State%2A>場合、 <xref:System.Data.ConnectionState.Closed>はを返す必要があります。  
   
- 呼び出し<xref:System.Data.Common.DbConnection.Close%2A>取り消すか、対応する終了を試みます<xref:System.Data.Common.DbConnection.OpenAsync%2A>呼び出します。  
+ の呼び出し<xref:System.Data.Common.DbConnection.Close%2A>は、対応<xref:System.Data.Common.DbConnection.OpenAsync%2A>する呼び出しの取り消しまたは終了を試みます。  
   
- .NET Framework Data provider for SQL Server の非同期プログラミングの詳細については、次を参照してください。[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)します。  
+ SQL Server の .NET Framework Data Provider での非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1287,11 +1286,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出した後<xref:System.Data.Common.DbConnection.OpenAsync%2A>、<xref:System.Data.Common.DbConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Connecting>、返されるまで<xref:System.Threading.Tasks.Task>が完了します。 次に、接続が成功すると場合、<xref:System.Data.Common.DbConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Open>します。 接続が失敗した場合、<xref:System.Data.Common.DbConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Closed>します。  
+ を呼び出し<xref:System.Data.Common.DbConnection.OpenAsync%2A>た<xref:System.Data.Common.DbConnection.State%2A>後、 <xref:System.Data.ConnectionState.Connecting> 返さ<xref:System.Threading.Tasks.Task>れたが完了するまで、はを返す必要があります。 次に、接続が成功した<xref:System.Data.Common.DbConnection.State%2A>場合、 <xref:System.Data.ConnectionState.Open>はを返す必要があります。 接続に失敗した<xref:System.Data.Common.DbConnection.State%2A>場合、 <xref:System.Data.ConnectionState.Closed>はを返す必要があります。  
   
- 呼び出し<xref:System.Data.Common.DbConnection.Close%2A>取り消すか、対応する終了を試みます<xref:System.Data.Common.DbConnection.OpenAsync%2A>呼び出します。  
+ の呼び出し<xref:System.Data.Common.DbConnection.Close%2A>は、対応<xref:System.Data.Common.DbConnection.OpenAsync%2A>する呼び出しの取り消しまたは終了を試みます。  
   
- .NET Framework Data provider for SQL Server の非同期プログラミングの詳細については、次を参照してください。[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)します。  
+ SQL Server の .NET Framework Data Provider での非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1419,7 +1418,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.Common.DbConnection.StateChange>イベントを閉じているからイベントの変更の状態を開く、または closed に開かれたときに発生します。  
+ <xref:System.Data.Common.DbConnection.StateChange>イベントは、イベントの状態が closed から opened に変更されるか、または opened から closed に変更されるときに発生します。  
   
  ]]></format>
         </remarks>
@@ -1569,7 +1568,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については、次を参照してください。[コマンドとパラメーター](~/docs/framework/data/adonet/commands-and-parameters.md)と<xref:System.Data.IDbConnection.CreateCommand%2A>します。  
+ 詳細については、「[コマンドとパラメーター](~/docs/framework/data/adonet/commands-and-parameters.md) 」および<xref:System.Data.IDbConnection.CreateCommand%2A>「」を参照してください。  
   
  ]]></format>
         </remarks>

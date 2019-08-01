@@ -28,14 +28,14 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サポートが必要な UI オートメーション プロバイダーの実装、<xref:System.Windows.Automation.RangeValuePattern>コントロール パターン。  
+ コントロールパターンを<xref:System.Windows.Automation.RangeValuePattern>サポートする必要がある UI オートメーションプロバイダーに実装されます。  
   
  ]]></format>
     </remarks>
     <altmember cref="T:System.Windows.Automation.RangeValuePattern" />
     <related type="Article" href="~/docs/framework/ui-automation/ui-automation-control-patterns-overview.md">UI オートメーション コントロール パターンの概要</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーション プロバイダーの実装</related>
-    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーション プロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/6acc6d08-bd67-4e2e-915c-9c1d34eb86fe">サーバー側 UI オートメーションプロバイダーの実装</related>
+    <related type="Article" href="https://msdn.microsoft.com/library/3584c0a1-9cd0-4968-8b63-b06390890ef6">クライアント側 UI オートメーションプロバイダーの実装</related>
     <related type="Article" href="https://msdn.microsoft.com/library/0d635c35-ffa8-4dc8-bbc9-12fcd5445776">UI オートメーション プロバイダーでのコントロール パターンのサポート</related>
     <related type="Article" href="https://msdn.microsoft.com/library/225feaa4-918e-418b-938e-7389338d0a69">UI オートメーション RangeValue コントロール パターンの実装</related>
   </Docs>
@@ -57,13 +57,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コントロールの値は読み取り専用かどうかを示す値を取得します。</summary>
+        <summary>コントロールの値が読み取り専用かどうかを示す値を取得します。</summary>
         <value>値が読み取り専用の場合は <see langword="true" />。変更可能な場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、読み取り専用でないコントロールを対象には、このメソッドの実装を示します。  
+ 次の例は、読み取り専用ではないコントロールに対してこのメソッドを実装する方法を示しています。  
   
  [!code-csharp[UIAIRangeValueProvider_snip#IsReadOnly](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/CSharp/RangeValueFragment.cs#isreadonly)]
  [!code-vb[UIAIRangeValueProvider_snip#IsReadOnly](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/visualbasic/rangevaluefragment.vb#isreadonly)]  
@@ -90,13 +90,13 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>加算または減算される値を取得、<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" />大規模な変更が行われると、PAGE DOWN キーなどのプロパティ。</summary>
-        <value>コントロールでサポートされる大きな変更値 (<see langword="Nothing" /> Visual basic)、コントロールがサポートされていない場合<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.LargeChange" />します。</value>
+        <summary>PageDown キーを使用するなど、大きな変更を行ったときに <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" /> プロパティに対して加算または減算する値を取得します。</summary>
+        <value>コントロールでサポートされている大きい変更値。コントロール<see langword="Nothing" />がをサポート<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.LargeChange" />していない場合は null (Visual Basic)。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、5.0 の大きな変更値を持つコントロールには、このメソッドの実装を示します。  
+ 次の例は、5.0 の大きな変更値を持つコントロールに対して、このメソッドを実装する方法を示しています。  
   
  [!code-csharp[UIAIRangeValueProvider_snip#LargeChange](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/CSharp/RangeValueFragment.cs#largechange)]
  [!code-vb[UIAIRangeValueProvider_snip#LargeChange](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/visualbasic/rangevaluefragment.vb#largechange)]  
@@ -125,12 +125,12 @@
       </ReturnValue>
       <Docs>
         <summary>コントロールでサポートされる範囲の最大値を取得します。</summary>
-        <value>コントロールでサポートされる最大値 (<see langword="Nothing" /> Visual basic)、コントロールがサポートされていない場合<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Maximum" />します。</value>
+        <value>コントロールでサポートされている最大値また<see langword="Nothing" />はコントロールがをサポート<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Maximum" />していない場合は null (Visual Basic)。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、255.0 の最大値を持つコントロールには、このメソッドの実装を示します。  
+ 最大値が255.0 のコントロールに対して、このメソッドを実装する例を次に示します。  
   
  [!code-csharp[UIAIRangeValueProvider_snip#Maximum](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/CSharp/RangeValueFragment.cs#maximum)]
  [!code-vb[UIAIRangeValueProvider_snip#Maximum](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/visualbasic/rangevaluefragment.vb#maximum)]  
@@ -159,12 +159,12 @@
       </ReturnValue>
       <Docs>
         <summary>コントロールでサポートされる範囲の最小値を取得します。</summary>
-        <value>コントロールでサポートされる最小値 (<see langword="Nothing" /> Visual basic)、コントロールがサポートされていない場合<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Minimum" />します。</value>
+        <value>コントロールでサポートされている最小値また<see langword="Nothing" />はコントロールがをサポート<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Minimum" />していない場合は null (Visual Basic)。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、最小値 0.0 がコントロールには、このメソッドの実装を示します。  
+ 次の例は、最小値が0.0 のコントロールに対してこのメソッドを実装する方法を示しています。  
   
  [!code-csharp[UIAIRangeValueProvider_snip#Minimum](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/CSharp/RangeValueFragment.cs#minimum)]
  [!code-vb[UIAIRangeValueProvider_snip#Minimum](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/visualbasic/rangevaluefragment.vb#minimum)]  
@@ -201,12 +201,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 実際の値のセットは、コントロールの実装に依存します。 コントロールは、要求されたに丸める場合がある`value`上または下します。  
+ 実際に設定される値は、コントロールの実装によって異なります。 コントロールは、要求さ`value`れたを上または下に丸めることができます。  
   
    
   
 ## Examples  
- 次の例では、カスタム コントロールには、このメソッドの 1 つの考えられる実装を示します。 カスタム コントロールには、基本色のアルファ値によって範囲の値が表示されます。  
+ 次の例は、カスタムコントロールに対してこのメソッドを1つ実装する方法を示しています。 カスタムコントロールは、その基本色のアルファ値を使用して範囲値を表示します。  
   
  [!code-csharp[UIAIRangeValueProvider_snip#SetValue](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/CSharp/RangeValueFragment.cs#setvalue)]
  [!code-vb[UIAIRangeValueProvider_snip#SetValue](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/visualbasic/rangevaluefragment.vb#setvalue)]  
@@ -234,13 +234,13 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>加算または減算される値を取得、<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" />小さな変更が行われると、このような方向キーと同様のプロパティ。</summary>
-        <value>小さな変更値または null (<see langword="Nothing" /> Visual basic)、コントロールがサポートされていない場合<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.SmallChange" />します。</value>
+        <summary>方向キーを使用するなど、小規模な変更を行ったときに <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" /> プロパティに対して加算または減算する値を取得します。</summary>
+        <value>コントロールでがサポート<see langword="Nothing" /> <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.SmallChange" />されていない場合は、小さな変更値または null (Visual Basic)。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、1.0 の小さな変更値を持つコントロールには、このメソッドの実装を示します。  
+ 次の例では、1.0 の値が小さいコントロールに対してこのメソッドを実装しています。  
   
  [!code-csharp[UIAIRangeValueProvider_snip#SmallChange](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/CSharp/RangeValueFragment.cs#smallchange)]
  [!code-vb[UIAIRangeValueProvider_snip#SmallChange](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/visualbasic/rangevaluefragment.vb#smallchange)]  
@@ -269,12 +269,12 @@
       </ReturnValue>
       <Docs>
         <summary>コントロールの値を取得します。</summary>
-        <value>コントロールまたは null の値 (<see langword="Nothing" /> Visual basic)、コントロールがサポートされていない場合<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" />します。</value>
+        <value>コントロールの値。コントロールがをサポート<see langword="Nothing" /> <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" />していない場合は null (Visual Basic)。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、カスタム コントロールには、このメソッドの実装を示します。 このサンプルでは、カスタム コントロールは、基本色のアルファの設定を使用して値が表示されます。  
+ 次の例は、カスタムコントロールのこのメソッドの実装を示しています。 このサンプルでは、カスタムコントロールは基本色のアルファ設定を使用して値を表示します。  
   
  [!code-csharp[UIAIRangeValueProvider_snip#Value](~/samples/snippets/csharp/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/CSharp/RangeValueFragment.cs#value)]
  [!code-vb[UIAIRangeValueProvider_snip#Value](~/samples/snippets/visualbasic/VS_Snippets_Wpf/UIAIRangeValueProvider_snip/visualbasic/rangevaluefragment.vb#value)]  

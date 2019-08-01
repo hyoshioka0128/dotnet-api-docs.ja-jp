@@ -32,13 +32,13 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- リソース マネージャーは、単一フェーズ コミットの最適化をサポートするためにこのインターフェイスを実装する場合でもという保証はありません単一フェーズ コミットを受け取ることに注意してください。 トランザクション マネージャーは、2 フェーズ コミットの通知を代わりに送信することができますも。  
+ Resource manager では、単一フェーズコミットの最適化をサポートするためにこのインターフェイスを実装している場合でも、単一フェーズコミットを受け取ることは保証されていないことに注意してください。 トランザクションマネージャーは、代わりに2フェーズコミット通知を送信できます。  
   
- 呼び出し、トランザクションの参加者として、リソース マネージャーを参加させる、<xref:System.Transactions.Transaction.EnlistVolatile%2A>メソッドまたは<xref:System.Transactions.Transaction.EnlistDurable%2A>のメソッド、<xref:System.Transactions.Transaction>クラス。 具体的には、`EnlistmentOptions`パラメーターと等しく必要があります<xref:System.Transactions.EnlistmentOptions.None>単一フェーズ コミットを実行するためにします。 誤って設定されている場合<xref:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired>、ない単一フェーズのコミットが発生します。  
+ リソースマネージャーをトランザクションの参加要素として参加させるに<xref:System.Transactions.Transaction.EnlistVolatile%2A> <xref:System.Transactions.Transaction.EnlistDurable%2A>は、 <xref:System.Transactions.Transaction>クラスのメソッドまたはメソッドを呼び出します。 具体的には`EnlistmentOptions` 、単一フェーズコミット<xref:System.Transactions.EnlistmentOptions.None>が確実に実行されるように、パラメーターはと同じである必要があります。 誤ってに<xref:System.Transactions.EnlistmentOptions.EnlistDuringPrepareRequired>設定されている場合、1フェーズコミットは実行されません。  
   
- 以降、<xref:System.Transactions.ISinglePhaseNotification>インターフェイスから派生、<xref:System.Transactions.IEnlistmentNotification>インターフェイス、2 フェーズ コミット通知をリソース マネージャーは、後者のすべてのメソッドを実装もする必要があります。  トランザクション マネージャーの 2 フェーズ コミットをかどうかを選択または、単一フェーズ コミットの最適化がこのリソース マネージャーで使用されます。  ただし、このインターフェイスを実装する、リソース マネージャー、利用可能になったら、最適化を利用できます。  
+ インターフェイスは<xref:System.Transactions.IEnlistmentNotification>インターフェイスから派生しているため、リソースマネージャーは2フェーズコミット通知のために後者のすべてのメソッドも実装する必要があります。 <xref:System.Transactions.ISinglePhaseNotification>  このリソースマネージャーでは、2フェーズコミットまたは単一フェーズコミット最適化が使用されているかどうかについて、トランザクションマネージャーが選択します。  ただし、このインターフェイスを実装することにより、リソースマネージャーは、使用可能な場合に最適化を利用できるようになります。  
   
- かどうか、最適化が使用され、トランザクション マネージャーは、<xref:System.Transactions.ISinglePhaseNotification.SinglePhaseCommit%2A>参加しているリソースのメソッドは、リソース マネージャーに応答この呼び出しのさまざまなメソッドを使用して、<xref:System.Transactions.SinglePhaseEnlistment>場合、トランザクション マネージャーに通知するクラス、トランザクションがコミットまたはロールバックすることです。  
+ 最適化が使用され、トランザクションマネージャーが参加し<xref:System.Transactions.ISinglePhaseNotification.SinglePhaseCommit%2A>たリソースのメソッドを呼び出す場合、リソースマネージャーは、 <xref:System.Transactions.SinglePhaseEnlistment>クラスのさまざまなメソッドを使用してこの呼び出しに応答し、トランザクションはコミットまたはロールバックされます。  
   
  ]]></format>
     </remarks>
@@ -85,18 +85,18 @@
       <Docs>
         <param name="singlePhaseEnlistment">トランザクション マネージャーに応答を送信するために使用する <see cref="T:System.Transactions.SinglePhaseEnlistment" />。</param>
         <param name="enlistment">トランザクション マネージャーに応答を送信するために使用する <see cref="T:System.Transactions.SinglePhaseEnlistment" />。</param>
-        <summary>単一フェーズ コミットの最適化のコールバックのリソース マネージャーの実装を表します。</summary>
+        <summary>単一フェーズ コミットの最適化に対応したリソース マネージャーにおけるコールバックの実装を表します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクション マネージャーの 2 フェーズ コミットをかどうかを選択または、単一フェーズ コミットの最適化がこのリソース マネージャーで使用されます。  単一フェーズと 2 フェーズ コミットの詳細については、次を参照してください。 [Committing A Transaction In Single-Phase and Multi-phase](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)します。  
+ このリソースマネージャーでは、2フェーズコミットまたは単一フェーズコミット最適化が使用されているかどうかについて、トランザクションマネージャーが選択します。  単一フェーズと2フェーズコミットの詳細については、「[単一フェーズおよび複数フェーズでのトランザクションのコミット](https://msdn.microsoft.com/library/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d)」を参照してください。  
   
- Resource manager のこの参加リストでそのため、いずれか、<xref:System.Transactions.ISinglePhaseNotification.SinglePhaseCommit%2A>メソッドが呼び出されると、または 2 つのフェーズで定義されているコミット メソッド、<xref:System.Transactions.IEnlistmentNotification>インターフェイスが呼び出されます。  
+ このため、リソースマネージャーのこの参加リストでは、 <xref:System.Transactions.ISinglePhaseNotification.SinglePhaseCommit%2A>メソッドが呼び出されるか、 <xref:System.Transactions.IEnlistmentNotification>インターフェイスに定義されている2フェーズコミットメソッドが呼び出されます。  
   
- このメソッドの実装は、いずれかを呼び出す必要があります、<xref:System.Transactions.SinglePhaseEnlistment.Committed%2A>メソッドまたは<xref:System.Transactions.SinglePhaseEnlistment.Aborted%2A>のメソッド、`singlePhaseEnlistment`パラメーターをトランザクションをコミットまたはロールバックするかどうかを示します。  
+ このメソッドの実装では、 <xref:System.Transactions.SinglePhaseEnlistment.Committed%2A> `singlePhaseEnlistment`パラメーターのメソッド<xref:System.Transactions.SinglePhaseEnlistment.Aborted%2A>またはメソッドのいずれかを呼び出して、トランザクションをコミットするかロールバックするかを指定する必要があります。  
   
- トランザクション マネージャーは、単一フェーズ コミットをサポートする 1 つだけの揮発性参加リストがある場合、またはゼロまたは揮発性参加リストと 1 つの永続参加リストがある場合に、このメソッドを呼び出します。 後者の場合、揮発性参加リストが表示される<xref:System.Transactions.IEnlistmentNotification.Prepare%2A>コミット段階-双と唯一の永続参加リストの通知は、単一フェーズ コミット通知を受け取ります。  
+ トランザクションマネージャーは、単一フェーズコミットをサポートする揮発性の参加リストが1つしかない場合、または、0個以上の揮発性の参加リストと1つの永続参加リストがある場合に、このメソッドを呼び出します。 後者の場合、揮発性の参加リストは<xref:System.Transactions.IEnlistmentNotification.Prepare%2A> 2 フェーズコミットの通知を受信し、唯一の永続参加リストは1フェーズコミット通知を受け取ります。  
   
  ]]></format>
         </remarks>

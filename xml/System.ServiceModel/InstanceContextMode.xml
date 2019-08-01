@@ -1,5 +1,5 @@
 <Type Name="InstanceContextMode" FullName="System.ServiceModel.InstanceContextMode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="6cc670a91ba9cd04f8f15714a1fe94480758599e" /><Meta Name="ms.sourcegitcommit" Value="2d8393b83688679d14f9fafe22c1fddd0ea39674" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="01/17/2019" /><Meta Name="ms.locfileid" Value="54363142" /></Metadata><TypeSignature Language="C#" Value="public enum InstanceContextMode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="d3079ebf12bb7013ba2dfd7da4de97434fc3b896" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686375" /></Metadata><TypeSignature Language="C#" Value="public enum InstanceContextMode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed InstanceContextMode extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.InstanceContextMode" />
   <TypeSignature Language="VB.NET" Value="Public Enum InstanceContextMode" />
@@ -20,15 +20,15 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ServiceModel.InstanceContext?displayProperty=nameWithType> は、チャネルとユーザー定義サービス オブジェクトとの関連付けを管理します。 <xref:System.ServiceModel.InstanceContextMode> プロパティを持つ <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A?displayProperty=nameWithType> 列挙型を使用して、<xref:System.ServiceModel.InstanceContext> オブジェクトの有効期間を指定します。 Windows Communication Foundation (WCF) を新規に作成できます<xref:System.ServiceModel.InstanceContext>オブジェクトのすべてのセッションのすべての呼び出しのことも、<xref:System.ServiceModel.InstanceContext>オブジェクトが 1 つのサービス オブジェクトにバインドします。 実際の例を参照してください、 [Instancing](~/docs/framework/wcf/samples/instancing.md)します。  
+
+クラス<xref:System.ServiceModel.InstanceContext?displayProperty=nameWithType>は、チャネルとユーザー定義のサービスオブジェクト間の関連付けを管理します。 `InstanceContextMode` プロパティを持つ <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A?displayProperty=nameWithType> 列挙型を使用して、<xref:System.ServiceModel.InstanceContext> オブジェクトの有効期間を指定します。 Windows Communication Foundation (WCF) では、すべて<xref:System.ServiceModel.InstanceContext>の呼び出しに対して新しいオブジェクトを作成するか、 <xref:System.ServiceModel.InstanceContext>すべてのセッションを使用するか、またはオブジェクトが1つのサービスオブジェクトにバインドされるように指定することができます。 実際の例については、「[インスタンス](~/docs/framework/wcf/samples/instancing.md)化」を参照してください。  
   
- 1 つの値を指定する 1 つ<xref:System.ServiceModel.InstanceContextMode.Single>オブジェクトは、サービスの有効期間のために使用する必要があります。  
-  
-> [!NOTE]
->  場合、<xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A>値が 1 つの結果、サービスできますのみ処理することが 1 つのメッセージはでも設定していない場合に設定されて、<xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A>値を<xref:System.ServiceModel.ConcurrencyMode.Multiple>します。  
-  
-   
-  
+`Single` 値は、サービスの有効期間の間、単一の <xref:System.ServiceModel.InstanceContext> オブジェクトを使用する必要があることを指定します。 `Single`値にはいくつかの注意事項が関連付けられています。
+
+- 値がに`Single`設定されている場合、サービスは、 <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A?displayProperty=nameWithtype>値もに<xref:System.ServiceModel.ConcurrencyMode.Multiple?displayProperty=nameWithType>設定しない限り、一度に1つのメッセージだけを処理できます。 <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A?displayProperty=nameWithType>  
+
+- シングルトン有効期間動作 (ホスト アプリケーションが <xref:System.ServiceModel.ServiceHost.%23ctor%2A?displayProperty=nameWithType> コンストラクターを呼び出し、サービスとして使用するオブジェクトを渡す場合など) では、サービス クラスで <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A?displayProperty=nameWithType> を `Single` に設定する必要があります。これを行わなかった場合は、サービス ホストを開いたときに例外がスローされます。  
+
 ## Examples  
  サービス クラスに対して <xref:System.ServiceModel.InstanceContextMode> を設定する方法を次のコード例に示します。  
   
@@ -105,16 +105,6 @@
       <MemberValue>2</MemberValue>
       <Docs>
         <summary>すべての着信呼び出しに対して 1 つの <see cref="T:System.ServiceModel.InstanceContext" /> オブジェクトだけを使用し、その後、そのオブジェクトをリサイクルしません。 サービス オブジェクトが存在しない場合は、1 つ作成されます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  シングルトン有効期間動作 (ホスト アプリケーションを呼び出す場合など、<xref:System.ServiceModel.ServiceHost.%23ctor%2A>コンス トラクター、サービスとして使用するオブジェクトを渡す)、サービス クラスを設定する必要があります<xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A>を単一のサービス ホストを開いたときに例外がスローされます。  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -40,20 +40,20 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>自動スクロールの動作をサポートするコントロールの基底クラスを定義します。</summary>
+    <summary>自動スクロールの動作をサポートするコントロールの基本クラスを定義します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 通常使用しない、<xref:System.Windows.Forms.ScrollableControl>クラスを直接します。 <xref:System.Windows.Forms.ContainerControl>と<xref:System.Windows.Forms.Panel>クラスは、このクラスから継承します。  
+ 通常、 <xref:System.Windows.Forms.ScrollableControl>クラスを直接使用することはありません。 クラス<xref:System.Windows.Forms.ContainerControl> と<xref:System.Windows.Forms.Panel>クラスは、このクラスを継承します。  
   
- <xref:System.Windows.Forms.ScrollableControl>クラスをスクロールする機能を必要とするコントロールの基底クラスとして機能します。 必要に応じてスクロール バーを表示するコントロールを有効にするには設定、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティを`true`設定と、<xref:System.Windows.Forms.ScrollableControl.AutoScrollMinSize%2A>プロパティを目的のサイズ。 コントロールのサイズが指定の最小サイズより小さいか、子コントロールがコントロールの境界の外側にある、適切なスクロール バーが表示されます。  
+ クラス<xref:System.Windows.Forms.ScrollableControl>は、スクロール機能を必要とするコントロールの基本クラスとして機能します。 必要に応じてコントロールがスクロールバーを表示できるように<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>するに`true`は、プロパティ<xref:System.Windows.Forms.ScrollableControl.AutoScrollMinSize%2A>をに設定し、プロパティを目的のサイズに設定します。 コントロールのサイズが指定した最小サイズより小さい場合、または子コントロールがコントロールの境界の外側にある場合は、適切なスクロールバーが表示されます。  
   
- スクロール バーが表示されます。 手動で無効にする設定、<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>と<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>プロパティ。 いずれかのプロパティ設定されている場合`false`、対応するスクロール バーが表示されない場合でも、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティに設定されて`true`します。  
+ 表示されるスクロールバーを手動でオーバーライドするに<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>は<xref:System.Windows.Forms.ScrollableControl.HScroll%2A> 、プロパティとプロパティを設定します。 いずれかのプロパティがに`false`設定されている場合、 <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティがに`true`設定されていても、対応するスクロールバーは表示されません。  
   
- 処理することができます、<xref:System.Windows.Forms.ScrollableControl.Scroll>コード、ユーザーがクライアント領域をスクロールするときを把握するイベントです。  
+ <xref:System.Windows.Forms.ScrollableControl.Scroll>イベントを処理して、ユーザーまたはコードがクライアント領域をスクロールするタイミングを知ることができます。  
   
- コントロールをフォームにプログラムで追加するときに使用して、<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>プロパティを現在の表示可能なスクロール領域の内外のコントロールを配置します。  
+ プログラムによってフォームにコントロールを追加する<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>場合は、プロパティを使用して、現在の表示可能なスクロール領域の内側または外側にコントロールを配置します。  
   
  ]]></format>
     </remarks>
@@ -81,13 +81,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の<xref:System.Windows.Forms.ScrollableControl.%23ctor%2A>コンス トラクターは、次の操作を実行します。  
+ 既定<xref:System.Windows.Forms.ScrollableControl.%23ctor%2A>のコンストラクターは、次のアクションを実行します。  
   
--   コンテナー コントロールとして呼び出すことによって、現在のインスタンスをマーク、<xref:System.Windows.Forms.Control.SetStyle%2A>を設定するメソッド、<xref:System.Windows.Forms.ControlStyles.ContainerControl>にスタイルを`true`します。  
+-   <xref:System.Windows.Forms.Control.SetStyle%2A>メソッドを呼び出して<xref:System.Windows.Forms.ControlStyles.ContainerControl>スタイルをに`true`設定することにより、現在のインスタンスをコンテナーコントロールとしてマークします。  
   
--   バック グラウンドの消去を設定できるように、<xref:System.Windows.Forms.ControlStyles.AllPaintingInWmPaint>に`false`します。  
+-   をに<xref:System.Windows.Forms.ControlStyles.AllPaintingInWmPaint> `false`設定して、背景を消去できるようにします。  
   
--   呼び出すことで自動スクロールを無効にします、<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>を設定するメソッド、<xref:System.Windows.Forms.ScrollableControl.ScrollStateAutoScrolling>ビットを`false`します。  
+-   <xref:System.Windows.Forms.ScrollableControl.ScrollStateAutoScrolling>ビットをに設定`false`する<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>メソッドを呼び出して、自動スクロールを無効にします。  
   
  ]]></format>
         </remarks>
@@ -127,7 +127,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 必要な場合、<xref:System.Windows.Forms.ScrollableControl.AdjustFormScrollbars%2A>メソッドは、スクロール バーを対応するために必要な表示領域のサイズ変更など、クライアント領域をレイアウトします。  
+ 必要に応じて<xref:System.Windows.Forms.ScrollableControl.AdjustFormScrollbars%2A> 、メソッドは、スクロールバーに対応するために必要に応じて表示領域のサイズを変更するなど、クライアント領域をレイアウトします。  
   
  ]]></format>
         </remarks>
@@ -169,47 +169,47 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはコンテナーにより、ユーザーが、表示されている境界の外にあるコントロールにスクロールするかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> 場合、コンテナーは、自動スクロールを有効それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
+        <summary>コンテナーで、表示されている境界の外にあるコントロールにユーザーがスクロールできるかどうかを示す値を取得または設定します。</summary>
+        <value>コンテナーで自動スクロールが実行できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに`true`、このプロパティは、コンテナーをその表示されている境界を超える仮想サイズを使用します。  
+ の`true`場合、このプロパティを使用すると、コンテナーは、表示されている境界を超える仮想サイズを持つことができます。  
   
- Windows フォームには現在制限があり、両方の <xref:System.Windows.Forms.Control.RightToLeft%2A> が有効になり、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> が <xref:System.Windows.Forms.RightToLeft.Yes> に設定されている場合に、<xref:System.Windows.Forms.ScrollableControl> から派生したすべてのクラスが適切に動作しされません。 たとえばとなどのコントロールを配置すること<xref:System.Windows.Forms.Panel>-から派生したコンテナー クラスまたは<xref:System.Windows.Forms.Panel>(など<xref:System.Windows.Forms.FlowLayoutPanel>または<xref:System.Windows.Forms.TableLayoutPanel>) - フォーム上。 コンテナーの <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> を <xref:System.Windows.Forms.RightToLeft.Yes> に設定し、コンテナー内の 1 つ以上のコントロールの <xref:System.Windows.Forms.Control.Anchor%2A> プロパティを <xref:System.Windows.Forms.AnchorStyles.Right> に設定する場合、スクロール バーが表示されません。 <xref:System.Windows.Forms.ScrollableControl> から派生するクラスは、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> が <xref:System.Windows.Forms.RightToLeft.No> に設定された場合のように動作します。  
+ Windows フォームには現在制限があり、両方の <xref:System.Windows.Forms.Control.RightToLeft%2A> が有効になり、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> が <xref:System.Windows.Forms.RightToLeft.Yes> に設定されている場合に、<xref:System.Windows.Forms.ScrollableControl> から派生したすべてのクラスが適切に動作しされません。 たとえば、などのコントロール<xref:System.Windows.Forms.Panel> 、またはから<xref:System.Windows.Forms.Panel>派生したコンテナークラス ( <xref:System.Windows.Forms.FlowLayoutPanel>や<xref:System.Windows.Forms.TableLayoutPanel>など) をフォームに配置したとします。 コンテナーの <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> を <xref:System.Windows.Forms.RightToLeft.Yes> に設定し、コンテナー内の 1 つ以上のコントロールの <xref:System.Windows.Forms.Control.Anchor%2A> プロパティを <xref:System.Windows.Forms.AnchorStyles.Right> に設定する場合、スクロール バーが表示されません。 <xref:System.Windows.Forms.ScrollableControl> から派生するクラスは、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> が <xref:System.Windows.Forms.RightToLeft.No> に設定された場合のように動作します。  
   
  現在、唯一の回避策は、別の <xref:System.Windows.Forms.ScrollableControl> 内側に <xref:System.Windows.Forms.ScrollableControl> をネストすることです。 たとえば、この状況で <xref:System.Windows.Forms.TableLayoutPanel> が動作することが必要な場合は、<xref:System.Windows.Forms.Panel> コントロールの内側に配置して、<xref:System.Windows.Forms.Panel> 上の <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> を <xref:System.Windows.Forms.RightToLeft.Yes> に設定します。  
   
 > [!NOTE]
->  <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> 自動的にスクロール バーの可視性を維持します。 そのため、設定、<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>または<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティを`true`にないされるときに有効<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>を有効にします。  
+>  <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>スクロールバーの表示を自動的に維持します。 したがって、が<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>有効<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>になっ`true`ている場合<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> 、プロパティまたはプロパティをに設定しても効果はありません。  
   
    
   
 ## Examples  
- 次のコード例に示す方法水平と垂直方向のスクロール バーは必要なときに自動的に提供される、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティに設定されて`true`します。 例を実行するには、次の手順に従います。  
+ 次のコード例は、 <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティがに`true`設定されている場合に、必要に応じて水平スクロールバーと垂直スクロールバーが自動的に提供される方法を示しています。 この例を実行するには、次の手順に従います。  
   
 1.  新しい Windows フォーム アプリケーションを作成します。  
   
 2.  フォームに <xref:System.Windows.Forms.Panel> を追加します。  
   
-3.  追加、<xref:System.Windows.Forms.TextBox>パネルに名前を付けます`text1`します。  
+3.  パネルに<xref:System.Windows.Forms.TextBox>を追加し、という`text1`名前を指定します。  
   
-4.  右側の部分をパネルの右端を超えて拡張できるように、テキスト ボックスを移動します。  
+4.  テキストボックスを移動して、右側の部分がパネルの右端からはみ出します。  
   
-     パネルの境界外にあるテキスト ボックスの一部のアウトラインのみが表示されます。 全体のテキスト ボックスが表示されている場合、テキスト ボックスはフォームでは、パネルではなく、します。  
+     パネルの境界の外側にあるテキストボックスの部分のアウトラインのみが表示されます。 テキストボックス全体が表示されている場合、テキストボックスはパネルではなくフォーム上にあります。  
   
 5.  フォームに <xref:System.Windows.Forms.Button> を追加します。  
   
-6.  ハンドラーを追加、`Click`ボタンのイベント。  
+6.  ボタンの`Click`イベントのハンドラーを追加します。  
   
-7.  次のコード例を追加し、ボタンからに付けます`Click`ハンドラー。  
+7.  次のコード例を追加し、ボタンの`Click`ハンドラーから呼び出します。  
   
- 例を実行するときに、パネルの境界内にあるテキスト ボックスの一部だけ表示できます。 ボタンをクリックすると、表示をテキスト ボックスの残りの部分を確認することが有効になりますが、水平スクロール バーが表示されます。  
+ この例を実行すると、パネルの境界内にあるテキストボックスの部分のみが表示されます。 このボタンをクリックすると、水平スクロールバーが表示され、テキストボックスの残りの部分を表示できます。  
   
- パネルの最下部より下のテキスト ボックスの一部を配置する場合に、ボタンをクリックするとは、垂直スクロール バーが表示されます。  
+ テキストボックスの一部をパネルの下部の下に配置すると、ボタンをクリックすると垂直スクロールバーが表示されます。  
   
- コード例をチェックする前に、パネルの境界の外側、テキスト ボックスかどうかを設定、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティを`true`に設定する前に、<xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>プロパティ。 これは、範囲外チェックは必要ありません。 場合<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>に設定されている`true`、テキスト ボックスが、パネル内に完全にスクロール バーは表示されません。 また、余白を 0, 0 の既定の設定をおくことができます。  
+ このコード例では、 <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティをに`true`設定する前、 <xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>およびプロパティを設定する前に、テキストボックスがパネルの境界の外側にあるかどうかを確認します。 この範囲外のチェックは必要ありません。 が<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> に`true`設定されている場合、テキストボックスがパネル内に完全に表示されていても、スクロールバーは表示されません。 また、余白を既定の設定の0、0のままにすることもできます。  
   
  [!code-cpp[Classic ScrollableControl.AutoScroll Example#1](~/samples/snippets/cpp/VS_Snippets_Winforms/Classic ScrollableControl.AutoScroll Example/CPP/source.cpp#1)]
  [!code-csharp[Classic ScrollableControl.AutoScroll Example#1](~/samples/snippets/csharp/VS_Snippets_Winforms/Classic ScrollableControl.AutoScroll Example/CS/source.cs#1)]
@@ -254,25 +254,25 @@
       </ReturnValue>
       <Docs>
         <summary>自動スクロールのマージンのサイズを取得または設定します。</summary>
-        <value>A<see cref="T:System.Drawing.Size" />ピクセル単位で自動スクロールのマージンの幅と高さを表します。</value>
+        <value>自動スクロールのマージンの高さと幅をピクセル単位で表す <see cref="T:System.Drawing.Size" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 自動スクロールのマージンは、すべての子コントロール、スクロール可能な親コントロールの端との距離です。 <xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>サイズは、スクロール バーが必要かどうかを判断するスクロール可能なコントロールに含まれる子コントロールのサイズに追加されます。 <xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>プロパティは、親のスクロール可能なコントロールがサイズ変更または個々 の子コントロールは、ビュー、取り込まれるときに評価され、スクロール バーを表示する必要があるかどうかを決定するために使用します。 ドッキングされたコントロールは、スクロール バーを表示するかどうかを決定する計算から除外されます。  
+ 自動スクロールのマージンは、子コントロールと、スクロール可能な親コントロールの端との距離です。 スクロールバーが必要かどうかを判断するために、スクロール可能なコントロールに含まれるすべての子コントロールのサイズにサイズが追加されます。<xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A> <xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>プロパティは、親のスクロール可能なコントロールのサイズが変更されるか、個々の子コントロールが表示されるときに評価され、スクロールバーを表示する必要があるかどうかを判断するために使用されます。 ドッキングされたコントロールは、スクロールバーを表示する必要があるかどうかを決定する計算から除外されます。  
   
 > [!NOTE]
->  ドッキングされたコントロールの場合<xref:System.Windows.Forms.Control.Dock%2A>プロパティに設定されて<xref:System.Windows.Forms.DockStyle.Fill?displayProperty=nameWithType>、コントロールが親のスクロール可能なコントロールを格納および使用する場合、ドッキングされたコントロールは無視されます、<xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>スクロール バーが必要かどうかを判断します。  
+>  ドッキングされたコントロール<xref:System.Windows.Forms.Control.Dock%2A>のプロパティがに<xref:System.Windows.Forms.DockStyle.Fill?displayProperty=nameWithType>設定されている場合、コントロールは、スクロールバーが必要かどうか<xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>を判断するためにを使用するときに、親のスクロール可能なコントロールを塗りつぶし、ドッキングされたコントロールを無視します。  
   
- 親のスクロール可能なコントロールに子コントロールの端からの距離に割り当てられている値よりも小さいかどうか、<xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>プロパティおよび<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティに設定されて`true`、適切なスクロール バーが表示されます。  
+ 子コントロールの端から親のスクロール可能なコントロールまでの距離が、 <xref:System.Windows.Forms.ScrollableControl.AutoScrollMargin%2A>プロパティ<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>に割り当てられた値よりも小さく、プロパティがに`true`設定されている場合は、適切なスクロールバーが表示されます。  
   
 > [!NOTE]
->  お勧め、スクロール可能なコントロール内のコントロールをドッキングするときなど、子のスクロール可能なコントロールを追加する、 <xref:System.Windows.Forms.Panel>、スクロールが必要となるその他のコントロールを格納します。 子を追加する必要があります<xref:System.Windows.Forms.Panel>コントロールをスクロール可能なコントロールとその<xref:System.Windows.Forms.Control.Dock%2A>プロパティに設定<xref:System.Windows.Forms.DockStyle.Fill?displayProperty=nameWithType>とその<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティに設定`true`します。 設定する必要があります、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>に親のスクロール可能なコントロールのプロパティ`false`します。  
+>  スクロール可能なコントロール内でコントロールをドッキングする場合は<xref:System.Windows.Forms.Panel>、スクロールが必要なその他のコントロールを格納するために、などの子のスクロール可能なコントロールを追加することをお勧めします。 子<xref:System.Windows.Forms.Panel>コントロールをスクロール可能なコントロールに追加し、その<xref:System.Windows.Forms.Control.Dock%2A>プロパティをに<xref:System.Windows.Forms.DockStyle.Fill?displayProperty=nameWithType>設定し<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> 、そのプロパティ`true`をに設定する必要があります。 スクロール可能な親<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>コントロールのプロパティをに`false`設定する必要があります。  
   
    
   
 ## Examples  
- 次のコード例は、派生クラスを使用して<xref:System.Windows.Forms.Panel>します。 例はテキスト ボックスの位置を評価し、その親コンテナーをパネル コントロールの動作と外観を変更します。 例では、インスタンスを作成することが必要です、<xref:System.Windows.Forms.Panel>コントロール、 <xref:System.Windows.Forms.TextBox>、および<xref:System.Windows.Forms.Button>します。 少なくとも 1 つのパネルの端と重なるようにパネルに、テキスト ボックスを配置します。 パネルの動作と外観の違いを確認するためのボタンのクリックで、この関数を呼び出します。  
+ 次のコード例では、派生クラス<xref:System.Windows.Forms.Panel>を使用します。 この例では、テキストボックスの位置を評価し、その親コンテナーである panel コントロールの外観と動作を変更します。 この例では、 <xref:System.Windows.Forms.Panel> <xref:System.Windows.Forms.TextBox>コントロール、、および<xref:System.Windows.Forms.Button>のインスタンスを作成しておく必要があります。 パネルにテキストボックスを配置して、少なくとも1つのパネルの端と重なるようにします。 ボタンをクリックして、パネルの動作と外観の違いを確認します。  
   
  [!code-cpp[Classic ScrollableControl.AutoScroll Example#1](~/samples/snippets/cpp/VS_Snippets_Winforms/Classic ScrollableControl.AutoScroll Example/CPP/source.cpp#1)]
  [!code-csharp[Classic ScrollableControl.AutoScroll Example#1](~/samples/snippets/csharp/VS_Snippets_Winforms/Classic ScrollableControl.AutoScroll Example/CS/source.cs#1)]
@@ -280,7 +280,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:System.Drawing.Size.Height" />または<see cref="P:System.Drawing.Size.Width" />割り当てられた値が 0 未満です。</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">代入された <see cref="P:System.Drawing.Size.Height" /> または <see cref="P:System.Drawing.Size.Width" /> の値が 0 未満です。</exception>
         <altmember cref="P:System.Windows.Forms.ScrollableControl.AutoScroll" />
         <altmember cref="M:System.Windows.Forms.ScrollableControl.SetAutoScrollMargin(System.Int32,System.Int32)" />
         <altmember cref="P:System.Windows.Forms.ScrollableControl.AutoScrollPosition" />
@@ -315,12 +315,12 @@
       </ReturnValue>
       <Docs>
         <summary>自動スクロールの最小サイズを取得または設定します。</summary>
-        <value>A<see cref="T:System.Drawing.Size" />ユーザーがスクロールできる仮想領域の最小サイズを決定します。</value>
+        <value>ユーザーがスクロールできる仮想領域の最小サイズを決定する <see cref="T:System.Drawing.Size" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.AutoScrollMinSize%2A>プロパティは、自動スクロール バーに割り当てられている画面のサイズの管理に使用されます。  
+ <xref:System.Windows.Forms.ScrollableControl.AutoScrollMinSize%2A>プロパティは、自動スクロールバーに割り当てられた画面サイズを管理するために使用されます。  
   
  ]]></format>
         </remarks>
@@ -358,25 +358,25 @@
         <ReturnType>System.Drawing.Point</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または自動スクロール位置を設定します。</summary>
-        <value>A<see cref="T:System.Drawing.Point" />自動スクロールの位置 (ピクセル単位) を表します。</value>
+        <summary>自動スクロールの位置を取得または設定します。</summary>
+        <value>自動スクロールの位置をピクセル単位で表す <see cref="T:System.Drawing.Point" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>プロパティは、スクロール可能なコントロールの表示部分の位置を表します。 このプロパティを使用すると、表示されるコントロールの部分を変更できます。  
+ プロパティ<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>は、スクロール可能なコントロールの可視部分の位置を表します。 このプロパティを使用して、表示されるコントロールの部分を変更します。  
   
- コントロールをフォームにプログラムで追加するときに使用して、<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>プロパティを現在の表示可能なスクロール領域の内外のコントロールを配置します。  
+ プログラムによってフォームにコントロールを追加する<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>場合は、プロパティを使用して、現在の表示可能なスクロール領域の内側または外側にコントロールを配置します。  
   
 > [!NOTE]
->  <xref:System.Drawing.Point.X%2A>と<xref:System.Drawing.Point.Y%2A>取得した座標の値が負の値の開始位置 (0, 0) から、コントロールがスクロール可能な場合。 このプロパティを設定するときに割り当てる必要があります常に正<xref:System.Drawing.Point.X%2A>と<xref:System.Drawing.Point.Y%2A>開始位置を基準としたスクロール位置を設定する値。 たとえばとした場合、水平スクロール バーをセット x と y を 200、スクロール 200 ピクセル右に移動する、です。セット x と y を 100、スクロールが表示されます、100 ピクセルで、左をジャンプを設定する、100 ピクセルの開始位置から離れた場所であるためです。 最初のケースで<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>{-200, 0}; を返します。 2 番目のケースを返します{-100,0}します。  
+>  コントロール<xref:System.Drawing.Point.X%2A>が<xref:System.Drawing.Point.Y%2A>開始位置 (0, 0) から離れた位置にある場合、取得される座標値と座標値は負になります。 このプロパティを設定するときは、常に正<xref:System.Drawing.Point.X%2A>の<xref:System.Drawing.Point.Y%2A>値と値を割り当てて、開始位置を基準としてスクロール位置を設定する必要があります。 たとえば、水平スクロールバーがあり、x と y を200に設定した場合は、スクロール200ピクセルを右に移動します。その後、x と y を100に設定すると、スクロールが100ピクセル左に移動します。これは、開始位置から100ピクセルを設定しているためです。 最初の例では<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A> 、が {-200, 0} を返します。2番目{-100,0}のケースでは、が返されます。  
   
- 検出する<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>のイベント ハンドラーを作成、変更、<xref:System.Windows.Forms.Control.Paint>イベント、古い位置の値をプライベート変数に保存し、後続の古い値に新しい値を比較<xref:System.Windows.Forms.Control.Paint>イベント。  
+ いつ変更さ<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>れたかを検出するには<xref:System.Windows.Forms.Control.Paint> 、イベントのイベントハンドラーを作成し、その前の位置の値をプライベート変数に保存して、 <xref:System.Windows.Forms.Control.Paint>新しい値とそれ以降のイベントの古い値とを比較します。  
   
    
   
 ## Examples  
- 次のコード例では、<xref:System.Windows.Forms.ScrollableControl>クラスを派生<xref:System.Windows.Forms.Panel>スクロール可能な領域の左上隅にボタンを追加します。 オフセットによって決定されます、例では、<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>します。 例では、必要のある前提としていますが、<xref:System.Windows.Forms.Form>を格納している、<xref:System.Windows.Forms.Panel>で、<xref:System.Windows.Forms.Button>にします。 自動スクロールを有効にするには、外部のクライアント領域でボタンを配置、<xref:System.Windows.Forms.Panel>します。  
+ 次のコード例では<xref:System.Windows.Forms.ScrollableControl> 、派生<xref:System.Windows.Forms.Panel>クラスを使用して、スクロール可能な領域の左上隅にボタンを追加します。 この例では、 <xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>によって決定されるオフセットを使用できます。 この例は、にを<xref:System.Windows.Forms.Form> <xref:System.Windows.Forms.Panel>持つ<xref:System.Windows.Forms.Button>を含むがあることを前提として記述されています。 自動スクロールを有効にするには、の<xref:System.Windows.Forms.Panel>クライアント領域の外側にボタンを配置します。  
   
  [!code-cpp[Windows.Forms.ScrollableControl#1](~/samples/snippets/cpp/VS_Snippets_Winforms/Windows.Forms.ScrollableControl/CPP/scrollablecontrol.cpp#1)]
  [!code-csharp[Windows.Forms.ScrollableControl#1](~/samples/snippets/csharp/VS_Snippets_Winforms/Windows.Forms.ScrollableControl/CS/scrollablecontrol.cs#1)]
@@ -436,13 +436,13 @@
         <ReturnType>System.Drawing.Rectangle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>コントロールの仮想の表示領域を表す四角形を取得します。</summary>
+        <summary>コントロールの仮想表示領域を表す四角形を取得します。</summary>
         <value>コントロールの表示領域を表す <see cref="T:System.Drawing.Rectangle" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティに設定されて`true`、<xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>プロパティは、仮想サイズと位置の<xref:System.Windows.Forms.ScrollableControl>コントロール。 たとえば場合、幅と高さの<xref:System.Windows.Forms.ScrollableControl>両方 100 ピクセルはその境界を超えて拡張するコントロールがコントロールに含まれています<xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>サイズを表します、<xref:System.Windows.Forms.ScrollableControl>に格納されているコントロールを含める必要があります。 同様に、<xref:System.Drawing.Rectangle.X%2A>と<xref:System.Drawing.Rectangle.Y%2A>プロパティの<xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>のスクロール位置に関連する、<xref:System.Windows.Forms.ScrollableControl>します。  
+ プロパティがに`true`設定されている<xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>場合、プロパティは、 <xref:System.Windows.Forms.ScrollableControl>コントロールの仮想サイズと位置です。 <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> たとえば、の幅と高さ<xref:System.Windows.Forms.ScrollableControl>が100ピクセルで、コントロールに<xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>境界を超えて拡張されるコントロールが含まれている場合、は<xref:System.Windows.Forms.ScrollableControl> 、含まれるコントロールを含めるために必要なサイズを表します。 同様に<xref:System.Drawing.Rectangle.X%2A> 、の<xref:System.Drawing.Rectangle.Y%2A> <xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>プロパティとプロパティは、 <xref:System.Windows.Forms.ScrollableControl>のスクロール位置に関連します。  
   
  ]]></format>
         </remarks>
@@ -489,17 +489,17 @@
       </ReturnValue>
       <Docs>
         <summary>コントロールのすべての端に対するドッキング埋め込みの設定を取得します。</summary>
-        <value>A<see cref="T:System.Windows.Forms.ScrollableControl.DockPaddingEdges" />ドッキングされたコントロールのすべての端の埋め込みを表します。</value>
+        <value>ドッキングされているコントロールのすべての端の埋め込みを表す <see cref="T:System.Windows.Forms.ScrollableControl.DockPaddingEdges" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、ドッキングされているコンポーネントのこのコントロールの内部の罫線を制御します。  
+ このプロパティは、ドッキングされたコンポーネントについて、このコントロール内の境界線を制御します。  
   
    
   
 ## Examples  
- 次のコード例は、派生クラスを使用して<xref:System.Windows.Forms.Panel>します。 例では、ドッキング パネル コントロールのボタンと、順番、<xref:System.Windows.Forms.ScrollableControl.DockPaddingEdges>プロパティ、各ボタンのクリックで個別に設定します。 例では、インスタンスを作成することが必要です、<xref:System.Windows.Forms.Panel>コントロールと<xref:System.Windows.Forms.Button>フォームのという名前のクラス レベル メンバー変数が宣言されていると`myCounter`32 ビット符号付き整数として。 このコードを呼び出す必要があります、<xref:System.Windows.Forms.Control.Click>ボタンのイベント。  
+ 次のコード例では、派生クラス<xref:System.Windows.Forms.Panel>を使用します。 この例では、panel コントロールにボタンをドッキングし<xref:System.Windows.Forms.ScrollableControl.DockPaddingEdges> 、プロパティを順番に切り替えて、ボタンをクリックしてそれぞれを個別に設定しています。 この例では、 <xref:System.Windows.Forms.Panel>コントロールのインスタンス<xref:System.Windows.Forms.Button>とフォームを作成し、という名前`myCounter`のクラスレベルのメンバー変数を32ビット符号付き整数として宣言している必要があります。 このコードは、ボタンの<xref:System.Windows.Forms.Control.Click>イベントで呼び出す必要があります。  
   
  [!code-cpp[Classic ScrollableControl.DockPadding Example#1](~/samples/snippets/cpp/VS_Snippets_Winforms/Classic ScrollableControl.DockPadding Example/CPP/source.cpp#1)]
  [!code-csharp[Classic ScrollableControl.DockPadding Example#1](~/samples/snippets/csharp/VS_Snippets_Winforms/Classic ScrollableControl.DockPadding Example/CS/source.cs#1)]
@@ -541,20 +541,20 @@
       <Docs>
         <param name="bit">確認対象のフラグ。</param>
         <summary>指定したフラグが設定されているかどうかを判断します。</summary>
-        <returns><see langword="true" /> 指定したフラグが設定されている場合それ以外の場合、<see langword="false" />します。</returns>
+        <returns>指定したフラグが設定されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 次の表に、フラグ、<xref:System.Windows.Forms.ScrollableControl>使用を制御します。  
+ 次の表では、コントロール<xref:System.Windows.Forms.ScrollableControl>が使用するフラグについて説明します。  
   
-|値|説明|  
+|[値]|説明|  
 |-----------|-----------------|  
-|<xref:System.Windows.Forms.ScrollableControl.ScrollStateAutoScrolling>|マスクを取得するために使用するかどうか、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティに設定されて`true`します。|  
-|<xref:System.Windows.Forms.ScrollableControl.ScrollStateHScrollVisible>|マスクを取得するために使用するかどうか、<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>プロパティに設定されて`true`します。|  
-|<xref:System.Windows.Forms.ScrollableControl.ScrollStateVScrollVisible>|マスクを取得するために使用するかどうか、<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティに設定されて`true`します。|  
-|<xref:System.Windows.Forms.ScrollableControl.ScrollStateUserHasScrolled>|ユーザーが行ったかどうかを取得するために使用するマスク、<xref:System.Windows.Forms.ScrollableControl>スクロールします。|  
-|<xref:System.Windows.Forms.ScrollableControl.ScrollStateFullDrag>|ユーザーがフル ウィンドウ ドラッグ アンド ドロップ操作を有効にするかどうかを取得するために使用するマスク。|  
+|<xref:System.Windows.Forms.ScrollableControl.ScrollStateAutoScrolling>|プロパティがに`true`設定されて<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>いるかどうかを取得するために使用されるマスク。|  
+|<xref:System.Windows.Forms.ScrollableControl.ScrollStateHScrollVisible>|プロパティがに`true`設定されて<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>いるかどうかを取得するために使用されるマスク。|  
+|<xref:System.Windows.Forms.ScrollableControl.ScrollStateVScrollVisible>|プロパティがに`true`設定されて<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>いるかどうかを取得するために使用されるマスク。|  
+|<xref:System.Windows.Forms.ScrollableControl.ScrollStateUserHasScrolled>|ユーザーが<xref:System.Windows.Forms.ScrollableControl>スクロールを行ったかどうかを取得するために使用するマスク。|  
+|<xref:System.Windows.Forms.ScrollableControl.ScrollStateFullDrag>|ユーザーが完全なウィンドウのドラッグアンドドロップ操作を有効にしたかどうかを取得するために使用するマスク。|  
   
  ]]></format>
         </remarks>
@@ -590,12 +590,12 @@
       </ReturnValue>
       <Docs>
         <summary>水平スクロール バーに関連付けられている特性を取得します。</summary>
-        <value>A<see cref="T:System.Windows.Forms.HScrollProperties" />水平スクロール バーに関する情報を格納します。</value>
+        <value>水平スクロール バーに関する情報を格納する <see cref="T:System.Windows.Forms.HScrollProperties" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.HScrollProperties>クラスには、スクロール バーと、その操作に関する情報が含まれていますが有効になっていると表示されているかどうか、スクロール ページ サイズ、向きなどの位置が表示され、します。  
+ <xref:System.Windows.Forms.HScrollProperties>クラスには、スクロールバーとその操作 (有効で表示されているかどうか、スクロールページのサイズ、向き、表示位置など) に関する情報が含まれています。  
   
  ]]></format>
         </remarks>
@@ -632,15 +632,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または水平スクロール バーを表示するかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> 水平スクロール バーを表示する場合それ以外の場合、<see langword="false" />します。</value>
+        <summary>水平スクロール バーが表示されるかどうかを示す値を、取得または設定します。</summary>
+        <value>水平スクロール バーが表示される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 機能、<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>プロパティは、呼び出しを通じて行うこともできます、<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>と<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>メソッドを使用して<xref:System.Windows.Forms.ScrollableControl.ScrollStateHScrollVisible>パラメーターとして。  
+ <xref:System.Windows.Forms.ScrollableControl.HScroll%2A>プロパティの機能は、パラメーターとしてを使用<xref:System.Windows.Forms.ScrollableControl.ScrollStateHScrollVisible>して<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>メソッド<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>およびメソッドを呼び出すことによっても実現できます。  
   
- **注**<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>自動的にスクロール バーの可視性を維持します。 そのため、設定、<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>または<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティ`true`されていないされるときに有効<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>を有効にします。  
+ **メモ**<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>スクロールバーの表示を自動的に維持します。 したがって、が<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>有効<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>になっ`true`ている場合<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> 、プロパティまたはプロパティをに設定しても効果はありません。  
   
  ]]></format>
         </remarks>
@@ -707,13 +707,13 @@
         <Parameter Name="e" Type="System.Windows.Forms.MouseEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">イベント データを格納している <see cref="T:System.Windows.Forms.MouseEventArgs" />。</param>
+        <param name="e">処理するウィンドウ メッセージを表す、参照渡しされた <see cref="T:System.Windows.Forms.MouseEventArgs" /> 。</param>
         <summary><see cref="E:System.Windows.Forms.Control.MouseWheel" /> イベントを発生させます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 垂直スクロール バーが表示されている場合です。 つまり、<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティに設定されて`true`、マウス ホイールをスクロールして、<xref:System.Windows.Forms.ScrollableControl>垂直方向を制御します。 ただし、水平スクロール バーが表示されている場合のみです。 つまり、<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>に設定されている`false`と<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>プロパティを設定する`true,`マウス ホイールを水平方向にスクロールします。  
+ 垂直スクロールバーが表示されている場合 ( <xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティがに`true`設定されている場合)、 <xref:System.Windows.Forms.ScrollableControl>マウスホイールはコントロールを垂直方向にスクロールします。 ただし、水平スクロールバーだけが表示される<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>場合は、がに`false` <xref:System.Windows.Forms.ScrollableControl.HScroll%2A>設定され、マウスホイールに`true,`設定するプロパティが水平方向にスクロールすることを意味します。  
   
  イベントを発生させると、イベント ハンドラーがデリゲートから呼び出されます。 詳細については、次を参照してください。[処理とイベントの発生](~/docs/standard/events/index.md)します。  
   
@@ -721,7 +721,7 @@
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>オーバーライドするときに<see cref="M:System.Windows.Forms.ScrollableControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)" />、派生クラスで基底クラスを呼び出すことを確認する<see cref="M:System.Windows.Forms.ScrollableControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)" />デリゲートを登録するためのメソッドがイベントを受信します。</para></block>
+        <block subset="none" type="overrides"><para>派生クラス<see cref="M:System.Windows.Forms.ScrollableControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)" />でをオーバーライドする場合は、登録されているデリゲート<see cref="M:System.Windows.Forms.ScrollableControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)" />がイベントを受け取るように、基本クラスのメソッドを呼び出す必要があります。</para></block>
         <altmember cref="P:System.Windows.Forms.ScrollableControl.HScroll" />
         <altmember cref="P:System.Windows.Forms.ScrollableControl.VScroll" />
         <altmember cref="E:System.Windows.Forms.ScrollableControl.Scroll" />
@@ -759,7 +759,7 @@
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>オーバーライドするときに<see cref="M:System.Windows.Forms.ScrollableControl.OnPaddingChanged(System.EventArgs)" />、派生クラスで基底クラスを呼び出すことを確認する<see cref="M:System.Windows.Forms.ScrollableControl.OnPaddingChanged(System.EventArgs)" />デリゲートを登録するためのメソッドがイベントを受信します。</para></block>
+        <block subset="none" type="overrides"><para>派生クラス<see cref="M:System.Windows.Forms.ScrollableControl.OnPaddingChanged(System.EventArgs)" />でをオーバーライドする場合は、登録されているデリゲート<see cref="M:System.Windows.Forms.ScrollableControl.OnPaddingChanged(System.EventArgs)" />がイベントを受け取るように、基本クラスのメソッドを呼び出す必要があります。</para></block>
       </Docs>
     </Member>
     <Member MemberName="OnPaintBackground">
@@ -794,7 +794,7 @@
   
  ]]></format>
         </remarks>
-        <block subset="none" type="overrides"><para>オーバーライドするときに<see cref="M:System.Windows.Forms.ScrollableControl.OnPaintBackground(System.Windows.Forms.PaintEventArgs)" />、派生クラスで基底クラスを呼び出すことを確認する<see cref="M:System.Windows.Forms.ScrollableControl.OnPaintBackground(System.Windows.Forms.PaintEventArgs)" />デリゲートを登録するためのメソッドがイベントを受信します。</para></block>
+        <block subset="none" type="overrides"><para>派生クラス<see cref="M:System.Windows.Forms.ScrollableControl.OnPaintBackground(System.Windows.Forms.PaintEventArgs)" />でをオーバーライドする場合は、登録されているデリゲート<see cref="M:System.Windows.Forms.ScrollableControl.OnPaintBackground(System.Windows.Forms.PaintEventArgs)" />がイベントを受け取るように、基本クラスのメソッドを呼び出す必要があります。</para></block>
       </Docs>
     </Member>
     <Member MemberName="OnRightToLeftChanged">
@@ -848,7 +848,7 @@
         <Parameter Name="se" Type="System.Windows.Forms.ScrollEventArgs" Index="0" FrameworkAlternate="netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="se">イベント データを格納している <see cref="T:System.Windows.Forms.ScrollEventArgs" />。</param>
+        <param name="se">処理するウィンドウ メッセージを表す、参照渡しされた <see cref="T:System.Windows.Forms.ScrollEventArgs" /> 。</param>
         <summary><see cref="E:System.Windows.Forms.ScrollableControl.Scroll" /> イベントを発生させます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -981,18 +981,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.Scroll>スクロール バー、やり取りすることによって、ユーザーがクライアント領域をスクロールするとき、またはユーザーがコントロールの間で移動して、アクティブなコントロールをスクロール表示、イベントが発生します。 <xref:System.Windows.Forms.ScrollableControl.Scroll>設定などのコードを記述するときにもイベントが発生した、<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>プロパティは、クライアント領域をスクロールできます。  
+ イベント<xref:System.Windows.Forms.ScrollableControl.Scroll>は、ユーザーがスクロールバーを操作してクライアント領域をスクロールしたとき、またはユーザーがコントロール間を移動したときに、アクティブなコントロールがスクロールして表示されるときに発生します。 イベント<xref:System.Windows.Forms.ScrollableControl.Scroll>は、クライアント領域をスクロールする、プロパティの<xref:System.Windows.Forms.ScrollableControl.AutoScrollPosition%2A>設定などのコードを記述した場合にも発生します。  
   
- 使用することができます、<xref:System.Windows.Forms.ScrollEventArgs.ScrollOrientation%2A>プロパティのスクロール バーの方向を決定する、イベント ハンドラーで、<xref:System.Windows.Forms.ScrollableControl.Scroll>イベント。  
+ イベントハンドラーで<xref:System.Windows.Forms.ScrollEventArgs.ScrollOrientation%2A>プロパティを使用して、 <xref:System.Windows.Forms.ScrollableControl.Scroll>イベントのスクロールバーの方向を決定することができます。  
   
  イベントを処理する方法の詳細については、次を参照してください。[処理とイベントの発生](~/docs/standard/events/index.md)します。  
   
    
   
 ## Examples  
- 次のコード例では、このメンバーの使用を示します。 例では、イベント ハンドラーが発生するときに報告、<xref:System.Windows.Forms.ScrollableControl.Scroll>イベント。 このレポートでは、イベントが発生してデバッグに役立つについて説明します。 複数のイベントまたは頻繁に発生するイベントを報告する、交換を検討<xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=nameWithType>で<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>またはメッセージを複数行に追加<xref:System.Windows.Forms.TextBox>します。  
+ このメンバーの使用例を次のコード例に示します。 この例では、イベントハンドラーが<xref:System.Windows.Forms.ScrollableControl.Scroll>イベントの発生を報告します。 このレポートは、イベントがいつ発生し、デバッグに役立つかを理解するのに役立ちます。 複数のイベントまたは頻繁に発生するイベントについてレポート<xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=nameWithType>する<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>には、メッセージをに置き換える<xref:System.Windows.Forms.TextBox>か、または複数行に追加することを検討してください。  
   
- コード例を実行するから継承する型のインスタンスを含むプロジェクトに貼り付けること<xref:System.Windows.Forms.ScrollableControl>などを<xref:System.Windows.Forms.Panel>または<xref:System.Windows.Forms.ContainerControl>します。 インスタンスの名前を`ScrollableControl1`イベント ハンドラーに関連付けられていることを確認してください、<xref:System.Windows.Forms.ScrollableControl.Scroll>イベント。  
+ コード例を実行するに<xref:System.Windows.Forms.ScrollableControl> <xref:System.Windows.Forms.Panel>は、や<xref:System.Windows.Forms.ContainerControl>など、から継承された型のインスタンスを含むプロジェクトに貼り付けます。 次に、インスタンス`ScrollableControl1`にという名前を付け、イベントハンドラーが<xref:System.Windows.Forms.ScrollableControl.Scroll>イベントに関連付けられていることを確認します。  
   
  [!code-csharp[System.Windows.Forms.EventExamples#74](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.EventExamples/CS/EventExamples.cs#74)]
  [!code-vb[System.Windows.Forms.EventExamples#74](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.EventExamples/VB/EventExamples.vb#74)]  
@@ -1031,16 +1031,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>にプロパティを設定する必要があります`true`、少なくとも 1 つ、水平方向または垂直スクロール バーの表示もあり、<xref:System.Windows.Forms.ScrollableControl.ScrollControlIntoView%2A>メソッドの効果。 水平および垂直方向のスクロール バーを表示する、<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>と<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>、それぞれの設定が必要`true`します。  
+ この<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティはに`true`設定する必要があります。また、 <xref:System.Windows.Forms.ScrollableControl.ScrollControlIntoView%2A>メソッドが効果を持つようにするには、スクロールバーの少なくとも1つ (水平または垂直) が表示されている必要があります。 水平スクロールバーと垂直スクロールバーを表示<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>するには、プロパティと<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティをそれぞれに`true`設定する必要があります。  
   
- 場合、`activeControl`パラメーターは、子コントロールではありません、アクションは実行されません。  
+ `activeControl`パラメーターが子コントロールでない場合は、何も行われません。  
   
- このメソッドが生じる可能性がある、<xref:System.Windows.Forms.ScrollableControl.Scroll>イベント。  
+ このメソッドは、イベント<xref:System.Windows.Forms.ScrollableControl.Scroll>を発生させる可能性があります。  
   
    
   
 ## Examples  
- 次のコード例は、フォームでの自動スクロールを有効、フォームのサイズを変更して、により、フォームのサイズが変更された後、ボタンが表示されるようになります。 この例が必要です、<xref:System.Windows.Forms.Form>で、<xref:System.Windows.Forms.Button>という名前`button2`に。  
+ 次のコード例では、フォームの自動スクロールを有効にし、フォームのサイズを変更して、フォームのサイズを変更した後もボタンを表示したままにします。 この例では、と<xref:System.Windows.Forms.Form> <xref:System.Windows.Forms.Button>いう名前`button2`のを持つが必要です。  
   
  [!code-cpp[Windows.Forms.Control Member5#2](~/samples/snippets/cpp/VS_Snippets_Winforms/Windows.Forms.Control Member5/CPP/controlmembers5.cpp#2)]
  [!code-csharp[Windows.Forms.Control Member5#2](~/samples/snippets/csharp/VS_Snippets_Winforms/Windows.Forms.Control Member5/CS/controlmembers5.cs#2)]
@@ -1074,12 +1074,12 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary>値を決定、<see cref="P:System.Windows.Forms.ScrollableControl.AutoScroll" />プロパティ。</summary>
+        <summary><see cref="P:System.Windows.Forms.ScrollableControl.AutoScroll" /> プロパティの値を判断します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.ScrollStateAutoScrolling>フィールドはマスクです。 と共に使用することができます、<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>と<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>を取得および設定方法、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティ。  
+ <xref:System.Windows.Forms.ScrollableControl.ScrollStateAutoScrolling>フィールドはマスクです。 メソッドとメソッドを使用<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A> <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>して、プロパティを取得および設定できます。 <xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>  
   
  ]]></format>
         </remarks>
@@ -1107,14 +1107,14 @@
       </ReturnValue>
       <MemberValue>16</MemberValue>
       <Docs>
-        <summary>ユーザーがフル ウィンドウ ドラッグを有効にするかどうかを判断します。</summary>
+        <summary>ユーザーがウィンドウ全体のドラッグを有効にしているかどうかを判断します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.ScrollStateFullDrag>フィールドはマスクです。 これを使用して、<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>と<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>メソッドを取得し、ユーザーが有効にするかどうかを設定するフル ウィンドウ ドラッグを許可します。  
+ <xref:System.Windows.Forms.ScrollableControl.ScrollStateFullDrag>フィールドはマスクです。 ユーザーがウィンドウ全体のドラッグを有効にしたかどうかを取得および設定するには、メソッドとメソッドを使用します。<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A> <xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>  
   
- フル ウィンドウ ドラッグを有効にすると、ユーザーを移動して、windows のサイズとウィンドウの内容が表示されます。  
+ ウィンドウ全体のドラッグを有効にすると、ユーザーがウィンドウを移動してサイズを設定したときにウィンドウの内容が表示されます。  
   
  ]]></format>
         </remarks>
@@ -1141,12 +1141,12 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>決定かどうかの値、<see cref="P:System.Windows.Forms.ScrollableControl.HScroll" />プロパティに設定されて<see langword="true" />します。</summary>
+        <summary><see cref="P:System.Windows.Forms.ScrollableControl.HScroll" /> プロパティの値が <see langword="true" /> に設定されているかどうかを判断します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.ScrollStateHScrollVisible>フィールドはマスクです。 これを使用して、<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>と<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>を取得および設定方法、<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>プロパティ。  
+ <xref:System.Windows.Forms.ScrollableControl.ScrollStateHScrollVisible>フィールドはマスクです。 プロパティを取得して設定するには、メソッドとメソッドを使用します。<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A> <xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A> <xref:System.Windows.Forms.ScrollableControl.HScroll%2A>  
   
  ]]></format>
         </remarks>
@@ -1174,12 +1174,12 @@
       </ReturnValue>
       <MemberValue>8</MemberValue>
       <Docs>
-        <summary>ユーザーがスクロールしたかどうかを判断します、<see cref="T:System.Windows.Forms.ScrollableControl" />コントロール。</summary>
+        <summary>ユーザーが <see cref="T:System.Windows.Forms.ScrollableControl" /> コントロール内をスクロールしたかどうかを判断します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.ScrollStateUserHasScrolled>フィールドはマスクです。 これを使用して、 <xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A> 、ユーザーがいるかどうかを取得するメソッド、<xref:System.Windows.Forms.ScrollableControl>します。  
+ <xref:System.Windows.Forms.ScrollableControl.ScrollStateUserHasScrolled>フィールドはマスクです。 これを<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>メソッドと共に使用して、ユーザーがを<xref:System.Windows.Forms.ScrollableControl>スクロールしたかどうかを取得します。  
   
  ]]></format>
         </remarks>
@@ -1208,12 +1208,12 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>決定かどうかの値、<see cref="P:System.Windows.Forms.ScrollableControl.VScroll" />プロパティに設定されて<see langword="true" />します。</summary>
+        <summary><see cref="P:System.Windows.Forms.ScrollableControl.VScroll" /> プロパティの値が <see langword="true" /> に設定されているかどうかを判断します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.ScrollStateVScrollVisible>フィールドはマスクです。 これを使用して、<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>と<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>を取得および設定方法、<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティ。  
+ <xref:System.Windows.Forms.ScrollableControl.ScrollStateVScrollVisible>フィールドはマスクです。 プロパティを取得して設定するには、メソッドとメソッドを使用します。<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A> <xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A> <xref:System.Windows.Forms.ScrollableControl.VScroll%2A>  
   
  ]]></format>
         </remarks>
@@ -1243,15 +1243,15 @@
       </Parameters>
       <Docs>
         <param name="activeControl">スクロールして表示する子コントロール。</param>
-        <summary>指定した子コントロールをスクロールのオフセットを計算します。</summary>
-        <returns>左上<see cref="T:System.Drawing.Point" />のコントロールをスクロールして表示するために必要なクライアント領域を基準と表示領域。</returns>
+        <summary>指定した子コントロールへのスクロールのオフセットを計算します。</summary>
+        <returns>スクロールしてコントロールを表示するために必要な表示領域の左上隅を、クライアント領域を基準として表した <see cref="T:System.Drawing.Point" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.ScrollableControl.ScrollControlIntoView%2A>メソッドは、<xref:System.Windows.Forms.ScrollableControl.ScrollToControl%2A>距離を指定したコントロールを表示するまでスクロールする必要がありますを計算するメソッド。 <xref:System.Windows.Forms.Control.AutoScrollOffset%2A>スクロール位置を調整する子コントロールのプロパティを使用します。  
+ メソッドは、 <xref:System.Windows.Forms.ScrollableControl.ScrollToControl%2A>メソッドを使用して、指定されたコントロールを表示するためにスクロールする必要がある距離を計算します。 <xref:System.Windows.Forms.ScrollableControl.ScrollControlIntoView%2A> 子コントロールのプロパティは、スクロールした位置を調整するために使用されます。 <xref:System.Windows.Forms.Control.AutoScrollOffset%2A>  
   
- <xref:System.Windows.Forms.ScrollableControl.ScrollToControl%2A> スクロールは発生しません<xref:System.Windows.Forms.ScrollableControl.SetDisplayRectLocation%2A>メソッドは、通常、計算された位置までスクロールして、その後に使用します。  
+ <xref:System.Windows.Forms.ScrollableControl.ScrollToControl%2A>スクロールが発生しません。通常<xref:System.Windows.Forms.ScrollableControl.SetDisplayRectLocation%2A> 、メソッドは、計算された位置までスクロールするために使用されます。  
   
  ]]></format>
         </remarks>
@@ -1290,15 +1290,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 余白は、各コントロールの境界線の高さと幅を設定します。 この余白を使用して、コンテナーでスクロール バーが必要な場合、コントロールが選択されたときのスクロール先を決定します。  
+ 余白は、各コントロールの境界線の幅と高さを設定します。 この余白は、コンテナーでスクロールバーが必要になるタイミングと、コントロールが選択されたときにスクロールする場所を決定するために使用されます。  
   
 > [!NOTE]
->  負の値として渡される場合、`x`または`y`値、値は 0 にリセットされます。  
+>  負の数が`x`または`y`の値として渡された場合、値は0にリセットされます。  
   
    
   
 ## Examples  
- 次のコード例は、派生クラスを使用して<xref:System.Windows.Forms.Panel>します。 例はテキスト ボックスの位置を評価し、その親コンテナーをパネル コントロールの動作と外観を変更します。 例では、インスタンスを作成することが必要です、<xref:System.Windows.Forms.Panel>コントロール、 <xref:System.Windows.Forms.TextBox>、および<xref:System.Windows.Forms.Button>します。 少なくとも 1 つのパネルの端と重なるようにパネルに、ボックスを配置します。 パネルの動作と外観の違いを確認するためのボタンのクリックでは、このサブ プロシージャを呼び出します。  
+ 次のコード例では、派生クラス<xref:System.Windows.Forms.Panel>を使用します。 この例では、テキストボックスの位置を評価し、その親コンテナーである panel コントロールの外観と動作を変更します。 この例では、 <xref:System.Windows.Forms.Panel> <xref:System.Windows.Forms.TextBox>コントロール、、および<xref:System.Windows.Forms.Button>のインスタンスを作成しておく必要があります。 パネルにボックスを配置して、パネルの端の少なくとも1つと重なるようにします。 ボタンをクリックすると、このサブプロシージャを呼び出して、パネルの動作と外観の違いを確認できます。  
   
  [!code-cpp[Classic ScrollableControl.SetAutoScrollMargin Example#1](~/samples/snippets/cpp/VS_Snippets_Winforms/Classic ScrollableControl.SetAutoScrollMargin Example/CPP/source.cpp#1)]
  [!code-csharp[Classic ScrollableControl.SetAutoScrollMargin Example#1](~/samples/snippets/csharp/VS_Snippets_Winforms/Classic ScrollableControl.SetAutoScrollMargin Example/CS/source.cs#1)]
@@ -1333,19 +1333,19 @@
         <Parameter Name="y" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="x">水平方向のオフセットの位置を<see cref="T:System.Windows.Forms.ScrollableControl" />します。</param>
-        <param name="y">垂直方向のオフセットの位置を<see cref="T:System.Windows.Forms.ScrollableControl" />します。</param>
-        <summary>指定された値の表示ウィンドウを位置します。</summary>
+        <param name="x"><see cref="T:System.Windows.Forms.ScrollableControl" /> を配置する位置の水平方向のオフセット。</param>
+        <param name="y"><see cref="T:System.Windows.Forms.ScrollableControl" /> を配置する位置の垂直方向のオフセット。</param>
+        <summary>表示ウィンドウを指定した値に配置します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>プロパティに設定されて`true`、<xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>プロパティは、仮想サイズとのクライアント領域の位置を表示、<xref:System.Windows.Forms.ScrollableControl>します。 呼び出す、<xref:System.Windows.Forms.ScrollableControl.SetDisplayRectLocation%2A>をスクロールするメソッド、<xref:System.Windows.Forms.ScrollableControl>指定の位置。  
+ プロパティがに設定され`true`ている<xref:System.Windows.Forms.ScrollableControl.DisplayRectangle%2A>場合、プロパティはの仮想<xref:System.Windows.Forms.ScrollableControl>サイズおよび位置を表示するクライアント領域になります。 <xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> メソッドを呼び出して、 <xref:System.Windows.Forms.ScrollableControl>を指定した位置までスクロールします。 <xref:System.Windows.Forms.ScrollableControl.SetDisplayRectLocation%2A>  
   
  ]]></format>
         </remarks>
         <block subset="none" type="usage"><para>
-            <see cref="M:System.Windows.Forms.ScrollableControl.SetDisplayRectLocation(System.Int32,System.Int32)" /> スクロール バーの位置は更新されません。 スクロール バーを更新するには、呼び出し、<see cref="M:System.Windows.Forms.ScrollableControl.AdjustFormScrollbars(System.Boolean)" />メソッド。</para></block>
+            <see cref="M:System.Windows.Forms.ScrollableControl.SetDisplayRectLocation(System.Int32,System.Int32)" />スクロールバーの位置を更新しません。 スクロールバーを更新するには、 <see cref="M:System.Windows.Forms.ScrollableControl.AdjustFormScrollbars(System.Boolean)" />メソッドを呼び出します。</para></block>
         <altmember cref="P:System.Windows.Forms.ScrollableControl.DisplayRectangle" />
         <altmember cref="M:System.Windows.Forms.ScrollableControl.ScrollControlIntoView(System.Windows.Forms.Control)" />
         <altmember cref="E:System.Windows.Forms.ScrollableControl.Scroll" />
@@ -1374,13 +1374,13 @@
       </Parameters>
       <Docs>
         <param name="bit">設定するスクロール状態フラグ。</param>
-        <param name="value">フラグを設定する値。</param>
+        <param name="value">フラグに設定する値。</param>
         <summary>指定したスクロール状態フラグを設定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ビット パラメーターのフィールドのいずれかに設定した場合、<xref:System.Windows.Forms.ScrollableControl>クラス、<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>メソッドにコントロールの状態を更新、`value`パラメーター。 詳細については、有効なパラメーターとその値は、次を参照してください。、<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>メソッド。  
+ ビットパラメーターが<xref:System.Windows.Forms.ScrollableControl>クラスのいずれかのフィールドに設定されている場合<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A> 、メソッドはコントロール`value`の状態をパラメーターに更新します。 有効なパラメーターとその値の詳細については、 <xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>メソッドを参照してください。  
   
  ]]></format>
         </remarks>
@@ -1412,13 +1412,13 @@
         <ReturnType>System.Windows.Forms.VScrollProperties</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>垂直スクロール バーに関連付けられている特性を取得します。</summary>
-        <value>A<see cref="T:System.Windows.Forms.VScrollProperties" />垂直スクロール バーに関する情報を格納します。</value>
+        <summary>垂直スクロール バーに関連付けられた特性を取得します。</summary>
+        <value>垂直スクロール バーに関する情報を格納する <see cref="T:System.Windows.Forms.VScrollProperties" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.VScrollProperties>クラスには、スクロール バーと、その操作に関する情報が含まれていますが有効になっていると表示されているかどうか、スクロール ページ サイズ、向きなどの位置が表示され、します。  
+ <xref:System.Windows.Forms.VScrollProperties>クラスには、スクロールバーとその操作 (有効で表示されているかどうか、スクロールページのサイズ、向き、表示位置など) に関する情報が含まれています。  
   
  ]]></format>
         </remarks>
@@ -1455,15 +1455,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または垂直スクロール バーを表示するかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> 垂直スクロール バーを表示する場合それ以外の場合、<see langword="false" />します。</value>
+        <summary>垂直スクロール バーが表示されるかどうかを示す値を、取得または設定します。</summary>
+        <value>垂直スクロール バーが表示される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 機能、<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティは、呼び出しを通じて行うこともできます、<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>と<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>メソッドを使用して<xref:System.Windows.Forms.ScrollableControl.ScrollStateVScrollVisible>パラメーターとして。  
+ <xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティの機能は、パラメーターとしてを使用<xref:System.Windows.Forms.ScrollableControl.ScrollStateVScrollVisible>して<xref:System.Windows.Forms.ScrollableControl.GetScrollState%2A>メソッド<xref:System.Windows.Forms.ScrollableControl.SetScrollState%2A>およびメソッドを呼び出すことによっても実現できます。  
   
- **注**<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>自動的にスクロール バーの可視性を維持します。 そのため、設定、<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>または<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>プロパティ`true`されていないされるときに有効<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>を有効にします。  
+ **メモ**<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A>スクロールバーの表示を自動的に維持します。 したがって、が<xref:System.Windows.Forms.ScrollableControl.HScroll%2A>有効<xref:System.Windows.Forms.ScrollableControl.VScroll%2A>になっ`true`ている場合<xref:System.Windows.Forms.ScrollableControl.AutoScroll%2A> 、プロパティまたはプロパティをに設定しても効果はありません。  
   
  ]]></format>
         </remarks>

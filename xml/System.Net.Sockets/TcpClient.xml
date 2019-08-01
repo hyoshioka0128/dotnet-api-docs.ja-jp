@@ -1,5 +1,5 @@
 <Type Name="TcpClient" FullName="System.Net.Sockets.TcpClient">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7a5e2f54532ab6d29e3d7d8aafa745aa2f0a1a55" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58736221" /></Metadata><TypeSignature Language="C#" Value="public class TcpClient : IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="507ad13c76bbf9c07a0fa6e73867b400985575aa" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68399312" /></Metadata><TypeSignature Language="C#" Value="public class TcpClient : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TcpClient extends System.Object implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Net.Sockets.TcpClient" />
   <TypeSignature Language="VB.NET" Value="Public Class TcpClient&#xA;Implements IDisposable" />
@@ -37,21 +37,21 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `TcpClient`クラスには、送信、接続するための単純なメソッドと、受信同期のブロッキング モードでのネットワーク経由でデータをストリーム配信します。  
+ クラス`TcpClient`は、同期ブロッキングモードでネットワーク経由でストリームデータを接続、送信、および受信するための単純なメソッドを提供します。  
   
- 順序で`TcpClient`接続、データを交換し、<xref:System.Net.Sockets.TcpListener>または<xref:System.Net.Sockets.Socket>TCP で作成された<xref:System.Net.Sockets.ProtocolType>受信接続要求をリッスンする必要があります。 次の 2 つの方法のいずれかで、このリスナーに接続できます。  
+ がデータ<xref:System.Net.Sockets.Socket> <xref:System.Net.Sockets.ProtocolType>を接続および交換`TcpClient`するためには、TCPで作成されたまたはが、受信接続要求をリッスンしている必要<xref:System.Net.Sockets.TcpListener>があります。 このリスナーには、次の2つの方法のいずれかで接続できます。  
   
--   作成、`TcpClient`にある 3 つのいずれかを呼び出すと<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッド。  
+-   を`TcpClient`作成し、使用可能な<xref:System.Net.Sockets.TcpClient.Connect%2A> 3 つのメソッドのいずれかを呼び出します。  
   
--   作成、`TcpClient`ホスト名を使用して、リモート ホストのポート番号。 このコンス トラクターは、接続を自動的に試行します。  
+-   リモートホスト`TcpClient`のホスト名とポート番号を使用して、を作成します。 このコンストラクターは、自動的に接続を試行します。  
   
 > [!NOTE]
->  同期ブロック モードでコネクションレスのデータグラムを送信する場合を使用して、<xref:System.Net.Sockets.UdpClient>クラス。  
+>  同期ブロッキングモードでコネクションレスのデータグラムを送信する場合は、 <xref:System.Net.Sockets.UdpClient>クラスを使用します。  
   
    
   
 ## Examples  
- 次のコード例を確立、`TcpClient`接続します。  
+ 次のコード例では`TcpClient` 、接続を確立します。  
   
  [!code-cpp[System.Net.Sockets.TcpClient#1](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient/CPP/tcpclient.cpp#1)]
  [!code-csharp[System.Net.Sockets.TcpClient#1](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient/CS/tcpclient.cs#1)]
@@ -59,8 +59,8 @@
   
  ]]></format>
     </remarks>
-    <permission cref="T:System.Net.SocketPermission">送信接続を確立するか、受信要求をそのまま使用する権限です。</permission>
-    <block subset="none" type="overrides"><para>データを送受信するを使用して、<see cref="M:System.Net.Sockets.TcpClient.GetStream" />メソッドを取得する、<see cref="T:System.Net.Sockets.NetworkStream" />します。 呼び出す、<see cref="M:System.Net.Sockets.NetworkStream.Write(System.Byte[],System.Int32,System.Int32)" />と<see cref="M:System.Net.Sockets.NetworkStream.Read(System.Byte[],System.Int32,System.Int32)" />のメソッド、<see cref="T:System.Net.Sockets.NetworkStream" />をリモート ホストとデータを送受信します。 使用して、<see cref="M:System.Net.Sockets.NetworkStream.Close(System.Int32)" />に関連付けられているすべてのリソースを解放するメソッド、<see cref="T:System.Net.Sockets.TcpClient" />します。</para></block>
+    <permission cref="T:System.Net.SocketPermission">発信接続を確立するか、受信要求を受け入れる権限。</permission>
+    <block subset="none" type="overrides"><para>データを送受信するには、 <see cref="M:System.Net.Sockets.TcpClient.GetStream" />メソッドを使用してを<see cref="T:System.Net.Sockets.NetworkStream" />取得します。 のメソッド<see cref="M:System.Net.Sockets.NetworkStream.Read(System.Byte[],System.Int32,System.Int32)" /> <see cref="T:System.Net.Sockets.NetworkStream" />とメソッドを呼び出して、リモートホストとの間でデータを送受信します。 <see cref="M:System.Net.Sockets.NetworkStream.Write(System.Byte[],System.Int32,System.Int32)" /> に関連付けられているすべての<see cref="T:System.Net.Sockets.TcpClient" />リソースを解放するには、メソッドを使用します。<see cref="M:System.Net.Sockets.NetworkStream.Close(System.Int32)" /></para></block>
     <altmember cref="T:System.Net.Sockets.TcpListener" />
     <altmember cref="T:System.Net.Sockets.NetworkStream" />
     <altmember cref="T:System.Net.Sockets.Socket" />
@@ -114,18 +114,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成する新しい<xref:System.Net.Sockets.TcpClient>と基になるサービス プロバイダーが、最も適切なローカル IP アドレスとポート番号を割り当てることができます。 最初に呼び出す必要があります、<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッド データを送受信する前にします。  
+ このコンストラクターは、新しい<xref:System.Net.Sockets.TcpClient>を作成し、基になるサービスプロバイダーが最も適切なローカル IP アドレスとポート番号を割り当てることができるようにします。 まず、データを送受信<xref:System.Net.Sockets.TcpClient.Connect%2A>する前にメソッドを呼び出す必要があります。  
   
 > [!NOTE]
->  このコンス トラクターは、IPv4 アドレスの種類でのみ動作します。  
+>  このコンストラクターは、IPv4 アドレスの種類でのみ動作します。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例は、既定のコンス トラクターを使用して新しいを作成する方法を示します<xref:System.Net.Sockets.TcpClient>します。  
+ 次のコード例は、パラメーターなしのコンストラクターを使用して、 <xref:System.Net.Sockets.TcpClient>新しいを作成する方法を示しています。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#4](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#4)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#4](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#4)]
@@ -171,17 +171,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターが新たに作成<xref:System.Net.Sockets.TcpClient>にバインドしますと、<xref:System.Net.IPEndPoint>で指定された、`localEP`パラメーター。 作成する必要がありますこのコンス トラクターを呼び出す前に、`IPEndPoint`を送信し、データを受信する IP アドレスとポート番号を使用します。 接続して通信する前に、ローカル IP アドレスとポート番号を指定する必要はありません。 作成する場合、`TcpClient`他のコンス トラクターを使用して、基になるサービス プロバイダーは最も適切なローカル IP アドレスとポート番号を割り当てられます。  
+ このコンストラクターは、新しい<xref:System.Net.Sockets.TcpClient>を作成し、 `localEP`パラメーター <xref:System.Net.IPEndPoint>によって指定されたにバインドします。 このコンストラクターを呼び出す前に、データの送受信`IPEndPoint`元の IP アドレスとポート番号を使用してを作成する必要があります。 接続して通信する前に、ローカル IP アドレスとポート番号を指定する必要はありません。 その他のコンストラクター `TcpClient`を使用してを作成すると、基になるサービスプロバイダーによって、最も適切なローカル IP アドレスとポート番号が割り当てられます。  
   
- 呼び出す必要があります、<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッド データを送受信する前にします。  
+ データを送受信する<xref:System.Net.Sockets.TcpClient.Connect%2A>前に、メソッドを呼び出す必要があります。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例は、のインスタンスを作成する方法を示します、<xref:System.Net.Sockets.TcpClient>クラスのローカル エンドポイントを使用します。  
+ ローカルエンドポイントを使用して<xref:System.Net.Sockets.TcpClient>クラスのインスタンスを作成する方法を次のコード例に示します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#2](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#2)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#2](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#2)]
@@ -232,12 +232,12 @@
 ## Remarks  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例は、のインスタンスを作成する方法を示します、<xref:System.Net.Sockets.TcpClient>クラス。  
+ <xref:System.Net.Sockets.TcpClient>クラスのインスタンスを作成する方法を次のコード例に示します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#15](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#15)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#15](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#15)]
@@ -246,7 +246,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="family" /> パラメーターが AddressFamily.InterNetwork ではありません。 
-または 
+- または - 
 <paramref name="family" /> パラメーターが AddressFamily.InterNetworkV6 ではありません。</exception>
       </Docs>
     </Member>
@@ -287,20 +287,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成する新しい<xref:System.Net.Sockets.TcpClient>同期接続しようと指定されたホスト名とポート番号。 基になるサービス プロバイダーでは、最も適切なローカル IP アドレスとポート番号を割り当てます。 `TcpClient` 接続するか失敗するまでブロックされます。 このコンス トラクターの初期化、DNS ホスト名を解決および 1 つの便利な手順で接続することができます。  
+ このコンストラクターは、新しい<xref:System.Net.Sockets.TcpClient>を作成し、指定されたホスト名とポート番号への同期接続を試行します。 基になるサービスプロバイダーによって、最も適切なローカル IP アドレスとポート番号が割り当てられます。 `TcpClient`は、接続または失敗するまでブロックします。 このコンストラクターを使用すると、DNS ホスト名を初期化して解決し、1つの便利な手順で接続できます。  
   
- IPv6 が有効になっている場合、<xref:System.Net.Sockets.TcpClient.%23ctor%28System.String%2CSystem.Int32%29>メソッドが呼び出され、IPv6 の両方に解決されるホストに接続し、IPv4 アドレス、IPv6 のアドレスへの接続試行の IPv4 アドレスに実行する前。 これには、ホストが IPv6 アドレスでリッスンしていない場合、接続の確立に時間が遅延の影響があります。  
-  
-> [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+ Ipv6 を有効にし<xref:System.Net.Sockets.TcpClient.%23ctor%28System.String%2CSystem.Int32%29> 、メソッドを呼び出して、ipv6 と ipv4 の両方のアドレスに解決されるホストに接続する場合は、ipv4 アドレスの前に ipv6 アドレスへの接続が最初に試行されます。 ホストが IPv6 アドレスでリッスンしていない場合、接続の確立に時間がかかることがあります。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
+  
+> [!NOTE]
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例は、のインスタンスを作成する方法を示します、<xref:System.Net.Sockets.TcpClient>クラスのホスト名を使用して、ポート番号。  
+ 次のコード例は、ホスト名とポート番号を<xref:System.Net.Sockets.TcpClient>使用してクラスのインスタンスを作成する方法を示しています。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#3](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#3)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#3](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#3)]
@@ -359,7 +359,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 派生したクラス<xref:System.Net.Sockets.TcpClient>接続試行が成功したかどうかを判断するこのプロパティを使用できます。 継続的な接続の状態を監視しません`TcpClient`します。 リモート ホストは、接続を閉じた場合`Active`は更新されません。 派生する場合`TcpClient`使用して、接続状態に近い注意が必要な<xref:System.Net.Sockets.Socket.Connected%2A>のプロパティ、<xref:System.Net.Sockets.Socket>によって返される、<xref:System.Net.Sockets.TcpClient.Client%2A>プロパティ。  
+ から<xref:System.Net.Sockets.TcpClient>派生するクラスは、このプロパティを使用して、接続試行が成功したかどうかを判断できます。 の実行中の`TcpClient`接続状態は監視されません。 リモートホストが接続を閉じた場合`Active` 、は更新されません。 から`TcpClient`派生していて、接続状態に詳細に注意する必要が<xref:System.Net.Sockets.Socket.Connected%2A>ある場合は<xref:System.Net.Sockets.Socket> 、 <xref:System.Net.Sockets.TcpClient.Client%2A>プロパティによって返されるのプロパティを使用します。  
   
  ]]></format>
         </remarks>
@@ -402,14 +402,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
-`Available`プロパティが読み取り用のデータがキューに置かれたかどうかを決定する方法。 データが使用可能な場合は、呼び出す<xref:System.Net.Sockets.NetworkStream.Read%2A>データを取得します。 使用可能なデータは、読み取り用のネットワーク バッファーにデータの総量がキューに登録します。 場合は、ネットワーク バッファーにデータがキューにありません。 `Available` 0 を返します。  
+プロパティ`Available`は、データが読み取り用にキューに格納されているかどうかを判断する方法です。 データが使用可能な場合<xref:System.Net.Sockets.NetworkStream.Read%2A>は、を呼び出してデータを取得します。 使用可能なデータは、読み取り用にネットワークバッファーにキューに格納されているデータの総量です。 データがネットワークバッファーに格納されてい`Available`ない場合、は0を返します。  
   
- リモート ホストがシャット ダウンまたは、接続を閉じる場合`Available`スローする可能性が、<xref:System.Net.Sockets.SocketException>します。 表示された場合、`SocketException`を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+ リモートホストがシャットダウンまたは接続を閉じると、 `Available`はをスロー <xref:System.Net.Sockets.SocketException>することがあります。 を受け取っ`SocketException`た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
   
    
   
 ## Examples  
- 次のコード例の使用を示しています、`Available`プロパティ。  
+ 次のコード例は、 `Available`プロパティの使用方法を示しています。  
   
  [!code-cpp[System.Net.Sockets.TcpClient1#1](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CPP/newtcpclient.cpp#1)]
  [!code-csharp[System.Net.Sockets.TcpClient1#1](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CS/newtcpclient.cs#1)]  
@@ -474,16 +474,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非同期の`BeginConnect`操作を呼び出すことによって完了する必要があります、<xref:System.Net.Sockets.TcpClient.EndConnect%2A>メソッド。 通常、メソッドは、によって呼び出される、`asyncCallback`を委任します。  
+ 非同期`BeginConnect`操作は、メソッドを<xref:System.Net.Sockets.TcpClient.EndConnect%2A>呼び出すことによって完了する必要があります。 通常、メソッドは`asyncCallback`デリゲートによって呼び出されます。  
   
- 操作が完了するまで、このメソッドはブロックされません。 操作が完了するまでにブロックするのいずれかの操作を使用して、<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッドのオーバー ロードします。  
+ このメソッドは、操作が完了するまでブロックしません。 操作が完了するまでブロックするには、 <xref:System.Net.Sockets.TcpClient.Connect%2A>メソッドオーバーロードのいずれかを使用します。  
   
- 詳細については、非同期プログラミング モデルを使用して、次を参照してください。 [Calling Synchronous Methods Asynchronously](~/docs/standard/asynchronous-programming-patterns/calling-synchronous-methods-asynchronously.md)します。  
+ 非同期プログラミングモデルの使用方法の詳細については、「[同期メソッドの非同期呼び出し](~/docs/standard/asynchronous-programming-patterns/calling-synchronous-methods-asynchronously.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例を作成、<xref:System.Net.Sockets.TcpClient>し、リモート ホストに接続します。  
+ 次のコード例では<xref:System.Net.Sockets.TcpClient> 、を作成し、リモートホストに接続します。  
   
  [!code-cpp[System.Net.Sockets.TcpClient1#4](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CPP/newtcpclient.cpp#4)]
  [!code-csharp[System.Net.Sockets.TcpClient1#4](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CS/newtcpclient.cs#4)]  
@@ -541,18 +541,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非同期の`BeginConnect`操作を呼び出すことによって完了する必要があります、<xref:System.Net.Sockets.TcpClient.EndConnect%2A>メソッド。 通常、メソッドは、によって呼び出される、`asyncCallback`を委任します。  
+ 非同期`BeginConnect`操作は、メソッドを<xref:System.Net.Sockets.TcpClient.EndConnect%2A>呼び出すことによって完了する必要があります。 通常、メソッドは`asyncCallback`デリゲートによって呼び出されます。  
   
- 操作が完了するまで、このメソッドはブロックされません。 操作が完了するまでにブロックするのいずれかの操作を使用して、<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッドのオーバー ロードします。  
+ このメソッドは、操作が完了するまでブロックしません。 操作が完了するまでブロックするには、 <xref:System.Net.Sockets.TcpClient.Connect%2A>メソッドオーバーロードのいずれかを使用します。  
   
- 詳細については、非同期プログラミング モデルを使用して、次を参照してください。 [Calling Synchronous Methods Asynchronously](~/docs/standard/asynchronous-programming-patterns/calling-synchronous-methods-asynchronously.md)します。  
+ 非同期プログラミングモデルの使用方法の詳細については、「[同期メソッドの非同期呼び出し](~/docs/standard/asynchronous-programming-patterns/calling-synchronous-methods-asynchronously.md)」を参照してください。  
   
- このメソッドは通常の呼び出し後すぐに使用、<xref:System.Net.Dns.BeginGetHostAddresses%2A>メソッドで、複数の IP アドレスを 1 つのホストに戻すことができます。  
+ 通常、このメソッドは、1つのホストに<xref:System.Net.Dns.BeginGetHostAddresses%2A>対して複数の IP アドレスを返すことができるメソッドの呼び出しの直後に使用されます。  
   
    
   
 ## Examples  
- 次のコード例を作成、<xref:System.Net.Sockets.TcpClient>し、リモート ホストに接続します。  
+ 次のコード例では<xref:System.Net.Sockets.TcpClient> 、を作成し、リモートホストに接続します。  
   
  [!code-cpp[System.Net.Sockets.TcpClient1#5](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CPP/newtcpclient.cpp#5)]
  [!code-csharp[System.Net.Sockets.TcpClient1#5](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CS/newtcpclient.cs#5)]  
@@ -610,16 +610,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非同期の`BeginConnect`操作を呼び出すことによって完了する必要があります、<xref:System.Net.Sockets.TcpClient.EndConnect%2A>メソッド。 通常、メソッドは、によって呼び出される、`asyncCallback`を委任します。  
+ 非同期`BeginConnect`操作は、メソッドを<xref:System.Net.Sockets.TcpClient.EndConnect%2A>呼び出すことによって完了する必要があります。 通常、メソッドは`asyncCallback`デリゲートによって呼び出されます。  
   
- 操作が完了するまで、このメソッドはブロックされません。 操作が完了するまでにブロックするのいずれかの操作を使用して、<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッドのオーバー ロードします。  
+ このメソッドは、操作が完了するまでブロックしません。 操作が完了するまでブロックするには、 <xref:System.Net.Sockets.TcpClient.Connect%2A>メソッドオーバーロードのいずれかを使用します。  
   
- 詳細については、非同期プログラミング モデルを使用して、次を参照してください。 [Calling Synchronous Methods Asynchronously](~/docs/standard/asynchronous-programming-patterns/calling-synchronous-methods-asynchronously.md)します。  
+ 非同期プログラミングモデルの使用方法の詳細については、「[同期メソッドの非同期呼び出し](~/docs/standard/asynchronous-programming-patterns/calling-synchronous-methods-asynchronously.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例を作成、<xref:System.Net.Sockets.TcpClient>し、リモート ホストに接続します。  
+ 次のコード例では<xref:System.Net.Sockets.TcpClient> 、を作成し、リモートホストに接続します。  
   
  [!code-cpp[System.Net.Sockets.TcpClient1#6](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CPP/newtcpclient.cpp#6)]
  [!code-csharp[System.Net.Sockets.TcpClient1#6](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CS/newtcpclient.cs#6)]  
@@ -677,12 +677,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Net.Sockets.TcpClient> 作成、<xref:System.Net.Sockets.Socket>をネットワーク経由でデータを送受信します。 派生したクラス`TcpClient`このプロパティを取得または設定を使用できます`Socket`します。 使用して、基になる`Socket`から返された`Client`が必要な場合にアクセスされる`TcpClient`を提供します。 使用することもできます`Client`を基になるかを設定する`Socket`既存`Socket`します。 簡潔さを活用するために必要な場合に便利ですが考えられます`TcpClient`既存を使用して`Socket`します。  
+ <xref:System.Net.Sockets.TcpClient>ネットワーク経由<xref:System.Net.Sockets.Socket>でデータを送受信するためのを作成します。 から`TcpClient`派生するクラスは、このプロパティを使用して`Socket`このプロパティを取得または設定できます。 が`TcpClient`提供する`Socket`を超える`Client`アクセスが必要な場合は、から返された基になるを使用します。 また、を使用`Client`して、基`Socket`になるを`Socket`既存のに設定することもできます。 これは、既存`TcpClient` `Socket`のを簡単に使用できるようにする場合に便利です。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、`Client`プロパティ。 この例では、基になるの受信バッファー サイズで<xref:System.Net.Sockets.Socket>が変更されました。  
+ 次のコード例は、 `Client`プロパティの使用方法を示しています。 この例では、基になる<xref:System.Net.Sockets.Socket>の受信バッファーサイズが変更されています。  
   
  [!code-csharp[TcpClientProtectedMethodsAndPropertiesExample#1](~/samples/snippets/csharp/VS_Snippets_Remoting/TcpClientProtectedMethodsAndPropertiesExample/CS/source.cs#1)]
  [!code-vb[TcpClientProtectedMethodsAndPropertiesExample#1](~/samples/snippets/visualbasic/VS_Snippets_Remoting/TcpClientProtectedMethodsAndPropertiesExample/VB/source.vb#1)]  
@@ -727,17 +727,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `Close`メソッドが破棄済みのインスタンスをマークし、要求を関連付けられている<xref:System.Net.Sockets.Socket>TCP 接続を閉じます。 に基づいて、<xref:System.Net.Sockets.TcpClient.LingerState%2A>プロパティ、TCP 接続が開いたまましばらく後に、`Close`送信するデータが残っている場合、メソッドが呼び出されます。 基になる接続の終了が完了したときに、通知はありません。  
+ メソッド`Close`は、インスタンスを破棄としてマークし、 <xref:System.Net.Sockets.Socket>関連付けられているが TCP 接続を閉じることを要求します。 <xref:System.Net.Sockets.TcpClient.LingerState%2A>プロパティに基づいて、データが送信されたままの状態で`Close`メソッドが呼び出された後、しばらくの間、TCP 接続が開いたままになる場合があります。 基になる接続が終了したときに通知は提供されません。  
   
- このメソッドを呼び出すことが最終的に、関連付けられている終了`Socket`と関連付けられているも閉じられます<xref:System.Net.Sockets.NetworkStream>いずれかが作成された場合、データの送受信に使用されます。  
+ このメソッドを呼び出すと、最終的には関連付け`Socket`られたが終了し<xref:System.Net.Sockets.NetworkStream>ます。また、データが作成された場合は、データの送受信に使用される、関連付けられているも閉じられます。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例は、終了を示します、<xref:System.Net.Sockets.TcpClient>呼び出すことによって、`Close`メソッド。  
+ 次のコード例は、 <xref:System.Net.Sockets.TcpClient> `Close`メソッドを呼び出してを終了する方法を示しています。  
   
  [!code-cpp[NCLTCPClientSync#1](~/samples/snippets/cpp/VS_Snippets_Remoting/NCLTcpClientSync/CPP/tcpclient.cpp#1)]
  [!code-csharp[NCLTCPClientSync#1](~/samples/snippets/csharp/VS_Snippets_Remoting/NCLTcpClientSync/CS/tcpclient.cs#1)]  
@@ -794,18 +794,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定した同期のリモート ホスト接続を確立するには、このメソッドを呼び出す<xref:System.Net.IPEndPoint>します。 呼び出す前に`Connect`のインスタンスを作成する必要があります、`IPEndPoint`クラス、IP アドレスとポート番号を使用します。 これを使用して、`IPEndPoint`として、`remoteEP`パラメーター。 `Connect`メソッドが接続するか失敗するまでブロックされます。 リモート ホストに接続すると、使用、<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドは、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 これを使用して、`NetworkStream`データを送受信します。  
+ 指定した<xref:System.Net.IPEndPoint>に対する同期リモートホスト接続を確立するには、このメソッドを呼び出します。 を呼び出す`Connect`前に、IP アドレスとポート番号を`IPEndPoint`使用して、クラスのインスタンスを作成する必要があります。 これ`IPEndPoint`を`remoteEP`パラメーターとして使用します。 メソッド`Connect`は、接続するか失敗するまでブロックします。 リモートホストに接続した後、 <xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドを使用して、基になる<xref:System.Net.Sockets.NetworkStream>を取得します。 データの送受信に使用します。 `NetworkStream`  
   
 > [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください[.NET Framework のネットワークのトレース。](~/docs/framework/network-programming/network-tracing.md)  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、.NET Framework の「[ネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、<xref:System.Net.IPEndPoint>リモート ホストに接続します。  
+ 次のコード例では<xref:System.Net.IPEndPoint> 、を使用してリモートホストに接続します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#7](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#7)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#7](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#7)]
@@ -860,18 +860,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定した同期のリモート ホスト接続を確立するには、このメソッドを呼び出す<xref:System.Net.IPAddress>とポート番号。 <xref:System.Net.Sockets.TcpClient.Connect%2A>メソッドが接続するか失敗するまでブロックされます。 リモート ホストに接続すると、使用、<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドは、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 これを使用して、`NetworkStream`データを送受信します。  
+ このメソッドを呼び出して、指定した<xref:System.Net.IPAddress>およびポート番号への同期リモートホスト接続を確立します。 メソッド<xref:System.Net.Sockets.TcpClient.Connect%2A>は、接続するか失敗するまでブロックします。 リモートホストに接続した後、 <xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドを使用して、基になる<xref:System.Net.Sockets.NetworkStream>を取得します。 データの送受信に使用します。 `NetworkStream`  
   
 > [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、リモート ホストに接続する IP アドレスとポート番号を使用します。  
+ 次のコード例では、IP アドレスとポート番号を使用してリモートホストと接続します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#6](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#6)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#6](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#6)]
@@ -925,18 +925,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは通常の呼び出し後すぐに使用、<xref:System.Net.Dns.BeginGetHostAddresses%2A>メソッドで、複数の IP アドレスを 1 つのホストに戻すことができます。 呼び出す、`Connect`メソッドの配列で指定されたホストとの同期リモート ホスト接続を確立するために<xref:System.Net.IPAddress>要素とポート番号。 `Connect`メソッドが接続するか失敗するまでブロックされます。 リモート ホストに接続すると、使用、<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドは、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 これを使用して、`NetworkStream`データを送受信します。  
+ 通常、このメソッドは、1つのホストに<xref:System.Net.Dns.BeginGetHostAddresses%2A>対して複数の IP アドレスを返すことができるメソッドの呼び出しの直後に使用されます。 メソッドを呼び出して、要素の<xref:System.Net.IPAddress>配列とポート番号で指定されたホストへの同期リモートホスト接続を確立します。 `Connect` メソッド`Connect`は、接続するか失敗するまでブロックします。 リモートホストに接続した後、 <xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドを使用して、基になる<xref:System.Net.Sockets.NetworkStream>を取得します。 データの送受信に使用します。 `NetworkStream`  
   
 > [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、リモート ホストに接続する IP アドレスとポート番号を使用します。  
+ 次のコード例では、IP アドレスとポート番号を使用してリモートホストと接続します。  
   
  [!code-cpp[System.Net.Sockets.TcpClient1#8](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CPP/newtcpclient.cpp#8)]
  [!code-csharp[System.Net.Sockets.TcpClient1#8](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CS/newtcpclient.cs#8)]  
@@ -992,20 +992,20 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定されたホスト名への同期のリモート ホスト接続を確立し、ポート番号には、このメソッドを呼び出します。 `Connect`メソッドが接続するか失敗するまでブロックされます。 リモート ホストに接続すると、使用、<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドは、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 これを使用して、`NetworkStream`データを送受信します。  
+ 指定したホスト名とポート番号への同期リモートホスト接続を確立するには、このメソッドを呼び出します。 メソッド`Connect`は、接続するか失敗するまでブロックします。 リモートホストに接続した後、 <xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドを使用して、基になる<xref:System.Net.Sockets.NetworkStream>を取得します。 データの送受信に使用します。 `NetworkStream`  
   
- IPv6 が有効になっている場合、`Connect(String, Int32)`メソッドが呼び出され、IPv6 の両方に解決されるホストに接続し、IPv4 アドレス、IPv6 のアドレスへの接続試行の IPv4 アドレスに実行する前。 これには、ホストが IPv6 アドレスでリッスンしていない場合、接続の確立に時間が遅延の影響があります。  
-  
-> [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+ Ipv6 を有効にし`Connect(String, Int32)` 、メソッドを呼び出して、ipv6 と ipv4 の両方のアドレスに解決されるホストに接続する場合は、ipv4 アドレスの前に ipv6 アドレスへの接続が最初に試行されます。 ホストが IPv6 アドレスでリッスンしていない場合、接続の確立に時間がかかることがあります。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
+  
+> [!NOTE]
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例は、ホスト名とポート番号をリモート ホストに接続します。  
+ 次のコード例では、ホスト名とポート番号を使用して、リモートホストに接続します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#5](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#5)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#5](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#5)]
@@ -1071,15 +1071,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 返されるを返します。<xref:System.Threading.Tasks.Task>オブジェクトは、TCP 接続が確立された後に完了します。 このメソッドは、接続要求が進行中ですが、呼び出し元のスレッドをブロックしません。  
+ この操作はブロックされません。 返された<xref:System.Threading.Tasks.Task>返されるオブジェクトは、TCP 接続が確立された後に完了します。 このメソッドは、接続要求の実行中に、呼び出し元のスレッドをブロックしません。  
   
- 指定した同期のリモート ホスト接続を確立するには、このメソッドを呼び出す<xref:System.Net.IPAddress>と非同期操作として、ポート番号。 リモート ホストに接続すると、使用、<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドは、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 これを使用して、`NetworkStream`データを送受信します。  
-  
-> [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+ 非同期操作として、指定した<xref:System.Net.IPAddress>およびポート番号への同期リモートホスト接続を確立するには、このメソッドを呼び出します。 リモートホストに接続した後、 <xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドを使用して、基になる<xref:System.Net.Sockets.NetworkStream>を取得します。 データの送受信に使用します。 `NetworkStream`  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
+  
+> [!NOTE]
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1130,15 +1130,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 返されるを返します。<xref:System.Threading.Tasks.Task>オブジェクトは、TCP 接続が確立された後に完了します。 このメソッドは、接続要求が進行中ですが、呼び出し元のスレッドをブロックしません。  
+ この操作はブロックされません。 返された<xref:System.Threading.Tasks.Task>返されるオブジェクトは、TCP 接続が確立された後に完了します。 このメソッドは、接続要求の実行中に、呼び出し元のスレッドをブロックしません。  
   
- このメソッドは通常の呼び出し後すぐに使用、<xref:System.Net.Dns.BeginGetHostAddresses%2A>メソッドで、複数の IP アドレスを 1 つのホストに戻すことができます。 配列で指定されたホストに同期のリモート ホスト接続を確立するには、このメソッドを呼び出す<xref:System.Net.IPAddress>要素と非同期操作として、ポート番号。 リモート ホストに接続すると、使用、<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドは、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 これを使用して、`NetworkStream`データを送受信します。  
-  
-> [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+ 通常、このメソッドは、1つのホストに<xref:System.Net.Dns.BeginGetHostAddresses%2A>対して複数の IP アドレスを返すことができるメソッドの呼び出しの直後に使用されます。 このメソッドを呼び出して、要素の<xref:System.Net.IPAddress>配列によって指定されたホストへの同期リモートホスト接続と、非同期操作としてのポート番号を確立します。 リモートホストに接続した後、 <xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドを使用して、基になる<xref:System.Net.Sockets.NetworkStream>を取得します。 データの送受信に使用します。 `NetworkStream`  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
+  
+> [!NOTE]
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1191,17 +1191,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 返されるを返します。<xref:System.Threading.Tasks.Task>オブジェクトは、TCP 接続が確立された後に完了します。 このメソッドは、接続要求が進行中ですが、呼び出し元のスレッドをブロックしません。  
+ この操作はブロックされません。 返された<xref:System.Threading.Tasks.Task>返されるオブジェクトは、TCP 接続が確立された後に完了します。 このメソッドは、接続要求の実行中に、呼び出し元のスレッドをブロックしません。  
   
- 指定されたホスト名への同期のリモート ホスト接続を確立し、ポート番号を非同期操作としては、このメソッドを呼び出します。 リモート ホストに接続すると、使用、<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドは、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 これを使用して、`NetworkStream`データを送受信します。  
+ 非同期操作として指定したホスト名とポート番号への同期リモートホスト接続を確立するには、このメソッドを呼び出します。 リモートホストに接続した後、 <xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドを使用して、基になる<xref:System.Net.Sockets.NetworkStream>を取得します。 データの送受信に使用します。 `NetworkStream`  
   
- IPv6 が有効になっている場合、<xref:System.Net.Sockets.TcpClient.ConnectAsync%28System.String%2CSystem.Int32%29>メソッドが呼び出され、IPv6 の両方に解決されるホストに接続し、IPv4 アドレス、IPv6 のアドレスへの接続試行の IPv4 アドレスに実行する前。 これには、ホストが IPv6 アドレスでリッスンしていない場合、接続の確立に時間が遅延の影響があります。  
-  
-> [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+ Ipv6 を有効にし<xref:System.Net.Sockets.TcpClient.ConnectAsync%28System.String%2CSystem.Int32%29> 、メソッドを呼び出して、ipv6 と ipv4 の両方のアドレスに解決されるホストに接続する場合は、ipv4 アドレスの前に ipv6 アドレスへの接続が最初に試行されます。 ホストが IPv6 アドレスでリッスンしていない場合、接続の確立に時間がかかることがあります。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
+  
+> [!NOTE]
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1248,14 +1248,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `Connected`プロパティの接続の状態の取得、<xref:System.Net.Sockets.TcpClient.Client%2A>最後の I/O 操作の時点でソケット。 返す場合`false`、`Client`ソケットされたか、接続していない、または接続されていません。  
+ プロパティ`Connected`は、最後の i/o 操作時<xref:System.Net.Sockets.TcpClient.Client%2A>のソケットの接続状態を取得します。 が返さ`false`れた場合`Client` 、ソケットは接続されていないか、接続されていません。  
   
- `Connected`プロパティには、最新の操作の時点で接続の状態のみが反映されます、送信または現在の状態を確認するメッセージを受信しようとする必要があります。 メッセージの送信が失敗した、このプロパティが返されなく`true`します。 この動作は仕様ことに注意してください。 失われている可能性があります、接続のテスト送信/受信までの時間、接続の状態を確実にテストすることはできません。 コードは、ソケットが接続されているし、正常に送信の失敗のハンドルに想定してください。  
+ プロパティは`Connected` 、最新の操作の時点で接続の状態のみを反映するため、現在の状態を確認するには、メッセージの送信または受信を試みる必要があります。 メッセージの送信に失敗すると、このプロパティは`true`返されなくなります。 この動作は仕様によるものであることに注意してください。 接続の状態を確実にテストすることはできません。これは、テストと送信/受信の間に接続が失われた可能性があるためです。 コードでは、ソケットが接続されていると想定し、失敗した送信を適切に処理します。  
   
    
   
 ## Examples  
- 次のコード例では、リモート エンドポイントに接続して、接続を検証します。  
+ 次のコード例では、リモートエンドポイントに接続し、接続を確認します。  
   
  [!code-cpp[System.Net.Sockets.TcpClient1#2](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CPP/newtcpclient.cpp#2)]
  [!code-csharp[System.Net.Sockets.TcpClient1#2](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CS/newtcpclient.cs#2)]  
@@ -1339,19 +1339,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パブリック`Dispose()`メソッドと<xref:System.Object.Finalize%2A>メソッド。 `Dispose()` このメソッドを呼び出す、`disposing`パラメーターに設定`true`します。 `Finalize` このメソッドを呼び出す`disposing`に設定`false`します。  
+ このメソッドは、パブリック`Dispose()`メソッド<xref:System.Object.Finalize%2A>とメソッドによって呼び出されます。 `Dispose()`パラメーターをに`true`設定し`disposing`て、このメソッドを呼び出します。 `Finalize`をに`disposing` `false`設定して、このメソッドを呼び出します。  
   
- `disposing` パラメーターが `true` の場合、このメソッドは、この <xref:System.Net.Sockets.TcpClient> が参照しているすべてのマネージド オブジェクトによって保持されているリソースをすべて解放します。 これは呼び出すことによって、`Dispose()`参照される各オブジェクトのメソッド。  
+ `disposing` パラメーターが `true` の場合、このメソッドは、この <xref:System.Net.Sockets.TcpClient> が参照しているすべてのマネージド オブジェクトによって保持されているリソースをすべて解放します。 これは、参照される`Dispose()`各オブジェクトのメソッドを呼び出すことによって行われます。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
  ]]></format>
         </remarks>
         <block subset="none" type="overrides"><para>
-            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see langword="Dispose(Boolean)" /> をオーバーライドする場合は、以前に <see langword="Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 実装する方法についての詳細は<see langword="Dispose(Boolean)" />を参照してください[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。  
+            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 <see langword="Dispose(Boolean)" /> をオーバーライドする場合は、以前に <see langword="Dispose" /> を呼び出したときに破棄されたオブジェクトを参照しないように注意する必要があります。 を実装<see langword="Dispose(Boolean)" />する方法の詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。  
   
-詳細については<see langword="Dispose" />と<see cref="M:System.Object.Finalize" />を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)と[Finalize メソッドをオーバーライドする](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))します。</para></block>
+<see langword="Dispose" /> および<see cref="M:System.Object.Finalize" />の詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」と「 [Finalize メソッドのオーバーライド](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))」を参照してください。</para></block>
       </Docs>
     </Member>
     <Member MemberName="EndConnect">
@@ -1391,10 +1391,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドはブロックするまで、操作を完了します。 この操作を同期的に実行するには、使用、<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッド。  
+ このメソッドは、操作が完了するまでブロックします。 この操作を同期的に実行する<xref:System.Net.Sockets.TcpClient.Connect%2A>には、メソッドを使用します。  
   
 > [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
   
    
   
@@ -1448,14 +1448,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定では、複数のクライアントが特定のポートを使用できます。ただし、クライアントの 1 つだけでは、ポートに送信されるネットワーク トラフィックの操作を実行できます。 使用することができます、`ExclusiveAddressUse`プロパティを複数のクライアントが特定のポートを使用するを防ぐためにします。  
+ 既定では、複数のクライアントが特定のポートを使用できます。ただし、ポートに送信されたネットワークトラフィックに対して操作を実行できるのは、1つのクライアントだけです。 プロパティを使用する`ExclusiveAddressUse`と、複数のクライアントが特定のポートを使用できないようにすることができます。  
   
- 基になるソケット クライアント ポートにバインドする前に、このプロパティを設定する必要があります。 呼び出す場合<xref:System.Net.Sockets.TcpClient.Connect%2A>、 <xref:System.Net.Sockets.TcpClient.BeginConnect%2A>、 <xref:System.Net.Sockets.TcpClient.%23ctor%28System.Net.IPEndPoint%29>、または<xref:System.Net.Sockets.TcpClient.%23ctor%28System.String%2CSystem.Int32%29>、メソッドの副作用として、クライアントのポートがバインドされているし、後で設定することはできません、`ExclusiveAddressUse`プロパティ。
+ 基になるソケットがクライアントポートにバインドされる前に、このプロパティを設定する必要があります。 <xref:System.Net.Sockets.TcpClient.Connect%2A> `ExclusiveAddressUse` 、 、<xref:System.Net.Sockets.TcpClient.BeginConnect%2A>、または<xref:System.Net.Sockets.TcpClient.%23ctor%28System.String%2CSystem.Int32%29>を呼び出すと、クライアントポートはメソッドの副作用としてバインドされます。その後、プロパティを設定することはできません。 <xref:System.Net.Sockets.TcpClient.%23ctor%28System.Net.IPEndPoint%29>
   
    
   
 ## Examples  
- 次のコード例を作成、<xref:System.Net.Sockets.TcpClient>取得しの値を設定し、`ExclusiveAddressUse`プロパティ。  
+ 次のコード例では<xref:System.Net.Sockets.TcpClient> 、を作成し、 `ExclusiveAddressUse`プロパティの値を取得して設定します。  
   
  [!code-cpp[System.Net.Sockets.TcpClient1#3](~/samples/snippets/cpp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CPP/newtcpclient.cpp#3)]
  [!code-csharp[System.Net.Sockets.TcpClient1#3](~/samples/snippets/csharp/VS_Snippets_Remoting/System.Net.Sockets.TcpClient1/CS/newtcpclient.cs#3)]  
@@ -1502,11 +1502,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、<xref:System.Object.Finalize%2A?displayProperty=nameWithType> をオーバーライドします。 アプリケーション コードは、このメソッドを呼び出さないでください。オブジェクトの`Finalize`への呼び出しによって、ガベージ コレクターによって終了処理が無効になっている場合を除き、ガベージ コレクション中にメソッドが自動的に起動、<xref:System.GC.SuppressFinalize%2A?displayProperty=nameWithType>メソッド。  
+ このメソッドは、<xref:System.Object.Finalize%2A?displayProperty=nameWithType> をオーバーライドします。 アプリケーションコードはこのメソッドを呼び出すことはできません。オブジェクトの`Finalize`メソッドは、ガベージコレクションの実行中に、メソッドの<xref:System.GC.SuppressFinalize%2A?displayProperty=nameWithType>呼び出しによってガベージコレクターによる終了処理が無効にされていない限り、自動的に呼び出されます。  
   
- <xref:System.Net.Sockets.TcpClient>クラスのファイナライザーが TCP 接続を閉じるし、に関連付けられているすべてのマネージ リソースも解放、`TcpClient`します。 これらのリソースは、基になる<xref:System.Net.Sockets.Socket>、リモート ホストへの接続に使用される、<xref:System.Net.Sockets.NetworkStream>データを送受信するために使用します。 ファイナライザーは、すべてのアンマネージ リソースを解放しません。  
+ クラス<xref:System.Net.Sockets.TcpClient>ファイナライザーは、TCP 接続を閉じ、に関連付けられて`TcpClient`いるすべてのマネージリソースを解放します。 これらのリソースには<xref:System.Net.Sockets.Socket> 、リモートホスト<xref:System.Net.Sockets.NetworkStream>との接続に使用される基になると、データの送受信に使用されるが含まれます。 ファイナライザーは、アンマネージリソースを解放しません。  
   
- 詳細については、次を参照してください。 [Finalize メソッドおよびデストラクター](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/0s71x931(v%3dvs.100))、[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)、および[Finalize メソッドをオーバーライドする](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))します。  
+ 詳細については、「 [Finalize メソッドとデストラクター](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/0s71x931(v%3dvs.100))」、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」、および「 [finalize メソッドのオーバーライド](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ddae83kx(v=vs.100))」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1551,23 +1551,23 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
-`GetStream`メソッドを返します。 を<xref:System.Net.Sockets.NetworkStream>データの送受信に使用することできます。 `NetworkStream`クラスから継承、<xref:System.IO.Stream>クラス、メソッドとネットワーク通信を容易にするためのプロパティの豊富なコレクションを提供します。  
+メソッド`GetStream`は、データ<xref:System.Net.Sockets.NetworkStream>の送受信に使用できるを返します。 クラス`NetworkStream`は、 <xref:System.IO.Stream>クラスから継承します。このクラスは、ネットワーク通信を容易にするために使用されるメソッドとプロパティの豊富なコレクションを提供します。  
   
- 呼び出す必要があります、<xref:System.Net.Sockets.TcpClient.Connect%2A>メソッド、または<xref:System.Net.Sockets.TcpClient.GetStream%2A>メソッドがスローされます、<xref:System.InvalidOperationException>します。 取得した後、`NetworkStream`を呼び出し、<xref:System.Net.Sockets.NetworkStream.Write%2A>リモート ホストにデータを送信する方法。 呼び出す、<xref:System.Net.Sockets.NetworkStream.Read%2A>リモート ホストから着信するデータを受信するメソッド。 これら両方のメソッドは、指定された操作が実行されるまでブロックします。 チェックして、読み取り操作でのブロッキングを回避できます、<xref:System.Net.Sockets.NetworkStream.DataAvailable%2A>プロパティ。 A`true`値は、データがリモート ホストからのお知らせし、は読み取り可能なことを意味します。 この場合、<xref:System.Net.Sockets.NetworkStream.Read%2A>すぐに完了することが保証されます。 リモート ホストがシャット ダウン、接続<xref:System.Net.Sockets.NetworkStream.Read%2A>ですぐに 0 バイトが返されます。  
-  
-> [!NOTE]
->  閉じる必要があります、`NetworkStream`を介してデータを送受信することができます。 閉じる<xref:System.Net.Sockets.TcpClient>によって解放されない、`NetworkStream`します。  
+ 最初に<xref:System.Net.Sockets.TcpClient.Connect%2A> <xref:System.InvalidOperationException>メソッドを呼び出す必要があります。指定しないと、メソッドはをスローします。<xref:System.Net.Sockets.TcpClient.GetStream%2A> を取得`NetworkStream`した後、 <xref:System.Net.Sockets.NetworkStream.Write%2A>メソッドを呼び出して、リモートホストにデータを送信します。 リモートホスト<xref:System.Net.Sockets.NetworkStream.Read%2A>から到着したデータを受信するには、メソッドを呼び出します。 これらのメソッドは、どちらも指定された操作が実行されるまでブロックします。 プロパティを<xref:System.Net.Sockets.NetworkStream.DataAvailable%2A>チェックすることで、読み取り操作でのブロックを回避できます。 値`true`は、リモートホストからデータが到着し、読み取り可能であることを意味します。 この場合、 <xref:System.Net.Sockets.NetworkStream.Read%2A>はすぐに完了することが保証されます。 リモートホストが接続をシャットダウンした場合<xref:System.Net.Sockets.NetworkStream.Read%2A> 、は直ちにゼロバイトのを返します。  
   
 > [!NOTE]
->  表示された場合、<xref:System.Net.Sockets.SocketException>を使用して、<xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>特定のエラー コードを取得します。 このコードを取得した後を参照することができます、 [Windows Sockets version 2 API エラー コード](/windows/desktop/winsock/windows-sockets-error-codes-2)エラーの詳細な説明のドキュメント。  
+>  データを送受信する`NetworkStream`ときは、を閉じる必要があります。 を<xref:System.Net.Sockets.TcpClient>終了しても`NetworkStream`、は解放されません。  
   
 > [!NOTE]
->  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、次を参照してください。[ネットワークのトレースを .NET Framework で](~/docs/framework/network-programming/network-tracing.md)します。  
+>  を受け取っ<xref:System.Net.Sockets.SocketException>た場合は、 <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=nameWithType>を使用して特定のエラーコードを取得します。 このコードを取得した後、 [Windows Sockets version 2 API エラーコード](/windows/desktop/winsock/windows-sockets-error-codes-2)のドキュメントを参照して、エラーの詳細な説明を参照できます。  
+  
+> [!NOTE]
+>  このメンバーは、アプリケーションでネットワーク トレースが有効にされている場合にトレース情報を出力します。 詳細については、「 [.NET Framework のネットワークトレース](~/docs/framework/network-programming/network-tracing.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では`GetStream`、基になるかを取得する<xref:System.Net.Sockets.NetworkStream>します。 取得した後、<xref:System.Net.Sockets.NetworkStream>を使用して送受信してその<xref:System.Net.Sockets.NetworkStream.Write%2A>と<xref:System.Net.Sockets.NetworkStream.Read%2A>メソッド。  
+ 次のコード例で`GetStream`は、を使用<xref:System.Net.Sockets.NetworkStream>して、基になるを取得します。 を取得<xref:System.Net.Sockets.NetworkStream>した後は、メソッド<xref:System.Net.Sockets.NetworkStream.Write%2A>と<xref:System.Net.Sockets.NetworkStream.Read%2A>メソッドを使用して送受信します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#14](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#14)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#14](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#14)]
@@ -1621,28 +1621,28 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `LingerState`プロパティの変更方法<xref:System.Net.Sockets.Socket.Close%2A>メソッドの動作はします。 このプロパティ セットを接続をリセットして Winsock によって条件を変更するとします。 接続のリセットは、IP プロトコルの動作に基づいて引き続き発生します。  
+ プロパティ`LingerState`は、メソッドの<xref:System.Net.Sockets.Socket.Close%2A>動作方法を変更します。 このプロパティを設定すると、Winsock によって接続をリセットできる条件が変更されます。 接続のリセットは、IP プロトコルの動作によっても発生する可能性があります。  
   
- このプロパティは、TCP 接続を開いたまま呼び出しの後に時間の長さを制御<xref:System.Net.Sockets.TcpClient.Close%2A>データが送信するのには残ります。 呼び出すと、<xref:System.Net.Sockets.NetworkStream.Write%2A>メソッド、データは送信のネットワーク バッファーに配置されます。 このプロパティは、前に、リモート ホストにこのデータを送信することを使用できます、<xref:System.Net.Sockets.TcpClient.Close%2A>メソッドは、接続を切断します。  
+ このプロパティは、データが送信されるときにを<xref:System.Net.Sockets.TcpClient.Close%2A>呼び出した後、TCP 接続が開いたままになる時間を制御します。 <xref:System.Net.Sockets.NetworkStream.Write%2A>メソッドを呼び出すと、データは送信ネットワークバッファーに配置されます。 このプロパティを使用すると、メソッドが<xref:System.Net.Sockets.TcpClient.Close%2A>接続を切断する前に、このデータが確実にリモートホストに送信されるようにすることができます。  
   
- 接続を維持できるように、作成、 <xref:System.Net.Sockets.LingerOption> 、目的の値を格納しているインスタンスし、設定、`LingerState`プロパティをこのインスタンスにします。  
+ 残留を有効にするに<xref:System.Net.Sockets.LingerOption>は、目的の値を含むインスタンスを`LingerState`作成し、このインスタンスにプロパティを設定します。  
   
- 次の表の動作、<xref:System.Net.Sockets.TcpClient.Close%2A>メソッドの使用できる値について、<xref:System.Net.Sockets.LingerOption.Enabled%2A>プロパティと<xref:System.Net.Sockets.LingerOption.LingerTime%2A>にプロパティが格納されている、`LingerState`プロパティ。  
+ 次の表<xref:System.Net.Sockets.TcpClient.Close%2A>では、プロパティ<xref:System.Net.Sockets.LingerOption.Enabled%2A>の使用可能な値に対するメソッドの動作と<xref:System.Net.Sockets.LingerOption.LingerTime%2A> 、 `LingerState`プロパティに格納されているプロパティについて説明します。  
   
 |LingerState.Enabled|LingerState.LingerTime|動作|  
 |-------------------------|----------------------------|--------------|  
-|`false` (無効)、既定値|タイムアウトが適用可能で、ない (既定値)。|既定の IP プロトコル タイムアウトの期限が切れるまで、保留中のデータ送信を試みます。|  
-|`true` (有効)|0 以外のタイムアウト|指定したタイムアウトが経過すると、失敗した場合、Winsock 接続をリセットするまで、保留中のデータ送信を試行します。|  
-|`true` (有効)|0 のタイムアウト。|保留中のデータと Winsock のリセットの接続を破棄します。|  
+|`false`(無効)、既定値|タイムアウトは適用されません (既定)。|既定の IP プロトコルのタイムアウトが経過するまで、保留中のデータの送信を試みます。|  
+|`true`enabled|0以外のタイムアウト|指定したタイムアウトが経過するまで保留中のデータを送信しようとします。失敗した場合は、Winsock によって接続がリセットされます。|  
+|`true`enabled|ゼロタイムアウト。|保留中のデータを破棄し、Winsock によって接続がリセットされます。|  
   
- IP スタックは、接続の往復時間に基づいて使用する既定の IP プロトコルのタイムアウト期間を計算します。 ほとんどの場合は、スタックによって計算されたタイムアウトは、アプリケーションで定義された 1 つ以上です。 これは、ソケットの既定の動作と、`LingerState`プロパティは設定されません。  
+ IP スタックは、接続のラウンドトリップ時間に基づいて、使用する既定の IP プロトコルタイムアウト期間を計算します。 ほとんどの場合、スタックによって計算されるタイムアウトは、アプリケーションで定義されているものよりも関連性が高くなります。 これは、 `LingerState`プロパティが設定されていない場合のソケットの既定の動作です。  
   
- ときに、<xref:System.Net.Sockets.LingerOption.LingerTime%2A>にプロパティが格納されている、`LingerState`プロパティは、既定の IP プロトコル タイムアウトよりも大きい設定は、既定の IP プロトコル タイムアウトの表示およびオーバーライドはまだ適用されます。  
+ プロパティに格納されているプロパティが既定のipプロトコルタイムアウトよりも大きい値に設定されている場合でも、既定のipプロトコルタイムアウトが適用され、上書きされます。<xref:System.Net.Sockets.LingerOption.LingerTime%2A> `LingerState`  
   
    
   
 ## Examples  
- 次のコード例のセットを取得しますが、ソケットの待機時間。  
+ 次のコード例では、ソケットの待機時間を設定し、取得します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#12](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#12)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#12](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#12)]
@@ -1686,17 +1686,17 @@
       </ReturnValue>
       <Docs>
         <summary>送信バッファーまたは受信バッファーが設定されているサイズを超えていない場合に、遅延を無効にする値を取得または設定します。</summary>
-        <value><see langword="true" /> 場合は、遅延が無効にします。それ以外の場合、<see langword="false" />します。 既定値は <see langword="false" /> です。</value>
+        <value><see langword="true" />遅延が無効な場合は。それ以外<see langword="false" />の場合は。 既定値は <see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに`NoDelay`は`false`、<xref:System.Net.Sockets.TcpClient>までを送信しませんパケット、ネットワーク経由で大量の送信データを収集しました。 により TCP セグメントのオーバーヘッドの量、少量のデータを送信する効果がありません。 ただし、状況は非常に少量のデータを送信、または送信する各パケットからの迅速な応答を期待する必要がある存在します。 決定は、ネットワーク効率は、アプリケーションの要件との相対的な重要度を比較検討する必要があります。  
+ が`NoDelay` <xref:System.Net.Sockets.TcpClient>の場合、は大量の送信データを収集するまで、ネットワーク経由でパケットを送信しません。 `false` TCP セグメントのオーバーヘッドの量により、少量のデータを送信するのは効率的ではありません。 ただし、状況によっては、送信する各パケットから非常に少量のデータを送信したり、迅速に応答したりする必要がある場合があります。 決定は、ネットワークの効率とアプリケーションの要件の相対的な重要度を重視する必要があります。  
   
    
   
 ## Examples  
- 次のコード例には、遅延が無効にします。 値をチェックし、`NoDelay`プロパティが正常に設定されていることを確認します。  
+ 次のコード例では、遅延を無効にします。 次に、の`NoDelay`値をチェックして、プロパティが正常に設定されたことを確認します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#13](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#13)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#13](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#13)]
@@ -1742,21 +1742,21 @@
       </ReturnValue>
       <Docs>
         <summary>受信バッファーのサイズを取得または設定します。</summary>
-        <value>受信バッファー サイズ (バイト単位)。 既定値は 8192 バイトです。</value>
+        <value>受信バッファー サイズ (バイト単位)。 既定値は 8,192 バイトです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `ReceiveBufferSize`プロパティを取得または設定のそれぞれの読み取り操作の受信バッファーに格納することを予期しているバイト数。 このプロパティは、実際には、受信データに割り当てられたネットワーク バッファー領域を操作します。  
+ プロパティ`ReceiveBufferSize`は、各読み取り操作の受信バッファーに格納することが予想されるバイト数を取得または設定します。 このプロパティは、受信データを受信するために割り当てられたネットワークバッファー領域を実際に操作します。  
   
- ネットワークのバッファーを呼び出すときに必要なデータが使用可能なをするアプリケーション バッファーと少なくとも同にする必要があります、<xref:System.Net.Sockets.NetworkStream.Read%2A?displayProperty=nameWithType>メソッド。 使用して、<xref:System.Net.Sockets.TcpClient.ReceiveBufferSize%2A>このサイズを設定するプロパティ。 アプリケーションが大量のデータを受信する場合、`Read`メソッド非常に大規模なアプリケーション バッファー。  
+ メソッドを<xref:System.Net.Sockets.NetworkStream.Read%2A?displayProperty=nameWithType>呼び出すときに、必要なデータを確実に使用できるようにするには、ネットワークバッファーがアプリケーションバッファーのサイズ以上である必要があります。 このサイズ<xref:System.Net.Sockets.TcpClient.ReceiveBufferSize%2A>を設定するには、プロパティを使用します。 アプリケーションが一括データを受信する場合は、メソッドに`Read`非常に大きなアプリケーションバッファーを渡す必要があります。  
   
- 要求のネットワーク バッファーがデータの量よりも小さい場合、`Read`メソッド、データを 1 つの読み取り操作の必要な量を取得できません。 追加の呼び出しのオーバーヘッドが発生これ、`Read`メソッド。  
+ ネットワークバッファーが、 `Read`メソッドで要求したデータの量よりも小さい場合、1回の読み取り操作で必要な量のデータを取得することはできません。 これにより、メソッドの`Read`追加の呼び出しのオーバーヘッドが発生します。  
   
    
   
 ## Examples  
- 次のコード例では、設定し、受信バッファー サイズを取得します。  
+ 次のコード例では、受信バッファーサイズを設定して取得します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#8](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#8)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#8](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#8)]
@@ -1766,8 +1766,9 @@
         </remarks>
         <exception cref="T:System.Net.Sockets.SocketException">バッファー サイズの設定中にエラーが発生しました。  
   
-または 
-.NET Compact Framework アプリケーションでは、このプロパティは設定できません。 代替手段については、「解説」の「プラットフォームメモ」を参照してください。</exception>
+ - または -  
+  
+ .NET Compact Framework アプリケーションでは、このプロパティは設定できません。 代替手段については、「解説」の「プラットフォームメモ」を参照してください。</exception>
         <altmember cref="P:System.Net.Sockets.TcpClient.SendBufferSize" />
         <altmember cref="M:System.Net.Sockets.NetworkStream.Read(System.Byte[],System.Int32,System.Int32)" />
       </Docs>
@@ -1813,12 +1814,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `ReceiveTimeout`プロパティは、時間の量を決定する、<xref:System.Net.Sockets.NetworkStream.Read%2A>メソッドがデータを受信できるまでブロックされます。 この時間はミリ秒単位で測定されます。 前にタイムアウトに達すると`Read`が正常に完了すると、<xref:System.Net.Sockets.TcpClient>スロー、<xref:System.IO.IOException>します。 既定では、タイムアウトはありません。  
+ プロパティ`ReceiveTimeout`は、 <xref:System.Net.Sockets.NetworkStream.Read%2A>メソッドがデータを受信できるようになるまでブロックする時間を決定します。 この時間は、ミリ秒単位で計測されます。 タイムアウトが、正常に完了する`Read`前に期限<xref:System.Net.Sockets.TcpClient>切れに<xref:System.IO.IOException>なると、はをスローします。 既定では、タイムアウトはありません。  
   
    
   
 ## Examples  
- 次のコード例では、設定し、受信のタイムアウトを取得します。  
+ 次のコード例では、受信タイムアウトを設定して取得します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#10](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#10)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#10](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#10)]
@@ -1866,21 +1867,21 @@
       </ReturnValue>
       <Docs>
         <summary>送信バッファーのサイズを取得または設定します。</summary>
-        <value>送信バッファー サイズ (バイト単位)。 既定値は 8192 バイトです。</value>
+        <value>送信バッファー サイズ (バイト単位)。 既定値は 8,192 バイトです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `SendBufferSize`プロパティを取得または設定への各呼び出しの送信を想定しているバイト数、<xref:System.Net.Sockets.NetworkStream.Write%2A?displayProperty=nameWithType>メソッド。 このプロパティは、実際には、送信操作に割り当てられたネットワーク バッファー領域を操作します。  
+ プロパティ`SendBufferSize`は、 <xref:System.Net.Sockets.NetworkStream.Write%2A?displayProperty=nameWithType>メソッドへの各呼び出しで送信することが予想されるバイト数を取得または設定します。 このプロパティは、送信操作に割り当てられたネットワークバッファー領域を実際に操作します。  
   
- 必要なデータが格納され 1 つの操作で送信されることを確認するアプリケーション バッファー サイズ以上で、ネットワーク バッファー必要があります。 使用して、<xref:System.Net.Sockets.TcpClient.SendBufferSize%2A>このサイズを設定するプロパティ。 アプリケーションが大量のデータを送信する場合、`Write`メソッド非常に大規模なアプリケーション バッファー。  
+ 目的のデータが1回の操作で格納および送信されるようにするには、ネットワークバッファーがアプリケーションバッファーのサイズ以上である必要があります。 このサイズ<xref:System.Net.Sockets.TcpClient.SendBufferSize%2A>を設定するには、プロパティを使用します。 アプリケーションが一括データを送信する場合は、メソッドに`Write`非常に大きなアプリケーションバッファーを渡す必要があります。  
   
- 指定したネットワークのバッファーがデータの量よりも小さい場合、`Write`メソッドをいくつかのネットワークに加えたすべての呼び出しの操作が実行されますが送信、`Write`メソッド。 ネットワークのバッファーがアプリケーション バッファー サイズ以上であることを確認して、データ スループットを実現できます。  
+ ネットワークバッファーが、メソッド`Write` `Write`によって提供されるデータ量よりも小さい場合、メソッドに対して行うすべての呼び出しに対して複数のネットワーク送信操作が実行されます。 ネットワークバッファーがアプリケーションバッファーのサイズ以上であることを確認することで、より高いデータスループットを実現できます。  
   
    
   
 ## Examples  
- 次のコード例では、設定し、送信バッファーのサイズを取得します。  
+ 次のコード例では、送信バッファーサイズを設定して取得します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#9](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#9)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#9](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#9)]
@@ -1933,14 +1934,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `SendTimeout`プロパティは、時間の量を決定する、<xref:System.Net.Sockets.Socket.Send%2A>が正常に完了することになるまで、メソッドはブロックされます。 この時間はミリ秒単位で測定されます。  
+ プロパティ`SendTimeout`は、 <xref:System.Net.Sockets.Socket.Send%2A>メソッドが正常に返されるまでブロックする時間を決定します。 この時間は、ミリ秒単位で計測されます。  
   
- 呼び出した後、<xref:System.Net.Sockets.NetworkStream.Write%2A>メソッドは、基になる<xref:System.Net.Sockets.Socket>実際には、ホストに送信されたバイト数を返します。 `SendTimeout`プロパティは、時間数を決定します。、<xref:System.Net.Sockets.TcpClient>返されるバイト数を受け取る前に待機します。 前にタイムアウトに達すると、`Send`メソッドが正常に完了すると、`TcpClient`がスローされます、<xref:System.Net.Sockets.SocketException>します。 既定では、タイムアウトはありません。  
+ <xref:System.Net.Sockets.NetworkStream.Write%2A>メソッドを呼び出した後、基に<xref:System.Net.Sockets.Socket>なるは実際にホストに送信されたバイト数を返します。 プロパティ`SendTimeout`は、が<xref:System.Net.Sockets.TcpClient>返されるバイト数を受け取る前にが待機する時間を決定します。 メソッドが`Send`正常に完了する前にタイムアウトの期限が`TcpClient`切れると、 <xref:System.Net.Sockets.SocketException>はをスローします。 既定では、タイムアウトはありません。  
   
    
   
 ## Examples  
- 設定および取得する次のコード例、`SendTimeout`値。  
+ 次のコード例では`SendTimeout` 、値を設定して取得します。  
   
  [!code-cpp[ClassicTcpClient.PublicMethodsAndPropertiesExample#11](~/samples/snippets/cpp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CPP/source.cpp#11)]
  [!code-csharp[ClassicTcpClient.PublicMethodsAndPropertiesExample#11](~/samples/snippets/csharp/VS_Snippets_Remoting/ClassicTcpClient.PublicMethodsAndPropertiesExample/CS/source.cs#11)]
@@ -1989,10 +1990,10 @@
           <format type="text/markdown"><![CDATA[
 
 ## Remarks  
-完了したら IDisposable.Dispose の呼び出しを使用して、<xref:System.Net.Sockets.TcpClient>します。 IDisposable.Dispose メソッドのまま、<xref:System.Net.Sockets.TcpClient>を使用できない状態です。 IDisposable.Dispose を呼び出して後ですべての参照を解放する必要があります、<xref:System.Net.Sockets.TcpClient>ガベージ コレクターがメモリをクリアできるようにする、<xref:System.Net.Sockets.TcpClient>によって占有されていた。 詳細については、[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)および[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)を参照してください。
+の使用が終了したら、 <xref:System.Net.Sockets.TcpClient>IDisposable. Dispose を呼び出します。 IDisposable メソッドは、を<xref:System.Net.Sockets.TcpClient>使用できない状態のままにします。 IDisposable を呼び出した後、に対する<xref:System.Net.Sockets.TcpClient>すべての参照を解放して、が占有し<xref:System.Net.Sockets.TcpClient>ていたメモリをガベージコレクターが再利用できるようにする必要があります。 詳細については、[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)および[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)を参照してください。
 
 > [!NOTE] 
-> 最後の参照を解放する前に常に IDisposable.Dispose を呼び出して、<xref:System.Net.Sockets.TcpClient>します。 ガベージ コレクター呼び出すまではそれ以外の場合、するを使用しているリソースが解放されません、<xref:System.Net.Sockets.TcpClient>オブジェクトの**Finalize**メソッド。
+> への最後の参照を解放する前に、 <xref:System.Net.Sockets.TcpClient>常に IDisposable. Dispose を呼び出してください。 そうしないと、ガベージコレクターが<xref:System.Net.Sockets.TcpClient>オブジェクトの**Finalize**メソッドを呼び出すまで、使用しているリソースは解放されません。
 
 ]]></format>
         </remarks>

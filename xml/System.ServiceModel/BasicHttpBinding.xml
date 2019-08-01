@@ -35,7 +35,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ServiceModel.BasicHttpBinding> では、SOAP 1.1 メッセージを送信するためのトランスポートとして HTTP を使用します。 サービスは、ASMX クライアントがアクセスするエンドポイントなど、WS-I BP 1.1 に準拠するエンドポイントを開示するためにこのバインドを使用できます。 同様に、クライアントが使用できる、 <xref:System.ServiceModel.BasicHttpBinding> WS に準拠するエンドポイントを公開するサービスと通信するの BP 1.1 では、ASMX Web サービスで構成された Windows Communication Foundation (WCF) サービスなど、<xref:System.ServiceModel.BasicHttpBinding>します。  
+ <xref:System.ServiceModel.BasicHttpBinding> では、SOAP 1.1 メッセージを送信するためのトランスポートとして HTTP を使用します。 サービスは、ASMX クライアントがアクセスするエンドポイントなど、WS-I BP 1.1 に準拠するエンドポイントを開示するためにこのバインドを使用できます。 同様に、クライアントはを使用<xref:System.ServiceModel.BasicHttpBinding>して、 <xref:System.ServiceModel.BasicHttpBinding>で構成された ASMX Web サービスや Windows Communication Foundation (WCF) サービスなど、ws-i BP 1.1 に準拠するエンドポイントを公開するサービスと通信できます。  
   
  セキュリティは既定では無効になっていますが、<xref:System.ServiceModel.BasicHttpSecurityMode> コンストラクターで <xref:System.ServiceModel.BasicHttpSecurityMode.None> を <xref:System.ServiceModel.BasicHttpBinding.%23ctor%28System.ServiceModel.BasicHttpSecurityMode%29> 以外の値に設定することで追加できます。 サービスは、"Text" メッセージ エンコードおよび UTF-8 テキスト エンコードを既定で使用します。  
   
@@ -177,7 +177,7 @@
       </Parameters>
       <Docs>
         <param name="configurationName"><see cref="T:System.ServiceModel.Configuration.BasicHttpBindingElement" /> のバインド構成の名前。</param>
-        <summary>構成名で指定されたバインディングを使用して、<see cref="T:System.ServiceModel.BasicHttpBinding" /> クラスの新しいインスタンスを初期化します。</summary>
+        <summary>構成名で指定されたバインドを使用して、<see cref="T:System.ServiceModel.BasicHttpBinding" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -223,7 +223,7 @@
       </ReturnValue>
       <Docs>
         <summary>クライアントがクッキーを受け入れて、それらを今後の要求に反映させるかどうかを示す値を取得または設定します。</summary>
-        <value>クッキーが許可される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</value>
+        <value>クッキーが許可される場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -233,7 +233,7 @@
 
 ## Examples
 
-次の例は、サーバーからすべてのクッキーを将来のクライアント要求にコピーされることを示すには、このプロパティを設定します。
+次の例では、このプロパティを設定して、サーバーからのすべてのクッキーを将来のクライアント要求にコピーする必要があることを示しています。
 
 ```csharp
 BasicHttpBinding binding = new BasicHttpBinding();
@@ -280,7 +280,7 @@ binding.AllowCookies = true;
         <typeparam name="TChannel">チャネル ファクトリが作成するチャネルの種類。</typeparam>
         <param name="parameters">作成されるチャネル ファクトリの要件を指定します。</param>
         <summary>指定した種類のチャネルを作成し、バインド パラメーターのコレクションで指定されている機能を満たすチャネル ファクトリ スタックを、クライアント上に構築します。</summary>
-        <returns>コレクションによって指定される機能を満たす <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" /> 型の <paramref name="TChannel" />。</returns>
+        <returns>コレクションによって指定される機能を満たす <paramref name="TChannel" /> 型の <see cref="T:System.ServiceModel.Channels.IChannelFactory`1" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -316,13 +316,13 @@ binding.AllowCookies = true;
   
 ## Remarks  
 
-インターネット リソースは、ローカル アドレスを持つ場合ローカルです。 ローカル アドレスは、同じコンピューター、ローカル LAN またはイントラネット上にありが構文的に識別、期間がないため (\.)、Uri のように`http://webserver/`と`http://localhost/`します。
+インターネット リソースは、ローカル アドレスを持つ場合ローカルです。 ローカルアドレスとは、同じコンピューター、ローカル LAN、またはイントラネット上にあり、構文上、ピリオド (\.) が含ま`http://webserver/` `http://localhost/`れていないことを示します。
 
-プロパティ決定、BypassProxyOnLocal 設定で構成されたエンドポイントかどうか、<xref:System.ServiceModel.BasicHttpBinding>ローカル リソースにアクセスするときにプロキシ サーバーを使用します。
+BypassProxyOnLocal プロパティを設定すると、 <xref:System.ServiceModel.BasicHttpBinding>で構成されたエンドポイントがローカルリソースにアクセスするときにプロキシサーバーを使用するかどうかが決まります。
 
-BypassProxyOnLocal 場合`true`、ローカル インターネット リソースへの要求はプロキシ サーバーを使用しません。 このプロパティを `localhost` に設定した場合で、同じコンピューター上のサービスと対話するクライアントがプロキシを経由するときは、(`true` ではなく) ホスト名を使用します。
+BypassProxyOnLocal が`true`の場合、ローカルインターネットリソースへの要求ではプロキシサーバーは使用されません。 このプロパティを `localhost` に設定した場合で、同じコンピューター上のサービスと対話するクライアントがプロキシを経由するときは、(`true` ではなく) ホスト名を使用します。
 
-BypassProxyOnLocal が場合`false`、すべてのインターネット要求 localhost 以外には、Uri は、プロキシ サーバーを通じて行われます。 Localhost のある Uri への要求は BypassProxyOnLocal 設定に関係なく、プロキシ サーバーを使用しません。
+BypassProxyOnLocal が`false`の場合、非 localhost uri へのすべてのインターネット要求はプロキシサーバーを介して行われます。 Localhost を使用した Uri への要求では、BypassProxyOnLocal の設定に関係なく、プロキシサーバーは使用されません。
   
 ## Examples
 
@@ -384,7 +384,7 @@ binding.BypassProxyOnLocal = true;
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>作成し、現在のバインディングに含まれるバインディング要素の順序付けられたコレクションを返します。</summary>
+        <summary>現在のバインディングに含まれるバインド要素の順序付けられたコレクションを作成して返します。</summary>
         <returns><see cref="T:System.ServiceModel.Channels.BindingElementCollection" /> により記述されたバインド要素の順序付けられたスタックを含む <see cref="T:System.ServiceModel.BasicHttpBinding" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -430,8 +430,8 @@ binding.BypassProxyOnLocal = true;
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または HTTP クッキー コンテナーが有効になっているかどうかを示す値を設定します。</summary>
-        <value><see langword="true" /> は HTTP クッキー コンテナーが有効な場合それ以外の場合、<see langword="false" />します。</value>
+        <summary>HTTP クッキー コンテナーが有効かどうかを示す値を取得または設定します。</summary>
+        <value>HTTP クッキーのコンテナーを有効にする場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -456,7 +456,7 @@ binding.BypassProxyOnLocal = true;
       </ReturnValue>
       <Docs>
         <summary>このバインドによって処理されるメッセージに使用される SOAP のバージョンを取得します。</summary>
-        <value>このバインディングと共に使用される <see cref="T:System.ServiceModel.EnvelopeVersion" /> の値。 この値は常に SOAP 1.1 です。</value>
+        <value>このバインドと共に使用される <see cref="T:System.ServiceModel.EnvelopeVersion" /> の値。 この値は常に SOAP 1.1 です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
@@ -563,7 +563,7 @@ binding.HostNameComparisonMode = HostNameComparisonMode.Exact;
   
 ## Remarks  
 
-<xref:System.ServiceModel.Channels.BufferManager> は、バッファー プールを使用することで、バッファーの使用コストを最小化します。 バッファーは、チャネルから出てくるメッセージをサービスが処理するときに必要です。 メッセージの読み込み処理に十分なメモリがバッファー プールにない場合、<xref:System.ServiceModel.Channels.BufferManager> は、CLR ヒープから追加のメモリを割り当てる必要があります。これにより、ガベージ コレクションのオーバーヘッドが増加します。 CLR ガベージ ヒープから大量の割り当ては、バッファー プールのサイズが小さすぎること、および MaxBufferPoolSize 制限を増やすことで割り当てを増やすとパフォーマンスが向上する可能性を示します。
+<xref:System.ServiceModel.Channels.BufferManager> は、バッファー プールを使用することで、バッファーの使用コストを最小化します。 バッファーは、チャネルから出てくるメッセージをサービスが処理するときに必要です。 メッセージの読み込み処理に十分なメモリがバッファー プールにない場合、<xref:System.ServiceModel.Channels.BufferManager> は、CLR ヒープから追加のメモリを割り当てる必要があります。これにより、ガベージ コレクションのオーバーヘッドが増加します。 CLR ガベージヒープからの広範な割り当ては、バッファープールサイズが小さすぎることを示しています。また、MaxBufferPoolSize の制限を増やすことにより、割り当てを大きくしてパフォーマンスを向上させることができます。
 
 ## Examples
 
@@ -627,7 +627,7 @@ binding.MaxBufferPoolSize = 0x80000 * 2;
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはチャネルからメッセージを受信するバッファーの最大サイズをバイト単位で設定します。</summary>
+        <summary>チャネルからメッセージを受信するバッファーの最大サイズ (バイト単位) を取得または設定します。</summary>
         <value>このバインドで構成されるエンドポイントのメッセージが処理されるときに、メッセージを格納するバッファーの最大サイズ (バイト単位)。 既定値は 65,536 バイトです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -636,21 +636,21 @@ binding.MaxBufferPoolSize = 0x80000 * 2;
 
 メッセージの処理中に、メッセージを保存する十分なメモリがバッファーにない場合は、CLR ヒープから追加のメモリを割り当てる必要があります。これにより、ガベージ コレクションのオーバーヘッドが増加します。 CLR ガベージ ヒープから大量の割り当てが行われることは、メッセージ バッファーのサイズが小さすぎること、および割り当てを増やすことでパフォーマンスが向上する可能性があることを示します。
 
-MaxBufferSize プロパティとその重要性の値は、メッセージがされているかどうかによって異なりますバッファリングまたは受信される、チャネルでストリームします。
+MaxBufferSize プロパティの値とその意味は、メッセージが受信されるチャネルでメッセージがバッファーされるか、ストリーム配信されるかによって異なります。
 
-- バッファリングされたトランスポート (<xref:System.ServiceModel.BasicHttpBinding.TransferMode>に設定<xref:System.ServiceModel.TransferMode.Buffered?displayProperty=nameWithType>)、この値は常にによって指定されると、<xref:System.ServiceModel.BasicHttpBinding.MaxReceivedMessageSize>プロパティ。
+- バッファー転送 (<xref:System.ServiceModel.BasicHttpBinding.TransferMode>に<xref:System.ServiceModel.TransferMode.Buffered?displayProperty=nameWithType>設定) の場合、この値は<xref:System.ServiceModel.BasicHttpBinding.MaxReceivedMessageSize>プロパティで指定された値と常に等しくなります。
 
-- ストリーミング トランスポート (<xref:System.ServiceModel.BasicHttpBinding.TransferMode> を <xref:System.ServiceModel.TransferMode.Streamed?displayProperty=nameWithType> に設定) では、SOAP ヘッダーだけをバッファーして、メッセージを生成する必要があります。 本文は、必要に応じてストリームに含めることができます。 ここでは、以下には MaxBufferSize<xref:System.ServiceModel.BasicHttpBinding.MaxReceivedMessageSize>ここで、<xref:System.ServiceModel.BasicHttpBinding.MaxReceivedMessageSize>メッセージ全体 (ヘッダーと本文) のサイズを制限 MaxBufferSize の SOAP ヘッダーのサイズだけを制限するとします。
+- ストリーミング トランスポート (<xref:System.ServiceModel.BasicHttpBinding.TransferMode> を <xref:System.ServiceModel.TransferMode.Streamed?displayProperty=nameWithType> に設定) では、SOAP ヘッダーだけをバッファーして、メッセージを生成する必要があります。 本文は、必要に応じてストリームに含めることができます。 この場合、maxbuffersize は以下のようになります<xref:System.ServiceModel.BasicHttpBinding.MaxReceivedMessageSize>。で<xref:System.ServiceModel.BasicHttpBinding.MaxReceivedMessageSize>は、メッセージ全体 (ヘッダーと本文) のサイズが制限され、maxbuffersize の境界は SOAP ヘッダーのサイズのみになります。
 
 ここで設定されるバッファー サイズに対する制限は、メッセージ交換のパフォーマンスを最適化するためのものです。 メッセージがバッファーに設定された最大値を超える場合に、メッセージが失われることはありません。 この場合は、CLR ヒープからのメモリがより多く要求され、これによりバッファーの使用時よりも多くのガベージ コレクションのオーバーヘッドが生じます。
 
 > [!NOTE]
-> MaxBufferSize の MaxReceivedMessageSize、設定は、ローカルの動作設定です。 これは、それらがメタデータの他のエンドポイントに転送されないことを意味します。 メタデータから、最大メッセージ サイズ 2 GB でサービスへのプロキシを生成する場合、プロキシは既定値の 64K のままです。 これによって、メッセージおよびメッセージ バッファー サイズの適切な制限を、引き続きローカル管理者が制御できます。
+> MaxBufferSize と MaxReceivedMessageSize の設定は、ローカルの動作設定です。 これは、それらがメタデータの他のエンドポイントに転送されないことを意味します。 メタデータから、最大メッセージ サイズ 2 GB でサービスへのプロキシを生成する場合、プロキシは既定値の 64K のままです。 これによって、メッセージおよびメッセージ バッファー サイズの適切な制限を、引き続きローカル管理者が制御できます。
   
 ## Examples
 
 
-次の例のセット**MaxBufferSize**を 1,000,000 バイトにします。
+次の例では、 **MaxBufferSize**を100万バイトに設定します。
 
 ```csharp
 BasicHttpBinding binding = new BasicHttpBinding();
@@ -690,24 +690,24 @@ binding.MaxBufferSize = 1000000;
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得またはこのバインディングで構成されたチャネルで受信可能なメッセージのバイト単位で最大のサイズを設定します。</summary>
+        <summary>このバインディングで構成されたチャネルで受信可能なメッセージの最大サイズ (バイト単位) を取得または設定します。</summary>
         <value>バインドで処理されるメッセージの最大サイズ (バイト単位)。 既定値は 65,536 バイトです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
 
-各メッセージに割り当てられたメモリの量、BasicHttpBinding を使用してサービスによって、ネットワーク上で受信できるメッセージのサイズに制限されます。 このメッセージ サイズの制限は、DoS スタイルの攻撃への露出を制限するためのものです。
+BasicHttpBinding を使用してサービスによってネットワーク上で受信できるメッセージのサイズは、各メッセージに割り当てられたメモリの量によって制限されます。 このメッセージ サイズの制限は、DoS スタイルの攻撃への露出を制限するためのものです。
 
 また、<xref:System.ServiceModel.BasicHttpBinding.MaxBufferSize> プロパティが <xref:System.ServiceModel.BasicHttpBinding> にあります。
 
-バッファーを介するトランスポート (<xref:System.ServiceModel.BasicHttpBinding.TransferMode> が <xref:System.ServiceModel.TransferMode.Buffered> に設定されます)。 この値は、MaxReceivedMessageSize で指定されているのと同じでは常にします。
+バッファーを介するトランスポート (<xref:System.ServiceModel.BasicHttpBinding.TransferMode> が <xref:System.ServiceModel.TransferMode.Buffered> に設定されます)。 この値は、常に MaxReceivedMessageSize によって指定された値と等しくなります。
 
-ストリーミング トランスポート (<xref:System.ServiceModel.BasicHttpBinding.TransferMode> を <xref:System.ServiceModel.TransferMode.Streamed> に設定) では、SOAP ヘッダーだけをバッファーして、メッセージを生成する必要があります。 本文は、必要に応じてストリームに含めることができます。 この場合、 <xref:System.ServiceModel.BasicHttpBinding.MaxBufferSize> MaxReceivedMessageSize がメッセージ全体 (ヘッダーと本文) のサイズを制限、MaxReceivedMessageSize 小さいと<xref:System.ServiceModel.BasicHttpBinding.MaxBufferSize>SOAP ヘッダーのサイズを制限します。
+ストリーミング トランスポート (<xref:System.ServiceModel.BasicHttpBinding.TransferMode> を <xref:System.ServiceModel.TransferMode.Streamed> に設定) では、SOAP ヘッダーだけをバッファーして、メッセージを生成する必要があります。 本文は、必要に応じてストリームに含めることができます。 この場合、は<xref:System.ServiceModel.BasicHttpBinding.MaxBufferSize> MaxReceivedMessageSize 以下になります。ここで、MaxReceivedMessageSize は、メッセージ全体 (ヘッダーと本文) のサイズと SOAP <xref:System.ServiceModel.BasicHttpBinding.MaxBufferSize>ヘッダーのサイズを範囲とします。
 
 ## Examples
 
-次の例では、MaxReceivedMessageSize を 1,000,000 バイトに設定します。
+次の例では、MaxReceivedMessageSize を100万バイトに設定します。
 
 ```csharp
 BasicHttpBinding binding = new BasicHttpBinding();
@@ -826,11 +826,11 @@ binding.MaxReceivedMessageSize = 65536 * 2;
   
 ## Remarks  
 
-場合、<xref:System.ServiceModel.BasicHttpBinding.UseDefaultWebProxy>に設定されている`true`既定のアドレスが使用され、ProxyAddress セットの値は無視されます。
+<xref:System.ServiceModel.BasicHttpBinding.UseDefaultWebProxy>がに`true`設定されている場合、既定のアドレスが使用され、ProxyAddress set の値は無視されます。
 
 ## Examples
 
-次の例では、アプリケーションの設定に ProxyAddress を設定します。
+次の例では、ProxyAddress をアプリケーション設定に設定します。
 
 ```csharp
 // Get base address from app settings in configuration
@@ -885,7 +885,7 @@ binding.ProxyAddress = baseAddress;
         <ReturnType>System.Xml.XmlDictionaryReaderQuotas</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このバインディングを使用して設定されるエンドポイントにより処理可能な、SOAP メッセージの複雑さに対する制約を取得または設定します。</summary>
+        <summary>このバインディングで構成されたエンドポイントにより処理可能な、SOAP メッセージの複雑さに対する制約を取得または設定します。</summary>
         <value>複雑さの制約を指定する <see cref="T:System.Xml.XmlDictionaryReaderQuotas" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -896,7 +896,7 @@ binding.ProxyAddress = baseAddress;
 
 ## Examples
 
-次の例では、アプリケーションの設定に ReaderQuotas を設定します。
+次の例では、ReaderQuotas をアプリケーション設定に設定します。
 
 ```csharp
 BasicHttpBinding binding = new BasicHttpBinding();
@@ -953,7 +953,7 @@ binding.ReaderQuotas = readerQuotas;
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このバインディングで構成されたチャネルとリスナーのための URI トランスポート スキームを取得します。</summary>
+        <summary>このバインドで構成されたチャネルとリスナーのための URI トランスポート スキームを取得します。</summary>
         <value>トランスポート バインド要素のセキュリティ モードが <see cref="F:System.ServiceModel.BasicHttpSecurityMode.Transport" /> または <see cref="F:System.ServiceModel.BasicHttpSecurityMode.TransportWithMessageCredential" /> に設定されている場合は "https"。それ以外の場合は "http"。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1003,8 +1003,8 @@ string thisScheme = binding.Scheme;
         <ReturnType>System.ServiceModel.BasicHttpSecurity</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このバインディングで使用されるセキュリティの種類を取得します。</summary>
-        <value>このバインディングで使用される <see cref="T:System.ServiceModel.BasicHttpSecurity" />。 既定値は <see cref="F:System.ServiceModel.BasicHttpSecurityMode.None" /> です。</value>
+        <summary>このバインドで使用されるセキュリティの種類を取得します。</summary>
+        <value>このバインドで使用される <see cref="T:System.ServiceModel.BasicHttpSecurity" />。 既定値は <see cref="F:System.ServiceModel.BasicHttpSecurityMode.None" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1047,8 +1047,8 @@ string thisScheme = binding.Scheme;
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Http クッキーのコンテナーでシリアル化を有効にするかどうかを示します。</summary>
-        <returns><see langword="true" /> http クッキー コンテナーには、シリアル化が有効にする必要がある場合それ以外の場合、<see langword="false" />します。</returns>
+        <summary>http クッキー コンテナーでシリアル化を有効にする必要があるかどうかを示します。</summary>
+        <returns>http cookie コンテナーでシリアル化を有効にする場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1077,8 +1077,8 @@ string thisScheme = binding.Scheme;
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>SOAP メッセージ構造の複雑さに対する制約値をシリアル化するかどうかを返します。</summary>
-        <returns><see langword="true" /> リーダーのクォータをシリアル化する場合それ以外の場合、<see langword="false" />します。</returns>
+        <summary>SOAP メッセージ構造の複雑さに対する制約値をシリアル化する必要があるかどうかを示す値を返します。</summary>
+        <returns>リーダーのクォータをシリアル化する必要がある場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1108,7 +1108,7 @@ string thisScheme = binding.Scheme;
       <Parameters />
       <Docs>
         <summary>メッセージ レベルまたはトランスポート レベルなどで、シリアル化が既に発生しているかどうかに基づき、セキュリティ設定をシリアル化する必要があるかどうかを示す値を返します。</summary>
-        <returns><see langword="true" /> セキュリティをシリアル化する場合それ以外の場合、<see langword="false" />します。</returns>
+        <returns>セキュリティをシリアル化する必要がある場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1138,7 +1138,7 @@ string thisScheme = binding.Scheme;
       <Parameters />
       <Docs>
         <summary>テキスト エンコーディングをシリアル化する必要があるかどうかを示す値を返します。</summary>
-        <returns><see langword="true" /> テキスト エンコーディングをシリアル化する必要があります。 場合それ以外の場合、<see langword="false" />します。</returns>
+        <returns>テキスト エンコーディングをシリアル化する必要がある場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1209,14 +1209,14 @@ bool receiveSynchronously = s.ReceiveSynchronously;
         <ReturnType>System.Text.Encoding</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>メッセージ テキストに使用される文字エンコーディングを取得または設定します。</summary>
-        <value>使用されている文字エンコードを示す <see cref="T:System.Text.Encoding" />。 既定値は <see cref="T:System.Text.UTF8Encoding" /> です。</value>
+        <summary>メッセージ テキストで使用される文字エンコーディングを取得または設定します。</summary>
+        <value>使用されている文字エンコードを示す <see cref="T:System.Text.Encoding" />。 既定値は、<see cref="T:System.Text.UTF8Encoding" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples
 
-次の例では、TextEncoding を設定<xref:System.Text.Encoding.Unicode?displayProperty=nameWithType>します。
+次の例では、 <xref:System.Text.Encoding.Unicode?displayProperty=nameWithType>TextEncoding をに設定します。
 
 ```csharp
 BasicHttpBinding binding = new BasicHttpBinding();
@@ -1279,7 +1279,7 @@ binding.TextEncoding = System.Text.Encoding.Unicode;
   
 ## Examples
 
-次の例では、TransferMode を設定<xref:System.ServiceModel.TransferMode.Streamed>します。
+次の例では、TransferMode をに<xref:System.ServiceModel.TransferMode.Streamed>設定します。
 
 ```csharp
 BasicHttpBinding binding = new BasicHttpBinding();
@@ -1317,18 +1317,18 @@ binding.TransferMode = TransferMode.Streamed;
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>使用できる場合にシステムの自動構成される HTTP プロキシを使用するかどうかを示す値を取得または設定します。</summary>
+        <summary>システムの自動構成される HTTP プロキシを使用する (可能な場合) かどうかを示す値を取得または設定します。</summary>
         <value>システムの自動構成される HTTP プロキシを使用する必要がある場合 (利用可能な場合) は、<see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="true" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
 
 ## Remarks
 
-これがエラー`true`と<xref:System.ServiceModel.BasicHttpBinding.ProxyAddress>null 以外であります。
+これを null 以外にすることは`true`でき<xref:System.ServiceModel.BasicHttpBinding.ProxyAddress>ません。
 
 ## Examples
 
-この例に UseDefaultWebProxy の値を設定する`false`します。
+この例では、UseDefaultWebProxy の値`false`をに設定します。
 
 ```csharp
 BasicHttpBinding binding = new BasicHttpBinding();

@@ -1,5 +1,5 @@
 <Type Name="IInstanceProvider" FullName="System.ServiceModel.Dispatcher.IInstanceProvider">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="6270c1d80674af973b6c957e53bfac75331644f8" /><Meta Name="ms.sourcegitcommit" Value="f1d16425528e237257ca3b58eb49217a514849ea" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="04/24/2019" /><Meta Name="ms.locfileid" Value="64032624" /></Metadata><TypeSignature Language="C#" Value="public interface IInstanceProvider" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="9add5e6cc7de34a7ed7cbeac8c904bfc6af4be62" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68392587" /></Metadata><TypeSignature Language="C#" Value="public interface IInstanceProvider" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IInstanceProvider" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.Dispatcher.IInstanceProvider" />
   <TypeSignature Language="VB.NET" Value="Public Interface IInstanceProvider" />
@@ -23,11 +23,11 @@
   
  挿入メカニズムがエンドポイント動作の場合は、構成ファイルを使用してカスタム動作を挿入できる <xref:System.ServiceModel.Configuration.BehaviorExtensionElement> オブジェクトも実装できます。 挿入メカニズムがコントラクト動作の場合は、サービス ホストを開く前にプログラムで動作を挿入したり、カスタム属性を実装したりできます。 コントラクト動作の例については、「使用例」のセクションを参照してください。  
   
- <xref:System.ServiceModel.Dispatcher.IInstanceProvider> には、2 つのメソッド <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> と <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> があります。 これらのメソッドは、通常、既定以外のコンストラクターを使用してサービス オブジェクトを作成するために、またはオブジェクトの有効期間に関係する状態を初期化または破棄するために実装されます。 サービス オブジェクト プールは、<xref:System.ServiceModel.Dispatcher.IInstanceProvider> のカスタム機能の一例です。  
+ <xref:System.ServiceModel.Dispatcher.IInstanceProvider> には、2 つのメソッド <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> と <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> があります。 これらのメソッドは、通常、パラメーター化されていないコンストラクターを使用してサービスオブジェクトを作成するか、オブジェクトの有効期間に関連する状態を初期化または破棄するために実装されます。 サービス オブジェクト プールは、<xref:System.ServiceModel.Dispatcher.IInstanceProvider> のカスタム機能の一例です。  
   
  通常、<xref:System.ServiceModel.InstanceContext> は、<xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> が最初に作成された時点で <xref:System.ServiceModel.InstanceContext> を呼び出し、<xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> が閉じられると、<xref:System.ServiceModel.InstanceContext> メソッドを呼び出します。  
   
- <xref:System.ServiceModel.InstanceContext> が閉じられる前に <xref:System.ServiceModel.InstanceContext> オブジェクトにサービス オブジェクトを解放させるには、2 つの方法があります。 第 1 の方法は、<xref:System.ServiceModel.OperationBehaviorAttribute.ReleaseInstanceMode%2A> を <xref:System.ServiceModel.ReleaseInstanceMode.AfterCall> または <xref:System.ServiceModel.ReleaseInstanceMode.BeforeAndAfterCall> に設定することです。 第 2 の方法は、<xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A> メソッドを呼び出すことです。 この方法を使用すると、<xref:System.ServiceModel.InstanceContext> は、ディスパッチャーのインスタンス プロバイダーで <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> メソッドを呼び出します。 新しいメッセージが到着するは、インスタンスが解放された後、WCF は使用して新しいインスタンス作成、<xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A>メソッド。  
+ <xref:System.ServiceModel.InstanceContext> が閉じられる前に <xref:System.ServiceModel.InstanceContext> オブジェクトにサービス オブジェクトを解放させるには、2 つの方法があります。 第 1 の方法は、<xref:System.ServiceModel.OperationBehaviorAttribute.ReleaseInstanceMode%2A> を <xref:System.ServiceModel.ReleaseInstanceMode.AfterCall> または <xref:System.ServiceModel.ReleaseInstanceMode.BeforeAndAfterCall> に設定することです。 第 2 の方法は、<xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A> メソッドを呼び出すことです。 この方法を使用すると、<xref:System.ServiceModel.InstanceContext> は、ディスパッチャーのインスタンス プロバイダーで <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> メソッドを呼び出します。 インスタンスが解放された後に新しいメッセージが到着すると、WCF は<xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A>メソッドを使用して新しいインスタンスを作成します。  
   
 > [!NOTE]
 >  サービスの <xref:System.ServiceModel.InstanceContextMode> が <xref:System.ServiceModel.InstanceContextMode.Single> の場合は、ユーザーが既知のサービス オブジェクトを提供しなかったときでも、システムは <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> メソッドと <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> メソッドのいずれも呼び出しません。ただし、ユーザーが直接 <xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A> を呼び出してから、<xref:System.ServiceModel.InstanceContext.GetServiceInstance%2A> を呼び出す場合を除きます。  
@@ -84,7 +84,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、 <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%28System.ServiceModel.InstanceContext%29> WCF サービスが新しいものを作成しようとしたときに受信する特定のサービス オブジェクトを制御するメソッド。  
+ <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%28System.ServiceModel.InstanceContext%29>メソッドを使用して、WCF サービスが新しいサービスオブジェクトを作成しようとしたときに受け取る、正確なサービスオブジェクトを制御します。  
   
    
   
@@ -131,7 +131,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、 <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%28System.ServiceModel.InstanceContext%2CSystem.ServiceModel.Channels.Message%29> WCF サービスが新しいものを作成しようとしたときに受信する特定のサービス オブジェクトを制御するメソッド。  
+ <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%28System.ServiceModel.InstanceContext%2CSystem.ServiceModel.Channels.Message%29>メソッドを使用して、WCF サービスが新しいサービスオブジェクトを作成しようとしたときに受け取る、正確なサービスオブジェクトを制御します。  
   
    
   

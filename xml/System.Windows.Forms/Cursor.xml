@@ -45,23 +45,23 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- カーソルは、小さな画像が画面上の場所は、マウス、ペン、またはトラック ボールなどのポインティング デバイスによって制御されます。 ポインティング デバイスに移動して、ユーザー、オペレーティング システムはそれに応じて、カーソルを移動します。  
+ カーソルは、画面上の場所がマウス、ペン、トラックボールなどのポインティングデバイスによって制御される小さな画像です。 ユーザーがポインティングデバイスを移動すると、オペレーティングシステムはそれに応じてカーソルを移動します。  
   
- 別のカーソルの図形は、マウスは必要があります。 どのような操作をユーザーに通知するために使用されます。 たとえば、編集、または、テキストを選択するとき、<xref:System.Windows.Forms.Cursors.IBeam%2A?displayProperty=nameWithType>通常カーソルが表示されます。 待機カーソルは、通常、プロセスが現在実行中のユーザーに通知するために使用されます。 プロセスが、ユーザーが待機する必要がありますの例は、ファイルを保存またはコントロールの入力をなど、ファイルを開いている、 <xref:System.Windows.Forms.DataGrid>、<xref:System.Windows.Forms.ListBox>または<xref:System.Windows.Forms.TreeView>で大量のデータ。  
+ さまざまなカーソル図形を使用して、マウスがどのような操作を行うかをユーザーに通知します。 たとえば、テキストを<xref:System.Windows.Forms.Cursors.IBeam%2A?displayProperty=nameWithType>編集または選択する場合、通常はカーソルが表示されます。 待機カーソルは、通常、プロセスが現在実行中であることをユーザーに通知するために使用されます。 ユーザーが待機しているプロセスの例として<xref:System.Windows.Forms.DataGrid> <xref:System.Windows.Forms.ListBox> <xref:System.Windows.Forms.TreeView>は、ファイルを開く、ファイルを保存する、などのコントロールに大量のデータを格納する、などがあります。  
   
- 派生したすべてのコントロール、<xref:System.Windows.Forms.Control>クラスが、<xref:System.Windows.Forms.Control.Cursor%2A>プロパティ。 マウス ポインターがコントロールの境界内にある場合に表示されるカーソルを変更するには、割り当て、<xref:System.Windows.Forms.Cursor>を<xref:System.Windows.Forms.Control.Cursor%2A>コントロールのプロパティ。 割り当てることで、アプリケーション レベルでカーソルを表示することができます、<xref:System.Windows.Forms.Cursor>を<xref:System.Windows.Forms.Cursor.Current%2A>プロパティ。 たとえば、設定、アプリケーションの目的は、テキスト ファイルを編集するのには場合、<xref:System.Windows.Forms.Cursor.Current%2A>プロパティを<xref:System.Windows.Forms.Cursors.WaitCursor%2A?displayProperty=nameWithType>ファイルの読み込みし、任意のマウス イベントが処理されていることを防ぐために保存中に、アプリケーションに待機カーソルを表示します。 プロセスが完了したら、設定、<xref:System.Windows.Forms.Cursor.Current%2A>プロパティを<xref:System.Windows.Forms.Cursors.Default%2A?displayProperty=nameWithType>コントロールの種類ごとに適切なカーソルを表示するアプリケーション。  
-  
-> [!NOTE]
->  呼び出す場合<xref:System.Windows.Forms.Application.DoEvents%2A?displayProperty=nameWithType>リセットする前に、<xref:System.Windows.Forms.Cursor.Current%2A>プロパティ、<xref:System.Windows.Forms.Cursors.Default%2A?displayProperty=nameWithType>カーソル、アプリケーションはマウス イベントのリッスンが再開され、適切な表示が再開されます<xref:System.Windows.Forms.Cursor>アプリケーション内の各コントロール。  
-  
- 既存のハンドルなどの複数のソースからカーソル オブジェクトを作成できます<xref:System.Windows.Forms.Cursor>、標準的な<xref:System.Windows.Forms.Cursor>ファイル、リソース、またはデータ ストリーム。  
+ <xref:System.Windows.Forms.Control>クラスから派生したすべてのコントロールに<xref:System.Windows.Forms.Control.Cursor%2A>は、プロパティがあります。 マウスポインターがコントロールの境界内にあるときに表示されるカーソルを変更するには、 <xref:System.Windows.Forms.Cursor>コントロールの<xref:System.Windows.Forms.Control.Cursor%2A>プロパティにを割り当てます。 または、を<xref:System.Windows.Forms.Cursor> <xref:System.Windows.Forms.Cursor.Current%2A>プロパティに割り当てることによって、アプリケーションレベルでカーソルを表示することもできます。 たとえば、アプリケーションの目的がテキストファイルを編集する場合は、 <xref:System.Windows.Forms.Cursor.Current%2A>プロパティをに<xref:System.Windows.Forms.Cursors.WaitCursor%2A?displayProperty=nameWithType>設定して、ファイルの読み込みまたは保存中にアプリケーションに待機カーソルを表示し、マウスイベントが処理されないようにすることができます。 プロセスが完了したら、 <xref:System.Windows.Forms.Cursor.Current%2A>プロパティをに<xref:System.Windows.Forms.Cursors.Default%2A?displayProperty=nameWithType>設定します。これにより、アプリケーションでは、各コントロールの種類に適切なカーソルが表示されます。  
   
 > [!NOTE]
->  <xref:System.Windows.Forms.Cursor>クラスがアニメーション化されたカーソル (.ani ファイル) または色が黒と白以外のカーソルをサポートしていません。  
+>  プロパティを<xref:System.Windows.Forms.Application.DoEvents%2A?displayProperty=nameWithType> カーソル<xref:System.Windows.Forms.Cursors.Default%2A?displayProperty=nameWithType>に戻す前に<xref:System.Windows.Forms.Cursor>を呼び出すと、アプリケーションはマウスイベントのリッスンを再開し、アプリケーション内の各コントロールに適切なを表示します。 <xref:System.Windows.Forms.Cursor.Current%2A>  
   
- カーソルを使用しているイメージのサイズが小さすぎる場合は使用できます、<xref:System.Windows.Forms.Cursor.DrawStretched%2A>カーソルの境界内が塗りつぶさイメージを強制する方法。 一時的に呼び出すことによって、カーソルを隠すことができます、<xref:System.Windows.Forms.Cursor.Hide%2A>メソッドを呼び出すことによって、復元、<xref:System.Windows.Forms.Cursor.Show%2A>メソッド。  
+ Cursor オブジェクトは、既存<xref:System.Windows.Forms.Cursor>の、標準<xref:System.Windows.Forms.Cursor>ファイル、リソース、またはデータストリームのハンドルなど、いくつかのソースから作成できます。  
   
- .NET Framework 4.5.2 以降で、 <xref:System.Windows.Forms.Cursor> app.config ファイルには、次のエントリが含まれている場合は、システム DPI 設定に基づいてのサイズ変更されます。  
+> [!NOTE]
+>  クラス<xref:System.Windows.Forms.Cursor>では、アニメーションカーソル (ani ファイル) や、白黒以外の色を持つカーソルはサポートされません。  
+  
+ カーソルとして使用しているイメージが小さすぎる場合は、 <xref:System.Windows.Forms.Cursor.DrawStretched%2A>メソッドを使用して、画像がカーソルの境界を埋めるように強制できます。 <xref:System.Windows.Forms.Cursor.Hide%2A>メソッドを呼び出してカーソルを一時的に非表示にし、 <xref:System.Windows.Forms.Cursor.Show%2A>メソッドを呼び出すことで復元することができます。  
+  
+ .NET Framework 4.5.2 以降では、app.config <xref:System.Windows.Forms.Cursor>ファイルに次のエントリが含まれている場合、はシステムの DPI 設定に基づいてサイズが変更されます。  
   
 ```  
 <appSettings>  
@@ -72,12 +72,12 @@
    
   
 ## Examples  
- 次のコード例では、カスタム カーソルを使用する方法を示すフォームが表示されます。 カスタム<xref:System.Windows.Forms.Cursor>アプリケーションのリソース ファイルに埋め込まれています。 例では、という名前のカーソル ファイルに含まれているカーソルを必要と`MyCursor.cur`します。 コマンドラインを使用してこのサンプルをコンパイルするには、次のフラグを含めます。 `/res:MyCursor.Cur, CustomCursor.MyCursor.Cur`  
+ 次のコード例では、カスタムカーソルの使用方法を示すフォームを表示します。 カスタム<xref:System.Windows.Forms.Cursor>は、アプリケーションのリソースファイルに埋め込まれます。 この例では、カーソルファイルにという名前`MyCursor.cur`のカーソルが含まれている必要があります。 コマンドラインを使用してこの例をコンパイルするには、次のフラグを指定します。`/res:MyCursor.Cur, CustomCursor.MyCursor.Cur`  
   
  [!code-csharp[System.Windows.Forms.Cursor#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor/CS/customcursor.cs#1)]
  [!code-vb[System.Windows.Forms.Cursor#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Cursor/VB/customcursor.vb#1)]  
   
- 次のコード例には顧客情報が表示されます、<xref:System.Windows.Forms.TreeView>コントロール。 ツリーのルート ノードは、顧客名を表示し、子ツリー ノードは、各顧客に割り当てられている注文番号を表示します。 この例では、1,000 人の顧客が 15 の注文で表示されます。 描画、<xref:System.Windows.Forms.TreeView>が抑制を使用して、<xref:System.Windows.Forms.TreeView.BeginUpdate%2A>と<xref:System.Windows.Forms.TreeView.EndUpdate%2A>メソッド、および待機<xref:System.Windows.Forms.Cursor>が表示されます中に、<xref:System.Windows.Forms.TreeView>を作成し、描画、<xref:System.Windows.Forms.TreeNode>オブジェクト。 この例では、という名前のカーソル ファイルである必要があります`MyWait.cur`アプリケーション ディレクトリにします。 必要です、`Customer`オブジェクトのコレクションを保持できる`Order`オブジェクト、およびのインスタンスを作成すること、<xref:System.Windows.Forms.TreeView>の control 権限、<xref:System.Windows.Forms.Form>します。  
+ 次のコード例では、 <xref:System.Windows.Forms.TreeView>コントロールに顧客情報を表示します。 ルートツリーノードには顧客名が表示され、子ツリーノードには各顧客に割り当てられた注文番号が表示されます。 この例では、1000の顧客がそれぞれ15の注文と共に表示されます。 の再<xref:System.Windows.Forms.TreeView>描画は、メソッド<xref:System.Windows.Forms.TreeView.BeginUpdate%2A>と<xref:System.Windows.Forms.TreeView.EndUpdate%2A>メソッドを使用して抑制され<xref:System.Windows.Forms.Cursor> 、がオブジェクトを<xref:System.Windows.Forms.TreeView> <xref:System.Windows.Forms.TreeNode>作成および描画する間、待機が表示されます。 この例では、アプリケーションディレクトリにという`MyWait.cur`名前のカーソルファイルが必要です。 また、オブジェクトの`Customer` `Order`コレクションを保持できるオブジェクトと、で<xref:System.Windows.Forms.TreeView>コントロール<xref:System.Windows.Forms.Form>のインスタンスを作成したオブジェクトも必要です。  
   
  [!code-cpp[TreeView#1](~/samples/snippets/cpp/VS_Snippets_Winforms/TreeView/CPP/treeview.cpp#1)]
  [!code-csharp[TreeView#1](~/samples/snippets/csharp/VS_Snippets_Winforms/TreeView/CS/treeview.cs#1)]
@@ -121,12 +121,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- それが済んだら、カーソル ハンドルを解放する必要があります。 リソースの破棄に関する詳細については、次を参照してください。[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)します。  
+ 操作が完了したら、カーソルハンドルを解放する必要があります。 リソースの破棄の詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例からカーソルを作成する、<xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>、その位置とクリッピング四角形を変更します。 結果を上から、コードが実行されるが左側の 50 ピクセルにカーソルが移動されます。 さらに、カーソルのクリッピング四角形をフォームの範囲を変更 (既定では、ユーザーの画面全体)。 この例が必要です、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Button>をクリックしたときに、このコードを呼び出します。  
+ 次のコード例では、 <xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>からカーソルを作成し、その位置とクリッピング四角形を変更します。 その結果、カーソルが上に移動し、コードが実行された時点から左の50ピクセルに移動します。 さらに、カーソルのクリッピング四角形は、フォームの境界に変更されます (既定では、ユーザーの画面全体になります)。 この例では、がクリック<xref:System.Windows.Forms.Form>され<xref:System.Windows.Forms.Button>たときにこのコードを呼び出すためにとが必要です。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#1)]
  [!code-csharp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#1)]
@@ -134,7 +134,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="handle" /> は <see cref="F:System.IntPtr.Zero" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="handle" /> が <see cref="F:System.IntPtr.Zero" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -160,15 +160,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定されたデータ ストリーム`stream`カーソル (.cur) ファイルを含める必要があります。  
+ によって指定さ`stream`れたデータストリームには、カーソル (...) ファイルが含まれている必要があります。  
   
 > [!NOTE]
->  アニメーション化されたカーソル (.ani ファイル) がサポートされていない、<xref:System.Windows.Forms.Cursor>クラス。  
+>  アニメーション化されたカーソル (ani ファイル) は、 <xref:System.Windows.Forms.Cursor>クラスではサポートされていません。  
   
    
   
 ## Examples  
- 次のコード例から、カーソルの読み込み、<xref:System.IO.Stream>によって作成された、<xref:System.Windows.Forms.OpenFileDialog.OpenFile%2A>のメソッド、<xref:System.Windows.Forms.OpenFileDialog>します。 メソッドが呼び出されたときに、<xref:System.Windows.Forms.OpenFileDialog>ユーザーに表示されると。 CUR ファイルを選択し、ダイアログを閉じる、ファイルが開かれると、<xref:System.IO.Stream>返されるを作成するために使用、<xref:System.Windows.Forms.Cursor>します。  
+ 次のコード例では、の<xref:System.IO.Stream> <xref:System.Windows.Forms.OpenFileDialog.OpenFile%2A> <xref:System.Windows.Forms.OpenFileDialog>メソッドによって作成されたからカーソルを読み込みます。 メソッドが呼び出されると、 <xref:System.Windows.Forms.OpenFileDialog>がユーザーに表示されます。 同じファイルが選択され、ダイアログボックスが閉じた場合、ファイル<xref:System.IO.Stream>が開かれ、返され<xref:System.Windows.Forms.Cursor>たがを作成するために使用されます。  
   
  [!code-cpp[CursorFromResource#1](~/samples/snippets/cpp/VS_Snippets_Winforms/CursorFromResource/CPP/mycursor.cpp#1)]
  [!code-csharp[CursorFromResource#1](~/samples/snippets/csharp/VS_Snippets_Winforms/CursorFromResource/CS/mycursor.cs#1)]
@@ -203,15 +203,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `fileName`パラメーターは、標準的なカーソル (.cur) ファイルを参照する必要があります。  
+ パラメーター `fileName`では、標準のカーソル (...) ファイルを参照する必要があります。  
   
 > [!NOTE]
->  アニメーション化されたカーソル (.ani ファイル) がサポートされていない、<xref:System.Windows.Forms.Cursor>クラス。  
+>  アニメーション化されたカーソル (ani ファイル) は、 <xref:System.Windows.Forms.Cursor>クラスではサポートされていません。  
   
    
   
 ## Examples  
- 次のコード例には顧客情報が表示されます、<xref:System.Windows.Forms.TreeView>コントロール。 ツリーのルート ノードは、顧客名を表示し、子ツリー ノードは、各顧客に割り当てられている注文番号を表示します。 この例では、1,000 人の顧客が 15 の注文で表示されます。 描画、<xref:System.Windows.Forms.TreeView>が抑制を使用して、<xref:System.Windows.Forms.TreeView.BeginUpdate%2A>と<xref:System.Windows.Forms.TreeView.EndUpdate%2A>メソッド、および待機<xref:System.Windows.Forms.Cursor>が表示されます中に、<xref:System.Windows.Forms.TreeView>を作成し、描画、<xref:System.Windows.Forms.TreeNode>オブジェクト。 この例が必要です、`Customer`オブジェクトのコレクションを保持できる`Order`オブジェクト。 インスタンスを作成することも必要です、<xref:System.Windows.Forms.TreeView>の control 権限、<xref:System.Windows.Forms.Form>します。  
+ 次のコード例では、 <xref:System.Windows.Forms.TreeView>コントロールに顧客情報を表示します。 ルートツリーノードには顧客名が表示され、子ツリーノードには各顧客に割り当てられた注文番号が表示されます。 この例では、1000の顧客がそれぞれ15の注文と共に表示されます。 の再<xref:System.Windows.Forms.TreeView>描画は、メソッド<xref:System.Windows.Forms.TreeView.BeginUpdate%2A>と<xref:System.Windows.Forms.TreeView.EndUpdate%2A>メソッドを使用して抑制され<xref:System.Windows.Forms.Cursor> 、がオブジェクトを<xref:System.Windows.Forms.TreeView> <xref:System.Windows.Forms.TreeNode>作成および描画する間、待機が表示されます。 この例では、オブジェクトの`Customer` `Order`コレクションを保持できるオブジェクトが必要です。 また、 <xref:System.Windows.Forms.TreeView> <xref:System.Windows.Forms.Form>でコントロールのインスタンスを作成しておく必要もあります。  
   
  [!code-cpp[TreeView#1](~/samples/snippets/cpp/VS_Snippets_Winforms/TreeView/CPP/treeview.cpp#1)]
  [!code-csharp[TreeView#1](~/samples/snippets/csharp/VS_Snippets_Winforms/TreeView/CS/treeview.cs#1)]
@@ -246,7 +246,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 次にカーソルをアプリケーション内のリソースとして埋め込む方法の例を示します。 リソースを埋め込むには、リソース名の後にコンマ、し、そのアセンブリの完全なパスを参照します。 埋め込みリソースから、カーソルを読み込む方法について説明する例を参照してください。  
+ 次に、アプリケーション内でカーソルをリソースとして埋め込む方法の例を示します。 リソースを埋め込むには、リソース名、コンマ、完全なアセンブリパスの順に参照します。 埋め込みリソースからカーソルを読み込む方法については、「例」のセクションを参照してください。  
   
 ```  
 Using the C# compiler:  
@@ -256,12 +256,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
 ```  
   
 > [!NOTE]
->  リソース参照をコンパイルするときだけでなく、コードで参照するときは、c# と Visual Basic の両方のコンパイラの大文字小文字を区別します。  
+>  コード内で参照する場合と同様に、コンパイル時のリソース参照では、 C#と Visual Basic の両方のコンパイラで大文字と小文字が区別されます。  
   
    
   
 ## Examples  
- 次のコード例を使用してカスタム カーソルを使用する方法を示すフォームが表示されます、<xref:System.Windows.Forms.Cursor.%23ctor%2A>コンス トラクター。 カスタム<xref:System.Windows.Forms.Cursor>アプリケーションのリソース ファイルに埋め込まれています。 例では、カーソルをという名前のカーソル ファイルに含まれている必要があります。`MyCursor.cur`します。 コマンドラインを使用してこのサンプルをコンパイルするには、次のフラグを含めます。 `/res:MyCursor.Cur, CustomCursor.MyCursor.Cur`  
+ 次のコード例では、 <xref:System.Windows.Forms.Cursor.%23ctor%2A>コンストラクターを使用してカスタムカーソルを使用する方法を示すフォームを表示します。 カスタム<xref:System.Windows.Forms.Cursor>は、アプリケーションのリソースファイルに埋め込まれます。 この例では、カーソルがという名前`MyCursor.cur`のカーソルファイルに格納されている必要があります。 コマンドラインを使用してこの例をコンパイルするには、次のフラグを指定します。`/res:MyCursor.Cur, CustomCursor.MyCursor.Cur`  
   
  [!code-csharp[System.Windows.Forms.Cursor#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor/CS/customcursor.cs#1)]
  [!code-vb[System.Windows.Forms.Cursor#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Cursor/VB/customcursor.vb#1)]  
@@ -299,12 +299,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- クリップされたカーソルは、クリッピング四角形内でのみ移動を許可します。 一般に、システムは、マウスがキャプチャされている場合にのみこれです。 カーソルが現在クリップされていない場合、結果として得られる四角形には、画面全体のディメンションが含まれています。  
+ クリップされたカーソルは、クリッピング四角形内でのみ移動できます。 通常、この操作は、マウスが現在キャプチャされている場合にのみ許可されます。 カーソルが現在クリップされていない場合、結果として得られる四角形には、画面全体のサイズが含まれます。  
   
    
   
 ## Examples  
- 次のコード例からカーソルを作成する、<xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>、その位置とクリッピング四角形を変更します。 結果を上から、コードが実行されるが左側の 50 ピクセルにカーソルが移動されます。 さらに、カーソルのクリッピング四角形をフォームの範囲を変更 (既定では、ユーザーの画面全体)。 この例が必要です、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Button>をクリックしたときに、このコードを呼び出します。  
+ 次のコード例では、 <xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>からカーソルを作成し、その位置とクリッピング四角形を変更します。 その結果、カーソルが上に移動し、コードが実行された時点から左の50ピクセルに移動します。 さらに、カーソルのクリッピング四角形は、フォームの境界に変更されます (既定では、ユーザーの画面全体になります)。 この例では、がクリック<xref:System.Windows.Forms.Form>され<xref:System.Windows.Forms.Button>たときにこのコードを呼び出すためにとが必要です。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#1)]
  [!code-csharp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#1)]
@@ -312,7 +312,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">このプロパティを設定するすべてのウィンドウ。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">すべてのウィンドウでこのプロパティを設定します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CopyHandle">
@@ -340,7 +340,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドの呼び出しの結果として作成されたハンドルが済んだらみるため、これは破棄されませんのガベージ コレクターによって破棄する必要があります。  
+ このメソッドを呼び出した結果として作成されたハンドルは、ガベージコレクターによって破棄されないため、使用後にを破棄する必要があります。  
   
  ]]></format>
         </remarks>
@@ -378,11 +378,11 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定、<xref:System.Windows.Forms.Cursor.Current%2A>プロパティが現在表示されているカーソルを変更します。 アプリケーションは、マウス イベントをリッスンするを続行できません。 アプリケーションが実行時間の長い操作中のマウス イベントに応答する必要があることを通知するには、使用、<xref:System.Windows.Forms.Application.UseWaitCursor%2A>プロパティ。 ただし、ほとんどの場合は、バック グラウンド スレッドを使用して、実行時間の長い操作を管理し、ユーザーがアクセスできるユーザー インターフェイスのままにする方がよい。 バック グラウンド タスクを簡単に実装する方法の詳細については、次を参照してください。<xref:System.ComponentModel.BackgroundWorker>します。  
+ プロパティを<xref:System.Windows.Forms.Cursor.Current%2A>設定すると、現在表示されているカーソルが変更されます。 アプリケーションは、マウスイベントを待機し続けることができます。 実行時間の長い操作中に、アプリケーションがマウスイベントに応答しないことを通知する<xref:System.Windows.Forms.Application.UseWaitCursor%2A>には、プロパティを使用します。 ただし、ほとんどの場合、バックグラウンドスレッドを使用して実行時間の長い操作を管理し、ユーザーがユーザーインターフェイスにアクセスできる状態を維持することをお勧めします。 バックグラウンドタスクを簡単に実装する方法の詳細に<xref:System.ComponentModel.BackgroundWorker>ついては、「」を参照してください。  
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">このプロパティを設定するセーフ サブウィンドウします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.SafeSubWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">セーフサブウィンドウでこのプロパティを設定します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.SafeSubWindows" /></permission>
         <altmember cref="M:System.Windows.Forms.Application.DoEvents" />
       </Docs>
     </Member>
@@ -416,12 +416,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
  <xref:System.Windows.Forms.Cursor.Dispose%2A> を使い終わったら <xref:System.Windows.Forms.Cursor> を呼び出します。 `Dispose`メソッドによって、<xref:System.Windows.Forms.Cursor> は使用不可の状態になります。 <xref:System.Windows.Forms.Cursor.Dispose%2A>呼び出し後は、<xref:System.Windows.Forms.Cursor>によって占有されていたメモリをガベージ コレクターがクリアできるよう、<xref:System.Windows.Forms.Cursor> へのすべての参照を解放する必要があります。 詳細については、[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)および[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)を参照してください。  
   
 > [!NOTE]
->  <xref:System.Windows.Forms.Cursor>への最後の参照を解放する前に、必ず<xref:System.Windows.Forms.Cursor.Dispose%2A>を呼び出してください。 それ以外の場合、ガベージ コレクターによって解放されるまで、使用されているリソースは解放されません。  
+>  <xref:System.Windows.Forms.Cursor>への最後の参照を解放する前に、必ず<xref:System.Windows.Forms.Cursor.Dispose%2A>を呼び出してください。 それ以外の場合、使用しているリソースは、ガベージコレクターによって解放されるまで解放されません。  
   
    
   
 ## Examples  
- 次のコード例では、フォーム、通常のサイズとストレッチ モードの 2 倍のサイズを指定したカーソルを描画します。 この例は、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Cursor>が呼び出されると、メソッドに渡す。  
+ 次のコード例では、指定されたカーソルを通常のサイズでフォームに描画し、拡大モードでサイズを2倍にします。 この例では<xref:System.Windows.Forms.Form> 、メソッド<xref:System.Windows.Forms.Cursor>が呼び出されたときに、とを渡す必要があります。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#2)]
  [!code-csharp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#2)]
@@ -460,12 +460,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって表される、グラフィックスの表面に描画コマンドが呼び出された、`g`パラメーターが、<xref:System.Drawing.Graphics>への呼び出しを渡すために、特定のイメージをレンダリングする方法についての情報は含まれません、<xref:System.Windows.Forms.Cursor>します。 <xref:System.Windows.Forms.Cursor.Draw%2A>メソッドは、指定したイメージをトリミングしを指定することができます、<xref:System.Drawing.Rectangle>内部を描画する、<xref:System.Windows.Forms.Cursor>します。 このメソッドは通常、グラフィックスの表面にカーソルを描画する場合に使用します。 ダイアログ ボックスがユーザーからのカーソルを選択する必要がありますなど、<xref:System.Windows.Forms.ListBox>コントロール、またはグループの<xref:System.Windows.Forms.RadioButton>コントロール。  
+ 描画コマンドは、 `g`パラメーターによって表されるグラフィックスサーフェイスから生成されます<xref:System.Drawing.Graphics>が、には特定のイメージをレンダリングする方法に関する情報が含まれ<xref:System.Windows.Forms.Cursor>ていないため、への呼び出しを渡します。 メソッド<xref:System.Windows.Forms.Cursor.Draw%2A>は、指定された次元にイメージをトリミングし、を<xref:System.Drawing.Rectangle>描画<xref:System.Windows.Forms.Cursor>するを指定できるようにします。 このメソッドは、通常、グラフィックサーフェイス上にカーソルを描画する場合に使用します。 たとえば、ユーザーが<xref:System.Windows.Forms.ListBox>コントロールまたはコントロールの<xref:System.Windows.Forms.RadioButton>グループからカーソルを選択できるダイアログが表示されている場合があります。  
   
    
   
 ## Examples  
- 次のコード例では、フォーム、通常のサイズとストレッチ モードの 2 倍のサイズを指定したカーソルを描画します。 この例が必要です、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Cursor>が呼び出されると、メソッドに渡すオブジェクト。  
+ 次のコード例では、指定されたカーソルを通常のサイズでフォームに描画し、拡大モードでサイズを2倍にします。 この例では、メソッドが<xref:System.Windows.Forms.Form>呼び出され<xref:System.Windows.Forms.Cursor>たときに、メソッドに渡すとオブジェクトが必要です。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#2)]
  [!code-csharp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#2)]
@@ -499,18 +499,18 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
       </Parameters>
       <Docs>
         <param name="g"><see cref="T:System.Windows.Forms.Cursor" /> が描画される <see cref="T:System.Drawing.Graphics" /> 表面。</param>
-        <param name="targetRect"><see cref="T:System.Windows.Forms.Cursor" /> の境界を表す <see cref="T:System.Drawing.Rectangle" />。</param>
+        <param name="targetRect"><see cref="T:System.Drawing.Rectangle" /> の境界を表す <see cref="T:System.Windows.Forms.Cursor" />。</param>
         <summary>カーソルを拡大した書式で、指定した範囲内の、指定した表面に描画します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって表される、グラフィックスの表面に描画コマンドが呼び出された、`g`パラメーターが、<xref:System.Drawing.Graphics>オブジェクトにへの呼び出しを渡すために、特定のイメージをレンダリングする方法に関する情報が含まれていない、<xref:System.Windows.Forms.Cursor>オブジェクト。 <xref:System.Windows.Forms.Cursor.DrawStretched%2A>メソッドに指定したイメージの伸縮<xref:System.Drawing.Rectangle>カーソルが描画されます。  
+ 描画コマンドは、 `g`パラメーターによって表されるグラフィックスサーフェイスから生成されます<xref:System.Drawing.Graphics>が、オブジェクトには、指定されたイメージをレンダリングする方法に関する情報<xref:System.Windows.Forms.Cursor>が含まれていないので、オブジェクトに呼び出しを渡します。 メソッド<xref:System.Windows.Forms.Cursor.DrawStretched%2A>は、カーソルが描画されるとき<xref:System.Drawing.Rectangle>に、指定されたに収まるようにイメージを拡大します。  
   
    
   
 ## Examples  
- 次のコード例では、フォーム、通常のサイズとストレッチ モードの 2 倍のサイズを指定したカーソルを描画します。 この例が必要です、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Cursor>が呼び出されると、メソッドに渡すオブジェクト。  
+ 次のコード例では、指定されたカーソルを通常のサイズでフォームに描画し、拡大モードでサイズを2倍にします。 この例では、メソッドが<xref:System.Windows.Forms.Form>呼び出され<xref:System.Windows.Forms.Cursor>たときに、メソッドに渡すとオブジェクトが必要です。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#2)]
  [!code-csharp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#2)]
@@ -549,7 +549,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例からカーソルを作成する、<xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>、その位置とクリッピング四角形を変更します。 結果を上から、コードが実行されるが左側の 50 ピクセルにカーソルが移動されます。 さらに、カーソルのクリッピング四角形をフォームの範囲を変更 (既定では、ユーザーの画面全体)。 この例は、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Button>がクリックされたときに、このコードを呼び出す。  
+ 次のコード例では、 <xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>からカーソルを作成し、その位置とクリッピング四角形を変更します。 その結果、カーソルが上に移動し、コードが実行された時点から左の50ピクセルに移動します。 さらに、カーソルのクリッピング四角形は、フォームの境界に変更されます (既定では、ユーザーの画面全体になります)。 この例では<xref:System.Windows.Forms.Form> 、が<xref:System.Windows.Forms.Button>クリックされたときにこのコードを呼び出すためにとが必要です。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#1)]
  [!code-csharp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#1)]
@@ -631,12 +631,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、ハンドルのコピーではありません。破棄しません。  
+ これはハンドルのコピーではありません。破棄しないでください。  
   
    
   
 ## Examples  
- 次のコード例からカーソルを作成する、<xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>、その位置とクリッピング四角形を変更します。 結果を上から、コードが実行されるが左側の 50 ピクセルにカーソルが移動されます。 さらに、カーソルのクリッピング四角形をフォームの範囲を変更 (既定では、ユーザーの画面全体)。 この例は、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Button>がクリックされたときに、このコードを呼び出す。  
+ 次のコード例では、 <xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>からカーソルを作成し、その位置とクリッピング四角形を変更します。 その結果、カーソルが上に移動し、コードが実行された時点から左の50ピクセルに移動します。 さらに、カーソルのクリッピング四角形は、フォームの境界に変更されます (既定では、ユーザーの画面全体になります)。 この例では<xref:System.Windows.Forms.Form> 、が<xref:System.Windows.Forms.Button>クリックされたときにこのコードを呼び出すためにとが必要です。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#1)]
  [!code-csharp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#1)]
@@ -644,7 +644,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Exception">ハンドル値が<see cref="F:System.IntPtr.Zero" />します。</exception>
+        <exception cref="T:System.Exception">ハンドル値は <see cref="F:System.IntPtr.Zero" /> です。</exception>
         <altmember cref="M:System.Windows.Forms.Cursor.Dispose" />
       </Docs>
     </Member>
@@ -672,12 +672,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.Cursor.Show%2A>と<xref:System.Windows.Forms.Cursor.Hide%2A>メソッドの呼び出しを分散する必要があります。 呼び出すたびに、<xref:System.Windows.Forms.Cursor.Hide%2A>メソッドに対応する呼び出しが必要があります、<xref:System.Windows.Forms.Cursor.Show%2A>メソッド。  
+ メソッド<xref:System.Windows.Forms.Cursor.Show%2A> と<xref:System.Windows.Forms.Cursor.Hide%2A>メソッドの呼び出しのバランスを取る必要があります。 <xref:System.Windows.Forms.Cursor.Hide%2A>メソッドを呼び出すたびに、その<xref:System.Windows.Forms.Cursor.Show%2A>メソッドへの対応する呼び出しが必要です。  
   
    
   
 ## Examples  
- 次のコード例では、マウス ポインターがボタンのクライアント領域に入ったとき、カーソルを非表示にします。 同様に、マウス ポインターがボタンのクライアント領域を離れると、カーソルが再度表示されます。 この例は、<xref:System.Windows.Forms.Form>で、<xref:System.Windows.Forms.Button>という名前`myButton`します。  
+ マウスポインターがボタンのクライアント領域に入ったときにカーソルを非表示にするコード例を次に示します。 同様に、マウスポインターがボタンのクライアント領域から離れると、カーソルが再び表示されます。 この例<xref:System.Windows.Forms.Form> `myButton`では、という名前のを使用する必要があります。<xref:System.Windows.Forms.Button>  
   
  [!code-cpp[CursorFromResource#3](~/samples/snippets/cpp/VS_Snippets_Winforms/CursorFromResource/CPP/mycursor.cpp#3)]
  [!code-csharp[CursorFromResource#3](~/samples/snippets/csharp/VS_Snippets_Winforms/CursorFromResource/CS/mycursor.cs#3)]
@@ -685,7 +685,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
   
  ]]></format>
         </remarks>
-        <permission cref="T:System.Security.Permissions.UIPermission">すべてのウィンドウには、このメソッドを呼び出します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
+        <permission cref="T:System.Security.Permissions.UIPermission">すべての windows でこのメソッドを呼び出します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.UIPermissionWindow.AllWindows" /></permission>
         <altmember cref="M:System.Windows.Forms.Cursor.Show" />
       </Docs>
     </Member>
@@ -712,7 +712,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.Cursor.HotSpot%2A>は、<xref:System.Drawing.Point>で画面上の他の要素と連携するカーソル。  
+ は、画面<xref:System.Drawing.Point>上の他の要素と対話するカーソル内のです。<xref:System.Windows.Forms.Cursor.HotSpot%2A>  
   
  ]]></format>
         </remarks>
@@ -745,10 +745,10 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
         <summary><see cref="T:System.Windows.Forms.Cursor" /> クラスの 2 つのインスタンスが等しいかどうかを示す値を返します。</summary>
         <returns><see cref="T:System.Windows.Forms.Cursor" /> クラスの 2 つのインスタンスが等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[この演算子を同等のメソッドは、します。 <xref:System.Windows.Forms.Cursor.Equals%28System.Object%29?displayProperty=nameWithType>  
+          <format type="text/markdown"><![CDATA[この演算子の同等の方法は次のようになります。<xref:System.Windows.Forms.Cursor.Equals%28System.Object%29?displayProperty=nameWithType>  
   
 ## Examples  
- 次のコード例では、フォーム、通常のサイズとストレッチ モードの 2 倍のサイズを指定したカーソルを描画します。 この例は、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Cursor>が呼び出されると、メソッドに渡すオブジェクト。  
+ 次のコード例では、指定されたカーソルを通常のサイズでフォームに描画し、拡大モードでサイズを2倍にします。 この例では<xref:System.Windows.Forms.Form> 、メソッド<xref:System.Windows.Forms.Cursor>が呼び出されたときに、およびオブジェクトを使用してメソッドに渡す必要があります。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#2)]
  [!code-csharp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#2)]
@@ -786,10 +786,10 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
         <summary><see cref="T:System.Windows.Forms.Cursor" /> クラスの 2 つのインスタンスが等しくないかどうかを示す値を返します。</summary>
         <returns><see cref="T:System.Windows.Forms.Cursor" /> クラスの 2 つのインスタンスが等しくない場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[この演算子を同等のメソッドは、します。 <xref:System.Windows.Forms.Cursor.Equals%28System.Object%29?displayProperty=nameWithType>  
+          <format type="text/markdown"><![CDATA[この演算子の同等の方法は次のようになります。<xref:System.Windows.Forms.Cursor.Equals%28System.Object%29?displayProperty=nameWithType>  
   
 ## Examples  
- 次のコード例では、フォーム、通常のサイズとストレッチ モードの 2 倍のサイズを指定したカーソルを描画します。 この例は、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Cursor>が呼び出されると、メソッドに渡す。  
+ 次のコード例では、指定されたカーソルを通常のサイズでフォームに描画し、拡大モードでサイズを2倍にします。 この例では<xref:System.Windows.Forms.Form> 、メソッド<xref:System.Windows.Forms.Cursor>が呼び出されたときに、とを渡す必要があります。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#2)]
  [!code-csharp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#2)]
@@ -824,12 +824,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.Cursor.Position%2A>プロパティのと同じですが、<xref:System.Windows.Forms.Control.MousePosition%2A?displayProperty=nameWithType>プロパティ。  
+ プロパティは、 <xref:System.Windows.Forms.Control.MousePosition%2A?displayProperty=nameWithType>プロパティと同じです。 <xref:System.Windows.Forms.Cursor.Position%2A>  
   
    
   
 ## Examples  
- 次のコード例からカーソルを作成する、<xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>、その位置とクリッピング四角形を変更します。 結果を上から、コードが実行されるが左側の 50 ピクセルにカーソルが移動されます。 さらに、カーソルのクリッピング四角形をフォームの範囲を変更 (既定では、ユーザーの画面全体)。 この例は、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Button>がクリックされたときに、このコードを呼び出す。  
+ 次のコード例では、 <xref:System.Windows.Forms.Cursor.Current%2A>カーソルの<xref:System.Windows.Forms.Cursor.Handle%2A>からカーソルを作成し、その位置とクリッピング四角形を変更します。 その結果、カーソルが上に移動し、コードが実行された時点から左の50ピクセルに移動します。 さらに、カーソルのクリッピング四角形は、フォームの境界に変更されます (既定では、ユーザーの画面全体になります)。 この例では<xref:System.Windows.Forms.Form> 、が<xref:System.Windows.Forms.Button>クリックされたときにこのコードを呼び出すためにとが必要です。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#1)]
  [!code-csharp[System.Windows.Forms.Cursor Members#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#1)]
@@ -864,12 +864,12 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Windows.Forms.Cursor.Show%2A>と<xref:System.Windows.Forms.Cursor.Hide%2A>メソッドの呼び出しを分散する必要があります。 呼び出すたびに、<xref:System.Windows.Forms.Cursor.Hide%2A>メソッドに対応する呼び出しが必要があります、<xref:System.Windows.Forms.Cursor.Show%2A>メソッド。  
+ メソッド<xref:System.Windows.Forms.Cursor.Show%2A> と<xref:System.Windows.Forms.Cursor.Hide%2A>メソッドの呼び出しのバランスを取る必要があります。 <xref:System.Windows.Forms.Cursor.Hide%2A>メソッドを呼び出すたびに、その<xref:System.Windows.Forms.Cursor.Show%2A>メソッドへの対応する呼び出しが必要です。  
   
    
   
 ## Examples  
- 次のコード例では、マウス ポインターがボタンのクライアント領域に入ったとき、カーソルを非表示にします。 同様に、マウス ポインターがボタンのクライアント領域を離れると、カーソルが再度表示されます。 この例は、<xref:System.Windows.Forms.Form>で、<xref:System.Windows.Forms.Button>という名前`myButton`します。  
+ マウスポインターがボタンのクライアント領域に入ったときにカーソルを非表示にするコード例を次に示します。 同様に、マウスポインターがボタンのクライアント領域から離れると、カーソルが再び表示されます。 この例<xref:System.Windows.Forms.Form> `myButton`では、という名前のを使用する必要があります。<xref:System.Windows.Forms.Button>  
   
  [!code-cpp[CursorFromResource#3](~/samples/snippets/cpp/VS_Snippets_Winforms/CursorFromResource/CPP/mycursor.cpp#3)]
  [!code-csharp[CursorFromResource#3](~/samples/snippets/csharp/VS_Snippets_Winforms/CursorFromResource/CS/mycursor.cs#3)]
@@ -904,7 +904,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、フォーム、通常のサイズとストレッチ モードの 2 倍のサイズを指定したカーソルを描画します。 この例は、<xref:System.Windows.Forms.Form>と<xref:System.Windows.Forms.Cursor>が呼び出されると、メソッドに渡すオブジェクト。  
+ 次のコード例では、指定されたカーソルを通常のサイズでフォームに描画し、拡大モードでサイズを2倍にします。 この例では<xref:System.Windows.Forms.Form> 、メソッド<xref:System.Windows.Forms.Cursor>が呼び出されたときに、およびオブジェクトを使用してメソッドに渡す必要があります。  
   
  [!code-cpp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CPP/cursorstuff.cpp#2)]
  [!code-csharp[System.Windows.Forms.Cursor Members#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Cursor Members/CS/cursorstuff.cs#2)]
@@ -983,7 +983,7 @@ vbc /resource:"MyWaitCursor.cur","MyCursors.MyWaitCursor.cur" MyCursor.vb
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Windows.Forms.Cursor" /> に関するデータを格納するオブジェクトを取得または設定します。</summary>
-        <value><see cref="T:System.Windows.Forms.Cursor" /> に関するデータを格納している <see cref="T:System.Object" />。 既定値は <see langword="null" /> です。</value>
+        <value><see cref="T:System.Windows.Forms.Cursor" /> に関するデータを格納している <see cref="T:System.Object" />。 既定値は、<see langword="null" /> です。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

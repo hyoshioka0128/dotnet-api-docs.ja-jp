@@ -64,39 +64,39 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このクラスは、循環を配列として汎用キューを実装します。 オブジェクトに格納されている、<xref:System.Collections.Generic.Queue%601>が一方の end で挿入され、その他から削除します。 キューおよびスタックは便利な情報の一時的なストレージが必要な場合つまり、可能性がある場合の値を取得後に要素を破棄します。 使用<xref:System.Collections.Generic.Queue%601>かどうかは、コレクションに保存されていることと同じ順序で情報にアクセスする必要があります。 使用<xref:System.Collections.Generic.Stack%601>逆の順序で情報にアクセスする必要がある場合。 使用<xref:System.Collections.Concurrent.ConcurrentQueue%601>または<xref:System.Collections.Concurrent.ConcurrentStack%601>同時に複数のスレッドからコレクションにアクセスする必要がある場合。  
+ このクラスは、汎用キューを循環配列として実装します。 に格納され<xref:System.Collections.Generic.Queue%601>ているオブジェクトは、一方の端に挿入され、もう一方からは削除されます。 キューとスタックは、情報のために一時的なストレージが必要な場合に便利です。つまり、値を取得した後に要素を破棄することが必要になる場合があります。 コレクション<xref:System.Collections.Generic.Queue%601>に格納されているのと同じ順序で情報にアクセスする必要がある場合は、を使用します。 情報<xref:System.Collections.Generic.Stack%601>に逆の順序でアクセスする必要がある場合は、を使用します。 複数<xref:System.Collections.Concurrent.ConcurrentQueue%601>の<xref:System.Collections.Concurrent.ConcurrentStack%601>スレッドから同時にコレクションにアクセスする必要がある場合は、またはを使用します。  
   
- 次の 3 つの主な操作を実行できる、<xref:System.Collections.Generic.Queue%601>とその要素。  
+ とその要素に対して、次<xref:System.Collections.Generic.Queue%601>の3つの主要な操作を実行できます。  
   
--   <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 末尾に要素を追加、<xref:System.Collections.Generic.Queue%601>します。  
+-   <xref:System.Collections.Generic.Queue%601.Enqueue%2A>の末尾に要素を追加し<xref:System.Collections.Generic.Queue%601>ます。  
   
--   <xref:System.Collections.Generic.Queue%601.Dequeue%2A> 先頭から最も古い要素を削除、<xref:System.Collections.Generic.Queue%601>します。  
+-   <xref:System.Collections.Generic.Queue%601.Dequeue%2A>の先頭から最も古い要素を削除<xref:System.Collections.Generic.Queue%601>します。  
   
--   <xref:System.Collections.Generic.Queue%601.Peek%2A> ピークの開始位置にある最も古い要素を返します、<xref:System.Collections.Generic.Queue%601>からは削除されませんが、<xref:System.Collections.Generic.Queue%601>します。  
+-   <xref:System.Collections.Generic.Queue%601.Peek%2A>peek は、 <xref:System.Collections.Generic.Queue%601>の先頭にある最も古い要素を返しますが、 <xref:System.Collections.Generic.Queue%601>からは削除しません。  
   
- 容量を<xref:System.Collections.Generic.Queue%601>要素の数が、<xref:System.Collections.Generic.Queue%601>を保持できます。 要素が追加される、<xref:System.Collections.Generic.Queue%601>容量は自動的に増加内部配列を再割り当てすることで必要とします。 呼び出すことによって、容量を削減できる<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>します。  
+ <xref:System.Collections.Generic.Queue%601>の容量は、<xref:System.Collections.Generic.Queue%601>が保持できる要素の数です。 要素がに<xref:System.Collections.Generic.Queue%601>追加されると、内部配列を再割り当てすることで、必要に応じて容量が自動的に増加します。 を呼び出す<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>と、容量を減らすことができます。  
   
- <xref:System.Collections.Generic.Queue%601> 受け入れる`null`参照の有効な値の型し、重複する要素を使用します。  
+ <xref:System.Collections.Generic.Queue%601>は`null` 、参照型の有効な値としてを受け入れ、重複する要素を許可します。  
   
    
   
 ## Examples  
- 次のコード例をいくつかの方法を示します、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスです。 コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601>ジェネリッククラスのいくつかのメソッドを示しています。 このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
   
  ]]></format>
     </remarks>
-    <threadsafe>パブリック静的 (<see langword="Shared" /> Visual Basic で) この型のメンバーはスレッド セーフです。 インスタンス メンバーの場合は、スレッド セーフであるとは限りません。  
+    <threadsafe>パブリック静的 (Visual Basic では<see langword="Shared" />) なこの型のメンバーはスレッド セーフです インスタンス メンバーの場合は、スレッド セーフであるとは限りません。  
   
-A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更されない限り、複数のリーダーを同時にサポートできます。  それでも、コレクションの列挙は、本質的には、スレッド セーフなプロシージャでは。 スレッド セーフであるキューでは、次を参照してください。<see cref="T:System.Collections.Concurrent.ConcurrentQueue`1" />します。</threadsafe>
+は<see cref="T:System.Collections.Generic.Queue`1" /> 、コレクションが変更されていない限り、複数のリーダーを同時にサポートできます。  それでも、コレクションを列挙することは、本質的にはスレッドセーフなプロシージャではありません。 スレッドセーフキューについては、 <see cref="T:System.Collections.Concurrent.ConcurrentQueue`1" />「」を参照してください。</threadsafe>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -142,24 +142,24 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 容量を<xref:System.Collections.Generic.Queue%601>は要素の数を<xref:System.Collections.Generic.Queue%601>を保持できます。 要素が追加される、<xref:System.Collections.Generic.Queue%601>容量は自動的に増加内部配列を再割り当てすることで必要とします。  
+ の<xref:System.Collections.Generic.Queue%601>容量は、 <xref:System.Collections.Generic.Queue%601>が保持できる要素の数です。 要素がに<xref:System.Collections.Generic.Queue%601>追加されると、内部配列を再割り当てすることで、必要に応じて容量が自動的に増加します。  
   
- 数の要素を追加するときにサイズ変更操作を実行する必要はありませんの初期量を指定する場合は、コレクションのサイズを推定することができます、<xref:System.Collections.Generic.Queue%601>します。  
+ コレクションのサイズを推定できる場合、初期容量を指定すると、 <xref:System.Collections.Generic.Queue%601>に要素を追加するときに、さまざまなサイズ変更操作を実行する必要がなくなります。  
   
- 呼び出すことによって、容量を削減できる<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>します。  
+ を呼び出す<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>と、容量を減らすことができます。  
   
- このコンス トラクターは、o (1) 操作です。  
+ このコンストラクターは O (1) 操作です。  
   
    
   
 ## Examples  
- 次のコード例は、このコンス トラクターとの他のいくつかの方法を示して、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスです。 コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ 次のコード例は、このコンストラクターと、 <xref:System.Collections.Generic.Queue%601>ジェネリッククラスの他のいくつかのメソッドを示しています。 このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -204,33 +204,33 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 容量を<xref:System.Collections.Generic.Queue%601>は要素の数を<xref:System.Collections.Generic.Queue%601>を保持できます。 要素が追加される、<xref:System.Collections.Generic.Queue%601>容量は自動的に増加内部配列を再割り当てすることで必要とします。  
+ の<xref:System.Collections.Generic.Queue%601>容量は、 <xref:System.Collections.Generic.Queue%601>が保持できる要素の数です。 要素がに<xref:System.Collections.Generic.Queue%601>追加されると、内部配列を再割り当てすることで、必要に応じて容量が自動的に増加します。  
   
- 数の要素を追加するときにサイズ変更操作を実行する必要はありませんの初期量を指定する場合は、コレクションのサイズを推定することができます、<xref:System.Collections.Generic.Queue%601>します。  
+ コレクションのサイズを推定できる場合、初期容量を指定すると、 <xref:System.Collections.Generic.Queue%601>に要素を追加するときに、さまざまなサイズ変更操作を実行する必要がなくなります。  
   
- 呼び出すことによって、容量を削減できる<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>します。  
+ を呼び出す<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>と、容量を減らすことができます。  
   
- 要素の上にコピー、<xref:System.Collections.Generic.Queue%601>によって読み取られるときと同じ順序で、<xref:System.Collections.Generic.IEnumerator%601>のコレクション。  
+ 要素は、コレクション<xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.IEnumerator%601>ので読み取られた順序で、にコピーされます。  
   
- このコンス トラクターは、O (`n`) 操作、`n`内の要素の数は、`collection`します。  
+ このコンストラクターは O (`n`) 操作です。ここ`n`で、は内`collection`の要素の数です。  
   
    
   
 ## Examples  
- 次のコード例は、このコンス トラクターとの他のいくつかの方法を示して、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスです。 コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ 次のコード例は、このコンストラクターと、 <xref:System.Collections.Generic.Queue%601>ジェネリッククラスの他のいくつかのメソッドを示しています。 このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -269,13 +269,13 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 容量を<xref:System.Collections.Generic.Queue%601>は要素の数を<xref:System.Collections.Generic.Queue%601>を保持できます。 要素が追加される、<xref:System.Collections.Generic.Queue%601>容量は自動的に増加内部配列を再割り当てすることで必要とします。  
+ の<xref:System.Collections.Generic.Queue%601>容量は、 <xref:System.Collections.Generic.Queue%601>が保持できる要素の数です。 要素がに<xref:System.Collections.Generic.Queue%601>追加されると、内部配列を再割り当てすることで、必要に応じて容量が自動的に増加します。  
   
- 数の要素を追加するときにサイズ変更操作を実行する必要はありませんの初期量を指定する場合は、コレクションのサイズを推定することができます、<xref:System.Collections.Generic.Queue%601>します。  
+ コレクションのサイズを推定できる場合、初期容量を指定すると、 <xref:System.Collections.Generic.Queue%601>に要素を追加するときに、さまざまなサイズ変更操作を実行する必要がなくなります。  
   
- 呼び出すことによって、容量を削減できる<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>します。  
+ を呼び出す<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>と、容量を減らすことができます。  
   
- このコンス トラクターは、O (`n`) 操作、`n`は`capacity`します。  
+ このコンストラクターは O (`n`) 操作です。ここ`n`で、は`capacity`です。  
   
  ]]></format>
         </remarks>
@@ -318,24 +318,24 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Collections.Generic.Queue%601.Count%2A> 0 に設定し、コレクションの要素からその他のオブジェクトへの参照も解放します。  
+ <xref:System.Collections.Generic.Queue%601.Count%2A>が0に設定され、コレクションの要素から他のオブジェクトへの参照も解放されます。  
   
- 容量は変更されません。 容量をリセットする、 <xref:System.Collections.Generic.Queue%601>、呼び出す<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>します。 空のトリミング<xref:System.Collections.Generic.Queue%601>の容量設定、<xref:System.Collections.Generic.Queue%601>を既定の容量。  
+ 容量は変更されません。 の<xref:System.Collections.Generic.Queue%601>容量をリセットするには、 <xref:System.Collections.Generic.Queue%601.TrimExcess%2A>を呼び出します。 空<xref:System.Collections.Generic.Queue%601>のをトリミングすると、 <xref:System.Collections.Generic.Queue%601>の容量が既定の容量に設定されます。  
   
- このメソッドは O (`n`) 操作、`n`は<xref:System.Collections.Generic.Queue%601.Count%2A>します。  
+ このメソッドは O (`n`) 操作です。ここ`n`で、は<xref:System.Collections.Generic.Queue%601.Count%2A>です。  
   
    
   
 ## Examples  
- 次のコード例をいくつかの方法を示します、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスなど、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッド。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドを含む、ジェネリッククラスのいくつかのメソッドを示しています。  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -385,22 +385,22 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、既定の等値比較子を使用して等しいかどうかを判断します<xref:System.Collections.Generic.EqualityComparer%601.Default%2A?displayProperty=nameWithType>の`T`キュー内の値の型。  
+ このメソッドは、キュー内の値の<xref:System.Collections.Generic.EqualityComparer%601.Default%2A?displayProperty=nameWithType>型`T`の既定の等値比較子を使用して、等しいかどうかを判断します。  
   
- このメソッドは、一方向の検索を実行します。そのため、このメソッドは、O (`n`) 操作、`n`は<xref:System.Collections.Generic.Queue%601.Count%2A>します。  
+ このメソッドは、線形検索を実行します。したがって、このメソッドは O (`n`) 演算です。 `n`ここ<xref:System.Collections.Generic.Queue%601.Count%2A>で、はです。  
   
    
   
 ## Examples  
- 次のコード例をいくつかの方法を示します、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスなど、<xref:System.Collections.Generic.Queue%601.Contains%2A>メソッド。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.Queue%601.Contains%2A>メソッドを含む、ジェネリッククラスのいくつかのメソッドを示しています。  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -451,13 +451,13 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 要素のコピー先は、<xref:System.Array>を列挙子が反復処理と同じ順序で、<xref:System.Collections.Generic.Queue%601>します。  
+ 要素は、列挙子が<xref:System.Array>を反復処理<xref:System.Collections.Generic.Queue%601>するのと同じ順序でにコピーされます。  
   
- このメソッドは O (`n`) 操作、`n`は<xref:System.Collections.Generic.Queue%601.Count%2A>します。  
+ このメソッドは O (`n`) 操作です。ここ`n`で、は<xref:System.Collections.Generic.Queue%601.Count%2A>です。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="array" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="array" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="arrayIndex" /> が 0 未満です。</exception>
         <exception cref="T:System.ArgumentException">コピー元の <see cref="T:System.Collections.Generic.Queue`1" /> の要素数が、コピー先 <paramref name="array" /> の <paramref name="arrayIndex" /> から最後までの使用可能領域を超えています。</exception>
       </Docs>
@@ -507,24 +507,24 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 容量を<xref:System.Collections.Generic.Queue%601>は要素の数を<xref:System.Collections.Generic.Queue%601>格納できます。 <xref:System.Collections.Generic.Queue%601.Count%2A> 実際には要素の数が、<xref:System.Collections.Generic.Queue%601>します。  
+ の<xref:System.Collections.Generic.Queue%601>容量は、 <xref:System.Collections.Generic.Queue%601>が格納できる要素の数です。 <xref:System.Collections.Generic.Queue%601.Count%2A>は、 <xref:System.Collections.Generic.Queue%601>実際に内にある要素の数です。  
   
- 以上の値を容量は常に<xref:System.Collections.Generic.Queue%601.Count%2A>します。 場合<xref:System.Collections.Generic.Queue%601.Count%2A>要素を追加するときに容量を超える、変更前の要素をコピーして、新しい要素を追加する前に、内部配列を自動的に再割り当てによって、容量が増やされます。  
+ 容量は、常に<xref:System.Collections.Generic.Queue%601.Count%2A>以上です。 が<xref:System.Collections.Generic.Queue%601.Count%2A>要素の追加中に容量を超えた場合、では、古い要素をコピーして新しい要素を追加する前に、内部配列が自動的に再割り当てされ、容量が増加します。  
   
  このプロパティ値を取得することは、O(1) 操作になります。  
   
    
   
 ## Examples  
- 次のコード例は、いくつかのプロパティとメソッドを示して、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスなど、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティ。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.Queue%601.Count%2A>プロパティを含む、ジェネリッククラスのいくつかのプロパティとメソッドを示しています。  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -572,22 +572,22 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
 ## Remarks  
  このメソッドは <xref:System.Collections.Generic.Queue%601.Peek%2A> メソッドに類似していますが、<xref:System.Collections.Generic.Queue%601.Peek%2A> は <xref:System.Collections.Generic.Queue%601> を変更しません。  
   
- 場合型`T`、参照型では、`null`に追加できる、<xref:System.Collections.Generic.Queue%601>値として。  
+ 型`T`が参照型の場合、 `null`を値<xref:System.Collections.Generic.Queue%601>としてに追加できます。  
   
- このメソッドは、o (1) 操作です。  
+ このメソッドは O (1) 操作です。  
   
    
   
 ## Examples  
- 次のコード例をいくつかの方法を示します、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスなど、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッド。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを含む、ジェネリッククラスのいくつかのメソッドを示しています。  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -638,22 +638,22 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合<xref:System.Collections.Generic.Queue%601.Count%2A>既に、容量の容量に等しい、<xref:System.Collections.Generic.Queue%601>は内部の配列を自動的に再割り当てによって向上し、新しい要素を追加する前に、既存の要素が新しい配列にコピーされます。  
+ が<xref:System.Collections.Generic.Queue%601.Count%2A>既に容量に等しい場合、の容量<xref:System.Collections.Generic.Queue%601>は、内部配列が自動的に再割り当てされ、新しい要素が追加される前に既存の要素が新しい配列にコピーされます。  
   
- 場合<xref:System.Collections.Generic.Queue%601.Count%2A>が小さい内部配列の容量よりもこのメソッドは、o (1) 操作。 を内部配列が、新しい要素を対応するために再割り当てする必要がある場合、このメソッドは、O をなります (`n`) 操作、`n`は<xref:System.Collections.Generic.Queue%601.Count%2A>します。  
+ が<xref:System.Collections.Generic.Queue%601.Count%2A>内部配列の容量より小さい場合、このメソッドは O (1) 操作になります。 新しい要素に対応するために内部配列を再割り当てする必要がある場合、このメソッド`n`は O () `n`操作<xref:System.Collections.Generic.Queue%601.Count%2A>になります。ここで、はです。  
   
    
   
 ## Examples  
- 次のコード例をいくつかの方法を示します、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスなど、<xref:System.Collections.Generic.Queue%601.Enqueue%2A>メソッド。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.Queue%601.Enqueue%2A>メソッドを含む、ジェネリッククラスのいくつかのメソッドを示しています。  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -701,36 +701,36 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `foreach` C# 言語のステートメント (`for each` C++ では、 `For Each` Visual basic) 列挙子の複雑さが隠されています。 したがって、列挙子を直接操作するのではなく、`foreach` を使用することをお勧めします。  
+ C# `for each` C++言語の`For Each`ステートメント (では、Visual Basic) によって、列挙子の複雑さが隠蔽されます。 `foreach` したがって、列挙子を直接操作するのではなく、`foreach` を使用することをお勧めします。  
   
  列挙子を使用すると、コレクション内のデータを読み取ることができますが、基になるコレクションを変更することはできません。  
   
  最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 この位置では、<xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> が未定義です。 そのため、<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> の値を読み取る前に、<xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> を呼び出して列挙子をコレクションの最初の要素に進める必要があります。  
   
- <xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> は、<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> は、<xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> を次の要素に進めます。  
+ <xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> は、<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> は、<xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> を次の要素に設定します。  
   
- 場合<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A>列挙子、コレクションの末尾がコレクション内の最後の要素の後に配置されているパスと<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A>返します`false`します。 この位置では、後続の呼び出しで列挙子の場合<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A>を返すことも`false`します。 最後の呼び出し場合<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A>返される`false`、<xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A>が定義されていません。 <xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> を、再度、コレクションの最初の要素に設定することはできません。列挙子の新しいインスタンスを作成する必要があります。  
+ <xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> がコレクションの末尾を通過した場合、列挙子がコレクション内の最後の要素の後に配置され、<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> は `false` を返します。 列挙子がこの位置にある場合、後続の <xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A> 呼び出しも `false` を返します。 の最後の呼び出し<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A>が返さ`false`れた場合、 <xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A>が未定義になります。 <xref:System.Collections.Generic.Queue%601.Enumerator.Current%2A> を、再度、コレクションの最初の要素に設定することはできません。列挙子の新しいインスタンスを作成する必要があります。  
   
- コレクションが変更されない限り、列挙子は有効です。 無効になり、次の呼び出しは変更を追加するなど、コレクション変更、または要素を削除するには、列挙子が不可能<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A>または<xref:System.Collections.Generic.Queue%601.Enumerator.System%23Collections%23IEnumerator%23Reset%2A>スロー、<xref:System.InvalidOperationException>します。  
+ コレクションが変更されない限り、列挙子は有効です。 要素の追加、変更、削除などの変更がコレクションに対して行われた場合、列挙子はなりに<xref:System.Collections.Generic.Queue%601.Enumerator.MoveNext%2A>無効化され、次のまたは<xref:System.Collections.Generic.Queue%601.Enumerator.System%23Collections%23IEnumerator%23Reset%2A>の呼び出しでがスロー <xref:System.InvalidOperationException>されます。  
   
- 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 列挙処理でスレッド セーフを確保するには、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
+ 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 列挙処理でスレッド セーフを確保するために、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
   
- コレクションの既定の実装<xref:System.Collections.Generic?displayProperty=nameWithType>が同期されていません。  
+ の<xref:System.Collections.Generic?displayProperty=nameWithType>コレクションの既定の実装は同期されていません。  
   
- このメソッドは、o (1) 操作です。  
+ このメソッドは O (1) 操作です。  
   
    
   
 ## Examples  
- 次のコード例を示します<xref:System.Collections.Generic.Queue%601>ジェネリック クラスは列挙可能です。 `foreach`ステートメント (`For Each` Visual basic で`for each`C++ で) キューを列挙するために使用します。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601>ジェネリッククラスが列挙可能であることを示しています。 ステートメント (`For Each` VisualBasic`for each`ではC++) は、キューを列挙するために使用されます。 `foreach`  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -780,22 +780,22 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
 ## Remarks  
  このメソッドは <xref:System.Collections.Generic.Queue%601.Dequeue%2A> メソッドに類似していますが、<xref:System.Collections.Generic.Queue%601.Peek%2A> は <xref:System.Collections.Generic.Queue%601> を変更しません。  
   
- 場合型`T`、参照型では、`null`に追加できる、<xref:System.Collections.Generic.Queue%601>値として。  
+ 型`T`が参照型の場合、 `null`を値<xref:System.Collections.Generic.Queue%601>としてに追加できます。  
   
- このメソッドは、o (1) 操作です。  
+ このメソッドは O (1) 操作です。  
   
    
   
 ## Examples  
- 次のコード例をいくつかの方法を示します、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスなど、<xref:System.Collections.Generic.Queue%601.Peek%2A>メソッド。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを含む、ジェネリッククラスのいくつかのメソッドを示しています。  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -846,23 +846,23 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `foreach` C# 言語のステートメント (`for each` C++ では、 `For Each` Visual basic) 列挙子の複雑さが隠されています。 したがって、列挙子を直接操作するのではなく、`foreach` を使用することをお勧めします。  
+ C# `for each` C++言語の`For Each`ステートメント (では、Visual Basic) によって、列挙子の複雑さが隠蔽されます。 `foreach` したがって、列挙子を直接操作するのではなく、`foreach` を使用することをお勧めします。  
   
  列挙子を使用すると、コレクション内のデータを読み取ることができますが、基になるコレクションを変更することはできません。  
   
  最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 この位置では、<xref:System.Collections.Generic.IEnumerator%601.Current%2A> が未定義です。 そのため、<xref:System.Collections.IEnumerator.MoveNext%2A> の値を読み取る前に、<xref:System.Collections.Generic.IEnumerator%601.Current%2A> を呼び出して列挙子をコレクションの最初の要素に進める必要があります。  
   
- <xref:System.Collections.Generic.IEnumerator%601.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.Generic.IEnumerator%601.Current%2A> を次の要素に進めます。  
+ <xref:System.Collections.Generic.IEnumerator%601.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.Generic.IEnumerator%601.Current%2A> を次の要素に設定します。  
   
- 場合<xref:System.Collections.IEnumerator.MoveNext%2A>列挙子、コレクションの末尾がコレクション内の最後の要素の後に配置されているパスと<xref:System.Collections.IEnumerator.MoveNext%2A>返します`false`します。 この位置では、後続の呼び出しで列挙子の場合<xref:System.Collections.IEnumerator.MoveNext%2A>を返すことも`false`します。 最後の呼び出し場合<xref:System.Collections.IEnumerator.MoveNext%2A>返される`false`、<xref:System.Collections.Generic.IEnumerator%601.Current%2A>が定義されていません。 <xref:System.Collections.Generic.IEnumerator%601.Current%2A> を、再度、コレクションの最初の要素に設定することはできません。列挙子の新しいインスタンスを作成する必要があります。  
+ <xref:System.Collections.IEnumerator.MoveNext%2A> がコレクションの末尾を通過した場合、列挙子がコレクション内の最後の要素の後に配置され、<xref:System.Collections.IEnumerator.MoveNext%2A> は `false` を返します。 列挙子がこの位置にある場合、後続の <xref:System.Collections.IEnumerator.MoveNext%2A> 呼び出しも `false` を返します。 の最後の呼び出し<xref:System.Collections.IEnumerator.MoveNext%2A>が返さ`false`れた場合、 <xref:System.Collections.Generic.IEnumerator%601.Current%2A>が未定義になります。 <xref:System.Collections.Generic.IEnumerator%601.Current%2A> を、再度、コレクションの最初の要素に設定することはできません。列挙子の新しいインスタンスを作成する必要があります。  
   
- コレクションが変更されない限り、列挙子は有効です。 無効になり、次の呼び出しは変更を追加するなど、コレクション変更、または要素を削除するには、列挙子が不可能<xref:System.Collections.IEnumerator.MoveNext%2A>または<xref:System.Collections.IEnumerator.Reset%2A>スロー、<xref:System.InvalidOperationException>します。  
+ コレクションが変更されない限り、列挙子は有効です。 要素の追加、変更、削除などの変更がコレクションに対して行われた場合、列挙子はなりに<xref:System.Collections.IEnumerator.MoveNext%2A>無効化され、次のまたは<xref:System.Collections.IEnumerator.Reset%2A>の呼び出しでがスロー <xref:System.InvalidOperationException>されます。  
   
- 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 列挙処理でスレッド セーフを確保するには、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
+ 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。 列挙処理でスレッド セーフを確保するために、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
   
- コレクションの既定の実装<xref:System.Collections.Generic?displayProperty=nameWithType>が同期されていません。  
+ の<xref:System.Collections.Generic?displayProperty=nameWithType>コレクションの既定の実装は同期されていません。  
   
- このメソッドは、o (1) 操作です。  
+ このメソッドは O (1) 操作です。  
   
  ]]></format>
         </remarks>
@@ -915,23 +915,23 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
 ## Remarks  
   
 > [!NOTE]
->  場合、ソースの種類<xref:System.Collections.ICollection>変換先の型に自動的にキャストすることはできません`array`の非ジェネリック実装<xref:System.Collections.ICollection.CopyTo%2A?displayProperty=nameWithType>スロー<xref:System.InvalidCastException>ジェネリック実装スローする一方、<xref:System.ArgumentException>します。  
+>  ソース<xref:System.Collections.ICollection>の型を変換先`array`の型に自動的にキャストできない場合、スロー <xref:System.InvalidCastException> <xref:System.ArgumentException>の<xref:System.Collections.ICollection.CopyTo%2A?displayProperty=nameWithType>非ジェネリック実装はスローされます。  
   
- このメソッドは O (`n`) 操作、`n`は<xref:System.Collections.Generic.Queue%601.Count%2A>します。  
+ このメソッドは O (`n`) 操作です。ここ`n`で、は<xref:System.Collections.Generic.Queue%601.Count%2A>です。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="array" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="array" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index" /> が 0 未満です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="array" /> が多次元です。  
   
-- または - 
+または 
  <paramref name="array" /> には、0 から始まるインデックス番号がありません。  
   
 - または - 
 コピー元の <see cref="T:System.Collections.ICollection" /> の要素数が、コピー先 <paramref name="array" /> の <paramref name="index" /> から最後までの使用可能領域を超えています。  
   
-- または - 
+または 
 コピー元の <see cref="T:System.Collections.ICollection" /> の型をコピー先の <paramref name="array" /> の型に自動的にキャストすることはできません。</exception>
       </Docs>
     </Member>
@@ -974,11 +974,11 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コレクションの既定の実装<xref:System.Collections.Generic?displayProperty=nameWithType>が同期されていません。  
+ の<xref:System.Collections.Generic?displayProperty=nameWithType>コレクションの既定の実装は同期されていません。  
   
  コレクションの列挙は、本質的にスレッド セーフなプロシージャではありません。  列挙処理でスレッド セーフを確保するには、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
   
- <xref:System.Collections.ICollection.SyncRoot%2A> は、<xref:System.Collections.ICollection> へのアクセスを同期するために使用できるオブジェクトを返します。 同期は、すべてのスレッドがコレクションにアクセスする前にこのオブジェクトをロックする場合のみ有効です。  
+ <xref:System.Collections.ICollection.SyncRoot%2A> は、<xref:System.Collections.ICollection> へのアクセスを同期するために使用できるオブジェクトを返します。 同期は、コレクションにアクセスする前にすべてのスレッドがこのオブジェクトをロックする場合にのみ有効です。  
   
  このプロパティ値を取得することは、O(1) 操作になります。  
   
@@ -1026,11 +1026,11 @@ A<see cref="T:System.Collections.Generic.Queue`1" />コレクションが変更�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- コレクションの既定の実装<xref:System.Collections.Generic?displayProperty=nameWithType>が同期されていません。  
+ の<xref:System.Collections.Generic?displayProperty=nameWithType>コレクションの既定の実装は同期されていません。  
   
  コレクションの列挙は、本質的にスレッド セーフなプロシージャではありません。  列挙処理でスレッド セーフを確保するには、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
   
- <xref:System.Collections.ICollection.SyncRoot%2A> は、<xref:System.Collections.ICollection> へのアクセスを同期するために使用できるオブジェクトを返します。 同期は、すべてのスレッドがコレクションにアクセスする前にこのオブジェクトをロックする場合のみ有効です。 次のコードは、使用、 <xref:System.Collections.ICollection.SyncRoot%2A> c#、C++、および Visual Basic のプロパティ。  
+ <xref:System.Collections.ICollection.SyncRoot%2A> は、<xref:System.Collections.ICollection> へのアクセスを同期するために使用できるオブジェクトを返します。 同期は、コレクションにアクセスする前にすべてのスレッドがこのオブジェクトをロックする場合にのみ有効です。 次のコードは、、 <xref:System.Collections.ICollection.SyncRoot%2A> C++、および Visual Basic のC#プロパティを使用する方法を示しています。  
   
 ```csharp  
 ICollection ic = ...;  
@@ -1103,23 +1103,23 @@ finally {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `foreach` C# 言語のステートメント (`for each` C++ では、 `For Each` Visual basic) 列挙子の複雑さが隠されています。 したがって、列挙子を直接操作するのではなく、`foreach` を使用することをお勧めします。  
+ C# `for each` C++言語の`For Each`ステートメント (では、Visual Basic) によって、列挙子の複雑さが隠蔽されます。 `foreach` したがって、列挙子を直接操作するのではなく、`foreach` を使用することをお勧めします。  
   
  列挙子を使用すると、コレクション内のデータを読み取ることができますが、基になるコレクションを変更することはできません。  
   
- 最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 <xref:System.Collections.IEnumerator.Reset%2A> を実行した場合も、列挙子はこの位置に戻されます。  この位置では、<xref:System.Collections.IEnumerator.Current%2A> が未定義です。 そのため、<xref:System.Collections.IEnumerator.MoveNext%2A> の値を読み取る前に、<xref:System.Collections.IEnumerator.Current%2A> を呼び出して列挙子をコレクションの最初の要素に進める必要があります。  
+ 最初に、列挙子はコレクション内の 1 番目の要素の前に位置付けられます。 <xref:System.Collections.IEnumerator.Reset%2A> を実行した場合も、列挙子はこの位置に戻されます。  この位置では、<xref:System.Collections.IEnumerator.Current%2A> は未定義です。 そのため、<xref:System.Collections.IEnumerator.MoveNext%2A> の値を読み取る前に、<xref:System.Collections.IEnumerator.Current%2A> を呼び出して列挙子をコレクションの最初の要素に進める必要があります。  
   
- <xref:System.Collections.IEnumerator.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> または <xref:System.Collections.IEnumerator.Reset%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IEnumerator.Current%2A> を次の要素に進めます。  
+ <xref:System.Collections.IEnumerator.Current%2A> は、<xref:System.Collections.IEnumerator.MoveNext%2A> または <xref:System.Collections.IEnumerator.Reset%2A> が呼び出されるまでは同じオブジェクトを返します。 <xref:System.Collections.IEnumerator.MoveNext%2A> は、<xref:System.Collections.IEnumerator.Current%2A> を次の要素に設定します。  
   
- 場合<xref:System.Collections.IEnumerator.MoveNext%2A>列挙子、コレクションの末尾がコレクション内の最後の要素の後に配置されているパスと<xref:System.Collections.IEnumerator.MoveNext%2A>返します`false`します。 この位置では、後続の呼び出しで列挙子の場合<xref:System.Collections.IEnumerator.MoveNext%2A>を返すことも`false`します。 最後の呼び出し場合<xref:System.Collections.IEnumerator.MoveNext%2A>返される`false`、<xref:System.Collections.IEnumerator.Current%2A>が定義されていません。 <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
+ <xref:System.Collections.IEnumerator.MoveNext%2A> がコレクションの末尾を通過した場合、列挙子がコレクション内の最後の要素の後に配置され、<xref:System.Collections.IEnumerator.MoveNext%2A> は `false` を返します。 列挙子がこの位置にある場合、後続の <xref:System.Collections.IEnumerator.MoveNext%2A> 呼び出しも `false` を返します。 の最後の呼び出し<xref:System.Collections.IEnumerator.MoveNext%2A>が返さ`false`れた場合、 <xref:System.Collections.IEnumerator.Current%2A>が未定義になります。 <xref:System.Collections.IEnumerator.Current%2A> をコレクションの最初の要素にもう一度設定するには、<xref:System.Collections.IEnumerator.Reset%2A> を呼び出してから <xref:System.Collections.IEnumerator.MoveNext%2A> を呼び出します。  
   
- コレクションが変更されない限り、列挙子は有効です。 無効になり、次の呼び出しは変更を追加するなど、コレクション変更、または要素を削除するには、列挙子が不可能<xref:System.Collections.IEnumerator.MoveNext%2A>または<xref:System.Collections.IEnumerator.Reset%2A>スロー、<xref:System.InvalidOperationException>します。 
+ コレクションが変更されない限り、列挙子は有効です。 要素の追加、変更、削除などの変更がコレクションに対して行われた場合、列挙子はなりに<xref:System.Collections.IEnumerator.MoveNext%2A>無効化され、次のまたは<xref:System.Collections.IEnumerator.Reset%2A>の呼び出しでがスロー <xref:System.InvalidOperationException>されます。 
   
- 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。  列挙処理でスレッド セーフを確保するには、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
+ 列挙子にはコレクションへの排他アクセス権限はないため、コレクションの列挙処理は本質的にスレッド セーフな処理ではありません。  列挙処理でスレッド セーフを確保するために、列挙処理が終わるまでコレクションをロックできます。  コレクションに対し複数のスレッドがアクセスして読み取りや書き込みを行うことができるようにするには、独自に同期化を実装する必要があります。  
   
- コレクションの既定の実装<xref:System.Collections.Generic?displayProperty=nameWithType>が同期されていません。  
+ の<xref:System.Collections.Generic?displayProperty=nameWithType>コレクションの既定の実装は同期されていません。  
   
- このメソッドは、o (1) 操作です。  
+ このメソッドは O (1) 操作です。  
   
  ]]></format>
         </remarks>
@@ -1160,27 +1160,27 @@ finally {
       <Parameters />
       <Docs>
         <summary><see cref="T:System.Collections.Generic.Queue`1" /> の要素を新しい配列にコピーします。</summary>
-        <returns>コピーした要素を格納する新しい配列、<see cref="T:System.Collections.Generic.Queue`1" />します。</returns>
+        <returns><see cref="T:System.Collections.Generic.Queue`1" /> からコピーした要素を格納する新しい配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Collections.Generic.Queue%601>は変更されません。 新しい配列の要素の順序は、の先頭から要素の順序と同じ、<xref:System.Collections.Generic.Queue%601>の終わりにします。  
+ <xref:System.Collections.Generic.Queue%601>は変更されません。 新しい配列内の要素の順序は、 <xref:System.Collections.Generic.Queue%601>の先頭から末尾までの要素の順序と同じです。  
   
- このメソッドは O (`n`) 操作、`n`は<xref:System.Collections.Generic.Queue%601.Count%2A>します。  
+ このメソッドは O (`n`) 操作です。ここ`n`で、は<xref:System.Collections.Generic.Queue%601.Count%2A>です。  
   
    
   
 ## Examples  
- 次のコード例をいくつかの方法を示します、<xref:System.Collections.Generic.Queue%601>ジェネリック クラスなど、<xref:System.Collections.Generic.Queue%601.ToArray%2A>メソッド。  
+ 次のコード例は、 <xref:System.Collections.Generic.Queue%601> <xref:System.Collections.Generic.Queue%601.ToArray%2A>メソッドを含む、ジェネリッククラスのいくつかのメソッドを示しています。  
   
- コード例は、既定の容量を持つ文字列のキューを作成し、使用して、 <xref:System.Collections.Generic.Queue%601.Enqueue%2A> 5 つの文字列をキューにします。 キューの状態は変更されませんが、キューの要素が列挙されます。 <xref:System.Collections.Generic.Queue%601.Dequeue%2A>メソッドを使用して、最初の文字列をデキューします。 <xref:System.Collections.Generic.Queue%601.Peek%2A>メソッドを使用して、キュー内の次の項目を確認し、<xref:System.Collections.Generic.Queue%601.Dequeue%2A>がデキューするメソッドを使用します。  
+ このコード例では、既定の容量を使用して文字列<xref:System.Collections.Generic.Queue%601.Enqueue%2A>のキューを作成し、メソッドを使用して5つの文字列をキューに置いています。 キューの要素が列挙され、キューの状態が変更されることはありません。 メソッド<xref:System.Collections.Generic.Queue%601.Dequeue%2A>は、最初の文字列をデキューするために使用されます。 メソッドは、キュー内の次の項目を確認するために使用され<xref:System.Collections.Generic.Queue%601.Dequeue%2A> 、その後、メソッドを使用してキューからデキューされます。 <xref:System.Collections.Generic.Queue%601.Peek%2A>  
   
- <xref:System.Collections.Generic.Queue%601.ToArray%2A>配列を作成し、キューの要素をコピーするメソッドを使用し、配列に渡されます、<xref:System.Collections.Generic.Queue%601.%23ctor%2A>を受け取るコンス トラクター<xref:System.Collections.Generic.IEnumerable%601>キューのコピーを作成します。 コピーの要素が表示されます。  
+ メソッド<xref:System.Collections.Generic.Queue%601.ToArray%2A>は、配列を作成し、その配列にキュー要素をコピーするために使用されます。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>その後、 <xref:System.Collections.Generic.IEnumerable%601>によって取得されるコンストラクターに配列が渡され、キューのコピーが作成されます。 コピーの要素が表示されます。  
   
- 配列 2 回、キューのサイズを作成、および<xref:System.Collections.Generic.Queue%601.CopyTo%2A>メソッドを使用して、配列の真中で始まる配列の要素をコピーします。 <xref:System.Collections.Generic.Queue%601.%23ctor%2A>コンス トラクターは先頭の 3 つの null 要素を格納しているキューの 2 番目のコピーを作成するにはもう一度使用されます。  
+ キューのサイズの2倍の配列が作成<xref:System.Collections.Generic.Queue%601.CopyTo%2A>され、メソッドを使用して配列の途中から配列の要素がコピーされます。 コンストラクター <xref:System.Collections.Generic.Queue%601.%23ctor%2A>は、最初に3つの null 要素を含むキューの2番目のコピーを作成するためにも使用されます。  
   
- <xref:System.Collections.Generic.Queue%601.Contains%2A> 「4」文字列がその後が、キューの最初のコピーのことを示すメソッドを使用、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドは、コピーをクリアし、<xref:System.Collections.Generic.Queue%601.Count%2A>プロパティは、キューが空であることを示します。  
+ メソッドは、文字列 "4" がキューの最初のコピーに含まれていることを示すために使用<xref:System.Collections.Generic.Queue%601.Clear%2A>されます。その後<xref:System.Collections.Generic.Queue%601.Count%2A> 、メソッドによってコピーがクリアされ、プロパティによってキューが空であることが示されます。 <xref:System.Collections.Generic.Queue%601.Contains%2A>  
   
  [!code-csharp[Generic.Queue#1](~/samples/snippets/csharp/VS_Snippets_CLR/Generic.Queue/cs/source.cs#1)]
  [!code-vb[Generic.Queue#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/Generic.Queue/vb/source.vb#1)]  
@@ -1225,11 +1225,11 @@ finally {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、コレクションのメモリ オーバーヘッドを最小要素がコレクションに追加されない場合に使用できます。 再割り当てすることと、大規模なコピーのコスト<xref:System.Collections.Generic.Queue%601>は適さない、ただし、そのため、<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>一覧は、「容量の 90% を超える場合メソッドは何も行いません。 比較的小規模の向上のための大規模な再割り当てコストの発生を回避できます。  
+ コレクションに新しい要素が追加されない場合は、このメソッドを使用してコレクションのメモリオーバーヘッドを最小限に抑えることができます。 ただし、大規模なの再割り当て<xref:System.Collections.Generic.Queue%601>とコピーにかかるコストはかなり大きく<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>なる可能性があるため、この方法では、リストの容量が 90% を超える場合は何も行われません。 これにより、比較的小さな増加に対して大きな再割り当てコストが発生することを回避できます。  
   
- このメソッドは O (`n`) 操作、`n`は<xref:System.Collections.Generic.Queue%601.Count%2A>します。  
+ このメソッドは O (`n`) 操作です。ここ`n`で、は<xref:System.Collections.Generic.Queue%601.Count%2A>です。  
   
- リセットする、<xref:System.Collections.Generic.Queue%601>を初期状態を呼び出し、<xref:System.Collections.Generic.Queue%601.Clear%2A>メソッドを呼び出す前に<xref:System.Collections.Generic.Queue%601.TrimExcess%2A>メソッド。 空のトリミング<xref:System.Collections.Generic.Queue%601>の容量設定、<xref:System.Collections.Generic.Queue%601>を既定の容量。  
+ を<xref:System.Collections.Generic.Queue%601>初期状態にリセットするには、 <xref:System.Collections.Generic.Queue%601.TrimExcess%2A>メソッド<xref:System.Collections.Generic.Queue%601.Clear%2A>を呼び出す前にメソッドを呼び出します。 空<xref:System.Collections.Generic.Queue%601>のをトリミングすると、 <xref:System.Collections.Generic.Queue%601>の容量が既定の容量に設定されます。  
   
  ]]></format>
         </remarks>

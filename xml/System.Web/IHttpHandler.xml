@@ -1,5 +1,5 @@
 <Type Name="IHttpHandler" FullName="System.Web.IHttpHandler">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="4e5655ad9711abf55e5f8999628a276496ace8de" /><Meta Name="ms.sourcegitcommit" Value="970510b397dd7c122a05b054df74369fba502071" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/25/2019" /><Meta Name="ms.locfileid" Value="67351873" /></Metadata><TypeSignature Language="C#" Value="public interface IHttpHandler" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="185fe356cb492b0a755e4be093815cfa4972d284" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68435396" /></Metadata><TypeSignature Language="C#" Value="public interface IHttpHandler" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IHttpHandler" />
   <TypeSignature Language="DocId" Value="T:System.Web.IHttpHandler" />
   <TypeSignature Language="VB.NET" Value="Public Interface IHttpHandler" />
@@ -18,9 +18,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 事前定義された、特定の種類の共通言語仕様 (CLS) 準拠の言語での HTTP 要求を処理するカスタム HTTP ハンドラーを記述できます。 実行可能ファイルのコードで定義されている、`HttpHandler`これら特定の要求に応答を従来の ASP または ASP.NET Web ページではなく、クラス、します。 HTTP ハンドラーは、低レベルの要求および応答サービスの IIS Web サーバーと対話する手段を提供し、ISAPI 拡張機能がより単純なプログラミング モデル、機能を提供します。  
+ カスタム HTTP ハンドラーを記述して、共通言語仕様 (CLS) 準拠の言語で、事前に定義された特定の種類の HTTP 要求を処理することができます。 従来の ASP または`HttpHandler` ASP.NET Web ページではなく、クラスで定義されている実行可能コードは、これらの特定の要求に応答します。 HTTP ハンドラーを使用すると、IIS Web サーバーの下位レベルの要求および応答サービスと対話することができ、ISAPI 拡張と同様の機能が提供されますが、プログラミングモデルはより単純になります。  
   
- これを実装する必要があります、ハンドラーがセッション状態の値にアクセスする場合、<xref:System.Web.SessionState.IRequiresSessionState>インターフェイス (メソッドを持たないマーカー インターフェイス)。  
+ ハンドラーがセッション状態の値にアクセスする場合は、 <xref:System.Web.SessionState.IRequiresSessionState>インターフェイスを実装する必要があります (メソッドのないマーカーインターフェイス)。  
   
  ]]></format>
     </remarks>
@@ -50,12 +50,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 明示的に設定する、<xref:System.Web.IHttpHandler.IsReusable%2A>プロパティを`true`または`false`をオーバーライドするコードを入力して、<xref:System.Web.IHttpHandler.IsReusable%2A>プロパティ アクセサー (ゲッター)。  
+ プロパティは、 <xref:System.Web.IHttpHandler.IsReusable%2A>明示的に`true`また`false`は<xref:System.Web.IHttpHandler.IsReusable%2A>プロパティアクセサー (getter) をオーバーライドするコードによって設定します。  
   
    
   
 ## Examples  
- 次のコード例は、4 つの行のテキストを handler.aspx という名前のページのクライアント要求に応答の HTTP 出力ストリームに書き込みます。 Handler.aspx に対するすべての要求を受けている、`MyHttpHandler`名前空間のクラス`HandlerExample`HandlerTest.dll アセンブリに含まれています。  
+ 次のコード例では、handler という名前のページに対するクライアント要求への応答として、4行のテキストを HTTP 出力ストリームに書き込みます。 ハンドラーのすべての要求は、アセンブリハンドラーに`MyHttpHandler`含まれる名前空間`HandlerExample`のクラスによって処理されます。  
   
  [!code-csharp[Classic IHttpHandler.ProcessRequest Example#1](~/samples/snippets/csharp/VS_Snippets_WebNet/Classic IHttpHandler.ProcessRequest Example/CS/source.cs#1)]
  [!code-vb[Classic IHttpHandler.ProcessRequest Example#1](~/samples/snippets/visualbasic/VS_Snippets_WebNet/Classic IHttpHandler.ProcessRequest Example/VB/source.vb#1)]  
@@ -91,12 +91,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- カスタムの配置`HttpHandler`でコードを<xref:System.Web.IHttpHandler.ProcessRequest%2A>で示すように、仮想メソッド、[例](#examples)セクション。
+ 「例」 `HttpHandler`のセクションに示されているように、 [](#examples)カスタムコードを<xref:System.Web.IHttpHandler.ProcessRequest%2A>仮想メソッドに配置します。
   
    
   
 ## Examples  
- 次のコード例は、4 つの行のテキストを handler.aspx という名前のページのクライアント要求に応答の HTTP 出力ストリームに書き込みます。 Handler.aspx に対するすべての要求を受けている、`MyHttpHandler`名前空間のクラス`HandlerExample`HandlerTest.dll アセンブリに含まれています。  
+ 次のコード例では、handler という名前のページに対するクライアント要求への応答として、4行のテキストを HTTP 出力ストリームに書き込みます。 ハンドラーのすべての要求は、アセンブリハンドラーに`MyHttpHandler`含まれる名前空間`HandlerExample`のクラスによって処理されます。  
   
  [!code-csharp[Classic IHttpHandler.ProcessRequest Example#1](~/samples/snippets/csharp/VS_Snippets_WebNet/Classic IHttpHandler.ProcessRequest Example/CS/source.cs#1)]
  [!code-vb[Classic IHttpHandler.ProcessRequest Example#1](~/samples/snippets/visualbasic/VS_Snippets_WebNet/Classic IHttpHandler.ProcessRequest Example/VB/source.vb#1)]  

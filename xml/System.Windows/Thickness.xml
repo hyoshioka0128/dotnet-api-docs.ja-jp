@@ -1,5 +1,5 @@
 <Type Name="Thickness" FullName="System.Windows.Thickness">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="edd70adbae3efa6460d8e99a3b033fb4e28546b0" /><Meta Name="ms.sourcegitcommit" Value="756d085f27705e86604f1bba5f2086ee23761acf" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="01/30/2019" /><Meta Name="ms.locfileid" Value="55310893" /></Metadata><TypeSignature Language="C#" Value="public struct Thickness : IEquatable&lt;System.Windows.Thickness&gt;" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="82ced9eaa65381f7fe9fd50799c2d034b444ac4f" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686417" /></Metadata><TypeSignature Language="C#" Value="public struct Thickness : IEquatable&lt;System.Windows.Thickness&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Thickness extends System.ValueType implements class System.IEquatable`1&lt;valuetype System.Windows.Thickness&gt;" />
   <TypeSignature Language="DocId" Value="T:System.Windows.Thickness" />
   <TypeSignature Language="VB.NET" Value="Public Structure Thickness&#xA;Implements IEquatable(Of Thickness)" />
@@ -32,51 +32,59 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定できる<xref:System.Windows.Thickness>方法は 2 つの値。 4 つを渡す場合<xref:System.Double>構造体に値を表す、 <xref:System.Windows.Thickness.Left%2A>、 <xref:System.Windows.Thickness.Top%2A>、<xref:System.Windows.Thickness.Right%2A>と<xref:System.Windows.Thickness.Bottom%2A>辺、それぞれの外接する四角形。 均一な値を外接する四角形の四辺すべてに適用される 1 つの値を指定することもできます。  
+ 値は 3 <xref:System.Windows.Thickness>つの方法で指定できます。 構造体に 4 <xref:System.Double>つの値を渡すと、境界<xref:System.Windows.Thickness.Left%2A>四角形<xref:System.Windows.Thickness.Top%2A>の<xref:System.Windows.Thickness.Right%2A> 、 <xref:System.Windows.Thickness.Bottom%2A> 、の各辺をそれぞれ表します。 2つ<xref:System.Double>の値を指定することもできます。最初の値は、外接する四角形の左右の辺を表し、2番目の値は外接する四角形の上辺と下辺を表します。 単一<xref:System.Double>の値を指定することもできます。これにより、外接する四角形の4辺すべてに均一な値が適用されます。  
   
 <a name="xamlAttributeUsage_Thickness"></a>   
 ## <a name="xaml-attribute-usage"></a>XAML 属性の使用方法  
   
-```  
+```xaml
 <object property="left"/>  
-- or -  
+```
+
+- または -
+
+```xaml
 <object property="left,top"/>  
-- or -  
+```
+
+または
+
+```xaml
 <object property=" left,top,right,bottom" ... />  
-```  
+```
   
 <a name="xamlValues_Thickness"></a>   
 ## <a name="xaml-values"></a>XAML 値  
  *left*  
- いずれかとして説明されているフレームの左端を<xref:System.Double>を指定する値を[!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]メジャー、または、 *qualifiedDouble* (下記参照)。 下の値の左、上、右のすべてをメジャーに適用する 1 つのメジャーが指定されて、専用の場合、<xref:System.Windows.Thickness>します。 これらのメジャーが対称的に適用された左と上のメジャーのペアを指定すると、専用の場合、 <xref:System.Windows.Thickness>: は右側の左の値が使用されます。 トップ値は、下部にあるためです。  
+ 測定値として、または*qualifiedDouble*として記述された、フレームの左端 (下記参照)。 <xref:System.Double> [!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)] 1つのメジャーのみが指定されている場合、そのメジャーはの<xref:System.Windows.Thickness>左、上、右、下のすべての値に適用されます。 左のペアだけを指定した場合、top メジャーが指定されると、これら<xref:System.Windows.Thickness>のメジャーはに対称的に適用されます。 left 値は right に使用され、top 値は bottom に使用されます。  
   
  *top*  
- いずれかとして説明されているフレームの上端を<xref:System.Double>を指定する値を[!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]メジャー、または、 *qualifiedDouble* (下記参照)。 これらのメジャーが対称的に適用された左と上のメジャーのペアを指定すると、専用の場合、 <xref:System.Windows.Thickness>: は右側の左の値が使用されます。 トップ値は、下部にあるためです。  
+ メジャーを[!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]指定する<xref:System.Double>値か、または*qualifiedDouble*として記述されたフレームの上端 (下記参照)。 左のペアだけを指定した場合、top メジャーが指定されると、これら<xref:System.Windows.Thickness>のメジャーはに対称的に適用されます。 left 値は right に使用され、top 値は bottom に使用されます。  
   
  *right*  
- いずれかとして説明されているフレームの右端を<xref:System.Double>を指定する値を[!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]メジャー、または、 *qualifiedDouble* (下記参照)。 指定されない場合は、左の値を使用します。  
+ フレームの右端。 <xref:System.Double> [!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]メジャーを指定する値か、 *qualifiedDouble* (以下を参照) として記述されます。 指定されていない場合、は左の値を使用します。  
   
  *bottom*  
- いずれかとして説明されているフレームの下端を<xref:System.Double>を指定する値を[!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]メジャー、または、 *qualifiedDouble* (下記参照)。 指定されない場合は、左の値を使用します。  
+ 小節を[!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]指定する<xref:System.Double>値か、または*qualifiedDouble*として記述されているフレームの下端 (下記参照)。 指定されていない場合、は左の値を使用します。  
   
  *qualifiedDouble*  
- A*二重*値、メジャーのいずれかの上に示した後に次の単位の宣言文字列のいずれか: `px`、 `in`、 `cm`、`pt`します。  
+ 上記のいずれかのメジャーについて説明した*double*値`px`。その後に、 `in` `cm`、、、 `pt`のいずれかの単位宣言文字列が続きます。  
   
- `px` (既定値) [!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]  
+ `px`(既定) はです。[!INCLUDE[TLA#tla_dipixel#plural](~/includes/tlasharptla-dipixelsharpplural-md.md)]  
   
- `in` インチです。1 in 96px = =  
+ `in` はインチ。1in==96px  
   
- `cm` センチメートル; は、します。1cm==(96/2.54) px  
+ `cm`はセンチメートルです。1cm = = (96/2.54) px  
   
- `pt` ポイントです。1pt==(96/72) px  
+ `pt` はポイント。1pt==(96/72) px  
   
 > [!NOTE]
->  値では、文字列として指定するときに明示的に小数点が含まれません必要があります。 文字列「1」で提供される[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]コードで参照されている場合は 1.0 の値に評価します。  
+>  文字列として指定した場合、値には、明示的に小数点を含める必要はありません。 で[!INCLUDE[TLA2#tla_xaml](~/includes/tla2sharptla-xaml-md.md)]指定された文字列 "1" は、コードで参照された場合、値1.0 に評価されます。  
   
    
   
 ## Examples  
- 次の例のインスタンスを作成する方法を示しています、<xref:System.Windows.Thickness>構造体し、を使用してそのプロパティを設定[!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]とコード。  
+ 次の例は、 <xref:System.Windows.Thickness>構造体のインスタンスを作成し、およびコードを使用[!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]してそのプロパティを設定する方法を示しています。  
   
  [!code-csharp[ThicknessStruct#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ThicknessStruct/CSharp/ThicknessSamp.cs#2)]
  [!code-vb[ThicknessStruct#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ThicknessStruct/VisualBasic/ThicknessSampVB.vb#2)]
@@ -154,7 +162,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例のインスタンスを作成する方法を示しています、<xref:System.Windows.Thickness>コードを使用して構造体。  
+ 次の例は、コードを使用して<xref:System.Windows.Thickness>構造体のインスタンスを作成する方法を示しています。  
   
  [!code-csharp[ThicknessStruct#1](~/samples/snippets/csharp/VS_Snippets_Wpf/ThicknessStruct/CSharp/ThicknessSamp.cs#1)]
  [!code-vb[ThicknessStruct#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ThicknessStruct/VisualBasic/ThicknessSampVB.vb#1)]
@@ -195,7 +203,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例の値を設定する方法を示しています、<xref:System.Windows.Thickness.Bottom%2A>プロパティを使用して[!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]とコード。  
+ 次の例は、およびコードを使用<xref:System.Windows.Thickness.Bottom%2A> [!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]してプロパティの値を設定する方法を示しています。  
   
  [!code-csharp[ThicknessStruct#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ThicknessStruct/CSharp/ThicknessSamp.cs#2)]
  [!code-vb[ThicknessStruct#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ThicknessStruct/VisualBasic/ThicknessSampVB.vb#2)]
@@ -241,7 +249,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有効桁数エラー値が演算に蓄積される可能性が論理的に等価な 2 つの浮動小数点値の等価テストが失敗するとします。  
+ 論理的に等価である2つの浮動小数点値の等価性のテストは、値が演算されるときに蓄積される可能性がある精度エラーのために失敗する可能性があります。  
   
  ]]></format>
         </remarks>
@@ -276,7 +284,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有効桁数エラー値が演算に蓄積される可能性が論理的に等価な 2 つの浮動小数点値に等しいかテストが失敗するとします。  
+ 論理的に等価である2つの浮動小数点値の等価性または非等値のテストは、値が演算されるときに蓄積される可能性がある精度エラーのために失敗する可能性があります。  
   
  ]]></format>
         </remarks>
@@ -331,12 +339,12 @@
       </ReturnValue>
       <Docs>
         <summary>外接する四角形の左辺の幅 (ピクセル単位) を取得または設定します。</summary>
-        <value>この <see cref="T:System.Windows.Thickness" /> のインスタンスについて、外接する四角形の左辺の幅 (ピクセル単位) を表す <see cref="T:System.Double" />。 1 ピクセルは 1/96 インチに相当します。 既定値は 0 です。</value>
+        <value>この <see cref="T:System.Double" /> のインスタンスについて、外接する四角形の左辺の幅 (ピクセル単位) を表す <see cref="T:System.Windows.Thickness" />。 1 ピクセルは 1/96 インチに相当します。 既定値は 0 です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例の値を設定する方法を示しています、<xref:System.Windows.Thickness.Left%2A>プロパティを使用して[!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]とコード。  
+ 次の例は、およびコードを使用<xref:System.Windows.Thickness.Left%2A> [!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]してプロパティの値を設定する方法を示しています。  
   
  [!code-csharp[ThicknessStruct#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ThicknessStruct/CSharp/ThicknessSamp.cs#2)]
  [!code-vb[ThicknessStruct#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ThicknessStruct/VisualBasic/ThicknessSampVB.vb#2)]
@@ -375,7 +383,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有効桁数エラー値が演算に蓄積される可能性が論理的に等価な 2 つの浮動小数点値の等価テストが失敗するとします。  
+ 論理的に等価である2つの浮動小数点値の等価性のテストは、値が演算されるときに蓄積される可能性がある精度エラーのために失敗する可能性があります。  
   
  ]]></format>
         </remarks>
@@ -410,7 +418,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有効桁数エラー値が演算に蓄積される可能性が論理的に等価な 2 つの浮動小数点値に等しいかテストが失敗するとします。  
+ 論理的に等価である2つの浮動小数点値の等価性または非等値のテストは、値が演算されるときに蓄積される可能性がある精度エラーのために失敗する可能性があります。  
   
  ]]></format>
         </remarks>
@@ -447,7 +455,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例の値を設定する方法を示しています、<xref:System.Windows.Thickness.Right%2A>プロパティを使用して[!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]とコード。  
+ 次の例は、およびコードを使用<xref:System.Windows.Thickness.Right%2A> [!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]してプロパティの値を設定する方法を示しています。  
   
  [!code-csharp[ThicknessStruct#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ThicknessStruct/CSharp/ThicknessSamp.cs#2)]
  [!code-vb[ThicknessStruct#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ThicknessStruct/VisualBasic/ThicknessSampVB.vb#2)]
@@ -488,7 +496,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例の値を設定する方法を示しています、<xref:System.Windows.Thickness.Top%2A>プロパティを使用して[!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]とコード。  
+ 次の例は、およびコードを使用<xref:System.Windows.Thickness.Top%2A> [!INCLUDE[TLA#tla_xaml](~/includes/tlasharptla-xaml-md.md)]してプロパティの値を設定する方法を示しています。  
   
  [!code-csharp[ThicknessStruct#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ThicknessStruct/CSharp/ThicknessSamp.cs#2)]
  [!code-vb[ThicknessStruct#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ThicknessStruct/VisualBasic/ThicknessSampVB.vb#2)]

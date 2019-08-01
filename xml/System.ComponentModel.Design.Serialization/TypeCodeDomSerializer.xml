@@ -24,12 +24,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>オブジェクトを新しい型をシリアル化します。</summary>
+    <summary>オブジェクトを新しい型にシリアル化します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer>クラスと同じタスクを実行する、<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>が、このクラスからオブジェクトをシリアル化する新しい種類を定義します。  
+ クラス<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer> は<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>と同じタスクを実行しますが、このクラスを介してオブジェクトをシリアル化すると、新しい型が定義されます。  
   
  ]]></format>
     </remarks>
@@ -92,27 +92,27 @@
       </Parameters>
       <Docs>
         <param name="manager">シリアル化に使用するシリアル化マネージャー。</param>
-        <param name="declaration">シリアル化に使用する宣言を入力します。</param>
+        <param name="declaration">シリアル化に使用する型宣言。</param>
         <summary>指定した型宣言を逆シリアル化します。</summary>
         <returns>ルート オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Deserialize%2A>メソッドには、既にシリアル化されたコード型宣言が逆シリアル化します。 次の表は、タスクの既定の実装を実行します。  
+ メソッド<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Deserialize%2A>は、以前にシリアル化されたコード型宣言を逆シリアル化します。 既定の実装で実行されるタスクを次の表に示します。  
   
 |タスク|説明|  
 |----------|-----------------|  
-|大文字小文字の区別のチェック|実装を検索、<xref:System.CodeDom.Compiler.CodeDomProvider>小文字または大文字と小文字を区別しないとしてメンバーを扱うかを決定するサービス。|  
-|ステートメントの並べ替え|すべてのメンバー変数と init メソッドのローカル変数は、テーブルに格納されます。 Init メソッド内の各ステートメントは、割り当てや、特定の変数で動作しているすべてのステートメントは、その変数でグループ化されたために、左側にあるに従ってグループ化ステートメント コレクションに追加されます。 ステートメントが変数は破棄されません。|  
-|逆シリアル化|に従って、変数は、各変数のステートメントのコレクションが逆シリアル化します。|  
+|大文字と小文字の区別のチェック|実装では、 <xref:System.CodeDom.Compiler.CodeDomProvider>サービスを検索して、メンバーが大文字と小文字を区別するかどうかを判断します。|  
+|ステートメントの並べ替え|Init メソッドのすべてのメンバー変数とローカル変数は、テーブルに格納されます。 その後、init メソッドの各ステートメントは、左辺に従ってグループ化されたステートメントコレクションに追加されるため、特定の変数を割り当てたり操作したりするすべてのステートメントは、その変数の下にグループ化されます。 ステートメントのない変数は破棄されます。|  
+|逆シリアル化|各変数のステートメントコレクションは、変数に従って逆シリアル化されます。|  
   
- 次の表は、サービス、<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Deserialize%2A>メソッドが必要です。  
+ 次の表は、 <xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Deserialize%2A>メソッドが必要とするサービスを示しています。  
   
 |サービス|説明|  
 |-------------|-----------------|  
-|<xref:System.CodeDom.Compiler.CodeDomProvider>|必須ではありません、サービス、使用可能な場合は使用を決定するかどうか、シリアル化小文字または大文字小文字を区別します。|  
-|<xref:System.ComponentModel.IContainer>|逆シリアル化、クエリの中で、名前のテーブルで、オブジェクトが存在しない場合<xref:System.ComponentModel.IContainer>されます。 このクエリが成功すると、オブジェクトのコンテナーがチェックされます。 コンテナーは、コンポーネントに必要なコンテナー引数の代理としても使用されます。|  
+|<xref:System.CodeDom.Compiler.CodeDomProvider>|厳密には必要ありませんが、使用可能な場合はサービスを使用して、シリアル化で大文字と小文字を区別するか、大文字と小文字を区別しないかを決定します。|  
+|<xref:System.ComponentModel.IContainer>|逆シリアル化中にオブジェクトが name テーブルに存在しない場合、に<xref:System.ComponentModel.IContainer>対するクエリが実行されます。 このクエリが成功した場合、オブジェクトのコンテナーがチェックされます。 コンテナーは、コンポーネントで必要な任意のコンテナー引数のスタンドアロンとしても使用されます。|  
   
  ]]></format>
         </remarks>
@@ -159,7 +159,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.GetInitializeMethod%2A>メソッドは、指定したメンバーのすべての初期化コードを出力するメソッドを返します。 既定の実装では、空のコンス トラクターを返します。 同じメソッドは、複数の値が返されるには、メソッドの同じインスタンスが返されます。 使用することができます、<xref:System.CodeDom.CodeObject.UserData%2A?displayProperty=nameWithType>ディクショナリを作成した方法に注意してください。 `typeDecl`パラメーターがインフラストラクチャ メソッドを追加することもできます。 たとえば、オブジェクトごとに個別のメソッドを出力する場合は、1 つのメソッドをさらにこれらすべてのメソッドを呼び出す必要があります。 このメソッドは、必要に応じて、コード型宣言に追加できます。  
+ メソッド<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.GetInitializeMethod%2A>は、指定されたメンバーのすべての初期化コードを出力するメソッドを返します。 既定の実装では、空のコンストラクターが返されます。 複数の値に対して同じメソッドが返される場合は、メソッドの同じインスタンスが返されます。 ディクショナリを使用し<xref:System.CodeDom.CodeObject.UserData%2A?displayProperty=nameWithType>て、作成したメソッドを記憶できます。 パラメーター `typeDecl`を使用して、インフラストラクチャメソッドを追加することもできます。 たとえば、オブジェクトごとに個別のメソッドを出力する場合は、これらのメソッドのすべてを順番に呼び出す1つのメソッドが必要です。 このメソッドは、必要に応じてコードの種類の宣言に追加できます。  
   
  ]]></format>
         </remarks>
@@ -199,12 +199,12 @@
         <param name="manager">シリアル化に使用するシリアル化マネージャー。</param>
         <param name="declaration">シリアル化に使用する型宣言。</param>
         <summary>逆シリアル化中に解釈されるメソッドの配列を返します。</summary>
-        <returns>A<see cref="T:System.CodeDom.CodeMemberMethod" />に逆シリアル化中に解釈されるメソッドの配列。</returns>
+        <returns>逆シリアル化中に解釈されるメソッドの <see cref="T:System.CodeDom.CodeMemberMethod" /> 配列。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の実装が、コンス トラクターを持つ 1 つの要素の配列を返します。  
+ 既定の実装は、コンストラクターを含む単一要素の配列を返します。  
   
  ]]></format>
         </remarks>
@@ -244,34 +244,34 @@
       <Docs>
         <param name="manager">シリアル化に使用するシリアル化マネージャー。</param>
         <param name="root">シリアル化するオブジェクト。</param>
-        <param name="members">メンバーの省略可能なコレクション。 <see langword="null" />または空です。</param>
-        <summary>ルートを定義する新しい型宣言を作成して、オブジェクト ルートをシリアル化します。</summary>
-        <returns>A<see cref="T:System.CodeDom.CodeTypeDeclaration" />ルート オブジェクトを定義します。</returns>
+        <param name="members">省略可能なメンバーのコレクション。 <see langword="null" /> または空になる場合があります。</param>
+        <summary>ルートを定義する新しい型宣言を作成することによって、オブジェクト ルートをシリアル化します。</summary>
+        <returns>ルート オブジェクトを定義する <see cref="T:System.CodeDom.CodeTypeDeclaration" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>メソッドには、新しい種類の定義を作成するメンバーの省略可能なコレクション、特定のルート オブジェクトがシリアル化します。 場合、`members`コレクションに値が含まれています、これらの値がシリアル化します。 値自体は、メンバー変数またはローカル変数のいずれかとしてシリアル化可能性があります。 この決定と呼ばれるオブジェクトにエクステンダー プロパティを検索することによって行われます`GenerateMember`します。 場合`true`メンバーが生成されます。 それ以外の場合、ローカル変数が生成されます。 便宜上、`members`コレクションは、ルート オブジェクトを含めることができます。 この場合、ルート オブジェクトも追加されませんメンバーまたはローカル変数として。  
+ メソッド<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>は、指定されたルートオブジェクトとオプションのメンバーのコレクションをシリアル化して、新しい型定義を作成します。 コレクションに`members`値が含まれている場合は、これらの値がシリアル化されます。 値自体は、メンバー変数またはローカル変数としてシリアル化できます。 この決定は、と呼ばれる`GenerateMember`オブジェクトで extender プロパティを検索することによって行われます。 の`true`場合、メンバーが生成されます。 それ以外の場合は、ローカル変数が生成されます。 便宜上、コレクションに`members`はルートオブジェクトを含めることができます。 この場合、ルートオブジェクトもメンバーまたはローカル変数として追加されません。  
   
- 返される型の名前は、名前付きオブジェクトの場合、ルート オブジェクトの名前から取得されます。 ない場合は、ルート クラスの単純型名から名前を生成します。  
+ 返される型の名前は、ルートオブジェクトの名前 (名前付きオブジェクトの場合) から取得されます。 それ以外の場合は、ルートクラスの単純型名から名前が指定されます。  
   
- 次の表の既定の実装で実行されるタスク、<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>メソッド。  
+ 次の表は、 <xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>メソッドの既定の実装によって実行されるタスクを示しています。  
   
 |タスク|説明|  
 |----------|-----------------|  
-|コンテキストのシード|など、データをシリアル化コンテキストが初期化されて、<xref:System.ComponentModel.Design.Serialization.RootContext>と <xref:System.CodeDom.CodeTypeDeclaration>|  
-|メンバーのシリアル化|次に、<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>ですべてのメンバーと呼び出しについて説明します<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeToExpression%2A>します。 シリアル化は便宜的な手段で行われるため<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeToExpression%2A>、これにより、シリアル化が 2 回行われていません。|  
-|ルートのシリアル化|次に、ルート オブジェクトをシリアル化し、そのステートメントがステートメントのコレクションに追加します。|  
-|ステートメントの統合|すべてのオブジェクトはシリアル化した後、<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>メソッドは、並べ替え、ステートメントから返されるメソッドに追加します<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.GetInitializeMethod%2A>します。 呼び出すすべてのメソッドから返されるコンス トラクターが最後に、用意<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.GetInitializeMethod%2A>します。|  
+|コンテキストシード処理|シリアル化コンテキストは、 <xref:System.ComponentModel.Design.Serialization.RootContext>およびを含むデータで初期化されます。<xref:System.CodeDom.CodeTypeDeclaration>|  
+|メンバーのシリアル化|次に<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A> 、すべてのメンバーとの呼び出し<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeToExpression%2A>について説明します。 シリアル化はで<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeToExpression%2A>させるされるため、これにより、シリアル化が2回実行されることがなくなります。|  
+|ルートのシリアル化|次に、ルートオブジェクトがシリアル化され、ステートメントがステートメントコレクションに追加されます。|  
+|ステートメントの統合|すべてのオブジェクトがシリアル化さ<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>れた後、メソッドはステートメントを並べ替え、から<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.GetInitializeMethod%2A>返されたメソッドに追加します。 最後に、から<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.GetInitializeMethod%2A>返されたすべてのメソッドを呼び出すコンストラクターがあります。|  
   
 -  
   
- 次の表は、オブジェクト、<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>メソッドは、コンテキスト スタックに配置します。  
+ 次の表は、メソッドが<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer.Serialize%2A>コンテキストスタックに配置するオブジェクトを示しています。  
   
-|[インスタンス]|説明|  
+|インスタンス|説明|  
 |--------------|-----------------|  
-|<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer>|このシリアライザー。 クラスを派生させることが有用かもしれませんこのクラスにパブリック プロパティを追加します。|  
-|<xref:System.CodeDom.CodeTypeDeclaration>|作成される型。 ほとんどのオブジェクトでは、これに直接アクセスは必要ありません。|  
+|<xref:System.ComponentModel.Design.Serialization.TypeCodeDomSerializer>|このシリアライザー。 派生クラスでは、このクラスにパブリックプロパティを追加すると便利な場合があります。|  
+|<xref:System.CodeDom.CodeTypeDeclaration>|作成される型。 ほとんどのオブジェクトは、このへの直接アクセスを必要としません。|  
   
  ]]></format>
         </remarks>

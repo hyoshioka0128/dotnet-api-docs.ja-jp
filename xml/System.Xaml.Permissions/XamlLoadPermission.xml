@@ -1,5 +1,5 @@
 <Type Name="XamlLoadPermission" FullName="System.Xaml.Permissions.XamlLoadPermission">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="e330420ea7145e56c36e7e0d95e08d869e94a012" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="64996230" /></Metadata><TypeSignature Language="C#" Value="public sealed class XamlLoadPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="430fa56418ccee326fba2fc18285fcd67e79f03d" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68439414" /></Metadata><TypeSignature Language="C#" Value="public sealed class XamlLoadPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit XamlLoadPermission extends System.Security.CodeAccessPermission implements class System.Security.Permissions.IUnrestrictedPermission" />
   <TypeSignature Language="DocId" Value="T:System.Xaml.Permissions.XamlLoadPermission" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class XamlLoadPermission&#xA;Inherits CodeAccessPermission&#xA;Implements IUnrestrictedPermission" />
@@ -8,6 +8,10 @@
   <AssemblyInfo>
     <AssemblyName>System.Xaml</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>System.Security.Permissions</AssemblyName>
+    <AssemblyVersion>4.0.2.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Security.CodeAccessPermission</BaseTypeName>
@@ -23,12 +27,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>XAML リーダーまたはライターによって使用されるアセンブリから型を読み込むためのアクセス許可を宣言します。</summary>
+    <summary>XAML リーダーまたはライターで使用されるアセンブリから型を読み込むためのアクセス許可を宣言します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Xaml.Permissions.XamlLoadPermission> 内部の型が部分信頼の下で読み込みに許可されているかどうかなどのシナリオに関連します。  
+ <xref:System.Xaml.Permissions.XamlLoadPermission>は、内部型が部分信頼での読み込みを許可されているかどうかなどのシナリオに関連します。  
   
  ]]></format>
     </remarks>
@@ -55,22 +59,26 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="allowedAccess" Type="System.Collections.Generic.IEnumerable&lt;System.Xaml.Permissions.XamlAccessLevel&gt;" />
       </Parameters>
       <Docs>
-        <param name="allowedAccess">特定の一連の列挙可能な<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />値。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />クラス、列挙可能な特定のセットを使用して<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />値。</summary>
+        <param name="allowedAccess">固有の <see cref="T:System.Xaml.Permissions.XamlAccessLevel" /> 値の列挙可能なセット。</param>
+        <summary>固有の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> 値の列挙可能なセットを使用して、<see cref="T:System.Xaml.Permissions.XamlAccessLevel" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの呼び出しを初期化します、<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>各コレクション`allowedAccess`エントリとして、アイテムの戻り値の設定と<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>に`false`で作成されたインスタンス。  
+ このコンストラクターの呼び出しは、項目<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>として`allowedAccess`各エントリを使用してコレクションを初期化し<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A> 、 `false`作成されたインスタンスでのの戻り値をに設定します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="allowedAccess" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="allowedAccess" /> null の項目などの無効な情報が含まれています。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="allowedAccess" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="allowedAccess" /> に、null の項目などの無効な情報が含まれていました。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -85,17 +93,21 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="state" Type="System.Security.Permissions.PermissionState" />
       </Parameters>
       <Docs>
         <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 列挙値。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />クラス、既存のアクセス許可を使用します。</summary>
+        <summary>既存のアクセス許可を使用して、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Permissions.PermissionState.Unrestricted> 戻り値の設定<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>に`true`で作成されたインスタンス。 このコンス トラクターへの呼び出しを設定、<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>コレクション`null`アクセス許可が報告されている場合は関係ないのでなく<xref:System.Xaml.Permissions.XamlAccessLevel>します。  
+ <xref:System.Security.Permissions.PermissionState.Unrestricted>作成された<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>インスタンス`true`でのの戻り値をに設定します。 このコンストラクターを呼び出すと、 <xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>コレクションが`null`に設定され<xref:System.Xaml.Permissions.XamlAccessLevel>ます。これは、アクセス許可がではなく報告されている場合には無関係であるためです。  
   
  ]]></format>
         </remarks>
@@ -113,21 +125,25 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="allowedAccess" Type="System.Xaml.Permissions.XamlAccessLevel" />
       </Parameters>
       <Docs>
-        <param name="allowedAccess">定義<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />値。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />クラス、1 つを使用して<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />値。</summary>
+        <param name="allowedAccess">定義する <see cref="T:System.Xaml.Permissions.XamlAccessLevel" /> 値。</param>
+        <summary>単一の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> 値を使用して、<see cref="T:System.Xaml.Permissions.XamlAccessLevel" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの呼び出しを初期化します、<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>コレクション`allowedAccess`唯一の項目としての戻り値の設定と<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>に`false`で作成されたインスタンス。  
+ このコンストラクターを呼び出すと、 <xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>の`allowedAccess`コレクションが唯一の項目として初期化され<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A> 、 `false`作成されたインスタンスでのの戻り値がに設定されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="allowedAccess" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="allowedAccess" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="AllowedAccess">
@@ -142,6 +158,10 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
           <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
@@ -151,13 +171,13 @@
         <ReturnType>System.Collections.Generic.IList&lt;System.Xaml.Permissions.XamlAccessLevel&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>すべての一覧を取得<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />値をこの<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />を表します。</summary>
-        <value>読み取り専用リスト<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />値、または<see langword="null" />します。</value>
+        <summary>この <see cref="T:System.Xaml.Permissions.XamlAccessLevel" /> で表されるすべての <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> 値のリストを取得します。</summary>
+        <value>読み取り専用の <see cref="T:System.Xaml.Permissions.XamlAccessLevel" /> 値のリスト、または <see langword="null" />。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、現在<xref:System.Xaml.Permissions.XamlLoadPermission>が初期化されるように<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>は`true`、<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>可能性があります`null`します。  
+ <xref:System.Xaml.Permissions.XamlLoadPermission>が<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A> <xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A> `null`のように現在のが初期化されている場合、はになることがあります。 `true`  
   
  ]]></format>
         </remarks>
@@ -175,18 +195,22 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Security.IPermission</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>作成して、現在の完全なコピーを返します<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。</summary>
+        <summary>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> のコピーを作成して返します。</summary>
         <returns>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> のコピー。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- インターフェイス コントラクトごと<xref:System.Security.IPermission>この値は<xref:System.Security.IPermission>シグネチャでにキャストできますが、<xref:System.Xaml.Permissions.XamlLoadPermission>します。  
+ この<xref:System.Security.IPermission> 値の<xref:System.Xaml.Permissions.XamlLoadPermission>インターフェイスコントラクトはシグネチャにありますが、にキャストできます。<xref:System.Security.IPermission>  
   
  ]]></format>
         </remarks>
@@ -204,6 +228,10 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netcore-3.0">
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -213,7 +241,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="obj" Type="System.Object" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="obj" Type="System.Object" Index="0" FrameworkAlternate="dotnet-plat-ext-3.0" />
       </Parameters>
       <Docs>
         <param name="obj">To be added.</param>
@@ -234,6 +262,10 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -244,11 +276,11 @@
         <param name="elem">セキュリティ オブジェクトの再構築に使用する XML エンコード。</param>
         <summary>XML エンコードから指定された状態で、セキュリティ オブジェクトを再構築します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="elem" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="elem" /> XML エンコードが含まれていませんが、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="elem" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="elem" /> に、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> の XML エンコーディングが含まれていません。  
   
-- または - 
-内の version 属性<paramref name="elem" />はサポートされていません。</exception>
+または 
+<paramref name="elem" /> 内の version 属性はサポートされていません。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -262,6 +294,10 @@
       <AssemblyInfo>
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netcore-3.0">
@@ -290,6 +326,10 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -297,9 +337,9 @@
         <Parameter Name="requestedAccess" Type="System.Xaml.Permissions.XamlAccessLevel" />
       </Parameters>
       <Docs>
-        <param name="requestedAccess">特定<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />を確認します。</param>
-        <summary>返すかどうかこの<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />指定が含まれています<see cref="T:System.Xaml.Permissions.XamlAccessLevel" />でその<see cref="P:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess" />一覧。</summary>
-        <returns><see langword="true" /> 場合<paramref name="requestedAccess" />内のアイテムとして存在する、 <see cref="P:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess" /> 、現在の一覧<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。 それ以外の場合は <see langword="false" />。</returns>
+        <param name="requestedAccess">チェックする特定の <see cref="T:System.Xaml.Permissions.XamlAccessLevel" />。</param>
+        <summary>この <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> の <see cref="T:System.Xaml.Permissions.XamlAccessLevel" /> のリスト内に指定された <see cref="P:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess" /> が含まれるかどうかを返します。</summary>
+        <returns>現在の <see cref="P:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess" /> の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> のリスト内のアイテムとして <paramref name="requestedAccess" /> が存在する場合は <see langword="true" />。 それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="requestedAccess" /> が null です。</exception>
       </Docs>
@@ -316,6 +356,10 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Security.IPermission</ReturnType>
       </ReturnValue>
@@ -323,18 +367,18 @@
         <Parameter Name="target" Type="System.Security.IPermission" />
       </Parameters>
       <Docs>
-        <param name="target">A<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />積集合を持つ現在<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。 <see langword="null" /> の可能性があります。</param>
-        <summary>作成して返します、 <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> 、現在の積集合である<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />と指定したアクセス許可。</summary>
-        <returns>現在の積集合を表す新しいアクセス許可<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />と指定した<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。 積集合が空の場合、この新しいアクセス許可は <see langword="null" /> です。</returns>
+        <param name="target">現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> との積集合を持つ <see cref="T:System.Xaml.Permissions.XamlLoadPermission" />。 <see langword="null" /> の可能性があります。</param>
+        <summary>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> と指定されたアクセス許可の積集合である <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> を作成して返します。</summary>
+        <returns>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> と指定した <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> の積集合を表す新しいアクセス許可。 積集合が空の場合、この新しいアクセス許可は <see langword="null" /> です。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Union、intersect、サブセットのロジックと<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>が最初に確認し、そのチェックのみに基づいて結果を返す可能性があります。 次に、<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>がチェックされます。  
+ Union、intersect、およびサブセットロジックの<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>場合は、最初にがチェックされ、そのチェックのみに基づいて結果が返されることがあります。 次に<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A> 、がチェックされます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="target" /> ない<see langword="null" />でないか、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="target" /> が <see langword="null" /> ではないか、または <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="IsSubsetOf">
@@ -349,6 +393,10 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -357,19 +405,19 @@
       </Parameters>
       <Docs>
         <param name="target">サブセットの関係にあるかどうかをテストするアクセス許可。 <see langword="null" /> の可能性があります。</param>
-        <summary>決定かどうか、現在<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />は指定したアクセス許可のサブセットです。</summary>
-        <returns><see langword="true" /> 場合、現在<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />は指定したアクセス許可のサブセットです。 そうしないと、<see langword="false" />します。</returns>
+        <summary>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> が、指定したアクセス許可のサブセットかどうかを判断します。</summary>
+        <returns>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> が、指定したアクセス許可のサブセットである場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Union、intersect、サブセットのロジックと<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>が最初に確認し、そのチェックのみに基づいて結果を返す可能性があります。 次に、<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>がチェックされます。  
+ Union、intersect、およびサブセットロジックの<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>場合は、最初にがチェックされ、そのチェックのみに基づいて結果が返されることがあります。 次に<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A> 、がチェックされます。  
   
- 場合`target`は`null`と現在<xref:System.Xaml.Permissions.XamlLoadPermission>はどちらも<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A> `false` 、空であり<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>一覧で、このメソッドが戻る`true`します。  
+ が`target` `false` <xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A> `true`で、現在<xref:System.Xaml.Permissions.XamlLoadPermission>のが両方とも空<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>のリストを持っている場合、このメソッドはを返します。 `null`  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="target" /> ない<see langword="null" />でないか、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="target" /> が <see langword="null" /> ではないか、または <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="IsUnrestricted">
@@ -387,13 +435,17 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>返すかどうかこの<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />無制限のアクセス許可を表します。</summary>
-        <returns><see langword="true" /> この場合<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />無制限のアクセス許可を表します。 <see langword="false" /> この場合<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />特定のアクセス レベルの制限を持つ<see cref="P:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess" />、またはアクセス許可がありません。</returns>
+        <summary>この <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> が無制限のアクセス許可を示すかどうかを返します。</summary>
+        <returns>この <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> が無制限のアクセス許可を示す場合は <see langword="true" />。 この <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> の <see cref="P:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess" /> に固有のアクセス レベル制限が含まれている場合や、アクセス許可がない場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -409,13 +461,17 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Security.SecurityElement</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>この XML エンコーディングを作成する<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />と現在の状態。</summary>
-        <returns>この XML エンコーディング<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />、状態情報を含むです。</returns>
+        <summary>この <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> とその現在の状態を表す XML エンコーディングを作成します。</summary>
+        <returns>状態情報を含む、この <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> の XML エンコーディング。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -431,6 +487,10 @@
         <AssemblyName>System.Xaml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Permissions</AssemblyName>
+        <AssemblyVersion>4.0.2.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Security.IPermission</ReturnType>
       </ReturnValue>
@@ -439,19 +499,19 @@
       </Parameters>
       <Docs>
         <param name="other">現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> と結合する <see cref="T:System.Xaml.Permissions.XamlLoadPermission" />。 <see langword="null" /> の可能性があります。</param>
-        <summary>現在の和集合を表すアクセス許可を作成<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />と指定したアクセス許可。</summary>
-        <returns>新しい<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />、現在の和集合を表す<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />と指定した<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。</returns>
+        <summary>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> と指定したアクセス許可の和集合を表すアクセス許可を作成します。</summary>
+        <returns>現在の <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> と指定した <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> の和集合を表す新しい <see cref="T:System.Xaml.Permissions.XamlLoadPermission" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Union、intersect、サブセットのロジックと<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>が最初に確認し、そのチェックのみに基づいて結果を返す可能性があります。 次に、<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A>がチェックされます。  
+ Union、intersect、およびサブセットロジックの<xref:System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted%2A>場合は、最初にがチェックされ、そのチェックのみに基づいて結果が返されることがあります。 次に<xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess%2A> 、がチェックされます。  
   
- 場合`other`は`null`、現在<xref:System.Xaml.Permissions.XamlLoadPermission>が返されます。  
+ <xref:System.Xaml.Permissions.XamlLoadPermission>が`other` の`null`場合は、現在のが返されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="other" /> ない<see langword="null" />でないか、<see cref="T:System.Xaml.Permissions.XamlLoadPermission" />します。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="other" /> が <see langword="null" /> ではないか、または <see cref="T:System.Xaml.Permissions.XamlLoadPermission" /> ではありません。</exception>
       </Docs>
     </Member>
   </Members>

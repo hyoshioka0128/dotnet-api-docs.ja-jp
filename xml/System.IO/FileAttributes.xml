@@ -42,16 +42,16 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>ファイルとディレクトリの属性を提供します。</summary>
+    <summary>ファイルとディレクトリに属性を提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出すことによって、ファイルとディレクトリの属性を取得できます、<xref:System.IO.File.GetAttributes%2A?displayProperty=nameWithType>メソッド、設定に呼び出すことによって、<xref:System.IO.File.SetAttributes%2A?displayProperty=nameWithType>メソッド。  
+ ファイルとディレクトリの属性は、 <xref:System.IO.File.GetAttributes%2A?displayProperty=nameWithType>メソッドを呼び出すことによって取得できます。また、 <xref:System.IO.File.SetAttributes%2A?displayProperty=nameWithType>メソッドを呼び出すことによって設定できます。  
   
- 圧縮状態を変更することはできません、<xref:System.IO.File>オブジェクトを使用して、<xref:System.IO.File.SetAttributes%2A?displayProperty=nameWithType>メソッド。 代わりに、する必要があります実際にファイルを圧縮する圧縮ツールまたはクラスのいずれかのいずれかを使用して、<xref:System.IO.Compression?displayProperty=nameWithType>名前空間。  
+ メソッドを使用して、 <xref:System.IO.File>オブジェクトの圧縮状態を変更することはできません。 <xref:System.IO.File.SetAttributes%2A?displayProperty=nameWithType> 代わりに、圧縮ツールまたは<xref:System.IO.Compression?displayProperty=nameWithType>名前空間のいずれかのクラスを使用して、実際にファイルを圧縮する必要があります。  
   
-次の属性は、Linux と macOS での .NET Core ではサポートされません。
+次の属性は、Linux および macOS の .NET Core ではサポートされていません。
 
 - <xref:System.IO.FileAttributes.Archive?displayProperty=nameWithType>
 - <xref:System.IO.FileAttributes.Compressed?displayProperty=nameWithType>
@@ -65,10 +65,10 @@
 - <xref:System.IO.FileAttributes.System?displayProperty=nameWithType>
 - <xref:System.IO.FileAttributes.Temporary?displayProperty=nameWithType>
 
-Unix システムでは、値がによって返される<xref:System.IO.File.GetAttributes%2A?displayProperty=nameWithType>が含まれています`Hidden`ピリオドで始まる名前のファイル (".")。 Macos では、取得または、非表示フラグを設定します。
+Unix システムでは、によって<xref:System.IO.File.GetAttributes%2A?displayProperty=nameWithType>返さ`Hidden`れる値に、名前がピリオド (".") で始まるファイルのが含まれます。 MacOS では、hidden フラグを取得または設定できます。
 
 ## Examples  
- 次の例では、ファイルの属性を取得してかどうか、ファイルは読み取り専用を確認する方法を示します。  
+ 次の例では、ファイルの属性を取得し、ファイルが読み取り専用かどうかを確認する方法を示します。  
   
  [!code-csharp[System.IO.FileAttributes#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.fileattributes/cs/example.cs#1)]
  [!code-vb[System.IO.FileAttributes#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.fileattributes/vb/example.vb#1)] 
@@ -152,7 +152,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>2048</MemberValue>
       <Docs>
-        <summary>ファイルは圧縮されます。</summary>
+        <summary>ファイルは圧縮ファイルです。</summary>
       </Docs>
     </Member>
     <Member MemberName="Device">
@@ -266,7 +266,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>16384</MemberValue>
       <Docs>
-        <summary>ファイルまたはディレクトリは暗号化されます。 ファイル、ファイル内のすべてのデータが暗号化されていることを意味します。 ディレクトリが新しく作成されたファイルとディレクトリの既定で暗号化されることを意味します。</summary>
+        <summary>ファイルまたはディレクトリは暗号化されています。 ファイルの場合は、ファイルのすべてのデータが暗号化されています。 ディレクトリの場合は、新規作成されるファイルおよびディレクトリが既定で暗号化されます。</summary>
       </Docs>
     </Member>
     <Member MemberName="Hidden">
@@ -304,7 +304,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>ファイルが非表示され、そのため、通常のディレクトリ一覧には含まれません。 <see langword="Hidden" /> は、Windows、Linux、macOS でサポートされています。</summary>
+        <summary>ファイルは隠しファイルです。したがって通常のディレクトリ リストには表示されません。 <see langword="Hidden" /> は、Windows、Linux、macOS でサポートされています。</summary>
       </Docs>
     </Member>
     <Member MemberName="IntegrityStream">
@@ -345,7 +345,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>32768</MemberValue>
       <Docs>
-        <summary>ファイルまたはディレクトリには、データ整合性のサポートが含まれています。 この値は、ファイルに適用される、ファイル内のすべてのデータ ストリームは整合性サポートを持ちます。 この値は、ディレクトリに適用される、すべての新しいファイルと既定では、そのディレクトリ内のサブディレクトリには、整合性のサポートがあります。</summary>
+        <summary>ファイルまたはディレクトリには、データ整合性のサポートが含まれます。 この値がファイルに適用されると、ファイルのすべてのデータ ストリームは整合性サポートを持ちます。 この値がディレクトリに適用されると、そのディレクトリ内のすべての新しいファイルとサブディレクトリは、既定で一貫性サポートを含みます。</summary>
       </Docs>
     </Member>
     <Member MemberName="Normal">
@@ -383,7 +383,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>128</MemberValue>
       <Docs>
-        <summary>ファイルは、特別な属性を持たない標準ファイルです。 この属性は単独で使用されている場合にのみ有効です。 <see langword="Normal" /> は、Windows、Linux、macOS でサポートされています。</summary>
+        <summary>ファイルは、特別な属性を持たない標準ファイルです。 この属性は、単独で使用された場合のみ有効です。 <see langword="Normal" /> は、Windows、Linux、macOS でサポートされています。</summary>
       </Docs>
     </Member>
     <Member MemberName="NoScrubData">
@@ -424,7 +424,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>131072</MemberValue>
       <Docs>
-        <summary>ファイルまたはディレクトリは、データ整合性のスキャンから除外されます。 既定では、この値がディレクトリに適用されるときに、すべての新しいファイルとそのディレクトリ内のサブディレクトリは、データの整合性から除外されます。</summary>
+        <summary>ファイルまたはディレクトリは、データ整合性のスキャン対象から除外されます。 この値がディレクトリに適用されると、そのディレクトリ内のすべての新しいファイルとサブディレクトリが既定でデータ一貫性から除外されます。</summary>
       </Docs>
     </Member>
     <Member MemberName="NotContentIndexed">
@@ -462,7 +462,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>8192</MemberValue>
       <Docs>
-        <summary>ファイルをオペレーティング システムのコンテンツ インデックス サービスでインデックス作成されません。</summary>
+        <summary>ファイルは、オペレーティング システムによるコンテンツ インデックス サービスでインデックスされません。</summary>
       </Docs>
     </Member>
     <Member MemberName="Offline">
@@ -500,7 +500,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>4096</MemberValue>
       <Docs>
-        <summary>ファイルはオフラインです。 ファイルのデータは、すぐにご利用いただけません。</summary>
+        <summary>ファイルはオフラインです。 オフラインのファイルのデータは、即時には使用できません。</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadOnly">
@@ -538,7 +538,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary>ファイルとは、読み取り専用です。 <see langword="ReadOnly" /> は、Windows、Linux、macOS でサポートされています。 Linux と macOS では、<see langword="ReadOnly" /> フラグの変更はアクセス許可の操作です。</summary>
+        <summary>ファイルは読み取り専用です。 <see langword="ReadOnly" /> は、Windows、Linux、macOS でサポートされています。 Linux と macOS では、<see langword="ReadOnly" /> フラグの変更はアクセス許可の操作です。</summary>
       </Docs>
     </Member>
     <Member MemberName="ReparsePoint">
@@ -576,7 +576,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>1024</MemberValue>
       <Docs>
-        <summary>ファイルには、ファイルまたはディレクトリに関連付けられているユーザー定義のデータのブロックは、再解析ポイントが含まれています。 <see langword="ReparsePoint" /> は、Windows、Linux、macOS でサポートされています。</summary>
+        <summary>ファイルには、ファイルまたはディレクトリに関連付けられたユーザー定義のデータ ブロックである、リパース ポイントが含まれています。 <see langword="ReparsePoint" /> は、Windows、Linux、macOS でサポートされています。</summary>
       </Docs>
     </Member>
     <Member MemberName="SparseFile">
@@ -614,7 +614,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>512</MemberValue>
       <Docs>
-        <summary>ファイルは、スパース ファイルです。 スパース ファイルは、通常、大規模なファイルの大部分が 0 のデータで構成されます。</summary>
+        <summary>ファイルはスパース ファイルです。 スパース ファイルは、通常、データの大部分が 0 である大きなファイルです。</summary>
       </Docs>
     </Member>
     <Member MemberName="System">
@@ -652,7 +652,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>ファイルは、システム ファイルです。 つまり、ファイルは、オペレーティング システムの一部であるか、オペレーティング システムによって排他的に使用されます。</summary>
+        <summary>ファイルはシステム ファイルです。 つまり、このファイルはオペレーティング システムの一部であるか、オペレーティング システムによって排他的に使用されます。</summary>
       </Docs>
     </Member>
     <Member MemberName="Temporary">
@@ -690,7 +690,7 @@ Unix システムでは、値がによって返される<xref:System.IO.File.Get
       </ReturnValue>
       <MemberValue>256</MemberValue>
       <Docs>
-        <summary>一時ファイルです。 一時ファイルには、中にアプリケーションを実行しても、アプリケーションが完了した後は必要ありません、必要なデータが含まれています。 ファイル システムは、すべての高速アクセスではなく、データのフラッシュ メモリ内のデータを大容量ストレージに保持しようとします。 不要になったとすぐには、アプリケーションが一時ファイルを削除してください。</summary>
+        <summary>一時ファイルです。 一時ファイルには、アプリケーションを実行中は必要で、アプリケーションを終了すると不要になるデータが含まれています。 ファイル システムは、データを大容量ストレージにフラッシュするのではなく、すべてのデータをメモリに保持するよう試みて、すばやくアクセスできるようにします。 一時ファイルが不要になったら、アプリケーションが直ちに削除する必要があります。</summary>
       </Docs>
     </Member>
   </Members>
