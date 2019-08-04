@@ -1,5 +1,5 @@
 <Type Name="DSA" FullName="System.Security.Cryptography.DSA">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="39575b26498a18eb4c633d1038fb72cfed7c271a" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543600" /></Metadata><TypeSignature Language="C#" Value="public abstract class DSA : System.Security.Cryptography.AsymmetricAlgorithm" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="e356a21b201d2d37b40a85131fe8b3dd297856c4" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686302" /></Metadata><TypeSignature Language="C#" Value="public abstract class DSA : System.Security.Cryptography.AsymmetricAlgorithm" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DSA extends System.Security.Cryptography.AsymmetricAlgorithm" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.DSA" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class DSA&#xA;Inherits AsymmetricAlgorithm" />
@@ -489,11 +489,41 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="passwordBytes">To be added.</param>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="passwordBytes">キー マテリアルを暗号化解除するときにパスワードとして使用するバイト。</param>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 EncryptedPrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>バイトベースのパスワードを使用して暗号化解除した後に、PKCS#8 EncryptedPrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ パスワードバイトは、EncryptedPrivateKeyInfo コンテンツによって示されるアルゴリズムによって使用されるキー派生関数 (KDF) に直接渡されます。
+これにより、PBKDF2 (パスワードベースのキー派生関数 2) でパスワードを処理するときに、UTF-8 以外のテキストエンコードを使用する他のシステムとの互換性が確保されます。
+このメソッドは、EncryptedPrivateKeyInfo の binary (BER/CER/DER) エンコードのみをサポートします。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">パスワードが正しくありません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、適用するキー派生関数 (KDF) が、<see cref="T:System.Char" /> ベースのパスワードを必要とするレガシの PKCS#12 KDF であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 EncryptedPrivateKeyInfo 構造体を表していません。
+
+または
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportEncryptedPkcs8PrivateKey">
@@ -523,11 +553,36 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="password">To be added.</param>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="password">キー マテリアルの暗号化に使用するパスワード。</param>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 EncryptedPrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>char ベースのパスワードを使用して暗号化解除した後に、PKCS#8 EncryptedPrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ の`source`内容が、PBKDF1 (パスワードベースのキー派生関数 1) または PBKDF2 (パスワードベースのキー派生関数 2) を使用するアルゴリズムを示す場合、パスワードは utf-8 エンコードを使用してバイトに変換されます。
+このメソッドは、EncryptedPrivateKeyInfo の binary (BER/CER/DER) エンコードのみをサポートします。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">パスワードが正しくありません。
+
+または
+
+<paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 EncryptedPrivateKeyInfo 構造体を表していません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+または
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportParameters">
@@ -594,10 +649,30 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 PrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>暗号化解除した後に、PKCS#8 PrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドでは、PrivateKeyInfo のバイナリ (BER/CER/DER) エンコードのみがサポートされます。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 PrivateKeyInfo 構造体を表していません。
+
+または
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+- または -
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportSubjectPublicKeyInfo">
@@ -626,10 +701,30 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">ASN.1-DER エンコードでの X.509 SubjectPublicKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>暗号化解除した後に、X.509 SubjectPublicKeyInfo 構造体から公開キーをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドは、SubjectPublicKeyInfo のバイナリ (DER) エンコーディングのみをサポートしています。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="source" /> のコンテンツは、ASN.1-DER でエンコードされた X.509 SubjectPublicKeyInfo 構造体を表していません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="SignData">
@@ -716,7 +811,7 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <summary>指定したハッシュ アルゴリズムを使用して、指定したストリームのハッシュ値を計算し、結果のハッシュ値に署名します。</summary>
         <returns>指定されたデータの DSA 署名。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
       </Docs>
     </Member>
@@ -759,14 +854,14 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <summary>指定したハッシュ アルゴリズムを使用して、指定したバイト配列の一部分のハッシュ値を計算し、結果のハッシュ値に署名します。</summary>
         <returns>指定されたデータの DSA 署名。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> が 0 未満です。  
   
 - または - 
  <paramref name="count" /> が 0 未満です。  
   
-- または - 
+または 
  <paramref name="offset" /> + <paramref name="count" /> - 1 の結果は、<paramref name="data" /> の上限を超えるインデックスになります。</exception>
       </Docs>
     </Member>
@@ -856,7 +951,7 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
 
 この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、<paramref name="hash" /> は 20 バイトの値ではありません。
 
-または
+- または -
 
 それ以外の場合は署名の作成が失敗しました。</exception>
       </Docs>
@@ -888,13 +983,26 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="passwordBytes">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="passwordBytes">キー マテリアルを暗号化するときにパスワードとして使用するバイト。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <param name="destination">PKCS#8 EncryptedPrivateKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>バイトベースのパスワードを使用して、現在のキーを PKCS# 8 EncryptedPrivateKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ パスワードのバイトは、によっ`pbeParameters`て示されるアルゴリズムによって使用されるキー派生関数 (kdf) に直接渡されます。
+これにより、PBKDF2 (パスワードベースのキー派生関数 2) でパスワードを処理するときに、UTF-8 以外のテキストエンコードを使用する他のシステムとの互換性が確保されます。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。
+
+または
+
+<paramref name="pbeParameters" /> は、<see cref="T:System.Char" /> ベースのパスワードを必要とする <see cref="F:System.Security.Cryptography.PbeEncryptionAlgorithm.TripleDes3KeyPkcs12" /> を使用する必要があることを示しています。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportEncryptedPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="TryExportEncryptedPkcs8PrivateKey">
@@ -924,13 +1032,21 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="password">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="password">キー マテリアルを暗号化するときに使用するパスワード。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <param name="destination">PKCS#8 EncryptedPrivateKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>char ベースのパスワードを使用して、PKCS#8 EncryptedPrivateKeyInfo 形式の現在のキーを、指定されたバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ が`pbeParameters` 、PBKDF2 (パスワードベースのキー派生関数 2) を使用するアルゴリズムを示す場合、パスワードは utf-8 エンコードを使用してバイトに変換されます。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportEncryptedPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="TryExportPkcs8PrivateKey">
@@ -959,11 +1075,13 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="destination">PKCS#8 PrivateKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>PKCS#8 PrivateKeyInfo 形式の現在のキーを、指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="TryExportSubjectPublicKeyInfo">
@@ -992,11 +1110,13 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="destination">X.509 SubjectPublicKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>現在のキーを X.509 SubjectPublicKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportSubjectPublicKeyInfo" />
       </Docs>
     </Member>
     <Member MemberName="TryHashData">
@@ -1132,10 +1252,10 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。  
   
 - または - 
- <paramref name="signature" /> が <see langword="null" /> です。</exception>
+ <paramref name="signature" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ アルゴリズムは SHA-1 ではありません。
 
-または
+- または -
 
 それ以外の場合は署名の検証が失敗しました。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
@@ -1273,7 +1393,7 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         <summary>指定したハッシュ アルゴリズムを使用して、バイト配列の部分のデータのハッシュ値を計算し、これを指定した署名と比較することによって、デジタル署名が有効であることを確認します。</summary>
         <returns>デジタル署名が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。  
   
 - または - 
  <paramref name="signature" /> は <see langword="null" />です。</exception>
@@ -1283,7 +1403,7 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
 - または - 
  <paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
  <paramref name="offset" /> + <paramref name="count" /> - 1 の結果は、<paramref name="data" /> の上限を超えるインデックスになります。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ アルゴリズムは SHA-1 ではありません。
 
@@ -1379,7 +1499,7 @@ FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリ
         </remarks>
         <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ値の長さは 20 バイトではありません。
 
-- または -
+または
 
 それ以外の場合は署名の検証が失敗しました。</exception>
       </Docs>
