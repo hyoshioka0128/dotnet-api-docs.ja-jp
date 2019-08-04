@@ -1,5 +1,5 @@
 <Type Name="Utf8JsonWriter" FullName="System.Text.Json.Utf8JsonWriter">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="9f3fe7c9f43d78e08083ff3bf78a5adad02329b8" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68434910" /></Metadata><TypeSignature Language="C#" Value="public sealed class Utf8JsonWriter : IAsyncDisposable, IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="20820b1a1bf9dbfbc76534ca3ea4c8cd4c53e196" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686075" /></Metadata><TypeSignature Language="C#" Value="public sealed class Utf8JsonWriter : IAsyncDisposable, IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Utf8JsonWriter extends System.Object implements class System.IAsyncDisposable, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.Utf8JsonWriter" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Utf8JsonWriter&#xA;Implements IAsyncDisposable, IDisposable" />
@@ -24,15 +24,13 @@
   <Docs>
     <summary>UTF-8 でエンコードされた JSON テキストの前方参照、非キャッシュの書き込みのために、高パフォーマンスの API を提供します。</summary>
     <remarks>
-      <format type="text/markdown"><![CDATA[  
+      <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
 `Utf8JsonWriter`キャッシュなしでテキストをシーケンシャルに書き込みます。また、コメントの書き込みを除き、既定では[JSON RFC](https://tools.ietf.org/html/rfc8259)に準拠します。
 
 検証が有効になっているときに無効な JSON を書き込もう<xref:System.InvalidOperationException>とするメソッドは、コンテキスト固有のエラーメッセージを使用してをスローします。
-
-この型は ref 構造体であるため、非同期的には直接サポートされません。 ただし、部分的なデータを書き込めるように再入をサポートし、チャンクの書き込みを続行します。
 
 出力をインデントおよび空白で書式設定したり、検証をスキップしたりできるようにするに<xref:System.Text.Json.JsonWriterOptions>は、のインスタンスを作成し、それをライターに渡します。
 
@@ -83,7 +81,7 @@
         <param name="options"><see cref="T:System.Text.Json.Utf8JsonWriter" /> のカスタマイズされた動作を定義します。既定では、最小化された JSON (余分な空白なし) を書き込み、書き込まれる JSON が構造上有効であることを JSON RFC に従って検証します。</param>
         <summary>指定された <paramref name="utf8Json" /> を使用して、新しい <see cref="T:System.Text.Json.Utf8JsonWriter" /> インスタンスを構築します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="utf8Json" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="utf8Json" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="BytesCommitted">
@@ -155,7 +153,7 @@
         <summary>現在のトークンの深度を取得します。</summary>
         <value>現在のトークンの深さ。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -229,8 +227,8 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
 ストリームの場合、これによってデータがストリームに書き込まれ、フラッシュされます。
 
 破棄<xref:System.Text.Json.Utf8JsonWriter>後にインスタンスを再利用することはできません。
-            
-            ]]></format>
+
+          ]]></format>
         </remarks>
       </Docs>
     </Member>
@@ -373,7 +371,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
 
           ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="bufferWriter" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="bufferWriter" /> は <see langword="null" /> です。</exception>
         <exception cref="T:System.ObjectDisposedException">このインスタンスは破棄されています。</exception>
       </Docs>
     </Member>
@@ -429,10 +427,20 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="bytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="bytes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込むプロパティの UTF-8 でエンコードされた名前。</param>
+        <param name="bytes">名前/値ペアの一部として、base 64 でエンコードされた JSON 文字列として書き込まれるバイナリ データ。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、プロパティ名と生バイト値 (base 64 でエンコードされた JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+書き込みの前にプロパティ名がエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBase64String">
@@ -455,10 +463,20 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="bytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="bytes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトのプロパティ名。</param>
+        <param name="bytes">名前/値ペアの一部として、base 64 でエンコードされた JSON 文字列として書き込まれるバイナリ データ。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、プロパティ名と生バイト値 (base 64 でエンコードされた JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+書き込みの前にプロパティ名がエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBase64String">
@@ -481,10 +499,20 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="bytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="bytes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトのプロパティ名。</param>
+        <param name="bytes">名前/値ペアの一部として、base 64 でエンコードされた JSON 文字列として書き込まれるバイナリ データ。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、プロパティ名と生バイト値 (Base64 でエンコードされた JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+書き込みの前にプロパティ名がエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎるとき。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBase64String">
@@ -507,10 +535,19 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="bytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="bytes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">書き込むプロパティの JSON でエンコードされた名前。</param>
+        <param name="bytes">名前/値ペアの一部として、base 64 でエンコードされた JSON 文字列として書き込まれるバイナリ データ。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と生バイト値 (base 64 でエンコードされた JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBase64StringValue">
@@ -532,9 +569,19 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="bytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="bytes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="bytes">JSON 配列の base 64 でエンコードされた JSON 文字列要素として書き込まれるバイナリ データ。</param>
+        <summary>JSON 配列の要素として、base 64 でエンコードされた JSON 文字列として生バイト値を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+書き込みの前にバイトがエンコードされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBoolean">
@@ -558,8 +605,8 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
       </Parameters>
       <Docs>
         <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
-        <param name="value">名前/値ペアの一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
-        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの "true" または "false" として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <param name="value">名前/値ペアの一部として、JSON リテラル <b>true</b> または <b>false</b> として書き込まれる値。</param>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの <b>true</b> または <b>false</b> として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
         <remarks>
           <format><![CDATA[
           
@@ -592,13 +639,13 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
       </Parameters>
       <Docs>
         <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
-        <param name="value">名前/値ペアの一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
-        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの "true" または "false" として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <param name="value">名前/値ペアの一部として、JSON リテラル <b>true</b> または <b>false</b> として書き込まれる値。</param>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの <b>true</b> または <b>false</b> として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
         <remarks>
           <format><![CDATA[
           
 書き込みの前にプロパティ名がエスケープされます。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
@@ -626,13 +673,13 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
       </Parameters>
       <Docs>
         <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
-        <param name="value">名前/値ペアの一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
-        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの "true" または "false" として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <param name="value">名前/値ペアの一部として、JSON リテラル <b>true</b> または <b>false</b> として書き込まれる値。</param>
+        <summary>文字列として指定されたプロパティ名と、<see cref="T:System.Boolean" /> 値 (JSON リテラルの <b>true</b> または <b>false</b> として) を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
         <remarks>
           <format><![CDATA[
           
 書き込みの前にプロパティ名がエスケープされます。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
@@ -659,10 +706,19 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON リテラル <b>true</b> または <b>false</b> として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.Boolean" /> 値 (JSON リテラル <b>true</b> または <b>false</b>) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteBooleanValue">
@@ -684,8 +740,8 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="value">JSON 配列の一部として、JSON リテラル "true" または "false" として書き込まれる値。</param>
-        <summary>JSON 配列の要素として、<see cref="T:System.Boolean" /> 値 (JSON リテラル "true" または "false" として) を書き込みます。</summary>
+        <param name="value">JSON 配列の一部として、JSON リテラル <b>true</b> または <b>false</b> として書き込まれる値。</param>
+        <summary>JSON 配列の要素として、<see cref="T:System.Boolean" /> 値 (JSON リテラル <b>true</b> または <b>false</b> として) を書き込みます。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
@@ -715,12 +771,12 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
           <format><![CDATA[
           
 コメント値は、書き込みの前にエスケープされません。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定した値が大きすぎます。
         
-- または -
+または
 
 <paramref name="utf8Value" /> にコメント区切り記号 (つまり */) が含まれています。</exception>
       </Docs>
@@ -750,12 +806,12 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
           <format><![CDATA[
           
 コメント値は、書き込みの前にエスケープされません。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定した値は、過大な OR です。
         
-または
+- または -
 
 <paramref name="value" /> にコメント区切り記号 (つまり */) が含まれています。</exception>
       </Docs>
@@ -785,12 +841,12 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
           <format><![CDATA[
           
 コメント値は、書き込みの前にエスケープされません。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定した値が大きすぎます。
         
-- または -
+または
 
 <paramref name="value" /> にコメント区切り記号 (つまり */) が含まれています。</exception>
       </Docs>
@@ -859,12 +915,12 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
       </Parameters>
       <Docs>
         <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
-        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、JSON リテラルの "null" を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <summary>バイト型の読み取り専用スパンとして指定されたプロパティ名と、JSON リテラルの <b>null</b> を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
         <remarks>
           <format><![CDATA[
           
 書き込みの前にプロパティ名がエスケープされます。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
@@ -891,12 +947,12 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
       </Parameters>
       <Docs>
         <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
-        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、JSON リテラルの "null" を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <summary>読み取り専用の文字範囲として指定されたプロパティ名と、JSON リテラルの <b>null</b> を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
         <remarks>
           <format><![CDATA[
           
 書き込みの前にプロパティ名がエスケープされます。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
@@ -923,12 +979,12 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
       </Parameters>
       <Docs>
         <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの UTF-16 でエンコードされたプロパティ名。</param>
-        <summary>文字列として指定されたプロパティ名と、JSON リテラルの "null" を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
+        <summary>文字列として指定されたプロパティ名と、JSON リテラルの <b>null</b> を、JSON オブジェクトの名前/値ペアの一部として書き込みます。</summary>
         <remarks>
           <format><![CDATA[
           
 書き込みの前にプロパティ名がエスケープされます。
-          
+
           ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
@@ -954,9 +1010,18 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="propertyName" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と JSON リテラル <b>null</b> を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNullValue">
@@ -976,7 +1041,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>JSON 配列の要素として、JSON リテラル "null" を書き込みます。</summary>
+        <summary>JSON 配列の要素として、JSON リテラル <b>null</b> を書き込みます。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
@@ -1007,7 +1072,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Decimal> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Decimal>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1041,7 +1108,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Double> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Double>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1075,7 +1144,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Int32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int32>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1109,7 +1180,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Int64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int64>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1143,7 +1216,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Single> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Single>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1182,7 +1257,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.UInt32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt32>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1221,7 +1298,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.UInt64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt64>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1255,7 +1334,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Decimal> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Decimal>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1289,7 +1370,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Double> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Double>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1323,7 +1406,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Int32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int32>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1357,7 +1442,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Int64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int64>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1391,7 +1478,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Single> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Single>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1430,7 +1519,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.UInt32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt32>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1469,7 +1560,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.UInt64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt64>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1503,7 +1596,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Decimal> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Decimal>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1537,7 +1632,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Double> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Double>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1571,7 +1668,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Int32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int32>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1605,7 +1704,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Int64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int64>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1639,7 +1740,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Single> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Single>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1678,7 +1781,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.UInt32> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt32>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1717,7 +1822,9 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.UInt64> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、"G" など) を次に示します。32767。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt64>
+
+書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -1745,10 +1852,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Decimal" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.Decimal" /> 値 (JSON 番号) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Decimal>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1771,10 +1889,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.Double" /> 値 (JSON 番号) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Double>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1797,10 +1926,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.Int32" /> 値 (JSON 番号) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int32>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1823,10 +1963,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.Int64" /> 値 (JSON 番号) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.Int64>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1849,10 +2000,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.Single" /> 値 (JSON 番号) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。<xref:System.Single>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1880,10 +2042,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.UInt32" /> 値 (JSON 番号) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt32>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumber">
@@ -1911,10 +2084,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 数値として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.UInt64" /> 値 (JSON 番号) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Buffers.StandardFormat> ("G")を使用してを書き込みます。たとえば、32767です。<xref:System.UInt64>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteNumberValue">
@@ -2261,7 +2445,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
 
-- または -
+または
 
 検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
@@ -2369,7 +2553,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
 
-または
+- または -
        
 検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
@@ -2393,9 +2577,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="propertyName" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON 配列の JSON でエンコードされたプロパティ名。</param>
+        <summary>JSON 配列の先頭を、事前にエンコードされたプロパティ名をキーとして書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えています。
+    
+または
+
+検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStartObject">
@@ -2419,7 +2616,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。
 
-- または -
+または
 
 検証が有効化されると、操作によって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
@@ -2455,7 +2652,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
         <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えました。 
 
-または
+- または -
        
 検証が有効化されると、この書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
@@ -2551,9 +2748,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="propertyName" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <summary>JSON オブジェクトの先頭を、事前にエンコードされたプロパティ名をキーとして書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">JSON の深度が、最大深度 1000 を超えています。
+          
+または
+
+検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -2616,7 +2826,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-次の<xref:System.DateTimeOffset>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000-07:00. 書き込みの前にプロパティ名がエスケープされます。
+ラウンドトライ<xref:System.Buffers.StandardFormat>を使用してを書き込みます (' O ')。たとえば、2017-06-12t05:30: 45.7680000:00 のようになります。 <xref:System.DateTimeOffset> 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2650,7 +2860,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Guid> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、": Nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式で、")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Guid> <xref:System.Buffers.StandardFormat> ("d") を使用して、nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式でを書き込みます。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2780,10 +2990,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="utf8PropertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="utf8PropertyName">書き込み対象の JSON オブジェクトの UTF-8 でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる JSON でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、UTF-8 プロパティ名と事前にエンコードされた値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+値は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+書き込みの前にプロパティ名がエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、このメソッドによって無効な JSON の書き込みが行われる場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -2812,7 +3034,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-次の<xref:System.DateTime>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000. 書き込みの前にプロパティ名がエスケープされます。
+ラウンドトライ<xref:System.Buffers.StandardFormat>を使用してを書き込みます (' O ')。たとえば、2017-06-12t05:30: 45.7680000 のようにします。 <xref:System.DateTime> 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2846,7 +3068,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-次の<xref:System.DateTimeOffset>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000-07:00. 書き込みの前にプロパティ名がエスケープされます。
+ラウンドトライ<xref:System.Buffers.StandardFormat>を使用してを書き込みます (' O ')。たとえば、2017-06-12t05:30: 45.7680000:00 のようになります。 <xref:System.DateTimeOffset> 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -2880,7 +3102,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Guid> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、": Nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式で、")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Guid> <xref:System.Buffers.StandardFormat> ("d") を使用して、nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式でを書き込みます。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3010,10 +3232,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトのプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる JSON でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、プロパティ名と事前にエンコードされた値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+値は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+書き込みの前にプロパティ名がエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3042,7 +3276,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-次の<xref:System.DateTime>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000. 書き込みの前にプロパティ名がエスケープされます。
+ラウンドトライ<xref:System.Buffers.StandardFormat>を使用してを書き込みます (' O ')。たとえば、2017-06-12t05:30: 45.7680000 のようにします。 <xref:System.DateTime> 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3076,7 +3310,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-次の<xref:System.DateTimeOffset>例のように、ラウンドトライ可能な (' O <xref:System.Buffers.StandardFormat> ') を使用してを書き込みます。2017-06-12T05:30:45.7680000-07:00. 書き込みの前にプロパティ名がエスケープされます。
+ラウンドトライ<xref:System.Buffers.StandardFormat>を使用してを書き込みます (' O ')。たとえば、2017-06-12t05:30: 45.7680000:00 のようになります。 <xref:System.DateTimeOffset> 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3110,7 +3344,7 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <remarks>
           <format><![CDATA[  
 
-<xref:System.Guid> 既定<xref:System.Buffers.StandardFormat>のを使用してを書き込みます (つまり、": Nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式で、")。 書き込みの前にプロパティ名がエスケープされます。
+既定値<xref:System.Guid> <xref:System.Buffers.StandardFormat> ("d") を使用して、nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式でを書き込みます。 書き込みの前にプロパティ名がエスケープされます。
 
           ]]></format>
         </remarks>
@@ -3240,10 +3474,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトのプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる JSON でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、プロパティ名と事前にエンコードされた値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+値は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+書き込みの前にプロパティ名がエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定されたプロパティ名が長すぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3266,10 +3512,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.DateTime" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.DateTime" /> 値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+ラウンドトライ<xref:System.Buffers.StandardFormat>を使用してを書き込みます (' O ')。たとえば、2017-06-12t05:30: 45.7680000 のようにします。 <xref:System.DateTime>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3292,10 +3549,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.DateTimeOffset" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.DateTimeOffset" /> 値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+ラウンドトライ<xref:System.Buffers.StandardFormat>を使用してを書き込みます (' O ')。たとえば、2017-06-12t05:30: 45.7680000:00 のようになります。 <xref:System.DateTimeOffset>
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3318,10 +3586,21 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と <see cref="T:System.Guid" /> 値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定値<xref:System.Guid> <xref:System.Buffers.StandardFormat> ("d") を使用して、nnnnnnnn-nnnn-nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn の形式でを書き込みます。
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3344,10 +3623,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="utf8Value" Type="System.ReadOnlySpan&lt;System.Byte&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="utf8Value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="utf8Value">名前/値ペアの一部として、JSON 文字列として書き込まれる UTF-8 でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と UTF-8 テキスト値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+値は、書き込みの前にエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3370,10 +3661,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名とテキスト値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+値は、書き込みの前にエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3396,10 +3699,22 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と文字列テキスト値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティ名は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+値は、書き込みの前にエスケープされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">指定した値が大きすぎます。</exception>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteString">
@@ -3422,10 +3737,19 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="propertyName">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyName">UTF-8 としてトランスコードおよび書き込み対象の JSON オブジェクトの JSON でエンコードされたプロパティ名。</param>
+        <param name="value">名前/値ペアの一部として、UTF-8 でトランスコードされた JSON 文字列として書き込まれる JSON でエンコードされた値。</param>
+        <summary>JSON オブジェクトの名前/値ペアの一部として、事前にエンコードされたプロパティ名と事前にエンコードされた値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+プロパティの名前と値は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteStringValue">
@@ -3636,9 +3960,18 @@ Ibufferwriter の場合、これまでに記述され<xref:System.Buffers.IBuffe
         <Parameter Name="value" Type="System.Text.Json.JsonEncodedText" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">JSON 配列の UTF-8 でトランスコードされた JSON 文字列要素として書き込まれる JSON でエンコードされた値。</param>
+        <summary>JSON 配列の要素として、事前にエンコードされたテキスト値 (JSON 文字列) を書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+値は、の<xref:System.Text.Json.JsonEncodedText>インスタンスが作成されたときに、既にエスケープされている必要があります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">検証が有効化されると、書き込み操作によって無効な JSON が生成される場合があります。</exception>
       </Docs>
     </Member>
   </Members>

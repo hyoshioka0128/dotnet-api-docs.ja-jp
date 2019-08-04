@@ -1,5 +1,5 @@
 <Type Name="ECDsa" FullName="System.Security.Cryptography.ECDsa">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="a23cd10e558c234a378388bcb9868e7d44ef9444" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68435991" /></Metadata><TypeSignature Language="C#" Value="public abstract class ECDsa : System.Security.Cryptography.AsymmetricAlgorithm" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="42f800b689b2b587eb5c7c29b72f7657c7116928" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68685973" /></Metadata><TypeSignature Language="C#" Value="public abstract class ECDsa : System.Security.Cryptography.AsymmetricAlgorithm" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit ECDsa extends System.Security.Cryptography.AsymmetricAlgorithm" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.ECDsa" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class ECDsa&#xA;Inherits AsymmetricAlgorithm" />
@@ -287,9 +287,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>現在のキーを ECPrivateKey 形式でエクスポートします。</summary>
+        <returns>このキーの ECPrivateKey 表現を格納しているバイト配列。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.ECDsa.TryExportECPrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="ExportExplicitParameters">
@@ -410,9 +412,10 @@
         <Parameter Name="xmlString" Type="System.String" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="xmlString">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="xmlString"><see cref="T:System.Security.Cryptography.AsymmetricAlgorithm" /> オブジェクトの再構築に使用する XML 文字列。</param>
+        <summary>このメソッドでは常にスローされます。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="System.NotImplementedException">すべての場合。</exception>
       </Docs>
     </Member>
     <Member MemberName="GenerateKey">
@@ -580,10 +583,22 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">ASN.1-BER エンコードでの ECPrivateKey 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドから制御が戻ったときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>ECPrivateKey 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドは、ECPrivateKey のバイナリ (BER/CER/DER) エンコーディングのみをサポートしています。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 ECPrivateKey 構造体を表していません。
+
+または
+
+キーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportEncryptedPkcs8PrivateKey">
@@ -613,11 +628,41 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="passwordBytes">To be added.</param>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="passwordBytes">キー マテリアルを暗号化解除するときにパスワードとして使用するバイト。</param>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 EncryptedPrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドから制御が戻ったときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>バイトベースのパスワードを使用して暗号化解除した後に、PKCS#8 EncryptedPrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ パスワードバイトは、EncryptedPrivateKeyInfo コンテンツによって示されるアルゴリズムによって使用されるキー派生関数 (KDF) に直接渡されます。
+これにより、PBKDF2 (パスワードベースのキー派生関数 2) でパスワードを処理するときに、UTF-8 以外のテキストエンコードを使用する他のシステムとの互換性が確保されます。
+このメソッドは、EncryptedPrivateKeyInfo の binary (BER/CER/DER) エンコードのみをサポートします。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">パスワードが正しくありません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、適用するキー派生関数 (KDF) が、<see cref="T:System.Char" /> ベースのパスワードを必要とするレガシの PKCS#12 KDF であることを示しています。
+
+または
+
+<paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 EncryptedPrivateKeyInfo 構造体を表していません。
+
+または
+
+<paramref name="source" /> のコンテンツは、このインスタンスで表されているアルゴリズム以外のアルゴリズム用のキーであることを示しています。
+
+または
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportEncryptedPkcs8PrivateKey">
@@ -647,11 +692,36 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="password">To be added.</param>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="password">キー マテリアルの暗号化に使用するパスワード。</param>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 EncryptedPrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドから制御が戻ったときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>char ベースのパスワードを使用して暗号化解除した後に、PKCS#8 EncryptedPrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ の`source`内容が、PBKDF1 (パスワードベースのキー派生関数 1) または PBKDF2 (パスワードベースのキー派生関数 2) を使用するアルゴリズムを示す場合、パスワードは utf-8 エンコードを使用してバイトに変換されます。
+このメソッドは、EncryptedPrivateKeyInfo の binary (BER/CER/DER) エンコードのみをサポートします。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">パスワードが正しくありません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 EncryptedPrivateKeyInfo 構造体を表していません。
+
+または
+
+<paramref name="source" /> のコンテンツは、このインスタンスで表されているアルゴリズム以外のアルゴリズム用のキーであることを示しています。
+
+または
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+- または -
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportParameters">
@@ -722,10 +792,30 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 PrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドから制御が戻ったときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>暗号化解除した後に、PKCS#8 PrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドでは、PrivateKeyInfo のバイナリ (BER/CER/DER) エンコードのみがサポートされます。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 PrivateKeyInfo 構造体を表していません。
+
+または
+
+<paramref name="source" /> のコンテンツは、このインスタンスで表されているアルゴリズム以外のアルゴリズム用のキーであることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>        
       </Docs>
     </Member>
     <Member MemberName="ImportSubjectPublicKeyInfo">
@@ -754,10 +844,30 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">ASN.1-BER エンコードでの X.509 SubjectPublicKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドから制御が戻ったときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>暗号化解除した後に、X.509 SubjectPublicKeyInfo 構造体から公開キーをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドは、SubjectPublicKeyInfo のバイナリ (DER) エンコーディングのみをサポートしています。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="source" /> のコンテンツは、ASN.1-DER でエンコードされた X.509 SubjectPublicKeyInfo 構造体を表していません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、このインスタンスで表されているアルゴリズム以外のアルゴリズム用のキーであることを示しています。
+
+または
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="KeyExchangeAlgorithm">
@@ -884,8 +994,8 @@
         <summary>指定したハッシュ アルゴリズムを使用して、指定したバイト配列のハッシュ値を計算し、結果のハッシュ値に署名します。</summary>
         <returns>指定されたデータの ECDSA 署名。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />のときに発生します。<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="SignData">
@@ -926,8 +1036,8 @@
         <summary>指定したハッシュ アルゴリズムを使用して、指定したストリームのハッシュ値を計算し、結果のハッシュ値に署名します。</summary>
         <returns>指定されたデータの ECDSA 署名。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />のときに発生します。<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="SignData">
@@ -972,11 +1082,11 @@
         <summary>指定したハッシュ アルゴリズムを使用して、指定したバイト配列の一部分のハッシュ値を計算し、結果のハッシュ値に署名します。</summary>
         <returns>指定されたデータの ECDSA 署名。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />のときに発生します。<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> が 0 未満です。  
   
-または 
+- または - 
  <paramref name="count" /> が 0 未満です。  
   
 - または - 
@@ -1050,10 +1160,11 @@
         <Parameter Name="includePrivateParameters" Type="System.Boolean" Index="0" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="includePrivateParameters">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="includePrivateParameters">プライベート パラメーターを含める場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</param>
+        <summary>このメソッドでは常にスローされます。</summary>
+        <returns>このメソッドは値を返しません。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="System.NotImplementedException">すべての場合。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryExportECPrivateKey">
@@ -1082,11 +1193,13 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="destination">ECPrivateKey データを受け取るバイト範囲。</param>
+        <param name="bytesWritten">このメソッドから制御が戻ったときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>現在のキーを ECPrivateKey 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="M:System.Security.Cryptography.ECDsa.ExportECPrivateKey()" />
       </Docs>
     </Member>
     <Member MemberName="TryExportEncryptedPkcs8PrivateKey">
@@ -1116,13 +1229,26 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="passwordBytes">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="passwordBytes">キー マテリアルを暗号化するときにパスワードとして使用するバイト。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <param name="destination">PKCS#8 EncryptedPrivateKeyInfo データを受け取るバイト範囲。</param>
+        <param name="bytesWritten">このメソッドから制御が戻ったときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>バイトベースのパスワードを使用して、現在のキーを PKCS#8 EncryptedPrivateKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ パスワードのバイトは、によっ`pbeParameters`て示されるアルゴリズムによって使用されるキー派生関数 (kdf) に直接渡されます。
+これにより、PBKDF2 (パスワードベースのキー派生関数 2) でパスワードを処理するときに、UTF-8 以外のテキストエンコードを使用する他のシステムとの互換性が確保されます。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。
+
+または
+
+<paramref name="pbeParameters" /> は、<see cref="T:System.Char" /> ベースのパスワードを必要とする <see cref="F:System.Security.Cryptography.PbeEncryptionAlgorithm.TripleDes3KeyPkcs12" /> を使用する必要があることを示しています。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportEncryptedPkcs8PrivateKey" />        
       </Docs>
     </Member>
     <Member MemberName="TryExportEncryptedPkcs8PrivateKey">
@@ -1152,13 +1278,21 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="password">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="password">キー マテリアルを暗号化するときに使用するパスワード。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <param name="destination">PKCS#8 EncryptedPrivateKeyInfo データを受け取るバイト範囲。</param>
+        <param name="bytesWritten">このメソッドから制御が戻ったときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>char ベースのパスワードを使用して、現在のキーを PKCS#8 EncryptedPrivateKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ が`pbeParameters` 、PBKDF2 (パスワードベースのキー派生関数 2) を使用するアルゴリズムを示す場合、パスワードは utf-8 エンコードを使用してバイトに変換されます。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportEncryptedPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="TryExportPkcs8PrivateKey">
@@ -1187,11 +1321,13 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="destination">PKCS#8 PrivateKeyInfo データを受け取るバイト範囲。</param>
+        <param name="bytesWritten">このメソッドから制御が戻ったときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>現在のキーを PKCS#8 PrivateKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportPkcs8PrivateKey" />        
       </Docs>
     </Member>
     <Member MemberName="TryExportSubjectPublicKeyInfo">
@@ -1220,11 +1356,13 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="destination">X.509 SubjectPublicKeyInfo データを受け取るバイト範囲。</param>
+        <param name="bytesWritten">このメソッドから制御が戻ったときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>現在のキーを X.509 SubjectPublicKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportSubjectPublicKeyInfo" />        
       </Docs>
     </Member>
     <Member MemberName="TryHashData">
@@ -1384,17 +1522,17 @@
         <Parameter Name="hashAlgorithm" Type="System.Security.Cryptography.HashAlgorithmName" Index="2" FrameworkAlternate="netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="data">署名されるデータ。</param>
+        <param name="data">署名されたデータ。</param>
         <param name="signature">検証する署名データ。</param>
         <param name="hashAlgorithm">データのハッシュ値を作成するために使用されるハッシュ アルゴリズム。</param>
         <summary>指定したハッシュ アルゴリズムを使用して、指定したデータのハッシュ値を計算し、これを指定した署名と比較することによって、デジタル署名が有効であることを確認します。</summary>
-        <returns>署名が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <returns>署名が有効な場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。  
   
 - または - 
  <paramref name="signature" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />のときに発生します。<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="VerifyData">
@@ -1431,17 +1569,17 @@
         <Parameter Name="hashAlgorithm" Type="System.Security.Cryptography.HashAlgorithmName" Index="2" FrameworkAlternate="netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="data">署名されるデータ。</param>
+        <param name="data">署名されたデータ。</param>
         <param name="signature">検証する署名データ。</param>
         <param name="hashAlgorithm">データのハッシュ値を作成するために使用されるハッシュ アルゴリズム。</param>
         <summary>指定したハッシュ アルゴリズムを使用して、指定したストリームのハッシュ値を計算し、これを指定した署名と比較することによって、デジタル署名が有効であることを確認します。</summary>
-        <returns>署名が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <returns>署名が有効な場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。  
   
 - または - 
  <paramref name="signature" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />のときに発生します。<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="VerifyData">
@@ -1516,25 +1654,25 @@
         <Parameter Name="hashAlgorithm" Type="System.Security.Cryptography.HashAlgorithmName" Index="4" FrameworkAlternate="netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-1.4;netstandard-1.6;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="data">署名されるデータ。</param>
+        <param name="data">署名されたデータ。</param>
         <param name="offset">ハッシュを計算する位置を示す開始インデックス。</param>
         <param name="count">ハッシュするバイト数。</param>
         <param name="signature">検証する署名データ。</param>
         <param name="hashAlgorithm">データのハッシュ値を作成するために使用されるハッシュ アルゴリズム。</param>
         <summary>指定したハッシュ アルゴリズムを使用して、バイト配列の部分のデータのハッシュ値を計算し、これを指定した署名と比較することによって、デジタル署名が有効であることを確認します。</summary>
-        <returns>署名が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <returns>署名が有効な場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" /> です。  
   
 - または - 
- <paramref name="signature" /> は <see langword="null" />です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+ <paramref name="signature" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />のときに発生します。<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> が 0 未満です。  
   
 - または - 
  <paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
  <paramref name="offset" /> + <paramref name="count" /> - 1 の結果は、<paramref name="data" /> の上限を超えるインデックスになります。</exception>
       </Docs>
     </Member>
@@ -1575,7 +1713,7 @@
         <param name="hash">データのブロックのハッシュ値。</param>
         <param name="signature">検証対象のデジタル署名。</param>
         <summary>デジタル署名と指定したハッシュ値を比較して検証します。</summary>
-        <returns>ハッシュ値が復号化された署名と等しい場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
+        <returns>ハッシュ値が復号化された署名と等しい場合は<see langword="true" /> 、それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

@@ -1,5 +1,5 @@
 <Type Name="MidpointRounding" FullName="System.MidpointRounding">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="f3a4821f7b35db072312b1c49ab52bae21228681" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58732192" /></Metadata><TypeSignature Language="C#" Value="public enum MidpointRounding" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="38e8ee38701d9fa5be725a24cad8895ed98d6fcb" /><Meta Name="ms.sourcegitcommit" Value="5c332e8417c001736f7e2f33a84791feebba2cd7" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/30/2019" /><Meta Name="ms.locfileid" Value="68632961" /></Metadata><TypeSignature Language="C#" Value="public enum MidpointRounding" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MidpointRounding extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.MidpointRounding" />
   <TypeSignature Language="VB.NET" Value="Public Enum MidpointRounding" />
@@ -44,13 +44,13 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.MidpointRounding>の適切なオーバー ロードを持つ<xref:System.Math.Round%2A?displayProperty=nameWithType>丸め処理の詳細に制御を提供します。  
+ 丸め<xref:System.MidpointRounding>処理の制御を<xref:System.Math.Round%2A?displayProperty=nameWithType>強化するには、の適切なオーバーロードと共にを使用します。  
   
- 丸め操作を暗黙の型または指定された精度; で元の番号は、します。有効桁数を足したものです。 1 つには次の桁を調べます元の数と同じ有効桁数を持つ最も近い番号を返します。 正の数値の場合、次の桁を 0 ~ 4 に最も近い数値を負の無限大方向です。 次の桁が 6 ~ 9 の場合は、最も近い数値は正の無限大方向です。 負の数値の場合、次の桁を 0 ~ 4 に最も近い数を正の無限大方向です。 次の桁が 6 ~ 9 の場合は、最も近い数値は負の無限大方向です。  
+ 丸め演算では、暗黙的または指定された有効桁数を使用して元の数値を取得します。その有効桁数に1を加えた次の数字を調べます。とは、元の数値と同じ有効桁数を持つ最も近い数値を返します。 正の数値の場合、次の桁が 0 ~ 4 の場合、最も近い数値は負の無限大になります。 次の数字が 6 ~ 9 の場合、最も近い数値は正の無限大になります。 負の数値の場合、次の桁が 0 ~ 4 の場合、最も近い数値は正の無限大になります。 次の数字が 6 ~ 9 の場合、最も近い数値は負の無限大になります。  
   
- 前のケースで、<xref:System.MidpointRounding>列挙型では、丸め処理の結果には影響しません。 ただし、次の桁が 5、考えられる結果を 2 つの中間点は、残りのすべての数字は 0 または残りの桁がない、最も近い数値があいまいです。 ここで、<xref:System.MidpointRounding>列挙型では、丸め演算が 0 または最も近い偶数から最も近い値を返すかどうかを指定することができます。  
+ 前の例では、 <xref:System.MidpointRounding>列挙体は丸め演算の結果に影響しません。 ただし、次の桁が5で、これが2つの結果の中間点であり、残りのすべての桁が0であるか、残りの桁がない場合は、最も近い数値があいまいになります。 この場合、 <xref:System.MidpointRounding>列挙体を使用すると、丸め処理で最も近い数値を0から、または最も近い偶数の値に返すかどうかを指定できます。  
   
- 次の表の値と共にいくつか負または正の数値を丸め処理の結果を示して<xref:System.MidpointRounding>します。 有効桁数の数値を丸めるに使用では、小数点 10 進数の影響、丸め処理後の数を意味する 0 にです。 たとえば、数値-2.5 の場合、小数部後の桁は 5 です。 その数字が中心であるため、使用できます、<xref:System.MidpointRounding>丸め処理の結果を決定する値。 AwayFromZero が指定されている場合は、有効桁数を持つゼロから離れる方向の最も近い番号はゼロである-3 が返されます。 ToEven が指定されている場合は、最も近い偶数の桁数が 0 である-2 が返されます。  
+ 次の表は、負の数値と正の数値をの<xref:System.MidpointRounding>値と組み合わせて丸めた結果を示しています。 数値の丸めに使用される精度は0です。これは、小数点の後の数値が丸め演算に影響することを意味します。 たとえば、数値-2.5 の場合、小数点の後の桁は5です。 この数字は中間点であるため、 <xref:System.MidpointRounding>値を使用して丸め処理の結果を判断できます。 Roundingmode.awayfromzero を指定した場合、-3 が返されます。これは、有効桁数が0の0から遠い方の数値であるためです。 ToEven が指定されている場合、-2 が返されます。これは、有効桁数が0の最も近い偶数であるためです。  
   
 |元の番号|AwayFromZero|ToEven|  
 |---------------------|------------------|------------|  
@@ -66,7 +66,7 @@
    
   
 ## Examples  
- 次のコード例に示します、<xref:System.Math.Round%2A>メソッドと組み合わせて、<xref:System.MidpointRounding.ToEven>列挙体。  
+ 次のコード例では<xref:System.Math.Round%2A> 、メソッドを<xref:System.MidpointRounding.ToEven>列挙体と組み合わせて使用する方法を示します。  
   
  [!code-cpp[math.midpointrounding#1](~/samples/snippets/cpp/VS_Snippets_CLR/math.midpointrounding/cpp/mpr.cpp#1)]
  [!code-csharp[math.midpointrounding#1](~/samples/snippets/csharp/VS_Snippets_CLR/math.midpointrounding/CS/mpr.cs#1)]
@@ -187,7 +187,7 @@
       </ReturnValue>
       <MemberValue>3</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>数値が他の 2 つの数値の中間に位置するとき、無限精度の結果に最も近く、それより大きくない結果に丸められます。</summary>
       </Docs>
     </Member>
     <Member MemberName="ToPositiveInfinity">
@@ -219,7 +219,7 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>数値が他の 2 つの数値の中間に位置するとき、無限精度の結果に最も近く、それより小さくない結果に丸められます。</summary>
       </Docs>
     </Member>
     <Member MemberName="ToZero">
@@ -251,7 +251,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>数値が他の 2 つの数値の中間に位置するとき、大きさで無限精度の結果に最も近く、それより大きくない結果に丸められます。</summary>
       </Docs>
     </Member>
   </Members>

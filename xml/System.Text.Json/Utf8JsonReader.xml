@@ -1,5 +1,5 @@
 <Type Name="Utf8JsonReader" FullName="System.Text.Json.Utf8JsonReader">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d819d79b85a5451effbb779c90de4a7d1fa77343" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68434918" /></Metadata><TypeSignature Language="C#" Value="public struct Utf8JsonReader" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f96f08bbedddf791c3a57f3e7a62c982af293c15" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686107" /></Metadata><TypeSignature Language="C#" Value="public struct Utf8JsonReader" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Utf8JsonReader extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.Utf8JsonReader" />
   <TypeSignature Language="VB.NET" Value="Public Structure Utf8JsonReader" />
@@ -21,13 +21,13 @@
   <Docs>
     <summary>UTF-8 でエンコードされた JSON テキストに対する前方参照、読み取り専用のアクセスのために高パフォーマンスの API を提供します。</summary>
     <remarks>
-      <format type="text/markdown"><![CDATA[  
+      <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
 `Utf8JsonReader`キャッシュを使用せずにテキストを順番に処理し、既定では[JSON RFC](https://tools.ietf.org/html/rfc8259)に厳密に準拠します。
 
-が`Utf8JsonReader`無効な JSON を検出した<xref:System.Text.Json.JsonReaderException>場合は、行の行番号やバイト位置などの基本的なエラー情報を使用してをスローします。
+が`Utf8JsonReader`無効な JSON を検出した<xref:System.Text.Json.JsonException>場合は、行の行番号やバイト位置などの基本的なエラー情報を使用してをスローします。
 
 この型は ref 構造体であるため、非同期的には直接サポートされません。 ただし、不完全なデータを読み取って、さらに多くのデータが表示された場合は、再入によるサポートを提供します。
 
@@ -99,11 +99,20 @@
         <Parameter Name="state" Type="System.Text.Json.JsonReaderState" />
       </Parameters>
       <Docs>
-        <param name="jsonData">To be added.</param>
-        <param name="isFinalBlock">To be added.</param>
-        <param name="state">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="jsonData">UTF-8 でエンコードされた、処理対象の JSON テキスト。</param>
+        <param name="isFinalBlock">入力シーケンスに処理対象のデータ全体が含まれている場合は、<see langword="true" />。 一部のデータが入力スパンに含まれていて、後続のデータがあることが確認されている場合にのみ <see langword="false" />。</param>
+        <param name="state">これがコンストラクターの最初の呼び出しである場合は、既定の状態が渡されます。 それ以外の場合は、<see cref="T:System.Text.Json.Utf8JsonReader" /> の前のインスタンスから状態を取り込んで、それを返します。</param>
+        <summary><see cref="T:System.Text.Json.Utf8JsonReader" /> クラスの新しいインスタンスを初期化します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+この型は ref 構造体であるため、スタックのみの型であり、ref 構造体のすべての制限が適用されます。
+コンストラクターがを<xref:System.Text.Json.JsonReaderState>受け入れる理由は次のようになります。
+
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -129,7 +138,7 @@
         <param name="state">リーダーの状態を格納する構造体。 コンストラクターの最初の呼び出しでは、既定の状態が反映されます。それ以外の場合は、<see cref="T:System.Text.Json.Utf8JsonReader" /> の前のインスタンスから状態が取り込まれ、それが返されます。</param>
         <summary><see cref="T:System.Text.Json.Utf8JsonReader" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -180,7 +189,7 @@
         <summary>現在のトークンの深度を取得します。</summary>
         <value>現在のトークンの深さ。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -209,7 +218,7 @@
         <summary>呼び出し元によって取り込まれ、より多くのデータを含む <see cref="T:System.Text.Json.Utf8JsonReader" /> コンストラクターに返される必要がある <see cref="T:System.Text.Json.Utf8JsonReader" /> 状態の現在のスナップショット。</summary>
         <value>To be added.</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -282,9 +291,11 @@ Ref 構造体であるとは異なり、非同期/待機の境界を越えて状
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>ソースから現在の JSON トークン値を解析し、base 64 でエンコードされた JSON 文字列をバイト配列としてデコードします。</summary>
+        <returns>現在の JSON トークン値を表すバイト配列。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークンの型が <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
+        <exception cref="T:System.FormatException">値は base 64 テキストとしてエンコードされていないため、バイトにデコードできません。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetComment">
@@ -304,9 +315,10 @@ Ref 構造体であるとは異なり、非同期/待機の境界を越えて状
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>ソースからの現在の JSON トークン値をコメントとして解析し、<see cref="T:System.String" /> としてトランスコードします。</summary>
+        <returns>現在の JSON トークン値を表すコメント。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークンがコメントではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetDateTime">
@@ -377,7 +389,7 @@ Ref 構造体であるとは異なり、非同期/待機の境界を越えて状
         <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Decimal" /> に解析します。</summary>
         <returns><see cref="T:System.Decimal" /> に解析された、UTF-8 でエンコードされたトークン値。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -410,7 +422,7 @@ Utf-8 `GetDecimal`でエンコードされたトークンの値全体を<xref:Sy
         <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Double" /> に解析します。</summary>
         <returns><see cref="T:System.Double" /> に解析された、UTF-8 でエンコードされたトークン値。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -489,7 +501,7 @@ Utf-8 `GetDouble`でエンコードされたトークンの値全体を<xref:Sys
         <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Int32" /> に解析します。</summary>
         <returns><see cref="T:System.Int32" /> に解析された、UTF-8 でエンコードされたトークン値。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -526,7 +538,7 @@ JSON トークン値は、<see cref="F:System.Int32.MinValue" /> 未満の数値
         <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Int64" /> に解析します。</summary>
         <returns><see cref="T:System.Int64" /> に解析された、UTF-8 でエンコードされたトークン値。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -590,7 +602,7 @@ JSON トークン値は、<see cref="F:System.Int64.MinValue" /> 未満の数値
         <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Single" /> に解析します。</summary>
         <returns><see cref="T:System.Single" /> に解析された、UTF-8 でエンコードされたトークン値。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -625,7 +637,7 @@ Utf-8 `GetSingle`でエンコードされたトークンの値全体を<xref:Sys
         <remarks>To be added.</remarks>
         <exception cref="T:System.InvalidOperationException">トークン値は JSON 文字列ではありません (つまり、<see cref="F:System.Text.Json.JsonTokenType.String" /> または <see cref="F:System.Text.Json.JsonTokenType.PropertyName" /> ではない)。
 
-または
+- または -
 
 JSON 文字列に無効な UTF-8 バイトまたは無効な UTF-16 サロゲートが含まれています。</exception>
         <altmember cref="P:System.Text.Json.Utf8JsonReader.TokenType" />
@@ -750,7 +762,7 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <summary>トークン値を取得するために使用する <c>Value</c> プロパティを示す値を取得します。</summary>
         <value><see langword="true" />トークン値を取得するには、を使用する必要があります。<see cref="P:System.Text.Json.Utf8JsonReader.ValueSequence" /> <see langword="false" />代わりに<see cref="P:System.Text.Json.Utf8JsonReader.ValueSpan" />を使用する必要があります。</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -778,8 +790,8 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>すべての JSON データが与えられたか、あるいは他にもデータが入ってくるのかを示す <see cref="T:System.Text.Json.Utf8JsonReader" /> のこのインスタンスのモードを取得します。</summary>
+        <value><see langword="true" />処理する JSON データ全体を含む入力範囲またはシーケンスを使用してリーダーが構築された場合は。 <see langword="false" />入力範囲またはシーケンスを使用してリーダーが構築され、その後に続くデータを含む部分的な JSON データが含まれている場合。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -826,7 +838,7 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <remarks>To be added.</remarks>
         <exception cref="T:System.Text.Json.JsonException">JSON RFC では無効な JSON トークンが検出されました。
         
-- または -
+または
 
 現在の深度が、最大深度によって設定された再帰の限度を超えています。</exception>
       </Docs>
@@ -848,8 +860,26 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>現在の JSON トークンの子をスキップします。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+<xref:System.Text.Json.Utf8JsonReader.TokenType> が<xref:System.Text.Json.JsonTokenType.PropertyName?displayProperty=nameWithType>の場合、リーダーは最初にプロパティ値に移動します。
+
+( <xref:System.Text.Json.Utf8JsonReader.TokenType>最初、または前進後) が<xref:System.Text.Json.JsonTokenType.StartObject?displayProperty=nameWithtype>また<xref:System.Text.Json.JsonTokenType.StartArray?displayProperty=nameWithType>はの場合、リーダーは一致<xref:System.Text.Json.JsonTokenType.EndObject?displayProperty=nameWithType>する<xref:System.Text.Json.JsonTokenType.EndArray?displayProperty=nameWithType>またはに進みます。
+            
+他のすべてのトークン型については、リーダーは移動しません。 次にを<xref:System.Text.Json.Utf8JsonReader.Read>呼び出した後、リーダーは次の値 (配列内の場合)、次のプロパティ名 (オブジェクトの場合)、または終了配列/オブジェクトトークンになります。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">リーダーに与えられたデータは一部であり、この後にデータが続きます (つまり、<see cref="P:System.Text.Json.Utf8JsonReader.IsFinalBlock" /> は <see langword="false" /> です)。</exception>
+        <exception cref="T:System.Text.Json.JsonException">JSON RFC に基づき、スキップ中、無効な JSON トークンが検出されました。
+
+または
+
+現在の深度が、最大深度によって設定された再帰の限度を超えています。</exception>
       </Docs>
     </Member>
     <Member MemberName="TokenStartIndex">
@@ -873,9 +903,19 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>最後に処理された JSON トークンの (UTF-8 でエンコードされた指定の入力テキスト内の) 開始位置となるインデックスを取得します。空白はスキップされます。</summary>
+        <value>指定した UTF-8 でエンコードされた入力テキスト内で最後に処理された JSON トークンの開始インデックス。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+JSON 文字列 (プロパティ名を含む) の場合、この値は開始引用符の前を指します。
+
+コメントの場合、この値は最初のコメント区切り記号 ('/') の前を指します。
+
+            ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TokenType">
@@ -943,10 +983,11 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <Parameter Name="value" Type="System.Byte[]" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="value">メソッドが成功した場合、base 64 テキストの (デコードされた) バイナリ表現が含まれます。</param>
+        <summary>ソースから現在の JSON トークン値の解析を試行し、base 64 でエンコードされた JSON 文字列をバイト配列としてデコードします。</summary>
+        <returns>トークン値全体が有効な base 64 テキストとしてエンコードされ、正常にバイトにデコードできる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">JSON トークンが <see cref="F:System.Text.Json.JsonTokenType.String" /> ではありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetDateTime">
@@ -1078,7 +1119,9 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
         <summary>次の JSON トークン値をソースから読み取り、それを <see cref="T:System.Guid" /> に解析します。</summary>
         <returns>UTF-8 でエンコードされたトークン値全体を <see cref="T:System.Guid" /> に正常に解析できる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
 
 このメソッドは、 <xref:System.Guid>ハイフンを使用した値の解析だけを行います。 
 
@@ -1334,9 +1377,28 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>現在の JSON トークンの子のスキップを試行します。</summary>
+        <returns>子を正常にスキップできるだけの十分なデータがあった場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+リーダーが、現在のトークンの子を完全にスキップするのに十分なデータを持っていなかった場合は、メソッドが呼び出される前の状態にリセットされます。
+              
+<xref:System.Text.Json.Utf8JsonReader.TokenType> が<xref:System.Text.Json.JsonTokenType.PropertyName?displayProperty=nameWithType>の場合、リーダーは最初にプロパティ値に移動します。
+
+( <xref:System.Text.Json.Utf8JsonReader.TokenType>最初、または前進後) が<xref:System.Text.Json.JsonTokenType.StartObject?displayProperty=nameWithType>また<xref:System.Text.Json.JsonTokenType.StartArray?displayProperty=nameWithType>はの場合、リーダーは一致<xref:System.Text.Json.JsonTokenType.EndObject?displayProperty=nameWithType>する<xref:System.Text.Json.JsonTokenType.EndArray?displayProperty=nameWithType>またはに進みます。
+            
+他のすべてのトークン型については、リーダーは移動しません。 次にを<xref:System.Text.Json.Utf8JsonReader.Read>呼び出した後、リーダーは次の値 (配列内の場合)、次のプロパティ名 (オブジェクトの場合)、または終了配列/オブジェクトトークンになります。
+
+          ]]></format>
+        </remarks>
+        <exception cref="T:System.Text.Json.JsonException">JSON RFC に基づき、スキップ中、無効な JSON トークンが検出されました。
+          
+または
+
+現在の深度が、最大深度によって設定された再帰の限度を超えています。</exception>
       </Docs>
     </Member>
     <Member MemberName="ValueSequence">
@@ -1364,7 +1426,7 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
 それ以外の場合、<see cref="P:System.Text.Json.Utf8JsonReader.ValueSequence" /> にはトークン値が格納されます。</summary>
         <value>To be added.</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
@@ -1401,7 +1463,7 @@ JSON トークン値は、<see cref="F:System.UInt64.MinValue" /> 未満の数�
 それ以外の場合、<see cref="P:System.Text.Json.Utf8JsonReader.ValueSequence" /> にはトークン値が格納されます。</summary>
         <value>To be added.</value>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
+          <format type="text/markdown"><![CDATA[
 
 ## Remarks
 

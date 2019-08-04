@@ -1,5 +1,5 @@
 <Type Name="ReceiveErrorHandling" FullName="System.ServiceModel.ReceiveErrorHandling">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="aecd43c408bd0e60da80645b5d0fde609f059196" /><Meta Name="ms.sourcegitcommit" Value="f991677a7374c45590a432ff7ab830beb05f2ccd" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/27/2019" /><Meta Name="ms.locfileid" Value="68591317" /></Metadata><TypeSignature Language="C#" Value="public enum ReceiveErrorHandling" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="acb32fca02aaed6e8e028a11968f658c39420ee8" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686327" /></Metadata><TypeSignature Language="C#" Value="public enum ReceiveErrorHandling" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ReceiveErrorHandling extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.ServiceModel.ReceiveErrorHandling" />
   <TypeSignature Language="VB.NET" Value="Public Enum ReceiveErrorHandling" />
@@ -15,12 +15,12 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>有害なメッセージの処理を指定する列挙体です。</summary>
+    <summary>有害なメッセージの処理を指定します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有害メッセージは、アプリケーションへのメッセージの配信が繰り返し失敗したメッセージです。 これは、メッセージ キュー (MSMQ) ベースのバインディングを使用している場合にのみ適用できます。 既定値は `Fault` です。これにより、リスナーでエラーが発生し、その結果、ServiceHost でもエラーが発生します。 有害メッセージが原因でサービスが失敗した場合は、<xref:System.ServiceModel.MsmqPoisonMessageException> がスローされます。 この例外は、System.Messaging API を使用してメッセージを移動させるために使用できる MSMQ メッセージの `LookupId` を含みます。 <xref:System.ServiceModel.ReceiveErrorHandling> 列挙体の一部の値 (`Reject` や `Move` など) は、[!INCLUDE[wv](~/includes/wv-md.md)] でのみ使用できます。 有害メッセージの処理は、<xref:System.ServiceModel.Channels.MsmqBindingElementBase.ReceiveErrorHandling%2A> プロパティをこの列挙体のいずれかの値に設定することで制御します。  
+ *有害なメッセージ*とは、アプリケーションへの配信が繰り返し失敗するメッセージです。 これは、メッセージ キュー (MSMQ) ベースのバインディングを使用している場合にのみ適用できます。 既定値は `Fault` です。これにより、リスナーでエラーが発生し、その結果、ServiceHost でもエラーが発生します。 有害メッセージが原因でサービスが失敗した場合は、<xref:System.ServiceModel.MsmqPoisonMessageException> がスローされます。 この例外は、System.Messaging API を使用してメッセージを移動させるために使用できる MSMQ メッセージの `LookupId` を含みます。 <xref:System.ServiceModel.ReceiveErrorHandling> 列挙体の一部の値 (`Reject` や `Move` など) は、[!INCLUDE[wv](~/includes/wv-md.md)] でのみ使用できます。 有害メッセージの処理は、<xref:System.ServiceModel.Channels.MsmqBindingElementBase.ReceiveErrorHandling%2A> プロパティをこの列挙体のいずれかの値に設定することで制御します。  
   
    
   
@@ -55,14 +55,6 @@
       <MemberValue>1</MemberValue>
       <Docs>
         <summary>このオプションは、有害メッセージを破棄します。 メッセージは、アプリケーションに配信されません。 この時点でメッセージの TTL の有効期限が既に切れている場合、メッセージは、送信側の配信不能キューに表示される可能性があります。 有効期限が切れていない場合は、どこにも表示されません。 このオプションは、メッセージが失われてもユーザーにとって問題がないことを示します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 適用可能なプラットフォーム : [!INCLUDE[wxp](~/includes/wxp-md.md)]、[!INCLUDE[ws2003](~/includes/ws2003-md.md)]、および [!INCLUDE[wv](~/includes/wv-md.md)]。  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Fault">
@@ -85,14 +77,6 @@
       <MemberValue>0</MemberValue>
       <Docs>
         <summary>このオプションは、ServiceHost のエラーの原因になったリスナーにエラーを送信します。 アプリケーションでキューのメッセージの処理を継続するには、なんらかの外部機構によってアプリケーション キューからメッセージを削除する必要があります。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- アプリケーション プラットフォーム : Windows XP、Windows Server 2003、および Windows Vista。  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Move">
@@ -115,14 +99,6 @@
       <MemberValue>3</MemberValue>
       <Docs>
         <summary>これは、有害メッセージを有害メッセージ キューに移動して、後で有害メッセージ処理アプリケーションで処理できるようにします。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 適用可能なプラットフォーム : [!INCLUDE[wv](~/includes/wv-md.md)]のみ。  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Reject">
@@ -145,14 +121,6 @@
       <MemberValue>2</MemberValue>
       <Docs>
         <summary>これは、アプリケーションでメッセージを受信できないという否定応答を送信側キュー マネージャーに返信するようメッセージ キュー (MSMQ) に指示します。 メッセージは、送信側キュー マネージャーの配信不能キューに置かれます。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 適用可能なプラットフォーム : [!INCLUDE[wv](~/includes/wv-md.md)]のみ。  
-  
- ]]></format>
-        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,5 +1,5 @@
 <Type Name="DbDataReader" FullName="System.Data.Common.DbDataReader">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="d479e17a4c080cf6d5c9adf20fdffaee9d3d4ae0" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68438371" /></Metadata><TypeSignature Language="C#" Value="public abstract class DbDataReader : MarshalByRefObject, IDisposable, System.Collections.IEnumerable, System.Data.IDataReader" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="4244d7084f3d26663b3dd6cdcb1078113ecee543" /><Meta Name="ms.sourcegitcommit" Value="5c332e8417c001736f7e2f33a84791feebba2cd7" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/30/2019" /><Meta Name="ms.locfileid" Value="68632577" /></Metadata><TypeSignature Language="C#" Value="public abstract class DbDataReader : MarshalByRefObject, IDisposable, System.Collections.IEnumerable, System.Data.IDataReader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DbDataReader extends System.MarshalByRefObject implements class System.Collections.IEnumerable, class System.Data.IDataReader, class System.Data.IDataRecord, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Data.Common.DbDataReader" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class DbDataReader&#xA;Inherits MarshalByRefObject&#xA;Implements IDataReader, IDisposable, IEnumerable" />
@@ -199,7 +199,7 @@
         <AssemblyVersion>4.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="T:System.Data.Common.DbDataReader" /> によって使用されているリソースを解放し、<see cref="M:System.Data.SqlClient.SqlDataReader.Close" /> を呼び出します。</summary>
+        <summary><see cref="T:System.Data.Common.DbDataReader" /> によって使用されているリソースを解放し、<see cref="M:System.Data.Common.DbDataReader.Close" /> を呼び出します。</summary>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </MemberGroup>
@@ -298,7 +298,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは <xref:System.Data.SqlClient.SqlDataReader.Close%2A> を呼び出します。  
+ このメソッドは <xref:System.Data.Common.DbDataReader.Close%2A> を呼び出します。  
   
  ]]></format>
         </remarks>
@@ -420,6 +420,7 @@
         <summary>指定された列の値を Boolean として取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -464,6 +465,7 @@
         <summary>指定された列の値をバイトとして取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -513,9 +515,10 @@
         <param name="buffer">データのコピー先のバッファー。</param>
         <param name="bufferOffset">データのコピー先のバッファーのインデックス。</param>
         <param name="length">読み取り対象の最大文字数。</param>
-        <summary>指定した列の <paramref name="dataOffset" /> で指定された位置から開始されるバイト ストリームを、バッファーの <paramref name="bufferOffset" /> で指定された開始位置に読み込みます。</summary>
+        <summary>指定したインデックスを開始位置として、指定した列から指定したバイト数を読み取り、バッファー内の指定した位置の開始位置としてバッファーに書き込みます。</summary>
         <returns>実際に読み取られたバイト数。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -560,6 +563,7 @@
         <summary>指定された列の値を単一の文字として取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -609,7 +613,7 @@
         <param name="buffer">データのコピー先のバッファー。</param>
         <param name="bufferOffset">データのコピー先のバッファーのインデックス。</param>
         <param name="length">読み取り対象の最大文字数。</param>
-        <summary>指定した列の <paramref name="dataOffset" /> で指定された位置から開始される文字ストリームを、バッファーの <paramref name="bufferOffset" /> で指定された開始位置に読み込みます。</summary>
+        <summary>指定したインデックスを開始位置として、指定した列から指定した文字数を読み取り、バッファー内の指定した位置の開始位置としてバッファーに書き込みます。</summary>
         <returns>実際に読み取られた文字数。</returns>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
@@ -654,9 +658,10 @@
       </Parameters>
       <Docs>
         <param name="ordinal">0 から始まる列序数。</param>
-        <summary>要求された列の序数の <see cref="T:System.Data.Common.DbDataReader" /> オブジェクトを返します。</summary>
-        <returns><see cref="T:System.Data.Common.DbDataReader" /> オブジェクト。</returns>
+        <summary>要求された列に対して、入れ子になったデータ リーダーを返します。</summary>
+        <returns>データ リーダー。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -698,7 +703,7 @@
       <Docs>
         <param name="ordinal">0 から始まる列序数。</param>
         <summary>指定された列のデータ型の名前を取得します。</summary>
-        <returns>データ型の名前を表す文字列。</returns>
+        <returns>データ型の名前。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -722,7 +727,7 @@ private static void GetDataTypes(String connectionString) {
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -766,6 +771,7 @@ private static void GetDataTypes(String connectionString) {
         <summary>指定された列の値を <see cref="T:System.DateTime" /> オブジェクトとして取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -847,9 +853,10 @@ private static void GetDataTypes(String connectionString) {
       </Parameters>
       <Docs>
         <param name="ordinal">0 から始まる列序数。</param>
-        <summary>指定された列の値を <see cref="T:System.Decimal" /> オブジェクトとして取得します。</summary>
+        <summary>指定した列の値を <see cref="T:System.Decimal" /> として取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -992,6 +999,7 @@ private static void GetDataTypes(String connectionString) {
         <summary>指定された列のデータ型を取得します。</summary>
         <returns>指定された列のデータ型。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1031,36 +1039,28 @@ private static void GetDataTypes(String connectionString) {
         <Parameter Name="ordinal" Type="System.Int32" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <typeparam name="T">指定された列の値を型として同期的に取得します。</typeparam>
-        <param name="ordinal">取得する列。</param>
-        <summary>指定された列の値を型として同期的に取得します。</summary>
-        <returns>取得する列。</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.InvalidOperationException">データの取得中、接続は破棄されるか、または閉じられます。  
+        <typeparam name="T">返される値の型。</typeparam>
+        <param name="ordinal">0 から始まる列序数。</param>
+        <summary>要求された型として指定した列の値を取得します。</summary>
+        <returns>指定された列の値。</returns>
+	<exception cref="T:System.InvalidOperationException">データの取得中、接続が切断されたか、閉じられました。  
 
-または 
-<see cref="T:System.Data.SqlClient.SqlDataReader" /> は、データの取得時に閉じます。  
+- または - 
+データの取得中、データ リーダーが閉じられました。  
   
 - または -
 
-読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.SqlClient.SqlDataReader.Read" /> は呼び出されなかったか、false を返しました)。  
-
-- または -
-
-以前に読み取られた列をシーケンシャル モードで読み取ろうとしました。  
+読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、<see langword="false" /> を返しました)。  
 
 または
 
+リーダーでは、以前に読み取られた列のシーケンシャル モードでの読み取りが試行されました。  
+
+- または -
+
 非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get* メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
-        <exception cref="T:System.IndexOutOfRangeException">存在しない列を読み取ろうとしています。</exception>
-        <exception cref="T:System.InvalidCastException"><paramref name="T" /> が SQL Server から返された型に一致しないか、キャストできません。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
+        <exception cref="T:System.InvalidCastException">データベースによって返された値が一致しないか、<typeparamref name="T" /> にキャストできません。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="GetFieldValueAsync&lt;T&gt;">
@@ -1069,15 +1069,7 @@ private static void GetDataTypes(String connectionString) {
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定された列の値を型として非同期的に取得します。</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
- ]]></format>
-        </remarks>
+        <summary>要求された型として指定された列の値を非同期で取得します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="GetFieldValueAsync&lt;T&gt;">
@@ -1116,45 +1108,44 @@ private static void GetDataTypes(String connectionString) {
       </Parameters>
       <Docs>
         <typeparam name="T">返される値の型。</typeparam>
-        <param name="ordinal">返される値の型。</param>
-        <summary>指定された列の値を型として非同期的に取得します。</summary>
-        <returns>返される値の型。</returns>
+        <param name="ordinal">0 から始まる列序数。</param>
+        <summary>要求された型として指定された列の値を非同期で取得します。</summary>
+        <returns>指定された列の値を <see cref="P:System.Threading.Tasks.Task`1.Result" /> に格納しているタスク。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- `T`次のいずれかの型を指定できます。  
-  
-|||||  
-|-|-|-|-|  
-|ブール型|Byte|Char|DateTime|  
-|DateTimeOffset|Decimal (10 進数型)|倍精度浮動小数点型|Float|  
-|GUID|Int16|Int32|Int64|  
-|String||||  
-  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+          <format type="text/markdown"><![CDATA[
+ ## Remarks 
+ この非同期メソッドは、リーダーがシーケンシャルモードで作成されるときに、呼び出し元のスレッドがブロックされないようにするためだけに必要です。
+ 
+ シーケンシャルモードが指定されていない場合、ReadAsync が完了するたびにすべての列の値がメモリ内で使用可能になり、メソッドの同期バージョンを呼び出すと、呼び出し元のスレッドがブロックされないようにする必要があります。
+
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
+
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">データの取得中、接続は破棄されるか、または閉じられます。  
+
+        <exception cref="T:System.InvalidOperationException">データの取得中、接続が切断されたか、閉じられました。  
   
 - または -
 
-<see cref="T:System.Data.Common.DbDataReader" /> は、データの取得時に閉じます。  
+データの取得中、データ リーダーが閉じられました。  
 
 - または -
 
-読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、false を返しました)。  
+読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、<see langword="false" /> を返しました)。
 
-または
+- または -
 
 以前に読み取られた列をシーケンシャル モードで読み取ろうとしました。  
 
-- または -
+または
 
-非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get* メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
-        <exception cref="T:System.IndexOutOfRangeException">存在しない列を読み取ろうとしています。</exception>
-        <exception cref="T:System.InvalidCastException"><paramref name="T" /> がデータ ソースから返された型に一致しないか、キャストできません。</exception>
+非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get_*_ メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
+        <exception cref="T:System.InvalidCastException">データベースによって返された値が一致しないか、<typeparamref name="T" /> にキャストできません。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetFieldValueAsync&lt;T&gt;">
@@ -1193,46 +1184,45 @@ private static void GetDataTypes(String connectionString) {
       </Parameters>
       <Docs>
         <typeparam name="T">返される値の型。</typeparam>
-        <param name="ordinal">返される値の型。</param>
-        <param name="cancellationToken">操作を取り消すことを示す通知を反映する取り消し命令。 これは取り消しを保証しません。 <see langword="CancellationToken.None" /> の設定は、このメソッドを <see cref="M:System.Data.Common.DbDataReader.GetFieldValueAsync``1(System.Int32)" /> と同じにします。 返されたタスクを取り消し済みとしてマークする必要があります。</param>
-        <summary>指定された列の値を型として非同期的に取得します。</summary>
-        <returns>返される値の型。</returns>
+        <param name="ordinal">0 から始まる列序数。</param>
+        <param name="cancellationToken">非同期操作を取り消すトークン。</param>
+        <summary>要求された型として指定された列の値を非同期で取得します。</summary>
+        <returns>指定された列の値を <see cref="P:System.Threading.Tasks.Task`1.Result" /> に格納しているタスク。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- `T`次のいずれかの型を指定できます。  
-  
-|||||  
-|-|-|-|-|  
-|ブール型|Byte|Char|DateTime|  
-|DateTimeOffset|Decimal (10 進数型)|倍精度浮動小数点型|Float|  
-|GUID|Int16|Int32|Int64|  
-|String||||  
-  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+          <format type="text/markdown"><![CDATA[
+ ## Remarks 
+ この非同期メソッドは、リーダーがシーケンシャルモードで作成されるときに、呼び出し元のスレッドがブロックされないようにするためだけに必要です。
+ 
+ シーケンシャルモードが指定されていない場合、ReadAsync が完了するたびにすべての列の値がメモリ内で使用可能になり、メソッドの同期バージョンを呼び出すと、呼び出し元のスレッドがブロックされないようにする必要があります。
+
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。 既定の実装は、既に取り消されたキャンセルトークンが渡された場合にも、取り消されたタスクを返します。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+
+ このメソッドは、早期に操作をキャンセルすることを要求するために使用できるキャンセル トークンを受け取ります。 実装は、この要求を無視する場合があります。
+ 
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">データの取得中、接続は破棄されるか、または閉じられます。  
+        <exception cref="T:System.InvalidOperationException">データの取得中、接続が切断されたか、閉じられました。  
   
 - または -
 
-<see cref="T:System.Data.Common.DbDataReader" /> は、データの取得時に閉じます。  
+データの取得中、データ リーダーが閉じられました。  
 
 - または -
 
-読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、false を返しました)。  
+読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、<see langword="false" /> を返しました)。
 
-または
+- または -
 
 以前に読み取られた列をシーケンシャル モードで読み取ろうとしました。  
 
-- または -
+または
 
-非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get* メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
-        <exception cref="T:System.IndexOutOfRangeException">存在しない列を読み取ろうとしています。</exception>
-        <exception cref="T:System.InvalidCastException"><paramref name="T" /> がデータ ソースから返された型に一致しないか、キャストできません。</exception>
+非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get_*_ メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
+        <exception cref="T:System.InvalidCastException">データベースによって返された値が一致しないか、<typeparamref name="T" /> にキャストできません。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetFloat">
@@ -1275,6 +1265,7 @@ private static void GetDataTypes(String connectionString) {
         <summary>指定された列の値を単精度浮動小数点値として取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1316,9 +1307,10 @@ private static void GetDataTypes(String connectionString) {
       </Parameters>
       <Docs>
         <param name="ordinal">0 から始まる列序数。</param>
-        <summary>指定された列の値をグローバル一意識別子 (GUID) として取得します。</summary>
+        <summary>指定した列の値をグローバル一意識別子 (GUID) として取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1363,6 +1355,7 @@ private static void GetDataTypes(String connectionString) {
         <summary>指定した列の値を 16 ビット符号付き整数として取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1431,6 +1424,7 @@ private static void GetCredits(String connectionString) {
   
  ]]></format>
         </remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1475,6 +1469,7 @@ private static void GetCredits(String connectionString) {
         <summary>指定された列の値を 64 ビット符号付き整数として取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1605,9 +1600,10 @@ private static void GetCredits(String connectionString) {
       </Parameters>
       <Docs>
         <param name="ordinal">0 から始まる列序数。</param>
-        <summary>指定された列の、プロバイダー固有のフィールド型を返します。</summary>
-        <returns>指定された列のデータ型を記述する <see cref="T:System.Type" /> オブジェクト。</returns>
+        <summary>指定された列のプロバイダー固有の型を取得します。</summary>
+        <returns>プロバイダー固有の .NET 型。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -1650,7 +1646,7 @@ private static void GetCredits(String connectionString) {
       </Parameters>
       <Docs>
         <param name="ordinal">0 から始まる列序数。</param>
-        <summary>指定された列の値を <see cref="T:System.Object" /> のインスタンスとして取得します。</summary>
+        <summary>指定された列の値をプロバイダー固有の型のインスタンスとして取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1703,7 +1699,7 @@ private static void GetCredits(String connectionString) {
       <Docs>
         <param name="values">属性列のコピー先の <see cref="T:System.Object" /> の配列。</param>
         <summary>現在の行のコレクション内にあるプロバイダー固有の属性列をすべて取得します。</summary>
-        <returns>配列に含まれる <see cref="T:System.Object" /> のインスタンスの数。</returns>
+        <returns>配列に含まれる要素のインスタンスの数。</returns>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1743,7 +1739,8 @@ private static void GetCredits(String connectionString) {
         <summary><see cref="T:System.Data.DataTable" /> の列メタデータを記述する <see cref="T:System.Data.Common.DbDataReader" /> を返します。</summary>
         <returns>列メタデータを記述する <see cref="T:System.Data.DataTable" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Data.SqlClient.SqlDataReader" /> が閉じています。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Data.Common.DbDataReader" /> が閉じています。</exception>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -1779,37 +1776,34 @@ private static void GetCredits(String connectionString) {
         <Parameter Name="ordinal" Type="System.Int32" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="ordinal"><see cref="T:System.IO.Stream" /> としてデータを取得します。</param>
-        <summary><see cref="T:System.IO.Stream" /> としてデータを取得します。</summary>
-        <returns>返されたオブジェクト。</returns>
+        <param name="ordinal">0 から始まる列序数。</param>
+        <summary>指定された列からデータを取得する目的でストリームを取得します。</summary>
+        <returns>ストリーム。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  <xref:System.Data.Common.DbDataReader.GetStream%2A>では、バイト配列に変換できる値の取得のみがサポートされています。  
-  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">データの取得中、接続は破棄されるか、または閉じられます。  
+        <exception cref="T:System.InvalidOperationException">データの取得中、接続が切断されたか、閉じられました。  
   
-- または -
+または
 
-<see cref="T:System.Data.Common.DbDataReader" /> は、データの取得時に閉じます。  
+データの取得中、データ リーダーが閉じられます。  
 
-- または -
+または
 
 読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、false を返しました)。  
 
-- または -
+または
 
-以前に読み取られた列をシーケンシャル モードで読み取ろうとしました。  
+データ リーダーでは、以前に読み取られた列のシーケンシャル モードでの読み取りが試行されました。  
 
-- または -
+または
 
 非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get* メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
-        <exception cref="T:System.IndexOutOfRangeException">存在しない列を読み取ろうとしています。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定の列は、<see cref="T:System.IO.Stream" /> で読み込めるバイナリ型ではありません。</exception>
       </Docs>
     </Member>
@@ -1853,6 +1847,7 @@ private static void GetCredits(String connectionString) {
         <summary>指定された列の値を <see cref="T:System.String" /> のインスタンスとして取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定したキャストが有効ではありません。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -1889,37 +1884,34 @@ private static void GetCredits(String connectionString) {
         <Parameter Name="ordinal" Type="System.Int32" Index="0" FrameworkAlternate="dotnet-uwp-10.0;netcore-1.0;netcore-1.1;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;netstandard-2.0;netstandard-2.1;xamarinandroid-7.1;xamarinios-10.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="ordinal"><see cref="T:System.IO.TextReader" /> としてデータを取得します。</param>
-        <summary><see cref="T:System.IO.TextReader" /> としてデータを取得します。</summary>
-        <returns>返されたオブジェクト。</returns>
+        <param name="ordinal">0 から始まる列序数。</param>
+        <summary>列からデータを取得する目的でテキスト リーダーを取得します。</summary>
+        <returns>テキスト リーダー。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  <xref:System.Data.Common.DbDataReader.GetTextReader%2A>では、文字配列 (文字列) に変換できる値の取得のみがサポートされています。  
-  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">データの取得中、接続は破棄されるか、または閉じられます。  
+        <exception cref="T:System.InvalidOperationException">データの取得中、接続が切断されたか、閉じられました。  
   
 - または -
 
-<see cref="T:System.Data.Common.DbDataReader" /> は、データの取得時に閉じます。  
+データの取得中、データ リーダーが閉じられます。  
 
 - または -
 
 読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、false を返しました)。  
 
-- または -
+または
 
-以前に読み取られた列をシーケンシャル モードで読み取ろうとしました。  
+データ リーダーでは、以前に読み取られた列のシーケンシャル モードでの読み取りが試行されました。  
 
-- または -
+または
 
 非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get* メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
-        <exception cref="T:System.IndexOutOfRangeException">存在しない列を読み取ろうとしています。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <exception cref="T:System.InvalidCastException">指定の列は、<see cref="T:System.IO.TextReader" /> で読み込めるテキスト型ではありません。</exception>
       </Docs>
     </Member>
@@ -1963,6 +1955,7 @@ private static void GetCredits(String connectionString) {
         <summary>指定された列の値を <see cref="T:System.Object" /> のインスタンスとして取得します。</summary>
         <returns>指定された列の値。</returns>
         <remarks>To be added.</remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -2081,7 +2074,7 @@ private static void GetCredits(String connectionString) {
         <summary><see cref="T:System.Data.Common.DbDataReader" /> が閉じているかどうかを示す値を取得します。</summary>
         <value><see cref="T:System.Data.Common.DbDataReader" /> が閉じている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Data.SqlClient.SqlDataReader" /> が閉じています。</exception>
+        <exception cref="T:System.InvalidOperationException"><see cref="T:System.Data.Common.DbDataReader" /> が閉じています。</exception>
         <block subset="none" type="overrides"><para>このプロパティ<see cref="P:System.Data.Common.DbDataReader.RecordsAffected" />は、リーダーが閉じられたときに値を返すように実装する必要があります。</para></block>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
@@ -2124,15 +2117,16 @@ private static void GetCredits(String connectionString) {
       <Docs>
         <param name="ordinal">0 から始まる列序数。</param>
         <summary>存在しない値や欠落値が列に含まれているかどうかを示す値を取得します。</summary>
-        <returns>指定した列が <see cref="T:System.DBNull" /> に等しい場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <returns>指定した列が <see cref="T:System.DBNull" /> と等価の場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- エラーが発生しないように、型指定された get メソッド ( <xref:System.Data.Common.DbDataReader.GetByte%2A> <xref:System.Data.Common.DbDataReader.GetChar%2A>、など) を呼び出す前に、このメソッドを呼び出して、null 列の値を確認します。  
+ 型指定された Get_ * _ メソッド ( <xref:System.Data.Common.DbDataReader.GetByte%2A> <xref:System.Data.Common.DbDataReader.GetChar%2A>、など) を呼び出す前に、このメソッドを呼び出して、例外がスローされないようにします。  
   
  ]]></format>
         </remarks>
+	<exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -2143,7 +2137,7 @@ private static void GetCredits(String connectionString) {
         <AssemblyVersion>4.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>列に格納されている値が存在しない値または欠損値かどうかを示す値を取得する <see cref="M:System.Data.Common.DbDataReader.IsDBNull(System.Int32)" /> の非同期バージョン。</summary>
+        <summary>列に格納されている値が存在しない値または欠損値かどうかを示す値を非同期で取得します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="IsDBNullAsync">
@@ -2179,21 +2173,28 @@ private static void GetCredits(String connectionString) {
       </Parameters>
       <Docs>
         <param name="ordinal">取得する、0 から始まる列。</param>
-        <summary>列に格納されている値が存在しない値または欠損値かどうかを示す値を取得する <see cref="M:System.Data.Common.DbDataReader.IsDBNull(System.Int32)" /> の非同期バージョン。</summary>
-        <returns>指定した列の値が <see langword="true" /> と等価である場合は <see langword="DBNull" />。それ以外の場合は <see langword="false" />。</returns>
+        <summary>列に格納されている値が存在しない値または欠損値かどうかを示す値を非同期で取得します。</summary>
+        <returns>指定された列値が <see langword="DBNull" /> に等しい場合は、<see cref="P:System.Threading.Tasks.Task`1.Result" /> プロパティが <see langword="true" /> になり、等しくない場合は <see langword="false" /> になる <see cref="T:System.Threading.Tasks.Task`1" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+          <format type="text/markdown"><![CDATA[
+ ## Remarks
+ この非同期メソッドは、リーダーがシーケンシャルモードで作成されるときに、呼び出し元のスレッドがブロックされないようにするためだけに必要です。
+ 
+ シーケンシャルモードが指定されていない場合、ReadAsync が完了するたびにすべての列の値がメモリ内で使用可能になり、メソッドの同期バージョンを呼び出すと、呼び出し元のスレッドがブロックされないようにする必要があります。
+
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
+
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">データの取得中、接続は破棄されるか、または閉じられます。  
+<exception cref="T:System.InvalidOperationException">データの取得中、接続が切断されたか、閉じられました。  
   
 または
 
-<see cref="T:System.Data.Common.DbDataReader" /> は、データの取得時に閉じます。  
+データの取得中、データ リーダーが閉じられます。  
 
 - または -
 
@@ -2203,10 +2204,10 @@ private static void GetCredits(String connectionString) {
 
 以前に読み取られた列をシーケンシャル モードで読み取ろうとしています。  
 
-または
+- または -
 
 非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get* メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
-        <exception cref="T:System.IndexOutOfRangeException">存在しない列を読み取ろうとしています。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
       </Docs>
     </Member>
     <Member MemberName="IsDBNullAsync">
@@ -2242,24 +2243,33 @@ private static void GetCredits(String connectionString) {
       </Parameters>
       <Docs>
         <param name="ordinal">取得する、0 から始まる列。</param>
-        <param name="cancellationToken">操作を取り消すことを示す通知を反映する取り消し命令。 これは取り消しを保証しません。 <see langword="CancellationToken.None" /> の設定は、このメソッドを <see cref="M:System.Data.Common.DbDataReader.IsDBNullAsync(System.Int32)" /> と同じにします。 返されたタスクを取り消し済みとしてマークする必要があります。</param>
-        <summary>列に格納されている値が存在しない値または欠損値かどうかを示す値を取得する <see cref="M:System.Data.Common.DbDataReader.IsDBNull(System.Int32)" /> の非同期バージョン。 必要に応じて、操作を取り消す必要があるという通知を送信します。</summary>
-        <returns>指定した列の値が <see langword="true" /> と等価である場合は <see langword="DBNull" />。それ以外の場合は <see langword="false" />。</returns>
+        <param name="cancellationToken">非同期操作を取り消すトークン。</param>
+        <summary>列に格納されている値が存在しない値または欠損値かどうかを示す値を非同期で取得します。</summary>
+        <returns>指定された列値が <see langword="DBNull" /> に等しい場合は、<see cref="P:System.Threading.Tasks.Task`1.Result" /> プロパティが <see langword="true" /> になり、等しくない場合は <see langword="false" /> になる <see cref="T:System.Threading.Tasks.Task`1" />。</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- 詳細については、「 [SqlClient ストリーミングサポート](~/docs/framework/data/adonet/sqlclient-streaming-support.md)」を参照してください。  
-  
+          <format type="text/markdown"><![CDATA[
+ ## Remarks
+ この非同期メソッドは、リーダーがシーケンシャルモードで作成されるときに、呼び出し元のスレッドがブロックされないようにするためだけに必要です。
+ 
+ シーケンシャルモードが指定されていない場合、ReadAsync が完了するたびにすべての列の値がメモリ内で使用可能になり、メソッドの同期バージョンを呼び出すと、呼び出し元のスレッドがブロックされないようにする必要があります。
+
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。 既定の実装は、既に取り消されたキャンセルトークンが渡された場合にも、取り消されたタスクを返します。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+
+ このメソッドは、早期に操作をキャンセルすることを要求するために使用できるキャンセル トークンを受け取ります。 実装は、この要求を無視する場合があります。
+ 
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException">データの取得中、接続は破棄されるか、または閉じられます。  
+
+	<exception cref="T:System.InvalidOperationException">データの取得中、接続が切断されたか、閉じられました。  
   
-- または -
+または
 
-<see cref="T:System.Data.Common.DbDataReader" /> は、データの取得時に閉じます。  
+データの取得中、データ リーダーが閉じられます。  
 
-- または -
+または
 
 読み取ることのできるデータはありません (たとえば、最初の <see cref="M:System.Data.Common.DbDataReader.Read" /> は呼び出されなかったか、false を返しました)。  
 
@@ -2269,7 +2279,7 @@ private static void GetCredits(String connectionString) {
 
 - または - 
 非同期操作が進行中でした。 シーケンシャル モードで実行中、これはすべての Get* メソッドに適用されます。ストリームの読み取り中に呼び出すことができるためです。</exception>
-        <exception cref="T:System.IndexOutOfRangeException">存在しない列を読み取ろうとしています。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="Item">
@@ -2323,7 +2333,7 @@ private static void GetCredits(String connectionString) {
         <summary>指定された列の値を <see cref="T:System.Object" /> のインスタンスとして取得します。</summary>
         <value>指定された列の値。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.IndexOutOfRangeException">渡されたインデックスは 0 から <see cref="P:System.Data.IDataRecord.FieldCount" /> の範囲外にあります。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">列インデックスが範囲外です。</exception>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -2424,7 +2434,7 @@ private static void GetCredits(String connectionString) {
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="M:System.Data.Common.DbDataReader.NextResult" /> の非同期バージョンを実装しますが、スレッドの呼び出しをブロックして、タスクを同期的に返します。</summary>
+        <summary>バッチ ステートメントの結果を読み取っているときに、次の結果にリーダーを非同期で進めます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2466,16 +2476,16 @@ private static void GetCredits(String connectionString) {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>バッチ ステートメントの結果を読み込むときに、リーダーを次の結果に進める <see cref="M:System.Data.Common.DbDataReader.NextResult" /> の非同期バージョン。  
-  
-CancellationToken.None を使用して、<see cref="M:System.Data.Common.DbDataReader.NextResultAsync(System.Threading.CancellationToken)" /> を呼び出します。</summary>
-        <returns>非同期操作を表すタスク。</returns>
+        <summary>バッチ ステートメントの結果を読み取っているときに、次の結果にリーダーを非同期で進めます。</summary>
+        <returns>結果セットが他にもある場合は <see cref="P:System.Threading.Tasks.Task`1.Result" /> プロパティが <see langword="true" /> で、ない場合は <see langword="false" /> の <see cref="T:System.Threading.Tasks.Task`1" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
-  
 ## Remarks  
- 非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
-  
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
  ]]></format>
         </remarks>
         <exception cref="T:System.Data.Common.DbException">コマンド テキストの実行中にエラーが発生しました。</exception>
@@ -2514,18 +2524,18 @@ CancellationToken.None を使用して、<see cref="M:System.Data.Common.DbDataR
       </Parameters>
       <Docs>
         <param name="cancellationToken">取り消し命令。</param>
-        <summary>これは <see cref="M:System.Data.Common.DbDataReader.NextResult" /> の非同期バージョンです。 プロバイダーは、適切な実装でオーバーライドする必要があります。 オプションで <paramref name="cancellationToken" /> を無視できます。  
-  
-既定の実装は <see cref="M:System.Data.Common.DbDataReader.NextResult" /> 同期メソッドを呼び出し、完了したタスクを返します。呼び出し元のスレッドはブロックされます。 既定の実装は、既に取り消された <paramref name="cancellationToken" /> を渡した場合、取り消されたタスクを返します。 <see cref="M:System.Data.Common.DbDataReader.NextResult" /> によってスローされる例外は、返されたタスクの Exception プロパティを介して通信されます。  
-  
-返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。</summary>
-        <returns>非同期操作を表すタスク。</returns>
+        <summary>バッチ ステートメントの結果を読み取っているときに、次の結果にリーダーを非同期で進めます。</summary>
+        <returns>結果セットが他にもある場合は <see cref="P:System.Threading.Tasks.Task`1.Result" /> プロパティが <see langword="true" /> で、ない場合は <see langword="false" /> の <see cref="T:System.Threading.Tasks.Task`1" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
-  
 ## Remarks  
- 非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
-  
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。 既定の実装は、既に取り消されたキャンセルトークンが渡された場合にも、取り消されたタスクを返します。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+
+ このメソッドは、早期に操作をキャンセルすることを要求するために使用できるキャンセル トークンを受け取ります。 実装は、この要求を無視する場合があります。
+ 
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
  ]]></format>
         </remarks>
         <exception cref="T:System.Data.Common.DbException">コマンド テキストの実行中にエラーが発生しました。</exception>
@@ -2567,7 +2577,7 @@ CancellationToken.None を使用して、<see cref="M:System.Data.Common.DbDataR
       <Parameters />
       <Docs>
         <summary>結果セット内の次のレコードにリーダーを進めます。</summary>
-        <returns>次の行が存在する場合は、<see langword="true" />。それ以外の場合は、<see langword="false" />。</returns>
+        <returns>次の行が存在する場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2585,7 +2595,7 @@ CancellationToken.None を使用して、<see cref="M:System.Data.Common.DbDataR
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="M:System.Data.Common.DbDataReader.Read" /> の非同期バージョンを実装しますが、スレッドの呼び出しをブロックして、タスクを同期的に返します。</summary>
+        <summary>結果セット内の次のレコードにリーダーを非同期で進めます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -2627,14 +2637,17 @@ CancellationToken.None を使用して、<see cref="M:System.Data.Common.DbDataR
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>結果セットの次のレコードにリーダーを進める <see cref="M:System.Data.Common.DbDataReader.Read" /> の非同期バージョン。 このメソッドは、CancellationToken.None で <see cref="M:System.Data.Common.DbDataReader.ReadAsync(System.Threading.CancellationToken)" /> を呼び出します。</summary>
-        <returns>非同期操作を表すタスク。</returns>
+        <summary>結果セット内の次のレコードにリーダーを非同期で進めます。</summary>
+        <returns>行が他にもある場合は <see cref="P:System.Threading.Tasks.Task`1.Result" /> プロパティが <see langword="true" /> で、ない場合は <see langword="false" /> の <see cref="T:System.Threading.Tasks.Task`1" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
-  
 ## Remarks  
- 非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
-  
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+ 
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
+
  ]]></format>
         </remarks>
         <exception cref="T:System.Data.Common.DbException">コマンド テキストの実行中にエラーが発生しました。</exception>
@@ -2673,18 +2686,19 @@ CancellationToken.None を使用して、<see cref="M:System.Data.Common.DbDataR
       </Parameters>
       <Docs>
         <param name="cancellationToken">取り消し命令。</param>
-        <summary>これは <see cref="M:System.Data.Common.DbDataReader.Read" /> の非同期バージョンです。  プロバイダーは、適切な実装でオーバーライドする必要があります。 オプションで cancellationToken を無視できます。  
-  
-既定の実装は <see cref="M:System.Data.Common.DbDataReader.Read" /> 同期メソッドを呼び出し、完了したタスクを返します。呼び出し元のスレッドはブロックされます。 既定の実装は、既に取り消された cancellationToken を渡した場合、取り消されたタスクを返します。  Read によってスローされる例外は、返されたタスクの Exception プロパティを介して通信されます。  
-  
-返されたタスクが完了するまで <see langword="DbDataReader" /> オブジェクトの他のメソッドとプロパティを呼び出さないでください。</summary>
-        <returns>非同期操作を表すタスク。</returns>
+        <summary>結果セット内の次のレコードにリーダーを非同期で進めます。</summary>
+        <returns>行が他にもある場合は <see cref="P:System.Threading.Tasks.Task`1.Result" /> プロパティが <see langword="true" /> で、ない場合は <see langword="false" /> の <see cref="T:System.Threading.Tasks.Task`1" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
-  
 ## Remarks  
- 非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
-  
+ この非同期メソッドの既定の実装は、対応する同期メソッドを呼び出し、完了したタスクを返します。これにより、呼び出し元のスレッドがブロックされる可能性があります。 既定の実装は、既に取り消されたキャンセルトークンが渡された場合にも、取り消されたタスクを返します。
+
+ [非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)をサポートするデータプロバイダーは、非同期 i/o 操作を使用して既定の inmplementation を上書きする必要があります。
+
+ このメソッドは、早期に操作をキャンセルすることを要求するために使用できるキャンセル トークンを受け取ります。 実装は、この要求を無視する場合があります。
+ 
+ 返されたタスクが完了していないうちは、DbDataReader のオブジェクトの他のメソッドとプロパティを呼び出さないでください。
+
  ]]></format>
         </remarks>
         <exception cref="T:System.Data.Common.DbException">コマンド テキストの実行中にエラーが発生しました。</exception>

@@ -1,5 +1,5 @@
 <Type Name="JsonReaderOptions" FullName="System.Text.Json.JsonReaderOptions">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="590bf9b15f70eb2068c7bd6fda7b3d122a382a1e" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68435032" /></Metadata><TypeSignature Language="C#" Value="public struct JsonReaderOptions" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="310bd7377754e942d407f3a215dfefb98fe69ed3" /><Meta Name="ms.sourcegitcommit" Value="406d23aba879fbb482c6da0f64c8ef9494f6a944" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/31/2019" /><Meta Name="ms.locfileid" Value="68686125" /></Metadata><TypeSignature Language="C#" Value="public struct JsonReaderOptions" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit JsonReaderOptions extends System.ValueType" />
   <TypeSignature Language="DocId" Value="T:System.Text.Json.JsonReaderOptions" />
   <TypeSignature Language="VB.NET" Value="Public Structure JsonReaderOptions" />
@@ -39,9 +39,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>読み取り対象の JSON ペイロード内で、オブジェクトまたは配列内の JSON 値の一覧の末尾に追加のコンマを使用 (および無視) できるかどうかを定義します。 既定では false に設定されており、末尾にコンマがあると <exception cref="T:System.Text.Json.JsonException" /> がスローされます。</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>読み取られる JSON ペイロード内でオブジェクトまたは配列の JSON 値の一覧の終わりにある余分なコンマが許可 (および無視) されるかどうかを定義する値を取得または設定します。</summary>
+        <value><see langword="true" />exra コンマが許可される場合は。それ以外<see langword="false" />の場合は。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+既定では、このプロパティはに`false` <xref:System.Text.Json.JsonException>設定され、末尾のコンマが見つかった場合はがスローされます。
+
+            ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CommentHandling">
@@ -65,17 +73,18 @@
         <ReturnType>System.Text.Json.JsonCommentHandling</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>JSON データを読み取るときに <see cref="T:System.Text.Json.Utf8JsonReader" /> 構造体がコメントを処理する方法を取得または設定します。</summary>
+        <summary>JSON データを読み取るときに <see cref="T:System.Text.Json.Utf8JsonReader" /> がコメントを処理する方法を決定する値を取得または設定します。</summary>
         <value>コメントの処理方法を示す列挙値の1つ。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[
 
 ## Remarks
 
-既定では、コメントが検出<xref:System.Text.Json.JsonReaderException>された場合、リーダーはをスローします。
+既定では、コメントが検出<xref:System.Text.Json.JsonException>された場合、リーダーはをスローします。
 
  ]]></format>
         </remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException"><see cref="T:System.Text.Json.JsonCommentHandling" /> 列挙のメンバーではない値にプロパティを設定しようとしています。</exception>
       </Docs>
     </Member>
     <Member MemberName="MaxDepth">
@@ -99,9 +108,18 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>JSON の読み取り時に許可される最大深度を取得または設定します。既定値 (つまり 0) は、最大深度が 64 であることを示します。 読み取りがこの深度を超えると、<exception cref="T:System.Text.Json.JsonException" /> がスローされます。</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>JSON の読み取り時に許可される最大深度を取得または設定します。既定値 (つまり 0) は、最大深度が 64 であることを示します。</summary>
+        <value>JSON を読み取るときに許可される最大深度。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+この深さを超えると、< 例外 cref = "T:System.Text.Json.JsonException > がスローされます。
+
+            ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">最大深度を負の値に設定しようとしています。</exception>
       </Docs>
     </Member>
   </Members>
