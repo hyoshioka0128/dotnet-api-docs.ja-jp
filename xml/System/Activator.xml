@@ -1,5 +1,5 @@
 <Type Name="Activator" FullName="System.Activator">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="801e71267cf6711d0f77ebb1070f352134e73e54" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58726026" /></Metadata><TypeSignature Language="C#" Value="public sealed class Activator : System.Runtime.InteropServices._Activator" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="8a3eb47b62fb7e8bcfcbecfed18ceb733f15be7b" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68398399" /></Metadata><TypeSignature Language="C#" Value="public sealed class Activator : System.Runtime.InteropServices._Activator" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Activator extends System.Object implements class System.Runtime.InteropServices._Activator" />
   <TypeSignature Language="DocId" Value="T:System.Activator" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Activator&#xA;Implements _Activator" />
@@ -51,26 +51,26 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Activator.CreateInstance%2A>メソッドは、指定された引数の最もよく一致するコンス トラクターを呼び出すことによって、アセンブリで定義されている型のインスタンスを作成します。 引数が指定されていない場合、既定コンス トラクターは、パラメーターを受け取らないコンス トラクターが呼び出されます。  
+ メソッド<xref:System.Activator.CreateInstance%2A>は、指定された引数に最も一致するコンストラクターを呼び出すことによって、アセンブリで定義されている型のインスタンスを作成します。 引数が指定されていない場合、パラメーターをとらないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。  
   
- 検索し、コンス トラクターを呼び出すための十分な権限が必要それ以外の場合、例外がスローされます。 既定では、コンス トラクターの検索中に、パブリック コンス トラクターのみと見なされます。 コンス トラクターまたは既定のコンス トラクターが見つからない場合、例外がスローされます。  
+ コンストラクターを検索して呼び出すには、十分なアクセス許可が必要です。それ以外の場合は、例外がスローされます。 既定では、コンストラクターの検索中に、パブリックコンストラクターだけが考慮されます。 コンストラクターまたはパラメーターなしのコンストラクターが見つからない場合は、例外がスローされます。  
   
- バインダーのパラメーターには、適切なコンス トラクターのアセンブリを検索するオブジェクトを指定します。 バインダーと検索条件を指定できます。 バインダーが指定されていない場合は、既定のバインダーが使用されます。 詳細については、<xref:System.Reflection.Binder?displayProperty=nameWithType> クラスおよび <xref:System.Reflection.BindingFlags?displayProperty=nameWithType> クラスを参照してください。  
+ バインダーパラメーターは、アセンブリ内で適切なコンストラクターを検索するオブジェクトを指定します。 独自のバインダーと検索条件を指定できます。 バインダーが指定されていない場合は、既定のバインダーが使用されます。 詳細については、<xref:System.Reflection.Binder?displayProperty=nameWithType> クラスおよび <xref:System.Reflection.BindingFlags?displayProperty=nameWithType> クラスを参照してください。  
   
- 証拠パラメーターは、セキュリティ ポリシーと、コンス トラクターのアクセス許可に影響します。 詳細については、<xref:System.Security.Policy.Evidence?displayProperty=nameWithType> クラスを参照してください。  
+ 証拠パラメーターは、コンストラクターのセキュリティポリシーとアクセス許可に影響します。 詳細については、<xref:System.Security.Policy.Evidence?displayProperty=nameWithType> クラスを参照してください。  
   
- ローカルまたはリモート サイトでは、型のインスタンスを作成できます。 型がリモートで作成すると、アクティベーション属性パラメーターは、リモート サイトの URI を指定します。 インスタンスを作成する呼び出しは、リモート サイトに到達する前に、中間サイトを通過可能性があります。 その他のアクティベーション属性には、環境、またはリモートの中間サイトでの呼び出しが動作するコンテキストを変更できます。  
+ 型のインスタンスは、ローカルまたはリモートのサイトで作成できます。 型がリモートで作成されている場合、アクティブ化属性のパラメーターはリモートサイトの URI を指定します。 インスタンスを作成するための呼び出しは、リモートサイトに到達する前に中間サイトを通過する可能性があります。 その他のアクティブ化属性では、呼び出しがリモートサイトと中間サイトで動作する環境またはコンテキストを変更できます。  
   
- インスタンスがローカルに作成される場合は、そのオブジェクトへの参照が返されます。 インスタンスがリモートで作成された場合、プロキシへの参照が返されます。 リモート オブジェクトは、ローカル オブジェクトの場合と同様に、プロキシを介して操作されます。  
+ インスタンスがローカルで作成されている場合は、そのオブジェクトへの参照が返されます。 インスタンスがリモートで作成された場合は、プロキシへの参照が返されます。 リモートオブジェクトは、ローカルオブジェクトであるかのように、プロキシを介して操作されます。  
   
- <xref:System.Activator.GetObject%2A>メソッドは、現在実行しているリモート オブジェクト、よく知られているオブジェクトのサーバー側でアクティブまたは XML Web サービス プロキシを作成します。 接続メディア、チャネルを指定することができます。 詳細については、<xref:System.Runtime.Remoting.Channels.ChannelServices?displayProperty=nameWithType> クラスを参照してください。  
+ メソッド<xref:System.Activator.GetObject%2A>は、現在実行中のリモートオブジェクト、サーバー側でアクティブ化された既知のオブジェクト、または XML Web サービスに対してプロキシを作成します。 接続メディア、つまりチャネルを指定できます。 詳細については、<xref:System.Runtime.Remoting.Channels.ChannelServices?displayProperty=nameWithType> クラスを参照してください。  
   
- アセンブリには、型定義が含まれます。 <xref:System.Activator.CreateInstance%2A>メソッドは、現在実行中のアセンブリから型のインスタンスを作成します。 <xref:System.Activator.CreateInstanceFrom%2A>メソッドは、アセンブリを含むファイルからインスタンスを作成します。 <xref:System.Activator.CreateComInstanceFrom%2A>メソッドは、アセンブリを含むファイルから COM オブジェクトのインスタンスを作成します。  
+ アセンブリには型定義が含まれています。 メソッド<xref:System.Activator.CreateInstance%2A>は、現在実行中のアセンブリから型のインスタンスを作成します。 メソッド<xref:System.Activator.CreateInstanceFrom%2A>は、アセンブリを含むファイルからインスタンスを作成します。 メソッド<xref:System.Activator.CreateComInstanceFrom%2A>は、アセンブリを含むファイルから COM オブジェクトのインスタンスを作成します。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Activator>クラスを動的に実行時にオブジェクトを構築します。  
+ 次の例は、クラスを使用<xref:System.Activator>して、実行時にオブジェクトを動的に構築する方法を示しています。  
   
  [!code-cpp[ActivatorX#1](~/samples/snippets/cpp/VS_Snippets_CLR/ActivatorX/cpp/ActivatorX.cpp#1)]
  [!code-csharp[ActivatorX#1](~/samples/snippets/csharp/VS_Snippets_CLR/ActivatorX/cs/ActivatorX.cs#1)]
@@ -126,20 +126,20 @@
       <Docs>
         <param name="assemblyName"><paramref name="typeName" /> という名前の型をシークする場所となるアセンブリが含まれているファイルの名前。</param>
         <param name="typeName">推奨される型の名前。</param>
-        <summary>名前を指定したアセンブリ ファイルと、既定のコンストラクターを使用して、名前を指定した COM オブジェクトのインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリ ファイルと、パラメーターなしのコンストラクターを使用して、名前を指定した COM オブジェクトのインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- A<xref:System.Runtime.InteropServices.ComVisibleAttribute?displayProperty=nameWithType>属性の値`true`COM 型を明示的にまたは既定で適用する必要がありますので、<xref:System.Activator.CreateComInstanceFrom%2A>メソッドは、その型のインスタンスを作成できます。 そうしないと、<xref:System.TypeLoadException>がスローされます。  
+ 値<xref:System.Runtime.InteropServices.ComVisibleAttribute?displayProperty=nameWithType>がの`true`属性は、明示的に、または既定で COM 型に適用する必要<xref:System.Activator.CreateComInstanceFrom%2A>があります。これにより、メソッドがその<xref:System.TypeLoadException>型のインスタンスを作成できるようになります。それ以外の場合は、がスローされます。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、呼び出し元が許可されている場合は、非パブリックな型を作成するこのメソッドを使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型を含むアセンブリの許可セットは、呼び出し元の許可に制限されているかどうか設定またはそのサブセットにします。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元が<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグで許可<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型を含むアセンブリの許可セットが呼び出し元の許可に限定されている場合に、非パブリック型を作成できます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]またはをサブセットに設定します。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -148,17 +148,18 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="typeName" /> または <paramref name="assemblyName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.TypeLoadException">COM を使用してインスタンスを作成できません。  
   
-または 
+- または - 
  <paramref name="typename" /> が <paramref name="assemblyName" /> で見つかりませんでした。</exception>
         <exception cref="T:System.MissingMethodException">一致するコンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.IO.FileNotFoundException"><paramref name="assemblyName" /> が見つからないか、読み込もうとしているモジュールにファイル名拡張子が指定されていません。</exception>
         <exception cref="T:System.MemberAccessException">抽象クラスのインスタンスを作成できません。  
   
-または 
-このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
+ または  
+  
+ このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
         <exception cref="T:System.NotSupportedException">呼び出し元は、<see cref="T:System.MarshalByRefObject" /> を継承しないオブジェクトのアクティベーション属性を提供できません。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="assemblyName" /> が空の文字列 ("") です。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateComInstanceFrom">
@@ -201,20 +202,20 @@
         <param name="typeName">推奨される型の名前。</param>
         <param name="hashValue">計算されたハッシュ コードの値。</param>
         <param name="hashAlgorithm">ファイルのハッシュ処理および厳密な名前の生成に使用されるハッシュ アルゴリズム。</param>
-        <summary>名前を指定したアセンブリ ファイルと、既定のコンストラクターを使用して、名前を指定した COM オブジェクトのインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリ ファイルと、パラメーターなしのコンストラクターを使用して、名前を指定した COM オブジェクトのインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- A<xref:System.Runtime.InteropServices.ComVisibleAttribute?displayProperty=nameWithType>属性の値`true`COM 型を明示的にまたは既定で適用する必要がありますので、<xref:System.Activator.CreateComInstanceFrom%2A>メソッドは、その型のインスタンスを作成できます。 そうしないと、<xref:System.TypeLoadException>がスローされます。  
+ 値<xref:System.Runtime.InteropServices.ComVisibleAttribute?displayProperty=nameWithType>がの`true`属性は、明示的に、または既定で COM 型に適用する必要<xref:System.Activator.CreateComInstanceFrom%2A>があります。これにより、メソッドがその<xref:System.TypeLoadException>型のインスタンスを作成できるようになります。それ以外の場合は、がスローされます。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、呼び出し元が許可されている場合は、非パブリックな型を作成するこのメソッドを使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型を含むアセンブリの許可セットは、呼び出し元の許可に制限されているかどうか設定またはそのサブセットにします。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元が<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグで許可<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型を含むアセンブリの許可セットが呼び出し元の許可に限定されている場合に、非パブリック型を作成できます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]またはをサブセットに設定します。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -232,17 +233,18 @@
         <exception cref="T:System.Security.SecurityException">"file://" で始まっていないコードベースが、必須の <see langword="WebPermission" /> なしで指定されました。</exception>
         <exception cref="T:System.TypeLoadException">COM を使用してインスタンスを作成できません  
   
-または 
+- または - 
  <paramref name="typename" /> が <paramref name="assemblyName" /> で見つかりませんでした。</exception>
         <exception cref="T:System.MissingMethodException">一致するコンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.MemberAccessException">抽象クラスのインスタンスを作成できません。  
   
-または 
-このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
+ または  
+  
+ このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
         <exception cref="T:System.NotSupportedException">呼び出し元は、<see cref="T:System.MarshalByRefObject" /> を継承しないオブジェクトのアクティベーション属性を提供できません。</exception>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">file:// で始まる URI を読み取る。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Net.WebPermission">file:// で始まらないする URI を読み取る。</permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">"file://" で始まる URI を読み取ります。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Net.WebPermission">"file://" で始まらない URI を読み取る場合。</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="CreateInstance">
@@ -293,9 +295,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- ドメイン ポリシーを設定して、アプリケーション ベースのセキュリティ モデルを提供するマニフェストに基づくアクティベーション中にアクティブ化コンテキストが使用されます。 <xref:System.ActivationContext>クラスが含まれています、<xref:System.ApplicationIdentity>アプリケーション マニフェストへのアクセスを提供するオブジェクト。 詳細については、<xref:System.Security.Policy.ApplicationSecurityManager> クラスを参照してください。  
+ アクティベーションコンテキストは、マニフェストに基づくアクティベーション中に、ドメインポリシーを設定し、アプリケーションベースのセキュリティモデルを提供するために使用されます。 クラスには、 <xref:System.ApplicationIdentity>アプリケーションマニフェストへのアクセスを提供するオブジェクトが含まれています。 <xref:System.ActivationContext> 詳細については、<xref:System.Security.Policy.ApplicationSecurityManager> クラスを参照してください。  
   
  ]]></format>
         </remarks>
@@ -345,23 +347,23 @@
       </Parameters>
       <Docs>
         <param name="type">作成するオブジェクトの型。</param>
-        <summary>指定された型の既定のコンストラクターを使用して、指定された型のインスタンスを作成します。</summary>
+        <summary>指定された型のパラメーターなしのコンストラクターを使用して、指定された型のインスタンスを作成します。</summary>
         <returns>新しく作成されたオブジェクトへの参照。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出されるコンス トラクターは、アクセス可能である必要があります。  
+ 呼び出すコンストラクターにアクセスできる必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている非パブリックな型へのアクセスに使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型を含むアセンブリの許可セットは、呼び出し元の許可に制限されているかどうか設定またはそのサブセットにします。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型を含むアセンブリの許可セットが呼び出し元の許可に限定されている場合に、非パブリック型にアクセスできます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]またはをサブセットに設定します。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次のコード例を呼び出す方法を示します、<xref:System.Activator.CreateInstance%28System.Type%29>メソッド。 さまざまな種類のインスタンスが作成され、その既定値が表示されます。  
+ <xref:System.Activator.CreateInstance%28System.Type%29>メソッドを呼び出す方法を次のコード例に示します。 複数の異なる型のインスタンスが作成され、その既定値が表示されます。  
   
  [!code-cpp[ActivatorX#4](~/samples/snippets/cpp/VS_Snippets_CLR/ActivatorX/cpp/source2.cpp#4)]
  [!code-csharp[ActivatorX#4](~/samples/snippets/csharp/VS_Snippets_CLR/ActivatorX/cs/source2.cs#4)]
@@ -376,7 +378,7 @@
  <paramref name="type" /> はオープン ジェネリック型です (つまり、<see cref="P:System.Type.ContainsGenericParameters" /> プロパティは <see langword="true" /> を返します)。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="type" /> を <see cref="T:System.Reflection.Emit.TypeBuilder" /> にすることはできません。  
   
-または 
+- または - 
 <see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
 または 
@@ -402,8 +404,8 @@
  一致するパブリック コンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.Runtime.InteropServices.COMException"><paramref name="type" /> は COM オブジェクトですが、型を取得するために使用されるクラス ID が有効でないか、または識別されたクラスが登録されていません。</exception>
         <exception cref="T:System.TypeLoadException"><paramref name="type" /> は有効な型ではありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -446,9 +448,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- ドメイン ポリシーを設定して、アプリケーション ベースのセキュリティ モデルを提供するマニフェストに基づくアクティベーション中にアクティブ化コンテキストが使用されます。 <xref:System.ActivationContext>クラスが含まれています、<xref:System.ApplicationIdentity>アプリケーション マニフェストへのアクセスを提供するオブジェクト。 詳細については、<xref:System.Security.Policy.ApplicationSecurityManager> クラスを参照してください。  
+ アクティベーションコンテキストは、マニフェストに基づくアクティベーション中に、ドメインポリシーを設定し、アプリケーションベースのセキュリティモデルを提供するために使用されます。 クラスには、 <xref:System.ApplicationIdentity>アプリケーションマニフェストへのアクセスを提供するオブジェクトが含まれています。 <xref:System.ActivationContext> 詳細については、<xref:System.Security.Policy.ApplicationSecurityManager> クラスを参照してください。  
   
  ]]></format>
         </remarks>
@@ -494,41 +496,41 @@
       <Docs>
         <param name="assemblyName"><paramref name="typeName" /> という名前の型をシークする場所となるアセンブリの名前。 <paramref name="assemblyName" /> が <see langword="null" /> の場合は、実行中のアセンブリが検索されます。</param>
         <param name="typeName">必要な型の完全修飾名。</param>
-        <summary>名前を指定したアセンブリと、既定のコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリと、パラメーターなしのコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除します。  
+ 戻り<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>値のラップを解除するには、を使用します。  
   
- `assemblyName` 次のいずれかになります。  
+ `assemblyName`次のいずれかを指定できます。  
   
--   アセンブリでは、パスまたはファイル拡張子なしの簡易名。 たとえばは指定`TypeExtensions`のパスと名前は.\bin\TypeExtensions.dll アセンブリ。  
+-   アセンブリのパスまたはファイル拡張子を持たない単純な名前。 たとえば、.\bin\TypeExtensions.dll. というパス`TypeExtensions`と名前を持つアセンブリに対してを指定します。  
   
--   簡易名、バージョン、カルチャ、およびパブリック キー トークンで構成される署名されたアセンブリの完全名たとえば、"TypeExtensions、バージョン 1.0.0.0、カルチャを = = neutral, PublicKeyToken = 181869f2f7435b51"。  
+-   単純な名前、バージョン、カルチャ、および公開キートークンで構成される署名付きアセンブリの完全名。たとえば、"TypeExtensions, Version = 1.0.0.0, Culture = ニュートラル, PublicKeyToken = 181869f2f7435b51" のようになります。  
   
- 共通言語ランタイムの識別し、アセンブリの読み込みの詳細については、次を参照してください。[ランタイムがアセンブリを検索する方法](~/docs/framework/deployment/how-the-runtime-locates-assemblies.md)します。 アプリケーション構成ファイルを使用して、アセンブリの場所を定義する方法の詳細については、次を参照してください。[アセンブリの場所を指定する](~/docs/framework/configure-apps/specify-assembly-location.md)します。 場合`assemblyName`が見つかると、既定のコンテキストに読み込まれます。  
+ 共通言語ランタイムがアセンブリを識別および読み込む方法の詳細については、「[ランタイムがアセンブリを検索する方法](~/docs/framework/deployment/how-the-runtime-locates-assemblies.md)」を参照してください。 アプリケーション構成ファイルを使用してアセンブリの場所を定義する方法の詳細については、「[アセンブリの場所の指定](~/docs/framework/configure-apps/specify-assembly-location.md)」を参照してください。 が`assemblyName`見つかった場合は、既定のコンテキストで読み込まれます。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、呼び出し元が許可されている場合は、非パブリックな型を作成するこのメソッドを使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型を含むアセンブリの許可セットは、呼び出し元の許可に制限されているかどうか設定またはそのサブセットにします。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元が<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグで許可<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型を含むアセンブリの許可セットが呼び出し元の許可に限定されている場合に、非パブリック型を作成できます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]またはをサブセットに設定します。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次の例は、という名前のクラスを定義します。`Person`という名前のアセンブリで`PersonInfo`します。 なお、`Person`クラスにはパラメーターなしのうちの 1 つは、2 つのコンス トラクター。  
+ 次の例では、と`Person`いう名前`PersonInfo`のアセンブリにという名前のクラスを定義しています。 `Person`クラスには2つのコンストラクターがあり、そのうちの1つがパラメーターなしであることに注意してください。  
   
  [!code-csharp[System.Activator.CreateInstance#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.activator.createinstance/cs/personinfo.cs#1)]
  [!code-vb[System.Activator.CreateInstance#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.activator.createinstance/vb/personinfo.vb#1)]  
   
- 次の例では、<xref:System.Activator.CreateInstance%28System.String%2CSystem.String%29>をインスタンス化するメソッド、`Person`クラス。 プロジェクトに追加する PersonInfo.dll への参照が必要です。 <xref:System.Activator.CreateInstance%28System.String%2CSystem.String%29>メソッドの呼び出し、`Person`クラスの既定のコンス トラクターに値を割り当てます例では、その`Name`プロパティ。  
+ 次の例では<xref:System.Activator.CreateInstance%28System.String%2CSystem.String%29> 、メソッドを呼び出し`Person`て、クラスをインスタンス化しています。 このためには、プロジェクトに追加するための参照が必要です。 メソッドは<xref:System.Activator.CreateInstance%28System.String%2CSystem.String%29>パラメーターなしの`Person`クラスのコンストラクターを呼び出すため、この例で`Name`はプロパティに値を割り当てています。  
   
  [!code-csharp[System.Activator.CreateInstance#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.activator.createinstance/cs/createinstanceex1.cs#2)]
  [!code-vb[System.Activator.CreateInstance#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.activator.createinstance/vb/createinstanceex1.vb#2)]  
   
- ただし、<xref:System.Activator.CreateInstance%2A>はマシン境界を越えているかをデザイン時に不明な型をインスタンス化に頻繁に呼び出されます。 この場合、プロジェクトのアセンブリへの参照を含めることはできませんし、型のメンバーへの事前バインディングされた呼び出しを行うことはできません。 この制限を回避するには、次の例を使用して、<xref:System.Activator.CreateInstance%2A>メソッドに値を代入するためにリフレクションと、`Person`オブジェクトの`Name`プロパティの値を表示します。  
+ ただし、 <xref:System.Activator.CreateInstance%2A>は、コンピューターの境界を越えているか、デザイン時に認識されていない型をインスタンス化するために頻繁に呼び出されます。 この場合、プロジェクトにアセンブリへの参照を含めることはできず、その型のメンバーへの事前バインディング呼び出しを行うことはできません。 この制限を回避するには、次の例<xref:System.Activator.CreateInstance%2A>では、リフレクションと共にメソッドを使用`Person`して`Name` 、オブジェクトのプロパティに値を割り当て、その値を表示します。  
   
  [!code-csharp[System.Activator.CreateInstance#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.activator.createinstance/cs/createinstanceex1a.cs#3)]
  [!code-vb[System.Activator.CreateInstance#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.activator.createinstance/vb/createinstanceex1a.vb#3)]  
@@ -542,7 +544,7 @@
         <exception cref="T:System.MethodAccessException">呼び出し元には、このコンストラクターを呼び出すアクセス許可がありません。</exception>
         <exception cref="T:System.MemberAccessException">抽象クラスのインスタンスを作成することができないか、またはこのメンバーは遅延バインド メカニズムで呼び出されました。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException">リフレクションを通じて呼び出されたコンストラクターが、例外をスローしました。</exception>
-        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" /> を通じて COM 型が取得されませんでした。</exception>
+        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" />を通じて COM 型が取得されませんでした。</exception>
         <exception cref="T:System.NotSupportedException"><see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyName" /> は正しいアセンブリではありません。  
   
@@ -550,10 +552,11 @@
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
         <exception cref="T:System.IO.FileLoadException">アセンブリまたはモジュールが、2 つの異なる証拠を使用して 2 回読み込まれました。  
   
-または 
-アセンブリ名かコード ベースが正しくありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+ または  
+  
+ アセンブリ名かコード ベースが正しくありません。</exception>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -590,8 +593,8 @@
       </Parameters>
       <Docs>
         <param name="type">作成するオブジェクトの型。</param>
-        <param name="nonPublic">パブリックまたはパブリックでない既定コンストラクターを一致させる場合は <see langword="true" />。パブリックの既定コンストラクターだけを一致させる場合は <see langword="false" />。</param>
-        <summary>指定された型の既定のコンストラクターを使用して、指定された型のインスタンスを作成します。</summary>
+        <param name="nonPublic">パブリックまたはパブリックでないパラメーターなしのコンストラクターを一致させる場合は <see langword="true" />。パブリックのパラメーターなしのコンストラクターだけを一致させる場合は <see langword="false" />。</param>
+        <summary>指定された型のパラメーターなしのコンストラクターを使用して、指定された型のインスタンスを作成します。</summary>
         <returns>新しく作成されたオブジェクトへの参照。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -599,7 +602,7 @@
 ## Remarks  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている場合、非パブリックな型とメンバーのアクセスに使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型とメンバーを含むアセンブリの許可セットが制限されているかどうか呼び出し元の設定またはそのサブセットを付与します。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型とメンバーを含むアセンブリの許可セットが制限されている場合に、非パブリックな型およびメンバーにアクセスできます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]呼び出し元の許可セットまたはサブセットに対して。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -615,7 +618,7 @@
 または 
 <see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
-または 
+- または - 
 <paramref name="type" /> を格納するアセンブリは <see cref="F:System.Reflection.Emit.AssemblyBuilderAccess.Save" /> を使用して作成された動的アセンブリです。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException">呼び出されるコンストラクターは例外をスローします。</exception>
         <exception cref="T:System.MethodAccessException">呼び出し元には、このコンストラクターを呼び出すアクセス許可がありません。</exception>
@@ -624,8 +627,8 @@
         <exception cref="T:System.MissingMethodException">一致するパブリック コンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.Runtime.InteropServices.COMException"><paramref name="type" /> は COM オブジェクトですが、型を取得するために使用されるクラス ID が有効でないか、または識別されたクラスが登録されていません。</exception>
         <exception cref="T:System.TypeLoadException"><paramref name="type" /> は有効な型ではありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -676,43 +679,43 @@
       </Parameters>
       <Docs>
         <param name="type">作成するオブジェクトの型。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <summary>指定したパラメーターに最も一致するコンストラクターを使用して、指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたオブジェクトへの参照。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出されるコンス トラクターは、アクセス可能である必要があり、指定した引数リストを最も具体的な一致を提供する必要があります。  
+ 呼び出されるコンストラクターはアクセス可能である必要があり、指定された引数リストと最も限定的な一致を提供する必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている非パブリックな型へのアクセスに使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型を含むアセンブリの許可セットは、呼び出し元の許可に制限されているかどうか設定またはそのサブセットにします。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型を含むアセンブリの許可セットが呼び出し元の許可に限定されている場合に、非パブリック型にアクセスできます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]またはをサブセットに設定します。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
    
   
 ## Examples  
- 次の例では、<xref:System.Activator.CreateInstance%28System.Type%2CSystem.Object%5B%5D%29>を作成する方法、<xref:System.String>オブジェクト。 呼び出す、 <xref:System.String.%23ctor%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29?displayProperty=nameWithType> 14 番目の位置から文字配列から 10 個の要素を含む文字列のインスタンスを作成するコンス トラクター。  
+ 次の例では<xref:System.Activator.CreateInstance%28System.Type%2CSystem.Object%5B%5D%29> 、メソッドを呼び出し<xref:System.String>てオブジェクトを作成します。 このメソッドは<xref:System.String.%23ctor%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29?displayProperty=nameWithType> 、コンストラクターを呼び出して、14番目位置から始まる文字配列から10個の要素を含む文字列をインスタンス化します。  
   
  [!code-csharp[System.Activator.CreateInstance#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.activator.createinstance/cs/CreateInstance5.cs#5)]
  [!code-vb[System.Activator.CreateInstance#5](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.activator.createinstance/vb/CreateInstance5.vb#5)]  
   
- 次の例に渡される引数を要素として持つジャグ配列を作成、<xref:System.String>コンス トラクター。 各配列を渡します、<xref:System.Activator.CreateInstance%28System.Type%2CSystem.Object%5B%5D%29>に適切な文字列コンス トラクターを呼び出すメソッド。  
+ 次の例では、要素が<xref:System.String>コンストラクターに渡される引数であるジャグ配列を作成します。 この例では、各配列を<xref:System.Activator.CreateInstance%28System.Type%2CSystem.Object%5B%5D%29>メソッドに渡して、適切な文字列コンストラクターを呼び出します。  
   
  [!code-csharp[System.Activator.CreateInstance#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.activator.createinstance/cs/createinstance2.cs#4)]
  [!code-vb[System.Activator.CreateInstance#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.activator.createinstance/vb/createinstance2.vb#4)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="type" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="type" /> が <see langword="RuntimeType" /> ではありません。  
   
 または 
  <paramref name="type" /> はオープン ジェネリック型です (つまり、<see cref="P:System.Type.ContainsGenericParameters" /> プロパティは <see langword="true" /> を返します)。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="type" /> を <see cref="T:System.Reflection.Emit.TypeBuilder" /> にすることはできません。  
   
-または 
+- または - 
 <see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
 または 
@@ -741,8 +744,8 @@
  一致するパブリック コンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.Runtime.InteropServices.COMException"><paramref name="type" /> は COM オブジェクトですが、型を取得するために使用されるクラス ID が有効でないか、または識別されたクラスが登録されていません。</exception>
         <exception cref="T:System.TypeLoadException"><paramref name="type" /> は有効な型ではありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -782,18 +785,18 @@
         <param name="domain"><paramref name="typeName" /> という名前の型が作成されるリモート ドメイン。</param>
         <param name="assemblyName"><paramref name="typeName" /> という名前の型をシークする場所となるアセンブリの名前。 <paramref name="assemblyName" /> が <see langword="null" /> の場合は、実行中のアセンブリが検索されます。</param>
         <param name="typeName">必要な型の完全修飾名。</param>
-        <summary>名前を指定したアセンブリと既定のコンストラクターを使用して、指定したリモート ドメインに、名前を指定した型のインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリとパラメーターなしのコンストラクターを使用して、指定したリモート ドメインに、名前を指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Activator.CreateInstance%2A>ホストがセキュリティのアクセス許可が制限されているアプリケーション ドメインでコードを実行する必要がある場合。  
+ ホスト<xref:System.Activator.CreateInstance%2A>が、セキュリティアクセス許可が制限されたアプリケーションドメインでコードを実行する必要がある場合に使用します。  
   
- 使用<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除します。  
+ 戻り<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>値のラップを解除するには、を使用します。  
   
 > [!NOTE]
->  このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType>に完全な信頼の直前の呼び出し元が必要です。  
+>  このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType> 、を使用して、直前の呼び出し元に完全信頼を与えるように要求します。  
   
  ]]></format>
         </remarks>
@@ -804,10 +807,11 @@
         <exception cref="T:System.MethodAccessException">呼び出し元には、このコンストラクターを呼び出すアクセス許可がありません。</exception>
         <exception cref="T:System.MemberAccessException">抽象型のインスタンスは作成できません。  
   
-または 
-このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
+ - または -  
+  
+ このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException">リフレクションを通じて呼び出されたコンストラクターが、例外をスローしました。</exception>
-        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" /> を通じて COM 型が取得されませんでした。</exception>
+        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" />を通じて COM 型が取得されませんでした。</exception>
         <exception cref="T:System.NotSupportedException"><see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyName" /> は正しいアセンブリではありません。  
   
@@ -815,11 +819,12 @@
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
         <exception cref="T:System.IO.FileLoadException">アセンブリまたはモジュールが、2 つの異なる証拠を使用して 2 回読み込まれました。  
   
-または 
-アセンブリ名かコード ベースが正しくありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">すべての型のメンバーに対して操作を呼び出す権限です。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+ または  
+  
+ アセンブリ名かコード ベースが正しくありません。</exception>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">すべての型のメンバーに対して操作を呼び出すことができる。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -863,16 +868,16 @@
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
 このパラメーターは、クライアント側でアクティブ化されるオブジェクトに関連しています。 クライアント アクティベーションは、下位互換性のために残されているレガシ テクノロジです。新規の開発には使用しないでください。 分散アプリケーションは、代わりに Windows Communication Foundation (WCF) を使用する必要があります。</param>
-        <summary>名前を指定したアセンブリと、既定のコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリと、パラメーターなしのコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除します。  
+ 戻り<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>値のラップを解除するには、を使用します。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、呼び出し元が許可されている場合は、非パブリックな型を作成するこのメソッドを使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型の許可セット、呼び出し元の許可セット、またはそのサブセットに制限されます。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元が<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグで許可<xref:System.Security.Permissions.ReflectionPermission>されている場合、および非パブリック型の許可セットが呼び出し元の許可セットまたはサブセットに制限されている場合に、非パブリック型を作成できます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)] (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -890,7 +895,7 @@
 または 
  <paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。  
   
-または 
+- または - 
  <paramref name="activationAttributes" /> が <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> ではありません。  
   
 配列。</exception>
@@ -900,11 +905,12 @@
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
         <exception cref="T:System.IO.FileLoadException">アセンブリまたはモジュールが、2 つの異なる証拠を使用して 2 回読み込まれました。  
   
-または 
-アセンブリ名かコード ベースが正しくありません。</exception>
+ または  
+  
+ アセンブリ名かコード ベースが正しくありません。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException"><paramref name="activationAttributes" /> で指定されたターゲットでリモートからのアクティブ化を試みたときにエラーが発生しました。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -946,7 +952,7 @@
       </Parameters>
       <Docs>
         <param name="type">作成するオブジェクトの型。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
 このパラメーターは、クライアント側でアクティブ化されるオブジェクトに関連しています。 クライアント アクティベーションは、下位互換性のために残されているレガシ テクノロジです。新規の開発には使用しないでください。 分散アプリケーションは、代わりに Windows Communication Foundation (WCF) を使用する必要があります。</param>
@@ -956,10 +962,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出されるコンス トラクターは、アクセス可能である必要があり、指定した引数リストを最も具体的な一致を提供する必要があります。  
+ 呼び出されるコンストラクターはアクセス可能である必要があり、指定された引数リストと最も限定的な一致を提供する必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている非パブリックな型へのアクセスに使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型を含むアセンブリの許可セットは、呼び出し元の許可に制限されているかどうか設定またはそのサブセットにします。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型を含むアセンブリの許可セットが呼び出し元の許可に限定されている場合に、非パブリック型にアクセスできます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]またはをサブセットに設定します。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -972,13 +978,13 @@
  <paramref name="type" /> はオープン ジェネリック型です (つまり、<see cref="P:System.Type.ContainsGenericParameters" /> プロパティは <see langword="true" /> を返します)。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="type" /> を <see cref="T:System.Reflection.Emit.TypeBuilder" /> にすることはできません。  
   
-または 
+- または - 
 <see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
-または 
+- または - 
  <paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。  
   
-または 
+- または - 
 <paramref name="type" /> を格納するアセンブリは、<see cref="F:System.Reflection.Emit.AssemblyBuilderAccess.Save" /> を使用して作成された動的アセンブリです。  
   
 または 
@@ -990,8 +996,8 @@
         <exception cref="T:System.MissingMethodException">一致するパブリック コンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.Runtime.InteropServices.COMException"><paramref name="type" /> は COM オブジェクトですが、型を取得するために使用されるクラス ID が有効でないか、または識別されたクラスが登録されていません。</exception>
         <exception cref="T:System.TypeLoadException"><paramref name="type" /> は有効な型ではありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -1037,7 +1043,7 @@
         <param name="type">作成するオブジェクトの型。</param>
         <param name="bindingAttr"><paramref name="type" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="type" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="type" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <summary>指定したパラメーターに最も一致するコンストラクターを使用して、指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたオブジェクトへの参照。</returns>
@@ -1045,10 +1051,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出されるコンス トラクターには、指定したバインダーとバインディング属性の制約下で指定された引数リストと最もよく一致を提供する必要があります。  
+ 呼び出されるコンストラクターは、指定されたバインダーおよびバインド属性の制約の下で、指定された引数リストと最も限定的な一致を提供する必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている場合、非パブリックな型とメンバーのアクセスに使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型とメンバーを含むアセンブリの許可セットが制限されているかどうか呼び出し元の設定またはそのサブセットを付与します。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型とメンバーを含むアセンブリの許可セットが制限されている場合に、非パブリックな型およびメンバーにアクセスできます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]呼び出し元の許可セットまたはサブセットに対して。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -1057,14 +1063,14 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="type" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="type" /> が <see langword="RuntimeType" /> ではありません。  
   
-または 
+- または - 
  <paramref name="type" /> はオープン ジェネリック型です (つまり、<see cref="P:System.Type.ContainsGenericParameters" /> プロパティは <see langword="true" /> を返します)。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="type" /> を <see cref="T:System.Reflection.Emit.TypeBuilder" /> にすることはできません。  
   
-または 
+- または - 
 <see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
-または 
+- または - 
 <paramref name="type" /> を格納するアセンブリは、<see cref="F:System.Reflection.Emit.AssemblyBuilderAccess.Save" /> を使用して作成された動的アセンブリです。  
   
 または 
@@ -1076,8 +1082,8 @@
         <exception cref="T:System.MissingMethodException">一致するコンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.Runtime.InteropServices.COMException"><paramref name="type" /> は COM オブジェクトですが、型を取得するために使用されるクラス ID が有効でないか、または識別されたクラスが登録されていません。</exception>
         <exception cref="T:System.TypeLoadException"><paramref name="type" /> は有効な型ではありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -1124,7 +1130,7 @@
         <param name="type">作成するオブジェクトの型。</param>
         <param name="bindingAttr"><paramref name="type" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="type" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="type" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -1135,10 +1141,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出されるコンス トラクターには、指定したバインダーとバインディング属性の制約下で指定された引数リストと最もよく一致を提供する必要があります。  
+ 呼び出されるコンストラクターは、指定されたバインダーおよびバインド属性の制約の下で、指定された引数リストと最も限定的な一致を提供する必要があります。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている場合、非パブリックな型とメンバーのアクセスに使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型とメンバーの許可セットが呼び出し元の制限されたセットを許可またはそのサブセットに。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型とメンバーの許可セットが呼び出し元の許可セットに制限されている場合に、非パブリックな型およびメンバーにアクセスできます。 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]サブセットにします。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -1151,13 +1157,13 @@
  <paramref name="type" /> はオープン ジェネリック型です (つまり、<see cref="P:System.Type.ContainsGenericParameters" /> プロパティは <see langword="true" /> を返します)。</exception>
         <exception cref="T:System.NotSupportedException"><paramref name="type" /> を <see cref="T:System.Reflection.Emit.TypeBuilder" /> にすることはできません。  
   
-または 
+- または - 
 <see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
-または 
+- または - 
  <paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。  
   
-または 
+- または - 
 <paramref name="type" /> を格納するアセンブリは、<see cref="F:System.Reflection.Emit.AssemblyBuilderAccess.Save" /> を使用して作成された動的アセンブリです。  
   
 または 
@@ -1169,8 +1175,8 @@
         <exception cref="T:System.MissingMethodException">一致するコンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.Runtime.InteropServices.COMException"><paramref name="type" /> は COM オブジェクトですが、型を取得するために使用されるクラス ID が有効でないか、または識別されたクラスが登録されていません。</exception>
         <exception cref="T:System.TypeLoadException"><paramref name="type" /> は有効な型ではありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">証拠を指定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlEvidence" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">証拠を提供します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlEvidence" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -1216,7 +1222,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -1227,10 +1233,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除します。  
+ 戻り<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>値のラップを解除するには、を使用します。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている場合、非パブリックな型とメンバーの作成に使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型とメンバーを含むアセンブリの許可セットが制限されているかどうか呼び出し元の設定またはそのサブセットを付与します。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型とメンバーを含むアセンブリの許可セットが制限されている場合に、非パブリックな型とメンバーを作成できます。呼び出し元の許可セットまたはサブセットに対して。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -1243,13 +1249,13 @@
         <exception cref="T:System.MethodAccessException">呼び出し元には、このコンストラクターを呼び出すアクセス許可がありません。</exception>
         <exception cref="T:System.MemberAccessException">抽象クラスのインスタンスを作成することができないか、またはこのメンバーは遅延バインド メカニズムで呼び出されました。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException">リフレクションを通じて呼び出されたコンストラクターが、例外をスローしました。</exception>
-        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" /> を通じて COM 型が取得されませんでした。</exception>
+        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" />を通じて COM 型が取得されませんでした。</exception>
         <exception cref="T:System.NotSupportedException"><see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
 または 
  <paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。  
   
-または 
+- または - 
 <paramref name="args" /> と最もよく一致するコンストラクターに <see langword="varargs" /> 引数があります。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyName" /> は正しいアセンブリではありません。  
   
@@ -1257,10 +1263,11 @@
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
         <exception cref="T:System.IO.FileLoadException">アセンブリまたはモジュールが、2 つの異なる証拠を使用して 2 回読み込まれました。  
   
-または 
-アセンブリ名かコード ベースが正しくありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+ - または -  
+  
+ アセンブリ名かコード ベースが正しくありません。</exception>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -1307,7 +1314,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -1318,12 +1325,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Activator.CreateInstance%2A>ホストがセキュリティのアクセス許可が制限されているアプリケーション ドメインでコードを実行する必要がある場合。  
+ ホスト<xref:System.Activator.CreateInstance%2A>が、セキュリティアクセス許可が制限されたアプリケーションドメインでコードを実行する必要がある場合に使用します。  
   
- 使用<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除します。  
+ 戻り<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>値のラップを解除するには、を使用します。  
   
 > [!NOTE]
->  このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType>に完全な信頼の直前の呼び出し元が必要です。  
+>  このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType> 、を使用して、直前の呼び出し元に完全信頼を与えるように要求します。  
   
  ]]></format>
         </remarks>
@@ -1334,13 +1341,13 @@
         <exception cref="T:System.MethodAccessException">呼び出し元には、このコンストラクターを呼び出すアクセス許可がありません。</exception>
         <exception cref="T:System.MemberAccessException">抽象クラスのインスタンスを作成することができないか、またはこのメンバーは遅延バインド メカニズムで呼び出されました。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException">リフレクションを通じて呼び出されたコンストラクターが、例外をスローしました。</exception>
-        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" /> を通じて COM 型が取得されませんでした。</exception>
+        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" />を通じて COM 型が取得されませんでした。</exception>
         <exception cref="T:System.NotSupportedException"><see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
-または 
+- または - 
  <paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。  
   
-または 
+- または - 
 <paramref name="args" /> と最もよく一致するコンストラクターに <see langword="varargs" /> 引数があります。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyName" /> は正しいアセンブリではありません。  
   
@@ -1348,11 +1355,12 @@
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
         <exception cref="T:System.IO.FileLoadException">アセンブリまたはモジュールが、2 つの異なる証拠を使用して 2 回読み込まれました。  
   
-または 
-アセンブリ名かコード ベースが正しくありません。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">すべての型のメンバーに対して操作を呼び出す権限です。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+ または  
+  
+ アセンブリ名かコード ベースが正しくありません。</exception>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">すべての型のメンバーに対して操作を呼び出すことができる。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -1403,7 +1411,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -1415,10 +1423,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除します。  
+ 戻り<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>値のラップを解除するには、を使用します。  
   
 > [!NOTE]
->  以降では、 [!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドは、呼び出し元が許可されている場合、非パブリックな型とメンバーの作成に使用できます<xref:System.Security.Permissions.ReflectionPermission>で、<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグと非パブリックな型とメンバーを含むアセンブリの許可セットが制限されているかどうか呼び出し元の設定またはそのサブセットを付与します。 (を参照してください[リフレクションに関するセキュリティの考慮事項](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md))。  
+>  以降では[!INCLUDE[net_v20sp1_long](~/includes/net-v20sp1-long-md.md)]、このメソッドを使用して、呼び出し元に<xref:System.Security.Permissions.ReflectionPermissionFlag.RestrictedMemberAccess?displayProperty=nameWithType>フラグが付与<xref:System.Security.Permissions.ReflectionPermission>されていて、非パブリック型とメンバーを含むアセンブリの許可セットが制限されている場合に、非パブリックな型とメンバーを作成できます。呼び出し元の許可セットまたはサブセットに対して。 (「[リフレクションのセキュリティに関する考慮事項」を](~/docs/framework/reflection-and-codedom/security-considerations-for-reflection.md)参照してください)。  
 >   
 >  この機能を使用するには、アプリケーションで [!INCLUDE[net_v35_long](~/includes/net-v35-long-md.md)] 以降を対象とする必要があります。  
   
@@ -1431,24 +1439,25 @@
         <exception cref="T:System.MethodAccessException">呼び出し元には、このコンストラクターを呼び出すアクセス許可がありません。</exception>
         <exception cref="T:System.MemberAccessException">抽象クラスのインスタンスを作成することができないか、またはこのメンバーは遅延バインド メカニズムで呼び出されました。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException">リフレクションを通じて呼び出されたコンストラクターが、例外をスローしました。</exception>
-        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" /> を通じて COM 型が取得されませんでした。</exception>
+        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" />を通じて COM 型が取得されませんでした。</exception>
         <exception cref="T:System.NotSupportedException"><see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
-または 
+- または - 
  <paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。  
   
-または 
+- または - 
 <paramref name="args" /> と最もよく一致するコンストラクターに <see langword="varargs" /> 引数があります。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyName" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
         <exception cref="T:System.IO.FileLoadException">アセンブリまたはモジュールが、2 つの異なる証拠を使用して 2 回読み込まれました。  
   
-または 
-アセンブリ名かコード ベースが正しくありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+ - または -  
+  
+ アセンブリ名かコード ベースが正しくありません。</exception>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance">
@@ -1500,7 +1509,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 通常、これは単一の <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。 <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> により、リモート オブジェクトのアクティブ化に必要な URL が指定されます。</param>
         <param name="securityAttributes">セキュリティ ポリシーがコードに与えるアクセス許可を決定するために使用する情報。</param>
@@ -1510,12 +1519,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Activator.CreateInstance%2A>ホストがセキュリティのアクセス許可が制限されているアプリケーション ドメインでコードを実行する必要がある場合。  
+ ホスト<xref:System.Activator.CreateInstance%2A>が、セキュリティアクセス許可が制限されたアプリケーションドメインでコードを実行する必要がある場合に使用します。  
   
- 使用<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除します。  
+ 戻り<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>値のラップを解除するには、を使用します。  
   
 > [!NOTE]
->  このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType>に完全な信頼の直前の呼び出し元が必要です。  
+>  このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType> 、を使用して、直前の呼び出し元に完全信頼を与えるように要求します。  
   
  ]]></format>
         </remarks>
@@ -1526,25 +1535,26 @@
         <exception cref="T:System.MethodAccessException">呼び出し元には、このコンストラクターを呼び出すアクセス許可がありません。</exception>
         <exception cref="T:System.MemberAccessException">抽象クラスのインスタンスを作成することができないか、またはこのメンバーは遅延バインド メカニズムで呼び出されました。</exception>
         <exception cref="T:System.Reflection.TargetInvocationException">リフレクションを通じて呼び出されたコンストラクターが、例外をスローしました。</exception>
-        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" /> を通じて COM 型が取得されませんでした。</exception>
+        <exception cref="T:System.Runtime.InteropServices.InvalidComObjectException"><see cref="Overload:System.Type.GetTypeFromProgID" /> または <see cref="Overload:System.Type.GetTypeFromCLSID" />を通じて COM 型が取得されませんでした。</exception>
         <exception cref="T:System.NotSupportedException"><see cref="T:System.TypedReference" />、<see cref="T:System.ArgIterator" />、<see cref="T:System.Void" />、および <see cref="T:System.RuntimeArgumentHandle" /> 型、またはそれらの型の配列の作成はサポートされていません。  
   
-または 
+- または - 
  <paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。  
   
 または 
 <paramref name="args" /> と最もよく一致するコンストラクターに <see langword="varargs" /> 引数があります。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyName" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
         <exception cref="T:System.IO.FileLoadException">アセンブリまたはモジュールが、2 つの異なる証拠を使用して 2 回読み込まれました。  
   
-または 
-アセンブリ名かコード ベースが正しくありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">すべての型のメンバーに対して操作を呼び出す権限です。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+ - または -  
+  
+ アセンブリ名かコード ベースが正しくありません。</exception>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">すべての型のメンバーに対して操作を呼び出すことができる。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstance&lt;T&gt;">
@@ -1595,15 +1605,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Activator.CreateInstance%60%601>ジェネリック メソッドは、コンパイラで型パラメーターで指定された型のインスタンス化を実装するために使用します。 たとえば、次のジェネリック メソッドの実装で`new T()`(`gcnew T()` C++ で) を使用して、<xref:System.Activator.CreateInstance%60%601>ジェネリック メソッド。  
+ ジェネリック<xref:System.Activator.CreateInstance%60%601>メソッドは、型パラメーターによって指定された型のインスタンス化を実装するために、コンパイラによって使用されます。 たとえば、次のジェネリックメソッド`new T()`では、(`gcnew T()`のC++) の実装でジェネリックメソッド<xref:System.Activator.CreateInstance%60%601>が使用されます。  
   
  [!code-cpp[System.Activation.CreateInstance~~1#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.activation.createinstance~~1/cpp/remarks.cpp#1)]
  [!code-csharp[System.Activation.CreateInstance~~1#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.activation.createinstance~~1/cs/remarks.cs#1)]
  [!code-vb[System.Activation.CreateInstance~~1#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.activation.createinstance~~1/vb/remarks.vb#1)]  
   
- 一般の使用はありません、<xref:System.Activator.CreateInstance%60%601>型は、コンパイル時に認識する必要がありますので、アプリケーションでジェネリック メソッドのコードします。 型がコンパイル時に既知の場合は、通常のインスタンス化の構文を使用できます (`new` C# 演算子`New`Visual Basic で`gcnew`C++ で)。 コンパイル時に、型が不明な場合は、非ジェネリック オーバー ロードを呼び出すことができます<xref:System.Activator.CreateInstance%2A>します。  
+ 一般に、型はコンパイル時に既知<xref:System.Activator.CreateInstance%60%601>である必要があるため、アプリケーションコードにはジェネリックメソッドは使用されません。 コンパイル時に型がわかっている場合は、通常のインスタンス化構文`new`を使用C#でき`New`ます (で`gcnew`はC++、in Visual Basic では演算子)。 コンパイル時に型が不明な場合は、の<xref:System.Activator.CreateInstance%2A>非ジェネリックオーバーロードを呼び出すことができます。  
   
- オーバー ロードはありません、<xref:System.Activator.CreateInstance%60%601>ジェネリック メソッドのオーバー ロード、汎用でないため、引数リストを取る<xref:System.Activator.CreateInstance%2A>既に遅延バインディングのコンス トラクターの解決を提供します。  
+ 引数リストを受け取る<xref:System.Activator.CreateInstance%60%601>ジェネリックメソッドのオーバーロードはありません。の<xref:System.Activator.CreateInstance%2A>非ジェネリックオーバーロードは、既に遅延バインディングされたコンストラクター解決を提供しているためです。  
   
  ]]></format>
         </remarks>
@@ -1664,20 +1674,20 @@
       <Docs>
         <param name="assemblyFile"><paramref name="typeName" /> という名前の型をシークする場所となるアセンブリが含まれているファイルの名前。</param>
         <param name="typeName">推奨される型の名前。</param>
-        <summary>名前を指定したアセンブリ ファイルと、既定のコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリ ファイルと、パラメーターなしのコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
    
   
 ## Examples  
- 次のコード例を呼び出す方法を示します、<xref:System.Activator.CreateInstanceFrom%2A>メソッド。 このコード例が示されている例の一部、<xref:System.Activator>クラス。  
+ <xref:System.Activator.CreateInstanceFrom%2A>メソッドを呼び出す方法を次のコード例に示します。 このコード例は、 <xref:System.Activator>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[ActivatorX#3](~/samples/snippets/cpp/VS_Snippets_CLR/ActivatorX/cpp/ActivatorX.cpp#3)]
  [!code-csharp[ActivatorX#3](~/samples/snippets/csharp/VS_Snippets_CLR/ActivatorX/cs/ActivatorX.cs#3)]
@@ -1695,11 +1705,11 @@
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要な <see cref="T:System.Security.Permissions.FileIOPermission" /> がありません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyFile" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリ パスを検索し、その内容を読み取る権限です。 列挙体に関連付けられている:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />と <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリパスを検索し、その内容を読み取る機能。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />た列挙型: および<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstanceFrom">
@@ -1739,20 +1749,20 @@
         <param name="domain"><paramref name="typeName" /> という名前の型が作成されるリモート ドメイン。</param>
         <param name="assemblyFile"><paramref name="typeName" /> という名前の型をシークする場所となるアセンブリが含まれているファイルの名前。</param>
         <param name="typeName">推奨される型の名前。</param>
-        <summary>名前を指定したアセンブリ ファイルと既定のコンストラクターを使用して、指定したリモート ドメインに、名前を指定した型のインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリ ファイルとパラメーターなしのコンストラクターを使用して、指定したリモート ドメインに、名前を指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Activator.CreateInstanceFrom%2A>ホストがセキュリティのアクセス許可が制限されているアプリケーション ドメインでコードを実行する必要がある場合。  
+ ホスト<xref:System.Activator.CreateInstanceFrom%2A>が、セキュリティアクセス許可が制限されたアプリケーションドメインでコードを実行する必要がある場合に使用します。  
   
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
 > [!NOTE]
->  このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType>に完全な信頼の直前の呼び出し元が必要です。  
+>  このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType> 、を使用して、直前の呼び出し元に完全信頼を与えるように要求します。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
  ]]></format>
         </remarks>
@@ -1766,11 +1776,11 @@
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要な <see cref="T:System.Security.Permissions.FileIOPermission" /> がありません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyFile" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリ パスを検索し、その内容を読み取る権限です。 列挙体に関連付けられている:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />と <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリパスを検索し、その内容を読み取る機能。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />た列挙型: および<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstanceFrom">
@@ -1814,15 +1824,15 @@
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
 このパラメーターは、クライアント側でアクティブ化されるオブジェクトに関連しています。 クライアント アクティベーションは、下位互換性のために残されているレガシ テクノロジです。新規の開発には使用しないでください。 分散アプリケーションは、代わりに Windows Communication Foundation (WCF) を使用する必要があります。</param>
-        <summary>名前を指定したアセンブリ ファイルと、既定のコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
+        <summary>名前を指定したアセンブリ ファイルと、パラメーターなしのコンストラクターを使用して、名前を指定した型のインスタンスを作成します。</summary>
         <returns>新しく作成されたインスタンスにアクセスするために、ラップを解除する必要があるハンドル。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
  ]]></format>
         </remarks>
@@ -1837,11 +1847,11 @@
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要な <see cref="T:System.Security.Permissions.FileIOPermission" /> がありません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyFile" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリ パスを検索し、その内容を読み取る権限です。 列挙体に関連付けられている:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />と <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">アクセス許可に関係なく、非パブリックな型の次のように設定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリパスを検索し、その内容を読み取る機能。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />た列挙型: および<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリック型にアクセスします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstanceFrom">
@@ -1882,7 +1892,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -1893,9 +1903,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
  ]]></format>
         </remarks>
@@ -1910,11 +1920,11 @@
         <exception cref="T:System.NotSupportedException"><paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyFile" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリ パスを検索し、その内容を読み取る権限です。 列挙体に関連付けられている:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />と <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリパスを検索し、その内容を読み取る機能。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />た列挙型: および<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstanceFrom">
@@ -1961,7 +1971,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -1972,11 +1982,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Activator.CreateInstanceFrom%2A>ホストがセキュリティのアクセス許可が制限されているアプリケーション ドメインでコードを実行する必要がある場合。  
+ ホスト<xref:System.Activator.CreateInstanceFrom%2A>が、セキュリティアクセス許可が制限されたアプリケーションドメインでコードを実行する必要がある場合に使用します。  
   
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照して、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの例外に関するセクションを参照してください。  
   
  ]]></format>
         </remarks>
@@ -1991,12 +2001,12 @@
         <exception cref="T:System.NotSupportedException"><paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyFile" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
  <paramref name="assemblyName" /> が、現在読み込まれているバージョンよりも新しいバージョンの共通言語ランタイムを対象としてコンパイルされました。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">証拠を指定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlEvidence" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリ パスを検索し、その内容を読み取る権限です。 列挙体に関連付けられている:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />と <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">証拠を提供します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlEvidence" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリパスを検索し、その内容を読み取る機能。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />た列挙型: および<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstanceFrom">
@@ -2044,7 +2054,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -2056,13 +2066,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="typeName" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="typeName" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.MissingMethodException">一致するコンストラクターが見つかりませんでした。</exception>
         <exception cref="T:System.TypeLoadException"><paramref name="typename" /> が <paramref name="assemblyFile" /> に見つかりませんでした。</exception>
         <exception cref="T:System.IO.FileNotFoundException"><paramref name="assemblyFile" /> が見つかりませんでした。</exception>
@@ -2075,9 +2085,9 @@
   
 または 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージ コードを呼び出す機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリ パスを検索し、その内容を読み取る権限です。 列挙体に関連付けられている:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />と <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">デリゲートのインスタンスを作成するときに、アンマネージコードを呼び出すことができるようにします。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリパスを検索し、その内容を読み取る機能。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />た列挙型: および<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
       </Docs>
     </Member>
     <Member MemberName="CreateInstanceFrom">
@@ -2129,7 +2139,7 @@
         <param name="ignoreCase"><paramref name="typeName" /> の検索で大文字と小文字を区別しない場合は <see langword="true" />。検索で大文字と小文字を区別する場合は <see langword="false" />。</param>
         <param name="bindingAttr"><paramref name="typeName" /> コンストラクターの検索に影響を与える 0 個以上のビット フラグの組み合わせ。 <paramref name="bindingAttr" /> が 0 の場合は、大文字と小文字を区別してパブリック コンストラクターを検索します。</param>
         <param name="binder"><paramref name="bindingAttr" /> および <paramref name="args" /> を使用して <paramref name="typeName" /> コンストラクターをシークおよび識別するオブジェクト。 <paramref name="binder" /> が <see langword="null" /> の場合は、既定のバインダーが使用されます。</param>
-        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターなしのコンストラクター (既定のコンストラクター) が呼び出されます。</param>
+        <param name="args">呼び出すコンストラクターのパラメーターと、数、順序、および型が一致する引数の配列。 <paramref name="args" /> が空の配列または <see langword="null" /> である場合は、パラメーターを受け取らないコンストラクター (パラメーターなしのコンストラクター) が呼び出されます。</param>
         <param name="culture"><paramref name="args" /> から <paramref name="typeName" /> コンストラクターに対して宣言された仮引数型への強制変換を制御するカルチャ固有の情報。 <paramref name="culture" /> が <see langword="null" /> の場合は、現在のスレッドの <see cref="T:System.Globalization.CultureInfo" /> が使用されます。</param>
         <param name="activationAttributes">アクティべーションに参加できる 1 つ以上の属性の配列。 これは、通常、リモート オブジェクトをアクティブ化するために必要な URL を指定する 1 つの <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> オブジェクトを含む配列です。  
   
@@ -2141,14 +2151,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Activator.CreateInstanceFrom%2A>ホストがセキュリティのアクセス許可が制限されているアプリケーション ドメインでコードを実行する必要がある場合。  
+ ホスト<xref:System.Activator.CreateInstanceFrom%2A>が、セキュリティアクセス許可が制限されたアプリケーションドメインでコードを実行する必要がある場合に使用します。  
   
- 使用して、<xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>戻り値のラップを解除するメソッド。  
+ <xref:System.Runtime.Remoting.ObjectHandle.Unwrap%2A?displayProperty=nameWithType>メソッドを使用して、戻り値のラップを解除します。  
   
 > [!NOTE]
->  このメソッドを使用して<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType>に完全な信頼の直前の呼び出し元が必要です。  
+>  このメソッドは<xref:System.Security.Permissions.SecurityAction.LinkDemand?displayProperty=nameWithType> 、を使用して、直前の呼び出し元に完全信頼を与えるように要求します。  
   
- その他の呼び出されたメソッドによってスローされる例外については、例外セクションを参照してください、<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>と<xref:System.Activator.CreateInstance%2A>メソッド。  
+ 呼び出されたメソッドによってスローされる可能性のある他の例外の詳細に<xref:System.Reflection.Assembly.LoadFrom%2A?displayProperty=nameWithType>つい<xref:System.Activator.CreateInstance%2A>ては、メソッドとメソッドの「例外」セクションを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2163,12 +2173,12 @@
         <exception cref="T:System.NotSupportedException"><paramref name="activationAttributes" /> が空の配列ではないか、作成される型が <see cref="T:System.MarshalByRefObject" /> から派生したものではありません。</exception>
         <exception cref="T:System.BadImageFormatException"><paramref name="assemblyFile" /> は正しいアセンブリではありません。  
   
-または 
+- または - 
 共通言語ランタイム (CLR) バージョン 2.0 以降が現在読み込まれており、<paramref name="assemblyName" /> は現在読み込まれているバージョンより新しいバージョンの CLR 用にコンパイルされました。 .NET Framework のバージョン 2.0、3.0、3.5 はすべて、CLR バージョン 2.0 を使うことにご注意ください。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">証拠を指定します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlEvidence" /></permission>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリ パスを検索し、その内容を読み取る権限です。 列挙体に関連付けられている:<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />と <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.ReflectionPermission">非パブリックな型およびそのアクセス許可セットに関係なくのメンバーにアクセスします。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">証拠を提供します。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlEvidence" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ディレクトリパスを検索し、その内容を読み取る機能。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.PathDiscovery" />た列挙型: および<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.ReflectionPermission">許可セットに関係なく、非パブリックな型とメンバーにアクセスするための。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.ReflectionPermissionFlag.MemberAccess" /></permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="GetObject">
@@ -2222,14 +2232,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- リモート オブジェクトにメッセージを送信プロキシを呼び出します。 コンソール アプリケーションは、プロキシでメソッドが呼び出されるまで、ネットワーク経由で、メッセージは送信されません。  
+ プロキシを呼び出して、リモートオブジェクトにメッセージを送信します。 プロキシでメソッドが呼び出されるまで、ネットワーク経由でメッセージが送信されることはありません。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="type" /> または <paramref name="url" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Runtime.Remoting.RemotingException"><paramref name="type" /> は、参照渡しでマーシャリングされません。インターフェイスでもありません。</exception>
         <exception cref="T:System.MemberAccessException">このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="T:System.Runtime.Remoting.WellKnownObjectMode" />
         <altmember cref="T:System.Runtime.Remoting.RemotingConfiguration" />
       </Docs>
@@ -2277,16 +2287,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- リモート オブジェクトにメッセージを送信プロキシを呼び出します。 コンソール アプリケーションは、プロキシでメソッドが呼び出されるまで、ネットワーク経由で、メッセージは送信されません。  
+ プロキシを呼び出して、リモートオブジェクトにメッセージを送信します。 プロキシでメソッドが呼び出されるまで、ネットワーク経由でメッセージが送信されることはありません。  
   
- `state`パラメーターは、チャネルに情報を通信しに渡される、<xref:System.Runtime.Remoting.Channels.IChannelSender.CreateMessageSink%2A?displayProperty=nameWithType>メソッド。  
+ パラメーター `state`は、情報をチャネルに伝達し、 <xref:System.Runtime.Remoting.Channels.IChannelSender.CreateMessageSink%2A?displayProperty=nameWithType>メソッドに渡します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="type" /> または <paramref name="url" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Runtime.Remoting.RemotingException"><paramref name="type" /> は、参照渡しでマーシャリングされません。インターフェイスでもありません。</exception>
         <exception cref="T:System.MemberAccessException">このメンバーは、遅延バインディング メカニズムで呼び出されました。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
         <altmember cref="T:System.Runtime.Remoting.WellKnownObjectMode" />
         <altmember cref="T:System.Runtime.Remoting.RemotingConfiguration" />
       </Docs>
@@ -2335,7 +2345,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするために使用し、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::GetIDsOfNames`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするために使用されます。マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetIDsOfNames`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2382,7 +2392,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするために使用し、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::GetTypeInfo`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするために使用されます。マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfo`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2425,7 +2435,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするために使用し、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::GetTypeInfoCount`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするために使用されます。マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfoCount`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2482,7 +2492,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするために使用し、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::Invoke`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするために使用されます。マネージコードからは呼び出さないでください。 の詳細`IDispatch::Invoke`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>

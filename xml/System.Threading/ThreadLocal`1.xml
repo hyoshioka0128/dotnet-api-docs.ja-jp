@@ -1,5 +1,5 @@
 <Type Name="ThreadLocal&lt;T&gt;" FullName="System.Threading.ThreadLocal&lt;T&gt;">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="229261779e88f1a3f244ed38b75d05b22d5635ba" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58737573" /></Metadata><TypeSignature Language="C#" Value="public class ThreadLocal&lt;T&gt; : IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f85db67fb53d297d1aec96b0ff39c4bed9963729" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68392313" /></Metadata><TypeSignature Language="C#" Value="public class ThreadLocal&lt;T&gt; : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ThreadLocal`1&lt;T&gt; extends System.Object implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Threading.ThreadLocal`1" />
   <TypeSignature Language="VB.NET" Value="Public Class ThreadLocal(Of T)&#xA;Implements IDisposable" />
@@ -58,7 +58,7 @@
   
  ]]></format>
     </remarks>
-    <threadsafe>例外として<see cref="M:System.Threading.ThreadLocal`1.Dispose" />、すべてのパブリックのプロテクト メンバーと<see cref="T:System.Threading.ThreadLocal`1" />スレッド セーフでは、複数のスレッドから同時に使用される可能性があります。 返される値、<see cref="P:System.Threading.ThreadLocal`1.Value" />と<see cref="P:System.Threading.ThreadLocal`1.IsValueCreated" />プロパティがプロパティにアクセスするスレッドを特定します。</threadsafe>
+    <threadsafe>を除き<see cref="M:System.Threading.ThreadLocal`1.Dispose" />、のすべてのパブリックメンバーとプロテクトメンバー <see cref="T:System.Threading.ThreadLocal`1" />はスレッドセーフであり、複数のスレッドから同時に使用することができます。 プロパティ<see cref="P:System.Threading.ThreadLocal`1.Value" /> と<see cref="P:System.Threading.ThreadLocal`1.IsValueCreated" />プロパティに対して返される値は、プロパティがアクセスされるスレッドに固有です。</threadsafe>
     <altmember cref="T:System.Lazy`1" />
     <altmember cref="T:System.Threading.AsyncLocal`1" />
     <related type="Article" href="~/docs/framework/performance/lazy-initialization.md">限定的な初期化</related>
@@ -112,9 +112,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定値`T`インスタンスを初期化するために使用時に<xref:System.Threading.ThreadLocal%601.Value%2A>が最初にアクセスします。  
+ の`T`既定値は、が初めてアクセスされ<xref:System.Threading.ThreadLocal%601.Value%2A>たときにインスタンスを初期化するために使用されます。  
   
- このコンス トラクターの呼び出しと同じですが、<xref:System.Threading.ThreadLocal%601.%23ctor%28System.Boolean%29>の値を持つコンス トラクター`false`の`trackAllValues`引数。  
+ このコンストラクターは、 <xref:System.Threading.ThreadLocal%601.%23ctor%28System.Boolean%29> `trackAllValues`引数`false`に値を指定してコンストラクターを呼び出すことと同じです。  
   
  ]]></format>
         </remarks>
@@ -158,7 +158,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`trackAllValues`は`false`、だけで、現在のスレッドのこのインスタンスの値にアクセスできます。 使用すると、<xref:System.Threading.ThreadLocal%601.Values%2A>をすべて取得するプロパティの値がスローされます、<xref:System.InvalidOperationException>例外。  
+ `trackAllValues` が`false`の場合、現在のスレッドのこのインスタンスの値にのみアクセスできます。 プロパティを使用し<xref:System.Threading.ThreadLocal%601.Values%2A>てすべての値を取得し<xref:System.InvalidOperationException>ようとすると、例外がスローされます。  
   
  ]]></format>
         </remarks>
@@ -239,7 +239,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`trackAllValues`は`false`、だけで、現在のスレッドのこのインスタンスの値にアクセスできます。 使用すると、<xref:System.Threading.ThreadLocal%601.Values%2A>をすべて取得するプロパティの値がスローされます、<xref:System.InvalidOperationException>例外。  
+ `trackAllValues` が`false`の場合、現在のスレッドのこのインスタンスの値にのみアクセスできます。 プロパティを使用し<xref:System.Threading.ThreadLocal%601.Values%2A>てすべての値を取得し<xref:System.InvalidOperationException>ようとすると、例外がスローされます。  
   
  ]]></format>
         </remarks>
@@ -347,7 +347,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ほとんどのメンバーとは異なり<xref:System.Threading.ThreadLocal%601>、このメソッドはスレッド セーフではありません。  
+ の<xref:System.Threading.ThreadLocal%601>ほとんどのメンバーとは異なり、このメソッドはスレッドセーフではありません。  
   
  ]]></format>
         </remarks>
@@ -467,14 +467,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 強制的へのアクセスに関する場合と同様に、現在のスレッドの初期化をこのメソッドを呼び出す<xref:System.Threading.ThreadLocal%601.Value%2A>直接します。  
+ このメソッドを呼び出すと、に直接アクセス<xref:System.Threading.ThreadLocal%601.Value%2A>した場合と同様に、現在のスレッドが強制的に初期化されます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ObjectDisposedException"><see cref="T:System.Threading.ThreadLocal`1" /> インスタンスは破棄されています。</exception>
         <exception cref="T:System.NullReferenceException">現在のスレッドの <see cref="P:System.Threading.ThreadLocal`1.Value" /> は null 参照 (Visual Basic での Nothing) です。</exception>
         <exception cref="T:System.InvalidOperationException">初期化関数が、<see cref="P:System.Threading.ThreadLocal`1.Value" /> を再帰的に参照しようとしました。</exception>
-        <exception cref="T:System.MissingMemberException">既定のコンストラクターが指定されず、値ファクトリが指定されていません。</exception>
+        <exception cref="T:System.MissingMemberException">パラメーターなしのコンストラクターが指定されず、値ファクトリが指定されていません。</exception>
         <altmember cref="T:System.Lazy`1" />
         <related type="Article" href="~/docs/framework/performance/lazy-initialization.md">限定的な初期化</related>
         <related type="Article" href="https://msdn.microsoft.com/library/8cd68620-dcc3-4f20-8835-c728a6820e71">方法: オブジェクトの遅延初期化を実行する</related>
@@ -520,13 +520,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アクセスする場合、このインスタンスは、現在のスレッドの前に初期化されませんでした、<xref:System.Threading.ThreadLocal%601.Value%2A>初期化を試みます。 初期値を取得する関数を呼び出して初期化が実行されます初期化関数が、構築時に指定された場合、<xref:System.Threading.ThreadLocal%601.Value%2A>します。 それ以外の場合の既定値が使用されます。 例外がスローされた場合、その例外はキャッシュされ、各プロパティの以降のアクセスがスローされます。  
+ このインスタンスが以前に現在のスレッドで初期化されて<xref:System.Threading.ThreadLocal%601.Value%2A>いなかった場合、にアクセスすると、そのインスタンスの初期化が試行されます。 構築中に初期化関数が指定された場合、の<xref:System.Threading.ThreadLocal%601.Value%2A>初期値を取得するために関数を呼び出すことによって初期化が行われます。 それ以外の場合は、の既定値が使用されます。 例外がスローされた場合、その例外はキャッシュされ、プロパティの後続のアクセスごとにスローされます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ObjectDisposedException"><see cref="T:System.Threading.ThreadLocal`1" /> インスタンスは破棄されています。</exception>
         <exception cref="T:System.InvalidOperationException">初期化関数が、<see cref="P:System.Threading.ThreadLocal`1.Value" /> を再帰的に参照しようとしました。</exception>
-        <exception cref="T:System.MissingMemberException">既定のコンストラクターが指定されず、値ファクトリが指定されていません。</exception>
+        <exception cref="T:System.MissingMemberException">パラメーターなしのコンストラクターが指定されず、値ファクトリが指定されていません。</exception>
         <altmember cref="T:System.Lazy`1" />
         <related type="Article" href="~/docs/framework/performance/lazy-initialization.md">限定的な初期化</related>
         <related type="Article" href="https://msdn.microsoft.com/library/8cd68620-dcc3-4f20-8835-c728a6820e71">方法: オブジェクトの遅延初期化を実行する</related>

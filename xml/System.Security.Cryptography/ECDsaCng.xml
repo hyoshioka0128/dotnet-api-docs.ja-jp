@@ -1,5 +1,5 @@
 <Type Name="ECDsaCng" FullName="System.Security.Cryptography.ECDsaCng">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3bb89ff48430135e8e45786e8e3aed2ddf2ef945" /><Meta Name="ms.sourcegitcommit" Value="bac13a81377b1c4ebf3990e3287a6f1700f73751" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/19/2019" /><Meta Name="ms.locfileid" Value="57921354" /></Metadata><TypeSignature Language="C#" Value="public sealed class ECDsaCng : System.Security.Cryptography.ECDsa" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="78628e093e5b401a7a31c9a4a34c4f52e5b65bbd" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68542461" /></Metadata><TypeSignature Language="C#" Value="public sealed class ECDsaCng : System.Security.Cryptography.ECDsa" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ECDsaCng extends System.Security.Cryptography.ECDsa" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.ECDsaCng" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ECDsaCng&#xA;Inherits ECDsa" />
@@ -32,12 +32,12 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このクラスから派生、<xref:System.Security.Cryptography.ECDsa>抽象基本クラス。  
+ このクラスは、 <xref:System.Security.Cryptography.ECDsa>抽象基本クラスから派生します。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.Security.Cryptography.ECDsaCng>メッセージと署名を使用して、メッセージが変更されていないことを確認する方法に署名するクラス。  
+ 次の例は、 <xref:System.Security.Cryptography.ECDsaCng>クラスを使用してメッセージに署名する方法と、署名を使用してメッセージが変更されていないことを確認する方法を示しています。  
   
  [!code-csharp[ECDsaCng#1](~/samples/snippets/csharp/VS_Snippets_CLR/ecdsacng/cs/program.cs#1)]
  [!code-vb[ECDsaCng#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/ecdsacng/vb/program.vb#1)]  
@@ -92,7 +92,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ランダムなキー ペアが、521 ビットの公開キーの長さ。  
+ ランダムキーペアの公開キーの長さは521ビットです。  
   
  ]]></format>
         </remarks>
@@ -139,7 +139,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ランダムなキー ペアがによって定義されたパブリック キーの長さが、`keySize`パラメーター。  
+ ランダムなキーのペアには、 `keySize`パラメーターによって定義される公開キーの長さが含まれます。  
   
  ]]></format>
         </remarks>
@@ -226,11 +226,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `curve` 検証する必要があります (つまり、返す必要があります`true`) に渡されるとき、<xref:System.Security.Cryptography.ECCurve.Validate%2A?displayProperty=nameWithType>メソッド名前付きまたは明示的なプライムのいずれかを指定する必要があります。  
+ `curve`は、 <xref:System.Security.Cryptography.ECCurve.Validate%2A?displayProperty=nameWithType>メソッドに渡されるときにを`true`検証する必要があります。また、名前付きまたは明示的な素数のいずれかである必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="curve" /> は検証されません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="curve" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.PlatformNotSupportedException"><paramref name="curve" /> に FriendlyName を持つ Oid が含まれない場合。</exception>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -382,7 +384,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- XML キーを逆シリアル化を使用して、<xref:System.Security.Cryptography.ECDsaCng.FromXmlString%28System.String%2CSystem.Security.Cryptography.ECKeyXmlFormat%29>オーバー ロードを代用します。  
+ XML キーを逆シリアル化するに<xref:System.Security.Cryptography.ECDsaCng.FromXmlString%28System.String%2CSystem.Security.Cryptography.ECKeyXmlFormat%29>は、代わりにオーバーロードを使用します。  
   
  ]]></format>
         </remarks>
@@ -420,7 +422,7 @@
         <param name="format">XML 文字列の形式を指定する列挙値の 1 つ。 現在使用できる唯一の形式は、<see cref="F:System.Security.Cryptography.ECKeyXmlFormat.Rfc4050" /> です。</param>
         <summary>指定した形式を使用して、XML 文字列からキー情報を逆シリアル化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="xml" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="xml" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="format" /> が無効な形式を指定しています。 使用できる唯一の値は、<see cref="F:System.Security.Cryptography.ECKeyXmlFormat.Rfc4050" /> です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">上記以外のすべてのエラー。</exception>
       </Docs>
@@ -495,13 +497,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティでは、次のアルゴリズム: <xref:System.Security.Cryptography.CngAlgorithm.MD5%2A>、 <xref:System.Security.Cryptography.CngAlgorithm.Sha1%2A>、 <xref:System.Security.Cryptography.CngAlgorithm.Sha256%2A>、 <xref:System.Security.Cryptography.CngAlgorithm.Sha384%2A>、および<xref:System.Security.Cryptography.CngAlgorithm.Sha512%2A>します。  
+ このプロパティは、、、 <xref:System.Security.Cryptography.CngAlgorithm.MD5%2A> <xref:System.Security.Cryptography.CngAlgorithm.Sha256%2A>、 <xref:System.Security.Cryptography.CngAlgorithm.Sha384%2A>、 <xref:System.Security.Cryptography.CngAlgorithm.Sha1%2A>および<xref:System.Security.Cryptography.CngAlgorithm.Sha512%2A>の各アルゴリズムを受け入れます。  
   
- その他のカスタム ハッシュ アルゴリズムも使用できます。  
+ その他のカスタムハッシュアルゴリズムを使用することもできます。  
   
- 既定のアルゴリズムは<xref:System.Security.Cryptography.CngAlgorithm.Sha256%2A>します。  
+ 既定のアルゴリズムは<xref:System.Security.Cryptography.CngAlgorithm.Sha256%2A>です。  
   
- 署名または既にハッシュされているデータを検証する場合は、このプロパティは使用されません。  
+ 既にハッシュされているデータに署名または検証する場合は、このプロパティは使用されません。  
   
  ]]></format>
         </remarks>
@@ -624,7 +626,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`parameters`のみを含む<xref:System.Security.Cryptography.ECParameters.Q>、公開キーがインポートだけです。 場合`parameters`も含まれています<xref:System.Security.Cryptography.ECParameters.D>、完全なキーのペアをインポートします。 <xref:System.Security.Cryptography.ECParameters.Curve>フィールドをインポートする曲線の種類を指定します。  
+ に`parameters` のみ<xref:System.Security.Cryptography.ECParameters.Q>が含まれている場合は、公開キーのみがインポートされます。 に`parameters`もが<xref:System.Security.Cryptography.ECParameters.D>含まれている場合は、完全なキーのペアがインポートされます。 フィールド<xref:System.Security.Cryptography.ECParameters.Curve>は、インポートする曲線の種類を指定します。  
   
  ]]></format>
         </remarks>
@@ -771,15 +773,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して、入力データをハッシュすることで指定されたデータの署名を生成する、<xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティ、および結果を署名します。  
+ このメソッドは、 <xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティを使用して入力データをハッシュし、結果に署名することによって、指定されたデータの署名を生成します。  
   
- <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>によって Cryptography Next Generation (CNG) キーがランダムに生成されない場合は、フラグが必要な<xref:System.Security.Cryptography.ECDsaCng>オブジェクト。  
+ このフラグは、Cryptography Next Generation (CNG) キーが<xref:System.Security.Cryptography.ECDsaCng>オブジェクトによってランダムに生成されない場合に必要です。 <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">インスタンスに関連付けられているキーの情報に秘密キーはありません。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名する権限です。 要求値:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名するためのアクセス許可。 要求の値<see cref="F:System.Security.Permissions.SecurityAction.Demand" />:。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
       </Docs>
     </Member>
     <Member MemberName="SignData">
@@ -823,15 +825,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドでは、指定したデータ ストリームの署名を生成を使用して、入力データをハッシュすることで、<xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティ、および結果を署名します。  
+ このメソッドは、 <xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティを使用して入力データをハッシュし、結果に署名することによって、指定されたデータストリームの署名を生成します。  
   
- <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>によって Cryptography Next Generation (CNG) キーがランダムに生成されない場合は、フラグが必要な<xref:System.Security.Cryptography.ECDsaCng>オブジェクト。  
+ このフラグは、Cryptography Next Generation (CNG) キーが<xref:System.Security.Cryptography.ECDsaCng>オブジェクトによってランダムに生成されない場合に必要です。 <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">インスタンスに関連付けられているキーの情報に秘密キーはありません。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名する権限です。 要求値:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名するためのアクセス許可。 要求の値<see cref="F:System.Security.Permissions.SecurityAction.Demand" />:。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
       </Docs>
     </Member>
     <Member MemberName="SignData">
@@ -879,16 +881,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して、入力データをハッシュすることで指定されたデータの署名を生成する、<xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティ、および結果に署名します。  
+ このメソッドは、 <xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティを使用して入力データをハッシュし、結果に署名することによって、指定されたデータの署名を生成します。  
   
- <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>によって Cryptography Next Generation (CNG) キーがランダムに生成されない場合は、フラグが必要な<xref:System.Security.Cryptography.ECDsaCng>オブジェクト。  
+ このフラグは、Cryptography Next Generation (CNG) キーが<xref:System.Security.Cryptography.ECDsaCng>オブジェクトによってランダムに生成されない場合に必要です。 <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> または <paramref name="offset" /> が原因で、データ文字列の境界外で読み取りが行われました。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">インスタンスに関連付けられているキーの情報に秘密キーはありません。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名する権限です。 要求値:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名するためのアクセス許可。 要求の値<see cref="F:System.Security.Permissions.SecurityAction.Demand" />:。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
       </Docs>
     </Member>
     <Member MemberName="SignHash">
@@ -938,13 +940,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>によって Cryptography Next Generation (CNG) キーがランダムに生成されない場合は、フラグが必要な<xref:System.Security.Cryptography.ECDsaCng>オブジェクト。  
+ このフラグは、Cryptography Next Generation (CNG) キーが<xref:System.Security.Cryptography.ECDsaCng>オブジェクトによってランダムに生成されない場合に必要です。 <xref:System.Security.Permissions.KeyContainerPermissionFlags.Sign?displayProperty=nameWithType>  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="hash" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="hash" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.Cryptography.CryptographicException">インスタンスに関連付けられているキーの情報に秘密キーはありません。</exception>
-        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名する権限です。 要求値:<see cref="F:System.Security.Permissions.SecurityAction.Demand" />します。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
+        <permission cref="T:System.Security.Permissions.KeyContainerPermission">データに署名するためのアクセス許可。 要求の値<see cref="F:System.Security.Permissions.SecurityAction.Demand" />:。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.KeyContainerPermissionFlags.Sign" /></permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="ToXmlString">
@@ -986,7 +988,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のキーを XML 表現に変換するを使用して、<xref:System.Security.Cryptography.ECDsaCng.ToXmlString%28System.Security.Cryptography.ECKeyXmlFormat%29>オーバー ロードを代用します。  
+ 現在のキーを XML 表現に変換するには、 <xref:System.Security.Cryptography.ECDsaCng.ToXmlString%28System.Security.Cryptography.ECKeyXmlFormat%29>代わりにオーバーロードを使用します。  
   
  ]]></format>
         </remarks>
@@ -1137,7 +1139,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して、入力データをハッシュすることで、指定されたデータの署名を生成する、<xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティ、および結果を署名します。  
+ このメソッドは、 <xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>プロパティを使用して入力データをハッシュし、結果に署名することによって、指定されたデータの署名を生成します。  
   
  ]]></format>
         </remarks>
@@ -1187,7 +1189,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して、入力データのハッシュ、<xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>検証前に、のプロパティ。  
+ このメソッドは、 <xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>検証の前にプロパティを使用して入力データをハッシュします。  
   
  ]]></format>
         </remarks>
@@ -1241,13 +1243,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを使用して、入力データのハッシュ、<xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>検証前に、のプロパティ。  
+ このメソッドは、 <xref:System.Security.Cryptography.ECDsaCng.HashAlgorithm%2A>検証の前にプロパティを使用して入力データをハッシュします。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> または <paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
  <paramref name="offset" /> または <paramref name="count" /> が、<paramref name="data" /> パラメーターで渡されたバイト配列の長さを超えています。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="data" /> または <paramref name="signature" /> が <see langword="null" /> です。</exception>
       </Docs>

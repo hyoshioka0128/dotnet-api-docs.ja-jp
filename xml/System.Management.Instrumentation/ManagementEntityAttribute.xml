@@ -1,5 +1,5 @@
 <Type Name="ManagementEntityAttribute" FullName="System.Management.Instrumentation.ManagementEntityAttribute">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="ecc50dbd0dfca3fba0fd567e0cc5017dc032a441" /><Meta Name="ms.sourcegitcommit" Value="756d085f27705e86604f1bba5f2086ee23761acf" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="01/30/2019" /><Meta Name="ms.locfileid" Value="55399800" /></Metadata><TypeSignature Language="C#" Value="public sealed class ManagementEntityAttribute : Attribute" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="b9342bbd64f0ae8c021f2dec8513ab7408a3d264" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68397005" /></Metadata><TypeSignature Language="C#" Value="public sealed class ManagementEntityAttribute : Attribute" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ManagementEntityAttribute extends System.Attribute" />
   <TypeSignature Language="DocId" Value="T:System.Management.Instrumentation.ManagementEntityAttribute" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ManagementEntityAttribute&#xA;Inherits Attribute" />
@@ -27,7 +27,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この属性でマークされたクラスをパブリックにする必要があります。  
+ この属性でマークされたクラスは、パブリックである必要があります。  
   
    
   
@@ -67,12 +67,12 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.Management.Instrumentation.ManagementEntityAttribute" /> クラスの新しいインスタンスを初期化します。 これは既定のコンストラクターです。</summary>
+        <summary><see cref="T:System.Management.Instrumentation.ManagementEntityAttribute" /> クラスの新しいインスタンスを初期化します。 これはパラメーターなしのコンストラクターです。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターには、名前のパラメーターは取りません。 使用して名前を指定しない場合、<xref:System.Management.Instrumentation.ManagementEntityAttribute.Name>パラメーター、関連付けられている WMI クラスの名前は既定で属性付きクラスの名前。  
+ このコンストラクターは、name パラメーターを受け取りません。 <xref:System.Management.Instrumentation.ManagementEntityAttribute.Name>パラメーターを使用して名前を指定しない場合、関連付けられている WMI クラスの名前は、既定で属性付きクラスの名前になります。  
   
  ]]></format>
         </remarks>
@@ -109,7 +109,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは、既存の抽象 WMI クラスを拡張するクラスを実装するプロバイダーを実装する場合に使用されます。  
+ これは、既存の抽象 WMI クラスを拡張するクラスを実装するプロバイダーを実装するときに使用されます。  
   
  ]]></format>
         </remarks>
@@ -146,12 +146,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティを設定して、WMI クラスの名前を指定しない場合、WMI クラスは既定の属性付きクラスの名前にします。  
+ このプロパティを設定して WMI クラスの名前を指定しない場合、WMI クラスの既定値は属性付きクラスの名前になります。  
   
    
   
 ## Examples  
- 次の例では、Name パラメーターは MortgageCalcWMIProvider クラスによって表される WMI クラスの名前を設定に使用されます。 MortgageCalculator 名前に設定します。 パラメーターの名前を使用、対応する C# クラス名場合、MortgageCalcWMIProvider ここでは、として使用されます WMI クラスの名前。  
+ 次の例では、Name パラメーターを使用して、MortgageCalcWMIProvider クラスによって表される WMI クラスの名前を設定します。 名前は MortgageCalculator に設定されます。 Name パラメーターが使用されていない場合C#は、対応するクラス名 (この場合は MortgageCalcWMIProvider) が WMI クラス名として使用されます。  
   
 ```  
 [ManagementEntity(Name = "MortgageCalculator")]  
@@ -195,21 +195,21 @@ public class MortgageCalcWMIProvider
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- シングルトン WMI クラスは、1 つのことができますのみがある 1 つのインスタンス。 WMI クラスのインスタンスが 1 つだけが作成されることを確認するためのロジックをコーディングできますが、このパラメーターの属性は、簡単かつ一貫性のあるタスクを作成に提供されます。  
+ シングルトン WMI クラスは、1つのインスタンスだけにすることができます。 WMI クラスの1つのインスタンスのみが作成されるようにロジックをコーディングすることもできますが、このパラメーター属性を使用すると、タスクを簡単かつ一貫したものにすることができます。  
   
- シングルトン WMI クラスを使用する場合、クライアント アプリケーションは、特別な構文を使用する必要があります。 詳細についてを参照してください、記述する、インスタンス オブジェクトのパスのトピックでは、MSDN オンライン ライブラリで[ http://www.msdn.com](https://www.msdn.com/)します。  
+ シングルトン WMI クラスを使用する場合、クライアントアプリケーションは特殊な構文を使用する必要があります。 詳細については、MSDN オンラインライブラリ[http://www.msdn.com](https://www.msdn.com/)() の「インスタンスオブジェクトパスの記述」を参照してください。  
   
    
   
 ## Examples  
- 次のコード スニペットでは、C# クラスがシングルトン WMI クラスに対応しているかを示す単一パラメーターを使用する方法を示します。  
+ 次のコードスニペットは、シングルトンパラメーターを使用して、 C#クラスがシングルトン WMI クラスに対応していることを示す方法を示しています。  
   
 ```  
 [ManagementEntity(Singleton=true)]  
 public class SingletonSample  
 ```  
   
- シングルトン クラスを実装するプロバイダーの作業の例を参照してください。[方法。基本的な分離プロバイダーを作成する](https://msdn.microsoft.com/library/1dabd442-c1ff-40a1-bb0e-d7b3566c2300)します。  
+ シングルトンクラスを実装するプロバイダーの完全な作業例については、 [「方法:基本的な分離プロバイダー](https://msdn.microsoft.com/library/1dabd442-c1ff-40a1-bb0e-d7b3566c2300)を作成します。  
   
  ]]></format>
         </remarks>

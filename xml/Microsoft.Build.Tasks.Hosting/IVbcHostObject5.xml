@@ -38,7 +38,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>バック グラウンド スレッドを直接呼び出すをできるようにするフリー スレッド ホスト オブジェクトを proffers インターフェイスを定義します (UI スレッドにマーシャ リングを回避できます。</summary>
+    <summary>バックグラウンド スレッドからの直接呼び出しを可能にする (UI スレッドへのマーシャリングを回避する) フリー スレッド ホスト オブジェクトを提供するインターフェイスを定義します。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -62,10 +62,10 @@
         <Parameter Name="buildFailedEvent" Type="System.IntPtr" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="buildSucceededEvent">[out] ビルドが成功したイベントです。</param>
-        <param name="buildFailedEvent">[out] ビルドに失敗したイベントです。</param>
-        <summary>このコードは、UI スレッドでのみ呼び出されます、VB. で実際のビルドの開始</summary>
-        <returns>メソッドが成功した場合は、0 を返します。</returns>
+        <param name="buildSucceededEvent">[出力] ビルドに成功したイベント。</param>
+        <param name="buildFailedEvent">[出力] ビルドに失敗したイベント。</param>
+        <summary>このコードは、UI スレッドでのみ呼び出され、VB の実際のビルドを開始します。</summary>
+        <returns>メソッドが正常に実行された場合は 0 を返します。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -88,9 +88,9 @@
         <Parameter Name="buildSuccess" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="buildSuccess">ビルドが成功したかどうかを示すフラグです。 値は<see langword="true" />成功します。</param>
+        <param name="buildSuccess">ビルドが成功したかどうかを示すフラグ。 成功のための値は <see langword="true" /> です。</param>
         <summary>コンパイルの最後に関数を実行します。</summary>
-        <returns>メソッドが成功した場合は、0 を返します。</returns>
+        <returns>メソッドが正常に実行された場合は 0 を返します。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -111,7 +111,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>バック グラウンド スレッドを直接呼び出すは、フリー スレッド ホスト オブジェクトを取得します。 UI スレッドにマーシャ リングを回避できます。</summary>
+        <summary>バックグラウンド スレッドを直接呼び出すことができるフリー スレッド ホスト オブジェクトを取得します。 UI スレッドへのマーシャリングを回避します。</summary>
         <returns>フリー スレッド ホスト オブジェクト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -137,7 +137,7 @@
       <Docs>
         <param name="highEntropyVA">高いエントロピの ASLR (Address Space Layout Randomization) のサポートを示すために <c>/ highentropyva</c> を設定する場合は <see langword="True" />。それ以外の場合は <see langword="False" />。</param>
         <summary><c>/highentropyva</c> 値を指定どおりに設定します。</summary>
-        <returns><see langword="True" /> 場合は、メソッドが正常に完了しました。</returns>
+        <returns>メソッドが正常に完了した場合は <see langword="True" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -162,12 +162,12 @@
       <Docs>
         <param name="platformWith32BitPreference"><c>/platform</c> 値を <see langword="AnyCPU32BitPreferred" /> に設定する場合は <see langword="True" />。それ以外の場合は <see langword="False" />。</param>
         <summary><c>/platform</c> 値を <see langword="AnyCPU32BitPreferred" /> に設定します。</summary>
-        <returns>返します<see langword="True" />メソッドが成功した場合。</returns>
+        <returns>メソッドが正常に終了した場合は <see langword="True" /> を返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、<xref:Microsoft.Build.Tasks.ManagedCompiler.Prefer32Bit%2A>プロパティが設定されて、プロジェクト<xref:Microsoft.Build.Tasks.Hosting.IVbcHostObject5.SetPlatformWith32BitPreference%2A>変更、`/platform`値`AnyCPU`またはプラットフォームの既定値 (`null`または"") に`AnyCPU32BitPreferred`します。 詳細については、次を参照してください。 [/platform (Visual Basic)](~/docs/visual-basic/reference/command-line-compiler/platform.md)します。`AnyCPU` `/platform`設定を切り替える (`/platform:AnyCPU`) 可能であれば、フォールバックは、64 ビット プロセスとして、アプリケーションを実行する 32 ビット システムの 32 ビット専用。 ただし、として 32 ビット アプリケーションを実行していることは多くの場合、望ましいの 64 ビットとして実行するため、64 ビット アプリケーションはより多くのメモリを消費する可能性があります。 `AnyCPU32BitPreferred`設定はのような`AnyCPU`が既定のアクションは、32 ビットまたは 64 ビットのいずれかのモードをサポートするシステムで 32 ビット モードでアプリケーションを実行します。  この設定は、フォールバックの 32 ビット モードがない可能性がある将来のプロセッサに対応します。  
+ `null` `/platform` <xref:Microsoft.Build.Tasks.Hosting.IVbcHostObject5.SetPlatformWith32BitPreference%2A> `AnyCPU32BitPreferred`プロジェクトに対して`AnyCPU`プロパティが設定されている場合、は、値または既定のプラットフォーム値 (または "") をに変更します。 <xref:Microsoft.Build.Tasks.ManagedCompiler.Prefer32Bit%2A> 詳細については、「 [/platform (Visual Basic)](~/docs/visual-basic/reference/command-line-compiler/platform.md)」を参照してください。スイッチ`AnyCPU`設定 ( `/platform` ) は、可能な場合は常に64ビットプロセスとしてアプリケーションを実行し、32ビット専用システムでは32ビットにフォールバックします。`/platform:AnyCPU` ただし、64ビットアプリケーションはより多くのメモリを消費する可能性があるため、アプリケーションを32ビットとして実行すること64をお勧めします。 この`AnyCPU32BitPreferred`設定は`AnyCPU`と似ていますが、既定のアクションでは、32ビットモードまたは64ビットモードをサポートするシステムで、アプリケーションを32ビットモードで実行する点が異なります。  この設定は、フォールバック32ビットモードを持たない可能性のある将来のプロセッサに対応します。  
   
  ]]></format>
         </remarks>
@@ -193,8 +193,8 @@
       </Parameters>
       <Docs>
         <param name="subsystemVersion">サブシステムのバージョン。</param>
-        <summary>指定されたサブシステムのバージョンを設定します。</summary>
-        <returns>返します<see langword="true" />メソッドが成功した場合。</returns>
+        <summary>サブシステム バージョンを指定のとおりに設定します。</summary>
+        <returns>メソッドが正常に終了した場合は <see langword="true" /> を返します。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

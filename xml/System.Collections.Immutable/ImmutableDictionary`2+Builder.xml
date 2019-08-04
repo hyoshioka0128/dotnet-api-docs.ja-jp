@@ -66,7 +66,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Collections.Immutable.ImmutableDictionary%602.AddRange%2A?displayProperty=nameWithType>他のメソッドが既にコレクションでの高速一括変更操作を提供し、<xref:System.Collections.Immutable.ImmutableDictionary%602.Builder>クラスと同じ効率でセットに対する変更の複数の組み合わせを使用できます。  
+ およびその他のメソッドは、コレクションに対する高速な一括変更操作<xref:System.Collections.Immutable.ImmutableDictionary%602.Builder>を既に提供していますが、クラスでは、同じ効率でセットに対して複数の変更を行うことができます。 <xref:System.Collections.Immutable.ImmutableDictionary%602.AddRange%2A?displayProperty=nameWithType>  
   
  ]]></format>
     </remarks>
@@ -451,9 +451,9 @@
         <summary>指定したキーを持つ要素を取得または設定します。</summary>
         <value>指定したキーを持つ要素。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.Collections.Generic.KeyNotFoundException">プロパティを取得して<paramref name="key" />が見つかりません。</exception>
-        <exception cref="T:System.NotSupportedException">プロパティが設定されていますと<see cref="T:System.Collections.Generic.IDictionary`2" />は読み取り専用です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.Collections.Generic.KeyNotFoundException">プロパティは取得されていますが、<paramref name="key" /> が見つかりません。</exception>
+        <exception cref="T:System.NotSupportedException">このプロパティが設定されていますが、<see cref="T:System.Collections.Generic.IDictionary`2" /> は読み取り専用です。</exception>
       </Docs>
     </Member>
     <Member MemberName="KeyComparer">
@@ -865,7 +865,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="T:System.Collections.ICollection" /> へのアクセスを同期するために使用できるオブジェクトを取得します。</summary>
+        <summary><see cref="T:System.Collections.ICollection" />へのアクセスを同期するために使用できるオブジェクトを取得します。</summary>
         <value><see cref="T:System.Collections.ICollection" /> へのアクセスを同期するために使用できるオブジェクト。</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1011,7 +1011,7 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Collections.IDictionary" /> オブジェクトが固定サイズかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> 場合、<see cref="T:System.Collections.IDictionary" />オブジェクトが固定サイズである場合は、<see langword="false" />します。</value>
+        <value><see cref="T:System.Collections.IDictionary" /> オブジェクトが固定サイズの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1102,7 +1102,7 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Collections.Generic.ICollection`1" /> のキーを保持している <see cref="T:System.Collections.Generic.IDictionary`2" /> を取得します。</summary>
-        <value><see cref="T:System.Collections.Generic.ICollection`1" />を実装するオブジェクトのキーを含む<see cref="T:System.Collections.Generic.IDictionary`2" />します。</value>
+        <value><see cref="T:System.Collections.Generic.ICollection`1" /> を実装するオブジェクトのキーを保持している <see cref="T:System.Collections.Generic.IDictionary`2" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1169,7 +1169,7 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Collections.Generic.ICollection`1" /> 内の値を格納している <see cref="T:System.Collections.Generic.IDictionary`2" /> を取得します。</summary>
-        <value><see cref="T:System.Collections.Generic.ICollection`1" />を実装するオブジェクトの値を含む<see cref="T:System.Collections.Generic.IDictionary`2" />します。</value>
+        <value><see cref="T:System.Collections.Generic.ICollection`1" /> を実装するオブジェクトの値を保持している <see cref="T:System.Collections.Generic.IDictionary`2" />。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1237,7 +1237,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、o (n) 操作であり、o (1) 時間を実際の変更の数としてこのメソッドのアプローチ 0 最後の呼び出し以降セットに近づきます。  
+ このメソッドは O (n) 操作であり、このメソッドを最後に呼び出した後に設定された実際の変更の数として O (1) 時間に近づいています。  
   
  ]]></format>
         </remarks>
@@ -1276,13 +1276,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 一部のシナリオを次に、<xref:System.Collections.Immutable.ImmutableDictionary%602.Builder.TryGetKey%2A>役立つ可能性があります。  
+ 役に立つ<xref:System.Collections.Immutable.ImmutableDictionary%602.Builder.TryGetKey%2A>可能性のあるシナリオを次に示します。  
   
--   新しい参照を作成する代わりに以前に格納されているオブジェクトの参照を再利用するには。  
+-   新しい参照を作成するのではなく、以前に格納されていたオブジェクト参照を再利用する場合。  
   
--   オブジェクトの正規の値を検索します。  
+-   オブジェクトの標準値を検索する場合  
   
--   オブジェクトに関するより完全なデータを取得します。  
+-   オブジェクトに関するより完全なデータを取得する必要がある場合  
   
  ]]></format>
         </remarks>

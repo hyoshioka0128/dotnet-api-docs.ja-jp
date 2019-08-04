@@ -1,5 +1,5 @@
 <Type Name="HttpClient" FullName="System.Net.Http.HttpClient">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="939b636d24fc0ba7dfb1eb08ed2bfc24a465f26f" /><Meta Name="ms.sourcegitcommit" Value="9170ef1c277dbe29b425d453dc133624b156d393" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/01/2019" /><Meta Name="ms.locfileid" Value="67488163" /></Metadata><TypeSignature Language="C#" Value="public class HttpClient : System.Net.Http.HttpMessageInvoker" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="74ff44a707bc142463a2ebc8e731df5d9bb6554a" /><Meta Name="ms.sourcegitcommit" Value="f991677a7374c45590a432ff7ab830beb05f2ccd" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/27/2019" /><Meta Name="ms.locfileid" Value="68591124" /></Metadata><TypeSignature Language="C#" Value="public class HttpClient : System.Net.Http.HttpMessageInvoker" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit HttpClient extends System.Net.Http.HttpMessageInvoker" />
   <TypeSignature Language="DocId" Value="T:System.Net.Http.HttpClient" />
   <TypeSignature Language="VB.NET" Value="Public Class HttpClient&#xA;Inherits HttpMessageInvoker" />
@@ -28,15 +28,15 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Net.Http.HttpClient>クラスのインスタンスは HTTP 要求を送信するセッションとして機能します。 <xref:System.Net.Http.HttpClient>インスタンスがそのインスタンスで実行されるすべての要求に適用する設定のコレクション。 さらに、すべて<xref:System.Net.Http.HttpClient>インスタンスが他に実行される要求からの要求を分離する、独自の接続プールを使用して<xref:System.Net.Http.HttpClient>インスタンス。  
+ クラス<xref:System.Net.Http.HttpClient>インスタンスは、HTTP 要求を送信するためのセッションとして機能します。 <xref:System.Net.Http.HttpClient>インスタンスは、そのインスタンスによって実行されるすべての要求に適用される設定のコレクションです。 さらに、すべて<xref:System.Net.Http.HttpClient>のインスタンスが独自の接続プールを使用するため、他の<xref:System.Net.Http.HttpClient>インスタンスによって実行される要求から要求が分離されます。  
   
- <xref:System.Net.Http.HttpClient>より特定の HTTP クライアントの基本クラスとしても機能します。 例として、FacebookHttpClient、Facebook web サービスに固有の追加のメソッドを提供することがあります (GetFriends メソッドでは、たとえば)。 派生クラスでは、クラスの仮想メソッドをオーバーライドしないでください。 受け取るコンス トラクター オーバー ロードを使用して、代わりに、<xref:System.Net.Http.HttpMessageHandler>処理前または後の要求の処理代わりに構成します。
+ は<xref:System.Net.Http.HttpClient> 、より具体的な HTTP クライアントの基本クラスとしても機能します。 例として、Facebook web サービスに固有の追加のメソッド (たとえば、GetFriends メソッド) を提供する FacebookHttpClient があります。 派生クラスでは、クラスの仮想メソッドをオーバーライドしないでください。 代わりに、を受け入れる<xref:System.Net.Http.HttpMessageHandler>コンストラクターのオーバーロードを使用して、要求前または要求後の処理を構成します。
   
- 既定では、.NET Framework、Mono、<xref:System.Net.HttpWebRequest>サーバーに要求を送信するために使用します。 取るコンス トラクターのオーバー ロードのいずれかで異なるチャネルを指定することで、この動作を変更できる、<xref:System.Net.Http.HttpMessageHandler>パラメーターとしてのインスタンス。 認証またはキャッシュなどの機能が必要な場合、<xref:System.Net.Http.WebRequestHandler>設定を構成するために使用することができますし、コンス トラクターに渡されるインスタンスのことができます。 返されたハンドラーを取るコンス トラクターのオーバー ロードのいずれかに渡すことができます、<xref:System.Net.Http.HttpMessageHandler>パラメーター。  
+ .NET Framework と Mono の既定では<xref:System.Net.HttpWebRequest> 、サーバーに要求を送信するためにが使用されます。 この動作は、インスタンスを<xref:System.Net.Http.HttpMessageHandler>パラメーターとして受け取るコンストラクターのオーバーロードのいずれかで別のチャネルを指定することによって変更できます。 認証やキャッシュなどの機能が必要な<xref:System.Net.Http.WebRequestHandler>場合は、を使用して設定を構成し、インスタンスをコンストラクターに渡すことができます。 返されたハンドラーは、パラメーターを<xref:System.Net.Http.HttpMessageHandler>受け取るコンストラクターのオーバーロードの1つに渡すことができます。  
   
- アプリを使用して、場合<xref:System.Net.Http.HttpClient>および関連クラス、<xref:System.Net.Http>名前空間が、大量のデータ (50 メガバイトまたはそれ以上) をダウンロードしようとしています。 その後、アプリのダウンロードのストリームと既定のバッファリングを使用しない必要があります。 既定のバッファリングを使用する場合は、クライアントのメモリ使用量が非常に大きな取得、パフォーマンスが低下するためになる可能性があります。  
+ 名前空間のおよび<xref:System.Net.Http.HttpClient>関連するクラスを使用しているアプリで大量のデータ (50 mb 以上) をダウンロードする場合、アプリはこれらのダウンロードをストリーミングし、既定のバッファリングを使用しないようにする必要があります。 <xref:System.Net.Http> 既定のバッファリングを使用すると、クライアントのメモリ使用量が非常に大きくなり、パフォーマンスが大幅に低下する可能性があります。  
   
- 次の方法では、スレッド セーフであるがあります。  
+ 次のメソッドはスレッドセーフです。  
   
 1.  <xref:System.Net.Http.HttpClient.CancelPendingRequests%2A>  
   
@@ -56,7 +56,7 @@
   
 9. <xref:System.Net.Http.HttpClient.SendAsync%2A>  
   
- <xref:System.Net.Http.HttpClient> 1 回インスタンス化し、アプリケーションの有効期間にわたって再利用するためのものです。 すべての要求に対して、HttpClient クラスをインスタンス化すると、負荷の下で使用可能なソケットの数は使い果たしてしまいます。 SocketException エラーが発生します。 HttpClient を正しく使用する例を次に示します。  
+ <xref:System.Net.Http.HttpClient>は、1回インスタンス化し、アプリケーションの有効期間全体に再利用することを目的としています。 すべての要求に対して HttpClient クラスをインスタンス化すると、大量の読み込みで使用可能なソケットの数が枯渇します。 これにより、SocketException エラーが発生します。 HttpClient を正しく使用する例を次に示します。  
   
 ```csharp
 public class GoodController : ApiController
@@ -71,40 +71,40 @@ public class GoodController : ApiController
 }
 ```  
   
-<xref:System.Net.Http.HttpClient>はこれを実行して各プラットフォームで使用可能な下位レベルの機能をラップする高度な API です。
+は<xref:System.Net.Http.HttpClient> 、実行される各プラットフォームで使用できる下位レベルの機能をラップする高レベルの API です。
 
-各プラットフォームの<xref:System.Net.Http.HttpClient>最適使用可能なトランスポートを使用しようとしています。
+各プラットフォームで、 <xref:System.Net.Http.HttpClient>は最適な利用可能なトランスポートを使用しようとします。
 
-| **ホスト/ランタイム**            | **バックエンド**                                                                               |
+| **ホスト/ランタイム**            | **バック**                                                                               |
 | --------------------------- | ----------------------------------------------------------------------------------------- |
-| Windows と .NET Framework      | <xref:System.Net.HttpWebRequest>                                                          |
+| Windows/.NET Framework      | <xref:System.Net.HttpWebRequest>                                                          |
 | Windows/Mono                | <xref:System.Net.HttpWebRequest>                                                          |
-| Windows/UWP                 | Windows ネイティブ<xref:System.Net.Http.WinHttpHandler>(HTTP 2.0 対応)                   |
-| Windows と .NET Core 1.0 2.0   | Windows ネイティブ<xref:System.Net.Http.WinHttpHandler>(HTTP 2.0 対応)                   |
-| Android と Xamarin             | ビルド時に選択します。 使用するか<xref:System.Net.HttpWebRequest>か Android のネイティブを使用して構成します。 [`HttpURLConnection`](https://developer.xamarin.com/api/type/Java.Net.HttpURLConnection/) |
-| iOS、tvOS、watchOS/Xamarin  | ビルド時に選択します。 使用するか<xref:System.Net.HttpWebRequest>Apple を使用するように構成または[ `NSUrlSession` ](https://developer.xamarin.com/api/type/MonoTouch.Foundation.NSUrlSession/) (HTTP 2.0 対応) |
-| macOS/Xamarin               | ビルド時に選択します。 使用するか<xref:System.Net.HttpWebRequest>Apple を使用するように構成または[ `NSUrlSession` ](https://developer.xamarin.com/api/type/MonoTouch.Foundation.NSUrlSession/) (HTTP 2.0 対応) |
+| Windows/UWP                 | Windows ネイティブ<xref:System.Net.Http.WinHttpHandler> (HTTP 2.0 対応)                   |
+| Windows/.NET Core 1.0-2.0   | Windows ネイティブ<xref:System.Net.Http.WinHttpHandler> (HTTP 2.0 対応)                   |
+| Android/Xamarin             | ビルド時に選択されます。 を使用<xref:System.Net.HttpWebRequest>するか、Android のネイティブを使用するように構成することができます。[`HttpURLConnection`](https://developer.xamarin.com/api/type/Java.Net.HttpURLConnection/) |
+| iOS、tvOS、watchOS/Xamarin  | ビルド時に選択されます。 を使用<xref:System.Net.HttpWebRequest>するか、Apple の[`NSUrlSession`](https://developer.xamarin.com/api/type/MonoTouch.Foundation.NSUrlSession/)を使用するように構成することができます (HTTP 2.0 対応)。 |
+| macOS/Xamarin               | ビルド時に選択されます。 を使用<xref:System.Net.HttpWebRequest>するか、Apple の[`NSUrlSession`](https://developer.xamarin.com/api/type/MonoTouch.Foundation.NSUrlSession/)を使用するように構成することができます (HTTP 2.0 対応)。 |
 | macOS/Mono                  | <xref:System.Net.HttpWebRequest>                                                          |
-| macOS と .NET Core 1.0 2.0     | `libcurl`-ベースの HTTP トランスポート (HTTP 2.0 対応)                                         |
+| macOS/.NET Core 1.0-2.0     | `libcurl`ベースの HTTP トランスポート (HTTP 2.0 対応)                                         |
 | Linux/Mono                  | <xref:System.Net.HttpWebRequest>                                                          |
-| Linux と .NET Core 1.0 2.0     | `libcurl`-ベースの HTTP トランスポート (HTTP 2.0 対応)                                         |
-| .NET core 2.1 以降     | <xref:System.Net.Http.SocketsHttpHandler?displayProperty=nameWithType>                    |
+| Linux/.NET Core 1.0-2.0     | `libcurl`ベースの HTTP トランスポート (HTTP 2.0 対応)                                         |
+| .NET Core 2.1 以降     | <xref:System.Net.Http.SocketsHttpHandler?displayProperty=nameWithType>                    |
 
-ユーザーが特定のトランスポートを構成できますも<xref:System.Net.Http.HttpClient>を呼び出すことによって、<xref:System.Net.Http.HttpClient.%23ctor*>を受け取るコンス トラクター、<xref:System.Net.Http.HttpMessageHandler>します。
+ユーザーは、 <xref:System.Net.Http.HttpClient> <xref:System.Net.Http.HttpClient.%23ctor*> を受け取るコンストラクターを呼び出すことによって、の特定のトランスポートを構成すること<xref:System.Net.Http.HttpMessageHandler>もできます。
 
-### <a name="httpclient-and-net-core"></a>HttpClient および .NET Core
+### <a name="httpclient-and-net-core"></a>HttpClient と .NET Core
 
-.NET Core 2.1 では、以降、<xref:System.Net.Http.SocketsHttpHandler?displayProperty=nameWithType>クラスの代わりに`HttpClientHandler`などの上位レベルの HTTP ネットワーク クラスで使用される実装を提供します`HttpClient`します。 使用<xref:System.Net.Http.SocketsHttpHandler>いくつかの利点を提供しています。
+.Net Core 2.1 以降、の代わり<xref:System.Net.Http.SocketsHttpHandler?displayProperty=nameWithType>に、クラス`HttpClientHandler`は、など`HttpClient`の上位レベルの HTTP ネットワーククラスで使用される実装を提供します。 の<xref:System.Net.Http.SocketsHttpHandler>使用には、次のようないくつかの利点があります。
 
 - 以前の実装と比較して、パフォーマンスが大幅に向上しています。
 
-- 展開とサービスを簡略化するプラットフォームの依存関係を除去します。 たとえば、 `libcurl` macOS と .NET Core の .NET Core への依存関係を for Linux が不要になった。
+- プラットフォームの依存関係を削除することで、デプロイとサービスが簡単になります。 たとえば、は`libcurl` 、macOS 用の .net core と Linux 用の .net core に依存しなくなりました。
 
-- すべての .NET プラットフォーム間で一貫性のある動作。
+- すべての .NET プラットフォームでの一貫した動作。
 
-この変更が望ましくない場合は、旧バージョンを使用するアプリケーションを構成することができます<xref:System.Net.Http.HttpClientHandler?displayProperty=nameWithType>代わりにさまざまな方法で。
+この変更が望ましくない場合は、代わりに古い<xref:System.Net.Http.HttpClientHandler?displayProperty=nameWithType>を使用するようにアプリケーションを構成できます。
 
-- 呼び出すことによって、<xref:System.AppContext.SetSwitch%2A?displayProperty=nameWithType>メソッドとして、次のとおりです。
+- 次の<xref:System.AppContext.SetSwitch%2A?displayProperty=nameWithType>ようにメソッドを呼び出します。
 
    ```csharp
    AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
@@ -113,7 +113,7 @@ public class GoodController : ApiController
    ```vb
    AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", False)
    ``` 
-- 定義することで、`System.Net.Http.UseSocketsHttpHandler`に切り替え、 *. netcore.runtimeconfig.json*構成ファイル。
+- `System.Net.Http.UseSocketsHttpHandler` *. Netcore. runtimeconfig. json*構成ファイルでスイッチを定義します。
 
   ```json
   "runtimeOptions": {
@@ -123,17 +123,17 @@ public class GoodController : ApiController
   }
   ```
   
-- という名前の環境変数を定義することで`DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER`いずれかに設定して`false`または 0。
+- という名前`DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER`の環境変数を定義し、これ`false`をまたは0に設定します。
 
 ## Examples  
  [!code-csharp[System.Net.Http.HttpClient#1](~/samples/snippets/csharp/VS_Snippets_Misc/system.net.http.httpclient/cs/source.cs#1)]  
   
- 上記のコード例では、`async Task Main()`エントリ ポイント。 C# 7.1 以降その機能が必要です。
+ 前のコード例では`async Task Main()` 、エントリポイントを使用しています。 この機能にC#は7.1 以降が必要です。
  
  ]]></format>
     </remarks>
     <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkID=245696">Web サービスへの接続</related>
-    <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=245697">クイック スタート: HttpClient を使って接続する</related>
+    <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=245697">クイック スタート:HttpClient を使って接続する</related>
     <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=245699">HttpClient ハンドラーを使う方法</related>
     <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=245698">HttpClient の接続をセキュリティで保護する方法</related>
     <related type="ExternalDocumentation" href="https://go.microsoft.com/fwlink/?LinkId=242550">HttpClient のサンプル</related>
@@ -152,7 +152,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Net.Http.HttpClient> 1 回インスタンス化し、アプリケーションの有効期間にわたって再利用するためのものです。 すべての要求に対して、HttpClient クラスをインスタンス化すると、負荷の下で使用可能なソケットの数は使い果たしてしまいます。 SocketException エラーが発生します。 HttpClient を正しく使用する例を次に示します。  
+ <xref:System.Net.Http.HttpClient>は、1回インスタンス化し、アプリケーションの有効期間全体に再利用することを目的としています。 すべての要求に対して HttpClient クラスをインスタンス化すると、大量の読み込みで使用可能なソケットの数が枯渇します。 これにより、SocketException エラーが発生します。 HttpClient を正しく使用する例を次に示します。  
   
 ```csharp  
 public class GoodController : ApiController  
@@ -198,7 +198,7 @@ public class GoodController : ApiController
         <remarks>
           <format type="text/markdown"><![CDATA[    
 ## Remarks  
-呼び出しと同じですがこのコンス トラクターを使用して、 [ `HttpClient(new HttpClientHandler(), true)` ](xref:System.Net.Http.HttpClient.%23ctor(System.Net.Http.HttpMessageHandler,System.Boolean))コンス トラクター。
+このコンストラクターの使用は、 [`HttpClient(new HttpClientHandler(), true)`](xref:System.Net.Http.HttpClient.%23ctor(System.Net.Http.HttpMessageHandler,System.Boolean))コンストラクターを呼び出すことと同じです。
 ]]></format>
         </remarks>
       </Docs>
@@ -233,9 +233,9 @@ public class GoodController : ApiController
         <remarks>
           <format type="text/markdown"><![CDATA[    
 ## Remarks  
-呼び出しと同じですがこのコンス トラクターを使用して、 [ `HttpClient(handler, true)` ](xref:System.Net.Http.HttpClient.%23ctor(System.Net.Http.HttpMessageHandler,System.Boolean))コンス トラクター。
+このコンストラクターの使用は、 [`HttpClient(handler, true)`](xref:System.Net.Http.HttpClient.%23ctor(System.Net.Http.HttpMessageHandler,System.Boolean))コンストラクターを呼び出すことと同じです。
 
-指定した`handler`が呼び出すことによって破棄の[HttpClient.Dispose](xref:System.Net.Http.HttpMessageInvoker.Dispose)します。  
+指定さ`handler`れたは、 [httpclient. Dispose](xref:System.Net.Http.HttpMessageInvoker.Dispose)を呼び出すことによって破棄されます。  
 ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="handler" /> が <see langword="null" /> です。</exception>
@@ -305,7 +305,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 送信するときに、<xref:System.Net.Http.HttpRequestMessage>に相対 Uri を持つメッセージの Uri が追加される、<xref:System.Net.Http.HttpClient.BaseAddress%2A>プロパティを絶対 Uri を作成します。  
+ 相対 uri を<xref:System.Net.Http.HttpRequestMessage>使用してを送信する場合、メッセージ uri は、絶対<xref:System.Net.Http.HttpClient.BaseAddress%2A> uri を作成するためにプロパティに追加されます。  
   
  ]]></format>
         </remarks>
@@ -342,7 +342,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドを呼び出した後、<xref:System.Net.Http.HttpClient>インスタンスは、追加の要求の実行にも使用できます。  
+ このメソッドを呼び出した後<xref:System.Net.Http.HttpClient>も、インスタンスを使用して追加の要求を実行できます。  
   
  ]]></format>
         </remarks>
@@ -367,9 +367,30 @@ public class GoodController : ApiController
         <ReturnType>System.Net.IWebProxy</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>グローバル HTTP プロキシを取得または設定します。</summary>
+        <value>を<see cref="T:System.Net.HttpWebRequest" />インスタンス化するすべての呼び出しによって使用されるプロキシ。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks
+この静的プロパティは、 <xref:System.Net.Http.HttpClient> <xref:System.Net.Http.HttpClientHandler>コンストラクターを介して渡されたでプロキシが明示的に設定されていない場合に、すべて のインスタンスが使用する既定のプロキシを決定します。 
+
+このプロパティによって返される既定のインスタンスは、プラットフォームに応じて異なる規則のセットに従って初期化されます。
+* **Windows の場合:** 環境変数から、または定義されていない場合は、ユーザーのプロキシ設定からプロキシ構成を読み取ります。
+
+* **MacOS の場合:** 環境変数から、または定義されていない場合はシステムのプロキシ設定からプロキシ構成を読み取ります。
+
+* **Linux の場合:** 環境変数からプロキシ構成を読み取ります。これらが定義されていない場合、このプロパティは、すべてのアドレスをバイパスする構成されていないインスタンスを初期化します。
+
+Windows および Unix ベースの`DefaultProxy`プラットフォームでの初期化に使用される環境変数は次のとおりです。
+* HTTP_PROXY: HTTP 要求で使用されるプロキシサーバーのホスト名または IP アドレス。
+* HTTPS_PROXY: HTTPS 要求で使用されるプロキシサーバーのホスト名または IP アドレス。
+* ALL_PROXY: HTTP_PROXY または HTTPS_PROXY の場合は、HTTP または HTTPS 要求で使用されるプロキシサーバーのホスト名または IP アドレスが定義されていません。
+* NO_PROXY: プロキシから除外する必要があるホスト名のコンマ区切りのリスト。
+
+ ]]></format>
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">渡される値を <see langword="null" /> とすることはできません。</exception>
       </Docs>
     </Member>
     <Member MemberName="DefaultRequestHeaders">
@@ -403,7 +424,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティに設定するヘッダーは、もう一度要求メッセージに設定する必要はありません。  
+ このプロパティで設定されたヘッダーは、要求メッセージで再度設定する必要はありません。  
   
  ]]></format>
         </remarks>
@@ -428,10 +449,23 @@ public class GoodController : ApiController
         <ReturnType>System.Version</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
+        <summary>この <see cref="T:System.Net.Http.HttpClient" /> インスタンスによって行われる後続の要求で使用される、既定の HTTP バージョンを取得または設定します。</summary>
+        <value>この<see cref="T:System.Net.Http.HttpClient" />インスタンスで行われたすべての要求に使用する既定のバージョン。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+`DefaultRequestVersion`既定<xref:System.Net.HttpVersion.Version11?displayProperty=nameWithType>値はです。
+
+プロパティ`DefaultRequestVersion`は<xref:System.Net.Http.HttpClient.GetAsync%2A>、、 <xref:System.Net.Http.HttpClient> 、<xref:System.Net.Http.HttpClient.GetStringAsync%2A>またはの呼び出しなど、このインスタンスを使用して送信されるすべての要求に使用する既定のHTTPバージョンを<xref:System.Net.Http.HttpClient.SendAsync%2A>指定します。
+
+プロパティ`DefaultRequestVersion`は、 <xref:System.Net.Http.HttpClient>インスタンスが要求を開始していない限り変更できます。
+ ]]></format>
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">設定操作で、<see langword="DefaultRequestVersion" /> が <see langword="null" /> です。</exception>
+      <exception cref="T:System.InvalidOperationException"><see cref="T:System.Net.Http.HttpClient" /> インスタンスにより 1 つ以上の要求が既に開始されています。</exception>
+      <exception cref="T:System.ObjectDisposedException"><see cref="T:System.Net.Http.HttpClient" /> インスタンスは既に破棄されています。</exception>
+    </Docs>
     </Member>
     <MemberGroup MemberName="DeleteAsync">
       <AssemblyInfo>
@@ -657,11 +691,11 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パブリック`Dispose()`メソッドと<xref:System.Object.Finalize%2A>メソッド。 `Dispose()` 保護された起動`Dispose(Boolean)`メソッドを`disposing`パラメーターに設定`true`します。 <xref:System.Object.Finalize%2A> 呼び出す`Dispose`で`disposing`に設定`false`します。  
+ このメソッドは、パブリック`Dispose()`メソッド<xref:System.Object.Finalize%2A>とメソッドによって呼び出されます。 `Dispose()``disposing`パラメーターをに`Dispose(Boolean)` 設定して、保護されたメソッド`true`を呼び出します。 <xref:System.Object.Finalize%2A>をに`disposing` `Dispose` 設定してを呼び出します`false`。  
   
  `disposing` パラメーターが `true` の場合、このメソッドは、この <xref:System.Net.Http.HttpClient> が参照しているすべてのマネージド オブジェクトによって保持されているリソースをすべて解放します。 このメソッドは、参照される各オブジェクトの `Dispose()` メソッドを呼び出します。  
   
- このメソッドが呼び出されたときに、<xref:System.Net.Http.HttpClient.CancelPendingRequests%2A>保留中のすべての要求を中止するメソッドが呼び出されます。  
+ このメソッドが呼び出されると、 <xref:System.Net.Http.HttpClient.CancelPendingRequests%2A>メソッドが呼び出され、保留中のすべての要求が中止されます。  
   
  ]]></format>
         </remarks>
@@ -1216,7 +1250,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 返された<xref:System.Threading.Tasks.Task%601>オブジェクトは、応答ヘッダーが読み取られた後に完了します。 このメソッドは、読み取るしたり応答本文をバッファーありません。  
+ この操作はブロックされません。 返さ<xref:System.Threading.Tasks.Task%601>れたオブジェクトは、応答ヘッダーが読み取られた後に完了します。 このメソッドは、応答本文の読み取りもバッファーも行いません。  
   
  ]]></format>
         </remarks>
@@ -1264,7 +1298,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 返された<xref:System.Threading.Tasks.Task%601>オブジェクトは、応答ヘッダーが読み取られた後に完了します。 このメソッドは、読み取るしたり応答本文をバッファーありません。  
+ この操作はブロックされません。 返さ<xref:System.Threading.Tasks.Task%601>れたオブジェクトは、応答ヘッダーが読み取られた後に完了します。 このメソッドは、応答本文の読み取りもバッファーも行いません。  
   
  ]]></format>
         </remarks>
@@ -1418,7 +1452,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アプリを設定できる、<xref:System.Net.Http.HttpClient.MaxResponseContentBufferSize%2A>応答を読み取るときに、バッファーへの応答のサイズを制限する値を小さくするプロパティ。 応答コンテンツのサイズがより大きいかどうか、<xref:System.Net.Http.HttpClient.MaxResponseContentBufferSize%2A>プロパティ、例外がスローされます。  
+ アプリでは、 <xref:System.Net.Http.HttpClient.MaxResponseContentBufferSize%2A>プロパティを小さい値に設定して、応答の読み取り時にバッファーに対する応答サイズを制限できます。 応答コンテンツのサイズが<xref:System.Net.Http.HttpClient.MaxResponseContentBufferSize%2A>プロパティより大きい場合は、例外がスローされます。  
   
  ]]></format>
         </remarks>
@@ -2039,7 +2073,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 返された<xref:System.Threading.Tasks.Task%601>オブジェクトはコンテンツを含む応答全体が読み取られると、完了します。  
+ この操作はブロックされません。 返さ<xref:System.Threading.Tasks.Task%601>れたオブジェクトは、コンテンツを含む応答全体が読み取られた後に完了します。  
   
  ]]></format>
         </remarks>
@@ -2085,7 +2119,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 値に応じて、`completionOption`パラメーター、返された<xref:System.Threading.Tasks.Task%601>オブジェクトは、応答があるか、コンテンツを含む応答全体を読み取ると、すぐに完了します。  
+ この操作はブロックされません。 `completionOption`パラメーターの値に応じて、返さ<xref:System.Threading.Tasks.Task%601>れたオブジェクトは、応答が使用可能になるか、コンテンツ全体が読み取られるとすぐに完了します。  
   
  ]]></format>
         </remarks>
@@ -2130,7 +2164,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 返された<xref:System.Threading.Tasks.Task%601>オブジェクトはコンテンツを含む応答全体が読み取られると、完了します。  
+ この操作はブロックされません。 返さ<xref:System.Threading.Tasks.Task%601>れたオブジェクトは、コンテンツを含む応答全体が読み取られた後に完了します。  
   
  ]]></format>
         </remarks>
@@ -2177,7 +2211,7 @@ public class GoodController : ApiController
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作はブロックされません。 値に応じて、`completionOption`パラメーター、返された<xref:System.Threading.Tasks.Task%601>オブジェクトは、応答があるか、コンテンツを含む応答全体を読み取ると、すぐに完了します。  
+ この操作はブロックされません。 `completionOption`パラメーターの値に応じて、返さ<xref:System.Threading.Tasks.Task%601>れたオブジェクトは、応答が使用可能になるか、コンテンツ全体が読み取られるとすぐに完了します。  
   
  ]]></format>
         </remarks>
@@ -2219,15 +2253,15 @@ public class GoodController : ApiController
 ## Remarks  
  既定値は 100,000 ミリ秒 (100 秒) です。  
   
- プロパティの値を設定すると、タイムアウトを設定する<xref:System.Threading.Timeout.InfiniteTimeSpan>します。  
+ 無限のタイムアウトを設定するには、プロパティ値<xref:System.Threading.Timeout.InfiniteTimeSpan>をに設定します。  
   
- ドメイン ネーム システム (DNS) クエリには、最大 15 秒を返すまたはタイムアウトをかかる場合があります。設定すると、要求には、解決を必要とするホスト名が含まれています。<xref:System.Net.Http.HttpClient.Timeout%2A>値より小さい 15 秒間かかる場合があります 15 秒以上前に、<xref:System.Net.WebException>が要求のタイムアウトを示すためにスローされます。  
+ ドメインネームシステム (DNS) のクエリが返されるか、タイムアウトになるまでに最大15秒かかることがあります。解決が必要なホスト名が要求に含まれており<xref:System.Net.Http.HttpClient.Timeout%2A> 、15秒未満の値に設定した場合は、 <xref:System.Net.WebException>がスローされてから要求のタイムアウトが示されるまでに15秒以上かかることがあります。  
   
- これを使用してすべての要求を同じタイムアウトが適用されます<xref:System.Net.Http.HttpClient>インスタンス。  使用して個々 の要求ごとに異なるタイムアウトを設定することも、<xref:System.Threading.CancellationTokenSource>タスク。 のみのうち短い 2 つのタイムアウトが適用されることに注意してください。  
+ この<xref:System.Net.Http.HttpClient>インスタンスを使用するすべての要求に対して、同じタイムアウトが適用されます。  また、タスクでを使用して、 <xref:System.Threading.CancellationTokenSource>個々の要求に対して異なるタイムアウトを設定することもできます。 2つのタイムアウトのうち、短い方だけが適用されることに注意してください。  
   
  ## <a name="example"></a>例
  
- 次の例のセット、`Timeout`プロパティ。
+ 次の例では`Timeout` 、プロパティを設定します。
   
 ```csharp
 HttpClient httpClient = new HttpClient();

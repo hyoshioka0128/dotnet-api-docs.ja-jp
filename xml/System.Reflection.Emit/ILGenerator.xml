@@ -1,5 +1,5 @@
 <Type Name="ILGenerator" FullName="System.Reflection.Emit.ILGenerator">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="730cc189b1c30856155711ca4b89d527ce724965" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58712858" /></Metadata><TypeSignature Language="C#" Value="public class ILGenerator : System.Runtime.InteropServices._ILGenerator" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="496ff7dc72b039e14c802cfd83af0947e09458b7" /><Meta Name="ms.sourcegitcommit" Value="74239f3977d28923e5020663db2c4e91601bea79" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/24/2019" /><Meta Name="ms.locfileid" Value="68437146" /></Metadata><TypeSignature Language="C#" Value="public class ILGenerator : System.Runtime.InteropServices._ILGenerator" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi beforefieldinit ILGenerator extends System.Object implements class System.Runtime.InteropServices._ILGenerator" />
   <TypeSignature Language="DocId" Value="T:System.Reflection.Emit.ILGenerator" />
   <TypeSignature Language="VB.NET" Value="Public Class ILGenerator&#xA;Implements _ILGenerator" />
@@ -9,6 +9,7 @@
     <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.3.0</AssemblyVersion>
+    <AssemblyVersion>4.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
@@ -46,9 +47,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Reflection.Emit.ILGenerator> 動的アセンブリのメソッドとコンス トラクターのメソッド本体を生成するために使用 (によって表される、<xref:System.Reflection.Emit.MethodBuilder>と<xref:System.Reflection.Emit.ConstructorBuilder>クラス) と、スタンドアロンの動的メソッドの (によって表される、<xref:System.Reflection.Emit.DynamicMethod>クラス)。 取得する、<xref:System.Reflection.Emit.ILGenerator>を使用して、 <xref:System.Reflection.Emit.ConstructorBuilder.GetILGenerator%2A?displayProperty=nameWithType>、 <xref:System.Reflection.Emit.DynamicMethod.GetILGenerator%2A?displayProperty=nameWithType>、および<xref:System.Reflection.Emit.MethodBuilder.GetILGenerator%2A?displayProperty=nameWithType>メソッド。  
+ <xref:System.Reflection.Emit.ILGenerator>は、動的アセンブリ ( <xref:System.Reflection.Emit.MethodBuilder> <xref:System.Reflection.Emit.DynamicMethod>クラスおよび<xref:System.Reflection.Emit.ConstructorBuilder>クラスによって表されます) のメソッドとコンストラクターのメソッド本体を生成するために使用されます。また、スタンドアロンの動的メソッド (クラスによって表される) に対しても使用されます。 を取得<xref:System.Reflection.Emit.ILGenerator>するには、 <xref:System.Reflection.Emit.ConstructorBuilder.GetILGenerator%2A?displayProperty=nameWithType>、 <xref:System.Reflection.Emit.DynamicMethod.GetILGenerator%2A?displayProperty=nameWithType>、および<xref:System.Reflection.Emit.MethodBuilder.GetILGenerator%2A?displayProperty=nameWithType>の各メソッドを使用します。  
   
- MSIL は、-イン タイム (JIT) コンパイラへの入力として使用されます。  
+ MSIL はジャストインタイム (JIT) コンパイラへの入力として使用されます。  
   
  ]]></format>
     </remarks>
@@ -66,6 +67,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -91,15 +93,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在の例外ブロックの末尾に分岐命令を生成します。  
+ 現在の例外ブロックの末尾に分岐命令を出力します。  
   
 > [!NOTE]
->  フィルターの例外ブロックを返す場合、 `constant exception_execute_handler` (共通言語インフラストラクチャ命令セット用のドキュメントを参照) への引数、`BeginCatchBlock`はチェックされません。  
+>  Filter 例外ブロックがを返す`constant exception_execute_handler`場合 (共通言語基盤の命令セットのドキュメントを参照)、への`BeginCatchBlock`引数はチェックされません。  
   
    
   
 ## Examples  
- 次のコード例は、のコンテキストの使用を示して、`BeginCatchBlock`メソッド。  
+ 次のコードサンプルは、 `BeginCatchBlock`メソッドのコンテキスト使用方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CS/source.cs#1)]
@@ -124,6 +126,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -146,9 +149,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在の例外ブロックの末尾に分岐命令を生成します。  
+ 現在の例外ブロックの末尾に分岐命令を出力します。  
   
- 場合、現在<xref:System.Reflection.Emit.ILGenerator>に関連付けられている、<xref:System.Reflection.Emit.DynamicMethod>オブジェクトをフィルター処理された例外ブロックの出力はサポートされていません。 <xref:System.Reflection.Emit.DynamicILInfo> 使用が例外ブロックをフィルター処理されている動的メソッドを構築するために使用します。  
+ 現在<xref:System.Reflection.Emit.ILGenerator>のが<xref:System.Reflection.Emit.DynamicMethod>オブジェクトに関連付けられている場合、フィルター処理された例外ブロックの出力はサポートされていません。 <xref:System.Reflection.Emit.DynamicILInfo>フィルター処理された例外ブロックを使用する動的メソッドを構築するために使用できます。  
   
  ]]></format>
         </remarks>
@@ -170,6 +173,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -193,12 +197,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 例外ブロックを作成するが、いくつかの情報を記録は、Microsoft intermediate language (MSIL ストリームに)、実際には生成されません。  
+ 例外ブロックを作成すると、一部の情報が記録されますが、実際には、Microsoft 中間言語 (MSIL) をストリームに出力しません。  
   
    
   
 ## Examples  
- 次のコード例は、のコンテキストの使用を示して、`BeginExceptionBlock`メソッド。  
+ 次のコードサンプルは、 `BeginExceptionBlock`メソッドのコンテキスト使用方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CS/source.cs#1)]
@@ -220,6 +224,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -242,12 +247,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、現在<xref:System.Reflection.Emit.ILGenerator>に関連付けられている、<xref:System.Reflection.Emit.DynamicMethod>例外フォールト ブロックを生成しているオブジェクトはサポートされていません。 <xref:System.Reflection.Emit.DynamicILInfo> 例外フォールト ブロックを使用する動的メソッドを構築するために使用します。  
+ 現在<xref:System.Reflection.Emit.ILGenerator>のが<xref:System.Reflection.Emit.DynamicMethod>オブジェクトに関連付けられている場合、例外エラーブロックの出力はサポートされていません。 <xref:System.Reflection.Emit.DynamicILInfo>を使用すると、例外エラーブロックを使用する動的メソッドを作成できます。  
   
    
   
 ## Examples  
- 次のコード サンプルの使用を示します`BeginFaultBlock`します。  
+ 次のコードサンプルは、の`BeginFaultBlock`使用方法を示しています。  
   
  [!code-cpp[ILGenerator_BeginFaultBlock#1](~/samples/snippets/cpp/VS_Snippets_CLR/ILGenerator_BeginFaultBlock/CPP/ilgenerator_beginfaultblock.cpp#1)]
  [!code-csharp[ILGenerator_BeginFaultBlock#1](~/samples/snippets/csharp/VS_Snippets_CLR/ILGenerator_BeginFaultBlock/CS/ilgenerator_beginfaultblock.cs#1)]
@@ -257,7 +262,7 @@
         </remarks>
         <exception cref="T:System.NotSupportedException">生成されている MSIL (Microsoft Intermediate Language) は、現在例外ブロックに含まれていません。  
   
-または 
+- または - 
 この <see cref="T:System.Reflection.Emit.ILGenerator" /> は <see cref="T:System.Reflection.Emit.DynamicMethod" /> に属しています。</exception>
       </Docs>
     </Member>
@@ -273,6 +278,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -295,7 +301,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード サンプルの使用を示します`BeginFinallyBlock`します。  
+ 次のコードサンプルは、の`BeginFinallyBlock`使用方法を示しています。  
   
  [!code-cpp[ILGenerator_BeginFinallyBlock_2#2](~/samples/snippets/cpp/VS_Snippets_CLR/ILGenerator_BeginFinallyBlock_2/CPP/ILGenerator_BeginFinallyBlock_2.cpp#2)]
  [!code-csharp[ILGenerator_BeginFinallyBlock_2#2](~/samples/snippets/csharp/VS_Snippets_CLR/ILGenerator_BeginFinallyBlock_2/CS/ilgenerator_beginfinallyblock_2.cs#2)]
@@ -318,6 +324,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -340,14 +347,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、シンボリック情報を出力に使用されます。 後で宣言されたローカル変数<xref:System.Reflection.Emit.ILGenerator.BeginScope%2A>のスコープは、対応するまで<xref:System.Reflection.Emit.ILGenerator.EndScope%2A>が呼び出されます。  
+ このメソッドは、シンボル情報を出力するために使用されます。 の後で宣言<xref:System.Reflection.Emit.ILGenerator.BeginScope%2A>されたローカル変数<xref:System.Reflection.Emit.ILGenerator.EndScope%2A>は、対応するが呼び出されるまでスコープが設定されます。  
   
- 場合、現在<xref:System.Reflection.Emit.ILGenerator>に関連付けられている、<xref:System.Reflection.Emit.DynamicMethod>オブジェクト、シンボル情報をサポートしていません。  
+ 現在<xref:System.Reflection.Emit.ILGenerator>のが<xref:System.Reflection.Emit.DynamicMethod>オブジェクトに関連付けられている場合、シンボリック情報はサポートされません。  
   
    
   
 ## Examples  
- 次のコード サンプルの使用を示します`BeginScope`と`EndScope`します。  
+ 次のコードサンプルは、と`BeginScope` `EndScope`の使用方法を示しています。  
   
  [!code-cpp[ILGenerator_Begin_EndScope#2](~/samples/snippets/cpp/VS_Snippets_CLR/ILGenerator_Begin_EndScope/CPP/ilgenerator_begin_endscope.cpp#2)]
  [!code-csharp[ILGenerator_Begin_EndScope#2](~/samples/snippets/csharp/VS_Snippets_CLR/ILGenerator_Begin_EndScope/CS/ilgenerator_begin_endscope.cs#2)]
@@ -380,6 +387,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -406,14 +414,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在の構文スコープでローカル変数を作成します。コードが生成されている場合など、`for`ループ (`For` Visual Basic でのループ)、変数のスコープがループします。  
+ ローカル変数は、現在の構文のスコープで作成されます。たとえば、ループ ( `for` `For` Visual Basic 内のループ) でコードを出力する場合、変数のスコープはループになります。  
   
- このオーバー ロードで作成されたローカル変数がピン留めされていません。 アンマネージ ポインターを使用するためのピン留めされた変数を作成するには、使用、<xref:System.Reflection.Emit.ILGenerator.DeclareLocal%28System.Type%2CSystem.Boolean%29>メソッドのオーバー ロードします。  
+ このオーバーロードを使用して作成されたローカル変数は固定されていません。 アンマネージポインターで使用する固定変数を作成するには<xref:System.Reflection.Emit.ILGenerator.DeclareLocal%28System.Type%2CSystem.Boolean%29> 、メソッドオーバーロードを使用します。  
   
    
   
 ## Examples  
- 次のコード例は、の使用を示します、`DeclareLocal`メソッド。 このコードのコード例の一部である、<xref:System.Reflection.Emit.LocalBuilder>クラス。  
+ 次のコード例は、 `DeclareLocal`メソッドの使用方法を示しています。 このコードは、 <xref:System.Reflection.Emit.LocalBuilder>クラスのより大きなコード例の一部です。  
   
  [!code-cpp[LocalBuilder_Sample_SetLocalSymInfo#2](~/samples/snippets/cpp/VS_Snippets_CLR/LocalBuilder_Sample_SetLocalSymInfo/CPP/localbuilder_sample_4.cpp#2)]
  [!code-csharp[LocalBuilder_Sample_SetLocalSymInfo#2](~/samples/snippets/csharp/VS_Snippets_CLR/LocalBuilder_Sample_SetLocalSymInfo/CS/localbuilder_sample_4.cs#2)]
@@ -437,6 +445,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -464,16 +473,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在の構文スコープでローカル変数を作成します。コードが生成されている場合など、`for`ループ (`For` Visual Basic でのループ)、変数のスコープがループします。  
+ ローカル変数は、現在の構文のスコープで作成されます。たとえば、ループ ( `for` `For` Visual Basic 内のループ) でコードを出力する場合、変数のスコープはループになります。  
   
- アンセーフ コードは、アンマネージ ポインターでを参照する前にオブジェクトを固定する必要があります。 参照先オブジェクトが固定されているときに、ガベージ コレクションによって移動できません。  
+ アンセーフコードでは、アンマネージポインターによって参照される前に、オブジェクトを固定する必要があります。 参照先オブジェクトは固定されていますが、ガベージコレクションによって移動することはできません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="localType" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="localType" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.InvalidOperationException">外側の型が <see cref="M:System.Reflection.Emit.TypeBuilder.CreateType" /> メソッドで作成されています。  
   
-または 
+- または - 
 外側のメソッドのメソッド本体が <see cref="M:System.Reflection.Emit.MethodBuilder.CreateMethodBody(System.Byte[],System.Int32)" /> メソッドによって作成されています。</exception>
         <exception cref="T:System.NotSupportedException">この <see cref="T:System.Reflection.Emit.ILGenerator" /> が関連付けられているメソッドが、<see cref="T:System.Reflection.Emit.MethodBuilder" /> で表されていません。</exception>
       </Docs>
@@ -490,6 +499,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -513,14 +523,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ストリーム内のラベルの位置を設定するに呼び出す必要がある<xref:System.Reflection.Emit.ILGenerator.MarkLabel%2A>します。  
+ ストリーム内のラベルの位置を設定するには、を呼び<xref:System.Reflection.Emit.ILGenerator.MarkLabel%2A>出す必要があります。  
   
- これはトークンだけで、ストリーム内の特定の位置をまだは表しません。  
+ これはトークンであり、ストリーム内の特定の場所をまだ表していません。  
   
    
   
 ## Examples  
- 次のコード例は、のコンテキストの使用を示して、`DefineLabel`メソッド。  
+ 次のコードサンプルは、 `DefineLabel`メソッドのコンテキスト使用方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.Label Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.Label Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.Label Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.Label Example/CS/source.cs#1)]
@@ -551,6 +561,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -576,14 +587,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、`opcode`パラメーターに引数が必要です、呼び出し元が引数の長さが宣言されているパラメーターの長さと一致することを確認する必要があります。 それ以外の場合、結果は予測できません。 たとえば、Emit 命令が 2 バイトのオペランドを必要とし、呼び出し元が 4 バイトのオペランドする場合、ランタイムは命令ストリームに 2 つの追加のバイトを出力します。 これらの余分なバイトになります<xref:System.Reflection.Emit.OpCodes.Nop>指示します。  
+ パラメーターに`opcode`引数が必要な場合、呼び出し元は、引数の長さが宣言されたパラメーターの長さと一致することを確認する必要があります。 それ以外の場合、結果は予測できません。 たとえば、出力命令に2バイトのオペランドが必要で、呼び出し元が4バイトのオペランドを指定した場合、ランタイムは命令ストリームに2つの追加バイトを出力します。 これらの余分なバイト<xref:System.Reflection.Emit.OpCodes.Nop>は指示されます。  
   
- 命令の値で定義されます<xref:System.Reflection.Emit.OpCodes>します。  
+ 命令値はで<xref:System.Reflection.Emit.OpCodes>定義されています。  
   
    
   
 ## Examples  
- 以下のコード サンプルの使用を示します`Emit`のインスタンスを使用して MSIL 出力を生成する<xref:System.Reflection.Emit.ILGenerator>します。  
+ 次のコードサンプルでは、を`Emit`使用して、の<xref:System.Reflection.Emit.ILGenerator>インスタンスを介して MSIL 出力を生成する方法を示します。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CS/source.cs#1)]
@@ -604,6 +615,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -631,7 +643,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -648,6 +660,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -680,7 +693,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -697,6 +710,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -724,7 +738,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -741,6 +755,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -768,7 +783,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -785,6 +800,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -812,7 +828,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -829,6 +845,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -864,13 +881,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
- 場所`con`命令ストリーム パッチを適用できるために必要な場合、ポータブル実行可能 (PE) ファイルには、モジュールを保持するときにするために記録されます。  
+ モジュールをポータブル`con`実行可能 (PE) ファイルに永続化するときに、必要に応じて命令ストリームにパッチを適用できるように、の場所が記録されます。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="con" /> は <see langword="null" />です。 この例外は、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)] の新しい例外です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="con" /> が <see langword="null" /> です。 この例外は、[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)] の新しい例外です。</exception>
       </Docs>
     </Member>
     <Member MemberName="Emit">
@@ -884,6 +901,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -911,14 +929,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
- 使用してラベルが作成された<xref:System.Reflection.Emit.ILGenerator.DefineLabel%2A>を使用して、ストリーム内の位置は固定と<xref:System.Reflection.Emit.ILGenerator.MarkLabel%2A>します。 1 バイトの命令を使用する場合、ラベルは最大で 127 バイト ストリーム内のジャンプを表すことができます。 `opcode` 分岐命令を表す必要があります。 分岐は相対的な手順については、あるため`label`は置き換えられますブランチへの正しいオフセット修正プロセス中にします。  
+ ラベルはを使用<xref:System.Reflection.Emit.ILGenerator.DefineLabel%2A>して作成され、ストリーム内の位置は<xref:System.Reflection.Emit.ILGenerator.MarkLabel%2A>を使用して固定されます。 1バイトの命令が使用されている場合、ラベルはストリームに沿って最大127バイトのジャンプを表すことができます。 `opcode`分岐命令を表す必要があります。 分岐は相対命令である`label`ため、はフィックスアッププロセス中に分岐する正しいオフセットに置き換えられます。  
   
    
   
 ## Examples  
- ジャンプ テーブルを使用する動的メソッドの作成の方法を次のコード例に示します。 配列を使用してジャンプ テーブルを構築<xref:System.Reflection.Emit.Label>します。  
+ 次のコードサンプルは、ジャンプテーブルを使用した動的メソッドの作成を示しています。 ジャンプテーブルは、の<xref:System.Reflection.Emit.Label>配列を使用して構築されます。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CS/source.cs#1)]
@@ -939,6 +957,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -966,16 +985,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- スイッチのテーブルを出力します。  
+ スイッチテーブルを生成します。  
   
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
- 使用してラベルが作成された<xref:System.Reflection.Emit.ILGenerator.DefineLabel%2A>を使用して、ストリーム内の位置は固定と<xref:System.Reflection.Emit.ILGenerator.MarkLabel%2A>します。 1 バイトの命令を使用する場合、ラベルは最大で 127 バイト ストリーム内のジャンプを表すことができます。 `opcode` 分岐命令を表す必要があります。 分岐は相対的な手順については、あるため`label`は置き換えられますブランチへの正しいオフセット修正プロセス中にします。  
+ ラベルはを使用<xref:System.Reflection.Emit.ILGenerator.DefineLabel%2A>して作成され、ストリーム内の位置<xref:System.Reflection.Emit.ILGenerator.MarkLabel%2A>はを使用して固定されます。 1バイトの命令が使用されている場合、ラベルはストリームに沿って最大127バイトのジャンプを表すことができます。 `opcode`分岐命令を表す必要があります。 分岐は相対命令である`label`ため、はフィックスアッププロセス中に分岐する正しいオフセットに置き換えられます。  
   
    
   
 ## Examples  
- ジャンプ テーブルを使用する動的メソッドの作成の方法を次のコード例に示します。 配列を使用してジャンプ テーブルを構築<xref:System.Reflection.Emit.Label>します。  
+ 次のコードサンプルは、ジャンプテーブルを使用した動的メソッドの作成を示しています。 ジャンプテーブルは、の<xref:System.Reflection.Emit.Label>配列を使用して構築されます。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CS/source.cs#1)]
@@ -997,6 +1016,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1024,7 +1044,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -1044,6 +1064,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1071,7 +1092,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -1089,6 +1110,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1116,7 +1138,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。 場所`field`命令ストリーム パッチを適用できるために必要な場合、ポータブル実行可能 (PE) ファイルには、モジュールを保持するときにするために記録されます。  
+ 命令値は、 `OpCodes`列挙体で定義されます。 モジュールをポータブル`field`実行可能 (PE) ファイルに永続化するときに、必要に応じて命令ストリームにパッチを適用できるように、の場所が記録されます。  
   
  ]]></format>
         </remarks>
@@ -1133,6 +1155,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1165,11 +1188,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
- 場所`meth`命令ストリーム パッチを適用できるために必要な場合、ポータブル実行可能 (PE) ファイルには、モジュールを保持するときにするために記録されます。  
+ モジュールをポータブル`meth`実行可能 (PE) ファイルに永続化するときに、必要に応じて命令ストリームにパッチを適用できるように、の場所が記録されます。  
   
- 場合`meth`ジェネリックのメソッドを表すジェネリック メソッド定義する必要があります。 つまり、その[MethodInfo.IsGenericMethodDefinition](xref:System.Reflection.MethodBase.IsGenericMethodDefinition)プロパティである必要があります`true`します。  
+ が`meth`ジェネリックメソッドを表す場合は、ジェネリックメソッド定義である必要があります。 つまり、 [IsGenericMethodDefinition](xref:System.Reflection.MethodBase.IsGenericMethodDefinition)プロパティはで`true`ある必要があります。  
   
  ]]></format>
         </remarks>
@@ -1188,6 +1211,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1220,7 +1244,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -1237,6 +1261,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1269,7 +1294,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。  
+ 命令値は、 `OpCodes`列挙体で定義されます。  
   
  ]]></format>
         </remarks>
@@ -1286,6 +1311,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1313,7 +1339,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。 場所`str`モジュールが、ポータブル実行可能 (PE) ファイルに保存された場合に将来のフィックス アップを記録します。  
+ 命令値は、 `OpCodes`列挙体で定義されます。 モジュールがポータブル`str`実行可能 (PE) ファイルに保存されている場合は、将来の修正のためにの場所が記録されます。  
   
  ]]></format>
         </remarks>
@@ -1330,6 +1356,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1362,7 +1389,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 命令の値が定義されている、`OpCodes`列挙体。 場所`cls`トークン パッチを適用できるために必要な場合、ポータブル実行可能 (PE) ファイルには、モジュールを保持するときにするために記録されます。  
+ 命令値は、 `OpCodes`列挙体で定義されます。 モジュールをポータブル`cls`実行可能 (PE) ファイルに永続化するときに、必要に応じてトークンを修正できるように、の場所が記録されます。  
   
  ]]></format>
         </remarks>
@@ -1380,6 +1407,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1414,17 +1442,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Reflection.Emit.ILGenerator.EmitCall%2A>メソッドを使用して呼び出しを出力を`varargs`メソッドのオーバー ロードがないため、<xref:System.Reflection.Emit.ILGenerator.Emit%2A>可変個引数のパラメーターの型を指定するメソッド。  
+ メソッドは、変数引数のパラメーターの`varargs`型を指定する<xref:System.Reflection.Emit.ILGenerator.Emit%2A>メソッドのオーバーロードがないため、メソッドの呼び出しを出力するために使用されます。 <xref:System.Reflection.Emit.ILGenerator.EmitCall%2A>  
   
- 使用しないメソッドの呼び出しを出力する、<xref:System.Reflection.CallingConventions.VarArgs>呼び出し規約を使用して、<xref:System.Reflection.Emit.ILGenerator.Emit%28System.Reflection.Emit.OpCode%2CSystem.Reflection.MethodInfo%29>メソッドのオーバー ロードします。  
+ <xref:System.Reflection.CallingConventions.VarArgs>呼び出し規約を使用しないメソッドへの呼び出しを出力するには<xref:System.Reflection.Emit.ILGenerator.Emit%28System.Reflection.Emit.OpCode%2CSystem.Reflection.MethodInfo%29> 、メソッドオーバーロードを使用します。  
   
 ## <a name="version-information"></a>バージョン情報  
- .NET Framework version 2.0 以降、<xref:System.Reflection.Emit.ILGenerator.EmitCall%2A>でないメソッドを指定する省略可能なパラメーターの型、メソッドが例外をスローしない`varargs`します。 <xref:System.InvalidProgramException> 呼び出しを実行するがスローされます。  
+ .NET Framework バージョン2.0 以降で<xref:System.Reflection.Emit.ILGenerator.EmitCall%2A> `varargs`は、メソッドに対して省略可能なパラメーターの型が指定されている場合、メソッドは例外をスローしません。 <xref:System.InvalidProgramException>呼び出しが実行されると、がスローされます。  
   
    
   
 ## Examples  
- 次のコード例は、2 つのメソッドを出力する`varargs`メソッドおよびメソッドを呼び出す、`varargs`メソッド。 `EmitCall`メソッドを使用する呼び出しの出力を`varargs`メソッド。  
+ 次のコード例では、メソッドと`varargs`メソッドを`varargs`呼び出すメソッドの2つのメソッドを出力します。 メソッドは、 `varargs`メソッドへの呼び出しを出力するために使用されます。 `EmitCall`  
   
  [!code-cpp[Emit.ArgIterator#1](~/samples/snippets/cpp/VS_Snippets_CLR/Emit.ArgIterator/cpp/source.cpp#1)]
  [!code-csharp[Emit.ArgIterator#1](~/samples/snippets/csharp/VS_Snippets_CLR/Emit.ArgIterator/cs/source.cs#1)]
@@ -1464,6 +1492,7 @@
       <AssemblyInfo>
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>netstandard</AssemblyName>
@@ -1488,12 +1517,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Reflection.Emit.ILGenerator.EmitCalli%2A>を配置する、<xref:System.Reflection.Emit.OpCodes.Calli>をストリームに命令します。 <xref:System.Reflection.Emit.ILGenerator.Emit%2A>は使用しないでください。  
+ ストリーム<xref:System.Reflection.Emit.ILGenerator.EmitCalli%2A>に命令を<xref:System.Reflection.Emit.OpCodes.Calli>配置するには、を使用します。 <xref:System.Reflection.Emit.ILGenerator.Emit%2A>は使用しないでください。  
   
    
   
 ## Examples  
- 次のコード サンプルは、のコンテキストの使用を示して、<xref:System.Reflection.Emit.ILGenerator.EmitCalli%2A>動的クラスの外部、アンマネージ型のメソッドを呼び出すメソッド。  
+ 次のコードサンプルは、動的クラスの外部<xref:System.Reflection.Emit.ILGenerator.EmitCalli%2A>でアンマネージ型メソッドを呼び出すメソッドのコンテキスト使用方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.EmitCalli Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.EmitCalli Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.EmitCalli Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.EmitCalli Example/CS/source.cs#1)]
@@ -1514,6 +1543,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1552,9 +1582,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用<xref:System.Reflection.Emit.ILGenerator.EmitCalli%2A>を配置する、<xref:System.Reflection.Emit.OpCodes.Calli>をストリームに命令します。 <xref:System.Reflection.Emit.ILGenerator.Emit%2A>は使用しないでください。  
+ ストリーム<xref:System.Reflection.Emit.ILGenerator.EmitCalli%2A>に命令を<xref:System.Reflection.Emit.OpCodes.Calli>配置するには、を使用します。 <xref:System.Reflection.Emit.ILGenerator.Emit%2A>は使用しないでください。  
   
- 場合`optionalParameterTypes`オプションの引数を指定します`callingConvention`含める必要があります、<xref:System.Reflection.CallingConventions.VarArgs?displayProperty=nameWithType>フラグ。  
+ で`optionalParameterTypes`省略可能な引数`callingConvention`を指定する<xref:System.Reflection.CallingConventions.VarArgs?displayProperty=nameWithType>場合は、にフラグを含める必要があります。  
   
  ]]></format>
         </remarks>
@@ -1582,6 +1612,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1612,12 +1643,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 型`localBuilder`のオーバー ロードのパラメーターの型に一致する必要があります、<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>メソッド。  
+ の`localBuilder`型は、 <xref:System.Console.WriteLine%2A?displayProperty=nameWithType>メソッドのオーバーロードのパラメーターの型と一致している必要があります。  
   
    
   
 ## Examples  
- 次のコード例は、のコンテキストの使用を示して、<xref:System.Reflection.Emit.ILGenerator.EmitWriteLine%2A>動的メソッドで、コンソールに文字列を書き込みます。  
+ 次のコードサンプルでは、 <xref:System.Reflection.Emit.ILGenerator.EmitWriteLine%2A>メソッドを使用して、動的メソッドで文字列をコンソールに書き込む方法を示します。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.OpCodes Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.OpCodes Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.OpCodes Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.OpCodes Example/CS/source.cs#1)]
@@ -1627,7 +1658,7 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="localBuilder" /> の型は <see cref="T:System.Reflection.Emit.TypeBuilder" /> または <see cref="T:System.Reflection.Emit.EnumBuilder" /> で、これらはサポートされていません。  
   
-または 
+- または - 
 <paramref name="localBuilder" />の型を受け入れる <see cref="Overload:System.Console.WriteLine" /> のオーバーロードがありません。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="localBuilder" /> は <see langword="null" />です。</exception>
       </Docs>
@@ -1644,6 +1675,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1674,12 +1706,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 型`fld`のオーバー ロードのパラメーターの型に一致する必要があります、<xref:System.Console.WriteLine%2A?displayProperty=nameWithType>メソッド。  
+ の`fld`型は、 <xref:System.Console.WriteLine%2A?displayProperty=nameWithType>メソッドのオーバーロードのパラメーターの型と一致している必要があります。  
   
    
   
 ## Examples  
- 次のコード サンプルの使用を示します、<xref:System.Reflection.Emit.ILGenerator.EmitWriteLine%2A>動的メソッドで、コンソールに文字列を書き込みます。  
+ 次のコードサンプルは、 <xref:System.Reflection.Emit.ILGenerator.EmitWriteLine%2A>メソッドを使用して、動的メソッドでコンソールに文字列を書き込む方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.OpCodes Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.OpCodes Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.OpCodes Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.OpCodes Example/CS/source.cs#1)]
@@ -1704,6 +1736,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1739,7 +1772,7 @@
    
   
 ## Examples  
- 次のコード例は、のコンテキストの使用を示して、`EmitWriteLine`動的メソッドで、コンソールに文字列を書き込みます。  
+ 次のコードサンプルでは、 `EmitWriteLine`メソッドを使用して、動的メソッドで文字列をコンソールに書き込む方法を示します。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.OpCodes Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.OpCodes Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.OpCodes Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.OpCodes Example/CS/source.cs#1)]
@@ -1761,6 +1794,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1783,7 +1817,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、のコンテキストの使用を示して、`EndExceptionBlock`メソッド。  
+ 次のコードサンプルは、 `EndExceptionBlock`メソッドのコンテキスト使用方法を示しています。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CS/source.cs#1)]
@@ -1807,6 +1841,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1829,14 +1864,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、シンボリック情報を出力に使用されます。 と共に使用する<xref:System.Reflection.Emit.ILGenerator.BeginScope%2A>します。  
+ このメソッドは、シンボル情報を出力するために使用されます。 と共に<xref:System.Reflection.Emit.ILGenerator.BeginScope%2A>使用されます。  
   
- 場合、現在<xref:System.Reflection.Emit.ILGenerator>に関連付けられている、<xref:System.Reflection.Emit.DynamicMethod>オブジェクト、シンボル情報をサポートしていません。  
+ 現在<xref:System.Reflection.Emit.ILGenerator>のが<xref:System.Reflection.Emit.DynamicMethod>オブジェクトに関連付けられている場合、シンボリック情報はサポートされません。  
   
    
   
 ## Examples  
- 次のコード サンプルの使用を示します`BeginScope`と`EndScope`します。  
+ 次のコードサンプルは、と`BeginScope` `EndScope`の使用方法を示しています。  
   
  [!code-cpp[ILGenerator_Begin_EndScope#2](~/samples/snippets/cpp/VS_Snippets_CLR/ILGenerator_Begin_EndScope/CPP/ilgenerator_begin_endscope.cpp#2)]
  [!code-csharp[ILGenerator_Begin_EndScope#2](~/samples/snippets/csharp/VS_Snippets_CLR/ILGenerator_Begin_EndScope/CS/ilgenerator_begin_endscope.cs#2)]
@@ -1859,6 +1894,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1879,11 +1915,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、透過的な場合は、部分的に信頼されたコードから呼び出すことができます。  
+ このメソッドは透過的であり、部分的に信頼されたコードから呼び出すことができます。  
   
- 場合、<xref:System.Reflection.Emit.ILGenerator.ILOffset%2A>前に、任意の MSIL 命令が出力されたプロパティにアクセスを 0 (ゼロ) を返します。  
+ MSIL 命令が出力される前にプロパティにアクセスした場合は、0(ゼロ)が返されます。<xref:System.Reflection.Emit.ILGenerator.ILOffset%2A>  
   
- 動的言語の MSIL を生成する場合、MSIL ストリーム内のオフセットをソース コードの行番号にマップするこのプロパティを使用できます。 例外がスローされたときに、スタック トレースを提供する、結果の情報を使用できます。  
+ 動的言語に対して MSIL が生成されるときに、このプロパティを使用して、MSIL ストリーム内のオフセットをソースコード行番号にマップできます。 生成された情報は、例外がスローされたときにスタックトレースを提供するために使用できます。  
   
  ]]></format>
         </remarks>
@@ -1901,6 +1937,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -1926,12 +1963,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ラベルは、複数回定義できません。  
+ ラベルを複数回定義することはできません。  
   
    
   
 ## Examples  
- 次のコード例は、のコンテキストの使用を示して`MarkLabel`分岐動的メソッドの MSIL を実装します。  
+ 次のコードサンプルでは、のコンテキスト`MarkLabel`の使用方法を示しています。これは、動的メソッドで MSIL 分岐を実装するためのものです。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.Emit Example 2#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.Emit Example 2/CS/source.cs#1)]
@@ -1941,7 +1978,7 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="loc" /> がラベル配列の無効なインデックスを表しています。  
   
-または 
+- または - 
 <paramref name="loc" /> のインデックスが既に定義されています。</exception>
       </Docs>
     </Member>
@@ -1987,11 +2024,11 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 行番号 1 からインデックスが作成されます。 列のインデックスは 0 から始まります。  
+ 行番号は1からインデックスが作成されます。 列には0からインデックスが付けられます。  
   
- 通常、シンボリック情報には、ソース行ごとに少なくとも 1 つの MSIL オフセットが含まれます。 ジャスト イン タイム (JIT) コンパイラは、メソッドをコンパイルするとき、保存する必要がある MSIL オフセットのリストをプロファイリング サービスに要求します。 この MSIL オフセットが呼び出される*シーケンス ポイント*します。  
+ 通常、シンボリック情報には、ソース行ごとに少なくとも1つの MSIL オフセットが含まれます。 ジャスト イン タイム (JIT) コンパイラは、メソッドをコンパイルするとき、保存する必要がある MSIL オフセットのリストをプロファイリング サービスに要求します。 これらの MSIL オフセットを*シーケンスポイント*と呼びます。  
   
- 場合、現在<xref:System.Reflection.Emit.ILGenerator>に関連付けられている、<xref:System.Reflection.Emit.DynamicMethod>オブジェクト、シンボル情報をサポートしていません。  
+ 現在<xref:System.Reflection.Emit.ILGenerator>のが<xref:System.Reflection.Emit.DynamicMethod>オブジェクトに関連付けられている場合、シンボリック情報はサポートされません。  
   
  ]]></format>
         </remarks>
@@ -2043,7 +2080,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::GetIDsOfNames`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetIDsOfNames`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2090,7 +2127,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::GetTypeInfo`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfo`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2133,7 +2170,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::GetTypeInfoCount`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::GetTypeInfoCount`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2190,7 +2227,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、アンマネージ コードからマネージ クラスにアクセスするため、マネージ コードから呼び出さないする必要があります。 詳細については`IDispatch::Invoke`、MSDN ライブラリを参照してください。  
+ このメソッドは、アンマネージコードからマネージクラスにアクセスするためのものであり、マネージコードからは呼び出さないでください。 の詳細`IDispatch::Invoke`については、MSDN ライブラリを参照してください。  
   
  ]]></format>
         </remarks>
@@ -2209,6 +2246,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -2239,7 +2277,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード サンプルは、のコンテキストの使用を示して`ThrowException`動的メソッドの MSIL には、内部例外をスローします。  
+ 次のコードサンプルでは、動的メソッド`ThrowException`の MSIL 内部で例外をスローするのコンテキスト使用方法を示します。  
   
  [!code-cpp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CPP/source.cpp#1)]
  [!code-csharp[System.Reflection.Emit.ILGenerator.ThrowException Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Reflection.Emit.ILGenerator.ThrowException Example/CS/source.cs#1)]
@@ -2250,8 +2288,8 @@
         <exception cref="T:System.ArgumentException"><paramref name="excType" /> が <see cref="T:System.Exception" /> クラスではないか、または <see cref="T:System.Exception" /> の派生クラスではありません。  
   
 または 
-型に既定のコンストラクターがありません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="excType" /> は <see langword="null" />です。</exception>
+この型には、パラメーターなしのコンストラクターがありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="excType" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="UsingNamespace">
@@ -2266,6 +2304,7 @@
         <AssemblyName>System.Reflection.Emit.ILGeneration</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.3.0</AssemblyVersion>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -2291,12 +2330,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合、現在<xref:System.Reflection.Emit.ILGenerator>に関連付けられている、<xref:System.Reflection.Emit.DynamicMethod>オブジェクト、このメソッドはサポートされていません。  
+ 現在<xref:System.Reflection.Emit.ILGenerator>のが<xref:System.Reflection.Emit.DynamicMethod>オブジェクトに関連付けられている場合、このメソッドはサポートされていません。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="usingNamespace" /> の長さが 0 です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="usingNamespace" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="usingNamespace" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.NotSupportedException">この <see cref="T:System.Reflection.Emit.ILGenerator" /> は <see cref="T:System.Reflection.Emit.DynamicMethod" /> に属しています。</exception>
       </Docs>
     </Member>

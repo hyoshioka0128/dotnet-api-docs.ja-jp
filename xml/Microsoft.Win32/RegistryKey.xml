@@ -40,26 +40,26 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
- レジストリは、コンピューターのオペレーティング システムとアプリケーションの情報の中央リポジトリとして機能します。 内に格納されている要素の論理順序に基づいて、階層形式でレジストリが構成されています (を参照してください<xref:Microsoft.Win32.Registry>この階層に基本レベルのアイテムの)。 レジストリの情報を格納する、格納されている情報の種類に基づいて、適切な場所を選択します。 それらのアプリケーションで予期しない動作が発生することができ、独自のアプリケーションに悪影響を与えることもできますこのため、他のアプリケーションによって作成された情報を破壊しないようにしてください。  
+ レジストリは、コンピューター上のオペレーティングシステムとアプリケーションの情報の中央リポジトリとして機能します。 レジストリは、その中に格納されている要素の論理的な順序に基づいて、階層形式で<xref:Microsoft.Win32.Registry>編成されます (この階層の基本レベルの項目については、「」を参照してください)。 レジストリに情報を格納する場合は、保存する情報の種類に基づいて適切な場所を選択します。 他のアプリケーションによって作成された情報が破棄されないようにしてください。これにより、これらのアプリケーションは予期しない動作を引き起こす可能性があり、独自のアプリケーションに悪影響を及ぼす可能性があります。  
   
 > [!IMPORTANT]
 >  この型は <xref:System.IDisposable> インターフェイスを実装します。 型の使用が完了したら、直接的または間接的に型を破棄する必要があります。 直接的に型を破棄するには、`try` / `catch` ブロック内で <xref:System.IDisposable.Dispose%2A> メソッドを呼び出します。 間接的に型を破棄するには、`using` (C# の場合) または `Using` (Visual Basic 言語) などの言語構成要素を使用します。 詳細については、<xref:System.IDisposable> インターフェイスに関するトピック内の「IDisposable を実装するオブジェクトの使用」セクションを参照してください。  
   
- レジストリ キーは、レジストリで、組織の基本単位し、ファイル エクスプ ローラーでフォルダーと比較することができます。 サブフォルダーがあることができます、フォルダーと同様、特定のキーのサブキー、ことができます。 ユーザーが、そのためには適切なアクセス許可と、キー ベースのキーでない限り、またはベースのキーの直下のレベルで、各キーを削除できます。 各キーには、複数の値を (ファイルに値を比較できるように) などの情報を格納するために使用するコンピューターにインストールされているアプリケーションについての情報に関連付けられていることもできます。 それぞれの値を保持する 1 つの特定の情報を取得または必要なときに更新できます。 たとえば、作成することができます、<xref:Microsoft.Win32.RegistryKey>キー、hkey_local_machine \software の下、会社とし、会社を作成するアプリケーションごとのサブキー。 各サブキーは、画面上の位置とサイズ、色の設定など、そのアプリケーションに固有の情報を保持またはファイル拡張子を認識します。  
+ レジストリキーは、レジストリ内の組織の基本単位であり、エクスプローラーのフォルダーと比較できます。 フォルダーにサブフォルダーを含めることができるのと同じように、特定のキーにサブキーを含めることができます。 各キーは、ユーザーが適切なアクセス許可を持っていて、キーが基本キーではないか、基本キーの直下のレベルにある限り、削除できます。 また、各キーには複数の値を関連付けることができます (値はファイルと比較できます)。たとえば、コンピューターにインストールされているアプリケーションに関する情報など、情報を格納するために使用されます。 各値には1つの特定の情報が保持され、必要に応じて取得または更新できます。 たとえば、会社用のを<xref:Microsoft.Win32.RegistryKey> 、キー HKEY_LOCAL_MACHINE\Software の下に作成し、会社が作成するアプリケーションごとにサブキーを作成することができます。 各サブキーには、色の設定、画面の位置とサイズ、認識されたファイル拡張子など、そのアプリケーション固有の情報が格納されます。  
   
- レジストリに格納されている情報は他のアプリケーションや、ユーザーは、そのため、セキュリティ データやアプリケーションの重要な情報を格納する必要があります使用しないことに注意してください。  
+ レジストリに格納されている情報は、他のアプリケーションやユーザーが使用できるため、セキュリティデータや重要なアプリケーションの情報を格納するためには使用できないことに注意してください。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
- 以降では、 [!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、レジストリ キーの長さが 255 文字に制限されません。  
+ 以降で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]は、レジストリキーの長さが255文字に制限されなくなりました。  
   
    
   
 ## Examples  
- 次のコード例では、HKEY_CURRENT_USER の下のサブキーを作成、その内容を操作し、サブキーを削除する方法を示します。  
+ 次のコード例は、HKEY_CURRENT_USER の下にサブキーを作成し、その内容を操作して、サブキーを削除する方法を示しています。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#1](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#1)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#1](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#1)]
@@ -101,14 +101,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- システム キーでこのメソッドを呼び出して効果はありません、ため、システム キーが閉じられることはありません。  
+ システムキーが閉じられることはないため、システムキーに対してこのメソッドを呼び出すことは効果がありません。  
   
- このメソッドは何も行いませんのインスタンス上で呼び出す場合`RegistryKey`は既に閉じられています。  
+ このメソッドは、既に閉じられているの`RegistryKey`インスタンスで呼び出した場合、何も実行しません。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#4)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#4)]
@@ -166,15 +166,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作を実行するには、ユーザーは、レジストリ階層でこのレベルで、以下のアクセス許可が必要です。  
+ この操作を実行するには、ユーザーはレジストリ階層で次のレベル以上の権限を持っている必要があります。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
    
   
 ## Examples  
- 次のコード例では、HKEY_CURRENT_USER の下のサブキーを作成、その内容を操作し、サブキーを削除する方法を示します。  
+ 次のコード例は、HKEY_CURRENT_USER の下にサブキーを作成し、その内容を操作して、サブキーを削除する方法を示しています。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#1](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#1)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#1](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#1)]
@@ -182,16 +182,16 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.SecurityException">レジストリ キーを作成する、または開くために必要なアクセス許可がユーザーにありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />このメソッドを呼び出すが閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" />書き込みできませんに。 たとえば、書き込み可能なキーとして開かれていないユーザーには、必要なアクセス権はありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">このメソッドの実行対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じられています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" /> に書き込みができません。書き込み可能なキーとして開かれていない、必要なアクセス権がユーザーに設定されていないなどの理由が考えられます。</exception>
         <exception cref="T:System.IO.IOException">入れ子のレベルが 510 を超えています。  
   
 - または - 
 キーの削除、または <see cref="F:Microsoft.Win32.Registry.LocalMachine" /> のルートでキー作成を試行したなどのシステム エラーが発生しました。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">存在する場合は、指定されたレジストリ キーを変更する機能、または場合のレジストリ キーを作成する機能のことがないです。 列挙体に関連付けられている: <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />、 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーが存在する場合にそのキーを変更する機能、またはレジストリキーが存在しない場合にそのキーを作成する機能。 関連付けられ<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />た列挙型:、<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Boolean)" />
       </Docs>
@@ -236,26 +236,26 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作を実行するには、ユーザーは、レジストリ階層でこのレベルで、以下のアクセス許可が必要です。  
+ この操作を実行するには、ユーザーはレジストリ階層で次のレベル以上の権限を持っている必要があります。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドのインスタンスが必要、<xref:Microsoft.Win32.RegistryKey>クラス。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを使用するには、 <xref:Microsoft.Win32.RegistryKey>クラスのインスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.Security.SecurityException">レジストリ キーを作成する、または開くために必要なアクセス許可がユーザーにありません。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="permissionCheck" /> に無効な値が含まれています。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />このメソッドを呼び出すが閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.ObjectDisposedException">このメソッドの実行対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じられています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" /> に書き込みができません。書き込み可能なキーとして開かれていない、必要なアクセス権がユーザーに設定されていないなどの理由が考えられます。</exception>
         <exception cref="T:System.IO.IOException">入れ子のレベルが 510 を超えています。  
   
-- または - 
+または 
 キーの削除、または <see cref="F:Microsoft.Win32.Registry.LocalMachine" /> のルートでキー作成を試行したなどのシステム エラーが発生しました。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">存在する場合は、指定されたレジストリ キーを変更する機能、または場合のレジストリ キーを作成する機能のことがないです。 列挙体に関連付けられている: <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />、 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーが存在する場合にそのキーを変更する機能、またはレジストリキーが存在しない場合にそのキーを作成する機能。 関連付けられ<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />た列挙型:、<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Boolean)" />
       </Docs>
@@ -302,16 +302,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作を実行するには、ユーザーは、レジストリ階層でこのレベルで、以下のアクセス許可が必要です。  
+ この操作を実行するには、ユーザーはレジストリ階層で次のレベル以上の権限を持っている必要があります。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A>メソッドのインスタンスが必要、<xref:Microsoft.Win32.RegistryKey>クラス。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A>メソッドを使用するには、 <xref:Microsoft.Win32.RegistryKey>クラスのインスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.Security.SecurityException">レジストリ キーを作成する、または開くために必要なアクセス許可がユーザーにありません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> に書き込みができません。たとえば、書き込み可能なキーとして開かれていないか、必要なアクセス権がユーザーにありません。</exception>
         <exception cref="T:System.IO.IOException">入れ子のレベルが 510 を超えています。  
@@ -361,32 +361,32 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A>メソッドで指定されたアクセス制御のあるレジストリ キーを作成する、`registrySecurity`パラメーター。 <xref:Microsoft.Win32.RegistryKey>返されるオブジェクトは、レジストリ キーを表しますが、そのオブジェクトがで指定されたアクセス制御によって制限されていない、`registrySecurity`パラメーター。  
+ メソッド<xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A>は、 `registrySecurity`パラメーターによって指定されたアクセス制御を持つレジストリキーを作成します。 返される`registrySecurity`オブジェクトはレジストリキーを表しますが、そのオブジェクトは、パラメーターで指定されたアクセス制御によって制限されません。 <xref:Microsoft.Win32.RegistryKey>  
   
- 場合`permissionCheck`は<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>読み取り/書き込みアクセスのキーが開かれます。 場合`permissionCheck`は<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType>、読み取りアクセスのキーが開かれます。  
+ `permissionCheck` が<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>の場合、キーは読み取り/書き込みアクセス用に開かれます。 `permissionCheck` が<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType>の場合、キーは読み取りアクセス用に開かれます。  
   
- 旧バージョンとの互換性のための読み取りと書き込みの場合、キーを開いた`permissionCheck`は<xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType>親キーが<xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType>します。 親キーは、他の設定にある場合は、読み取り/書き込み状態が親のキーの設定によって制御されます。  
+ 旧バージョンとの互換性のために、が`permissionCheck` <xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType>で、親キーにも<xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType>ある場合、キーは読み取りと書き込みのために開かれます。 親キーに他の設定がある場合、読み取り/書き込みの状態は親キーの設定によって制御されます。  
   
- この操作を実行するために、ユーザーはこのレベルで、以下のアクセス許可をレジストリ階層が必要です。  
+ この操作を実行するには、ユーザーはレジストリ階層で次のレベル以上の権限を持っている必要があります。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドのインスタンスが必要、<xref:Microsoft.Win32.RegistryKey>クラス。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを使用するには、 <xref:Microsoft.Win32.RegistryKey>クラスのインスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.Security.SecurityException">レジストリ キーを作成する、または開くために必要なアクセス許可がユーザーにありません。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="permissionCheck" /> に無効な値が含まれています。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />このメソッドを呼び出すが閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.ObjectDisposedException">このメソッドの実行対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じられています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> に書き込みができません。たとえば、書き込み可能なキーとして開かれていないか、必要なアクセス権がユーザーにありません。</exception>
         <exception cref="T:System.IO.IOException">入れ子のレベルが 510 を超えています。  
   
 - または - 
 キーの削除、または <see cref="F:Microsoft.Win32.Registry.LocalMachine" /> のルートでキー作成を試行したなどのシステム エラーが発生しました。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">存在する場合は、指定されたレジストリ キーを変更する機能、または場合のレジストリ キーを作成する機能のことがないです。 列挙体に関連付けられている: <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />、 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーが存在する場合にそのキーを変更する機能、またはレジストリキーが存在しない場合にそのキーを作成する機能。 関連付けられ<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />た列挙型:、<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Boolean)" />
       </Docs>
@@ -435,16 +435,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この操作を実行するには、ユーザーは、レジストリ階層でこのレベルで、以下のアクセス許可が必要です。  
+ この操作を実行するには、ユーザーはレジストリ階層で次のレベル以上の権限を持っている必要があります。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A>メソッドのインスタンスが必要、<xref:Microsoft.Win32.RegistryKey>クラス。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A>メソッドを使用するには、 <xref:Microsoft.Win32.RegistryKey>クラスのインスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="options" /> に有効なオプションが指定されていません。</exception>
         <exception cref="T:System.Security.SecurityException">レジストリ キーを作成する、または開くために必要なアクセス許可がユーザーにありません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> に書き込みができません。たとえば、書き込み可能なキーとして開かれていないか、必要なアクセス権がユーザーにありません。</exception>
@@ -495,25 +495,25 @@
       <Docs>
         <param name="subkey">作成または開くサブキーの名前またはパス。</param>
         <param name="permissionCheck">キーが読み取りアクセスで開かれているか、それとも読み取り/書き込みアクセスで開かれているかを示す列挙値の 1 つ。</param>
-        <param name="registryOptions">を使用するレジストリ オプションたとえば、揮発性のキーを作成します。</param>
-        <param name="options">を使用するレジストリ オプションたとえば、揮発性のキーを作成します。</param>
-        <summary>サブキーを作成または指定した権限のチェックおよびレジストリ オプションを使用して、書き込みアクセス用のサブキーを開きます。</summary>
+        <param name="registryOptions">使用するレジストリ オプション (揮発性のキーを作成するなど)。</param>
+        <param name="options">使用するレジストリ オプション (揮発性のキーを作成するなど)。</param>
+        <summary>指定されたアクセス許可チェック オプションおよびレジストリ オプションを使用して、サブキーを作成するか、サブキーを書き込みアクセスで開きます。</summary>
         <returns>新しく作成されたサブキー、または操作に失敗した場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在を取得する<xref:Microsoft.Win32.RegistryKey>オブジェクト、空の文字列 ("") の`subkey`。  
+ 現在<xref:Microsoft.Win32.RegistryKey>のオブジェクトを取得するには、に空の`subkey`文字列 ("") を指定します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ObjectDisposedException">現在<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトが閉じられます (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.UnauthorizedAccessException">現在<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトは書き込むことはできません; たとえば、書き込み可能なキーとして開かれていないまたはユーザーには、必要なアクセス権はありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ObjectDisposedException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトは閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.UnauthorizedAccessException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトに書き込みができません。書き込み可能なキーとして開かれていない、必要なアクセス権がユーザーに設定されていないなどの理由が考えられます。</exception>
         <exception cref="T:System.IO.IOException">入れ子のレベルが 510 を超えています。  
   
 - または - 
-キーまたはでキーを作成しようとするの削除などのシステム エラーが発生しました、<see cref="F:Microsoft.Win32.Registry.LocalMachine" />ルート。</exception>
+システム エラーが発生しました。たとえば、<see cref="F:Microsoft.Win32.Registry.LocalMachine" /> ルートでキーが削除されたか、キーの作成が試行されました。</exception>
         <exception cref="T:System.Security.SecurityException">レジストリ キーを作成する、または開くために必要なアクセス許可がユーザーにありません。</exception>
       </Docs>
     </Member>
@@ -559,17 +559,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在を取得する<xref:Microsoft.Win32.RegistryKey>オブジェクト、空の文字列 ("") の`subkey`。  
+ 現在<xref:Microsoft.Win32.RegistryKey>のオブジェクトを取得するには、に空の`subkey`文字列 ("") を指定します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ObjectDisposedException">現在<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトが閉じられます。 閉じられたキーにアクセスできません。</exception>
-        <exception cref="T:System.UnauthorizedAccessException">現在<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトは書き込むことはできません; たとえば、書き込み可能なキーとして開かれていないまたはユーザーには、必要なアクセス権はありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ObjectDisposedException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> は閉じています。 閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.UnauthorizedAccessException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトに書き込みができません。書き込み可能なキーとして開かれていない、必要なアクセス権がユーザーに設定されていないなどの理由が考えられます。</exception>
         <exception cref="T:System.IO.IOException">入れ子のレベルが 510 を超えています。  
   
 - または - 
-キーまたはでキーを作成しようとするの削除などのシステム エラーが発生しました、<see cref="F:Microsoft.Win32.Registry.LocalMachine" />ルート。</exception>
+システム エラーが発生しました。たとえば、<see cref="F:Microsoft.Win32.Registry.LocalMachine" /> ルートでキーが削除されたか、キーの作成が試行されました。</exception>
         <exception cref="T:System.Security.SecurityException">レジストリ キーを作成する、または開くために必要なアクセス許可がユーザーにありません。</exception>
       </Docs>
     </Member>
@@ -619,14 +619,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 子サブキーを削除するには、次のように使用します。<xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>します。  
+ 子サブキーを削除する<xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>には、を使用します。  
   
- レジストリ キーを削除するには、注意を使用します。  
+ レジストリキーを削除するときは注意が必要です。  
   
    
   
 ## Examples  
- 次の例を使用する方法を示します<xref:Microsoft.Win32.RegistryKey.DeleteSubKey%2A>します。  
+ を使用<xref:Microsoft.Win32.RegistryKey.DeleteSubKey%2A>する方法を次の例に示します。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#5](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source2.cpp#5)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#5](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source2.cs#5)]
@@ -634,14 +634,14 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><paramref name="subkey" />子サブキーがあります</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="subkey" />パラメーターが有効なレジストリ キーを指定しません。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="subkey" /> に子サブキーがあります。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="subkey" /> パラメーターに、有効なレジストリ サブキーが指定されていません。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーの削除に必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、キーの削除に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーを変更する機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリキーを変更する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.CreateSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteValue(System.String)" />
@@ -685,26 +685,26 @@
       </Parameters>
       <Docs>
         <param name="subkey">削除するサブキーの名前。 この文字列の大文字と小文字は区別されません。</param>
-        <param name="throwOnMissingSubKey">指定したサブキーが見つからない場合に例外を発生させるかどうかを示します。 この引数は場合<see langword="true" />と、指定したサブキーが存在しない、例外が発生します。 この引数は場合<see langword="false" />と、指定したサブキーが存在しない、アクションは実行されません。</param>
+        <param name="throwOnMissingSubKey">指定したサブキーが見つからない場合に例外を発生させるかどうかを示します。 この引数が <see langword="true" /> であり、指定したサブキーが見つからない場合は、例外が発生します。 この引数が <see langword="false" /> であり、指定したサブキーが見つからない場合は、何も実行されません。</param>
         <summary>指定したサブキーを削除します。また、サブキーが見つからない場合に例外を発生させるかどうかを指定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 子サブキーを削除するには、次のように使用します。<xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>します。  
+ 子サブキーを削除する<xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>には、を使用します。  
   
- レジストリ キーを削除するには、注意を使用します。  
+ レジストリキーを削除するときは注意が必要です。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.InvalidOperationException"><paramref name="subkey" /> 子サブキーがあります。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="subkey" /> 有効なレジストリ キーを指定しないと<paramref name="throwOnMissingSubKey" />は<see langword="true" />します。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーの削除に必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.InvalidOperationException"><paramref name="subkey" /> に子サブキーがあります。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="subkey" /> に有効なレジストリ キーが指定されておらず、<paramref name="throwOnMissingSubKey" /> が <see langword="true" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、キーの削除に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーを変更する機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリキーを変更する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.CreateSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteValue(System.String)" />
@@ -718,7 +718,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>サブキーとその子サブキーを再帰的に必要に応じて例外処理を削除します。</summary>
+        <summary>サブキーとその子サブキーを再帰的に削除します。必要に応じて例外処理の有無を指定できます。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="DeleteSubKeyTree">
@@ -762,15 +762,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- サブキーとそのツリーを削除する適切なアクセス許可が必要です。  
+ サブキーとそのツリーを削除するには、適切なアクセス許可が必要です。  
   
 > [!CAUTION]
->  特定のキーを削除すると、ツリー内のキーの下のすべてのエントリが削除されます。 警告は表示されません。 使用して、子サブキーがあるないときにのみ、サブキーを削除する場合、<xref:Microsoft.Win32.RegistryKey.DeleteSubKey%2A>メソッド。  
+>  特定のキーを削除すると、ツリー内のキーの下にあるすべてのエントリが削除されます。 警告は表示されません。 サブキーに子サブキーがない場合にのみサブキーを削除するに<xref:Microsoft.Win32.RegistryKey.DeleteSubKey%2A>は、メソッドを使用します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#4)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#4)]
@@ -778,17 +778,17 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException">ルート ハイブの削除が試行されます。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException">ルート ハイブを削除しようとしました。  
   
-- または - 
- <paramref name="subkey" /> 有効なレジストリ サブキーを指定しません。</exception>
+または 
+ <paramref name="subkey" /> に、有効なレジストリ サブキーが指定されていません。</exception>
         <exception cref="T:System.IO.IOException">I/O エラーが発生しました。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーの削除に必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、キーの削除に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーを変更する機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリキーを変更する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.CreateSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteValue(System.String)" />
@@ -834,19 +834,19 @@
       </Parameters>
       <Docs>
         <param name="subkey">削除するサブキーの名前。 この文字列の大文字と小文字は区別されません。</param>
-        <param name="throwOnMissingSubKey">指定したサブキーが見つからない場合に例外を発生させるかどうかを示します。 この引数は場合<see langword="true" />と、指定したサブキーが存在しない、例外が発生します。 この引数は場合<see langword="false" />と、指定したサブキーが存在しない、アクションは実行されません。</param>
+        <param name="throwOnMissingSubKey">指定したサブキーが見つからない場合に例外を発生させるかどうかを示します。 この引数が <see langword="true" /> であり、指定したサブキーが見つからない場合は、例外が発生します。 この引数が <see langword="false" /> であり、指定したサブキーが見つからない場合は、何も実行されません。</param>
         <summary>指定されたサブキーとその子サブキーを再帰的に削除します。サブキーが見つからなかった場合に例外を発生させるかどうかを指定します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException">ツリーのルート ハイブを削除する試行されました。  
+        <exception cref="T:System.ArgumentException">ツリーのルート ハイブを削除しようとしました。  
   
-- または - 
- <paramref name="subkey" /> 有効なレジストリ サブキーを指定しないと<paramref name="throwOnMissingSubKey" />は<see langword="true" />します。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />が閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
+または 
+ <paramref name="subkey" /> に有効なレジストリ サブキーが指定されておらず、<paramref name="throwOnMissingSubKey" /> が <see langword="true" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="subkey" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーの削除に必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーを変更する機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、キーの削除に必要なアクセス許可がありません。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリキーを変更する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="DeleteValue">
@@ -895,12 +895,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Windows 95、Windows 98、Windows 98 Second Edition、および Windows Millennium Edition では、上に空の文字列を指定する、`name`パラメーターでは、既定値は削除されません。  
+ Windows 95、windows 98、windows 98 Second edition、および windows Millennium edition では、 `name`パラメーターに空の文字列を指定しても、既定値は削除されません。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#3](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#3)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#3](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#3)]
@@ -908,11 +908,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="name" /> 値に有効な参照ではありません。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、値を削除するために必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" />操作中は読み取り専用です。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーを削除する機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
+        <exception cref="T:System.ArgumentException"><paramref name="name" /> が有効な値参照ではありません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、値の削除に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.UnauthorizedAccessException">操作しようとしている <see cref="T:Microsoft.Win32.RegistryKey" /> は読み取り専用です。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリキーを削除する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Boolean)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValue(System.String)" />
@@ -957,26 +957,26 @@
       </Parameters>
       <Docs>
         <param name="name">削除する値の名前。</param>
-        <param name="throwOnMissingValue">指定した値が見つからない場合に例外を発生させるかどうかを示します。 この引数は場合<see langword="true" />と指定した値が存在しない、例外が発生します。 この引数は場合<see langword="false" />と指定した値が存在しない、アクションは実行されません。</param>
+        <param name="throwOnMissingValue">指定した値が見つからない場合に例外を発生させるかどうかを示します。 この引数が <see langword="true" /> であり、指定した値が見つからない場合は、例外が発生します。 この引数が <see langword="false" /> であり、指定した値が見つからない場合は、何も実行されません。</param>
         <summary>指定した値をこのキーから削除します。また、値が見つからない場合に例外を発生させるかどうかを指定します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 場合`throwOnMissingValue`は`false`、後で削除されるだけで、値にアクセスしようとしないで、削除が成功したかどうかに通知する方法はありません。 そのため、この方法でレジストリから値を削除するときは、注意を使用します。  
+ `throwOnMissingValue` が`false`の場合、削除されたばかりの値にアクセスしようとしても、削除が成功したかどうかを確認する方法はありません。 したがって、この方法でレジストリから値を削除する場合は注意が必要です。  
   
- Windows 95、Windows 98、Windows 98 Second Edition、および Windows Millennium Edition では、上に空の文字列を指定する、`name`パラメーターでは、既定値は削除されません。  
+ Windows 95、windows 98、windows 98 Second edition、および windows Millennium edition では、 `name`パラメーターに空の文字列を指定しても、既定値は削除されません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="name" /> 値に有効な参照ではないと<paramref name="throwOnMissingValue" />は<see langword="true" />します。  
+        <exception cref="T:System.ArgumentException"><paramref name="name" /> が有効な値参照ではなくて、<paramref name="throwOnMissingValue" /> が <see langword="true" /> です。  
   
-- または - 
- <paramref name="name" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、値を削除するために必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" />操作中は読み取り専用です。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーを削除する機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
+または 
+ <paramref name="name" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、値の削除に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.UnauthorizedAccessException">操作しようとしている <see cref="T:Microsoft.Win32.RegistryKey" /> は読み取り専用です。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリキーを削除する権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Boolean)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValue(System.String)" />
@@ -1054,7 +1054,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>キーを終了し、内容が変更された場合にディスクにフラッシュします。</summary>
+        <summary>キーを閉じ、内容が変更されている場合はディスクへフラッシュします。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1096,13 +1096,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出す必要はありません`Flush`キーの変更を書き込む。 レジストリの変更がディスクにフラッシュは、レジストリ レイジー フラッシャします。 レイジー フラッシュと、システムが指定した時間間隔後に自動的かつ定期的に発生します。 レジストリの変更もフラッシュ ディスクにシステムのシャット ダウンします。  
+ キーへの変更を書き込む`Flush`ためにを呼び出す必要はありません。 レジストリがレイジーフラッシャーを使用すると、レジストリの変更がディスクにフラッシュされます。 レイジーフラッシュは、システムによって指定された時間間隔の後、自動的に、定期的に行われます。 システムのシャットダウン時に、レジストリの変更もディスクにフラッシュされます。  
   
- 異なり<xref:Microsoft.Win32.RegistryKey.Close%2A>、`Flush`関数の戻り値のすべてのデータがレジストリに書き込まれたときにのみです。  
+ と<xref:Microsoft.Win32.RegistryKey.Close%2A>は異なり`Flush` 、関数は、すべてのデータがレジストリに書き込まれた場合にのみを返します。  
   
- `Flush`関数がの一部またはすべての他のキーが記述も可能性があります。 過度にこの関数を呼び出すと、アプリケーションのパフォーマンスに悪影響を及ぼすことができます。  
+ 関数`Flush`は、他のすべてのキーの一部またはすべてを書き込むこともできます。 この関数を過度に呼び出すと、アプリケーションのパフォーマンスに悪影響を及ぼす可能性があります。  
   
- アプリケーションはのみ呼び出す必要があります`Flush`場合は、絶対パスにする必要があります特定のレジストリの変更を記録することをディスクにします。 一般に、`Flush`場合、これまでを使用する必要があります。  
+ アプリケーションは、レジストリの`Flush`変更がディスクに記録されることを絶対的に特定する必要がある場合にのみ、を呼び出す必要があります。 一般に、 `Flush`ほとんどの場合は、使用する必要があります。  
   
  ]]></format>
         </remarks>
@@ -1159,11 +1159,11 @@
         <summary>指定されたハンドルからレジストリ キーを作成します。</summary>
         <returns>レジストリ キー</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="handle" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="handle" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
         <exception cref="T:System.Security.SecurityException">ユーザーには、この操作を実行するために必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="FromHandle">
@@ -1211,18 +1211,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `view`サブキーを開くなどの後続の操作でこのメソッドのパラメーターを使用します。  
+ このメソッドのパラメーターは、サブキーを開くなどの後続の操作で使用されます。 `view`  
   
- 場合`view`は<xref:Microsoft.Win32.RegistryView.Registry64>がマシンには、32 ビットのオペレーティング システムが実行されている、返されたキーを使用して、<xref:Microsoft.Win32.RegistryView.Registry32>ビュー。  
+ が`view`で<xref:Microsoft.Win32.RegistryView.Registry64>あってもコンピューターが32ビットのオペレーティングシステムを実行している場合、 <xref:Microsoft.Win32.RegistryView.Registry32>返されるキーはビューを使用します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="view" /> が無効です。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="handle" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="handle" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
         <exception cref="T:System.Security.SecurityException">ユーザーには、この操作を実行するために必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <MemberGroup MemberName="GetAccessControl">
@@ -1264,20 +1264,20 @@
       <Parameters />
       <Docs>
         <summary>現在のレジストリ キーのアクセス制御セキュリティを返します。</summary>
-        <returns>現在によって表されるレジストリ キーに対するアクセス制御のアクセス許可を記述するオブジェクト<see cref="T:Microsoft.Win32.RegistryKey" />します。</returns>
+        <returns>現在の <see cref="T:Microsoft.Win32.RegistryKey" /> で表されるレジストリ キーに対するアクセス制御のためのアクセス許可を記述するオブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドのオーバー ロードの呼び出しと同じですが、<xref:Microsoft.Win32.RegistryKey.GetAccessControl%28System.Security.AccessControl.AccessControlSections%29>メソッドのオーバー ロードでは、次のフラグのビットごとの組み合わせ: <xref:System.Security.AccessControl.AccessControlSections.Access?displayProperty=nameWithType>、 <xref:System.Security.AccessControl.AccessControlSections.Owner?displayProperty=nameWithType>、および<xref:System.Security.AccessControl.AccessControlSections.Group?displayProperty=nameWithType>します。 オーバー ロードを使用すると、他のアクセス許可を検索します。  
+ <xref:Microsoft.Win32.RegistryKey.GetAccessControl%28System.Security.AccessControl.AccessControlSections%29>このメソッドオーバーロードは<xref:System.Security.AccessControl.AccessControlSections.Access?displayProperty=nameWithType>、、 <xref:System.Security.AccessControl.AccessControlSections.Owner?displayProperty=nameWithType>、および<xref:System.Security.AccessControl.AccessControlSections.Group?displayProperty=nameWithType>の各フラグのビットごとの組み合わせを使用してメソッドオーバーロードを呼び出すことと同じです。 そのオーバーロードを使用して、他のアクセス許可を検索することができます。  
   
- ユーザーがいる必要があります<xref:System.Security.AccessControl.RegistryRights.ReadPermissions?displayProperty=nameWithType>権限をこのメソッドを呼び出します。  
+ ユーザーは、この<xref:System.Security.AccessControl.RegistryRights.ReadPermissions?displayProperty=nameWithType>メソッドを呼び出すための権限を持っている必要があります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.InvalidOperationException">現在のキーが削除されました。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.InvalidOperationException">現在のキーは削除されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetAccessControl">
@@ -1313,20 +1313,20 @@
       <Docs>
         <param name="includeSections">取得するセキュリティ情報の種類を指定する列挙値のビットごとの組み合わせ。</param>
         <summary>現在のレジストリ キーについて、指定されたセクションのアクセス制御セキュリティを返します。</summary>
-        <returns>現在によって表されるレジストリ キーに対するアクセス制御のアクセス許可を記述するオブジェクト<see cref="T:Microsoft.Win32.RegistryKey" />します。</returns>
+        <returns>現在の <see cref="T:Microsoft.Win32.RegistryKey" /> で表されるレジストリ キーに対するアクセス制御のためのアクセス許可を記述するオブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現在のユーザーに付与するアクセス許可を要求するには、次のフラグのビットごとの組み合わせを指定: <xref:System.Security.AccessControl.AccessControlSections.Access?displayProperty=nameWithType>、 <xref:System.Security.AccessControl.AccessControlSections.Owner?displayProperty=nameWithType>、および<xref:System.Security.AccessControl.AccessControlSections.Group?displayProperty=nameWithType>します。 また、使用することができます、<xref:Microsoft.Win32.RegistryKey.GetAccessControl>メソッド オーバー ロードで値の組み合わせだけを指定します。  
+ 現在ユーザーに付与されているアクセス許可を要求するには、、 <xref:System.Security.AccessControl.AccessControlSections.Access?displayProperty=nameWithType> <xref:System.Security.AccessControl.AccessControlSections.Owner?displayProperty=nameWithType>、および<xref:System.Security.AccessControl.AccessControlSections.Group?displayProperty=nameWithType>の各フラグのビットごとの組み合わせを指定します。 または、 <xref:Microsoft.Win32.RegistryKey.GetAccessControl>メソッドのオーバーロードを使用して、値の組み合わせを正確に指定することもできます。  
   
- ユーザーがいる必要があります<xref:System.Security.AccessControl.RegistryRights.ReadPermissions?displayProperty=nameWithType>権限をこのメソッドを呼び出します。  
+ ユーザーは、この<xref:System.Security.AccessControl.RegistryRights.ReadPermissions?displayProperty=nameWithType>メソッドを呼び出すための権限を持っている必要があります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.InvalidOperationException">現在のキーが削除されました。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.InvalidOperationException">現在のキーは削除されています。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetSubKeyNames">
@@ -1368,12 +1368,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、再帰的に検索名前ではありません。 呼び出し元の基本レベルの名前を返します。  
+ このメソッドは、名前を再帰的に検索しません。 このメソッドは、呼び出された基本レベルの名前を返します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#2)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#2)]
@@ -1381,11 +1381,11 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーからの読み取りに必要な権限がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、キーからの読み取りに必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <exception cref="T:System.IO.IOException">システム エラーが発生しました、たとえば、現在のキーが削除されています。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取るする機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <exception cref="T:System.IO.IOException">システム エラーが発生しました。たとえば、現在のキーが削除されています。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取ることができる。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
         <altmember cref="P:Microsoft.Win32.RegistryKey.SubKeyCount" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValueNames" />
       </Docs>
@@ -1436,30 +1436,30 @@
       </Parameters>
       <Docs>
         <param name="name">取得する値の名前。 この文字列の大文字と小文字は区別されません。</param>
-        <summary>指定した名前に関連付けられている値を取得します。 返します<see langword="null" />名前/値ペアがレジストリに存在しない場合。</summary>
-        <returns>関連付けられている値<paramref name="name" />、または<see langword="null" />場合<paramref name="name" />が見つかりません。</returns>
+        <summary>指定した名前に関連付けられている値を取得します。 名前/値ペアがレジストリに存在しない場合、<see langword="null" /> を返します。</summary>
+        <returns><paramref name="name" /> に関連付けられた値。<paramref name="name" /> が見つからない場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
   
 > [!NOTE]
->  レジストリ キーには、任意の名前に関連付けられていない 1 つの値を持つことができます。 レジストリ エディターでこの無名の値が表示されたら、名の代わりに文字列「(既定値)」が表示されます。 この無名の値を取得するには、いずれかを指定`null`または空の文字列 ("") の`name`します。  
+>  レジストリキーには、どの名前にも関連付けられていない1つの値を含めることができます。 この名前のない値がレジストリエディターに表示されると、名前の代わりに "(既定値)" という文字列が表示されます。 この無名の値を取得するに`null`は、に対して`name`または空の文字列 ("") を指定します。  
   
- ときに、<xref:Microsoft.Win32.RegistryKey.GetValue%2A>メソッドを展開可能な文字列値を取得します (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>)、ローカル環境からデータを使用して環境文字列を展開します。 リモート コンピューター上のレジストリから展開可能な文字列値を取得するには使用、<xref:Microsoft.Win32.RegistryKey.GetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueOptions%29>環境文字列の拡張をしないようにするかを指定するメソッドのオーバー ロードします。  
-  
-> [!NOTE]
->  環境変数への展開可能な参照を格納している値が文字列として格納されている場合 (<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>)、展開可能な文字列としてではなく (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>)、<xref:Microsoft.Win32.RegistryKey.GetValue%2A>展開しません。 このような文字列を展開するには、呼び出すことによって取得された後、<xref:System.Environment.ExpandEnvironmentVariables%2A>メソッド。  
+ メソッドが<xref:Microsoft.Win32.RegistryKey.GetValue%2A>展開可能な文字列値 (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>) を取得すると、ローカル環境のデータを使用して環境文字列が展開されます。 リモートコンピューターのレジストリから展開可能な文字列値を取得するには<xref:Microsoft.Win32.RegistryKey.GetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueOptions%29> 、メソッドオーバーロードを使用して、環境文字列を展開しないように指定します。  
   
 > [!NOTE]
->  データを取得するお勧めの方法、<xref:Microsoft.Win32.Registry.PerformanceData>キーが使用するには、<xref:System.Diagnostics.PerformanceCounter>クラスではなく、<xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=nameWithType>メソッド。  
+>  環境変数への展開可能な参照を含む値が、展開可能な<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>文字列 (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>) ではなく文字列 () とし<xref:Microsoft.Win32.RegistryKey.GetValue%2A>て格納されている場合、では展開されません。 <xref:System.Environment.ExpandEnvironmentVariables%2A>メソッドを呼び出すことにより、このような文字列を取得した後に展開できます。  
+  
+> [!NOTE]
+>  <xref:Microsoft.Win32.Registry.PerformanceData>キーからデータを取得する場合は、 <xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=nameWithType>メソッドではなく<xref:System.Diagnostics.PerformanceCounter>クラスを使用することをお勧めします。  
 >   
->  <xref:Microsoft.Win32.RegistryKey.GetValue%2A> REG_NONE または REG_LINK 型の値の読み取りをサポートしません。  どちらの場合も、既定値 (`null`) が、実際の値の代わりに返されます。  
+>  <xref:Microsoft.Win32.RegistryKey.GetValue%2A>では、REG_NONE または REG_LINK 型の値の読み取りはサポートされていません。  どちらの場合も、実際の値`null`の代わりに既定値 () が返されます。  
   
    
   
 ## Examples  
- 次のコード例では、テスト キーを作成し、キーに別のデータ型の値を追加します。 名前/値ペアの読み取りし、コンソールに表示しの例を使用して、<xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>対応するレジストリ データ型を取得します。  
+ 次のコード例では、テストキーを作成し、異なるデータ型の値をキーに追加します。 次に、名前と値のペアを読み取ってコンソールに表示し、 <xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>メソッドを使用して対応するレジストリデータ型を取得します。  
   
  [!code-cpp[Microsoft.Win32.RegistryValueKind#1](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryValueKind/CPP/source.cpp#1)]
  [!code-csharp[Microsoft.Win32.RegistryValueKind#1](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryValueKind/CS/source.cs#1)]
@@ -1467,12 +1467,12 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、レジストリ キーからの読み取りに必要な権限がありません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーからの読み取りに必要なアクセス許可がありません。</exception>
         <exception cref="T:System.ObjectDisposedException">指定された値を格納している <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.IO.IOException">指定された値を格納する <see cref="T:Microsoft.Win32.RegistryKey" /> は、削除対象としてマークされています。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取る。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.EnvironmentPermission">REG_EXPAND_SZ の種類のレジストリ キーの読み取り。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取ります。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.EnvironmentPermission">型のレジストリキーを読み取るには、REG_EXPAND_SZ です。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValueNames" />
         <altmember cref="Overload:Microsoft.Win32.RegistryKey.SetValue" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteValue(System.String)" />
@@ -1517,32 +1517,32 @@
       </Parameters>
       <Docs>
         <param name="name">取得する値の名前。 この文字列の大文字と小文字は区別されません。</param>
-        <param name="defaultValue">場合に返す値<paramref name="name" />存在しません。</param>
+        <param name="defaultValue"><paramref name="name" /> が存在しない場合に返す値。</param>
         <summary>指定した名前に関連付けられている値を取得します。 名前が見つからない場合、設定されている既定値を返します。</summary>
-        <returns>関連付けられている値<paramref name="name" />、いずれかでの埋め込み左未展開、環境変数または<paramref name="defaultValue" />場合<paramref name="name" />が見つかりません。</returns>
+        <returns><paramref name="name" /> に関連付けられた値 (埋め込まれた環境変数は未展開のまま)。<paramref name="defaultValue" /> が見つからない場合は <paramref name="name" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このオーバー ロードを使用して、<xref:Microsoft.Win32.RegistryKey.GetValue%2A>名がまだ存在しない場所ケースを処理するなど、初めてアプリケーションを実行します。 このオーバー ロードを呼び出すたびを使用して、`defaultValue`場合に返す値を指定するパラメーター`name`存在しません。  
+ の<xref:Microsoft.Win32.RegistryKey.GetValue%2A>このオーバーロードを使用して、名前がまだ存在しないケース (たとえば、アプリケーションを初めて実行したとき) を処理します。 このオーバーロードを呼び出すときは常に`defaultValue` 、パラメーターを使用して、が`name`存在しない場合に返す値を指定します。  
   
 > [!NOTE]
->  レジストリ キーには、任意の名前に関連付けられていない 1 つの値を持つことができます。 レジストリ エディターでこの無名の値が表示されたら、名の代わりに文字列「(既定値)」が表示されます。 この無名の値を取得するには、いずれかを指定`null`または空の文字列 ("") の`name`します。  
+>  レジストリキーには、どの名前にも関連付けられていない1つの値を含めることができます。 この名前のない値がレジストリエディターに表示されると、名前の代わりに "(既定値)" という文字列が表示されます。 この無名の値を取得するに`null`は、に対して`name`または空の文字列 ("") を指定します。  
   
- ときに、<xref:Microsoft.Win32.RegistryKey.GetValue%2A>メソッドを展開可能な文字列値を取得します (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>)、ローカル環境からデータを使用して環境文字列を展開します。 リモート コンピューター上のレジストリから展開可能な文字列値を取得するには使用、<xref:Microsoft.Win32.RegistryKey.GetValue%2A>環境文字列の拡張をしないようにするかを指定するオーバー ロードします。  
-  
-> [!NOTE]
->  環境変数への展開可能な参照を格納している値が文字列として格納されている場合 (<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>)、展開可能な文字列としてではなく (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>)、<xref:Microsoft.Win32.RegistryKey.GetValue%2A>メソッドは展開しません。 このような文字列を展開するには、呼び出すことによって取得された後、<xref:System.Environment.ExpandEnvironmentVariables%2A>メソッド。  
+ メソッドが<xref:Microsoft.Win32.RegistryKey.GetValue%2A>展開可能な文字列値 (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>) を取得すると、ローカル環境のデータを使用して環境文字列が展開されます。 リモートコンピューターのレジストリから展開可能な文字列値を取得するには<xref:Microsoft.Win32.RegistryKey.GetValue%2A> 、オーバーロードを使用して、環境文字列を展開しないように指定します。  
   
 > [!NOTE]
->  データを取得するお勧めの方法、<xref:Microsoft.Win32.Registry.PerformanceData>キーが使用するには、<xref:System.Diagnostics.PerformanceCounter>クラスではなく、<xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=nameWithType>メソッド。  
+>  環境変数への展開可能な参照を含む値が、展開可能な<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>文字列 (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>) <xref:Microsoft.Win32.RegistryKey.GetValue%2A>ではなく文字列 () として格納されている場合、メソッドは拡張されません。 <xref:System.Environment.ExpandEnvironmentVariables%2A>メソッドを呼び出すことにより、このような文字列を取得した後に展開できます。  
+  
+> [!NOTE]
+>  <xref:Microsoft.Win32.Registry.PerformanceData>キーからデータを取得する場合は、 <xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=nameWithType>メソッドではなく<xref:System.Diagnostics.PerformanceCounter>クラスを使用することをお勧めします。  
 >   
->  <xref:Microsoft.Win32.RegistryKey.GetValue%2A> REG_NONE または REG_LINK 型の値の読み取りをサポートしません。  どちらの場合も、既定値 (`null`) が、実際の値の代わりに返されます。  
+>  <xref:Microsoft.Win32.RegistryKey.GetValue%2A>では、REG_NONE または REG_LINK 型の値の読み取りはサポートされていません。  どちらの場合も、実際の値`null`の代わりに既定値 () が返されます。  
   
    
   
 ## Examples  
- 次のコード例では、値を持つテスト キーを作成し、その値を取得します。 次に、試行されたキーから存在しない値を取得するにはこの場合、<xref:Microsoft.Win32.RegistryKey.GetValue%2A>メソッドは、指定した既定値を返します。  
+ 次のコード例では、値を指定してテストキーを作成し、その値を取得します。 次に、この例では、キーから存在しない値を取得しようとします。この場合、メソッド<xref:Microsoft.Win32.RegistryKey.GetValue%2A>は、指定された既定値を返します。  
   
  [!code-cpp[Classic RegistryKey.GetValue Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic RegistryKey.GetValue Example/CPP/source.cpp#1)]
  [!code-csharp[Classic RegistryKey.GetValue Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic RegistryKey.GetValue Example/CS/source.cs#1)]
@@ -1550,12 +1550,12 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、レジストリ キーからの読み取りに必要な権限がありません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーからの読み取りに必要なアクセス許可がありません。</exception>
         <exception cref="T:System.ObjectDisposedException">指定された値を格納している <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.IO.IOException">指定された値を格納する <see cref="T:Microsoft.Win32.RegistryKey" /> は、削除対象としてマークされています。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取る。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.EnvironmentPermission">REG_EXPAND_SZ の種類のレジストリ キーの読み取り。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取ります。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.EnvironmentPermission">型のレジストリキーを読み取るには、REG_EXPAND_SZ です。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValueNames" />
         <altmember cref="Overload:Microsoft.Win32.RegistryKey.SetValue" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteValue(System.String)" />
@@ -1603,27 +1603,27 @@
       </Parameters>
       <Docs>
         <param name="name">取得する値の名前。 この文字列の大文字と小文字は区別されません。</param>
-        <param name="defaultValue">場合に返す値<paramref name="name" />存在しません。</param>
+        <param name="defaultValue"><paramref name="name" /> が存在しない場合に返す値。</param>
         <param name="options">取得した値のオプションの処理を指定する列挙値の 1 つ。</param>
         <summary>指定した名前に関連付けられている値を、取得オプションを指定して取得します。 名前が見つからない場合、設定されている既定値を返します。</summary>
-        <returns>関連付けられている値<paramref name="name" />、指定に従って処理され、 <paramref name="options" />、または<paramref name="defaultValue" />場合<paramref name="name" />が見つかりません。</returns>
+        <returns><paramref name="name" /> に関連付けられた値を、指定した <paramref name="options" /> に従って処理したもの。<paramref name="defaultValue" /> が見つからなかった場合は <paramref name="name" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このオーバー ロードを使用すると、取得した値の特別な処理を指定します。 たとえば、指定<xref:Microsoft.Win32.RegistryValueOptions.DoNotExpandEnvironmentNames?displayProperty=nameWithType>型のレジストリ値を取得するときに<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>埋め込まれた環境変数を展開せずに文字列を取得します。  
+ 取得した値の特別な処理を指定するには、このオーバーロードを使用します。 たとえば、埋め込み環境変数<xref:Microsoft.Win32.RegistryValueOptions.DoNotExpandEnvironmentNames?displayProperty=nameWithType>を展開せずに文字列を<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>取得するために、型のレジストリ値を取得するときにを指定できます。  
   
- 使用して、`defaultValue`場合に返す値を指定するパラメーター`name`存在しません。  
+ パラメーターを使用して、が存在しない`name`場合に返す値を指定します。 `defaultValue`  
   
 > [!NOTE]
->  レジストリ キーには、任意の名前に関連付けられていない 1 つの値を持つことができます。 レジストリ エディターでこの無名の値が表示されたら、名の代わりに文字列「(既定値)」が表示されます。 この無名の値を取得するには、いずれかを指定`null`または空の文字列 ("") の`name`します。  
+>  レジストリキーには、どの名前にも関連付けられていない1つの値を含めることができます。 この名前のない値がレジストリエディターに表示されると、名前の代わりに "(既定値)" という文字列が表示されます。 この無名の値を取得するに`null`は、に対して`name`または空の文字列 ("") を指定します。  
 >   
->  <xref:Microsoft.Win32.RegistryKey.GetValue%2A> REG_NONE または REG_LINK 型の値の読み取りをサポートしません。  どちらの場合も、既定値 (`null`) が、実際の値の代わりに返されます。  
+>  <xref:Microsoft.Win32.RegistryKey.GetValue%2A>では、REG_NONE または REG_LINK 型の値の読み取りはサポートされていません。  どちらの場合も、実際の値`null`の代わりに既定値 () が返されます。  
   
    
   
 ## Examples  
- 次のコード サンプルでは、テスト キーを作成し、埋め込まれた環境変数の値を追加して、展開と展開の両方の形式で値を取得します。  
+ 次のコードサンプルでは、テストキーを作成し、埋め込み環境変数を使用して値を追加し、展開されたフォームと展開されていないフォームの両方で値を取得します。  
   
  [!code-cpp[RegistryValueOptions#1](~/samples/snippets/cpp/VS_Snippets_CLR/RegistryValueOptions/CPP/RegistryValueOptions.cpp#1)]
  [!code-csharp[RegistryValueOptions#1](~/samples/snippets/csharp/VS_Snippets_CLR/RegistryValueOptions/CS/source.cs#1)]
@@ -1631,13 +1631,13 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、レジストリ キーからの読み取りに必要な権限がありません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーからの読み取りに必要なアクセス許可がありません。</exception>
         <exception cref="T:System.ObjectDisposedException">指定された値を格納している <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.IO.IOException">指定された値を格納する <see cref="T:Microsoft.Win32.RegistryKey" /> は、削除対象としてマークされています。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="options" /> が有効な <see cref="T:Microsoft.Win32.RegistryValueOptions" /> 値ではありません。たとえば、無効な値が <see cref="T:Microsoft.Win32.RegistryValueOptions" /> にキャストされています。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取る。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.EnvironmentPermission">REG_EXPAND_SZ の種類のレジストリ キーの読み取り。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取ります。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.EnvironmentPermission">型のレジストリキーを読み取るには、REG_EXPAND_SZ です。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.PermissionState.Unrestricted" /></permission>
         <altmember cref="T:Microsoft.Win32.RegistryValueOptions" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValueNames" />
         <altmember cref="Overload:Microsoft.Win32.RegistryKey.SetValue" />
@@ -1685,21 +1685,21 @@
       <Docs>
         <param name="name">レジストリ データ型を取得する値の名前。 この文字列の大文字と小文字は区別されません。</param>
         <summary>指定した名前に関連付けられた値のレジストリ データ型を取得します。</summary>
-        <returns>関連付けられている値のレジストリ データ型<paramref name="name" />します。</returns>
+        <returns><paramref name="name" /> に関連付けられた値のレジストリ データ型。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
   
 > [!NOTE]
->  レジストリ キーには、任意の名前に関連付けられていない 1 つの値を持つことができます。 レジストリ エディターでこの無名の値が表示されたら、名の代わりに文字列「(既定値)」が表示されます。 この無名の値のレジストリ データ型を取得するには、いずれかを指定`null`または空の文字列 ("") の`name`します。  
+>  レジストリキーには、どの名前にも関連付けられていない1つの値を含めることができます。 この名前のない値がレジストリエディターに表示されると、名前の代わりに "(既定値)" という文字列が表示されます。 この名前のない値のレジストリデータ型を取得するに`null`は、の場合`name`はまたは空の文字列 ("") を指定します。  
   
- サポートされているレジストリ データ型についてを参照してください、<xref:Microsoft.Win32.RegistryValueKind>列挙体。  
+ サポートされているレジストリデータ型の詳細につい<xref:Microsoft.Win32.RegistryValueKind>ては、列挙体を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、テスト キーを作成し、キーに別のデータ型の値を追加します。 名前/値ペアの読み取りし、コンソールに表示しの例を使用して、<xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>対応するレジストリ データ型を取得します。  
+ 次のコード例では、テストキーを作成し、異なるデータ型の値をキーに追加します。 次に、名前と値のペアを読み取ってコンソールに表示し、 <xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>メソッドを使用して対応するレジストリデータ型を取得します。  
   
  [!code-cpp[Microsoft.Win32.RegistryValueKind#1](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryValueKind/CPP/source.cpp#1)]
  [!code-csharp[Microsoft.Win32.RegistryValueKind#1](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryValueKind/CS/source.cs#1)]
@@ -1707,16 +1707,16 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、レジストリ キーからの読み取りに必要な権限がありません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーからの読み取りに必要なアクセス許可がありません。</exception>
         <exception cref="T:System.ObjectDisposedException">指定された値を格納している <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
-        <exception cref="T:System.IO.IOException">指定した値を含むサブキーが存在しません。  
+        <exception cref="T:System.IO.IOException">指定された値を格納しているサブキーが存在しません。  
   
 - または - 
-指定された名前/値ペア<paramref name="name" />存在しません。  
+<paramref name="name" /> で指定された名前/値ペアが存在しません。  
   
-Windows 95、Windows 98、または Windows Millennium Edition では、この例外はスローされません。</exception>
+この例外は、Windows 95、Windows 98、および Windows Millennium Edition ではスローされません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取る。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取ります。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValueNames" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValue(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.SetValue(System.String,System.Object)" />
@@ -1764,12 +1764,12 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
 ## Remarks  
  キーの値の名前が見つからない場合は、空の配列が返されます。  
   
- レジストリ キーの名前/値ペアの名前の空の文字列は、既定値を持つことができます ("")。 によって、配列が返される既定値がレジストリ キーに設定されている場合、<xref:Microsoft.Win32.RegistryKey.GetValueNames%2A>メソッドに空の文字列が含まれています。  
+ レジストリキーには、既定値、つまり名前と値のペア (名前が空の文字列 ("")) を指定できます。 レジストリキーに既定値が設定されている場合、 <xref:Microsoft.Win32.RegistryKey.GetValueNames%2A>メソッドによって返される配列には空の文字列が含まれます。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#2)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#2)]
@@ -1777,11 +1777,11 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、レジストリ キーからの読み取りに必要な権限がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーからの読み取りに必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <exception cref="T:System.IO.IOException">システム エラーが発生しました。たとえば、現在のキーが削除されました。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取るする機能。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <exception cref="T:System.IO.IOException">システム エラーが発生しました。たとえば、現在のキーが削除されています。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">レジストリから読み取ることができる。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValue(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetSubKeyNames" />
       </Docs>
@@ -1819,15 +1819,15 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <ReturnType>Microsoft.Win32.SafeHandles.SafeRegistryHandle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得、<see cref="T:Microsoft.Win32.SafeHandles.SafeRegistryHandle" />キーのレジストリを表すオブジェクトを現在<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトによってカプセル化します。</summary>
+        <summary>現在の <see cref="T:Microsoft.Win32.SafeHandles.SafeRegistryHandle" /> オブジェクトによってカプセル化されているレジストリ キーを表す <see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトを取得します。</summary>
         <value>レジストリ キーのハンドル。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ObjectDisposedException">レジストリ キーが閉じられます。 閉じられたキーにアクセスできません。</exception>
+        <exception cref="T:System.ObjectDisposedException">レジストリ キーが閉じられています。 閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
         <exception cref="T:System.IO.IOException">現在のキーの削除など、システム エラーが発生しました。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーの読み取りに必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に対する完全な信頼が必要です。 このメンバーは、部分的に信頼されたまたは透過的なコードで使用することはできません。</permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <exception cref="T:System.Security.SecurityException">ユーザーには、キーを読み取るために必要なアクセス許可がありません。</exception>
+        <permission cref="T:System.Security.SecurityCriticalAttribute">直前の呼び出し元に完全信頼が必要です。 このメンバーは、部分的に信頼されているコードまたは透過的なコードでは使用できません。</permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
       </Docs>
     </Member>
     <Member MemberName="Name">
@@ -1868,12 +1868,12 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- キーの名前には、常に始まるなどの基本キー HKEY_LOCAL_MACHINE レジストリ内でこのキーの絶対パスが含まれています。  
+ キーの名前には、レジストリ内のこのキーの絶対パスが含まれます。常に、HKEY_LOCAL_MACHINE などの基本キーから開始します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#4)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#4)]
@@ -1881,7 +1881,7 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />が閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <altmember cref="M:Microsoft.Win32.RegistryKey.ToString" />
       </Docs>
     </Member>
@@ -1924,10 +1924,10 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
       <Docs>
         <param name="hKey">開く HKEY。</param>
         <param name="view">使用するレジストリ ビュー。</param>
-        <summary>新しい開きます<see cref="T:Microsoft.Win32.RegistryKey" />を表す、指定されたビューを使用してローカル コンピューター上の要求されたキー。</summary>
+        <summary>ローカル コンピューター上にある要求されたキーを表す新しい <see cref="T:Microsoft.Win32.RegistryKey" /> を、指定されたビューで開きます。</summary>
         <returns>要求されたレジストリ キー。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="hKey" /> または<paramref name="view" />が無効です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hKey" /> または <paramref name="view" /> が無効です。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
         <exception cref="T:System.Security.SecurityException">ユーザーには、この操作を実行するために必要なアクセス許可がありません。</exception>
       </Docs>
@@ -1975,22 +1975,22 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <Parameter Name="machineName" Type="System.String" Index="1" FrameworkAlternate="dotnet-plat-ext-2.1;dotnet-plat-ext-2.2;dotnet-plat-ext-3.0;netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="hKey">開くには、HKEY から、<see cref="T:Microsoft.Win32.RegistryHive" />列挙体。</param>
+        <param name="hKey"><see cref="T:Microsoft.Win32.RegistryHive" /> 列挙体の開く対象の HKEY。</param>
         <param name="machineName">リモート コンピューター。</param>
-        <summary>新しい開きます<see cref="T:Microsoft.Win32.RegistryKey" />リモート コンピューター上の要求されたキーを表します。</summary>
+        <summary>リモート コンピューター上にある要求されたキーを表す新しい <see cref="T:Microsoft.Win32.RegistryKey" /> を開きます。</summary>
         <returns>要求されたレジストリ キー。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ローカル コンピューターのレジストリを開く`machineName`は<xref:System.String.Empty?displayProperty=nameWithType>します。 要求されたキーがリモート コンピューターでは、ルート キーである必要があり、適切なによって識別される<xref:Microsoft.Win32.RegistryHive>値。  
+ `machineName` が<xref:System.String.Empty?displayProperty=nameWithType>の場合、ローカルコンピューターのレジストリが開かれます。 要求されたキーは、リモートコンピューター上のルートキーである必要があり、 <xref:Microsoft.Win32.RegistryHive>適切な値によって識別されます。  
   
- リモートで開かれているキーの順序、サーバーとクライアントの両方のマシンがリモート レジストリ サービスを実行してし、リモート管理を有効になっている必要があります。  
+ キーをリモートで開くには、サーバーとクライアントの両方のコンピューターでリモートレジストリサービスが実行され、リモート管理が有効になっている必要があります。  
   
    
   
 ## Examples  
- 次のコード例では、リモート コンピューター上のレジストリ キーを開き、キーの値を列挙する方法を示します。 リモート コンピューターでは、リモート レジストリ サービスが実行されている必要があります。 プログラムを呼び出すときに、コマンドライン引数として、リモート コンピューターの名前を指定します。  
+ 次のコード例は、リモートコンピューターでレジストリキーを開き、キーの値を列挙する方法を示しています。 リモートコンピューターでリモートレジストリサービスが実行されている必要があります。 プログラムを呼び出すときに、コマンドライン引数としてリモートコンピューターの名前を指定します。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey.OpenRemoteBaseKey#1](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey.OpenRemoteBaseKey/CPP/source.cpp#1)]
  [!code-csharp[Microsoft.Win32.RegistryKey.OpenRemoteBaseKey#1](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey.OpenRemoteBaseKey/CS/source.cs#1)]
@@ -2000,10 +2000,10 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="hKey" /> が無効です。</exception>
         <exception cref="T:System.IO.IOException"><paramref name="machineName" /> が見つかりません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="machineName" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、この操作を実行する適切なアクセス許可がありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="machineName" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、この操作を実行するための十分なアクセス許可がありません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="T:Microsoft.Win32.RegistryHive" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Boolean)" />
       </Docs>
@@ -2053,19 +2053,19 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ローカル コンピューターのレジストリを開く`machineName`は<xref:System.String.Empty?displayProperty=nameWithType>します。 要求されたキーがリモート コンピューターでは、ルート キーである必要があり、適切なによって識別される<xref:Microsoft.Win32.RegistryHive>値。  
+ `machineName` が<xref:System.String.Empty?displayProperty=nameWithType>の場合、ローカルコンピューターのレジストリが開かれます。 要求されたキーは、リモートコンピューター上のルートキーである必要があり、 <xref:Microsoft.Win32.RegistryHive>適切な値によって識別されます。  
   
- リモートで開かれているキーの順序、サーバーとクライアントの両方のマシンがリモート レジストリ サービスを実行してし、リモート管理を有効になっている必要があります。  
+ キーをリモートで開くには、サーバーとクライアントの両方のコンピューターでリモートレジストリサービスが実行され、リモート管理が有効になっている必要があります。  
   
- 64 ビット版 Windows レジストリの一部が 32 ビットおよび 64 ビットのアプリケーション用とは別に格納されます。 32 ビット アプリケーション ビューを 32 ビットと 64 ビット アプリケーションを 64 ビットのビューがあります。 場合`view`は<xref:Microsoft.Win32.RegistryView.Registry64>がリモート コンピューターで 32 ビットのオペレーティング システムが実行されている、返されたキーを使用して、<xref:Microsoft.Win32.RegistryView.Registry32>ビュー。  
+ Windows の64ビットバージョンでは、レジストリの一部が32ビットおよび64ビットアプリケーション用に個別に格納されます。 32ビットアプリケーションには32ビットのビューがあり、64ビットアプリケーションの場合は64ビットのビューがあります。 が`view`で<xref:Microsoft.Win32.RegistryView.Registry64>あっても、リモートコンピューターが32ビットのオペレーティングシステムを実行している場合、 <xref:Microsoft.Win32.RegistryView.Registry32>返されるキーはビューを使用します。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException"><paramref name="hKey" /> または<paramref name="view" />が無効です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="hKey" /> または <paramref name="view" /> が無効です。</exception>
         <exception cref="T:System.IO.IOException"><paramref name="machineName" /> が見つかりません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="machineName" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="machineName" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、この操作の実行に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、この操作を実行するための必要なアクセス許可がありません。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="OpenSubKey">
@@ -2108,23 +2108,23 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">名前または読み取り専用で開くサブキーのパス。</param>
+        <param name="name">読み取り専用で開くサブキーの名前またはパス。</param>
         <summary>サブキーを読み取り専用で取得します。</summary>
-        <returns>要求された場合、サブキーまたは<see langword="null" />場合は、操作に失敗しました。</returns>
+        <returns>要求されたサブキー。操作が失敗した場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- その他のメソッドとプロパティを操作できる前に、キーを開く必要があります。 キーを変更する必要があります開くのオーバー ロード、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドなどの書き込みアクセス権を指定することができますが、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CMicrosoft.Win32.RegistryKeyPermissionCheck%29>オーバー ロードまたは<xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CSystem.Boolean%29>オーバー ロードします。  
+ 他のメソッドやプロパティを使用して操作する前に、キーを開く必要があります。 キーを変更するには、 <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> <xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CMicrosoft.Win32.RegistryKeyPermissionCheck%29>オーバーロードや<xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CSystem.Boolean%29>オーバーロードなどの書き込みアクセスを指定できるメソッドのオーバーロードを使用して、キーを開く必要があります。  
   
- 場合は、指定したサブキーが見つからない、`null`が返されます。  
+ 指定したサブキーが見つからない場合`null`は、が返されます。  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドのインスタンスがある必要があります<xref:Microsoft.Win32.RegistryKey>します。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>の静的メンバーのいずれかを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを使用するには、の<xref:Microsoft.Win32.RegistryKey>インスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
    
   
 ## Examples  
- 次のコード例は、テスト キーを作成し、使用して、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを呼び出して、メソッドの両方のオーバー ロードのデモを開き、します。  
+ 次のコード例では、テストキーを作成<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>し、メソッドを使用してそれを開き、メソッドの両方のオーバーロードを示します。  
   
  [!code-cpp[RegistryKey.OpenSubKey#1](~/samples/snippets/cpp/VS_Snippets_CLR/RegistryKey.OpenSubKey/CPP/opensubkey.cpp#1)]
  [!code-csharp[RegistryKey.OpenSubKey#1](~/samples/snippets/csharp/VS_Snippets_CLR/RegistryKey.OpenSubKey/CS/opensubkey.cs#1)]
@@ -2133,10 +2133,10 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" /> です</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />が閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、レジストリ キーの読み取りに必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーの読み取りに必要なアクセス許可。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーの読み取りに必要なアクセス許可がありません。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーを読み取る機能。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.CreateSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String)" />
@@ -2184,21 +2184,21 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <param name="name">作成または開くサブキーの名前またはパス。</param>
         <param name="permissionCheck">キーが読み取りアクセスで開かれているか、それとも読み取り/書き込みアクセスで開かれているかを示す列挙値の 1 つ。</param>
         <summary>指定したサブキーを読み取りアクセスまたは読み取り/書き込みアクセス用に取得します。</summary>
-        <returns>要求された場合、サブキーまたは<see langword="null" />場合は、操作に失敗しました。</returns>
+        <returns>要求されたサブキー。操作が失敗した場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは例外をスローするのではなくを返します`null`要求されたキーが存在しない場合。  
+ このメソッドは、例外をスローするの`null`ではなく、要求されたキーが存在しない場合はを返します。  
   
- 場合`permissionCheck`は<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>場合、読み取りと書き込みのために、キーを開く`permissionCheck`は<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType>または<xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType>の読み取りと親キーが開かれていない限り、キーが開かれた<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>します。  
+ が`permissionCheck` <xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType> <xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType> <xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType> `permissionCheck`の場合、キーは読み取りと書き込みのために開かれます。がまたはの場合、親キーがで開かれていない限り、読み取り用にキーが開かれます。 <xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドのインスタンスが必要、<xref:Microsoft.Win32.RegistryKey>クラス。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを使用するには、 <xref:Microsoft.Win32.RegistryKey>クラスのインスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
    
   
 ## Examples  
- 次のコード例では、100 のキー/値ペアを格納しているサブキーを作成して、閉じます。 サブキーを開く例を示します<xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default>、すべての値の読み取りにし、サブキーを終了時刻を記録します。 サブキーを開く例を示します<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree>し、すべての値の読み取りにかかる時間を記録します。 最後に、この例を計算し、向上率を表示します。  
+ 次のコード例では、100のキーと値のペアを含むサブキーを作成して閉じます。 この例では、を<xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default>使用してサブキーを開き、すべての値の読み取りにかかる時間を記録して、サブキーを閉じます。 この例では、を<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree>使用してサブキーを開き、すべての値の読み取りにかかる時間を記録します。 最後に、この例では、改善率を計算して表示します。  
   
  [!code-csharp[RegistryKey.OpenSubKey_PermCheck#1](~/samples/snippets/csharp/VS_Snippets_CLR/RegistryKey.OpenSubKey_PermCheck/cs/source.cs#1)]
  [!code-vb[RegistryKey.OpenSubKey_PermCheck#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/RegistryKey.OpenSubKey_PermCheck/vb/source.vb#1)]  
@@ -2207,10 +2207,10 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" /> です</exception>
         <exception cref="T:System.ArgumentException"><paramref name="permissionCheck" /> に無効な値が含まれています。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />が閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、レジストリ キーの読み取りに必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーの読み取りに必要なアクセス許可。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーの読み取りに必要なアクセス許可がありません。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーを読み取る機能。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.CreateSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String)" />
@@ -2256,24 +2256,24 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <Parameter Name="writable" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="name">名前または開くサブキーのパス。</param>
-        <param name="writable">設定<see langword="true" />キーへの書き込みアクセスが必要な場合。</param>
-        <summary>指定したサブキーを取得し、書き込みアクセスが、キーに適用するかどうかを指定します。</summary>
-        <returns>要求された場合、サブキーまたは<see langword="null" />場合は、操作に失敗しました。</returns>
+        <param name="name">開くサブキーの名前またはパス。</param>
+        <param name="writable">キーへの書き込みアクセスが必要な場合には <see langword="true" /> に設定してください。</param>
+        <summary>指定したサブキーを取得します。また、キーに書き込みアクセスを適用するかどうかを指定します。</summary>
+        <returns>要求されたサブキー。操作が失敗した場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドが戻るかどうかは、要求されたキーのファイルが存在しない、`null`例外をスローする代わりにします。  
+ 要求されたキーが存在しない場合、 `null`このメソッドは、例外をスローする代わりにを返します。  
   
- 場合`writable`は`true`読み取り専用に、キーを開く、それ以外の場合、キーの読み取りと書き込みが開きます。  
+ `writable` が`true`の場合、キーは読み取りと書き込みのために開かれます。それ以外の場合、キーは読み取り専用として開かれます。  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドのインスタンスが必要、<xref:Microsoft.Win32.RegistryKey>メソッド。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを使用するには、 <xref:Microsoft.Win32.RegistryKey>メソッドのインスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
    
   
 ## Examples  
- 次のコード例は、テスト キーを作成し、使用して、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを呼び出して、メソッドの両方のオーバー ロードのデモを開き、します。  
+ 次のコード例では、テストキーを作成<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>し、メソッドを使用してそれを開き、メソッドの両方のオーバーロードを示します。  
   
  [!code-cpp[RegistryKey.OpenSubKey#1](~/samples/snippets/cpp/VS_Snippets_CLR/RegistryKey.OpenSubKey/CPP/opensubkey.cpp#1)]
  [!code-csharp[RegistryKey.OpenSubKey#1](~/samples/snippets/csharp/VS_Snippets_CLR/RegistryKey.OpenSubKey/CS/opensubkey.cs#1)]
@@ -2281,11 +2281,11 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />が閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、指定したモードでのレジストリ キーへのアクセスに必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーの読み取りに必要なアクセス許可。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、指定したモードでのレジストリ キーへのアクセスに必要なアクセス許可がありません。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーを読み取る機能。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.CreateSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String)" />
@@ -2335,18 +2335,18 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <param name="name">作成または開くサブキーの名前またはパス。</param>
         <param name="rights">レジストリ キーの権限。</param>
         <summary>指定された名前とアクセス権を持つサブキーを取得します。 .NET Framework 4.6 以降で使用できます。</summary>
-        <returns>要求された場合、サブキーまたは<see langword="null" />場合は、操作に失敗しました。</returns>
+        <returns>要求されたサブキー。操作が失敗した場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- その他のメソッドとプロパティを操作できる前に、キーを開く必要があります。 キーを変更する必要があります開くのオーバー ロード、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを書き込みアクセス権を指定することができます。  
+ 他のメソッドやプロパティを使用して操作する前に、キーを開く必要があります。 キーを変更するには、書き込みアクセスを指定できる<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドのオーバーロードを使用して、キーを開く必要があります。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />が閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、指定したモードでのレジストリ キーへのアクセスに必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、指定したモードでのレジストリ キーへのアクセスに必要なアクセス許可がありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="OpenSubKey">
@@ -2389,30 +2389,30 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <param name="permissionCheck">キーが読み取りアクセスで開かれているか、それとも読み取り/書き込みアクセスで開かれているかを示す列挙値の 1 つ。</param>
         <param name="rights">必要なセキュリティ アクセスを表す列挙値のビットごとの組み合わせ。</param>
         <summary>指定したアクセス権を要求して、指定したサブキーを読み取りアクセスまたは読み取り/書き込みアクセス用に取得します。</summary>
-        <returns>要求された場合、サブキーまたは<see langword="null" />場合は、操作に失敗しました。</returns>
+        <returns>要求されたサブキー。操作が失敗した場合は <see langword="null" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは例外をスローするのではなくを返します`null`要求されたキーが存在しない場合。  
+ このメソッドは、例外をスローするの`null`ではなく、要求されたキーが存在しない場合はを返します。  
   
- 場合`permissionCheck`は<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>場合、読み取りと書き込みのために、キーを開く`permissionCheck`は<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType>または<xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType>の読み取りと親キーが開かれていない限り、キーが開かれた<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>します。  
+ が`permissionCheck` <xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType> <xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType> <xref:Microsoft.Win32.RegistryKeyPermissionCheck.Default?displayProperty=nameWithType> `permissionCheck`の場合、キーは読み取りと書き込みのために開かれます。がまたはの場合、親キーがで開かれていない限り、読み取り用にキーが開かれます。 <xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree?displayProperty=nameWithType>  
   
- 指定されたアクセス`permissionCheck`に指定されたアクセスよりも優先`rights`します。 例では、指定した場合の<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType>の`permissionCheck`と<xref:System.Security.AccessControl.RegistryRights.WriteKey?displayProperty=nameWithType>の`rights`サブキーを書き込みの試みが例外をスローします。  
+ に`permissionCheck`指定されたアクセスは、に`rights`指定されたアクセスよりも優先されます。 たとえば<xref:Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree?displayProperty=nameWithType> 、for `permissionCheck`および<xref:System.Security.AccessControl.RegistryRights.WriteKey?displayProperty=nameWithType>にを指定した場合、サブキーへの書き込みを試みると、例外がスローされます。 `rights`  
   
- 使用するには、<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドのインスタンスが必要、<xref:Microsoft.Win32.RegistryKey>クラス。 インスタンスを取得する<xref:Microsoft.Win32.RegistryKey>、いずれかの静的メンバーを使用して、<xref:Microsoft.Win32.Registry>クラス。  
+ <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>メソッドを使用するには、 <xref:Microsoft.Win32.RegistryKey>クラスのインスタンスが必要です。 の<xref:Microsoft.Win32.RegistryKey>インスタンスを取得するには、 <xref:Microsoft.Win32.Registry>クラスの静的メンバーの1つを使用します。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="name" /> は <see langword="null" /> です</exception>
         <exception cref="T:System.ArgumentException"><paramref name="permissionCheck" /> に無効な値が含まれています。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />が閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
-        <exception cref="T:System.Security.SecurityException"><paramref name="rights" /> 無効なレジストリ権限の値が含まれています。  
+        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
+        <exception cref="T:System.Security.SecurityException"><paramref name="rights" /> に、無効なレジストリ権限の値が含まれています。  
   
 - または - 
-ユーザーには、要求されたアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーの読み取りに必要なアクセス許可。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+ユーザーに、要求されたアクセス許可がありません。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーを読み取る機能。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.CreateSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String)" />
@@ -2458,17 +2458,17 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- レジストリ キーに対するアクセス許可を変更するには、使用、<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A>メソッドを取得する、<xref:System.Security.AccessControl.RegistrySecurity>を既存の Windows アクセス制御セキュリティを表すオブジェクトを変更する<xref:System.Security.AccessControl.RegistrySecurity>オブジェクトし、を使用して、<xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A>のセキュリティを更新する方法そのカギ。  
+ レジストリキーのアクセス許可を変更するには<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A> 、メソッドを使用<xref:System.Security.AccessControl.RegistrySecurity>して、既存の Windows アクセス制御セキュリティを表す<xref:System.Security.AccessControl.RegistrySecurity>オブジェクトを取得し、その<xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A>オブジェクトを変更します。次に、メソッドを使用して、のセキュリティを更新します。そのカギ。  
   
 > [!CAUTION]
->  <xref:System.Security.AccessControl.RegistrySecurity>オブジェクトの指定された`registrySecurity`のレジストリ キーの既存のセキュリティが置き換えられます。 新しいユーザーのアクセス許可を追加するには、使用、<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A>既存のアクセスを取得するメソッドは、セキュリティを制御し、変更します。  
+>  <xref:System.Security.AccessControl.RegistrySecurity> に`registrySecurity`指定されたオブジェクトは、レジストリキーの既存のセキュリティを置き換えます。 新しいユーザーにアクセス許可を追加するには<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A> 、メソッドを使用して既存のアクセス制御セキュリティを取得し、それを変更します。  
   
    
   
 ## Examples  
- 次のコード例では、テスト キーを作成します。 現在のユーザーが許可されている<xref:System.Security.AccessControl.RegistryRights.ReadKey>と<xref:System.Security.AccessControl.RegistryRights.Delete>権限が拒否された<xref:System.Security.AccessControl.RegistryRights.ChangePermissions>と<xref:System.Security.AccessControl.RegistryRights.WriteKey>権限。 その後は、キーの成功を操作またはこれらのアクセス許可に応じて失敗を試行します。  
+ 次のコード例では、テストキーを作成します。 現在のユーザーは許可<xref:System.Security.AccessControl.RegistryRights.ReadKey> <xref:System.Security.AccessControl.RegistryRights.Delete>されてい<xref:System.Security.AccessControl.RegistryRights.ChangePermissions>ます<xref:System.Security.AccessControl.RegistryRights.WriteKey>が、権限は拒否されています。 後続のキーの操作は、これらのアクセス許可に応じて成功または失敗します。  
   
- キーが削除される前に、コードが一時停止します。 レジストリ エディターを切り替えるし、レジストリ エディターを使用して、キーがアクセスされたときに、同じアクセス権を適用することを確認できます。 (を使用する場合は、これは最適**RunAs**管理者権限のないローカル ユーザーとして、レジストリ エディターとサンプル コードを実行するコマンド ラインから。 レジストリ エディターでは、特定の管理者がそれらの権利が拒否された場合でも、管理者アクセス許可の変更を常に許可します。 TestUser、コマンドをという名前のローカル ユーザーを定義している場合`runas /user:TestUser cmd`レジストリ エディターとし、サンプル コードを実行できるコマンド ウィンドウを開きます)。  
+ キーが削除される前に、コードが一時停止します。 レジストリエディターに切り替えて、レジストリエディターを使用してキーにアクセスしたときに同じアクセス権が適用されていることを確認できます。 (これは、コマンドラインから**RunAs**を使用して、管理者権限を持たないローカルユーザーとしてレジストリエディターとサンプルコードを実行する場合に最適です。 レジストリエディターでは、特定の管理者が権限を拒否している場合でも、管理者は常にアクセス許可を変更できます。 TestUser という名前のローカルユーザーを定義した場合`runas /user:TestUser cmd` 、コマンドを実行すると、レジストリエディターを実行してからサンプルコードを実行するコマンドウィンドウが開きます。  
   
  [!code-cpp[RegistrySecurity101#1](~/samples/snippets/cpp/VS_Snippets_CLR/RegistrySecurity101/cpp/source.cpp#1)]
  [!code-csharp[RegistrySecurity101#1](~/samples/snippets/csharp/VS_Snippets_CLR/RegistrySecurity101/CS/source.cs#1)]
@@ -2476,9 +2476,9 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.UnauthorizedAccessException">現在<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトでは、キーを表すアクセス制御セキュリティを使用し、呼び出し元が<see cref="F:System.Security.AccessControl.RegistryRights.ChangePermissions" />権限。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="registrySecurity" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.UnauthorizedAccessException">現在の <see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトはアクセス制御セキュリティを指定したキーを表しますが、呼び出し元には <see cref="F:System.Security.AccessControl.RegistryRights.ChangePermissions" /> 権限がありません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="registrySecurity" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="SetValue">
@@ -2488,7 +2488,7 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>レジストリ キーに名前/値ペアの値を設定します。 格納されているデータの型からまたは指定した、オーバー ロードに応じて、レジストリ データ型が決定されます<see cref="T:Microsoft.Win32.RegistryValueKind" />します。</summary>
+        <summary>レジストリ キーに名前/値ペアの値を設定します。 オーバーロードに応じて、格納するデータの型または指定した <see cref="T:Microsoft.Win32.RegistryValueKind" /> に基づいてレジストリ データ型が判別されます。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="SetValue">
@@ -2529,31 +2529,31 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 多くの値をレジストリ内の各キーに格納できるため、使用、`name`パラメーターを設定する特定の値を指定します。  
+ レジストリ内の各キーには多くの値を格納できるため、 `name`パラメーターを使用して、設定する特定の値を指定する必要があります。  
   
 > [!NOTE]
->  レジストリ キーには、任意の名前に関連付けられていない 1 つの値を持つことができます。 レジストリ エディターでこの無名の値が表示されたら、名の代わりに文字列「(既定値)」が表示されます。 この無名の値を設定するには、いずれかを指定`null`または空の文字列 ("") の`name`します。  
+>  レジストリキーには、どの名前にも関連付けられていない1つの値を含めることができます。 この名前のない値がレジストリエディターに表示されると、名前の代わりに "(既定値)" という文字列が表示されます。 この名前のない値を設定する`null`には、に`name`または空の文字列 ("") を指定します。  
   
- キーの値を設定するには、書き込みアクセス権を持つキーを開く必要があります。 書き込みアクセス権を持つキーを開いた後、そのキーの名前/値ペアのいずれかを変更できます。  
+ キーの値を設定するには、書き込みアクセス権を持つキーを開く必要があります。 書き込みアクセス権を持つキーを開いた後、そのキーの名前と値のペアを変更できます。  
   
- 場合、指定した`name`が存在しないキーが作成され、関連付けられている値に設定されて`value`します。  
+ 指定`name`したがキーに存在しない場合は、作成され、関連付けられ`value`た値がに設定されます。  
   
- このオーバー ロード<xref:Microsoft.Win32.RegistryKey.SetValue%2A>64 ビット整数を文字列として格納されます (<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>)。 として 64 ビットの数値を格納する<xref:Microsoft.Win32.RegistryValueKind.QWord?displayProperty=nameWithType>、値を使用して、<xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29>を指定するオーバー ロード<xref:Microsoft.Win32.RegistryValueKind>します。  
+ のこのオーバーロード<xref:Microsoft.Win32.RegistryKey.SetValue%2A>では、64ビット整数が文字列<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>() として格納されます。 64ビットの数値を値と<xref:Microsoft.Win32.RegistryValueKind.QWord?displayProperty=nameWithType>して格納する<xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29>には、 <xref:Microsoft.Win32.RegistryValueKind>を指定するオーバーロードを使用します。  
   
- このオーバー ロード<xref:Microsoft.Win32.RegistryKey.SetValue%2A>としてすべての文字列値を格納<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>環境変数への展開可能な参照が含まれている場合でも、します。 文字列値として展開可能な文字列を保存する (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>)、使用、<xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29>を指定するオーバー ロード<xref:Microsoft.Win32.RegistryValueKind>します。  
+ 環境変数へ<xref:Microsoft.Win32.RegistryKey.SetValue%2A>の展開可能な参照<xref:Microsoft.Win32.RegistryValueKind.String?displayProperty=nameWithType>が含まれている場合でも、のこのオーバーロードでは、すべての文字列値がとして格納されます。 文字列値を展開可能な文字列 (<xref:Microsoft.Win32.RegistryValueKind.ExpandString?displayProperty=nameWithType>) として<xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29>保存するに<xref:Microsoft.Win32.RegistryValueKind>は、を指定するオーバーロードを使用します。  
   
- 32 ビットの整数以外の数値型は、このメソッドのオーバー ロードで文字列として格納されます。 列挙体の要素は、要素名を含む文字列として格納されます。  
+ 32ビット整数以外の数値型は、このメソッドオーバーロードによって文字列として格納されます。 列挙要素は、要素名を含む文字列として格納されます。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
 > [!NOTE]
->  Windows 98 と Windows Millennium Edition ではない、Unicode にレジストリと、すべての Unicode 文字はすべてのコード ページに対して無効です。 現在のコード ページに無効な Unicode 文字は、使用可能な最適の一致に置換されます。 例外をスローすることはありません。  
+>  Windows 98 および Windows Millennium Edition では、レジストリは Unicode ではなく、すべての Unicode 文字がすべてのコードページで有効であるとは限りません。 現在のコードページに対して無効な Unicode 文字が、使用できる最適な一致に置き換えられます。 例外をスローすることはありません。  
   
    
   
 ## Examples  
- 次のコード例に示す方法、<xref:Microsoft.Win32.RegistryKey.SetValue%2A>メソッドは、値を設定するときに、レジストリ データ型を決定します。 例は、テスト キーを作成し、キーに別のデータ型の値を追加します。 名前/値ペアの読み取りし、コンソールに表示しの例を使用して、<xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>メソッドに対応するレジストリ データ型を表示します。  
+ 次のコード例は、値<xref:Microsoft.Win32.RegistryKey.SetValue%2A>を設定するときに、メソッドがレジストリデータ型を決定する方法を示しています。 この例では、テストキーを作成し、異なるデータ型の値をキーに追加します。 次に、名前と値のペアを読み取ってコンソールに表示し、 <xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>メソッドを使用して対応するレジストリデータ型を表示します。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey.SetValue1#1](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey.SetValue1/CPP/source.cpp#1)]
  [!code-csharp[Microsoft.Win32.RegistryKey.SetValue1#1](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey.SetValue1/CS/source.cs#1)]
@@ -2561,17 +2561,17 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="value" /> サポートされていないデータ型。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="value" /> がサポートされないデータ型です。</exception>
         <exception cref="T:System.ObjectDisposedException">指定された値を格納している <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
-        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" />は読み取り専用と書き込むことができませんに。 たとえば、キーが書き込みアクセスで開かれていません。  
+        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" /> は読み取り専用なので、書き込みできません。たとえば、キーが書き込みアクセスで開かれていません。  
   
 - または - 
-<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトをルート レベル ノードを表すし、オペレーティング システムが Windows Millennium Edition または Windows 98 です。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、作成またはレジストリ キーを変更するために必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.IO.IOException"><see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトをルート レベル ノードを表すし、オペレーティング システムが Windows 2000、Windows XP、または Windows Server 2003 です。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">存在する場合は、指定されたレジストリ キーを変更する、または存在しない場合は、レジストリ キーを作成します。 列挙体に関連付けられている: <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />、 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+<see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトがルート レベルのノードを表し、オペレーティング システムが Windows Millennium Edition または Windows 98 です。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーの作成または変更に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.IO.IOException"><see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトがルート レベルのノードを表し、オペレーティング システムが Windows 2000、Windows XP、または Windows Server 2003 です。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーが存在する場合にそのキーを変更する場合は。存在しない場合はレジストリキーを作成する場合は。 関連付けられ<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />た列挙型:、<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValue(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValueKind(System.String)" />
         <altmember cref="P:Microsoft.Win32.RegistryKey.ValueCount" />
@@ -2624,33 +2624,33 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 多くの値をレジストリ内の各キーに格納できるため、使用、`name`パラメーターを設定する特定の値を指定します。  
+ レジストリ内の各キーには多くの値を格納できるため、 `name`パラメーターを使用して、設定する特定の値を指定する必要があります。  
   
 > [!NOTE]
->  レジストリ キーには、任意の名前に関連付けられていない 1 つの値を持つことができます。 レジストリ エディターでこの無名の値が表示されたら、名の代わりに文字列「(既定値)」が表示されます。 この無名の値を設定するには、いずれかを指定`null`または空の文字列 ("") の`name`します。  
+>  レジストリキーには、どの名前にも関連付けられていない1つの値を含めることができます。 この名前のない値がレジストリエディターに表示されると、名前の代わりに "(既定値)" という文字列が表示されます。 この名前のない値を設定する`null`には、に`name`または空の文字列 ("") を指定します。  
   
- キーの値を設定するには、書き込みアクセス権を持つキーを開く必要があります。 書き込みアクセス権を持つキーを開いた後、そのキーの名前/値ペアのいずれかを変更できます。  
+ キーの値を設定するには、書き込みアクセス権を持つキーを開く必要があります。 書き込みアクセス権を持つキーを開いた後、そのキーの名前と値のペアを変更できます。  
   
- 場合、指定した`name`が存在しない作成、キーと関連付けられている値に設定されて`value`します。  
-  
-> [!NOTE]
->  レジストリ データ型を指定する<xref:Microsoft.Win32.RegistryValueKind.Unknown>と同じです、<xref:Microsoft.Win32.RegistryKey.SetValue%2A>オーバー ロードします。  
-  
- 場合の指定した型`value`、指定したとが一致しません`valueKind`、データにすることはできませんと変換、<xref:System.ArgumentException>がスローされます。 たとえば、格納、<xref:System.Int64?displayProperty=nameWithType>として、 <xref:Microsoft.Win32.RegistryValueKind.DWord?displayProperty=nameWithType>、その値がの最大値より小さい場合にのみが、 <xref:System.Int32?displayProperty=nameWithType>。 として 1 つの文字列値を格納することはできません、<xref:Microsoft.Win32.RegistryValueKind.MultiString?displayProperty=nameWithType>します。  
+ 指定`name`したがキーに存在しない場合は、作成され、関連付けられて`value`いる値はに設定されます。  
   
 > [!NOTE]
->  ボックス化された値が渡された場合<xref:Microsoft.Win32.RegistryValueKind.DWord?displayProperty=nameWithType>または<xref:Microsoft.Win32.RegistryValueKind.QWord?displayProperty=nameWithType>、変換が行われるインバリアント カルチャを使用します。  
+>  レジストリデータ型<xref:Microsoft.Win32.RegistryValueKind.Unknown>の指定は、 <xref:Microsoft.Win32.RegistryKey.SetValue%2A>オーバーロードを使用する場合と同じです。  
+  
+ 指定`value`したの型が指定`valueKind`したと一致せず、データを変換できない<xref:System.ArgumentException>場合は、がスローされます。 たとえば、を<xref:System.Int64?displayProperty=nameWithType> <xref:Microsoft.Win32.RegistryValueKind.DWord?displayProperty=nameWithType>として格納でき<xref:System.Int32?displayProperty=nameWithType>ますが、その値がの最大値よりも小さい場合に限られます。 1つの文字列値をとして<xref:Microsoft.Win32.RegistryValueKind.MultiString?displayProperty=nameWithType>格納することはできません。  
+  
+> [!NOTE]
+>  または<xref:Microsoft.Win32.RegistryValueKind.DWord?displayProperty=nameWithType> <xref:Microsoft.Win32.RegistryValueKind.QWord?displayProperty=nameWithType>に対してボックス化された値が渡された場合、変換はインバリアントカルチャを使用して行われます。  
   
 > [!CAUTION]
->  公開しない<xref:Microsoft.Win32.RegistryKey>こと悪意のあるプログラムが何千もの無意味なサブキーを作成またはキー/値ペア方法でオブジェクト。 たとえば、任意のキーまたは値を入力する呼び出し元を許可しません。  
+>  悪意のある<xref:Microsoft.Win32.RegistryKey>プログラムによって何千もの無意味なサブキーまたはキーと値のペアが作成されるような方法でオブジェクトを公開しないでください。 たとえば、呼び出し元が任意のキーまたは値を入力することを許可しないでください。  
   
 > [!NOTE]
->  Windows 98 と Windows Millennium Edition ではない、Unicode にレジストリと、すべての Unicode 文字はすべてのコード ページに対して無効です。 現在のコード ページに無効な Unicode 文字は、使用可能な最適の一致に置換されます。 例外をスローすることはありません。  
+>  Windows 98 および Windows Millennium Edition では、レジストリは Unicode ではなく、すべての Unicode 文字がすべてのコードページで有効であるとは限りません。 現在のコードページに対して無効な Unicode 文字が、使用できる最適な一致に置き換えられます。 例外をスローすることはありません。  
   
    
   
 ## Examples  
- 次のコード例は、テスト キーを作成し、使用して、<xref:Microsoft.Win32.RegistryKey.SetValue%2A>各値のレジストリ データ型を指定するいくつかの値を格納する方法。 名前/値ペアの読み取りし、コンソールに表示しの例を使用して、<xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>メソッドに対応するレジストリ データ型を表示します。  
+ 次のコード例では、テストキーを作成<xref:Microsoft.Win32.RegistryKey.SetValue%2A>し、メソッドを使用して複数の値を格納し、各値のレジストリデータ型を指定します。 次に、名前と値のペアを読み取ってコンソールに表示し、 <xref:Microsoft.Win32.RegistryKey.GetValueKind%2A>メソッドを使用して対応するレジストリデータ型を表示します。  
   
  [!code-cpp[Microsoft.Win32.RegistryValueKind#1](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryValueKind/CPP/source.cpp#1)]
  [!code-csharp[Microsoft.Win32.RegistryValueKind#1](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryValueKind/CS/source.cs#1)]
@@ -2658,17 +2658,17 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException">型<paramref name="value" />で指定されたレジストリ データ型とは一致しませんでした<paramref name="valueKind" />、そのため、データが適切に変換できません。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="value" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="value" /> の型が <paramref name="valueKind" /> で指定したレジストリ データ型と一致しなかったため、データを適切に変換できませんでした。</exception>
         <exception cref="T:System.ObjectDisposedException">指定された値を格納している <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
-        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" />は読み取り専用と書き込むことができませんに。 たとえば、キーが書き込みアクセスで開かれていません。  
+        <exception cref="T:System.UnauthorizedAccessException"><see cref="T:Microsoft.Win32.RegistryKey" /> は読み取り専用なので、書き込みできません。たとえば、キーが書き込みアクセスで開かれていません。  
   
 - または - 
-<see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトをルート レベル ノードを表すし、オペレーティング システムが Windows Millennium Edition または Windows 98 です。</exception>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、作成またはレジストリ キーを変更するために必要なアクセス許可がありません。</exception>
-        <exception cref="T:System.IO.IOException"><see cref="T:Microsoft.Win32.RegistryKey" />オブジェクトをルート レベル ノードを表すし、オペレーティング システムが Windows 2000、Windows XP、または Windows Server 2003 です。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">存在する場合は、指定されたレジストリ キーを変更する、または存在しない場合は、レジストリ キーを作成します。 列挙体に関連付けられている: <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />、 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
-        <permission cref="T:System.Security.Permissions.SecurityPermission">場合は指定されたレジストリ キーにアクセスする機能をリモートのキーになります。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
+<see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトがルート レベルのノードを表し、オペレーティング システムが Windows Millennium Edition または Windows 98 です。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、レジストリ キーの作成または変更に必要なアクセス許可がありません。</exception>
+        <exception cref="T:System.IO.IOException"><see cref="T:Microsoft.Win32.RegistryKey" /> オブジェクトがルート レベルのノードを表し、オペレーティング システムが Windows 2000、Windows XP、または Windows Server 2003 です。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーが存在する場合にそのキーを変更する場合は。存在しない場合はレジストリキーを作成する場合は。 関連付けられ<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Write" />た列挙型:、<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Create" /></permission>
+        <permission cref="T:System.Security.Permissions.SecurityPermission">指定されたレジストリキーがリモートキーである場合にアクセスする権限。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValueKind(System.String)" />
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetValue(System.String)" />
         <altmember cref="P:Microsoft.Win32.RegistryKey.ValueCount" />
@@ -2713,12 +2713,12 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、再帰的に数名前ではありません。 のみ、呼び出し元の基本レベルの名前の数を返します。  
+ このプロパティは、名前を再帰的にカウントしません。 このメソッドは、呼び出し元の基本レベルの名前の数のみを返します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#2)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#2)]
@@ -2726,11 +2726,11 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーの読み取りアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、キーの読み取りアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <exception cref="T:System.IO.IOException">システム エラーが発生しました、たとえば、現在のキーが削除されています。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーの読み取りに必要なアクセス許可。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <exception cref="T:System.IO.IOException">システム エラーが発生しました。たとえば、現在のキーが削除されています。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーを読み取る機能。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
         <altmember cref="M:Microsoft.Win32.RegistryKey.GetSubKeyNames" />
       </Docs>
     </Member>
@@ -2762,7 +2762,7 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[
 
 ## Remarks  
-このメソッドは呼び出すことと同じ効果<xref:Microsoft.Win32.RegistryKey.Close%2A>します。
+このメソッドは、を呼び出す<xref:Microsoft.Win32.RegistryKey.Close%2A>場合と同じ効果があります。
 
 ]]></format>
         </remarks>
@@ -2802,17 +2802,17 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
       <Parameters />
       <Docs>
         <summary>このキーの文字列形式を取得します。</summary>
-        <returns>キーを表す文字列。 指定したキーが有効でない場合 (見つかりません) <see langword="null" />が返されます。</returns>
+        <returns>キーを表す文字列。 指定したサブキーが無効である (見つからない) 場合は、<see langword="null" /> が返されます。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 戻り値には、指定したキーとキーの 16 進数の値のレジストリ パスが含まれます。 レジストリ パスに指定したキーの絶対ルートが含まれます、常が開始されます、レジストリの基本キーのいずれかのたとえば、HKEY_LOCAL_MACHINE。  
+ 戻り値には、指定されたキーのレジストリパスと、キーの16進値が含まれます。 レジストリパスには、指定されたキーの絶対ルートが含まれます。は、通常、HKEY_LOCAL_MACHINE など、レジストリの基本キーのいずれかから開始します。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#4)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#4](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#4)]
@@ -2820,7 +2820,7 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />アクセスされているが閉じられる (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.ObjectDisposedException">アクセスする <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <altmember cref="P:Microsoft.Win32.RegistryKey.Name" />
       </Docs>
     </Member>
@@ -2862,12 +2862,12 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 各レジストリ キーでは、任意の名前に関連付けられていない既定値があります。 使用してこの無名の値を設定することができます、<xref:Microsoft.Win32.RegistryKey.SetValue%2A>メソッドといずれかを指定する`null`または空の文字列 ("") の`name`します。 既定値が設定されていることはありませんが場合、によって返される合計数に影響を与えず、<xref:Microsoft.Win32.RegistryKey.ValueCount%2A>プロパティは設定すると、ただし、これは常にカウントされます。  
+ 各レジストリキーには、どの名前にも関連付けられていない既定値が設定されています。 この名前のない値は、 <xref:Microsoft.Win32.RegistryKey.SetValue%2A>メソッドを使用し、に対し`name`て`null`または空の文字列 ("") を指定することによって設定できます。 既定値が設定されていない場合は、 <xref:Microsoft.Win32.RegistryKey.ValueCount%2A>プロパティによって返される合計数には影響しません。設定されると、常にカウントされます。  
   
    
   
 ## Examples  
- このコード例が示されている例の一部、<xref:Microsoft.Win32.RegistryKey>クラス。  
+ このコード例は、 <xref:Microsoft.Win32.RegistryKey>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/cpp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CPP/source.cpp#2)]
  [!code-csharp[Microsoft.Win32.RegistryKey2#2](~/samples/snippets/csharp/VS_Snippets_CLR/Microsoft.Win32.RegistryKey2/CS/source.cs#2)]
@@ -2875,11 +2875,11 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.Security.SecurityException">ユーザーには、キーの読み取りアクセス許可がありません。</exception>
-        <exception cref="T:System.ObjectDisposedException"><see cref="T:Microsoft.Win32.RegistryKey" />を閉じる操作される (閉じられたキーにアクセスすることはできません)。</exception>
+        <exception cref="T:System.Security.SecurityException">ユーザーに、キーの読み取りアクセス許可がありません。</exception>
+        <exception cref="T:System.ObjectDisposedException">操作対象の <see cref="T:Microsoft.Win32.RegistryKey" /> が閉じています。閉じられたキーにはアクセスできません。</exception>
         <exception cref="T:System.UnauthorizedAccessException">ユーザーに、必要なレジストリ権限がありません。</exception>
-        <exception cref="T:System.IO.IOException">システム エラーが発生しました、たとえば、現在のキーが削除されています。</exception>
-        <permission cref="T:System.Security.Permissions.RegistryPermission">指定されたレジストリ キーの読み取りに必要なアクセス許可。 関連付けられた列挙体。 <see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
+        <exception cref="T:System.IO.IOException">システム エラーが発生しました。たとえば、現在のキーが削除されています。</exception>
+        <permission cref="T:System.Security.Permissions.RegistryPermission">指定したレジストリキーを読み取る機能。 関連付けられた列挙型:<see cref="F:System.Security.Permissions.RegistryPermissionAccess.Read" /></permission>
       </Docs>
     </Member>
     <Member MemberName="View">
@@ -2919,14 +2919,14 @@ Windows 95、Windows 98、または Windows Millennium Edition では、この�
         <value>レジストリ キーの作成に使用されたビュー。  
   
 - または - 
- <see cref="F:Microsoft.Win32.RegistryView.Default" />、ビューが使用されなかった場合。</value>
+ <see cref="F:Microsoft.Win32.RegistryView.Default" /> (ビューが使用されなかった場合)。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 64 ビット版 Windows レジストリの一部が 32 ビットおよび 64 ビットのアプリケーション用とは別に格納されます。 32 ビット アプリケーション ビューを 32 ビットと 64 ビット アプリケーションを 64 ビットのビューがあります。  
+ Windows の64ビットバージョンでは、レジストリの一部が32ビットおよび64ビットアプリケーション用に個別に格納されます。 32ビットアプリケーションには32ビットのビューがあり、64ビットアプリケーションの場合は64ビットのビューがあります。  
   
- ビューが常の実際のビューに対応するいると想定しないで、<xref:Microsoft.Win32.RegistryKey>します。  
+ ビューが常にの実際のビュー <xref:Microsoft.Win32.RegistryKey>に対応しているとは限りません。  
   
  ]]></format>
         </remarks>

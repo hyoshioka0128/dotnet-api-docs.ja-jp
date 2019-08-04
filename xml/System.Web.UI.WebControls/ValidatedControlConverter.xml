@@ -17,14 +17,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>検証コントロールで検証可能な Web フォーム ページ上のコントロールをコントロールの ID を含む文字列に変換します。</summary>
+    <summary>検証コントロールで検証できる Web フォーム ページ上のコントロールを、コントロール ID を保持する文字列に変換します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- すべてのコントロールは、検証コントロールで検証できます。 このクラスは、検証コントロールに関連付けることができる Web フォーム ページ上のコントロール Id のコレクションを作成します。 このコレクションは、検証コントロールに関連付けることができる Web フォーム ページ上のコントロールの一覧を表示する、デザイナーでよく使用されます。  
+ 検証コントロールで検証できないコントロールもあります。 このクラスは、検証コントロールに関連付けることができる Web フォームページ上にコントロール Id のコレクションを作成します。 このコレクションは、通常、検証コントロールに関連付けることができる Web フォームページ上のコントロールの一覧を表示するために、デザイナーで使用されます。  
   
- 独自の検証コントロールを作成する場合は、検証コントロールをサポートするコントロールの一覧を表示するデザイナーを有効にできます。 単に検証は、次のようにコントロールを表す文字列プロパティに属性を追加します。  
+ 独自の検証コントロールを作成するときに、検証コントロールをサポートするコントロールの一覧をデザイナーで表示できるようにすることができます。 次のように、検証するコントロールを表す文字列プロパティに属性を追加するだけです。  
   
 ```vb  
 <TypeConverter(GetType(ValidatedControlConverter))> _  
@@ -102,13 +102,13 @@
       </Parameters>
       <Docs>
         <param name="control">チェックするコントロール。</param>
-        <summary>検証可能なコントロールのリストを指定したコントロールを追加するかどうかを示す値を返します。</summary>
-        <returns><see langword="true" /> 場合は、コントロールは、検証可能なコントロールのリストに追加する必要があります。それ以外の場合、<see langword="false" />します。</returns>
+        <summary>指定されたコントロールを、検証可能なコントロールのリストに追加するかどうかを示す値を返します。</summary>
+        <returns>検証可能なコントロールのリストにコントロールを追加する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ときに、<xref:System.Web.UI.WebControls.ValidatedControlConverter.FilterControl%2A>メソッドを返します。 `true`、<xref:System.Web.UI.WebControls.ValidatedControlConverter>インスタンスがコントロールのパラメーターで指定したコントロールの ID を追加、<xref:System.ComponentModel.TypeConverter.StandardValuesCollection>によって返される、<xref:System.Web.UI.WebControls.ControlIDConverter.GetStandardValues%2A>メソッド。  
+ メソッドが<xref:System.Web.UI.WebControls.ValidatedControlConverter.FilterControl%2A> `true`返されると、 <xref:System.Web.UI.WebControls.ValidatedControlConverter>インスタンスは、コントロールパラメーターで指定された<xref:System.ComponentModel.TypeConverter.StandardValuesCollection>コントロールの ID を、 <xref:System.Web.UI.WebControls.ControlIDConverter.GetStandardValues%2A>メソッドによって返されるに追加します。  
   
  ]]></format>
         </remarks>
@@ -134,8 +134,8 @@
       </Parameters>
       <Docs>
         <param name="context">書式コンテキストを提供する <see cref="T:System.ComponentModel.ITypeDescriptorContext" />。これを使用すると、このコンバーターが呼び出される環境についての追加情報を抽出できます。 このパラメーターまたはこのパラメーターのプロパティには、<see langword="null" /> を指定できます。</param>
-        <summary>フォーマット コンテキストが提供されている場合、この型コンバーターが対象とするデータ型の標準値のコレクションを返します。</summary>
-        <returns>有効な値の標準セットを保持するコレクションまたは<see langword="null" />データ型が標準値セットをサポートしていない場合。</returns>
+        <summary>書式指定コンテキストが指定されている場合、型コンバーターがデザインされた対象のデータ型の標準値のコレクションを返します。</summary>
+        <returns>有効値の標準セットを保持しているコレクション、またはデータ型が標準値セットをサポートしていない場合は <see langword="null" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -159,8 +159,8 @@
       </Parameters>
       <Docs>
         <param name="context">書式指定コンテキストを提供する <see cref="T:System.ComponentModel.ITypeDescriptorContext" />。</param>
-        <summary>返された標準値のコレクションにあるかどうかを示す値を返します<see cref="M:System.Web.UI.WebControls.ValidatedControlConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />は指定したコンテキストを使用して、指定できる値の排他的なリスト。</summary>
-        <returns><see langword="true" /> 返されたコレクション場合<see cref="M:System.Web.UI.WebControls.ValidatedControlConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />が可能な値の排他的リスト<see langword="false" />他の値が可能な場合。</returns>
+        <summary>指定したコンテキストを使用して、<see cref="M:System.Web.UI.WebControls.ValidatedControlConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" /> から返された標準値のコレクションが使用できる値の排他的なリストかどうかを示す値を返します。</summary>
+        <returns><see cref="M:System.Web.UI.WebControls.ValidatedControlConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" /> から返されたコレクションが、使用できる値の完全なリストである場合は <see langword="true" />。他の値を使用できる場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

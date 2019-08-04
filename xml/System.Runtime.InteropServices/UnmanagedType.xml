@@ -44,14 +44,14 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用して、<xref:System.Runtime.InteropServices.UnmanagedType>で列挙、<xref:System.Runtime.InteropServices.MarshalAsAttribute?displayProperty=nameWithType>型がアンマネージ コードとの相互運用時にマーシャ リング方法を指定する属性。  この列挙を使用して、.NET Framework では使用できない型 (I1、I2、I4、I8、R4、R8、U2、U4、および U8) が管理されていない型の単純な値とその他のさまざまな種類を使用してコードにマーシャ リングすることができます。  
+ アンマネージコードとの<xref:System.Runtime.InteropServices.MarshalAsAttribute?displayProperty=nameWithType>相互運用時に型をマーシャリングする方法を指定するには、属性と共に列挙体を使用します。<xref:System.Runtime.InteropServices.UnmanagedType>  この列挙体を使用して、単純な値の型 (I1、I2、I4、I8、R4、R8、U2、U4、および U8) を使用してコードをマーシャリングしたり、.NET Framework で使用できないアンマネージ型、各種のその他の型を使用したりすることができます。  
   
  詳細については、「[アンマネージ コードとの相互運用](~/docs/framework/interop/index.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード フラグメントでは、アンマネージ COM コンポーネントによって実装されるインターフェイスをマネージ ソース コードで宣言する方法を示します。 <xref:System.Runtime.InteropServices.ComImportAttribute?displayProperty=nameWithType>属性により、`IMyStorage`インターフェイスを使用して COM によってエクスポートされません。 (COM クライアントは、既存の COM コンポーネントを直接使用します。)この例で<xref:System.Runtime.InteropServices.MarshalAsAttribute>いくつかを指定します<xref:System.Runtime.InteropServices.UnmanagedType>、元の COM インターフェイスで使用される型を表すメンバー。  
+ 次のコードフラグメントは、マネージソースコードで、COM コンポーネントによって実装されているアンマネージインターフェイスを宣言する方法を示しています。 属性<xref:System.Runtime.InteropServices.ComImportAttribute?displayProperty=nameWithType>は、COM `IMyStorage`で使用するために、インターフェイスがエクスポートされないようにします。 (COM クライアントは、既存の COM コンポーネントを直接使用する必要があります)。この例では<xref:System.Runtime.InteropServices.MarshalAsAttribute> 、は<xref:System.Runtime.InteropServices.UnmanagedType> 、元の COM インターフェイスで使用されている型を表す複数のメンバーを指定しています。  
   
  [!code-cpp[ImprovedInteropSnippets#2](~/samples/snippets/cpp/VS_Snippets_CLR/ImprovedInteropSnippets/CPP/codefile2.cpp#2)]
  [!code-csharp[ImprovedInteropSnippets#2](~/samples/snippets/csharp/VS_Snippets_CLR/ImprovedInteropSnippets/CS/codefile2.cs#2)]
@@ -310,7 +310,7 @@
       </ReturnValue>
       <MemberValue>23</MemberValue>
       <Docs>
-        <summary>構造体に定義されているインライン固定長文字配列で使用します。 <see langword="ByValTStr" /> 構造体に含まれる文字列を C スタイル、固定サイズのように動作する型 (たとえば、 <c>char [5]</c>)。 <see langword="ByValTStr" /> で使用する文字型は、格納される構造体に適用する <see cref="T:System.Runtime.InteropServices.StructLayoutAttribute" /> 属性の引数 <see cref="T:System.Runtime.InteropServices.CharSet" /> によって決定されます。 配列のサイズを示す場合は、常に <see cref="F:System.Runtime.InteropServices.MarshalAsAttribute.SizeConst" /> フィールドを使用します。</summary>
+        <summary>構造体に定義されているインライン固定長文字配列で使用します。 <see langword="ByValTStr" /> 型は、構造体内の C スタイルの固定サイズの文字列 (たとえば、<c>char s[5]</c>) のように動作します。 <see langword="ByValTStr" /> で使用する文字型は、格納される構造体に適用する <see cref="T:System.Runtime.InteropServices.StructLayoutAttribute" /> 属性の引数 <see cref="T:System.Runtime.InteropServices.CharSet" /> によって決定されます。 配列のサイズを示す場合は、常に <see cref="F:System.Runtime.InteropServices.MarshalAsAttribute.SizeConst" /> フィールドを使用します。</summary>
       </Docs>
     </Member>
     <Member MemberName="Currency">
@@ -710,7 +710,7 @@
       </ReturnValue>
       <MemberValue>26</MemberValue>
       <Docs>
-        <summary>COM の <see langword="IDispatch" /> ポインター (Microsoft Visual Basic 6.0 では <see langword="Object" />)。</summary>
+        <summary>COM の <see langword="IDispatch" /> ポインター (Microsoft Visual Basic 6.0 では<see langword="Object" /> )。</summary>
       </Docs>
     </Member>
     <Member MemberName="IInspectable">
@@ -1052,7 +1052,7 @@
       </ReturnValue>
       <MemberValue>21</MemberValue>
       <Docs>
-        <summary>終端が null の 2 バイトの Unicode 文字列。 使用することはできません、 <see langword="LPWStr" /> 、アンマネージ文字列の値の文字列が、管理されていないを使用して作成された場合を除き、<see langword="CoTaskMemAlloc" />関数。</summary>
+        <summary>終端が null の 2 バイトの Unicode 文字列。 文字列がアンマネージド <see langword="CoTaskMemAlloc" /> 関数を使用して作成されない限り、アンマネージド文字列で <see langword="LPWStr" /> 値を使用することはできません。</summary>
       </Docs>
     </Member>
     <Member MemberName="R4">

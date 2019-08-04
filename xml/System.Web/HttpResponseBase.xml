@@ -28,9 +28,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.HttpResponseBase>クラスは抽象クラスと同じメンバーを含む、<xref:System.Web.HttpResponse>クラス。 <xref:System.Web.HttpResponseBase>クラスでは、派生クラスのようなものを作成することができます、<xref:System.Web.HttpResponse>クラスが、カスタマイズすることができ、ASP.NET パイプラインの外部を操作します。 単体テストを実行するときに通常動作をテストするシナリオを伴うをカスタマイズしたメンバーを実装するのに派生クラスを使用します。  
+ クラスは、 <xref:System.Web.HttpResponse>クラスと同じメンバーを含む抽象クラスです。 <xref:System.Web.HttpResponseBase> クラスを使用すると、クラスの<xref:System.Web.HttpResponse>ような派生クラスを作成できますが、カスタマイズして、ASP.NET パイプラインの外部で作業することができます。 <xref:System.Web.HttpResponseBase> 単体テストを実行する場合、通常は、派生クラスを使用して、テストするシナリオを満たすようにカスタマイズされた動作を持つメンバーを実装します。  
   
- <xref:System.Web.HttpResponseWrapper> クラスは <xref:System.Web.HttpResponseBase> クラスから派生します。 <xref:System.Web.HttpResponseWrapper>クラスのラッパーとして機能、<xref:System.Web.HttpResponse>クラス。 インスタンスの使用通常、実行時に、<xref:System.Web.HttpResponseWrapper>クラスのメンバーを呼び出す、<xref:System.Web.HttpResponse>オブジェクト。  
+ <xref:System.Web.HttpResponseWrapper> クラスは <xref:System.Web.HttpResponseBase> クラスから派生します。 クラス<xref:System.Web.HttpResponseWrapper>は、 <xref:System.Web.HttpResponse>クラスのラッパーとして機能します。 実行時には、通常、 <xref:System.Web.HttpResponseWrapper>クラスのインスタンスを使用して、 <xref:System.Web.HttpResponse>オブジェクトのメンバーを呼び出します。  
   
  ]]></format>
     </remarks>
@@ -349,17 +349,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- OnSendingHeaders 疑似イベントは、アプリケーションごとのサブスクリプションではなく、要求ごとのサブスクリプションがあるという点で、IHttpModule のレベルのパイプライン イベントとは異なります。 目的は、コールバックが応答状態コードを変更することがありますか、応答のクッキーまたはヘッダーを設定することがあります。 その他の使用法と注意事項:  
+ 疑似イベント OnSendingHeaders は、アプリケーションごとのサブスクリプションではなく、要求ごとのサブスクリプションであるという点で、IHttpModule レベルのパイプラインイベントとは異なります。 この目的は、コールバックが応答ステータスコードを変更したり、応答の cookie またはヘッダーを設定したりする可能性があることです。 その他の使用上の注意事項と注意事項:  
   
--   このメソッドは、IIS が統合パイプライン モードのパイプラインの実行時にのみ、および応答ヘッダーは、現在の要求のまだ送信されていない場合にのみ有効です。  
+-   このメソッドは、IIS が統合パイプラインモードパイプラインで実行されていて、現在の要求に対して応答ヘッダーがまだ送信されていない場合にのみ有効です。  
   
--   ASP.NET ランタイムでは、スレッドで呼び出されるコールバックについて何も保証はされません。 たとえば、コールバック呼び出すことができます同期的にバック グラウンド スレッドでバック グラウンドのフラッシュが実行されている場合。 <xref:System.Web.HttpContext.Current%2A> このようなスレッドで使用できるは保証されません。  
+-   ASP.NET ランタイムは、コールバックが呼び出されるスレッドについては何も保証しません。 たとえば、バックグラウンドフラッシュが実行されている場合、コールバックはバックグラウンドスレッドで同期的に呼び出されることがあります。 <xref:System.Web.HttpContext.Current%2A>は、このようなスレッドで使用できるとは限りません。  
   
--   コールバック応答エンティティ本体を操作するか、フラッシュで結果を任意のメソッドを呼び出さないでください。 コールバックを呼び出してはならないなど<xref:System.Web.HttpResponseBase.Redirect%2A>、そのメソッドが応答エンティティ本体を操作できます。  
+-   コールバックは、応答エンティティ本体を操作するメソッドを呼び出さないでください。または、その結果、フラッシュされます。 たとえば、コールバックはを呼び出す<xref:System.Web.HttpResponseBase.Redirect%2A>ことはできません。このメソッドは応答エンティティ本体を操作する可能性があるためです。  
   
--   コールバックは、実行時間が短い同期コードのみを含める必要があります。 非同期操作を呼び出し、このような操作を待機すると、デッドロックが発生する可能性があります。  
+-   コールバックには、実行時間の短い同期コードのみを含める必要があります。 非同期操作を呼び出そうとするか、このような操作を待機すると、デッドロックが発生する可能性があります。  
   
--   コールバックが例外をスローしない必要があります。それ以外の場合の動作は定義されません。  
+-   コールバックで例外をスローすることはできません。それ以外の場合、動作は定義されません。  
   
  ]]></format>
         </remarks>
@@ -569,7 +569,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.HttpResponseBase.Buffer%2A>のプロパティ、<xref:System.Web.HttpResponseBase>優先のクラスが非推奨とされました、<xref:System.Web.HttpResponseBase.BufferOutput%2A>プロパティと、ASP の旧バージョンと互換性のためだけに提供されます。  
+ クラスのプロパティは、 <xref:System.Web.HttpResponseBase.BufferOutput%2A>プロパティを優先するように非推奨とされており、ASP の旧バージョンとの互換性のためだけに用意されています。 <xref:System.Web.HttpResponseBase.Buffer%2A> <xref:System.Web.HttpResponseBase>  
   
  ]]></format>
         </remarks>
@@ -597,7 +597,7 @@
       </ReturnValue>
       <Docs>
         <summary>ページ全体の処理が完了した後に、出力をバッファリングしてから送信するかどうかを示す値を取得または設定します。</summary>
-        <value>出力がバッファリングされる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>出力がバッファリングされる場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -648,7 +648,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="T:System.Web.HttpCacheability" /> 列挙値の 1 つに一致する <see langword="Cache-Control" /> HTTP ヘッダーを取得または設定します。</summary>
+        <summary><see langword="Cache-Control" /> 列挙値の 1 つに一致する <see cref="T:System.Web.HttpCacheability" /> HTTP ヘッダーを取得または設定します。</summary>
         <value>現在の応答のキャッシュ ポリシー。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
@@ -783,7 +783,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については、「 <xref:System.Web.HttpResponse.ClientDisconnectedToken%2A?displayProperty=nameWithType> 」を参照してください。  
+ 詳細については、「<xref:System.Web.HttpResponse.ClientDisconnectedToken%2A?displayProperty=nameWithType>」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -944,7 +944,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.DisableUserCache%2A?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.DisableUserCache%2A?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1229,7 +1229,7 @@
       </ReturnValue>
       <Docs>
         <summary>クライアントがサーバーに接続されているかどうかを示す値を取得します。</summary>
-        <value>クライアントが現在接続されている場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>クライアントが現在接続されている場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -1255,7 +1255,7 @@
       </ReturnValue>
       <Docs>
         <summary>クライアントが新しい場所へリダイレクトされるかどうかを示す値を取得します。</summary>
-        <value>Location 応答ヘッダーの値が現在の場所と異なる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>Location 応答ヘッダーの値が現在の場所と異なる場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -1378,7 +1378,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- PushPromise が非決定的にあり、アプリケーションはロジックに依存している必要はありません。 その唯一の目的は、場合によってはパフォーマンス上の利点です。 プッシュ要求を完全に無視する原因となる多くの状況 (プロトコルと実装) があります。 想定されるは、ファイア アンド フォーゲットに基づいています。  
+ PushPromise は非決定的であり、アプリケーションはそれに依存するロジックを持つことはできません。 その唯一の目的は、場合によってはパフォーマンス上の利点です。 多くの条件 (プロトコルおよび実装) によって、がプッシュ要求を完全に無視することがあります。 期待は、火災および忘れることに基づいています。  
   
  ]]></format>
         </remarks>
@@ -1416,7 +1416,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- PushPromise が非決定的にあり、アプリケーションはロジックに依存している必要はありません。 その唯一の目的は、場合によってはパフォーマンス上の利点です。 プッシュ要求を完全に無視する原因となる多くの状況 (プロトコルと実装) があります。 想定されるは、ファイア アンド フォーゲットに基づいています。  
+ PushPromise は非決定的であり、アプリケーションはそれに依存するロジックを持つことはできません。 その唯一の目的は、場合によってはパフォーマンス上の利点です。 多くの条件 (プロトコルおよび実装) によって、がプッシュ要求を完全に無視することがあります。 期待は、火災および忘れることに基づいています。  
   
  ]]></format>
         </remarks>
@@ -1485,7 +1485,7 @@
       </Parameters>
       <Docs>
         <param name="url">対象となる位置。</param>
-        <param name="endResponse">現在のプロセスを終了する場合は <see langword="true" />。</param>
+        <param name="endResponse">現在のプロセスを終了する場合は<see langword="true" /> 。</param>
         <summary>要求を指定した URL へリダイレクトし、現在のプロセスの実行を終了するかどうかを指定します。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
@@ -1554,9 +1554,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.HttpResponseBase.RedirectPermanent%28System.String%29>メソッドのオーバー ロードが応答で HTTP ステータス コードを 301 し、に要求をリダイレクトする URL が含まれています。 HTTP 状態コード 301 は、HTTP 応答の標準的なコードです。 永続的なリダイレクトが存在し、リダイレクト場所が提供されることを示します。  
+ メソッド<xref:System.Web.HttpResponseBase.RedirectPermanent%28System.String%29>オーバーロードは、応答に 301 HTTP 状態コードを提供し、要求をリダイレクトする URL を含みます。 301 HTTP 状態コードは、HTTP 応答の標準コードです。 これは永続的なリダイレクトが存在し、リダイレクトの場所を提供することを示します。  
   
- 呼び出す、<xref:System.Web.HttpResponseBase.RedirectPermanent%28System.String%29>メソッドは、応答の残りの部分を終了します。  
+ メソッドを<xref:System.Web.HttpResponseBase.RedirectPermanent%28System.String%29>呼び出すと、応答の残りの部分が終了します。  
   
  ]]></format>
         </remarks>
@@ -1587,13 +1587,13 @@
       </Parameters>
       <Docs>
         <param name="url">要求のリダイレクト先の場所。</param>
-        <param name="endResponse">応答を終了する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は <see langword="false" /> です。</param>
+        <param name="endResponse">応答を終了する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 既定値は、<see langword="false" /> です。</param>
         <summary>要求された URL から指定された URL への永続的なリダイレクトを実行し、応答を完了するためのオプションを提供します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Web.HttpResponseBase.RedirectPermanent%28System.String%2CSystem.Boolean%29>オーバー ロード メソッドで、応答の HTTP ステータス コードを 301 し、に要求をリダイレクトする URL が含まれています。 このオーバー ロードには、終了するか、リダイレクトが行われた後、応答を完了するかを指定するオプションも提供します。 HTTP 状態コード 301 は、HTTP 応答の標準的なコードです。 永続的なリダイレクトが存在し、リダイレクト場所が提供されることを示します。  
+ オーバーロード<xref:System.Web.HttpResponseBase.RedirectPermanent%28System.String%2CSystem.Boolean%29>メソッドは、応答に 301 HTTP 状態コードを提供し、要求をリダイレクトする URL を含みます。 このオーバーロードには、リダイレクトの実行後に応答を終了するか、完了するかを指定するオプションも用意されています。 301 HTTP 状態コードは、HTTP 応答の標準コードです。 これは永続的なリダイレクトが存在し、リダイレクトの場所を提供することを示します。  
   
  ]]></format>
         </remarks>
@@ -1637,7 +1637,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoute%28System.Object%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoute%28System.Object%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1672,7 +1672,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoute%28System.String%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoute%28System.String%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1707,7 +1707,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoute%28System.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoute%28System.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1744,7 +1744,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoute%28System.String%2CSystem.Object%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoute%28System.String%2CSystem.Object%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1781,7 +1781,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoute%28System.String%2CSystem.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoute%28System.String%2CSystem.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1825,7 +1825,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.Object%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.Object%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1860,7 +1860,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.String%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.String%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1895,7 +1895,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1932,7 +1932,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.String%2CSystem.Object%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.String%2CSystem.Object%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1969,7 +1969,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.String%2CSystem.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.RedirectToRoutePermanent%28System.String%2CSystem.Web.Routing.RouteValueDictionary%29?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -2044,7 +2044,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Web サイトの構成ファイルで指定されているカスタム出力キャッシュ プロバイダーに関連付けられている出力キャッシュ アイテムを削除するには、このメソッドを呼び出します。 既定の出力キャッシュ プロバイダーに関連付けられている出力キャッシュ アイテムを削除するには、呼び出し、<xref:System.Web.HttpResponseBase.RemoveOutputCacheItem%28System.String%29>メソッドのオーバー ロードします。  
+ Web サイト構成ファイルで指定されているカスタム出力キャッシュプロバイダーに関連付けられている出力キャッシュ項目を削除するには、このメソッドを呼び出します。 既定の出力キャッシュプロバイダーに関連付けられている出力キャッシュ項目を削除するに<xref:System.Web.HttpResponseBase.RemoveOutputCacheItem%28System.String%29>は、メソッドオーバーロードを呼び出します。  
   
  ]]></format>
         </remarks>
@@ -2101,7 +2101,7 @@
       </ReturnValue>
       <Docs>
         <summary>クライアントに返される <see langword="Status" /> 値を取得または設定します。</summary>
-        <value>HTTP 出力のステータス。 有効な状態コードの詳細については、次を参照してください。 [HTTP 状態コード](https://go.microsoft.com/fwlink/?LinkId=73157)MSDN Web サイト。</value>
+        <value>HTTP 出力のステータス。 有効なステータス コードの情報については、MSDN Web サイトの「 [HTTP ステータス コード](https://go.microsoft.com/fwlink/?LinkId=73157) 」を参照してください。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -2127,7 +2127,7 @@
       </ReturnValue>
       <Docs>
         <summary>クライアントへ返される出力の HTTP ステータス コードを取得または設定します。</summary>
-        <value>クライアントに返される HTTP 出力のステータス コード。 有効な状態コードの詳細については、次を参照してください。 [HTTP 状態コード](https://go.microsoft.com/fwlink/?LinkId=73157)MSDN Web サイト。</value>
+        <value>クライアントに返される HTTP 出力のステータス コード。 有効なステータス コードの情報については、MSDN Web サイトの「 [HTTP ステータス コード](https://go.microsoft.com/fwlink/?LinkId=73157) 」を参照してください。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -2153,7 +2153,7 @@
       </ReturnValue>
       <Docs>
         <summary>クライアントへ返される出力の HTTP ステータス メッセージを取得または設定します。</summary>
-        <value>クライアントに返される HTTP 出力のステータス メッセージ。 有効な状態コードの詳細については、次を参照してください。 [HTTP 状態コード](https://go.microsoft.com/fwlink/?LinkId=73157)MSDN Web サイト。</value>
+        <value>クライアントに返される HTTP 出力のステータス メッセージ。 有効なステータス コードの情報については、MSDN Web サイトの「 [HTTP ステータス コード](https://go.microsoft.com/fwlink/?LinkId=73157) 」を参照してください。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -2229,7 +2229,7 @@
       </ReturnValue>
       <Docs>
         <summary>HTTP ヘッダーのみがクライアントに送信されるかどうかを示す値を取得または設定します。</summary>
-        <value><see langword="true" /> HTTP メッセージの内容は表示されません。 場合、それ以外の場合、<see langword="false" />します。</value>
+        <value><see langword="true" />HTTP メッセージの内容を抑制する場合は。それ以外<see langword="false" />の場合は。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -2259,9 +2259,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定では、ASP.NET に送信、`Cache-Control: private`応答ヘッダーしない限り、この応答を明示的にキャッシュ ポリシーが指定されています。 このプロパティを要求ごとにこの既定の応答ヘッダーを表示しないようにします。 ヘッダーはまだ設定アプリケーション全体の非表示<xref:System.Web.Configuration.HttpRuntimeSection.SendCacheControlHeader%2A>で[httpRuntime 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/e9b81350-8aaf-47cc-9843-5f7d0c59f369)または[(ASP.NET 設定スキーマ)のcachingのoutputCache要素](https://msdn.microsoft.com/library/47cd2b47-316f-4dfd-bbf8-539be3066fee).  
+ 既定では、この応答`Cache-Control: private`に明示的なキャッシュポリシーが指定されていない限り、ASP.NET は応答ヘッダーを送信します。 このプロパティを使用すると、要求ごとにこの既定の応答ヘッダーを抑制できます。 <xref:System.Web.Configuration.HttpRuntimeSection.SendCacheControlHeader%2A> [HttpRuntime 要素 (ASP.NET settings schema)](https://msdn.microsoft.com/library/e9b81350-8aaf-47cc-9843-5f7d0c59f369)または[outputCache 要素 (ASP.NET Settings schema)](https://msdn.microsoft.com/library/47cd2b47-316f-4dfd-bbf8-539be3066fee)でを設定することによって、アプリケーション全体に対してヘッダーを抑制することもできます。  
   
- 既定の非表示にすると注意して使用`Cache-Control: private`プロキシとしてのヘッダーおよびなどの中継ぎ局がこのヘッダーのない応答として扱わキャッシュ可能な既定では。 この処理を行うには、機密情報の誤ったキャッシュを可能性があります。 参照してください[RFC 2616、Sec. 13.4](https://tools.ietf.org/html/rfc2616)詳細についてはします。  
+ 既定`Cache-Control: private`のヘッダーを非表示にする場合は注意してください。プロキシなどの中継局は、既定では、このヘッダーがない応答をキャッシュ可能として扱うことができます。 この処理により、機密情報が誤ってキャッシュされる可能性があります。 詳細については[、RFC 2616、Sec. 13.4](https://tools.ietf.org/html/rfc2616)を参照してください。  
   
  ]]></format>
         </remarks>
@@ -2292,7 +2292,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメンバーの詳細については、次を参照してください。<xref:System.Web.HttpResponse.SuppressFormsAuthenticationRedirect%2A?displayProperty=nameWithType>します。  
+ このメンバーの詳細について<xref:System.Web.HttpResponse.SuppressFormsAuthenticationRedirect%2A?displayProperty=nameWithType>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -2390,7 +2390,7 @@
       </ReturnValue>
       <Docs>
         <summary>[!INCLUDE[iisver](~/includes/iisver-md.md)] カスタム エラーが無効かどうかを指定する値を取得または設定します。</summary>
-        <value>IIS カスタム エラーが無効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</value>
+        <value>IIS カスタム エラーが無効な場合は<see langword="true" /> 。それ以外の場合は <see langword="false" />。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>
       </Docs>
@@ -2587,7 +2587,7 @@
       </Parameters>
       <Docs>
         <param name="filename">現在の応答に書き込むファイルの名前。</param>
-        <param name="readIntoMemory">ファイルをメモリ ブロックに書き込む場合は <see langword="true" />。</param>
+        <param name="readIntoMemory">ファイルをメモリ ブロックに書き込む場合は<see langword="true" /> 。</param>
         <summary>指定されたファイルの内容を HTTP 応答出力ストリームに書き込み、そのコンテンツがメモリ ブロックとして書き込まれるかどうかを指定します。</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotImplementedException">常に。</exception>

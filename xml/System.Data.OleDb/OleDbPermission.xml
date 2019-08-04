@@ -27,12 +27,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>OLE db、OLE DB データ ソースにアクセスするための十分なセキュリティ レベルをユーザーが持っているかどうかを確認するには、.NET Framework Data Provider を使用できます。</summary>
+    <summary>.NET Framework OLE DB 用データ プロバイダーで、OLE DB データ ソースへのアクセスに関するセキュリティ レベルをユーザーに適切に割り当てることができるようにします。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- .NET Framework Data Provider for OLE DB が部分信頼シナリオを有効にすると、このクラスは将来使用するためものです。 現在、.NET Framework Data Provider for OLE DB には、FullTrust 権限が必要です。 現時点を使用して、`OleDbPermission`クラスが影響を与えません。 詳細については、「 [Code Access Security and ADO.NET](~/docs/framework/data/adonet/code-access-security.md)」を参照してください。  
+ このクラスは、OLE DB の .NET Framework Data Provider が部分信頼シナリオで有効になっている場合に将来使用することを目的としています。 現在、OLE DB の .NET Framework Data Provider には、FullTrust アクセス許可が必要です。 現在、 `OleDbPermission`クラスを使用しても効果はありません。 詳細については、「 [Code Access Security and ADO.NET](~/docs/framework/data/adonet/code-access-security.md)」を参照してください。  
   
  ]]></format>
     </remarks>
@@ -142,14 +142,14 @@
         <Parameter Name="allowBlankPassword" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか 1 つ。</param>
-        <param name="allowBlankPassword">空白のパスワードが許可されているかどうかを示します。</param>
+        <param name="state"><see cref="T:System.Security.Permissions.PermissionState" /> 値のいずれか。</param>
+        <param name="allowBlankPassword">空白のパスワードを許可するかどうかを示します。</param>
         <summary><see cref="T:System.Data.OleDb.OleDbPermission" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Permissions.PermissionState>列挙型よりも優先、<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>プロパティ。 そのため、設定した場合<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>に`false`も設定する必要があります<xref:System.Security.Permissions.PermissionState>に`None`をユーザーが空白のパスワードを使用して接続を確立することを防ぐためにします。  
+ 列挙<xref:System.Security.Permissions.PermissionState>は、 <xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A>プロパティよりも優先されます。 したがって、をに<xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A> `false`設定した場合は、 <xref:System.Security.Permissions.PermissionState>を`None`に設定して、ユーザーが空白のパスワードを使用して接続を確立できないようにする必要もあります。  
   
  ]]></format>
         </remarks>
@@ -180,7 +180,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>返します、<see cref="T:System.Data.OleDb.OleDbPermission" />として、<see cref="T:System.Security.IPermission" />します。</summary>
+        <summary><see cref="T:System.Data.OleDb.OleDbPermission" /> を <see cref="T:System.Security.IPermission" /> として返します。</summary>
         <returns>現在のアクセス許可オブジェクトのコピー。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -233,9 +233,9 @@
         <Parameter Name="target" Type="System.Security.IPermission" Index="0" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="target">ターゲット<see cref="T:System.Security.IPermission" />積集合を持つ現在<see cref="T:System.Data.OleDb.OleDbPermission" />します。</param>
-        <summary>返します、 <see cref="T:System.Security.IPermission" /> 、現在の積集合である<see cref="T:System.Data.OleDb.OleDbPermission" />と指定したターゲット<see cref="T:System.Security.IPermission" />します。</summary>
-        <returns>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの積集合を表す新しいアクセス許可オブジェクト。 この新しいアクセス許可オブジェクトは、積集合が空の場合、null 参照です。</returns>
+        <param name="target">現在の <see cref="T:System.Data.OleDb.OleDbPermission" /> と交差するターゲットの <see cref="T:System.Security.IPermission" />。</param>
+        <summary>現在の <see cref="T:System.Data.OleDb.OleDbPermission" /> と指定されたターゲットの <see cref="T:System.Security.IPermission" /> の積集合である <see cref="T:System.Security.IPermission" /> を返します。</summary>
+        <returns>現在のアクセス許可オブジェクトと指定したアクセス許可オブジェクトの積集合を表す新しいアクセス許可オブジェクト。 積集合が空の場合、この新しいアクセス許可オブジェクトは null 参照になります。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -274,8 +274,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>このプロパティは、不使用とマークされています。 このプロパティの設定は影響しません。</summary>
-        <value>このプロパティは、不使用とマークされています。 このプロパティの設定は影響しません。</value>
+        <summary>このプロパティは互換性のために残されています。 このプロパティを設定しても効果はありません。</summary>
+        <value>このプロパティは互換性のために残されています。 このプロパティを設定しても効果はありません。</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

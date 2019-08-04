@@ -26,35 +26,35 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>一連の CodeDOM ステートメントにオブジェクト グラフをシリアル化します。 このクラスは、シリアライザーの抽象基本クラスを提供します。</summary>
+    <summary>オブジェクト グラフを一連の CodeDOM ステートメントにシリアル化します。 このクラスは、シリアライザーの抽象基本クラスを提供します。</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- カスタムを実装する<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>コンポーネントの型のデザイン時コンポーネントの初期化コードの生成を制御します。  
+ カスタム<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>を実装すると、デザイン時にコンポーネントの型に対するコンポーネント初期化コードの生成を制御できます。  
   
- カスタムの実装に<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>タイプは、する必要があります。  
+ 型のカスタム<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>を実装するには、次のことを行う必要があります。  
   
 1.  <xref:System.ComponentModel.Design.Serialization.CodeDomSerializer> から派生するクラスを定義します。  
   
-2.  実装メソッドは、シリアル化または逆シリアル化メソッドをオーバーライドします。 (詳細については、以下の情報を参照してください)。  
+2.  シリアル化または逆シリアル化メソッドのメソッドオーバーライドを実装します。 (詳細については、以下の情報を参照してください)。  
   
-3.  カスタムを関連付ける<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>型を使用してコンポーネントの実装を<xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute>します。  
+3.  <xref:System.ComponentModel.Design.Serialization.CodeDomSerializer> を<xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute>使用して、カスタム実装をコンポーネントの型に関連付けます。  
   
- コンポーネントの構成コードを生成するためのシリアル化メソッドを実装するには。  
+ コンポーネントの構成コードを生成するためのシリアル化メソッドを実装するには、次の手順を実行します。  
   
-1.  派生したクラス内で<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>適切なシリアル化のオーバーライド、または基本クラスのメソッドを逆シリアル化します。  
+1.  から<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>派生したクラス内で、基底クラスの適切なシリアル化または逆シリアル化メソッドをオーバーライドします。  
   
-2.  既定のシリアライザー コンポーネントの既定の構成を実行するコード ステートメントを生成する場合は、取得し、コンポーネントの基本シリアライザーを呼び出す必要があります。 コンポーネントの基本シリアライザーを取得する呼び出し、<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetSerializer%2A>のメソッド、<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager>メソッドのオーバーライドに渡されます。 渡す、<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetSerializer%2A>メソッドは、要求しているシリアライザーの基本型と共にの構成をシリアル化するコンポーネントの型<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>します。 使用して、基本のシリアライザーをオーバーライドして、同じ名前のメソッドを呼び出して、<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager>とオーバーライド メソッドに渡されたオブジェクト。 実装する場合、<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer.Serialize%2A>メソッド、<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer.Serialize%2A>基本シリアライザーのメソッドは、オブジェクトを返します。 このオブジェクトの型の値をシリアル化するコンポーネントの種類に依存する基本シリアライザーの型によって異なります。 実装する場合、 <xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeEvents%2A>、 <xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeProperties%2A>、または<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializePropertiesToResources%2A>メソッドを作成する必要が新しい<xref:System.CodeDom.CodeStatementCollection>生成されたコードのステートメントを含めるし、メソッドに渡すことにします。  
+2.  既定のシリアライザーで既定のコンポーネント構成を実行するコードステートメントを生成する場合は、コンポーネントの基本シリアライザーを取得して呼び出す必要があります。 コンポーネントの基本シリアライザーを取得するには、メソッド<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetSerializer%2A>オーバーライドに渡さ<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager>れたのメソッドを呼び出します。 要求し<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetSerializer%2A>ているシリアライザーの基本型 () <xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>と共に、の構成をシリアル化するコンポーネントの型をメソッドに渡します。 メソッドオーバーライドに渡されたオブジェクト<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager>とオブジェクトを使用して、基本シリアライザーでオーバーライドする同じ名前のメソッドを呼び出します。 <xref:System.ComponentModel.Design.Serialization.CodeDomSerializer.Serialize%2A>メソッドを実装する場合<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer.Serialize%2A> 、基本シリアライザーのメソッドはオブジェクトを返します。 このオブジェクトの型は、値をシリアル化するコンポーネントの型によって異なりますが、基本シリアライザーの型によって異なります。 <xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeEvents%2A>、 <xref:System.CodeDom.CodeStatementCollection> 、または<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializePropertiesToResources%2A>メソッドを実装する場合は、生成されたコードステートメントを格納する新しいを作成し、メソッドに渡す必要があります。 <xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeProperties%2A>  
   
-3.  シリアライザーの基本メソッドを呼び出した場合があります、<xref:System.CodeDom.CodeStatementCollection>コンポーネントを初期化するために生成するステートメントを格納しています。 作成する必要がありますそれ以外の場合、<xref:System.CodeDom.CodeStatementCollection>します。 追加することができます<xref:System.CodeDom.CodeStatement>をこのコレクションにコンポーネントの構成コードを生成するステートメントを表すオブジェクト。  
+3.  基本シリアライザーメソッドを呼び出した場合は、コンポーネントを初期化する<xref:System.CodeDom.CodeStatementCollection>ために生成するステートメントを含むがあります。 それ以外の場合は<xref:System.CodeDom.CodeStatementCollection>、を作成する必要があります。 コンポーネント構成コード<xref:System.CodeDom.CodeStatement>で生成するステートメントを表すオブジェクトをこのコレクションに追加できます。  
   
-4.  返す、<xref:System.CodeDom.CodeStatementCollection>コンポーネントの構成を生成するソース コードを表します。  
+4.  <xref:System.CodeDom.CodeStatementCollection>コンポーネントを構成するために生成するソースコードを表すを返します。  
   
    
   
 ## Examples  
- 次のコード例から派生したカスタムの CodeDOM シリアライザーを作成する方法を示しています。<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>します。  
+ から<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer>派生するカスタム CodeDOM シリアライザーを作成する方法を次のコード例に示します。  
   
  [!code-cpp[IDesignerSerializationManagerSample#1](~/samples/snippets/cpp/VS_Snippets_Winforms/IDesignerSerializationManagerSample/CPP/idesignerserializationmanagersample.cpp#1)]
  [!code-csharp[IDesignerSerializationManagerSample#1](~/samples/snippets/csharp/VS_Snippets_Winforms/IDesignerSerializationManagerSample/CS/idesignerserializationmanagersample.cs#1)]
@@ -121,20 +121,20 @@
         <Parameter Name="codeObject" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="manager">逆シリアル化プロセス中に使用されるシリアル化マネージャー インターフェイス。</param>
-        <param name="codeObject">逆シリアル化のシリアル化された CodeDOM オブジェクト。</param>
-        <summary>オブジェクトには、指定したシリアル化された CodeDOM オブジェクトを逆シリアル化します。</summary>
+        <param name="manager">逆シリアル化処理中に使用されるシリアル化マネージャー インターフェイス。</param>
+        <param name="codeObject">逆シリアル化の対象となる、シリアル化された CodeDOM オブジェクト。</param>
+        <summary>指定したシリアル化された CodeDOM オブジェクトを逆シリアル化してオブジェクトに戻します。</summary>
         <returns>逆シリアル化された CodeDOM オブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドでは、シリアル化マネージャーを使用して、オブジェクトを作成し、データ型を解決します。 オブジェクト グラフのルートが返されます。  
+ このメソッドは、シリアル化マネージャーを使用してオブジェクトを作成し、データ型を解決します。 オブジェクトグラフのルートが返されます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="manager" /> または <paramref name="codeObject" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="codeObject" /> サポートされていないコード要素です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="codeObject" /> はサポートされないコード要素です。</exception>
       </Docs>
     </Member>
     <Member MemberName="DeserializeExpression">
@@ -161,11 +161,11 @@
         <Parameter Name="expression" Type="System.CodeDom.CodeExpression" Index="2" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="manager">逆シリアル化プロセス中に使用されるシリアル化マネージャー インターフェイス。</param>
-        <param name="name">式を提供する省略可能な名前です。 式の結果オブジェクトの作成時に場合、オブジェクトには、シリアル化マネージャーを後で検索には、この名前が付けられます。 Null 参照 (Visual Basic では Nothing) の場合は、名前は指定しません。</param>
+        <param name="manager">逆シリアル化処理中に使用されるシリアル化マネージャー インターフェイス。</param>
+        <param name="name">式を指定する省略可能な名前。 式で結果としてオブジェクトが作成された場合、オブジェクトにはシリアル化マネージャーによって後続の検索にこの名前が付けられます。 これが null 参照 (Visual Basic では Nothing) の場合、名前は指定されません。</param>
         <param name="expression">逆シリアル化する CodeDOM 式。</param>
-        <summary>指定された式を逆シリアル化します。</summary>
-        <returns>結果の解釈のオブジェクト<paramref name="expression" />します。</returns>
+        <summary>指定した式を逆シリアル化します。</summary>
+        <returns><paramref name="expression" /> の解釈の結果として作成されたオブジェクト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -193,10 +193,10 @@
         <Parameter Name="filter" Type="System.Attribute[]" Index="2" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="manager">逆シリアル化プロセス中に使用されるシリアル化マネージャー インターフェイス。</param>
+        <param name="manager">逆シリアル化処理中に使用されるシリアル化マネージャー インターフェイス。</param>
         <param name="value">プロパティを逆シリアル化するオブジェクト。</param>
         <param name="filter">プロパティに適用するオプションのフィルター。</param>
-        <summary>フィルターが指定されている場合は、指定したフィルターに一致する指定したオブジェクトのプロパティを逆シリアル化します。</summary>
+        <summary>フィルターが指定されている場合、指定したフィルターに一致する指定したオブジェクトのプロパティを逆シリアル化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -223,7 +223,7 @@
         <Parameter Name="statement" Type="System.CodeDom.CodeStatement" Index="1" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="manager">逆シリアル化プロセス中に使用されるシリアル化マネージャー インターフェイス。</param>
+        <param name="manager">逆シリアル化処理中に使用されるシリアル化マネージャー インターフェイス。</param>
         <param name="statement">逆シリアル化する CodeDOM ステートメント。</param>
         <summary>指定したステートメントを逆シリアル化します。</summary>
         <remarks>To be added.</remarks>
@@ -257,12 +257,12 @@
         <param name="manager">シリアル化に使用するシリアル化マネージャー。</param>
         <param name="statement">逆シリアル化するステートメント。</param>
         <summary>1 つのステートメントを逆シリアル化します。</summary>
-        <returns>逆シリアル化の結果のオブジェクト インスタンス<paramref name="statement" />します。</returns>
+        <returns><paramref name="statement" /> の逆シリアル化の結果のオブジェクト インスタンス。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.ComponentModel.Design.Serialization.CodeDomSerializer.DeserializeStatementToInstance%2A>は呼び出し元の相当<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.DeserializeStatement%2A>、変数の代入ステートメントでは、初期化式、またはフィールドの代入ステートメントで変数の宣言ステートメントがステートメントで結果として得られる場合は、オブジェクトのインスタンスを返す点が異なります。  
+ は、を呼び出す<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.DeserializeStatement%2A>ことと同じです。ただし、結果のステートメントが変数assignステートメント、変数宣言(init式)、またはフィールドの代入ステートメントである場合は、オブジェクトインスタンスが返される点が異なります。<xref:System.ComponentModel.Design.Serialization.CodeDomSerializer.DeserializeStatementToInstance%2A>  
   
  ]]></format>
         </remarks>
@@ -294,11 +294,11 @@
         <Parameter Name="targetType" Type="System.Type" Index="2" FrameworkAlternate="netcore-3.0;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
       </Parameters>
       <Docs>
-        <param name="statement"><see cref="T:System.CodeDom.CodeStatement" />をグループを決定します。</param>
-        <param name="expression">A<see cref="T:System.CodeDom.CodeExpression" />を<paramref name="statement" />が削減されています。</param>
+        <param name="statement">グループを決定する対象の <see cref="T:System.CodeDom.CodeStatement" />。</param>
+        <param name="expression"><paramref name="statement" /> が削減された対象の <see cref="T:System.CodeDom.CodeExpression" />。</param>
         <param name="targetType"><see cref="T:System.Type" /> の <paramref name="statement" />。</param>
-        <summary>指定したステートメントが属しているステートメント グループを決定します。</summary>
-        <returns>使用して、コンポーネントの名前<paramref name="statement" />グループ化する必要があります。</returns>
+        <summary>特定のステートメントが属する必要のあるステートメント グループを決定します。</summary>
+        <returns><paramref name="statement" /> をグループ化する必要がある対象のコンポーネントの名前。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -363,7 +363,7 @@
       <Docs>
         <param name="manager">シリアル化に使用するシリアル化マネージャー。</param>
         <param name="value">シリアル化するオブジェクト。</param>
-        <summary>既定値を指定したオブジェクトをシリアル化します。</summary>
+        <summary>既定値を考慮して特定のオブジェクトをシリアル化します。</summary>
         <returns><paramref name="value" /> を表す CodeDom オブジェクト。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="manager" /> または <paramref name="value" /> が <see langword="null" /> です。</exception>
@@ -395,10 +395,10 @@
       </Parameters>
       <Docs>
         <param name="manager">シリアル化時に使用するシリアル化マネージャー。</param>
-        <param name="statements">ステートメントのコレクションをシリアル化イベント ステートメントが追加されます。</param>
-        <param name="value">イベントをシリアル化するオブジェクト。</param>
-        <param name="filter">イベントの検索に適用するメンバーの属性フィルターです。</param>
-        <summary>指定したオブジェクトのすべてのイベントをシリアル化します。</summary>
+        <param name="statements">シリアル化されたイベント ステートメントが追加されるステートメント コレクション。</param>
+        <param name="value">イベントがシリアル化されるオブジェクト。</param>
+        <param name="filter">イベント検索に適用するメンバー属性フィルター。</param>
+        <summary>指定したオブジェクトのイベントをすべてシリアル化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -500,10 +500,10 @@
       </Parameters>
       <Docs>
         <param name="manager">シリアル化時に使用するシリアル化マネージャー。</param>
-        <param name="statements">プロパティのシリアル化されたステートメントを追加するステートメントのコレクション。</param>
-        <param name="value">シリアル化するプロパティを持つオブジェクト。</param>
-        <param name="filter">プロパティの検索に適用するメンバーの属性フィルターです。</param>
-        <summary>指定したフィルターを使用して、指定したオブジェクトのすべてのプロパティをシリアル化します。</summary>
+        <param name="statements">シリアル化されたプロパティ ステートメントを追加するステートメントのコレクション。</param>
+        <param name="value">プロパティがシリアル化されるオブジェクト。</param>
+        <param name="filter">プロパティ検索に適用するメンバー属性フィルター。</param>
+        <summary>指定したフィルターを使用して、指定したオブジェクトのプロパティをすべてシリアル化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -533,10 +533,10 @@
       </Parameters>
       <Docs>
         <param name="manager">シリアル化時に使用するシリアル化マネージャー。</param>
-        <param name="statements">シリアル化中に使用するステートメントのコレクション。 リソース シリアライザーでは、これを使用して作成ステートメントでは、リソースの書き込みが、個々 のプロパティがリソースにすべてのプロパティはシリアル化するために、ステートメントを割り当てることはありません。</param>
+        <param name="statements">シリアル化中に使用するステートメントのコレクション。 リソース シリアライザーでは、これを使用してリソース作成ステートメントを書き込みますが、すべてのプロパティがリソースにシリアル化されるため、個々のプロパティの割り当てステートメントはありません。</param>
         <param name="value">プロパティを逆シリアル化するオブジェクト。</param>
         <param name="filter">プロパティに適用するオプションのフィルター。</param>
-        <summary>リソースに指定されたプロパティをシリアル化します。</summary>
+        <summary>指定されたプロパティをリソースにシリアル化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -628,7 +628,7 @@
         <param name="manager">シリアル化時に使用するシリアル化マネージャー。</param>
         <param name="value">シリアル化するオブジェクト。</param>
         <summary>指定した値を CodeDOM 式にシリアル化します。</summary>
-        <returns>シリアル化された値。 指定した値のシリアライザーがない場合、またはその値のシリアライザーが返されなかった場合は null 参照 (Visual Basic の Nothing) が返されます、<see cref="T:System.CodeDom.CodeExpression" />します。</returns>
+        <returns>シリアル化された値。 指定された値のシリアライザーが存在しない場合、またはその値のシリアライザーによって <see cref="T:System.CodeDom.CodeExpression" /> が返されなかった場合は、null 参照 (Visual Basic では Nothing) が返されます。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -666,12 +666,12 @@
         <param name="manager">シリアル化時に使用するシリアル化マネージャー。</param>
         <param name="value">シリアル化するオブジェクト。</param>
         <summary>指定した値を CodeDOM 式にシリアル化します。</summary>
-        <returns>シリアル化された値。 返されます。<see langword="null" />参照式を指定した値の取得できない場合、または、値をシリアル化することはできません。</returns>
+        <returns>シリアル化された値。 このメソッドは、指定した値の参照式を取得できない場合、または値をシリアル化できない場合に <see langword="null" /> を返します。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeToExpression%2A>値の単純な参照式を取得できない場合は停止します。 パラメーターまたはステートメントの対象として使用する結果として得られる式が予想される場合は、このメソッドを呼び出します。  
+ このメソッドはと似<xref:System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeToExpression%2A>ていますが、値の単純な参照式を取得できない場合に停止する点が異なります。 結果として得られる式がステートメントのパラメーターまたはターゲットとして使用されることが予想される場合は、このメソッドを呼び出します。  
   
  ]]></format>
         </remarks>

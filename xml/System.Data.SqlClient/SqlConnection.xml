@@ -50,18 +50,18 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- A<xref:System.Data.SqlClient.SqlConnection>オブジェクトは、SQL Server データ ソースへの一意のセッションを表します。 クライアント/サーバー データベース システムでは、サーバーへのネットワーク接続と同じです。 <xref:System.Data.SqlClient.SqlConnection> と共に使用<xref:System.Data.SqlClient.SqlDataAdapter>と<xref:System.Data.SqlClient.SqlCommand>Microsoft SQL Server データベースに接続するときにパフォーマンスを向上させる。 すべてのサード パーティ製の SQL Server 製品と他の OLE DB でサポートされているデータ ソース、使用して<xref:System.Data.OleDb.OleDbConnection>します。  
+ オブジェクト<xref:System.Data.SqlClient.SqlConnection>は、SQL Server データソースへの一意のセッションを表します。 クライアント/サーバーデータベースシステムでは、サーバーへのネットワーク接続に相当します。 <xref:System.Data.SqlClient.SqlConnection>は<xref:System.Data.SqlClient.SqlDataAdapter> 、およびと共<xref:System.Data.SqlClient.SqlCommand>に使用して、Microsoft SQL Server データベースに接続するときのパフォーマンスを向上させます。 すべてのサードパーティ SQL Server 製品、およびその他の OLE DB サポートされるデータ<xref:System.Data.OleDb.OleDbConnection>ソースについては、を使用します。  
   
- インスタンスを作成するときに<xref:System.Data.SqlClient.SqlConnection>、すべてのプロパティは、それぞれの初期値に設定されます。 これらの値の一覧は、次を参照してください。、<xref:System.Data.SqlClient.SqlConnection>コンス トラクター。  
+ のインスタンスを作成すると<xref:System.Data.SqlClient.SqlConnection>、すべてのプロパティが初期値に設定されます。 これらの値の一覧については<xref:System.Data.SqlClient.SqlConnection> 、「コンストラクター」を参照してください。  
   
- 参照してください<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>接続文字列キーワードの一覧についてはします。  
+ 接続<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>文字列のキーワードの一覧については、「」を参照してください。  
   
- 場合、<xref:System.Data.SqlClient.SqlConnection>帯がスコープ、閉じられているしません。 そのため、する必要があります明示的に閉じる接続呼び出して`Close`または`Dispose`します。 `Close` `Dispose`が機能的に同等です。 値、接続プール場合、`Pooling`に設定されている`true`または`yes`、基になる接続が接続プールに返されます。 その一方で場合、`Pooling`に設定されている`false`または`no`サーバーへの接続を基になる実際には終了です。  
+ が<xref:System.Data.SqlClient.SqlConnection>スコープ外に出ると、閉じられません。 そのため、または`Close` `Dispose`を呼び出して、接続を明示的に閉じる必要があります。 `Close`と`Dispose`は機能的に同等です。 接続プールの値`Pooling`がまたは`yes`に`true`設定されている場合、基になる接続が接続プールに返されます。 一方、がまたは`Pooling` `no`に`false`設定されている場合、サーバーへの基になる接続が実際に閉じられます。  
   
 > [!NOTE]
 >  接続が接続プールからフェッチされたり接続プールに返されたりしたとき、ログイン イベントとログアウト イベントはサーバーで発生しません。これは、接続プールに返されても接続は実際には終了していないためです。 詳しくは、「[SQL Server の接続プール (ADO.NET)](~/docs/framework/data/adonet/sql-server-connection-pooling.md)」をご覧ください。  
   
- 接続は常に閉じられることを確認するには、内の接続を開く、`using`ブロック、次のコード フラグメントで示すようにします。 これにより、コード ブロックの終了時に、接続が自動的に閉じられること。  
+ 接続が常に閉じられるようにするには、次`using`のコードに示すように、ブロック内で接続を開きます。 これにより、コードがブロックを終了したときに、接続が自動的に閉じられるようになります。  
   
 ```vb  
 Using connection As New SqlConnection(connectionString)  
@@ -80,21 +80,21 @@ using (SqlConnection connection = new SqlConnection(connectionString))
 ```  
   
 > [!NOTE]
->  高パフォーマンス アプリケーションを配置するには、接続プールを使用する必要があります。 .NET Framework Data Provider for SQL Server を使用する場合、いくつかの設定を変更できますが接続プール、プロバイダーは、これを自動的に管理するために有効にすることはありません。 詳しくは、「[SQL Server の接続プール (ADO.NET)](~/docs/framework/data/adonet/sql-server-connection-pooling.md)」をご覧ください。  
+>  高パフォーマンスのアプリケーションを展開するには、接続プールを使用する必要があります。 SQL Server に .NET Framework Data Provider を使用する場合、プロバイダーはこれを自動的に管理するため、接続プールを有効にする必要はありません。ただし、一部の設定は変更できます。 詳しくは、「[SQL Server の接続プール (ADO.NET)](~/docs/framework/data/adonet/sql-server-connection-pooling.md)」をご覧ください。  
   
- 場合、<xref:System.Data.SqlClient.SqlException>メソッドの実行によって生成される、 <xref:System.Data.SqlClient.SqlCommand>、<xref:System.Data.SqlClient.SqlConnection>重大度レベルが 19 以下は開いたままです。 サーバーが通常閉じます重大度レベルが 20 以上の場合、<xref:System.Data.SqlClient.SqlConnection>します。 ただし、ユーザーは接続を再び開き、続行できます。  
+ を実行しているメソッドによって<xref:System.Data.SqlClient.SqlConnection> <xref:System.Data.SqlClient.SqlException>が生成された場合、重大度レベルが19以下の場合、は開いたまま<xref:System.Data.SqlClient.SqlCommand>になります。 重大度レベルが20以上の場合、サーバーは通常、 <xref:System.Data.SqlClient.SqlConnection>を閉じます。 ただし、ユーザーは接続を再び開き、続行できます。  
   
- インスタンスを作成するアプリケーション、<xref:System.Data.SqlClient.SqlConnection>オブジェクトには、宣言型または命令型のセキュリティ確認要求を設定して、コードに十分なアクセス許可を有効にしてすべての直接的および間接的な呼び出し元が必要とすることができます。 <xref:System.Data.SqlClient.SqlConnection> 使用してセキュリティ要求により、<xref:System.Data.SqlClient.SqlClientPermission>オブジェクト。 ユーザーを使用して、コードが十分なアクセス許可を持つことを確認することができます、<xref:System.Data.SqlClient.SqlClientPermissionAttribute>オブジェクト。 ユーザーと管理者を使っても、 [Caspol.exe (コード アクセス セキュリティ ポリシー ツール)](~/docs/framework/tools/caspol-exe-code-access-security-policy-tool.md)コンピューター、ユーザー、およびエンタープライズ レベルのセキュリティ ポリシーを変更します。 詳細については、「[.NET でのセキュリティ](~/docs/standard/security/index.md)」を参照してください。 セキュリティ確認要求を使用する方法を示す例では、次を参照してください。[コード アクセス セキュリティと ADO.NET](~/docs/framework/data/adonet/code-access-security.md)します。  
+ <xref:System.Data.SqlClient.SqlConnection>オブジェクトのインスタンスを作成するアプリケーションでは、すべての直接および間接呼び出し元に、宣言または命令型のセキュリティ要求を設定することによって、コードに対する十分なアクセス許可を与える必要があります。 <xref:System.Data.SqlClient.SqlConnection><xref:System.Data.SqlClient.SqlClientPermission>オブジェクトを使用してセキュリティ要求を行います。 ユーザーは、 <xref:System.Data.SqlClient.SqlClientPermissionAttribute>オブジェクトを使用して、コードに十分なアクセス許可があることを確認できます。 また、ユーザーと管理者は、 [caspol.exe (コードアクセスセキュリティポリシーツール)](~/docs/framework/tools/caspol-exe-code-access-security-policy-tool.md)を使用して、コンピューター、ユーザー、およびエンタープライズレベルのセキュリティポリシーを変更することもできます。 詳細については、「[.NET でのセキュリティ](~/docs/standard/security/index.md)」を参照してください。 セキュリティ要求の使用方法を示す例については、「[コードアクセスセキュリティと ADO.NET](~/docs/framework/data/adonet/code-access-security.md)」を参照してください。  
   
- サーバーからの警告および情報メッセージの処理の詳細については、次を参照してください。[接続イベント](~/docs/framework/data/adonet/connection-events.md)します。 SQL Server エンジンのエラーとエラー メッセージの詳細については、次を参照してください。[データベース エンジンのイベントとエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)します。
+ サーバーからの警告メッセージと情報メッセージの処理の詳細については、「[接続イベント](~/docs/framework/data/adonet/connection-events.md)」を参照してください。 SQL Server エンジンのエラーとエラーメッセージの詳細については、「[イベントとエラーのデータベースエンジン](/sql/relational-databases/errors-events/database-engine-events-and-errors)」を参照してください。
   
 > [!CAUTION]
->  共有メモリではなく、TCP を強制することができます。 Tcp を付けることによって行うことができます: 接続でサーバー名を文字列または localhost を使用できます。  
+>  共有メモリではなく TCP を強制することができます。 これを行うには、tcp: のプレフィックスを接続文字列のサーバー名に付けるか、localhost を使用します。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlCommand>と<xref:System.Data.SqlClient.SqlConnection>します。 <xref:System.Data.SqlClient.SqlConnection>を開き、として設定は、<xref:System.Data.SqlClient.SqlCommand.Connection%2A>の<xref:System.Data.SqlClient.SqlCommand>します。 例を呼び出して<xref:System.Data.SqlClient.SqlCommand.ExecuteNonQuery%2A>します。 これを実現する、<xref:System.Data.SqlClient.SqlCommand.ExecuteNonQuery%2A>接続文字列とクエリ文字列が渡される、 [!INCLUDE[tsql](~/includes/tsql-md.md)] INSERT ステートメントです。 使用して、コードの終了時に、接続が自動的に終了ブロック。  
+ 次の例では<xref:System.Data.SqlClient.SqlCommand> 、と<xref:System.Data.SqlClient.SqlConnection>を作成します。 が開き、の<xref:System.Data.SqlClient.SqlCommand.Connection%2A>として<xref:System.Data.SqlClient.SqlCommand>設定されます。 <xref:System.Data.SqlClient.SqlConnection> この例では<xref:System.Data.SqlClient.SqlCommand.ExecuteNonQuery%2A>、を呼び出します。 これを実現するため<xref:System.Data.SqlClient.SqlCommand.ExecuteNonQuery%2A>に、には、接続文字列と、 [!INCLUDE[tsql](~/includes/tsql-md.md)] INSERT ステートメントであるクエリ文字列が渡されます。 コードが using ブロックを終了すると、接続は自動的に閉じられます。  
   
  [!code-csharp[Classic WebData SqlCommand.ExecuteNonQuery Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlCommand.ExecuteNonQuery Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlCommand.ExecuteNonQuery Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlCommand.ExecuteNonQuery Example/VB/source.vb#1)]  
@@ -150,7 +150,7 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しいインスタンス<xref:System.Data.SqlClient.SqlConnection>が作成、読み取り/書き込みプロパティは、その関連付けられているキーワードを使用して具体的には設定されている場合を除き、次の初期値に設定されます、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティ。  
+ の<xref:System.Data.SqlClient.SqlConnection>新しいインスタンスが作成されると、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティに関連付けられているキーワードを使用して明示的に設定されていない限り、読み取り/書き込みプロパティは次の初期値に設定されます。  
   
 |プロパティ|初期値|  
 |----------------|-------------------|  
@@ -159,12 +159,12 @@ using (SqlConnection connection = new SqlConnection(connectionString))
 |<xref:System.Data.SqlClient.SqlConnection.Database%2A>|空の文字列 ("")|  
 |<xref:System.Data.SqlClient.SqlConnection.DataSource%2A>|空の文字列 ("")|  
   
- のみを使用してこれらのプロパティの値を変更することができます、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティ。 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>クラスを作成および接続文字列の内容を管理するための機能を提供します。  
+ これらのプロパティの値を変更するには、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティを使用する必要があります。 クラス<xref:System.Data.SqlClient.SqlConnectionStringBuilder>は、接続文字列の内容を作成および管理するための機能を提供します。  
   
    
   
 ## Examples  
- 次の例では、作成し、開きます、<xref:System.Data.SqlClient.SqlConnection>します。  
+ 次の例では、を<xref:System.Data.SqlClient.SqlConnection>作成して開きます。  
   
  [!code-csharp[Classic WebData SqlConnection.SqlConnection Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.SqlConnection Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.SqlConnection Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.SqlConnection Example/VB/source.vb#1)]  
@@ -213,7 +213,7 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しいインスタンス<xref:System.Data.SqlClient.SqlConnection>が作成、読み取り/書き込みプロパティは、その関連付けられているキーワードを使用して具体的には設定されている場合を除き、次の初期値に設定されます、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティ。  
+ の<xref:System.Data.SqlClient.SqlConnection>新しいインスタンスが作成されると、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティに関連付けられているキーワードを使用して明示的に設定されていない限り、読み取り/書き込みプロパティは次の初期値に設定されます。  
   
 |プロパティ|初期値|  
 |----------------|-------------------|  
@@ -222,12 +222,12 @@ using (SqlConnection connection = new SqlConnection(connectionString))
 |<xref:System.Data.SqlClient.SqlConnection.Database%2A>|空の文字列 ("")|  
 |<xref:System.Data.SqlClient.SqlConnection.DataSource%2A>|空の文字列 ("")|  
   
- のみを使用してこれらのプロパティの値を変更することができます、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティ。 <xref:System.Data.SqlClient.SqlConnection>クラスを作成および接続文字列の内容を管理するための機能を提供します。  
+ これらのプロパティの値を変更するには、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティを使用する必要があります。 クラス<xref:System.Data.SqlClient.SqlConnection>は、接続文字列の内容を作成および管理するための機能を提供します。  
   
    
   
 ## Examples  
- 次の例では、作成し、開きます、<xref:System.Data.SqlClient.SqlConnection>します。  
+ 次の例では、を<xref:System.Data.SqlClient.SqlConnection>作成して開きます。  
   
  [!code-csharp[Classic WebData SqlConnection.SqlConnection1 Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.SqlConnection1 Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.SqlConnection1 Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.SqlConnection1 Example/VB/source.vb#1)]  
@@ -235,7 +235,7 @@ using (SqlConnection connection = new SqlConnection(connectionString))
  ]]></format>
         </remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続 (ADO.NET)</related>
-        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">For SQL Server、.NET Framework Data Provider を使用</related>
+        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">SQL Server に .NET Framework Data Provider を使用する</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -399,25 +399,25 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコマンドは、BEGIN TRANSACTION の SQL Server の実装にマップされます。  
+ このコマンドは、BEGIN TRANSACTION の SQL Server 実装にマップされます。  
   
- 明示的にコミットしたりを使用して、トランザクションをロールバックする必要があります、<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。 SQL Server トランザクションの管理モデルはを .NET Framework Data Provider が正しく実行されるようにするには、SQL Server によって提供されるものなど、他のトランザクション管理モデルを使用しないでください。  
+ <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。 SQL Server トランザクション管理モデルの .NET Framework Data Provider が正しく動作することを確認するには、SQL Server で提供されているものなど、他のトランザクション管理モデルを使用しないようにします。  
   
 > [!NOTE]
->  分離レベルを指定しない場合は、既定の分離レベルが使用されます。 分離レベルを指定する、<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>メソッドを受け取るオーバー ロードを使用して、`iso`パラメーター (<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>)。 トランザクションの分離レベルは、接続が終了または破棄されるまで、トランザクションが完了した後に永続化します。 分離のレベルを設定**スナップショット**snapshot 分離レベルが有効になっていないデータベースではない例外をスローします。 既定の分離レベルを使用して、トランザクションが完了します。  
+>  分離レベルを指定しない場合は、既定の分離レベルが使用されます。 <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>メソッドで分離レベルを指定するには、 `iso`パラメーター (<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>) を受け取るオーバーロードを使用します。 トランザクションに対して設定された分離レベルは、トランザクションが完了した後、および接続が閉じられるか破棄されるまで保持されます。 スナップショット分離レベルが有効になっていないデータベースで、分離レベルを**snapshot**に設定しても、例外はスローされません。 トランザクションは、既定の分離レベルを使用して完了します。  
   
 > [!CAUTION]
->  トランザクションを開始する、サーバー上、レベル 16 または上位のエラーが発生した場合、トランザクションはロールバックされませんまで、<xref:System.Data.SqlClient.SqlDataReader.Read%2A>メソッドが呼び出されます。 例外がスローされない**ExecuteReader**します。  
+>  トランザクションが開始され、サーバーでレベル16以上のエラーが発生した場合、 <xref:System.Data.SqlClient.SqlDataReader.Read%2A>メソッドが呼び出されるまでトランザクションはロールバックされません。 **ExecuteReader**では例外はスローされません。  
   
 > [!CAUTION]
->  クエリが大量のデータと呼び出しを返す場合`BeginTransaction`、 <xref:System.Data.SqlClient.SqlException> MARS を使用する場合に、SQL Server で並列トランザクションが許可されないためにスローされます。 この問題を避けるためには、常にトランザクションに関連付けるコマンドや、接続リーダーが開く前にします。  
+>  クエリが大量のデータを返し、を呼び出す`BeginTransaction` <xref:System.Data.SqlClient.SqlException>と、SQL Server では MARS を使用するときに並列トランザクションが許可されないため、がスローされます。 この問題を回避するには、すべてのリーダーが開いている前に、常にトランザクションをコマンド、接続、またはその両方に関連付けます。  
   
- SQL Server のトランザクションの詳細については、次を参照してください。[トランザクション (TRANSACT-SQL)](/sql/t-sql/language-elements/transactions-transact-sql)します。
+ SQL Server トランザクションの詳細については、「[トランザクション (transact-sql)](/sql/t-sql/language-elements/transactions-transact-sql)」を参照してください。
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>と<xref:System.Data.SqlClient.SqlTransaction>します。 使用する方法も示します、 <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>、 <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>、および<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、と<xref:System.Data.SqlClient.SqlTransaction>を作成します。 また、、、および<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A> <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>の各メソッドの<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>使用方法も示します。  
   
  [!code-csharp[Classic WebData SqlConnection.BeginTransaction Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.BeginTransaction Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction Example/VB/source.vb#1)]  
@@ -473,22 +473,22 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコマンドは、BEGIN TRANSACTION の SQL Server の実装にマップされます。  
+ このコマンドは、BEGIN TRANSACTION の SQL Server 実装にマップされます。  
   
- 明示的にコミットしたりを使用して、トランザクションをロールバックする必要があります、<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。 SQL Server トランザクションの管理モデルはを .NET Framework Data Provider が正しく実行されるようにするには、SQL Server によって提供されるものなど、他のトランザクション管理モデルを使用しないでください。  
+ <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。 SQL Server トランザクション管理モデルの .NET Framework Data Provider が正しく動作することを確認するには、SQL Server で提供されているものなど、他のトランザクション管理モデルを使用しないようにします。  
   
 > [!NOTE]
-> トランザクションがコミットまたはロールバックした後、トランザクションの分離レベルが自動コミット モード (SQL Server の既定値) になっているすべての後続のコマンドの永続化します。 これによりなどの永続化して、行外の他のユーザーのロックは、REPEATABLE READ 分離レベルの予期しない結果が生成することができます。 分離レベルは、(READ COMMITTED) の既定値にリセットするには、実行、[!INCLUDE[tsql](~/includes/tsql-md.md)]ステートメントの設定のトランザクション分離レベル READ COMMITTED またはコール<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A?displayProperty=nameWithType>と、その直後<xref:System.Data.SqlClient.SqlTransaction.Commit%2A?displayProperty=nameWithType>します。 SQL Server の分離レベルの詳細については、次を参照してください。[トランザクション分離レベル](/sql/t-sql/language-elements/transaction-isolation-levels)します。
+> トランザクションがコミットまたはロールバックされた後、トランザクションの分離レベルは、自動コミットモード (SQL Server 既定値) の後続のすべてのコマンドに対して保持されます。 これにより、反復可能な読み取りの分離レベルなどの予期しない結果が発生し、他のユーザーが行から除外されます。 分離レベルを既定値 (read committed) にリセットするには、 [!INCLUDE[tsql](~/includes/tsql-md.md)] SET TRANSACTION 分離レベル read committed ステートメントを実行する<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A?displayProperty=nameWithType>か、に<xref:System.Data.SqlClient.SqlTransaction.Commit%2A?displayProperty=nameWithType>続けてを呼び出します。 SQL Server 分離レベルの詳細については、「[トランザクション分離レベル](/sql/t-sql/language-elements/transaction-isolation-levels)」を参照してください。
   
- SQL Server のトランザクションの詳細については、次を参照してください。[トランザクション (TRANSACT-SQL)](/sql/t-sql/language-elements/transactions-transact-sql)します。
+ SQL Server トランザクションの詳細については、「[トランザクション (transact-sql)](/sql/t-sql/language-elements/transactions-transact-sql)」を参照してください。
   
 > [!CAUTION]
->  クエリが大量のデータと呼び出しを返す場合`BeginTransaction`、 <xref:System.Data.SqlClient.SqlException> MARS を使用する場合に、SQL Server で並列トランザクションが許可されないためにスローされます。 この問題を避けるためには、常にトランザクションに関連付けるコマンドや、接続リーダーが開く前にします。  
+>  クエリが大量のデータを返し、を呼び出す`BeginTransaction` <xref:System.Data.SqlClient.SqlException>と、SQL Server では MARS を使用するときに並列トランザクションが許可されないため、がスローされます。 この問題を回避するには、すべてのリーダーが開いている前に、常にトランザクションをコマンド、接続、またはその両方に関連付けます。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>と<xref:System.Data.SqlClient.SqlTransaction>します。 使用する方法も示します、 <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>、 <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>、および<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、と<xref:System.Data.SqlClient.SqlTransaction>を作成します。 また、、、および<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A> <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>の各メソッドの<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>使用方法も示します。  
   
  [!code-csharp[Classic WebData SqlConnection.BeginTransaction1 Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction1 Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.BeginTransaction1 Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction1 Example/VB/source.vb#1)]  
@@ -499,7 +499,7 @@ using (SqlConnection connection = new SqlConnection(connectionString))
         <exception cref="T:System.InvalidOperationException">並列トランザクションはサポートされていません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/f46570de-9e50-4fe6-8710-a8c31fa8569b">トランザクション (ADO.NET)</related>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続 (ADO.NET)</related>
-        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">For SQL Server、.NET Framework Data Provider を使用</related>
+        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">SQL Server に .NET Framework Data Provider を使用する</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -544,23 +544,23 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコマンドは、BEGIN TRANSACTION の SQL Server の実装にマップされます。  
+ このコマンドは、BEGIN TRANSACTION の SQL Server 実装にマップされます。  
   
- 長さ、`transactionName`パラメーターは、32 文字を超えない必要があります。 それ以外の場合、例外がスローされます。  
+ `transactionName`パラメーターの長さは32文字以下でなければなりません。それ以外の場合は、例外がスローされます。  
   
- 値、`transactionName`以降の呼び出しでパラメーターを使用できる<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>し、`savePoint`のパラメーター、<xref:System.Data.SqlClient.SqlTransaction.Save%2A>メソッド。  
+ `transactionName`パラメーターの値は、 <xref:System.Data.SqlClient.SqlTransaction.Save%2A>メソッドの`savePoint`パラメーターでおよびを<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>後で呼び出すときに使用できます。  
   
- 明示的にコミットしたりを使用して、トランザクションをロールバックする必要があります、<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。 確認する、[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)]データ プロバイダーの SQL Server トランザクションの管理モデルが正しく、実行を 1 つの SQL Server によって提供されるなど、他のトランザクション管理モデルを使用して回避します。  
+ <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。 SQL Server トランザクション管理モデルの[!INCLUDE[dnprdnshort](~/includes/dnprdnshort-md.md)] Data Provider が正常に動作することを確認するには、SQL Server によって提供されるものなど、他のトランザクション管理モデルを使用しないようにします。  
   
- SQL Server のトランザクションの詳細については、次を参照してください。[トランザクション (TRANSACT-SQL)](/sql/t-sql/language-elements/transactions-transact-sql)します。
+ SQL Server トランザクションの詳細については、「[トランザクション (transact-sql)](/sql/t-sql/language-elements/transactions-transact-sql)」を参照してください。
   
 > [!CAUTION]
->  クエリが大量のデータと呼び出しを返す場合`BeginTransaction`、 <xref:System.Data.SqlClient.SqlException> MARS を使用する場合に、SQL Server で並列トランザクションが許可されないためにスローされます。 この問題を避けるためには、常にトランザクションに関連付けるコマンドや、接続リーダーが開く前にします。  
+>  クエリが大量のデータを返し、を呼び出す`BeginTransaction` <xref:System.Data.SqlClient.SqlException>と、SQL Server では MARS を使用するときに並列トランザクションが許可されないため、がスローされます。 この問題を回避するには、すべてのリーダーが開いている前に、常にトランザクションをコマンド、接続、またはその両方に関連付けます。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>と<xref:System.Data.SqlClient.SqlTransaction>します。 使用する方法も示します、 <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>、 <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>、および<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、と<xref:System.Data.SqlClient.SqlTransaction>を作成します。 また、、、および<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A> <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>の各メソッドの<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>使用方法も示します。  
   
  [!code-csharp[Classic WebData SqlConnection.BeginTransaction2 Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction2 Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.BeginTransaction2 Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction2 Example/VB/source.vb#1)]  
@@ -571,7 +571,7 @@ using (SqlConnection connection = new SqlConnection(connectionString))
         <exception cref="T:System.InvalidOperationException">並列トランザクションはサポートされていません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/f46570de-9e50-4fe6-8710-a8c31fa8569b">トランザクション (ADO.NET)</related>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続 (ADO.NET)</related>
-        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">For SQL Server、.NET Framework Data Provider を使用</related>
+        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">SQL Server に .NET Framework Data Provider を使用する</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -618,24 +618,24 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコマンドは、BEGIN TRANSACTION の SQL Server の実装にマップされます。  
+ このコマンドは、BEGIN TRANSACTION の SQL Server 実装にマップされます。  
   
- 値、`transactionName`以降の呼び出しでパラメーターを使用できる<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>し、`savePoint`のパラメーター、<xref:System.Data.SqlClient.SqlTransaction.Save%2A>メソッド。  
+ `transactionName`パラメーターの値は、 <xref:System.Data.SqlClient.SqlTransaction.Save%2A>メソッドの`savePoint`パラメーターでおよびを<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>後で呼び出すときに使用できます。  
   
- 明示的にコミットしたりを使用して、トランザクションをロールバックする必要があります、<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。 SQL Server トランザクションの管理モデルが正しく実行されるようにするには、SQL Server によって提供されるものなど、他のトランザクション管理モデルを使用しないでください。  
+ <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>または<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。 SQL Server トランザクション管理モデルが正常に動作することを確認するには、SQL Server によって提供されるものなど、他のトランザクション管理モデルを使用しないようにします。  
   
 > [!NOTE]
->  トランザクションがコミットまたはロールバックした後、トランザクションの分離レベルが自動コミット モード (SQL Server の既定値) になっているすべての後続のコマンドの永続化します。 これによりなどの永続化して、行外の他のユーザーのロックは、REPEATABLE READ 分離レベルの予期しない結果が生成することができます。 分離レベルは、(READ COMMITTED) の既定値にリセットするには、実行、[!INCLUDE[tsql](~/includes/tsql-md.md)]ステートメントの設定のトランザクション分離レベル READ COMMITTED またはコール<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A?displayProperty=nameWithType>と、その直後<xref:System.Data.SqlClient.SqlTransaction.Commit%2A?displayProperty=nameWithType>します。 SQL Server の分離レベルの詳細については、次を参照してください。[トランザクション分離レベル](/sql/t-sql/language-elements/transaction-isolation-levels)します。
+>  トランザクションがコミットまたはロールバックされた後、トランザクションの分離レベルは、自動コミットモード (SQL Server 既定値) の後続のすべてのコマンドに対して保持されます。 これにより、反復可能な読み取りの分離レベルなどの予期しない結果が発生し、他のユーザーが行から除外されます。 分離レベルを既定値 (read committed) にリセットするには、 [!INCLUDE[tsql](~/includes/tsql-md.md)] SET TRANSACTION 分離レベル read committed ステートメントを実行する<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A?displayProperty=nameWithType>か、に<xref:System.Data.SqlClient.SqlTransaction.Commit%2A?displayProperty=nameWithType>続けてを呼び出します。 SQL Server 分離レベルの詳細については、「[トランザクション分離レベル](/sql/t-sql/language-elements/transaction-isolation-levels)」を参照してください。
   
- SQL Server のトランザクションの詳細については、次を参照してください。[トランザクション (TRANSACT-SQL)](/sql/t-sql/language-elements/transactions-transact-sql)します。
+ SQL Server トランザクションの詳細については、「[トランザクション (transact-sql)](/sql/t-sql/language-elements/transactions-transact-sql)」を参照してください。
   
 > [!CAUTION]
->  クエリが大量のデータと呼び出しを返す場合`BeginTransaction`、 <xref:System.Data.SqlClient.SqlException> MARS を使用する場合に、SQL Server で並列トランザクションが許可されないためにスローされます。 この問題を避けるためには、常にトランザクションに関連付けるコマンドや、接続リーダーが開く前にします。  
+>  クエリが大量のデータを返し、を呼び出す`BeginTransaction` <xref:System.Data.SqlClient.SqlException>と、SQL Server では MARS を使用するときに並列トランザクションが許可されないため、がスローされます。 この問題を回避するには、すべてのリーダーが開いている前に、常にトランザクションをコマンド、接続、またはその両方に関連付けます。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>と<xref:System.Data.SqlClient.SqlTransaction>します。 使用する方法も示します、 <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>、 <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>、および<xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>メソッド。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、と<xref:System.Data.SqlClient.SqlTransaction>を作成します。 また、、、および<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A> <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A>の各メソッドの<xref:System.Data.SqlClient.SqlTransaction.Commit%2A>使用方法も示します。  
   
  [!code-csharp[Classic WebData SqlConnection.BeginTransaction3 Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction3 Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.BeginTransaction3 Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.BeginTransaction3 Example/VB/source.vb#1)]  
@@ -646,7 +646,7 @@ using (SqlConnection connection = new SqlConnection(connectionString))
         <exception cref="T:System.InvalidOperationException">並列トランザクションはサポートされていません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/f46570de-9e50-4fe6-8710-a8c31fa8569b">トランザクション (ADO.NET)</related>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続 (ADO.NET)</related>
-        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">For SQL Server、.NET Framework Data Provider を使用</related>
+        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">SQL Server に .NET Framework Data Provider を使用する</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -693,12 +693,12 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定された値、`database`パラメーターは有効なデータベース名である必要があります。 `database`パラメーターが null 値、空の文字列、または空白だけの文字の文字列に含めることはできません。  
+ `database`パラメーターに指定する値は、有効なデータベース名である必要があります。 パラメーター `database`に null 値、空の文字列、または空白文字のみを含む文字列を含めることはできません。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>し、一部の読み取り専用プロパティを表示します。  
+ を作成し、その<xref:System.Data.SqlClient.SqlConnection>読み取り専用プロパティの一部を表示する例を次に示します。  
   
  [!code-csharp[Classic WebData SqlConnection.Database Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Database Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.Database Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Database Example/VB/source.vb#1)]  
@@ -759,18 +759,18 @@ using (SqlConnection connection = new SqlConnection(connectionString))
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- Windows Server を SQL Server を使用しているときに開発者は、機能により、既存のパスワードを変更するには、現在と新しいパスワードの両方を指定するクライアント アプリケーションを利用できます。 アプリケーションは、古いパスワードの有効期限が切れてし、管理者の介入なしにこの操作を完了できる場合、最初のログイン時に、ユーザーに新しいパスワード入力を求めるなどの機能を実装できます。  
+ Windows Server で SQL Server を使用する場合、開発者は、既存のパスワードを変更するために、クライアントアプリケーションが現在のパスワードと新しいパスワードの両方を提供できる機能を利用できます。 アプリケーションでは、最初のログイン時にユーザーに新しいパスワードの入力を求めるなどの機能を実装できます。この場合、古いパスワードの有効期限が切れていると、管理者の介入なしにこの操作を完了できます。  
   
- <xref:System.Data.SqlClient.SqlConnection.ChangePassword%2A>メソッドは、指定されたに示されたユーザーの SQL Server のパスワードを変更`connectionString`パラメーターに指定する値を`newPassword`パラメーター。 かどうか、接続文字列には、統合セキュリティ オプションが含まれます (つまり、"Integrated Security = True"または同等の)、例外がスローされます。  
+ メソッド<xref:System.Data.SqlClient.SqlConnection.ChangePassword%2A>は、指定`connectionString`されたパラメーターで指定されたユーザーの SQL Server パスワードを、 `newPassword`パラメーターに指定された値に変更します。 接続文字列に統合セキュリティのオプション ("Integrated Security = True" またはそれと同等のオプション) が含まれている場合は、例外がスローされます。  
   
- パスワードが期限切れを呼び出すことを確認する、<xref:System.Data.SqlClient.SqlConnection.Open%2A>メソッド発生させ、<xref:System.Data.SqlClient.SqlException>します。 接続文字列内に含まれるパスワードをリセットする必要がありますを指定するには、<xref:System.Data.SqlClient.SqlException.Number%2A>例外のプロパティには、状態値 18487 または 18488 が含まれています。 最初の値 (18487) は、パスワードの有効期限が切れた、こと、2 つ目の (18488) では、ログイン前にパスワードをリセットする必要がありますを示しますを示します。  
+ パスワードの有効期限が切れていることを<xref:System.Data.SqlClient.SqlConnection.Open%2A>確認するため<xref:System.Data.SqlClient.SqlException>に、メソッドを呼び出すと、が発生します。 接続文字列に含まれているパスワードをリセットする必要があることを示すために<xref:System.Data.SqlClient.SqlException.Number%2A> 、例外のプロパティには状態値18487または18488が含まれています。 最初の値 (18487) は、パスワードの有効期限が切れていることを示します。2番目の値 (18488) は、ログインする前にパスワードをリセットする必要があることを示します。  
   
- このメソッドは、サーバーに独自の接続を開き、パスワードの変更を要求しが完了するとすぐに、接続を閉じます。 この接続はなくから取得されません、SQL Server の接続プールに返されます。  
+ このメソッドは、サーバーへの独自の接続を開き、パスワードの変更を要求し、完了したらすぐに接続を閉じます。 この接続は、SQL Server 接続プールから取得されることも、返されることもありません。  
   
    
   
 ## Examples  
- パスワードの変更の簡単な例を次に示します。  
+ パスワードを変更する簡単な例を次に示します。  
   
 ```csharp
 class Program {  
@@ -794,7 +794,7 @@ End Module
   
 ```  
   
- 次のコンソール アプリケーションでは、現在のパスワードの有効期限が切れているため、ユーザーのパスワードを変更する際の問題を示します。  
+ 次のコンソールアプリケーションは、現在のパスワードの有効期限が切れているためにユーザーのパスワードを変更する際に発生する問題を示しています。  
   
  [!code-csharp[DataWorks SqlConnection.ChangePassword#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/DataWorks SqlConnection.ChangePassword/CS/source.cs#1)]
  [!code-vb[DataWorks SqlConnection.ChangePassword#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/DataWorks SqlConnection.ChangePassword/VB/source.vb#1)]  
@@ -803,12 +803,12 @@ End Module
         </remarks>
         <exception cref="T:System.ArgumentException">接続文字列には、統合セキュリティを使用するオプションが含まれています。  
   
-Or 
+or 
 <paramref name="newPassword" /> が 128 文字を超えています。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="connectionString" /> または <paramref name="newPassword" /> のいずれかのパラメーターが null です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/745c5f95-2f02-4674-b378-6d51a7ec2490">接続文字列 (ADO.NET)</related>
         <related type="Article" href="https://msdn.microsoft.com/library/9abc3f92-1be3-4e1a-b360-762dc689650e">データ ソースへの接続 (ADO.NET)</related>
-        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">For SQL Server、.NET Framework Data Provider を使用</related>
+        <related type="Article" href="~/docs/framework/data/adonet/sql/index.md">SQL Server に .NET Framework Data Provider を使用する</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -848,24 +848,24 @@ Or
       <Docs>
         <param name="connectionString">サーバーに接続するために必要な情報を保持する接続文字列。 接続文字列では <see langword="Integrated Security = true" />、<see langword="UserId" />、<see langword="Password" />、<see langword="ContextConnection = true" /> のいずれの接続文字列のキーワードも使用すべきではありません。</param>
         <param name="credential"><see cref="T:System.Data.SqlClient.SqlCredential" /> オブジェクト。</param>
-        <param name="newPassword">新しいパスワード。<paramref name="newPassword" />  は読み取り専用でなければなりません。 このパスワードは、サーバー側で設定されているパスワード セキュリティ ポリシー (最低限の長さ、使用文字の要件など) も満たしている必要があります。</param>
+        <param name="newPassword">新しいパスワード。<paramref name="newPassword" /> は読み取り専用でなければなりません。 このパスワードは、サーバー側で設定されているパスワード セキュリティ ポリシー (最低限の長さ、使用文字の要件など) も満たしている必要があります。</param>
         <param name="newSecurePassword">To be added.</param>
         <summary><see cref="T:System.Data.SqlClient.SqlCredential" /> オブジェクトで指定されたユーザーの SQL Server のパスワードを変更します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException">接続文字列には任意の組み合わせが含まれています<see langword="UserId" />、 <see langword="Password" />、または<see langword="Integrated Security=true" />します。
+        <exception cref="T:System.ArgumentException">接続の文字列には <see langword="UserId" />、<see langword="Password" />、または <see langword="Integrated Security=true" /> の組み合わせのいずれかが含まれています。
 
 - または - 
-接続文字列が含まれる<see langword="Context Connection=true" />します。  
+<see langword="Context Connection=true" /> を含む接続文字列。  
 
 - または -
 
 <paramref name="newSecurePassword" /> (または <paramref name="newPassword" />) が 128 文字を超えています。
 
-- または -
+または
 
 <paramref name="newSecurePassword" /> (または <paramref name="newPassword" />) は読み取り専用ではありません。
 
-- または -
+または
 
 <paramref name="newSecurePassword" /> (または <paramref name="newPassword" />) が空の文字列です。</exception>
         <exception cref="T:System.ArgumentNullException">パラメーターのうちの 1 つ (<paramref name="connectionString" />、<paramref name="credential" />、または <paramref name="newSecurePassword" />) が null です。</exception>
@@ -908,7 +908,7 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlConnection.ClearAllPools%2A> 接続プールをリセットします (または空に)。 適切にマークし、ときに、プールに返される) ではなく破棄の呼び出し時に使用中の接続がある場合<xref:System.Data.SqlClient.SqlConnection.Close%2A>がそれらで呼び出されます。  
+ <xref:System.Data.SqlClient.SqlConnection.ClearAllPools%2A>接続プールをリセット (または空にする) します。 呼び出し時に使用中の接続がある場合、それらは適切にマークされ、が呼び出されたとき<xref:System.Data.SqlClient.SqlConnection.Close%2A>に (プールに返される代わりに) 破棄されます。  
   
  ]]></format>
         </remarks>
@@ -955,7 +955,7 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlConnection.ClearPool%2A> 関連付けられている接続プールをクリア、`connection`します。 追加の接続に関連付けられている場合`connection`は呼び出し時に使用が適切にマークされ場合は、プールに返される) ではなく破棄されます<xref:System.Data.SqlClient.SqlConnection.Close%2A>がそれらで呼び出されます。  
+ <xref:System.Data.SqlClient.SqlConnection.ClearPool%2A>に関連付けられている接続プール`connection`をクリアします。 に`connection`関連付けられている追加の接続が呼び出し時に使用されている場合、それらの接続は適切にマークされ、が<xref:System.Data.SqlClient.SqlConnection.Close%2A>呼び出されたときに (プールに返されるのではなく) 破棄されます。  
   
  ]]></format>
         </remarks>
@@ -1003,9 +1003,9 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlConnection.ClientConnectionId%2A> 接続するサーバーのバージョンに関係なく動作しますが、拡張イベント ログと接続リング バッファー エラーに関するエントリに存在するされません[!INCLUDE[sskatmai_r2](~/includes/sskatmai-r2-md.md)]以前のバージョン。  
+ <xref:System.Data.SqlClient.SqlConnection.ClientConnectionId%2A>接続するサーバーのバージョンに関係なく機能しますが、拡張イベントログと接続リングバッファーエラーに対するエントリは、以前に[!INCLUDE[sskatmai_r2](~/includes/sskatmai-r2-md.md)]は存在しません。  
   
- 接続 ID をログに記録、拡張イベントが有効になっている場合、サーバーで障害発生したかどうかの拡張イベント ログでは、接続 ID を検索できます。 接続リング バッファーに、接続 ID を検索することもできます ([接続リング バッファーによる SQL Server 2008 のトラブルシューティング](https://go.microsoft.com/fwlink/?LinkId=207752)) 特定の接続エラー。 接続リング バッファー内の接続 ID がない場合は、ネットワーク エラーを想定できます。  
+ 接続 id をログに記録する拡張イベントが有効になっている場合は、拡張イベントログで接続 ID を検索して、サーバーでエラーが発生したかどうかを確認できます。 また、接続リングバッファー (接続[リングバッファーを使用した SQL Server 2008 の接続のトラブルシューティング](https://go.microsoft.com/fwlink/?LinkId=207752)) で接続 ID を特定の接続エラーに対して見つけることもできます。 接続 ID が接続リングバッファーにない場合は、ネットワークエラーと見なすことができます。  
   
  ]]></format>
         </remarks>
@@ -1052,25 +1052,25 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlConnection.Close%2A>メソッドが保留中のトランザクションをロールバックします。 接続プールへの接続を解放し、または接続プールが無効になっている場合、接続を閉じます。  
+ メソッド<xref:System.Data.SqlClient.SqlConnection.Close%2A>は、保留中のトランザクションをロールバックします。 次に、接続プールへの接続を解放するか、接続プールが無効になっている場合は接続を閉じます。  
   
 > [!NOTE]
->  保留中のトランザクションの使用を開始[!INCLUDE[tsql](~/includes/tsql-md.md)]または<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>が自動的にロールバックされた接続プールが有効になっている場合、接続がリセットされます。 接続プールがオフの場合は、トランザクションがロールバック後`SqlConnection.Close`が呼び出されます。 トランザクションの開始を<xref:System.Transactions>によって制御されます、`System.Transactions`インフラストラクチャ、およびは受けません`SqlConnection.Close`します。  
+>  または[!INCLUDE[tsql](~/includes/tsql-md.md)] <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>を使用して開始された保留中のトランザクションは、接続プールが有効になっている場合、接続がリセットされると自動的にロールバックされます。 接続プールが無効になっている場合は、が`SqlConnection.Close`呼び出された後にトランザクションがロールバックされます。 から<xref:System.Transactions>開始されたトランザクションは`System.Transactions` 、インフラストラクチャを介して制御さ`SqlConnection.Close`れ、の影響を受けません。  
   
- アプリケーションが呼び出すことができます<xref:System.Data.SqlClient.SqlConnection.Close%2A>1 つ以上の時間。 例外は生成されません。  
+ アプリケーションが複数回<xref:System.Data.SqlClient.SqlConnection.Close%2A>呼び出すことができます。 例外は生成されません。  
   
- 場合、<xref:System.Data.SqlClient.SqlConnection>帯がスコープ、閉じられているしません。 そのため、する必要があります明示的に閉じる接続呼び出して`Close`または`Dispose`します。 `Close` `Dispose`が機能的に同等です。 値、接続プール場合、`Pooling`に設定されている`true`または`yes`、基になる接続が接続プールに返されます。 その一方で場合、`Pooling`に設定されている`false`または`no`、基になるサーバーに接続が閉じられました。  
+ が<xref:System.Data.SqlClient.SqlConnection>スコープ外に出ると、閉じられません。 そのため、または`Close` `Dispose`を呼び出して、接続を明示的に閉じる必要があります。 `Close`と`Dispose`は機能的に同等です。 接続プールの値`Pooling`がまたは`yes`に`true`設定されている場合、基になる接続が接続プールに返されます。 一方、がまたは`Pooling` `no`に`false`設定されている場合は、サーバーへの基になる接続が閉じられます。  
   
 > [!NOTE]
 >  接続が接続プールからフェッチされたり接続プールに返されたりしたとき、ログイン イベントとログアウト イベントはサーバーで発生しません。これは、接続プールに返されても接続は実際には終了していないためです。 詳しくは、「[SQL Server の接続プール (ADO.NET)](~/docs/framework/data/adonet/sql-server-connection-pooling.md)」をご覧ください。  
   
 > [!CAUTION]
->  呼び出さない`Close`または`Dispose`接続、DataReader またはで他の任意のマネージ オブジェクトで、`Finalize`クラスのメソッド。 ファイナライザーで、クラスが直接所有しているアンマネージ リソースだけを解放する必要があります。 クラスがアンマネージ リソースを所有していない場合は、クラス定義に `Finalize` メソッドを含めないでください。 詳細については、次を参照してください。[ガベージ コレクション](~/docs/standard/garbage-collection/index.md)します。  
+>  クラスの`Finalize`メソッド`Close`で`Dispose` 、接続、DataReader、またはその他のマネージオブジェクトでまたはを呼び出さないでください。 ファイナライザーでは、クラスが直接所有しているアンマネージリソースのみを解放する必要があります。 クラスがアンマネージ リソースを所有していない場合は、クラス定義に `Finalize` メソッドを含めないでください。 詳細については、「[ガベージコレクション](~/docs/standard/garbage-collection/index.md)」を参照してください。  
   
    
   
 ## Examples  
- 次の例では、作成、 <xref:System.Data.SqlClient.SqlConnection>、それを開いた、一部のプロパティが表示されます。 接続が自動的の最後に閉じられます、`using`ブロックします。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection>、を作成して開き、そのプロパティの一部を表示します。 接続は`using`ブロックの最後に自動的に閉じられます。  
   
  [!code-csharp[Classic WebData SqlConnection.Open Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Open Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.Open Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Open Example/VB/source.vb#1)]  
@@ -1143,9 +1143,9 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- パラメーター化されたクエリでは、SqlClient によりとのやり取りを SQL Server にパラメーターのメタデータを暗号化する必要があるパラメーターを参照してくださいと方法 (どのキーとアルゴリズムを使用する必要があります)。 アプリケーションでは、複数回、同じクエリを呼び出し、余分なラウンド トリップができる場合、サーバーたびには、アプリケーションのパフォーマンスが低下します。  
+ パラメーター化されたクエリの場合、SqlClient はパラメーターのメタデータを SQL Server するラウンドトリップを作成し、暗号化する必要があるパラメーターとその方法 (どのキーとアルゴリズムを使用する必要があるか) を確認します。 アプリケーションが同じクエリを複数回呼び出す場合は、そのたびに追加のラウンドトリップがサーバーに対して行われるため、アプリケーションのパフォーマンスが低下します。  
   
- **ColumnEncryptionQueryMetadataCacheEnabled**同じクエリが複数回呼び出された場合は true に設定して、サーバーへのラウンドト リップができる 1 回だけです。 キャッシュには、2000 のクエリに設定されているが構成可能な最大サイズ パラメーターがあります。  
+ **Columnencryptionquerymetadatacacheenabled**が true に設定されている場合、同じクエリが複数回呼び出されると、サーバーへのラウンドトリップが1回だけ行われます。 キャッシュには、2000クエリに設定された、構成可能な最大サイズのパラメーターがあります。  
   
  ]]></format>
         </remarks>
@@ -1252,77 +1252,77 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A> OLE DB 接続文字列に似ていますが、同一ではありません。 返される接続文字列では OLE DB や ADO とは異なり、ユーザー設定と同じ<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>、Persist Security Info 値に設定されている場合、セキュリティ情報マイナス`false`(既定値)。 .NET Framework Data Provider for SQL Server が永続化または Persist Security Info 設定していない場合、接続文字列にパスワードを返すしていない`true`します。  
+ <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>は OLE DB の接続文字列に似ていますが、同じではありません。 OLE DB または ADO とは異なり、返される接続文字列はユーザーセット<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>と同じです。 [セキュリティ情報を保持する] の値が (既定) に`false`設定されている場合は、セキュリティ情報を除きます。 SQL Server の .NET Framework Data Provider は、[セキュリティ情報を保持する] をに`true`設定しない限り、接続文字列のパスワードを保持したり返したりすることはありません。  
 
- 使用することができます、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティをデータベースに接続します。 次の例では、一般的な接続文字列を示します。  
+ プロパティを使用し<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>てデータベースに接続できます。 一般的な接続文字列の例を次に示します。  
   
 ```  
 "Persist Security Info=False;Integrated Security=true;Initial Catalog=Northwind;server=(local)"  
 ```  
   
- 使用して、新しい<xref:System.Data.SqlClient.SqlConnectionStringBuilder>実行時に有効な接続文字列を作成します。 詳細については、「[接続文字列ビルダー](~/docs/framework/data/adonet/connection-string-builders.md)」をご覧ください。  
+ 実行時に<xref:System.Data.SqlClient.SqlConnectionStringBuilder>有効な接続文字列を作成するには、新しいを使用します。 詳細については、「[接続文字列ビルダー](~/docs/framework/data/adonet/connection-string-builders.md)」をご覧ください。  
   
- <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティは、接続が閉じられたときにのみ設定できます。 接続文字列の値の多くに、対応する読み取り専用プロパティがあります。 接続文字列が設定されている場合、エラーが検出された場合を除き、これらのプロパティが更新します。 ここで、プロパティのいずれも更新されます。 <xref:System.Data.SqlClient.SqlConnection> プロパティに格納されている設定のみを返す、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>します。  
+ <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>プロパティは、接続が閉じられている場合にのみ設定できます。 接続文字列の値の多くに、対応する読み取り専用プロパティがあります。 接続文字列が設定されている場合は、エラーが検出された場合を除き、これらのプロパティが更新されます。 この場合、プロパティは更新されません。 <xref:System.Data.SqlClient.SqlConnection>プロパティは、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>に含まれている設定のみを返します。  
   
- ローカル コンピューターに接続する場合、サーバーの"(local)"と指定します。 サーバー名が指定されていない場合は、ローカル コンピューターの既定のインスタンスに接続が試行されます。  
+ ローカルコンピューターに接続するには、サーバーの "(local)" を指定します。 サーバー名が指定されていない場合、ローカルコンピューター上の既定のインスタンスへの接続が試行されます。  
   
- リセット、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>閉じている接続すべて接続文字列の値 (および関連するプロパティ) など、パスワードをリセットします。 などを含む接続文字列を設定した場合"データベース = AdventureWorks"、およびへの接続文字列をリセットし、"データ ソース myserver; = 統合セキュリティ = true"、<xref:System.Data.SqlClient.SqlConnection.Database%2A>プロパティが"AdventureWorks"に設定されて不要になった。  
+ 閉じた<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>接続でをリセットすると、パスワードを含むすべての接続文字列値 (および関連するプロパティ) がリセットされます。 たとえば、"Database = AdventureWorks" を含む接続文字列を設定し、接続文字列を "Data Source = myserver; Integrated Security = true" <xref:System.Data.SqlClient.SqlConnection.Database%2A>にリセットすると、プロパティは "AdventureWorks" に設定されなくなります。  
   
- 接続文字列が設定されている後すぐに解析されます。 解析中に、ランタイム例外などの構文エラーが見つかった場合<xref:System.ArgumentException>が生成されます。 試行、接続を開く場合にのみ、その他のエラーを確認できます。  
+ 接続文字列は、設定された直後に解析されます。 解析時に構文のエラーが見つかった場合は、などのランタイム<xref:System.ArgumentException>例外が生成されます。 その他のエラーが発生するのは、接続を開こうとしたときだけです。  
   
- 接続文字列の基本形式には、一連キーワード/値ペアのセミコロンで区切ってにはが含まれています。 それぞれのキーワードと値の関連付けには、等号 (=) が使用されます。 セミコロン、単一引用符または二重引用符文字が含まれている値を含めるには、値を二重引用符で囲む必要があります。 セミコロンと二重引用符文字の両方が、値が含まれる場合、値は単一引用符で囲むことができます。 単一引用符も値が二重引用符文字で始まる場合に役立ちます。 逆に、値が単一引用符で始まる場合は、二重引用符を使用できます。 値に単一引用符と二重引用符の両方の文字が含まれている場合は、値内で発生するたびに値を囲むために使用する引用符文字が倍増する必要があります。  
+ 接続文字列の基本形式には、セミコロンで区切られた一連のキーワードと値のペアが含まれています。 それぞれのキーワードと値の関連付けには、等号 (=) が使用されます。 セミコロン、単一引用符、または二重引用符文字を含む値を含めるには、値を二重引用符で囲む必要があります。 値にセミコロンと二重引用符の両方が含まれている場合は、値を単一引用符で囲むことができます。 単一引用符は、値が二重引用符で始まる場合にも役立ちます。 逆に、値が単一引用符で始まる場合は、二重引用符を使用できます。 値に単一引用符と二重引用符の両方の文字が含まれている場合、値を囲むために使用される引用符文字は、値内に出現するたびに2倍にする必要があります。  
   
- 文字列値の先頭または末尾のスペースを含めるには、単一引用符または二重引用符のいずれかの値を囲む必要があります。 引用符で囲まれている場合でも、整数、ブール値、列挙値の先頭または末尾の空白は無視されます。 ただし、文字列リテラル キーワードまたは値内にスペースが保持されます。 一重または二重引用符は、区切り記号を使用せず、接続文字列内で使用可能性があります (たとえば、データ ソース = my'Server またはデータ ソース"Server =) 引用符文字が値の最初と最後の文字がない限り、します。  
+ 文字列値に先行または末尾のスペースを含めるには、値を単一引用符または二重引用符で囲む必要があります。 整数、ブール値、または列挙値の前後の先頭または末尾のスペースは、引用符で囲まれていても無視されます。 ただし、文字列リテラルキーワードまたは値内のスペースは保持されます。 一重引用符または二重引用符は、区切り記号を使用せずに接続文字列内で使用することができます (たとえば、データソース = My' Server または Data Source = my "Server)。引用符文字が値の最初または最後の文字である場合を除きます。  
   
- キーワードは、大文字小文字が区別されません。  
+ キーワードでは、大文字と小文字は区別されません。  
   
- 次の表には、内のキーワード値の有効な名前が一覧表示、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>します。  
+ 次の表に、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>内のキーワード値の有効な名前を示します。  
   
 |キーワード|既定値|説明|  
 |-------------|-------------|-----------------|  
-|Addr|N/A|シノニムの**データソース**します。|  
-|アドレス|N/A|シノニムの**データソース**します。|  
-|アプリ|N/A|シノニムの**アプリケーション名**します。|  
-|Application Name|N/A|アプリケーション、または '.NET SQLClient Data Provider' アプリケーションの名前を指定しない場合の名前。<br /><br /> アプリケーション名は 128 文字以下。|  
-|`ApplicationIntent`|`ReadWrite`|アプリケーションがサーバーに接続するときのワークロードのタイプを宣言します。 設定可能な値は `ReadOnly` および `ReadWrite` です。 例:<br /><br /> `ApplicationIntent=ReadOnly`<br /><br /> Always On 可用性グループの SqlClient サポートの詳細については、「[高可用性障害復旧のための SqlClient サポート](~/docs/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery.md)」をご覧ください。|  
-|Asynchronous Processing<br /><br /> - または -<br /><br /> Async|'false'|ときに`true`、非同期操作のサポートを有効にします。 認識される値は `true`、`false`、`yes` および `no` です。<br /><br /> 以降でこのプロパティは無視されます[!INCLUDE[net_v45](~/includes/net-v45-md.md)]します。 非同期プログラミングの SqlClient サポートの詳細については、次を参照してください。[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)します。|  
-|AttachDBFilename<br /><br /> - または -<br /><br /> 拡張プロパティ<br /><br /> - または -<br /><br /> 初期ファイル名|N/A|アタッチできるデータベースの完全なパス名を含む、プライマリ データベース ファイルの名前。 AttachDBFilename は、.mdf 拡張子を持つプライマリ データ ファイルにのみサポートされます。<br /><br /> 接続文字列で AttachDBFileName キーの値が指定されている場合、データベースがアタッチされているし、接続の既定のデータベースになります。<br /><br /> このキーが指定されていないと、データベースが以前にアタッチされている場合は、データベースはアタッチされません。 以前接続されているデータベースは、接続の既定のデータベースとして使用されます。<br /><br /> AttachDBFileName キーは、このキーが指定されている場合、エイリアスとしてこのキーの値が使用します。 ただし、名前は接続されている別のデータベースで既に使用されて、接続は失敗します。<br /><br /> パスには、DataDirectory 置換文字列を使用して、絶対または相対可能性があります。 DataDirectory を使用する場合は、置換文字列を指すディレクトリのサブディレクトリ内にデータベース ファイルが存在する必要があります。 **注:** リモート サーバー、HTTP、および UNC パス名はサポートされていません。 <br /><br /> データベース名は、次のように 'database' キーワード (またはそのエイリアスのいずれか) で指定する必要があります。<br /><br /> <code>"AttachDbFileName=&#124;DataDirectory&#124;\data\YourDB.mdf;integrated security=true;database=YourDatabase"</code><br /><br /> データ ファイルと同じディレクトリにログ ファイルが存在する場合、プライマリ データ ファイルのアタッチ時に 'database' キーワードが使用されると、エラーが生成されます。 この場合は、ログ ファイルを削除してください。 データベースがアタッチされると、物理パスに基づいて、新しいログ ファイルが自動的に生成されます。|  
-|認証|N/A|使用される認証方法[SQL データベースを Azure Active Directory 認証を使用する接続](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/#7-connect-to-your-database-by-using-azure-active-directory-identities)します。<br /><br /> 次の値を指定できます。<br /><br /> Active Directory の統合、Active Directory パスワードで Sql パスワード。|  
-|Column Encryption Setting|N/A|有効または無効に[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)接続に対して機能します。|  
-|Connect Timeout<br /><br /> - または -<br /><br /> Connection Timeout<br /><br /> - または -<br /><br /> Timeout|15|秒単位で時間の長さ、サーバーへの接続を待機します。<br /><br /> 有効な値は 0 以上、2147483647 以下。<br /><br /> Azure SQL データベースへの接続を開くときに、接続のタイムアウトを 30 秒に設定します。|  
-|接続の有効期間<br /><br /> - または -<br /><br /> Load Balance Timeout|0|接続がプールに返された時点で、その接続の作成時刻と現在の時刻を比較し、その時間の長さ (秒) が `Connection Lifetime` で指定した値を超えている場合は、その接続が破棄されます。 これは、クラスター構成を採用している状況で、実行中のサーバーと、オンラインになったばかりのサーバーの間での、負荷を強制的に分散するのに便利です。<br /><br /> 値ゼロ (0) の場合、プールされた接続の最大接続タイムアウトにします。|  
-|ConnectRetryCount|1|コントロール、再接続試行回数後、クライアントは、アイドル状態の接続エラーを識別します。 有効な値は、0 ~ 255 です。 既定値は 1 です。 0 の場合は、再接続 (接続の回復性を無効にする) にしないでください。<br /><br /> アイドル接続の回復の詳細については、次を参照してください。[技術記事 - アイドル接続の回復性](https://go.microsoft.com/fwlink/?LinkId=393996)します。|  
-|ConnectRetryInterval|10|各接続再試行 (ConnectRetryCount) までの時間を指定します。 有効な値は 1 ~ 60 秒 (既定 = 10)、最初の再接続の試行後に適用します。 クライアントが再接続; をすぐにしようと切断された接続が検出されると、これは最初の再接続の試行であり、ConnectRetryCount が 0 より大きい場合にのみ発生します。 ConnectRetryCount が 1 より大きい最初の再接続の試行が失敗した場合、クライアントは、2 回目以降の再接続を試行する ConnectRetryInterval を待機します。<br /><br /> アイドル接続の回復の詳細については、次を参照してください。[技術記事 - アイドル接続の回復性](https://go.microsoft.com/fwlink/?LinkId=393996)します。|  
-|Context Connection|'false'|`true` SQL Server に、プロセス内の接続を確立する必要がある場合。|  
-|Current Language<br /><br /> - または -<br /><br /> 言語|N/A|データベース サーバーの警告またはエラー メッセージに使用される言語を設定します。<br /><br /> 言語名は 128 文字以下。|  
-|データ ソース<br /><br /> - または -<br /><br /> サーバー<br /><br /> - または -<br /><br /> アドレス<br /><br /> - または -<br /><br /> Addr<br /><br /> - または -<br /><br /> [ネットワーク アドレス]|N/A|接続先となる SQL Server のインスタンスの名前またはネットワーク アドレス。 サーバー名の後にポート番号を指定できます。<br /><br /> `server=tcp:servername, portnumber`<br /><br /> 常にローカル インスタンスを指定するときに、(local) 使用します。 プロトコルを強制するには、次のプレフィックスのいずれかを追加します。<br /><br /> `np:(local),  tcp:(local), lpc:(local)`<br /><br /> 以降で[!INCLUDE[net_v45](~/includes/net-v45-md.md)]、次のように LocalDB データベースに接続することができますもします。<br /><br /> `server=(localdb)\\myInstance`<br /><br /> LocalDB の詳細については、次を参照してください。 [SqlClient による LocalDB のサポート](~/docs/framework/data/adonet/sql/sqlclient-support-for-localdb.md)します。<br /><br /> **データ ソース**TCP 形式または名前付きパイプの形式を使用する必要があります。<br /><br /> TCP の形式は次のとおりです。<br /><br /> -tcp:\<ホスト名 >\\< インスタンス名\><br />-tcp:\<ホスト名 >、\<TCP/IP ポート番号 ><br /><br /> TCP の形式は、プレフィックスで始まる必要があります"tcp:"ホスト名とインスタンス名で指定されたデータベースのインスタンスが続きます。 この形式は、Azure SQL Database に接続するときに適用されません。 プロトコルが指定されていない場合、Azure SQL Database への接続の TCP が自動的に選択します。<br /><br /> 次の方法のいずれかでは、ホスト名を指定する必要があります。<br /><br /> -   NetBIOSName<br />-IPv4Address<br />-IPv6Address<br /><br /> インスタンス名は、データベース インスタンスがホストされている特定の TCP/IP ポート番号を解決するのには使用されます。 または、TCP/IP ポート番号を直接指定することは許可されてもします。 両方のインスタンス名、ポート番号が存在しない場合は、既定のデータベース インスタンスが使用されます。<br /><br /> 名前付きパイプの形式は次のとおりです。<br /><br /> -np:\\\\< ホスト名\>\pipe\\< パイプ名\><br /><br /> 名前付きパイプの形式は、プレフィックスで始まる必要があります"np:"名前付きパイプ名が続きます。<br /><br /> 次の方法のいずれかでは、ホスト名を指定する必要があります。<br /><br /> -   NetBIOSName<br />-IPv4Address<br />-IPv6Address<br /><br /> パイプ名は、.NET Framework アプリケーションの接続先のデータベース インスタンスを識別するために使用されます。<br /><br /> 場合の値、**ネットワーク**キーを指定すると、プレフィックス"tcp:"と"np:"は指定しないでください。 **注:** いずれかでプレフィックスとして、共有メモリは、代わりに TCP を使用を強制できます**tcp:** またはを使用して、接続文字列では、サーバー名に**localhost**します。|  
-|Encrypt|'false'|ときに`true`、SQL Server は、サーバーにインストールされている証明書がある場合、クライアントとサーバー間で送信されるすべてのデータに対して SSL 暗号化を使用します。 認識される値は `true`、`false`、`yes` および `no` です。 詳細については、次を参照してください。[接続文字列の構文](~/docs/framework/data/adonet/connection-string-syntax.md)します。<br /><br /> 以降で[!INCLUDE[net_v45](~/includes/net-v45-md.md)]、`TrustServerCertificate`が false と`Encrypt`が true の場合、SQL Server の SSL 証明書にサーバー名 (または IP アドレス) する必要がありますと正確に一致、サーバー名 (または IP アドレス)、接続文字列で指定します。 それ以外の場合、接続試行は失敗します。 証明書のサブジェクトがワイルドカード文字 (*) で始まるのサポートについては、次を参照してください。[サーバー認証のためサーバー証明書でワイルドカードを受け入れる](https://support.microsoft.com/kb/258858)します。|  
-|Enlist|'true'|`true` SQL Server の接続プーラーが、作成スレッドの現在のトランザクション コンテキストで接続を自動的に登録することを示します。|  
-|Failover Partner|N/A|データベース ミラーリングが構成されているフェールオーバー パートナー サーバーの名前。<br /><br /> このキーの値の場合""、し**Initial Catalog**存在する必要があり、その値がすることはできません""です。<br /><br /> サーバー名は 128 文字以下。<br /><br /> 指定する場合は、データベース ミラーリングのフェールオーバー パートナーがフェールオーバー パートナー サーバーが未構成し、(、Server キーワードで指定)、プライマリ サーバーが使用できないと接続は失敗します。<br /><br /> データベース ミラーリングのフェールオーバー パートナーとプライマリ サーバーが未構成を指定する場合は、プライマリ サーバーが使用可能な場合 (、Server キーワードで指定)、プライマリ サーバーへの接続は成功します。|  
-|Initial Catalog<br /><br /> - または -<br /><br /> データベース|N/A|データベースの名前。<br /><br /> データベース名は 128 文字以下。|  
-|Integrated Security<br /><br /> - または -<br /><br /> Trusted_Connection|'false'|ときに`false`、ユーザー ID とパスワードが接続に指定します。 ときに`true`、現在の Windows アカウントの資格情報が認証に使用されます。<br /><br /> 認識できる値は`true`、 `false`、 `yes`、 `no`、および`sspi`(強く推奨)、これに相当`true`します。<br /><br /> ユーザー ID とパスワードが指定されて、統合された場合、セキュリティが true の場合、ユーザー ID に設定しパスワードは無視され、統合セキュリティを使用します。<br /><br /> <xref:System.Data.SqlClient.SqlCredential> SQL Server 認証を使用する接続の資格情報を指定するより安全な方法は、(`Integrated Security=false`)。|  
-|Max Pool Size|100|プールで許可される接続の最大数。<br /><br /> 有効な値は、1 以上です。 値より小さい**Min Pool Size**エラーを生成します。|  
-|Min Pool Size|0|プールで許可される接続の最小数。<br /><br /> 有効な値は 0 以上です。 このフィールドにゼロ (0) では、最小の接続が最初に開かれていないことを意味します。<br /><br /> 値を超える**最大プール サイズ**エラーを生成します。|  
-|MultipleActiveResultSets|'false'|ときに`true`アプリケーションが複数のアクティブな結果セット (MARS) を維持することができます。 ときに`false`アプリケーションが処理またはその接続で他のバッチを実行するには、1 つのバッチからすべての結果セットを取り消す必要があります。<br /><br /> 認識できる値は`true`と`false`します。<br /><br /> 詳細については、「 [複数のアクティブな結果セット (MARS)](~/docs/framework/data/adonet/sql/multiple-active-result-sets-mars.md)」を参照してください。|  
-|`MultiSubnetFailover`|FALSE|常に指定`multiSubnetFailover=True`可用性グループ リスナーを SQL Server 2012 の (またはそれ以降) の可用性グループまたは SQL Server 2012 (以降) フェールオーバー クラスター インスタンスに接続するとき。 `multiSubnetFailover=True` SqlClient が迅速に検出し、(現在) アクティブなサーバーに接続を構成します。 指定できる値は`Yes`と`No`、`True`と`False`または`1`と`0`します。 例:<br /><br /> `MultiSubnetFailover=True`<br /><br /> 既定値は `False` です。 Ag で常の SqlClient のサポートの詳細については、次を参照してください。[高可用性、ディザスター リカバリーのための SqlClient サポート](~/docs/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery.md)します。|  
-|Network Library<br /><br /> - または -<br /><br /> ネットワーク<br /><br /> - または -<br /><br /> Net|N/A|SQL Server のインスタンスへの接続を確立するために使用されるネットワーク ライブラリです。 サポートされている値は次のとおりです。<br /><br /> dbnmpntw (名前付きパイプ)<br /><br /> dbmsrpcn (マルチ プロトコル、Windows RPC)<br /><br /> dbmsadsn (Appletalk)<br /><br /> dbmsgnet (VIA)<br /><br /> dbmslpcn (共有メモリ)<br /><br /> dbmsspxn (IPX/SPX)<br /><br /> dbmssocn (TCP/IP)<br /><br /> Dbmsvinn (Banyan Vines)<br /><br /> 接続先のシステムに、対応するネットワーク DLL がインストールされている必要があります。 ネットワークを指定しないし、ローカル サーバーを使用する場合 (たとえば、"."または"(local)")、共有メモリを使用します。 次の例では、ネットワーク ライブラリが Win32 Winsock TCP/IP (dbmssocn) で、使用ポートは 1433 です。<br /><br /> `Network Library=dbmssocn;Data Source=000.000.000.000,1433;`|  
-|Packet Size|8000|SQL Server のインスタンスとの通信に使用するネットワーク パケットのバイト サイズ。<br /><br /> パケット サイズが 512 以上にすることができます、32768 以下。|  
-|[Password]<br /><br /> - または -<br /><br /> PWD|N/A|SQL Server のログオン アカウントのパスワード。 推奨されません。 高レベルのセキュリティを維持するために強くお勧めを使用すること、`Integrated Security`または`Trusted_Connection`キーワード代わりにします。 <xref:System.Data.SqlClient.SqlCredential> SQL Server 認証を使用する接続の資格情報を指定するより安全な方法です。<br /><br /> パスワードは 128 文字である必要がありますまたはそれ以下。|  
-|Persist Security Info<br /><br /> - または -<br /><br /> PersistSecurityInfo|'false'|設定すると`false`または`no`(強く推奨)、接続が開いているか、開いている状態になった場合、接続文字列の一部として、パスワードなどの機密情報が返されません。 接続文字列をリセットするパスワードを含むすべての接続文字列の値をリセットします。 認識される値は `true`、`false`、`yes` および `no` です。|  
-|PoolBlockingPeriod|自動|接続プールのブロック期間の動作を設定します。 参照してください<xref:System.Data.SqlClient.SqlConnectionStringBuilder.PoolBlockingPeriod>については、プロパティ。|  
-|Pooling|'true'|このキーの値が新しく作成された、true に設定されている場合、接続は、アプリケーションによって閉じられたときに、プールに追加されます。 次回、同じ接続を開くでその接続がプールから描画されます。<br /><br /> 同じ接続文字列がある場合の接続のと同じ自動的に見なされます。 さまざまな接続では、異なる接続文字列があります。<br /><br /> このキーの値が"true"は"false"、"yes"または"no"です。|  
-|Replication|'false'|`true` 場合は、接続を使用して、レプリケーションがサポートされていること。|  
-|Transaction Binding|Implicit Unbind|参加するいると接続の関連付けを制御`System.Transactions`トランザクション。<br /><br /> 指定できる値は次のとおりです。<br /><br /> `Transaction Binding=Implicit Unbind;`<br /><br /> `Transaction Binding=Explicit Unbind;`<br /><br /> 暗黙的なバインドの解除には、終了時に、トランザクションからデタッチへの接続が発生します。 デタッチ後、接続に対する追加の要求は、自動コミット モードで実行されます。 トランザクションがアクティブである間に要求が実行されても、`System.Transactions.Transaction.Current` プロパティの確認は行われません。 トランザクションの終了後、追加の要求は、自動コミット モードで実行されます。<br /><br /> システム トランザクションを終了する場合 (を使用して、スコープ内でブロック) 最後のコマンドが完了する前にスローされます<xref:System.InvalidOperationException>します。<br /><br /> 接続が保たれますが、接続が閉じられるまで、トランザクションまたは明示的なにアタッチされている明示的なバインドの解除エラーの原因`SqlConnection.TransactionEnlist(null)`が呼び出されます。 以降で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]、暗黙的なバインドを解除する変更明示的バインド解除廃止されています。 `InvalidOperationException` が登録済みのトランザクションではない場合および登録済みのトランザクションがアクティブではない場合は、`Transaction.Current` がスローされます。|  
-|TransparentNetworkIPResolution|説明を参照してください。|このキーの値を `true` に設定すると、特定の DNS エントリのすべての IP アドレスを取得し、リストの最初の IP アドレスで接続を試行するようアプリケーションに要求します。 0.5 秒以内に接続が確立されない場合、アプリケーションは他のすべての IP アドレスへの接続を同時に試行します。 最初の応答を受信すると、アプリケーションは応答した IP アドレスで接続を確立します。<br /><br /> 場合、`MultiSubnetFailover`にキーが設定されている`true`、`TransparentNetworkIPResolution`は無視されます。<br /><br /> 場合、`Failover Partner`キーを設定すると、`TransparentNetworkIPResolution`は無視されます。<br /><br /> このキーの値である必要があります`true`、 `false`、 `yes`、または`no`します。<br /><br /> 値`yes`は同じの値には扱わ`true`します。<br /><br /> 値`no`は同じの値には扱わ`false`します。<br /><br /> 既定値は次のとおりです。<br /><br /> <ul><li>`false` いつ：<br /><br /> <ul><li>データ ソースが終わる、Azure SQL Database への接続。<br /><br /> <ul><li>.database.chinacloudapi.cn</li><li>.database.usgovcloudapi.net</li><li>.database.cloudapi.de</li><li>.database.windows.net</li></ul></li><li>`Authentication` 'Active Directory パスワード' または ' Active Directory が統合です '</li></ul></li><li>`true`。上記のいずれのケースにも該当しない場合。</li></ul>|  
-|TrustServerCertificate|'false'|設定すると`true`信頼性を検証する証明書チェーンのウォークをバイパスするときに、チャネルを暗号化に SSL を使用します。 TrustServerCertificate に設定されている場合`true`に暗号化が設定されていると`false`チャネルは暗号化されません。 認識される値は `true`、`false`、`yes` および `no` です。 詳細については、次を参照してください。[接続文字列の構文](~/docs/framework/data/adonet/connection-string-syntax.md)します。|  
-|型システムのバージョン|N/A|型システムを示す文字列値、アプリケーションが必要です。 クライアント アプリケーションで利用可能な機能は、SQL Server のバージョンとデータベースの互換性レベルに依存します。 使用されている SQL Server のバージョンが、クライアント アプリケーションで想定されているものと異なる場合、アプリケーションが正常に動作しない可能性がありますが、型システムのバージョンを明示的に設定することでその問題を防ぐことができます。 **注:** SQL Server でインプロセスで実行される共通言語ランタイム (CLR) コードに対して型システムのバージョンを設定することはできません。 詳細については、次を参照してください。 [SQL Server 共通言語ランタイム統合](~/docs/framework/data/adonet/sql/sql-server-common-language-runtime-integration.md)します。 <br /><br /> 指定できる値は次のとおりです。<br /><br /> `Type System Version=SQL Server 2012;`<br /><br /> `Type System Version=SQL Server 2008;`<br /><br /> `Type System Version=SQL Server 2005;`<br /><br /> `Type System Version=Latest;`<br /><br /> `Type System Version=SQL Server 2012;` バージョン 11.0.0.0 Microsoft.SqlServer.Types.dll のアプリケーションを要求することを指定します。 他の`Type System Version`設定 Microsoft.SqlServer.Types.dll の version 10.0.0.0 が必要になります。<br /><br /> `Latest` 廃止され、使用する必要があります。 `Latest` は `Type System Version=SQL Server 2008;` と同じです。|  
-|User ID<br /><br /> - または -<br /><br /> UID<br /><br /> - または -|N/A|SQL Server ログイン アカウント。 推奨されません。 高レベルのセキュリティを維持するために強くお勧めを使用すること、`Integrated Security`または`Trusted_Connection`キーワード代わりにします。 <xref:System.Data.SqlClient.SqlCredential> SQL Server 認証を使用する接続の資格情報を指定するより安全な方法です。<br /><br /> ユーザー ID は 128 文字である必要がありますまたはそれ以下。|  
-|User Instance|'false'|既定の SQL Server Express インスタンスから呼び出し元のアカウントで実行されているランタイムが開始したインスタンスへの接続をリダイレクトするかどうかを示す値。|  
-|Workstation ID<br /><br /> - または -<br /><br /> WSID|ローカル コンピューターの名前|SQL Server に接続するワークステーションの名前。<br /><br /> ID は 128 文字である必要がありますまたはそれ以下。|  
+|引き|N/A|**データソース**のシノニム。|  
+|アドレス|N/A|**データソース**のシノニム。|  
+|アプリ|N/A|**アプリケーション名**のシノニム。|  
+|Application Name|N/A|アプリケーションの名前。アプリケーション名が指定されていない場合は、' .NET SQLClient Data Provider ' です。<br /><br /> アプリケーション名は128文字以下にする必要があります。|  
+|`ApplicationIntent`|`ReadWrite`|アプリケーションがサーバーに接続するときのワークロードのタイプを宣言します。 有効な値は、`ReadOnly` と `ReadWrite` です。 次に例を示します。<br /><br /> `ApplicationIntent=ReadOnly`<br /><br /> Always On 可用性グループの SqlClient サポートの詳細については、「[高可用性障害復旧のための SqlClient サポート](~/docs/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery.md)」をご覧ください。|  
+|Asynchronous Processing<br /><br /> - または -<br /><br /> Async|'false'|の`true`場合、非同期操作のサポートを有効にします。 認識される値は `true`、`false`、`yes` および `no` です。<br /><br /> このプロパティは [!INCLUDE[net_v45](~/includes/net-v45-md.md)] の開始時に無視されます。 非同期プログラミングの SqlClient サポートの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。|  
+|AttachDBFilename<br /><br /> または<br /><br /> 拡張プロパティ<br /><br /> または<br /><br /> 初期ファイル名|N/A|アタッチ可能なデータベースの完全パス名を含む、プライマリデータベースファイルの名前。 AttachDBFilename は、.mdf 拡張子を持つプライマリデータファイルに対してのみサポートされます。<br /><br /> 接続文字列に AttachDBFileName キーの値が指定されている場合は、データベースがアタッチされ、接続の既定のデータベースになります。<br /><br /> このキーが指定されていない場合、データベースが既にアタッチされていると、データベースは再アタッチされません。 以前にアタッチされたデータベースは、接続の既定のデータベースとして使用されます。<br /><br /> このキーが AttachDBFileName キーと共に指定されている場合、このキーの値はエイリアスとして使用されます。 ただし、アタッチされた別のデータベースで既に名前が使用されている場合、接続は失敗します。<br /><br /> パスは、DataDirectory 代替文字列を使用して絶対パスまたは相対パスにすることができます。 DataDirectory を使用する場合、データベースファイルは、置換文字列が指すディレクトリのサブディレクトリ内に存在する必要があります。 **注:** リモートサーバー、HTTP、および UNC のパス名はサポートされていません。 <br /><br /> 次のように、データベース名にはキーワード ' database ' (またはそのエイリアスの1つ) を指定する必要があります。<br /><br /> <code>"AttachDbFileName=&#124;DataDirectory&#124;\data\YourDB.mdf;integrated security=true;database=YourDatabase"</code><br /><br /> データ ファイルと同じディレクトリにログ ファイルが存在する場合、プライマリ データ ファイルのアタッチ時に 'database' キーワードが使用されると、エラーが生成されます。 この場合は、ログ ファイルを削除してください。 データベースがアタッチされると、物理パスに基づいて、新しいログ ファイルが自動的に生成されます。|  
+|認証|N/A|[Azure Active Directory 認証を使用して SQL Database に接続する](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/#7-connect-to-your-database-by-using-azure-active-directory-identities)ために使用される認証方法。<br /><br /> 次の値を指定できます。<br /><br /> Active Directory 統合、Active Directory パスワード、Sql パスワード。|  
+|列の暗号化設定|N/A|接続の[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)機能を有効または無効にします。|  
+|Connect Timeout<br /><br /> または<br /><br /> Connection Timeout<br /><br /> - または -<br /><br /> Timeout|15|サーバーへの接続を待機する時間 (秒単位)。試行を終了してエラーを生成します。<br /><br /> 有効な値は、0以上かつ2147483647以下です。<br /><br /> Azure SQL Database への接続を開くときに、接続タイムアウトを30秒に設定します。|  
+|接続の有効期間<br /><br /> - または -<br /><br /> Load Balance Timeout|0|接続がプールに返された時点で、その接続の作成時刻と現在の時刻を比較し、その時間の長さ (秒) が `Connection Lifetime` で指定した値を超えている場合は、その接続が破棄されます。 これは、クラスター構成を採用している状況で、実行中のサーバーと、オンラインになったばかりのサーバーの間での、負荷を強制的に分散するのに便利です。<br /><br /> 値をゼロ (0) に設定すると、プールされた接続の最大接続タイムアウトが発生します。|  
+|ConnectRetryCount|1|クライアントがアイドル状態の接続エラーを識別した後の再接続試行回数を制御します。 有効な値は 0 ~ 255 です。 既定値は 1 です。 0は、再接続を試行しない (接続の回復性を無効にする) ことを意味します。<br /><br /> アイドル状態の接続の回復性の詳細については、「[技術記事-アイドル状態の接続の回復性](https://go.microsoft.com/fwlink/?LinkId=393996)」を参照してください。|  
+|ConnectRetryInterval|10|各接続再試行の間隔 (ConnectRetryCount) を指定します。 有効な値は 1 ~ 60 秒 (既定 = 10) で、最初の再接続の試行後に適用されます。 接続が切断されると、クライアントは直ちに再接続を試みます。これは最初の再接続試行で、ConnectRetryCount が0より大きい場合にのみ発生します。 最初の再接続の試行が失敗し、ConnectRetryCount が1より大きい場合、クライアントは ConnectRetryInterval を待機して、2回目以降の再接続を試行します。<br /><br /> アイドル状態の接続の回復性の詳細については、「[技術記事-アイドル状態の接続の回復性](https://go.microsoft.com/fwlink/?LinkId=393996)」を参照してください。|  
+|Context Connection|'false'|`true`SQL Server へのインプロセス接続を作成する必要がある場合はです。|  
+|Current Language<br /><br /> - または -<br /><br /> 言語|N/A|データベースサーバーの警告メッセージまたはエラーメッセージに使用する言語を設定します。<br /><br /> 言語名は128文字以下にする必要があります。|  
+|データ ソース<br /><br /> - または -<br /><br /> サーバー<br /><br /> または<br /><br /> アドレス<br /><br /> - または -<br /><br /> 引き<br /><br /> - または -<br /><br /> [ネットワーク アドレス]|N/A|接続先の SQL Server インスタンスの名前またはネットワークアドレス。 ポート番号は、サーバー名の後に指定できます。<br /><br /> `server=tcp:servername, portnumber`<br /><br /> ローカルインスタンスを指定する場合は、常に (local) を使用します。 プロトコルを強制するには、次のいずれかのプレフィックスを追加します。<br /><br /> `np:(local),  tcp:(local), lpc:(local)`<br /><br /> 以降で[!INCLUDE[net_v45](~/includes/net-v45-md.md)]は、次のように LocalDB データベースに接続することもできます。<br /><br /> `server=(localdb)\\myInstance`<br /><br /> LocalDB の詳細については、「 [localdb の SqlClient サポート](~/docs/framework/data/adonet/sql/sqlclient-support-for-localdb.md)」を参照してください。<br /><br /> **データソース**では、TCP 形式または名前付きパイプ形式を使用する必要があります。<br /><br /> TCP 形式は次のとおりです。<br /><br /> -tcp:\<ホスト名 >\\< インスタンス名\><br />-tcp:\<ホスト名 >、\<tcp/ip ポート番号 ><br /><br /> TCP 形式は、"tcp:" というプレフィックスで始まり、ホスト名とインスタンス名によって指定されたデータベースインスタンスが続く必要があります。 この形式は、Azure SQL Database に接続する場合には適用されません。 プロトコルが指定されていない場合、Azure SQL Database への接続に対して TCP が自動的に選択されます。<br /><br /> ホスト名は、次のいずれかの方法で指定する必要があります。<br /><br /> -NetBIOSName<br />-IPv4Address<br />-IPv6Address<br /><br /> インスタンス名は、データベースインスタンスがホストされている特定の TCP/IP ポート番号に解決するために使用されます。 または、TCP/IP ポート番号を直接指定することもできます。 インスタンス名とポート番号の両方が存在しない場合は、既定のデータベースインスタンスが使用されます。<br /><br /> 名前付きパイプの形式は次のとおりです。<br /><br /> -np:\\\\< ホスト名\>\ パイプ\\< パイプ名\><br /><br /> 名前付きパイプの形式はプレフィックス "np:" で始まり、その後に名前付きパイプ名が続きます。<br /><br /> ホスト名は、次のいずれかの方法で指定する必要があります。<br /><br /> -NetBIOSName<br />-IPv4Address<br />-IPv6Address<br /><br /> パイプ名は、.NET Framework アプリケーションが接続されるデータベースインスタンスを識別するために使用されます。<br /><br /> **ネットワーク**キーの値を指定する場合は、プレフィックス "tcp:" と "np:" を指定しないでください。 **注:** 共有メモリではなく TCP を強制的に使用することができます。**そのために**は、接続文字列でサーバー名にプレフィックスを付けるか、 **localhost**を使用します。|  
+|Encrypt|'false'|の`true`場合、SQL Server サーバーに証明書がインストールされている場合、クライアントとサーバーの間で送信されるすべてのデータに対して SSL 暗号化が使用されます。 認識される値は `true`、`false`、`yes` および `no` です。 詳細については、「[接続文字列の構文](~/docs/framework/data/adonet/connection-string-syntax.md)」を参照してください。<br /><br /> 以降では`Encrypt` `TrustServerCertificate` [!INCLUDE[net_v45](~/includes/net-v45-md.md)]、が false であり、が true の場合、SQL Server の SSL 証明書のサーバー名 (または ip アドレス) は、接続文字列で指定されているサーバー名 (または ip アドレス) と正確に一致する必要があります。 それ以外の場合、接続試行は失敗します。 サブジェクトがワイルドカード文字 (*) で始まる証明書のサポートの詳細については、「サーバー[認証にサーバー証明書で使用されるワイルドカードを使用する](https://support.microsoft.com/kb/258858)」を参照してください。|  
+|Enlist|'true'|`true`SQL Server 接続プーラーが、作成スレッドの現在のトランザクションコンテキストに接続を自動的に参加させることを示します。|  
+|Failover Partner|N/A|データベースミラーリングが構成されているフェールオーバーパートナーサーバーの名前。<br /><br /> このキーの値が "" の場合は、**初期カタログ**が存在し、その値を "" にすることはできません。<br /><br /> サーバー名は128文字以下にする必要があります。<br /><br /> フェールオーバーパートナーを指定しても、フェールオーバーパートナーサーバーがデータベースミラーリング用に構成されておらず、(Server キーワードで指定された) プライマリサーバーが使用できない場合、接続は失敗します。<br /><br /> フェールオーバーパートナーを指定し、プライマリサーバーがデータベースミラーリング用に構成されていない場合、プライマリサーバーが使用可能な場合、プライマリサーバー (Server キーワードで指定) への接続は成功します。|  
+|Initial Catalog<br /><br /> - または -<br /><br /> データベース|N/A|データベースの名前。<br /><br /> データベース名は128文字以下にする必要があります。|  
+|Integrated Security<br /><br /> または<br /><br /> Trusted_Connection|'false'|の`false`場合、ユーザー ID とパスワードは接続で指定されます。 の`true`場合、現在の Windows アカウントの資格情報が認証に使用されます。<br /><br /> 認識される`true`値`false`は`yes`、 、、`sspi` 、 `no` 、および(強く推奨)です。これは`true`と同じです。<br /><br /> ユーザー ID とパスワードを指定し、Integrated Security を true に設定した場合、ユーザー ID とパスワードは無視され、統合セキュリティが使用されます。<br /><br /> <xref:System.Data.SqlClient.SqlCredential>は、SQL Server 認証 (`Integrated Security=false`) を使用する接続の資格情報を指定するより安全な方法です。|  
+|Max Pool Size|100|プールで許可されている接続の最大数。<br /><br /> 有効な値は1以上です。 **最小プールサイズ**未満の値を指定すると、エラーが発生します。|  
+|Min Pool Size|0|プールで許可されている接続の最小数。<br /><br /> 有効な値は0以上です。 このフィールドにゼロ (0) を入力すると、最初に最小接続が開かれません。<br /><br /> **最大プールサイズ**より大きい値を指定すると、エラーが発生します。|  
+|MultipleActiveResultSets|'false'|の`true`場合、アプリケーションは複数のアクティブな結果セット (MARS) を保持できます。 の`false`場合、アプリケーションは、その接続で他のバッチを実行する前に、1つのバッチからすべての結果セットを処理するか、取り消す必要があります。<br /><br /> 認識される`true`値`false`はとです。<br /><br /> 詳細については、「 [複数のアクティブな結果セット (MARS)](~/docs/framework/data/adonet/sql/multiple-active-result-sets-mars.md)」を参照してください。|  
+|`MultiSubnetFailover`|false|SQL Server 2012 `multiSubnetFailover=True` (またはそれ以降) の可用性グループまたは SQL Server 2012 (またはそれ以降) のフェールオーバークラスターインスタンスの可用性グループリスナーに接続する場合は、必ずを指定します。 `multiSubnetFailover=True`(現在) アクティブなサーバーを迅速に検出して接続できるように SqlClient を構成します。 使用可能な`Yes`値`No`は`True` 、、 `1` 、 `0`および`False`またはとです。 次に例を示します。<br /><br /> `MultiSubnetFailover=True`<br /><br /> 既定値は、`False` です。 Always On Ag の SqlClient のサポートの詳細については、「[高可用性、ディザスターリカバリーのための Sqlclient サポート](~/docs/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery.md)」を参照してください。|  
+|Network Library<br /><br /> - または -<br /><br /> ネットワーク<br /><br /> - または -<br /><br /> Net|N/A|SQL Server のインスタンスへの接続を確立するために使用されるネットワークライブラリ。 サポートされている値は次のとおりです。<br /><br /> dbnmpntw (名前付きパイプ)<br /><br /> dbmsrpcn (マルチプロトコル、Windows RPC)<br /><br /> dbmsadsn (Apple Talk)<br /><br /> dbmsgnet (VIA)<br /><br /> dbmslpcn (共有メモリ)<br /><br /> dbmsspxn (IPX/SPX)<br /><br /> dbmssocn (TCP/IP)<br /><br /> Dbmsvinn (Banyan Vines)<br /><br /> 接続先のシステムに、対応するネットワーク DLL がインストールされている必要があります。 ネットワークを指定せず、ローカルサーバー ("." や "(local)" など) を使用する場合は、共有メモリが使用されます。 次の例では、ネットワーク ライブラリが Win32 Winsock TCP/IP (dbmssocn) で、使用ポートは 1433 です。<br /><br /> `Network Library=dbmssocn;Data Source=000.000.000.000,1433;`|  
+|Packet Size|8000|SQL Server のインスタンスとの通信に使用されるネットワークパケットのサイズ (バイト単位)。<br /><br /> パケットサイズは512以上、32768以下でなければなりません。|  
+|パスワード<br /><br /> - または -<br /><br /> PWD|N/A|SQL Server アカウントのログオンに使用するパスワードです。 推奨されません。 高いレベルのセキュリティを維持するに`Integrated Security`は、代わりにキーワードまたは`Trusted_Connection`キーワードを使用することを強くお勧めします。 <xref:System.Data.SqlClient.SqlCredential>は、SQL Server 認証を使用する接続の資格情報を指定するより安全な方法です。<br /><br /> パスワードは128文字以下でなければなりません。|  
+|Persist Security Info<br /><br /> - または -<br /><br /> PersistSecurityInfo|'false'|または`false` `no` (強くお勧めします) に設定した場合、接続が開いているか、開いている状態になったことがある場合、パスワードなどのセキュリティ関連の情報は、接続の一部として返されません。 接続文字列をリセットすると、パスワードを含むすべての接続文字列の値がリセットされます。 認識される値は `true`、`false`、`yes` および `no` です。|  
+|System.data.sqlclient.sqlconnectionstringbuilder.poolblockingperiod|自動|接続プールのブロック期間の動作を設定します。 詳細<xref:System.Data.SqlClient.SqlConnectionStringBuilder.PoolBlockingPeriod>については、プロパティを参照してください。|  
+|Pooling|'true'|このキーの値が true に設定されている場合、新しく作成された接続はアプリケーションによって閉じられたときにプールに追加されます。 次に同じ接続を開こうとすると、その接続がプールから描画されます。<br /><br /> 接続文字列が同じである場合、接続は同じと見なされます。 接続ごとに異なる接続文字列があります。<br /><br /> このキーの値には、"true"、"false"、"yes"、または "no" を指定できます。|  
+|Replication|'false'|`true`接続を使用してレプリケーションがサポートされている場合はです。|  
+|Transaction Binding|Implicit Unbind|参加`System.Transactions`しているトランザクションとの接続の関連付けを制御します。<br /><br /> 指定できる値は次のとおりです。<br /><br /> `Transaction Binding=Implicit Unbind;`<br /><br /> `Transaction Binding=Explicit Unbind;`<br /><br /> 暗黙のバインド解除では、終了時に接続がトランザクションからデタッチされます。 デタッチ後、接続に対する追加の要求は、自動コミット モードで実行されます。 トランザクションがアクティブである間に要求が実行されても、`System.Transactions.Transaction.Current` プロパティの確認は行われません。 トランザクションの終了後、追加の要求は、自動コミット モードで実行されます。<br /><br /> 最後のコマンドが完了する前に、システムが (using ブロックのスコープ内で) トランザクションを終了すると<xref:System.InvalidOperationException>、がスローされます。<br /><br /> 明示的なバインド解除を行うと、接続が閉じられるか、明示的`SqlConnection.TransactionEnlist(null)`なが呼び出されるまで、接続がトランザクションにアタッチされたままになります。 以降で[!INCLUDE[net_v40_long](~/includes/net-v40-long-md.md)]は、暗黙的なバインド解除を変更することで、明示的なバインド解除が廃止されました。 `InvalidOperationException` が登録済みのトランザクションではない場合および登録済みのトランザクションがアクティブではない場合は、`Transaction.Current` がスローされます。|  
+|TransparentNetworkIPResolution|説明を参照してください。|このキーの値を `true` に設定すると、特定の DNS エントリのすべての IP アドレスを取得し、リストの最初の IP アドレスで接続を試行するようアプリケーションに要求します。 0.5 秒以内に接続が確立されない場合、アプリケーションは他のすべての IP アドレスへの接続を同時に試行します。 最初の応答を受信すると、アプリケーションは応答した IP アドレスで接続を確立します。<br /><br /> キーが`MultiSubnetFailover`に`true`設定されて`TransparentNetworkIPResolution`いる場合、は無視されます。<br /><br /> キーが`Failover Partner`設定されて`TransparentNetworkIPResolution`いる場合、は無視されます。<br /><br /> このキーの`true`値は`yes`、 `false`、、、または`no`である必要があります。<br /><br /> の`yes`値は、の`true`値と同じように扱われます。<br /><br /> の`no`値は、の`false`値と同じように扱われます。<br /><br /> 既定値は次のとおりです。<br /><br /> <ul><li>`false`いつ：<br /><br /> <ul><li>データソースが次で終わる Azure SQL Database に接続しています:<br /><br /> <ul><li>.database.chinacloudapi.cn</li><li>.database.usgovcloudapi.net</li><li>.database.cloudapi.de</li><li>.database.windows.net</li></ul></li><li>`Authentication`' Active Directory Password ' または ' Active Directory Integrated ' です</li></ul></li><li>`true`。上記のいずれのケースにも該当しない場合。</li></ul>|  
+|TrustServerCertificate|'false'|に`true`設定すると、信頼関係を検証するために証明書チェーンのウォークをバイパスするときに、SSL を使用してチャネルが暗号化されます。 Trustservercertificate がに`true`設定され、Encrypt がに`false`設定されている場合、チャネルは暗号化されません。 認識される値は `true`、`false`、`yes` および `no` です。 詳細については、「[接続文字列の構文](~/docs/framework/data/adonet/connection-string-syntax.md)」を参照してください。|  
+|型システムのバージョン|N/A|アプリケーションが要求する型システムを示す文字列値。 クライアント アプリケーションで利用可能な機能は、SQL Server のバージョンとデータベースの互換性レベルに依存します。 使用されている SQL Server のバージョンが、クライアント アプリケーションで想定されているものと異なる場合、アプリケーションが正常に動作しない可能性がありますが、型システムのバージョンを明示的に設定することでその問題を防ぐことができます。 **注:** SQL Server でインプロセスで実行される共通言語ランタイム (CLR) コードに対して型システムのバージョンを設定することはできません。 詳細については、「 [SQL Server 共通言語ランタイムの統合](~/docs/framework/data/adonet/sql/sql-server-common-language-runtime-integration.md)」を参照してください。 <br /><br /> 指定できる値は次のとおりです。<br /><br /> `Type System Version=SQL Server 2012;`<br /><br /> `Type System Version=SQL Server 2008;`<br /><br /> `Type System Version=SQL Server 2005;`<br /><br /> `Type System Version=Latest;`<br /><br /> `Type System Version=SQL Server 2012;`アプリケーションが11.0.0.0 のバージョンを必要とすることを指定します。 その他`Type System Version`の設定には、バージョン10.0.0.0 の Microsoft. SqlServer. .dll が必要です。<br /><br /> `Latest`は互換性のために残されているため、使用しないでください。 `Latest` は `Type System Version=SQL Server 2008;` と同じです。|  
+|User ID<br /><br /> - または -<br /><br /> UID<br /><br /> または|N/A|SQL Server ログインアカウントです。 推奨されません。 高いレベルのセキュリティを維持するに`Integrated Security`は、代わりにキーワードまたは`Trusted_Connection`キーワードを使用することを強くお勧めします。 <xref:System.Data.SqlClient.SqlCredential>は、SQL Server 認証を使用する接続の資格情報を指定するより安全な方法です。<br /><br /> ユーザー ID は128文字以下でなければなりません。|  
+|User Instance|'false'|既定の SQL Server Express インスタンスから、呼び出し元のアカウントで実行されているランタイムによって開始されるインスタンスに接続をリダイレクトするかどうかを示す値。|  
+|Workstation ID<br /><br /> - または -<br /><br /> WSID|ローカルコンピューター名|SQL Server に接続しているワークステーションの名前。<br /><br /> ID は128文字以下でなければなりません。|  
   
- 次の一覧には、接続プール内の値の有効な名前が含まれています、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>します。 詳しくは、「[SQL Server の接続プール (ADO.NET)](~/docs/framework/data/adonet/sql-server-connection-pooling.md)」をご覧ください。  
+ 次の一覧には、内の<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>接続プール値の有効な名前が含まれています。 詳しくは、「[SQL Server の接続プール (ADO.NET)](~/docs/framework/data/adonet/sql-server-connection-pooling.md)」をご覧ください。  
   
--   接続の有効期間 (または Load Balance Timeout)  
+-   接続の有効期間 (または負荷分散のタイムアウト)  
   
 -   Enlist  
   
@@ -1332,21 +1332,21 @@ Or
   
 -   Pooling  
   
- キーワードまたは接続プールをブール値を必要とする値を設定するときに 'yes' 'true' と 'false' ではなく ' no' の代わりに使用できます。 整数値は文字列として表されます。  
+ ブール値を必要とするキーワードまたは接続プーリングの値を設定する場合は、' true ' ではなく ' yes '、' false ' の代わりに ' no ' を使用できます。 整数値は文字列として表されます。  
 
 > [!NOTE]
->  .NET Framework Data Provider for SQL Server では、独自のプロトコルを使用して SQL Server と通信します。 そのため、これはできません ODBC データ ソース名 (DSN) の使用 ODBC レイヤーを追加しないため、SQL Server に接続するとき。  
+>  SQL Server の .NET Framework Data Provider は、独自のプロトコルを使用して SQL Server と通信します。 そのため、SQL Server に接続するときに odbc データソース名 (DSN) を使用することはできません。 ODBC レイヤーは追加されません。  
   
 > [!NOTE]
->  ユニバーサル データ リンク (UDL) ファイルは、.NET Framework Data Provider for SQL Server のサポートされていません。  
+>  ユニバーサルデータリンク (UDL) ファイルは、SQL Server の .NET Framework Data Provider ではサポートされていません。  
   
 > [!CAUTION]
->  このリリースでは、アプリケーションが注意を使用する必要があります (たとえば、ダイアログ ボックスでは、および接続文字列に追加することから、ユーザー ID とパスワード情報を取得するときなど) のユーザー入力に基づいて接続文字列を構築するときにします。 アプリケーションは、ユーザーがこれらの値で追加の接続文字列パラメーターを埋め込むことはできませんを確認してください (などとしてパスワードを入力する"なデータベースができない"別のデータベースに接続するために)。 ユーザー入力に基づいて接続文字列を作成する必要がある場合は、新しい使用<xref:System.Data.SqlClient.SqlConnectionStringBuilder>が接続文字列を検証し、この問題を解決するのに役立ちます。 参照してください[接続文字列ビルダー](~/docs/framework/data/adonet/connection-string-builders.md)詳細についてはします。  
+>  このリリースでは、ユーザー入力に基づいて接続文字列を作成する場合 (たとえば、ダイアログボックスからユーザー ID とパスワードの情報を取得して接続文字列に追加する場合)、アプリケーションは注意を払ってください。 アプリケーションでは、ユーザーがこれらの値に追加の接続文字列パラメーターを埋め込むことができないようにする必要があります (たとえば、別のデータベースへのアタッチを試行するときに、パスワードを "validpassword; database =" db "として入力するなど)。 ユーザー入力に基づいて接続文字列を作成する必要がある場合は<xref:System.Data.SqlClient.SqlConnectionStringBuilder>、新しいを使用します。これにより、接続文字列が検証され、この問題を回避することができます。 詳細については、「[接続文字列ビルダー](~/docs/framework/data/adonet/connection-string-builders.md) 」を参照してください。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>設定と、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>接続を開く前に、プロパティ。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、を作成<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>し、接続を開く前にプロパティを設定します。  
   
  [!code-csharp[Classic WebData SqlConnection.ConnectionString Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.ConnectionString Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.ConnectionString Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.ConnectionString Example/VB/source.vb#1)]  
@@ -1412,12 +1412,12 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用してタイムアウトに接続が待機する時間の量を設定することができます、`Connect Timeout`または`Connection Timeout`接続文字列のキーワード。 値が 0 の制限がないことを示します。 およびに避ける必要があります、<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>接続の試みが無期限に待機するためです。  
+ 接続文字列内で`Connect Timeout`または`Connection Timeout`キーワードを使用して、接続がタイムアウトするまで待機する時間を設定できます。 値0は制限がないことを示します。では、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>接続の試行が無制限に待機するため、では回避する必要があります。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>設定と、`Connection Timeout`接続文字列が 30 秒にします。 コードの接続を確立し、表示、<xref:System.Data.SqlClient.SqlConnection.ConnectionTimeout%2A>コンソール ウィンドウでプロパティ。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、を作成`Connection Timeout`し、接続文字列でを30秒に設定します。 このコードによって接続が開か<xref:System.Data.SqlClient.SqlConnection.ConnectionTimeout%2A>れ、コンソールウィンドウにプロパティが表示されます。  
   
  [!code-csharp[Classic WebData SqlConnection.ConnectionTimeout Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.ConnectionTimeout Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.ConnectionTimeout Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.ConnectionTimeout Example/VB/source.vb#1)]  
@@ -1549,21 +1549,21 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `Persist Security Info = true` 値を取得するために必要な<xref:System.Data.SqlClient.SqlCredential>オブジェクト<xref:System.Data.SqlClient.SqlConnection.Credential%2A>します。  
+ `Persist Security Info = true`は、 <xref:System.Data.SqlClient.SqlCredential>を使用して<xref:System.Data.SqlClient.SqlConnection.Credential%2A>オブジェクトの値を取得するために必要です。  
   
- 既定値の<xref:System.Data.SqlClient.SqlConnection.Credential%2A>が null です。  
+ の<xref:System.Data.SqlClient.SqlConnection.Credential%2A>既定値は null です。  
   
  <xref:System.InvalidOperationException>例外が発生します。  
   
--   場合<xref:System.Data.SqlClient.SqlConnection.Credential%2A>が開いている接続を設定します。  
+-   開い<xref:System.Data.SqlClient.SqlConnection.Credential%2A>ている接続でが設定されている場合。  
   
--   場合<xref:System.Data.SqlClient.SqlConnection.Credential%2A>ときに設定されます`Context Connection=true`します。  
+-   がの場合に`Context Connection=true`設定されます。 <xref:System.Data.SqlClient.SqlConnection.Credential%2A>  
   
--   場合<xref:System.Data.SqlClient.SqlConnection.Credential%2A>ときに設定されます`Integrated Security = true`します。  
+-   がの場合に`Integrated Security = true`設定されます。 <xref:System.Data.SqlClient.SqlConnection.Credential%2A>  
   
--   場合<xref:System.Data.SqlClient.SqlConnection.Credential%2A>接続文字列を使用する場合に設定されている`Password`します。  
+-   接続<xref:System.Data.SqlClient.SqlConnection.Credential%2A>文字列でを使用`Password`する場合は、が設定されます。  
   
--   場合<xref:System.Data.SqlClient.SqlConnection.Credential%2A>接続文字列を使用する場合に設定されている`UserID`します。  
+-   接続<xref:System.Data.SqlClient.SqlConnection.Credential%2A>文字列でを使用`UserID`する場合は、が設定されます。  
   
  ]]></format>
         </remarks>
@@ -1643,12 +1643,12 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlConnection.Database%2A>プロパティを動的に更新します。 現在のデータベースを使って変更する場合、[!INCLUDE[tsql](~/includes/tsql-md.md)]ステートメントまたは<xref:System.Data.SqlClient.SqlConnection.ChangeDatabase%2A>メソッド、情報メッセージが送信され、プロパティが自動的に更新されます。  
+ プロパティ<xref:System.Data.SqlClient.SqlConnection.Database%2A>は動的に更新されます。 [!INCLUDE[tsql](~/includes/tsql-md.md)] ステートメント<xref:System.Data.SqlClient.SqlConnection.ChangeDatabase%2A>またはメソッドを使用して現在のデータベースを変更すると、情報メッセージが送信され、プロパティが自動的に更新されます。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>し、一部の読み取り専用プロパティを表示します。  
+ を作成し、その<xref:System.Data.SqlClient.SqlConnection>読み取り専用プロパティの一部を表示する例を次に示します。  
   
  [!code-csharp[Classic WebData SqlConnection.Database Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Database Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.Database Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Database Example/VB/source.vb#1)]  
@@ -1703,19 +1703,19 @@ Or
       </ReturnValue>
       <Docs>
         <summary>接続先となる SQL Server のインスタンスの名前を取得します。</summary>
-        <value>接続先となる SQL Server のインスタンスの名前。 既定値は空の文字列です。</value>
+        <value>接続先の SQL Server インスタンスの名前。 既定値は空の文字列です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
   
 > [!NOTE]
->  <xref:System.Data.SqlClient.SqlConnection.DataSource%2A>プロパティが返す`null`場合、接続文字列が、<xref:System.Data.SqlClient.SqlConnection>は"コンテキスト接続 = true"です。  
+>  の<xref:System.Data.SqlClient.SqlConnection.DataSource%2A>接続文字列`null` <xref:System.Data.SqlClient.SqlConnection>が "context connection = true" の場合、プロパティはを返します。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>し、一部の読み取り専用プロパティを表示します。  
+ を作成し、その<xref:System.Data.SqlClient.SqlConnection>読み取り専用プロパティの一部を表示する例を次に示します。  
   
  [!code-csharp[Classic WebData SqlConnection.DataSource Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.DataSource Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.DataSource Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.DataSource Example/VB/source.vb#1)]  
@@ -1822,11 +1822,11 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用することができます、<xref:System.Data.SqlClient.SqlConnection.EnlistTransaction%2A>分散トランザクションに参加するメソッド。 これにより、接続するため、<xref:System.Transactions.Transaction>インスタンス、 **EnlistTransaction**で利用できる機能を活用、<xref:System.Transactions>名前空間を管理するための分散トランザクション、する方が望ましいので**どちら**この目的のためです。 詳細については、次を参照してください。[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)です。  
+ メソッドを使用し<xref:System.Data.SqlClient.SqlConnection.EnlistTransaction%2A>て、分散トランザクションに参加させることができます。 <xref:System.Transactions.Transaction> **EnlistTransaction**はインスタンスに接続を参加させるため、分散トランザクションを管理する<xref:System.Transactions> **ために名前空間で使用できる機能を活用して、** この目的には EnlistDistributedTransaction を使用します。 詳細については、「[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)」を参照してください。  
   
- 使用して既存の分散トランザクションに参加する続行することができます、**どちら**メソッドへの自動参加が無効になっている場合。 既存の分散トランザクションに参加により、トランザクションがコミットまたはロールバックする場合、データ ソースにあるコードによって加えられた変更もコミットまたはロールバックします。  
+ 自動参加が無効になっている場合は、 **EnlistDistributedTransaction**メソッドを使用して、既存の分散トランザクションに参加を続けることができます。 既存の分散トランザクションに参加すると、トランザクションがコミットまたはロールバックされた場合に、データソースのコードによって行われた変更もコミットまたはロールバックされるようになります。  
   
- `EnlistDistributedTransaction` 例外を返します、<xref:System.Data.SqlClient.SqlConnection>はトランザクションを使用して、既に開始<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>します。 ただし、トランザクションがデータ ソースで開始されたローカル トランザクション (BEGIN TRANSACTION ステートメントを使用して、明示的に実行することによってなど、<xref:System.Data.SqlClient.SqlCommand>オブジェクト)、**どちら**ロールバック、ローカル トランザクションの要求に応じて、既存の分散トランザクションに参加するとします。 ローカル トランザクションがロールバックはし、ないローカル トランザクションを管理する責任を負います開始するを使用して通知を受け取りません<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>します。  
+ `EnlistDistributedTransaction`がを使用して<xref:System.Data.SqlClient.SqlConnection>既にトランザクションを開始し<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>ている場合、は例外を返します。 ただし、トランザクションがデータソースで開始されるローカルトランザクションである場合 (たとえば、 <xref:System.Data.SqlClient.SqlCommand>オブジェクトを使用して BEGIN TRANSACTION ステートメントを明示的に実行することによって)、 **EnlistDistributedTransaction**はローカルトランザクションをロールバックし、要求に応じて、既存の分散トランザクションに参加します。 ローカルトランザクションがロールバックされたことが通知されず、を使用して開始されて<xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>いないローカルトランザクションを管理する責任があります。  
   
  ]]></format>
         </remarks>
@@ -1863,7 +1863,7 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用することができます、<xref:System.Data.SqlClient.SqlConnection.EnlistTransaction%2A>分散トランザクションに参加するメソッド。 これにより、接続するため、<xref:System.Transactions.Transaction>インスタンス、 **EnlistTransaction**で利用できる機能を活用、<xref:System.Transactions>名前空間を管理するための分散トランザクション、する方が望ましいので**どちら**、使用、 **System.EnterpriseServices.ITransaction**オブジェクト。 異なる意味があります。 接続が明示的にトランザクションに参加していると、参加解除またはできません、最初のトランザクションが完了するまで、別のトランザクションに参加しています。 分散トランザクションの詳細については、次を参照してください。[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)です。  
+ メソッドを使用し<xref:System.Data.SqlClient.SqlConnection.EnlistTransaction%2A>て、分散トランザクションに参加させることができます。 <xref:System.Transactions.Transaction> **EnlistTransaction**はインスタンスに接続を参加させるため、分散トランザクションを管理する<xref:System.Transactions> **ために名前空間で使用できる機能を活用して、EnlistDistributedTransaction**。 **system.enterpriseservices**オブジェクトを使用します。 また、若干異なるセマンティクスがあります。1つのトランザクションに明示的に参加した接続は、最初のトランザクションが終了するまで、参加を解除したり別のトランザクションに参加させたりすることはできません。 分散トランザクションの詳細については、「[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -1907,12 +1907,12 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定すると<xref:System.Data.SqlClient.SqlConnection.FireInfoMessageEventOnUserErrors%2A>に`true`、エラーとして例外が処理されるようになりましたが扱わ以前<xref:System.Data.SqlClient.SqlConnection.InfoMessage>イベント。 すべてのイベントは、すぐに起動され、イベント ハンドラーによって処理されます。 場合は、<xref:System.Data.SqlClient.SqlConnection.FireInfoMessageEventOnUserErrors%2A>に設定されている`false`、し<xref:System.Data.SqlClient.SqlConnection.InfoMessage>イベントは、プロシージャの最後に処理されます。  
+ をに<xref:System.Data.SqlClient.SqlConnection.FireInfoMessageEventOnUserErrors%2A> `true`設定すると、以前に例外として扱われたエラー <xref:System.Data.SqlClient.SqlConnection.InfoMessage>がイベントとして処理されるようになります。 すべてのイベントはすぐに起動し、イベントハンドラーによって処理されます。 が<xref:System.Data.SqlClient.SqlConnection.FireInfoMessageEventOnUserErrors%2A> <xref:System.Data.SqlClient.SqlConnection.InfoMessage>に`false`設定されている場合は、プロシージャの最後にイベントが処理されます。  
   
 > [!NOTE]
->  コマンドの処理を停止するサーバーを原因となる重要度のレベルが 17 以上のエラーを例外として処理する必要があります。 この場合、<xref:System.Data.SqlClient.SqlConnection.InfoMessage> イベントによるエラー処理の方法にかかわらず例外がスローされます。  
+>  重大度レベルが17以上のエラーが発生したため、サーバーが処理を停止した場合は、例外として処理する必要があります。 この場合、<xref:System.Data.SqlClient.SqlConnection.InfoMessage> イベントによるエラー処理の方法にかかわらず例外がスローされます。  
   
- イベントの使用の詳細については、次を参照してください。[接続イベント](~/docs/framework/data/adonet/connection-events.md)します。 SQL Server エンジンによって生成されたエラーの詳細については、次を参照してください。[データベース エンジン エラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)します。
+ イベントの操作の詳細については、「[接続イベント](~/docs/framework/data/adonet/connection-events.md)」を参照してください。 SQL Server エンジンによって生成されるエラーの詳細については、「[データベースエンジンエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)」を参照してください。
   
  ]]></format>
         </remarks>
@@ -1933,11 +1933,11 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 1 つ以上のバージョン管理されたストアド プロシージャのスキーマ情報を取得しようとすると、最新のスキーマのみが返されます。
+ 複数のバージョンがあるストアドプロシージャのスキーマ情報を取得しようとすると、最新のもののみのスキーマが返されます。
   
  ]]></format>
         </remarks>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </MemberGroup>
@@ -1969,7 +1969,7 @@ Or
         <summary>この <see cref="T:System.Data.SqlClient.SqlConnection" /> のデータ ソースのスキーマ情報を返します。 スキームの詳細については、「[SQL Server スキーマ コレクション](~/docs/framework/data/adonet/sql-server-schema-collections.md)」を参照してください。</summary>
         <returns>スキーマ情報を格納する <see cref="T:System.Data.DataTable" />。</returns>
         <remarks>To be added.</remarks>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -2007,15 +2007,15 @@ Or
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- データベース、テーブルまたは列のスキーマ情報を必要があります。 このサンプルでは:  
+ データベース、テーブル、または列のスキーマ情報が必要になる場合があります。 このサンプルは次のとおりです。  
   
--   GetSchema を使用して、スキーマ情報を取得します。  
+-   は、GetSchema を使用してスキーマ情報を取得します。  
   
--   スキーマの制限を使用すると、指定した情報を取得できます。  
+-   指定された情報を取得するには、スキーマ制限を使用します。  
   
--   データベース、テーブル、および一部の列のスキーマ情報を取得します。  
+-   データベース、テーブル、およびいくつかの列のスキーマ情報を取得します。  
   
- このサンプルを実行する前にする必要があります、サンプル データベースを作成する、次を使用して[!INCLUDE[tsql](~/includes/tsql-md.md)]:  
+ サンプルを実行する前に、次[!INCLUDE[tsql](~/includes/tsql-md.md)]のコードを使用してサンプルデータベースを作成する必要があります。  
   
 ```  
 USE [master]  
@@ -2081,7 +2081,7 @@ ALTER TABLE [dbo].[Course] CHECK CONSTRAINT [FK_Course_Department]
 GO  
 ```  
   
- [データベースからスキーマ情報の取得方法](https://code.msdn.microsoft.com/How-to-Get-Schema-b66d62e2)このコード サンプルの c# および Visual Basic バージョンの Visual Studio プロジェクトにします。  
+ [データベースからスキーマ情報を取得する方法につい](https://code.msdn.microsoft.com/How-to-Get-Schema-b66d62e2)てはC# 、Visual Studio プロジェクトで、このコードサンプルのバージョンと Visual Basic について説明します。  
   
 ```csharp  
 using System;  
@@ -2247,7 +2247,7 @@ class Program {
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="collectionName" /> は null として指定されます。</exception>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -2287,17 +2287,17 @@ class Program {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `restrictionValues`パラメーターを指定できます*n* 、特定のコレクションに対する制限のコレクションで指定された値の深さ。 指定された制限の値を設定し、その他の制限の値を設定できません、ために、前述の制限を設定する必要があります。`null`しの値を指定するには制限の適切な値を格納します。  
+ パラメーター `restrictionValues`では、特定のコレクションの制限コレクションによって指定される値の*n*の深さを指定できます。 特定の制限に値を設定し、他の制限値を設定しないようにするには、上記の制限値`null`をに設定してから、に値を指定する制限の適切な値を入力する必要があります。  
   
- この例では、"Tables"コレクションです。 "Tables"コレクションがデータベース、所有者、3 つの制限、テーブル名が"Carl"の所有者に関連付けられているテーブルのみを取得する場合は、次の値に渡す必要があります:"Carl"は null です。 制限値が渡されたしない場合は、既定値がその制限に使用されます。 これは渡すことと同じマッピング`null`とは異なるパラメーター値に空の文字列を渡すことです。 その場合、空の文字列 ("") は、指定されたパラメーターの値であると見なされます。  
+ この例として、"Tables" コレクションがあります。 "Tables" コレクションに3つの制限 (データベース、所有者、およびテーブル名) があり、所有者 "Carl" に関連付けられているテーブルのみを取得する場合は、次の値を渡す必要があります: null、"Carl"。 制限値が渡されない場合は、その制限に既定値が使用されます。 これは`null`、を渡す場合と同じマッピングです。これは、パラメーター値として空の文字列を渡すこととは異なります。 その場合、空の文字列 ("") は、指定されたパラメーターの値と見なされます。  
   
- コード サンプル デモンストレーション<xref:System.Data.SqlClient.SqlConnection.GetSchema%2A>を参照してください<xref:System.Data.SqlClient.SqlConnection.GetSchema%2A>します。  
+ <xref:System.Data.SqlClient.SqlConnection.GetSchema%2A>を示すコードサンプルについて<xref:System.Data.SqlClient.SqlConnection.GetSchema%2A>は、「」を参照してください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="collectionName" /> は null として指定されます。</exception>
         <altmember cref="M:System.Data.SqlClient.SqlConnection.GetSchema" />
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -2342,15 +2342,15 @@ class Program {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 警告またはサーバーによって送信される情報メッセージを処理するクライアントを作成する必要があります、<xref:System.Data.SqlClient.SqlInfoMessageEventHandler>このイベントを待機するデリゲート。  
+ サーバーから送信された警告または情報メッセージを処理するクライアントは<xref:System.Data.SqlClient.SqlInfoMessageEventHandler> 、このイベントをリッスンするデリゲートを作成する必要があります。  
   
- <xref:System.Data.SqlClient.SqlConnection.InfoMessage>イベントは、10 の重大度でメッセージのときに発生します。 または、SQL Server によって以下が返されます。 エラーとメッセージを 20 の原因を重大度を持つ接続が閉じ、重大度レベル 11 と 20 の間のメッセージが発生します。 SQL Server エラー レベルの詳細については、次を参照してください。[データベース エンジン エラーの重大度](/sql/relational-databases/errors-events/database-engine-error-severities)します。
+ イベント<xref:System.Data.SqlClient.SqlConnection.InfoMessage>は、重大度が10以下のメッセージが SQL Server によって返されたときに発生します。 重大度が 11 ~ 20 のメッセージでは、エラーが発生し、重大度が20を超えるメッセージによって接続が閉じられます。 SQL Server エラーレベルの詳細については、「[データベースエンジンエラーの重大度](/sql/relational-databases/errors-events/database-engine-error-severities)」を参照してください。
   
- 詳細と例では、次を参照してください。[接続イベント](~/docs/framework/data/adonet/connection-events.md)します。  
+ 詳細と例については、「[接続イベント](~/docs/framework/data/adonet/connection-events.md)」を参照してください。  
   
  ]]></format>
         </remarks>
-        <related type="Article" href="https://msdn.microsoft.com/library/5a29de74-acfc-4134-8616-829dd7ce0710">接続イベントの処理</related>
+        <related type="Article" href="https://msdn.microsoft.com/library/5a29de74-acfc-4134-8616-829dd7ce0710">接続イベントの操作</related>
         <related type="Article" href="~/docs/framework/data/adonet/ado-net-overview.md">ADO.NET の概要</related>
       </Docs>
     </Member>
@@ -2421,21 +2421,21 @@ class Program {
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.SqlClient.SqlConnection>がある場合は、接続プールから開いている接続を描画します。 それ以外の場合、SQL Server のインスタンスへの新しい接続を確立します。  
+ は<xref:System.Data.SqlClient.SqlConnection> 、接続プールが使用可能な場合は、接続プールから開いている接続を描画します。 それ以外の場合は、SQL Server のインスタンスへの新しい接続を確立します。  
   
 > [!NOTE]
->  場合、<xref:System.Data.SqlClient.SqlConnection>帯がスコープが閉じられていません。 そのため、する必要があります明示的に閉じる接続呼び出して<xref:System.Data.SqlClient.SqlConnection.Close%2A>します。  
+>  が<xref:System.Data.SqlClient.SqlConnection>スコープ外に出ると、閉じられません。 そのため、を呼び出し<xref:System.Data.SqlClient.SqlConnection.Close%2A>て、接続を明示的に閉じる必要があります。  
   
 > [!NOTE]
->  TCP/IP、以外のプロトコルを使用して SQL Server のインスタンスに接続しようとする 1433 以外のポート番号を指定する場合、<xref:System.Data.SqlClient.SqlConnection.Open%2A>メソッドは失敗します。 1433 以外のポート番号を指定するには、"サーバー マシン名、ポート番号 ="接続文字列、および使用して、TCP/IP プロトコルでします。  
+>  SQL Server のインスタンスに接続しようとしていて、tcp/ip 以外のプロトコルを使用している場合に1433以外のポート番号を指定<xref:System.Data.SqlClient.SqlConnection.Open%2A>すると、メソッドは失敗します。 1433以外のポート番号を指定するには、接続文字列に "server = machinename, port number" を含め、TCP/IP プロトコルを使用します。  
   
 > [!NOTE]
->  .NET Framework Data Provider for SQL Server には、"許可への呼び出しにアンマネージ アセンブリ"有効なセキュリティ アクセス許可が必要です (<xref:System.Security.Permissions.SecurityPermission>で<xref:System.Security.Permissions.SecurityPermissionFlag>に設定`UnmanagedCode`) を開く、 <xref:System.Data.SqlClient.SqlConnection> SQL デバッグを有効にします。  
+>  SQL Server の .NET Framework Data Provider では、"アンマネージアセンブリへの呼び出しを許可する" が<xref:System.Security.Permissions.SecurityPermission>有効<xref:System.Security.Permissions.SecurityPermissionFlag> (が`UnmanagedCode` <xref:System.Data.SqlClient.SqlConnection>に設定されている) のセキュリティアクセス許可で、SQL デバッグが有効になっているを開くことができます。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>し、それを開き、そのプロパティの一部が表示されます。 接続が自動的の最後に閉じられます、`using`ブロックします。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection>、を作成して開き、そのプロパティの一部を表示します。 接続は`using`ブロックの最後に自動的に閉じられます。  
   
  [!code-csharp[Classic WebData SqlConnection.Open Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Open Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.Open Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.Open Example/VB/source.vb#1)]  
@@ -2444,9 +2444,9 @@ class Program {
         </remarks>
         <exception cref="T:System.InvalidOperationException">データ ソースまたはサーバーを指定せずに接続を開くことはできません。  
   
-または 
+or 
 接続は既に開かれています。</exception>
-        <exception cref="T:System.Data.SqlClient.SqlException">接続を開くときに発生した接続レベルのエラー。 <see cref="P:System.Data.SqlClient.SqlException.Number" /> プロパティに値 18487 または 18488 が含まれている場合、指定したパスワードの有効期限が切れているか、リセットする必要があることを示しています。 詳細については、<see cref="M:System.Data.SqlClient.SqlConnection.ChangePassword(System.String,System.String)" /> メソッドを参照してください。  
+        <exception cref="T:System.Data.SqlClient.SqlException">接続を開くときに発生した接続レベルのエラー。 <see cref="P:System.Data.SqlClient.SqlException.Number" /> プロパティに値 18487 または 18488 が含まれている場合、指定したパスワードの有効期限が切れているか、リセットする必要があることを示しています。 詳細については、 <see cref="M:System.Data.SqlClient.SqlConnection.ChangePassword(System.String,System.String)" /> メソッドを参照してください。  
   
 app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグに、使用できないか、不明な要素が含まれています。</exception>
         <exception cref="T:System.Configuration.ConfigurationErrorsException"><see langword="&lt;localdbinstances&gt;" /> セクションに、同じ名前のエントリが 2 つ含まれています。</exception>
@@ -2493,17 +2493,17 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出した後<xref:System.Data.SqlClient.SqlConnection.OpenAsync%2A>、<xref:System.Data.SqlClient.SqlConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Connecting>、返されるまで<xref:System.Threading.Tasks.Task>が完了します。 次に、接続が成功すると場合、<xref:System.Data.SqlClient.SqlConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Open>します。 接続が失敗した場合、<xref:System.Data.SqlClient.SqlConnection.State%2A>返す必要があります<xref:System.Data.ConnectionState.Closed>します。  
+ を呼び出し<xref:System.Data.SqlClient.SqlConnection.OpenAsync%2A>た<xref:System.Data.SqlClient.SqlConnection.State%2A>後、 <xref:System.Data.ConnectionState.Connecting> 返さ<xref:System.Threading.Tasks.Task>れたが完了するまで、はを返す必要があります。 次に、接続が成功した<xref:System.Data.SqlClient.SqlConnection.State%2A>場合、 <xref:System.Data.ConnectionState.Open>はを返す必要があります。 接続に失敗した<xref:System.Data.SqlClient.SqlConnection.State%2A>場合、 <xref:System.Data.ConnectionState.Closed>はを返す必要があります。  
   
- 呼び出し<xref:System.Data.SqlClient.SqlConnection.Close%2A>取り消すか、対応する終了を試みます<xref:System.Data.SqlClient.SqlConnection.OpenAsync%2A>呼び出します。  
+ の呼び出し<xref:System.Data.SqlClient.SqlConnection.Close%2A>は、対応<xref:System.Data.SqlClient.SqlConnection.OpenAsync%2A>する呼び出しの取り消しまたは終了を試みます。  
   
- .NET Framework Data provider for SQL Server の非同期プログラミングの詳細については、次を参照してください。[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)します。  
+ SQL Server の .NET Framework Data Provider での非同期プログラミングの詳細については、「[非同期プログラミング](~/docs/framework/data/adonet/asynchronous-programming.md)」を参照してください。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.InvalidOperationException">タスクの完了前に、同じインスタンスに対して <see cref="M:System.Data.SqlClient.SqlConnection.OpenAsync(System.Threading.CancellationToken)" /> を複数回呼び出しています。  
   
- <see langword="Context Connection=true" /> は接続文字列で指定されます。  
+ <see langword="Context Connection=true" /> が接続文字列に指定されています。  
   
 接続タイムアウトが経過する前に、接続プールから接続を使用できませんでした。</exception>
         <exception cref="T:System.Data.SqlClient.SqlException">接続を開くときに発生した SQL Server によって返されるすべてのエラー。</exception>
@@ -2555,16 +2555,16 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- アプリケーションを一括コピー操作を実行または送信または大量の text または image データの受信する場合、既定値より少ないネットワークが発生するため、効率が向上よりも大きいパケット サイズは読み取りおよび書き込み操作。 512 バイトにパケット サイズを設定できる場合は、アプリケーションは、少量の情報を送受信、(のパケット サイズの値を使用して、 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>)、これはほとんどのデータ転送操作のための十分な。 多くのアプリケーションでは、既定のパケット サイズが最適です。  
+ アプリケーションで一括コピー操作を実行したり、大量のテキストやイメージデータを送受信したりすると、ネットワークの読み取りおよび書き込み操作が減少するため、既定値より大きいパケットサイズで効率が向上する可能性があります。 アプリケーションが送受信する情報の量が少ない場合は、パケットサイズを512バイト (の<xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>パケットサイズの値を使用) に設定できます。これは、ほとんどのデータ転送操作に十分です。 多くのアプリケーションでは、既定のパケット サイズが最適です。  
   
- <xref:System.Data.SqlClient.SqlConnection.PacketSize%2A> 512 ~ 32767 バイトの範囲内の値があります。 値がこの範囲外にある場合、例外が生成されます。  
+ <xref:System.Data.SqlClient.SqlConnection.PacketSize%2A>512 ~ 32767 バイトの範囲の値を指定できます。 値がこの範囲外の場合は、例外が生成されます。  
   
- 非常に効率の SinglePage アロケーターは、SQL Server の全体的なスケーラビリティを減らすことではなく SQL Server のインスタンスで複数ページ アロケーターを使用するパケットにより、8000 よりも大きい数に既定値を設定します。 SQL Server がメモリを使用する方法の詳細については、次を参照してください。[メモリ管理アーキテクチャ ガイド](/sql/relational-databases/memory-management-architecture-guide)します。
+ 既定値を8000より大きい数値に設定すると、パケットでは、より効率的な1ページアロケーターではなく、SQL Server のインスタンスでマルチページアロケーターが使用され、SQL Server の全体的なスケーラビリティが低下します。 SQL Server によるメモリの使用方法の詳細については、「[メモリ管理アーキテクチャガイド](/sql/relational-databases/memory-management-architecture-guide)」を参照してください。
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>などを設定、 `Packet Size` 512、接続文字列にします。 表示されます、<xref:System.Data.SqlClient.SqlConnection.PacketSize%2A>と<xref:System.Data.SqlClient.SqlConnection.ServerVersion%2A>コンソール ウィンドウでプロパティ。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection>、接続文字列で`Packet Size`を512に設定するなど、を作成します。 プロパティ<xref:System.Data.SqlClient.SqlConnection.PacketSize%2A> と<xref:System.Data.SqlClient.SqlConnection.ServerVersion%2A>プロパティがコンソールウィンドウに表示されます。  
   
  [!code-csharp[Classic WebData SqlConnection.PacketSize Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.PacketSize Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.PacketSize Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.PacketSize Example/VB/source.vb#1)]  
@@ -2638,7 +2638,7 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 統計情報の収集が有効でないと、このメソッドは、エラーはスローされません。  
+ 統計情報の収集が有効になっておらず、このメソッドが呼び出された場合、エラーはスローされません。  
   
  ]]></format>
         </remarks>
@@ -2683,7 +2683,7 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドが呼び出されると、取得した値されて現在の位置で時間。 接続を使用して、続行する場合、値が正しくありません。 最新の値を取得するメソッドを再度実行する必要があります。  
+ このメソッドが呼び出されると、取得される値は現在の時点の値になります。 引き続き接続を使用する場合は、値が正しくありません。 最新の値を取得するには、メソッドを再実行する必要があります。  
   
  ]]></format>
         </remarks>
@@ -2739,14 +2739,14 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 形式は、バージョン *##. ##. ###* 最初の 2 つの数字は、メジャー バージョン、次の 2 つの数字は、マイナーのバージョン、最後の 4 桁の数字は、リリース バージョン。 文字列の形式は、 *major.minor.build*がある場合は、メジャー、マイナーが正確に 2 桁の数字と、ビルドが正確に 4 桁の数字です。  
+ バージョンの形式は *# #. # #. # # # # です。* 最初の2桁はメジャーバージョン、次の2桁はマイナーバージョン、最後の4桁はリリースバージョンです。 文字列の形式は major. *minor. build です*。ここで、major と minor は2桁の数字で、ビルドは4桁の数字です。  
   
  返されるタスクが完了しておらず、<xref:System.Data.SqlClient.SqlConnection.OpenAsync%2A> への呼び出しの後に接続が開かれていないときに、<xref:System.Data.SqlClient.SqlConnection.ServerVersion%2A> が呼び出されました。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>し、表示、<xref:System.Data.SqlClient.SqlConnection.ServerVersion%2A>プロパティ。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、を作成<xref:System.Data.SqlClient.SqlConnection.ServerVersion%2A>し、プロパティを表示します。  
   
  [!code-csharp[Classic WebData ISqlConnection.ServerVersion Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData ISqlConnection.ServerVersion Example/CS/source.cs#1)]
  [!code-vb[Classic WebData ISqlConnection.ServerVersion Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData ISqlConnection.ServerVersion Example/VB/source.vb#1)]  
@@ -2811,7 +2811,7 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 返します、<xref:System.Data.ConnectionState>の状態を示す列挙体、<xref:System.Data.SqlClient.SqlConnection>します。 値を更新は、接続を閉じて<xref:System.Data.SqlClient.SqlConnection.State%2A>します。  
+ の状態を示す<xref:System.Data.ConnectionState>列挙体を返します。 <xref:System.Data.SqlClient.SqlConnection> 接続を閉じて再度開くと、の<xref:System.Data.SqlClient.SqlConnection.State%2A>値が更新されます。  
   
  ]]></format>
         </remarks>
@@ -2843,7 +2843,7 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
         <ReturnType>System.Data.StateChangeEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続の状態が変更されたときに発生します。</summary>
+        <summary>接続の状態が変化したときに発生します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2888,7 +2888,7 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 統計情報の収集を有効にして、パフォーマンスに与える影響は多少、したがってを有効にすることが必要な場合にのみです。  
+ 統計情報の収集を有効にすることは軽微ですが、パフォーマンスには大きな影響があるため、必要な場合にのみ有効にする必要があります。  
   
  ]]></format>
         </remarks>
@@ -2924,7 +2924,7 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[
 
 ## Remarks  
-または明示的にコミットする必要がありますを使用してトランザクションをロールバック、トランザクションが完了すると、<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッド。
+トランザクションが完了したら、メソッド<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。
 
 ]]></format>
         </remarks>
@@ -2954,14 +2954,14 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
         <Parameter Name="iso" Type="System.Data.IsolationLevel" Index="0" FrameworkAlternate="netframework-1.1" />
       </Parameters>
       <Docs>
-        <param name="iso"><see cref="T:System.Data.IsolationLevel" /> 値のいずれか 1 つ。</param>
+        <param name="iso"><see cref="T:System.Data.IsolationLevel" /> 値のいずれか。</param>
         <summary>指定した <see cref="T:System.Data.IsolationLevel" /> 値を使用して、データベース トランザクションを開始します。</summary>
         <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[
 
 ## Remarks  
-または明示的にコミットする必要がありますを使用してトランザクションをロールバック、トランザクションが完了すると、<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッド。
+トランザクションが完了したら、メソッド<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。
 
 ]]></format>
         </remarks>
@@ -3031,7 +3031,7 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
 ## Remarks  
  このメンバーは、明示的なインターフェイス メンバーの実装です。 これは、<xref:System.Data.SqlClient.SqlConnection> のインスタンスが <xref:System.ICloneable> インターフェイスにキャストされる場合のみ、使用できます。  
   
- このメンバーは、.NET Compact Framework でのみサポートされます。  
+ このメンバーは、.NET Compact Framework によってのみサポートされます。  
   
  ]]></format>
         </remarks>
@@ -3083,12 +3083,12 @@ app.config ファイルの <see langword="&lt;system.data.localdb&gt;" /> タグ
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 文字列には、通常、クライアントのネットワーク名が含まれています。 <xref:System.Data.SqlClient.SqlConnection.WorkstationId%2A>プロパティに対応して、`Workstation ID`接続文字列プロパティ。  
+ 文字列には、通常、クライアントのネットワーク名が含まれます。 プロパティ<xref:System.Data.SqlClient.SqlConnection.WorkstationId%2A>は、 `Workstation ID`接続文字列プロパティに対応します。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.SqlClient.SqlConnection>し、表示、<xref:System.Data.SqlClient.SqlConnection.WorkstationId%2A>プロパティ。  
+ 次の例では<xref:System.Data.SqlClient.SqlConnection> 、を作成<xref:System.Data.SqlClient.SqlConnection.WorkstationId%2A>し、プロパティを表示します。  
   
  [!code-csharp[Classic WebData SqlConnection.WorkstationId Example#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData SqlConnection.WorkstationId Example/CS/source.cs#1)]
  [!code-vb[Classic WebData SqlConnection.WorkstationId Example#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData SqlConnection.WorkstationId Example/VB/source.vb#1)]  

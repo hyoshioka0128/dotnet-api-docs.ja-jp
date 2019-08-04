@@ -1,5 +1,5 @@
 <Type Name="UCOMITypeLib" FullName="System.Runtime.InteropServices.UCOMITypeLib">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="cdab968db06e9756b2fa736a9db32523a1970b94" /><Meta Name="ms.sourcegitcommit" Value="2767b5903996fbd7e2b81eda1114dfc9d0d9db63" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="05/02/2019" /><Meta Name="ms.locfileid" Value="65014733" /></Metadata><TypeSignature Language="C#" Value="public interface UCOMITypeLib" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="774d1a3c1753a35ca69987a35a6984406f5dbe2c" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68541461" /></Metadata><TypeSignature Language="C#" Value="public interface UCOMITypeLib" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract UCOMITypeLib" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.InteropServices.UCOMITypeLib" />
   <TypeSignature Language="VB.NET" Value="Public Interface UCOMITypeLib" />
@@ -40,7 +40,7 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については、`ITypeLib`インターフェイス、MSDN ライブラリを参照してください。  
+ インターフェイスの`ITypeLib`詳細については、MSDN ライブラリを参照してください。  
   
  ]]></format>
     </remarks>
@@ -73,20 +73,20 @@
       </Parameters>
       <Docs>
         <param name="szNameBuf">検索する名前。</param>
-        <param name="lHashVal">検索速度をハッシュ値を計算、<see langword="LHashValOfNameSys" />関数。 場合<paramref name="lHashVal" />が 0 の値が計算されます場合、。</param>
-        <param name="ppTInfo">正常に返されたで指定された名前が含まれている型の説明へのポインターの配列<paramref name="szNameBuf" />します。</param>
-        <param name="rgMemId">配列、<see langword="MEMBERID" />の; 検出された項目の<paramref name="rgMemId" /> [i] は、<see langword="MEMBERID" />で指定された型の説明にインデックスを作成する<paramref name="ppTInfo" />[i]。 <see langword="null" /> にすることはできません。</param>
-        <param name="pcFound">エントリを検索するインスタンスの数を示します。 たとえば、 <paramref name="pcFound" /> = 1 は、最初の出現箇所を呼び出すことができます。 1 つのインスタンスが検出されると、検索を停止します。  
+        <param name="lHashVal"><see langword="LHashValOfNameSys" /> 関数によって計算され、検索を高速化するハッシュ値。 <paramref name="lHashVal" /> が 0 の場合、値が計算されます。</param>
+        <param name="ppTInfo">正常に返された場合は、<paramref name="szNameBuf" /> で指定した名前を格納している型の説明へのポインターの配列。</param>
+        <param name="rgMemId">検出された項目の <see langword="MEMBERID" /> の配列。<paramref name="rgMemId" />[i] は、<paramref name="ppTInfo" />[i] によって指定される型の説明にインデックスを作成する <see langword="MEMBERID" /> です。 <see langword="null" /> にすることはできません。</param>
+        <param name="pcFound">開始時に、検索するインスタンス数を示します。 たとえば、最初の項目を検索するには、<paramref name="pcFound" /> = 1 を呼び出します。 検索は 1 つのインスタンスが見つかったときに停止します。  
   
-終了時に、検出されたインスタンスの数を示します。 場合、<see langword="in" />と<see langword="out" />値<paramref name="pcFound" />が同じ名前を含む複数の種類の説明がある可能性があります。</param>
-        <summary>タイプ ライブラリ内の型の説明の出現箇所を検索します。</summary>
+終了時には、検索されたインスタンス数を示します。 <paramref name="pcFound" /> の <see langword="in" /> 値と <see langword="out" /> 値が同じ場合は、その名前を含む型の説明がもっと多く存在している可能性があります。</param>
+        <summary>タイプ ライブラリで型の説明を検索します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 十分な大きさである必要があります`rgMemId`を保持する`pcFound`エントリ。  
+ エントリを保持`pcFound`するのに`rgMemId`十分な領域が必要です。  
   
- 詳細については`ITypeLib::FindName`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::FindName`  
   
  ]]></format>
         </remarks>
@@ -123,16 +123,16 @@
       </Parameters>
       <Docs>
         <param name="index">ドキュメントが返される型の説明のインデックス。</param>
-        <param name="strName">指定した項目の名前を含む文字列を返します。</param>
-        <param name="strDocString">指定した項目のドキュメント文字列を含む文字列を返します。</param>
+        <param name="strName">指定した項目の名前を格納している文字列を返します。</param>
+        <param name="strDocString">指定した項目のドキュメント文字列を格納している文字列を返します。</param>
         <param name="dwHelpContext">指定した項目に関連付けられたヘルプ コンテキスト識別子を返します。</param>
-        <param name="strHelpFile">ヘルプ ファイルの完全修飾名を含む文字列を返します。</param>
-        <summary>ライブラリのドキュメント文字列、完全なヘルプ ファイルの名前とパス、およびヘルプ ファイル内のライブラリ ヘルプ トピックのコンテキスト id を取得します。</summary>
+        <param name="strHelpFile">ヘルプ ファイルの完全限定名を格納している文字列を返します。</param>
+        <summary>ヘルプ ファイルのライブラリ ヘルプ トピックのライブラリ ドキュメント文字列、完全なヘルプ ファイル名とパス、およびコンテキスト識別子を取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::GetDocumentation`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::GetDocumentation`  
   
  ]]></format>
         </remarks>
@@ -164,15 +164,15 @@
         <Parameter Name="ppTLibAttr" Type="System.IntPtr" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="ppTLibAttr">正常に返された場合は、ライブラリの属性を格納する構造体。</param>
-        <summary>ライブラリの属性を格納する構造体を取得します。</summary>
+        <param name="ppTLibAttr">正常に返された場合は、ライブラリの属性を格納している構造体。</param>
+        <summary>ライブラリの属性を格納している構造体を取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって参照される構造体の値`ppTLibAttr`によって取得できます<xref:System.Runtime.InteropServices.Marshal.PtrToStructure%2A>します。  
+ に`ppTLibAttr`よって参照される構造体の値は<xref:System.Runtime.InteropServices.Marshal.PtrToStructure%2A>、によって取得できます。  
   
- 詳細については`ITypeLib::GetTypeLibAttr`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::GetTypeLibAttr`  
   
  ]]></format>
         </remarks>
@@ -200,13 +200,13 @@
         <Parameter Name="ppTComp" Type="System.Runtime.InteropServices.UCOMITypeComp" RefType="out" Index="0" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="ppTComp">正常に返されたのインスタンスを<see langword="UCOMITypeComp" />このインスタンス<see langword="ITypeLib" />します。</param>
-        <summary>ライブラリの型、変数、定数、およびグローバル関数をバインドするクライアント コンパイラを有効にします。</summary>
+        <param name="ppTComp">正常に返された場合は、この <see langword="UCOMITypeComp" /> の <see langword="ITypeLib" /> インスタンスのインスタンス。</param>
+        <summary>クライアント コンパイラがライブラリの型、変数、定数、およびグローバル関数をバインドできるようにします。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::GetTypeComp`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::GetTypeComp`  
   
  ]]></format>
         </remarks>
@@ -235,14 +235,14 @@
         <Parameter Name="ppTI" Type="System.Runtime.InteropServices.UCOMITypeInfo" RefType="out" Index="1" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="index">インデックス、<see langword="UCOMITypeInfo" />インターフェイスを返します。</param>
-        <param name="ppTI">正常に返さ、<see langword="UCOMITypeInfo" />によって参照される型を記述する<paramref name="index" />します。</param>
+        <param name="index">返される <see langword="UCOMITypeInfo" /> インターフェイスのインデックス。</param>
+        <param name="ppTI">正常に返された場合は、<paramref name="index" /> が参照する型を記述する <see langword="UCOMITypeInfo" />。</param>
         <summary>ライブラリ内の指定した型の説明を取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::GetTypeInfo`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::GetTypeInfo`  
   
  ]]></format>
         </remarks>
@@ -272,13 +272,13 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>タイプ ライブラリ内の型の説明の数を返します。</summary>
-        <returns>タイプ ライブラリ内の型の説明の数。</returns>
+        <summary>タイプ ライブラリにある型の説明の数を返します。</summary>
+        <returns>タイプ ライブラリにある型の説明の数。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::GetTypeInfoCount`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::GetTypeInfoCount`  
   
  ]]></format>
         </remarks>
@@ -307,14 +307,14 @@
         <Parameter Name="ppTInfo" Type="System.Runtime.InteropServices.UCOMITypeInfo" RefType="out" Index="1" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="guid">型情報が要求されたクラスの CLSID のインターフェイスの IID。</param>
-        <param name="ppTInfo">正常に返された、要求された<see langword="ITypeInfo" />インターフェイス。</param>
-        <summary>指定された GUID に対応する型の説明を取得します。</summary>
+        <param name="guid">型情報を要求したクラスの CLSID のインターフェイスの IID。</param>
+        <param name="ppTInfo">正常に返された場合は、要求した <see langword="ITypeInfo" /> インターフェイス。</param>
+        <summary>指定された GUID に対応するタイプ記述を取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::GetTypeInfoOfGuid`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::GetTypeInfoOfGuid`  
   
  ]]></format>
         </remarks>
@@ -340,10 +340,17 @@
         <Parameter Name="pTKind" Type="System.Runtime.InteropServices.ComTypes.TYPEKIND" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <param name="pTKind">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="index">タイプ ライブラリ内の型の説明のインデックス</param>
+        <param name="pTKind">型の説明に関する <see langword="TYPEKIND" /> 列挙体への参照。</param>
+        <summary>型の説明の型を取得します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ 詳細については、「 [ITypeLib:: GetTypeInfoType](/windows/win32/api/oaidl/nf-oaidl-itypelib-gettypeinfotype)」を参照してください。  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetTypeInfoType">
@@ -369,14 +376,14 @@
         <Parameter Name="pTKind" Type="System.Runtime.InteropServices.TYPEKIND" RefType="out" Index="1" FrameworkAlternate="netframework-1.1;netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;xamarinandroid-7.1;xamarinmac-3.0" />
       </Parameters>
       <Docs>
-        <param name="index">タイプ ライブラリ内の型説明のインデックス。</param>
-        <param name="pTKind">参照、<see langword="TYPEKIND" />列挙型の説明。</param>
-        <summary>型の説明の種類を取得します。</summary>
+        <param name="index">タイプ ライブラリ内の型の説明のインデックス。</param>
+        <param name="pTKind">型の説明の <see langword="TYPEKIND" /> 列挙体への参照。</param>
+        <summary>型の説明の型を取得します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::GetTypeInfoOfType`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::GetTypeInfoOfType`  
   
  ]]></format>
         </remarks>
@@ -410,14 +417,14 @@
       </Parameters>
       <Docs>
         <param name="szNameBuf">テストする文字列。</param>
-        <param name="lHashVal">ハッシュ値<paramref name="szNameBuf" />します。</param>
-        <summary>渡された文字列には、型の名前が含まれています。 または、メンバーは、ライブラリで説明されているかどうかを示します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="szNameBuf" />がタイプ ライブラリ内で見つかった場合は<see langword="false" />します。</returns>
+        <param name="lHashVal"><paramref name="szNameBuf" /> のハッシュ値。</param>
+        <summary>渡された文字列がライブラリで記述される型またはメンバーの名前を格納しているかどうかを示します。</summary>
+        <returns><paramref name="szNameBuf" /> がタイプ ライブラリに存在する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::IsName`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::IsName`  
   
  ]]></format>
         </remarks>
@@ -449,13 +456,13 @@
         <Parameter Name="pTLibAttr" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="pTLibAttr"><see langword="TLIBATTR" />を解放します。</param>
-        <summary>リリース、<see cref="T:System.Runtime.InteropServices.TYPELIBATTR" />から最初に取得された<see cref="M:System.Runtime.InteropServices.UCOMITypeLib.GetLibAttr(System.IntPtr@)" />します。</summary>
+        <param name="pTLibAttr">解放する <see langword="TLIBATTR" />。</param>
+        <summary><see cref="T:System.Runtime.InteropServices.TYPELIBATTR" /> から初めに取得した <see cref="M:System.Runtime.InteropServices.UCOMITypeLib.GetLibAttr(System.IntPtr@)" /> を解放します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 詳細については`ITypeLib::ReleaseTLibAttr`、MSDN ライブラリを参照してください。  
+ の詳細については、MSDNライブラリを参照してください。`ITypeLib::ReleaseTLibAttr`  
   
  ]]></format>
         </remarks>

@@ -1,5 +1,5 @@
 <Type Name="DSA" FullName="System.Security.Cryptography.DSA">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="6ac44eda268d88916404c0d78df632e3adcc6208" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58680792" /></Metadata><TypeSignature Language="C#" Value="public abstract class DSA : System.Security.Cryptography.AsymmetricAlgorithm" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="39575b26498a18eb4c633d1038fb72cfed7c271a" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543600" /></Metadata><TypeSignature Language="C#" Value="public abstract class DSA : System.Security.Cryptography.AsymmetricAlgorithm" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DSA extends System.Security.Cryptography.AsymmetricAlgorithm" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.DSA" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class DSA&#xA;Inherits AsymmetricAlgorithm" />
@@ -37,14 +37,18 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用することができます、<xref:System.Security.Cryptography.DSA>クラスと派生クラスで、データの整合性を保護するためのデジタル署名を作成します。  <xref:System.Security.Cryptography.DSACryptoServiceProvider>このクラスの実装を提供します。  
+ <xref:System.Security.Cryptography.DSA>クラスと派生クラスを使用して、データの整合性を保護するためのデジタル署名を作成できます。  は<xref:System.Security.Cryptography.DSACryptoServiceProvider> 、このクラスの実装を提供します。  
   
- 最初、送信者はメッセージのデジタル署名する公開キー システムを使用するには、メッセージ ダイジェストを作成するためにハッシュ関数を適用します。 送信者は、メッセージ ダイジェストを送信者の署名を作成する送信者の秘密キーで暗号化します。 メッセージと署名を受信、受信側は送信者の公開キーを使用して、メッセージ ダイジェストを復旧する署名を復号化し、が使用されている同じハッシュ アルゴリズムを使用して、メッセージのハッシュを計算します。 送信者から受信したメッセージ ダイジェストを受信者が完全に一致する計算、メッセージ ダイジェスト、受信側メッセージが転送中に変更されていないと想定できます。 送信者の公開キーに共通の知識があるため、すべてのユーザーが、署名を検証できることに注意してください。  
+ 公開キーシステムを使用してメッセージにデジタル署名するには、最初にメッセージにハッシュ関数を適用してメッセージダイジェストを作成します。 送信側は、送信者の秘密キーを使用してメッセージダイジェストを暗号化し、送信者の個人用署名を作成します。 受信側は、メッセージと署名を受け取ると、送信者の公開キーを使用して署名の暗号化を解除し、メッセージダイジェストを回復し、送信者が使用したのと同じハッシュアルゴリズムを使用してメッセージをハッシュします。 受信側が送信するメッセージダイジェストと正確に一致するメッセージダイジェストが送信側から受信された場合、受信側は、メッセージが転送中に変更されていないと見なすことができます。 送信者の公開キーはよく知られているため、だれでも署名を検証できます。  
   
- 新しい非対称アルゴリズムを利用できます。 使用を検討して、<xref:System.Security.Cryptography.RSA>クラス、<xref:System.Security.Cryptography.ECDsa>クラス、または<xref:System.Security.Cryptography.ECDiffieHellman>クラスの代わりに、<xref:System.Security.Cryptography.DSA>クラス。 使用<xref:System.Security.Cryptography.DSA>従来のアプリケーションとデータを互換性のためだけです。  
+> [!IMPORTANT]
+> 新しい非対称アルゴリズムを使用できます。 クラスの<xref:System.Security.Cryptography.RSA> <xref:System.Security.Cryptography.ECDsa> 代わりにクラスまたはクラスを使用することを検討<xref:System.Security.Cryptography.DSA>してください。 レガシ<xref:System.Security.Cryptography.DSA>アプリケーションとデータとの互換性のためだけに使用してください。  
   
- このアルゴリズムでは、64 ビット単位で 1024 ビットから 512 ビットのキー長をサポートしています。  
-  
+ DSA アルゴリズムには、2つの異なるバージョンが存在します。
+FIPS 186-2 で説明されている元の形式では、ハッシュアルゴリズムとして SHA-1 を使用する必要があり、64ビット単位で512ビットから1024ビットまでのキーの長さをサポートしています。
+アルゴリズムの更新バージョンは、FIPS 186-3 で説明されていました。このアルゴリズムでは、SHA-1 ファミリのハッシュアルゴリズムを使用できるようになり、2048ビットキーと3072ビットキーがサポートされるようになりました。
+この型のすべての派生実装で、DSA に対する FIPS 186-3 の機能強化がサポートされているわけではありません。 サポートは、プロパティを使用<xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes>して検出できます。
+ 
  ]]></format>
     </remarks>
     <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
@@ -162,7 +166,7 @@
         <summary>キー サイズを指定して新しい短期 DSA キーを作成します。</summary>
         <returns>指定したキー サイズの新しい短期 DSA キー。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="keySizeInBits" /> は <see cref="P:System.Security.Cryptography.AsymmetricAlgorithm.KeySize" /> とは異なります。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="keySizeInBits" /> は <see cref="P:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes" /> によって許可されていません。</exception>
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -243,7 +247,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.DSA>System.Security.Cryptography.DSA の名前を使用します。  
+ で<xref:System.Security.Cryptography.DSA>は、という名前を使用します。  
   
  ]]></format>
         </remarks>
@@ -458,6 +462,74 @@
         <exception cref="T:System.NotImplementedException">派生クラスはこのメソッドをオーバーライドする必要があります。</exception>
       </Docs>
     </Member>
+    <Member MemberName="ImportEncryptedPkcs8PrivateKey">
+      <MemberSignature Language="C#" Value="public override void ImportEncryptedPkcs8PrivateKey (ReadOnlySpan&lt;byte&gt; passwordBytes, ReadOnlySpan&lt;byte&gt; source, out int bytesRead);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ImportEncryptedPkcs8PrivateKey(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; passwordBytes, valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; source, [out] int32&amp; bytesRead) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.ImportEncryptedPkcs8PrivateKey(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub ImportEncryptedPkcs8PrivateKey (passwordBytes As ReadOnlySpan(Of Byte), source As ReadOnlySpan(Of Byte), ByRef bytesRead As Integer)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override void ImportEncryptedPkcs8PrivateKey(ReadOnlySpan&lt;System::Byte&gt; passwordBytes, ReadOnlySpan&lt;System::Byte&gt; source, [Runtime::InteropServices::Out] int % bytesRead);" />
+      <MemberSignature Language="F#" Value="override this.ImportEncryptedPkcs8PrivateKey : ReadOnlySpan&lt;byte&gt; * ReadOnlySpan&lt;byte&gt; *  -&gt; unit" Usage="dSA.ImportEncryptedPkcs8PrivateKey (passwordBytes, source, bytesRead)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="passwordBytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="source" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="1" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="passwordBytes">To be added.</param>
+        <param name="source">To be added.</param>
+        <param name="bytesRead">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImportEncryptedPkcs8PrivateKey">
+      <MemberSignature Language="C#" Value="public override void ImportEncryptedPkcs8PrivateKey (ReadOnlySpan&lt;char&gt; password, ReadOnlySpan&lt;byte&gt; source, out int bytesRead);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ImportEncryptedPkcs8PrivateKey(valuetype System.ReadOnlySpan`1&lt;char&gt; password, valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; source, [out] int32&amp; bytesRead) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.ImportEncryptedPkcs8PrivateKey(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Byte},System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub ImportEncryptedPkcs8PrivateKey (password As ReadOnlySpan(Of Char), source As ReadOnlySpan(Of Byte), ByRef bytesRead As Integer)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override void ImportEncryptedPkcs8PrivateKey(ReadOnlySpan&lt;char&gt; password, ReadOnlySpan&lt;System::Byte&gt; source, [Runtime::InteropServices::Out] int % bytesRead);" />
+      <MemberSignature Language="F#" Value="override this.ImportEncryptedPkcs8PrivateKey : ReadOnlySpan&lt;char&gt; * ReadOnlySpan&lt;byte&gt; *  -&gt; unit" Usage="dSA.ImportEncryptedPkcs8PrivateKey (password, source, bytesRead)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="password" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="source" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="1" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="password">To be added.</param>
+        <param name="source">To be added.</param>
+        <param name="bytesRead">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ImportParameters">
       <MemberSignature Language="C#" Value="public abstract void ImportParameters (System.Security.Cryptography.DSAParameters parameters);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ImportParameters(valuetype System.Security.Cryptography.DSAParameters parameters) cil managed" />
@@ -494,6 +566,70 @@
         <summary>派生クラスでオーバーライドされると、指定された <see cref="T:System.Security.Cryptography.DSAParameters" /> をインポートします。</summary>
         <remarks>To be added.</remarks>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
+      </Docs>
+    </Member>
+    <Member MemberName="ImportPkcs8PrivateKey">
+      <MemberSignature Language="C#" Value="public override void ImportPkcs8PrivateKey (ReadOnlySpan&lt;byte&gt; source, out int bytesRead);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ImportPkcs8PrivateKey(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; source, [out] int32&amp; bytesRead) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.ImportPkcs8PrivateKey(System.ReadOnlySpan{System.Byte},System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub ImportPkcs8PrivateKey (source As ReadOnlySpan(Of Byte), ByRef bytesRead As Integer)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override void ImportPkcs8PrivateKey(ReadOnlySpan&lt;System::Byte&gt; source, [Runtime::InteropServices::Out] int % bytesRead);" />
+      <MemberSignature Language="F#" Value="override this.ImportPkcs8PrivateKey : ReadOnlySpan&lt;byte&gt; *  -&gt; unit" Usage="dSA.ImportPkcs8PrivateKey (source, bytesRead)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="bytesRead">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImportSubjectPublicKeyInfo">
+      <MemberSignature Language="C#" Value="public override void ImportSubjectPublicKeyInfo (ReadOnlySpan&lt;byte&gt; source, out int bytesRead);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ImportSubjectPublicKeyInfo(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; source, [out] int32&amp; bytesRead) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.ImportSubjectPublicKeyInfo(System.ReadOnlySpan{System.Byte},System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub ImportSubjectPublicKeyInfo (source As ReadOnlySpan(Of Byte), ByRef bytesRead As Integer)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override void ImportSubjectPublicKeyInfo(ReadOnlySpan&lt;System::Byte&gt; source, [Runtime::InteropServices::Out] int % bytesRead);" />
+      <MemberSignature Language="F#" Value="override this.ImportSubjectPublicKeyInfo : ReadOnlySpan&lt;byte&gt; *  -&gt; unit" Usage="dSA.ImportSubjectPublicKeyInfo (source, bytesRead)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="bytesRead">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <MemberGroup MemberName="SignData">
@@ -623,14 +759,14 @@
         <summary>指定したハッシュ アルゴリズムを使用して、指定したバイト配列の一部分のハッシュ値を計算し、結果のハッシュ値に署名します。</summary>
         <returns>指定されたデータの DSA 署名。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> が 0 未満です。  
   
-または 
+- または - 
  <paramref name="count" /> が 0 未満です。  
   
-または 
+- または - 
  <paramref name="offset" /> + <paramref name="count" /> - 1 の結果は、<paramref name="data" /> の上限を超えるインデックスになります。</exception>
       </Docs>
     </Member>
@@ -701,7 +837,161 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="hash">To be added.</param>
+        <param name="hash">署名するハッシュ。</param>
+        <param name="destination">署名を受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。</param>
+        <summary>指定されたハッシュの DSA 署名を、指定されたバッファーに作成しようとします。</summary>
+        <returns><paramref name="destination" /> が結果を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドの既定の実装では、 <xref:System.Security.Cryptography.DSA.CreateSignature(System.Byte[])>を呼び出し、結果を`destination`にコピーします。
+派生型では、このメソッドをオーバーライドして、中間の配列を作成しないようにする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">このインスタンスでは公開キーのみ表されます。
+
+または
+
+この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、<paramref name="hash" /> は 20 バイトの値ではありません。
+
+または
+
+それ以外の場合は署名の作成が失敗しました。</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="TryExportEncryptedPkcs8PrivateKey">
+      <MemberSignature Language="C#" Value="public override bool TryExportEncryptedPkcs8PrivateKey (ReadOnlySpan&lt;byte&gt; passwordBytes, System.Security.Cryptography.PbeParameters pbeParameters, Span&lt;byte&gt; destination, out int bytesWritten);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TryExportEncryptedPkcs8PrivateKey(valuetype System.ReadOnlySpan`1&lt;unsigned int8&gt; passwordBytes, class System.Security.Cryptography.PbeParameters pbeParameters, valuetype System.Span`1&lt;unsigned int8&gt; destination, [out] int32&amp; bytesWritten) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.TryExportEncryptedPkcs8PrivateKey(System.ReadOnlySpan{System.Byte},System.Security.Cryptography.PbeParameters,System.Span{System.Byte},System.Int32@)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override bool TryExportEncryptedPkcs8PrivateKey(ReadOnlySpan&lt;System::Byte&gt; passwordBytes, System::Security::Cryptography::PbeParameters ^ pbeParameters, Span&lt;System::Byte&gt; destination, [Runtime::InteropServices::Out] int % bytesWritten);" />
+      <MemberSignature Language="F#" Value="override this.TryExportEncryptedPkcs8PrivateKey : ReadOnlySpan&lt;byte&gt; * System.Security.Cryptography.PbeParameters * Span&lt;byte&gt; *  -&gt; bool" Usage="dSA.TryExportEncryptedPkcs8PrivateKey (passwordBytes, pbeParameters, destination, bytesWritten)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="passwordBytes" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="pbeParameters" Type="System.Security.Cryptography.PbeParameters" Index="1" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="destination" Type="System.Span&lt;System.Byte&gt;" Index="2" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="passwordBytes">To be added.</param>
+        <param name="pbeParameters">To be added.</param>
+        <param name="destination">To be added.</param>
+        <param name="bytesWritten">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryExportEncryptedPkcs8PrivateKey">
+      <MemberSignature Language="C#" Value="public override bool TryExportEncryptedPkcs8PrivateKey (ReadOnlySpan&lt;char&gt; password, System.Security.Cryptography.PbeParameters pbeParameters, Span&lt;byte&gt; destination, out int bytesWritten);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TryExportEncryptedPkcs8PrivateKey(valuetype System.ReadOnlySpan`1&lt;char&gt; password, class System.Security.Cryptography.PbeParameters pbeParameters, valuetype System.Span`1&lt;unsigned int8&gt; destination, [out] int32&amp; bytesWritten) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.TryExportEncryptedPkcs8PrivateKey(System.ReadOnlySpan{System.Char},System.Security.Cryptography.PbeParameters,System.Span{System.Byte},System.Int32@)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override bool TryExportEncryptedPkcs8PrivateKey(ReadOnlySpan&lt;char&gt; password, System::Security::Cryptography::PbeParameters ^ pbeParameters, Span&lt;System::Byte&gt; destination, [Runtime::InteropServices::Out] int % bytesWritten);" />
+      <MemberSignature Language="F#" Value="override this.TryExportEncryptedPkcs8PrivateKey : ReadOnlySpan&lt;char&gt; * System.Security.Cryptography.PbeParameters * Span&lt;byte&gt; *  -&gt; bool" Usage="dSA.TryExportEncryptedPkcs8PrivateKey (password, pbeParameters, destination, bytesWritten)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="password" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="pbeParameters" Type="System.Security.Cryptography.PbeParameters" Index="1" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="destination" Type="System.Span&lt;System.Byte&gt;" Index="2" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="password">To be added.</param>
+        <param name="pbeParameters">To be added.</param>
+        <param name="destination">To be added.</param>
+        <param name="bytesWritten">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryExportPkcs8PrivateKey">
+      <MemberSignature Language="C#" Value="public override bool TryExportPkcs8PrivateKey (Span&lt;byte&gt; destination, out int bytesWritten);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TryExportPkcs8PrivateKey(valuetype System.Span`1&lt;unsigned int8&gt; destination, [out] int32&amp; bytesWritten) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.TryExportPkcs8PrivateKey(System.Span{System.Byte},System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function TryExportPkcs8PrivateKey (destination As Span(Of Byte), ByRef bytesWritten As Integer) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override bool TryExportPkcs8PrivateKey(Span&lt;System::Byte&gt; destination, [Runtime::InteropServices::Out] int % bytesWritten);" />
+      <MemberSignature Language="F#" Value="override this.TryExportPkcs8PrivateKey : Span&lt;byte&gt; *  -&gt; bool" Usage="dSA.TryExportPkcs8PrivateKey (destination, bytesWritten)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="destination" Type="System.Span&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
+        <param name="destination">To be added.</param>
+        <param name="bytesWritten">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryExportSubjectPublicKeyInfo">
+      <MemberSignature Language="C#" Value="public override bool TryExportSubjectPublicKeyInfo (Span&lt;byte&gt; destination, out int bytesWritten);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TryExportSubjectPublicKeyInfo(valuetype System.Span`1&lt;unsigned int8&gt; destination, [out] int32&amp; bytesWritten) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Cryptography.DSA.TryExportSubjectPublicKeyInfo(System.Span{System.Byte},System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function TryExportSubjectPublicKeyInfo (destination As Span(Of Byte), ByRef bytesWritten As Integer) As Boolean" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override bool TryExportSubjectPublicKeyInfo(Span&lt;System::Byte&gt; destination, [Runtime::InteropServices::Out] int % bytesWritten);" />
+      <MemberSignature Language="F#" Value="override this.TryExportSubjectPublicKeyInfo : Span&lt;byte&gt; *  -&gt; bool" Usage="dSA.TryExportSubjectPublicKeyInfo (destination, bytesWritten)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Security.Cryptography.Algorithms</AssemblyName>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>netstandard</AssemblyName>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="destination" Type="System.Span&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
+        <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
+      </Parameters>
+      <Docs>
         <param name="destination">To be added.</param>
         <param name="bytesWritten">To be added.</param>
         <summary>To be added.</summary>
@@ -738,13 +1028,20 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="data">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="hashAlgorithm">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="data">ハッシュされるデータ。</param>
+        <param name="destination">ハッシュ値を受け取るバイト スパン。</param>
+        <param name="hashAlgorithm">使用するハッシュ アルゴリズムの名前。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。</param>
+        <summary>指定されたバッファーに指定されたデータのハッシュ値を計算しようとします。</summary>
+        <returns><paramref name="destination" /> が結果を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドの既定の実装では、 <xref:System.Security.Cryptography.DSA.HashData(System.Byte[], System.Int32, System.Int32, System.Security.Cryptography.HashAlgorithmName)>を呼び出し、結果を`destination`にコピーします。
+派生型では、このメソッドをオーバーライドして、中間の配列を作成しないようにする必要があります。
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TrySignData">
@@ -776,12 +1073,12 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="data">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="hashAlgorithm">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="data">ハッシュおよび署名するデータ。</param>
+        <param name="destination">署名を受け取るバイト スパン。</param>
+        <param name="hashAlgorithm">使用するハッシュ アルゴリズムの名前。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。</param>
+        <summary>指定されたデータの DSA 署名を、指定されたバッファーに作成しようとします。</summary>
+        <returns><paramref name="destination" /> が結果を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -835,7 +1132,12 @@
         <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。  
   
 - または - 
- <paramref name="signature" /> は <see langword="null" />です。</exception>
+ <paramref name="signature" /> が <see langword="null" /> です。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ アルゴリズムは SHA-1 ではありません。
+
+または
+
+それ以外の場合は署名の検証が失敗しました。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
       </Docs>
     </Member>
@@ -881,6 +1183,11 @@
 - または - 
  <paramref name="signature" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ アルゴリズムは SHA-1 ではありません。
+
+- または -
+
+それ以外の場合は署名の検証が失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="VerifyData">
@@ -911,12 +1218,18 @@
         <Parameter Name="hashAlgorithm" Type="System.Security.Cryptography.HashAlgorithmName" Index="2" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="data">To be added.</param>
-        <param name="signature">To be added.</param>
-        <param name="hashAlgorithm">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="data">署名されるデータ。</param>
+        <param name="signature">検証される署名。</param>
+        <param name="hashAlgorithm">データのハッシュ値を作成するために使用されるハッシュ アルゴリズム。</param>
+        <summary>指定されたハッシュ アルゴリズムを使用して、バイト スパン内のデータのハッシュ値を計算し、これを指定された署名と比較することによって、デジタル署名が有効であることを確認します。</summary>
+        <returns>デジタル署名が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ アルゴリズムは SHA-1 ではありません。
+
+または
+
+それ以外の場合は署名の検証が失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="VerifyData">
@@ -960,18 +1273,23 @@
         <summary>指定したハッシュ アルゴリズムを使用して、バイト配列の部分のデータのハッシュ値を計算し、これを指定した署名と比較することによって、デジタル署名が有効であることを確認します。</summary>
         <returns>デジタル署名が有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> は <see langword="null" />です。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="data" /> が <see langword="null" /> です。  
   
 - または - 
  <paramref name="signature" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="hashAlgorithm" />.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name" /> は <see langword="null" /> または <see cref="F:System.String.Empty" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset" /> が 0 未満です。  
   
-または 
+- または - 
  <paramref name="count" /> が 0 未満です。  
   
 または 
  <paramref name="offset" /> + <paramref name="count" /> - 1 の結果は、<paramref name="data" /> の上限を超えるインデックスになります。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ アルゴリズムは SHA-1 ではありません。
+
+または
+
+それ以外の場合は署名の検証が失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="VerifySignature">
@@ -1012,6 +1330,11 @@
         <summary>派生クラスでオーバーライドされると、指定されたデータの <see cref="T:System.Security.Cryptography.DSA" /> 署名を検証します。</summary>
         <returns><paramref name="rgbSignature" /> が、指定したハッシュ アルゴリズムとキーを使用して <paramref name="rgbHash" /> に対して算出された署名と一致する場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ値の長さは 20 バイトではありません。
+
+または
+
+それ以外の場合は署名の検証が失敗しました。</exception>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -1042,11 +1365,23 @@
         <Parameter Name="signature" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="1" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="hash">To be added.</param>
-        <param name="signature">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="hash">検証するデータ ハッシュ。</param>
+        <param name="signature">検証する署名。</param>
+        <summary>指定されたデータ ハッシュに対してデジタル署名が有効であることを検証します。</summary>
+        <returns>デジタル署名がハッシュに対して有効な場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドの既定の実装は<xref:System.Security.Cryptography.DSA.VerifySignature(System.Byte[], System.Byte[])> 、範囲を配列にコピーした後にを呼び出します。
+派生型では、このメソッドをオーバーライドして、中間の配列を作成しないようにする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">この実装の種類では従来の DSA (FIPS 186-2) のみがサポートされます。また、ハッシュ値の長さは 20 バイトではありません。
+
+- または -
+
+それ以外の場合は署名の検証が失敗しました。</exception>
       </Docs>
     </Member>
   </Members>

@@ -1,5 +1,5 @@
 <Type Name="FormattableString" FullName="System.FormattableString">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="07cb0b4881e653c916fc036ec59a97517e15fc53" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58724057" /></Metadata><TypeSignature Language="C#" Value="public abstract class FormattableString : IFormattable" />
+  <TypeSignature Language="C#" Value="public abstract class FormattableString : IFormattable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit FormattableString extends System.Object implements class System.IFormattable" />
   <TypeSignature Language="DocId" Value="T:System.FormattableString" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class FormattableString&#xA;Implements IFormattable" />
@@ -36,9 +36,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 複合書式指定文字列は、固定テキストに、書式指定項目と呼ばれるインデックス化されたプレースホルダーが混合されて構成されます。このプレースホルダーはリスト内のオブジェクトに対応します。 書式設定操作によって生成される結果の文字列は、元の固定テキストに文字列で表されたリスト内のオブジェクトが混合されて構成されます。 複合書式指定がなどのメソッドでサポートされて<xref:System.String.Format%2A?displayProperty=nameWithType>、 <xref:System.Console.WriteLine%2A?displayProperty=nameWithType>、および<xref:System.Text.StringBuilder.AppendFormat%2A?displayProperty=nameWithType>します。  複合書式指定の詳細については、次を参照してください。[複合書式指定](~/docs/standard/base-types/composite-formatting.md)します。  
+ 複合書式指定文字列は、固定テキストに、書式指定項目と呼ばれるインデックス化されたプレースホルダーが混合されて構成されます。このプレースホルダーはリスト内のオブジェクトに対応します。 書式設定操作によって生成される結果の文字列は、元の固定テキストに文字列で表されたリスト内のオブジェクトが混合されて構成されます。 複合書式指定は<xref:System.String.Format%2A?displayProperty=nameWithType>、、 <xref:System.Console.WriteLine%2A?displayProperty=nameWithType>、 <xref:System.Text.StringBuilder.AppendFormat%2A?displayProperty=nameWithType>などのメソッドでサポートされています。  複合書式指定の詳細については、「[複合書式指定](~/docs/standard/base-types/composite-formatting.md)」を参照してください。  
   
- A <xref:System.FormattableString> C# または Visual Basic で、挿入文字列からインスタンスがあります。  
+ インスタンスは、または Visual Basic のC#挿入文字列によって生成される場合があります。 <xref:System.FormattableString>  
   
  ]]></format>
     </remarks>
@@ -111,7 +111,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって返されるオブジェクトの配列から引数を取得できる、<xref:System.FormattableString.GetArguments%2A>メソッド、またはこれらは、インデックス番号から個別に取得できる、<xref:System.FormattableString.GetArgument%2A>メソッド。 個々 の引数のインデックスの範囲は 0 から<xref:System.FormattableString.ArgumentCount%2A>- 1。  
+ 引数は、 <xref:System.FormattableString.GetArguments%2A>メソッドによって返されたオブジェクト配列から取得することも、 <xref:System.FormattableString.GetArgument%2A>メソッドからインデックス番号を指定して個別に取得することもできます。 個々の引数のインデックスの範囲は 0 <xref:System.FormattableString.ArgumentCount%2A> ~-1 です。  
   
  ]]></format>
         </remarks>
@@ -142,10 +142,28 @@
         <Parameter Name="formattable" Type="System.FormattableString" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="formattable">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="formattable">書式設定する文字列。</param>
+        <summary>引数が現在のカルチャの規則を使用して書式設定された結果の文字列を返します。</summary>
+        <returns>現在のカルチャの規則を使用して現在のインスタンスを書式設定した結果の文字列。</returns>
+        <remarks>
+          <format type="text/markdown">
+  <![CDA
+
+### Remarks
+
+この静的メソッドは、によっC#て次の方法でインポートできます。
+
+```csharp
+    using static System.FormattableString;
+```
+
+この import ディレクティブのスコープ内では、次のように記述することによって、挿入文字列を現在のカルチャで書式設定できます。
+
+```csharp
+    CurrentCulture($"{{ lat = {latitude}; lon = {longitude} }}");
+```
+
+          ]]></format>.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Format">
@@ -183,12 +201,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 複合書式指定文字列は、ゼロまたは個以上の固定テキスト個角かっこで区切られた、インデックス番号で示されている、1 つまたは複数の書式項目 (たとえば、 `{0}`)。 各書式項目のインデックスは、複合書式指定文字列に続くオブジェクトの一覧内の引数に対応します。 たとえば、: 次のステートメントで  
+ 複合書式指定文字列は、1つ以上の書式項目を組み合わせた0個以上の固定テキストで構成されます。これは、角かっこで区切られ`{0}`たインデックス番号 (たとえば、) によって示されます。 各書式指定項目のインデックスは、複合書式指定文字列の後にあるオブジェクトリストの引数に対応します。 たとえば、次のステートメントのようにします。  
   
  [!code-csharp[Formatting.Composite#9](~/samples/snippets/csharp/VS_Snippets_CLR/Formatting.Composite/cs/Composite1.cs#9)]
  [!code-vb[Formatting.Composite#9](~/samples/snippets/visualbasic/VS_Snippets_CLR/Formatting.Composite/vb/Composite1.vb#9)]  
   
- 複合書式指定文字列は`"Name = {0}, hours = {1:hh}"`します。  
+ 複合書式指定文字列が`"Name = {0}, hours = {1:hh}"`です。  
   
  ]]></format>
         </remarks>
@@ -269,7 +287,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- クライアントでは、配列の内容は変更しないでください。  
+ クライアントは、配列の内容を変更することはできません。  
   
  ]]></format>
         </remarks>
@@ -314,13 +332,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この静的メソッドは、次のステートメントによって、C# にインポートできます。  
+ この静的メソッドは、次のC#ステートメントを使用してでインポートできます。  
   
 ```csharp  
 using static System.FormattableString;  
 ```  
   
- スコープ内でを`using static`ディレクティブ、補間文字列可能性がありますでフォーマットされてインバリアント カルチャの規則を使用して、次のコード。  
+ この`using static`ディレクティブのスコープ内では、次のようなコードによってインバリアントカルチャの規則を使用して、挿入文字列を書式設定できます。  
   
 ```csharp  
 Invariant($"{{ lat = {latitude}; lon = {longitude} }}")   
@@ -374,7 +392,7 @@ Invariant($"{{ lat = {latitude}; lon = {longitude} }}")
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この実装は、派生クラスの<xref:System.FormattableString.ToString%28System.IFormatProvider%29>実装します。  
+ この実装は、派生クラス<xref:System.FormattableString.ToString%28System.IFormatProvider%29>の実装を呼び出します。  
   
  このメンバーは、明示的なインターフェイス実装です。 これは、<xref:System.FormattableString> のインスタンスが <xref:System.IFormattable> インターフェイスにキャストされる場合のみ、使用できます。  
   

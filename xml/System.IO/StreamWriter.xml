@@ -1,5 +1,5 @@
 <Type Name="StreamWriter" FullName="System.IO.StreamWriter">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="8950df3197d8807f20c2dca17e09051a09ae77f6" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67238119" /></Metadata><TypeSignature Language="C#" Value="public class StreamWriter : System.IO.TextWriter" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="a33bfad9d9e1c3047dcb04e8a0f28e4eddc6fd3c" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68542257" /></Metadata><TypeSignature Language="C#" Value="public class StreamWriter : System.IO.TextWriter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit StreamWriter extends System.IO.TextWriter" />
   <TypeSignature Language="DocId" Value="T:System.IO.StreamWriter" />
   <TypeSignature Language="VB.NET" Value="Public Class StreamWriter&#xA;Inherits TextWriter" />
@@ -46,21 +46,21 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.IO.StreamWriter> 派生したクラスは特定のエンコーディングで文字出力用に設計されていますが<xref:System.IO.Stream>バイト入出力用に設計されています。  
+ <xref:System.IO.StreamWriter>は、特定のエンコードでの文字出力用に設計され<xref:System.IO.Stream>ています。一方、から派生したクラスは、バイト入出力用に設計されています。  
   
 > [!IMPORTANT]
 >  この型は <xref:System.IDisposable> インターフェイスを実装します。 型の使用が完了したら、直接的または間接的に型を破棄する必要があります。 直接的に型を破棄するには、`try` / `catch` ブロック内で <xref:System.IDisposable.Dispose%2A> メソッドを呼び出します。 間接的に型を破棄するには、`using` (C# の場合) または `Using` (Visual Basic 言語) などの言語構成要素を使用します。 詳細については、<xref:System.IDisposable> インターフェイスに関するトピック内の「IDisposable を実装するオブジェクトの使用」セクションを参照してください。  
   
- <xref:System.IO.StreamWriter> 既定値のインスタンスを使用して<xref:System.Text.UTF8Encoding>それ以外の場合に指定されていない場合。 このインスタンスの`UTF8Encoding`バイト順マーク (BOM) なししたがっては構築その<xref:System.Text.Encoding.GetPreamble%2A>メソッドは空のバイト配列を返します。 このコンス トラクターの既定の utf-8 エンコードでは、無効なバイトで例外をスローします。 この動作のエンコーディング オブジェクトによって提供される動作とは異なります、<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType>プロパティ。 BOM を指定し、無効なバイトで例外がスローするかどうかを判断するには、エンコーディング オブジェクトをなど、パラメーターとして受け取るコンス トラクターを使用<xref:System.IO.StreamWriter.%23ctor%28System.String%2CSystem.Boolean%2CSystem.Text.Encoding%29>または<xref:System.IO.StreamWriter.%23ctor%2A>します。  
+ <xref:System.IO.StreamWriter>特に指定しない限り<xref:System.Text.UTF8Encoding> 、既定ではのインスタンスが使用されます。 の`UTF8Encoding`このインスタンスは、バイトオーダーマーク (BOM) を使用せず<xref:System.Text.Encoding.GetPreamble%2A>に構築されるため、メソッドは空のバイト配列を返します。 このコンストラクターの既定の UTF-8 エンコーディングでは、無効なバイトで例外がスローされます。 この動作は、プロパティの<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType> encoding オブジェクトによって提供される動作とは異なります。 BOM を指定し、無効なバイトに対して例外がスローされるかどうかを判断するに<xref:System.IO.StreamWriter.%23ctor%28System.String%2CSystem.Boolean%2CSystem.Text.Encoding%29>は、や<xref:System.IO.StreamWriter.%23ctor%2A>などのパラメーターとしてエンコーディングオブジェクトを受け取るコンストラクターを使用します。  
   
- 既定で、<xref:System.IO.StreamWriter>安全なスレッドはありません。 参照してください<xref:System.IO.TextWriter.Synchronized%2A?displayProperty=nameWithType>のスレッド セーフ ラッパー。  
+ 既定では、 <xref:System.IO.StreamWriter>はスレッドセーフではありません。 スレッド<xref:System.IO.TextWriter.Synchronized%2A?displayProperty=nameWithType>セーフなラッパーについては、「」を参照してください。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例は、使用する方法を示します、<xref:System.IO.StreamWriter>オブジェクトを使用して、C ドライブのディレクトリを一覧表示されるファイルの書き込みを<xref:System.IO.StreamReader>を読み取り、各ディレクトリ名を表示するオブジェクト。 これらのオブジェクトを使用するをお勧め、`using`ステートメント、アンマネージ リソースが適切に破棄されるようにします。 `using`ステートメントが自動的に呼び出します<xref:System.IDisposable.Dispose%2A>それを使用するコードが完了したときのオブジェクト。 使用するこの例で使用されるコンス トラクターはサポートされていません[!INCLUDE[win8_appstore_long](~/includes/win8-appstore-long-md.md)]アプリ。  
+ 次の例では、 <xref:System.IO.StreamWriter>オブジェクトを使用して、C ドライブ上のディレクトリの一覧を示すファイルを作成し、オブジェクトを<xref:System.IO.StreamReader>使用して各ディレクトリ名を読み取り、表示する方法を示します。 アンマネージリソースが正しく破棄されるように`using` 、ステートメントでこれらのオブジェクトを使用することをお勧めします。 ステートメント`using`は、それ<xref:System.IDisposable.Dispose%2A>を使用しているコードが完了すると、オブジェクトに対してを自動的に呼び出します。 この例で使用するコンストラクターは、アプリで[!INCLUDE[win8_appstore_long](~/includes/win8-appstore-long-md.md)]の使用はサポートされていません。  
   
  [!code-csharp[StreamReadWrite#1](~/samples/snippets/csharp/VS_Snippets_CLR/streamreadwrite/cs/program.cs#1)]
  [!code-vb[StreamReadWrite#1](~/samples/snippets/visualbasic/VS_Snippets_CLR/streamreadwrite/vb/module1.vb#1)]  
@@ -133,19 +133,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成、 <xref:System.IO.StreamWriter> utf-8 エンコード付きでせずバイト オーダー マーク (BOM) ので、<xref:System.Text.Encoding.GetPreamble%2A>メソッドは空のバイト配列を返します。 このコンス トラクターの既定の utf-8 エンコードでは、無効なバイトで例外をスローします。 この動作のエンコーディング オブジェクトによって提供される動作とは異なります、<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType>プロパティ。 無効なバイトで例外がスローするかどうかを指定するなど、パラメーターとしてのエンコーディング オブジェクトを受け取るコンス トラクターを使用して、<xref:System.IO.StreamWriter.%23ctor%2A>します。 <xref:System.IO.StreamWriter.BaseStream%2A>を使用してプロパティを初期化、`stream`パラメーター。 ストリームの位置はリセットされません。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter>バイト順マーク (BOM) を使用せずに utf-8 エンコーディングを使用し<xref:System.Text.Encoding.GetPreamble%2A>てを作成します。そのため、メソッドは空のバイト配列を返します。 このコンストラクターの既定の UTF-8 エンコーディングでは、無効なバイトで例外がスローされます。 この動作は、プロパティの<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType> encoding オブジェクトによって提供される動作とは異なります。 無効なバイトに対して例外がスローされるかどうかを指定するには、などのパラメーター <xref:System.IO.StreamWriter.%23ctor%2A>としてエンコーディングオブジェクトを受け取るコンストラクターを使用します。 プロパティは、 `stream`パラメーターを使用して初期化されます。 <xref:System.IO.StreamWriter.BaseStream%2A> ストリームの位置はリセットされません。  
   
- <xref:System.IO.StreamWriter>オブジェクト呼び出し<xref:System.IO.Stream.Dispose>提供された<xref:System.IO.Stream>オブジェクトと<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>が呼び出されます。  
+ が<xref:System.IO.StreamWriter>呼び出される<xref:System.IO.Stream.Dispose> <xref:System.IO.Stream>と、<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>オブジェクトは、指定されたオブジェクトに対してを呼び出します。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されず、例外がスローされる可能性があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、このコンス トラクターを示します。  
+ 次のコード例は、このコンストラクターを示しています。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program1.cs#1)]
  [!code-vb[System.IO.StreamWriter.ctor#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program1.vb#1)]  
@@ -153,7 +153,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="stream" /> が書き込み可能ではありません。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="stream" /> が <see langword="null" /> です。</exception>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -202,21 +202,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成、 <xref:System.IO.StreamWriter> utf-8 エンコード付きでせずバイト オーダー マーク (BOM) ので、<xref:System.Text.Encoding.GetPreamble%2A>メソッドは空のバイト配列を返します。 このコンス トラクターの既定の utf-8 エンコードでは、無効なバイトで例外をスローします。 この動作のエンコーディング オブジェクトによって提供される動作とは異なります、<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType>プロパティ。 BOM を指定し、無効なバイトで例外がスローするかどうかを判断するには、エンコーディング オブジェクトをなど、パラメーターとして受け取るコンス トラクターを使用<xref:System.IO.StreamWriter.%23ctor%28System.String%2CSystem.Boolean%2CSystem.Text.Encoding%29>します。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter>バイト順マーク (BOM) を使用せずに utf-8 エンコーディングを使用し<xref:System.Text.Encoding.GetPreamble%2A>てを作成します。そのため、メソッドは空のバイト配列を返します。 このコンストラクターの既定の UTF-8 エンコーディングでは、無効なバイトで例外がスローされます。 この動作は、プロパティの<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType> encoding オブジェクトによって提供される動作とは異なります。 BOM を指定し、無効なバイトに対して例外がスローされるかどうかを判断するには、など<xref:System.IO.StreamWriter.%23ctor%28System.String%2CSystem.Boolean%2CSystem.Text.Encoding%29>のパラメーターとしてエンコーディングオブジェクトを受け取るコンストラクターを使用します。  
   
- `path`パラメーターは、汎用名前付け規則 (UNC) 共有上のファイルを含む、ファイル名を指定できます。 ファイルが存在する場合は上書きされます。それ以外の場合、新しいファイルが作成されます。  
+ パラメーター `path`には、汎用名前付け規則 (UNC) 共有上のファイルを含むファイル名を指定できます。 ファイルが存在する場合は上書きされます。それ以外の場合は、新しいファイルが作成されます。  
   
- `path`パラメーターは、ディスクに格納されているファイルは必要ありません。 ストリームを使用してアクセスをサポートするシステムの一部であることができます。  
+ この`path`パラメーターは、ディスクに格納されているファイルである必要はありません。ストリームを使用したアクセスをサポートするシステムの任意の部分を指定できます。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されず、例外がスローされる可能性があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、このコンス トラクターを示します。  
+ 次のコード例は、このコンストラクターを示しています。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program5.cs#5)]
  [!code-vb[System.IO.StreamWriter.ctor#5](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program5.vb#5)]  
@@ -226,14 +226,14 @@
         <exception cref="T:System.UnauthorizedAccessException">アクセスが拒否されました。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="path" /> が空の文字列 ("") です。  
   
-または 
+- または - 
  <paramref name="path" /> には、システム デバイスの名前 (com1、com2 など) が含まれます。</exception>
-        <exception cref="T:System.ArgumentNullException"><paramref name="path" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="path" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">指定されたパスが正しくありません (たとえば、マップされていないドライブにあるなど)。</exception>
         <exception cref="T:System.IO.PathTooLongException">指定したパス、ファイル名、またはその両方がシステム定義の最大長を超えています。</exception>
         <exception cref="T:System.IO.IOException"><paramref name="path" /> には、ファイル名、ディレクトリ名、またはボリューム ラベルの不正な構文または無効な構文が含まれています。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルを読み書きします。 列挙型に関連付けられている: <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />、 <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルの読み取りと書き込みを行います。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />た列挙型:、<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -286,19 +286,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを初期化します、<xref:System.IO.StreamWriter.Encoding%2A>エンコード パラメーターを使用してプロパティと<xref:System.IO.StreamWriter.BaseStream%2A>ストリーム パラメーターを使用するプロパティ。 ストリームの位置はリセットされません。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter.Encoding%2A> encoding パラメーター <xref:System.IO.StreamWriter.BaseStream%2A>を使用してプロパティを初期化し、ストリームパラメーターを使用してプロパティを初期化します。 ストリームの位置はリセットされません。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
   
- <xref:System.IO.StreamWriter>オブジェクト呼び出し<xref:System.IO.Stream.Dispose>提供された<xref:System.IO.Stream>オブジェクトと<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>が呼び出されます。  
+ が<xref:System.IO.StreamWriter>呼び出される<xref:System.IO.Stream.Dispose> <xref:System.IO.Stream>と、<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>オブジェクトは、指定されたオブジェクトに対してを呼び出します。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は、解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されない可能性があり、例外がスローされる可能性があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例では、このコンス トラクターを示します。  
+ このコンストラクターの例を次に示します。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program2.cs#2)]
  [!code-vb[System.IO.StreamWriter.ctor#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program2.vb#2)]  
@@ -358,21 +358,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを作成、 <xref:System.IO.StreamWriter> utf-8 エンコード付きでせずバイト オーダー マーク (BOM) ので、<xref:System.Text.Encoding.GetPreamble%2A>メソッドは空のバイト配列を返します。 このコンス トラクターの既定の utf-8 エンコードでは、無効なバイトで例外をスローします。 この動作のエンコーディング オブジェクトによって提供される動作とは異なります、<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType>プロパティ。 BOM を指定し、無効なバイトで例外がスローするかどうかを判断するには、エンコーディング オブジェクトをなど、パラメーターとして受け取るコンス トラクターを使用<xref:System.IO.StreamWriter.%23ctor%28System.String%2CSystem.Boolean%2CSystem.Text.Encoding%29>します。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter>バイト順マーク (BOM) を使用せずに utf-8 エンコーディングを使用し<xref:System.Text.Encoding.GetPreamble%2A>てを作成します。そのため、メソッドは空のバイト配列を返します。 このコンストラクターの既定の UTF-8 エンコーディングでは、無効なバイトで例外がスローされます。 この動作は、プロパティの<xref:System.Text.Encoding.UTF8%2A?displayProperty=nameWithType> encoding オブジェクトによって提供される動作とは異なります。 BOM を指定し、無効なバイトに対して例外がスローされるかどうかを判断するには、など<xref:System.IO.StreamWriter.%23ctor%28System.String%2CSystem.Boolean%2CSystem.Text.Encoding%29>のパラメーターとしてエンコーディングオブジェクトを受け取るコンストラクターを使用します。  
   
- `path`パラメーターは、汎用名前付け規則 (UNC) 共有上のファイルを含む、ファイル名を指定できます。  
+ パラメーター `path`には、汎用名前付け規則 (UNC) 共有上のファイルを含むファイル名を指定できます。  
   
- `path`パラメーターは、ディスクに格納されているファイルは必要ありません。 ストリームを使用してアクセスをサポートするシステムの一部であることができます。  
+ この`path`パラメーターは、ディスクに格納されているファイルである必要はありません。ストリームを使用したアクセスをサポートするシステムの任意の部分を指定できます。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は、解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されない可能性があり、例外がスローされる可能性があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次のコード例では、このコンス トラクターを示します。  
+ 次のコード例は、このコンストラクターを示しています。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program6.cs#6)]
  [!code-vb[System.IO.StreamWriter.ctor#6](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program6.vb#6)]  
@@ -382,14 +382,14 @@
         <exception cref="T:System.UnauthorizedAccessException">アクセスが拒否されました。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="path" /> が空です。  
   
-または 
+- または - 
  <paramref name="path" /> には、システム デバイスの名前 (com1、com2 など) が含まれます。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="path" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">指定されたパスが正しくありません (たとえば、マップされていないドライブにあるなど)。</exception>
         <exception cref="T:System.IO.IOException"><paramref name="path" /> には、ファイル名、ディレクトリ名、またはボリューム ラベルの不正な構文または無効な構文が含まれています。</exception>
         <exception cref="T:System.IO.PathTooLongException">指定したパス、ファイル名、またはその両方がシステム定義の最大長を超えています。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルを読み書きします。 列挙型に関連付けられている: <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />、 <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルの読み取りと書き込みを行います。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />た列挙型:、<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -444,19 +444,19 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターを初期化します、<xref:System.IO.StreamWriter.Encoding%2A>プロパティを使用して、`encoding`パラメーター、および<xref:System.IO.StreamWriter.BaseStream%2A>プロパティを使用して、`stream`パラメーター。 ストリームの位置はリセットされません。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter.Encoding%2A> `encoding`パラメーター <xref:System.IO.StreamWriter.BaseStream%2A>を使用してプロパティを初期化し、 `stream`パラメーターを使用してプロパティを初期化します。 ストリームの位置はリセットされません。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
   
- <xref:System.IO.StreamWriter>オブジェクト呼び出し<xref:System.IO.Stream.Dispose>提供された<xref:System.IO.Stream>オブジェクトと<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>が呼び出されます。  
+ が<xref:System.IO.StreamWriter>呼び出される<xref:System.IO.Stream.Dispose> <xref:System.IO.Stream>と、<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>オブジェクトは、指定されたオブジェクトに対してを呼び出します。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は、解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されない可能性があり、例外がスローされる可能性があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例では、このコンス トラクターを示します。  
+ このコンストラクターの例を次に示します。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program3.cs#3)]
  [!code-vb[System.IO.StreamWriter.ctor#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program3.vb#3)]  
@@ -518,21 +518,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの初期化、<xref:System.IO.StreamWriter.Encoding%2A>エンコード パラメーターを使用するプロパティ。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter.Encoding%2A> encoding パラメーターを使用してプロパティを初期化します。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
   
- `path` 汎用名前付け規則 (UNC) 共有上のファイルを含む、ファイル名であることができます。  
+ `path`には、汎用名前付け規則 (UNC) 共有上のファイルを含むファイル名を指定できます。  
   
- `path` ディスクに格納されているファイルにする必要はありません。ストリーム経由でアクセスをサポートするシステムの任意の部分であることができます。  
+ `path`は、ディスクに格納されているファイルである必要はありません。ストリーム経由のアクセスをサポートするシステムの任意の部分を指定できます。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は、解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されない可能性があり、例外がスローされる可能性があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例では、このコンス トラクターを示します。  
+ このコンストラクターの例を次に示します。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program7.cs#7)]
  [!code-vb[System.IO.StreamWriter.ctor#7](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program7.vb#7)]  
@@ -549,7 +549,7 @@
         <exception cref="T:System.IO.IOException"><paramref name="path" /> には、ファイル名、ディレクトリ名、またはボリューム ラベルの不正な構文または無効な構文が含まれています。</exception>
         <exception cref="T:System.IO.PathTooLongException">指定したパス、ファイル名、またはその両方がシステム定義の最大長を超えています。</exception>
         <exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルを読み書きします。 列挙型に関連付けられている: <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />、 <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルの読み取りと書き込みを行います。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />た列挙型:、<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
         <altmember cref="T:System.Text.Encoding" />
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
@@ -600,17 +600,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 設定しない限り、`leaveOpen`パラメーターを`true`、<xref:System.IO.StreamWriter>オブジェクト呼び出し<xref:System.IO.Stream.Dispose>提供された<xref:System.IO.Stream>オブジェクトと<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>が呼び出されます。  
+ `leaveOpen`パラメーターを<xref:System.IO.StreamWriter.Dispose%2A?displayProperty=nameWithType>に`true`設定しない限り<xref:System.IO.Stream.Dispose> 、 <xref:System.IO.Stream>オブジェクトは、が呼び出されたときに、指定されたオブジェクトに対してを呼び出します。 <xref:System.IO.StreamWriter>  
   
- このコンス トラクターの初期化、<xref:System.IO.StreamWriter.Encoding%2A>プロパティを使用して、`encoding`パラメーター、および初期化、<xref:System.IO.StreamWriter.BaseStream%2A>プロパティを使用して、`stream`パラメーター。 ストリームの位置はリセットされません。 詳細については、次を参照してください。、<xref:System.IO.TextWriter.Encoding%2A>プロパティ。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter.Encoding%2A> `encoding` `stream`パラメーターを使用してプロパティを初期化し、パラメーターを使用してプロパティを初期化します。<xref:System.IO.StreamWriter.BaseStream%2A> ストリームの位置はリセットされません。 詳細については、 <xref:System.IO.TextWriter.Encoding%2A>プロパティを参照してください。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は、解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されない可能性があり、例外がスローされる可能性があります。  
   
    
   
 ## Examples  
- 次の例では、このコンス トラクターを示します。  
+ このコンストラクターの例を次に示します。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program4.cs#4)]
  [!code-vb[System.IO.StreamWriter.ctor#4](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program4.vb#4)]  
@@ -670,21 +670,21 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターの初期化、<xref:System.IO.StreamWriter.Encoding%2A>エンコード パラメーターを使用するプロパティ。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
+ このコンストラクターは、 <xref:System.IO.StreamWriter.Encoding%2A> encoding パラメーターを使用してプロパティを初期化します。 詳細については、「<xref:System.IO.TextWriter.Encoding%2A>」を参照してください。  
   
- `path` 汎用名前付け規則 (UNC) 共有上のファイルを含む、ファイル名であることができます。  
+ `path`には、汎用名前付け規則 (UNC) 共有上のファイルを含むファイル名を指定できます。  
   
- `path` ディスクに格納されているファイルにする必要はありません。ストリーム経由でアクセスをサポートするシステムの任意の部分であることができます。  
+ `path`は、ディスクに格納されているファイルである必要はありません。ストリーム経由のアクセスをサポートするシステムの任意の部分を指定できます。  
   
 > [!CAUTION]
->  特定のカルチャ設定と一連の文字をコンパイルして、同じ文字を別のカルチャ設定を取得すると、文字は、解釈されないことしがスローされる例外が発生する可能性があります。  
+>  特定のカルチャ設定を使用して文字セットをコンパイルし、異なるカルチャ設定で同じ文字を取得すると、文字が解釈されない可能性があり、例外がスローされる可能性があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例では、このコンス トラクターを示します。  
+ このコンストラクターの例を次に示します。  
   
  [!code-csharp[System.IO.StreamWriter.ctor#8](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.io.streamwriter.ctor/cs/program8.cs#8)]
  [!code-vb[System.IO.StreamWriter.ctor#8](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.io.streamwriter.ctor/vb/program8.vb#8)]  
@@ -693,7 +693,7 @@
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="path" /> が空の文字列 ("") です。  
   
-または 
+- または - 
  <paramref name="path" /> には、システム デバイスの名前 (com1、com2 など) が含まれます。</exception>
         <exception cref="T:System.ArgumentNullException"><paramref name="path" /> または <paramref name="encoding" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="bufferSize" /> が負の値です。</exception>
@@ -702,7 +702,7 @@
         <exception cref="T:System.UnauthorizedAccessException">アクセスが拒否されました。</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">指定されたパスが正しくありません (たとえば、マップされていないドライブにあるなど)。</exception>
         <exception cref="T:System.IO.PathTooLongException">指定したパス、ファイル名、またはその両方がシステム定義の最大長を超えています。</exception>
-        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルを読み書きします。 列挙型に関連付けられている: <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />、 <see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
+        <permission cref="T:System.Security.Permissions.FileIOPermission">ファイルの読み取りと書き込みを行います。 関連付けられ<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Read" />た列挙型:、<see cref="F:System.Security.Permissions.FileIOPermissionAccess.Write" /></permission>
         <altmember cref="T:System.Text.Encoding" />
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
@@ -750,18 +750,18 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ストリームのフラッシュを明示的に呼び出さない限り、その基になるエンコーダー フラッシュしない<xref:System.IO.StreamWriter.Flush%2A>または<xref:System.IO.StreamWriter.Close%2A>します。 設定<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`データからフラッシュされるバッファー ストリームに書き込み操作の後、エンコーダーの状態はフラッシュされませんが、ことを意味します。 これにより、エンコーダーで、次の文字のブロックは正常にエンコードできるように、(一部の文字) の状態を維持できます。 このシナリオでは、UTF8、UTF7、特定の文字をエンコードするため、エンコーダーは、隣接する文字または文字列を受信した後に影響します。  
+ または<xref:System.IO.StreamWriter.Flush%2A> <xref:System.IO.StreamWriter.Close%2A>を明示的に呼び出す場合を除き、ストリームをフラッシュしても、基になるエンコーダーはフラッシュされません。 を<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`設定すると、各書き込み操作の後、バッファーからストリームにデータがフラッシュされますが、エンコーダーの状態はフラッシュされません。 これにより、エンコーダーは次の文字ブロックを正しくエンコードできるように、その状態 (部分文字) を保持できます。 このシナリオは、エンコーダーが隣接する文字を受け取ると、特定の文字のみをエンコードできる UTF8 と UTF7 に影響します。  
   
- ときに`AutoFlush`に設定されている`false`、`StreamWriter`バッファリングのどちらも内部的に、可能性のあるで渡されるエンコーディングから、エンコーダーでは、限られた量の操作を行います。 パフォーマンスの向上を設定して取得できます`AutoFlush`に`false`常に呼び出すことを前提と`Close`(または、少なくとも`Flush`) 完了したら書き込みの`StreamWriter`します。  
+ が`AutoFlush`に`false`設定され`StreamWriter`ている場合、は、渡されたエンコーディングから、内部的にもエンコーダー内でも可能な限り制限されたバッファーを使用します。 を`AutoFlush`に設定`Close` `false`することにより、パフォーマンスを向上させることができ`StreamWriter`ます。 `Flush`これを行うには、を使用して書き込みを完了するときに常に (以上) を呼び出す必要があります。  
   
- たとえば、設定`AutoFlush`に`true`ユーザーに迅速なフィードバックが必要ですが、デバイスを作成する場合。 `Console.Out` このような場合のいずれかです。`StreamWriter`への書き込みに内部的に使用`Console`に呼び出されるたびにエンコーダー状態以外のすべての内部状態をフラッシュ<xref:System.IO.StreamWriter.Write%2A?displayProperty=nameWithType>します。  
+ たとえば、ユーザーが`AutoFlush`すぐ`true`にフィードバックを受け取るデバイスに書き込む場合は、をに設定します。 `Console.Out`は、次のいずれかのケースです。`Console`を`StreamWriter` 呼び出すたびに、エンコーダーの状態を除くすべての内部状態をフラッシュするために、書き込みのために内部的に使用される。<xref:System.IO.StreamWriter.Write%2A?displayProperty=nameWithType>  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例を使用する構文を示しています、`AutoFlush`プロパティ。  
+ 次の例は、 `AutoFlush`プロパティを使用するための構文を示しています。  
   
  [!code-cpp[System.IO.StreamWriter#5](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.StreamWriter/CPP/logger.cpp#5)]
  [!code-csharp[System.IO.StreamWriter#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/logger.cs#5)]
@@ -864,16 +864,16 @@
 ## Remarks  
  このメソッドは、<xref:System.IO.Stream.Close%2A?displayProperty=nameWithType> をオーバーライドします。  
   
- この実装の<xref:System.IO.StreamWriter.Close%2A>呼び出し、<xref:System.IO.StreamWriter.Dispose%2A>メソッドに渡して、`true`値。  
+ の<xref:System.IO.StreamWriter.Close%2A>この実装は、 <xref:System.IO.StreamWriter.Dispose%2A>値を`true`渡すメソッドを呼び出します。  
   
- 呼び出す必要があります<xref:System.IO.StreamWriter.Close%2A>を基になるストリームに、のすべてのデータを正しく書き込むことを確認します。 呼び出しに続く<xref:System.IO.StreamWriter.Close%2A>でその操作、<xref:System.IO.StreamWriter>例外が発生する可能性があります。 ディスクに十分な空き領域がある場合は、呼び出す<xref:System.IO.StreamWriter.Close%2A>で例外が発生します。  
+ すべてのデータ<xref:System.IO.StreamWriter.Close%2A>が基になるストリームに正しく書き込まれるようにするには、を呼び出す必要があります。 への呼び出しに<xref:System.IO.StreamWriter.Close%2A>続くと、 <xref:System.IO.StreamWriter>に対する操作によって例外が発生する可能性があります。 ディスクに十分な空き領域がない場合は<xref:System.IO.StreamWriter.Close%2A> 、を呼び出すと例外が発生します。  
   
- ストリームのフラッシュを明示的に呼び出さない限り、その基になるエンコーダー フラッシュしない<xref:System.IO.StreamWriter.Flush%2A>または<xref:System.IO.StreamWriter.Close%2A>します。 設定<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`データは、バッファーからストリームにフラッシュされますが、エンコーダーの状態はフラッシュされないことを意味します。 これにより、エンコーダーで、次の文字のブロックは正常にエンコードできるように、(一部の文字) の状態を維持できます。 このシナリオでは、UTF8、UTF7、特定の文字をエンコードするため、エンコーダーは、隣接する文字または文字列を受信した後に影響します。  
+ または<xref:System.IO.StreamWriter.Flush%2A> <xref:System.IO.StreamWriter.Close%2A>を明示的に呼び出す場合を除き、ストリームをフラッシュしても、基になるエンコーダーはフラッシュされません。 を<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`設定すると、バッファーからストリームにデータがフラッシュされますが、エンコーダーの状態はフラッシュされません。 これにより、エンコーダーは次の文字ブロックを正しくエンコードできるように、その状態 (部分文字) を保持できます。 このシナリオは、エンコーダーが隣接する文字を受け取ると、特定の文字のみをエンコードできる UTF8 と UTF7 に影響します。  
   
    
   
 ## Examples  
- 次のコード例に示します、`Close`メソッド。  
+ 次のコード例は、 `Close`メソッドを示しています。  
   
  [!code-cpp[System.IO.StreamWriter#17](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.StreamWriter/CPP/logger.cpp#17)]
  [!code-csharp[System.IO.StreamWriter#17](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/logger.cs#17)]
@@ -937,9 +937,9 @@
         </remarks>
         <exception cref="T:System.Text.EncoderFallbackException">現在のエンコードは、Unicode サロゲート ペアの片方の表示をサポートしていません。</exception>
         <block subset="none" type="overrides"><para>
-            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 オーバーライドするときに<see langword="Dispose" />を以前の呼び出しで破棄されたオブジェクトを参照しないように注意、<see langword="Dispose" />します。  
+            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 をオーバーライド<see langword="Dispose" />する場合は、以前にを<see langword="Dispose" />呼び出したときに破棄されたオブジェクトを参照しないように注意してください。  
   
-このメソッドは、基底クラスの dispose メソッド<see cref="M:System.IO.TextWriter.Dispose(System.Boolean)" />します。</para></block>
+このメソッドは、基本クラスの dispose メソッドを<see cref="M:System.IO.TextWriter.Dispose(System.Boolean)" />呼び出します。</para></block>
         <related type="Article" href="~/docs/standard/io/index.md">ファイルおよびストリーム入出力</related>
         <related type="Article" href="~/docs/standard/io/how-to-read-text-from-a-file.md">方法 : ファイルからテキストを読み取る</related>
         <related type="Article" href="~/docs/standard/io/how-to-write-text-to-a-file.md">方法 : ファイルにテキストを書き込む</related>
@@ -972,8 +972,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>バッファーされたデータを基になるストリームに非同期で書き込み、<see cref="T:System.IO.StreamWriter" /> で使用されるアンマネージド リソースを解放します。</summary>
+        <returns>非同期の破棄操作を表すタスク。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1018,14 +1018,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、いくつか XML のシナリオで使用されるエンコーディングを格納しているヘッダーを記述する必要があります、ために必要な<xref:System.IO.StreamWriter>します。 これにより、任意で使用する XML コード<xref:System.IO.StreamWriter>し、正しい XML ヘッダーを生成します。  
+ このプロパティは、 <xref:System.IO.StreamWriter>で使用されるエンコーディングを含むヘッダーを書き込む必要がある一部の XML シナリオで必要です。 これにより、xml コードは任意<xref:System.IO.StreamWriter>のを使用して、正しい xml ヘッダーを生成することができます。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例では、指定したエンコーディングを取得します<xref:System.IO.StreamWriter>インスタンス。  
+ 次の例では、指定した<xref:System.IO.StreamWriter>インスタンスのエンコーディングを取得します。  
   
  [!code-cpp[System.IO.StreamWriter#11](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.StreamWriter/CPP/logger.cpp#11)]
  [!code-csharp[System.IO.StreamWriter#11](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/logger.cs#11)]
@@ -1121,7 +1121,7 @@
 ## Remarks  
  このメソッドは、<xref:System.IO.TextWriter.Flush%2A?displayProperty=nameWithType> をオーバーライドします。  
   
- ストリームのフラッシュを明示的に呼び出さない限り、その基になるエンコーダー フラッシュしない`Flush`または<xref:System.IO.StreamWriter.Close%2A>します。 設定<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`データからフラッシュされるバッファー ストリームに書き込み操作の後、エンコーダーの状態はフラッシュされませんが、ことを意味します。 これにより、エンコーダーで、次の文字のブロックは正常にエンコードできるように、(一部の文字) の状態を維持できます。 このシナリオでは、UTF8、UTF7、特定の文字をエンコードするため、エンコーダーは、隣接する文字または文字列を受信した後に影響します。  
+ または`Flush` <xref:System.IO.StreamWriter.Close%2A>を明示的に呼び出す場合を除き、ストリームをフラッシュしても、基になるエンコーダーはフラッシュされません。 を<xref:System.IO.StreamWriter.AutoFlush%2A>に`true`設定すると、各書き込み操作の後、バッファーからストリームにデータがフラッシュされますが、エンコーダーの状態はフラッシュされません。 これにより、エンコーダーは次の文字ブロックを正しくエンコードできるように、その状態 (部分文字) を保持できます。 このシナリオは、エンコーダーが隣接する文字を受け取ると、特定の文字のみをエンコードできる UTF8 と UTF7 に影響します。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
@@ -1221,16 +1221,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用`Null`への出力をリダイレクトする、`StreamWriter`オペレーティング システムのリソースを使いません。  
+ オペレーティング`Null`システムのリソースを使用`StreamWriter`しないに出力をリダイレクトするには、を使用します。  
   
- ときに、`StreamWriter.Write`でメソッドが呼び出された`Null`、単に呼び出しを返します、および実際にデータは任意のバッキング ストアに書き込まれません。  
+ メソッドがで`Null`呼び出されると、呼び出しは単にを返し、どのバッキングストアにもデータは実際には書き込まれません。 `StreamWriter.Write`  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- 次の例を使用して、`Null`フィールド。  
+ 次の例は、 `Null`フィールドの使用方法を示しています。  
   
  [!code-cpp[System.IO.StreamWriter#6](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.IO.StreamWriter/CPP/logger.cpp#6)]
  [!code-csharp[System.IO.StreamWriter#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/logger.cs#6)]
@@ -1300,7 +1300,7 @@
 ## Remarks  
  このメソッドは、<xref:System.IO.TextWriter.Write%2A?displayProperty=nameWithType> をオーバーライドします。  
   
- 指定した文字は、ストリームの末尾に到達しない限り、基になるストリームに書き込まれます。 場合<xref:System.IO.StreamWriter.AutoFlush%2A>は`true`、<xref:System.IO.StreamWriter.Flush%2A>が自動的に呼び出されます。  
+ ストリームの末尾に到達しない限り、指定した文字が基になるストリームに書き込まれます。 <xref:System.IO.StreamWriter.Flush%2A>が<xref:System.IO.StreamWriter.AutoFlush%2A> の場合は、が自動的に呼び出されます。`true`  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
@@ -1365,9 +1365,9 @@
 ## Remarks  
  このメソッドは、<xref:System.IO.TextWriter.Write%2A?displayProperty=nameWithType> をオーバーライドします。  
   
- 指定された文字は、ストリームの末尾に到達しない限り、基になるストリームに書き込まれます。 場合<xref:System.IO.StreamWriter.AutoFlush%2A>は`true`、<xref:System.IO.StreamWriter.Flush%2A>が自動的に呼び出されます。  
+ ストリームの末尾に到達しない限り、指定した文字が基になるストリームに書き込まれます。 <xref:System.IO.StreamWriter.Flush%2A>が<xref:System.IO.StreamWriter.AutoFlush%2A> の場合は、が自動的に呼び出されます。`true`  
   
- このメソッドが高速なパフォーマンスを提供`Write`(`char[],``int,``int`) を確認する引数が少ないためです。  
+ この方法では、チェックする`Write`引数`char[],``int,``int`が減るため、() よりもパフォーマンスが向上する場合があります。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
@@ -1410,8 +1410,8 @@
         <Parameter Name="buffer" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="buffer">書き込む文字スパン。</param>
+        <summary>文字スパンをストリームに書き込みます。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1466,9 +1466,9 @@
 ## Remarks  
  このメソッドは、<xref:System.IO.TextWriter.Write%2A?displayProperty=nameWithType> をオーバーライドします。  
   
- 指定した<xref:System.String>は、ストリームの末尾に到達しない限り、基になるストリームに書き込まれます。  
+ ストリームの<xref:System.String>末尾に達しない限り、指定されたは基になるストリームに書き込まれます。  
   
- <xref:System.IO.StreamWriter.Flush%2A> 場合に自動的に呼び出される<xref:System.IO.StreamWriter.AutoFlush%2A>は`true`します。 場合`value`は`null`エントリは書き込まれません。  
+ <xref:System.IO.StreamWriter.Flush%2A>がの<xref:System.IO.StreamWriter.AutoFlush%2A> `true`場合、は自動的に呼び出されます。 `value` が`null`の場合、エントリは書き込まれません。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
@@ -1511,10 +1511,18 @@
         <Parameter Name="arg0" Type="System.Object" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg0">書式設定および書き込みをするオブジェクト。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object)" /> メソッドと同じセマンティクスを使用して、書式設定された文字列をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.Write(System.String,System.Object)>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -1552,10 +1560,18 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg">書式設定および書き込みをする 0 個以上のオブジェクトを含むオブジェクト配列。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object[])" /> メソッドと同じセマンティクスを使用して、書式設定された文字列をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.Write(System.String,System.Object[])>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -1613,14 +1629,14 @@
 ## Remarks  
  このメソッドは、<xref:System.IO.TextWriter.Write%2A?displayProperty=nameWithType> をオーバーライドします。  
   
- 文字を読み取る`buffer`から始まる`index`まで`index`+ (`count` - 1)。 すべての文字は、基になるストリームの末尾に到達しない限り、基になるストリームに書き込まれます。 <xref:System.IO.StreamWriter.Flush%2A> 場合に自動的に呼び出される<xref:System.IO.StreamWriter.AutoFlush%2A>は`true`します。  
+ 文字`buffer`はから`index`読み取られ、 `index` + (`count` -1) が続きます。 基になるストリームの末尾に到達しない限り、すべての文字が基になるストリームに書き込まれます。 <xref:System.IO.StreamWriter.Flush%2A>がの<xref:System.IO.StreamWriter.AutoFlush%2A> `true`場合、は自動的に呼び出されます。  
   
  共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。  
   
    
   
 ## Examples  
- この例では、ファイル、3 番目の要素配列の先頭に 13 要素配列から 8 文字を書き込みます。  
+ この例では、配列の3番目の要素を開始位置として、13個の要素から成る配列の8文字をファイルに書き込みます。  
   
  [!code-cpp[Classic StreamWriter.Write2 Example#1](~/samples/snippets/cpp/VS_Snippets_CLR_Classic/classic StreamWriter.Write2 Example/CPP/source.cpp#1)]
  [!code-csharp[Classic StreamWriter.Write2 Example#1](~/samples/snippets/csharp/VS_Snippets_CLR_Classic/classic StreamWriter.Write2 Example/CS/source.cs#1)]
@@ -1669,11 +1685,19 @@
         <Parameter Name="arg1" Type="System.Object" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <param name="arg1">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg0">書式設定および書き込みをする最初のオブジェクト。</param>
+        <param name="arg1">書式設定および書き込みをする 2 番目のオブジェクト。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> メソッドと同じセマンティクスを使用して、書式設定された文字列をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.Write(System.String,System.Object,System.Object)>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -1707,12 +1731,20 @@
         <Parameter Name="arg2" Type="System.Object" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <param name="arg1">To be added.</param>
-        <param name="arg2">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg0">書式設定および書き込みをする最初のオブジェクト。</param>
+        <param name="arg1">書式設定および書き込みをする 2 番目のオブジェクト。</param>
+        <param name="arg2">書式設定および書き込みをする 3 番目のオブジェクト。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object,System.Object,System.Object)" /> メソッドと同じセマンティクスを使用して、書式設定された文字列をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.Write(System.String,System.Object,System.Object,System.Object)>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <MemberGroup MemberName="WriteAsync">
@@ -1723,7 +1755,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>ストリームにデータを非同期で書き込みます。</summary>
+        <summary>データをストリームに非同期で書き込みます。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="WriteAsync">
@@ -1774,7 +1806,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、1 つの文字を書き込む方法を示しています (文字"a") を使用してテキスト ファイルに、<xref:System.IO.StreamWriter.WriteAsync%28System.Char%29>メソッド。  
+ 次の例では、 <xref:System.IO.StreamWriter.WriteAsync%28System.Char%29>メソッドを使用して、1文字 (文字 "a") をテキストファイルに書き込む方法を示します。  
   
  [!code-csharp[System.IO.StreamWriter#20](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/example20.cs#20)]
  [!code-vb[System.IO.StreamWriter#20](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.StreamWriter/VB/example20.vb#20)]  
@@ -1833,7 +1865,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例を使用して、テキスト ファイルに文字列を書き込む方法を示しています、<xref:System.IO.StreamWriter.WriteAsync%28System.String%29>メソッド。  
+ 次の例は、 <xref:System.IO.StreamWriter.WriteAsync%28System.String%29>メソッドを使用してテキストファイルに文字列を書き込む方法を示しています。  
   
  [!code-csharp[System.IO.StreamWriter#21](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/example21.cs#21)]
  [!code-vb[System.IO.StreamWriter#21](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.StreamWriter/VB/example21.vb#21)]  
@@ -1872,10 +1904,10 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="buffer">ストリームに書き込む文字メモリ領域。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>文字メモリ領域をストリームに非同期で書き込みます。</summary>
+        <returns>非同期の書き込み操作を表すタスク。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1931,7 +1963,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例を使用して、テキスト ファイルに複数の文字を書き込む方法を示しています、<xref:System.IO.StreamWriter.WriteAsync%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>メソッド。  
+ 次の例は、 <xref:System.IO.StreamWriter.WriteAsync%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>メソッドを使用してテキストファイルに複数の文字を書き込む方法を示しています。  
   
  [!code-csharp[System.IO.StreamWriter#24](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/example24.cs#24)]
  [!code-vb[System.IO.StreamWriter#24](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.StreamWriter/VB/example24.vb#24)]  
@@ -1974,9 +2006,21 @@
         <Parameter Name="buffer" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="buffer">ストリームに書き込む文字スパン。</param>
+        <summary>文字スパンのテキスト表現、続いて行終端記号をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+指定された値のテキスト表現は、 [ReadOnlySpan<Char>を呼び出すことによって生成されます。ToString](xref:System.ReadOnlySpan%601.ToString%2A)メソッド。
+
+行終端記号は、<xref:System.IO.TextWriter.CoreNewLine> フィールドで定義されます。
+
+共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteLine">
@@ -2007,9 +2051,23 @@
         <Parameter Name="value" Type="System.String" Index="0" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">書き込む文字列。 <paramref name="value" /> が <see langword="null" /> の場合は、行終端記号だけを書き込みます。</param>
+        <summary>文字列を、続いて行終端記号をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+このオーバーロードは、 <xref:System.IO.TextWriter.Write%28System.Char%5B%5D%29?displayProperty=nameWithType>オーバーロードに相当します。
+
+行終端記号は、<xref:System.IO.TextWriter.CoreNewLine> フィールドで定義されます。
+
+このメソッドは、指定した文字列で個別の改行文字 (16 進数で 0x000a) を検索しないため、改行文字は <xref:System.IO.TextWriter.NewLine%2A> に置き換えられません。
+
+共通 I/O タスクの一覧は、 [共通 I/O タスク](~/docs/standard/io/common-i-o-tasks.md) を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteLine">
@@ -2041,10 +2099,18 @@
         <Parameter Name="arg0" Type="System.Object" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg0">書式設定および書き込みをするオブジェクト。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object)" /> メソッドと同じセマンティクスを使用して、書式設定された文字列と新しい行をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.WriteLine(System.String,System.Object)>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteLine">
@@ -2082,10 +2148,18 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg">書式設定および書き込みをする 0 個以上のオブジェクトを含むオブジェクト配列。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object)" /> と同じセマンティクスを使用して、書式設定された文字列と新しい行をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.WriteLine(System.String,System.Object[])>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteLine">
@@ -2118,11 +2192,19 @@
         <Parameter Name="arg1" Type="System.Object" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <param name="arg1">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg0">書式設定および書き込みをする最初のオブジェクト。</param>
+        <param name="arg1">書式設定および書き込みをする 2 番目のオブジェクト。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> メソッドと同じセマンティクスを使用して、書式設定された文字列と新しい行をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.WriteLine(System.String,System.Object,System.Object)>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteLine">
@@ -2156,12 +2238,20 @@
         <Parameter Name="arg2" Type="System.Object" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <param name="arg1">To be added.</param>
-        <param name="arg2">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="format">複合書式設定文字列。</param>
+        <param name="arg0">書式設定および書き込みをする最初のオブジェクト。</param>
+        <param name="arg1">書式設定および書き込みをする 2 番目のオブジェクト。</param>
+        <param name="arg2">書式設定および書き込みをする 3 番目のオブジェクト。</param>
+        <summary><see cref="M:System.String.Format(System.String,System.Object)" /> と同じセマンティクスを使用して、書式設定された文字列と新しい行をストリームに書き込みます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+提供<xref:System.IO.TextWriter.WriteLine(System.String,System.Object,System.Object,System.Object)>される複合書式指定機能の説明については、「」を参照してください。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <MemberGroup MemberName="WriteLineAsync">
@@ -2172,7 +2262,7 @@
         <AssemblyVersion>4.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>データを非同期でストリームに書き込み、続けて行終端記号を書き込みます。</summary>
+        <summary>データを、続いて行終端記号を非同期でストリームに書き込みます。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="WriteLineAsync">
@@ -2220,7 +2310,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって、行終端記号が定義されている、<xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティ。  
+ 行終端記号は、 <xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティによって定義されます。  
   
  ]]></format>
         </remarks>
@@ -2270,18 +2360,18 @@
       </Parameters>
       <Docs>
         <param name="value">ストリームに書き込む文字。</param>
-        <summary>非同期でストリームに文字を書き込み、続けて行終端記号を書き込みます。</summary>
+        <summary>文字を、続いて行終端記号を非同期でストリームに書き込みます。</summary>
         <returns>非同期の書き込み操作を表すタスク。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって、行終端記号が定義されている、<xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティ。  
+ 行終端記号は、 <xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティによって定義されます。  
   
    
   
 ## Examples  
- 次の例では、1 つの文字を書き込む方法を示しています (文字"a") テキスト ファイルの行に続く別の行を使用して単一の文字 (文字"b") を含む、<xref:System.IO.StreamWriter.WriteLineAsync%28System.Char%29>メソッド。  
+ 次の例では、 <xref:System.IO.StreamWriter.WriteLineAsync%28System.Char%29>メソッドを使用して、1つの文字 (文字 "a") をテキストファイル内の行に、その後に1つの文字 ("b") を含む別の行を書き込む方法を示します。  
   
  [!code-csharp[System.IO.StreamWriter#22](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/example22.cs#22)]
  [!code-vb[System.IO.StreamWriter#22](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.StreamWriter/VB/example22.vb#22)]  
@@ -2334,18 +2424,18 @@
       </Parameters>
       <Docs>
         <param name="value">書き込む文字列。 値が <see langword="null" /> の場合は、行終端記号だけが書き込まれます。</param>
-        <summary>文字列を非同期でストリームに書き込み、続けて行終端記号を書き込みます。</summary>
+        <summary>文字列を、続いて行終端記号を非同期でストリームに書き込みます。</summary>
         <returns>非同期の書き込み操作を表すタスク。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって、行終端記号が定義されている、<xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティ。  
+ 行終端記号は、 <xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティによって定義されます。  
   
    
   
 ## Examples  
- 次の例を使用してテキスト ファイルに文字列値で構成される 2 つの行を記述する方法を示しています、<xref:System.IO.StreamWriter.WriteLineAsync%28System.String%29>メソッド。  
+ 次の例は、 <xref:System.IO.StreamWriter.WriteLineAsync%28System.String%29>メソッドを使用して、文字列値で構成される2つの行をテキストファイルに書き込む方法を示しています。  
   
  [!code-csharp[System.IO.StreamWriter#23](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/example23.cs#23)]
  [!code-vb[System.IO.StreamWriter#23](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.StreamWriter/VB/example23.vb#23)]  
@@ -2384,11 +2474,19 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="netcore-2.1;netcore-2.2;netcore-3.0;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">ストリームに書き込む文字メモリ領域。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>文字メモリ領域のテキスト表現を、続いて行終端記号を非同期でストリームに書き込みます。</summary>
+        <returns>非同期の書き込み操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+
+## Remarks
+
+行終端記号は、<xref:System.IO.TextWriter.CoreNewLine> フィールドで定義されます。
+ 
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteLineAsync">
@@ -2437,18 +2535,18 @@
         <param name="buffer">データの書き込み元の文字配列。</param>
         <param name="index">データの読み取りを開始する、バッファー内の文字位置。</param>
         <param name="count">書き込む文字の最大数。</param>
-        <summary>文字の部分配列をストリームに非同期で書き込み、続けて行終端記号を書き込みます。</summary>
+        <summary>文字の部分配列を、続いて行終端記号を非同期でストリームに書き込みます。</summary>
         <returns>非同期の書き込み操作を表すタスク。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- によって、行終端記号が定義されている、<xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティ。  
+ 行終端記号は、 <xref:System.IO.TextWriter.NewLine%2A?displayProperty=nameWithType>プロパティによって定義されます。  
   
    
   
 ## Examples  
- 次の例を使用して、テキスト ファイルで 2 つの別々 の行に文字を書き込む方法を示しています、<xref:System.IO.StreamWriter.WriteLineAsync%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>メソッド。 最初の行には、文字列 (「最初の行」とそれに続く空白文字) から最初の 11 文字が含まれています。 2 番目の行には、文字列から残りの文字が含まれています (文字「と 2 番目の行」)。  
+ 次の例では、 <xref:System.IO.StreamWriter.WriteLineAsync%28System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32%29>メソッドを使用して、テキストファイル内の2つの異なる行に文字を書き込む方法を示します。 最初の行には、文字列の最初の11文字 ("最初の行" の後にスペースが続く文字) が含まれています。 2行目には、文字列の残りの文字 (文字 "と2行目") が含まれています。  
   
  [!code-csharp[System.IO.StreamWriter#25](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.IO.StreamWriter/CS/example25.cs#25)]
  [!code-vb[System.IO.StreamWriter#25](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.IO.StreamWriter/VB/example25.vb#25)]  

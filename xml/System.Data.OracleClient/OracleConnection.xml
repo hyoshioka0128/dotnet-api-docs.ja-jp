@@ -34,24 +34,24 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この型は非推奨し、.NET Framework の将来のバージョンで削除される予定です。 詳細については、次を参照してください。 [Oracle および ADO.NET](~/docs/framework/data/adonet/oracle-and-adonet.md)します。  
+ この型は非推奨です。今後のバージョンの .NET Framework では削除されます。 詳細については、「 [Oracle と ADO.NET](~/docs/framework/data/adonet/oracle-and-adonet.md)」を参照してください。  
   
- <xref:System.Data.OracleClient.OracleConnection>オブジェクトは、Oracle データベースへの一意の接続を表します。 クライアント/サーバー データベース システムでは、場合は、サーバーへのネットワーク接続と同じです。  
+ オブジェクト<xref:System.Data.OracleClient.OracleConnection>は、Oracle データベースへの一意の接続を表します。 クライアント/サーバーデータベースシステムの場合は、サーバーへのネットワーク接続に相当します。  
   
- インスタンスを作成するアプリケーション、<xref:System.Data.OracleClient.OracleConnection>オブジェクトをすべて直接および間接の呼び出し元コードに適切なアクセス許可を必要とする宣言型または命令型のセキュリティ確認要求を設定できます。 <xref:System.Data.OracleClient.OracleConnection> 使用してセキュリティの要求を作成、<xref:System.Data.OracleClient.OraclePermission>オブジェクト。 ユーザーを使用して、コードが適切なアクセス許可を持つことを確認することができます、<xref:System.Data.OracleClient.OraclePermissionAttribute>オブジェクト。 ユーザーおよび管理者では、コンピューター、ユーザー、およびエンタープライズ レベルのセキュリティ ポリシーを変更するのにコード アクセス セキュリティ ポリシー ツール (Caspol.exe) を使用できますも。 詳細については、[セキュリティ](https://msdn.microsoft.com/library/9a9621d7-8883-4a4f-a874-65e8e09e20a6)に関するページをご覧ください。  
-  
-> [!NOTE]
->  異なり、**接続**、他の .NET Framework データ プロバイダー (SQL Server、OLE DB および ODBC) 内のオブジェクト<xref:System.Data.OracleClient.OracleConnection>はサポートしていません、<xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A>プロパティ。 プロパティまたは接続文字列で接続タイムアウトの設定も何も起こりません、および返される値は常に 0 です。 <xref:System.Data.OracleClient.OracleConnection> サポートされていません、<xref:System.Data.OracleClient.OracleConnection.Database%2A>プロパティまたは<xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>メソッド。  
-  
- 場合、<xref:System.Data.OracleClient.OracleConnection>オブジェクトがスコープ外になる、未処理のままにします。 そのため、常を閉じてください<xref:System.Data.OracleClient.OracleConnection>オブジェクトを呼び出すことによって<xref:System.Data.OracleClient.OracleConnection.Close%2A>または**Dispose**、またはを使用して、<xref:System.Data.OracleClient.OracleConnection>オブジェクト内を`Using`ステートメント。 それ以外の場合、ガベージ コレクションがそれらをすぐに解放しない可能性があります。 ガベージ コレクターによって削除される接続の数が待機している間に、接続の最大数に達した場合は、このような遅延をエラーになります。 これに対し、呼び出すことによって、接続を閉じる<xref:System.Data.OracleClient.OracleConnection.Close%2A>スケーラビリティを向上し、アプリケーション全体のパフォーマンスを向上させるより効率的にネイティブ リソースを使用します。 接続は常に閉じられることを確認するには、内の接続を開く、`Using`ブロックします。  
+ <xref:System.Data.OracleClient.OracleConnection>オブジェクトのインスタンスを作成するアプリケーションは、すべての直接および間接呼び出し元に対して、コードに対する適切なアクセス許可を必要とする宣言型または命令型のセキュリティ要求を設定できます。 <xref:System.Data.OracleClient.OracleConnection>オブジェクトを使用して、 <xref:System.Data.OracleClient.OraclePermission>セキュリティ要求を作成します。 ユーザーは、 <xref:System.Data.OracleClient.OraclePermissionAttribute>オブジェクトを使用して、コードに適切なアクセス許可があることを確認できます。 また、ユーザーと管理者は、コードアクセスセキュリティポリシーツール (Caspol.exe) を使用して、コンピューター、ユーザー、およびエンタープライズレベルのセキュリティポリシーを変更することもできます。 詳細については、[セキュリティ](https://msdn.microsoft.com/library/9a9621d7-8883-4a4f-a874-65e8e09e20a6)に関するページをご覧ください。  
   
 > [!NOTE]
->  高パフォーマンス アプリケーションを展開するには、多くの場合、接続プールを使用する必要があります。 ただし、.NET Framework Data Provider for Oracle を使用する場合、プロバイダーは、これを自動的に管理するために接続がプールを有効にする必要はありません。  
+>  他の .NET Framework データプロバイダー (SQL Server、OLE DB、および ODBC) の**Connection**オブジェクトとは異なり<xref:System.Data.OracleClient.OracleConnection> 、はプロパティを<xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A>サポートしていません。 接続タイムアウトをプロパティまたは接続文字列として設定しても効果はありません。返される値は常に0です。 <xref:System.Data.OracleClient.OracleConnection>また、 <xref:System.Data.OracleClient.OracleConnection.Database%2A> <xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>は、プロパティまたはメソッドをサポートしていません。  
+  
+ オブジェクトが<xref:System.Data.OracleClient.OracleConnection>スコープ外に出ると、オブジェクトは開いたままになります。 したがって、常にオブジェクト<xref:System.Data.OracleClient.OracleConnection>を閉じるに<xref:System.Data.OracleClient.OracleConnection.Close%2A>は****、または<xref:System.Data.OracleClient.OracleConnection> Dispose を呼び出すか、 `Using`ステートメント内でオブジェクトを使用します。 それ以外の場合、ガベージコレクションはすぐに解放しない可能性があります。 多くの接続がガベージコレクターによって削除されるのを待機している間に最大接続数に達した場合、このような遅延が発生する可能性があります。 これに対して、を呼び出す<xref:System.Data.OracleClient.OracleConnection.Close%2A>ことによって接続を閉じると、ネイティブリソースがより効率的に使用され、スケーラビリティが向上し、アプリケーション全体のパフォーマンスが向上します。 接続が常に閉じられるようにするには、 `Using`ブロック内で接続を開きます。  
+  
+> [!NOTE]
+>  高パフォーマンスのアプリケーションを展開するには、多くの場合、接続プールを使用する必要があります。 ただし、Oracle の .NET Framework Data Provider を使用する場合は、プロバイダーがこれを自動的に管理するため、接続プールを有効にする必要はありません。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.OracleClient.OracleCommand>と<xref:System.Data.OracleClient.OracleConnection>します。 <xref:System.Data.OracleClient.OracleConnection>を開き、として設定は、<xref:System.Data.OracleClient.OracleCommand.Connection%2A?displayProperty=nameWithType>プロパティ。 例を呼び出して<xref:System.Data.OracleClient.OracleCommand.ExecuteNonQuery%2A>接続を閉じます。 これを実現する、<xref:System.Data.OracleClient.OracleCommand.ExecuteNonQuery%2A>接続文字列とは、SQL の INSERT ステートメントのクエリ文字列が渡されます。  
+ 次の例では<xref:System.Data.OracleClient.OracleCommand> 、 <xref:System.Data.OracleClient.OracleConnection>とを作成します。 が開き、 <xref:System.Data.OracleClient.OracleCommand.Connection%2A?displayProperty=nameWithType>プロパティとして設定されます。 <xref:System.Data.OracleClient.OracleConnection> この例では<xref:System.Data.OracleClient.OracleCommand.ExecuteNonQuery%2A>、を呼び出し、接続を閉じます。 これを実現するため<xref:System.Data.OracleClient.OracleCommand.ExecuteNonQuery%2A>に、には、接続文字列と、SQL の INSERT ステートメントであるクエリ文字列が渡されます。  
   
  [!code-csharp[Classic WebData OracleConnection#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection/VB/source.vb#1)]  
@@ -91,7 +91,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、作成し、開きます、<xref:System.Data.OracleClient.OracleConnection>します。  
+ 次の例では<xref:System.Data.OracleClient.OracleConnection>、を作成して開きます。  
   
  [!code-csharp[Classic WebData OracleConnection.OracleConnection1#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.OracleConnection1/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.OracleConnection1#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.OracleConnection1/VB/source.vb#1)]  
@@ -118,13 +118,13 @@
         <Parameter Name="connectionString" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="connectionString">データベースを開くために使用される接続。</param>
-        <summary>新しいインスタンスを初期化、<see cref="T:System.Data.OracleClient.OracleConnection" />クラスを指定した接続文字列に置き換えます。</summary>
+        <param name="connectionString">データベースを開くために使用する接続。</param>
+        <summary>接続文字列を指定して、<see cref="T:System.Data.OracleClient.OracleConnection" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、作成し、開きます、<xref:System.Data.OracleClient.OracleConnection>します。  
+ 次の例では<xref:System.Data.OracleClient.OracleConnection>、を作成して開きます。  
   
  [!code-csharp[Classic WebData OracleConnection.OracleConnection1#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.OracleConnection1/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.OracleConnection1#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.OracleConnection1/VB/source.vb#1)]  
@@ -192,17 +192,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクションをロールバックまたはコミットは、する必要があります明示的に使用する、<xref:System.Data.OracleClient.OracleTransaction.Commit%2A>または<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>メソッド。  
+ トランザクションをコミットまたはロールバックするに<xref:System.Data.OracleClient.OracleTransaction.Commit%2A>は、メソッドまたは<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>メソッドを明示的に使用する必要があります。  
   
- .NET Framework Data Provider for Oracle トランザクションの管理モデルを正しく実行することを確認するには、データベースによって提供されるものなど、他のトランザクション管理モデルを使用しないでください。  
+ Oracle トランザクション管理モデルの .NET Framework Data Provider が正常に実行されるようにするには、データベースによって提供されるものなど、他のトランザクション管理モデルを使用しないようにします。  
   
 > [!NOTE]
->  分離レベルを指定しない場合は、既定の分離レベルが使用されます。 分離レベルを指定する、<xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>メソッドを使用して、<xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>オーバー ロードします。  
+>  分離レベルを指定しない場合は、既定の分離レベルが使用されます。 <xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>メソッドで分離レベルを指定するには、 <xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>オーバーロードを使用します。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.OracleClient.OracleConnection>と<xref:System.Data.OracleClient.OracleTransaction>します。 使用する方法も示します、 <xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>、 <xref:System.Data.OracleClient.OracleTransaction.Commit%2A>、および<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>メソッド。  
+ 次の例では<xref:System.Data.OracleClient.OracleConnection> 、 <xref:System.Data.OracleClient.OracleTransaction>とを作成します。 また、、 <xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A> <xref:System.Data.OracleClient.OracleTransaction.Commit%2A>、および<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>の各メソッドの使用方法も示します。  
   
  [!code-csharp[Classic WebData OracleConnection.BeginTransaction#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.BeginTransaction/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.BeginTransaction#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.BeginTransaction/VB/source.vb#1)]  
@@ -236,20 +236,20 @@
       </Parameters>
       <Docs>
         <param name="il">この接続のトランザクション分離レベル。</param>
-        <summary>指定したデータベースでトランザクションを開始<see cref="T:System.Data.IsolationLevel" />値。</summary>
+        <summary>指定した <see cref="T:System.Data.IsolationLevel" /> 値を使用して、データベースでトランザクションを開始します。</summary>
         <returns>新しいトランザクションを表すオブジェクト。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- トランザクションをロールバックまたはコミットは、する必要があります明示的に使用する、<xref:System.Data.OracleClient.OracleTransaction.Commit%2A>または<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>メソッド。  
+ トランザクションをコミットまたはロールバックするに<xref:System.Data.OracleClient.OracleTransaction.Commit%2A>は、メソッドまたは<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>メソッドを明示的に使用する必要があります。  
   
- .NET Framework Data Provider for Oracle トランザクションの管理モデルを正しく実行することを確認するには、データベースによって提供されるものなど、他のトランザクション管理モデルを使用しないでください。  
+ Oracle トランザクション管理モデルの .NET Framework Data Provider が正常に実行されるようにするには、データベースによって提供されるものなど、他のトランザクション管理モデルを使用しないようにします。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.OracleClient.OracleConnection>と<xref:System.Data.OracleClient.OracleTransaction>します。 使用する方法も示します、 <xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>、 <xref:System.Data.OracleClient.OracleTransaction.Commit%2A>、および<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>メソッド。  
+ 次の例では<xref:System.Data.OracleClient.OracleConnection> 、 <xref:System.Data.OracleClient.OracleTransaction>とを作成します。 また、、 <xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A> <xref:System.Data.OracleClient.OracleTransaction.Commit%2A>、および<xref:System.Data.OracleClient.OracleTransaction.Rollback%2A>の各メソッドの使用方法も示します。  
   
  [!code-csharp[Classic WebData OracleConnection.BeginTransaction#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.BeginTransaction/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.BeginTransaction#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.BeginTransaction/VB/source.vb#1)]  
@@ -287,10 +287,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `value`パラメーターは、有効なデータベース名を含める必要があり、null 値、空の文字列を含めることはできません ("")、または空白文字だけを含む文字列。  
+ パラメーター `value`には、有効なデータベース名を含める必要があります。また、null 値、空の文字列 ("")、または空白文字のみを含む文字列を含めることはできません。  
   
 > [!NOTE]
->  異なり、**接続**、他の .NET Framework データ プロバイダー (SQL Server、OLE DB および ODBC) 内のオブジェクト<xref:System.Data.OracleClient.OracleConnection>はサポートしていません、<xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A>プロパティ。 プロパティまたは接続文字列で接続タイムアウトの設定も何も起こりません、および返される値は常に 0 です。 <xref:System.Data.OracleClient.OracleConnection> サポートされていません、<xref:System.Data.OracleClient.OracleConnection.Database%2A>プロパティまたは<xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>メソッド。  
+>  他の .NET Framework データプロバイダー (SQL Server、OLE DB、および ODBC) の**Connection**オブジェクトとは異なり<xref:System.Data.OracleClient.OracleConnection> 、はプロパティを<xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A>サポートしていません。 接続タイムアウトをプロパティまたは接続文字列として設定しても効果はありません。返される値は常に0です。 <xref:System.Data.OracleClient.OracleConnection>また、 <xref:System.Data.OracleClient.OracleConnection.Database%2A> <xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>は、プロパティまたはメソッドをサポートしていません。  
   
  ]]></format>
         </remarks>
@@ -322,7 +322,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.OracleClient.OracleConnection.ClearAllPools%2A> 接続プールをリセットします (または空に)。 接続が呼び出し時に使用されている場合に、これらが適切にマークとときに破棄<xref:System.Data.OracleClient.OracleConnection.Close%2A>がそれらで呼び出されます。  
+ <xref:System.Data.OracleClient.OracleConnection.ClearAllPools%2A>接続プールをリセット (または空にする) します。 呼び出し時に接続が使用されている場合、それらの接続は適切にマークさ<xref:System.Data.OracleClient.OracleConnection.Close%2A>れ、が呼び出されると破棄されます。  
   
  ]]></format>
         </remarks>
@@ -354,7 +354,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.OracleClient.OracleConnection.ClearPool%2A> メソッドに関連付けられている接続プールをクリアします`connection`します。 追加の接続に関連付けられている場合`connection`は呼び出し時に使用して、これらが適切にマークと破棄されたときに<xref:System.Data.OracleClient.OracleConnection.Close%2A>がそれらで呼び出されます。  
+ <xref:System.Data.OracleClient.OracleConnection.ClearPool%2A>メソッドは、に`connection`関連付けられている接続プールをクリアします。 に`connection`関連付けられている追加の接続が呼び出し時に使用されている場合、それらの<xref:System.Data.OracleClient.OracleConnection.Close%2A>接続は適切にマークされ、が呼び出されると破棄されます。  
   
  ]]></format>
         </remarks>
@@ -384,15 +384,15 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.OracleClient.OracleConnection.Close%2A>メソッドが保留中のトランザクションをロールバックします。 接続プールへの接続を解放し、または接続プールが無効になっている場合、接続を閉じます。  
+ メソッド<xref:System.Data.OracleClient.OracleConnection.Close%2A>は、保留中のトランザクションをロールバックします。 次に、接続プールへの接続を解放するか、接続プールが無効になっている場合は接続を閉じます。  
   
- アプリケーションが呼び出すことができます<xref:System.Data.OracleClient.OracleConnection.Close%2A>例外を生成せずに 2 回以上。  
+ アプリケーションは、例外<xref:System.Data.OracleClient.OracleConnection.Close%2A>を生成せずに複数回呼び出すことができます。  
   
 > [!NOTE]
->  .NET Framework Data Provider for Oracle を使用する場合は、接続プロバイダーは、これを自動的に管理するためのプールを有効にする必要はありません。  
+>  Oracle で .NET Framework Data Provider を使用する場合、プロバイダーはこれを自動的に管理するため、接続プールを有効にする必要はありません。  
   
 > [!CAUTION]
->  呼び出さないでください<xref:System.Data.OracleClient.OracleConnection.Close%2A>上、 <xref:System.Data.OracleClient.OracleConnection>、 <xref:System.Data.OracleClient.OracleDataReader>、またはその他のマネージ オブジェクトで、`Finalize`クラスのメソッド。 ファイナライザーで、クラスが直接所有しているアンマネージ リソースだけを解放する必要があります。 クラスがアンマネージ リソースを所有していない場合は、クラス定義に `Finalize` メソッドを含めないでください。 詳細については、次を参照してください。[ガベージ コレクション](~/docs/standard/garbage-collection/index.md)します。  
+>  <xref:System.Data.OracleClient.OracleConnection.Close%2A>クラスの<xref:System.Data.OracleClient.OracleConnection>メソッドで<xref:System.Data.OracleClient.OracleDataReader>、、、またはその他のマネージオブジェクトに対してを呼び出さないでください。 `Finalize` ファイナライザーでは、クラスが直接所有しているアンマネージリソースのみを解放する必要があります。 クラスがアンマネージ リソースを所有していない場合は、クラス定義に `Finalize` メソッドを含めないでください。 詳細については、「[ガベージコレクション](~/docs/standard/garbage-collection/index.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -439,69 +439,69 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>取得または設定する Oracle データベースを開くために使用する文字列。</summary>
-        <value>最初の接続を確立するために、サーバー名などの設定を含む Oracle 接続文字列が必要です。 既定値は、空の文字列 ("") です。</value>
+        <summary>Oracle データベースを開くために使用する文字列を取得または設定します。</summary>
+        <value>サーバー名など、初期接続を確立するために必要な設定を含んだ Oracle 接続文字列。 既定値は、空の文字列 ("") です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>接続が閉じられたときにのみ設定できます。  
+ は<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A> 、接続が閉じられている場合にのみ設定できます。  
   
- 使用することができます、<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>プロパティをデータベースに接続します。 次の例では、一般的な接続文字列を示します。  
+ プロパティを使用し<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>てデータベースに接続できます。 一般的な接続文字列の例を次に示します。  
   
 ```  
 "Data Source=Oracle8i;Integrated Security=yes"  
 ```  
   
- 対応する読み取り専用プロパティを持つ文字列で指定された設定の多く (たとえば、`Data Source=MyServer`に対応する、<xref:System.Data.OracleClient.OracleConnection.DataSource%2A>プロパティ)。 接続文字列を設定すると、これらすべてのプロパティがいない限り、更新エラーが検出された場合、プロパティのいずれも更新されます。 <xref:System.Data.OracleClient.OracleConnection> プロパティは、既定の設定またはで指定されたこれらの設定のみを返す、<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>します。  
+ 文字列に指定された設定の多くには、対応する読み取り専用プロパティが`Data Source=MyServer`あります (たとえば、 <xref:System.Data.OracleClient.OracleConnection.DataSource%2A>プロパティに対応する)。 接続文字列が設定されている場合、エラーが検出されない限り、これらのプロパティはすべて更新されます。この場合、プロパティは更新されません。 <xref:System.Data.OracleClient.OracleConnection>プロパティは、 <xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>既定の設定またはで指定された設定のみを返します。  
   
- リセット、<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>閉じた接続に対して、すべての接続文字列の値 (と関連するプロパティ)、パスワードを含むをリセットします。  
+ 閉じた<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>接続でをリセットすると、パスワードを含め、すべての接続文字列の値 (および関連するプロパティ) がリセットされます。  
   
- 接続文字列が設定されている後すぐに解析されます。 構文、実行時例外、エラーなどがわかった解析場合<xref:System.ArgumentException>が生成されます。 試行、接続を開く場合にのみ、その他のエラーを確認できます。  
+ 接続文字列は、設定された直後に解析されます。 解析によって<xref:System.ArgumentException>構文でエラーが判明した場合は、などの実行時例外が生成されます。 その他のエラーが発生するのは、接続を開こうとしたときだけです。  
   
- 接続文字列の基本形式は、一連のキーワード/値ペアのセミコロンで区切られたです。 それぞれのキーワードと値の関連付けには、等号 (=) が使用されます。 セミコロン、単一引用符または二重引用符文字が含まれている値を含めるには、値を二重引用符で囲む必要があります。 セミコロンと二重引用符文字の両方が、値が含まれる場合、値は単一引用符で囲むことができます。 単一引用符も値が二重引用符文字で始まる場合に役立ちます。 逆に、値が単一引用符で開始する場合は、二重引用符を使用できます。 値に単一引用符と二重引用符の両方の文字が含まれている場合、値を囲むために使用する引用符文字は値の中で発生するたび倍する必要があります。  
+ 接続文字列の基本的な形式は、セミコロンで区切られた一連のキーワードと値のペアです。 それぞれのキーワードと値の関連付けには、等号 (=) が使用されます。 セミコロン、単一引用符、または二重引用符文字を含む値を含めるには、値を二重引用符で囲む必要があります。 値にセミコロンと二重引用符の両方が含まれている場合は、値を単一引用符で囲むことができます。 単一引用符は、値が二重引用符で始まる場合にも役立ちます。 逆に、値が単一引用符で始まる場合は、二重引用符を使用できます。 値に単一引用符と二重引用符の両方の文字が含まれている場合、値を囲むために使用される引用符文字は、値内で出現するたびに2倍にする必要があります。  
   
- 直前または文字列値の末尾のスペースを含めるには、一重引用符または二重引用符のいずれかの値を囲む必要があります。 引用符で囲まれている場合でも、整数、ブール値、列挙値の先頭または末尾の空白は無視されます。 ただし、文字列リテラル キーワードまたは値内にスペースが保持されます。 一重または二重引用符は、引用符文字をなど、値の最初または最後の文字がない限り、区切り記号を使用せず、接続文字列内で使用可能性があります`Data Source= my'Server`または`Data Source= my"Server`します。  
+ 文字列値に先行または末尾のスペースを含めるには、値を単一引用符または二重引用符で囲む必要があります。 整数、ブール値、または列挙値の前後の先頭または末尾のスペースは、引用符で囲まれていても無視されます。 ただし、文字列リテラルキーワードまたは値内のスペースは保持されます。 引用符を使用しない接続文字列内では、一重引用符または二重引用符を使用できます。ただし、 `Data Source= my'Server`または`Data Source= my"Server`のように、値の最初または最後の文字が引用符で囲まれている必要があります。  
   
- キーワードまたは値を等号 (=) を含めるもう 1 つの等号 (=) を前する必要があります。 たとえば、仮想的な接続文字列で  
+ キーワードまたは値に等号 (=) を含めるには、その前に別の等号を付ける必要があります。 たとえば、仮定の接続文字列で  
   
 ```  
 "key==word=value"  
 ```  
   
- キーワードは"キー = word"、値は"value"です。  
+ キーワードは "key = word" で、値は "value" です。  
   
- 接続文字列のキーワード/値ペアの特定のキーワードが複数回発生した場合、最後に見つかった値のセットで使用されます。  
+ キーワード/値ペア内の特定のキーワードが接続文字列内で複数回出現する場合は、最後に出現した値が設定されます。  
   
- キーワードは、大文字と小文字を区別しません。  
+ キーワードは大文字と小文字を区別しません。  
   
- 次の表には、内の値の有効な名前が一覧表示、<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>します。  
+ 次の表に、 <xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>内の値の有効な名前を示します。  
   
-|名前|既定値|説明|  
+|name|既定値|説明|  
 |----------|-------------|-----------------|  
-|データ ソース<br /><br /> - または -<br /><br /> サーバー||Oracle の接続先のインスタンスの名前またはネットワーク アドレス。|  
-|Integrated Security|'false'|接続がセキュリティで保護された接続であるかどうかをかどうか。<br /><br /> 認識できる値は`true`(強く推奨)、 `false`、 `yes`、および`no`します。|  
-|[Password]||ログオン Oracle アカウントのパスワード。 高レベルのセキュリティを維持するために強くお勧め、統合セキュリティ キーワードを使用することです。|  
-|Persist Security Info|'false'|設定すると`false`または`no`(強く推奨)、接続が開いているか、開いているになった場合、接続文字列の一部として、パスワードなどの機密情報が返されません<xref:System.Data.OracleClient.OracleConnection.State%2A>します。 接続文字列をリセットするパスワードを含むすべての接続文字列の値をリセットします。<br /><br /> 認識される値は `true`、`false`、`yes` および `no` です。|  
-|Unicode|'false'|.NET Framework Data Provider for Oracle が UTF16 モードの API 呼び出しを使用するかどうかを指定します。 このキーワードは Oracle9i クライアント ソフトウェアを使用する場合を除き無視されます。|  
-|User ID||Oracle ログイン アカウントです。 高レベルのセキュリティを維持するために強くお勧め、統合セキュリティ キーワードを使用することです。|  
+|データ ソース<br /><br /> または<br /><br /> サーバー||接続先となる Oracle のインスタンスの名前またはネットワークアドレス。|  
+|Integrated Security|'false'|接続がセキュリティで保護された接続であるかどうか。<br /><br /> 認識される`true`値は (強く推奨`false`) `yes`、、 `no`、およびです。|  
+|パスワード||Oracle アカウントのログオンに使用するパスワードです。 高いレベルのセキュリティを維持するには、代わりに統合セキュリティキーワードを使用することを強くお勧めします。|  
+|Persist Security Info|'false'|または`false` `no` (強くお勧めします) に設定すると、接続が開いている場合や開い<xref:System.Data.OracleClient.OracleConnection.State%2A>ていたことがある場合に、パスワードなどのセキュリティを重視する情報が接続の一部として返されません。 接続文字列をリセットすると、パスワードを含むすべての接続文字列の値がリセットされます。<br /><br /> 認識される値は `true`、`false`、`yes` および `no` です。|  
+|Unicode|'false'|Oracle 用の .NET Framework Data Provider が UTF16 モード API 呼び出しを使用するかどうかを指定します。 このキーワードは、Oracle9i クライアントソフトウェアを使用する場合を除き、無視されます。|  
+|User ID||Oracle ログインアカウント。 高いレベルのセキュリティを維持するには、代わりに統合セキュリティキーワードを使用することを強くお勧めします。|  
   
- 次の表には、接続プール内の値の有効な名前が一覧表示、<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>します。  
+ 次の表に、内の<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>接続プール値の有効な名前を示します。  
   
-|名前|既定値|説明|  
+|name|既定値|説明|  
 |----------|-------------|-----------------|  
-|接続の有効期間|0|接続がプールに返された時点で、その接続の作成時刻と現在の時刻を比較し、その時間の長さ (秒) が `Connection Lifetime` で指定した値を超えている場合は、その接続が破棄されます。 これは、クラスター構成を採用している状況で、実行中のサーバーと、オンラインになったばかりのサーバーの間での、負荷を強制的に分散するのに便利です。<br /><br /> 値 0 の場合、プールされた接続の最大接続タイムアウトにします。|  
-|Enlist|'true'|ときに`true`または`yes`、プーラーが、作成スレッドの現在のトランザクション コンテキストで接続を自動的に登録します。<br /><br /> 認識される値は `true`、`false`、`yes` および `no` です。|  
-|Max Pool Size|100|プールに格納できる最大接続数。 設定、`Max Pool Size`の値、<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>パフォーマンスに影響を与えることができます。 作成して積極的に 100 個の接続では複数使用する必要がありますを増やす場合`Max Pool Size`アプリケーションの安定した状態の接続の使用量の概算値にします。|  
+|接続の有効期間|0|接続がプールに返された時点で、その接続の作成時刻と現在の時刻を比較し、その時間の長さ (秒) が `Connection Lifetime` で指定した値を超えている場合は、その接続が破棄されます。 これは、クラスター構成を採用している状況で、実行中のサーバーと、オンラインになったばかりのサーバーの間での、負荷を強制的に分散するのに便利です。<br /><br /> 値を0に設定すると、プールされた接続の最大接続タイムアウトが発生します。|  
+|Enlist|'true'|また`true` は`yes`の場合、プーラーは作成スレッドの現在のトランザクションコンテキストに接続を自動的に参加させます。<br /><br /> 認識される値は `true`、`false`、`yes` および `no` です。|  
+|Max Pool Size|100|プールに格納できる最大接続数。 の値を設定する<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>と、パフォーマンスに影響する可能性があります。 `Max Pool Size` 100を超える接続を作成してアクティブに使用する予定がある場合`Max Pool Size`は、アプリケーションの定常状態の接続の使用量を近似する値を増やす必要があります。|  
 |Min Pool Size|0|プールで許可される接続の最小数。|  
-|Pooling|'true'|ときに`true`または`yes`、<xref:System.Data.OracleClient.OracleConnection>オブジェクトが適切なプールから描画または必要に応じてが作成され、適切なプールに追加します。<br /><br /> 認識される値は `true`、`false`、`yes` および `no` です。|  
+|Pooling|'true'|また`true`は`yes`の<xref:System.Data.OracleClient.OracleConnection>場合、オブジェクトは適切なプールから描画されるか、必要に応じて、適切なプールに追加されます。<br /><br /> 認識される値は `true`、`false`、`yes` および `no` です。|  
   
- キーワードまたは接続プールをブール値を必要とする値を設定する場合は、'true' ではなくと 'no' に 'false' ではなく 'yes' を使用できます。 整数値は文字列として表されます。  
+ ブール値を必要とするキーワードまたは接続プーリングの値を設定する場合は、' true ' ではなく ' yes '、' false ' の代わりに ' no ' を使用できます。 整数値は文字列として表されます。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.OracleClient.OracleConnection>および接続文字列の一部のプロパティを設定します。  
+ 次の例では<xref:System.Data.OracleClient.OracleConnection> 、を作成し、そのプロパティの一部を接続文字列に設定します。  
   
  [!code-csharp[Classic WebData OracleConnection.DataSource#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.DataSource/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.DataSource#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.DataSource/VB/source.vb#1)]  
@@ -535,20 +535,20 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>試行を終了し、エラーが発生する前に、接続を確立するために待機する時間を取得します。</summary>
+        <summary>試行を中断してエラーを生成する前に、接続の確立時に待機する時間を取得します。</summary>
         <value>接続が開くのを待機する時間 (秒単位)。 既定値は 15 秒です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用してタイムアウトに接続が待機する時間の量を設定することができます、`Connect Timeout`または`Connection Timeout`接続文字列のキーワード。 値が 0 の制限がないことを示します。 およびに避ける必要があります、<xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>接続の試みが無期限に待機するためです。  
+ 接続文字列内で`Connect Timeout`または`Connection Timeout`キーワードを使用して、接続がタイムアウトするまで待機する時間を設定できます。 値0は制限がないことを示します。では、 <xref:System.Data.OracleClient.OracleConnection.ConnectionString%2A>接続の試行が無制限に待機するため、では回避する必要があります。  
   
 > [!NOTE]
->  異なり、 `Connection` 、他の .NET Framework データ プロバイダー (SQL Server、OLE DB および ODBC) 内のオブジェクト<xref:System.Data.OracleClient.OracleConnection>はサポートしていません、<xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A>プロパティ。 接続タイムアウト プロパティを使用または接続文字列のいずれかの設定も何も起こりません、および返される値は常に 0 です。 <xref:System.Data.OracleClient.OracleConnection> サポートされていません、<xref:System.Data.OracleClient.OracleConnection.Database%2A>プロパティまたは<xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>メソッド。  
+>  他の .NET Framework データプロバイダー (SQL Server、OLE DB、および ODBC) の<xref:System.Data.OracleClient.OracleConnection> <xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A> オブジェクトとは異なり、ではプロパティがサポートされて`Connection`いません。 接続のタイムアウトをプロパティまたは接続文字列で設定しても効果はありません。返される値は常に0です。 <xref:System.Data.OracleClient.OracleConnection>また、 <xref:System.Data.OracleClient.OracleConnection.Database%2A> <xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>は、プロパティまたはメソッドをサポートしていません。  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">指定された値が、0 未満です。</exception>
+        <exception cref="T:System.ArgumentException">指定された値が 0 未満です。</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateCommand">
@@ -570,7 +570,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>作成して返します、<see cref="T:System.Data.OracleClient.OracleCommand" />オブジェクトに関連付けられている、<see cref="T:System.Data.OracleClient.OracleConnection" />します。</summary>
+        <summary><see cref="T:System.Data.OracleClient.OracleCommand" /> に関連付けられている <see cref="T:System.Data.OracleClient.OracleConnection" /> オブジェクトを作成し、返します。</summary>
         <returns><see cref="T:System.Data.OracleClient.OracleCommand" /> オブジェクト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -629,10 +629,10 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.OracleClient.OracleConnection.Database%2A>プロパティを動的に更新します。 SQL ステートメントを使用して、現在のデータベースを変更するかどうか、または<xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>メソッド、情報メッセージが送信され、プロパティが自動的に更新されます。  
+ プロパティ<xref:System.Data.OracleClient.OracleConnection.Database%2A>は動的に更新されます。 SQL ステートメントまたは<xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>メソッドを使用して現在のデータベースを変更すると、情報メッセージが送信され、プロパティが自動的に更新されます。  
   
 > [!NOTE]
->  異なり、 `Connection` 、他の .NET Framework データ プロバイダー (SQL Server、OLE DB および ODBC) 内のオブジェクト<xref:System.Data.OracleClient.OracleConnection>はサポートしていません、<xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A>プロパティ。 接続タイムアウト プロパティを使用または接続文字列のいずれかの設定も何も起こりません、および返される値は常に 0 です。 <xref:System.Data.OracleClient.OracleConnection> サポートされていません、<xref:System.Data.OracleClient.OracleConnection.Database%2A>プロパティまたは<xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>メソッド。  
+>  他の .NET Framework データプロバイダー (SQL Server、OLE DB、および ODBC) の<xref:System.Data.OracleClient.OracleConnection> <xref:System.Data.OracleClient.OracleConnection.ConnectionTimeout%2A> オブジェクトとは異なり、ではプロパティがサポートされて`Connection`いません。 接続のタイムアウトをプロパティまたは接続文字列で設定しても効果はありません。返される値は常に0です。 <xref:System.Data.OracleClient.OracleConnection>また、 <xref:System.Data.OracleClient.OracleConnection.Database%2A> <xref:System.Data.OracleClient.OracleConnection.ChangeDatabase%2A>は、プロパティまたはメソッドをサポートしていません。  
   
  ]]></format>
         </remarks>
@@ -665,13 +665,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続先となる Oracle サーバーの名前を取得します。</summary>
-        <value>接続先となる Oracle サーバーの名前。 既定値は、空の文字列 ("") です。</value>
+        <summary>接続する Oracle サーバーの名前を取得します。</summary>
+        <value>接続する Oracle サーバーの名前。 既定値は、空の文字列 ("") です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.OracleClient.OracleConnection>し、一部の読み取り専用プロパティを表示します。  
+ を作成<xref:System.Data.OracleClient.OracleConnection>し、その読み取り専用プロパティの一部を表示する例を次に示します。  
   
  [!code-csharp[Classic WebData OracleConnection.DataSource#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.DataSource/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.DataSource#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.DataSource/VB/source.vb#1)]  
@@ -734,13 +734,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しい ADO.NET 2.0 では、サポートを使用するため、<xref:System.Data.Common.DbConnection.EnlistTransaction%2A>分散トランザクションに参加するメソッド。 これにより、接続するため、<xref:System.Transactions.Transaction>インスタンス、 **EnlistTransaction**で利用できる機能を活用、<xref:System.Transactions>名前空間を管理するための分散トランザクション、する方が望ましいので**どちら**この目的のためです。 詳細については、次を参照してください。[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)です。  
+ ADO.NET 2.0 の新機能では、 <xref:System.Data.Common.DbConnection.EnlistTransaction%2A>メソッドを使用した分散トランザクションへの参加がサポートされています。 <xref:System.Transactions.Transaction> **EnlistTransaction**はインスタンスに接続を参加させるため、分散トランザクションを管理する<xref:System.Transactions> **ために名前空間で使用できる機能を活用して、** この目的には EnlistDistributedTransaction を使用します。 詳細については、「[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)」を参照してください。  
   
- 使用して既存の分散トランザクションに参加する続行することができます、  
+ 既存の分散トランザクションへの参加は、  
   
- <xref:System.Data.OracleClient.OracleConnection.EnlistDistributedTransaction%2A> メソッドへの自動参加が無効になっている場合。 つまり場合は、トランザクションがコミットまたはロールバックし、データ ソースにあるコードによって加えられた変更もコミットまたはロールバックにより、既存の分散トランザクションに参加します。  
+ <xref:System.Data.OracleClient.OracleConnection.EnlistDistributedTransaction%2A>自動参加が無効になっている場合のメソッド。 既存の分散トランザクションに参加すると、トランザクションがコミットまたはロールバックされた場合に、データソースのコードによって行われた変更もコミットまたはロールバックされます。  
   
- <xref:System.Data.OracleClient.OracleConnection.EnlistDistributedTransaction%2A> 例外を返します、<xref:System.Data.OracleClient.OracleConnection>はトランザクションを使用して、既に開始<xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>します。 ただし、トランザクションがデータ ソースで開始されたローカル トランザクション (BEGIN TRANSACTION ステートメントを使用して、明示的に実行することによってなど、<xref:System.Data.OracleClient.OracleCommand>オブジェクト)、<xref:System.Data.OracleClient.OracleConnection.EnlistDistributedTransaction%2A>ローカル トランザクションをロールバックし、既存の参加要求されたとして分散トランザクション。 ローカル トランザクションがロールバックはし、ないローカル トランザクションを管理する責任を負います開始するを使用して、通知が届きません<xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>します。  
+ <xref:System.Data.OracleClient.OracleConnection.EnlistDistributedTransaction%2A>がを使用して<xref:System.Data.OracleClient.OracleConnection>既にトランザクションを開始し<xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>ている場合、は例外を返します。 ただし、トランザクションがデータソースで開始されたローカルトランザクションである場合 (たとえば、 <xref:System.Data.OracleClient.OracleCommand>オブジェクトを使用して BEGIN TRANSACTION ステートメントを明示的に実行する場合)、 <xref:System.Data.OracleClient.OracleConnection.EnlistDistributedTransaction%2A>はローカルトランザクションをロールバックし、既存のに参加します。要求された分散トランザクション。 ローカルトランザクションがロールバックされたことが通知されず、を使用して開始されて<xref:System.Data.OracleClient.OracleConnection.BeginTransaction%2A>いないローカルトランザクションを管理する責任があります。  
   
  ]]></format>
         </remarks>
@@ -771,9 +771,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 新しい ADO.NET 2.0 では、サポートを使用するため、  
+ ADO.NET 2.0 の新機能では、  
   
- <xref:System.Data.Common.DbConnection.EnlistTransaction%2A> 分散トランザクションに参加するメソッドです。 これにより、接続するため、<xref:System.Transactions.Transaction>インスタンス、 **EnlistTransaction**で利用できる機能を活用、<xref:System.Transactions>名前空間を管理するための分散トランザクション、する方が望ましいので**どちら**、使用、 **System.EnterpriseServices.ITransaction**オブジェクト。 異なる意味があります。 接続が明示的にトランザクションに参加していると、参加解除またはできません、最初のトランザクションが完了するまで、別のトランザクションに参加しています。 分散トランザクションの詳細については、次を参照してください。[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)です。  
+ <xref:System.Data.Common.DbConnection.EnlistTransaction%2A>分散トランザクションに参加するメソッド。 <xref:System.Transactions.Transaction> **EnlistTransaction**はインスタンスに接続を参加させるため、分散トランザクションを管理する<xref:System.Transactions> **ために名前空間で使用できる機能を活用して、EnlistDistributedTransaction**。 **system.enterpriseservices**オブジェクトを使用します。 また、若干異なるセマンティクスがあります。1つのトランザクションに明示的に参加した接続は、最初のトランザクションが終了するまで、参加を解除したり別のトランザクションに参加させたりすることはできません。 分散トランザクションの詳細については、「[分散トランザクション](~/docs/framework/data/adonet/distributed-transactions.md)」を参照してください。  
   
  ]]></format>
         </remarks>
@@ -786,7 +786,7 @@
       </AssemblyInfo>
       <Docs>
         <summary>この <see cref="T:System.Data.OracleClient.OracleConnection" /> のデータ ソースのスキーマ情報を返します。</summary>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
       </Docs>
     </MemberGroup>
     <Member MemberName="GetSchema">
@@ -810,7 +810,7 @@
         <summary>この <see cref="T:System.Data.OracleClient.OracleConnection" /> のデータ ソースのスキーマ情報を返します。</summary>
         <returns>スキーマ情報を格納する <see cref="T:System.Data.DataTable" />。</returns>
         <remarks>To be added.</remarks>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
       </Docs>
     </Member>
     <Member MemberName="GetSchema">
@@ -840,22 +840,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 使用してクエリ<xref:System.Data.OracleClient.OracleConnection.GetSchema%2A>小文字が区別されます。 ケースの Oracle の処理を行うのため、スキーマが作成されると、これにつながる予期しない結果。  
+ を使用<xref:System.Data.OracleClient.OracleConnection.GetSchema%2A>するクエリは大文字と小文字が区別されます。 Oracle がスキーマを最初に作成したときの処理によって、予期しない結果が生じる可能性があります。  
   
- 引用符は、スキーマが作成された場合`,`Oracle が大文字でオブジェクト名を格納します。 スキーマは、引用符で作成された、Oracle は、大文字と小文字の指定のオブジェクト名を格納します。  
+ スキーマが引用符`,`なしで作成された場合、Oracle はオブジェクト名を大文字で格納します。 スキーマが引用符で作成されている場合、Oracle では、指定された大文字と小文字を区別してオブジェクト名を格納します。  
   
- たとえば、次の 2 つのステートメントのいずれかを使用して、MyTable という名前のテーブルを作成するとします。  
+ たとえば、次の2つのステートメントのいずれかを使用して、MyTable という名前のテーブルを作成したとします。  
   
  `CREATE TABLE MyTable ...`  
   
  `CREATE TABLE "MyTable" ...`  
   
- 使用してこのテーブルに関する情報を取得する、 **GetSchema**メソッドでは、最初のケース、しなければならないというで「mytable」という名前引数として渡します。 2 番目のケースで「mytable」という名前引数として渡す必要があります。  
+ 最初のケースの**GetSchema**メソッドを使用してこのテーブルに関する情報を取得するには、引数として "MYTABLE" を渡す必要があります。 2番目のケースでは、引数として "MyTable" を渡す必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="collectionName" /> は null として指定されます。</exception>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
       </Docs>
     </Member>
     <Member MemberName="GetSchema">
@@ -887,26 +887,26 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- `restrictionValues`パラメーターは、特定のコレクションに対する制限のコレクションで指定されている値の n 個の深さを指定できます。 指定された制限の値を設定し、その他の制限の値を設定できません、ために、配置の値を指定するには制限の適切な値を null には、前述の制限を設定する必要があります。  
+ パラメーター `restrictionValues`は、特定のコレクションの制限コレクションによって指定される値の n の深さを指定できます。 特定の制限に対して値を設定し、他の制限値を設定しないようにするには、上記の制限を null に設定し、値を指定する制限のに適切な値を設定する必要があります。  
   
- この例では、"Tables"コレクションです。 "Tables"コレクションに 3 つの制限がある場合: データベース、所有者、およびテーブル名。"Carl"の所有者に関連付けられているテーブルのみを取得するし、(少なくとも) 次の値で渡す必要がある場合:"Carl"は null です。 制限値が渡されたしない場合は、既定値がその制限に使用されます。 これは、これは、パラメーターの値に空の文字列を渡すこととは異なる null を渡すことと同じマッピングです。 その場合、空の文字列 ("") は、指定されたパラメーターの値であると見なされます。  
+ この例として、"Tables" コレクションがあります。 "Tables" コレクションに3つの制限がある場合: データベース、所有者、およびテーブル名。所有者 "Carl" に関連付けられているテーブルだけを取得するには、次の値 (少なくとも、null、"Carl") を渡す必要があります。 制限値が渡されない場合は、その制限に既定値が使用されます。 これは、null を渡す場合と同じマッピングです。これは、パラメーター値に空の文字列を渡すこととは異なります。 その場合、空の文字列 ("") は、指定されたパラメーターの値と見なされます。  
   
- 使用してクエリ<xref:System.Data.OracleClient.OracleConnection.GetSchema%2A>小文字が区別されます。 ケースの Oracle の処理を行うのため、スキーマが作成されると、これにつながる予期しない結果。  
+ を使用<xref:System.Data.OracleClient.OracleConnection.GetSchema%2A>するクエリは大文字と小文字が区別されます。 Oracle がスキーマを最初に作成したときの処理によって、予期しない結果が生じる可能性があります。  
   
- 引用符は、スキーマが作成された場合`,`Oracle が大文字でオブジェクト名を格納します。 スキーマは、引用符で作成された、Oracle は、大文字と小文字の指定のオブジェクト名を格納します。  
+ スキーマが引用符`,`なしで作成された場合、Oracle はオブジェクト名を大文字で格納します。 スキーマが引用符で作成されている場合、Oracle では、指定された大文字と小文字を区別してオブジェクト名を格納します。  
   
- たとえば、次の 2 つのステートメントのいずれかを使用して、MyTable という名前のテーブルを作成するとします。  
+ たとえば、次の2つのステートメントのいずれかを使用して、MyTable という名前のテーブルを作成したとします。  
   
  `CREATE TABLE MyTable ...`  
   
  `CREATE TABLE "MyTable" ...`  
   
- 使用してこのテーブルに関する情報を取得する、 **GetSchema**メソッドでは、最初のケース、しなければならないというで「mytable」という名前引数として渡します。 2 番目のケースで「mytable」という名前引数として渡す必要があります。  
+ 最初のケースの**GetSchema**メソッドを使用してこのテーブルに関する情報を取得するには、引数として "MYTABLE" を渡す必要があります。 2番目のケースでは、引数として "MyTable" を渡す必要があります。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException"><paramref name="collectionName" /> は null として指定されます。</exception>
-        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからスキーマ情報の取得</related>
+        <related type="Article" href="~/docs/framework/data/adonet/retrieving-database-schema-information.md">データベースからのスキーマ情報の取得</related>
       </Docs>
     </Member>
     <Member MemberName="InfoMessage">
@@ -927,14 +927,14 @@
         <ReturnType>System.Data.OracleClient.OracleInfoMessageEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Oracle が警告または情報メッセージを送信するときに発生します。</summary>
+        <summary>Oracle が警告メッセージまたは情報メッセージを送信したときに発生します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- データ プロバイダーが成功した場合に情報メッセージを受信するたびに、.NET Framework Data Provider for Oracle は、Oracle Call Interface (OCI) を使用するため、<xref:System.Data.OracleClient.OracleConnection.InfoMessage>イベントが生成されます。 例には、構文エラーを含むストアド プロシージャを作成。 呼び出し、<xref:System.Data.OracleClient.OracleCommand.ExecuteNonQuery%2A>メソッドは成功します。 ただし、<xref:System.Data.OracleClient.OracleConnection.InfoMessage>構文エラーを通知イベントが生成されます。  
+ Oracle 用の .NET Framework Data Provider は oracle Call Interface (OCI) を使用するため、データプロバイダーが情報メッセージ<xref:System.Data.OracleClient.OracleConnection.InfoMessage>で成功を受信するたびに、イベントが生成されます。 たとえば、構文エラーを含むストアドプロシージャを作成するとします。 メソッドの<xref:System.Data.OracleClient.OracleCommand.ExecuteNonQuery%2A>呼び出しは成功します。 ただし、 <xref:System.Data.OracleClient.OracleConnection.InfoMessage>構文エラーを通知するイベントが生成されます。  
   
- 警告または情報メッセージが、サーバーから送信された処理を希望するクライアントを作成する必要があります、<xref:System.Data.OracleClient.OracleInfoMessageEventHandler>このイベントを待機するデリゲート。  
+ サーバーから送信された警告または情報メッセージを処理するクライアントは<xref:System.Data.OracleClient.OracleInfoMessageEventHandler> 、このイベントをリッスンするデリゲートを作成する必要があります。  
   
  ]]></format>
         </remarks>
@@ -959,15 +959,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>指定されたプロパティの設定を使用、データベースへの接続を開く、<see cref="P:System.Data.OracleClient.OracleConnection.ConnectionString" />します。</summary>
+        <summary><see cref="P:System.Data.OracleClient.OracleConnection.ConnectionString" /> で指定したプロパティ設定を使用して、データベース接続を開きます。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.OracleClient.OracleConnection>がある場合は、接続プールから開いている接続を描画します。 それ以外の場合、データベースへの新しい接続を確立します。  
+ は<xref:System.Data.OracleClient.OracleConnection> 、接続プールが使用可能な場合は、接続プールから開いている接続を描画します。 それ以外の場合は、データベースへの新しい接続を確立します。  
   
 > [!NOTE]
->  場合、<xref:System.Data.OracleClient.OracleConnection>がスコープから外れたりを表す接続が自動的に閉じるされません。 そのため、する必要があります明示的に閉じる接続呼び出して<xref:System.Data.OracleClient.OracleConnection.Close%2A>します。  
+>  が<xref:System.Data.OracleClient.OracleConnection>スコープ外になった場合、それが表す接続は自動的に閉じられません。 そのため、を呼び出し<xref:System.Data.OracleClient.OracleConnection.Close%2A>て、接続を明示的に閉じる必要があります。  
   
  ]]></format>
         </remarks>
@@ -1001,18 +1001,18 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>クライアントが接続されているサーバーのバージョンを含む文字列を取得します。</summary>
-        <value>接続先のサーバーのバージョン。</value>
+        <summary>クライアントが接続しているサーバーのバージョンが示された文字列を取得します。</summary>
+        <value>接続されているサーバーのバージョン。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Data.OracleClient.OracleConnection.ServerVersion%2A>プロパティは、Oracle のバージョンの形式にします。 たとえば、Oracle8 リリースの形式は、形式の文字列"8.1.7.0.0 Oracle8 8.1.7.0.0 - 運用環境にリリースします"。  
+ <xref:System.Data.OracleClient.OracleConnection.ServerVersion%2A>プロパティは Oracle バージョン形式です。 たとえば、Oracle8 リリースの形式は、"8.1.7.0.0 Oracle8 Release 8.1.7.0.0-Production" という形式の文字列です。  
   
    
   
 ## Examples  
- 次の例では、作成、<xref:System.Data.OracleClient.OracleConnection>し、一部の読み取り専用プロパティを表示します。  
+ を作成<xref:System.Data.OracleClient.OracleConnection>し、その読み取り専用プロパティの一部を表示する例を次に示します。  
   
  [!code-csharp[Classic WebData OracleConnection.ServerVersion#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.ServerVersion/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.ServerVersion#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.ServerVersion/VB/source.vb#1)]  
@@ -1049,21 +1049,21 @@
       </ReturnValue>
       <Docs>
         <summary>現在の接続の状態を取得します。</summary>
-        <value><see cref="T:System.Data.ConnectionState" /> 値のビットごとの組み合わせ。 既定値は <see langword="Closed" /> です。</value>
+        <value><see cref="T:System.Data.ConnectionState" /> 値のビットごとの組み合わせ。 既定値は、<see langword="Closed" /> です。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 許可されている状態の変更は次のとおりです。  
+ 許可される状態の変更は次のとおりです。  
   
--   `Closed`に`Open`を使用して、`Open`のメソッド、<xref:System.Data.OracleClient.OracleConnection>オブジェクト。  
+-   オブジェクトの`Open` `Closed` `Open`メソッドを使用してからに。 <xref:System.Data.OracleClient.OracleConnection>  
   
--   `Open`に`Closed`を使用して、<xref:System.Data.OracleClient.OracleConnection.Close%2A>のメソッド、<xref:System.Data.OracleClient.OracleConnection>オブジェクト。  
+-   オブジェクトの`Closed` `Open` <xref:System.Data.OracleClient.OracleConnection.Close%2A>メソッドを使用してからに。 <xref:System.Data.OracleClient.OracleConnection>  
   
    
   
 ## Examples  
- 次の例は、派生クラスのインスタンスを作成します。 <xref:System.Data.OracleClient.OracleConnection>、設定、 <xref:System.Data.IDbConnection.ConnectionString%2A>、し、表示、<xref:System.Data.OracleClient.OracleConnection.State%2A>します。  
+ 次の例では、派生クラス<xref:System.Data.OracleClient.OracleConnection>のインスタンスを作成し、その<xref:System.Data.IDbConnection.ConnectionString%2A>を設定し<xref:System.Data.OracleClient.OracleConnection.State%2A>て、を表示します。  
   
  [!code-csharp[Classic WebData OracleConnection.State#1](~/samples/snippets/csharp/VS_Snippets_ADO.NET/Classic WebData OracleConnection.State/CS/source.cs#1)]
  [!code-vb[Classic WebData OracleConnection.State#1](~/samples/snippets/visualbasic/VS_Snippets_ADO.NET/Classic WebData OracleConnection.State/VB/source.vb#1)]  
@@ -1088,7 +1088,7 @@
         <ReturnType>System.Data.StateChangeEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>接続の状態が変更されたときに発生します。</summary>
+        <summary>接続の状態が変化したときに発生します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1117,7 +1117,7 @@
           <format type="text/markdown"><![CDATA[
 
 ## Remarks  
-または明示的にコミットする必要がありますを使用してトランザクションをロールバック、トランザクションが完了すると、<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッド。
+トランザクションが完了したら、メソッド<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。
 
 ]]></format>
         </remarks>
@@ -1151,7 +1151,7 @@
           <format type="text/markdown"><![CDATA[
 
 ## Remarks  
-または明示的にコミットする必要がありますを使用してトランザクションをロールバック、トランザクションが完了すると、<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッド。
+トランザクションが完了したら、メソッド<xref:System.Data.IDbTransaction.Commit>または<xref:System.Data.IDbTransaction.Rollback>メソッドを使用して、トランザクションを明示的にコミットまたはロールバックする必要があります。
 
 ]]></format>
         </remarks>

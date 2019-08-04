@@ -67,7 +67,7 @@
   
 ## Remarks
 
-`ImmutableList<T>` パブリック コンス トラクターがありません。まず、空の取得を`ImmutableList<T>`を使用して、<xref:System.Collections.Immutable.ImmutableList%601.Empty?displayProperty=nameWithType>します。 など、メソッドを呼び出すことができますし、<xref:System.Collections.Immutable.ImmutableList%601.Add%2A>と<xref:System.Collections.Immutable.ImmutableList%601.AddRange%2A>コレクションを設定します。 これらのメソッドが新しいオブジェクトを返すことに注意してください。 追加または変更できないリストから項目を削除するときは、追加または削除するには、項目を含むオリジナル リストのコピーが作成され、元のリストは変更されません。  
+`ImmutableList<T>`にパブリックコンストラクターがありません。まず、を使用して`ImmutableList<T>`空の<xref:System.Collections.Immutable.ImmutableList%601.Empty?displayProperty=nameWithType>を取得します。 その後、 <xref:System.Collections.Immutable.ImmutableList%601.Add%2A>や<xref:System.Collections.Immutable.ImmutableList%601.AddRange%2A>などのメソッドを呼び出して、コレクションにデータを設定できます。 これらのメソッドは新しいオブジェクトを返すことに注意してください。 変更できないリストの項目を追加または削除すると、その項目が追加または削除されたときに元の一覧のコピーが作成され、元の一覧は変更されません。  
   
  ]]></format>
     </remarks>
@@ -327,7 +327,7 @@
         <typeparam name="TOutput">変換後の配列要素の型。</typeparam>
         <param name="converter">各要素の型を変換するデリゲート。</param>
         <summary>現在の変更できないリストの要素を別の型に変換し、変換された要素が格納されたリストを返します。</summary>
-        <returns>現在から変換された要素を格納しているターゲット型のリストを<see cref="T:System.Collections.Immutable.ImmutableList`1" />します。</returns>
+        <returns>現在の <see cref="T:System.Collections.Immutable.ImmutableList`1" /> から変換された要素を含むターゲットの型のリスト。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -856,7 +856,7 @@
 ## Remarks  
   
 > [!CAUTION]
->  値としてこの列挙子を使用する場合、入力 (つまり、それがボックス化されていない) 場合はコピーしない 2 番目の変数に代入することで、または別のメソッドに渡すことによって。 この列挙子が破棄され、リソース プールを変更可能な参照型のスタックを返します、リスクがある場合は値型の列挙子をコピー (簡単に発生することが意図せずに値を渡す場合) を既にスタック返されるリソースに、プールはデータの破損または例外につながる、列挙子のコピーのいずれかで使用されているも可能性があります。  
+>  この列挙子が値型として使用されている場合 (つまり、ボックス化されていない場合)、2番目の変数に代入するか、別のメソッドに渡すことによってコピーしないでください。 この列挙子が破棄されると、変更可能な参照型のスタックがリソースプールに返されます。値の型の列挙子がコピーされると (これは、値を渡したときに誤って発生する可能性があります)、既に存在しているスタックがあるというリスクがあります。リソースプールに返されたが、列挙子のコピーのいずれかによって使用されていて、データの破損または例外が発生している可能性があります。  
   
  ]]></format>
         </remarks>
@@ -1092,7 +1092,7 @@
         <summary>リストの指定したインデックス位置にある要素を取得します。</summary>
         <value>指定したインデックス位置にある要素。</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.IndexOutOfRangeException">Get 操作で<paramref name="index" />が負の値より小さくないまたは<see cref="P:System.Collections.Immutable.ImmutableList`1.Count" />します。</exception>
+        <exception cref="T:System.IndexOutOfRangeException">取得操作で、<paramref name="index" /> が負の値であるか、<see cref="P:System.Collections.Immutable.ImmutableList`1.Count" /> より小さくありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="ItemRef">
@@ -1120,10 +1120,10 @@
       </Parameters>
       <Docs>
         <param name="index">取得するセット内の要素の、0 から始まるインデックス番号。</param>
-        <summary>読み取り専用参照セットの要素を取得、指定された<paramref name="index" />します。</summary>
-        <returns>指定した位置にある要素への読み取り専用参照。</returns>
+        <summary>指定した <paramref name="index" /> にあるセットの要素への読み取り専用の参照を取得します。</summary>
+        <returns>指定した位置にある要素への読み取り専用の参照。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.IndexOutOfRangeException"><paramref name="index" /> 負の値より小さくないまたは<see cref="P:System.Collections.Immutable.ImmutableList`1.Count" />します。</exception>
+        <exception cref="T:System.IndexOutOfRangeException"><paramref name="index" /> が負の値であるか、<see cref="P:System.Collections.Immutable.ImmutableList`1.Count" /> より小さくありません。</exception>
       </Docs>
     </Member>
     <Member MemberName="LastIndexOf">
@@ -1624,7 +1624,7 @@
         <summary>指定した比較子を使用して、変更できないリスト全体の要素を並べ替えます。</summary>
         <returns>並べ替えられたリスト。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="comparison" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="comparison" /> は <see langword="null" />です。</exception>
       </Docs>
     </Member>
     <Member MemberName="Sort">
@@ -2988,7 +2988,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- これは o (1) 操作であり、1 つ (小) のメモリ割り当てのみになります。 返される変更可能な一覧はスレッド セーフではありません。  
+ これは O (1) 操作であり、1つの (小さい) メモリ割り当てのみになります。 返された変更可能なリストは、スレッドセーフではありません。  
   
  ]]></format>
         </remarks>

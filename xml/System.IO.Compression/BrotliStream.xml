@@ -1,5 +1,5 @@
 <Type Name="BrotliStream" FullName="System.IO.Compression.BrotliStream">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="29f22ad2e73a3181f369f4ab0098911707b10abf" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58731400" /></Metadata><TypeSignature Language="C#" Value="public sealed class BrotliStream : System.IO.Stream" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="22a3f881771a01ad5a30a0a62f3f3c969d964ca0" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543363" /></Metadata><TypeSignature Language="C#" Value="public sealed class BrotliStream : System.IO.Stream" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BrotliStream extends System.IO.Stream" />
   <TypeSignature Language="DocId" Value="T:System.IO.Compression.BrotliStream" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BrotliStream&#xA;Inherits Stream" />
@@ -362,9 +362,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary><see cref="T:System.IO.Compression.BrotliStream" /> によって使用されているアンマネージ リソースを非同期に解放します。</summary>
+        <returns>非同期の破棄操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+メソッド`DisposeAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する dispose 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。 
+
+このメソッドは、バッキングストアに変更を書き込み、ストリームを終了してリソースを解放することによって、Brotli ストリームを破棄します。   
+
+を`DisposeAsync`呼び出すと、 <xref:System.IO.Compression.BrotliStream>によって使用されるリソースを他の目的で再割り当てできます。 詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。  
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EndRead">
@@ -474,10 +486,18 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>この Brotli ストリームに対応するすべてのバッファーを非同期にクリアし、バッファー内のデータを基になるデバイスに書き込み、キャンセル要求を監視します。</summary>
+        <returns>非同期のフラッシュ操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled?displayProperty=nameWithType>タスクには<xref:System.Threading.Tasks.Task.Status?displayProperty=nameWithType>プロパティの値が含まれます。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Length">
@@ -554,10 +574,22 @@
         <Parameter Name="buffer" Type="System.Span&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">メモリの領域。 このメソッドが戻ると、この領域のコンテンツは現在のソースから読み取られたバイトに置き換えられます。</param>
+        <summary>現在の Brotli ストリームからバイト シーケンスをバイト スパンに読み取り、読み取られたバイト数だけ Brotli ストリーム内の位置を進めます。</summary>
+        <returns>バッファーに読み取られた合計バイト数。 要求しただけのバイト数を読み取ることができなかった場合、この値はバッファーに割り当てられているバイト数より小さくなります。ストリームの末尾に到達した場合は 0 (ゼロ) になることがあります。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+現在の<xref:System.IO.Compression.BrotliStream.CanRead%2A>インスタンスが読み取りをサポートしているかどうかを確認するには、プロパティを使用します。 現在の<xref:System.IO.Compression.BrotliStream.ReadAsync%2A>ストリームから非同期的に読み取るには、メソッドを使用します。
+
+このメソッドは、現在の`buffer.Length`ストリームから最大バイトを読み取り、に`buffer`格納します。 Brotli ストリーム内の現在位置は、読み取られたバイト数によって拡張されます。ただし、例外が発生した場合、Brotli ストリーム内の現在位置は変更されません。 このメソッドは、データが使用できない場合に、少なくとも1バイトのデータを読み取ることができるようになるまでブロックします。 `Read`ストリームにデータがこれ以上ない場合にのみ0を返します。これ以上のデータは必要ありません (閉じているソケットやファイルの終端など)。 メソッドは、ストリームの末尾に到達していない場合でも、要求されたバイト数よりも小さい値を返すことができます。
+
+ プリミティブ<xref:System.IO.BinaryReader>データ型の読み取りに使用します。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Read">
@@ -620,11 +652,23 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">データを書き込むメモリの領域。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>現在の Brotli ストリームからバイト シーケンスを非同期に読み取ってバイト メモリの範囲に書き込み、読み取られたバイト数だけ Brotli ストリーム内の位置を進め、キャンセル要求を監視します。</summary>
+        <returns>非同期の読み取り操作を表すタスク。バッファーに読み取られたバイト数の合計がラップされます。 相当するバイト数が現在使用できない場合、結果の値はバッファーに割り当てられているバイト数より小さくなります。Brotli ストリームの末尾に到達した場合は 0 (ゼロ) になることがあります。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+メソッド`ReadAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する i/o 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。
+
+現在の<xref:System.IO.Compression.BrotliStream.CanRead%2A>インスタンスが読み取りをサポートしているかどうかを確認するには、プロパティを使用します。
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled?displayProperty=nameWithType>タスクには<xref:System.Threading.Tasks.Task.Status?displayProperty=nameWithType>プロパティの値が含まれます。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReadAsync">
@@ -652,13 +696,25 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="count">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">データを書き込むバッファー。</param>
+        <param name="offset">Brotli ストリームからのデータの書き込み開始位置を示す <paramref name="buffer" /> 内のバイト オフセット。</param>
+        <param name="count">読み取る最大バイト数。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>現在の Brotli ストリームからバイト シーケンスを非同期で読み取り、指定されたインデックスを開始位置とするバイト配列に書き込み、読み取られたバイト数だけ Brotli ストリーム内の位置を進め、キャンセル要求を監視します。</summary>
+        <returns>非同期の読み取り操作を表すタスク。<paramref name="buffer" /> に読み取られたバイト数の合計がラップされます。 現在使用できるバイト数が要求した数より小さい場合、結果の値は要求したバイト数より小さくなることがあります。また、Brotli ストリームの末尾に到達した場合は 0 になることがあります。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+  
+## Remarks
+
+メソッド`ReadAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する i/o 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。
+
+現在の<xref:System.IO.Compression.BrotliStream.CanRead%2A>インスタンスが読み取りをサポートしているかどうかを確認するには、プロパティを使用します。
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled?displayProperty=nameWithType>タスクには<xref:System.Threading.Tasks.Task.Status?displayProperty=nameWithType>プロパティの値が含まれます。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Seek">
@@ -743,9 +799,19 @@
         <Parameter Name="buffer" Type="System.ReadOnlySpan&lt;System.Byte&gt;" Index="0" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="buffer">メモリの領域。 このメソッドでは、この領域のコンテンツが現在の Brotli ストリームにコピーされます。</param>
+        <summary>現在の Brotli ストリームに読み取り専用バイト スパンからバイト シーケンスを書き込み、書き込まれたバイト数だけこの Brotli ストリーム内の現在位置を進めます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+現在の<xref:System.IO.Compression.BrotliStream.CanWrite%2A>インスタンスが書き込みをサポートしているかどうかを判断するには、プロパティを使用します。 現在の<xref:System.IO.Compression.BrotliStream.WriteAsync%2A>ストリームに非同期に書き込むには、メソッドを使用します。
+
+書き込み操作が成功した場合、Brotli ストリーム内の位置は、書き込まれたバイト数だけ進みます。 例外が発生した場合、Brotli ストリーム内の位置は変更されません。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -802,11 +868,23 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">データの書き込み元となるメモリ領域。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>圧縮されたバイトを、指定されたバイト メモリ領域から基になる Brotli ストリームに非同期で書き込みます。</summary>
+        <returns>非同期の書き込み操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+メソッド`WriteAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する i/o 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。
+
+現在の<xref:System.IO.Compression.BrotliStream.CanWrite%2A>インスタンスが書き込みをサポートしているかどうかを判断するには、プロパティを使用します。
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled?displayProperty=nameWithType>タスクには<xref:System.Threading.Tasks.Task.Status?displayProperty=nameWithType>プロパティの値が含まれます。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteAsync">
@@ -834,13 +912,25 @@
         <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="count">To be added.</param>
-        <param name="cancellationToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">圧縮するデータを格納しているバッファー。</param>
+        <param name="offset"><paramref name="buffer" /> のゼロから始まるバイト オフセットであり、ここから Brotli ストリームにバイトをコピーします。</param>
+        <param name="count">書き込む最大バイト数。</param>
+        <param name="cancellationToken">キャンセル要求を監視するためのトークン。 既定値は <see cref="P:System.Threading.CancellationToken.None" /> です。</param>
+        <summary>圧縮されたバイトを、指定されたバイト配列から基になる Brotli ストリームに非同期で書き込みます。</summary>
+        <returns>非同期の書き込み操作を表すタスク。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+
+## Remarks
+
+メソッド`WriteAsync`を使用すると、メインスレッドをブロックせずに、リソースを集中的に使用する i/o 操作を実行できます。 このパフォーマンスに関する考慮事項は、時間のかかるストリーム操作によって UI スレッドがブロックされ、アプリが動作していないと見なされる可能性がある [!INCLUDE[win8_appname_long](~/includes/win8-appname-long-md.md)] アプリまたは[!INCLUDE[desktop_appname](~/includes/desktop-appname-md.md)] アプリで特に重要です。 非同期メソッドは、Visual Basic および`async` `await` C#のキーワードと共に使用されます。
+
+現在の<xref:System.IO.Compression.BrotliStream.CanWrite%2A>インスタンスが書き込みをサポートしているかどうかを判断するには、プロパティを使用します。
+
+操作が完了前にキャンセルされた場合、返された<xref:System.Threading.Tasks.TaskStatus.Canceled?displayProperty=nameWithType>タスクには<xref:System.Threading.Tasks.Task.Status?displayProperty=nameWithType>プロパティの値が含まれます。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

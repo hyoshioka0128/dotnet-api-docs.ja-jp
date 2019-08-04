@@ -1,5 +1,5 @@
 <Type Name="CmsSigner" FullName="System.Security.Cryptography.Pkcs.CmsSigner">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="f618bed0161ea089270dd537c79a7a7a8c628ef6" /><Meta Name="ms.sourcegitcommit" Value="7461f9e28c2f184bd1596e6f07c25a3f34984516" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/28/2019" /><Meta Name="ms.locfileid" Value="58548238" /></Metadata><TypeSignature Language="C#" Value="public sealed class CmsSigner" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="823b4d7b2e66636cc53fabed75725279ad1f3e08" /><Meta Name="ms.sourcegitcommit" Value="24f564114ee2fa9c63dbac1b25b82826cc4e320f" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/25/2019" /><Meta Name="ms.locfileid" Value="68488163" /></Metadata><TypeSignature Language="C#" Value="public sealed class CmsSigner" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CmsSigner extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.Pkcs.CmsSigner" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CmsSigner" />
@@ -22,7 +22,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary><see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスには署名機能が用意されています。</summary>
+    <summary>CMS/PKCS#7 署名付きメッセージでの署名者候補を表します。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -32,7 +32,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスのインスタンスを作成します。</summary>
+        <summary><see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスの新しいインスタンスを初期化します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName=".ctor">
@@ -56,18 +56,18 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary><see cref="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor" /> コンストラクターは、既定のサブジェクト識別子タイプを使用して <see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスのインスタンスを作成します。</summary>
+        <summary><see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスの新しいインスタンスを既定値で初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Pkcs.CmsSigner>クラスには次の既定のプロパティの値。  
+ このコンストラクターは、次の既定のプロパティ値になります。
   
 |プロパティ|既定値|  
 |--------------|-------------------|  
-|<xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A>|<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType?displayProperty=nameWithType>|  
-|<xref:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm%2A>|1.3.14.3.2.26 (szOID_OIWSEC_sha1)|  
-|<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>|<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.None> 場合<xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A>は<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType>、<br /><br /> <xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot> それ以外の場合|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A>|<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.IssuerAndSerialNumber?displayProperty=nameWithType>|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm%2A>|2.16.840.1.101.3.4.2.1 (SHA-256)|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>|<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot?displayProperty=nameWithType>|  
   
  ]]></format>
         </remarks>
@@ -105,16 +105,26 @@
         <Parameter Name="parameters" Type="System.Security.Cryptography.CspParameters" />
       </Parameters>
       <Docs>
-        <param name="parameters">使用する CSP パラメーターを表す <see cref="T:System.Security.Cryptography.CspParameters" /> オブジェクト。</param>
-        <summary><see cref="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.CspParameters)" /> コンストラクターは、暗号化サービス プロバイダー (CSP) のパラメーターを指定して、<see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスのインスタンスを作成します。 <see cref="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.CspParameters)" /> は、署名に使用する特定の CSP および秘密キーがわかっている場合に役立ちます。</summary>
+        <param name="parameters">使用する署名キーを記述する CSP パラメーター。</param>
+        <summary>保存されているキーから <see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターで使用される既定のプロパティ値を参照してください。<xref:System.Security.Cryptography.Pkcs.CmsSigner.%23ctor>します。 これらの値は、このコンス トラクターを使用する場合に、例外は<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>に設定されている<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.None?displayProperty=nameWithType>します。  
+ このコンストラクターは、次の既定のプロパティ値になります。
   
+|プロパティ|既定値|  
+|--------------|-------------------|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A>|<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.SubjectKeyIdentifier?displayProperty=nameWithType>|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm%2A>|2.16.840.1.101.3.4.2.1 (SHA-256)|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>|<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.None?displayProperty=nameWithType>|  
+  
+> [!IMPORTANT]
+> このメソッドは、.NET Framework でのみサポートされています。 .NET Core での使用は、 <xref:System.PlatformNotSupportedException>をスローします。
+
  ]]></format>
         </remarks>
+        <exception cref="T:System.PlatformNotSupportedException">.NET Core のみ: すべてのケース。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -141,9 +151,21 @@
         <Parameter Name="signerIdentifierType" Type="System.Security.Cryptography.Pkcs.SubjectIdentifierType" />
       </Parameters>
       <Docs>
-        <param name="signerIdentifierType">署名者識別子タイプを指定する <see cref="T:System.Security.Cryptography.Pkcs.SubjectIdentifierType" /> 列挙型のメンバーです。</param>
-        <summary><see cref="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType)" /> コンストラクターは、指定されたサブジェクト識別子タイプを使用して <see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスのインスタンスを作成します。</summary>
-        <remarks>To be added.</remarks>
+        <param name="signerIdentifierType">使用された署名証明書を識別するために使用するスキーム。</param>
+        <summary>指定したサブジェクト識別子型を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスの新しいインスタンスを初期化します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このコンストラクターは、次の既定のプロパティ値になります。
+  
+|プロパティ|既定値|  
+|--------------|-------------------|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm%2A>|2.16.840.1.101.3.4.2.1 (SHA-256)|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>|<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.None?displayProperty=nameWithType><xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A> が<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.NoSignature?displayProperty=nameWithType>の場合、<br /><br /> <xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot?displayProperty=nameWithType>それ以外|  
+  
+]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -170,15 +192,21 @@
         <Parameter Name="certificate" Type="System.Security.Cryptography.X509Certificates.X509Certificate2" />
       </Parameters>
       <Docs>
-        <param name="certificate">署名証明書を表す <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> オブジェクト。</param>
-        <summary><see cref="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)" /> コンストラクターは、指定された署名証明書を使用して <see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスのインスタンスを作成します。</summary>
+        <param name="certificate">メッセージの署名に使用される秘密キーを持つ証明書。</param>
+        <summary>指定した署名者証明書を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このコンス トラクターで使用される既定のプロパティ値を参照してください。<xref:System.Security.Cryptography.Pkcs.CmsSigner.%23ctor>します。  
+ このコンストラクターは、次の既定のプロパティ値になります。
   
- 指定された署名証明書、`certificate`パラメーターは、入力の有効性はチェックされません。 このコンス トラクターに提供する前に証明書を検証するには、使用、<xref:System.Security.Cryptography.X509Certificates.X509Chain.Build%2A?displayProperty=nameWithType>メソッド。  
+|プロパティ|既定値|  
+|--------------|-------------------|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A>|<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.IssuerAndSerialNumber?displayProperty=nameWithType>|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm%2A>|2.16.840.1.101.3.4.2.1 (SHA-256)|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>|<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot?displayProperty=nameWithType>|  
+  
+ `certificate`パラメーターで指定された署名証明書の入力の有効性がチェックされていません。 証明書をこのコンストラクターに渡す前に検証するには、 <xref:System.Security.Cryptography.X509Certificates.X509Chain.Build%2A?displayProperty=nameWithType>メソッドを使用します。  
   
  ]]></format>
         </remarks>
@@ -209,14 +237,21 @@
         <Parameter Name="certificate" Type="System.Security.Cryptography.X509Certificates.X509Certificate2" />
       </Parameters>
       <Docs>
-        <param name="signerIdentifierType">署名者識別子タイプを指定する <see cref="T:System.Security.Cryptography.Pkcs.SubjectIdentifierType" /> 列挙型のメンバーです。</param>
-        <param name="certificate">署名証明書を表す <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> オブジェクト。</param>
-        <summary><see cref="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2)" /> コンストラクターは、指定された署名者識別子タイプと署名証明書を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスのインスタンスを作成します。</summary>
+        <param name="signerIdentifierType">使用された署名証明書を識別するために使用するスキーム。</param>
+        <param name="certificate">メッセージの署名に使用される秘密キーを持つ証明書。</param>
+        <summary>指定した署名者証明書とサブジェクト識別子型を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 指定された署名証明書、`certificate`パラメーターは、入力の有効性はチェックされません。 このコンス トラクターに提供する前に証明書を検証するには、使用、<xref:System.Security.Cryptography.X509Certificates.X509Chain.Build%2A?displayProperty=nameWithType>メソッド。  
+ このコンストラクターは、次の既定のプロパティ値になります。
+  
+|プロパティ|既定値|  
+|--------------|-------------------|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm%2A>|2.16.840.1.101.3.4.2.1 (SHA-256)|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>|<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.None?displayProperty=nameWithType><xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A> が<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.NoSignature?displayProperty=nameWithType>の場合、<br /><br /> <xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot?displayProperty=nameWithType>それ以外|  
+
+ `certificate`パラメーターで指定された署名証明書の入力の有効性がチェックされていません。 証明書をこのコンストラクターに渡す前に検証するには、 <xref:System.Security.Cryptography.X509Certificates.X509Chain.Build%2A?displayProperty=nameWithType>メソッドを使用します。  
   
  ]]></format>
         </remarks>
@@ -244,11 +279,27 @@
         <Parameter Name="privateKey" Type="System.Security.Cryptography.AsymmetricAlgorithm" Index="2" FrameworkAlternate="dotnet-plat-ext-3.0" />
       </Parameters>
       <Docs>
-        <param name="signerIdentifierType">To be added.</param>
-        <param name="certificate">To be added.</param>
-        <param name="privateKey">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="signerIdentifierType">使用された署名証明書の識別に使用するスキームを指定する列挙値の 1 つ。</param>
+        <param name="certificate">メッセージの署名に使用される秘密キーを持つ証明書。</param>
+        <param name="privateKey">メッセージへの署名時に使用する秘密キー オブジェクト。</param>
+        <summary>指定した署名者証明書、サブジェクト識別子型、および秘密キー オブジェクトを使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> クラスの新しいインスタンスを初期化します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このコンストラクターは、次の既定のプロパティ値になります。
+  
+|プロパティ|既定値|  
+|--------------|-------------------|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm%2A>|2.16.840.1.101.3.4.2.1 (SHA-256)|  
+|<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>|<xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.None?displayProperty=nameWithType><xref:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType%2A> が<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.NoSignature?displayProperty=nameWithType>の場合、<br /><br /> <xref:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot?displayProperty=nameWithType>それ以外|  
+
+ `certificate`パラメーターで指定された署名証明書の入力の有効性がチェックされていません。 証明書をこのコンストラクターに渡す前に検証するには、 <xref:System.Security.Cryptography.X509Certificates.X509Chain.Build%2A?displayProperty=nameWithType>メソッドを使用します。  
+  
+ このコンストラクターは、パラメーターが`privateKey`の`certificate`公開キーに対応しているかどうかを検証しません。 キーが一致しない場合、 <xref:System.Security.Cryptography.Pkcs.SignedCms>クラスと<xref:System.Security.Cryptography.Pkcs.SignerInfo.ComputeCounterSignature(System.Security.Cryptography.Pkcs.CmsSigner)>メソッドは署名<xref:System.Security.Cryptography.CryptographicException>プロセス中にをスローします。
+
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Certificate">
@@ -276,14 +327,11 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" /> プロパティは、署名証明書を表す <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> オブジェクトを設定または取得します。</summary>
-        <value><see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" />署名証明書を表すオブジェクト。</value>
+        <value>署名証明書を表すオブジェクト。<see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /></value>
         <remarks>To be added.</remarks>
         <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificates" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm" />
         <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes" />
+        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="Certificates">
@@ -310,22 +358,18 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509Certificate2Collection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificates" /> プロパティは、署名対象のメッセージに関連付けられた証明書を保持する <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2Collection" /> コレクションを取得します。</summary>
-        <value>署名対象のメッセージに関連付けられた一連の証明書を表す <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2Collection" /> コレクション。</value>
+          <summary><see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.WholeChain" /> および <see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot" /> と見なされる証明書のコレクションを取得します。</summary>
+        <value><see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.WholeChain" /> および<see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot" />と見なされる証明書のコレクション。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、署名者の証明書チェーン内の証明書を保持するために使用可能性があります。  この場合、コレクションに含まれる証明書がの設定によって決まりますが、<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A>プロパティ。 署名者の証明書チェーン内のすべての証明書があるとは限りません<xref:System.Security.Cryptography.Pkcs.CmsSigner.Certificates%2A>します。  
+ このコレクションの証明書は、に<xref:System.Security.Cryptography.X509Certificates.X509Chain>よって複数<xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption>の証明書が含まれていることが示されたときに、によっ<xref:System.Security.Cryptography.X509Certificates.X509ChainPolicy.ExtraStore?displayProperty=nameWithType>て提供されます。 このコレクションに含まれる、 <xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption>値に関連しない証明書は無視されます。
   
  ]]></format>
         </remarks>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm" />
         <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes" />
+        <altmember cref="P:System.Security.Cryptography.X509Certificates.X509ChainPolicy.ExtraStore" />
       </Docs>
     </Member>
     <Member MemberName="DigestAlgorithm">
@@ -352,22 +396,16 @@
         <ReturnType>System.Security.Cryptography.Oid</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm" /> プロパティは、署名用のハッシュ アルゴリズムを表す <see cref="T:System.Security.Cryptography.Oid" /> を設定または取得します。</summary>
-        <value>署名用のハッシュ アルゴリズムを表す <see cref="T:System.Security.Cryptography.Oid" /> オブジェクト。</value>
+        <summary>署名と共に使用するハッシュ アルゴリズムのアルゴリズム識別子を取得または設定します。</summary>
+        <value>署名に使用するハッシュアルゴリズムのアルゴリズム識別子。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティの既定値を参照してください。<xref:System.Security.Cryptography.Pkcs.CmsSigner.%23ctor>します。  
+ このプロパティの既定値については<xref:System.Security.Cryptography.Pkcs.CmsSigner.%23ctor>、「」を参照してください。  
   
  ]]></format>
         </remarks>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificates" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes" />
       </Docs>
     </Member>
     <Member MemberName="IncludeOption">
@@ -394,33 +432,10 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509IncludeOption</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" /> プロパティは、作成した CMS/PKCS #7 メッセージに、署名証明書に関連付けられているルートおよびチェーン全体を追加するかどうかを制御するオプションを設定または取得します。</summary>
-        <value><see cref="T:System.Security.Cryptography.X509Certificates.X509IncludeOption" /> オブジェクトへの X509 証明書チェーンの追加方法を指定する <see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> 列挙型のメンバー。 <see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" /> プロパティには、次のいずれかの <see cref="T:System.Security.Cryptography.X509Certificates.X509IncludeOption" /> メンバーを指定できます。  
-  
- <list type="table"><listheader><term> name 
- </term><description> [値] 
- </description><description> 説明 
- </description></listheader><item><term><see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.None" /></term><description> 0 
- </description><description> 証明書チェーンは追加されません。  
-  
- </description></item><item><term><see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.ExcludeRoot" /></term><description> 1 
- </description><description> ルート証明書を除く証明書チェーンが追加されます。  
-  
- </description></item><item><term><see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.EndCertOnly" /></term><description> 2 
- </description><description> 終了証明書だけが追加されます。  
-  
- </description></item><item><term><see cref="F:System.Security.Cryptography.X509Certificates.X509IncludeOption.WholeChain" /></term><description> 3 
- </description><description> ルート証明書を含む証明書チェーンが追加されます。  
-  
- </description></item></list></value>
+        <summary>署名されたメッセージに埋め込む署名者証明書の証明書チェーンの数を示すオプションを取得または設定します。</summary>
+        <value>署名されたメッセージに埋め込まれる、署名者証明書の証明書チェーンの量を示す列挙値の1つ。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentException">メソッドに渡されたいずれかの引数が無効です。</exception>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificates" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes" />
       </Docs>
     </Member>
     <Member MemberName="PrivateKey">
@@ -443,9 +458,10 @@
         <ReturnType>System.Security.Cryptography.AsymmetricAlgorithm</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>署名時に使用する秘密キー オブジェクトを取得または設定します。</summary>
+        <value>署名時に使用する秘密キー、また<see langword="null" />は<see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />プロパティに関連付けられた秘密キーを使用する場合は。</value>
         <remarks>To be added.</remarks>
+        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />
       </Docs>
     </Member>
     <Member MemberName="SignedAttributes">
@@ -472,24 +488,19 @@
         <ReturnType>System.Security.Cryptography.CryptographicAttributeObjectCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes" /> プロパティは、結果の <see cref="T:System.Security.Cryptography.CryptographicAttributeObjectCollection" /> コンテンツに関連付けられる署名属性の <see cref="T:System.Security.Cryptography.Pkcs.SignerInfo" /> コレクションを取得します。 署名属性は、指定されたコンテンツと共に署名されます。</summary>
-        <value>署名属性を表す <see cref="T:System.Security.Cryptography.CryptographicAttributeObjectCollection" /> コレクション。 署名属性が存在しない場合、このプロパティ値は空のコレクションになります。</value>
+        <summary>この署名に関連付けられ、この署名に保護もされている属性のコレクションを取得します。</summary>
+        <value>署名によっても保護されている、このシグネチャに関連付ける属性のコレクション。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 内に含まれる署名属性の例として、<xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>コレクションを取得して、<xref:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes%2A>プロパティは、<xref:System.Security.Cryptography.Pkcs.Pkcs9SigningTime>時間属性を署名します。  
+ プロパティによって取得される<xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>コレクションに含まれる可能性のある署名付き属性の例は、 <xref:System.Security.Cryptography.Pkcs.Pkcs9SigningTime>署名時刻属性です。 <xref:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes%2A>  
   
- A<xref:System.Security.Cryptography.Pkcs.Pkcs9ContentType>オブジェクトと<xref:System.Security.Cryptography.Pkcs.Pkcs9MessageDigest>オブジェクトが自動的に生成され、配置、<xref:System.Security.Cryptography.Pkcs.SignerInfo.SignedAttributes%2A?displayProperty=nameWithType>プロパティは、対応する署名者のたびに、<xref:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes%2A>プロパティが空でないです。  
+ プロパティが空で<xref:System.Security.Cryptography.Pkcs.Pkcs9MessageDigest>ない場合<xref:System.Security.Cryptography.Pkcs.SignerInfo.SignedAttributes%2A?displayProperty=nameWithType>は、オブジェクトとオブジェクトが自動的に生成され、対応する署名者のプロパティに配置されます。 <xref:System.Security.Cryptography.Pkcs.Pkcs9ContentType> <xref:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes%2A>  
   
  ]]></format>
         </remarks>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificates" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" />
         <altmember cref="T:System.Security.Cryptography.Pkcs.Pkcs9SigningTime" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType" />
         <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes" />
       </Docs>
     </Member>
@@ -517,16 +528,10 @@
         <ReturnType>System.Security.Cryptography.Pkcs.SubjectIdentifierType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType" /> プロパティは、署名者の識別子タイプを設定または取得します。</summary>
-        <value>署名者の識別子タイプを指定する <see cref="T:System.Security.Cryptography.Pkcs.SubjectIdentifierType" /> 列挙型のメンバー。</value>
+        <summary>使用された署名証明書を識別するために使用するスキームを取得します。</summary>
+        <value>使用された受信者証明書を識別するために使用するスキーム。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentException">メソッドに渡されたいずれかの引数が無効です。</exception>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificates" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes" />
       </Docs>
     </Member>
     <Member MemberName="UnsignedAttributes">
@@ -553,22 +558,17 @@
         <ReturnType>System.Security.Cryptography.CryptographicAttributeObjectCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes" /> プロパティは、結果の <see cref="T:System.Security.Cryptography.CryptographicAttributeObjectCollection" /> コンテンツに関連付けられる PKCS #9 非署名属性の <see cref="T:System.Security.Cryptography.Pkcs.SignerInfo" /> コレクションを取得します。 非署名属性は、署名を無効化せずに変更できます。</summary>
-        <value>非署名属性を表す <see cref="T:System.Security.Cryptography.CryptographicAttributeObjectCollection" /> コレクション。 非署名属性が存在しない場合、このプロパティ値は空のコレクションになります。</value>
+        <summary>この署名に関連付けられているが、この署名に保護はされていない属性のコレクションを取得します。</summary>
+        <value>署名によって保護されていない、この署名に関連付ける属性のコレクション。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 含めることが符号なしの属性の例、<xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>コレクションを取得して、<xref:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes%2A>プロパティは、副署名します。  
+ プロパティによって取得される<xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>コレクションに含まれる可能性のある符号なし属性の例は、副署名です。 <xref:System.Security.Cryptography.Pkcs.CmsSigner.UnsignedAttributes%2A>  
   
  ]]></format>
         </remarks>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificate" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.Certificates" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.DigestAlgorithm" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption" />
         <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes" />
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsSigner.SignerIdentifierType" />
       </Docs>
     </Member>
   </Members>

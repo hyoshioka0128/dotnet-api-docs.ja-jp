@@ -79,34 +79,34 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非常に大きな<xref:System.Collections.Concurrent.ConcurrentDictionary%602>オブジェクトを設定して、64 ビット システムで 2 ギガバイト (GB) に最大配列サイズを増やすことができます、 [ `<gcAllowVeryLargeObjects>` ](~/docs/framework/configure-apps/file-schema/runtime/gcallowverylargeobjects-element.md)構成要素を`true`実行時環境でします。  
+ 非常に大きな<xref:System.Collections.Concurrent.ConcurrentDictionary%602>オブジェクトの場合は、実行時環境で[`<gcAllowVeryLargeObjects>`](~/docs/framework/configure-apps/file-schema/runtime/gcallowverylargeobjects-element.md)構成要素をに設定する`true`ことにより、64ビットシステムで最大配列サイズを2ギガバイト (GB) に増やすことができます。  
   
 > [!NOTE]
->  <xref:System.Collections.Concurrent.ConcurrentDictionary%602> 実装して、<xref:System.Collections.Generic.IReadOnlyCollection%601>と<xref:System.Collections.Generic.IReadOnlyDictionary%602>インターフェイス以降では、 [!INCLUDE[net_v46](~/includes/net-v46-md.md)]、.NET Framework の以前のバージョンでは、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラスは、これらのインターフェイスを実装しませんでした。  
+>  <xref:System.Collections.Concurrent.ConcurrentDictionary%602>は、以降の<xref:System.Collections.Concurrent.ConcurrentDictionary%602>インターフェイスを実装します。以前のバージョンの .NET Framework では、クラスはこれらのインターフェイスを実装していませんでした。 <xref:System.Collections.Generic.IReadOnlyDictionary%602> <xref:System.Collections.Generic.IReadOnlyCollection%601> [!INCLUDE[net_v46](~/includes/net-v46-md.md)]  
   
- ように、<xref:System.Collections.Generic.Dictionary%602?displayProperty=nameWithType>クラス、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>実装、<xref:System.Collections.Generic.IDictionary%602>インターフェイス。 さらに、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>の次の表に示す、いくつかのメソッドを追加または更新して、ディクショナリのキー/値ペアを提供します。  
+ クラスと同様に<xref:System.Collections.Concurrent.ConcurrentDictionary%602> 、は<xref:System.Collections.Generic.IDictionary%602>インターフェイスを実装します。 <xref:System.Collections.Generic.Dictionary%602?displayProperty=nameWithType> さらに、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602>には、次の表に示すように、ディクショナリのキーと値のペアを追加または更新するためのいくつかのメソッドが用意されています。  
   
-|目的|このメソッドを使用して、|使用法|  
+|目的|このメソッドを使用する|使用に関する注意事項|  
 |----------------|---------------------|-----------------|  
-|ディクショナリに存在しない場合、ディクショナリに新しいキーを追加します。|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryAdd%2A>|このメソッドは、キーがディクショナリに現在存在しない場合に、指定したキー/値ペアを追加します。 メソッドを返します`true`または`false`新しいペアが追加されたかどうかによって異なります。|  
-|そのキーは、特定の値を持つ場合、ディクショナリ内の既存のキーの値を更新します。|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryUpdate%2A>|このメソッドは、新しい値でキーを更新、およびキーが指定された値を持つかどうかを確認します。 似ています、<xref:System.Threading.Interlocked.CompareExchange%2A>メソッド、it のディクショナリの要素で使用される点が異なります。|  
-|無条件では、ディクショナリのキー/値ペアを格納し、既に存在しているキーの値を上書き|インデクサーの set アクセス操作子。 `dictionary[key] = newValue`||  
-|辞書にキー/値ペアを追加またはキーが既に存在する場合は、キーの既存の値に基づくキーの値を更新|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2CSystem.Func%7B%600%2C%601%7D%2CSystem.Func%7B%600%2C%601%2C%601%7D%29><br /><br /> - または -<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2C%601%2CSystem.Func%7B%600%2C%601%2C%601%7D%29>|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2CSystem.Func%7B%600%2C%601%7D%2CSystem.Func%7B%600%2C%601%2C%601%7D%29> キーと 2 つのデリゲートを受け取ります。 キーがディクショナリ内に存在しない場合は、最初のデリゲートを使用します。キーを承認して、キーに追加する必要がある値を返します。 キーが存在する場合は、2 番目のデリゲートを使用します。キーとその現在の値を受け取ってし、キーを設定する新しい値を返します。<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2C%601%2CSystem.Func%7B%600%2C%601%2C%601%7D%29> キー、値を追加して更新のデリゲートを受け取ります。 これは、前のオーバー ロードと同じする点を除いて、キーを追加するデリゲートは使用されません。|  
-|ディクショナリに値を追加して、キーが存在しない場合に返す、ディクショナリのキーの値を取得します。|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2C%601%29><br /><br /> - または -<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2CSystem.Func%7B%600%2C%601%7D%29>|これらのオーバー ロードは、これがない場合にのみ値を追加、ディクショナリのキー/値ペアの遅延初期化を提供します。<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2C%601%29> キーが存在しないかどうかに追加する値。<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2CSystem.Func%7B%600%2C%601%7D%29> キーが存在しない場合、値を生成するデリゲートを受け取ります。|  
+|ディクショナリに新しいキーがまだ存在しない場合は、そのキーを追加します。|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryAdd%2A>|このメソッドは、キーが現在ディクショナリ内に存在しない場合、指定されたキーと値のペアを追加します。 新しいペアが`true`追加`false`されたかどうかによって、メソッドはまたはを返します。|  
+|このキーに特定の値が含まれている場合は、ディクショナリ内の既存のキーの値を更新します。|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryUpdate%2A>|このメソッドは、キーに指定された値があるかどうかを確認し、存在する場合は、新しい値でキーを更新します。 これは、ディクショナリ要素<xref:System.Threading.Interlocked.CompareExchange%2A>に使用される点を除いて、メソッドに似ています。|  
+|キーと値のペアをディクショナリに無条件で格納し、既に存在するキーの値を上書きします。|インデクサーの setter:`dictionary[key] = newValue`||  
+|キーと値のペアをディクショナリに追加します。キーが既に存在する場合は、キーの既存の値に基づいてキーの値を更新します。|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2CSystem.Func%7B%600%2C%601%7D%2CSystem.Func%7B%600%2C%601%2C%601%7D%29><br /><br /> - または -<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2C%601%2CSystem.Func%7B%600%2C%601%2C%601%7D%29>|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2CSystem.Func%7B%600%2C%601%7D%2CSystem.Func%7B%600%2C%601%2C%601%7D%29>は、キーと2つのデリゲートを受け取ります。 キーがディクショナリに存在しない場合は、最初のデリゲートを使用します。キーを受け取り、キーに対して追加する必要がある値を返します。 キーが存在する場合は、2つ目のデリゲートを使用します。キーとその現在の値を受け取り、キーに設定する必要がある新しい値を返します。<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%28%600%2C%601%2CSystem.Func%7B%600%2C%601%2C%601%7D%29>キー、追加する値、および更新デリゲートを受け入れます。 これは前のオーバーロードと同じですが、デリゲートを使用してキーを追加しない点が異なります。|  
+|ディクショナリ内のキーの値を取得し、その値をディクショナリに追加して、キーが存在しない場合はそれを返します。|<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2C%601%29><br /><br /> - または -<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2CSystem.Func%7B%600%2C%601%7D%29>|これらのオーバーロードは、ディクショナリ内のキーと値のペアに対して遅延初期化を提供し、値が存在しない場合にのみ値を追加します。<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2C%601%29>キーが存在しない場合は、追加する値を取得します。<br /><br /> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%28%600%2CSystem.Func%7B%600%2C%601%7D%29>キーが存在しない場合は、値を生成するデリゲートを受け取ります。|  
   
- これらすべての操作はアトミックとスレッド セーフの他のすべての操作に関して、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラス。 唯一の例外は、デリゲートを受け取るメソッド<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>と<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>します。 変更と、ディクショナリへの書き込み操作の<xref:System.Collections.Concurrent.ConcurrentDictionary%602>細かいロックを使用して、スレッド セーフを確保します。 (ディクショナリに対する読み取り操作はロック制御不要の方法で実行されます)。ただし、これらのメソッドのデリゲートは、ロックの状況で不明なコードの実行から生じる可能性のある問題を回避するロックの外側に呼び出されます。 したがって、これらのデリゲートによって実行されるコードには適用操作の原子性できません。  
+ これらの操作はすべてアトミックであり、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラスの他のすべての操作に関してスレッドセーフです。 唯一の例外は、デリゲートを受け取るメソッド (、、および<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A> <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>) です。 ディクショナリに対する変更および書き込み操作の場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602> 、ではきめ細かなロックを使用してスレッドセーフを確保します。 (ディクショナリに対する読み取り操作は、ロックなしの方法で実行されます)。ただし、ロックの下で不明なコードを実行した場合に発生する可能性のある問題を回避するために、これらのメソッドのデリゲートはロックの外部で呼び出されます。 したがって、これらのデリゲートによって実行されるコードは、操作の原子性の影響を受けません。  
   
    
   
 ## Examples  
- 次の例を作成する方法を示しています、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>オブジェクト。  
+ 次の例は、オブジェクトを<xref:System.Collections.Concurrent.ConcurrentDictionary%602>構築する方法を示しています。  
   
  [!code-csharp[System.Collections.Concurrent.ConcurrentDictionary#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/cs/concdictionary.cs#1)]
  [!code-vb[System.Collections.Concurrent.ConcurrentDictionary#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/vb/concdictionary.vb#1)]  
   
  ]]></format>
     </remarks>
-    <threadsafe>すべてのパブリックおよびプロテクト メンバー<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />スレッド セーフでは、複数のスレッドから同時に使用される可能性があります。 ただし、メンバーに、インターフェイスのいずれかでアクセス、<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />拡張メソッドなど、実装するスレッド セーフである保証はありませんし、呼び出し元によって同期される必要があります。</threadsafe>
+    <threadsafe>のすべてのパブリックメンバーと<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />プロテクトメンバーはスレッドセーフであり、複数のスレッドから同時に使用できます。 ただし、が<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />実装するインターフェイスの1つ (拡張メソッドを含む) を介してアクセスされるメンバーは、スレッドセーフであるとは限りません。また、呼び出し元による同期が必要になる場合があります。</threadsafe>
     <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
     <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
   </Docs>
@@ -154,7 +154,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の同時実行レベルは Cpu の数です。 高い同時実行レベルは、干渉してブロックすることがなくより多くの同時書き込み操作が行うことができます。 高い同時実行レベルの値も発生するすべてのロックを必要とする操作 (たとえば、テーブルのサイズ変更、`ToArray`と`Count`) にコストが高くなります。 バケットの数の初期値を表す、既定の容量 (DEFAULT_CAPACITY) では、大規模な辞書を構築するときに、非常に小さなディクショナリのサイズと数のサイズ変更の間にトレードオフです。 また、容量を小さな素数で割り切れるできないする必要があります。 既定の容量は 31 です。  
+ 既定の同時実行レベルは Cpu の数と同じです。 同時実行レベルが高いほど、干渉やブロッキングを発生させずに、同時に行われる書き込み操作が増加します。 同時実行レベルの値が高いと、すべてのロックを必要とする操作 ( `ToArray`テーブル`Count`のサイズ変更、など) も負荷が高くなります。 既定の容量 (DEFAULT_CAPACITY) は、バケットの初期数を表します。これは、非常に小さな辞書のサイズと大きな辞書を構築するときのサイズ変更の間のトレードオフです。 また、容量を小さな素数で割り切れないようにする必要があります。 既定の容量は31です。  
   
  ]]></format>
         </remarks>
@@ -193,8 +193,8 @@
         <param name="collection">新しい <see cref="T:System.Collections.Generic.IEnumerable`1" /> に要素がコピーされた <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />。</param>
         <summary>指定した <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> からコピーされた要素を格納し、既定のコンカレンシー レベルと既定の初期量を備え、キーの型の既定の比較子を使用する、<see cref="T:System.Collections.Generic.IEnumerable`1" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> またはそのキーのいずれかが<see langword="null" />します。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="collection" /> には 1 つまたは複数の重複するキーが含まれます。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> またはそのキーが <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="collection" /> に、1 つ以上の重複するキーが格納されています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -230,7 +230,7 @@
         <param name="comparer">キーの比較時に使用する等価比較の実装。</param>
         <summary>空で、既定のコンカレンシー レベルと容量を備え、指定した <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> を使用する、<see cref="T:System.Collections.Generic.IEqualityComparer`1" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="comparer" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="comparer" /> は <see langword="null" />です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -351,7 +351,7 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> または <paramref name="comparer" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="concurrencyLevel" /> が 1 未満です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="collection" /> には 1 つまたは複数の重複するキーが含まれます。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="collection" /> に、1 つ以上の重複するキーが格納されています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -391,7 +391,7 @@
         <param name="comparer">キーの比較時に使用する <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> の実装。</param>
         <summary>空で、指定したコンカレンシー レベルと指定した初期量を備え、指定した <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> を使用する、<see cref="T:System.Collections.Generic.IEqualityComparer`1" /> クラスの新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="comparer" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="comparer" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="concurrencyLevel" /> または <paramref name="capacity" /> が 1 未満です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
@@ -409,7 +409,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例を呼び出す方法を示しています、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>メソッド。  
+ 次の例は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>メソッドを呼び出す方法を示しています。  
   
  [!code-csharp[System.Collections.Concurrent.ConcurrentDictionary#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/cs/concdictionary.cs#3)]
  [!code-vb[System.Collections.Concurrent.ConcurrentDictionary#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/vb/concdictionary.vb#3)]  
@@ -462,9 +462,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出す場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>さまざまなスレッドで同時に`addValueFactory`呼び出すことができますが、複数回、呼び出しごとにディクショナリに、キー/値ペアを追加しない可能性があります。  
+ 異なるスレッドで<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>同時にを呼び出す`addValueFactory`と、が複数回呼び出される可能性がありますが、そのキーと値のペアは、呼び出しごとにディクショナリに追加されない可能性があります。  
 
- 変更と、ディクショナリへの書き込み操作の<xref:System.Collections.Concurrent.ConcurrentDictionary%602>細かいロックを使用して、スレッド セーフを確保します。 (ディクショナリに対する読み取り操作はロック制御不要の方法で実行されます)。ただし、`addValueFactory`と`updateValueFactory`不明なロック コードを実行から生じる可能性のある問題を回避するロックの外側にデリゲートが呼び出されます。 そのため、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>の他のすべての操作に関してはアトミックではない、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラス。  
+ ディクショナリに対する変更および書き込み操作の場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602> 、ではきめ細かなロックを使用してスレッドセーフを確保します。 (ディクショナリに対する読み取り操作は、ロックなしの方法で実行されます)。ただし、ロック`addValueFactory`の`updateValueFactory`下で不明なコードを実行した場合に発生する可能性のある問題を回避するために、およびデリゲートはロックの外部で呼び出されます。 したがって<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A> 、は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラスの他のすべての操作に関してアトミックではありません。  
   
  ]]></format>
         </remarks>
@@ -516,13 +516,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、初期化する方法を示します、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>と AddOrUpdate メソッドを使用して、コレクションに追加項目を追加し、既存の項目を更新する方法。  
+ 次のコード例は、を初期化<xref:System.Collections.Concurrent.ConcurrentDictionary%602>する方法と、addorupdate メソッドを使用してコレクションに項目を追加し、既存の項目を更新する方法を示しています。  
   
  [!code-csharp[System.Collections.ConcurrentColAddUpdate#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.collections.concurrentcoladdupdate/cs/program.cs#1)]
  [!code-vb[System.Collections.ConcurrentColAddUpdate#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.collections.concurrentcoladdupdate/vb/module1.vb#1)]  
 
 ## Remarks  
- 変更と、ディクショナリへの書き込み操作の<xref:System.Collections.Concurrent.ConcurrentDictionary%602>細かいロックを使用して、スレッド セーフを確保します。 (ディクショナリに対する読み取り操作はロック制御不要の方法で実行されます)。ただし、`updateValueFactory`不明なロック コードを実行から生じる可能性のある問題を回避するロックの外側にデリゲートが呼び出されます。 そのため、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>の他のすべての操作に関してはアトミックではない、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラス。  
+ ディクショナリに対する変更および書き込み操作の場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602> 、ではきめ細かなロックを使用してスレッドセーフを確保します。 (ディクショナリに対する読み取り操作は、ロックなしの方法で実行されます)。ただし、ロック`updateValueFactory`の下で不明なコードを実行した場合に発生する可能性のある問題を回避するために、デリゲートはロックの外部で呼び出されます。 したがって<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A> 、は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラスの他のすべての操作に関してアトミックではありません。  
   
  ]]></format>
         </remarks>
@@ -565,7 +565,7 @@
         <Parameter Name="factoryArgument" Type="TArg" Index="3" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.7.2;netframework-4.8;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <typeparam name="TArg">渡す引数の型<paramref name="addValueFactory" />と<paramref name="updateValueFactory" />します。</typeparam>
+        <typeparam name="TArg"><paramref name="addValueFactory" /> および<paramref name="updateValueFactory" />に渡す引数の型。</typeparam>
         <param name="key">追加するキーまたは値を更新するキー。</param>
         <param name="addValueFactory">キーが存在しない場合に、値を生成するために使用される関数。</param>
         <param name="updateValueFactory">キーの既存の値に基づいて、既存のキーの新しい値を生成するために使用される関数。</param>
@@ -576,14 +576,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 呼び出す場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>さまざまなスレッドで同時に`addValueFactory`呼び出すことができますが、複数回、呼び出しごとにディクショナリに、キー/値ペアを追加しない可能性があります。  
+ 異なるスレッドで<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>同時にを呼び出す`addValueFactory`と、が複数回呼び出される可能性がありますが、そのキーと値のペアは、呼び出しごとにディクショナリに追加されない可能性があります。  
 
- 変更と、ディクショナリへの書き込み操作の<xref:System.Collections.Concurrent.ConcurrentDictionary%602>細かいロックを使用して、スレッド セーフを確保します。 (ディクショナリに対する読み取り操作はロック制御不要の方法で実行されます)。ただし、`addValueFactory`と`updateValueFactory`不明なロック コードを実行から生じる可能性のある問題を回避するロックの外側にデリゲートが呼び出されます。 そのため、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>の他のすべての操作に関してはアトミックではない、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラス。  
+ ディクショナリに対する変更および書き込み操作の場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602> 、ではきめ細かなロックを使用してスレッドセーフを確保します。 (ディクショナリに対する読み取り操作は、ロックなしの方法で実行されます)。ただし、ロック`addValueFactory`の`updateValueFactory`下で不明なコードを実行した場合に発生する可能性のある問題を回避するために、およびデリゲートはロックの外部で呼び出されます。 したがって<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A> 、は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラスの他のすべての操作に関してアトミックではありません。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="key" />、<paramref name="addValueFactory" />、または <paramref name="updateValueFactory" /> が null 参照 (Visual Basic の場合は Nothing) です。</exception>
-        <exception cref="T:System.OverflowException">ディクショナリに含まれる要素が多すぎます。</exception>
+        <exception cref="T:System.OverflowException">ディレクトリに含まれている要素が多すぎます。</exception>
       </Docs>
     </Member>
     <Member MemberName="Clear">
@@ -664,7 +664,7 @@
         <summary>指定したキーが <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> に格納されているかどうかを判断します。</summary>
         <returns>指定したキーを持つ要素が <see langword="true" /> に格納されている場合は <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> が <see langword="null" /> です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -707,7 +707,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、スナップショット セマンティクスと内の項目の数を表す、<xref:System.Collections.Concurrent.ConcurrentDictionary%602?displayProperty=nameWithType>プロパティがアクセスされた時点でします。  
+ このプロパティにはスナップショットセマンティクスがあり、プロパティがアクセスさ<xref:System.Collections.Concurrent.ConcurrentDictionary%602?displayProperty=nameWithType>れた時点の内の項目数を表します。  
   
  ]]></format>
         </remarks>
@@ -765,7 +765,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ディクショナリから返される列挙子を安全に読み取りと同時に使用し、これは、ディクショナリの特定の時点へのスナップショットを表しませんが、ディクショナリに書き込みます。 列挙子を介して公開される内容は、後のディクショナリに加えられた変更を含めることができます<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetEnumerator%2A>が呼び出されました。  
+ ディクショナリから返された列挙子は、ディクショナリの読み取りと書き込みで同時に使用することは安全ですが、ディクショナリの時点でのスナップショットは表しません。 列挙子を通じて公開されるコンテンツには、が呼び出さ<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetEnumerator%2A>れた後にディクショナリに加えられた変更が含まれる場合があります。  
   
  ]]></format>
         </remarks>
@@ -785,7 +785,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例を呼び出す方法を示しています、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>メソッド。  
+ 次の例は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>メソッドを呼び出す方法を示しています。  
   
  [!code-csharp[System.Collections.Concurrent.ConcurrentDictionary#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/cs/concdictionary.cs#3)]
  [!code-vb[System.Collections.Concurrent.ConcurrentDictionary#3](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/vb/concdictionary.vb#3)]  
@@ -836,17 +836,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks   
- 変更と、ディクショナリへの書き込み操作の<xref:System.Collections.Concurrent.ConcurrentDictionary%602>細かいロックを使用して、スレッド セーフを確保します。 (ディクショナリに対する読み取り操作はロック制御不要の方法で実行されます)。ただし、`valueFactory`不明なロック コードを実行から生じる可能性のある問題を回避するロックの外側にデリゲートが呼び出されます。 そのため、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>の他のすべての操作に関してはアトミックではない、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラス。  
+ ディクショナリに対する変更および書き込み操作の場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602> 、ではきめ細かなロックを使用してスレッドセーフを確保します。 (ディクショナリに対する読み取り操作は、ロックなしの方法で実行されます)。ただし、ロック`valueFactory`の下で不明なコードを実行した場合に発生する可能性のある問題を回避するために、デリゲートはロックの外部で呼び出されます。 したがって<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A> 、は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラスの他のすべての操作に関してアトミックではありません。  
 
- 中に別のスレッドによって、キー/値を挿入することができますので`valueFactory`が値を生成することはできません信頼できるからといって`valueFactory`実行すると、その生成された値のディクショナリに挿入され、返されます。 呼び出す場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>さまざまなスレッドで同時に`valueFactory`呼び出すことができますが、複数回、1 つだけのキー/値ペアをディクショナリに追加されます。 
+ キー/値は、が値を生成している`valueFactory`間に別のスレッドによって挿入される`valueFactory`可能性があるため、生成された値がディクショナリに挿入されて返されるという理由で、キー/値を他のスレッドで挿入することはできません。 異なるスレッドで<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>同時にを呼び出す`valueFactory`と、が複数回呼び出される可能性がありますが、ディクショナリに追加されるのは1つのキーと値のペアだけです。 
  
- 戻り値が後に別のスレッドによって、キー/値を挿入するかどうかの辞書にキーの存在に依存<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>する前と呼ばれる`valueFactory`値を生成します。
+ 戻り値は、ディクショナリ内のキーの存在と、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>が呼び出されてから値が生成される前`valueFactory`に別のスレッドによってキー/値が挿入されるかどうかによって異なります。
 
  | シナリオ | 戻り値 |
  | -------- | ------------ |
- | キーは既に辞書に。 | 既存の値が返されます。 |
- | キーは、ディクショナリ内ではありません。 `valueFactory` 値を生成します。 キーの再確認をでキーが見つかりません。 | キー/値は、ディクショナリに挿入され、値が返されます。 |
- | キーは、ディクショナリ内ではありません。 `valueFactory` 値を生成します。 中に`valueFactory`が別のスレッドの値を生成するには、キーの値を挿入します。 後`valueFactory`を実行し、その他のスレッドによって挿入されたキーが見つかったキーの再確認、時にします。 | 他のスレッドによって挿入された値が返されます。 |
+ | キーは既にディクショナリに存在します。 | 既存の値が返されます。 |
+ | キーがディクショナリにありません。 `valueFactory`値を生成します。 キーのノートで、キーが見つかりません。 | キー/値がディクショナリに挿入され、値が返されます。 |
+ | キーがディクショナリにありません。 `valueFactory`値を生成します。 が`valueFactory`値を生成している間に、別のスレッドによってキーの値が挿入されます。 は、キーの実行時とノート時に、もう一方のスレッドによって挿入されたキーを検索します。`valueFactory` | もう一方のスレッドによって挿入された値が返されます。 |
   
  ]]></format>
         </remarks>
@@ -893,7 +893,7 @@
         <summary>キーがまだ存在しない場合に、<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> にキーと値のペアを追加します。 新しい値、またはキーが存在する場合は既存の値を返します。</summary>
         <returns>キーの値。 キーがディクショナリに既に存在する場合はキーの既存の値、キーがディクショナリに存在していなかった場合は新しい値になります。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.OverflowException">ディクショナリには、既に要素の最大数 (<see cref="F:System.Int32.MaxValue" />) が含まれています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
@@ -931,7 +931,7 @@
         <Parameter Name="factoryArgument" Type="TArg" Index="2" FrameworkAlternate="netcore-2.0;netcore-2.1;netcore-2.2;netcore-3.0;netframework-4.7.2;netframework-4.8;netstandard-2.1" />
       </Parameters>
       <Docs>
-        <typeparam name="TArg">渡す引数の型<paramref name="valueFactory" />します。</typeparam>
+        <typeparam name="TArg">に<paramref name="valueFactory" />渡す引数の型。</typeparam>
         <param name="key">追加する要素のキー。</param>
         <param name="valueFactory">キーの値を生成するために使用される関数。</param>
         <param name="factoryArgument"><paramref name="valueFactory" /> に渡す引数値。</param>
@@ -941,22 +941,22 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks   
- 変更と、ディクショナリへの書き込み操作の<xref:System.Collections.Concurrent.ConcurrentDictionary%602>細かいロックを使用して、スレッド セーフを確保します。 (ディクショナリに対する読み取り操作はロック制御不要の方法で実行されます)。ただし、`valueFactory`不明なロック コードを実行から生じる可能性のある問題を回避するロックの外側にデリゲートが呼び出されます。 そのため、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>の他のすべての操作に関してはアトミックではない、<xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラス。  
+ ディクショナリに対する変更および書き込み操作の場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602> 、ではきめ細かなロックを使用してスレッドセーフを確保します。 (ディクショナリに対する読み取り操作は、ロックなしの方法で実行されます)。ただし、ロック`valueFactory`の下で不明なコードを実行した場合に発生する可能性のある問題を回避するために、デリゲートはロックの外部で呼び出されます。 したがって<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A> 、は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602>クラスの他のすべての操作に関してアトミックではありません。  
 
- 中に別のスレッドによって、キー/値を挿入することができますので`valueFactory`が値を生成することはできません信頼できるからといって`valueFactory`実行すると、その生成された値のディクショナリに挿入され、返されます。 呼び出す場合<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>さまざまなスレッドで同時に`valueFactory`呼び出すことができますが、複数回、1 つだけのキー/値ペアをディクショナリに追加されます。 
+ キー/値は、が値を生成している`valueFactory`間に別のスレッドによって挿入される`valueFactory`可能性があるため、生成された値がディクショナリに挿入されて返されるという理由で、キー/値を他のスレッドで挿入することはできません。 異なるスレッドで<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>同時にを呼び出す`valueFactory`と、が複数回呼び出される可能性がありますが、ディクショナリに追加されるのは1つのキーと値のペアだけです。 
  
- 戻り値が後に別のスレッドによって、キー/値を挿入するかどうかの辞書にキーの存在に依存<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>する前と呼ばれる`valueFactory`値を生成します。
+ 戻り値は、ディクショナリ内のキーの存在と、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetOrAdd%2A>が呼び出されてから値が生成される前`valueFactory`に別のスレッドによってキー/値が挿入されるかどうかによって異なります。
 
  | シナリオ | 戻り値 |
  | -------- | ------------ |
- | キーは既に辞書に。 | 既存の値が返されます。 |
- | キーは、ディクショナリ内ではありません。 `valueFactory` 値を生成します。 キーの再確認をでキーが見つかりません。 | キー/値は、ディクショナリに挿入され、値が返されます。 |
- | キーは、ディクショナリ内ではありません。 `valueFactory` 値を生成します。 中に`valueFactory`が別のスレッドの値を生成するには、キーの値を挿入します。 後`valueFactory`を実行し、その他のスレッドによって挿入されたキーが見つかったキーの再確認、時にします。 | 他のスレッドによって挿入された値が返されます。 |
+ | キーは既にディクショナリに存在します。 | 既存の値が返されます。 |
+ | キーがディクショナリにありません。 `valueFactory`値を生成します。 キーのノートで、キーが見つかりません。 | キー/値がディクショナリに挿入され、値が返されます。 |
+ | キーがディクショナリにありません。 `valueFactory`値を生成します。 が`valueFactory`値を生成している間に、別のスレッドによってキーの値が挿入されます。 は、キーの実行時とノート時に、もう一方のスレッドによって挿入されたキーを検索します。`valueFactory` | もう一方のスレッドによって挿入された値が返されます。 |
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> <see langword="null" />参照 (Visual Basic では Nothing) です。</exception>
-        <exception cref="T:System.OverflowException">ディクショナリに含まれる要素が多すぎます。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> が <see langword="null" /> 参照 (Visual Basic では Nothing) です。</exception>
+        <exception cref="T:System.OverflowException">ディレクトリに含まれている要素が多すぎます。</exception>
       </Docs>
     </Member>
     <Member MemberName="IsEmpty">
@@ -1033,7 +1033,7 @@
         <value>指定したインデックス位置にあるキーと値のペアの値。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.Collections.Generic.KeyNotFoundException">プロパティが取得され、<paramref name="key" /> がコレクションに存在しません。</exception>
+        <exception cref="T:System.Collections.Generic.KeyNotFoundException">プロパティが取得されましたが、コレクション内に <paramref name="key" /> が存在しません。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -1188,7 +1188,7 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array"><see cref="T:System.Collections.ICollection" /> から要素がコピーされる先の 1 次元配列。 配列には、0 から始まるインデックスが設定されている必要があります。</param>
+        <param name="array"><see cref="T:System.Collections.ICollection" /> から要素がコピーされる 1 次元配列。 配列には、0 から始まるインデックスが設定されている必要があります。</param>
         <param name="index">コピーの開始位置とする <paramref name="array" /> のインデックス (0 から始まる)。</param>
         <summary>指定した配列インデックスを開始位置として、配列に <see cref="T:System.Collections.ICollection" /> の要素をコピーします。</summary>
         <remarks>To be added.</remarks>
@@ -1313,7 +1313,7 @@
         <param name="value">追加する要素の値として使用するオブジェクト。</param>
         <summary>指定したキーと値を <see cref="T:System.Collections.Generic.IDictionary`2" /> に追加します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException">同じキーを持つ要素が、<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> に既に存在します。</exception>
         <exception cref="T:System.OverflowException">ディクショナリには、既に要素の最大数 (<see cref="F:System.Int32.MaxValue" />) が含まれています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
@@ -1355,9 +1355,9 @@
       <Docs>
         <param name="key">削除する要素のキー。</param>
         <summary>指定したキーを持つ要素を <see cref="T:System.Collections.Generic.IDictionary`2" /> から削除します。</summary>
-        <returns>要素が正常に削除された場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 このメソッドは、元の <see langword="false" /> で <paramref name="key" /> が見つからなかった場合にも <see cref="T:System.Collections.Generic.IDictionary`2" /> を返します。</returns>
+        <returns>要素が正常に削除された場合は <see langword="true" />。それ以外の場合は <see langword="false" />。 このメソッドは、元の <see cref="T:System.Collections.Generic.IDictionary`2" /> で <paramref name="key" /> が見つからなかった場合にも <see langword="false" /> を返します。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" />です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -1465,13 +1465,13 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array"><see cref="T:System.Collections.ICollection" /> から要素がコピーされる先の 1 次元配列。 配列には、0 から始まるインデックスが設定されている必要があります。</param>
+        <param name="array"><see cref="T:System.Collections.ICollection" /> から要素がコピーされる 1 次元配列。 配列には、0 から始まるインデックスが設定されている必要があります。</param>
         <param name="index">コピーの開始位置とする <paramref name="array" /> のインデックス (0 から始まる)。</param>
         <summary>指定した配列インデックスを開始位置として、配列に <see cref="T:System.Collections.ICollection" /> の要素をコピーします。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="array" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="array" /> は <see langword="null" />です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index" /> が 0 未満です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="index" /> 長さ以上、<paramref name="array" />します。  
+        <exception cref="T:System.ArgumentException"><paramref name="index" /> が <paramref name="array" /> の長さ以上です。  
   
 - または - 
 コピー元の <see cref="T:System.Collections.ICollection" /> の要素数が、コピー先 <paramref name="array" /> の <paramref name="index" /> から最後までの使用可能領域を超えています。</exception>
@@ -1511,7 +1511,7 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Collections.ICollection" /> へのアクセスが SyncRoot で同期されているかどうかを示す値を取得します。</summary>
-        <value><see langword="true" /> へのアクセスが同期されている (スレッド セーフである) 場合は <see cref="T:System.Collections.ICollection" />。それ以外の場合は <see langword="false" />。 <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />このプロパティは常に返します<see langword="false" />します。</value>
+        <value><see langword="true" /> へのアクセスが同期されている (スレッド セーフである) 場合は <see cref="T:System.Collections.ICollection" />。それ以外の場合は <see langword="false" />。 の<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />場合、このプロパティ<see langword="false" />は常にを返します。</value>
         <remarks>To be added.</remarks>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
@@ -1594,14 +1594,14 @@
         <param name="value">値として使用するオブジェクト。</param>
         <summary>指定したキーと値をディクショナリに追加します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException"><paramref name="key" /> 型のキー タイプに割り当てることはできませんが、<see cref="T:System.Collections.Generic.Dictionary`2" />します。  
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentException"><paramref name="key" /> が、<see cref="T:System.Collections.Generic.Dictionary`2" /> のキーの型に代入できない型です。  
   
 - または - 
- <paramref name="value" /> 型の値の型に割り当てることはできませんが、<see cref="T:System.Collections.Generic.Dictionary`2" />します。  
+ <paramref name="value" /> が、<see cref="T:System.Collections.Generic.Dictionary`2" /> 内の値の型に代入できない型です。  
   
 - または - 
-同じキーを持つ値は既に、<see cref="T:System.Collections.Generic.Dictionary`2" />します。</exception>
+同じキーを持つ値が、<see cref="T:System.Collections.Generic.Dictionary`2" /> に既に存在します。</exception>
         <exception cref="T:System.OverflowException">ディクショナリには、既に要素の最大数 (<see cref="F:System.Int32.MaxValue" />) が含まれています。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
@@ -1644,7 +1644,7 @@
         <summary>指定したキーを持つ要素が <see cref="T:System.Collections.Generic.IDictionary`2" /> に含まれているかどうかを示す値を取得します。</summary>
         <returns>指定したキーを持つ要素が <see langword="true" /> に格納されている場合は <see cref="T:System.Collections.Generic.IDictionary`2" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> が <see langword="null" /> です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -1799,10 +1799,10 @@
       <Docs>
         <param name="key">取得または設定する値のキー。</param>
         <summary>指定されたキーに関連付けられている値を取得または設定します。</summary>
-        <value>指定したキーに関連付けられた値、または <see langword="null" /> がディクショナリにない場合または <paramref name="key" /> が <paramref name="key" /> のキー型に代入できる型ではない場合は <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />。</value>
+        <value>指定したキーに関連付けられている値。<paramref name="key" /> がディクショナリに存在しない場合、または <paramref name="key" /> が <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> のキーの型に代入できない型である場合は <see langword="null" />。</value>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ArgumentException">値が割り当てられ、<paramref name="key" /> がキー型または <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> の値型に代入できる型ではありません。</exception>
+        <exception cref="T:System.ArgumentException">値を代入しようとしていますが、<paramref name="key" /> は、<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> のキーの型または値型に代入できない型です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -1881,7 +1881,7 @@
         <param name="key">削除する要素のキー。</param>
         <summary>指定したキーを持つ要素を <see cref="T:System.Collections.IDictionary" /> から削除します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" />です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>
@@ -1961,7 +1961,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ディクショナリから返される列挙子を安全に読み取りと同時に使用し、これは、ディクショナリの特定の時点へのスナップショットを表しませんが、ディクショナリに書き込みます。 列挙子を介して公開される内容は、後のディクショナリに加えられた変更を含めることができます<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetEnumerator%2A>が呼び出されました。  
+ ディクショナリから返された列挙子は、ディクショナリの読み取りと書き込みで同時に使用することは安全ですが、ディクショナリの時点でのスナップショットは表しません。 列挙子を通じて公開されるコンテンツには、が呼び出さ<xref:System.Collections.Concurrent.ConcurrentDictionary%602.GetEnumerator%2A>れた後にディクショナリに加えられた変更が含まれる場合があります。  
   
  ]]></format>
         </remarks>
@@ -2040,17 +2040,17 @@
         <param name="key">追加する要素のキー。</param>
         <param name="value">追加する要素の値。 参照型の場合は <see langword="null" /> の値を使用できます。</param>
         <summary><see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> に対して、指定したキーと値の追加を試みます。</summary>
-        <returns>キーと値のペアが <see langword="true" /> に正常に追加された場合は <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />。キーが既に存在する場合は <see langword="false" />。</returns>
+        <returns>キーと値のペアが <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> に正常に追加された場合は <see langword="true" />。キーが既に存在する場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドが戻る`false`キーが既に存在する場合。 使用して、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryUpdate%2A>または<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>キーが既に存在する場合は、値を更新するメソッド。  
+ このメソッドは`false` 、キーが既に存在する場合はを返します。 キーが既<xref:System.Collections.Concurrent.ConcurrentDictionary%602.AddOrUpdate%2A>に存在する場合に値を更新するには、メソッドまたはメソッドを使用します。<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryUpdate%2A>  
   
    
   
 ## Examples  
- 次の例を呼び出す方法を示しています、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryAdd%2A?displayProperty=nameWithType>メソッド。  
+ 次の例は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryAdd%2A?displayProperty=nameWithType>メソッドを呼び出す方法を示しています。  
   
  [!code-csharp[System.Collections.Concurrent.ConcurrentDictionary#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/cs/concdictionary.cs#2)]
  [!code-vb[System.Collections.Concurrent.ConcurrentDictionary#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/vb/concdictionary.vb#2)]  
@@ -2102,7 +2102,7 @@
         <param name="key">取得する値のキー。</param>
         <param name="value">このメソッドから戻るときに、指定したキーを持つオブジェクトが <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> から格納されます。操作が失敗した場合は、型の既定値が格納されます。</param>
         <summary><see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> から、指定したキーに関連付けられている値の取得を試みます。</summary>
-        <returns>キーが <see langword="true" /> に見つかった場合は <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" />。それ以外の場合は <see langword="false" />。</returns>
+        <returns>キーが <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> に見つかった場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
@@ -2142,14 +2142,14 @@
       </Parameters>
       <Docs>
         <param name="key">削除して返す要素のキー。</param>
-        <param name="value">このメソッドから戻るときに、<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> から削除されたオブジェクトが格納されます。<see langword="TValue" /> が存在しない場合は、<paramref name="key" /> 型の既定値が格納されます。</param>
+        <param name="value">このメソッドから戻るときに、<see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> から削除されたオブジェクトが格納されます。<paramref name="key" /> が存在しない場合は、<see langword="TValue" /> 型の既定値が格納されます。</param>
         <summary><see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2" /> から、指定したキーを持つ値を削除して返そうと試みます。</summary>
         <returns>オブジェクトが正常に削除された場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例を呼び出す方法を示しています、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryRemove%2A?displayProperty=nameWithType>メソッド。  
+ 次の例は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryRemove%2A?displayProperty=nameWithType>メソッドを呼び出す方法を示しています。  
   
  [!code-csharp[System.Collections.Concurrent.ConcurrentDictionary#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/cs/concdictionary.cs#2)]
  [!code-vb[System.Collections.Concurrent.ConcurrentDictionary#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/vb/concdictionary.vb#2)]  
@@ -2198,19 +2198,19 @@
         <param name="newValue">比較した結果が等しい場合に、指定した <paramref name="key" /> を持つ要素の値を置き換える値。</param>
         <param name="comparisonValue">指定した <paramref name="key" /> を持つ要素の値と比較する値。</param>
         <summary><paramref name="key" /> での既存の値が <paramref name="comparisonValue" /> と等しい場合は、<paramref name="key" /> に関連付けられている値を <paramref name="newValue" /> に更新します。</summary>
-        <returns><see langword="true" /> を持つ値が <paramref name="key" /> に等しかったため、<paramref name="comparisonValue" /> に置き換えられた場合は <paramref name="newValue" />。それ以外の場合は <see langword="false" />。</returns>
+        <returns><paramref name="key" /> を持つ値が <paramref name="comparisonValue" /> に等しかったため、<paramref name="newValue" /> に置き換えられた場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例を呼び出す方法を示しています、<xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryUpdate%2A>メソッド。  
+ 次の例は、 <xref:System.Collections.Concurrent.ConcurrentDictionary%602.TryUpdate%2A>メソッドを呼び出す方法を示しています。  
   
  [!code-csharp[System.Collections.Concurrent.ConcurrentDictionary#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/cs/concdictionary.cs#2)]
  [!code-vb[System.Collections.Concurrent.ConcurrentDictionary#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.collections.concurrent.concurrentdictionary/vb/concdictionary.vb#2)]  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="key" /> が <see langword="null" /> です。</exception>
         <related type="Article" href="https://msdn.microsoft.com/library/2e7ca21f-786c-4367-96be-0cf3f3dcc6bd">スレッド セーフなコレクション</related>
         <related type="Article" href="https://msdn.microsoft.com/library/81b64b95-13f7-4532-9249-ab532f629598">方法: ConcurrentDictionary の項目を追加および削除する</related>
       </Docs>

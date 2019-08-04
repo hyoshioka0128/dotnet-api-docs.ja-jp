@@ -1,5 +1,5 @@
 <Type Name="LifetimeContext" FullName="System.Composition.Hosting.Core.LifetimeContext">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="83777aa7a78ab4e6309de80c934ef73bbabb1983" /><Meta Name="ms.sourcegitcommit" Value="1bb00d2f4343e73ae8d58668f02297a3cf10a4c1" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/15/2019" /><Meta Name="ms.locfileid" Value="63896521" /></Metadata><TypeSignature Language="C#" Value="public sealed class LifetimeContext : System.Composition.CompositionContext, IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="edc8fbb11e123ae683423a3affacc4c44de9a21c" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543729" /></Metadata><TypeSignature Language="C#" Value="public sealed class LifetimeContext : System.Composition.CompositionContext, IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LifetimeContext extends System.Composition.CompositionContext implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Composition.Hosting.Core.LifetimeContext" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LifetimeContext&#xA;Inherits CompositionContext&#xA;Implements IDisposable" />
@@ -26,9 +26,9 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
-<xref:System.Composition.Hosting.Core.LifetimeContext>オブジェクトが共有されているパートの共有の単位。 これにより、バインドされたパーツの破棄を制御し、既存のコンポジション操作の一環として、または新しい合成操作の基礎として、インスタンスを取得するために使用できます。 特定の共有境界によって制限されている部分を格納する、個々 の有効期間コンテキストに設定できます。
+オブジェクト<xref:System.Composition.Hosting.Core.LifetimeContext>は、共有パーツの共有の単位です。 バインドされたパーツの破棄を制御し、既存の合成操作の一部として、または新しいコンポジション操作の基礎として、インスタンスを取得するために使用できます。 個々の有効期間コンテキストは、特定の共有境界によって制約される部分を含むようにマークできます。
 
-このオブジェクトには、2 つとは別に保護された共有状態の情報が含まれています。 パーツ インスタンスを共有すると、パーツ インスタンスをバインドします。 共有パート インスタンスは、ロックフリーの読み取り可能なとされない問題の破棄中に追加された場合。 自体に縛られることによって保護されます。 アクティブ化ロジックは、このロックで呼び出される避けられません。 バインドされたパーツのインスタンスは、常にロックして保護<see langword="this" />、され破棄した後に書き込まれるはことはありません。 バインドされたパーツのインスタンスに設定されている<see langword="null" />ロック状態で、<xref:System.Composition.Hosting.Core.LifetimeContext.Dispose>メソッド。 バインドされたパーツのインスタンスの破棄後に書き込みが許可された場合は、解放されない破棄可能な部分になります。 バインドされている一部の dispose メソッドは、外部ロックで呼び出されます。 
+このオブジェクトには、個別に保護された共有状態の2つの部分が含まれます。共有パーツインスタンスとバインドされたパーツインスタンスです。 共有パーツインスタンスはロックフリーで読み取り可能なので、破棄中にに追加されても問題は発生しません。 これは、それ自体をロックすることによって保護されています。 アクティベーションロジックは、このロックの下で増える呼び出されます。 バインドされたパーツインスタンスは常に<see langword="this" />ロックによって保護され、破棄後には書き込まれません。 バインドされたパーツインスタンスは<see langword="null" /> 、 <xref:System.Composition.Hosting.Core.LifetimeContext.Dispose>メソッドのロックの下でに設定されます。 バインドされたパーツインスタンスの破棄後に書き込みが許可された場合、破棄可能なパーツは解放されません。 バインドされたパーツの dispose メソッドは、ロックの外側で呼び出されます。 
   
  ]]></format>
     </remarks>
@@ -143,7 +143,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 現時点では、ルートは、境界をすることはできません。  
+ 現在、ルートを境界にすることはできません。  
   
  ]]></format>
         </remarks>
@@ -182,7 +182,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パーツ インスタンスが既に存在する場合のロック制御不要です。 パーツ インスタンスを作成する必要があります、ロックが表示されますが (同時読み取りは引き続きは、安全でロック制御不要)、このメソッドを使用するその他の書き込みをシリアル化されます。 重要するコンポジション、およびそのため、ロックの取得は厳密にリーフ-root ライフタイム ツリー内。  
+ パーツインスタンスが既に存在する場合、このメソッドはロックを解放します。 パーツインスタンスを作成する必要がある場合は、このメソッドを使用する他の書き込みをシリアル化するロックが取得されます (同時実行読み取りは、引き続き安全でロック解放されます)。 構成 (つまり、ロックの取得) は、有効期間ツリー内では厳密にリーフツールートであることが重要です。  
   
  ]]></format>
         </remarks>
@@ -241,6 +241,7 @@
         <summary>コンポジション コンテキストからコントラクト インスタンスを取得します。</summary>
         <returns>インスタンスが取得された場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
   </Members>

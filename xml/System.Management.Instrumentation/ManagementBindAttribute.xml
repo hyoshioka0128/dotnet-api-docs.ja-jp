@@ -1,5 +1,5 @@
 <Type Name="ManagementBindAttribute" FullName="System.Management.Instrumentation.ManagementBindAttribute">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="761580cb9f100b3208ef15341665b809291937fc" /><Meta Name="ms.sourcegitcommit" Value="756d085f27705e86604f1bba5f2086ee23761acf" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="01/30/2019" /><Meta Name="ms.locfileid" Value="55348385" /></Metadata><TypeSignature Language="C#" Value="public sealed class ManagementBindAttribute : System.Management.Instrumentation.ManagementNewInstanceAttribute" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="7bc290c22309c400226b0b025190d2a636e9a372" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68397844" /></Metadata><TypeSignature Language="C#" Value="public sealed class ManagementBindAttribute : System.Management.Instrumentation.ManagementNewInstanceAttribute" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ManagementBindAttribute extends System.Management.Instrumentation.ManagementNewInstanceAttribute" />
   <TypeSignature Language="DocId" Value="T:System.Management.Instrumentation.ManagementBindAttribute" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ManagementBindAttribute&#xA;Inherits ManagementNewInstanceAttribute" />
@@ -27,21 +27,21 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この属性は、WMI の get 操作を実行するインフラストラクチャを使用するメソッドをマークします。 メソッドは、パラメーターとして、対応する WMI クラスのキー値を取得し、関連付けられている WMI クラスのインスタンスを返します。 必要があります。  
+ この属性は、インフラストラクチャが WMI の get 操作を実行するために使用するメソッドをマークします。 メソッドは、対応する WMI クラスのキー値をパラメーターとして受け取り、関連付けられている WMI クラスのインスタンスを返す必要があります。  
   
  > [!IMPORTANT]
- > メソッドのパラメーターは、クラスのキーのパラメーターとして正確に同じ名前と種類が必要です。 キー パラメーターで識別されます、<xref:System.Management.Instrumentation.ManagementKeyAttribute>属性。
+ > メソッドのパラメーターの名前と型は、クラスのキーパラメーターとまったく同じである必要があります。 キーパラメーターは、 <xref:System.Management.Instrumentation.ManagementKeyAttribute>属性によって識別されます。
   
  メソッドは、クラスのすべてのインストルメント化されたプロパティに値を割り当てる必要があります。  
   
- WMI プロバイダーの拡張機能のインフラストラクチャは、このバインド機能を必要とするこの属性を持つコンス トラクターをまず検索します。 見つからない場合、WMI クラスの型を返す静的メソッドを検索します。  
+ WMI プロバイダーの拡張機能のインフラストラクチャでこのバインディング機能が必要な場合は、まず、この属性を持つコンストラクターを検索します。 見つからない場合は、WMI クラス型を返す静的メソッドを検索します。  
   
  この属性のターゲットは、メソッドまたは静的メソッドのいずれかである必要があります。  
   
    
   
 ## Examples  
- 次の例では、クラスのコンス トラクターをマークする ManagementBind 属性を使用する方法を示します。  
+ 次の例は、ManagementBind 属性を使用して、クラスのコンストラクターをマークする方法を示しています。  
   
 ```csharp  
 // Use the ManagementBind attribute to specify that this constructor  
@@ -80,7 +80,7 @@ public ClassConstructor(int Id)
       </Attributes>
       <Parameters />
       <Docs>
-        <summary><see cref="T:System.Management.Instrumentation.ManagementBindAttribute" /> クラスの新しいインスタンスを初期化します。 これは既定のコンストラクターです。</summary>
+        <summary><see cref="T:System.Management.Instrumentation.ManagementBindAttribute" /> クラスの新しいインスタンスを初期化します。 これはパラメーターなしのコンストラクターです。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -115,7 +115,7 @@ public ClassConstructor(int Id)
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 返される型の場合<xref:System.Object?displayProperty=nameWithType>、出力は、型の値として処理する必要があります<xref:System.Object?displayProperty=nameWithType>します。  
+ 返される型が<xref:System.Object?displayProperty=nameWithType>の場合、出力は型<xref:System.Object?displayProperty=nameWithType>の値として処理される必要があります。  
   
  ]]></format>
         </remarks>

@@ -1,5 +1,5 @@
 <Type Name="SequencePosition" FullName="System.SequencePosition">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="f13c7c77bbcfe5e9a64957da33063da0f4f37dbd" /><Meta Name="ms.sourcegitcommit" Value="ea104bc7868886a205b1df30baed6ca34ff70ecb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/20/2019" /><Meta Name="ms.locfileid" Value="68369131" /></Metadata><TypeSignature Language="C#" Value="public struct SequencePosition : IEquatable&lt;SequencePosition&gt;" />
+  <TypeSignature Language="C#" Value="public struct SequencePosition : IEquatable&lt;SequencePosition&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit SequencePosition extends System.ValueType implements class System.IEquatable`1&lt;valuetype System.SequencePosition&gt;" />
   <TypeSignature Language="DocId" Value="T:System.SequencePosition" />
   <TypeSignature Language="VB.NET" Value="Public Structure SequencePosition&#xA;Implements IEquatable(Of SequencePosition)" />
@@ -55,8 +55,8 @@
         <Parameter Name="integer" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="object">To be added.</param>
-        <param name="integer">To be added.</param>
+        <param name="object">連続していないメモリのセット。</param>
+        <param name="integer"><paramref name="object" /> 内の位置。</param>
         <summary><see cref="T:System.SequencePosition" /> 構造体の新しいインスタンスを初期化します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -91,10 +91,18 @@
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">このインスタンスと比較するオブジェクト。</param>
-        <summary>対象のインスタンスが、指定したオブジェクトに等しいかどうかを示す値を返します。 <see cref="T:System.SequencePosition" /> の等値性は、<see cref="T:System.Buffers.ReadOnlySequence`1" /> 内の同じ場所がポイントされることを保証するものではありません。</summary>
-        <returns><paramref name="obj" /> が <see cref="T:System.SequencePosition" /> のインスタンスで、このインスタンスと同じ値を保持している場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
-        <remarks>To be added.</remarks>
+        <param name="obj">現在のインスタンスと比較するオブジェクト。</param>
+        <summary>現在のインスタンスが別のオブジェクトと等しいかどうかを示す値を返します。</summary>
+        <returns><paramref name="obj" /> の型が <see cref="T:System.SequencePosition" /> で、現在のインスタンスに等しければ <see langword="true" />。それ以外の場合は、<see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+          
+## Remarks
+
+等値は、2つのインスタンスが内の<xref:System.Buffers.ReadOnlySequence`1>同じ場所を指していることを保証しません。
+
+          ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -125,10 +133,18 @@
         <Parameter Name="other" Type="System.SequencePosition" />
       </Parameters>
       <Docs>
-        <param name="other">このインスタンスと比較するシーケンス位置。</param>
-        <summary>このインスタンスが指定したシーケンス位置に等しいかどうかを示す値を返します。 <see cref="T:System.SequencePosition" /> の等値性は、<see cref="T:System.Buffers.ReadOnlySequence`1" /> 内の同じ場所がポイントされることを保証するものではありません。</summary>
-        <returns><paramref name="obj" /> の値がこのインスタンスと同じ場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
-        <remarks>To be added.</remarks>
+        <param name="other">現在のインスタンスと比較するシーケンス位置。</param>
+        <summary>現在のインスタンスが <see cref="T:System.SequencePosition" /> と等しいかどうかを示します。</summary>
+        <returns>2 つのインスタンスが等しい場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+          
+## Remarks
+
+等値は、2つのインスタンスが内の<xref:System.Buffers.ReadOnlySequence`1>同じ場所を指していることを保証しません。
+
+             </format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -159,8 +175,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>このインスタンスのハッシュ コードを返します。</summary>
+        <returns>対象のインスタンスのハッシュ コード。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -193,7 +209,7 @@
       <Parameters />
       <Docs>
         <summary>この <see cref="T:System.SequencePosition" /> の整数部分を返します。</summary>
-        <returns>この <see cref="T:System.SequencePosition" /> の整数部分。</returns>
+        <returns>このシーケンス位置の整数部分。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -226,7 +242,7 @@
       <Parameters />
       <Docs>
         <summary>この <see cref="T:System.SequencePosition" /> のオブジェクト部分を返します。</summary>
-        <returns>この <see cref="T:System.SequencePosition" /> のオブジェクト部分。</returns>
+        <returns>このシーケンス位置のオブジェクト部分。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

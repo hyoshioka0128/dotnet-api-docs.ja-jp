@@ -15,7 +15,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>コンポジションを MEF 属性付きプログラミング モデルを使用するためのヘルパー メソッドが含まれています。</summary>
+    <summary>MEF 属性付きのプログラミング モデルを合成で使用するためのヘルパー メソッドを格納します。</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -54,7 +54,7 @@
       </Parameters>
       <Docs>
         <typeparam name="T">新しいパーツの型。</typeparam>
-        <param name="batch">バッチに追加します。</param>
+        <param name="batch">追加先のバッチ。</param>
         <param name="exportedValue">加算する値。</param>
         <summary>指定された値からパーツを作成し、指定されたバッチに追加します。</summary>
         <returns>新しいパーツ。</returns>
@@ -87,10 +87,10 @@
       </Parameters>
       <Docs>
         <typeparam name="T">新しいパーツの型。</typeparam>
-        <param name="batch">バッチに追加します。</param>
+        <param name="batch">追加先のバッチ。</param>
         <param name="contractName">エクスポートのコントラクト名。</param>
         <param name="exportedValue">加算する値。</param>
-        <summary>指定された値からパーツを作成し、指定したコントラクト名の指定されたバッチに追加します。</summary>
+        <summary>指定された値からパーツを作成し、指定されたコントラクト名の指定されたバッチに追加します。</summary>
         <returns>新しいパーツ。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -116,9 +116,9 @@
         <Parameter Name="attributedPart" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="batch">バッチに追加します。</param>
+        <param name="batch">追加先のバッチ。</param>
         <param name="attributedPart">追加するオブジェクト。</param>
-        <summary>指定した属性付きオブジェクトからコンポーザブル パーツを作成し、指定された合成バッチに追加します。</summary>
+        <summary>指定された属性付きオブジェクトからコンポーザブル パーツを作成し、指定された合成バッチに追加します。</summary>
         <returns>新しいパーツ。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -130,7 +130,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定したオブジェクトからパーツを作成し、指定された合成コンテナーで合成します。</summary>
+        <summary>指定されたオブジェクトからパーツを作成し、指定された合成コンテナーで合成します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="ComposeExportedValue&lt;T&gt;">
@@ -191,9 +191,9 @@
       <Docs>
         <typeparam name="T">新しいパーツの型。</typeparam>
         <param name="container">合成を実行する合成コンテナー。</param>
-        <param name="contractName">パーツをエクスポートするコントラクト名。</param>
+        <param name="contractName">パーツをエクスポートするときのコントラクト名。</param>
         <param name="exportedValue">合成する値。</param>
-        <summary>指定したコントラクト名の下にある指定したオブジェクトからパーツを作成し、指定された合成コンテナーで合成します。</summary>
+        <summary>指定されたオブジェクトから指定されたコントラクト名でパーツを作成し、指定された合成コンテナーで合成します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -225,7 +225,7 @@
       </Parameters>
       <Docs>
         <param name="container">合成を実行する合成コンテナー。</param>
-        <param name="attributedParts">作成する属性付きオブジェクトの配列。</param>
+        <param name="attributedParts">合成する属性付きオブジェクトの配列。</param>
         <summary>属性付きオブジェクトの配列からコンポーザブル パーツを作成し、指定された合成コンテナーで合成します。</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -289,7 +289,7 @@
       <Docs>
         <param name="partDefinition">新しいパーツの定義。</param>
         <param name="attributedPart">属性付きオブジェクト。</param>
-        <summary>指定したパーツ定義を使用して、指定した属性付きオブジェクトからコンポーザブル パーツを作成します。</summary>
+        <summary>指定した属性付きオブジェクトから、指定したパーツ定義を使用して、コンポーザブル パーツを作成します。</summary>
         <returns>作成されたパーツ。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -316,10 +316,10 @@
       <Docs>
         <param name="attributedPart">属性付きオブジェクト。</param>
         <param name="reflectionContext">パーツのリフレクション コンテキスト。</param>
-        <summary>指定したリフレクション コンテキストを使用して、指定した属性付きオブジェクトからコンポーザブル パーツを作成します。</summary>
+        <summary>指定した属性付きオブジェクトから、指定したリフレクション コンテキストを使用して、コンポーザブル パーツを作成します。</summary>
         <returns>作成されたパーツ。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="reflectionContext" /> は <see langword="null" /> です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="reflectionContext" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <MemberGroup MemberName="CreatePartDefinition">
@@ -329,7 +329,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定された型と配信元では、パーツ定義を作成します。</summary>
+        <summary>型および元を指定して、パーツ定義を作成します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="CreatePartDefinition">
@@ -353,8 +353,8 @@
       </Parameters>
       <Docs>
         <param name="type">定義の型。</param>
-        <param name="origin">定義の元です。</param>
-        <summary>指定された型と配信元では、パーツ定義を作成します。</summary>
+        <param name="origin">定義の元。</param>
+        <summary>型および元を指定して、パーツ定義を作成します。</summary>
         <returns>新しいパーツ定義。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -381,9 +381,9 @@
       </Parameters>
       <Docs>
         <param name="type">定義の型。</param>
-        <param name="origin">定義の元です。</param>
+        <param name="origin">定義の元。</param>
         <param name="ensureIsDiscoverable">新しい定義を検出可能にするかどうかを示す値。</param>
-        <summary>指定された型と配信元では、パーツ定義を作成します。</summary>
+        <summary>型および元を指定して、パーツ定義を作成します。</summary>
         <returns>新しいパーツ定義。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -411,8 +411,8 @@
       <Docs>
         <param name="part">検索するパーツ。</param>
         <param name="contractType">コントラクトの型。</param>
-        <summary>指定したパーツに指定したコントラクト型に一致するエクスポートが含まれているかどうか示す値を返します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="part" />と一致するエクスポート定義が含まれる<paramref name="contractType" />、それ以外の<see langword="false" />します。</returns>
+        <summary>指定した部分に、指定したコントラクト型に一致するエクスポートが含まれているかどうかを示す値を返します。</summary>
+        <returns><paramref name="part" /> に、<paramref name="contractType" /> に一致するエクスポート定義が含まれる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -441,8 +441,8 @@
       <Docs>
         <typeparam name="T">コントラクトの型。</typeparam>
         <param name="part">検索するパーツ。</param>
-        <summary>指定したパーツに指定したコントラクト型に一致するエクスポートが含まれているかどうか示す値を返します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="part" />型のエクスポート定義を含む<paramref name="T" />、それ以外の<see langword="false" />します。</returns>
+        <summary>指定した部分に、指定したコントラクト型に一致するエクスポートが含まれているかどうかを示す値を返します。</summary>
+        <returns><paramref name="part" /> に、型 <paramref name="T" /> のエクスポート定義が含まれる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -471,8 +471,8 @@
       </Parameters>
       <Docs>
         <param name="type">使用する型。</param>
-        <summary>指定した型の正規のコントラクト名を取得します。</summary>
-        <returns>指定した型から作成されたコントラクト名。</returns>
+        <summary>指定された型の正規のコントラクト名を取得します。</summary>
+        <returns>指定された型から作成されるコントラクト名。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -502,7 +502,7 @@
         <typeparam name="TMetadataView">取得するメタデータ ビュー オブジェクトの型。</typeparam>
         <param name="metadata">柔軟なメタデータのコレクション。</param>
         <summary>柔軟なメタデータのディクショナリからメタデータ ビュー オブジェクトを取得します。</summary>
-        <returns>指定したメタデータを含むメタデータ ビュー。</returns>
+        <returns>指定されたメタデータを含むメタデータ ビュー。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -513,7 +513,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>メソッドまたは型の一意識別子を取得します。</summary>
+        <summary>メソッドまたは型の一意の識別子を取得します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="GetTypeIdentity">
@@ -537,7 +537,7 @@
       </Parameters>
       <Docs>
         <param name="method">チェックするメソッド。</param>
-        <summary>指定したメソッドの一意識別子を取得します。</summary>
+        <summary>指定されたメソッドの一意の識別子を取得します。</summary>
         <returns>メソッドの一意の識別子。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -562,7 +562,7 @@
       </Parameters>
       <Docs>
         <param name="type">チェックする型。</param>
-        <summary>指定した型の一意識別子を取得します。</summary>
+        <summary>指定された型の一意の識別子を取得します。</summary>
         <returns>型の一意の識別子。</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -600,8 +600,8 @@
       <Docs>
         <param name="part">検索するパーツ。</param>
         <param name="contractType">コントラクトの型。</param>
-        <summary>指定したパーツに指定したコントラクト型と一致するインポートが含まれているかどうか示す値を返します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="part" />と一致するインポート定義が含まれる<paramref name="contractType" />、それ以外の<see langword="false" />します。</returns>
+        <summary>指定した部分に、指定したコントラクト型に一致するインポートが含まれているかどうかを示す値を返します。</summary>
+        <returns><paramref name="part" /> に、<paramref name="contractType" /> に一致するインポート定義が含まれる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -629,8 +629,8 @@
         <param name="part">検索するパーツ。</param>
         <param name="contractType">コントラクトの型。</param>
         <param name="importCardinality">インポートの基数。</param>
-        <summary>指定したパーツに指定のコントラクトに一致するインポートが含まれているかどうか示す値を返しますでは、型し、インポートの基数。</summary>
-        <returns><see langword="true" /> 場合<paramref name="part" />と一致するインポート定義が含まれる<paramref name="contractType" />と<paramref name="importCardinality" />、それ以外の<see langword="false" />します。</returns>
+        <summary>指定した部分に、指定したコントラクト型とインポートの基数に一致するインポートが含まれているかどうかを示す値を返します。</summary>
+        <returns><paramref name="part" /> に、<paramref name="contractType" /> と <paramref name="importCardinality" /> に一致するインポート定義が含まれる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -659,8 +659,8 @@
       <Docs>
         <typeparam name="T">コントラクトの型。</typeparam>
         <param name="part">検索するパーツ。</param>
-        <summary>指定したパーツに指定したコントラクト型と一致するインポートが含まれているかどうか示す値を返します。</summary>
-        <returns><see langword="true" /> 場合<paramref name="part" />型のインポート定義が含まれています<paramref name="T" />、それ以外の<see langword="false" />します。</returns>
+        <summary>指定した部分に、指定したコントラクト型に一致するインポートが含まれているかどうかを示す値を返します。</summary>
+        <returns><paramref name="part" /> に、型 <paramref name="T" /> のインポート定義が含まれる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -690,8 +690,8 @@
         <typeparam name="T">コントラクトの型。</typeparam>
         <param name="part">検索するパーツ。</param>
         <param name="importCardinality">インポートの基数。</param>
-        <summary>指定したパーツに指定のコントラクトに一致するインポートが含まれているかどうか示す値を返しますでは、型し、インポートの基数。</summary>
-        <returns><see langword="true" /> 場合<paramref name="part" />型のインポート定義が含まれています<paramref name="T" />指定されたインポートの基数を持つ、それ以外の<see langword="false" />します。</returns>
+        <summary>指定した部分に、指定したコントラクト型とインポートの基数に一致するインポートが含まれているかどうかを示す値を返します。</summary>
+        <returns><paramref name="part" /> に、指定したインポートの基数を持つ、型 <paramref name="T" /> のインポート定義が含まれる場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -702,7 +702,7 @@
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary>指定したパーツを合成します。</summary>
+        <summary>指定されたパーツを合成します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName="SatisfyImportsOnce">
@@ -728,18 +728,18 @@
       <Docs>
         <param name="compositionService">使用する合成サービス。</param>
         <param name="attributedPart">合成するパーツ。</param>
-        <summary>再合成を無効になっていると、指定された合成サービスを使用して、指定したパーツを合成します。</summary>
+        <summary>再合成を無効にし、指定された合成サービスを使用して、指定されたパーツを合成します。</summary>
         <returns>合成されたパーツ。</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有効なまま保証されませんこのメソッドを使用して構成する部分、コンポジションの通常とは異なり場合、カタログの背後にある`compositionService`変更します。  
+ 通常の構成とは異なり、このメソッドで構成されるパーツは、カタログ`compositionService`が変更された場合にも有効なままであるとは限りません。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="compositionService" /> または <paramref name="attributedPart" /> が <see langword="null" /> です。</exception>
-        <exception cref="T:System.ComponentModel.Composition.CompositionException">合成時にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> 発生したエラーのコレクションを含みます。</exception>
+        <exception cref="T:System.ComponentModel.Composition.CompositionException">合成中にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが含まれます。</exception>
         <exception cref="T:System.ObjectDisposedException"><see cref="T:System.ComponentModel.Composition.ICompositionService" /> は破棄されています。</exception>
       </Docs>
     </Member>
@@ -767,11 +767,11 @@
         <param name="compositionService">使用する合成サービス。</param>
         <param name="attributedPart">合成するパーツ。</param>
         <param name="reflectionContext">パーツのリフレクション コンテキスト。</param>
-        <summary>再合成を無効になっている、指定された合成サービスを使用して、指定したリフレクション コンテキストを使用して、指定したパーツを合成します。</summary>
+        <summary>指定されたパーツを、再合成を無効にして、指定された合成サービスと指定されたリフレクション コンテキストを使用して合成します。</summary>
         <returns>合成されたパーツ。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="reflectionContext" /> は <see langword="null" /> です。</exception>
-        <exception cref="T:System.ComponentModel.Composition.CompositionException">合成時にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> 発生したエラーのコレクションを含みます。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="reflectionContext" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ComponentModel.Composition.CompositionException">合成中にエラーが発生しました。 <see cref="P:System.ComponentModel.Composition.CompositionException.Errors" /> には、発生したエラーのコレクションが含まれます。</exception>
         <exception cref="T:System.ObjectDisposedException"><see cref="T:System.ComponentModel.Composition.ICompositionService" /> は破棄されています。</exception>
       </Docs>
     </Member>

@@ -1,5 +1,5 @@
 <Type Name="NativeLibrary" FullName="System.Runtime.InteropServices.NativeLibrary">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="85aa85f3b8986cbc570c4cf47534c2556c2827df" /><Meta Name="ms.sourcegitcommit" Value="727af77f0b7ae2636efa3bc47000697540084461" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/15/2019" /><Meta Name="ms.locfileid" Value="67877115" /></Metadata><TypeSignature Language="C#" Value="public static class NativeLibrary" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="d3e9c92383bb3920d2d1beecdaf4b28f1c4c0256" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68541724" /></Metadata><TypeSignature Language="C#" Value="public static class NativeLibrary" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit NativeLibrary extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Runtime.InteropServices.NativeLibrary" />
   <TypeSignature Language="VB.NET" Value="Public Class NativeLibrary" />
@@ -66,13 +66,13 @@
         <param name="name">エクスポートされたシンボルの名前。</param>
         <summary>エクスポートされたシンボルのアドレスを取得します。</summary>
         <returns>シンボルのアドレス。</returns>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
-これは単純な OS 呼び出しラッパーであり、名前マングルを行いません。
+これは OS 呼び出しを中心とした単純なラッパーであり、名前の変形は実行されません。
 
          ]]></format>
-         </remarks>
+        </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="handle" /> または <paramref name="name" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.EntryPointNotFoundException">シンボルが見つかりません。</exception>
       </Docs>
@@ -130,17 +130,17 @@
         <param name="searchPath">検索パス。</param>
         <summary>ネイティブ ライブラリを読み込むための高度な API を提供します。</summary>
         <returns>読み込まれたライブラリのハンドル。</returns>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
-ライブラリ名を指定するには、このメソッドは、ランタイム構成や入力パラメーターは、呼び出し元のアセンブリの属性に基づいて特定のパスを検索します。 場合、`searchPath`パラメーターが null 以外、この列挙体のフラグが使用されます。 それ以外の場合、フラグが指定された、<xref:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute>呼び出し元のアセンブリで、いずれかが存在する場合を使用します。 このメソッドでは、ネイティブ ライブラリの解決のための次のマネージ コールバックは呼び出されません。 
+ライブラリ名が指定されている場合、このメソッドは、呼び出し元アセンブリのランタイム構成、入力パラメーター、および属性に基づいて特定のパスを検索します。 `searchPath`パラメーターが null 以外の場合は、この列挙体のフラグが使用されます。 それ以外の場合は、呼び出し<xref:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute>元アセンブリのによって指定されたフラグ (存在する場合) が使用されます。 このメソッドは、ネイティブライブラリの解決のために次のマネージコールバックを呼び出しません。 
 
-- アセンブリごとのコールバックを登録します。
+- アセンブリごとに登録されたコールバック。
 - <xref:System.Runtime.Loader.AssemblyLoadContext.LoadUnmanagedDll%2A?displayProperty=nameWithType> メソッド。
 - <xref:System.Runtime.Loader.AssemblyLoadContext.ResolvingUnmanagedDll?displayProperty=nameWithType>イベント。
 
          ]]></format>
-         </remarks>
+        </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="libraryName" /> または <paramref name="assembly" /> が <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException"><paramref name="assembly" /> が <see langword="RuntimeAssembly" /> ではありません。</exception>
         <exception cref="T:System.DllNotFoundException">ライブラリが見つかりません。</exception>
@@ -169,15 +169,15 @@
         <param name="assembly">リゾルバーが登録されるアセンブリ。</param>
         <param name="resolver">登録するリゾルバー コールバック。</param>
         <summary>アセンブリからのネイティブ ライブラリのインポートを解決するためのコールバックを設定します。</summary>
-        <remarks>  
+        <remarks>
           <format type="text/markdown"><![CDATA[  
 
-このアセンブリの競合回避モジュールは、このアセンブリによって開始されたネイティブ ライブラリの読み込みを解決するのには、最初の試行です。 
+このアセンブリによって開始されたネイティブライブラリの読み込みを解決するための最初の試行は、このアセンブリごとの競合回避モジュールです。 
 
-アセンブリごと、1 つだけの競合回避モジュールを登録できます。 2 つ目を登録しようとしています。 競合回避モジュールが失敗し、<xref:System.InvalidOperationException>します。
+アセンブリごとに登録できるリゾルバーは1つだけです。 2つ目のリゾルバーを登録しよう<xref:System.InvalidOperationException>とすると、で失敗します。
 
          ]]></format>
-         </remarks>
+        </remarks>
         <exception cref="T:System.ArgumentNullException"><paramref name="assembly" /> または paramref name="resolver" /&gt; は <see langword="null" /> です。</exception>
         <exception cref="T:System.ArgumentException">リゾルバーはこのアセンブリに既に設定されています。</exception>
       </Docs>
@@ -237,7 +237,7 @@
         <summary>ネイティブ ライブラリを読み込むための単純な API を提供し、操作が成功したかどうかを示す値を返します。</summary>
         <returns>ネイティブ ライブラリが正常に読み込まれた場合は <see langword="true" />、それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException"><paramref name="libraryPath" /> は <see langword="null" />です。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="libraryPath" /> が <see langword="null" /> です。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryLoad">

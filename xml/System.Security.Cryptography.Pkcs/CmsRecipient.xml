@@ -1,5 +1,5 @@
 <Type Name="CmsRecipient" FullName="System.Security.Cryptography.Pkcs.CmsRecipient">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="106653988cf3c62083c0e33f1c7b7f4b36583525" /><Meta Name="ms.sourcegitcommit" Value="bc24a3ba616ee1df8b858f9400cae4f058ea3a7e" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="06/19/2019" /><Meta Name="ms.locfileid" Value="67247159" /></Metadata><TypeSignature Language="C#" Value="public sealed class CmsRecipient" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="f80795e5f372487ffcd96600210533cf89afed9e" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543753" /></Metadata><TypeSignature Language="C#" Value="public sealed class CmsRecipient" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CmsRecipient extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.Pkcs.CmsRecipient" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CmsRecipient" />
@@ -36,7 +36,7 @@
         <AssemblyVersion>4.0.2.0</AssemblyVersion>
       </AssemblyInfo>
       <Docs>
-        <summary><see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスのインスタンスを構築します。</summary>
+        <summary><see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスの新しいインスタンスを初期化します。</summary>
       </Docs>
     </MemberGroup>
     <Member MemberName=".ctor">
@@ -66,23 +66,24 @@
         <Parameter Name="certificate" Type="System.Security.Cryptography.X509Certificates.X509Certificate2" />
       </Parameters>
       <Docs>
-        <param name="certificate">受取人の証明書を表す <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> オブジェクト。</param>
-        <summary><see cref="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)" /> コンストラクターは、指定された受取人の証明書を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスのインスタンスを構築します。</summary>
+        <param name="certificate">この受信者に対する暗号化に使用する証明書。</param>
+        <summary>公開キー アルゴリズム向けの既定の暗号化モードと <see cref="F:System.Security.Cryptography.Pkcs.SubjectIdentifierType.IssuerAndSerialNumber" /> サブジェクト識別子を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスの新しいインスタンスを指定の証明書で初期化します。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Security.Cryptography.Pkcs.CmsRecipient>クラスには次の既定のプロパティの値。  
+ <xref:System.Security.Cryptography.Pkcs.CmsRecipient>クラスには、次の既定のプロパティ値があります。  
   
 |プロパティ|既定値|  
 |--------------|-------------------|  
 |<xref:System.Security.Cryptography.Pkcs.CmsRecipient.RecipientIdentifierType%2A>|<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.IssuerAndSerialNumber>|  
+|<xref:System.Security.Cryptography.Pkcs.CmsRecipient.RSAEncryptionPadding%2A>|null|  
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentNullException">null 参照を有効な引数として受け付けないメソッドに null 参照が渡されました。</exception>
-        <exception cref="T:System.Security.Cryptography.CryptographicException">暗号操作を完了できませんでした。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="certificate" /> パラメーターが <see langword="null" /> です。</exception>
         <altmember cref="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2)" />
+        <altmember cref="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.RSAEncryptionPadding)" />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -113,13 +114,14 @@
         <Parameter Name="certificate" Type="System.Security.Cryptography.X509Certificates.X509Certificate2" />
       </Parameters>
       <Docs>
-        <param name="recipientIdentifierType">受取人の識別子のタイプを指定する <see cref="T:System.Security.Cryptography.Pkcs.SubjectIdentifierType" /> 列挙型のメンバー。</param>
-        <param name="certificate">受取人の証明書を表す <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> オブジェクト。</param>
-        <summary><see cref="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2)" /> コンストラクターは、指定された受取人識別子タイプと受取人証明書を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスのインスタンスを構築します。</summary>
+        <param name="recipientIdentifierType">使用された受信者の証明書を識別するために使用するスキーム。</param>
+        <param name="certificate">この受信者に対する暗号化に使用する証明書。</param>
+        <summary>公開キー アルゴリズムの既定の暗号化モードを使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスの新しいインスタンスを指定の証明書と受信者の識別子の型で初期化します。</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">null 参照を有効な引数として受け付けないメソッドに null 参照が渡されました。</exception>
-        <exception cref="T:System.Security.Cryptography.CryptographicException">暗号操作を完了できませんでした。</exception>
+        <exception cref="T:System.ArgumentNullException"><paramref name="certificate" /> パラメーターが <see langword="null" /> です。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="recipientIdentifierType" /> 値はサポートされていません。</exception>
         <altmember cref="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)" />
+        <altmember cref="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.RSAEncryptionPadding)" />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -141,10 +143,27 @@
         <Parameter Name="rsaEncryptionPadding" Type="System.Security.Cryptography.RSAEncryptionPadding" Index="1" FrameworkAlternate="dotnet-plat-ext-3.0" />
       </Parameters>
       <Docs>
-        <param name="certificate">To be added.</param>
-        <param name="rsaEncryptionPadding">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="certificate">この受信者に対する暗号化に使用する証明書。</param>
+        <param name="rsaEncryptionPadding">この受信者に対する暗号化に使用する RSA パディング モード。</param>
+        <summary><see cref="F:System.Security.Cryptography.Pkcs.SubjectIdentifierType.IssuerAndSerialNumber" /> サブジェクト識別子を使用して、<see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスの新しいインスタンスを、指定された RSA 証明書と RSA 暗号化パディングで初期化します。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ <xref:System.Security.Cryptography.Pkcs.CmsRecipient>クラスには、次の既定のプロパティ値があります。  
+  
+|プロパティ|既定値|  
+|--------------|-------------------|  
+|<xref:System.Security.Cryptography.Pkcs.CmsRecipient.RecipientIdentifierType%2A>|<xref:System.Security.Cryptography.Pkcs.SubjectIdentifierType.IssuerAndSerialNumber>|  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="certificate" /> パラメーターまたは <paramref name="rsaEncryptionPadding" /> パラメーターが <see langword="null" /> です。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="certificate" /> パラメーター公開キーは、RSA 公開キーとして認識されません。
+
+- または -
+
+<paramref name="recipientIdentifierType" /> 値はサポートされていません。</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -167,11 +186,14 @@
         <Parameter Name="rsaEncryptionPadding" Type="System.Security.Cryptography.RSAEncryptionPadding" Index="2" FrameworkAlternate="dotnet-plat-ext-3.0" />
       </Parameters>
       <Docs>
-        <param name="recipientIdentifierType">To be added.</param>
-        <param name="certificate">To be added.</param>
-        <param name="rsaEncryptionPadding">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="recipientIdentifierType">使用された受信者の証明書を識別するために使用するスキーム。</param>
+        <param name="certificate">この受信者に対する暗号化に使用する証明書。</param>
+        <param name="rsaEncryptionPadding">この受信者に対する暗号化に使用する RSA パディング モード。</param>
+        <summary><see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> クラスの新しいインスタンスを、指定の RSA 証明書、RSA 暗号化パディング、およびサブジェクト識別子で初期化します。</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException"><paramref name="certificate" /> パラメーターまたは <paramref name="rsaEncryptionPadding" /> パラメーターが <see langword="null" /> です。</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="certificate" /> パラメーター公開キーは、RSA 公開キーとして認識されません。</exception>
+        <altmember cref="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2)" />
       </Docs>
     </Member>
     <Member MemberName="Certificate">
@@ -201,10 +223,9 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509Certificate2</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsRecipient.Certificate" /> プロパティは、受取人に関連付けられた証明書を取得します。</summary>
-        <value>受取人に関連付けられた証明書を保持する <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> オブジェクト。</value>
+        <summary>この受信者に対する暗号化に使用する証明書を取得します。</summary>
+        <value>この受信者の暗号化に使用する証明書。</value>
         <remarks>To be added.</remarks>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsRecipient.RecipientIdentifierType" />
       </Docs>
     </Member>
     <Member MemberName="RecipientIdentifierType">
@@ -234,10 +255,9 @@
         <ReturnType>System.Security.Cryptography.Pkcs.SubjectIdentifierType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><see cref="P:System.Security.Cryptography.Pkcs.CmsRecipient.RecipientIdentifierType" /> プロパティは、受取人の識別子のタイプを取得します。</summary>
-        <value>受取人の識別子のタイプを指定する <see cref="T:System.Security.Cryptography.Pkcs.SubjectIdentifierType" /> 列挙型のメンバー。</value>
+        <summary>使用された受信者の証明書を識別するために使用するスキームを取得します。</summary>
+        <value>使用された受信者証明書を識別するために使用するスキーム。</value>
         <remarks>To be added.</remarks>
-        <altmember cref="P:System.Security.Cryptography.Pkcs.CmsRecipient.Certificate" />
       </Docs>
     </Member>
     <Member MemberName="RSAEncryptionPadding">
@@ -259,9 +279,16 @@
         <ReturnType>System.Security.Cryptography.RSAEncryptionPadding</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>この受信者に対する暗号化に使用する RSA 暗号化パディングを取得します。</summary>
+        <value>この受信者の暗号化に使用する RSA 暗号化埋め込み。</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ 値`null`は、証明書の公開キーの既定の暗号化埋め込みを使用する必要があることを示します。
+
+]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

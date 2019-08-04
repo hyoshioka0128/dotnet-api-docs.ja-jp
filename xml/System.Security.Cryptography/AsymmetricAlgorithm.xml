@@ -1,5 +1,5 @@
 <Type Name="AsymmetricAlgorithm" FullName="System.Security.Cryptography.AsymmetricAlgorithm">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="3361529a45a3e81158b90a60a61b66e77b737854" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58726936" /></Metadata><TypeSignature Language="C#" Value="public abstract class AsymmetricAlgorithm : IDisposable" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="615c55a98e2f627c916fde1b499a0eb9559c06b2" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543869" /></Metadata><TypeSignature Language="C#" Value="public abstract class AsymmetricAlgorithm : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit AsymmetricAlgorithm extends System.Object implements class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:System.Security.Cryptography.AsymmetricAlgorithm" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class AsymmetricAlgorithm&#xA;Implements IDisposable" />
@@ -42,15 +42,15 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非対称暗号化アルゴリズムとも呼ばれる公開キー アルゴリズムは、送信者と受信者の両方が関連するキーのペアを保持することが必要です。 秘密キーと公開キー。 両方のキーは、エンティティに固有です。 公開キーが利用できるだれこのキーは、受信者に送信されるデータをエンコードするために使用されます。 秘密キーに対して; 受信側でプライベート保持する必要があります。このキーは、受信者の公開キーを使用してエンコードされたメッセージをデコードに使用されます。 <xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスは、公開キー アルゴリズムの実装。 公開キー暗号化アルゴリズムとアルゴリズムの詳細については、「公開キー暗号化」セクションを参照してください。 [Cryptographic Services](~/docs/standard/security/cryptographic-services.md)します。 厳密名ツール (Sn.exe) を使用してキー ペアを作成する方法については、次を参照してください。[方法。公開キーと秘密キーのキー ペアを作成する](~/docs/framework/app-domains/how-to-create-a-public-private-key-pair.md)」を参照してください。  
+ 非対称暗号アルゴリズム (公開キーアルゴリズムとも呼ばれます) では、送信側と受信側の両方で、秘密キーと公開キーのペアを保持する必要があります。 どちらのキーも、エンティティに対して一意です。 公開キーはだれでも利用できます。このキーは、受信側に送信されるデータをエンコードするために使用されます。 秘密キーは受信側によってプライベートに保持されている必要があります。このキーは、受信者の公開キーを使用してエンコードされたメッセージをデコードするために使用されます。 <xref:System.Security.Cryptography.RSACryptoServiceProvider>クラスは、公開キーアルゴリズムの実装です。 公開キーの暗号化とアルゴリズムの詳細については、「[暗号化サービス](~/docs/standard/security/cryptographic-services.md)」の「公開キーの暗号化」セクションを参照してください。 厳密名ツール (sn.exe) を使用してキーペアを作成する方法については、 [「方法:公開キーと秘密キーのキー ペアを作成する](~/docs/framework/app-domains/how-to-create-a-public-private-key-pair.md)」を参照してください。  
   
- 公開キー システムを使用すると、デジタル署名を形成します。 デジタル署名は、データの整合性を保護するために使用されます。 たとえば、公開キー システムを使用して、メッセージのデジタル署名、送信者最初を適用するハッシュ関数メッセージ ダイジェストを作成するためにします。 送信者は、メッセージ ダイジェストを送信者の署名を作成する送信者の秘密キーで暗号化します。 メッセージと署名を受信、受信側は送信者の公開キーを使用して、メッセージ ダイジェストを復旧する署名を復号化し、が使用されている同じハッシュ アルゴリズムを使用して、メッセージのハッシュを計算します。 受信機を計算する、メッセージ ダイジェストには、送信者から受信したメッセージのダイジェストが一致すると、受信側はメッセージが転送中に変更されなかったことを想定できます。 送信者の公開キーに共通の知識があるため、署名を確認できますすべてのユーザーに注意してください。 この手法では、メッセージを秘密にすることはできません。メッセージを秘密にするには、その必要がありますも暗号化されます。  
+ 公開キーシステムを使用して、デジタル署名を形成できます。 デジタル署名は、データの整合性を保護するために使用されます。 たとえば、公開キーシステムを使用してメッセージのデジタル署名を行う場合、送信側はまずメッセージにハッシュ関数を適用してメッセージダイジェストを作成します。 送信側は、送信者の秘密キーを使用してメッセージダイジェストを暗号化し、送信者の個人用署名を作成します。 受信側は、メッセージと署名を受け取ると、送信者の公開キーを使用して署名の暗号化を解除し、メッセージダイジェストを回復し、送信者が使用したのと同じハッシュアルゴリズムを使用してメッセージをハッシュします。 受信側が計算するメッセージダイジェストが送信者から受信したメッセージダイジェストと一致する場合、受信側は、転送中にメッセージが変更されていないと見なすことができます。 送信者の公開キーはよく知られているため、だれでも署名を検証できます。 この手法では、メッセージの秘密性は保持されません。メッセージをシークレットとして使用するには、そのメッセージも暗号化する必要があります。  
   
- .NET Framework には、デジタル署名アルゴリズムを実装する次のクラスが用意されています: <xref:System.Security.Cryptography.DSACryptoServiceProvider>、 <xref:System.Security.Cryptography.RSACryptoServiceProvider>、 <xref:System.Security.Cryptography.ECDsa> (基本クラス) と<xref:System.Security.Cryptography.ECDsaCng>します。  
+ .NET Framework には<xref:System.Security.Cryptography.DSACryptoServiceProvider>、デジタル署名アルゴリズム<xref:System.Security.Cryptography.RSACryptoServiceProvider>(、、 <xref:System.Security.Cryptography.ECDsa> (基底クラス)、および<xref:System.Security.Cryptography.ECDsaCng>) を実装する次のクラスが用意されています。  
   
- <xref:System.Security.Cryptography>名前空間の具象クラスを提供する<xref:System.Security.Cryptography.RSA>と<xref:System.Security.Cryptography.DSA>のみです。  
+ 名前<xref:System.Security.Cryptography>空間は、および<xref:System.Security.Cryptography.DSA>のみ<xref:System.Security.Cryptography.RSA>の具象クラスを提供します。  
   
- RSA アルゴリズムを使用して、暗号化し、XML データを復号化する方法について説明しますと作成して、XML デジタル署名の確認は、次の記事を参照してください。  
+ RSA アルゴリズムを使用して XML データを暗号化および復号化し、XML デジタル署名を作成および検証する方法については、次の記事を参照してください。  
   
 -   [方法: 非対称キーで XML 要素を暗号化する](~/docs/standard/security/how-to-encrypt-xml-elements-with-asymmetric-keys.md)  
   
@@ -63,13 +63,13 @@
    
   
 ## Examples  
- 次のコード例から継承したカスタムの非対称アルゴリズムを実装する方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  カスタム クラスを使用する方法を示す追加のクラスが提供されます。  
+ 次のコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスから継承されたカスタム非対称アルゴリズムを実装する方法を示しています。  カスタムクラスの使用方法を示す追加のクラスが用意されています。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#2](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#2)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#2)]
  [!code-vb[System.Security.Cryptography.AsymmetricAlgorithm#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/VB/customcrypto.vb#2)]  
   
- カスタム クラスを使用する方法を示す追加のクラスを次に示します。  
+ カスタムクラスの使用方法を示す追加のクラスを次に示します。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#3](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcryptoimpl.cpp#3)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#3](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#3)]
@@ -113,7 +113,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 抽象クラスのインスタンスを作成することはできません。 アプリケーション コードでは、派生クラスの新しいインスタンスを作成します。 <xref:System.Security.Cryptography.RSACryptoServiceProvider>と<xref:System.Security.Cryptography.DSACryptoServiceProvider>クラスは、現在サポートされている唯一の実装。  
+ 抽象クラスのインスタンスを作成することはできません。 アプリケーションコードは、派生クラスの新しいインスタンスを作成します。 クラス<xref:System.Security.Cryptography.RSACryptoServiceProvider> と<xref:System.Security.Cryptography.DSACryptoServiceProvider>クラスは、現在サポートされている唯一の実装です。  
   
  ]]></format>
         </remarks>
@@ -156,14 +156,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、単純な呼び出しを<xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType>メソッド。  
+ このメソッドは、メソッドの<xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType>単純な呼び出しです。  
   
- 呼び出す`Dispose`によって使用されるリソースの使用、<xref:System.Security.Cryptography.AsymmetricAlgorithm>他の目的で再割り当てするクラス。 詳細については`Dispose`を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)します。  
+ を`Dispose`呼び出すと、他の<xref:System.Security.Cryptography.AsymmetricAlgorithm>目的でクラスによって使用されるリソースが再割り当てされます。 の詳細`Dispose`については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。  
   
    
   
 ## Examples  
- 次のコード例を呼び出す方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.Clear%2A>を現在のリソースを解放するメソッド`customCrypto`オブジェクト。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.Clear%2A>メソッドを呼び出して、現在`customCrypto`のオブジェクトのリソースを解放する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcryptoimpl.cpp#1)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#1)]
@@ -225,7 +225,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、実装する方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.Create%2A>拡張クラスのメソッド。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、拡張クラスに<xref:System.Security.Cryptography.AsymmetricAlgorithm.Create%2A>メソッドを実装する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#11](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#11)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#11](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#11)]
@@ -296,7 +296,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、実装する方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.Create%2A>拡張クラスのメソッド。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、拡張クラスに<xref:System.Security.Cryptography.AsymmetricAlgorithm.Create%2A>メソッドを実装する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#12](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#12)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#12](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#12)]
@@ -404,16 +404,16 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このメソッドは、パブリック`Dispose()`メソッドと`Finalize`メソッド。 `Dispose()` 保護された起動`Dispose(Boolean)`メソッドを`disposing`パラメーターに設定`true`します。 `Finalize` 呼び出す`Dispose`で`disposing`に設定`false`します。  
+ このメソッドは、パブリック`Dispose()`メソッド`Finalize`とメソッドによって呼び出されます。 `Dispose()``disposing`パラメーターをに`Dispose(Boolean)` 設定して、保護されたメソッド`true`を呼び出します。 `Finalize`をに`disposing` `Dispose` 設定してを呼び出します`false`。  
   
  `disposing` パラメーターが `true` の場合、このメソッドは、この <xref:System.Security.Cryptography.AsymmetricAlgorithm> が参照しているすべてのマネージド オブジェクトによって保持されているリソースをすべて解放します。 このメソッドは、参照される各オブジェクトの `Dispose()` メソッドを呼び出します。  
   
  ]]></format>
         </remarks>
         <block subset="none" type="overrides"><para>
-            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 オーバーライドするときに<see langword="Dispose(Boolean)" />を以前の呼び出しで破棄されたオブジェクトを参照しないように注意、<see langword="Dispose" />します。 実装する方法についての詳細は<see langword="Dispose(Boolean)" />を参照してください[Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)します。  
+            <see langword="Dispose" /> は、他のオブジェクトから複数回呼び出すことができます。 をオーバーライド<see langword="Dispose(Boolean)" />する場合は、以前にを<see langword="Dispose" />呼び出したときに破棄されたオブジェクトを参照しないように注意してください。 を実装<see langword="Dispose(Boolean)" />する方法の詳細については、「 [Dispose メソッドの実装](~/docs/standard/garbage-collection/implementing-dispose.md)」を参照してください。  
   
-詳細については<see langword="Dispose" />と<see langword="Finalize" />を参照してください[アンマネージ リソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)します。</para></block>
+<see langword="Dispose" /> および<see langword="Finalize" />の詳細については、「[アンマネージリソースのクリーンアップ](~/docs/standard/garbage-collection/unmanaged.md)」を参照してください。</para></block>
         <related type="Article" href="~/docs/standard/security/cryptographic-services.md">暗号化サービス</related>
       </Docs>
     </Member>
@@ -442,11 +442,25 @@
         <Parameter Name="pbeParameters" Type="System.Security.Cryptography.PbeParameters" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="passwordBytes">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="passwordBytes">キー マテリアルを暗号化するときにパスワードとして使用するバイト。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <summary>現在のキーを PKCS# 8 EncryptedPrivateKeyInfo 形式で、バイトベースのパスワードを使用してエクスポートします。</summary>
+        <returns>このキーの PKCS# 8 EncryptedPrivateKeyInfo 表現を含むバイト配列。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ パスワードのバイトは、によっ`pbeParameters`て示されるアルゴリズムによって使用されるキー派生関数 (kdf) に直接渡されます。
+これにより、PBKDF2 (パスワードベースのキー派生関数 2) でパスワードを処理するときに、UTF-8 以外のテキストエンコードを使用する他のシステムとの互換性が確保されます。
+
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。
+
+または
+
+<paramref name="pbeParameters" /> は、<see cref="T:System.Char" /> ベースのパスワードを必要とする <see cref="F:System.Security.Cryptography.PbeEncryptionAlgorithm.TripleDes3KeyPkcs12" /> を使用する必要があることを示しています。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.TryExportEncryptedPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="ExportEncryptedPkcs8PrivateKey">
@@ -474,11 +488,20 @@
         <Parameter Name="pbeParameters" Type="System.Security.Cryptography.PbeParameters" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="password">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="password">キー マテリアルを暗号化するときに使用するパスワード。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <summary>現在のキーを PKCS# 8 EncryptedPrivateKeyInfo 形式で、char ベースのパスワードを使用してエクスポートします。</summary>
+        <returns>このキーの PKCS# 8 EncryptedPrivateKeyInfo 表現を含むバイト配列。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ が`pbeParameters` 、PBKDF2 (パスワードベースのキー派生関数 2) を使用するアルゴリズムを示す場合、パスワードは utf-8 エンコードを使用してバイトに変換されます。
+
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.TryExportEncryptedPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="ExportPkcs8PrivateKey">
@@ -504,9 +527,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>現在のキーを PKCS# 8 PrivateKeyInfo 形式でエクスポートします。</summary>
+        <returns>このキーの PKCS# 8 PrivateKeyInfo 表現を含むバイト配列。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportEncryptedPkcs8PrivateKey" />
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.TryExportPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="ExportSubjectPublicKeyInfo">
@@ -532,9 +558,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>現在のキーの公開キーの部分を、X.509 SubjectPublicKeyInfo 形式でエクスポートします。</summary>
+        <returns>このキーの公開キーの部分の X.509 SubjectPublicKeyInfo 表現を含むバイト配列。</returns>
         <remarks>To be added.</remarks>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.TryExportSubjectPublicKeyInfo" />
       </Docs>
     </Member>
     <Member MemberName="FromXmlString">
@@ -575,7 +602,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、実装する方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.FromXmlString%2A>を現在の設定に指定された XML 文字列を解析<xref:System.Security.Cryptography.CspParameters>オブジェクト。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、指定され<xref:System.Security.Cryptography.AsymmetricAlgorithm.FromXmlString%2A>た XML 文字列を解析して現在<xref:System.Security.Cryptography.CspParameters>のオブジェクトを設定するメソッドを実装する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#4](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#4)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#4](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#4)]
@@ -613,11 +640,42 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="passwordBytes">To be added.</param>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="passwordBytes">キー マテリアルを暗号化解除するときにパスワードとして使用するバイト。</param>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 EncryptedPrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>バイトベースのパスワードを使用して暗号化解除した後に、PKCS#8 EncryptedPrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ パスワードのバイトは、によっ`pbeParameters`て示されるアルゴリズムによって使用されるキー派生関数 (kdf) に直接渡されます。
+これにより、PBKDF2 (パスワードベースのキー派生関数 2) でパスワードを処理するときに、UTF-8 以外のテキストエンコードを使用する他のシステムとの互換性が確保されます。
+
+ このメソッドは、EncryptedPrivateKeyInfo の binary (BER/CER/DER) エンコードのみをサポートします。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">パスワードが正しくありません。
+
+または
+
+<paramref name="source" /> のコンテンツは、適用するキー派生関数 (KDF) が、<see cref="T:System.Char" /> ベースのパスワードを必要とするレガシの PKCS#12 KDF であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 EncryptedPrivateKeyInfo 構造体を表していません。
+
+または
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+- または -
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportEncryptedPkcs8PrivateKey">
@@ -647,11 +705,37 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="2" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="password">To be added.</param>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="password">キー マテリアルの暗号化に使用するパスワード。</param>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 EncryptedPrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>char ベースのパスワードを使用して暗号化解除した後に、PKCS#8 EncryptedPrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ の`source`内容が、PBKDF1 (パスワードベースのキー派生関数 1) または PBKDF2 (パスワードベースのキー派生関数 2) を使用するアルゴリズムを示す場合、パスワードは utf-8 エンコードを使用してバイトに変換されます。
+
+ このメソッドは、EncryptedPrivateKeyInfo の binary (BER/CER/DER) エンコードのみをサポートします。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">パスワードが正しくありません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 EncryptedPrivateKeyInfo 構造体を表していません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportPkcs8PrivateKey">
@@ -680,10 +764,30 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">ASN.1-BER エンコードでの PKCS#8 PrivateKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>暗号化解除した後に、PKCS#8 PrivateKeyInfo 構造体から公開/秘密キー ペアをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドでは、PrivateKeyInfo のバイナリ (BER/CER/DER) エンコードのみがサポートされます。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="source" /> のコンテンツは、ASN.1-BER でエンコードされた PKCS#8 PrivateKeyInfo 構造体を表していません。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+または
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="ImportSubjectPublicKeyInfo">
@@ -712,10 +816,30 @@
         <Parameter Name="bytesRead" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="bytesRead">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">ASN.1-DER エンコードでの X.509 SubjectPublicKeyInfo 構造体のバイト。</param>
+        <param name="bytesRead">このメソッドが戻るときに、<paramref name="source" /> から読み込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>暗号化解除した後に、X.509 SubjectPublicKeyInfo 構造体から公開キーをインポートし、このオブジェクトのキーを置き換えます。</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ このメソッドは、SubjectPublicKeyInfo のバイナリ (DER) エンコーディングのみをサポートしています。
+値が Base64 でエンコードされている場合、または PEM テキスト形式の場合、呼び出し元は、このメソッドを呼び出す前にコンテンツを Base64 でデコードする必要があります。
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="source" /> のコンテンツは、ASN.1-DER でエンコードされた X.509 SubjectPublicKeyInfo 構造体を表していません。
+
+または
+
+<paramref name="source" /> のコンテンツは、そのキーが、このインスタンスで表されているアルゴリズム以外のアルゴリズム用であることを示しています。
+
+- または -
+
+<paramref name="source" /> のコンテンツは、サポートされていない形式のキーを表しています。
+
+または
+
+アルゴリズム固有のキーのインポートに失敗しました。</exception>
       </Docs>
     </Member>
     <Member MemberName="KeyExchangeAlgorithm">
@@ -753,7 +877,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、オーバーライドする方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.KeyExchangeAlgorithm%2A>キー交換アルゴリズムの名前を返すプロパティ。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.KeyExchangeAlgorithm%2A>プロパティをオーバーライドして、キー交換アルゴリズムの名前を返す方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#6](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#6)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#6](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#6)]
@@ -800,12 +924,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有効なキー サイズが非対称アルゴリズムの特定の実装で指定され、記載されて、<xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>プロパティ。  
+ 有効なキーサイズは、非対称アルゴリズムの特定の実装によって指定され、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>プロパティに一覧表示されます。  
   
    
   
 ## Examples  
- 次のコード例は、オーバーライドする方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.KeySize%2A>プロパティは、ローカルで識別される範囲内にあることを確認する`keySizes`メンバー変数。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.KeySize%2A>プロパティをオーバーライドして、ローカル`keySizes`メンバー変数で識別される範囲内にあるかどうかを確認する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#9](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#9)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#9](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#9)]
@@ -852,9 +976,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 有効なキー サイズが非対称アルゴリズムの特定の実装で指定され、記載されて、<xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>プロパティ。  
+ 有効なキーサイズは、非対称アルゴリズムの特定の実装によって指定され、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>プロパティに一覧表示されます。  
   
- このフィールドには、<xref:System.Security.Cryptography.AsymmetricAlgorithm.KeySize%2A>プロパティ。  
+ このフィールドには、プロパティ<xref:System.Security.Cryptography.AsymmetricAlgorithm.KeySize%2A>を使用してアクセスします。  
   
  ]]></format>
         </remarks>
@@ -897,12 +1021,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非対称アルゴリズムでは、この配列内のエントリと一致するキー サイズだけをサポートします。  
+ 非対称アルゴリズムでは、この配列内のエントリと一致するキーサイズのみがサポートされます。  
   
    
   
 ## Examples  
- 次のコード例を呼び出す方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>プロパティを取得する、 <xref:System.Security.Cryptography.KeySizes.MinSize%2A>、 <xref:System.Security.Cryptography.KeySizes.MaxSize%2A>、および<xref:System.Security.Cryptography.KeySizes.SkipSize%2A>プロパティ。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ <xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>プロパティを呼び出して、 <xref:System.Security.Cryptography.KeySizes.MaxSize%2A>、、および<xref:System.Security.Cryptography.KeySizes.SkipSize%2A>の<xref:System.Security.Cryptography.KeySizes.MinSize%2A>各プロパティを取得する方法を次のコード例に示します。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#10](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcryptoimpl.cpp#10)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#10](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#10)]
@@ -948,9 +1072,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 非対称アルゴリズムでは、この配列内のエントリと一致するキー サイズだけをサポートします。  
+ 非対称アルゴリズムでは、この配列内のエントリと一致するキーサイズのみがサポートされます。  
   
- このフィールドには、<xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>プロパティ。  
+ このフィールドには、プロパティ<xref:System.Security.Cryptography.AsymmetricAlgorithm.LegalKeySizes%2A>を使用してアクセスします。  
   
  ]]></format>
         </remarks>
@@ -992,7 +1116,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例は、オーバーライドする方法を示します、<xref:System.Security.Cryptography.AsymmetricAlgorithm.SignatureAlgorithm%2A>署名アルゴリズムの名前を返すプロパティ。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.SignatureAlgorithm%2A>プロパティをオーバーライドして、署名アルゴリズムの名前を返す方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#7](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#7)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#7](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#7)]
@@ -1029,7 +1153,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>このメンバーの説明については、<see cref="M:System.IDisposable.Dispose" /> のトピックを参照してください。</summary>
+        <summary>このメンバーの詳細については、「<see cref="M:System.IDisposable.Dispose" />」をご覧ください。</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[
 
@@ -1081,7 +1205,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例を呼び出す方法を示します、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.ToXmlString%2A> 、現在のパラメーターの XML 表現を作成するメソッドを<xref:System.Security.Cryptography.AsymmetricAlgorithm>オブジェクト。 このコード例が示されている例の一部、<xref:System.Security.Cryptography.AsymmetricAlgorithm>クラス。  
+ 次のコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm.ToXmlString%2A>メソッドを呼び出して、現在<xref:System.Security.Cryptography.AsymmetricAlgorithm>のオブジェクトのパラメーターの XML 表現を作成する方法を示しています。 このコード例は、 <xref:System.Security.Cryptography.AsymmetricAlgorithm>クラスに対して提供される大規模な例の一部です。  
   
  [!code-cpp[System.Security.Cryptography.AsymmetricAlgorithm#5](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/cpp/customcrypto.cpp#5)]
  [!code-csharp[System.Security.Cryptography.AsymmetricAlgorithm#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Security.Cryptography.AsymmetricAlgorithm/CS/customcrypto.cs#5)]
@@ -1119,13 +1243,27 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="passwordBytes">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="passwordBytes">キー マテリアルを暗号化するときにパスワードとして使用するバイト。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <param name="destination">PKCS#8 EncryptedPrivateKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>バイトベースのパスワードを使用して、現在のキーを PKCS# 8 EncryptedPrivateKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ パスワードのバイトは、によっ`pbeParameters`て示されるアルゴリズムによって使用されるキー派生関数 (kdf) に直接渡されます。
+これにより、PBKDF2 (パスワードベースのキー派生関数 2) でパスワードを処理するときに、UTF-8 以外のテキストエンコードを使用する他のシステムとの互換性が確保されます。
+
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。
+
+- または -
+
+<paramref name="pbeParameters" /> は、<see cref="T:System.Char" /> ベースのパスワードを必要とする <see cref="F:System.Security.Cryptography.PbeEncryptionAlgorithm.TripleDes3KeyPkcs12" /> を使用する必要があることを示しています。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportEncryptedPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="TryExportEncryptedPkcs8PrivateKey">
@@ -1155,13 +1293,22 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="3" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="password">To be added.</param>
-        <param name="pbeParameters">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="password">キー マテリアルを暗号化するときに使用するパスワード。</param>
+        <param name="pbeParameters">キー マテリアルを暗号化するときに使用する、パスワードベースの暗号化 (PBE) パラメーター。</param>
+        <param name="destination">PKCS#8 EncryptedPrivateKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>char ベースのパスワードを使用して、PKCS#8 EncryptedPrivateKeyInfo 形式の現在のキーを、指定されたバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ が`pbeParameters` 、PBKDF2 (パスワードベースのキー派生関数 2) を使用するアルゴリズムを示す場合、パスワードは utf-8 エンコードを使用してバイトに変換されます。
+
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportEncryptedPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="TryExportPkcs8PrivateKey">
@@ -1190,11 +1337,13 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="destination">PKCS#8 PrivateKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>PKCS#8 PrivateKeyInfo 形式の現在のキーを、指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportPkcs8PrivateKey" />
       </Docs>
     </Member>
     <Member MemberName="TryExportSubjectPublicKeyInfo">
@@ -1223,11 +1372,13 @@
         <Parameter Name="bytesWritten" Type="System.Int32" RefType="out" Index="1" FrameworkAlternate="netcore-3.0" />
       </Parameters>
       <Docs>
-        <param name="destination">To be added.</param>
-        <param name="bytesWritten">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="destination">X.509 SubjectPublicKeyInfo データを受け取るバイト スパン。</param>
+        <param name="bytesWritten">このメソッドが戻るときに、<paramref name="destination" /> に書き込まれたバイト数を示す値が含まれます。 このパラメーターは初期化前として処理されます。</param>
+        <summary>現在のキーを X.509 SubjectPublicKeyInfo 形式で指定のバッファーにエクスポートすることを試みます。</summary>
+        <returns><paramref name="destination" /> が出力を受け入れるだけの十分な大きさの場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">キーをエクスポートすることができませんでした。</exception>
+        <altmember cref="Overload:System.Security.Cryptography.AsymmetricAlgorithm.ExportSubjectPublicKeyInfo" />
       </Docs>
     </Member>
   </Members>

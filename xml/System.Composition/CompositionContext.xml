@@ -1,5 +1,5 @@
 <Type Name="CompositionContext" FullName="System.Composition.CompositionContext">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="29ea0a7154ef4af995e71142a854bfdd56ce0a4a" /><Meta Name="ms.sourcegitcommit" Value="220917117f9d774aaa482439aa7324e39dc1f5b6" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="02/25/2019" /><Meta Name="ms.locfileid" Value="56788899" /></Metadata><TypeSignature Language="C#" Value="public abstract class CompositionContext" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="68274ebffacaf8b25cd3ee54d3a7b9efcd708ea8" /><Meta Name="ms.sourcegitcommit" Value="634678f7ccd2928c6b2cf792a301b079b63639af" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/26/2019" /><Meta Name="ms.locfileid" Value="68543892" /></Metadata><TypeSignature Language="C#" Value="public abstract class CompositionContext" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CompositionContext extends System.Object" />
   <TypeSignature Language="DocId" Value="T:System.Composition.CompositionContext" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class CompositionContext" />
@@ -43,7 +43,7 @@
   
 ## Remarks  
   
-このコンス トラクターが保護されているに注意してください。派生したクラスによってのみ呼び出すことができます、<see cref="T:System.Composition.CompositionContext"/>クラス。 
+このコンストラクターは保護されていることに注意してください。このクラスは、クラスから派生した<see cref="T:System.Composition.CompositionContext"/>クラスによってのみ呼び出すことができます。 
  ]]></format>
         </remarks>
       </Docs>
@@ -74,7 +74,7 @@
         <summary>指定したコントラクトと一致するエクスポートを取得します。</summary>
         <returns>エクスポート値。</returns>
         <remarks></remarks>
-        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対してエクスポートが見つかりません。</exception>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExport">
@@ -103,6 +103,7 @@
         <summary>指定された型と一致するエクスポートを取得します。</summary>
         <returns>エクスポート値。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="exportType" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExport">
@@ -129,10 +130,11 @@
       </Parameters>
       <Docs>
         <param name="exportType">照合する型。</param>
-        <param name="contractName">対応させる名前です。</param>
+        <param name="contractName">一致させる名前。</param>
         <summary>指定された名前および型と一致するエクスポートを取得します。</summary>
         <returns>エクスポート値。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="exportType" /> および <paramref name="contractName" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExport&lt;TExport&gt;">
@@ -162,6 +164,7 @@
         <summary>指定したジェネリック型パラメーターに一致するエクスポートを取得します。</summary>
         <returns>エクスポート値。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><typeparamref name="TExport" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExport&lt;TExport&gt;">
@@ -194,6 +197,7 @@
         <summary>指定されたジェネリック型パラメーターおよびコントラクト名と一致するエクスポートを返します。</summary>
         <returns>エクスポート値。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><typeparamref name="TExport" /> および <paramref name="contractName" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExports">
@@ -222,6 +226,7 @@
         <summary>指定した型に一致するすべてのエクスポートから成るコレクションを取得します。</summary>
         <returns>エクスポートされた値のコレクション。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="exportType" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExports">
@@ -248,10 +253,11 @@
       </Parameters>
       <Docs>
         <param name="exportType">照合する型。</param>
-        <param name="contractName">対応させる名前です。</param>
+        <param name="contractName">一致させる名前。</param>
         <summary>指定されたコントラクト名と型と一致するすべてのエクスポートを取得します。</summary>
         <returns>エクスポートされた値のコレクション。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="exportType" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExports&lt;TExport&gt;">
@@ -281,6 +287,7 @@
         <summary>指定されたジェネリック型パラメーターに一致するすべてのエクスポートを取得します。</summary>
         <returns>エクスポートされた値のコレクション。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><typeparamref name="TExport" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="GetExports&lt;TExport&gt;">
@@ -309,10 +316,11 @@
       </Parameters>
       <Docs>
         <typeparam name="TExport">照合する型。</typeparam>
-        <param name="contractName">対応させる名前です。</param>
+        <param name="contractName">一致させる名前。</param>
         <summary>指定されたジェネリック型パラメーターとコントラクト名に一致するすべてのエクスポートを取得します。</summary>
         <returns>エクスポートされた値のコレクション。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><typeparamref name="TExport" /> および <paramref name="contractName" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetExport">
@@ -343,6 +351,7 @@
         <summary>指定のコントラクト名と一致するエクスポートを返すか、一致が存在しない場合は <see langword="null" /> を返します。</summary>
         <returns>エクスポートが見つかった場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetExport">
@@ -373,6 +382,7 @@
         <summary>指定の型と一致するエクスポートを返すか、一致が存在しない場合は <see langword="null" /> を返します。</summary>
         <returns>エクスポートが見つかった場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetExport">
@@ -400,11 +410,12 @@
       </Parameters>
       <Docs>
         <param name="exportType">照合する型。</param>
-        <param name="contractName">対応させる名前です。</param>
+        <param name="contractName">一致させる名前。</param>
         <param name="export">このメソッドから制御が戻るときに、一致するエクスポートまたは <see langword="null" /> が格納されます。</param>
         <summary>指定のコントラクト名および型と一致するエクスポートを返すか、一致が存在しない場合は <see langword="null" /> を返します。</summary>
         <returns>エクスポートが見つかった場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetExport&lt;TExport&gt;">
@@ -437,6 +448,7 @@
         <summary>指定のジェネリック型パラメーターと一致するエクスポートを返すか、一致が存在しない場合は <see langword="null" /> を返します。</summary>
         <returns>エクスポートが見つかった場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
     <Member MemberName="TryGetExport&lt;TExport&gt;">
@@ -466,11 +478,12 @@
       </Parameters>
       <Docs>
         <typeparam name="TExport">照合する型。</typeparam>
-        <param name="contractName">対応させる名前です。</param>
+        <param name="contractName">一致させる名前。</param>
         <param name="export">このメソッドから制御が戻るときに、一致するエクスポートまたは <see langword="null" /> が格納されます。</param>
         <summary>指定のジェネリック型パラメーター およびコントラクト名と一致するエクスポートを返すか、一致が存在しない場合は <see langword="null" /> を返します。</summary>
         <returns>エクスポートが見つかった場合は <see langword="true" />。それ以外の場合は <see langword="false" />。</returns>
         <remarks></remarks>
+        <exception cref="T:System.Composition.Hosting.CompositionFailedException"><paramref name="contract" /> に対するエクスポートが見つかりませんでした。</exception>
       </Docs>
     </Member>
   </Members>

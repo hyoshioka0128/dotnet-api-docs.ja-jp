@@ -1,5 +1,5 @@
 <Type Name="LazyThreadSafetyMode" FullName="System.Threading.LazyThreadSafetyMode">
-  <Metadata><Meta Name="ms.openlocfilehash" Value="7f00d9d8962d1fd87330f2e8fe2f3cba1aea4aff" /><Meta Name="ms.sourcegitcommit" Value="a3e01ec36374fac54a55add0dcc1e754e394abeb" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="03/30/2019" /><Meta Name="ms.locfileid" Value="58702240" /></Metadata><TypeSignature Language="C#" Value="public enum LazyThreadSafetyMode" />
+  <Metadata><Meta Name="ms.openlocfilehash" Value="1572f860069ab9a5fc15b40d017dc83c02cefdc1" /><Meta Name="ms.sourcegitcommit" Value="e7974886b08aa83a8fb461e8550f31a7d4331ee3" /><Meta Name="ms.translationtype" Value="MT" /><Meta Name="ms.contentlocale" Value="ja-JP" /><Meta Name="ms.lasthandoff" Value="07/23/2019" /><Meta Name="ms.locfileid" Value="68392228" /></Metadata><TypeSignature Language="C#" Value="public enum LazyThreadSafetyMode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed LazyThreadSafetyMode extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:System.Threading.LazyThreadSafetyMode" />
   <TypeSignature Language="VB.NET" Value="Public Enum LazyThreadSafetyMode" />
@@ -36,19 +36,19 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- この列挙体を使用して、`mode`パラメーターの<xref:System.Lazy%601>コンス トラクター。 スレッドの同期でのすべてのコンス トラクターの影響があるかどうかに関して、この列挙体に記述できます`mode`パラメーター。  
+ この列挙体を使用し`mode`て、 <xref:System.Lazy%601>コンストラクターのパラメーターを指定します。 スレッド同期に対するすべてのコンストラクターの影響は、パラメーターがある`mode`かどうかにかかわらず、この列挙体の観点から記述できます。  
   
- A<xref:System.Lazy%601>初期化のユーザーが指定したメソッドまたはの既定のコンス トラクターのいずれかのインスタンスの初期化`T`します。 初期化メソッドがで指定された、`valueFactory`のパラメーターを<xref:System.Lazy%601>コンス トラクター。 インスタンスを返します`T`のインスタンスによって遅延インスタンス化される型である<xref:System.Lazy%601>します。 コンス トラクターがない場合、`valueFactory`パラメーターでは、既定のコンス トラクターの`T`を初期化するために使用、<xref:System.Lazy%601>インスタンス。 どちらの場合の初期化するには、初めて呼び出すことが行われます。、<xref:System.Lazy%601.Value%2A?displayProperty=nameWithType>プロパティ。  
+ インスタンスは、ユーザー指定の初期化メソッドか、のパラメーターなしの`T`コンストラクターによって初期化されます。 <xref:System.Lazy%601> 初期化メソッドは、 `valueFactory` <xref:System.Lazy%601>コンストラクターのパラメーターによって指定されます。 メソッドは`T`、のインスタンスを返します。これは、の<xref:System.Lazy%601>インスタンスによって遅延的にインスタンス化される型です。 コンストラクターに`valueFactory`パラメーターがない場合は、のパラメーターなしの`T`コンストラクターを使用して<xref:System.Lazy%601>インスタンスが初期化されます。 どちらの場合も、 <xref:System.Lazy%601.Value%2A?displayProperty=nameWithType>プロパティを初めて呼び出すときに初期化が発生します。  
   
- スレッド セーフを指定するだけでなく、<xref:System.Lazy%601>この列挙体のインスタンスでは、例外がキャッシュに影響します。 例外をキャッシュする場合、<xref:System.Lazy%601>インスタンス、インスタンスを初期化する機会を 1 つだけを取得します。 呼び出した場合、例外がスローされて初めて、<xref:System.Lazy%601.Value%2A?displayProperty=nameWithType>プロパティ、例外はキャッシュされ、以降すべての呼び出しで再スロー、<xref:System.Lazy%601.Value%2A?displayProperty=nameWithType>プロパティ。 例外をキャッシュする利点は、エラーが発生した場合でも、任意の 2 つのスレッドがその結果は同じを常に取得します。  
+ この列挙体は、 <xref:System.Lazy%601>インスタンスのスレッドセーフを指定するだけでなく、例外のキャッシュにも影響します。 <xref:System.Lazy%601>インスタンスに対して例外がキャッシュされると、インスタンスを初期化する機会が1つだけ返されます。 最初に<xref:System.Lazy%601.Value%2A?displayProperty=nameWithType>プロパティを呼び出したときに例外がスローされた場合、その例外はキャッシュされ、その後<xref:System.Lazy%601.Value%2A?displayProperty=nameWithType>のプロパティのすべての呼び出しで再スローされます。 例外のキャッシュの利点は、エラーが発生した場合でも、任意の2つのスレッドが常に同じ結果を得ることです。  
   
- PublicationOnly モードを指定すると、例外はキャッシュされません。 None を指定すると ExecutionAndPublication、キャッシュによって異なるかどうか、初期化メソッドを指定するか、許可の既定のコンス トラクターまたは`T`使用します。 初期化メソッドを指定すると、この 2 つのモードで例外キャッシュが有効になります。 初期化メソッドは非常に単純にすることができます。 たとえば、`T` に既定のコンストラクターを呼び出すことができます。C# の場合は `new Lazy<Contents>(() => new Contents(), mode)`、Visual Basic の場合は `New Lazy(Of Contents)(Function() New Contents())` です。 既定のコンス トラクターからスローされる例外で、初期化メソッドを指定していないコンス トラクターを使用するかどうかは`T`はキャッシュされません。 次の表は、例外がキャッシュの動作をまとめたものです。  
+ [パブリケーションのみ] モードを指定すると、例外はキャッシュされません。 None または executionandpublication を指定すると、のキャッシュは、初期化メソッドを指定するか、のパラメーター `T`なしのコンストラクターを使用できるようにするかによって異なります。 初期化メソッドを指定すると、この 2 つのモードで例外キャッシュが有効になります。 初期化メソッドは非常に単純にすることができます。 たとえば、の`T`場合は、の`new Lazy<Contents>(() => new Contents(), mode)` C#場合はパラメーターなしのコンストラクターを`New Lazy(Of Contents)(Function() New Contents())` 、Visual Basic の場合はを呼び出します。 初期化メソッドを指定しないコンストラクターを使用する場合、のパラメーターなしの`T`コンストラクターによってスローされる例外はキャッシュされません。 次の表は、例外のキャッシュ動作をまとめたものです。  
   
-|モード|初期化メソッドを使用します。|既定のコンス トラクターを使用します。 `T`|  
+|モード|初期化メソッドの使用|のパラメーターなしのコンストラクターの使用`T`|  
 |----------|---------------------------------|---------------------------------------|  
-|なし|キャッシュ済み|キャッシュされていません。|  
-|PublicationOnly|キャッシュされていません。|キャッシュされていません。|  
-|ExecutionAndPublication|キャッシュ済み|キャッシュされていません。|  
+|None|キャッシュ済み|キャッシュなし|  
+|文書のみ|キャッシュなし|キャッシュなし|  
+|は executionandpublication|キャッシュ済み|キャッシュなし|  
   
  ]]></format>
     </remarks>
@@ -90,7 +90,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>ロックを使って確実に 1 つのスレッドのみが <see cref="T:System.Lazy`1" /> インスタンスをスレッド セーフな方法で初期化します。 初期化メソッド (初期化メソッドがない場合は、既定のコンストラクター) は内部でロックを使うため、デッドロックが発生することがあります。 初期化メソッドを指定した (<paramref name="valueFactory" /> パラメーター) <see cref="T:System.Lazy`1" /> コンストラクターを使った場合に、<see cref="P:System.Lazy`1.Value" /> プロパティを初回に呼び出したときに初期化メソッドが例外をスローした (または例外のハンドルに失敗した) 場合、その例外はキャッシュされ、それ以降に <see cref="P:System.Lazy`1.Value" /> プロパティを呼び出した時点で再度スローされます。 初期化メソッドを指定しない <see cref="T:System.Lazy`1" /> コンストラクターを使った場合、<paramref name="T" /> について既定のコンストラクターからスローされる例外はキャッシュされません。 その場合、<see cref="P:System.Lazy`1.Value" /> プロパティへの後続の呼び出しで <see cref="T:System.Lazy`1" /> インスタンスが正常に初期化される可能性があります。 初期化メソッドが <see cref="T:System.Lazy`1" /> インスタンスの <see cref="P:System.Lazy`1.Value" /> プロパティに再帰的にアクセスすると、<see cref="T:System.InvalidOperationException" /> がスローされます。</summary>
+        <summary>ロックを使って確実に 1 つのスレッドのみが <see cref="T:System.Lazy`1" /> インスタンスをスレッド セーフな方法で初期化します。 初期化メソッド (初期化メソッドがない場合は、パラメーターなしのコンストラクター) は内部でロックを使うため、デッドロックが発生することがあります。 初期化メソッドを指定した (<paramref name="valueFactory" /> パラメーター) <see cref="T:System.Lazy`1" /> コンストラクターを使った場合に、<see cref="P:System.Lazy`1.Value" /> プロパティを初回に呼び出したときに初期化メソッドが例外をスローした (または例外のハンドルに失敗した) 場合、その例外はキャッシュされ、それ以降に <see cref="P:System.Lazy`1.Value" /> プロパティを呼び出した時点で再度スローされます。 初期化メソッドを指定しない <see cref="T:System.Lazy`1" /> コンストラクターを使用する場合、<paramref name="T" /> についてパラメーターなしのコンストラクターからスローされる例外はキャッシュされません。 その場合、<see cref="P:System.Lazy`1.Value" /> プロパティへの後続の呼び出しで <see cref="T:System.Lazy`1" /> インスタンスが正常に初期化される可能性があります。 初期化メソッドが <see cref="T:System.Lazy`1" /> インスタンスの <see cref="P:System.Lazy`1.Value" /> プロパティに再帰的にアクセスすると、<see cref="T:System.InvalidOperationException" /> がスローされます。</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -128,7 +128,7 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary><see cref="T:System.Lazy`1" /> インスタンスはスレッド セーフではありません。インスタンスに複数のスレッドからアクセスした場合の動作は未定義です。 高いパフォーマンスが重要であり、<see cref="T:System.Lazy`1" /> インスタンスが複数のスレッドから初期化されないことが保証されている場合にのみ、このモードを使ってください。 初期化メソッドを指定した (<paramref name="valueFactory" /> パラメーター) <see cref="T:System.Lazy`1" /> コンストラクターを使った場合に、<see cref="P:System.Lazy`1.Value" /> プロパティを初回に呼び出したときに初期化メソッドが例外をスローした (または例外のハンドルに失敗した) 場合、その例外はキャッシュされ、それ以降に <see cref="P:System.Lazy`1.Value" /> プロパティを呼び出した時点で再度スローされます。 初期化メソッドを指定しない <see cref="T:System.Lazy`1" /> コンストラクターを使った場合、<paramref name="T" /> について既定のコンストラクターからスローされる例外はキャッシュされません。 その場合、<see cref="P:System.Lazy`1.Value" /> プロパティへの後続の呼び出しで <see cref="T:System.Lazy`1" /> インスタンスが正常に初期化される可能性があります。 初期化メソッドが <see cref="T:System.Lazy`1" /> インスタンスの <see cref="P:System.Lazy`1.Value" /> プロパティに再帰的にアクセスすると、<see cref="T:System.InvalidOperationException" /> がスローされます。</summary>
+        <summary><see cref="T:System.Lazy`1" /> インスタンスはスレッド セーフではありません。インスタンスに複数のスレッドからアクセスした場合の動作は未定義です。 高いパフォーマンスが重要であり、<see cref="T:System.Lazy`1" /> インスタンスが複数のスレッドから初期化されないことが保証されている場合にのみ、このモードを使ってください。 初期化メソッドを指定した (<paramref name="valueFactory" /> パラメーター) <see cref="T:System.Lazy`1" /> コンストラクターを使った場合に、<see cref="P:System.Lazy`1.Value" /> プロパティを初回に呼び出したときに初期化メソッドが例外をスローした (または例外のハンドルに失敗した) 場合、その例外はキャッシュされ、それ以降に <see cref="P:System.Lazy`1.Value" /> プロパティを呼び出した時点で再度スローされます。 初期化メソッドを指定しない <see cref="T:System.Lazy`1" /> コンストラクターを使用する場合、<paramref name="T" /> についてパラメーターなしのコンストラクターからスローされる例外はキャッシュされません。 その場合、<see cref="P:System.Lazy`1.Value" /> プロパティへの後続の呼び出しで <see cref="T:System.Lazy`1" /> インスタンスが正常に初期化される可能性があります。 初期化メソッドが <see cref="T:System.Lazy`1" /> インスタンスの <see cref="P:System.Lazy`1.Value" /> プロパティに再帰的にアクセスすると、<see cref="T:System.InvalidOperationException" /> がスローされます。</summary>
       </Docs>
     </Member>
     <Member MemberName="PublicationOnly">
@@ -166,7 +166,7 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary>複数のスレッドが <see cref="T:System.Lazy`1" /> のインスタンスを同時に初期化しようとすると、すべてのスレッドが初期化メソッド (または、初期化メソッドが存在しない場合は既定のコンストラクター) の実行を許可されます。 最初に初期化を完了したスレッドが <see cref="T:System.Lazy`1" /> インスタンスの値を設定します。 初期化メソッドを同時に実行したその他のスレッドには、その値が返されます。ただし、それらのスレッドで初期化メソッドが例外をスローした場合を除きます。 競合するスレッドによって作成された <paramref name="T" /> のインスタンスは、すべて破棄されます。 いずれかのスレッドで初期化メソッドが例外をスローした場合、その例外はそのスレッドの <see cref="P:System.Lazy`1.Value" /> プロパティの外に伝達されます。 例外はキャッシュされません。 <see cref="P:System.Lazy`1.IsValueCreated" /> プロパティの値は <see langword="false" /> のままになります。その後、例外がスローされたスレッドまたは他のスレッドが <see cref="P:System.Lazy`1.Value" /> プロパティを呼び出すと、初期化メソッドは再実行されます。 初期化メソッドが <see cref="T:System.Lazy`1" /> インスタンスの <see cref="P:System.Lazy`1.Value" /> プロパティに再帰的にアクセスしても、例外はスローされません。</summary>
+        <summary>複数のスレッドで <see cref="T:System.Lazy`1" /> のインスタンスを同時に初期化しようとすると、すべてのスレッドで初期化メソッド (または、初期化メソッドが存在しない場合はパラメーターなしのコンストラクター) の実行が許可されます。 最初に初期化を完了したスレッドが <see cref="T:System.Lazy`1" /> インスタンスの値を設定します。 初期化メソッドを同時に実行したその他のスレッドには、その値が返されます。ただし、それらのスレッドで初期化メソッドが例外をスローした場合を除きます。 競合するスレッドによって作成された <paramref name="T" /> のインスタンスは、すべて破棄されます。 いずれかのスレッドで初期化メソッドが例外をスローした場合、その例外はそのスレッドの <see cref="P:System.Lazy`1.Value" /> プロパティの外に伝達されます。 例外はキャッシュされません。 <see cref="P:System.Lazy`1.IsValueCreated" /> プロパティの値は <see langword="false" /> のままになります。その後、例外がスローされたスレッドまたは他のスレッドが <see cref="P:System.Lazy`1.Value" /> プロパティを呼び出すと、初期化メソッドは再実行されます。 初期化メソッドが <see cref="P:System.Lazy`1.Value" /> インスタンスの <see cref="T:System.Lazy`1" /> プロパティに再帰的にアクセスしても、例外はスローされません。</summary>
       </Docs>
     </Member>
   </Members>

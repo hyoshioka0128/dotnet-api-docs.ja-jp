@@ -45,33 +45,33 @@
       <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 構成のグレゴリオ暦カレンダーでは、2 つの時代 (年号) を認識します。B. C. または、西暦と a. d. または、紀元 この実装の<xref:System.Globalization.GregorianCalendar>クラスは、現在の時代 (西暦のみを認識 または 紀元) で変更します。  
+ グレゴリオ暦は、次の2つの時代 (年号) を認識します。紀元前 または B.C.E.、および A.D. または紀元 <xref:System.Globalization.GregorianCalendar>クラスのこの実装は、現在の時代 (年号) のみを認識します。 または紀元)。  
   
 > [!NOTE]
 >  <xref:System.Globalization.GregorianCalendar> クラスや .NET Framework のその他のカレンダー クラスの使用方法の詳細については、「[カレンダーの使用](~/docs/standard/datetime/working-with-calendars.md)」を参照してください。  
   
- 構成のグレゴリオ暦カレンダーにおける閏年は 100 で割り切れる場合を除き、4、均等に割り切れるある年として定義されます。 ただし、400 で割り切れる年が閏年が。 たとえば、1900 年が閏年ではありませんでしたが、2000 年でした。 平年は 365 日で、閏年は 366 日です。  
+ グレゴリオ暦の閏年は、100で割り切れない限り、4で均等に割り切れた年として定義されます。 しかし、400で割り切れる年数はうるう年です。 たとえば、1900年はうるう年ではなく、2000年はでした。 平年は 365 日で、閏年は 366 日です。  
   
- 構成のグレゴリオ暦カレンダーでは、28 ~ 31 日の 12 か月間があります。年 1 月 (31 日)、2 月号 (28 または 29 日まで)、年 3 月 (31 日)、年 4 月 (30 日)、月 (31 日)、年 6 月 (30 日)、年 7 月 (31 日)、年 8 月 (31 日)、年 9 月 (30 日)、年 10 月 (31 日)、11 月 (30 日間)、および年 12 月 (31 日)。 年 2 月 29 日、閏年の付けと平年 28。  
+ グレゴリオ暦には、それぞれ 28 ~ 31 日の12か月があります。1月 (31 日)、2月 (28 日または29日)、3月 (31 日)、4月 (30 日)、5月 (31 日)、6月 (30 日)、7月 (31 日)、8月 (31 日)、9月 (30 日)、および12月 (31 日)。 2月はうるう年の29日で、平年は28日間です。  
   
 > [!IMPORTANT]
->  既定では、すべて<xref:System.DateTime>と<xref:System.DateTimeOffset>構成のグレゴリオ暦カレンダーにおける日付と時刻の値が高速です。  
+>  既定では、 <xref:System.DateTime>および<xref:System.DateTimeOffset>のすべての値が、グレゴリオ暦の日付と時刻を表します。  
   
- 構成のグレゴリオ暦カレンダーは、ユリウス暦の代わりとして開発されました (で表される、<xref:System.Globalization.JulianCalendar>クラス) と、1582 年 10 月 15 日に、少数のカルチャで初めて導入されました。 グレゴリオ暦のカルチャの導入前にある履歴の日付を扱うときに、.NET Framework で利用可能である場合に元のカレンダーを使用する必要があります。 たとえば、デンマークからユリウス暦に変更構成のグレゴリオ暦カレンダー (ユリウス暦) の 2 月 19 日または年 3 月 1 日 (グレゴリオ暦) の場合は 1700 に。 この場合は、グレゴリオ暦の導入より前に、の日付をユリウス暦を使用してください。 ただし、カルチャに組み込みサポートはないことに注意してください、<xref:System.Globalization.JulianCalendar>クラス。 使用する必要があります、<xref:System.Globalization.JulianCalendar>スタンドアロンの暦としてクラス。 詳細については、次を参照してください。[カレンダーの使用](~/docs/standard/datetime/working-with-calendars.md)します。
+ グレゴリオ暦は、ユリウス暦 ( <xref:System.Globalization.JulianCalendar>クラスによって表されます) の代わりとして開発され、1582年10月15日にごく少数のカルチャで初めて導入されました。 カルチャによってグレゴリオ暦が導入される過去の日付を操作する場合、.NET Framework で使用できる場合は、元の暦を使用する必要があります。 たとえば、デンマークがユリウス暦から、1700年2月19日 (ユリウス暦)、または年3月1日 (グレゴリオ暦) でグレゴリオ暦に変更されました。 この場合、グレゴリオ暦を採用する前の日付については、ユリウス暦を使用する必要があります。 ただし、カルチャでは、 <xref:System.Globalization.JulianCalendar>クラスの組み込みサポートは提供されないことに注意してください。 このクラスは、 <xref:System.Globalization.JulianCalendar>スタンドアロンの暦として使用する必要があります。 詳細については、「[カレンダーの操作](~/docs/standard/datetime/working-with-calendars.md)」を参照してください。
   
- ユリウス暦はデンマークで正式に使用された最後の日であるユリウス暦で、1700 年 2 月 18日が 1 日、グレゴリオ暦での 1700 年 3 月 1日より前である次の例を示しています。  
+ 次の例では、ユリウス暦で1700年2月18日 (ユリウス暦が正式に使用された最後の日) は、グレゴリオ暦の1700年3月1日よりも1日前になっています。  
   
  [!code-csharp[System.Globalization.GregorianCalendar.Class#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.globalization.gregoriancalendar.class/cs/minimum1.cs#1)]
  [!code-vb[System.Globalization.GregorianCalendar.Class#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.globalization.gregoriancalendar.class/vb/minimum1.vb#1)]  
   
- 各<xref:System.Globalization.CultureInfo>予定表のセットをサポートします。 <xref:System.Globalization.CultureInfo.Calendar%2A> プロパティは、カルチャの既定のカレンダーを返し、<xref:System.Globalization.CultureInfo.OptionalCalendars%2A> プロパティは、カルチャでサポートされているすべてのカレンダーを含む配列を返します。 使用する暦を変更する、 <xref:System.Globalization.CultureInfo>、アプリケーションで設定できます、<xref:System.Globalization.DateTimeFormatInfo.Calendar%2A>プロパティを新しい<xref:System.Globalization.Calendar>します。  
+ では、カレンダーのセットをサポートしています。<xref:System.Globalization.CultureInfo> <xref:System.Globalization.CultureInfo.Calendar%2A> プロパティは、カルチャの既定のカレンダーを返し、<xref:System.Globalization.CultureInfo.OptionalCalendars%2A> プロパティは、カルチャでサポートされているすべてのカレンダーを含む配列を返します。 によって<xref:System.Globalization.CultureInfo>使用されるカレンダーを変更するには、 <xref:System.Globalization.DateTimeFormatInfo.Calendar%2A>アプリケーションでプロパティを<xref:System.Globalization.Calendar>新しいに設定します。  
   
- <xref:System.Globalization.DateTimeFormatInfo.GetEra%2A> 場合にのみ省略時代 (年号) の名前に区切り記号は無視されます、<xref:System.Globalization.GregorianCalendar>でが選択されている<xref:System.Globalization.DateTimeFormatInfo.Calendar%2A?displayProperty=nameWithType>カルチャが「a. d.」を使用して 時代 (年号) の名前、つまり「a. d.」として "AD"と同じです。  
+ <xref:System.Globalization.DateTimeFormatInfo.GetEra%2A><xref:System.Globalization.GregorianCalendar> で<xref:System.Globalization.DateTimeFormatInfo.Calendar%2A?displayProperty=nameWithType>が選択されていて、カルチャが "A.D." を使用している場合にのみ、省略された時代 (年号) 名の句読点を無視します。 年号名、つまり "A.D." は、"AD" に相当します。  
   
    
   
 ## Examples  
- コード例を次に示します<xref:System.Globalization.DateTimeFormatInfo>暦はグレゴリオ暦とカルチャが「a. d.」の時代 (年号) の名前を使用している場合にのみ、時代 (年号) の名前で句読点を無視します。  
+ 次のコード例では<xref:System.Globalization.DateTimeFormatInfo> 、カレンダーがグレゴリオ暦で、カルチャで時代 (年号) が使用されている場合にのみ、時代 (年号) 名の句読点を無視することを示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar.GetEra#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetEra/CPP/gregorian_getera.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar.GetEra#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetEra/CS/gregorian_getera.cs#1)]
@@ -83,7 +83,7 @@
     <altmember cref="P:System.Globalization.CultureInfo.Calendar" />
     <altmember cref="P:System.Globalization.CultureInfo.OptionalCalendars" />
     <related type="Article" href="~/docs/standard/datetime/working-with-calendars.md">カレンダーの使用</related>
-    <related type="ExternalDocumentation" href="https://code.msdn.microsoft.com/NET-Framework-4-Calendar-3360a84a">サンプル:カレンダーの週の範囲のユーティリティ</related>
+    <related type="ExternalDocumentation" href="https://code.msdn.microsoft.com/NET-Framework-4-Calendar-3360a84a">サンプル:Calendar Week の範囲ユーティリティ</related>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -131,12 +131,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 既定の<xref:System.Globalization.GregorianCalendarTypes>値は<xref:System.Globalization.GregorianCalendarTypes.Localized>します。 場合、<xref:System.Globalization.DateTimeFormatInfo.Calendar%2A?displayProperty=nameWithType>のプロパティ、<xref:System.Globalization.CultureInfo>に設定されている、<xref:System.Globalization.GregorianCalendar>このコンス トラクターで作成され、日付と時刻に関連付けられている言語でローカライズ、<xref:System.Globalization.CultureInfo>します。  
+ 既定<xref:System.Globalization.GregorianCalendarTypes>値は<xref:System.Globalization.GregorianCalendarTypes.Localized>です。 のプロパティが、このコンストラクターを使用し<xref:System.Globalization.GregorianCalendar>て作成されたに設定されている場合、日付と時刻はに関連<xref:System.Globalization.CultureInfo>付けられた言語でローカライズされます。 <xref:System.Globalization.CultureInfo> <xref:System.Globalization.DateTimeFormatInfo.Calendar%2A?displayProperty=nameWithType>  
   
    
   
 ## Examples  
- 次のコード例の出力を<xref:System.DateTime>を使用して、<xref:System.Globalization.GregorianCalendar>はローカライズされています。  
+ 次のコード例では<xref:System.DateTime> 、ローカライズ<xref:System.Globalization.GregorianCalendar>されたを使用してを出力します。  
   
  [!code-cpp[System.Globalization.GregorianCalendarLocalized#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendarLocalized/CPP/gregorianlocalized.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendarLocalized#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendarLocalized/CS/gregorianlocalized.cs#1)]
@@ -234,13 +234,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 結果の日の部分<xref:System.DateTime>結果として得られる日が結果として得られる結果の年の月の有効な日付ではない場合に影響します。 結果として得られる結果の年の月の最後の有効な日付に変更されます。 結果の年の部分<xref:System.DateTime>がその月が指定した年を超えた場合の影響を受ける<xref:System.DateTime>します。 この実装では、現在の時代をサポートします。 そのため、<xref:System.ArgumentException>結果の年が指定した時代 (年号) を超えた場合にスローされる<xref:System.DateTime>します。 結果の時刻の部分<xref:System.DateTime>は、指定したのと同じ<xref:System.DateTime>します。  
+ 結果として得ら<xref:System.DateTime>れるの日部分は、結果として得られる年の月の有効な日ではない場合に影響を受けます。 結果として得られた年の月の最後の有効日に変更されます。 結果として得ら<xref:System.DateTime>れたの年の部分が、指定<xref:System.DateTime>したの年の外側にある場合は影響を受けます。 この実装では、現在の時代 (年号) のみがサポートされます。 したがって<xref:System.ArgumentException> 、結果の年が指定<xref:System.DateTime>したの時代 (年号) の外にある場合は、がスローされます。 結果<xref:System.DateTime>のの日付と時刻の部分は、指定した<xref:System.DateTime>と同じままです。  
   
- などの場合は、指定した月、年 10 月 31 日間には、指定した日が、その月の 31 日との値、`months`パラメーターが 6 で、結果の年 1 月は年 4 月、および結果として得られる da、指定した年を超えるy は、4 月の末日である 30 日です。  
+ たとえば、指定された月が31日の場合、指定された日がその月の31日、 `months`パラメーターの値が6、結果として得られる年が指定した年より1つ多い、結果の月が4月、結果の day は、4月の最終日を示す30日です。  
   
- 場合の値、`months`パラメーターが負の場合、その結果<xref:System.DateTime>が、指定よりも前<xref:System.DateTime>します。  
+ `months`パラメーターの値が負の場合、結果<xref:System.DateTime>は指定した<xref:System.DateTime>よりも前になります。  
   
- <xref:System.DateTime.Kind%2A> 、返されたプロパティ<xref:System.DateTime>常に equals を値<xref:System.DateTimeKind.Unspecified?displayProperty=nameWithType>します。 維持することができます、<xref:System.DateTime.Kind%2A>のプロパティ、`time`パラメーターを呼び出すことによって、<xref:System.DateTime.SpecifyKind%2A?displayProperty=nameWithType>メソッドを次の例を示します。  
+ <xref:System.DateTimeKind.Unspecified?displayProperty=nameWithType>戻り<xref:System.DateTime.Kind%2A> 値のプロパティは、常にと<xref:System.DateTime>等しくなります。 次の例に<xref:System.DateTime.Kind%2A>示すように`time` 、 <xref:System.DateTime.SpecifyKind%2A?displayProperty=nameWithType>メソッドを呼び出すことによって、パラメーターのプロパティを保持できます。  
   
  [!code-csharp[System.Globalization.Calendar.AddMethods#5](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.globalization.calendar.addmethods/cs/add1.cs#5)]
  [!code-vb[System.Globalization.Calendar.AddMethods#5](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.globalization.calendar.addmethods/vb/add1.vb#5)]  
@@ -248,7 +248,7 @@
    
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -259,7 +259,7 @@
         <exception cref="T:System.ArgumentException">結果として得られる <see cref="T:System.DateTime" /> がサポートされている範囲外の値です。</exception>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="months" /> が -120000 未満です。  
   
-- または - 
+または 
  <paramref name="months" /> が 120000 を超えています。</exception>
         <altmember cref="T:System.DateTime" />
         <altmember cref="M:System.Globalization.GregorianCalendar.AddYears(System.DateTime,System.Int32)" />
@@ -301,8 +301,8 @@
       <Docs>
         <param name="time">週数を加算する対象の <see cref="T:System.DateTime" />。</param>
         <param name="weeks">加算する週数。</param>
-        <summary>返します、<see cref="T:System.DateTime" />から指定した週の指定した数は<c>DateTime</c>します。</summary>
-        <returns><see cref="T:System.DateTime" />を指定した週の指定した数を加算した結果を<c>DateTime</c>します。</returns>
+        <summary>指定した <c>DateTime</c> から指定した週数が経過した後の <see cref="T:System.DateTime" /> を返します。</summary>
+        <returns>指定した <c>DateTime</c> に指定した週数を加算した結果の <see cref="T:System.DateTime" />。</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -352,13 +352,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 結果の日の部分<xref:System.DateTime>結果として得られる日が結果として得られる結果の年の月の有効な日付ではない場合に影響します。 結果として得られる結果の年の月の最後の有効な日付に変更されます。 結果の月の部分<xref:System.DateTime>は、指定したのと同じ<xref:System.DateTime>します。 この実装では、現在の時代をサポートします。 そのため、<xref:System.ArgumentException>結果の年が指定した時代 (年号) を超えた場合にスローされる<xref:System.DateTime>します。 結果の時刻の部分<xref:System.DateTime>は、指定したのと同じ<xref:System.DateTime>します。  
+ 結果として得ら<xref:System.DateTime>れるの日部分は、結果として得られる年の月の有効な日ではない場合に影響を受けます。 結果として得られた年の月の最後の有効日に変更されます。 結果<xref:System.DateTime>のの月の部分は、指定した<xref:System.DateTime>と同じままです。 この実装では、現在の時代 (年号) のみがサポートされます。 したがって<xref:System.ArgumentException> 、結果の年が指定<xref:System.DateTime>したの時代 (年号) の外にある場合は、がスローされます。 結果<xref:System.DateTime>のの日付と時刻の部分は、指定した<xref:System.DateTime>と同じままです。  
   
- たとえば、年 2 月は、平年の場合は 29 日を除く 28 の日が。 指定した日付がうるう年の 2 月 29 日と値の場合は`years`は 1 です。 結果として得られる日付は次の年 2 月 28 日になります。  
+ たとえば、2月は28日ありますが、うるう年が29日ある場合を除きます。 指定された日付がうるう年の2月の29日で、の`years`値が1の場合、結果の日付は翌年の2月28日になります。  
   
- 場合`years`が負の場合、その結果<xref:System.DateTime>が、指定よりも前<xref:System.DateTime>します。  
+ が`years`負の値の場合<xref:System.DateTime> 、結果は指定し<xref:System.DateTime>たよりも前になります。  
   
- <xref:System.DateTime.Kind%2A> 、返されたプロパティ<xref:System.DateTime>常に equals を値<xref:System.DateTimeKind.Unspecified?displayProperty=nameWithType>します。 維持することができます、<xref:System.DateTime.Kind%2A>のプロパティ、`time`パラメーターを呼び出すことによって、<xref:System.DateTime.SpecifyKind%2A?displayProperty=nameWithType>メソッドを次の例を示します。  
+ <xref:System.DateTimeKind.Unspecified?displayProperty=nameWithType>戻り<xref:System.DateTime.Kind%2A> 値のプロパティは、常にと<xref:System.DateTime>等しくなります。 次の例に<xref:System.DateTime.Kind%2A>示すように`time` 、 <xref:System.DateTime.SpecifyKind%2A?displayProperty=nameWithType>メソッドを呼び出すことによって、パラメーターのプロパティを保持できます。  
   
  [!code-csharp[System.Globalization.Calendar.AddMethods#8](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.globalization.calendar.addmethods/cs/add1.cs#8)]
  [!code-vb[System.Globalization.Calendar.AddMethods#8](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.globalization.calendar.addmethods/vb/add1.vb#8)]  
@@ -366,7 +366,7 @@
    
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -422,7 +422,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 構成のグレゴリオ暦カレンダーでは、2 つの時代 (年号) を認識します。B. C. または、西暦と a. d. または、紀元 この実装の<xref:System.Globalization.GregorianCalendar>クラスは、現在の時代 (西暦のみを認識 または 紀元) で変更します。 このフィールドは、常に 1 を返します。  
+ グレゴリオ暦は、次の2つの時代 (年号) を認識します。紀元前 または B.C.E.、および A.D. または紀元 <xref:System.Globalization.GregorianCalendar>クラスのこの実装は、現在の時代 (年号) のみを認識します。 または紀元)。 このフィールドは常に1を返します。  
   
  ]]></format>
         </remarks>
@@ -472,7 +472,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次の例では、リフレクションを使用して、それぞれをインスタンス化<xref:System.Globalization.Calendar>型については、.NET Framework との値を表示、<xref:System.Globalization.Calendar.AlgorithmType%2A>プロパティ。  
+ 次の例では、リフレクションを<xref:System.Globalization.Calendar>使用して、.NET Framework で検出された各<xref:System.Globalization.Calendar.AlgorithmType%2A>型をインスタンス化し、そのプロパティの値を表示します。  
   
  [!code-csharp[System.Globalization.Calendar.AlgorithmType#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.globalization.calendar.algorithmtype/cs/algorithmtype1.cs#1)]
  [!code-vb[System.Globalization.Calendar.AlgorithmType#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.globalization.calendar.algorithmtype/vb/algorithmtype1.vb#1)]  
@@ -516,12 +516,12 @@
       </ReturnValue>
       <Docs>
         <summary>現在の <see cref="T:System.Globalization.GregorianCalendarTypes" /> の言語バージョンを示す <see cref="T:System.Globalization.GregorianCalendar" /> 値を取得または設定します。</summary>
-        <value>A <see cref="T:System.Globalization.GregorianCalendarTypes" /> 、現在の言語バージョンを示す値<see cref="T:System.Globalization.GregorianCalendar" />します。</value>
+        <value>現在の <see cref="T:System.Globalization.GregorianCalendarTypes" /> の言語バージョンを示す <see cref="T:System.Globalization.GregorianCalendar" /> 値。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、カルチャでサポートされている GregorianCalendar 言語バージョンを確認する方法を示します。  
+ 次のコード例は、カルチャでサポートされているいる gregoriancalendar 言語バージョンを確認する方法を示しています。  
   
  [!code-cpp[System.Globalization.GregorianCalendarTypes#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendarTypes/CPP/gregoriancalendartypes.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendarTypes#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendarTypes/CS/gregoriancalendartypes.cs#1)]
@@ -574,7 +574,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 構成のグレゴリオ暦カレンダーでは、2 つの時代 (年号) を認識します。B. C. または、西暦と a. d. または、紀元 この実装の<xref:System.Globalization.GregorianCalendar>クラスは、現在の時代 (西暦のみを認識 または 紀元) で変更します。 このプロパティは、常に 1 つだけの要素の配列を返します。  
+ グレゴリオ暦は、次の2つの時代 (年号) を認識します。紀元前 または B.C.E.、および A.D. または紀元 <xref:System.Globalization.GregorianCalendar>クラスのこの実装は、現在の時代 (年号) のみを認識します。 または紀元)。 このプロパティは、常に要素を1つだけ持つ配列を返します。  
   
  ]]></format>
         </remarks>
@@ -626,7 +626,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -687,12 +687,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.DayOfWeek>値は日曜日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日およびします。  
+ <xref:System.DayOfWeek>値は、日曜日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日です。  
   
    
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -754,12 +754,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 年の日付は、年の最初の日付から日数として定義されます。 たとえば、<xref:System.Globalization.GregorianCalendar.GetDayOfYear%2A>最初の月の最初の曜日は 1 を返しますと<xref:System.Globalization.GregorianCalendar.GetDayOfYear%2A>、過去 1 か月の最後の日は、その年の日数の合計数を返しますの値が同じから返される<xref:System.Globalization.GregorianCalendar.GetDaysInYear%2A>します。  
+ 年の日付は、その年の最初の日からの日数として定義されます。 たとえば、 <xref:System.Globalization.GregorianCalendar.GetDayOfYear%2A>最初の月の最初の日の場合は 1 <xref:System.Globalization.GregorianCalendar.GetDayOfYear%2A>を返し、最後の月の最後の日はその年の合計日数を返します。これは、によって<xref:System.Globalization.GregorianCalendar.GetDaysInYear%2A>返される値と同じです。  
   
    
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -824,12 +824,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- たとえば、このメソッドを返します 28 または 29 年 2 月の (`month` = 2) かどうかに応じて、`year`うるう年します。  
+ たとえば、このメソッドは、が閏年かどうか`month` `year`に応じて、2月 (= 2) に対して28または29を返します。  
   
    
   
 ## Examples  
- 次のコード例では、それぞれ各時代 (年号) の 5 年間の 2 番目の月の GetDaysInMonth を呼び出します。  
+ 次のコード例では、各時代 (年号) の5年ごとに、2番目の月の GetDaysInMonth を呼び出します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar.GetDaysInMonth#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetDaysInMonth/CPP/gregoriancalendar_getdaysinmonth.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar.GetDaysInMonth#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetDaysInMonth/CS/gregoriancalendar_getdaysinmonth.cs#1)]
@@ -839,10 +839,10 @@
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="era" /> がカレンダーでサポートされている範囲外です。  
   
-- または - 
+または 
  <paramref name="year" /> がカレンダーでサポートされている範囲外です。  
   
-- または - 
+または 
  <paramref name="month" /> がカレンダーでサポートされている範囲外です。</exception>
         <altmember cref="F:System.Globalization.Calendar.CurrentEra" />
         <altmember cref="F:System.Globalization.GregorianCalendar.ADEra" />
@@ -897,12 +897,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 365 または 366 のかどうかに応じて、たとえば、このメソッドが返されます`year`うるう年します。  
+ たとえば、が閏年かどうか`year`によって、このメソッドは365または366を返します。  
   
    
   
 ## Examples  
- 次のコード例では、各時代 (年号) の 5 年間 GetDaysInYear を呼び出します。  
+ 次のコード例では、各時代 (年号) の5年間、GetDaysInYear を呼び出します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar.GetDaysInYear#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetDaysInYear/CPP/gregoriancalendar_getdaysinyear.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar.GetDaysInYear#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetDaysInYear/CS/gregoriancalendar_getdaysinyear.cs#1)]
@@ -965,12 +965,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 構成のグレゴリオ暦カレンダーでは、2 つの時代 (年号) を認識します。B. C. または、西暦と a. d. または、紀元 この実装の<xref:System.Globalization.GregorianCalendar>クラスは、現在の時代 (西暦のみを認識 または 紀元) で変更します。  
+ グレゴリオ暦は、次の2つの時代 (年号) を認識します。紀元前 または B.C.E.、および A.D. または紀元 <xref:System.Globalization.GregorianCalendar>クラスのこの実装は、現在の時代 (年号) のみを認識します。 または紀元)。  
   
    
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -1043,7 +1043,7 @@
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="year" /> がグレゴリオ暦の 1 年未満か、グレゴリオ暦の 9999 年よりも大きい値です。  
   
-- または - 
+または 
  <paramref name="era" /> が、<see cref="F:System.Globalization.GregorianCalendar.ADEra" /> でも <see langword="GregorianCalendar.Eras[Calendar.CurrentEra]" /> でもありません。</exception>
       </Docs>
     </Member>
@@ -1091,7 +1091,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -1158,7 +1158,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、各時代 (年号) の 5 年間 GetMonthsInYear を呼び出します。  
+ 次のコード例では、各時代 (年号) の5年に対して Get当月 Sinyear を呼び出します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar.GetMonthsInYear#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetMonthsInYear/CPP/gregoriancalendar_getmonthsinyear.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar.GetMonthsInYear#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.GetMonthsInYear/CS/gregoriancalendar_getmonthsinyear.cs#1)]
@@ -1213,10 +1213,10 @@
         <Parameter Name="firstDayOfWeek" Type="System.DayOfWeek" Index="2" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0" />
       </Parameters>
       <Docs>
-        <param name="time"><see cref="T:System.DateTime" />読み取るオブジェクト。</param>
+        <param name="time">読み込む <see cref="T:System.DateTime" /> オブジェクト。</param>
         <param name="rule">暦の週を定義するいずれかの <see cref="T:System.Globalization.CalendarWeekRule" /> 値。</param>
         <param name="firstDayOfWeek">週の最初の曜日を表すいずれかの <see cref="T:System.DayOfWeek" /> 値。</param>
-        <summary>指定した日付を含むその年の通算週を返します<see cref="T:System.DateTime" />オブジェクト。</summary>
+        <summary>指定した <see cref="T:System.DateTime" /> オブジェクトの日付を含むその年の週を返します。</summary>
         <returns><paramref name="time" /> パラメーターの日付を含む年の週を表す 1 から始まる整数。</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="firstDayOfWeek" /> がカレンダーでサポートされている範囲外です。
@@ -1269,7 +1269,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例のいくつかのコンポーネントの値を表示する、<xref:System.DateTime>構成のグレゴリオ暦カレンダーの観点から。  
+ 次のコード例では、 <xref:System.DateTime>の複数のコンポーネントの値をグレゴリオ暦の観点から表示します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CPP/gregoriancalendar_addget.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_AddGet#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_AddGet/CS/gregoriancalendar_addget.cs#1)]
@@ -1340,14 +1340,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 閏年、グレゴリオ暦では、4 つの 100 で割り切れる場合を除き、均等に割り切れる年として定義されます。 ただし、400 で割り切れる年が閏年が。 たとえば、1900 年が閏年ではありませんでしたが、2000 年でした。 平年は 365 日で、閏年は 366 日です。  
+ グレゴリオ暦の閏年は、100で割り切れる場合を除き、4で均等に割り切れる年として定義されています。 しかし、400で割り切れる年数はうるう年です。 たとえば、1900年はうるう年ではなく、2000年はでした。 平年は 365 日で、閏年は 366 日です。  
   
- 閏日が閏年でのみ発生する日です。 グレゴリオ暦のカレンダーでは、2 月 29 日はのみ閏日です。  
+ 閏年は、閏年にのみ発生する日です。 グレゴリオ暦では、2月の29日が唯一の閏日です。  
   
    
   
 ## Examples  
- 次のコード例では、2 番目の月 (2 月)、時代 (年号) のそれぞれに 5 年間の最後の日の IsLeapDay を呼び出します。  
+ 次のコード例では、2番目の月の最後の日 (2 月) について、各時代 (年号) の5年間の IsLeapDay を呼び出します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar.IsLeapDay#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.IsLeapDay/CPP/gregoriancalendar_isleapday.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar.IsLeapDay#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.IsLeapDay/CS/gregoriancalendar_isleapday.cs#1)]
@@ -1363,7 +1363,7 @@
 - または - 
  <paramref name="month" /> がカレンダーでサポートされている範囲外です。  
   
-- または - 
+または 
  <paramref name="day" /> がカレンダーでサポートされている範囲外です。</exception>
         <altmember cref="F:System.Globalization.Calendar.CurrentEra" />
         <altmember cref="F:System.Globalization.GregorianCalendar.ADEra" />
@@ -1422,14 +1422,14 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 閏年、グレゴリオ暦では、4 つの 100 で割り切れる場合を除き、均等に割り切れる年として定義されます。 ただし、400 で割り切れる年が閏年が。 たとえば、1900 年が閏年ではありませんでしたが、2000 年でした。 平年は 365 日で、閏年は 366 日です。  
+ グレゴリオ暦の閏年は、100で割り切れる場合を除き、4で均等に割り切れる年として定義されています。 しかし、400で割り切れる年数はうるう年です。 たとえば、1900年はうるう年ではなく、2000年はでした。 平年は 365 日で、閏年は 366 日です。  
   
- 閏月が閏年でのみ発生する月全体です。 構成のグレゴリオ暦カレンダーには、閏月がありません。  
+ 閏月は、閏月でのみ発生する月の全体です。 グレゴリオ暦には閏月がありません。  
   
    
   
 ## Examples  
- 次のコード例では、現在の時代 (年号) の 5 年間のすべての月の IsLeapMonth を呼び出します。  
+ 次のコード例では、現在の時代 (年号) の5年間のすべての月の IsLeapMonth を呼び出します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar.IsLeapMonth#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.IsLeapMonth/CPP/gregoriancalendar_isleapmonth.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar.IsLeapMonth#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.IsLeapMonth/CS/gregoriancalendar_isleapmonth.cs#1)]
@@ -1439,7 +1439,7 @@
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="era" /> がカレンダーでサポートされている範囲外です。  
   
-- または - 
+または 
  <paramref name="year" /> がカレンダーでサポートされている範囲外です。  
   
 - または - 
@@ -1498,12 +1498,12 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- 閏年、グレゴリオ暦では、4 つの 100 で割り切れる場合を除き、均等に割り切れる年として定義されます。 ただし、400 で割り切れる年が閏年が。 たとえば、1900 年が閏年ではありませんでしたが、2000 年でした。 平年は 365 日で、閏年は 366 日です。  
+ グレゴリオ暦の閏年は、100で割り切れる場合を除き、4で均等に割り切れる年として定義されています。 しかし、400で割り切れる年数はうるう年です。 たとえば、1900年はうるう年ではなく、2000年はでした。 平年は 365 日で、閏年は 366 日です。  
   
    
   
 ## Examples  
- 次のコード例では、5 年以上に、時代 (年号) の各 IsLeapYear を呼び出します。  
+ 次のコード例では、時代 (年号) ごとに5年間 IsLeapYear を呼び出します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar.IsLeapYear#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.IsLeapYear/CPP/gregoriancalendar_isleapyear.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar.IsLeapYear#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar.IsLeapYear/CS/gregoriancalendar_isleapyear.cs#1)]
@@ -1561,12 +1561,12 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Globalization.GregorianCalendar" /> 型でサポートされている最も新しい日付と時刻を取得します。</summary>
-        <value>最新の日付と時刻でサポートされている、 <see cref="T:System.Globalization.GregorianCalendar" /> 9999 の紀元、年 12 月 31 日の最後の瞬間である型 等価<see cref="F:System.DateTime.MaxValue" />します。</value>
+        <value><see cref="T:System.Globalization.GregorianCalendar" />型でサポートされている最も新しい日付と時刻。これは、紀元9999年12月31日の最後の瞬間です。 とは、と<see cref="F:System.DateTime.MaxValue" />同じです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Examples  
- 次のコード例では、最小値と予定表の最大値を取得します。  
+ 次のコード例では、カレンダーの最小値と最大値を取得します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_MinMax#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_MinMax/CPP/gregoriancalendar_minmax.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_MinMax#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_MinMax/CS/gregoriancalendar_minmax.cs#1)]
@@ -1615,17 +1615,17 @@
       </ReturnValue>
       <Docs>
         <summary><see cref="T:System.Globalization.GregorianCalendar" /> 型でサポートされている最も古い日付と時刻を取得します。</summary>
-        <value>最も古い日付と時刻でサポートされている、<see cref="T:System.Globalization.GregorianCalendar" />紀元 0001、1 月 1 日の最初の瞬間である型 等価<see cref="F:System.DateTime.MinValue" />します。</value>
+        <value><see cref="T:System.Globalization.GregorianCalendar" />型でサポートされている最も古い日付と時刻。これは、紀元0001年1月1日の最初の瞬間です。 とは、と<see cref="F:System.DateTime.MinValue" />同じです。</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- ただしの値、<xref:System.Globalization.GregorianCalendar.MinSupportedDateTime%2A>プロパティは、紀元 0001、1 月 1 日の最初の瞬間、構成のグレゴリオ暦カレンダーは 1582 年 10 月 15日まで導入されなかった、および大陸、世界中のヨーロッパ全体での採用が遅くします。 構成のグレゴリオ暦カレンダーを採用するまで、ヨーロッパ、米国、およびオーストラリアの大陸でほとんどのカルチャを使用してユリウス暦で表される、<xref:System.Globalization.JulianCalendar>クラス。  
+ <xref:System.Globalization.GregorianCalendar.MinSupportedDateTime%2A>プロパティの値は、西暦0001年1月1日の最初の瞬間ですが、グレゴリオ暦は1582年10月15日まで導入されていません。また、ヨーロッパ大陸と世界全体での導入は低速でした。 グレゴリオ暦を採用するまで、ヨーロッパ、アメリカ、オーストラリア大陸のほとんどのカルチャでは、 <xref:System.Globalization.JulianCalendar>クラスで表されるユリウス暦が使用されていました。  
   
    
   
 ## Examples  
- 次のコード例では、最小値と予定表の最大値を取得します。  
+ 次のコード例では、カレンダーの最小値と最大値を取得します。  
   
  [!code-cpp[System.Globalization.GregorianCalendar_MinMax#1](~/samples/snippets/cpp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_MinMax/CPP/gregoriancalendar_minmax.cpp#1)]
  [!code-csharp[System.Globalization.GregorianCalendar_MinMax#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Globalization.GregorianCalendar_MinMax/CS/gregoriancalendar_minmax.cs#1)]
@@ -1764,9 +1764,9 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- <xref:System.Globalization.GregorianCalendar.TwoDigitYearMax%2A> 2 桁で表すことができる 100 年の範囲の最後の年です。 4 桁の年は 2 桁の唯一の検索によって決まります`year`その 100 年の範囲内です。 たとえば場合、<xref:System.Globalization.GregorianCalendar.TwoDigitYearMax%2A>設定されている 2029 年に 100 年間の範囲はように、1930年 ~ 2029年します。 そのため、30 の 2 桁の値は、2029年として解釈されます 2 桁の値は 29、ように、1930、として解釈されます。  
+ <xref:System.Globalization.GregorianCalendar.TwoDigitYearMax%2A>は、100年の範囲の最後の年で、2桁の年で表すことができます。 世紀は、100年の範囲内で、2桁の数字`year`のみを検索することによって決定されます。 たとえば、が 2029 <xref:System.Globalization.GregorianCalendar.TwoDigitYearMax%2A>に設定されている場合、100年の範囲は1930から2029になります。 したがって、2桁の値30は1930と解釈され、2桁の値29は2029として解釈されます。  
   
- <xref:System.Globalization.GregorianCalendar.ToFourDigitYear%2A> 2 桁または 4 桁の年のいずれかをサポートしています。 4 桁の値に従って、値に変換するメソッドを 2 桁の年の値 (100 未満) を渡すと、<xref:System.Globalization.GregorianCalendar.TwoDigitYearMax%2A>適切な世紀を表す値。 アプリケーションがサポートされているカレンダーの範囲内にある 4 桁の年の値を提供している場合<xref:System.Globalization.GregorianCalendar.ToFourDigitYear%2A>、実際の入力値を返します。 場合は、アプリケーションがサポートされているカレンダーの範囲外にある 4 桁の値を提供、または負の値が渡された場合は、メソッドは例外をスローします。  
+ <xref:System.Globalization.GregorianCalendar.ToFourDigitYear%2A>2桁の年または4桁の年をサポートします。 2桁の年の値 (100 未満) を渡すと、該当する世紀を表す<xref:System.Globalization.GregorianCalendar.TwoDigitYearMax%2A>値に従って、メソッドによって値が4桁の値に変換されます。 サポートされているカレンダーの範囲<xref:System.Globalization.GregorianCalendar.ToFourDigitYear%2A>内にある4桁の年の値がアプリケーションによって提供される場合、メソッドは実際の入力値を返します。 サポートされている暦の範囲外にある4桁の値をアプリケーションが提供した場合、または負の値を指定した場合、メソッドは例外をスローします。  
   
  ]]></format>
         </remarks>
@@ -1814,17 +1814,17 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- このプロパティは、2 桁の年を 4 桁の年に適切に変換できます。 たとえば、このプロパティが 2029年に設定されている場合、100 年範囲はように、1930年から 2029 です。 そのため、30 の 2 桁の値は、2029年として解釈されます 2 桁の値は 29、ように、1930、として解釈されます。  
+ このプロパティを使用すると、2桁の年を4桁の年に正しく変換できます。 たとえば、このプロパティが2029に設定されている場合、100年の範囲は1930から2029になります。 したがって、2桁の値30は1930と解釈され、2桁の値29は2029として解釈されます。  
   
- このプロパティの初期値は、コントロール パネルの地域と言語のオプション部分の設定から派生します。 ただし、その情報を変更の有効期間中に、<xref:System.AppDomain>します。 <xref:System.Globalization.GregorianCalendar>クラス システム設定の変更を検出が自動的にします。  
+ このプロパティの初期値は、コントロールパネルの [地域と言語のオプション] の設定から取得されます。 ただし、この情報は、 <xref:System.AppDomain>の有効期間中に変更される可能性があります。 クラス<xref:System.Globalization.GregorianCalendar>は、システム設定の変更を自動的に検出しません。  
   
- アプリケーションは、この値を 2 桁の年をそのまま使用することを示す 99 に設定する必要があります。 たとえば、このプロパティが 99 に設定されている場合、100 年の範囲は 0 (ほとんどのカレンダーの有効な値されません) 99 です。 そのため、30 の 2 桁の値は 30 として解釈されます。  
+ アプリケーションでは、この値を99に設定して、2桁の年を文字どおりに取得する必要があることを示します。 たとえば、このプロパティが99に設定されている場合、100年の範囲は 0 (ほとんどの暦では有効な値ではありません) から99になります。 したがって、2桁の値30は30と解釈されます。  
   
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentOutOfRangeException">設定操作で指定された値が 99 未満です。  
   
-- または - 
+または 
 設定操作で指定した値が <see langword="MaxSupportedDateTime.Year" /> を超えています。</exception>
         <exception cref="T:System.InvalidOperationException">set 操作において、現在のインスタンスが読み取り専用です。</exception>
         <altmember cref="M:System.Globalization.GregorianCalendar.ToFourDigitYear(System.Int32)" />
